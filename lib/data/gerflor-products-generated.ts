@@ -5876,7 +5876,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 55 Clic - LOUNGE OAK BEIGE (Šifra: 1272)',
     images: [{
       id: 'creation-55-clic-beige-eir-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-beige/pod/62761 - JPG 72 dpi-Creation 1272 Lounge Oak Beige Sky View-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-beige/pod/49281 - 1272 - Lounge oak beige-pod.jpg?v=9',
       alt: 'LOUNGE OAK BEIGE',
       isPrimary: true,
       order: 1,
@@ -5973,23 +5973,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-cedar-golden',
-    name: 'Unknown CEDAR GOLDEN',
+    name: '1606 CEDAR GOLDEN',
     slug: 'creation-55-clic-cedar-golden',
-    sku: 'Unknown',
+    sku: '1606',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - CEDAR GOLDEN',
-    description: 'Gerflor Creation 55 Clic - CEDAR GOLDEN (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - CEDAR GOLDEN (Šifra: 1606)',
     images: [{
       id: 'creation-55-clic-cedar-golden-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/cedar-golden.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-cedar-golden/pod/61111 - JPG 72 dpi-Creation 1606 Cedar Golden Sky View-pod.jpg?v=9',
       alt: 'CEDAR GOLDEN',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '1606' },
       { key: 'color', label: 'Boja', value: 'CEDAR GOLDEN' },
     ],
     inStock: true,
@@ -6000,23 +6000,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-chestnut-eir',
-    name: 'Unknown LOUNGE OAK CHESTNUT',
+    name: '1274 LOUNGE OAK CHESTNUT',
     slug: 'creation-55-clic-chestnut-eir',
-    sku: 'Unknown',
+    sku: '1274',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - LOUNGE OAK CHESTNUT',
-    description: 'Gerflor Creation 55 Clic - LOUNGE OAK CHESTNUT (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - LOUNGE OAK CHESTNUT (Šifra: 1274)',
     images: [{
       id: 'creation-55-clic-chestnut-eir-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/chestnut-eir.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-chestnut/pod/49286 - 1274 - Lounge oak chestnut-pod.jpg?v=9',
       alt: 'LOUNGE OAK CHESTNUT',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '1274' },
       { key: 'color', label: 'Boja', value: 'LOUNGE OAK CHESTNUT' },
     ],
     inStock: true,
@@ -6107,21 +6107,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-collection-ballerina',
     name: '0347 BALLERINA',
     slug: 'creation-55-clic-collection-ballerina',
-    sku: 'Unknown',
+    sku: '0347',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - BALLERINA',
-    description: 'Gerflor Creation 55 Clic - BALLERINA (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - BALLERINA (Šifra: 0347)',
     images: [{
       id: 'creation-55-clic-collection-ballerina-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/collection-ballerina.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-ballerina/pod/49041 - 0347 Ballerina -pod.jpg?v=9',
       alt: 'BALLERINA',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0347' },
       { key: 'color', label: 'Boja', value: 'BALLERINA' },
     ],
     inStock: true,
@@ -6134,21 +6134,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-collection-quartet',
     name: '0503 QUARTET',
     slug: 'creation-55-clic-collection-quartet',
-    sku: 'Unknown',
+    sku: '0503',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - QUARTET',
-    description: 'Gerflor Creation 55 Clic - QUARTET (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - QUARTET (Šifra: 0503)',
     images: [{
       id: 'creation-55-clic-collection-quartet-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/collection-quartet.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-quartet/pod/44491 - 0503-quartet-pod.jpg?v=9',
       alt: 'QUARTET',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0503' },
       { key: 'color', label: 'Boja', value: 'QUARTET' },
     ],
     inStock: true,
@@ -6161,21 +6161,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-collection-ranch',
     name: '0456 RANCH',
     slug: 'creation-55-clic-collection-ranch',
-    sku: 'Unknown',
+    sku: '0456',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - RANCH',
-    description: 'Gerflor Creation 55 Clic - RANCH (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - RANCH (Šifra: 0456)',
     images: [{
       id: 'creation-55-clic-collection-ranch-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/collection-ranch.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-ranch/pod/49051 - 0456 Ranch-pod.jpg?v=9',
       alt: 'RANCH',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0456' },
       { key: 'color', label: 'Boja', value: 'RANCH' },
     ],
     inStock: true,
@@ -6239,23 +6239,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-dark-brown',
-    name: 'Unknown CEDAR DARK BROWN',
+    name: '1605 CEDAR DARK BROWN',
     slug: 'creation-55-clic-dark-brown',
-    sku: 'Unknown',
+    sku: '1605',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - CEDAR DARK BROWN',
-    description: 'Gerflor Creation 55 Clic - CEDAR DARK BROWN (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - CEDAR DARK BROWN (Šifra: 1605)',
     images: [{
       id: 'creation-55-clic-dark-brown-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/dark-brown.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-cedar-dark-brown/pod/61061 - JPG 72 dpi-Creation 1605 Cedar Dark Brown Sky View-pod.jpg?v=9',
       alt: 'CEDAR DARK BROWN',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '1605' },
       { key: 'color', label: 'Boja', value: 'CEDAR DARK BROWN' },
     ],
     inStock: true,
@@ -6266,23 +6266,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-golden-eir',
-    name: 'Unknown LOUNGE OAK GOLDEN',
+    name: '1271 LOUNGE OAK GOLDEN',
     slug: 'creation-55-clic-golden-eir',
-    sku: 'Unknown',
+    sku: '1271',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - LOUNGE OAK GOLDEN',
-    description: 'Gerflor Creation 55 Clic - LOUNGE OAK GOLDEN (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - LOUNGE OAK GOLDEN (Šifra: 1271)',
     images: [{
       id: 'creation-55-clic-golden-eir-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/golden-eir.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-golden/pod/49291 - 1271 - Lounge oak golden -pod.jpg?v=9',
       alt: 'LOUNGE OAK GOLDEN',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '1271' },
       { key: 'color', label: 'Boja', value: 'LOUNGE OAK GOLDEN' },
     ],
     inStock: true,
@@ -6347,21 +6347,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-honey-oak',
     name: '0441 HONEY OAK',
     slug: 'creation-55-clic-honey-oak',
-    sku: 'Unknown',
+    sku: '0441',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - HONEY OAK',
-    description: 'Gerflor Creation 55 Clic - HONEY OAK (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - HONEY OAK (Šifra: 0441)',
     images: [{
       id: 'creation-55-clic-honey-oak-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/honey-oak.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-honey-oak/pod/44456 - 0441-honey-oak-pod.jpg?v=9',
       alt: 'HONEY OAK',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0441' },
       { key: 'color', label: 'Boja', value: 'HONEY OAK' },
     ],
     inStock: true,
@@ -6374,21 +6374,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-long-board',
     name: '0455 LONGBOARD',
     slug: 'creation-55-clic-long-board',
-    sku: 'Unknown',
+    sku: '0455',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - LONGBOARD',
-    description: 'Gerflor Creation 55 Clic - LONGBOARD (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - LONGBOARD (Šifra: 0455)',
     images: [{
       id: 'creation-55-clic-long-board-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/long-board.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-longboard/pod/41511 - 0455-longboard-pod.jpg?v=9',
       alt: 'LONGBOARD',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0455' },
       { key: 'color', label: 'Boja', value: 'LONGBOARD' },
     ],
     inStock: true,
@@ -6451,23 +6451,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-natural-eir',
-    name: 'Unknown LOUNGE OAK NATURAL EIR',
+    name: '1273 LOUNGE OAK NATURAL EIR',
     slug: 'creation-55-clic-natural-eir',
-    sku: 'Unknown',
+    sku: '1273',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - LOUNGE OAK NATURAL EIR',
-    description: 'Gerflor Creation 55 Clic - LOUNGE OAK NATURAL EIR (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - LOUNGE OAK NATURAL EIR (Šifra: 1273)',
     images: [{
       id: 'creation-55-clic-natural-eir-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/natural-eir.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-natural-eir/pod/63916 - Creation 1273 Lounge Oak Natural-pod.jpg?v=9',
       alt: 'LOUNGE OAK NATURAL EIR',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '1273' },
       { key: 'color', label: 'Boja', value: 'LOUNGE OAK NATURAL EIR' },
     ],
     inStock: true,
@@ -6558,21 +6558,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-quartet-honey',
     name: '0870 QUARTET HONEY',
     slug: 'creation-55-clic-quartet-honey',
-    sku: 'Unknown',
+    sku: '0870',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - QUARTET HONEY',
-    description: 'Gerflor Creation 55 Clic - QUARTET HONEY (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - QUARTET HONEY (Šifra: 0870)',
     images: [{
       id: 'creation-55-clic-quartet-honey-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/quartet-honey.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-quartet-honey/pod/49046 - 0870 - Quartet Honey -pod.jpg?v=9',
       alt: 'QUARTET HONEY',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0870' },
       { key: 'color', label: 'Boja', value: 'QUARTET HONEY' },
     ],
     inStock: true,
@@ -6637,21 +6637,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-white-lime',
     name: '0584 WHITE LIME',
     slug: 'creation-55-clic-white-lime',
-    sku: 'Unknown',
+    sku: '0584',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - WHITE LIME',
-    description: 'Gerflor Creation 55 Clic - WHITE LIME (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - WHITE LIME (Šifra: 0584)',
     images: [{
       id: 'creation-55-clic-white-lime-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/white-lime.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-white-lime/pod/44516 - 0584-white-lime-pod.jpg?v=9',
       alt: 'WHITE LIME',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0584' },
       { key: 'color', label: 'Boja', value: 'WHITE LIME' },
     ],
     inStock: true,
