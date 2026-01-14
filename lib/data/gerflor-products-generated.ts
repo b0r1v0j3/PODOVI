@@ -12070,23 +12070,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-70-clic-wood-honey',
-    name: 'Unknown LINEAR WOOD HONEY',
+    name: '1702 LINEAR WOOD HONEY',
     slug: 'creation-70-clic-wood-honey',
-    sku: 'Unknown',
+    sku: '1702',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 70 Clic - LINEAR WOOD HONEY',
-    description: 'Gerflor Creation 70 Clic - LINEAR WOOD HONEY (Šifra: Unknown)',
+    description: 'Gerflor Creation 70 Clic - LINEAR WOOD HONEY (Šifra: 1702)',
     images: [{
       id: 'creation-70-clic-wood-honey-img-1',
-      url: '/images/products/lvt/colors/creation-70-clic/wood-honey.jpg',
+      url: '/images/products/lvt/colors/creation-70-clic/Unknown-linear-wood-honey/pod/61451 - JPG 72 dpi-Linear Wood Honey - VDC-pod.jpg?v=9',
       alt: 'LINEAR WOOD HONEY',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 70 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '1702' },
       { key: 'color', label: 'Boja', value: 'LINEAR WOOD HONEY' },
     ],
     inStock: true,
