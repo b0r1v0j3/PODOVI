@@ -14,18 +14,26 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = await productRepository.findBySlug(params.slug);
-  
-  if (!product) {
+  try {
+    const product = await productRepository.findBySlug(params.slug);
+    
+    if (!product) {
+      return {
+        title: 'Proizvod nije pronađen',
+      };
+    }
+
     return {
-      title: 'Proizvod nije pronađen',
+      title: `${product.name || 'Proizvod'} | Podovi.online`,
+      description: product.shortDescription || product.description || '',
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: 'Proizvod | Podovi.online',
+      description: '',
     };
   }
-
-  return {
-    title: `${product.name || 'Proizvod'} | Podovi.online`,
-    description: product.shortDescription || product.description || '',
-  };
 }
 
 export default async function ProductPage({ params }: Props) {
