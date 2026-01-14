@@ -44,21 +44,30 @@ export default async function ProductPage({ params }: Props) {
       notFound();
     }
 
-    // Ensure product has required fields
+    // Ensure product has required fields with defensive checks
     if (!product.images || !Array.isArray(product.images)) {
       product.images = [];
     }
     if (!product.specs || !Array.isArray(product.specs)) {
       product.specs = [];
     }
-    if (!product.name) {
+    if (!product.name || typeof product.name !== 'string') {
       product.name = 'Proizvod';
     }
-    if (!product.shortDescription) {
-      product.shortDescription = product.description || '';
+    if (!product.shortDescription || typeof product.shortDescription !== 'string') {
+      product.shortDescription = (product.description && typeof product.description === 'string') ? product.description : '';
     }
-    if (!product.description) {
-      product.description = product.shortDescription || '';
+    if (!product.description || typeof product.description !== 'string') {
+      product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
+    }
+    if (!product.slug || typeof product.slug !== 'string') {
+      product.slug = params.slug;
+    }
+    if (!product.categoryId || typeof product.categoryId !== 'string') {
+      product.categoryId = '6'; // Default to LVT
+    }
+    if (!product.brandId || typeof product.brandId !== 'string') {
+      product.brandId = '6'; // Default to Gerflor
     }
 
     const category = product.categoryId 
@@ -220,7 +229,7 @@ export default async function ProductPage({ params }: Props) {
             )}
 
             {/* Documents Download Section */}
-            {product.slug.includes('creation') && (
+            {product.slug && typeof product.slug === 'string' && product.slug.includes('creation') && (
               <div className="mt-10 pt-10 border-t border-gray-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -285,7 +294,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
 
         {/* Certifications & Eco Features - Full Width Below */}
-        {product.slug.includes('creation') && (
+        {product.slug && typeof product.slug === 'string' && product.slug.includes('creation') && (
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Certifications */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
