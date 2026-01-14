@@ -71,9 +71,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   
   if (isLVTCategory) {
     // Collections are products with SKU starting with "GER-" (main collection products)
-    // Colors are individual color products with 4-digit SKU codes
-    collections = products.filter(p => p.sku && p.sku.startsWith('GER-'));
-    colors = products.filter(p => !p.sku || !p.sku.startsWith('GER-'));
+    // Colors are individual color products with 4-digit SKU codes or other patterns
+    collections = products.filter(p => p.sku?.startsWith('GER-') ?? false);
+    colors = products.filter(p => !p.sku?.startsWith('GER-'));
   }
 
   return (
