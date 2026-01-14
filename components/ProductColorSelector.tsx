@@ -36,12 +36,16 @@ export default function ProductColorSelector({
   externalLink,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
+  const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
 
   // Update image when color is selected
-  const handleColorSelect = (imageUrl: string, imageAlt: string) => {
-    console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt });
+  const handleColorSelect = (imageUrl: string, imageAlt: string, colorCode?: string, colorName?: string) => {
+    console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt, colorCode, colorName });
     if (imageUrl) {
       setSelectedImage({ url: imageUrl, alt: imageAlt });
+      if (colorCode && colorName) {
+        setSelectedColor({ code: colorCode, name: colorName });
+      }
     }
   };
 
@@ -67,6 +71,15 @@ export default function ProductColorSelector({
               </div>
             )}
           </div>
+          
+          {/* Selected Color Info */}
+          {selectedColor && (
+            <div className="mt-4 text-center">
+              <p className="text-sm text-gray-500 mb-1">Izabrana boja</p>
+              <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
+              <p className="text-base text-gray-700">{selectedColor.name}</p>
+            </div>
+          )}
         </div>
 
         {/* Product Info - Below Image */}

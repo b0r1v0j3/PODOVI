@@ -17,7 +17,7 @@ interface Color {
 
 interface ColorGridProps {
   collectionSlug: string;
-  onColorSelect?: (imageUrl: string, imageAlt: string) => void;
+  onColorSelect?: (imageUrl: string, imageAlt: string, colorCode?: string, colorName?: string) => void;
   compact?: boolean;
 }
 
@@ -90,12 +90,14 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
       // URLs are already normalized in the useEffect
       const imageUrl = color.lifestyle_url || color.texture_url || color.image_url || '';
       const imageAlt = color.full_name || color.name || '';
+      const colorCode = color.code || '';
+      const colorName = color.name || '';
       
       // Ensure URL is normalized
       const normalizedUrl = normalizeSrc(imageUrl);
       
       if (normalizedUrl) {
-        onColorSelect(normalizedUrl, imageAlt);
+        onColorSelect(normalizedUrl, imageAlt, colorCode, colorName);
       } else {
         console.warn('ColorGrid: No valid image URL for color', color);
       }
@@ -192,12 +194,6 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
         </div>
       )}
 
-      {/* Compact header for compact mode */}
-      {compact && (
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Izaberite boju</h3>
-        </div>
-      )}
 
       {/* Grid */}
       <div className={`grid gap-3 ${compact ? 'grid-cols-4 md:grid-cols-5 lg:grid-cols-6' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
