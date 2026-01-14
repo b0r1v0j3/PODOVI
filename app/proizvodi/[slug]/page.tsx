@@ -37,7 +37,9 @@ export default async function ProductPage({ params }: Props) {
 
   const category = await categoryRepository.findById(product.categoryId);
   const brand = await brandRepository.findById(product.brandId);
-  const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
+  const primaryImage = product.images && product.images.length > 0 
+    ? (product.images.find(img => img.isPrimary) || product.images[0])
+    : null;
 
   return (
     <div className="min-h-screen bg-gray-50">
