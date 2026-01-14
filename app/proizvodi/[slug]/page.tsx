@@ -297,4 +297,8 @@ export default async function ProductPage({ params }: Props) {
       </div>
     </div>
   );
+  } catch (error) {
+    console.error('Error rendering product page:', error);
+    notFound();
+  }
 }
