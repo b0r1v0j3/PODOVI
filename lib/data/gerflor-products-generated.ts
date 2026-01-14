@@ -11324,7 +11324,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 70 Clic - MARBLE BLACK MARBLE LIGHT GREY (Šifra: 1722)',
     images: [{
       id: 'creation-70-clic-black-61291722-img-1',
-      url: '/images/products/lvt/colors/creation-70-clic/1722-marble-black-marble-light-grey/pod/61971 - JPG 72 dpi-Marble Black-Marble Light Grey-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-70-clic/1722-marble-black-marble-light-grey/pod/62826 - JPG 72 dpi-Marble black - 389x729 - CR70 VDC-ilustracija.jpg?v=9',
       alt: 'MARBLE BLACK MARBLE LIGHT GREY',
       isPrimary: true,
       order: 1,
