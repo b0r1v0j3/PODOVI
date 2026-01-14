@@ -61,8 +61,12 @@ export default async function ProductPage({ params }: Props) {
       product.description = product.shortDescription || '';
     }
 
-    const category = await categoryRepository.findById(product.categoryId);
-    const brand = await brandRepository.findById(product.brandId);
+    const category = product.categoryId 
+      ? await categoryRepository.findById(product.categoryId)
+      : null;
+    const brand = product.brandId 
+      ? await brandRepository.findById(product.brandId)
+      : null;
     const primaryImage = product.images && product.images.length > 0 
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
