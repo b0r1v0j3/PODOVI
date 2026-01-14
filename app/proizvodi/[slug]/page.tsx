@@ -29,17 +29,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const product = await productRepository.findBySlug(params.slug);
-  
-  if (!product) {
-    notFound();
-  }
+  try {
+    const product = await productRepository.findBySlug(params.slug);
+    
+    if (!product) {
+      notFound();
+    }
 
-  const category = await categoryRepository.findById(product.categoryId);
-  const brand = await brandRepository.findById(product.brandId);
-  const primaryImage = product.images && product.images.length > 0 
-    ? (product.images.find(img => img.isPrimary) || product.images[0])
-    : null;
+    // Ensure product has required fields
+    if (!product.images || !Array.isArray(product.images)) {
+      product.images = [];
+    }
+    if (!product.specs || !Array.isArray(product.specs)) {
+      product.specs = [];
+    }
+    if (!product.name) {
+      product.name = 'Proizvod';
+    }
+    if (!product.shortDescription) {
+      product.shortDescription = product.description || '';
+    }
+    if (!product.description) {
+      product.description = product.shortDescription || '';
+    }
+
+    const category = await categoryRepository.findById(product.categoryId);
+    const brand = await brandRepository.findById(product.brandId);
+    const primaryImage = product.images && product.images.length > 0 
+      ? (product.images.find(img => img.isPrimary) || product.images[0])
+      : null;
 
   return (
     <div className="min-h-screen bg-gray-50">
