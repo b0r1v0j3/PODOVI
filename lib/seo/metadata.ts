@@ -52,6 +52,7 @@ export function generateProductMetadata(params: {
   currency?: string;
 }): Metadata {
   return {
+    metadataBase: new URL(SITE_URL),
     title: params.title,
     description: params.description,
     openGraph: {
@@ -76,6 +77,7 @@ export function generateCategoryMetadata(params: {
   url: string;
 }): Metadata {
   return {
+    metadataBase: new URL(SITE_URL),
     title: params.title,
     description: params.description,
     openGraph: {

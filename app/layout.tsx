@@ -7,7 +7,10 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: "Podovi - Katalog podnih obloga",
   description: "Pronađite savršen pod za vaš prostor. Širok izbor laminata, vinila, parketa i drugih podnih obloga od vodećih brendova.",
   keywords: "podovi, laminat, vinil, parket, podne obloge, Srbija",

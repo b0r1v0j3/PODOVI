@@ -18,7 +18,14 @@ export default function ProductImage({ src, alt, className, sizes, quality }: Pr
       src={imgSrc || '/images/placeholder.svg'}
       alt={alt}
       className={className}
-      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      style={{ 
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover'
+      }}
       onError={() => setImgSrc('/images/placeholder.svg')}
     />
   );
