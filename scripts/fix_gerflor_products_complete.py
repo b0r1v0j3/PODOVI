@@ -56,9 +56,11 @@ for name, code in code_mapping.items():
     # Look for products with creation-40-clic and the color name
     pattern = rf"(id:\s*['\"]creation-40-clic[^'\"]*{color_name.lower().replace(' ', '-')}[^'\"]*['\"].*?sku:\s*['\"])Unknown(['\"].*?description:\s*['\"][^'\"]*\(Šifra:\s*)Unknown([^'\"]*['\"].*?url:\s*['\"])([^'\"]*)(['\"].*?specs:.*?code['\"],\s*value:\s*['\"])Unknown(['\"])"
     
+    updated_count_local = 0
+    
     def replace_product(match):
-        nonlocal updated_count
-        updated_count += 1
+        nonlocal updated_count_local
+        updated_count_local += 1
         
         sku_part = match.group(1)
         desc_part1 = match.group(2)
@@ -80,6 +82,7 @@ for name, code in code_mapping.items():
     # Try the complex pattern first
     if re.search(pattern, content, re.DOTALL):
         content = re.sub(pattern, replace_product, content, flags=re.DOTALL)
+        updated_count += updated_count_local
         print(f"✅ Ažuriran kompletan proizvod: {name}")
     else:
         # Try simpler patterns
