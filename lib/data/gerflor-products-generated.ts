@@ -1999,7 +1999,7 @@ export const gerflor_products: Product[] = [
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0850' },
       { key: 'color', label: 'Boja', value: 'CEDAR BROWN' },
     ],
     inStock: true,
@@ -2265,7 +2265,7 @@ export const gerflor_products: Product[] = [
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0441' },
       { key: 'color', label: 'Boja', value: 'HONEY OAK' },
     ],
     inStock: true,
@@ -2371,7 +2371,7 @@ export const gerflor_products: Product[] = [
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0870' },
       { key: 'color', label: 'Boja', value: 'QUARTET HONEY' },
     ],
     inStock: true,
@@ -2424,7 +2424,7 @@ export const gerflor_products: Product[] = [
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0584' },
       { key: 'color', label: 'Boja', value: 'WHITE LIME' },
     ],
     inStock: true,
