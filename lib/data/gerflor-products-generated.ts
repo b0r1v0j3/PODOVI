@@ -2118,21 +2118,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-40-clic-collection-quartet',
     name: '0503 QUARTET',
     slug: 'creation-40-clic-collection-quartet',
-    sku: 'Unknown',
+    sku: '0503',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - QUARTET',
-    description: 'Gerflor Creation 40 Clic - QUARTET (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - QUARTET (Šifra: 0503)',
     images: [{
       id: 'creation-40-clic-collection-quartet-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/collection-quartet.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0503-quartet/pod/44491 - 0503-quartet-pod.jpg?v=9',
       alt: 'QUARTET',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0503' },
       { key: 'color', label: 'Boja', value: 'QUARTET' },
     ],
     inStock: true,
