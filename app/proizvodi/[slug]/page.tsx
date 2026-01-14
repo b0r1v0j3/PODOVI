@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.name} | Podovi.online`,
-    description: product.shortDescription,
+    title: `${product.name || 'Proizvod'} | Podovi.online`,
+    description: product.shortDescription || product.description || '',
   };
 }
 

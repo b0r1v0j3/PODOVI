@@ -9,7 +9,9 @@ interface ProductCardProps {
 
 export default async function ProductCard({ product }: ProductCardProps) {
   const brand = await brandRepository.findById(product.brandId);
-  const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
+  const primaryImage = product.images && product.images.length > 0 
+    ? (product.images.find(img => img.isPrimary) || product.images[0])
+    : null;
 
   return (
     <Link 
