@@ -1992,7 +1992,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - CEDAR BROWN (Šifra: 0850)',
     images: [{
       id: 'creation-40-clic-cedar-brown-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/cedar-brown.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0850-cedar-brown/pod/0850-cedar-brown-pod.jpg?v=9',
       alt: 'CEDAR BROWN',
       isPrimary: true,
       order: 1,
@@ -2019,7 +2019,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - CEDAR NATURAL (Šifra: 1607)',
     images: [{
       id: 'creation-40-clic-cedar-natural-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/cedar-natural.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/1607-cedar-natural/pod/1607-cedar-natural-pod.jpg?v=9',
       alt: 'CEDAR NATURAL',
       isPrimary: true,
       order: 1,
@@ -2258,7 +2258,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - HONEY OAK (Šifra: 0441)',
     images: [{
       id: 'creation-40-clic-honey-oak-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/honey-oak.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0441-honey-oak/pod/0441-honey-oak-pod.jpg?v=9',
       alt: 'HONEY OAK',
       isPrimary: true,
       order: 1,
@@ -2364,7 +2364,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - QUARTET HONEY (Šifra: 0870)',
     images: [{
       id: 'creation-40-clic-quartet-honey-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/quartet-honey.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0870-quartet-honey/pod/0870-quartet-honey-pod.jpg?v=9',
       alt: 'QUARTET HONEY',
       isPrimary: true,
       order: 1,
@@ -2417,7 +2417,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - WHITE LIME (Šifra: 0584)',
     images: [{
       id: 'creation-40-clic-white-lime-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/white-lime.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0584-white-lime/pod/0584-white-lime-pod.jpg?v=9',
       alt: 'WHITE LIME',
       isPrimary: true,
       order: 1,
