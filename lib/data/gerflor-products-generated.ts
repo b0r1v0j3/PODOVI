@@ -1992,7 +1992,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - CEDAR BROWN (Šifra: 0850)',
     images: [{
       id: 'creation-40-clic-cedar-brown-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/0850-cedar-brown/pod/0850-cedar-brown-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/0850-cedar-brown/pod/41426 - 0850-cedar-brown-pod.jpg?v=9',
       alt: 'CEDAR BROWN',
       isPrimary: true,
       order: 1,
@@ -2019,7 +2019,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - CEDAR NATURAL (Šifra: 1607)',
     images: [{
       id: 'creation-40-clic-cedar-natural-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/1607-cedar-natural/pod/1607-cedar-natural-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/1607-cedar-natural/pod/60991 - JPG 72 dpi-Creation 1607 Cedar Natural Sky View-pod.jpg?v=9',
       alt: 'CEDAR NATURAL',
       isPrimary: true,
       order: 1,
@@ -2098,7 +2098,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - BALLERINA (Šifra: 0347)',
     images: [{
       id: 'creation-40-clic-collection-ballerina-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/0347-ballerina/pod/0347-ballerina-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/0347-ballerina/pod/49041 - 0347 Ballerina -pod.jpg?v=9',
       alt: 'BALLERINA',
       isPrimary: true,
       order: 1,
@@ -2152,7 +2152,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - RANCH (Šifra: 0456)',
     images: [{
       id: 'creation-40-clic-collection-ranch-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/0456-ranch/pod/0456-ranch-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/0456-ranch/pod/49051 - 0456 Ranch-pod.jpg?v=9',
       alt: 'RANCH',
       isPrimary: true,
       order: 1,
@@ -2179,7 +2179,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - TWIST (Šifra: 0504)',
     images: [{
       id: 'creation-40-clic-collection-twist-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/0504-twist/pod/0504-twist-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/0504-twist/pod/45901 - 0504-twist-pod.jpg?v=9',
       alt: 'TWIST',
       isPrimary: true,
       order: 1,
@@ -2258,7 +2258,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - HONEY OAK (Šifra: 0441)',
     images: [{
       id: 'creation-40-clic-honey-oak-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/0441-honey-oak/pod/0441-honey-oak-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/0441-honey-oak/pod/44456 - 0441-honey-oak-pod.jpg?v=9',
       alt: 'HONEY OAK',
       isPrimary: true,
       order: 1,
@@ -2285,7 +2285,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - LONGBOARD (Šifra: 0455)',
     images: [{
       id: 'creation-40-clic-long-board-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/0455-long-board/pod/0455-long-board-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/0455-long-board/pod/41511 - 0455-longboard-pod.jpg?v=9',
       alt: 'LONGBOARD',
       isPrimary: true,
       order: 1,
@@ -2364,7 +2364,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - QUARTET HONEY (Šifra: 0870)',
     images: [{
       id: 'creation-40-clic-quartet-honey-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/0870-quartet-honey/pod/0870-quartet-honey-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/0870-quartet-honey/pod/49046 - 0870 - Quartet Honey -pod.jpg?v=9',
       alt: 'QUARTET HONEY',
       isPrimary: true,
       order: 1,
@@ -2417,7 +2417,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic - WHITE LIME (Šifra: 0584)',
     images: [{
       id: 'creation-40-clic-white-lime-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/0584-white-lime/pod/0584-white-lime-pod.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic/0584-white-lime/pod/44516 - 0584-white-lime-pod.jpg?v=9',
       alt: 'WHITE LIME',
       isPrimary: true,
       order: 1,
