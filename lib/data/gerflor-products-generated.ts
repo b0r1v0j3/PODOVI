@@ -5867,23 +5867,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-beige-eir',
-    name: 'Unknown LOUNGE OAK BEIGE',
+    name: '1272 LOUNGE OAK BEIGE',
     slug: 'creation-55-clic-beige-eir',
-    sku: 'Unknown',
+    sku: '1272',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - LOUNGE OAK BEIGE',
-    description: 'Gerflor Creation 55 Clic - LOUNGE OAK BEIGE (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - LOUNGE OAK BEIGE (Šifra: 1272)',
     images: [{
       id: 'creation-55-clic-beige-eir-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/beige-eir.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-beige/pod/62761 - JPG 72 dpi-Creation 1272 Lounge Oak Beige Sky View-pod.jpg?v=9',
       alt: 'LOUNGE OAK BEIGE',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '1272' },
       { key: 'color', label: 'Boja', value: 'LOUNGE OAK BEIGE' },
     ],
     inStock: true,
@@ -5948,21 +5948,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-cedar-brown',
     name: '0850 CEDAR BROWN',
     slug: 'creation-55-clic-cedar-brown',
-    sku: 'Unknown',
+    sku: '0850',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - CEDAR BROWN',
-    description: 'Gerflor Creation 55 Clic - CEDAR BROWN (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - CEDAR BROWN (Šifra: 0850)',
     images: [{
       id: 'creation-55-clic-cedar-brown-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/cedar-brown.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-cedar-brown/pod/41426 - 0850-cedar-brown-pod.jpg?v=9',
       alt: 'CEDAR BROWN',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0850' },
       { key: 'color', label: 'Boja', value: 'CEDAR BROWN' },
     ],
     inStock: true,
