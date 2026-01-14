@@ -12,15 +12,18 @@ interface BrandPageProps {
 }
 
 export async function generateMetadata({ params }: BrandPageProps): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
   const brand = await getBrandBySlug(params.slug);
 
   if (!brand) {
     return {
+      metadataBase: new URL(baseUrl),
       title: 'Brend nije pronađen',
     };
   }
 
   return {
+    metadataBase: new URL(baseUrl),
     title: `${brand.name} Proizvodi | Podovi Doo`,
     description: `${brand.description} - Pogledajte sve ${brand.name} proizvode u našoj ponudi.`,
     openGraph: {

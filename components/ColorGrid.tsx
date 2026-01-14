@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import Image from 'next/image';
 
 interface Color {
   collection: string;
@@ -35,34 +34,16 @@ function normalizeSrc(raw?: string | null) {
   return p;
 }
 
-function ImageWithFallback({ src, alt, className, sizes, priority, quality }: any) {
-  const [errored, setErrored] = useState(false);
-  const normalized = normalizeSrc(src);
-
-  if (!normalized || errored) {
-    // Render a regular img with placeholder to avoid Next/Image crashes when src is empty
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/images/placeholder.svg"
-        alt={alt}
-        className={className}
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-      />
-    );
-  }
+function ImageWithFallback({ src, alt, className }: any) {
+  const [imgSrc, setImgSrc] = useState(() => normalizeSrc(src));
 
   return (
-    <Image
-      src={normalized}
+    <img
+      src={imgSrc || '/images/placeholder.svg'}
       alt={alt}
-      fill
       className={className}
-      sizes={sizes}
-      quality={quality}
-      unoptimized
-      priority={priority}
-      onError={() => setErrored(true)}
+      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      onError={() => setImgSrc('/images/placeholder.svg')}
     />
   );
 }

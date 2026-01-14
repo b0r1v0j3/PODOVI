@@ -14,22 +14,27 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+  
   try {
     const product = await productRepository.findBySlug(params.slug);
     
     if (!product) {
       return {
+        metadataBase: new URL(baseUrl),
         title: 'Proizvod nije pronađen',
       };
     }
 
     return {
+      metadataBase: new URL(baseUrl),
       title: `${product.name || 'Proizvod'} | Podovi.online`,
       description: product.shortDescription || product.description || '',
     };
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
+      metadataBase: new URL(baseUrl),
       title: 'Proizvod | Podovi.online',
       description: '',
     };

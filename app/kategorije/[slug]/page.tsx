@@ -17,15 +17,18 @@ interface CategoryPageProps {
 }
 
 export async function generateMetadata({ params }: CategoryPageProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
   const category = await categoryRepository.findBySlug(params.slug);
   
   if (!category) {
     return {
+      metadataBase: new URL(baseUrl),
       title: 'Kategorija nije pronađena',
     };
   }
 
   return {
+    metadataBase: new URL(baseUrl),
     title: `${category.name} - Podovi`,
     description: category.description,
     openGraph: {
