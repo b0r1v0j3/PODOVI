@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import Link from 'next/link';
 
 interface Color {
   collection: string;
@@ -18,6 +17,8 @@ interface Color {
 
 interface ColorGridProps {
   collectionSlug: string;
+  onColorSelect?: (imageUrl: string, imageAlt: string) => void;
+  compact?: boolean;
 }
 
 function normalizeSrc(raw?: string | null) {
@@ -56,7 +57,7 @@ function ImageWithFallback({ src, alt, className }: any) {
   );
 }
 
-export default function ColorGrid({ collectionSlug }: ColorGridProps) {
+export default function ColorGrid({ collectionSlug, onColorSelect, compact = false }: ColorGridProps) {
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -82,10 +83,14 @@ export default function ColorGrid({ collectionSlug }: ColorGridProps) {
     return collectionName;
   };
 
-  // Generate product URL from color slug
-  const getProductUrl = (colorSlug: string): string => {
-    const collectionName = getCollectionName(collectionSlug);
-    return `/proizvodi/${collectionName}-${colorSlug}`;
+  // Handle color selection
+  const handleColorClick = (color: Color) => {
+    if (onColorSelect) {
+      // Use lifestyle_url if available, otherwise texture_url or image_url
+      const imageUrl = color.lifestyle_url || color.texture_url || color.image_url || '';
+      const imageAlt = color.full_name || color.name || '';
+      onColorSelect(imageUrl, imageAlt);
+    }
   };
 
   useEffect(() => {
@@ -154,35 +159,44 @@ export default function ColorGrid({ collectionSlug }: ColorGridProps) {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">Dostupne boje</h2>
-          <p className="text-gray-600 mt-1">{colors.length} {colors.length === 1 ? 'boja' : colors.length < 5 ? 'boje' : 'boja'}</p>
-        </div>
+      {/* Header - only show if not compact */}
+      {!compact && (
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">Dostupne boje</h2>
+            <p className="text-gray-600 mt-1">{colors.length} {colors.length === 1 ? 'boja' : colors.length < 5 ? 'boje' : 'boja'}</p>
+          </div>
 
-        {/* Search */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Pretraži po šifri ili nazivu..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-          />
-          {searchTerm && (
-            <button onClick={() => setSearchTerm('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">✕</button>
-          )}
+          {/* Search */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Pretraži po šifri ili nazivu..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+            {searchTerm && (
+              <button onClick={() => setSearchTerm('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">✕</button>
+            )}
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Compact header for compact mode */}
+      {compact && (
+        <div>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Izaberite boju</h3>
+        </div>
+      )}
 
       {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <div className={`grid gap-3 ${compact ? 'grid-cols-4 md:grid-cols-5 lg:grid-cols-6' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
         {filteredColors.map((color) => (
-          <Link
+          <button
             key={color.slug}
-            href={getProductUrl(color.slug)}
-            className="group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border border-gray-200 text-left cursor-pointer focus:outline-none"
+            onClick={() => handleColorClick(color)}
+            className="group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 border-gray-200 hover:border-primary-500 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             {/* Image */}
             <div className="aspect-square relative overflow-hidden bg-gray-100">
@@ -191,26 +205,22 @@ export default function ColorGrid({ collectionSlug }: ColorGridProps) {
                   src={color.texture_url || color.image_url || ''}
                   alt={color.full_name}
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+                  sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
                   quality={100}
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">Bez slike</div>
+                <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">Bez slike</div>
               )}
+            </div>
 
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
-                <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+            {/* Info - only show if not compact */}
+            {!compact && (
+              <div className="p-3">
+                <p className="font-semibold text-gray-900 text-sm truncate">{color.code}</p>
+                <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
               </div>
-            </div>
-
-            {/* Info */}
-            <div className="p-3">
-              <p className="font-semibold text-gray-900 text-sm truncate">{color.code}</p>
-              <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
-            </div>
-          </Link>
+            )}
+          </button>
         ))}
       </div>
 

@@ -6,7 +6,7 @@ import { categoryRepository } from '@/lib/repositories/category-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import CertificationBadges from '@/components/CertificationBadges';
 import EcoFeatures from '@/components/EcoFeatures';
-import ColorGrid from '@/components/ColorGrid';
+import ProductColorSelector from '@/components/ProductColorSelector';
 import ProductImage from '@/components/ProductImage';
 
 interface Props {
@@ -113,106 +113,116 @@ export default async function ProductPage({ params }: Props) {
 
       {/* Product Content */}
       <div className="container py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Image Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
-              {primaryImage ? (
-                <ProductImage
-                  src={primaryImage.url}
-                  alt={primaryImage.alt}
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={100}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  <span>Bez slike</span>
+        {product.categoryId === '6' ? (
+          // LVT products with color selector
+          <ProductColorSelector
+            initialImage={primaryImage}
+            collectionSlug={product.slug}
+            productName={product.name}
+            productPrice={product.price}
+            priceUnit={product.priceUnit}
+            brand={brand ? { name: brand.name, slug: brand.slug } : null}
+            shortDescription={product.shortDescription}
+            inStock={product.inStock}
+            productSlug={product.slug}
+            externalLink={product.externalLink}
+          />
+        ) : (
+          // Non-LVT products - standard layout
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Image Section */}
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
+                {primaryImage ? (
+                  <ProductImage
+                    src={primaryImage.url}
+                    alt={primaryImage.alt}
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={100}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-gray-400">
+                    <span>Bez slike</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Info Section */}
+            <div className="space-y-8">
+              {/* Brand */}
+              {brand && (
+                <div className="flex items-center space-x-3">
+                  <span className="text-sm text-gray-500">Brend:</span>
+                  <Link
+                    href={`/brendovi/${brand.slug}`}
+                    className="text-primary-600 hover:text-primary-700 font-semibold"
+                  >
+                    {brand.name}
+                  </Link>
                 </div>
               )}
-            </div>
-          </div>
 
-          {/* Info Section */}
-          <div className="space-y-8">
-            {/* Brand */}
-            {brand && (
-              <div className="flex items-center space-x-3">
-                <span className="text-sm text-gray-500">Brend:</span>
+              {/* Title */}
+              <div>
+                <h1 className="text-4xl font-bold text-gray-900 mb-3">
+                  {product.name}
+                </h1>
+                {product.shortDescription && (
+                  <p className="text-xl text-gray-600">
+                    {product.shortDescription}
+                  </p>
+                )}
+              </div>
+
+              {/* Price (if available) */}
+              {product.price && product.price > 0 && (
+                <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
+                  <div className="flex items-baseline space-x-2">
+                    <span className="text-4xl font-bold text-primary-600">
+                      {product.price.toLocaleString('sr-RS')}
+                    </span>
+                    <span className="text-lg text-gray-600">RSD</span>
+                    {product.priceUnit && (
+                      <span className="text-lg text-gray-500">/ {product.priceUnit}</span>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Availability */}
+              <div className="flex items-center space-x-2">
+                <div
+                  className={`w-3 h-3 rounded-full ${
+                    product.inStock ? 'bg-green-500' : 'bg-red-500'
+                  }`}
+                ></div>
+                <span className="text-gray-700">
+                  {product.inStock ? 'Na stanju' : 'Nije dostupno'}
+                </span>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href={`/brendovi/${brand.slug}`}
-                  className="text-primary-600 hover:text-primary-700 font-semibold"
+                  href={`/kontakt?product=${product.slug}`}
+                  className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg px-8 py-4 flex-1"
                 >
-                  {brand.name}
+                  Pošaljite upit
                 </Link>
+                {product.externalLink && (
+                  <a
+                    href={product.externalLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-lg px-8 py-4 flex-1"
+                  >
+                    Pogledaj na sajtu proizvođača
+                  </a>
+                )}
               </div>
-            )}
-
-            {/* Title */}
-            <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-3">
-                {product.name}
-              </h1>
-              {product.shortDescription && (
-                <p className="text-xl text-gray-600">
-                  {product.shortDescription}
-                </p>
-              )}
             </div>
-
-            {/* Price (if available) */}
-            {product.price && product.price > 0 && (
-              <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
-                <div className="flex items-baseline space-x-2">
-                  <span className="text-4xl font-bold text-primary-600">
-                    {product.price.toLocaleString('sr-RS')}
-                  </span>
-                  <span className="text-lg text-gray-600">RSD</span>
-                  {product.priceUnit && (
-                    <span className="text-lg text-gray-500">/ {product.priceUnit}</span>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Availability */}
-            <div className="flex items-center space-x-2">
-              <div
-                className={`w-3 h-3 rounded-full ${
-                  product.inStock ? 'bg-green-500' : 'bg-red-500'
-                }`}
-              ></div>
-              <span className="text-gray-700">
-                {product.inStock ? 'Na stanju' : 'Nije dostupno'}
-              </span>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href={`/kontakt?product=${product.slug}`}
-                className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg px-8 py-4 flex-1"
-              >
-                Pošaljite upit
-              </Link>
-              {product.externalLink && (
-                <a
-                  href={product.externalLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-lg px-8 py-4 flex-1"
-                >
-                  Pogledaj na sajtu proizvođača
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Color Grid - For LVT products - MOVED TO TOP */}
-        {product.categoryId === '6' && (
-          <div className="mt-12 bg-white rounded-2xl shadow-lg p-8">
-            <ColorGrid collectionSlug={product.slug} />
           </div>
         )}
 
