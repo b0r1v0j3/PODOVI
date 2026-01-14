@@ -69,20 +69,20 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let collections: typeof products = [];
   let colors: typeof products = [];
   
-  // Create brands map for Client Component
-  const brandsMap = new Map<string, typeof allBrands[0]>();
+  // Create brands object for Client Component (serializable)
+  const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (isLVTCategory) {
     // Collections are products with SKU starting with "GER-" (main collection products)
     // Colors are individual color products with 4-digit SKU codes or other patterns
     collections = products.filter(p => p.sku?.startsWith('GER-') ?? false);
     colors = products.filter(p => !p.sku?.startsWith('GER-'));
     
-    // Build brands map for all products
+    // Build brands record for all products
     for (const product of products) {
-      if (!brandsMap.has(product.brandId)) {
+      if (!brandsRecord[product.brandId]) {
         const brand = allBrands.find(b => b.id === product.brandId);
         if (brand) {
-          brandsMap.set(product.brandId, brand);
+          brandsRecord[product.brandId] = brand;
         }
       }
     }
@@ -126,7 +126,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               <LVTTabs
                 collections={collections}
                 colors={colors}
-                brandsMap={brandsMap}
+                brandsRecord={brandsRecord}
               />
             ) : (
               <>

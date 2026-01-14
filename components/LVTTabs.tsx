@@ -7,10 +7,10 @@ import ProductCardClient from '@/components/ProductCardClient';
 interface LVTTabsProps {
   collections: Product[];
   colors: Product[];
-  brandsMap: Map<string, Brand>;
+  brandsRecord: Record<string, Brand>;
 }
 
-export default function LVTTabs({ collections, colors, brandsMap }: LVTTabsProps) {
+export default function LVTTabs({ collections, colors, brandsRecord }: LVTTabsProps) {
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>('collections');
 
   const renderProducts = (products: Product[]) => {
@@ -32,7 +32,7 @@ export default function LVTTabs({ collections, colors, brandsMap }: LVTTabsProps
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {products.map((product) => {
-          const brand = brandsMap.get(product.brandId) || null;
+          const brand = brandsRecord[product.brandId] || null;
           return (
             <ProductCardClient key={product.id} product={product} brand={brand} />
           );
