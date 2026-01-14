@@ -143,8 +143,8 @@ export default function ContactPage() {
                 <div className="ml-4">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Radno vreme</h3>
                   <p className="text-gray-600">
-                    Ponedeljak - Petak: 08:00 - 17:00<br />
-                    Subota: 09:00 - 14:00<br />
+                    Ponedeljak - Petak: 08:00 - 18:00<br />
+                    Subota: 08:00 - 15:00<br />
                     Nedelja: Zatvoreno
                   </p>
                 </div>
