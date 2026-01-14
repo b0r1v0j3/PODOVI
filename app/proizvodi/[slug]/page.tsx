@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { categoryRepository } from '@/lib/repositories/category-repository';
@@ -71,10 +72,18 @@ export default async function ProductPage({ params }: Props) {
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
               {primaryImage ? (
-                <img
+                <Image
                   src={primaryImage.url}
                   alt={primaryImage.alt}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={100}
+                  unoptimized
+                  onError={(e) => {
+                    // Fallback to placeholder on error
+                    e.currentTarget.src = '/images/placeholder.svg';
+                  }}
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-400">

@@ -44,7 +44,7 @@ function ImageWithFallback({ src, alt, className, sizes, priority, quality }: an
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src="/images/placeholder.png"
+        src="/images/placeholder.svg"
         alt={alt}
         className={className}
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
