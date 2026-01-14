@@ -2091,21 +2091,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-40-clic-collection-ballerina',
     name: '0347 BALLERINA',
     slug: 'creation-40-clic-collection-ballerina',
-    sku: 'Unknown',
+    sku: '0347',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - BALLERINA',
-    description: 'Gerflor Creation 40 Clic - BALLERINA (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - BALLERINA (Šifra: 0347)',
     images: [{
       id: 'creation-40-clic-collection-ballerina-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/collection-ballerina.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0347-ballerina/pod/0347-ballerina-pod.jpg?v=9',
       alt: 'BALLERINA',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0347' },
       { key: 'color', label: 'Boja', value: 'BALLERINA' },
     ],
     inStock: true,
