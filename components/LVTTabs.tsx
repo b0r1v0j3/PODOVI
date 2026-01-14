@@ -1,15 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { Product } from '@/types';
-import ProductCard from '@/components/ProductCard';
+import { useState, useMemo } from 'react';
+import { Product, Brand } from '@/types';
+import ProductCardClient from '@/components/ProductCardClient';
 
 interface LVTTabsProps {
   collections: Product[];
   colors: Product[];
+  brandsMap: Map<string, Brand>;
 }
 
-export default function LVTTabs({ collections, colors }: LVTTabsProps) {
+export default function LVTTabs({ collections, colors, brandsMap }: LVTTabsProps) {
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>('collections');
 
   const renderProducts = (products: Product[]) => {
@@ -30,9 +31,12 @@ export default function LVTTabs({ collections, colors }: LVTTabsProps) {
     }
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {products.map((product) => {
+          const brand = brandsMap.get(product.brandId) || null;
+          return (
+            <ProductCardClient key={product.id} product={product} brand={brand} />
+          );
+        })}
       </div>
     );
   };
