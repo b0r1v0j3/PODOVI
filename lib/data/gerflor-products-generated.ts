@@ -3379,7 +3379,7 @@ export const gerflor_products: Product[] = [
     description: 'Gerflor Creation 40 Clic Acoustic - CURTON STONE TAUPE (Šifra: 1604)',
     images: [{
       id: 'creation-40-clic-acoustic-taupe-61321604-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic-acoustic/1604-curton-stone-taupe/pod/1604-curton-stone-taupe-ilustracija.jpg?v=9',
+      url: '/images/products/lvt/colors/creation-40-clic-acoustic/1604-curton-stone-taupe/pod/1604-curton-stone-taupe-pod.jpg?v=9',
       alt: 'CURTON STONE TAUPE',
       isPrimary: true,
       order: 1,
