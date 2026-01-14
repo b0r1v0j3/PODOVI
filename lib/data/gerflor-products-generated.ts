@@ -1983,7 +1983,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-cedar-brown',
-    name: 'Unknown CEDAR BROWN',
+    name: '0850 CEDAR BROWN',
     slug: 'creation-40-clic-cedar-brown',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2010,7 +2010,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-cedar-natural',
-    name: 'Unknown CEDAR NATURAL',
+    name: '1607 CEDAR NATURAL',
     slug: 'creation-40-clic-cedar-natural',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2089,7 +2089,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-collection-ballerina',
-    name: 'Unknown BALLERINA',
+    name: '0347 BALLERINA',
     slug: 'creation-40-clic-collection-ballerina',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2116,7 +2116,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-collection-quartet',
-    name: 'Unknown QUARTET',
+    name: '0503 QUARTET',
     slug: 'creation-40-clic-collection-quartet',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2143,7 +2143,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-collection-ranch',
-    name: 'Unknown RANCH',
+    name: '0456 RANCH',
     slug: 'creation-40-clic-collection-ranch',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2170,7 +2170,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-collection-twist',
-    name: 'Unknown TWIST',
+    name: '0504 TWIST',
     slug: 'creation-40-clic-collection-twist',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2249,7 +2249,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-honey-oak',
-    name: 'Unknown HONEY OAK',
+    name: '0441 HONEY OAK',
     slug: 'creation-40-clic-honey-oak',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2276,7 +2276,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-long-board',
-    name: 'Unknown LONGBOARD',
+    name: '0455 LONGBOARD',
     slug: 'creation-40-clic-long-board',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2355,7 +2355,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-quartet-honey',
-    name: 'Unknown QUARTET HONEY',
+    name: '0870 QUARTET HONEY',
     slug: 'creation-40-clic-quartet-honey',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -2408,7 +2408,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-white-lime',
-    name: 'Unknown WHITE LIME',
+    name: '0584 WHITE LIME',
     slug: 'creation-40-clic-white-lime',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -5946,7 +5946,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-cedar-brown',
-    name: 'Unknown CEDAR BROWN',
+    name: '0850 CEDAR BROWN',
     slug: 'creation-55-clic-cedar-brown',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -6105,7 +6105,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-collection-ballerina',
-    name: 'Unknown BALLERINA',
+    name: '0347 BALLERINA',
     slug: 'creation-55-clic-collection-ballerina',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -6132,7 +6132,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-collection-quartet',
-    name: 'Unknown QUARTET',
+    name: '0503 QUARTET',
     slug: 'creation-55-clic-collection-quartet',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -6159,7 +6159,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-collection-ranch',
-    name: 'Unknown RANCH',
+    name: '0456 RANCH',
     slug: 'creation-55-clic-collection-ranch',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -6186,7 +6186,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-collection-twist',
-    name: 'Unknown TWIST',
+    name: '0504 TWIST',
     slug: 'creation-55-clic-collection-twist',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -6345,7 +6345,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-honey-oak',
-    name: 'Unknown HONEY OAK',
+    name: '0441 HONEY OAK',
     slug: 'creation-55-clic-honey-oak',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -6372,7 +6372,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-long-board',
-    name: 'Unknown LONGBOARD',
+    name: '0455 LONGBOARD',
     slug: 'creation-55-clic-long-board',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -6556,7 +6556,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-quartet-honey',
-    name: 'Unknown QUARTET HONEY',
+    name: '0870 QUARTET HONEY',
     slug: 'creation-55-clic-quartet-honey',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
@@ -6635,7 +6635,7 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-white-lime',
-    name: 'Unknown WHITE LIME',
+    name: '0584 WHITE LIME',
     slug: 'creation-55-clic-white-lime',
     sku: 'Unknown',
     categoryId: '6',  // LVT category
