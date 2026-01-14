@@ -6188,14 +6188,14 @@ export const gerflor_products: Product[] = [
     id: 'creation-55-clic-collection-twist',
     name: '0504 TWIST',
     slug: 'creation-55-clic-collection-twist',
-    sku: 'Unknown',
+    sku: '0504',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 55 Clic - TWIST',
-    description: 'Gerflor Creation 55 Clic - TWIST (Šifra: Unknown)',
+    description: 'Gerflor Creation 55 Clic - TWIST (Šifra: 0504)',
     images: [{
       id: 'creation-55-clic-collection-twist-img-1',
-      url: '/images/products/lvt/colors/creation-55-clic/collection-twist.jpg',
+      url: '/images/products/lvt/colors/creation-55-clic/Unknown-twist/pod/45901 - 0504-twist-pod.jpg?v=9',
       alt: 'TWIST',
       isPrimary: true,
       order: 1,
