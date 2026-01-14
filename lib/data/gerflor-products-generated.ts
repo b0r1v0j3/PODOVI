@@ -2278,21 +2278,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-40-clic-long-board',
     name: '0455 LONGBOARD',
     slug: 'creation-40-clic-long-board',
-    sku: 'Unknown',
+    sku: '0455',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - LONGBOARD',
-    description: 'Gerflor Creation 40 Clic - LONGBOARD (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - LONGBOARD (Šifra: 0455)',
     images: [{
       id: 'creation-40-clic-long-board-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/long-board.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0455-long-board/pod/0455-long-board-pod.jpg?v=9',
       alt: 'LONGBOARD',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0455' },
       { key: 'color', label: 'Boja', value: 'LONGBOARD' },
     ],
     inStock: true,
