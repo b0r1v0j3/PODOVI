@@ -74,9 +74,27 @@ export default function ColorGrid({ collectionSlug }: ColorGridProps) {
   const [selectedColorIndex, setSelectedColorIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    // Validate collectionSlug
+    if (!collectionSlug || typeof collectionSlug !== 'string') {
+      console.error('ColorGrid: Invalid collectionSlug', collectionSlug);
+      setLoading(false);
+      return;
+    }
+
     fetch('/data/lvt_colors_complete.json')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Failed to fetch colors: ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => {
+        if (!data || !data.colors || !Array.isArray(data.colors)) {
+          console.error('ColorGrid: Invalid data structure', data);
+          setLoading(false);
+          return;
+        }
+
         // Extract collection name from slug
         // e.g., "gerflor-creation-30" → "creation-30"
         // e.g., "creation-saga2-terra-35021566" → "creation-saga2"
