@@ -1989,7 +1989,7 @@ export const gerflor_products: Product[] = [
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - CEDAR BROWN',
-    description: 'Gerflor Creation 40 Clic - CEDAR BROWN (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - CEDAR BROWN (Šifra: 0850)',
     images: [{
       id: 'creation-40-clic-cedar-brown-img-1',
       url: '/images/products/lvt/colors/creation-40-clic/cedar-brown.jpg',
@@ -2016,7 +2016,7 @@ export const gerflor_products: Product[] = [
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - CEDAR NATURAL',
-    description: 'Gerflor Creation 40 Clic - CEDAR NATURAL (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - CEDAR NATURAL (Šifra: 1607)',
     images: [{
       id: 'creation-40-clic-cedar-natural-img-1',
       url: '/images/products/lvt/colors/creation-40-clic/cedar-natural.jpg',
@@ -2026,7 +2026,7 @@ export const gerflor_products: Product[] = [
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '1607' },
       { key: 'color', label: 'Boja', value: 'CEDAR NATURAL' },
     ],
     inStock: true,
@@ -2255,7 +2255,7 @@ export const gerflor_products: Product[] = [
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - HONEY OAK',
-    description: 'Gerflor Creation 40 Clic - HONEY OAK (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - HONEY OAK (Šifra: 0441)',
     images: [{
       id: 'creation-40-clic-honey-oak-img-1',
       url: '/images/products/lvt/colors/creation-40-clic/honey-oak.jpg',
@@ -2361,7 +2361,7 @@ export const gerflor_products: Product[] = [
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - QUARTET HONEY',
-    description: 'Gerflor Creation 40 Clic - QUARTET HONEY (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - QUARTET HONEY (Šifra: 0870)',
     images: [{
       id: 'creation-40-clic-quartet-honey-img-1',
       url: '/images/products/lvt/colors/creation-40-clic/quartet-honey.jpg',
@@ -2414,7 +2414,7 @@ export const gerflor_products: Product[] = [
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - WHITE LIME',
-    description: 'Gerflor Creation 40 Clic - WHITE LIME (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - WHITE LIME (Šifra: 0584)',
     images: [{
       id: 'creation-40-clic-white-lime-img-1',
       url: '/images/products/lvt/colors/creation-40-clic/white-lime.jpg',
@@ -6202,7 +6202,7 @@ export const gerflor_products: Product[] = [
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0504' },
       { key: 'color', label: 'Boja', value: 'TWIST' },
     ],
     inStock: true,
