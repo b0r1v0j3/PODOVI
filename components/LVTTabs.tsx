@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { Product, Brand } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 
