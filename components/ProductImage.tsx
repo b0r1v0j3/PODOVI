@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ProductImageProps {
   src: string;
@@ -12,6 +12,13 @@ interface ProductImageProps {
 
 export default function ProductImage({ src, alt, className, sizes, quality }: ProductImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
+
+  // Update image source when src prop changes
+  useEffect(() => {
+    if (src) {
+      setImgSrc(src);
+    }
+  }, [src]);
 
   return (
     <img

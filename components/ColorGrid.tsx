@@ -87,9 +87,18 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
   const handleColorClick = (color: Color) => {
     if (onColorSelect) {
       // Use lifestyle_url if available, otherwise texture_url or image_url
+      // URLs are already normalized in the useEffect
       const imageUrl = color.lifestyle_url || color.texture_url || color.image_url || '';
       const imageAlt = color.full_name || color.name || '';
-      onColorSelect(imageUrl, imageAlt);
+      
+      // Ensure URL is normalized
+      const normalizedUrl = normalizeSrc(imageUrl);
+      
+      if (normalizedUrl) {
+        onColorSelect(normalizedUrl, imageAlt);
+      } else {
+        console.warn('ColorGrid: No valid image URL for color', color);
+      }
     }
   };
 

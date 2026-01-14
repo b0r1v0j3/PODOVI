@@ -39,7 +39,10 @@ export default function ProductColorSelector({
 
   // Update image when color is selected
   const handleColorSelect = (imageUrl: string, imageAlt: string) => {
-    setSelectedImage({ url: imageUrl, alt: imageAlt });
+    console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt });
+    if (imageUrl) {
+      setSelectedImage({ url: imageUrl, alt: imageAlt });
+    }
   };
 
   return (
@@ -51,6 +54,7 @@ export default function ProductColorSelector({
           <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
             {selectedImage ? (
               <ProductImage
+                key={selectedImage.url}
                 src={selectedImage.url}
                 alt={selectedImage.alt}
                 className="object-cover"
