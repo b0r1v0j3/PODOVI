@@ -71,15 +71,6 @@ export default function ProductColorSelector({
               </div>
             )}
           </div>
-          
-          {/* Selected Color Info */}
-          {selectedColor && (
-            <div className="mt-4 text-center">
-              <p className="text-sm text-gray-500 mb-1">Izabrana boja</p>
-              <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
-              <p className="text-base text-gray-700">{selectedColor.name}</p>
-            </div>
-          )}
         </div>
 
         {/* Product Info - Below Image */}
