@@ -70,10 +70,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let colors: typeof products = [];
   
   if (isLVTCategory) {
-    // Collections are products with externalLink (main collection products)
-    collections = products.filter(p => p.externalLink);
-    // Colors are individual color products without externalLink
-    colors = products.filter(p => !p.externalLink);
+    // Collections are products with SKU starting with "GER-" (main collection products)
+    // Colors are individual color products with 4-digit SKU codes
+    collections = products.filter(p => p.sku.startsWith('GER-'));
+    colors = products.filter(p => !p.sku.startsWith('GER-'));
   }
 
   return (
