@@ -43,9 +43,9 @@ export default function ProductColorSelector({
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* Left Column - Image and Info */}
-      <div className="lg:col-span-1 space-y-6">
+      <div className="space-y-6">
         {/* Large Image Section */}
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
@@ -54,7 +54,7 @@ export default function ProductColorSelector({
                 src={selectedImage.url}
                 alt={selectedImage.alt}
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 quality={100}
               />
             ) : (
@@ -142,7 +142,7 @@ export default function ProductColorSelector({
       </div>
 
       {/* Right Column - Color Grid */}
-      <div className="lg:col-span-2">
+      <div>
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <ColorGrid 
             collectionSlug={collectionSlug} 
