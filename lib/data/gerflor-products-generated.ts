@@ -1985,7 +1985,7 @@ export const gerflor_products: Product[] = [
     id: 'creation-40-clic-cedar-brown',
     name: '0850 CEDAR BROWN',
     slug: 'creation-40-clic-cedar-brown',
-    sku: 'Unknown',
+    sku: '0850',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - CEDAR BROWN',
@@ -2012,7 +2012,7 @@ export const gerflor_products: Product[] = [
     id: 'creation-40-clic-cedar-natural',
     name: '1607 CEDAR NATURAL',
     slug: 'creation-40-clic-cedar-natural',
-    sku: 'Unknown',
+    sku: '1607',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - CEDAR NATURAL',
@@ -2145,21 +2145,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-40-clic-collection-ranch',
     name: '0456 RANCH',
     slug: 'creation-40-clic-collection-ranch',
-    sku: 'Unknown',
+    sku: '0456',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - RANCH',
-    description: 'Gerflor Creation 40 Clic - RANCH (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - RANCH (Šifra: 0456)',
     images: [{
       id: 'creation-40-clic-collection-ranch-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/collection-ranch.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0456-ranch/pod/0456-ranch-pod.jpg?v=9',
       alt: 'RANCH',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0456' },
       { key: 'color', label: 'Boja', value: 'RANCH' },
     ],
     inStock: true,
@@ -2172,21 +2172,21 @@ export const gerflor_products: Product[] = [
     id: 'creation-40-clic-collection-twist',
     name: '0504 TWIST',
     slug: 'creation-40-clic-collection-twist',
-    sku: 'Unknown',
+    sku: '0504',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
     shortDescription: 'Gerflor Creation 40 Clic - TWIST',
-    description: 'Gerflor Creation 40 Clic - TWIST (Šifra: Unknown)',
+    description: 'Gerflor Creation 40 Clic - TWIST (Šifra: 0504)',
     images: [{
       id: 'creation-40-clic-collection-twist-img-1',
-      url: '/images/products/lvt/colors/creation-40-clic/collection-twist.jpg',
+      url: '/images/products/lvt/colors/creation-40-clic/0504-twist/pod/0504-twist-pod.jpg?v=9',
       alt: 'TWIST',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic' },
-      { key: 'code', label: 'Šifra', value: 'Unknown' },
+      { key: 'code', label: 'Šifra', value: '0504' },
       { key: 'color', label: 'Boja', value: 'TWIST' },
     ],
     inStock: true,
