@@ -115,9 +115,11 @@ export default async function ProductPage({ params }: Props) {
               <h1 className="text-4xl font-bold text-gray-900 mb-3">
                 {product.name}
               </h1>
-              <p className="text-xl text-gray-600">
-                {product.shortDescription}
-              </p>
+              {product.shortDescription && (
+                <p className="text-xl text-gray-600">
+                  {product.shortDescription}
+                </p>
+              )}
             </div>
 
             {/* Price (if available) */}
@@ -181,9 +183,11 @@ export default async function ProductPage({ params }: Props) {
           {/* Description */}
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
-            <div className="prose prose-lg max-w-none text-gray-700">
-              <p>{product.description}</p>
-            </div>
+            {product.description && (
+              <div className="prose prose-lg max-w-none text-gray-700">
+                <p>{product.description}</p>
+              </div>
+            )}
 
             {/* Documents Download Section */}
             {product.slug.includes('creation') && (
@@ -231,7 +235,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           {/* Specifications */}
-          {product.specs && product.specs.length > 0 && (
+          {product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Specifikacije</h2>
               <dl className="space-y-4">
