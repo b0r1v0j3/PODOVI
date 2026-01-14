@@ -132,6 +132,7 @@ export default function ColorGrid({ collectionSlug }: ColorGridProps) {
       })
       .catch(err => {
         console.error('Error loading colors:', err);
+        setColors([]);
         setLoading(false);
       });
   }, [collectionSlug]);
