@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
+import type { ProductSpec } from '@/types';
 
 interface ProductColorSelectorProps {
   initialImage: {
@@ -19,6 +20,7 @@ interface ProductColorSelectorProps {
     slug: string;
   } | null;
   shortDescription?: string;
+  specs?: ProductSpec[];
   inStock: boolean;
   productSlug: string;
   externalLink?: string;
@@ -32,6 +34,7 @@ export default function ProductColorSelector({
   priceUnit,
   brand,
   shortDescription,
+  specs,
   inStock,
   productSlug,
   externalLink,
@@ -96,23 +99,6 @@ export default function ProductColorSelector({
             </div>
           )}
 
-          {selectedCharacteristics && (
-            <div className="mt-6">
-              <details className="group border border-gray-200 rounded-xl p-4">
-                <summary className="cursor-pointer text-base font-semibold text-gray-900">
-                  Karakteristike boje
-                </summary>
-                <dl className="mt-4 space-y-3">
-                  {Object.entries(selectedCharacteristics).map(([label, value]) => (
-                    <div key={label} className="border-b border-gray-200 pb-3 last:border-0">
-                      <dt className="text-xs font-medium text-gray-500 mb-1">{label}</dt>
-                      <dd className="text-sm font-semibold text-gray-900">{value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </details>
-            </div>
-          )}
         </div>
 
         {/* Product Info - Below Image */}
@@ -191,8 +177,8 @@ export default function ProductColorSelector({
         </div>
       </div>
 
-      {/* Right Column - Color Grid */}
-      <div>
+      {/* Right Column - Color Grid and Characteristics */}
+      <div className="space-y-6">
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <ColorGrid 
             collectionSlug={collectionSlug} 
@@ -201,6 +187,32 @@ export default function ProductColorSelector({
             initialColorSlug={initialColorSlug}
           />
         </div>
+        {specs && specs.length > 0 && (
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Karakteristike</h3>
+            <dl className="space-y-3">
+              {specs.map((spec) => (
+                <div key={spec.key} className="border-b border-gray-200 pb-3 last:border-0">
+                  <dt className="text-xs font-medium text-gray-500 mb-1">{spec.label}</dt>
+                  <dd className="text-sm font-semibold text-gray-900">{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+        {selectedCharacteristics && (
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Karakteristike boje</h3>
+            <dl className="space-y-3">
+              {Object.entries(selectedCharacteristics).map(([label, value]) => (
+                <div key={label} className="border-b border-gray-200 pb-3 last:border-0">
+                  <dt className="text-xs font-medium text-gray-500 mb-1">{label}</dt>
+                  <dd className="text-sm font-semibold text-gray-900">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
       </div>
     </div>
   );

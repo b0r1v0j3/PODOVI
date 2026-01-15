@@ -397,6 +397,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
             priceUnit={product.priceUnit}
             brand={brand ? { name: brand.name, slug: brand.slug } : null}
             shortDescription={product.shortDescription}
+            specs={product.specs}
             inStock={product.inStock}
             productSlug={product.slug}
             externalLink={product.externalLink}
@@ -512,20 +513,18 @@ export default async function ProductPage({ params, searchParams }: Props) {
             )}
 
             {product.detailsSections && product.detailsSections.length > 0 && (
-              <div className="mt-8 space-y-4">
+              <div className="mt-8 space-y-6">
                 {product.detailsSections.map((section) => (
-                  <details key={section.title} className="group border border-gray-200 rounded-xl p-4">
-                    <summary className="cursor-pointer text-lg font-semibold text-gray-900">
-                      {section.title}
-                    </summary>
+                  <div key={section.title} className="border border-gray-200 rounded-xl p-4">
+                    <h3 className="text-lg font-semibold text-gray-900">{section.title}</h3>
                     {section.items && section.items.length > 0 && (
-                      <ul className="mt-4 list-disc pl-5 text-gray-700">
+                      <ul className="mt-3 list-disc pl-5 text-gray-700">
                         {section.items.map((item, index) => (
                           <li key={`${section.title}-${index}`}>{item}</li>
                         ))}
                       </ul>
                     )}
-                  </details>
+                  </div>
                 ))}
               </div>
             )}
@@ -576,25 +575,21 @@ export default async function ProductPage({ params, searchParams }: Props) {
           </div>
 
           {/* Specifications */}
-          {product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
+          {product.categoryId !== '6' && product.categoryId !== '7' && product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
             <div className="bg-white rounded-2xl shadow-lg p-8">
-              <details open className="group">
-                <summary className="text-2xl font-bold text-gray-900 mb-6 cursor-pointer">
-                  Karakteristike
-                </summary>
-                <dl className="space-y-4">
-                  {product.specs.map((spec) => (
-                    <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
-                      <dt className="text-sm font-medium text-gray-500 mb-1">
-                        {spec.label}
-                      </dt>
-                      <dd className="text-base font-semibold text-gray-900">
-                        {spec.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </details>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
+              <dl className="space-y-4">
+                {product.specs.map((spec) => (
+                  <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
+                    <dt className="text-sm font-medium text-gray-500 mb-1">
+                      {spec.label}
+                    </dt>
+                    <dd className="text-base font-semibold text-gray-900">
+                      {spec.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           )}
         </div>

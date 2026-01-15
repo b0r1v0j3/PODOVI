@@ -1,10 +1,35 @@
 "use client";
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
+
+  const navLinkClass = (href: string) => {
+    const active = isActive(href);
+    return `text-gray-800 hover:text-primary-700 transition-colors duration-200 
+            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1 pb-1 border-b-2 ${
+              active ? 'text-primary-700 border-primary-600' : 'border-transparent'
+            }`;
+  };
+
+  const mobileNavLinkClass = (href: string) => {
+    const active = isActive(href);
+    return `block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
+            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm ${
+              active ? 'text-primary-700 font-semibold' : ''
+            }`;
+  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -29,35 +54,38 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               href="/" 
-              className="text-gray-800 hover:text-primary-700 transition-colors duration-200 
-                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1"
+              className={navLinkClass('/')}
+              aria-current={isActive('/') ? 'page' : undefined}
             >
               Početna
             </Link>
             <Link 
               href="/kategorije" 
-              className="text-gray-800 hover:text-primary-700 transition-colors duration-200 
-                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1"
+              className={navLinkClass('/kategorije')}
+              aria-current={isActive('/kategorije') ? 'page' : undefined}
             >
               Kategorije
             </Link>
             <Link 
               href="/brendovi" 
-              className="text-gray-800 hover:text-primary-700 transition-colors duration-200 
-                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1"
+              className={navLinkClass('/brendovi')}
+              aria-current={isActive('/brendovi') ? 'page' : undefined}
             >
               Brendovi
             </Link>
             <Link 
               href="/kontakt" 
-              className="text-gray-800 hover:text-primary-700 transition-colors duration-200 
-                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1"
+              className={navLinkClass('/kontakt')}
+              aria-current={isActive('/kontakt') ? 'page' : undefined}
             >
               Kontakt
             </Link>
             <Link 
               href="/upiti" 
-              className="btn-primary focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              className={`btn-primary focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                isActive('/upiti') ? 'ring-2 ring-primary-600 ring-offset-2' : ''
+              }`}
+              aria-current={isActive('/upiti') ? 'page' : undefined}
             >
               Pošalji upit
             </Link>
@@ -91,32 +119,32 @@ export default function Header() {
           >
             <Link 
               href="/" 
-              className="block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
-                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+              className={mobileNavLinkClass('/')}
+              aria-current={isActive('/') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Početna
             </Link>
             <Link 
               href="/kategorije" 
-              className="block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
-                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+              className={mobileNavLinkClass('/kategorije')}
+              aria-current={isActive('/kategorije') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Kategorije
             </Link>
             <Link 
               href="/brendovi" 
-              className="block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
-                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+              className={mobileNavLinkClass('/brendovi')}
+              aria-current={isActive('/brendovi') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Brendovi
             </Link>
             <Link 
               href="/kontakt" 
-              className="block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
-                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+              className={mobileNavLinkClass('/kontakt')}
+              aria-current={isActive('/kontakt') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Kontakt
@@ -124,6 +152,7 @@ export default function Header() {
             <Link 
               href="/upiti" 
               className="block btn-primary text-center focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              aria-current={isActive('/upiti') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Pošalji upit

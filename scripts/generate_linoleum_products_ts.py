@@ -136,6 +136,7 @@ for idx, collection in enumerate(collections, 1):
 
     # Details sections (translated bullets)
     details_sections = []
+    global_seen_items = set()
     for section_key, title_sr in SECTION_TITLE_TRANSLATIONS.items():
         items = specs.get(section_key, [])
         if isinstance(items, list) and items:
@@ -144,15 +145,27 @@ for idx, collection in enumerate(collections, 1):
             # Deduplicate items while keeping order
             unique_items = []
             seen_items = set()
+            seen_98 = False
             for item in translated_items:
                 if item in seen_items:
                     continue
+                if item.lower().startswith('98% prirodnih') and seen_98:
+                    continue
+                if item.lower().startswith('98% prirodnih'):
+                    seen_98 = True
                 seen_items.add(item)
                 unique_items.append(item)
-            if unique_items:
+            # Remove items that already appeared in previous sections
+            filtered_items = []
+            for item in unique_items:
+                if item in global_seen_items:
+                    continue
+                global_seen_items.add(item)
+                filtered_items.append(item)
+            if filtered_items:
                 details_sections.append({
                     "title": title_sr,
-                    "items": unique_items,
+                    "items": filtered_items,
                 })
 
     # Remove duplicate sections with identical item lists
