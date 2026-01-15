@@ -27,19 +27,38 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-primary-600 transition">
+            <Link 
+              href="/" 
+              className="text-gray-800 hover:text-primary-700 transition-colors duration-200 
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1"
+            >
               Početna
             </Link>
-            <Link href="/kategorije" className="text-gray-700 hover:text-primary-600 transition">
+            <Link 
+              href="/kategorije" 
+              className="text-gray-800 hover:text-primary-700 transition-colors duration-200 
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1"
+            >
               Kategorije
             </Link>
-            <Link href="/brendovi" className="text-gray-700 hover:text-primary-600 transition">
+            <Link 
+              href="/brendovi" 
+              className="text-gray-800 hover:text-primary-700 transition-colors duration-200 
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1"
+            >
               Brendovi
             </Link>
-            <Link href="/kontakt" className="text-gray-700 hover:text-primary-600 transition">
+            <Link 
+              href="/kontakt" 
+              className="text-gray-800 hover:text-primary-700 transition-colors duration-200 
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1"
+            >
               Kontakt
             </Link>
-            <Link href="/upiti" className="btn-primary">
+            <Link 
+              href="/upiti" 
+              className="btn-primary focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            >
               Pošalji upit
             </Link>
           </div>
@@ -47,8 +66,12 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden p-2 text-gray-700"
+            className="md:hidden p-2 text-gray-800 hover:text-primary-700 transition-colors
+                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Zatvori meni" : "Otvori meni"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {mobileMenuOpen ? (
@@ -62,20 +85,47 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-3">
-            <Link href="/" className="block text-gray-700 hover:text-primary-600 transition">
+          <div 
+            id="mobile-menu" 
+            className="md:hidden mt-4 pb-4 space-y-3 animate-fadeIn"
+          >
+            <Link 
+              href="/" 
+              className="block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Početna
             </Link>
-            <Link href="/kategorije" className="block text-gray-700 hover:text-primary-600 transition">
+            <Link 
+              href="/kategorije" 
+              className="block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Kategorije
             </Link>
-            <Link href="/brendovi" className="block text-gray-700 hover:text-primary-600 transition">
+            <Link 
+              href="/brendovi" 
+              className="block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Brendovi
             </Link>
-            <Link href="/kontakt" className="block text-gray-700 hover:text-primary-600 transition">
+            <Link 
+              href="/kontakt" 
+              className="block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Kontakt
             </Link>
-            <Link href="/upiti" className="block btn-primary text-center">
+            <Link 
+              href="/upiti" 
+              className="block btn-primary text-center focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Pošalji upit
             </Link>
           </div>

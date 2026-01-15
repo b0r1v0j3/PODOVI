@@ -47,9 +47,19 @@ export default function RootLayout({
   return (
     <html lang="sr">
       <body className={inter.className}>
+        {/* Skip to main content link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 
+                     bg-primary-600 text-white px-4 py-2 rounded-md z-50
+                     focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+        >
+          Preskoči na sadržaj
+        </a>
+        
         <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="flex-grow">
+          <main id="main-content" className="flex-grow">
             {children}
           </main>
           <Footer />

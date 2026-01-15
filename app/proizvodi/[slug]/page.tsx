@@ -8,6 +8,7 @@ import CertificationBadges from '@/components/CertificationBadges';
 import EcoFeatures from '@/components/EcoFeatures';
 import ProductColorSelector from '@/components/ProductColorSelector';
 import ProductImage from '@/components/ProductImage';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface Props {
   params: { slug: string };
@@ -26,10 +27,67 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       };
     }
 
+    const category = product.categoryId 
+      ? await categoryRepository.findById(product.categoryId)
+      : null;
+    const brand = product.brandId 
+      ? await brandRepository.findById(product.brandId)
+      : null;
+    const primaryImage = product.images?.[0];
+
+    // Build rich description
+    const priceText = product.price > 0 
+      ? `Cena: ${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}` 
+      : '';
+    const brandText = brand ? `${brand.name}` : '';
+    const categoryText = category ? `${category.name}` : '';
+    
+    const description = `${product.shortDescription || product.description || ''} ${priceText}. ${brandText} ${categoryText}`.trim();
+
+    // Build keywords
+    const keywords = [
+      product.name,
+      brandText,
+      categoryText,
+      'podovi',
+      'podne obloge',
+      'Srbija',
+      'laminat',
+      'vinil',
+      'LVT'
+    ].filter(Boolean).join(', ');
+
     return {
       metadataBase: new URL(baseUrl),
-      title: `${product.name || 'Proizvod'} | Podovi.online`,
-      description: product.shortDescription || product.description || '',
+      title: `${product.name} - Cena i Karakteristike | Podovi.online`,
+      description: description.substring(0, 160), // SEO limit
+      keywords,
+      authors: [{ name: 'Podovi.online' }],
+      openGraph: {
+        title: product.name,
+        description: product.shortDescription || product.description || '',
+        type: 'website',
+        locale: 'sr_RS',
+        url: `${baseUrl}/proizvodi/${params.slug}`,
+        siteName: 'Podovi.online',
+        images: primaryImage ? [
+          {
+            url: primaryImage.url,
+            width: 1200,
+            height: 630,
+            alt: primaryImage.alt || product.name,
+          }
+        ] : [],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: product.name,
+        description: product.shortDescription || product.description || '',
+        images: primaryImage ? [primaryImage.url] : [],
+      },
+      alternates: {
+        canonical: `${baseUrl}/proizvodi/${params.slug}`,
+      },
     };
   } catch (error) {
     console.error('Error generating metadata:', error);
@@ -85,31 +143,54 @@ export default async function ProductPage({ params }: Props) {
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
 
+  // Schema.org structured data
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description || product.shortDescription || '',
+    "image": primaryImage ? `${baseUrl}${primaryImage.url}` : undefined,
+    "brand": brand ? {
+      "@type": "Brand",
+      "name": brand.name
+    } : undefined,
+    "category": category?.name,
+    "offers": {
+      "@type": "Offer",
+      "price": product.price > 0 ? product.price : undefined,
+      "priceCurrency": "RSD",
+      "availability": product.inStock 
+        ? "https://schema.org/InStock" 
+        : "https://schema.org/OutOfStock",
+      "url": `${baseUrl}/proizvodi/${product.slug}`,
+      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+    },
+    "sku": product.sku,
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumbs */}
-      <div className="bg-white border-b">
-        <div className="container py-4">
-          <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-gray-500 hover:text-primary-600">
-              Početna
-            </Link>
-            <span className="text-gray-400">/</span>
-            {category && (
-              <>
-                <Link
-                  href={`/kategorije/${category.slug}`}
-                  className="text-gray-500 hover:text-primary-600"
-                >
-                  {category.name}
-                </Link>
-                <span className="text-gray-400">/</span>
-              </>
-            )}
-            <span className="text-gray-900 font-medium">{product.name}</span>
-          </nav>
+    <>
+      {/* Schema.org JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaData)
+        }}
+      />
+
+      <div className="min-h-screen bg-gray-50">
+        {/* Breadcrumbs */}
+        <div className="bg-white border-b">
+          <div className="container py-4">
+            <Breadcrumbs
+              items={[
+                ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
+                { label: product.name }
+              ]}
+            />
+          </div>
         </div>
-      </div>
 
       {/* Product Content */}
       <div className="container py-12">
@@ -325,7 +406,8 @@ export default async function ProductPage({ params }: Props) {
         )}
 
       </div>
-    </div>
+      </div>
+    </>
   );
   } catch (error) {
     console.error('Error rendering product page:', error);
