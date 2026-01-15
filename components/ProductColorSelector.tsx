@@ -84,40 +84,40 @@ export default function ProductColorSelector({
 
   return (
     <>
-      {/* Main Grid - Fixed Heights */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        {/* Left Column - Image + Info */}
-        <div className="space-y-6">
-          {/* Large Image Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
-              {selectedImage ? (
-                <ProductImage
-                  key={selectedImage.url}
-                  src={selectedImage.url}
-                  alt={selectedImage.alt}
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={100}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  <span>Bez slike</span>
-                </div>
-              )}
-            </div>
-            
-            {/* Selected Color Info */}
-            {selectedColor && (
-              <div className="mt-4 text-center">
-                <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
-                <p className="text-base text-gray-700">{selectedColor.name}</p>
+      {/* Main Grid - Image Left, Info + Colors Right */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        {/* Left Column - Image Only */}
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
+            {selectedImage ? (
+              <ProductImage
+                key={selectedImage.url}
+                src={selectedImage.url}
+                alt={selectedImage.alt}
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={100}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-gray-400">
+                <span>Bez slike</span>
               </div>
             )}
           </div>
+          
+          {/* Selected Color Info */}
+          {selectedColor && (
+            <div className="mt-4 text-center">
+              <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
+              <p className="text-base text-gray-700">{selectedColor.name}</p>
+            </div>
+          )}
+        </div>
 
-          {/* Product Info */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 space-y-6">
+        {/* Right Column - Info + Colors Stacked */}
+        <div className="flex flex-col gap-6">
+          {/* Product Info + CTA */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4">
             {/* Brand */}
             {brand && (
               <div className="flex items-center space-x-3">
@@ -190,32 +190,32 @@ export default function ProductColorSelector({
               )}
             </div>
           </div>
-        </div>
 
-        {/* Right Column - Colors Only */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
-          <div className="flex items-start justify-between gap-4 mb-4">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
-              <p className="text-sm text-gray-500">{colorsCountLabel} {colorsCount === 1 ? 'boja' : 'boja'}</p>
+          {/* Colors Section */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1">
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
+                <p className="text-sm text-gray-500">{colorsCountLabel} {colorsCount === 1 ? 'boja' : 'boja'}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsColorsModalOpen(true)}
+                className="text-primary-600 hover:text-primary-700 text-sm font-semibold whitespace-nowrap"
+              >
+                Pogledaj sve →
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => setIsColorsModalOpen(true)}
-              className="text-primary-600 hover:text-primary-700 text-sm font-semibold whitespace-nowrap"
-            >
-              Pogledaj sve →
-            </button>
-          </div>
-          <div className="flex-1">
-            <ColorGrid
-              collectionSlug={collectionSlug}
-              onColorSelect={handleColorSelect}
-              compact={true}
-              initialColorSlug={initialColorSlug}
-              limit={18}
-              onColorsLoaded={setColorsCount}
-            />
+            <div className="flex-1">
+              <ColorGrid
+                collectionSlug={collectionSlug}
+                onColorSelect={handleColorSelect}
+                compact={true}
+                initialColorSlug={initialColorSlug}
+                limit={18}
+                onColorsLoaded={setColorsCount}
+              />
+            </div>
           </div>
         </div>
       </div>
