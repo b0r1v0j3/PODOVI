@@ -235,6 +235,16 @@ export default function ColorGrid({
     setCurrentPage(0);
   }, [searchTerm]);
 
+  // Pagination for compact mode - calculate pages from filteredColors (before limit)
+  const totalPages = useMemo(() => {
+    if (!compact || !limit) {
+      return 1;
+    }
+    // Use filteredColors length, but cap at limit for pagination
+    const maxColors = typeof limit === 'number' && limit > 0 ? limit : filteredColors.length;
+    return Math.ceil(Math.min(filteredColors.length, maxColors) / itemsPerPage);
+  }, [filteredColors.length, itemsPerPage, compact, limit]);
+
   const visibleColors = useMemo(() => {
     if (typeof limit === 'number' && limit > 0) {
       return filteredColors.slice(0, limit);
@@ -244,19 +254,12 @@ export default function ColorGrid({
 
   // Pagination for compact mode
   const paginatedColors = useMemo(() => {
-    if (!compact || !limit) {
+    if (!compact || !limit || totalPages <= 1) {
       return visibleColors;
     }
     const startIndex = currentPage * itemsPerPage;
     return visibleColors.slice(startIndex, startIndex + itemsPerPage);
-  }, [visibleColors, currentPage, itemsPerPage, compact, limit]);
-
-  const totalPages = useMemo(() => {
-    if (!compact || !limit) {
-      return 1;
-    }
-    return Math.ceil(visibleColors.length / itemsPerPage);
-  }, [visibleColors.length, itemsPerPage, compact, limit]);
+  }, [visibleColors, currentPage, itemsPerPage, compact, limit, totalPages]);
 
   const goToPage = (page: number) => {
     if (page >= 0 && page < totalPages) {
