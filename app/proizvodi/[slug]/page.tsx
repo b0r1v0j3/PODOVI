@@ -9,7 +9,7 @@ import EcoFeatures from '@/components/EcoFeatures';
 import ProductColorSelector from '@/components/ProductColorSelector';
 import ProductImage from '@/components/ProductImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import type { Product, ProductImage, ProductSpec } from '@/types';
+import type { Product, ProductImage as ProductImageType, ProductSpec } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 
@@ -94,7 +94,7 @@ function colorToProduct(source: ColorSource, slug: string): Product & { collecti
     ? (color.texture_url || color.lifestyle_url || color.image_url || '')
     : (color.texture_url || color.image_url || '');
 
-  const images: ProductImage[] = primaryImageUrl
+  const images: ProductImageType[] = primaryImageUrl
     ? [{
         id: `color-img-${categorySlug}-${color.slug}`,
         url: primaryImageUrl,
