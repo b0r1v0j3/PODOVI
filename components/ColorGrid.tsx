@@ -130,9 +130,9 @@ export default function ColorGrid({
   // Handle color selection
   const handleColorClick = (color: Color) => {
     if (onColorSelect) {
-      // Use lifestyle_url if available, otherwise texture_url or image_url
+      // Use texture_url (pod images) first, then image_url, lifestyle_url as last resort
       // URLs are already normalized in the useEffect
-      const imageUrl = color.lifestyle_url || color.texture_url || color.image_url || '';
+      const imageUrl = color.texture_url || color.image_url || color.lifestyle_url || '';
       const imageAlt = color.full_name || color.name || '';
       const colorCode = color.code || '';
       const colorName = color.name || '';
