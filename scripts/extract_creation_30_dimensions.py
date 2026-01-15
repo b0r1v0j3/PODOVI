@@ -88,31 +88,43 @@ def get_all_colors_from_collection(driver, collection_url):
     
     try:
         # Try to find "View all" button and click it
-        view_all_btn = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'View all')]"))
+        view_all_btn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'View all')] | //a[contains(text(), 'View all')]"))
         )
         driver.execute_script("arguments[0].click();", view_all_btn)
-        time.sleep(2)
+        time.sleep(3)  # Wait longer for modal to load
         
         # Collect links from the modal
-        modal_colors = driver.find_elements(By.XPATH, "//div[contains(@class, 'modal')]//a[contains(@href, '/products/')]")
+        modal_colors = WebDriverWait(driver, 5).until(
+            EC.presence_of_all_elements_located((By.XPATH, "//div[contains(@class, 'modal')]//a[contains(@href, '/products/')] | //div[contains(@class, 'modal')]//a[contains(@href, 'creation-30')]"))
+        )
         for link in modal_colors:
             href = link.get_attribute('href')
             if href and href not in color_urls and href != collection_url:
-                color_urls.append(href)
+                import re
+                # Check if it's a color URL (has color code pattern)
+                if re.search(r'-\d{4}-', href) or re.search(r'r\d{7}', href) or 'creation-30' in href:
+                    color_urls.append(href)
         
         # Close modal
-        driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.ESCAPE)
-        time.sleep(1)
-    except:
+        try:
+            driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.ESCAPE)
+            time.sleep(1)
+        except:
+            pass
+    except Exception as e:
+        print(f"  ⚠️  Greška pri otvaranju 'View all': {e}")
         # Fallback: collect colors directly from the page
-        page_colors = driver.find_elements(By.XPATH, "//a[contains(@href, '/products/')]")
-        for link in page_colors:
-            href = link.get_attribute('href')
-            if href and href not in color_urls and href != collection_url:
-                import re
-                if re.search(r'-\d{4}-', href) or re.search(r'r\d{7}', href):
-                    color_urls.append(href)
+        try:
+            page_colors = driver.find_elements(By.XPATH, "//a[contains(@href, '/products/')]")
+            for link in page_colors:
+                href = link.get_attribute('href')
+                if href and href not in color_urls and href != collection_url:
+                    import re
+                    if re.search(r'-\d{4}-', href) or re.search(r'r\d{7}', href) or ('creation-30' in href and href != collection_url):
+                        color_urls.append(href)
+        except Exception as e2:
+            print(f"  ⚠️  Greška pri direktnom sakupljanju: {e2}")
     
     print(f"  ✓ Pronađeno {len(color_urls)} boja")
     return color_urls

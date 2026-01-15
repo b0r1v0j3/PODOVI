@@ -82,13 +82,22 @@ def update_lvt_colors_with_dimensions():
     updated_count = 0
     total_specs_found = 0
     
-    # Also check for creation_30_dimensions.json
-    creation_30_dimensions_path = Path('downloads/creation_30_dimensions.json')
-    if creation_30_dimensions_path.exists():
-        print(f"\n📄 Obrađujem: creation_30_dimensions.json")
+    # Also check for creation_30_dimensions.json (try multiple locations)
+    creation_30_dimensions_path = None
+    possible_paths = [
+        Path('downloads/creation_30_dimensions.json'),
+        Path('downloads/product_descriptions/lvt/creation_30_dimensions.json'),
+    ]
+    for path in possible_paths:
+        if path.exists():
+            creation_30_dimensions_path = path
+            break
+    if creation_30_dimensions_path and creation_30_dimensions_path.exists():
+        print(f"\n📄 Obrađujem: {creation_30_dimensions_path.name}")
         with open(creation_30_dimensions_path, 'r', encoding='utf-8') as f:
             creation_30_data = json.load(f)
         
+        print(f"  📊 Pronađeno {len(creation_30_data)} boja sa specs")
         for color_slug, specs in creation_30_data.items():
             if not specs:
                 continue
@@ -98,42 +107,55 @@ def update_lvt_colors_with_dimensions():
             # We need to find color with slug: "ballerina-41870347"
             
             # Extract the color slug part (after collection prefix)
-            color_slug_match = re.search(r'creation-30-new-collection-(\d{4})-(.+?)(?:-\d+)?$', color_slug)
-            if color_slug_match:
-                code = color_slug_match.group(1)
-                name_part = color_slug_match.group(2)
-                # Try to construct the expected slug format
-                expected_slug = f"{name_part}-{code}"
-                # Also try with full number suffix
-                full_slug_match = re.search(r'creation-30-new-collection-(.+?)(-\d+)?$', color_slug)
-                if full_slug_match:
-                    expected_slug_full = full_slug_match.group(1)
+            # color_slug format: "creation-30-new-collection-0347-ballerina-41870347"
+            # Expected slug in JSON: "ballerina-41870347"
+            
+            # Try to extract slug after the last occurrence of collection name
+            # Pattern: name-number (e.g., "ballerina-41870347")
+            slug_match = re.search(r'creation-30-new-collection-\d{4}-(.+?-\d+)$', color_slug)
+            if slug_match:
+                expected_slug = slug_match.group(1)  # e.g., "ballerina-41870347"
             else:
-                # Fallback: try to extract from end of slug
+                # Fallback: extract last two parts
                 parts = color_slug.split('-')
                 if len(parts) >= 2:
-                    expected_slug = '-'.join(parts[-2:])  # Last two parts
+                    expected_slug = '-'.join(parts[-2:])
                 else:
                     expected_slug = color_slug
             
             # Try to find color by slug
             color = find_color_by_slug(colors, expected_slug)
             
+            if not color and expected_slug:
+                # Try alternative: just the name part without number
+                name_only = expected_slug.split('-')[0] if '-' in expected_slug else expected_slug
+                for c in colors:
+                    if c.get('slug', '').startswith(name_only):
+                        color = c
+                        break
+            
             if not color:
-                # Try to find by code
-                code_match = re.search(r'(\d{4})', color_slug)
+                # Try to find by code from creation-30 collection
+                code_match = re.search(r'creation-30-new-collection-(\d{4})', color_slug)
                 if code_match:
                     code = code_match.group(1)
-                    # Extract name from slug
-                    name_match = re.search(r'-\d{4}-(.+?)(?:-\d+)?$', color_slug)
-                    name_hint = name_match.group(1) if name_match else ''
-                    color = find_color_by_code_and_name(colors, code, name_hint)
+                    # Find by code in creation-30 collection
+                    for c in colors:
+                        if c.get('code') == code and c.get('collection') == 'creation-30':
+                            color = c
+                            break
+            
+            if not color:
+                # Last resort: print debug info
+                print(f"  ⚠️  Nije pronađena boja za slug: {color_slug} (expected: {expected_slug if 'expected_slug' in locals() else 'N/A'})")
             
             if color:
-                if 'dimension' not in color or not color.get('dimension'):
-                    if 'DIMENSION' in specs:
-                        color['dimension'] = specs['DIMENSION']
-                        print(f"  ✓ Dodata dimenzija za {color.get('full_name', color_slug)}: {specs['DIMENSION']}")
+                # Always update if DIMENSION exists in specs (even if color already has dimension)
+                if 'DIMENSION' in specs:
+                    old_dimension = color.get('dimension', 'N/A')
+                    color['dimension'] = specs['DIMENSION']
+                    if old_dimension != specs['DIMENSION']:
+                        print(f"  ✓ Dodata/ažurirana dimenzija za {color.get('full_name', color_slug)}: {specs['DIMENSION']} (stara: {old_dimension})")
                         updated_count += 1
                 
                 if 'format' not in color or not color.get('format'):
@@ -146,66 +168,63 @@ def update_lvt_colors_with_dimensions():
     
     # Find all description JSON files
     descriptions_dir = Path('downloads/product_descriptions/lvt')
-    if not descriptions_dir.exists():
-        print(f"⚠️  {descriptions_dir} ne postoji, preskačem...")
-    else:
-    
-    # Process each collection description file
-    for desc_file in descriptions_dir.glob('*_descriptions.json'):
-        print(f"\n📄 Obrađujem: {desc_file.name}")
-        
-        with open(desc_file, 'r', encoding='utf-8') as f:
-            desc_data = json.load(f)
-        
-        collection_colors = desc_data.get('colors', [])
-        print(f"  📊 Pronađeno {len(collection_colors)} boja u opisu")
-        
-        for desc_color in collection_colors:
-            desc_slug = desc_color.get('slug', '')
-            specs = desc_color.get('specs', {})
+    if descriptions_dir.exists():
+        # Process each collection description file
+        for desc_file in descriptions_dir.glob('*_descriptions.json'):
+            print(f"\n📄 Obrađujem: {desc_file.name}")
             
-            if not specs:
-                continue
+            with open(desc_file, 'r', encoding='utf-8') as f:
+                desc_data = json.load(f)
             
-            total_specs_found += 1
+            collection_colors = desc_data.get('colors', [])
+            print(f"  📊 Pronađeno {len(collection_colors)} boja u opisu")
             
-            # Find matching color in lvt_colors_complete.json
-            color = find_color_by_slug(colors, desc_slug)
-            
-            if not color:
-                # Try alternative matching
-                # Extract code from slug
-                code_match = re.search(r'(\d{4})', desc_slug)
-                if code_match:
-                    code = code_match.group(1)
-                    for c in colors:
-                        if c.get('code') == code:
-                            color = c
-                            break
-            
-            if color:
-                # Update color with specs
-                if 'dimension' not in color or not color.get('dimension'):
-                    if 'DIMENSION' in specs:
-                        color['dimension'] = specs['DIMENSION']
-                        print(f"  ✓ Dodata dimenzija za {color.get('full_name', desc_slug)}: {specs['DIMENSION']}")
-                        updated_count += 1
+            for desc_color in collection_colors:
+                desc_slug = desc_color.get('slug', '')
+                specs = desc_color.get('specs', {})
                 
-                if 'format' not in color or not color.get('format'):
-                    if 'FORMAT' in specs:
-                        color['format'] = specs['FORMAT']
+                if not specs:
+                    continue
                 
-                if 'overall_thickness' not in color or not color.get('overall_thickness'):
-                    if 'OVERALL THICKNESS' in specs:
-                        color['overall_thickness'] = specs['OVERALL THICKNESS']
+                total_specs_found += 1
                 
-                if 'welding_rod' not in color or not color.get('welding_rod'):
-                    if 'WELDING ROD' in specs:
-                        color['welding_rod'] = specs['WELDING ROD']
-                    elif 'WELDING ROD REF.' in specs:
-                        color['welding_rod'] = specs['WELDING ROD REF.']
-            else:
-                print(f"  ⚠️  Nije pronađena boja za slug: {desc_slug}")
+                # Find matching color in lvt_colors_complete.json
+                color = find_color_by_slug(colors, desc_slug)
+                
+                if not color:
+                    # Try alternative matching
+                    # Extract code from slug
+                    code_match = re.search(r'(\d{4})', desc_slug)
+                    if code_match:
+                        code = code_match.group(1)
+                        for c in colors:
+                            if c.get('code') == code:
+                                color = c
+                                break
+                
+                if color:
+                    # Update color with specs
+                    if 'dimension' not in color or not color.get('dimension'):
+                        if 'DIMENSION' in specs:
+                            color['dimension'] = specs['DIMENSION']
+                            print(f"  ✓ Dodata dimenzija za {color.get('full_name', desc_slug)}: {specs['DIMENSION']}")
+                            updated_count += 1
+                    
+                    if 'format' not in color or not color.get('format'):
+                        if 'FORMAT' in specs:
+                            color['format'] = specs['FORMAT']
+                    
+                    if 'overall_thickness' not in color or not color.get('overall_thickness'):
+                        if 'OVERALL THICKNESS' in specs:
+                            color['overall_thickness'] = specs['OVERALL THICKNESS']
+                    
+                    if 'welding_rod' not in color or not color.get('welding_rod'):
+                        if 'WELDING ROD' in specs:
+                            color['welding_rod'] = specs['WELDING ROD']
+                        elif 'WELDING ROD REF.' in specs:
+                            color['welding_rod'] = specs['WELDING ROD REF.']
+                else:
+                    print(f"  ⚠️  Nije pronađena boja za slug: {desc_slug}")
     
     # Save updated JSON
     print(f"\n💾 Čuvam ažurirani JSON...")
