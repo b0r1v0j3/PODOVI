@@ -33,6 +33,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const lastCategorySlug = useRef<string>('');
   const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt';
 
+  const colorsCountLabel = useJsonColors
+    ? (loadingColors
+        ? '...'
+        : (colorsFromJSON.length > 0
+            ? String(colorsFromJSON.length)
+            : (totalColorsCount !== null ? String(totalColorsCount) : '...')))
+    : String(legacyColors.length);
+
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
     if (!useJsonColors) {
@@ -202,14 +210,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            Boje ({useJsonColors
-              ? (loadingColors
-                  ? '...'
-                  : (colorsFromJSON.length > 0
-                      ? colorsFromJSON.length
-                      : (totalColorsCount ?? '...')))
-              : legacyColors.length
-            })
+            Boje ({colorsCountLabel})
           </button>
         </div>
       </div>
