@@ -379,7 +379,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa 0.30mm slojem habanja - idealna za stambene i lake komercijalne prostore',
-    description: 'Creation 30 je sintetička, dekorativna i fleksibilna PVC podna obloga dostupna u pločama sa oborenim ivicama na sve četiri strane. Sadrži 0.30mm sloj habanja i visokokvalitetni dekorativni film. Proizvod uključuje akustični gornji sloj za poboljšanu udobnost pri hodu. Sa ukupnom debljinom od 2mm, Creation 30 ima crosslinked poliuretanski površinski tretman (Protecshield) koji osigurava lako održavanje.',
+    description: 'Create without limits with Creation 30: a complete flooring solution offering ultra-realistic designs, versatile formats and seamless harmony — ideal for new build projects, perfect for light traffic applications (housing)',
     images: [{ id: '8-1', url: '/images/products/lvt/creation-30.jpg', alt: 'Gerflor Creation 30', isPrimary: true, order: 1 }],
     specs: [
       { key: 'thickness', label: 'Ukupna debljina', value: '2mm' },
@@ -395,6 +395,39 @@ export const products: Product[] = [
     inStock: true,
     featured: true,
     externalLink: 'https://www.gerflor-cee.com/products/creation-30-new-collection',
+    detailsSections: [
+      {
+        title: 'Dizajn i struktura',
+        items: [
+          'Create without limits',
+          'Complete format offering: rectangular tiles, square tiles, standard planks, XL planks - designed to meet every project need',
+          'Refined designs & harmonious color palettes: every detail crafted to create exclusive space',
+          'New surface embosses: ultra-realistic and varied textures that elevate each design',
+          'Ultra-matt finish with Protecshield™: velvet touch and natural elegance',
+          'Smart Design – up to 3sqm of design variation: enhanced visual variation on selected designs for deeper realism',
+          'Smart Comfort innovation: acoustic top layer for better walking (79dB) and thermal comfort',
+          '4 bevelled edges: authentic wood and tile effects',
+          'From floor to wall: create seamless harmony with our Mural Revela Collection',
+        ],
+      },
+      {
+        title: 'Ugradnja i održavanje',
+        items: [
+          'Dry Back system: professional-grade installation for lasting performance',
+          'Ideal for new build',
+          'Protecshield™ surface treatment: enhanced resistance, effortless cleaning',
+          'Efficient maintenance protocol: simplified care, maximum impact',
+        ],
+      },
+      {
+        title: 'Održivost',
+        items: [
+          'Recycled content average 35%',
+          'TVOC after 28 days <10 µg/m³',
+          'Recycled content 55%',
+        ],
+      },
+    ],
     createdAt: new Date('2024-03-20'),
     updatedAt: new Date('2024-03-20'),
   },
