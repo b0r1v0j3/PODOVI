@@ -19,7 +19,7 @@ interface ColorFromJSON {
 
 interface LVTTabsProps {
   collections: Product[];
-  colors: Product[]; // Used for LVT colors (from products array)
+  colors: Product[]; // Legacy fallback for non-JSON categories
   brandsRecord: Record<string, Brand>;
   categorySlug: string; // 'lvt' or 'linoleum'
 }
@@ -31,7 +31,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
   const hasLoadedColors = useRef(false);
   const lastCategorySlug = useRef<string>('');
-  const useJsonColors = categorySlug === 'linoleum';
+  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt';
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -40,7 +40,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       return;
     }
 
-    const jsonPath = '/data/linoleum_colors_complete.json';
+    const jsonPath = categorySlug === 'linoleum'
+      ? '/data/linoleum_colors_complete.json'
+      : '/data/lvt_colors_complete.json';
 
     fetch(jsonPath)
       .then(res => {
@@ -77,7 +79,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
 
     if (activeTab === 'colors' && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
-      const jsonPath = '/data/linoleum_colors_complete.json';
+      const jsonPath = categorySlug === 'linoleum'
+        ? '/data/linoleum_colors_complete.json'
+        : '/data/lvt_colors_complete.json';
 
       fetch(jsonPath)
         .then(res => {
