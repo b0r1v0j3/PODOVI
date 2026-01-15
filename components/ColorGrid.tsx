@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo, useRef } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 interface Color {
   collection: string;
@@ -150,33 +151,37 @@ export default function ColorGrid({
     // Update selected slug
     setCurrentSelectedSlug(color.slug);
     
-    // If in compact mode (ProductColorSelector), just update the image, don't navigate
-    if (compact && onColorSelect) {
-      // Use texture_url (pod images) first, then image_url, lifestyle_url as last resort
-      // URLs are already normalized in the useEffect
-      const imageUrl = color.texture_url || color.image_url || color.lifestyle_url || '';
-      const imageAlt = color.full_name || color.name || '';
-      const colorCode = color.code || '';
-      const colorName = color.name || '';
-      const characteristics = buildCharacteristics(color);
+    // If in compact mode (ProductColorSelector), update URL with ?color= parameter and update image
+    if (compact) {
+      // Update URL with ?color= parameter
+      const params = new URLSearchParams(searchParams);
+      params.set('color', color.slug);
+      router.push(`${pathname}?${params.toString()}`, { scroll: false });
       
-      // Ensure URL is normalized
-      const normalizedUrl = normalizeSrc(imageUrl);
-      
-      if (normalizedUrl) {
-        onColorSelect({ imageUrl: normalizedUrl, imageAlt, colorCode, colorName, characteristics, colorSlug: color.slug });
-      } else {
-        console.warn('ColorGrid: No valid image URL for color', color);
+      // Also call onColorSelect if provided
+      if (onColorSelect) {
+        // Use texture_url (pod images) first, then image_url, lifestyle_url as last resort
+        // URLs are already normalized in the useEffect
+        const imageUrl = color.texture_url || color.image_url || color.lifestyle_url || '';
+        const imageAlt = color.full_name || color.name || '';
+        const colorCode = color.code || '';
+        const colorName = color.name || '';
+        const characteristics = buildCharacteristics(color);
+        
+        // Ensure URL is normalized
+        const normalizedUrl = normalizeSrc(imageUrl);
+        
+        if (normalizedUrl) {
+          onColorSelect({ imageUrl: normalizedUrl, imageAlt, colorCode, colorName, characteristics, colorSlug: color.slug });
+        } else {
+          console.warn('ColorGrid: No valid image URL for color', color);
+        }
       }
       return;
     }
     
     // If not in compact mode, navigate to individual color page
-    // (Link will handle navigation, but we can also update URL here if needed)
-    if (event) {
-      // Let the link handle navigation naturally
-      return;
-    }
+    // (Link will handle navigation)
   };
 
   useEffect(() => {
@@ -346,19 +351,10 @@ export default function ColorGrid({
         {paginatedColors.map((color) => {
           const isSelected = currentSelectedSlug === color.slug;
           return (
-          <a
+          <button
             key={color.slug}
-            href={`/proizvodi/${collectionSlug}-${color.slug}`}
-            onClick={(e) => {
-              // If onColorSelect is provided and we're in compact mode (ProductColorSelector),
-              // prevent navigation and just update the image
-              if (onColorSelect && compact) {
-                e.preventDefault();
-                handleColorClick(color, e);
-              }
-              // Otherwise, let the link navigate normally
-            }}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 block ${
+            onClick={() => handleColorClick(color)}
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 w-full ${
               isSelected 
                 ? 'border-red-500 shadow-lg ring-2 ring-red-200' 
                 : 'border-gray-200 hover:border-primary-500'
@@ -386,7 +382,7 @@ export default function ColorGrid({
                 <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
               </div>
             )}
-          </a>
+          </button>
           );
         })}
       </div>
