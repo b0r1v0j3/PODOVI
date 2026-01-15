@@ -57,7 +57,26 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
         return { categorySlug: candidate.categorySlug, color: match };
       }
     } catch (error) {
-      console.error('Error reading color JSON:', candidate.fileName, error);
+      console.error('Error reading local color JSON:', candidate.fileName, error);
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+        const response = await fetch(`${baseUrl}/data/${candidate.fileName}`, {
+          next: { revalidate: 3600 },
+        });
+        if (!response.ok) {
+          continue;
+        }
+        const data = await response.json();
+        if (!data || !Array.isArray(data.colors)) {
+          continue;
+        }
+        const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
+        if (match) {
+          return { categorySlug: candidate.categorySlug, color: match };
+        }
+      } catch (fetchError) {
+        console.error('Error reading remote color JSON:', candidate.fileName, fetchError);
+      }
     }
   }
 
