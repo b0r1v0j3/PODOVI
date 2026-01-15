@@ -104,7 +104,11 @@ export default function ColorGrid({
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(0);
   const hasAutoSelected = useRef(false);
+  
+  // Pagination settings for compact mode
+  const itemsPerPage = compact ? 12 : 20;
 
   // Extract collection name for URL construction
   const getCollectionName = (slug: string): string => {
@@ -209,8 +213,15 @@ export default function ColorGrid({
     if (match) {
       hasAutoSelected.current = true;
       handleColorClick(match);
+      // If in compact mode with pagination, navigate to the page containing this color
+      if (compact && limit) {
+        const index = filteredColors.findIndex(c => c.slug === initialColorSlug);
+        if (index >= 0) {
+          setCurrentPage(Math.floor(index / itemsPerPage));
+        }
+      }
     }
-  }, [colors, initialColorSlug, onColorSelect]);
+  }, [colors, initialColorSlug, onColorSelect, compact, limit, filteredColors, itemsPerPage]);
 
   const filteredColors = useMemo(() => {
     return colors.filter(color =>
@@ -219,12 +230,47 @@ export default function ColorGrid({
     );
   }, [colors, searchTerm]);
 
+  // Reset page when search term changes
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [searchTerm]);
+
   const visibleColors = useMemo(() => {
     if (typeof limit === 'number' && limit > 0) {
       return filteredColors.slice(0, limit);
     }
     return filteredColors;
   }, [filteredColors, limit]);
+
+  // Pagination for compact mode
+  const paginatedColors = useMemo(() => {
+    if (!compact || !limit) {
+      return visibleColors;
+    }
+    const startIndex = currentPage * itemsPerPage;
+    return visibleColors.slice(startIndex, startIndex + itemsPerPage);
+  }, [visibleColors, currentPage, itemsPerPage, compact, limit]);
+
+  const totalPages = useMemo(() => {
+    if (!compact || !limit) {
+      return 1;
+    }
+    return Math.ceil(visibleColors.length / itemsPerPage);
+  }, [visibleColors.length, itemsPerPage, compact, limit]);
+
+  const goToPage = (page: number) => {
+    if (page >= 0 && page < totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const goToPrevious = () => {
+    goToPage(currentPage - 1);
+  };
+
+  const goToNext = () => {
+    goToPage(currentPage + 1);
+  };
 
   if (loading) {
     return (
@@ -266,9 +312,55 @@ export default function ColorGrid({
       )}
 
 
+      {/* Pagination Controls - only for compact mode with limit */}
+      {compact && limit && totalPages > 1 && (
+        <div className="flex flex-col items-center gap-2 mb-4">
+          {/* Arrows */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={goToPrevious}
+              disabled={currentPage === 0}
+              className="p-2 rounded-full bg-white border-2 border-gray-300 hover:border-primary-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+              aria-label="Prethodna strana"
+            >
+              <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            {/* Page Indicators (dots) */}
+            <div className="flex items-center gap-1.5">
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToPage(index)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    index === currentPage
+                      ? 'w-6 bg-primary-600'
+                      : 'w-1.5 bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Strana ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <button
+              onClick={goToNext}
+              disabled={currentPage === totalPages - 1}
+              className="p-2 rounded-full bg-white border-2 border-gray-300 hover:border-primary-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+              aria-label="Sledeća strana"
+            >
+              <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Grid */}
       <div className={`grid gap-3 ${compact ? 'grid-cols-4 md:grid-cols-5 lg:grid-cols-6' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
-        {visibleColors.map((color) => (
+        {paginatedColors.map((color) => (
           <button
             key={color.slug}
             onClick={() => handleColorClick(color)}
