@@ -90,22 +90,41 @@ def update_lvt_colors_with_dimensions():
             if not specs:
                 continue
             
-            # Extract code from slug
-            code_match = re.search(r'(\d{4})', color_slug)
-            if not code_match:
-                continue
+            # Try to find color by matching slug patterns
+            # color_slug format: "creation-30-new-collection-0347-ballerina-41870347"
+            # We need to find color with slug: "ballerina-41870347"
             
-            code = code_match.group(1)
-            # Extract name from slug
-            name_match = re.search(r'-\d{4}-(.+?)(?:-\d+)?$', color_slug)
-            name_hint = name_match.group(1) if name_match else ''
+            # Extract the color slug part (after collection prefix)
+            color_slug_match = re.search(r'creation-30-new-collection-(\d{4})-(.+?)(?:-\d+)?$', color_slug)
+            if color_slug_match:
+                code = color_slug_match.group(1)
+                name_part = color_slug_match.group(2)
+                # Try to construct the expected slug format
+                expected_slug = f"{name_part}-{code}"
+                # Also try with full number suffix
+                full_slug_match = re.search(r'creation-30-new-collection-(.+?)(-\d+)?$', color_slug)
+                if full_slug_match:
+                    expected_slug_full = full_slug_match.group(1)
+            else:
+                # Fallback: try to extract from end of slug
+                parts = color_slug.split('-')
+                if len(parts) >= 2:
+                    expected_slug = '-'.join(parts[-2:])  # Last two parts
+                else:
+                    expected_slug = color_slug
             
-            # Find matching color
-            color = find_color_by_code_and_name(colors, code, name_hint)
+            # Try to find color by slug
+            color = find_color_by_slug(colors, expected_slug)
             
             if not color:
-                # Try alternative matching by slug
-                color = find_color_by_slug(colors, color_slug)
+                # Try to find by code
+                code_match = re.search(r'(\d{4})', color_slug)
+                if code_match:
+                    code = code_match.group(1)
+                    # Extract name from slug
+                    name_match = re.search(r'-\d{4}-(.+?)(?:-\d+)?$', color_slug)
+                    name_hint = name_match.group(1) if name_match else ''
+                    color = find_color_by_code_and_name(colors, code, name_hint)
             
             if color:
                 if 'dimension' not in color or not color.get('dimension'):
