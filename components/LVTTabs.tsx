@@ -136,7 +136,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               featured: false,
               createdAt: new Date(),
               updatedAt: new Date(),
-            };
+              collectionSlug: color.collection,
+            } as Product & { collectionSlug: string };
           });
 
           setColorsFromJSON(colorsAsProducts);

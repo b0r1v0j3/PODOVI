@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
 
@@ -37,6 +38,8 @@ export default function ProductColorSelector({
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
+  const searchParams = useSearchParams();
+  const initialColorSlug = searchParams.get('color') || undefined;
 
   // Update image when color is selected
   const handleColorSelect = (imageUrl: string, imageAlt: string, colorCode?: string, colorName?: string) => {
@@ -164,6 +167,7 @@ export default function ProductColorSelector({
             collectionSlug={collectionSlug} 
             onColorSelect={handleColorSelect}
             compact={true}
+            initialColorSlug={initialColorSlug}
           />
         </div>
       </div>

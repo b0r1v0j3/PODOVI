@@ -13,10 +13,22 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   const primaryImage = product.images && product.images.length > 0 
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
+  const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
+  const isColorSku = typeof product.sku === 'string' && /^\d{4}$/.test(product.sku);
+  const isColorTile = (product.categoryId === '6' || product.categoryId === '7') && isColorSku;
+  let productHref = `/proizvodi/${product.slug}`;
+
+  if (isColorTile && colorCollectionSlug) {
+    let collectionSlug = colorCollectionSlug;
+    if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
+      collectionSlug = `gerflor-${collectionSlug}`;
+    }
+    productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
+  }
 
   return (
     <Link 
-      href={`/proizvodi/${product.slug}`}
+      href={productHref}
       className="group card hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-primary-100"
     >
       <div className="relative h-64 bg-gray-100 overflow-hidden group-hover:scale-105 transition-transform duration-500">

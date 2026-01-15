@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 
 interface Color {
   collection: string;
@@ -19,6 +19,7 @@ interface ColorGridProps {
   collectionSlug: string;
   onColorSelect?: (imageUrl: string, imageAlt: string, colorCode?: string, colorName?: string) => void;
   compact?: boolean;
+  initialColorSlug?: string;
 }
 
 function normalizeSrc(raw?: string | null) {
@@ -57,10 +58,11 @@ function ImageWithFallback({ src, alt, className }: any) {
   );
 }
 
-export default function ColorGrid({ collectionSlug, onColorSelect, compact = false }: ColorGridProps) {
+export default function ColorGrid({ collectionSlug, onColorSelect, compact = false, initialColorSlug }: ColorGridProps) {
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const hasAutoSelected = useRef(false);
 
   // Extract collection name for URL construction
   const getCollectionName = (slug: string): string => {
@@ -151,6 +153,18 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
         setLoading(false);
       });
   }, [collectionSlug]);
+
+  useEffect(() => {
+    if (!initialColorSlug || !onColorSelect || hasAutoSelected.current || colors.length === 0) {
+      return;
+    }
+
+    const match = colors.find(color => color.slug === initialColorSlug);
+    if (match) {
+      hasAutoSelected.current = true;
+      handleColorClick(match);
+    }
+  }, [colors, initialColorSlug, onColorSelect]);
 
   const filteredColors = useMemo(() => {
     return colors.filter(color =>
