@@ -275,13 +275,6 @@ export default function ColorGrid({
     return pages > 1 ? pages : 1;
   }, [visibleColors.length, itemsPerPage, compact, limit]);
 
-  const visibleColors = useMemo(() => {
-    if (typeof limit === 'number' && limit > 0) {
-      return filteredColors.slice(0, limit);
-    }
-    return filteredColors;
-  }, [filteredColors, limit]);
-
   // Pagination for compact mode
   const paginatedColors = useMemo(() => {
     if (!compact || !limit || totalPages <= 1) {
