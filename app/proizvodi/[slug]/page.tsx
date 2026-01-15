@@ -54,6 +54,33 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
     return { categorySlug: 'linoleum', color: linoleumMatch };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+  const candidates: Array<{ categorySlug: 'lvt' | 'linoleum'; fileName: string }> = [
+    { categorySlug: 'lvt', fileName: 'lvt_colors_complete.json' },
+    { categorySlug: 'linoleum', fileName: 'linoleum_colors_complete.json' },
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      const response = await fetch(`${baseUrl}/data/${candidate.fileName}`, {
+        cache: 'no-store',
+      });
+      if (!response.ok) {
+        continue;
+      }
+      const data = await response.json();
+      if (!data || !Array.isArray(data.colors)) {
+        continue;
+      }
+      const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
+      if (match) {
+        return { categorySlug: candidate.categorySlug, color: match };
+      }
+    } catch (error) {
+      console.error('Error reading remote color JSON:', candidate.fileName, error);
+    }
+  }
+
   return null;
 }
 
