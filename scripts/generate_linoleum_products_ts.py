@@ -141,16 +141,34 @@ for idx, collection in enumerate(collections, 1):
         if isinstance(items, list) and items:
             translated_items = [translate_bullet(item) for item in items if isinstance(item, str)]
             translated_items = [item for item in translated_items if item]
-            if translated_items:
+            # Deduplicate items while keeping order
+            unique_items = []
+            seen_items = set()
+            for item in translated_items:
+                if item in seen_items:
+                    continue
+                seen_items.add(item)
+                unique_items.append(item)
+            if unique_items:
                 details_sections.append({
                     "title": title_sr,
-                    "items": translated_items,
+                    "items": unique_items,
                 })
 
+    # Remove duplicate sections with identical item lists
+    unique_sections = []
+    seen_section_items = set()
+    for section in details_sections:
+        items_key = tuple(section.get("items", []))
+        if items_key in seen_section_items:
+            continue
+        seen_section_items.add(items_key)
+        unique_sections.append(section)
+
     details_sections_str = ""
-    if details_sections:
+    if unique_sections:
         lines = ["    detailsSections: ["]
-        for section in details_sections:
+        for section in unique_sections:
             lines.append("      {")
             lines.append(f"        title: '{ts_escape(section['title'])}',")
             lines.append("        items: [")
