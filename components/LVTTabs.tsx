@@ -32,14 +32,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const hasLoadedColors = useRef(false);
   const lastCategorySlug = useRef<string>('');
   const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt';
-
-  const colorsCountLabel = useJsonColors
-    ? (loadingColors
-        ? '...'
-        : (colorsFromJSON.length > 0
-            ? String(colorsFromJSON.length)
-            : (totalColorsCount !== null ? String(totalColorsCount) : '...')))
-    : String(legacyColors.length);
+  const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -210,7 +203,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            Boje ({colorsCountLabel})
+            Boje ({useJsonColors
+              ? (loadingColors
+                  ? '...'
+                  : (colorsFromJSON.length > 0
+                      ? colorsFromJSON.length
+                      : (totalColorsCount ?? '...')))
+              : legacyColors.length
+            })
           </button>
         </div>
       </div>
@@ -227,7 +227,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         ) : (
           <div>
             {useJsonColors ? (
-              loadingColors ? (
+              isColorsLoading ? (
                 <div className="text-center py-12">
                   <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
                   <p className="mt-4 text-gray-600">Učitavam boje...</p>
