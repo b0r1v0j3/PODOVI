@@ -398,6 +398,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
               priceUnit={product.priceUnit}
               brand={brand ? { name: brand.name, slug: brand.slug } : null}
               shortDescription={product.shortDescription}
+              specs={product.specs}
               inStock={product.inStock}
               productSlug={product.slug}
               externalLink={product.externalLink}

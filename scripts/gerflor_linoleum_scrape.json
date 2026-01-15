@@ -1,0 +1,1263 @@
+{
+  "total": 45,
+  "scraped_at": "2026-01-15 06:24:26",
+  "source": "https://www.gerflor-cee.com/category/linoleum",
+  "products": [
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-colorette",
+      "collection": "DLW Colorette",
+      "code": "",
+      "name": "DLW COLORETTE",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20106.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20216.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20217.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20218.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20219.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67524/dlw%20colorette%20-%20technical%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.3.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67524/dlw%20colorette%20-%20technical%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.3.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.3.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus",
+      "collection": "DLW Colorette Acoustic",
+      "code": "",
+      "name": "DLW COLORETTE ACOUSTIC PLUS",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20218.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/34921.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/59392.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20223.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67540/dlw%20colorette%20acousticplus19db%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20142/dlw%20acousticplus%20-%20environmental%20product%20declaration%20(epd).pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67540/dlw%20colorette%20acousticplus19db%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-moon",
+      "collection": "DLW Lino Art",
+      "code": "",
+      "name": "DLW LINO ART MOON",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/60164.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60166.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60175.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60169.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60171.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban",
+      "collection": "DLW Lino Art",
+      "code": "",
+      "name": "DLW LINO ART URBAN",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-linodur",
+      "collection": "DLW Linodur",
+      "code": "",
+      "name": "DLW LINODUR",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/38009.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/38015.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/38012.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/38010.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/38011.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67539/linodur%20-%20technical%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.7.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67539/linodur%20-%20technical%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.7.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.7.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-2-mm",
+      "collection": "DLW Marmorette 2",
+      "code": "",
+      "name": "DLW MARMORETTE 2 MM",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/16595.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20461.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60728.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20466.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20467.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67534/dlw%20marmorette%20-%20technical%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.8.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67534/dlw%20marmorette%20-%20technical%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.8.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.8.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-25-mm",
+      "collection": "DLW Marmorette 25",
+      "code": "",
+      "name": "DLW MARMORETTE 2.5 MM",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20455.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20456.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20457.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20096.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/16595.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67534/dlw%20marmorette%20-%20technical%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.9.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/34425/linoleum%20marmorette%20-%20environmental%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.9.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67534/dlw%20marmorette%20-%20technical%20datasheet.pdf?__hstc=167757281.bfd637e1f6def6f2d9d51653adfba375.1768454400129.1768454400129.1768454400129.1&__hssc=167757281.9.1768454400129&__hsfp=fdc07dda9e04162b1cf112738bceee5b",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-32-mm",
+      "collection": "DLW Marmorette 32",
+      "code": "",
+      "name": "DLW MARMORETTE 3.2 MM",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20096.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/16595.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20465.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20466.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20467.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67534/dlw%20marmorette%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67534/dlw%20marmorette%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-acoustic",
+      "collection": "DLW Marmorette Acoustic",
+      "code": "",
+      "name": "DLW MARMORETTE ACOUSTIC",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20457.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20458.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60728.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20467.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20471.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67541/marmorette%20acoustic%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67541/marmorette%20acoustic%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-acousticplus",
+      "collection": "DLW Marmorette Acousticplus",
+      "code": "",
+      "name": "DLW MARMORETTE ACOUSTICPLUS",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20096.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20458.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20461.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60728.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20467.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67542/marmorette%20acoustic%20plus%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20142/dlw%20acousticplus%20-%20environmental%20product%20declaration%20(epd).pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67542/marmorette%20acoustic%20plus%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-bfl-s1",
+      "collection": "DLW Marmorette Bfl",
+      "code": "",
+      "name": "DLW MARMORETTE BFL-S1",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20458.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60728.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20467.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20471.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20472.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67537/marmorette%202.5%20mm%20bfl-s1%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67537/marmorette%202.5%20mm%20bfl-s1%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-lch",
+      "collection": "DLW Marmorette Lch",
+      "code": "",
+      "name": "DLW MARMORETTE LCH",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/16595.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/16606.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/45489.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67538/marmorette%202.5mm%20lch%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67538/marmorette%202.5mm%20lch%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-r10",
+      "collection": "DLW Marmorette R10",
+      "code": "",
+      "name": "DLW MARMORETTE R10",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20458.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60728.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20467.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20471.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20472.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67536/marmorette%202.5mm%20r10%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67536/marmorette%202.5mm%20r10%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-uni-walton",
+      "collection": "DLW Uni Walton",
+      "code": "",
+      "name": "DLW UNI WALTON",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20439.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20440.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20441.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20442.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20443.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67535/uni%20walton%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67535/uni%20walton%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/56138/dlw%20linoleum%20.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-uni-walton-acoustic-plus",
+      "collection": "DLW Uni Walton",
+      "code": "",
+      "name": "DLW UNI WALTON ACOUSTIC PLUS",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20450.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/45490.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/19515.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/29738.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67543/uni%20walton%20acoustic%20plus%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20142/dlw%20acousticplus%20-%20environmental%20product%20declaration%20(epd).pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67543/uni%20walton%20acoustic%20plus%20-%20technical%20datasheet.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-moon-0238-meteorite-r9620238",
+      "collection": "DLW Lino Art",
+      "code": "0238",
+      "name": "METEORITE",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/60164.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60166.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60175.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60169.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60171.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-moon-0239-shadow-r9620239",
+      "collection": "DLW Lino Art",
+      "code": "0239",
+      "name": "SHADOW",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/60164.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60166.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60175.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60169.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60171.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-moon-0240-rock-r9620240",
+      "collection": "DLW Lino Art",
+      "code": "0240",
+      "name": "ROCK",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/60164.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60166.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60175.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60169.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60171.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-moon-0241-green-flash-r9620241",
+      "collection": "DLW Lino Art",
+      "code": "0241",
+      "name": "GREEN FLASH",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/60164.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60166.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60175.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60169.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60171.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-moon-0242-stone-r9620242",
+      "collection": "DLW Lino Art",
+      "code": "0242",
+      "name": "STONE",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/60164.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60166.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60175.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60169.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60171.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-moon-0243-space-r9620243",
+      "collection": "DLW Lino Art",
+      "code": "0243",
+      "name": "SPACE",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/60164.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60166.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60175.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60169.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/60171.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67532/tds%20lino%20art%20moon%20nov%202025-%20en.pdf.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0550-beton-soft-grey-r8930550",
+      "collection": "DLW Lino Art",
+      "code": "0550",
+      "name": "BETON SOFT GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0552-silver-grey-r8930552",
+      "collection": "DLW Lino Art",
+      "code": "0552",
+      "name": "SILVER GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0553-dark-concrete-grey-r8930553",
+      "collection": "DLW Lino Art",
+      "code": "0553",
+      "name": "DARK CONCRETE GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0554-concrete-grey-r8930554",
+      "collection": "DLW Lino Art",
+      "code": "0554",
+      "name": "CONCRETE GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0557-urban-grey-r8930557",
+      "collection": "DLW Lino Art",
+      "code": "0557",
+      "name": "URBAN GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0560-bold-grey-r8930560",
+      "collection": "DLW Lino Art",
+      "code": "0560",
+      "name": "BOLD GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0562-titan-grey-r8930562",
+      "collection": "DLW Lino Art",
+      "code": "0562",
+      "name": "TITAN GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0563-zinc-grey-r8930563",
+      "collection": "DLW Lino Art",
+      "code": "0563",
+      "name": "ZINC GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0565-graphite-grey-r8930565",
+      "collection": "DLW Lino Art",
+      "code": "0565",
+      "name": "GRAPHITE GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/36834/stain%20resistance%20results%20-%20guide.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0568-asphalt-grey-r8930568",
+      "collection": "DLW Lino Art",
+      "code": "0568",
+      "name": "ASPHALT GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0569-curb-grey-r8930569",
+      "collection": "DLW Lino Art",
+      "code": "0569",
+      "name": "CURB GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0570-metropolis-grey-r8930570",
+      "collection": "DLW Lino Art",
+      "code": "0570",
+      "name": "METROPOLIS GREY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0571-tree-bark-brown-r8930571",
+      "collection": "DLW Lino Art",
+      "code": "0571",
+      "name": "TREE BARK BROWN",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0572-terracotta-brown-r8930572",
+      "collection": "DLW Lino Art",
+      "code": "0572",
+      "name": "TERRACOTTA BROWN",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0573-brick-brown-r8930573",
+      "collection": "DLW Lino Art",
+      "code": "0573",
+      "name": "BRICK BROWN",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0575-powder-stone-brown-r8930575",
+      "collection": "DLW Lino Art",
+      "code": "0575",
+      "name": "POWDER STONE BROWN",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0576-earth-clay-r8930576",
+      "collection": "DLW Lino Art",
+      "code": "0576",
+      "name": "EARTH CLAY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0577-ochre-clay-r8930577",
+      "collection": "DLW Lino Art",
+      "code": "0577",
+      "name": "OCHRE CLAY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0578-marine-clay-r8930578",
+      "collection": "DLW Lino Art",
+      "code": "0578",
+      "name": "MARINE CLAY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0579-city-clay-r8930579",
+      "collection": "DLW Lino Art",
+      "code": "0579",
+      "name": "CITY CLAY",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0580-bush-green-r8930580",
+      "collection": "DLW Lino Art",
+      "code": "0580",
+      "name": "BUSH GREEN",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0582-stalk-green-r8930582",
+      "collection": "DLW Lino Art",
+      "code": "0582",
+      "name": "STALK GREEN",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0583-lily-green-r8930583",
+      "collection": "DLW Lino Art",
+      "code": "0583",
+      "name": "LILY GREEN",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-lino-art-urban-0584-night-blue-r8930584",
+      "collection": "DLW Lino Art",
+      "code": "0584",
+      "name": "NIGHT BLUE",
+      "characteristics": {},
+      "images": [
+        "https://cdn.gerflor.com/media/1642426083/1/20415.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20417.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20418.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20419.jpg",
+        "https://cdn.gerflor.com/media/1642426083/1/20422.jpg"
+      ],
+      "downloads": [
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/67533/lino%20art%20urban%20-%20technical%20data%20sheet.pdf",
+          "label": "Download"
+        },
+        {
+          "url": "https://cdn.gerflor.com/media/2/20622/dlw%20neocare%20-%20treating%20damaged%20area.pdf",
+          "label": "Download"
+        }
+      ]
+    }
+  ]
+}

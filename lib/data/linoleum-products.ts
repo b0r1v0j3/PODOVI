@@ -11,8 +11,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-01',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje za komercijalne i stambene prostore',
+    description: 'Visokoperformansno podno rešenje za komercijalne i stambene prostore',
     images: [{ id: '101-1', url: '/images/products/linoleum/dlw-colorette.jpg', alt: 'DLW COLORETTE', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -27,9 +27,8 @@ export const linoleumProducts: Product[] = [
         items: [
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           'Kreativan dizajn: šareno tačkasti uzorak',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
           'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
@@ -52,8 +51,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-02',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka uz 19 dB zvučne izolacije!',
-    description: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka uz 19 dB zvučne izolacije!',
+    shortDescription: 'Visokoperformansno podno rešenje sa zvučnom izolacijom od 19 dB',
+    description: 'Visokoperformansno podno rešenje sa zvučnom izolacijom od 19 dB',
     images: [{ id: '102-1', url: '/images/products/linoleum/dlw-colorette-acoustic-plus.jpg', alt: 'DLW COLORETTE ACOUSTIC PLUS', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -66,14 +65,15 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: šareno tačkasti uzorak',
-          'Reciklirana penasta podloga 1,5 mm: 19 dB zvučne izolacije',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
+          'Reciklirana penasta podloga 1',
+          '5 mm: 19 dB zvučne izolacije',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
         ],
       },
@@ -93,8 +93,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-03',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa modernim terrazzo dizajnom, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa modernim terrazzo dizajnom, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa modernim terrazzo dizajnom',
+    description: 'Visokoperformansno podno rešenje sa modernim terrazzo dizajnom',
     images: [{ id: '103-1', url: '/images/products/linoleum/dlw-lino-art-moon.jpg', alt: 'DLW LINO ART MOON', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -107,13 +107,13 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: moderni terrazzo uzorak',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
           '83% brzo obnovljivih sastojaka: očuvanje resursa',
         ],
@@ -134,8 +134,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-04',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa modernim urbanim industrijskim dizajnom, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa modernim urbanim industrijskim dizajnom, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa modernim urbanim industrijskim dizajnom',
+    description: 'Visokoperformansno podno rešenje sa modernim urbanim industrijskim dizajnom',
     images: [{ id: '104-1', url: '/images/products/linoleum/dlw-lino-art-urban.jpg', alt: 'DLW LINO ART URBAN', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -148,13 +148,13 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: moderan urbani industrijski uzorak',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
           '83% brzo obnovljivih sastojaka: očuvanje resursa',
         ],
@@ -175,8 +175,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-05',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Najjače rešenje u DLW Linoleum asortimanu, zasnovano na 98% prirodnih sastojaka',
-    description: 'Najjače rešenje u DLW Linoleum asortimanu, zasnovano na 98% prirodnih sastojaka',
+    shortDescription: 'Najjače rešenje u DLW Linoleum asortimanu',
+    description: 'Najjače rešenje u DLW Linoleum asortimanu',
     images: [{ id: '105-1', url: '/images/products/linoleum/dlw-linodur.jpg', alt: 'DLW LINODUR', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -189,11 +189,10 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Moderan dizajn: efekat fine granulacije',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
           'Debljina 4 mm: pogodno za mehanički saobraćaj',
           'Visoka otpornost na habanje i ogrebotine: namenjeno industrijskim prostorima',
@@ -216,8 +215,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-06',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
+    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
     images: [{ id: '106-1', url: '/images/products/linoleum/dlw-marmorette-2-mm.jpg', alt: 'DLW MARMORETTE 2 MM', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -230,13 +229,13 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: mermerni uzorak',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
           '76% brzo obnovljivih sastojaka: očuvanje resursa',
         ],
@@ -257,8 +256,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-07',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
+    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
     images: [{ id: '107-1', url: '/images/products/linoleum/dlw-marmorette-25-mm.jpg', alt: 'DLW MARMORETTE 2.5 MM', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -271,14 +270,14 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: mermerni uzorak',
           'Široka paleta od 64 boje: za kreiranje željene atmosfere',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
         ],
       },
@@ -298,8 +297,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-08',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
+    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
     images: [{ id: '108-1', url: '/images/products/linoleum/dlw-marmorette-32-mm.jpg', alt: 'DLW MARMORETTE 3.2 MM', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -312,13 +311,13 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: mermerni uzorak',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
           '76% brzo obnovljivih sastojaka: očuvanje resursa',
         ],
@@ -339,8 +338,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-09',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom i 15 dB zvučne izolacije, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom i 15 dB zvučne izolacije, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom i 15 dB zvučne izolacije',
+    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom i 15 dB zvučne izolacije',
     images: [{ id: '109-1', url: '/images/products/linoleum/dlw-marmorette-acoustic.jpg', alt: 'DLW MARMORETTE ACOUSTIC', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -353,14 +352,14 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: mermerni uzorak',
           'Podloga od plute 2 mm: 15 dB zvučne izolacije',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
         ],
       },
@@ -380,8 +379,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-10',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka uz 19 dB zvučne izolacije!',
-    description: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka uz 19 dB zvučne izolacije!',
+    shortDescription: 'Visokoperformansno podno rešenje sa zvučnom izolacijom od 19 dB',
+    description: 'Visokoperformansno podno rešenje sa zvučnom izolacijom od 19 dB',
     images: [{ id: '110-1', url: '/images/products/linoleum/dlw-marmorette-acousticplus.jpg', alt: 'DLW MARMORETTE ACOUSTICPLUS', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -394,14 +393,15 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: mermerni uzorak',
-          'Reciklirana penasta podloga 1,5 mm: 19 dB zvučne izolacije',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
+          'Reciklirana penasta podloga 1',
+          '5 mm: 19 dB zvučne izolacije',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
         ],
       },
@@ -421,8 +421,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-11',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
+    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
     images: [{ id: '111-1', url: '/images/products/linoleum/dlw-marmorette-bfl-s1.jpg', alt: 'DLW MARMORETTE BFL-S1', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -435,14 +435,14 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: mermerni uzorak',
           'Otpornost na požar: Bfl-s1',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
         ],
       },
@@ -462,8 +462,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-12',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom i disipativnim svojstvima, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom i disipativnim svojstvima, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom i disipativnim svojstvima',
+    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom i disipativnim svojstvima',
     images: [{ id: '112-1', url: '/images/products/linoleum/dlw-marmorette-lch.jpg', alt: 'DLW MARMORETTE LCH', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -476,12 +476,11 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: mermerni uzorak',
           'Antistatička svojstva: vertikalni otpor (EN 1081): 1x10⁶ ≤ R ≤ 1x10⁸',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
           'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom i okruženja gde je potrebna disipativna verzija',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
@@ -503,8 +502,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-13',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom, zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
+    description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
     images: [{ id: '113-1', url: '/images/products/linoleum/dlw-marmorette-r10.jpg', alt: 'DLW MARMORETTE R10', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -517,14 +516,14 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: mermerni uzorak',
           'Otpornost na klizanje: klasa R10',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
         ],
       },
@@ -544,8 +543,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-14',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka!',
-    description: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka!',
+    shortDescription: 'Visokoperformansno podno rešenje za komercijalne i stambene prostore',
+    description: 'Visokoperformansno podno rešenje za komercijalne i stambene prostore',
     images: [{ id: '114-1', url: '/images/products/linoleum/dlw-uni-walton.jpg', alt: 'DLW UNI WALTON', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -558,13 +557,13 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: jednobojni uzorak',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
           '76% brzo obnovljivih sastojaka: očuvanje resursa',
         ],
@@ -585,8 +584,8 @@ export const linoleumProducts: Product[] = [
     sku: 'LINOLEUM-15',
     categoryId: '7', // Linoleum category
     brandId: '6',    // Gerflor brand
-    shortDescription: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka uz 19 dB zvučne izolacije!',
-    description: 'Visokoperformansno podno rešenje zasnovano na 98% prirodnih sastojaka uz 19 dB zvučne izolacije!',
+    shortDescription: 'Visokoperformansno podno rešenje sa zvučnom izolacijom od 19 dB',
+    description: 'Visokoperformansno podno rešenje sa zvučnom izolacijom od 19 dB',
     images: [{ id: '115-1', url: '/images/products/linoleum/dlw-uni-walton-acoustic-plus.jpg', alt: 'DLW UNI WALTON ACOUSTIC PLUS', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
@@ -599,14 +598,15 @@ export const linoleumProducts: Product[] = [
       {
         title: 'Dizajn i struktura',
         items: [
+          'Neocare površinska obrada: mat efekat, lako održavanje i nizak ukupni trošak vlasništva',
           '98% prirodnih sastojaka: svetle i živopisne boje',
           'Uloženi dizajni: dugotrajan izgled',
-          'Neocare površinska obrada: mat efekat',
           'Kreativan dizajn: jednobojni uzorak',
-          'Reciklirana penasta podloga 1,5 mm: 19 dB zvučne izolacije',
-          'Neocare površinska obrada: lako održavanje i nizak ukupni trošak vlasništva',
+          'Reciklirana penasta podloga 1',
+          '5 mm: 19 dB zvučne izolacije',
           'Fleksibilan proizvod: lako se seče i ugrađuje',
-          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje, zdravstvo...)',
+          'Visoka otpornost na habanje i ogrebotine: idealno za prostore sa velikim prometom (obrazovanje',
+          'zdravstvo...)',
           'Odlično antivirusno i antibakterijsko ponašanje: pogodno za zdravstvene ustanove',
         ],
       },

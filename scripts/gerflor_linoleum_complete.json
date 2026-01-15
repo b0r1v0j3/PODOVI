@@ -1,0 +1,56 @@
+{
+  "scraped_at": "2026-01-15 06:36:40",
+  "source": "https://www.gerflor-cee.com/category/linoleum",
+  "summary": {
+    "total_collections": 2,
+    "total_colors": 0,
+    "collections_with_characteristics": 0
+  },
+  "collections": [
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-colorette",
+      "name": "DLW COLORETTE",
+      "characteristics": {},
+      "downloads": [],
+      "collection_images": [],
+      "colors": [
+        "https://www.gerflor-cee.com/products/dlw-colorette-0001-banana-yellow-r8940001",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0004-bluebird-r8940004",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0006-vivid-green-r8940006",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0012-light-beige-r8940012",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0016-deep-orange-r8940016",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0043-light-mud-r8940043",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0052-oxid-grey-r8940052",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0058-aluminium-grey-r8940058",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0059-stone-grey-r8940059",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0071-straw-beige-r8940071",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0073-sand-yellow-r8940073",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0080-elephant-grey-r8940080",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0081-private-black-r8940081",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0110-cadillac-pink-r8940110",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0118-power-red-r8940118",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0123-poppy-blue-r8940123",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0132-spicy-green-r8940132",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0170-kumquat-orange-r8940170",
+        "https://www.gerflor-cee.com/products/dlw-colorette-0171-sunrise-orange-r8940171",
+        "https://www.gerflor-cee.com/products/dlw-linoleum-skirting",
+        "https://www.gerflor-cee.com/products/dlw-marmorette-25-mm"
+      ]
+    },
+    {
+      "url": "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus",
+      "name": "DLW COLORETTE ACOUSTIC PLUS",
+      "characteristics": {},
+      "downloads": [],
+      "collection_images": [],
+      "colors": [
+        "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus-0012-light-beige-r8830012",
+        "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus-0052-oxid-grey-r8830052",
+        "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus-0058-aluminium-grey-r8830058",
+        "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus-0059-stone-grey-r8830059",
+        "https://www.gerflor-cee.com/products/dlw-marmorette-acousticplus"
+      ]
+    }
+  ],
+  "colors": []
+}

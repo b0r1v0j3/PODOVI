@@ -5,6 +5,8 @@ import { useSearchParams } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
 
+import { ProductSpec } from '@/types';
+
 interface ProductColorSelectorProps {
   initialImage: {
     url: string;
@@ -19,6 +21,7 @@ interface ProductColorSelectorProps {
     slug: string;
   } | null;
   shortDescription?: string;
+  specs?: ProductSpec[];
   inStock: boolean;
   productSlug: string;
   externalLink?: string;
@@ -32,12 +35,14 @@ export default function ProductColorSelector({
   priceUnit,
   brand,
   shortDescription,
+  specs,
   inStock,
   productSlug,
   externalLink,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
   const searchParams = useSearchParams();
@@ -51,12 +56,15 @@ export default function ProductColorSelector({
     colorName?: string;
     characteristics?: Record<string, string>;
   }) => {
-    const { imageUrl, imageAlt, colorCode, colorName } = payload;
-    console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt, colorCode, colorName });
+    const { imageUrl, imageAlt, colorCode, colorName, characteristics } = payload;
+    console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt, colorCode, colorName, characteristics });
     if (imageUrl) {
       setSelectedImage({ url: imageUrl, alt: imageAlt });
       if (colorCode && colorName) {
         setSelectedColor({ code: colorCode, name: colorName });
+      }
+      if (characteristics) {
+        setSelectedCharacteristics(characteristics);
       }
     }
   };
@@ -210,6 +218,36 @@ export default function ProductColorSelector({
             />
           </div>
         </div>
+      </div>
+
+      {/* Full Width - Characteristics & Color Characteristics */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {specs && specs.length > 0 && (
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Karakteristike</h3>
+            <dl className="space-y-3">
+              {specs.map((spec) => (
+                <div key={spec.key} className="border-b border-gray-200 pb-3 last:border-0">
+                  <dt className="text-xs font-medium text-gray-500 mb-1">{spec.label}</dt>
+                  <dd className="text-sm font-semibold text-gray-900">{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+        {selectedCharacteristics && (
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Karakteristike boje</h3>
+            <dl className="space-y-3">
+              {Object.entries(selectedCharacteristics).map(([label, value]) => (
+                <div key={label} className="border-b border-gray-200 pb-3 last:border-0">
+                  <dt className="text-xs font-medium text-gray-500 mb-1">{label}</dt>
+                  <dd className="text-sm font-semibold text-gray-900">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
       </div>
 
       {isColorsModalOpen && (
