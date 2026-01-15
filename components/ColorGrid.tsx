@@ -111,8 +111,8 @@ export default function ColorGrid({
   const hasAutoSelected = useRef(false);
   
   // Pagination settings for compact mode
-  // In compact mode, show 6 colors per page (2 rows x 3 columns)
-  const itemsPerPage = compact ? 6 : 20;
+  // In compact mode, show 12 colors per page (2 rows x 6 columns)
+  const itemsPerPage = compact ? 12 : 20;
   
   // Track selected color slug for highlighting
   const [currentSelectedSlug, setCurrentSelectedSlug] = useState<string | undefined>(selectedColorSlug || initialColorSlug);
@@ -333,7 +333,7 @@ export default function ColorGrid({
       )}
 
       {/* Grid */}
-      <div className={`grid ${compact ? 'grid-cols-3 gap-4 mb-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3'}`}>
+      <div className={`grid gap-3 ${compact ? 'grid-cols-6 mb-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
         {paginatedColors.map((color) => {
           const isSelected = currentSelectedSlug === color.slug;
           return (
