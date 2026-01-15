@@ -28,11 +28,13 @@ interface ColorGridProps {
     colorCode?: string;
     colorName?: string;
     characteristics?: Record<string, string>;
+    colorSlug?: string;
   }) => void;
   compact?: boolean;
   initialColorSlug?: string;
   limit?: number;
   onColorsLoaded?: (count: number) => void;
+  selectedColorSlug?: string; // Slug of currently selected color for highlighting
 }
 
 function normalizeSrc(raw?: string | null) {
@@ -100,6 +102,7 @@ export default function ColorGrid({
   initialColorSlug,
   limit,
   onColorsLoaded,
+  selectedColorSlug,
 }: ColorGridProps) {
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(true);
@@ -109,6 +112,16 @@ export default function ColorGrid({
   
   // Pagination settings for compact mode
   const itemsPerPage = compact ? 12 : 20;
+  
+  // Track selected color slug for highlighting
+  const [currentSelectedSlug, setCurrentSelectedSlug] = useState<string | undefined>(selectedColorSlug || initialColorSlug);
+  
+  // Update selected slug when prop changes
+  useEffect(() => {
+    if (selectedColorSlug) {
+      setCurrentSelectedSlug(selectedColorSlug);
+    }
+  }, [selectedColorSlug]);
 
   // Extract collection name for URL construction
   const getCollectionName = (slug: string): string => {
@@ -133,6 +146,9 @@ export default function ColorGrid({
 
   // Handle color selection
   const handleColorClick = (color: Color) => {
+    // Update selected slug
+    setCurrentSelectedSlug(color.slug);
+    
     if (onColorSelect) {
       // Use texture_url (pod images) first, then image_url, lifestyle_url as last resort
       // URLs are already normalized in the useEffect
@@ -146,7 +162,7 @@ export default function ColorGrid({
       const normalizedUrl = normalizeSrc(imageUrl);
       
       if (normalizedUrl) {
-        onColorSelect({ imageUrl: normalizedUrl, imageAlt, colorCode, colorName, characteristics });
+        onColorSelect({ imageUrl: normalizedUrl, imageAlt, colorCode, colorName, characteristics, colorSlug: color.slug });
       } else {
         console.warn('ColorGrid: No valid image URL for color', color);
       }
@@ -211,18 +227,25 @@ export default function ColorGrid({
     );
   }, [colors, searchTerm]);
 
+  // Auto-select first color or initial color when colors are loaded
   useEffect(() => {
-    if (!initialColorSlug || !onColorSelect || hasAutoSelected.current || colors.length === 0) {
+    if (!onColorSelect || hasAutoSelected.current || colors.length === 0) {
       return;
     }
 
-    const match = colors.find(color => color.slug === initialColorSlug);
-    if (match) {
+    // If there's an initialColorSlug, use it; otherwise select first color
+    const colorToSelect = initialColorSlug 
+      ? filteredColors.find(color => color.slug === initialColorSlug)
+      : filteredColors[0];
+
+    if (colorToSelect) {
       hasAutoSelected.current = true;
-      handleColorClick(match);
+      setCurrentSelectedSlug(colorToSelect.slug);
+      handleColorClick(colorToSelect);
+      
       // If in compact mode with pagination, navigate to the page containing this color
       if (compact && limit) {
-        const index = filteredColors.findIndex(c => c.slug === initialColorSlug);
+        const index = filteredColors.findIndex(c => c.slug === colorToSelect.slug);
         if (index >= 0) {
           setCurrentPage(Math.floor(index / itemsPerPage));
         }
@@ -235,15 +258,22 @@ export default function ColorGrid({
     setCurrentPage(0);
   }, [searchTerm]);
 
-  // Pagination for compact mode - calculate pages from filteredColors (before limit)
+  const visibleColors = useMemo(() => {
+    if (typeof limit === 'number' && limit > 0) {
+      return filteredColors.slice(0, limit);
+    }
+    return filteredColors;
+  }, [filteredColors, limit]);
+
+  // Pagination for compact mode - calculate pages from visibleColors
   const totalPages = useMemo(() => {
     if (!compact || !limit) {
       return 1;
     }
-    // Use filteredColors length, but cap at limit for pagination
-    const maxColors = typeof limit === 'number' && limit > 0 ? limit : filteredColors.length;
-    return Math.ceil(Math.min(filteredColors.length, maxColors) / itemsPerPage);
-  }, [filteredColors.length, itemsPerPage, compact, limit]);
+    // Calculate pages based on visibleColors (already limited)
+    const pages = Math.ceil(visibleColors.length / itemsPerPage);
+    return pages > 1 ? pages : 1;
+  }, [visibleColors.length, itemsPerPage, compact, limit]);
 
   const visibleColors = useMemo(() => {
     if (typeof limit === 'number' && limit > 0) {
@@ -363,11 +393,17 @@ export default function ColorGrid({
 
       {/* Grid */}
       <div className={`grid gap-3 ${compact ? 'grid-cols-4 md:grid-cols-5 lg:grid-cols-6' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
-        {paginatedColors.map((color) => (
+        {paginatedColors.map((color) => {
+          const isSelected = currentSelectedSlug === color.slug;
+          return (
           <button
             key={color.slug}
             onClick={() => handleColorClick(color)}
-            className="group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 border-gray-200 hover:border-primary-500 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+              isSelected 
+                ? 'border-red-500 shadow-lg ring-2 ring-red-200' 
+                : 'border-gray-200 hover:border-primary-500'
+            }`}
           >
             {/* Image */}
             <div className="aspect-square relative overflow-hidden bg-gray-100">
@@ -392,7 +428,8 @@ export default function ColorGrid({
               </div>
             )}
           </button>
-        ))}
+          );
+        })}
       </div>
 
       {filteredColors.length === 0 && (

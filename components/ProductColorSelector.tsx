@@ -44,6 +44,7 @@ export default function ProductColorSelector({
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
+  const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(undefined);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
@@ -57,6 +58,7 @@ export default function ProductColorSelector({
     colorCode?: string;
     colorName?: string;
     characteristics?: Record<string, string>;
+    colorSlug?: string;
   }) => {
     const { imageUrl, imageAlt, colorCode, colorName, characteristics } = payload;
     console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt, colorCode, colorName, characteristics });
@@ -64,6 +66,10 @@ export default function ProductColorSelector({
       setSelectedImage({ url: imageUrl, alt: imageAlt });
       if (colorCode && colorName) {
         setSelectedColor({ code: colorCode, name: colorName });
+      }
+      // Extract slug from imageAlt or use a fallback
+      if (payload.colorSlug) {
+        setSelectedColorSlug(payload.colorSlug);
       }
       if (characteristics) {
         setSelectedCharacteristics(characteristics);
@@ -223,6 +229,7 @@ export default function ProductColorSelector({
                 initialColorSlug={initialColorSlug}
                 limit={12}
                 onColorsLoaded={setColorsCount}
+                selectedColorSlug={selectedColorSlug}
               />
             </div>
           </div>
@@ -256,6 +263,7 @@ export default function ProductColorSelector({
                 onColorSelect={handleModalColorSelect}
                 compact={false}
                 initialColorSlug={initialColorSlug}
+                selectedColorSlug={selectedColorSlug}
               />
             </div>
           </div>
