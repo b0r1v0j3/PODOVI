@@ -79,6 +79,9 @@ def update_lvt_colors_with_dimensions():
     colors = lvt_data.get('colors', [])
     print(f"📊 Učitano {len(colors)} boja iz lvt_colors_complete.json")
     
+    updated_count = 0
+    total_specs_found = 0
+    
     # Also check for creation_30_dimensions.json
     creation_30_dimensions_path = Path('downloads/creation_30_dimensions.json')
     if creation_30_dimensions_path.exists():
@@ -146,9 +149,6 @@ def update_lvt_colors_with_dimensions():
     if not descriptions_dir.exists():
         print(f"⚠️  {descriptions_dir} ne postoji, preskačem...")
     else:
-    
-    updated_count = 0
-    total_specs_found = 0
     
     # Process each collection description file
     for desc_file in descriptions_dir.glob('*_descriptions.json'):
