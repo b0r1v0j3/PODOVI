@@ -1,8 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { readFile } from 'fs/promises';
-import path from 'path';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
@@ -12,6 +10,8 @@ import ProductColorSelector from '@/components/ProductColorSelector';
 import ProductImage from '@/components/ProductImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import type { Product, ProductImage, ProductSpec } from '@/types';
+import lvtColorsData from '@/public/data/lvt_colors_complete.json';
+import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,46 +40,18 @@ type ColorSource = {
   color: ColorFromJSON;
 };
 
-async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
-  const candidates: Array<{ categorySlug: 'lvt' | 'linoleum'; fileName: string }> = [
-    { categorySlug: 'lvt', fileName: 'lvt_colors_complete.json' },
-    { categorySlug: 'linoleum', fileName: 'linoleum_colors_complete.json' },
-  ];
+const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
+const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
 
-  for (const candidate of candidates) {
-    try {
-      const jsonPath = path.join(process.cwd(), 'public', 'data', candidate.fileName);
-      const raw = await readFile(jsonPath, 'utf8');
-      const data = JSON.parse(raw);
-      if (!data || !Array.isArray(data.colors)) {
-        continue;
-      }
-      const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
-      if (match) {
-        return { categorySlug: candidate.categorySlug, color: match };
-      }
-    } catch (error) {
-      console.error('Error reading local color JSON:', candidate.fileName, error);
-      try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
-        const response = await fetch(`${baseUrl}/data/${candidate.fileName}`, {
-          cache: 'no-store',
-        });
-        if (!response.ok) {
-          continue;
-        }
-        const data = await response.json();
-        if (!data || !Array.isArray(data.colors)) {
-          continue;
-        }
-        const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
-        if (match) {
-          return { categorySlug: candidate.categorySlug, color: match };
-        }
-      } catch (fetchError) {
-        console.error('Error reading remote color JSON:', candidate.fileName, fetchError);
-      }
-    }
+async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
+  const lvtMatch = lvtColors.find(color => color.slug === slug);
+  if (lvtMatch) {
+    return { categorySlug: 'lvt', color: lvtMatch };
+  }
+
+  const linoleumMatch = linoleumColors.find(color => color.slug === slug);
+  if (linoleumMatch) {
+    return { categorySlug: 'linoleum', color: linoleumMatch };
   }
 
   return null;
