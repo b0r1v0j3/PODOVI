@@ -203,7 +203,11 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             }`}
           >
             Boje ({useJsonColors
-              ? (loadingColors ? '...' : (colorsFromJSON.length > 0 ? colorsFromJSON.length : (totalColorsCount ?? 0)))
+              ? (loadingColors
+                  ? '...'
+                  : (colorsFromJSON.length > 0
+                      ? colorsFromJSON.length
+                      : (totalColorsCount ?? '...')))
               : legacyColors.length
             })
           </button>
