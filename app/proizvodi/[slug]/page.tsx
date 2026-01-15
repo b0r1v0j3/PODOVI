@@ -194,8 +194,8 @@ export default async function ProductPage({ params }: Props) {
 
       {/* Product Content */}
       <div className="container py-12">
-        {product.categoryId === '6' ? (
-          // LVT products with color selector
+        {(product.categoryId === '6' || product.categoryId === '7') ? (
+          // LVT and Linoleum products with color selector
           <ProductColorSelector
             initialImage={primaryImage}
             collectionSlug={product.slug}

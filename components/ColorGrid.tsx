@@ -114,7 +114,11 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
 
     const collectionName = getCollectionName(collectionSlug);
 
-    fetch('/data/lvt_colors_complete.json')
+    // Determine which JSON to load based on collection slug
+    const isLinoleum = collectionSlug.startsWith('dlw-');
+    const jsonPath = isLinoleum ? '/data/linoleum_colors_complete.json' : '/data/lvt_colors_complete.json';
+
+    fetch(jsonPath)
       .then(res => {
         if (!res.ok) {
           throw new Error(`Failed to fetch colors: ${res.status}`);
