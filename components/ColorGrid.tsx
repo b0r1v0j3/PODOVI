@@ -105,6 +105,9 @@ export default function ColorGrid({
   onColorsLoaded,
   selectedColorSlug,
 }: ColorGridProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
