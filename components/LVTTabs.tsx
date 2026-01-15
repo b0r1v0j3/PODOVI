@@ -42,11 +42,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
 
   // Load colors from JSON when colors tab is active
   useEffect(() => {
+    console.log('LVTTabs useEffect:', { activeTab, hasLoadedColors: hasLoadedColors.current, loadingColors, categorySlug });
     if (activeTab === 'colors' && !hasLoadedColors.current && !loadingColors) {
+      console.log('Loading colors from JSON...');
       setLoadingColors(true);
       const jsonPath = categorySlug === 'linoleum' 
         ? '/data/linoleum_colors_complete.json'
         : '/data/lvt_colors_complete.json';
+      console.log('Fetching from:', jsonPath);
 
       fetch(jsonPath)
         .then(res => {
@@ -56,6 +59,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
           return res.json();
         })
         .then(data => {
+          console.log('LVTTabs: Received data', { total: data?.total, colorsCount: data?.colors?.length });
           if (!data || !data.colors || !Array.isArray(data.colors)) {
             console.error('LVTTabs: Invalid data structure', data);
             setLoadingColors(false);
@@ -100,12 +104,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             };
           });
 
+          console.log('LVTTabs: Converted colors to products', colorsAsProducts.length);
           setColorsFromJSON(colorsAsProducts);
           setLoadingColors(false);
           hasLoadedColors.current = true;
         })
         .catch(err => {
           console.error('Error loading colors from JSON:', err);
+          console.error('Error details:', { message: err.message, stack: err.stack });
           setColorsFromJSON([]);
           setLoadingColors(false);
           hasLoadedColors.current = true; // Mark as loaded even on error to prevent retry loop
@@ -157,7 +163,10 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             Kolekcije ({collections.length})
           </button>
           <button
-            onClick={() => setActiveTab('colors')}
+            onClick={() => {
+              console.log('Boje tab clicked, current activeTab:', activeTab);
+              setActiveTab('colors');
+            }}
             className={`pb-4 px-1 font-semibold text-lg transition-colors duration-200 ${
               activeTab === 'colors'
                 ? 'text-primary-600 border-b-2 border-primary-600'
