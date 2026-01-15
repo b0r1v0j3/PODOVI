@@ -184,11 +184,37 @@ function colorToProduct(source: ColorSource, slug: string): Product & { collecti
 }
 
 async function resolveProductBySlug(slug: string): Promise<(Product & { collectionSlug?: string }) | null> {
+  // First try to find product by slug directly (for collections)
   const product = await productRepository.findBySlug(slug);
   if (product) {
     return product;
   }
 
+  // Try to parse slug as collection-slug-color-slug format
+  // Example: "gerflor-creation-30-ballerina-41870347"
+  // Strategy: Try to find the collection slug first, then extract color slug
+  
+  // Get all products to find matching collection
+  const allProducts = await productRepository.findAll();
+  
+  // Try to match collection slug from the beginning of the slug
+  for (const prod of allProducts) {
+    if (slug.startsWith(prod.slug + '-')) {
+      // Found collection! Extract color slug
+      const colorSlug = slug.substring(prod.slug.length + 1); // +1 for the dash
+      
+      // Try to find color by its slug
+      const colorSource = await loadColorFromJson(colorSlug);
+      if (colorSource) {
+        const colorProduct = colorToProduct(colorSource, slug);
+        // Set collectionSlug to the collection's slug
+        colorProduct.collectionSlug = prod.slug;
+        return colorProduct;
+      }
+    }
+  }
+
+  // Fallback: try to load color by slug directly (for backward compatibility)
   const colorSource = await loadColorFromJson(slug);
   if (colorSource) {
     return colorToProduct(colorSource, slug);

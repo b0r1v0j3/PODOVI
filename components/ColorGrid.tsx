@@ -348,7 +348,7 @@ export default function ColorGrid({
           return (
           <a
             key={color.slug}
-            href={`/proizvodi/${color.slug}`}
+            href={`/proizvodi/${collectionSlug}-${color.slug}`}
             onClick={(e) => {
               // If onColorSelect is provided and we're in compact mode (ProductColorSelector),
               // prevent navigation and just update the image
