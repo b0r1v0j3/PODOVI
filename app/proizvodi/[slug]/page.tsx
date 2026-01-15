@@ -206,9 +206,7 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
       // Try to find color by its slug
       const colorSource = await loadColorFromJson(colorSlug);
       if (colorSource) {
-        const colorProduct = colorToProduct(colorSource, slug);
-        // Set collectionSlug to the collection's slug
-        colorProduct.collectionSlug = prod.slug;
+        const colorProduct = colorToProduct(colorSource, slug, prod.slug);
         return colorProduct;
       }
     }
