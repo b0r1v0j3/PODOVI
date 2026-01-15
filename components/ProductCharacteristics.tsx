@@ -27,7 +27,17 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
     const colorsData = isLinoleum ? linoleumColorsData : lvtColorsData;
     const colors = (colorsData as { colors?: any[] }).colors || [];
     
-    const color = colors.find((c: any) => c.slug === colorSlug);
+    // Try exact match first
+    let color = colors.find((c: any) => c.slug === colorSlug);
+    
+    // If not found, try to find by partial match (in case slug format differs)
+    if (!color) {
+      color = colors.find((c: any) => {
+        const cSlug = c.slug || '';
+        return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
+      });
+    }
+    
     if (color) {
       const colorCharacteristics: Record<string, string> = {};
       

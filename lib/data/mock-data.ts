@@ -379,7 +379,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa 0.30mm slojem habanja - idealna za stambene i lake komercijalne prostore',
-    description: 'Create without limits with Creation 30: a complete flooring solution offering ultra-realistic designs, versatile formats and seamless harmony — ideal for new build projects, perfect for light traffic applications (housing)',
+    description: 'Kreirajte bez ograničenja sa Creation 30: kompletan podni sistem koji nudi ultra-realistične dizajne, raznovrsne formate i besprekornu harmoniju — idealno za nove objekte, savršeno za stambene i lake komercijalne prostore',
     images: [{ id: '8-1', url: '/images/products/lvt/creation-30.jpg', alt: 'Gerflor Creation 30', isPrimary: true, order: 1 }],
     specs: [
       { key: 'thickness', label: 'Ukupna debljina', value: '2mm' },
