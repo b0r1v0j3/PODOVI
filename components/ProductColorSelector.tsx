@@ -86,9 +86,9 @@ export default function ProductColorSelector({
     <>
       {/* Main Grid - Image Left, Info + Colors Right */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        {/* Left Column - Image Only */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
-          <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
+        {/* Left Column - Image + External Link */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
+          <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
             {selectedImage ? (
               <ProductImage
                 key={selectedImage.url}
@@ -110,6 +110,20 @@ export default function ProductColorSelector({
             <div className="mt-4 text-center">
               <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
               <p className="text-base text-gray-700">{selectedColor.name}</p>
+            </div>
+          )}
+
+          {/* External Link Button - Below Image */}
+          {externalLink && (
+            <div className="mt-4">
+              <a
+                href={externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-base px-6 py-3 w-full"
+              >
+                Pogledaj na sajtu proizvođača
+              </a>
             </div>
           )}
         </div>
@@ -170,24 +184,14 @@ export default function ProductColorSelector({
               </span>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col gap-3">
+            {/* CTA Button - Only "Pošaljite upit" */}
+            <div>
               <a
                 href={`/kontakt?product=${productSlug}`}
-                className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-base px-6 py-3"
+                className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-base px-6 py-3 w-full"
               >
                 Pošaljite upit
               </a>
-              {externalLink && (
-                <a
-                  href={externalLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-base px-6 py-3"
-                >
-                  Pogledaj na sajtu proizvođača
-                </a>
-              )}
             </div>
           </div>
 
@@ -212,7 +216,7 @@ export default function ProductColorSelector({
                 onColorSelect={handleColorSelect}
                 compact={true}
                 initialColorSlug={initialColorSlug}
-                limit={18}
+                limit={12}
                 onColorsLoaded={setColorsCount}
               />
             </div>
