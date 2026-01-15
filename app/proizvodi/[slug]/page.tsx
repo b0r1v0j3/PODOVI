@@ -13,6 +13,8 @@ import ProductImage from '@/components/ProductImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import type { Product, ProductImage, ProductSpec } from '@/types';
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: { slug: string };
 }
@@ -61,7 +63,7 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
         const response = await fetch(`${baseUrl}/data/${candidate.fileName}`, {
-          next: { revalidate: 3600 },
+          cache: 'no-store',
         });
         if (!response.ok) {
           continue;
