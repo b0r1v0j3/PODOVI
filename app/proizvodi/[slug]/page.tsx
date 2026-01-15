@@ -140,7 +140,7 @@ function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSpec[] {
   return Array.from(merged.values());
 }
 
-function colorToProduct(source: ColorSource, slug: string): Product & { collectionSlug: string } {
+function colorToProduct(source: ColorSource, slug: string, collectionSlugOverride?: string): Product & { collectionSlug: string } {
   const { categorySlug, color } = source;
   const isLVT = categorySlug === 'lvt';
   const categoryId = isLVT ? '6' : '7';
@@ -179,7 +179,7 @@ function colorToProduct(source: ColorSource, slug: string): Product & { collecti
     featured: false,
     createdAt: new Date(),
     updatedAt: new Date(),
-    collectionSlug: color.collection,
+    collectionSlug: collectionSlugOverride || color.collection,
   };
 }
 
