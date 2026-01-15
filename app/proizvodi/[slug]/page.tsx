@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const primaryImage = product.images?.[0];
 
     // Build rich description
-    const priceText = product.price > 0 
+    const priceText = product.price && product.price > 0 
       ? `Cena: ${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}` 
       : '';
     const brandText = brand ? `${brand.name}` : '';
@@ -158,7 +158,7 @@ export default async function ProductPage({ params }: Props) {
     "category": category?.name,
     "offers": {
       "@type": "Offer",
-      "price": product.price > 0 ? product.price : undefined,
+      "price": product.price && product.price > 0 ? product.price : undefined,
       "priceCurrency": "RSD",
       "availability": product.inStock 
         ? "https://schema.org/InStock" 
