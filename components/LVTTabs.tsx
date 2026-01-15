@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { Product, Brand } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 
@@ -33,6 +33,13 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const lastCategorySlug = useRef<string>('');
   const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt';
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
+  const collectionsToRender = useMemo(() => {
+    if (!useJsonColors) {
+      return collections;
+    }
+
+    return collections.filter((product) => !/^\d{4}$/.test(product.sku ?? ''));
+  }, [collections, useJsonColors]);
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -153,7 +160,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
   }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors]);
 
-  const renderProducts = (products: Product[]) => {
+  const renderProducts = (products: Product[], gridKey: string) => {
     if (products.length === 0) {
       return (
         <div className="bg-white rounded-lg shadow-sm p-12 text-center">
@@ -170,7 +177,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       );
     }
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div key={gridKey} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {products.map((product) => {
           const brand = brandsRecord[product.brandId] || null;
           return (
@@ -194,7 +201,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            Kolekcije ({collections.length})
+            Kolekcije ({collectionsToRender.length})
           </button>
           <button
             onClick={() => setActiveTab('colors')}
@@ -221,9 +228,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         {activeTab === 'collections' ? (
           <div>
             <p className="text-gray-600 mb-6">
-              {collections.length === 0 ? 'Nema' : collections.length} {collections.length === 1 ? 'kolekcija' : 'kolekcija'}
+              {collectionsToRender.length === 0 ? 'Nema' : collectionsToRender.length} {collectionsToRender.length === 1 ? 'kolekcija' : 'kolekcija'}
             </p>
-            {renderProducts(collections)}
+            {renderProducts(collectionsToRender, 'collections')}
           </div>
         ) : (
           <div>
@@ -238,7 +245,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                   <p className="text-gray-600 mb-6">
                     {colorsFromJSON.length === 0 ? 'Nema' : colorsFromJSON.length} {colorsFromJSON.length === 1 ? 'boja' : 'boja'}
                   </p>
-                  {renderProducts(colorsFromJSON)}
+                  {renderProducts(colorsFromJSON, 'colors')}
                 </>
               )
             ) : (
@@ -246,7 +253,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 <p className="text-gray-600 mb-6">
                   {legacyColors.length === 0 ? 'Nema' : legacyColors.length} {legacyColors.length === 1 ? 'boja' : 'boja'}
                 </p>
-                {renderProducts(legacyColors)}
+                {renderProducts(legacyColors, 'colors-legacy')}
               </>
             )}
           </div>
