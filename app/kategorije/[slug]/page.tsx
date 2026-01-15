@@ -152,6 +152,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 collections={collections}
                 colors={colors}
                 brandsRecord={brandsRecord}
+                categorySlug={category.slug}
               />
             ) : (
               <>

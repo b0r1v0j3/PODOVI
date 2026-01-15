@@ -1,17 +1,117 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Product, Brand } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 
-interface LVTTabsProps {
-  collections: Product[];
-  colors: Product[];
-  brandsRecord: Record<string, Brand>;
+interface ColorFromJSON {
+  collection: string;
+  collection_name: string;
+  code: string;
+  name: string;
+  full_name: string;
+  slug: string;
+  image_url?: string;
+  texture_url?: string;
+  lifestyle_url?: string;
+  image_count: number;
 }
 
-export default function LVTTabs({ collections, colors, brandsRecord }: LVTTabsProps) {
+interface LVTTabsProps {
+  collections: Product[];
+  colors: Product[]; // Legacy - not used for colors from JSON
+  brandsRecord: Record<string, Brand>;
+  categorySlug: string; // 'lvt' or 'linoleum'
+}
+
+export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug }: LVTTabsProps) {
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>('collections');
+  const [colorsFromJSON, setColorsFromJSON] = useState<Product[]>([]);
+  const [loadingColors, setLoadingColors] = useState(false);
+  const hasLoadedColors = useRef(false);
+  const lastCategorySlug = useRef<string>('');
+
+  // Reset loaded state when category changes
+  useEffect(() => {
+    if (lastCategorySlug.current !== categorySlug) {
+      hasLoadedColors.current = false;
+      setColorsFromJSON([]);
+      lastCategorySlug.current = categorySlug;
+    }
+  }, [categorySlug]);
+
+  // Load colors from JSON when colors tab is active
+  useEffect(() => {
+    if (activeTab === 'colors' && !hasLoadedColors.current && !loadingColors) {
+      setLoadingColors(true);
+      const jsonPath = categorySlug === 'linoleum' 
+        ? '/data/linoleum_colors_complete.json'
+        : '/data/lvt_colors_complete.json';
+
+      fetch(jsonPath)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`Failed to fetch colors: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(data => {
+          if (!data || !data.colors || !Array.isArray(data.colors)) {
+            console.error('LVTTabs: Invalid data structure', data);
+            setLoadingColors(false);
+            return;
+          }
+
+          // Convert colors from JSON to Product objects
+          const colorsAsProducts: Product[] = data.colors.map((color: ColorFromJSON, index: number) => {
+            // Find brand ID (Gerflor = '6')
+            const gerflorBrand = Object.values(brandsRecord).find(b => b.slug === 'gerflor');
+            const brandId = gerflorBrand?.id || '6';
+            
+            // Find category ID
+            const categoryId = categorySlug === 'linoleum' ? '7' : '6';
+
+            // Use lifestyle_url or texture_url or image_url
+            const primaryImageUrl = color.lifestyle_url || color.texture_url || color.image_url || '';
+
+            return {
+              id: `color-${categorySlug}-${color.slug}`,
+              name: color.full_name || `${color.code} ${color.name}`,
+              slug: color.slug,
+              sku: color.code,
+              categoryId: categoryId,
+              brandId: brandId,
+              shortDescription: `${color.collection_name} - ${color.name}`,
+              description: `${color.full_name} iz kolekcije ${color.collection_name}`,
+              images: primaryImageUrl ? [{
+                id: `color-img-${index}`,
+                url: primaryImageUrl,
+                alt: color.full_name || color.name,
+                isPrimary: true,
+                order: 1,
+              }] : [],
+              specs: [],
+              price: undefined,
+              priceUnit: undefined,
+              inStock: true,
+              featured: false,
+              createdAt: new Date(),
+              updatedAt: new Date(),
+            };
+          });
+
+          setColorsFromJSON(colorsAsProducts);
+          setLoadingColors(false);
+          hasLoadedColors.current = true;
+        })
+        .catch(err => {
+          console.error('Error loading colors from JSON:', err);
+          setColorsFromJSON([]);
+          setLoadingColors(false);
+          hasLoadedColors.current = true; // Mark as loaded even on error to prevent retry loop
+        });
+    }
+  }, [activeTab, categorySlug, loadingColors, brandsRecord]);
 
   const renderProducts = (products: Product[]) => {
     if (products.length === 0) {
@@ -64,7 +164,7 @@ export default function LVTTabs({ collections, colors, brandsRecord }: LVTTabsPr
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            Boje ({colors.length})
+            Boje ({loadingColors ? '...' : colorsFromJSON.length || 0})
           </button>
         </div>
       </div>
@@ -80,10 +180,19 @@ export default function LVTTabs({ collections, colors, brandsRecord }: LVTTabsPr
           </div>
         ) : (
           <div>
-            <p className="text-gray-600 mb-6">
-              {colors.length === 0 ? 'Nema' : colors.length} {colors.length === 1 ? 'boja' : 'boja'}
-            </p>
-            {renderProducts(colors)}
+            {loadingColors ? (
+              <div className="text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                <p className="mt-4 text-gray-600">Učitavam boje...</p>
+              </div>
+            ) : (
+              <>
+                <p className="text-gray-600 mb-6">
+                  {colorsFromJSON.length === 0 ? 'Nema' : colorsFromJSON.length} {colorsFromJSON.length === 1 ? 'boja' : 'boja'}
+                </p>
+                {renderProducts(colorsFromJSON)}
+              </>
+            )}
           </div>
         )}
       </div>
