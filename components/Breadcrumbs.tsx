@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
 
 export interface BreadcrumbItem {
   label: string;
@@ -29,7 +28,15 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
 
           return (
             <li key={index} className="flex items-center space-x-2">
-              <ChevronRight className="h-4 w-4 text-gray-400" aria-hidden="true" />
+              <svg 
+                className="h-4 w-4 text-gray-400" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
               
               {isLast || !item.href ? (
                 <span
