@@ -1,0 +1,360 @@
+{
+  "LVT Kategorija": {
+    "url": "https://www.gerflor-cee.com/products/lvt",
+    "page_name": "LVT Kategorija",
+    "timestamp": "2026-01-15T14:28:19.870456",
+    "sections": [
+      {
+        "index": 0,
+        "info": {
+          "tag": "div",
+          "text": "Search\nProducts\nSegments\nGerflor group\nSustainability\nContact\nDesign by Gerflor\nEcoVadis Gold\nMobile menu\n0",
+          "classes": "container grid",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1400,
+            "height": 100
+          },
+          "location": {
+            "x": 456,
+            "y": 0
+          }
+        }
+      },
+      {
+        "index": 1,
+        "info": {
+          "tag": "div",
+          "text": "Page not found.\n404\nSorry, the page you are looking for is not available any more or cannot be accessed...\nGo to homepage",
+          "classes": "container",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1400,
+            "height": 727
+          },
+          "location": {
+            "x": 456,
+            "y": 100
+          }
+        }
+      },
+      {
+        "index": 2,
+        "info": {
+          "tag": "section",
+          "text": "Page not found.\n404\nSorry, the page you are looking for is not available any more or cannot be accessed...\nGo to homepage",
+          "classes": "section-not-fount",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1360,
+            "height": 727
+          },
+          "location": {
+            "x": 476,
+            "y": 100
+          }
+        }
+      },
+      {
+        "index": 3,
+        "info": {
+          "tag": "div",
+          "text": "Gerflor group\nAbout Gerflor\nCorporate\nValues\nWork at Gerflor\nCarrers\nSuppliers\nStay tuned\nfacebook\nlinkedin\nyoutube",
+          "classes": "container",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1400,
+            "height": 289
+          },
+          "location": {
+            "x": 456,
+            "y": 877
+          }
+        }
+      },
+      {
+        "index": 5,
+        "info": {
+          "tag": "div",
+          "text": "Privacy Policy\nCookies\nGTS\nLegal Notice\nCopyright © 2024 Gerflor. All rights reserved.",
+          "classes": "container",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1400,
+            "height": 18
+          },
+          "location": {
+            "x": 456,
+            "y": 1227
+          }
+        }
+      }
+    ],
+    "accordions": [],
+    "tabs": [],
+    "buttons": [],
+    "images": [],
+    "spacing_analysis": {
+      "sections": [
+        {
+          "margin_top": "0px",
+          "margin_bottom": "0px",
+          "padding": "160px 0px",
+          "height": 727
+        }
+      ]
+    },
+    "layout_structure": {
+      "body_classes": "path-products site-type-b2b web-peco",
+      "main_container_classes": [
+        "container grid",
+        "main-container",
+        "container",
+        "section-not-fount",
+        "container"
+      ]
+    },
+    "screenshot": "downloads/gerflor_analysis/lvt_kategorija_screenshot.png"
+  },
+  "Linoleum Kategorija": {
+    "url": "https://www.gerflor-cee.com/products/linoleum",
+    "page_name": "Linoleum Kategorija",
+    "timestamp": "2026-01-15T14:28:24.941605",
+    "sections": [
+      {
+        "index": 0,
+        "info": {
+          "tag": "div",
+          "text": "Search\nProducts\nSegments\nGerflor group\nSustainability\nContact\nDesign by Gerflor\nEcoVadis Gold\nMobile menu\n0",
+          "classes": "container grid",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1400,
+            "height": 100
+          },
+          "location": {
+            "x": 456,
+            "y": 0
+          }
+        }
+      },
+      {
+        "index": 1,
+        "info": {
+          "tag": "div",
+          "text": "Page not found.\n404\nSorry, the page you are looking for is not available any more or cannot be accessed...\nGo to homepage",
+          "classes": "container",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1400,
+            "height": 727
+          },
+          "location": {
+            "x": 456,
+            "y": 100
+          }
+        }
+      },
+      {
+        "index": 2,
+        "info": {
+          "tag": "section",
+          "text": "Page not found.\n404\nSorry, the page you are looking for is not available any more or cannot be accessed...\nGo to homepage",
+          "classes": "section-not-fount",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1360,
+            "height": 727
+          },
+          "location": {
+            "x": 476,
+            "y": 100
+          }
+        }
+      },
+      {
+        "index": 3,
+        "info": {
+          "tag": "div",
+          "text": "Gerflor group\nAbout Gerflor\nCorporate\nValues\nWork at Gerflor\nCarrers\nSuppliers\nStay tuned\nfacebook\nlinkedin\nyoutube",
+          "classes": "container",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1400,
+            "height": 289
+          },
+          "location": {
+            "x": 456,
+            "y": 877
+          }
+        }
+      },
+      {
+        "index": 5,
+        "info": {
+          "tag": "div",
+          "text": "Privacy Policy\nCookies\nGTS\nLegal Notice\nCopyright © 2024 Gerflor. All rights reserved.",
+          "classes": "container",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 1400,
+            "height": 18
+          },
+          "location": {
+            "x": 456,
+            "y": 1227
+          }
+        }
+      }
+    ],
+    "accordions": [],
+    "tabs": [],
+    "buttons": [],
+    "images": [],
+    "spacing_analysis": {
+      "sections": [
+        {
+          "margin_top": "0px",
+          "margin_bottom": "0px",
+          "padding": "160px 0px",
+          "height": 727
+        }
+      ]
+    },
+    "layout_structure": {
+      "body_classes": "path-products site-type-b2b web-peco",
+      "main_container_classes": [
+        "container grid",
+        "main-container",
+        "container",
+        "section-not-fount",
+        "container"
+      ]
+    },
+    "screenshot": "downloads/gerflor_analysis/linoleum_kategorija_screenshot.png"
+  },
+  "Product_Creation 40 Zen (LVT)": {
+    "product_name": "Creation 40 Zen (LVT)",
+    "url": "https://www.gerflor-cee.com/products/creation-40-zen",
+    "sections": {},
+    "certifications": [],
+    "eco_features": [
+      {
+        "section": {
+          "tag": "section",
+          "text": "Sustainability\nRecycled content 19%\nTVOC after 28 days < 10 µg/m3\nTotal Sustainable raw materials (mineral, recycled and bio) 55%\nShow more",
+          "classes": "section section-sustainability js-anchor gi-sustainability section--product-new-template",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 2313,
+            "height": 278
+          },
+          "location": {
+            "x": 0,
+            "y": 899
+          }
+        },
+        "text": "Total Sustainable raw materials (mineral, recycled and bio)"
+      },
+      {
+        "section": {
+          "tag": "section",
+          "text": "Sustainability\nRecycled content 19%\nTVOC after 28 days < 10 µg/m3\nTotal Sustainable raw materials (mineral, recycled and bio) 55%\nShow more",
+          "classes": "section section-sustainability js-anchor gi-sustainability section--product-new-template",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 2313,
+            "height": 278
+          },
+          "location": {
+            "x": 0,
+            "y": 899
+          }
+        },
+        "text": "Recycled content"
+      }
+    ],
+    "specifications": [],
+    "details_sections": [
+      {
+        "trigger": "Download options",
+        "content": "Download images\n.JPG"
+      },
+      {
+        "trigger": "See full description",
+        "content": ""
+      }
+    ],
+    "layout": {},
+    "screenshot": "downloads/gerflor_analysis/creation_40_zen_(lvt)_full.png"
+  },
+  "Product_DLW Colorette (Linoleum)": {
+    "product_name": "DLW Colorette (Linoleum)",
+    "url": "https://www.gerflor-cee.com/products/dlw-colorette",
+    "sections": {},
+    "certifications": [],
+    "eco_features": [
+      {
+        "section": {
+          "tag": "section",
+          "text": "Sustainability\nRecycled content average 25%\nTVOC after 28 days <10 µg/m3\nTotal Sustainable raw materials (mineral, recycled and bio) 64%\nShow more\ntotal gwp landfill\n1 year: 7.79 kg CO2 eq/m²\n25 years",
+          "classes": "section section-sustainability js-anchor gi-sustainability section--product-new-template",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 2313,
+            "height": 278
+          },
+          "location": {
+            "x": 0,
+            "y": 899
+          }
+        },
+        "text": "Total Sustainable raw materials (mineral, recycled and bio)"
+      },
+      {
+        "section": {
+          "tag": "section",
+          "text": "Sustainability\nRecycled content average 25%\nTVOC after 28 days <10 µg/m3\nTotal Sustainable raw materials (mineral, recycled and bio) 64%\nShow more\ntotal gwp landfill\n1 year: 7.79 kg CO2 eq/m²\n25 years",
+          "classes": "section section-sustainability js-anchor gi-sustainability section--product-new-template",
+          "id": "",
+          "visible": true,
+          "size": {
+            "width": 2313,
+            "height": 278
+          },
+          "location": {
+            "x": 0,
+            "y": 899
+          }
+        },
+        "text": "Recycled content average"
+      }
+    ],
+    "specifications": [],
+    "details_sections": [
+      {
+        "trigger": "Download options",
+        "content": "Download images\n.JPG"
+      },
+      {
+        "trigger": "See full description",
+        "content": ""
+      }
+    ],
+    "layout": {},
+    "screenshot": "downloads/gerflor_analysis/dlw_colorette_(linoleum)_full.png"
+  }
+}
