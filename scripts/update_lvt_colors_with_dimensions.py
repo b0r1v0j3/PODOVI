@@ -25,6 +25,17 @@ def normalize_slug(slug):
         return f"{name}-{code}"
     return slug
 
+def find_color_by_code_and_name(colors, code, name_hint):
+    """Find color by code and name hint"""
+    for color in colors:
+        if color.get('code') == code:
+            # Check if name matches
+            color_name = color.get('name', '').upper().replace('-', ' ').replace('_', ' ')
+            name_upper = name_hint.upper().replace('-', ' ').replace('_', ' ')
+            if name_upper in color_name or color_name in name_upper:
+                return color
+    return None
+
 def find_color_by_slug(colors, target_slug):
     """Find color in colors array by matching slug"""
     # Try exact match first
@@ -68,11 +79,54 @@ def update_lvt_colors_with_dimensions():
     colors = lvt_data.get('colors', [])
     print(f"📊 Učitano {len(colors)} boja iz lvt_colors_complete.json")
     
+    # Also check for creation_30_dimensions.json
+    creation_30_dimensions_path = Path('downloads/creation_30_dimensions.json')
+    if creation_30_dimensions_path.exists():
+        print(f"\n📄 Obrađujem: creation_30_dimensions.json")
+        with open(creation_30_dimensions_path, 'r', encoding='utf-8') as f:
+            creation_30_data = json.load(f)
+        
+        for color_slug, specs in creation_30_data.items():
+            if not specs:
+                continue
+            
+            # Extract code from slug
+            code_match = re.search(r'(\d{4})', color_slug)
+            if not code_match:
+                continue
+            
+            code = code_match.group(1)
+            # Extract name from slug
+            name_match = re.search(r'-\d{4}-(.+?)(?:-\d+)?$', color_slug)
+            name_hint = name_match.group(1) if name_match else ''
+            
+            # Find matching color
+            color = find_color_by_code_and_name(colors, code, name_hint)
+            
+            if not color:
+                # Try alternative matching by slug
+                color = find_color_by_slug(colors, color_slug)
+            
+            if color:
+                if 'dimension' not in color or not color.get('dimension'):
+                    if 'DIMENSION' in specs:
+                        color['dimension'] = specs['DIMENSION']
+                        print(f"  ✓ Dodata dimenzija za {color.get('full_name', color_slug)}: {specs['DIMENSION']}")
+                        updated_count += 1
+                
+                if 'format' not in color or not color.get('format'):
+                    if 'FORMAT' in specs:
+                        color['format'] = specs['FORMAT']
+                
+                if 'overall_thickness' not in color or not color.get('overall_thickness'):
+                    if 'OVERALL THICKNESS' in specs:
+                        color['overall_thickness'] = specs['OVERALL THICKNESS']
+    
     # Find all description JSON files
     descriptions_dir = Path('downloads/product_descriptions/lvt')
     if not descriptions_dir.exists():
-        print(f"❌ {descriptions_dir} ne postoji!")
-        return
+        print(f"⚠️  {descriptions_dir} ne postoji, preskačem...")
+    else:
     
     updated_count = 0
     total_specs_found = 0
