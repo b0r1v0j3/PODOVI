@@ -28,8 +28,33 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
     const colors = (colorsData as { colors?: any[] }).colors || [];
     
     const color = colors.find((c: any) => c.slug === colorSlug);
-    if (color && color.characteristics) {
-      setSelectedCharacteristics(color.characteristics);
+    if (color) {
+      const colorCharacteristics: Record<string, string> = {};
+      
+      // Add characteristics from color.characteristics if exists
+      if (color.characteristics) {
+        Object.assign(colorCharacteristics, color.characteristics);
+      }
+      
+      // Add dimension, format, overall_thickness, welding_rod if they exist
+      if (color.dimension) {
+        colorCharacteristics['Dimenzije'] = color.dimension;
+      }
+      if (color.format) {
+        colorCharacteristics['Format'] = color.format;
+      }
+      if (color.overall_thickness) {
+        colorCharacteristics['Ukupna debljina'] = color.overall_thickness;
+      }
+      if (color.welding_rod) {
+        colorCharacteristics['Šifra šipke za varenje'] = color.welding_rod;
+      }
+      
+      if (Object.keys(colorCharacteristics).length > 0) {
+        setSelectedCharacteristics(colorCharacteristics);
+      } else {
+        setSelectedCharacteristics(null);
+      }
     } else {
       setSelectedCharacteristics(null);
     }
