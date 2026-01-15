@@ -13,11 +13,22 @@ interface Color {
   texture_url?: string;
   lifestyle_url?: string;
   image_count: number;
+  welding_rod?: string;
+  dimension?: string;
+  format?: string;
+  overall_thickness?: string;
+  characteristics?: Record<string, string>;
 }
 
 interface ColorGridProps {
   collectionSlug: string;
-  onColorSelect?: (imageUrl: string, imageAlt: string, colorCode?: string, colorName?: string) => void;
+  onColorSelect?: (payload: {
+    imageUrl: string;
+    imageAlt: string;
+    colorCode?: string;
+    colorName?: string;
+    characteristics?: Record<string, string>;
+  }) => void;
   compact?: boolean;
   initialColorSlug?: string;
 }
@@ -58,6 +69,28 @@ function ImageWithFallback({ src, alt, className }: any) {
   );
 }
 
+function buildCharacteristics(color: Color): Record<string, string> | undefined {
+  if (color.characteristics && Object.keys(color.characteristics).length > 0) {
+    return color.characteristics;
+  }
+
+  const characteristics: Record<string, string> = {};
+  if (color.format) {
+    characteristics['Format'] = color.format;
+  }
+  if (color.overall_thickness) {
+    characteristics['Ukupna debljina'] = color.overall_thickness;
+  }
+  if (color.dimension) {
+    characteristics['Dimenzije'] = color.dimension;
+  }
+  if (color.welding_rod) {
+    characteristics['Šifra šipke za varenje'] = color.welding_rod;
+  }
+
+  return Object.keys(characteristics).length > 0 ? characteristics : undefined;
+}
+
 export default function ColorGrid({ collectionSlug, onColorSelect, compact = false, initialColorSlug }: ColorGridProps) {
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(true);
@@ -94,12 +127,13 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
       const imageAlt = color.full_name || color.name || '';
       const colorCode = color.code || '';
       const colorName = color.name || '';
+      const characteristics = buildCharacteristics(color);
       
       // Ensure URL is normalized
       const normalizedUrl = normalizeSrc(imageUrl);
       
       if (normalizedUrl) {
-        onColorSelect(normalizedUrl, imageAlt, colorCode, colorName);
+        onColorSelect({ imageUrl: normalizedUrl, imageAlt, colorCode, colorName, characteristics });
       } else {
         console.warn('ColorGrid: No valid image URL for color', color);
       }

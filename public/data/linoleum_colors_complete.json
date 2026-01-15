@@ -14,7 +14,16 @@
       "image_count": 1,
       "welding_rod": "R8970010",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970010",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -28,7 +37,19 @@
       "image_count": 1,
       "welding_rod": "R8980119",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980119",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -42,7 +63,19 @@
       "image_count": 1,
       "welding_rod": "R8970273",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970273",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-r10",
@@ -56,7 +89,19 @@
       "image_count": 1,
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980023",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -70,7 +115,19 @@
       "image_count": 1,
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980059",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -84,7 +141,19 @@
       "image_count": 1,
       "welding_rod": "R8970058",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970058",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -98,7 +167,19 @@
       "image_count": 1,
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980053",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -112,7 +193,16 @@
       "image_count": 1,
       "welding_rod": "R8970062",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970062",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -126,7 +216,19 @@
       "image_count": 1,
       "welding_rod": "R8970110",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970110",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -140,7 +242,19 @@
       "image_count": 1,
       "welding_rod": "R8980117",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980117",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -154,7 +268,19 @@
       "image_count": 1,
       "welding_rod": "R8980164",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980164",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -168,7 +294,19 @@
       "image_count": 1,
       "welding_rod": "R8980158",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980158",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -182,7 +320,19 @@
       "image_count": 1,
       "welding_rod": "R8980055",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980055",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -196,7 +346,19 @@
       "image_count": 1,
       "welding_rod": "R8980254",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980254",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -210,7 +372,19 @@
       "image_count": 1,
       "welding_rod": "R8975562",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975562",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -224,7 +398,16 @@
       "image_count": 1,
       "welding_rod": "R8970290",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970290",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -238,7 +421,19 @@
       "image_count": 1,
       "welding_rod": "R8980166",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980166",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-bfl-s1",
@@ -252,7 +447,19 @@
       "image_count": 1,
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980023",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -266,7 +473,19 @@
       "image_count": 3,
       "welding_rod": "R8970579",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970579",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -280,7 +499,19 @@
       "image_count": 1,
       "welding_rod": "R8970071",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970071",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -294,7 +525,16 @@
       "image_count": 1,
       "welding_rod": "R8970085",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Šifra šipke za varenje": "R8970085",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -308,7 +548,19 @@
       "image_count": 1,
       "welding_rod": "R8970052",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970052",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -322,7 +574,19 @@
       "image_count": 1,
       "welding_rod": "R8980146",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980146",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -336,7 +600,19 @@
       "image_count": 1,
       "welding_rod": "R8970238",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970238",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -350,7 +626,19 @@
       "image_count": 1,
       "welding_rod": "R8970232",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970232",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -364,7 +652,19 @@
       "image_count": 1,
       "welding_rod": "R8980018",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980018",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -378,7 +678,19 @@
       "image_count": 1,
       "welding_rod": "R8980075",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980075",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -392,7 +704,19 @@
       "image_count": 1,
       "welding_rod": "R8980055",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980055",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acoustic",
@@ -406,7 +730,19 @@
       "image_count": 1,
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980053",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -420,7 +756,19 @@
       "image_count": 1,
       "welding_rod": "R8980055",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980055",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette-acoustic-plus",
@@ -434,7 +782,19 @@
       "image_count": 1,
       "welding_rod": "R8970012",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970012",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -448,7 +808,19 @@
       "image_count": 1,
       "welding_rod": "R8980091",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980091",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -462,7 +834,16 @@
       "image_count": 1,
       "welding_rod": "R8970060",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970060",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -476,7 +857,19 @@
       "image_count": 1,
       "welding_rod": "R8980022",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980022",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -490,7 +883,19 @@
       "image_count": 1,
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980053",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -504,7 +909,16 @@
       "image_count": 1,
       "welding_rod": "R8970259",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970259",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-linodur",
@@ -518,7 +932,19 @@
       "image_count": 1,
       "welding_rod": "R8980372",
       "dimension": "2 m X 28.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 28.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "28.0 m",
+        "Šifra šipke za varenje": "R8980372",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -532,7 +958,19 @@
       "image_count": 1,
       "welding_rod": "R8970571",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970571",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -546,7 +984,19 @@
       "image_count": 1,
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980023",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -560,7 +1010,19 @@
       "image_count": 2,
       "welding_rod": "R8980091",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980091",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -574,7 +1036,19 @@
       "image_count": 1,
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980070",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -588,7 +1062,19 @@
       "image_count": 1,
       "welding_rod": "R8970568",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970568",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -602,7 +1088,19 @@
       "image_count": 1,
       "welding_rod": "R8980089",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980089",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -616,7 +1114,19 @@
       "image_count": 1,
       "welding_rod": "R8975553",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975553",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -630,7 +1140,19 @@
       "image_count": 1,
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980053",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -644,7 +1166,19 @@
       "image_count": 1,
       "welding_rod": "R8980073",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980073",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -658,7 +1192,19 @@
       "image_count": 1,
       "welding_rod": "R8970585",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970585",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-linodur",
@@ -672,7 +1218,19 @@
       "image_count": 1,
       "welding_rod": "R8980281",
       "dimension": "2 m X 28.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 28.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "28.0 m",
+        "Šifra šipke za varenje": "R8980281",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -686,7 +1244,19 @@
       "image_count": 1,
       "welding_rod": "R8970569",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970569",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -700,7 +1270,19 @@
       "image_count": 1,
       "welding_rod": "R8980040",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980040",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -714,7 +1296,19 @@
       "image_count": 1,
       "welding_rod": "R8970237",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970237",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -728,7 +1322,19 @@
       "image_count": 1,
       "welding_rod": "R8970218",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970218",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -742,7 +1348,19 @@
       "image_count": 1,
       "welding_rod": "R8980128",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980128",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -756,7 +1374,19 @@
       "image_count": 1,
       "welding_rod": "R8975550",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975550",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -770,7 +1400,19 @@
       "image_count": 1,
       "welding_rod": "R8970081",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970081",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -784,7 +1426,19 @@
       "image_count": 1,
       "welding_rod": "R8970232",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970232",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -798,7 +1452,19 @@
       "image_count": 1,
       "welding_rod": "R8980043",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980043",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -812,7 +1478,19 @@
       "image_count": 1,
       "welding_rod": "R8970231",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970231",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -826,7 +1504,19 @@
       "image_count": 1,
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980045",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -840,7 +1530,19 @@
       "image_count": 1,
       "welding_rod": "R8980149",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980149",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -854,7 +1556,19 @@
       "image_count": 1,
       "welding_rod": "R8980211",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980211",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -868,7 +1582,16 @@
       "image_count": 1,
       "welding_rod": "R8970200",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970200",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -882,7 +1605,19 @@
       "image_count": 1,
       "welding_rod": "R8970004",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970004",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -896,7 +1631,19 @@
       "image_count": 1,
       "welding_rod": "R8970159",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970159",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -910,7 +1657,19 @@
       "image_count": 1,
       "welding_rod": "R8980022",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980022",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -924,7 +1683,19 @@
       "image_count": 1,
       "welding_rod": "R8980160",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980160",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -938,7 +1709,16 @@
       "image_count": 1,
       "welding_rod": "R8970035",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970035",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -952,7 +1732,19 @@
       "image_count": 1,
       "welding_rod": "R8970143",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970143",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -966,7 +1758,19 @@
       "image_count": 1,
       "welding_rod": "R8980040",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980040",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -980,7 +1784,19 @@
       "image_count": 1,
       "welding_rod": "R8970171",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970171",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -994,7 +1810,19 @@
       "image_count": 1,
       "welding_rod": "R8980158",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980158",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1008,7 +1836,19 @@
       "image_count": 1,
       "welding_rod": "R8970587",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970587",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -1022,7 +1862,19 @@
       "image_count": 1,
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980023",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -1036,7 +1888,19 @@
       "image_count": 2,
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980045",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1050,7 +1914,19 @@
       "image_count": 1,
       "welding_rod": "R8980138",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980138",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1064,7 +1940,19 @@
       "image_count": 1,
       "welding_rod": "R8980118",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980118",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1078,7 +1966,19 @@
       "image_count": 1,
       "welding_rod": "R8980146",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980146",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1092,7 +1992,19 @@
       "image_count": 1,
       "welding_rod": "R8980153",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980153",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1106,7 +2018,19 @@
       "image_count": 1,
       "welding_rod": "R8980164",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980164",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1120,7 +2044,19 @@
       "image_count": 1,
       "welding_rod": "R8980119",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980119",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -1134,7 +2070,19 @@
       "image_count": 1,
       "welding_rod": "R8980050",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980050",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1148,7 +2096,19 @@
       "image_count": 1,
       "welding_rod": "R8980173",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980173",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -1162,7 +2122,16 @@
       "image_count": 1,
       "welding_rod": "R8970180",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970180",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1176,7 +2145,19 @@
       "image_count": 1,
       "welding_rod": "R8970570",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970570",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1190,7 +2171,19 @@
       "image_count": 1,
       "welding_rod": "R8970583",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970583",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acoustic",
@@ -1204,7 +2197,19 @@
       "image_count": 1,
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980059",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-r10",
@@ -1218,7 +2223,19 @@
       "image_count": 1,
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980070",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1232,7 +2249,19 @@
       "image_count": 1,
       "welding_rod": "R8980042",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980042",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -1246,7 +2275,19 @@
       "image_count": 1,
       "welding_rod": "R8980056",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980056",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1260,7 +2301,19 @@
       "image_count": 1,
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980045",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -1274,7 +2327,19 @@
       "image_count": 1,
       "welding_rod": "R8970243",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970243",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-r10",
@@ -1288,7 +2353,19 @@
       "image_count": 1,
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980053",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1302,7 +2379,19 @@
       "image_count": 1,
       "welding_rod": "R8980019",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980019",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1316,7 +2405,19 @@
       "image_count": 1,
       "welding_rod": "R8975557",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975557",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -1330,7 +2431,19 @@
       "image_count": 1,
       "welding_rod": "R8970001",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970001",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1344,7 +2457,19 @@
       "image_count": 1,
       "welding_rod": "R8980096",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980096",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1358,7 +2483,19 @@
       "image_count": 1,
       "welding_rod": "R8980056",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980056",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1372,7 +2509,19 @@
       "image_count": 1,
       "welding_rod": "R8980252",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980252",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acoustic",
@@ -1386,7 +2535,19 @@
       "image_count": 1,
       "welding_rod": "R8980019",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980019",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-linodur",
@@ -1400,7 +2561,19 @@
       "image_count": 1,
       "welding_rod": "R8980011",
       "dimension": "2 m X 28.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 28.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "28.0 m",
+        "Šifra šipke za varenje": "R8980011",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1414,7 +2587,19 @@
       "image_count": 1,
       "welding_rod": "R8980155",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980155",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1428,7 +2613,19 @@
       "image_count": 1,
       "welding_rod": "R8980132",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980132",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -1442,7 +2639,19 @@
       "image_count": 1,
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980070",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1456,7 +2665,19 @@
       "image_count": 1,
       "welding_rod": "R8980136",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980136",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -1470,7 +2691,19 @@
       "image_count": 1,
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980059",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1484,7 +2717,19 @@
       "image_count": 1,
       "welding_rod": "R8980253",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980253",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1498,7 +2743,19 @@
       "image_count": 1,
       "welding_rod": "R8980054",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980054",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -1512,7 +2769,19 @@
       "image_count": 1,
       "welding_rod": "R8980160",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980160",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -1526,7 +2795,19 @@
       "image_count": 1,
       "welding_rod": "R8970239",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970239",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -1540,7 +2821,19 @@
       "image_count": 1,
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980059",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -1554,7 +2847,19 @@
       "image_count": 1,
       "welding_rod": "R8980050",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980050",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-linodur",
@@ -1568,7 +2873,19 @@
       "image_count": 1,
       "welding_rod": "R8980020",
       "dimension": "2 m X 28.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 28.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "28.0 m",
+        "Šifra šipke za varenje": "R8980020",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -1582,7 +2899,19 @@
       "image_count": 1,
       "welding_rod": "R8970242",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970242",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1596,7 +2925,19 @@
       "image_count": 1,
       "welding_rod": "R8970580",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970580",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -1610,7 +2951,16 @@
       "image_count": 1,
       "welding_rod": "R8970082",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970082",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-linodur",
@@ -1624,7 +2974,19 @@
       "image_count": 1,
       "welding_rod": "R8980024",
       "dimension": "2 m X 28.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 28.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "28.0 m",
+        "Šifra šipke za varenje": "R8980024",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette-acoustic-plus",
@@ -1638,7 +3000,18 @@
       "image_count": 1,
       "welding_rod": "",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1652,7 +3025,19 @@
       "image_count": 1,
       "welding_rod": "R8980090",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980090",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1666,7 +3051,19 @@
       "image_count": 1,
       "welding_rod": "R8980153",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980153",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1680,7 +3077,19 @@
       "image_count": 1,
       "welding_rod": "R8980149",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980149",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acoustic",
@@ -1694,7 +3103,19 @@
       "image_count": 1,
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980023",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -1708,7 +3129,19 @@
       "image_count": 1,
       "welding_rod": "R8970241",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970241",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1722,7 +3155,19 @@
       "image_count": 1,
       "welding_rod": "R8975552",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975552",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1736,7 +3181,19 @@
       "image_count": 1,
       "welding_rod": "R8970575",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970575",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -1750,7 +3207,19 @@
       "image_count": 1,
       "welding_rod": "R8970016",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970016",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1764,7 +3233,19 @@
       "image_count": 1,
       "welding_rod": "R8980096",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980096",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -1778,7 +3259,19 @@
       "image_count": 1,
       "welding_rod": "R8970080",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970080",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1792,7 +3285,19 @@
       "image_count": 1,
       "welding_rod": "R8980121",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980121",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1806,7 +3311,19 @@
       "image_count": 1,
       "welding_rod": "R8980243",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980243",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -1820,7 +3337,16 @@
       "image_count": 1,
       "welding_rod": "R8970088",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970088",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1834,7 +3360,19 @@
       "image_count": 1,
       "welding_rod": "R8970572",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970572",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1848,7 +3386,19 @@
       "image_count": 1,
       "welding_rod": "R8970577",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970577",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-lch",
@@ -1862,7 +3412,19 @@
       "image_count": 1,
       "welding_rod": "R8980055",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980055",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1876,7 +3438,19 @@
       "image_count": 1,
       "welding_rod": "R8970576",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970576",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton-acoustic-plus",
@@ -1890,7 +3464,16 @@
       "image_count": 1,
       "welding_rod": "R8970085",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Šifra šipke za varenje": "R8970085",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1904,7 +3487,19 @@
       "image_count": 1,
       "welding_rod": "R8970573",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970573",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-bfl-s1",
@@ -1918,7 +3513,19 @@
       "image_count": 1,
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980059",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -1932,7 +3539,19 @@
       "image_count": 1,
       "welding_rod": "R8970582",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970582",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -1946,7 +3565,19 @@
       "image_count": 1,
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980070",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -1960,7 +3591,16 @@
       "image_count": 1,
       "welding_rod": "R8970258",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970258",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1974,7 +3614,19 @@
       "image_count": 1,
       "welding_rod": "R8980050",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980050",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -1988,7 +3640,19 @@
       "image_count": 1,
       "welding_rod": "R8980106",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980106",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acoustic",
@@ -2002,7 +3666,19 @@
       "image_count": 1,
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980045",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -2016,7 +3692,19 @@
       "image_count": 1,
       "welding_rod": "R8970170",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970170",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2030,7 +3718,19 @@
       "image_count": 1,
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980059",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2044,7 +3744,19 @@
       "image_count": 1,
       "welding_rod": "R8980072",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980072",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette-acoustic-plus",
@@ -2058,7 +3770,19 @@
       "image_count": 1,
       "welding_rod": "R8970159",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970159",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -2072,7 +3796,16 @@
       "image_count": 1,
       "welding_rod": "R8970343",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970343",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette-acoustic-plus",
@@ -2086,7 +3819,19 @@
       "image_count": 1,
       "welding_rod": "R8970052",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970052",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2100,7 +3845,19 @@
       "image_count": 1,
       "welding_rod": "R8980100",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980100",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2114,7 +3871,19 @@
       "image_count": 1,
       "welding_rod": "R8980003",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980003",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2128,7 +3897,19 @@
       "image_count": 1,
       "welding_rod": "R8980155",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980155",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -2142,7 +3923,19 @@
       "image_count": 1,
       "welding_rod": "R8975565",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975565",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -2156,7 +3949,19 @@
       "image_count": 1,
       "welding_rod": "R8970006",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970006",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2170,7 +3975,19 @@
       "image_count": 1,
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980023",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acoustic",
@@ -2184,7 +4001,19 @@
       "image_count": 1,
       "welding_rod": "R8980098",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980098",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-bfl-s1",
@@ -2198,7 +4027,19 @@
       "image_count": 1,
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980053",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2212,7 +4053,19 @@
       "image_count": 2,
       "welding_rod": "R8980049",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "3.20 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "3.20 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980049",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2226,7 +4079,19 @@
       "image_count": 1,
       "welding_rod": "R8980129",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980129",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-lch",
@@ -2240,7 +4105,19 @@
       "image_count": 1,
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980023",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2254,7 +4131,19 @@
       "image_count": 1,
       "welding_rod": "R8980172",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980172",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2268,7 +4157,19 @@
       "image_count": 1,
       "welding_rod": "R8980108",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980108",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-2-mm",
@@ -2282,7 +4183,19 @@
       "image_count": 1,
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980053",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2296,7 +4209,19 @@
       "image_count": 1,
       "welding_rod": "R8980251",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980251",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -2310,7 +4235,19 @@
       "image_count": 1,
       "welding_rod": "R8970236",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970236",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2324,7 +4261,19 @@
       "image_count": 1,
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980070",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -2338,7 +4287,19 @@
       "image_count": 1,
       "welding_rod": "R8970586",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970586",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2352,7 +4313,19 @@
       "image_count": 1,
       "welding_rod": "R8980253",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980253",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -2366,7 +4339,19 @@
       "image_count": 1,
       "welding_rod": "R8970234",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970234",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2380,7 +4365,19 @@
       "image_count": 1,
       "welding_rod": "R8980224",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980224",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-32-mm",
@@ -2394,7 +4391,19 @@
       "image_count": 1,
       "welding_rod": "R8980049",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "3.20 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "3.20 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980049",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -2408,7 +4417,19 @@
       "image_count": 1,
       "welding_rod": "R8970235",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970235",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-r10",
@@ -2422,7 +4443,19 @@
       "image_count": 1,
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980059",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2436,7 +4469,19 @@
       "image_count": 1,
       "welding_rod": "R8980145",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980145",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2450,7 +4495,19 @@
       "image_count": 1,
       "welding_rod": "R8980022",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980022",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2464,7 +4521,19 @@
       "image_count": 1,
       "welding_rod": "R8980028",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980028",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -2478,7 +4547,19 @@
       "image_count": 1,
       "welding_rod": "R8970578",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970578",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2492,7 +4573,19 @@
       "image_count": 1,
       "welding_rod": "R8980099",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980099",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -2506,7 +4599,19 @@
       "image_count": 1,
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980023",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -2520,7 +4625,19 @@
       "image_count": 1,
       "welding_rod": "R8975554",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975554",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-linodur",
@@ -2534,7 +4651,19 @@
       "image_count": 1,
       "welding_rod": "R8980156",
       "dimension": "2 m X 28.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 28.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "28.0 m",
+        "Šifra šipke za varenje": "R8980156",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-bfl-s1",
@@ -2548,7 +4677,19 @@
       "image_count": 1,
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980070",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -2562,7 +4703,16 @@
       "image_count": 1,
       "welding_rod": "R8970295",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970295",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2576,7 +4726,19 @@
       "image_count": 1,
       "welding_rod": "R8980083",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980083",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2590,7 +4752,19 @@
       "image_count": 1,
       "welding_rod": "R8980076",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980076",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -2604,7 +4778,19 @@
       "image_count": 1,
       "welding_rod": "R8970012",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970012",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -2618,7 +4804,16 @@
       "image_count": 1,
       "welding_rod": "R8970183",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970183",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -2632,7 +4827,19 @@
       "image_count": 1,
       "welding_rod": "R8970240",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970240",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-r10",
@@ -2646,7 +4853,19 @@
       "image_count": 1,
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980045",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2660,7 +4879,19 @@
       "image_count": 1,
       "welding_rod": "R8980098",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980098",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-moon",
@@ -2674,7 +4905,19 @@
       "image_count": 1,
       "welding_rod": "R8970233",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970233",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2688,7 +4931,19 @@
       "image_count": 1,
       "welding_rod": "R8980130",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980130",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2702,7 +4957,19 @@
       "image_count": 1,
       "welding_rod": "R8980148",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980148",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -2716,7 +4983,19 @@
       "image_count": 1,
       "welding_rod": "R8970584",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970584",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2730,7 +5009,19 @@
       "image_count": 1,
       "welding_rod": "R8980092",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980092",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-bfl-s1",
@@ -2744,7 +5035,19 @@
       "image_count": 1,
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980045",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2758,7 +5061,19 @@
       "image_count": 1,
       "welding_rod": "R8980122",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980122",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-colorette",
@@ -2772,7 +5087,19 @@
       "image_count": 1,
       "welding_rod": "R8970123",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8970123",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-acousticplus",
@@ -2786,7 +5113,19 @@
       "image_count": 1,
       "welding_rod": "R8980040",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "4.00 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "4.00 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980040",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -2800,7 +5139,19 @@
       "image_count": 1,
       "welding_rod": "R8975563",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975563",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-uni-walton",
@@ -2814,7 +5165,16 @@
       "image_count": 1,
       "welding_rod": "R8970181",
       "dimension": "",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Šifra šipke za varenje": "R8970181",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-lino-art-urban",
@@ -2828,7 +5188,19 @@
       "image_count": 1,
       "welding_rod": "R8975560",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8975560",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     },
     {
       "collection": "dlw-marmorette-25-mm",
@@ -2842,7 +5214,19 @@
       "image_count": 1,
       "welding_rod": "R8980026",
       "dimension": "2 m X 31.0 m",
-      "format": "2m roll"
+      "format": "2m roll",
+      "overall_thickness": "2.50 mm",
+      "characteristics": {
+        "Format": "2m roll",
+        "Ukupna debljina": "2.50 mm",
+        "Dimenzije": "2 m X 31.0 m",
+        "Širina rolne": "2 m",
+        "Dužina rolne": "31.0 m",
+        "Šifra šipke za varenje": "R8980026",
+        "Tip": "Linoleum",
+        "Tip instalacije": "Lepljenje",
+        "Površinska obrada": "Neocare"
+      }
     }
   ]
 }

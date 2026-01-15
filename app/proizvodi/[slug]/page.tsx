@@ -17,6 +17,7 @@ export const dynamic = 'force-dynamic';
 
 interface Props {
   params: { slug: string };
+  searchParams?: { color?: string };
 }
 
 interface ColorFromJSON {
@@ -33,6 +34,8 @@ interface ColorFromJSON {
   welding_rod?: string;
   dimension?: string;
   format?: string;
+  overall_thickness?: string;
+  characteristics?: Record<string, string>;
 }
 
 type ColorSource = {
@@ -84,6 +87,50 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
   return null;
 }
 
+function toSpecKey(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
+  const specs: ProductSpec[] = [];
+
+  if (color.format) {
+    specs.push({ key: 'format', label: 'Format', value: color.format });
+  }
+  if (color.overall_thickness) {
+    specs.push({ key: 'overall_thickness', label: 'Ukupna debljina', value: color.overall_thickness });
+  }
+  if (color.dimension) {
+    specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
+  }
+  if (color.welding_rod) {
+    specs.push({ key: 'welding_rod', label: 'Šifra šipke za varenje', value: color.welding_rod });
+  }
+
+  if (color.characteristics) {
+    for (const [label, value] of Object.entries(color.characteristics)) {
+      if (!value) continue;
+      specs.push({ key: toSpecKey(label) || `spec-${label}`, label, value });
+    }
+  }
+
+  return specs;
+}
+
+function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSpec[] {
+  const merged = new Map<string, ProductSpec>();
+  for (const spec of base) {
+    merged.set(spec.key, spec);
+  }
+  for (const spec of extra) {
+    merged.set(spec.key, spec);
+  }
+  return Array.from(merged.values());
+}
+
 function colorToProduct(source: ColorSource, slug: string): Product & { collectionSlug: string } {
   const { categorySlug, color } = source;
   const isLVT = categorySlug === 'lvt';
@@ -104,16 +151,7 @@ function colorToProduct(source: ColorSource, slug: string): Product & { collecti
       }]
     : [];
 
-  const specs: ProductSpec[] = [];
-  if (color.format) {
-    specs.push({ key: 'format', label: 'Format', value: color.format });
-  }
-  if (color.dimension) {
-    specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
-  }
-  if (color.welding_rod) {
-    specs.push({ key: 'welding_rod', label: 'Welding rod', value: color.welding_rod });
-  }
+  const specs = buildSpecsFromColor(color);
 
   return {
     id: `color-${categorySlug}-${color.slug}`,
@@ -235,7 +273,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ProductPage({ params }: Props) {
+export default async function ProductPage({ params, searchParams }: Props) {
   try {
     const product = await resolveProductBySlug(params.slug);
     
@@ -258,6 +296,17 @@ export default async function ProductPage({ params }: Props) {
     }
     if (!product.description || typeof product.description !== 'string') {
       product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
+    }
+
+    const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
+    if (selectedColorSlug) {
+      const colorSource = await loadColorFromJson(selectedColorSlug);
+      if (colorSource?.color) {
+        const colorSpecs = buildSpecsFromColor(colorSource.color);
+        if (colorSpecs.length > 0) {
+          product.specs = mergeSpecs(product.specs, colorSpecs);
+        }
+      }
     }
     if (!product.slug || typeof product.slug !== 'string') {
       product.slug = params.slug;
@@ -454,6 +503,25 @@ export default async function ProductPage({ params }: Props) {
               </div>
             )}
 
+            {product.detailsSections && product.detailsSections.length > 0 && (
+              <div className="mt-8 space-y-4">
+                {product.detailsSections.map((section) => (
+                  <details key={section.title} className="group border border-gray-200 rounded-xl p-4">
+                    <summary className="cursor-pointer text-lg font-semibold text-gray-900">
+                      {section.title}
+                    </summary>
+                    {section.items && section.items.length > 0 && (
+                      <ul className="mt-4 list-disc pl-5 text-gray-700">
+                        {section.items.map((item, index) => (
+                          <li key={`${section.title}-${index}`}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </details>
+                ))}
+              </div>
+            )}
+
             {/* Documents Download Section */}
             {product.slug && typeof product.slug === 'string' && product.slug.includes('creation') && (
               <div className="mt-10 pt-10 border-t border-gray-200">
@@ -502,19 +570,23 @@ export default async function ProductPage({ params }: Props) {
           {/* Specifications */}
           {product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
             <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Specifikacije</h2>
-              <dl className="space-y-4">
-                {product.specs.map((spec) => (
-                  <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
-                    <dt className="text-sm font-medium text-gray-500 mb-1">
-                      {spec.label}
-                    </dt>
-                    <dd className="text-base font-semibold text-gray-900">
-                      {spec.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <details open className="group">
+                <summary className="text-2xl font-bold text-gray-900 mb-6 cursor-pointer">
+                  Karakteristike
+                </summary>
+                <dl className="space-y-4">
+                  {product.specs.map((spec) => (
+                    <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
+                      <dt className="text-sm font-medium text-gray-500 mb-1">
+                        {spec.label}
+                      </dt>
+                      <dd className="text-base font-semibold text-gray-900">
+                        {spec.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </details>
             </div>
           )}
         </div>

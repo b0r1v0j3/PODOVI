@@ -38,16 +38,29 @@ export default function ProductColorSelector({
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const searchParams = useSearchParams();
   const initialColorSlug = searchParams.get('color') || undefined;
 
   // Update image when color is selected
-  const handleColorSelect = (imageUrl: string, imageAlt: string, colorCode?: string, colorName?: string) => {
+  const handleColorSelect = (payload: {
+    imageUrl: string;
+    imageAlt: string;
+    colorCode?: string;
+    colorName?: string;
+    characteristics?: Record<string, string>;
+  }) => {
+    const { imageUrl, imageAlt, colorCode, colorName, characteristics } = payload;
     console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt, colorCode, colorName });
     if (imageUrl) {
       setSelectedImage({ url: imageUrl, alt: imageAlt });
       if (colorCode && colorName) {
         setSelectedColor({ code: colorCode, name: colorName });
+      }
+      if (characteristics && Object.keys(characteristics).length > 0) {
+        setSelectedCharacteristics(characteristics);
+      } else {
+        setSelectedCharacteristics(null);
       }
     }
   };
@@ -80,6 +93,24 @@ export default function ProductColorSelector({
             <div className="mt-4 text-center">
               <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
               <p className="text-base text-gray-700">{selectedColor.name}</p>
+            </div>
+          )}
+
+          {selectedCharacteristics && (
+            <div className="mt-6">
+              <details className="group border border-gray-200 rounded-xl p-4">
+                <summary className="cursor-pointer text-base font-semibold text-gray-900">
+                  Karakteristike boje
+                </summary>
+                <dl className="mt-4 space-y-3">
+                  {Object.entries(selectedCharacteristics).map(([label, value]) => (
+                    <div key={label} className="border-b border-gray-200 pb-3 last:border-0">
+                      <dt className="text-xs font-medium text-gray-500 mb-1">{label}</dt>
+                      <dd className="text-sm font-semibold text-gray-900">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </details>
             </div>
           )}
         </div>

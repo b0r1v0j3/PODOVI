@@ -34,6 +34,11 @@ export interface ProductSpec {
   value: string;
 }
 
+export interface ProductDetailsSection {
+  title: string;
+  items: string[];
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -51,6 +56,7 @@ export interface Product {
   featured: boolean;
   coveragePerPackage?: number; // m² per package for calculator
   externalLink?: string; // External link for collections (e.g., Gerflor)
+  detailsSections?: ProductDetailsSection[];
   createdAt: Date;
   updatedAt: Date;
 }
