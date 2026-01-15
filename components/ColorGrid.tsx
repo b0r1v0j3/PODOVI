@@ -146,11 +146,12 @@ export default function ColorGrid({
   };
 
   // Handle color selection
-  const handleColorClick = (color: Color) => {
+  const handleColorClick = (color: Color, event?: React.MouseEvent) => {
     // Update selected slug
     setCurrentSelectedSlug(color.slug);
     
-    if (onColorSelect) {
+    // If in compact mode (ProductColorSelector), just update the image, don't navigate
+    if (compact && onColorSelect) {
       // Use texture_url (pod images) first, then image_url, lifestyle_url as last resort
       // URLs are already normalized in the useEffect
       const imageUrl = color.texture_url || color.image_url || color.lifestyle_url || '';
@@ -167,6 +168,14 @@ export default function ColorGrid({
       } else {
         console.warn('ColorGrid: No valid image URL for color', color);
       }
+      return;
+    }
+    
+    // If not in compact mode, navigate to individual color page
+    // (Link will handle navigation, but we can also update URL here if needed)
+    if (event) {
+      // Let the link handle navigation naturally
+      return;
     }
   };
 
@@ -337,10 +346,19 @@ export default function ColorGrid({
         {paginatedColors.map((color) => {
           const isSelected = currentSelectedSlug === color.slug;
           return (
-          <button
+          <a
             key={color.slug}
-            onClick={() => handleColorClick(color)}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+            href={`/proizvodi/${color.slug}`}
+            onClick={(e) => {
+              // If onColorSelect is provided and we're in compact mode (ProductColorSelector),
+              // prevent navigation and just update the image
+              if (onColorSelect && compact) {
+                e.preventDefault();
+                handleColorClick(color, e);
+              }
+              // Otherwise, let the link navigate normally
+            }}
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 block ${
               isSelected 
                 ? 'border-red-500 shadow-lg ring-2 ring-red-200' 
                 : 'border-gray-200 hover:border-primary-500'
@@ -368,7 +386,7 @@ export default function ColorGrid({
                 <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
               </div>
             )}
-          </button>
+          </a>
           );
         })}
       </div>
