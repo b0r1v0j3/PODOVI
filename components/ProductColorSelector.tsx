@@ -25,6 +25,7 @@ interface ProductColorSelectorProps {
   inStock: boolean;
   productSlug: string;
   externalLink?: string;
+  onCharacteristicsChange?: (characteristics: Record<string, string> | null) => void;
 }
 
 export default function ProductColorSelector({
@@ -39,6 +40,7 @@ export default function ProductColorSelector({
   inStock,
   productSlug,
   externalLink,
+  onCharacteristicsChange,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
@@ -65,6 +67,9 @@ export default function ProductColorSelector({
       }
       if (characteristics) {
         setSelectedCharacteristics(characteristics);
+        if (onCharacteristicsChange) {
+          onCharacteristicsChange(characteristics);
+        }
       }
     }
   };
@@ -224,28 +229,6 @@ export default function ProductColorSelector({
         </div>
       </div>
 
-      {/* Full Width - Combined Characteristics */}
-      {(specs && specs.length > 0) || selectedCharacteristics ? (
-        <div className="bg-white rounded-2xl shadow-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Karakteristike</h3>
-          <dl className="space-y-3">
-            {/* Collection specs */}
-            {specs && specs.length > 0 && specs.map((spec) => (
-              <div key={spec.key} className="border-b border-gray-200 pb-3 last:border-0">
-                <dt className="text-xs font-medium text-gray-500 mb-1">{spec.label}</dt>
-                <dd className="text-sm font-semibold text-gray-900">{spec.value}</dd>
-              </div>
-            ))}
-            {/* Color characteristics */}
-            {selectedCharacteristics && Object.entries(selectedCharacteristics).map(([label, value]) => (
-              <div key={label} className="border-b border-gray-200 pb-3 last:border-0">
-                <dt className="text-xs font-medium text-gray-500 mb-1">{label}</dt>
-                <dd className="text-sm font-semibold text-gray-900">{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      ) : null}
 
       {isColorsModalOpen && (
         <div className="fixed inset-0 z-[60]">

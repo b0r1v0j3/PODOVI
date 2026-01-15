@@ -9,6 +9,7 @@ import EcoFeatures from '@/components/EcoFeatures';
 import ProductColorSelector from '@/components/ProductColorSelector';
 import ProductImage from '@/components/ProductImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ProductCharacteristics from '@/components/ProductCharacteristics';
 import type { Product, ProductImage as ProductImageType, ProductSpec } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
@@ -404,8 +405,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
               externalLink={product.externalLink}
             />
 
-            {/* Description & Details Below */}
-            <div className="mt-8">
+            {/* Description & Characteristics Side by Side */}
+            <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Description */}
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
                 {product.description && (
@@ -415,7 +417,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 )}
 
                 {product.detailsSections && product.detailsSections.length > 0 && (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="space-y-4">
                     {product.detailsSections.map((section) => (
                       <div key={section.title} className="border border-gray-200 rounded-xl p-4">
                         <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
@@ -431,6 +433,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   </div>
                 )}
               </div>
+              
+              {/* Characteristics */}
+              <ProductCharacteristics specs={product.specs} categoryId={product.categoryId} />
             </div>
           </>
         ) : (
