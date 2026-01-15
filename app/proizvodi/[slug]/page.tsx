@@ -388,20 +388,50 @@ export default async function ProductPage({ params, searchParams }: Props) {
       {/* Product Content */}
       <div className="container py-12">
         {(product.categoryId === '6' || product.categoryId === '7') ? (
-          // LVT and Linoleum products with color selector
-          <ProductColorSelector
-            initialImage={primaryImage}
-            collectionSlug={(product as { collectionSlug?: string }).collectionSlug || product.slug}
-            productName={product.name}
-            productPrice={product.price}
-            priceUnit={product.priceUnit}
-            brand={brand ? { name: brand.name, slug: brand.slug } : null}
-            shortDescription={product.shortDescription}
-            specs={product.specs}
-            inStock={product.inStock}
-            productSlug={product.slug}
-            externalLink={product.externalLink}
-          />
+          <>
+            {/* LVT and Linoleum products with color selector */}
+            <ProductColorSelector
+              initialImage={primaryImage}
+              collectionSlug={(product as { collectionSlug?: string }).collectionSlug || product.slug}
+              productName={product.name}
+              productPrice={product.price}
+              priceUnit={product.priceUnit}
+              brand={brand ? { name: brand.name, slug: brand.slug } : null}
+              shortDescription={product.shortDescription}
+              inStock={product.inStock}
+              productSlug={product.slug}
+              externalLink={product.externalLink}
+            />
+
+            {/* Description & Details Below */}
+            <div className="mt-12">
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
+                {product.description && (
+                  <div className="prose prose-lg max-w-none text-gray-700 mb-8">
+                    <p>{product.description}</p>
+                  </div>
+                )}
+
+                {product.detailsSections && product.detailsSections.length > 0 && (
+                  <div className="space-y-4">
+                    {product.detailsSections.map((section) => (
+                      <div key={section.title}>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+                        {section.items && section.items.length > 0 && (
+                          <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                            {section.items.map((item, index) => (
+                              <li key={`${section.title}-${index}`}>{item}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
         ) : (
           // Non-LVT products - standard layout
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -501,98 +531,39 @@ export default async function ProductPage({ params, searchParams }: Props) {
           </div>
         )}
 
-        {/* Description & Specs */}
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Description */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
-            {product.description && (
-              <div className="prose prose-lg max-w-none text-gray-700">
-                <p>{product.description}</p>
-              </div>
-            )}
-
-            {product.detailsSections && product.detailsSections.length > 0 && (
-              <div className="mt-8 space-y-6">
-                {product.detailsSections.map((section) => (
-                  <div key={section.title} className="border border-gray-200 rounded-xl p-4">
-                    <h3 className="text-lg font-semibold text-gray-900">{section.title}</h3>
-                    {section.items && section.items.length > 0 && (
-                      <ul className="mt-3 list-disc pl-5 text-gray-700">
-                        {section.items.map((item, index) => (
-                          <li key={`${section.title}-${index}`}>{item}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Documents Download Section */}
-            {product.slug && typeof product.slug === 'string' && product.slug.includes('creation') && (
-              <div className="mt-10 pt-10 border-t border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  Dokumentacija
-                </h3>
-                <p className="text-sm text-gray-600 mb-6">
-                  Kompletna tehnička dokumentacija, uputstva za instalaciju i sertifikati
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <a
-                    href={product.externalLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl hover:border-primary-600 hover:bg-primary-50 transition-all group"
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-primary-600 transition-colors">
-                      <svg className="w-6 h-6 text-red-600 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-gray-900 group-hover:text-primary-600">Sva dokumenta</p>
-                      <p className="text-sm text-gray-500">Gerflor sajt</p>
-                    </div>
-                    <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                  <div className="col-span-2 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                    <p className="text-sm text-gray-700 mb-3">
-                      <strong>Napomena:</strong> Kompletna dokumentacija dostupna na Gerflor zvaničnom sajtu.
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Tehnički podaci, uputstva za instalaciju, sertifikati i svi PDF dokumenti možete preuzeti klikom na dugme iznad.
-                    </p>
-                  </div>
+        {/* Description & Specs - For Non-LVT/Linoleum Only */}
+        {product.categoryId !== '6' && product.categoryId !== '7' && (
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Description */}
+            <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
+              {product.description && (
+                <div className="prose prose-lg max-w-none text-gray-700">
+                  <p>{product.description}</p>
                 </div>
+              )}
+            </div>
+
+            {/* Specifications */}
+            {product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
+                <dl className="space-y-4">
+                  {product.specs.map((spec) => (
+                    <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
+                      <dt className="text-sm font-medium text-gray-500 mb-1">
+                        {spec.label}
+                      </dt>
+                      <dd className="text-base font-semibold text-gray-900">
+                        {spec.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             )}
           </div>
-
-          {/* Specifications */}
-          {product.categoryId !== '6' && product.categoryId !== '7' && product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
-              <dl className="space-y-4">
-                {product.specs.map((spec) => (
-                  <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
-                    <dt className="text-sm font-medium text-gray-500 mb-1">
-                      {spec.label}
-                    </dt>
-                    <dd className="text-base font-semibold text-gray-900">
-                      {spec.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          )}
-        </div>
+        )}
 
         {/* Certifications & Eco Features - Full Width Below */}
         {product.slug && typeof product.slug === 'string' && product.slug.includes('creation') && (

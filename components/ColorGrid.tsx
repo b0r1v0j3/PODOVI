@@ -31,6 +31,8 @@ interface ColorGridProps {
   }) => void;
   compact?: boolean;
   initialColorSlug?: string;
+  limit?: number;
+  onColorsLoaded?: (count: number) => void;
 }
 
 function normalizeSrc(raw?: string | null) {
@@ -91,7 +93,14 @@ function buildCharacteristics(color: Color): Record<string, string> | undefined 
   return Object.keys(characteristics).length > 0 ? characteristics : undefined;
 }
 
-export default function ColorGrid({ collectionSlug, onColorSelect, compact = false, initialColorSlug }: ColorGridProps) {
+export default function ColorGrid({
+  collectionSlug,
+  onColorSelect,
+  compact = false,
+  initialColorSlug,
+  limit,
+  onColorsLoaded,
+}: ColorGridProps) {
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -179,6 +188,9 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
         }));
 
         setColors(normalizedColors);
+        if (onColorsLoaded) {
+          onColorsLoaded(normalizedColors.length);
+        }
         setLoading(false);
       })
       .catch(err => {
@@ -206,6 +218,13 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
       (color.code || '').includes(searchTerm)
     );
   }, [colors, searchTerm]);
+
+  const visibleColors = useMemo(() => {
+    if (typeof limit === 'number' && limit > 0) {
+      return filteredColors.slice(0, limit);
+    }
+    return filteredColors;
+  }, [filteredColors, limit]);
 
   if (loading) {
     return (
@@ -249,7 +268,7 @@ export default function ColorGrid({ collectionSlug, onColorSelect, compact = fal
 
       {/* Grid */}
       <div className={`grid gap-3 ${compact ? 'grid-cols-4 md:grid-cols-5 lg:grid-cols-6' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
-        {filteredColors.map((color) => (
+        {visibleColors.map((color) => (
           <button
             key={color.slug}
             onClick={() => handleColorClick(color)}
