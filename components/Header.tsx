@@ -17,9 +17,9 @@ export default function Header() {
 
   const navLinkClass = (href: string) => {
     const active = isActive(href);
-    return `text-gray-800 hover:text-primary-700 transition-colors duration-200 
-            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-1 pb-1 border-b-2 ${
-              active ? 'text-primary-700 border-primary-600' : 'border-transparent'
+    return `text-gray-800 hover:text-primary-700 transition-all duration-200 
+            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-2 py-1 ${
+              active ? 'text-primary-700 ring-2 ring-primary-600 ring-offset-2' : ''
             }`;
   };
 
