@@ -1,5 +1,5 @@
 {
-  "total": 567,
+  "total": 583,
   "collections": 18,
   "colors": [
     {
@@ -6602,26 +6602,13 @@
     {
       "collection": "creation-40-clic",
       "collection_name": "Creation 40 Clic",
-      "code": "0347",
-      "name": "BALLERINA",
-      "full_name": "0347 BALLERINA",
-      "slug": "ballerina-0347",
-      "image_url": "/images/products/lvt/colors/creation-40-clic/0347-ballerina/pod/49041 - 0347 Ballerina -pod.jpg?v=9",
-      "texture_url": "/images/products/lvt/colors/creation-40-clic/0347-ballerina/pod/49041 - 0347 Ballerina -pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0347-ballerina/ilustracija/60956 - Ballerina2_Creation-ilustracija.jpg?v=9"
-    },
-    {
-      "collection": "creation-40-clic",
-      "collection_name": "Creation 40 Clic",
       "code": "0850",
       "name": "CEDAR BROWN",
       "full_name": "0850 CEDAR BROWN",
-      "slug": "cedar-brown-0850",
+      "slug": "cedar-brown",
       "image_url": "/images/products/lvt/colors/creation-40-clic/0850-cedar-brown/pod/41426 - 0850-cedar-brown-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-40-clic/0850-cedar-brown/pod/41426 - 0850-cedar-brown-pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0850-cedar-brown/ilustracija/60516 - JPG 72 dpi-Cedar Brown CR40 Rigid AC - Room scene-ilustracija.jpg?v=9"
+      "image_count": 1
     },
     {
       "collection": "creation-40-clic",
@@ -6629,23 +6616,21 @@
       "code": "1607",
       "name": "CEDAR NATURAL",
       "full_name": "1607 CEDAR NATURAL",
-      "slug": "cedar-natural-1607",
+      "slug": "cedar-natural",
       "image_url": "/images/products/lvt/colors/creation-40-clic/1607-cedar-natural/pod/60991 - JPG 72 dpi-Creation 1607 Cedar Natural Sky View-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-40-clic/1607-cedar-natural/pod/60991 - JPG 72 dpi-Creation 1607 Cedar Natural Sky View-pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/1607-cedar-natural/ilustracija/60996 - JPG 72 dpi-Living room - Cedar Natural 1607 - Room scene-ilustracija.jpg?v=9"
+      "image_count": 1
     },
     {
       "collection": "creation-40-clic",
       "collection_name": "Creation 40 Clic",
-      "code": "0441",
-      "name": "HONEY OAK",
-      "full_name": "0441 HONEY OAK",
-      "slug": "honey-oak-0441",
-      "image_url": "/images/products/lvt/colors/creation-40-clic/0441-honey-oak/pod/44456 - 0441-honey-oak-pod.jpg?v=9",
-      "texture_url": "/images/products/lvt/colors/creation-40-clic/0441-honey-oak/pod/44456 - 0441-honey-oak-pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0441-honey-oak/ilustracija/60611 - JPG 72 dpi-Honey Oak 2-ilustracija.jpg?v=9"
+      "code": "0347",
+      "name": "BALLERINA",
+      "full_name": "0347 BALLERINA",
+      "slug": "collection-ballerina",
+      "image_url": "/images/products/lvt/colors/creation-40-clic/0347-ballerina/pod/49041 - 0347 Ballerina -pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-40-clic/0347-ballerina/pod/49041 - 0347 Ballerina -pod.jpg?v=9",
+      "image_count": 1
     },
     {
       "collection": "creation-40-clic",
@@ -6653,23 +6638,10 @@
       "code": "0503",
       "name": "QUARTET",
       "full_name": "0503 QUARTET",
-      "slug": "quartet-0503",
+      "slug": "collection-quartet",
       "image_url": "/images/products/lvt/colors/creation-40-clic/0503-quartet/pod/44491 - 0503-quartet-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-40-clic/0503-quartet/pod/44491 - 0503-quartet-pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0503-quartet/ilustracija/60631 - QUARTET _Creation-ilustracija.jpg?v=9"
-    },
-    {
-      "collection": "creation-40-clic",
-      "collection_name": "Creation 40 Clic",
-      "code": "0870",
-      "name": "QUARTET HONEY",
-      "full_name": "0870 QUARTET HONEY",
-      "slug": "quartet-honey-0870",
-      "image_url": "/images/products/lvt/colors/creation-40-clic/0870-quartet-honey/pod/49046 - 0870 - Quartet Honey -pod.jpg?v=9",
-      "texture_url": "/images/products/lvt/colors/creation-40-clic/0870-quartet-honey/pod/49046 - 0870 - Quartet Honey -pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0870-quartet-honey/ilustracija/60961 - JPG 72 dpi-Living room - Quartet honey 0870 - Room scene-ilustracija.jpg?v=9"
+      "image_count": 1
     },
     {
       "collection": "creation-40-clic",
@@ -6677,11 +6649,10 @@
       "code": "0456",
       "name": "RANCH",
       "full_name": "0456 RANCH",
-      "slug": "ranch-0456",
+      "slug": "collection-ranch",
       "image_url": "/images/products/lvt/colors/creation-40-clic/0456-ranch/pod/49051 - 0456 Ranch-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-40-clic/0456-ranch/pod/49051 - 0456 Ranch-pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0456-ranch/ilustracija/60966 - JPG 72 dpi-Ranch-ilustracija.jpg?v=9"
+      "image_count": 1
     },
     {
       "collection": "creation-40-clic",
@@ -6689,23 +6660,21 @@
       "code": "0504",
       "name": "TWIST",
       "full_name": "0504 TWIST",
-      "slug": "twist-0504",
+      "slug": "collection-twist",
       "image_url": "/images/products/lvt/colors/creation-40-clic/0504-twist/pod/45901 - 0504-twist-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-40-clic/0504-twist/pod/45901 - 0504-twist-pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0504-twist/ilustracija/60741 - Twist-_Creation-ilustracija.jpg?v=9"
+      "image_count": 1
     },
     {
       "collection": "creation-40-clic",
       "collection_name": "Creation 40 Clic",
-      "code": "0584",
-      "name": "WHITE LIME",
-      "full_name": "0584 WHITE LIME",
-      "slug": "white-lime-0584",
-      "image_url": "/images/products/lvt/colors/creation-40-clic/0584-white-lime/pod/44516 - 0584-white-lime-pod.jpg?v=9",
-      "texture_url": "/images/products/lvt/colors/creation-40-clic/0584-white-lime/pod/44516 - 0584-white-lime-pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0584-white-lime/ilustracija/60651 - JPG 72 dpi-White lime 0584-ilustracija.jpg?v=9"
+      "code": "Unknown",
+      "name": "0441 HONEY OAK",
+      "full_name": "Unknown 0441 HONEY OAK",
+      "slug": "honey-oak",
+      "image_url": "/images/products/lvt/colors/creation-40-clic/0441-honey-oak/pod/44456 - 0441-honey-oak-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-40-clic/0441-honey-oak/pod/44456 - 0441-honey-oak-pod.jpg?v=9",
+      "image_count": 1
     },
     {
       "collection": "creation-40-clic",
@@ -6713,11 +6682,208 @@
       "code": "0455",
       "name": "LONGBOARD",
       "full_name": "0455 LONGBOARD",
-      "slug": "longboard-0455",
+      "slug": "long-board",
       "image_url": "/images/products/lvt/colors/creation-40-clic/0455-long-board/pod/41511 - 0455-longboard-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-40-clic/0455-long-board/pod/41511 - 0455-longboard-pod.jpg?v=9",
-      "image_count": 1,
-      "lifestyle_url": "/images/products/lvt/colors/creation-40-clic/0455-long-board/ilustracija/60531 - JPG 72 dpi-Kitchen - Long board 0455 - Room scene-ilustracija.jpg?v=9"
+      "image_count": 1
+    },
+    {
+      "collection": "creation-40-clic",
+      "collection_name": "Creation 40 Clic",
+      "code": "Unknown",
+      "name": "0870 QUARTET HONEY",
+      "full_name": "Unknown 0870 QUARTET HONEY",
+      "slug": "quartet-honey",
+      "image_url": "/images/products/lvt/colors/creation-40-clic/0870-quartet-honey/pod/49046 - 0870 - Quartet Honey -pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-40-clic/0870-quartet-honey/pod/49046 - 0870 - Quartet Honey -pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-40-clic",
+      "collection_name": "Creation 40 Clic",
+      "code": "Unknown",
+      "name": "0584 WHITE LIME",
+      "full_name": "Unknown 0584 WHITE LIME",
+      "slug": "white-lime",
+      "image_url": "/images/products/lvt/colors/creation-40-clic/0584-white-lime/pod/44516 - 0584-white-lime-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-40-clic/0584-white-lime/pod/44516 - 0584-white-lime-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "1272",
+      "name": "LOUNGE OAK BEIGE",
+      "full_name": "1272 LOUNGE OAK BEIGE",
+      "slug": "beige-eir",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-beige/pod/49281 - 1272 - Lounge oak beige-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-beige/pod/49281 - 1272 - Lounge oak beige-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0850",
+      "name": "CEDAR BROWN",
+      "full_name": "0850 CEDAR BROWN",
+      "slug": "cedar-brown",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-cedar-brown/pod/41426 - 0850-cedar-brown-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-cedar-brown/pod/41426 - 0850-cedar-brown-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "1606",
+      "name": "CEDAR GOLDEN",
+      "full_name": "1606 CEDAR GOLDEN",
+      "slug": "cedar-golden",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-cedar-golden/pod/61111 - JPG 72 dpi-Creation 1606 Cedar Golden Sky View-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-cedar-golden/pod/61111 - JPG 72 dpi-Creation 1606 Cedar Golden Sky View-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "1274",
+      "name": "LOUNGE OAK CHESTNUT",
+      "full_name": "1274 LOUNGE OAK CHESTNUT",
+      "slug": "chestnut-eir",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-chestnut/pod/49286 - 1274 - Lounge oak chestnut-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-chestnut/pod/49286 - 1274 - Lounge oak chestnut-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0347",
+      "name": "BALLERINA",
+      "full_name": "0347 BALLERINA",
+      "slug": "collection-ballerina",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-ballerina/pod/49041 - 0347 Ballerina -pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-ballerina/pod/49041 - 0347 Ballerina -pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0503",
+      "name": "QUARTET",
+      "full_name": "0503 QUARTET",
+      "slug": "collection-quartet",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-quartet/pod/44491 - 0503-quartet-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-quartet/pod/44491 - 0503-quartet-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0456",
+      "name": "RANCH",
+      "full_name": "0456 RANCH",
+      "slug": "collection-ranch",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-ranch/pod/49051 - 0456 Ranch-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-ranch/pod/49051 - 0456 Ranch-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0504",
+      "name": "TWIST",
+      "full_name": "0504 TWIST",
+      "slug": "collection-twist",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-twist/pod/45901 - 0504-twist-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-twist/pod/45901 - 0504-twist-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "1605",
+      "name": "CEDAR DARK BROWN",
+      "full_name": "1605 CEDAR DARK BROWN",
+      "slug": "dark-brown",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-cedar-dark-brown/pod/61061 - JPG 72 dpi-Creation 1605 Cedar Dark Brown Sky View-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-cedar-dark-brown/pod/61061 - JPG 72 dpi-Creation 1605 Cedar Dark Brown Sky View-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "1271",
+      "name": "LOUNGE OAK GOLDEN",
+      "full_name": "1271 LOUNGE OAK GOLDEN",
+      "slug": "golden-eir",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-golden/pod/49291 - 1271 - Lounge oak golden -pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-golden/pod/49291 - 1271 - Lounge oak golden -pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0441",
+      "name": "HONEY OAK",
+      "full_name": "0441 HONEY OAK",
+      "slug": "honey-oak",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-honey-oak/pod/44456 - 0441-honey-oak-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-honey-oak/pod/44456 - 0441-honey-oak-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0455",
+      "name": "LONGBOARD",
+      "full_name": "0455 LONGBOARD",
+      "slug": "long-board",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-longboard/pod/41511 - 0455-longboard-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-longboard/pod/41511 - 0455-longboard-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "1273",
+      "name": "LOUNGE OAK NATURAL EIR",
+      "full_name": "1273 LOUNGE OAK NATURAL EIR",
+      "slug": "natural-eir",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-natural-eir/pod/63916 - Creation 1273 Lounge Oak Natural-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-lounge-oak-natural-eir/pod/63916 - Creation 1273 Lounge Oak Natural-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0870",
+      "name": "QUARTET HONEY",
+      "full_name": "0870 QUARTET HONEY",
+      "slug": "quartet-honey",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-quartet-honey/pod/49046 - 0870 - Quartet Honey -pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-quartet-honey/pod/49046 - 0870 - Quartet Honey -pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-55-clic",
+      "collection_name": "Creation 55 Clic",
+      "code": "0584",
+      "name": "WHITE LIME",
+      "full_name": "0584 WHITE LIME",
+      "slug": "white-lime",
+      "image_url": "/images/products/lvt/colors/creation-55-clic/Unknown-white-lime/pod/44516 - 0584-white-lime-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-55-clic/Unknown-white-lime/pod/44516 - 0584-white-lime-pod.jpg?v=9",
+      "image_count": 1
+    },
+    {
+      "collection": "creation-70-clic",
+      "collection_name": "Creation 70 Clic",
+      "code": "1702",
+      "name": "LINEAR WOOD HONEY",
+      "full_name": "1702 LINEAR WOOD HONEY",
+      "slug": "wood-honey",
+      "image_url": "/images/products/lvt/colors/creation-70-clic/Unknown-linear-wood-honey/pod/61451 - JPG 72 dpi-Linear Wood Honey - VDC-pod.jpg?v=9",
+      "texture_url": "/images/products/lvt/colors/creation-70-clic/Unknown-linear-wood-honey/pod/61451 - JPG 72 dpi-Linear Wood Honey - VDC-pod.jpg?v=9",
+      "image_count": 1
     }
   ]
 }

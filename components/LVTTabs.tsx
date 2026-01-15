@@ -19,7 +19,7 @@ interface ColorFromJSON {
 
 interface LVTTabsProps {
   collections: Product[];
-  colors: Product[]; // Legacy - not used for colors from JSON
+  colors: Product[]; // Used for LVT colors (from products array)
   brandsRecord: Record<string, Brand>;
   categorySlug: string; // 'lvt' or 'linoleum'
 }
@@ -31,12 +31,16 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
   const hasLoadedColors = useRef(false);
   const lastCategorySlug = useRef<string>('');
+  const useJsonColors = categorySlug === 'linoleum';
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
-    const jsonPath = categorySlug === 'linoleum' 
-      ? '/data/linoleum_colors_complete.json'
-      : '/data/lvt_colors_complete.json';
+    if (!useJsonColors) {
+      setTotalColorsCount(null);
+      return;
+    }
+
+    const jsonPath = '/data/linoleum_colors_complete.json';
 
     fetch(jsonPath)
       .then(res => {
@@ -53,7 +57,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       .catch(err => {
         console.error('Error loading colors count:', err);
       });
-  }, [categorySlug]);
+  }, [categorySlug, useJsonColors]);
 
   // Reset loaded state when category changes
   useEffect(() => {
@@ -67,11 +71,13 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
 
   // Load colors from JSON when colors tab is active
   useEffect(() => {
+    if (!useJsonColors) {
+      return;
+    }
+
     if (activeTab === 'colors' && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
-      const jsonPath = categorySlug === 'linoleum' 
-        ? '/data/linoleum_colors_complete.json'
-        : '/data/lvt_colors_complete.json';
+      const jsonPath = '/data/linoleum_colors_complete.json';
 
       fetch(jsonPath)
         .then(res => {
@@ -139,7 +145,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
           hasLoadedColors.current = true; // Mark as loaded even on error to prevent retry loop
         });
     }
-  }, [activeTab, categorySlug, loadingColors, brandsRecord]);
+  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors]);
 
   const renderProducts = (products: Product[]) => {
     if (products.length === 0) {
@@ -192,7 +198,10 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            Boje ({loadingColors ? '...' : (colorsFromJSON.length > 0 ? colorsFromJSON.length : (totalColorsCount ?? 0))})
+            Boje ({useJsonColors
+              ? (loadingColors ? '...' : (colorsFromJSON.length > 0 ? colorsFromJSON.length : (totalColorsCount ?? 0)))
+              : legacyColors.length
+            })
           </button>
         </div>
       </div>
@@ -208,17 +217,26 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
           </div>
         ) : (
           <div>
-            {loadingColors ? (
-              <div className="text-center py-12">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-                <p className="mt-4 text-gray-600">Učitavam boje...</p>
-              </div>
+            {useJsonColors ? (
+              loadingColors ? (
+                <div className="text-center py-12">
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                  <p className="mt-4 text-gray-600">Učitavam boje...</p>
+                </div>
+              ) : (
+                <>
+                  <p className="text-gray-600 mb-6">
+                    {colorsFromJSON.length === 0 ? 'Nema' : colorsFromJSON.length} {colorsFromJSON.length === 1 ? 'boja' : 'boja'}
+                  </p>
+                  {renderProducts(colorsFromJSON)}
+                </>
+              )
             ) : (
               <>
                 <p className="text-gray-600 mb-6">
-                  {colorsFromJSON.length === 0 ? 'Nema' : colorsFromJSON.length} {colorsFromJSON.length === 1 ? 'boja' : 'boja'}
+                  {legacyColors.length === 0 ? 'Nema' : legacyColors.length} {legacyColors.length === 1 ? 'boja' : 'boja'}
                 </p>
-                {renderProducts(colorsFromJSON)}
+                {renderProducts(legacyColors)}
               </>
             )}
           </div>
