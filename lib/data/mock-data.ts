@@ -56,7 +56,7 @@ export const categories: Category[] = [
     name: 'Linoleum',
     slug: 'linoleum',
     description: 'Prirodni linoleum podovi - ekološki i izdržljivi',
-    image: '/images/categories/linoleum.jpg',
+    image: '/images/products/linoleum/dlw-colorette/0110-cadillac-pink/44901 - 0110 CADILLAC PINK.jpg',
     order: 7,
   },
 ];
