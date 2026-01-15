@@ -28,14 +28,39 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>('collections');
   const [colorsFromJSON, setColorsFromJSON] = useState<Product[]>([]);
   const [loadingColors, setLoadingColors] = useState(false);
+  const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
   const hasLoadedColors = useRef(false);
   const lastCategorySlug = useRef<string>('');
+
+  // Load total count from JSON on mount (without loading all colors)
+  useEffect(() => {
+    const jsonPath = categorySlug === 'linoleum' 
+      ? '/data/linoleum_colors_complete.json'
+      : '/data/lvt_colors_complete.json';
+
+    fetch(jsonPath)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Failed to fetch colors: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (data && typeof data.total === 'number') {
+          setTotalColorsCount(data.total);
+        }
+      })
+      .catch(err => {
+        console.error('Error loading colors count:', err);
+      });
+  }, [categorySlug]);
 
   // Reset loaded state when category changes
   useEffect(() => {
     if (lastCategorySlug.current !== categorySlug) {
       hasLoadedColors.current = false;
       setColorsFromJSON([]);
+      setTotalColorsCount(null);
       lastCategorySlug.current = categorySlug;
     }
   }, [categorySlug]);
@@ -167,7 +192,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            Boje ({loadingColors ? '...' : colorsFromJSON.length || 0})
+            Boje ({loadingColors ? '...' : (colorsFromJSON.length > 0 ? colorsFromJSON.length : (totalColorsCount ?? 0))})
           </button>
         </div>
       </div>
