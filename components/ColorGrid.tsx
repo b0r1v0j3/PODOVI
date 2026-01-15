@@ -111,7 +111,8 @@ export default function ColorGrid({
   const hasAutoSelected = useRef(false);
   
   // Pagination settings for compact mode
-  const itemsPerPage = compact ? 12 : 20;
+  // In compact mode, show 6 colors per page so pagination works with limit=12 (2 pages)
+  const itemsPerPage = compact ? 6 : 20;
   
   // Track selected color slug for highlighting
   const [currentSelectedSlug, setCurrentSelectedSlug] = useState<string | undefined>(selectedColorSlug || initialColorSlug);
