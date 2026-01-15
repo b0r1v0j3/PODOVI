@@ -87,11 +87,18 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
   return null;
 }
 
-function toSpecKey(label: string): string {
-  return label
+function toSpecKey(label: string, fallbackIndex?: number): string {
+  const normalized = label
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
+  if (normalized) {
+    return normalized;
+  }
+  if (typeof fallbackIndex === 'number') {
+    return `spec-${fallbackIndex}`;
+  }
+  return 'spec';
 }
 
 function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
@@ -111,10 +118,11 @@ function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
   }
 
   if (color.characteristics) {
-    for (const [label, value] of Object.entries(color.characteristics)) {
-      if (!value) continue;
-      specs.push({ key: toSpecKey(label) || `spec-${label}`, label, value });
-    }
+    const entries = Object.entries(color.characteristics);
+    entries.forEach(([label, value], index) => {
+      if (!value) return;
+      specs.push({ key: toSpecKey(label, index), label, value });
+    });
   }
 
   return specs;
