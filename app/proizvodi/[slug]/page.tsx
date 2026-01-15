@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { readFile } from 'fs/promises';
+import path from 'path';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
@@ -9,16 +11,130 @@ import EcoFeatures from '@/components/EcoFeatures';
 import ProductColorSelector from '@/components/ProductColorSelector';
 import ProductImage from '@/components/ProductImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import type { Product, ProductImage, ProductSpec } from '@/types';
 
 interface Props {
   params: { slug: string };
+}
+
+interface ColorFromJSON {
+  collection: string;
+  collection_name: string;
+  code: string;
+  name: string;
+  full_name: string;
+  slug: string;
+  image_url?: string;
+  texture_url?: string;
+  lifestyle_url?: string;
+  image_count: number;
+  welding_rod?: string;
+  dimension?: string;
+  format?: string;
+}
+
+type ColorSource = {
+  categorySlug: 'lvt' | 'linoleum';
+  color: ColorFromJSON;
+};
+
+async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
+  const candidates: Array<{ categorySlug: 'lvt' | 'linoleum'; fileName: string }> = [
+    { categorySlug: 'lvt', fileName: 'lvt_colors_complete.json' },
+    { categorySlug: 'linoleum', fileName: 'linoleum_colors_complete.json' },
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      const jsonPath = path.join(process.cwd(), 'public', 'data', candidate.fileName);
+      const raw = await readFile(jsonPath, 'utf8');
+      const data = JSON.parse(raw);
+      if (!data || !Array.isArray(data.colors)) {
+        continue;
+      }
+      const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
+      if (match) {
+        return { categorySlug: candidate.categorySlug, color: match };
+      }
+    } catch (error) {
+      console.error('Error reading color JSON:', candidate.fileName, error);
+    }
+  }
+
+  return null;
+}
+
+function colorToProduct(source: ColorSource, slug: string): Product & { collectionSlug: string } {
+  const { categorySlug, color } = source;
+  const isLVT = categorySlug === 'lvt';
+  const categoryId = isLVT ? '6' : '7';
+  const brandId = '6';
+  const name = color.full_name || `${color.code} ${color.name}`.trim();
+  const primaryImageUrl = isLVT
+    ? (color.texture_url || color.lifestyle_url || color.image_url || '')
+    : (color.texture_url || color.image_url || '');
+
+  const images: ProductImage[] = primaryImageUrl
+    ? [{
+        id: `color-img-${categorySlug}-${color.slug}`,
+        url: primaryImageUrl,
+        alt: name,
+        isPrimary: true,
+        order: 1,
+      }]
+    : [];
+
+  const specs: ProductSpec[] = [];
+  if (color.format) {
+    specs.push({ key: 'format', label: 'Format', value: color.format });
+  }
+  if (color.dimension) {
+    specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
+  }
+  if (color.welding_rod) {
+    specs.push({ key: 'welding_rod', label: 'Welding rod', value: color.welding_rod });
+  }
+
+  return {
+    id: `color-${categorySlug}-${color.slug}`,
+    name,
+    slug,
+    sku: color.code,
+    categoryId,
+    brandId,
+    shortDescription: `${color.collection_name} - ${color.name}`,
+    description: `${name} iz kolekcije ${color.collection_name}`,
+    images,
+    specs,
+    price: undefined,
+    priceUnit: undefined,
+    inStock: true,
+    featured: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    collectionSlug: color.collection,
+  };
+}
+
+async function resolveProductBySlug(slug: string): Promise<(Product & { collectionSlug?: string }) | null> {
+  const product = await productRepository.findBySlug(slug);
+  if (product) {
+    return product;
+  }
+
+  const colorSource = await loadColorFromJson(slug);
+  if (colorSource) {
+    return colorToProduct(colorSource, slug);
+  }
+
+  return null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
   
   try {
-    const product = await productRepository.findBySlug(params.slug);
+    const product = await resolveProductBySlug(params.slug);
     
     if (!product) {
       return {
@@ -101,7 +217,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   try {
-    const product = await productRepository.findBySlug(params.slug);
+    const product = await resolveProductBySlug(params.slug);
     
     if (!product) {
       notFound();
@@ -198,7 +314,7 @@ export default async function ProductPage({ params }: Props) {
           // LVT and Linoleum products with color selector
           <ProductColorSelector
             initialImage={primaryImage}
-            collectionSlug={product.slug}
+            collectionSlug={(product as { collectionSlug?: string }).collectionSlug || product.slug}
             productName={product.name}
             productPrice={product.price}
             priceUnit={product.priceUnit}
