@@ -204,6 +204,13 @@ export default function ColorGrid({
       });
   }, [collectionSlug]);
 
+  const filteredColors = useMemo(() => {
+    return colors.filter(color =>
+      (color.full_name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (color.code || '').includes(searchTerm)
+    );
+  }, [colors, searchTerm]);
+
   useEffect(() => {
     if (!initialColorSlug || !onColorSelect || hasAutoSelected.current || colors.length === 0) {
       return;
@@ -222,13 +229,6 @@ export default function ColorGrid({
       }
     }
   }, [colors, initialColorSlug, onColorSelect, compact, limit, filteredColors, itemsPerPage]);
-
-  const filteredColors = useMemo(() => {
-    return colors.filter(color =>
-      (color.full_name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (color.code || '').includes(searchTerm)
-    );
-  }, [colors, searchTerm]);
 
   // Reset page when search term changes
   useEffect(() => {
