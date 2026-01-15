@@ -111,7 +111,7 @@ export default function ColorGrid({
   const hasAutoSelected = useRef(false);
   
   // Pagination settings for compact mode
-  // In compact mode, show 6 colors per page so pagination works with limit=12 (2 pages)
+  // In compact mode, show 6 colors per page (2 rows x 3 columns)
   const itemsPerPage = compact ? 6 : 20;
   
   // Track selected color slug for highlighting
@@ -245,45 +245,39 @@ export default function ColorGrid({
       handleColorClick(colorToSelect);
       
       // If in compact mode with pagination, navigate to the page containing this color
-      if (compact && limit) {
+      if (compact) {
         const index = filteredColors.findIndex(c => c.slug === colorToSelect.slug);
         if (index >= 0) {
           setCurrentPage(Math.floor(index / itemsPerPage));
         }
       }
     }
-  }, [colors, initialColorSlug, onColorSelect, compact, limit, filteredColors, itemsPerPage]);
+  }, [colors, initialColorSlug, onColorSelect, compact, filteredColors, itemsPerPage]);
 
   // Reset page when search term changes
   useEffect(() => {
     setCurrentPage(0);
   }, [searchTerm]);
 
-  const visibleColors = useMemo(() => {
-    if (typeof limit === 'number' && limit > 0) {
-      return filteredColors.slice(0, limit);
-    }
-    return filteredColors;
-  }, [filteredColors, limit]);
-
-  // Pagination for compact mode - calculate pages from visibleColors
+  // Pagination for compact mode - use ALL filteredColors, not limited
   const totalPages = useMemo(() => {
-    if (!compact || !limit) {
+    if (!compact) {
       return 1;
     }
-    // Calculate pages based on visibleColors (already limited)
-    const pages = Math.ceil(visibleColors.length / itemsPerPage);
+    // Calculate pages based on ALL filteredColors (not limited)
+    const pages = Math.ceil(filteredColors.length / itemsPerPage);
     return pages > 1 ? pages : 1;
-  }, [visibleColors.length, itemsPerPage, compact, limit]);
+  }, [filteredColors.length, itemsPerPage, compact]);
 
-  // Pagination for compact mode
+  // Pagination for compact mode - show all colors with pagination
   const paginatedColors = useMemo(() => {
-    if (!compact || !limit || totalPages <= 1) {
-      return visibleColors;
+    if (!compact || totalPages <= 1) {
+      // If not compact or no pagination needed, return filteredColors (all colors)
+      return filteredColors;
     }
     const startIndex = currentPage * itemsPerPage;
-    return visibleColors.slice(startIndex, startIndex + itemsPerPage);
-  }, [visibleColors, currentPage, itemsPerPage, compact, limit, totalPages]);
+    return filteredColors.slice(startIndex, startIndex + itemsPerPage);
+  }, [filteredColors, currentPage, itemsPerPage, compact, totalPages]);
 
   const goToPage = (page: number) => {
     if (page >= 0 && page < totalPages) {
@@ -338,10 +332,50 @@ export default function ColorGrid({
         </div>
       )}
 
+      {/* Grid */}
+      <div className={`grid ${compact ? 'grid-cols-3 gap-4 mb-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3'}`}>
+        {paginatedColors.map((color) => {
+          const isSelected = currentSelectedSlug === color.slug;
+          return (
+          <button
+            key={color.slug}
+            onClick={() => handleColorClick(color)}
+            className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+              isSelected 
+                ? 'border-red-500 shadow-lg ring-2 ring-red-200' 
+                : 'border-gray-200 hover:border-primary-500'
+            }`}
+          >
+            {/* Image */}
+            <div className="aspect-square relative overflow-hidden bg-gray-100">
+              {(color.texture_url || color.image_url) ? (
+                <ImageWithFallback
+                  src={color.texture_url || color.image_url || ''}
+                  alt={color.full_name}
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
+                  quality={100}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">Bez slike</div>
+              )}
+            </div>
 
-      {/* Pagination Controls - only for compact mode with limit */}
-      {compact && limit && totalPages > 1 && (
-        <div className="flex flex-col items-center gap-2 mb-4">
+            {/* Info - only show if not compact */}
+            {!compact && (
+              <div className="p-3">
+                <p className="font-semibold text-gray-900 text-sm truncate">{color.code}</p>
+                <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
+              </div>
+            )}
+          </button>
+          );
+        })}
+      </div>
+
+      {/* Pagination Controls - below grid for compact mode */}
+      {compact && totalPages > 1 && (
+        <div className="flex flex-col items-center gap-2 mt-4">
           {/* Arrows */}
           <div className="flex items-center gap-4">
             <button
@@ -384,47 +418,6 @@ export default function ColorGrid({
           </div>
         </div>
       )}
-
-      {/* Grid */}
-      <div className={`grid gap-3 ${compact ? 'grid-cols-4 md:grid-cols-5 lg:grid-cols-6' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
-        {paginatedColors.map((color) => {
-          const isSelected = currentSelectedSlug === color.slug;
-          return (
-          <button
-            key={color.slug}
-            onClick={() => handleColorClick(color)}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-              isSelected 
-                ? 'border-red-500 shadow-lg ring-2 ring-red-200' 
-                : 'border-gray-200 hover:border-primary-500'
-            }`}
-          >
-            {/* Image */}
-            <div className="aspect-square relative overflow-hidden bg-gray-100">
-              {(color.texture_url || color.image_url) ? (
-                <ImageWithFallback
-                  src={color.texture_url || color.image_url || ''}
-                  alt={color.full_name}
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
-                  quality={100}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">Bez slike</div>
-              )}
-            </div>
-
-            {/* Info - only show if not compact */}
-            {!compact && (
-              <div className="p-3">
-                <p className="font-semibold text-gray-900 text-sm truncate">{color.code}</p>
-                <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
-              </div>
-            )}
-          </button>
-          );
-        })}
-      </div>
 
       {filteredColors.length === 0 && (
         <div className="text-center py-12">
