@@ -217,7 +217,7 @@ export const linoleumProducts: Product[] = [
     brandId: '6',    // Gerflor brand
     shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
     description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
-    images: [{ id: '106-1', url: '/images/products/linoleum/dlw-marmorette-2-mm.jpg', alt: 'DLW MARMORETTE 2 MM', isPrimary: true, order: 1 }],
+    images: [{ id: '106-1', url: '/images/products/linoleum/dlw-marmorette-2mm.jpg', alt: 'DLW MARMORETTE 2 MM', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
       { key: 'thickness', label: 'Ukupna debljina', value: '2.00 mm' },
@@ -258,7 +258,7 @@ export const linoleumProducts: Product[] = [
     brandId: '6',    // Gerflor brand
     shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
     description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
-    images: [{ id: '107-1', url: '/images/products/linoleum/dlw-marmorette-25-mm.jpg', alt: 'DLW MARMORETTE 2.5 MM', isPrimary: true, order: 1 }],
+    images: [{ id: '107-1', url: '/images/products/linoleum/dlw-marmorette-2.5mm.jpg', alt: 'DLW MARMORETTE 2.5 MM', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
       { key: 'thickness', label: 'Ukupna debljina', value: '2.50 mm' },
@@ -299,7 +299,7 @@ export const linoleumProducts: Product[] = [
     brandId: '6',    // Gerflor brand
     shortDescription: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
     description: 'Visokoperformansno podno rešenje sa poznatim mermernim dizajnom',
-    images: [{ id: '108-1', url: '/images/products/linoleum/dlw-marmorette-32-mm.jpg', alt: 'DLW MARMORETTE 3.2 MM', isPrimary: true, order: 1 }],
+    images: [{ id: '108-1', url: '/images/products/linoleum/dlw-marmorette-3.2mm.jpg', alt: 'DLW MARMORETTE 3.2 MM', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
       { key: 'thickness', label: 'Ukupna debljina', value: '3.20 mm' },
@@ -381,7 +381,7 @@ export const linoleumProducts: Product[] = [
     brandId: '6',    // Gerflor brand
     shortDescription: 'Visokoperformansno podno rešenje sa zvučnom izolacijom od 19 dB',
     description: 'Visokoperformansno podno rešenje sa zvučnom izolacijom od 19 dB',
-    images: [{ id: '110-1', url: '/images/products/linoleum/dlw-marmorette-acousticplus.jpg', alt: 'DLW MARMORETTE ACOUSTICPLUS', isPrimary: true, order: 1 }],
+    images: [{ id: '110-1', url: '/images/products/linoleum/dlw-marmorette-acoustic-plus.jpg', alt: 'DLW MARMORETTE ACOUSTICPLUS', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Roll' },
       { key: 'thickness', label: 'Ukupna debljina', value: '4.00 mm' },
