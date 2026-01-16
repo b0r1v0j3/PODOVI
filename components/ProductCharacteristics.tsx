@@ -112,11 +112,11 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">Karakteristike</h2>
-      <dl className="space-y-3">
+      <dl className="space-y-4">
         {finalSpecs.map((spec, index) => (
-          <div key={`${spec.label}-${index}`} className="border-b border-gray-200 pb-3 last:border-0">
+          <div key={`${spec.label}-${index}`} className="border-b border-gray-200 pb-4 last:border-0">
             <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
-            <dd className="text-base font-semibold text-gray-900">{spec.value}</dd>
+            <dd className="text-lg font-semibold text-gray-900">{spec.value}</dd>
           </div>
         ))}
       </dl>

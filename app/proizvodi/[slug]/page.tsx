@@ -141,6 +141,62 @@ function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSpec[] {
   return Array.from(merged.values());
 }
 
+function parseDescriptionToSections(description: string): ProductDetailsSection[] {
+  if (!description || typeof description !== 'string') {
+    return [];
+  }
+
+  const sections: ProductDetailsSection[] = [];
+  const lines = description.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+  
+  let currentSection: ProductDetailsSection | null = null;
+  
+  // Section titles to look for (case insensitive)
+  const sectionTitles = [
+    'Design & Product',
+    'Product & Design',
+    'Installation & Maintenance',
+    'Market Application',
+    'Sustainability',
+    'Sustainability & Comfort',
+    'Technical',
+    'Environmental'
+  ];
+  
+  for (const line of lines) {
+    // Check if this line is a section title
+    const isSectionTitle = sectionTitles.some(title => 
+      line.toLowerCase() === title.toLowerCase() || 
+      line.toLowerCase().startsWith(title.toLowerCase() + ' &') ||
+      line.toLowerCase().startsWith(title.toLowerCase() + ' and')
+    );
+    
+    if (isSectionTitle) {
+      // Save previous section if exists
+      if (currentSection && currentSection.items.length > 0) {
+        sections.push(currentSection);
+      }
+      // Start new section
+      currentSection = {
+        title: line,
+        items: []
+      };
+    } else if (currentSection) {
+      // Add as bullet point to current section
+      if (line.length > 0) {
+        currentSection.items.push(line);
+      }
+    }
+  }
+  
+  // Add last section if exists
+  if (currentSection && currentSection.items.length > 0) {
+    sections.push(currentSection);
+  }
+  
+  return sections;
+}
+
 function colorToProduct(source: ColorSource, slug: string, collectionSlugOverride?: string): Product & { collectionSlug: string } {
   const { categorySlug, color } = source;
   const isLVT = categorySlug === 'lvt';
@@ -444,28 +500,48 @@ export default async function ProductPage({ params, searchParams }: Props) {
               {/* Description */}
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
-                {product.description && (
-                  <div className="prose prose-lg max-w-none text-gray-700 mb-6">
-                    <p className="whitespace-pre-line">{product.description}</p>
-                  </div>
-                )}
-
-                {product.detailsSections && product.detailsSections.length > 0 && (
-                  <div className="space-y-4">
-                    {product.detailsSections.map((section) => (
-                      <div key={section.title} className="border border-gray-200 rounded-xl p-4">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
-                        {section.items && section.items.length > 0 && (
-                          <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                            {section.items.map((item, index) => (
-                              <li key={`${section.title}-${index}`} className="text-sm">{item}</li>
-                            ))}
-                          </ul>
-                        )}
+                
+                {/* Parse description into sections */}
+                {(() => {
+                  const descriptionSections = product.description 
+                    ? parseDescriptionToSections(product.description)
+                    : [];
+                  
+                  // Use parsed sections if available, otherwise use product.detailsSections
+                  const sectionsToDisplay = descriptionSections.length > 0 
+                    ? descriptionSections 
+                    : (product.detailsSections || []);
+                  
+                  if (sectionsToDisplay.length > 0) {
+                    return (
+                      <div className="space-y-6">
+                        {sectionsToDisplay.map((section, idx) => (
+                          <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+                            {section.items && section.items.length > 0 && (
+                              <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                                {section.items.map((item, index) => (
+                                  <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                )}
+                    );
+                  }
+                  
+                  // Fallback: show description as plain text if no sections found
+                  if (product.description) {
+                    return (
+                      <div className="prose prose-lg max-w-none text-gray-700">
+                        <p className="whitespace-pre-line">{product.description}</p>
+                      </div>
+                    );
+                  }
+                  
+                  return null;
+                })()}
               </div>
               
               {/* Characteristics */}
