@@ -151,17 +151,25 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
   
   let currentSection: ProductDetailsSection | null = null;
   
-  // Section titles to look for (case insensitive, with variations)
+  // Section titles to look for (case insensitive, with variations) - both English and Serbian
   const sectionTitles = [
     'Design & Product',
     'Product & Design',
+    'Dizajn i proizvod',
     'Installation & Maintenance',
+    'Ugradnja i održavanje',
     'Market Application',
+    'Primena',
     'Sustainability',
     'Sustainability & Comfort',
+    'Održivost',
+    'Održivost i komfor',
     'Technical',
     'Technical and environmental',
-    'Environmental'
+    'Tehničke karakteristike',
+    'Tehničke i ekološke specifikacije',
+    'Environmental',
+    'Ekološke karakteristike'
   ];
   
   for (let i = 0; i < lines.length; i++) {
