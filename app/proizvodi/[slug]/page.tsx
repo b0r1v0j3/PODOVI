@@ -202,11 +202,21 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
       // Exact match
       if (lineLower === titleLower) return true;
       
-      // Starts with title (for variations)
-      if (lineLower.startsWith(titleLower)) return true;
+      // Match if line starts with title and either:
+      // 1. Ends with colon (":") - e.g., "Proizvod:", "Ugradnja:"
+      // 2. Is followed by colon in the original line - e.g., "Product :"
+      // 3. Line is short (< 30 chars) and starts with title - for single word sections
+      if (lineLower.startsWith(titleLower)) {
+        // Check if it ends with colon or is short single-word section
+        if (line.endsWith(':') || line.endsWith(' :') || (line.length < 30 && !line.includes(' '))) {
+          return true;
+        }
+      }
       
       // Contains title (for variations like "Technical and environmental")
-      if (lineLower.includes(titleLower) && line.length < 60) return true;
+      if (lineLower.includes(titleLower) && line.length < 60 && (line.endsWith(':') || line.endsWith(' :'))) {
+        return true;
+      }
       
       return false;
     });
