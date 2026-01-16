@@ -146,6 +146,9 @@ def process_collection_file(colors_file_path, colors_complete_path, collection_t
     """Process one collection file and update colors_complete.json"""
     print(f"\n📦 Obrađujem: {colors_file_path.name}")
     
+    # Extract collection slug from filename (e.g., "creation-70-megaclic_colors.json" -> "creation-70-megaclic")
+    collection_slug_from_file = colors_file_path.stem.replace('_colors', '')
+    
     # Load extracted colors data
     with open(colors_file_path, 'r', encoding='utf-8') as f:
         extracted_data = json.load(f)
@@ -165,12 +168,62 @@ def process_collection_file(colors_file_path, colors_complete_path, collection_t
     extracted_colors = extracted_data.get('colors', [])
     print(f"  📊 Ekstraktovano boja: {len(extracted_colors)}")
     
+    # Build index by code for faster lookup
+    colors_by_code = {}
+    for color in colors:
+        code = color.get('code')
+        if code:
+            if code not in colors_by_code:
+                colors_by_code[code] = []
+            colors_by_code[code].append(color)
+    
     for extracted_color in extracted_colors:
         color_slug = extracted_color.get('slug', '')
         color_url = extracted_color.get('url', '')
         
-        # Find matching color in colors_complete.json
-        color = find_color_in_colors(colors, color_slug, color_url)
+        # First try to find by code (most reliable)
+        color = None
+        code_match = re.search(r'(\d{4})', color_slug)
+        if code_match:
+            target_code = code_match.group(1)
+            candidates = colors_by_code.get(target_code, [])
+            
+            if len(candidates) == 1:
+                color = candidates[0]
+            elif len(candidates) > 1:
+                # Multiple matches - try to find by collection
+                # First try exact collection match
+                for candidate in candidates:
+                    candidate_collection = candidate.get('collection', '')
+                    if candidate_collection == collection_slug_from_file:
+                        color = candidate
+                        break
+                
+                # If no exact match, try normalized match
+                if not color:
+                    normalized_collection = collection_slug_from_file.replace('-megaclic', '').replace('-clic', '').replace('-looselay', '').replace('-zen', '').replace('-new-collection', '').replace('-acoustic', '')
+                    for candidate in candidates:
+                        candidate_collection = candidate.get('collection', '')
+                        normalized_candidate = candidate_collection.replace('-megaclic', '').replace('-clic', '').replace('-looselay', '').replace('-zen', '').replace('-new-collection', '').replace('-acoustic', '')
+                        if normalized_candidate == normalized_collection:
+                            color = candidate
+                            break
+                
+                # If still no match, try partial match
+                if not color:
+                    for candidate in candidates:
+                        candidate_collection = candidate.get('collection', '')
+                        if collection_slug_from_file in candidate_collection or candidate_collection in collection_slug_from_file:
+                            color = candidate
+                            break
+                
+                # If still no match, use first candidate (better than nothing)
+                if not color:
+                    color = candidates[0]
+        
+        # If not found by code, try other methods
+        if not color:
+            color = find_color_in_colors(colors, color_slug, color_url)
         
         if color:
             if update_color_data(color, extracted_color):
