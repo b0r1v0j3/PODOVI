@@ -16,18 +16,17 @@ def extract_color_slug_from_full_slug(full_slug):
     Izvlači color slug iz punog slug-a
     E.g., "creation-40-clic-acoustic-new-collection-0347-ballerina-61300347" -> "ballerina-61300347"
     """
-    # Try to match pattern: code-name-number
-    match = re.search(r'(\d{4})-([\w-]+?-\d+)$', full_slug)
-    if match:
-        code = match.group(1)
-        rest = match.group(2)
-        # Extract name and final number
-        parts = rest.split('-')
-        if len(parts) >= 2:
-            # Last part is number, everything before is name
-            name = '-'.join(parts[:-1])
-            final_num = parts[-1]
-            return f"{name}-{final_num}"
+    # Pattern: ...code-name-finalnumber
+    # E.g., creation-40-clic-acoustic-new-collection-0347-ballerina-61300347
+    #       -> ballerina-61300347
+    
+    # Find the 4-digit code, then extract everything after it
+    code_match = re.search(r'-(\d{4})-([\w-]+?-\d+)$', full_slug)
+    if code_match:
+        # Everything after the code
+        after_code = code_match.group(2)
+        # This should be "ballerina-61300347" format
+        return after_code
     
     return None
 
@@ -78,32 +77,42 @@ def main():
             if not color:
                 continue
             
-            # Update dimension if available in specs
+            # Update dimension if available in specs (UVEK ažurira)
             if 'DIMENSION' in specs:
                 dimension = specs['DIMENSION'].strip()
-                if dimension and not color.get('dimension'):
-                    color['dimension'] = dimension
-                    updated += 1
+                if dimension:
+                    old_dim = color.get('dimension')
+                    if old_dim != dimension:
+                        color['dimension'] = dimension
+                        updated += 1
             elif 'WIDTH' in specs and 'LENGTH' in specs:
                 width = specs['WIDTH'].strip()
                 length = specs['LENGTH'].strip()
-                if width and length and not color.get('dimension'):
-                    color['dimension'] = f"{width} X {length}"
-                    updated += 1
+                if width and length:
+                    new_dimension = f"{width} X {length}"
+                    old_dim = color.get('dimension')
+                    if old_dim != new_dimension:
+                        color['dimension'] = new_dimension
+                        updated += 1
             
-            # Update format
+            # Update format (UVEK ažurira)
             if 'FORMAT' in specs or 'FORMATS' in specs:
                 format_val = specs.get('FORMAT') or specs.get('FORMATS', '')
-                if format_val and not color.get('format'):
-                    color['format'] = format_val.strip()
-                    updated += 1
+                if format_val:
+                    format_val = format_val.strip()
+                    old_format = color.get('format')
+                    if old_format != format_val:
+                        color['format'] = format_val
+                        updated += 1
             
-            # Update thickness
+            # Update thickness (UVEK ažurira)
             if 'OVERALL THICKNESS' in specs:
                 thickness = specs['OVERALL THICKNESS'].strip()
-                if thickness and not color.get('overall_thickness'):
-                    color['overall_thickness'] = thickness
-                    updated += 1
+                if thickness:
+                    old_thickness = color.get('overall_thickness')
+                    if old_thickness != thickness:
+                        color['overall_thickness'] = thickness
+                        updated += 1
         
         if updated > 0:
             print(f"  {file.name}: +{updated}")
