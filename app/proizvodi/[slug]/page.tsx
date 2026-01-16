@@ -37,6 +37,7 @@ interface ColorFromJSON {
   format?: string;
   overall_thickness?: string;
   characteristics?: Record<string, string>;
+  description?: string;
 }
 
 type ColorSource = {
