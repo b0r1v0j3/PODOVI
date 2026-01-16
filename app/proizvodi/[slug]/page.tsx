@@ -151,7 +151,7 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
   
   let currentSection: ProductDetailsSection | null = null;
   
-  // Section titles to look for (case insensitive)
+  // Section titles to look for (case insensitive, with variations)
   const sectionTitles = [
     'Design & Product',
     'Product & Design',
@@ -160,16 +160,29 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
     'Sustainability',
     'Sustainability & Comfort',
     'Technical',
+    'Technical and environmental',
     'Environmental'
   ];
   
-  for (const line of lines) {
-    // Check if this line is a section title
-    const isSectionTitle = sectionTitles.some(title => 
-      line.toLowerCase() === title.toLowerCase() || 
-      line.toLowerCase().startsWith(title.toLowerCase() + ' &') ||
-      line.toLowerCase().startsWith(title.toLowerCase() + ' and')
-    );
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    
+    // Check if this line is a section title (more flexible matching)
+    const isSectionTitle = sectionTitles.some(title => {
+      const titleLower = title.toLowerCase();
+      const lineLower = line.toLowerCase();
+      
+      // Exact match
+      if (lineLower === titleLower) return true;
+      
+      // Starts with title (for variations)
+      if (lineLower.startsWith(titleLower)) return true;
+      
+      // Contains title (for variations like "Technical and environmental")
+      if (lineLower.includes(titleLower) && line.length < 60) return true;
+      
+      return false;
+    });
     
     if (isSectionTitle) {
       // Save previous section if exists
@@ -183,10 +196,12 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
       };
     } else if (currentSection) {
       // Add as bullet point to current section
-      if (line.length > 0) {
+      // Skip very short lines that might be just separators or empty
+      if (line.length > 3 && !line.match(/^[-=]+$/)) {
         currentSection.items.push(line);
       }
     }
+    // If we're before any section, skip intro lines (they're not part of structured sections)
   }
   
   // Add last section if exists
