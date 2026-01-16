@@ -57,7 +57,7 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
         colorCharacteristics['Ukupna debljina'] = color.overall_thickness;
       }
       if (color.welding_rod) {
-        colorCharacteristics['Šifra šipke za varenje'] = color.welding_rod;
+        colorCharacteristics['Elektroda za varenje'] = color.welding_rod;
       }
       
       if (Object.keys(colorCharacteristics).length > 0) {

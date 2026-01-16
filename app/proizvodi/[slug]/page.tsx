@@ -116,7 +116,7 @@ function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
     specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
   }
   if (color.welding_rod) {
-    specs.push({ key: 'welding_rod', label: 'Šifra šipke za varenje', value: color.welding_rod });
+    specs.push({ key: 'welding_rod', label: 'Elektroda za varenje', value: color.welding_rod });
   }
 
   if (color.characteristics) {
