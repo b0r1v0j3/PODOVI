@@ -39,12 +39,33 @@ def setup_driver():
     return driver
 
 def accept_cookies(driver):
-    """Accept cookies if present"""
+    """Accept cookies if present - improved version"""
     try:
-        cookie_button = driver.find_element(By.ID, "tarteaucitronPersonalize2")
-        if cookie_button.is_displayed():
-            cookie_button.click()
-            time.sleep(1)
+        # Wait a bit for cookie popup to appear
+        time.sleep(2)
+        
+        # Try multiple ways to accept cookies
+        cookie_selectors = [
+            (By.ID, "tarteaucitronPersonalize2"),
+            (By.XPATH, "//button[contains(text(), 'Accept All')]"),
+            (By.XPATH, "//button[contains(text(), 'Accept')]"),
+            (By.XPATH, "//button[contains(text(), 'I accept')]"),
+            (By.XPATH, "//button[contains(@class, 'accept')]"),
+            (By.XPATH, "//a[contains(text(), 'Accept All')]"),
+        ]
+        
+        for selector_type, selector_value in cookie_selectors:
+            try:
+                cookie_button = WebDriverWait(driver, 3).until(
+                    EC.element_to_be_clickable((selector_type, selector_value))
+                )
+                if cookie_button.is_displayed():
+                    driver.execute_script("arguments[0].click();", cookie_button)
+                    time.sleep(1)
+                    print("      ✓ Cookies prihvaćeni")
+                    return
+            except:
+                continue
     except:
         pass
 
@@ -210,14 +231,16 @@ def extract_description(driver):
     return description
 
 def extract_characteristics(driver):
-    """Extract characteristics by clicking on 'Characteristics' dropdown"""
+    """Extract characteristics by clicking on 'Characteristics' dropdown - improved scrolling"""
     specs = {}
     
     try:
+        # First, scroll to top to ensure we can find elements
+        driver.execute_script("window.scrollTo(0, 0);")
+        time.sleep(0.5)
+        
         # Find "Technical and environmental specifications" section first
-        # Then find "Characteristics" within it
         try:
-            # Try to find the section header
             section_header = WebDriverWait(driver, 5).until(
                 EC.presence_of_element_located((By.XPATH,
                     "//*[contains(text(), 'Technical and environmental specifications')] | "
@@ -225,42 +248,53 @@ def extract_characteristics(driver):
                     "//*[contains(text(), 'Specifications')]"
                 ))
             )
-            driver.execute_script("arguments[0].scrollIntoView(true);", section_header)
-            time.sleep(0.5)
+            # Scroll to section with offset to ensure it's fully visible
+            driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", section_header)
+            time.sleep(1)
         except:
-            pass
+            # If section not found, try to scroll down gradually
+            driver.execute_script("window.scrollTo(0, 500);")
+            time.sleep(0.5)
         
         # Find and click "Characteristics" dropdown/button
-        # It's usually a clickable element with a chevron/arrow
         try:
-            # Look for Characteristics with arrow/chevron (collapsed state)
-            char_button = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, 
-                    "//*[contains(text(), 'Characteristics')]/ancestor::button[1] | "
-                    "//*[contains(text(), 'Characteristics')]/ancestor::div[contains(@class, 'accordion')][1] | "
-                    "//*[contains(text(), 'Characteristics')]/ancestor::div[contains(@class, 'collapsible')][1] | "
-                    "//button[.//*[contains(text(), 'Characteristics')]] | "
-                    "//div[contains(@class, 'accordion')]//*[contains(text(), 'Characteristics')] | "
-                    "//*[contains(text(), 'Characteristics')]/preceding-sibling::*[contains(@class, 'chevron') or contains(@class, 'arrow')]/.. | "
-                    "//*[contains(text(), 'Characteristics')]/parent::*[contains(@class, 'header') or contains(@class, 'title')]"
+            # Look for Characteristics text first
+            char_text = WebDriverWait(driver, 5).until(
+                EC.presence_of_element_located((By.XPATH, 
+                    "//*[contains(text(), 'Characteristics')]"
                 ))
             )
-            driver.execute_script("arguments[0].scrollIntoView(true);", char_button)
+            
+            # Scroll to Characteristics with center alignment
+            driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", char_text)
             time.sleep(0.5)
             
-            # Click to expand
-            driver.execute_script("arguments[0].click();", char_button)
-            time.sleep(1.5)  # Wait for dropdown to expand
+            # Find clickable parent (button or div with click handler)
+            char_button = None
+            try:
+                # Try to find button ancestor
+                char_button = char_text.find_element(By.XPATH, 
+                    "./ancestor::button[1] | "
+                    "./ancestor::div[contains(@class, 'accordion')][1] | "
+                    "./ancestor::div[contains(@class, 'collapsible')][1] | "
+                    "./ancestor::div[contains(@class, 'header')][1] | "
+                    "./parent::*[contains(@class, 'header') or contains(@class, 'title')] | "
+                    "./.."
+                )
+            except:
+                char_button = char_text
+            
+            if char_button:
+                # Scroll again to ensure button is visible
+                driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", char_button)
+                time.sleep(0.5)
+                
+                # Click to expand
+                driver.execute_script("arguments[0].click();", char_button)
+                time.sleep(2)  # Wait longer for dropdown to expand
         except Exception as e:
             print(f"      ⚠️  Nije pronađen Characteristics button: {e}")
-            # Try alternative: just look for the text and click parent
-            try:
-                char_text = driver.find_element(By.XPATH, "//*[contains(text(), 'Characteristics')]")
-                parent = char_text.find_element(By.XPATH, "./..")
-                driver.execute_script("arguments[0].click();", parent)
-                time.sleep(1.5)
-            except:
-                return specs
+            return specs
         
         # Extract all key-value pairs from Characteristics section
         try:
