@@ -162,6 +162,11 @@ function colorToProduct(source: ColorSource, slug: string, collectionSlugOverrid
 
   const specs = buildSpecsFromColor(color);
 
+  // Use description from JSON if available, otherwise generate default
+  const description = (color.description && typeof color.description === 'string' && color.description.trim())
+    ? color.description.trim()
+    : `${name} iz kolekcije ${color.collection_name}`;
+
   return {
     id: `color-${categorySlug}-${color.slug}`,
     name,
@@ -170,7 +175,7 @@ function colorToProduct(source: ColorSource, slug: string, collectionSlugOverrid
     categoryId,
     brandId,
     shortDescription: `${color.collection_name} - ${color.name}`,
-    description: `${name} iz kolekcije ${color.collection_name}`,
+    description,
     images,
     specs,
     price: undefined,
