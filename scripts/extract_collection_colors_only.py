@@ -39,36 +39,53 @@ def setup_driver():
     return driver
 
 def accept_cookies(driver):
-    """Accept cookies if present - improved version"""
+    """Accept cookies if present - improved version with multiple strategies"""
     try:
         # Wait a bit for cookie popup to appear
         time.sleep(2)
         
-        # First try to find "Accept All" button (most common)
+        # Strategy 1: Find by exact text "Accept All" (case insensitive)
         try:
             accept_all_btn = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.XPATH, 
-                    "//button[contains(text(), 'Accept All')] | "
-                    "//button[normalize-space(text())='Accept All'] | "
-                    "//button[contains(., 'Accept All')]"
+                    "//button[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')='accept all'] | "
+                    "//button[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'accept all')] | "
+                    "//button[normalize-space(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))='accept all']"
                 ))
             )
             if accept_all_btn.is_displayed():
-                driver.execute_script("arguments[0].scrollIntoView(true);", accept_all_btn)
-                time.sleep(0.3)
+                # Scroll to center of viewport
+                driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", accept_all_btn)
+                time.sleep(0.5)
+                # Click using JavaScript (more reliable)
                 driver.execute_script("arguments[0].click();", accept_all_btn)
-                time.sleep(1)
+                time.sleep(1.5)
                 print("      ✓ Cookies prihvaćeni (Accept All)")
                 return
-        except:
-            pass
+        except Exception as e:
+            print(f"      ⚠️  Strategy 1 failed: {e}")
         
-        # Fallback: Try other selectors
+        # Strategy 2: Find all buttons and check text
+        try:
+            all_buttons = driver.find_elements(By.TAG_NAME, "button")
+            for btn in all_buttons:
+                if btn.is_displayed():
+                    btn_text = btn.text.strip().lower()
+                    if 'accept all' in btn_text or btn_text == 'accept all':
+                        driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", btn)
+                        time.sleep(0.5)
+                        driver.execute_script("arguments[0].click();", btn)
+                        time.sleep(1.5)
+                        print("      ✓ Cookies prihvaćeni (Accept All - Strategy 2)")
+                        return
+        except Exception as e:
+            print(f"      ⚠️  Strategy 2 failed: {e}")
+        
+        # Strategy 3: Find by ID or class
         cookie_selectors = [
             (By.ID, "tarteaucitronPersonalize2"),
-            (By.XPATH, "//button[contains(text(), 'Accept')]"),
-            (By.XPATH, "//button[contains(text(), 'I accept')]"),
             (By.XPATH, "//button[contains(@class, 'accept')]"),
+            (By.XPATH, "//button[contains(@id, 'accept')]"),
             (By.XPATH, "//a[contains(text(), 'Accept All')]"),
         ]
         
@@ -78,16 +95,18 @@ def accept_cookies(driver):
                     EC.element_to_be_clickable((selector_type, selector_value))
                 )
                 if cookie_button.is_displayed():
-                    driver.execute_script("arguments[0].scrollIntoView(true);", cookie_button)
-                    time.sleep(0.3)
+                    driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", cookie_button)
+                    time.sleep(0.5)
                     driver.execute_script("arguments[0].click();", cookie_button)
-                    time.sleep(1)
-                    print("      ✓ Cookies prihvaćeni")
+                    time.sleep(1.5)
+                    print("      ✓ Cookies prihvaćeni (Fallback)")
                     return
             except:
                 continue
-    except:
-        pass
+        
+        print("      ⚠️  Nije pronađeno Accept All dugme")
+    except Exception as e:
+        print(f"      ⚠️  Greška pri prihvatanju cookies: {e}")
 
 def get_all_colors_from_collection(driver, collection_url):
     """Get all color URLs from a collection page"""
