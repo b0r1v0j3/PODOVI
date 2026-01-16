@@ -12,6 +12,20 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding='utf-8')
 
+# Mapping from complete JSON collection slug to extracted file slug
+COLLECTION_MAPPING = {
+    'creation-30': 'creation-30-new-collection',
+    'creation-40': 'creation-40-new-collection',
+    'creation-40-clic': 'creation-40-clic-new-collection',
+    'creation-40-clic-acoustic': 'creation-40-clic-acoustic-new-collection',
+    'creation-55': 'creation-55-new-collection',
+    'creation-55-clic': 'creation-55-clic-new-collection',
+    'creation-55-clic-acoustic': 'creation-55-clic-acoustic-new-collection',
+    'creation-70': 'creation-70-new-collection',
+    'creation-70-clic': 'creation-70-clic-5mm-new-collection',
+    'creation-70-looselay': 'new-2025-creation-70-looselay',
+}
+
 def normalize_color_slug(slug):
     """Normalize color slug to match format in colors_complete.json"""
     # Remove collection prefix
@@ -142,12 +156,19 @@ def update_color_data(color, extracted_data):
     
     return updated
 
-def process_collection_file(colors_file_path, colors_complete_path, collection_type):
-    """Process one collection file and update colors_complete.json"""
+def process_collection_file(colors_file_path, colors_complete_path, collection_type, specific_collection=None):
+    """Process one collection file and update colors_complete.json
+    
+    Args:
+        specific_collection: If provided, only update colors from this collection slug (in complete JSON)
+    """
     print(f"\n📦 Obrađujem: {colors_file_path.name}")
     
     # Extract collection slug from filename (e.g., "creation-70-megaclic_colors.json" -> "creation-70-megaclic")
     collection_slug_from_file = colors_file_path.stem.replace('_colors', '')
+    
+    # If specific_collection is provided, use it for filtering
+    target_collection = specific_collection if specific_collection else collection_slug_from_file
     
     # Load extracted colors data
     with open(colors_file_path, 'r', encoding='utf-8') as f:
@@ -169,8 +190,13 @@ def process_collection_file(colors_file_path, colors_complete_path, collection_t
     print(f"  📊 Ekstraktovano boja: {len(extracted_colors)}")
     
     # Build index by code for faster lookup
+    # If specific_collection is provided, filter colors by that collection
     colors_by_code = {}
     for color in colors:
+        # Filter by collection if specified
+        if specific_collection and color.get('collection') != specific_collection:
+            continue
+        
         code = color.get('code')
         if code:
             if code not in colors_by_code:
@@ -265,10 +291,22 @@ def main():
         
         lvt_files = list(lvt_dir.glob('*_colors.json'))
         for colors_file in lvt_files:
+            # Check if this file should be mapped to a different collection slug
+            extracted_slug = colors_file.stem.replace('_colors', '')
+            target_collection = None
+            
+            # Find if this extracted slug maps to a different collection in complete JSON
+            for complete_slug, mapped_extracted_slug in COLLECTION_MAPPING.items():
+                if extracted_slug == mapped_extracted_slug:
+                    target_collection = complete_slug
+                    print(f"  🔄 Mapiranje: {extracted_slug} -> {complete_slug}")
+                    break
+            
             updated, not_found = process_collection_file(
                 colors_file, 
                 lvt_colors_complete, 
-                'lvt'
+                'lvt',
+                specific_collection=target_collection
             )
             total_updated += updated
             total_not_found += not_found
