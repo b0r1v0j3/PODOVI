@@ -81,7 +81,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "4.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "28.0 m",
+        "DIMENSION": "2 m X 28.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-linodur-1020-spring-blue-r8201020",
@@ -160,7 +167,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "4.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "28.0 m",
+        "DIMENSION": "2 m X 28.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-linodur-1024-speckled-blue-r8201024",
@@ -239,7 +253,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "4.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "28.0 m",
+        "DIMENSION": "2 m X 28.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-linodur-1056-marble-grey-r8201056",
@@ -318,7 +339,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "4.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "28.0 m",
+        "DIMENSION": "2 m X 28.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-linodur-1072-peach-orange-r8201072",
@@ -397,7 +425,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "4.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "28.0 m",
+        "DIMENSION": "2 m X 28.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-linodur-1081-sporty-black-r8201081",
@@ -476,7 +511,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "4.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "28.0 m",
+        "DIMENSION": "2 m X 28.0 m"
+      }
     }
   ]
 }

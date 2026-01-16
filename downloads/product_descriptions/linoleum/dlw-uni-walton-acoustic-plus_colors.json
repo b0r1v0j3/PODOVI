@@ -81,7 +81,12 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m"
+      }
     }
   ]
 }

@@ -81,7 +81,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus-0052-oxid-grey-r8830052",
@@ -160,7 +167,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus-0058-aluminium-grey-r8830058",
@@ -239,7 +253,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-colorette-acoustic-plus-0059-stone-grey-r8830059",
@@ -318,7 +339,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     }
   ]
 }

@@ -86,24 +86,46 @@ def update_color_aggressive(color, extracted_data):
     specs = extracted_data.get('specs', {})
     if specs and len(specs) > 0:
         # Map specs to color fields
+        # Handle DIMENSION (can be direct or combined from WIDTH/LENGTH)
         if 'DIMENSION' in specs:
             dimension = specs['DIMENSION'].strip()
             if dimension:
                 color['dimension'] = dimension
                 updated = True
+        elif 'WIDTH' in specs and 'LENGTH' in specs:
+            # Combine WIDTH and LENGTH
+            width = specs['WIDTH'].strip()
+            length = specs['LENGTH'].strip()
+            if width and length:
+                color['dimension'] = f"{width} X {length}"
+                updated = True
+        elif 'WIDTH OF SHEET' in specs and 'LENGTH OF SHEET' in specs:
+            width = specs['WIDTH OF SHEET'].strip()
+            length = specs['LENGTH OF SHEET'].strip()
+            if width and length:
+                color['dimension'] = f"{width} X {length}"
+                updated = True
         
+        # Handle FORMAT (can be "FORMAT" or "FORMATS")
         if 'FORMAT' in specs:
             format_val = specs['FORMAT'].strip()
             if format_val:
                 color['format'] = format_val
                 updated = True
+        elif 'FORMATS' in specs:
+            format_val = specs['FORMATS'].strip()
+            if format_val:
+                color['format'] = format_val
+                updated = True
         
+        # Handle OVERALL THICKNESS
         if 'OVERALL THICKNESS' in specs:
             thickness = specs['OVERALL THICKNESS'].strip()
             if thickness:
                 color['overall_thickness'] = thickness
                 updated = True
         
+        # Handle WELDING ROD
         if 'WELDING ROD' in specs or 'WELDING ROD REF.' in specs:
             welding_rod = specs.get('WELDING ROD') or specs.get('WELDING ROD REF.', '')
             if welding_rod:

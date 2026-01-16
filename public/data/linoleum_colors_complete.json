@@ -39,7 +39,7 @@
       "welding_rod": "R8980119",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -93,7 +93,7 @@
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -120,7 +120,7 @@
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -147,7 +147,7 @@
       "welding_rod": "R8970058",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -174,7 +174,7 @@
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.00 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.00 mm",
@@ -279,7 +279,7 @@
       "welding_rod": "R8980164",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -306,7 +306,7 @@
       "welding_rod": "R8980158",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -333,7 +333,7 @@
       "welding_rod": "R8980055",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "2.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -465,7 +465,7 @@
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -546,7 +546,7 @@
       "welding_rod": "R8970085",
       "dimension": "",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -570,7 +570,7 @@
       "welding_rod": "R8970052",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -759,7 +759,7 @@
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.00 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.00 mm",
@@ -786,7 +786,7 @@
       "welding_rod": "R8980055",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "3.20 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -813,7 +813,7 @@
       "welding_rod": "R8970012",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -840,7 +840,7 @@
       "welding_rod": "R8980091",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -891,7 +891,7 @@
       "welding_rod": "R8980022",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -918,7 +918,7 @@
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.00 mm",
+      "overall_thickness": "3.20 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.00 mm",
@@ -1023,7 +1023,7 @@
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "3.20 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -1077,7 +1077,7 @@
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "3.20 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -1185,7 +1185,7 @@
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.00 mm",
@@ -1320,7 +1320,7 @@
       "welding_rod": "R8980040",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -1590,7 +1590,7 @@
       "welding_rod": "R8980149",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -1695,7 +1695,7 @@
       "welding_rod": "R8970159",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -1722,7 +1722,7 @@
       "welding_rod": "R8980022",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "3.20 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -1749,7 +1749,7 @@
       "welding_rod": "R8980160",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.00 mm",
@@ -1827,7 +1827,7 @@
       "welding_rod": "R8980040",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -1935,7 +1935,7 @@
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -1962,7 +1962,7 @@
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "2.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2070,7 +2070,7 @@
       "welding_rod": "R8980153",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2151,7 +2151,7 @@
       "welding_rod": "R8980050",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "2.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2283,7 +2283,7 @@
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2364,7 +2364,7 @@
       "welding_rod": "R8980056",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "3.20 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2391,7 +2391,7 @@
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2445,7 +2445,7 @@
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.00 mm",
@@ -2472,7 +2472,7 @@
       "welding_rod": "R8980019",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -2553,7 +2553,7 @@
       "welding_rod": "R8980096",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2688,7 +2688,7 @@
       "welding_rod": "R8980155",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2742,7 +2742,7 @@
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "2.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2796,7 +2796,7 @@
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "2.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2823,7 +2823,7 @@
       "welding_rod": "R8980253",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2931,7 +2931,7 @@
       "welding_rod": "R8980059",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "3.20 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -2958,7 +2958,7 @@
       "welding_rod": "R8980050",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "3.20 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -3704,7 +3704,7 @@
       "welding_rod": "R8980070",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -3809,7 +3809,7 @@
       "welding_rod": "R8980045",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -4130,7 +4130,7 @@
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",
@@ -4157,7 +4157,7 @@
       "welding_rod": "R8980098",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.50 mm",
+      "overall_thickness": "4.00 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.50 mm",
@@ -4184,7 +4184,7 @@
       "welding_rod": "R8980053",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "2.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "2.00 mm",
@@ -4211,7 +4211,7 @@
       "welding_rod": "R8980049",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "3.20 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "3.20 mm",
@@ -4265,7 +4265,7 @@
       "welding_rod": "R8980023",
       "dimension": "2 m X 31.0 m",
       "format": "2m roll",
-      "overall_thickness": "4.00 mm",
+      "overall_thickness": "2.50 mm",
       "characteristics": {
         "Format": "2m roll",
         "Ukupna debljina": "4.00 mm",

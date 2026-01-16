@@ -81,7 +81,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "2.50 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-r10-0045-sand-beige-r8230045",
@@ -160,7 +167,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "2.50 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-r10-0053-ice-grey-r8230053",
@@ -239,7 +253,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "2.50 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-r10-0059-plumb-grey-r8230059",
@@ -318,7 +339,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "2.50 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-r10-0070-rocky-brown-r8230070",
@@ -397,7 +425,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "2.50 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     }
   ]
 }

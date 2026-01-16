@@ -81,7 +81,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-acoustic-0023-dusty-blue-r8870023",
@@ -160,7 +167,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-acoustic-0045-sand-beige-r8870045",
@@ -239,7 +253,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-acoustic-0053-ice-grey-r8870053",
@@ -318,7 +339,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-acoustic-0059-plumb-grey-r8870059",
@@ -397,7 +425,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-acoustic-0098-desert-beige-r8870098",
@@ -476,7 +511,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "4.00 mm",
+        "THICKNESS OF THE WEARLAYER": "2.00 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     }
   ]
 }

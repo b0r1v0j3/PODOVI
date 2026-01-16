@@ -81,7 +81,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "2.50 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/dlw-marmorette-lch-0055-ash-grey-r8890055",
@@ -160,7 +167,14 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "OVERALL THICKNESS": "2.50 mm",
+        "THICKNESS OF THE WEARLAYER": "2.50 mm",
+        "FORMAT DETAILS": "2m roll",
+        "WIDTH OF SHEET": "2 m",
+        "LENGTH OF SHEET": "31.0 m",
+        "DIMENSION": "2 m X 31.0 m"
+      }
     }
   ]
 }

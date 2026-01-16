@@ -18,7 +18,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "21.2 cm X 123.9 cm",
+        "FORMAT": "Plank",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "21.2 c",
+        "LENGTH": "123.9 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1271-lounge-oak-golden-61391271",
@@ -34,7 +40,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "24 cm X 146.1 cm",
+        "FORMAT": "XL Plank",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "24 c",
+        "LENGTH": "146.1 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1272-lounge-oak-beige-61391272",
@@ -50,7 +62,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "24 cm X 146.1 cm",
+        "FORMAT": "XL Plank",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "24 c",
+        "LENGTH": "146.1 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1273-lounge-oak-natural-61391273",
@@ -66,7 +84,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "24 cm X 146.1 cm",
+        "FORMAT": "XL Plank",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "24 c",
+        "LENGTH": "146.1 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1274-lounge-oak-chestnut-61391274",
@@ -82,7 +106,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "24 cm X 146.1 cm",
+        "FORMAT": "XL Plank",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "24 c",
+        "LENGTH": "146.1 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1597-quartet-dark-brown-60601597",
@@ -98,7 +128,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "21.2 cm X 123.9 cm",
+        "FORMAT": "Plank",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "21.2 c",
+        "LENGTH": "123.9 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1603-curton-stone-clear-60611603",
@@ -114,7 +150,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "38.9 cm X 72.9 cm",
+        "FORMAT": "Rectangular tile",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "38.9 c",
+        "LENGTH": "72.9 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1604-curton-stone-taupe-60611604",
@@ -130,7 +172,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "38.9 cm X 72.9 cm",
+        "FORMAT": "Rectangular tile",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "38.9 c",
+        "LENGTH": "72.9 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1605-cedar-dark-brown-60621605",
@@ -146,7 +194,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "24 cm X 146.1 cm",
+        "FORMAT": "XL Plank",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "24 c",
+        "LENGTH": "146.1 c"
+      }
     },
     {
       "url": "https://www.gerflor-cee.com/products/creation-40-clic-new-collection-1606-cedar-golden-60621606",
@@ -162,7 +216,13 @@
           ]
         }
       },
-      "specs": {}
+      "specs": {
+        "DIMENSION": "24 cm X 146.1 cm",
+        "FORMAT": "XL Plank",
+        "OVERALL THICKNESS": "4.50 mm",
+        "WIDTH": "24 c",
+        "LENGTH": "146.1 c"
+      }
     }
   ]
 }
