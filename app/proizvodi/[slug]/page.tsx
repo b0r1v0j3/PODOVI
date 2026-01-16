@@ -445,8 +445,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
                 {product.description && (
-                  <div className="prose prose-lg max-w-none text-gray-700 mb-6">
-                    <p>{product.description}</p>
+                  <div className="prose prose-lg max-w-none text-gray-700 mb-6 whitespace-pre-line">
+                    {product.description.split('\n').map((line, idx) => (
+                      <p key={idx} className={idx > 0 ? 'mt-3' : ''}>{line}</p>
+                    ))}
                   </div>
                 )}
 
