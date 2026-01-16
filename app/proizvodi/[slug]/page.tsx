@@ -446,7 +446,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
                 {product.description && (
                   <div className="prose prose-lg max-w-none text-gray-700 mb-6">
-                    <p>{product.description}</p>
+                    <p className="whitespace-pre-line">{product.description}</p>
                   </div>
                 )}
 
