@@ -73,15 +73,29 @@ def main():
                 # Check if collections are related
                 # E.g., "creation-55-clic-acoustic" matches "creation-55-clic-acoustic-new-collection"
                 if collection_from_file in c_collection or c_collection in collection_from_file:
-                    # This is likely the right color
+                    # This is likely the right color - UPDATE ALL SPECS
+                    changed = False
+                    
+                    # Dimension
                     dimension = specs.get('DIMENSION', '').strip()
-                    if dimension:
-                        old_dim = candidate.get('dimension')
-                        if old_dim != dimension:
-                            candidate['dimension'] = dimension
-                            candidate['format'] = specs.get('FORMAT') or specs.get('FORMATS', candidate.get('format', ''))
-                            candidate['overall_thickness'] = specs.get('OVERALL THICKNESS', candidate.get('overall_thickness', ''))
-                            updated += 1
+                    if dimension and candidate.get('dimension') != dimension:
+                        candidate['dimension'] = dimension
+                        changed = True
+                    
+                    # Format
+                    format_val = (specs.get('FORMAT') or specs.get('FORMATS') or '').strip()
+                    if format_val and candidate.get('format') != format_val:
+                        candidate['format'] = format_val
+                        changed = True
+                    
+                    # Overall thickness
+                    thickness = specs.get('OVERALL THICKNESS', '').strip()
+                    if thickness and candidate.get('overall_thickness') != thickness:
+                        candidate['overall_thickness'] = thickness
+                        changed = True
+                    
+                    if changed:
+                        updated += 1
                     break
         
         if updated > 0:
