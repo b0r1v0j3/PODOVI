@@ -40,10 +40,18 @@ def setup_driver():
     return driver
 
 def accept_cookies(driver):
-    """Accept cookies if present - improved version with multiple strategies"""
+    """Accept cookies if present - with screenshot and coordinate click"""
     try:
         # Wait for cookie popup to appear
         time.sleep(3)
+        
+        # Take screenshot for debugging
+        try:
+            screenshot_path = Path('downloads/cookie_popup_debug.png')
+            driver.save_screenshot(str(screenshot_path))
+            print(f"      📸 Screenshot sačuvan: {screenshot_path}")
+        except:
+            pass
         
         # Strategy 1: Find all buttons and check text (most reliable)
         try:
@@ -54,6 +62,16 @@ def accept_cookies(driver):
             
             all_buttons = driver.find_elements(By.TAG_NAME, "button")
             print(f"      🔍 Pronađeno {len(all_buttons)} dugmadi, tražim 'Accept All'...")
+            
+            # Print all button texts for debugging
+            for i, btn in enumerate(all_buttons[:10]):  # First 10 buttons
+                try:
+                    if btn.is_displayed():
+                        btn_text = btn.text.strip()
+                        if btn_text:
+                            print(f"        Button {i+1}: '{btn_text}'")
+                except:
+                    pass
             
             for btn in all_buttons:
                 try:
@@ -67,41 +85,70 @@ def accept_cookies(driver):
                     if 'accept all' in btn_text_lower or btn_text_lower == 'accept all':
                         print(f"      ✓ Pronađeno 'Accept All' dugme: '{btn_text}'")
                         
+                        # Get button location and size
+                        location = btn.location
+                        size = btn.size
+                        center_x = location['x'] + size['width'] // 2
+                        center_y = location['y'] + size['height'] // 2
+                        print(f"      📍 Pozicija dugmeta: x={center_x}, y={center_y}")
+                        
                         # Try multiple click methods
                         try:
-                            # Method 1: Scroll to center and JavaScript click
+                            # Method 1: Click on coordinates (most reliable for popups)
+                            driver.execute_script(f"document.elementFromPoint({center_x}, {center_y}).click();")
+                            time.sleep(2)
+                            print("      ✓ Cookies prihvaćeni (Coordinate click)")
+                            return
+                        except Exception as e:
+                            print(f"        ⚠️  Coordinate click failed: {e}")
+                        
+                        try:
+                            # Method 2: Scroll to center and JavaScript click
                             driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", btn)
                             time.sleep(0.5)
                             driver.execute_script("arguments[0].click();", btn)
                             time.sleep(2)
                             print("      ✓ Cookies prihvaćeni (JavaScript click)")
                             return
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f"        ⚠️  JavaScript click failed: {e}")
                         
                         try:
-                            # Method 2: ActionChains click
+                            # Method 3: ActionChains click
                             ActionChains(driver).move_to_element(btn).click().perform()
                             time.sleep(2)
                             print("      ✓ Cookies prihvaćeni (ActionChains click)")
                             return
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f"        ⚠️  ActionChains click failed: {e}")
                         
                         try:
-                            # Method 3: Direct click
+                            # Method 4: Direct click
                             btn.click()
                             time.sleep(2)
                             print("      ✓ Cookies prihvaćeni (Direct click)")
                             return
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f"        ⚠️  Direct click failed: {e}")
                 except Exception as e:
                     continue
         except Exception as e:
             print(f"      ⚠️  Strategy 1 failed: {e}")
         
-        # Strategy 2: Find by XPath with various patterns
+        # Strategy 2: Try clicking on center of screen (where popup usually is)
+        try:
+            window_size = driver.get_window_size()
+            center_x = window_size['width'] // 2
+            center_y = window_size['height'] // 2
+            print(f"      🎯 Pokušavam klik na centar ekrana: x={center_x}, y={center_y}")
+            # Try clicking slightly to the right (where Accept All button usually is)
+            driver.execute_script(f"document.elementFromPoint({center_x + 100}, {center_y + 50}).click();")
+            time.sleep(2)
+            print("      ✓ Pokušao klik na centar ekrana")
+        except Exception as e:
+            print(f"      ⚠️  Center click failed: {e}")
+        
+        # Strategy 3: Find by XPath with various patterns
         try:
             xpath_patterns = [
                 "//button[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'accept all')]",
@@ -116,39 +163,18 @@ def accept_cookies(driver):
                         EC.element_to_be_clickable((By.XPATH, xpath))
                     )
                     if accept_all_btn.is_displayed():
-                        driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", accept_all_btn)
-                        time.sleep(0.5)
-                        driver.execute_script("arguments[0].click();", accept_all_btn)
+                        location = accept_all_btn.location
+                        size = accept_all_btn.size
+                        center_x = location['x'] + size['width'] // 2
+                        center_y = location['y'] + size['height'] // 2
+                        driver.execute_script(f"document.elementFromPoint({center_x}, {center_y}).click();")
                         time.sleep(2)
-                        print("      ✓ Cookies prihvaćeni (XPath)")
+                        print("      ✓ Cookies prihvaćeni (XPath + Coordinate)")
                         return
                 except:
                     continue
         except Exception as e:
-            print(f"      ⚠️  Strategy 2 failed: {e}")
-        
-        # Strategy 3: Find by ID or class
-        cookie_selectors = [
-            (By.ID, "tarteaucitronPersonalize2"),
-            (By.XPATH, "//button[contains(@class, 'accept')]"),
-            (By.XPATH, "//button[contains(@id, 'accept')]"),
-            (By.XPATH, "//a[contains(text(), 'Accept All')]"),
-        ]
-        
-        for selector_type, selector_value in cookie_selectors:
-            try:
-                cookie_button = WebDriverWait(driver, 2).until(
-                    EC.element_to_be_clickable((selector_type, selector_value))
-                )
-                if cookie_button.is_displayed():
-                    driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", cookie_button)
-                    time.sleep(0.5)
-                    driver.execute_script("arguments[0].click();", cookie_button)
-                    time.sleep(2)
-                    print("      ✓ Cookies prihvaćeni (Fallback)")
-                    return
-            except:
-                continue
+            print(f"      ⚠️  Strategy 3 failed: {e}")
         
         print("      ⚠️  Nije pronađeno Accept All dugme")
     except Exception as e:
