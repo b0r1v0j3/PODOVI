@@ -16,6 +16,7 @@ from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
@@ -41,43 +42,88 @@ def setup_driver():
 def accept_cookies(driver):
     """Accept cookies if present - improved version with multiple strategies"""
     try:
-        # Wait a bit for cookie popup to appear
-        time.sleep(2)
+        # Wait for cookie popup to appear
+        time.sleep(3)
         
-        # Strategy 1: Find by exact text "Accept All" (case insensitive)
+        # Strategy 1: Find all buttons and check text (most reliable)
         try:
-            accept_all_btn = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, 
-                    "//button[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')='accept all'] | "
-                    "//button[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'accept all')] | "
-                    "//button[normalize-space(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))='accept all']"
-                ))
+            # Wait for any buttons to be present
+            WebDriverWait(driver, 5).until(
+                EC.presence_of_element_located((By.TAG_NAME, "button"))
             )
-            if accept_all_btn.is_displayed():
-                # Scroll to center of viewport
-                driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", accept_all_btn)
-                time.sleep(0.5)
-                # Click using JavaScript (more reliable)
-                driver.execute_script("arguments[0].click();", accept_all_btn)
-                time.sleep(1.5)
-                print("      ✓ Cookies prihvaćeni (Accept All)")
-                return
+            
+            all_buttons = driver.find_elements(By.TAG_NAME, "button")
+            print(f"      🔍 Pronađeno {len(all_buttons)} dugmadi, tražim 'Accept All'...")
+            
+            for btn in all_buttons:
+                try:
+                    if not btn.is_displayed():
+                        continue
+                    
+                    btn_text = btn.text.strip()
+                    btn_text_lower = btn_text.lower()
+                    
+                    # Check if it's Accept All button
+                    if 'accept all' in btn_text_lower or btn_text_lower == 'accept all':
+                        print(f"      ✓ Pronađeno 'Accept All' dugme: '{btn_text}'")
+                        
+                        # Try multiple click methods
+                        try:
+                            # Method 1: Scroll to center and JavaScript click
+                            driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", btn)
+                            time.sleep(0.5)
+                            driver.execute_script("arguments[0].click();", btn)
+                            time.sleep(2)
+                            print("      ✓ Cookies prihvaćeni (JavaScript click)")
+                            return
+                        except:
+                            pass
+                        
+                        try:
+                            # Method 2: ActionChains click
+                            ActionChains(driver).move_to_element(btn).click().perform()
+                            time.sleep(2)
+                            print("      ✓ Cookies prihvaćeni (ActionChains click)")
+                            return
+                        except:
+                            pass
+                        
+                        try:
+                            # Method 3: Direct click
+                            btn.click()
+                            time.sleep(2)
+                            print("      ✓ Cookies prihvaćeni (Direct click)")
+                            return
+                        except:
+                            pass
+                except Exception as e:
+                    continue
         except Exception as e:
             print(f"      ⚠️  Strategy 1 failed: {e}")
         
-        # Strategy 2: Find all buttons and check text
+        # Strategy 2: Find by XPath with various patterns
         try:
-            all_buttons = driver.find_elements(By.TAG_NAME, "button")
-            for btn in all_buttons:
-                if btn.is_displayed():
-                    btn_text = btn.text.strip().lower()
-                    if 'accept all' in btn_text or btn_text == 'accept all':
-                        driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", btn)
+            xpath_patterns = [
+                "//button[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'accept all')]",
+                "//button[normalize-space(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))='accept all']",
+                "//button[text()='Accept All']",
+                "//button[.='Accept All']",
+            ]
+            
+            for xpath in xpath_patterns:
+                try:
+                    accept_all_btn = WebDriverWait(driver, 3).until(
+                        EC.element_to_be_clickable((By.XPATH, xpath))
+                    )
+                    if accept_all_btn.is_displayed():
+                        driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", accept_all_btn)
                         time.sleep(0.5)
-                        driver.execute_script("arguments[0].click();", btn)
-                        time.sleep(1.5)
-                        print("      ✓ Cookies prihvaćeni (Accept All - Strategy 2)")
+                        driver.execute_script("arguments[0].click();", accept_all_btn)
+                        time.sleep(2)
+                        print("      ✓ Cookies prihvaćeni (XPath)")
                         return
+                except:
+                    continue
         except Exception as e:
             print(f"      ⚠️  Strategy 2 failed: {e}")
         
@@ -98,7 +144,7 @@ def accept_cookies(driver):
                     driver.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", cookie_button)
                     time.sleep(0.5)
                     driver.execute_script("arguments[0].click();", cookie_button)
-                    time.sleep(1.5)
+                    time.sleep(2)
                     print("      ✓ Cookies prihvaćeni (Fallback)")
                     return
             except:
