@@ -797,7 +797,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Saga²',
-    description: 'Creation Saga² LVT kolekcija - vinil u pločama različitih formata. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: 'Proizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core » sa pluto jezgrom za komfor i akustične performanse (15 dB smanjenje buke)\nProtecShield™ površinska obrada: lako za čišćenje, bez potrebe za voskom\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <5mm\n\nPrimena:\nIdealno za zone sa visokim prometom: prodavnice, kancelarije, recepcije, itd.\n\nOkruženje:\n100% reciklabilno\n55% recikliranog sadržaja\nPluto: obnovljiva sirovina\nTVOC <10µg/m³\nBez ftalata',
     images: [{ id: '24-1', url: '/images/products/lvt/creation-saga.jpg', alt: 'Gerflor Creation Saga²', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
