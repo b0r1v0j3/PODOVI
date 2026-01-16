@@ -74,15 +74,17 @@ def update_color_aggressive(color, extracted_data):
         if full_text and isinstance(full_text, str):
             full_text = full_text.strip()
             if full_text and len(full_text) > 20:
-                color['description'] = full_text
-                updated = True
+                if not color.get('description') or color.get('description') != full_text:
+                    color['description'] = full_text
+                    updated = True
         elif intro_text and isinstance(intro_text, str):
             intro_text = intro_text.strip()
             if intro_text and len(intro_text) > 20:
-                color['description'] = intro_text
-                updated = True
+                if not color.get('description') or color.get('description') != intro_text:
+                    color['description'] = intro_text
+                    updated = True
     
-    # Update specs (ako postoje)
+    # Update specs (UVEK ažurira ako postoje, nezavisno od description)
     specs = extracted_data.get('specs', {})
     if specs and len(specs) > 0:
         # Map specs to color fields
@@ -90,40 +92,48 @@ def update_color_aggressive(color, extracted_data):
         if 'DIMENSION' in specs:
             dimension = specs['DIMENSION'].strip()
             if dimension:
-                color['dimension'] = dimension
-                updated = True
+                if not color.get('dimension') or color.get('dimension') != dimension:
+                    color['dimension'] = dimension
+                    updated = True
         elif 'WIDTH' in specs and 'LENGTH' in specs:
             # Combine WIDTH and LENGTH
             width = specs['WIDTH'].strip()
             length = specs['LENGTH'].strip()
             if width and length:
-                color['dimension'] = f"{width} X {length}"
-                updated = True
+                new_dimension = f"{width} X {length}"
+                if not color.get('dimension') or color.get('dimension') != new_dimension:
+                    color['dimension'] = new_dimension
+                    updated = True
         elif 'WIDTH OF SHEET' in specs and 'LENGTH OF SHEET' in specs:
             width = specs['WIDTH OF SHEET'].strip()
             length = specs['LENGTH OF SHEET'].strip()
             if width and length:
-                color['dimension'] = f"{width} X {length}"
-                updated = True
+                new_dimension = f"{width} X {length}"
+                if not color.get('dimension') or color.get('dimension') != new_dimension:
+                    color['dimension'] = new_dimension
+                    updated = True
         
         # Handle FORMAT (can be "FORMAT" or "FORMATS")
         if 'FORMAT' in specs:
             format_val = specs['FORMAT'].strip()
             if format_val:
-                color['format'] = format_val
-                updated = True
+                if not color.get('format') or color.get('format') != format_val:
+                    color['format'] = format_val
+                    updated = True
         elif 'FORMATS' in specs:
             format_val = specs['FORMATS'].strip()
             if format_val:
-                color['format'] = format_val
-                updated = True
+                if not color.get('format') or color.get('format') != format_val:
+                    color['format'] = format_val
+                    updated = True
         
         # Handle OVERALL THICKNESS
         if 'OVERALL THICKNESS' in specs:
             thickness = specs['OVERALL THICKNESS'].strip()
             if thickness:
-                color['overall_thickness'] = thickness
-                updated = True
+                if not color.get('overall_thickness') or color.get('overall_thickness') != thickness:
+                    color['overall_thickness'] = thickness
+                    updated = True
         
         # Handle WELDING ROD
         if 'WELDING ROD' in specs or 'WELDING ROD REF.' in specs:
@@ -131,8 +141,9 @@ def update_color_aggressive(color, extracted_data):
             if welding_rod:
                 welding_rod = welding_rod.strip()
                 if welding_rod:
-                    color['welding_rod'] = welding_rod
-                    updated = True
+                    if not color.get('welding_rod') or color.get('welding_rod') != welding_rod:
+                        color['welding_rod'] = welding_rod
+                        updated = True
     
     return updated
 
