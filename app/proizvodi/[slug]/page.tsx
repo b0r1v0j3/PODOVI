@@ -345,6 +345,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
         if (colorSpecs.length > 0) {
           product.specs = mergeSpecs(product.specs, colorSpecs);
         }
+        // Update description from color if available
+        if (colorSource.color.description && typeof colorSource.color.description === 'string' && colorSource.color.description.trim()) {
+          product.description = colorSource.color.description.trim();
+        }
       }
     }
     if (!product.slug || typeof product.slug !== 'string') {
