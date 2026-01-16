@@ -379,7 +379,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa 0.30mm slojem habanja - idealna za stambene i lake komercijalne prostore',
-    description: 'Kreirajte bez ograničenja sa Creation 30: kompletan podni sistem koji nudi ultra-realistične dizajne, raznovrsne formate i besprekornu harmoniju — idealno za nove objekte, savršeno za stambene i lake komercijalne prostore',
+    description: `Proizvod:\nKompletan\ format:\ pravougaone\ pločice,\ kvadratne\ pločice,\ standardne\ daske,\ XL\ daske,\ \-\ dizajnirano\ da\ zadovolji\ svaki\ projekat\nProfinjeni\ dizajni\ i\ harmonične\ palete\ boja:\ svaki\ detalj\ osmišljen\ da\ stvori\ ekskluzivan\ prostor\nNovi\ površinski\ utisci:\ ultra\-realistične\ i\ raznovrsne\ teksture\ koje\ uzdignu\ svaki\ dizajn\nUltra\-mat\ završetak\ sa\ Protecshield™:\ baršunasti\ dodir\ i\ prirodna\ elegancija\nSmart\ Dizajn\ –\ do\ 3\ m²\ varijacije\ dizajna:\ poboljšana\ vizuelna\ varijacija\ na\ odabranim\ dizajnima\ za\ dublji\ realizam\nSmart\ Komfor\ inovacija:\ akustični\ gornji\ sloj\ za\ bolje\ hodanje\ \(79dB\)\ i\ toplotni\ komfor\n4\ zakošene\ ivice:\ autentičan\ efekat\ drveta\ i\ pločica\nOd\ poda\ do\ zida:\ stvorite\ besprekornu\ harmoniju\ sa\ našom\ Mural\ Revela\ kolekcijom\n\nUgradnja:\nDry\ Back\ sistem:\ profesionalna\ ugradnja\ za\ dugotrajnu\ performansu\nIdealno\ za\ novu\ gradnju\nProtecshield™\ površinska\ obrada:\ poboljšana\ otpornost,\ jednostavno\ čišćenje\nEfikasan\ protokol\ održavanja:\ pojednostavljena\ nega,\ maksimalan\ efekat\n\nOkruženje:`,
     images: [{ id: '8-1', url: '/images/products/lvt/creation-30.jpg', alt: 'Gerflor Creation 30', isPrimary: true, order: 1 }],
     specs: [
       { key: 'thickness', label: 'Ukupna debljina', value: '2mm' },
@@ -439,7 +439,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa 0.40mm slojem habanja - idealna za stambene i komercijalne prostore',
-    description: 'Creation 40 je sintetička, dekorativna i fleksibilna PVC podna obloga dostupna u pločama. Sadrži 0.40mm sloj habanja i visokokvalitetni dekorativni film. Sa ukupnom debljinom od 2mm, Creation 40 ima crosslinked poliuretanski površinski tretman (Protecshield) koji osigurava lako održavanje i povećanu otpornost na habanje.',
+    description: `Proizvod:\nSintetičko,\ dekorativno\ i\ fleksibilno\ PVC\ rešenje\ za\ podove\nDostupno\ u\ formatima:\ daske\ i\ pločice\n4\ zakošene\ ivice\nSloj\ habanja:\ 0\.40\ mm\nUkupna\ debljina:\ 2\ mm\nAkustični\ gornji\ sloj\ za\ bolje\ hodanje\ i\ toplotni\ komfor\nProtecShield™\ površinska\ obrada:\ poboljšana\ otpornost,\ jednostavno\ čišćenje\nVelika\ varijacija\ dizajna\ sa\ high\-definition\ štampanim\ dekorativnim\ filmom\n\nUgradnja:\nDry\ Back\ sistem:\ profesionalna\ ugradnja\ za\ dugotrajnu\ performansu\nIdealno\ za\ novu\ gradnju\nLako\ sečenje\ za\ jednostavnu\ ugradnju\n\nPrimena:\nEvropska\ klasa\ upotrebe:\ 13501\-1\nProtivpožarna\ klasifikacija:\ Bfl\-s1\ \(EN\ 13501\-1\)\n\nOkruženje:\n100%\ reciklabilno\n35%\ recikliranog\ sadržaja\nTVOC\ <10µg/m³\nBez\ ftalata\nKompatibilno\ sa\ REACH\ standardima\nA\+\ ocena\ \-\ najviši\ nivo\ zdravstvenih\ standarda\nCertifikovano:\ Floorscore®,\ IAC\ Gold\ \&\ M1`,
     images: [{ id: '9-1', url: '/images/products/lvt/creation-40.jpg', alt: 'Gerflor Creation 40', isPrimary: true, order: 1 }],
     specs: [
       { key: 'thickness', label: 'Ukupna debljina', value: '2mm' },
@@ -466,7 +466,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa clic sistemom',
-    description: 'Creation 40 Clic LVT kolekcija - vinil sa clic sistemom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nwith\ Creation\ 40\ Clic\ :\ where\ Dizajn\ meets\ inovacija\nultra\-realistične\ designs:\ ultra\-realistične\ textures,\ velvet\-touch\ surfaces\ and\ elegant\ ultra\-matt\ finish\nNovi\ površinski\ utisci:\ raznovrsne\ teksture\ that\ bring\ each\ Dizajn\ to\ life\nAvailable\ formats:\ XL\ daske,\ standardne\ daske\ and\ pravougaone\ pločice\ \-\ designed\ to\ suit\ every\ space\nSmart\ Dizajn:\ poboljšana\ vizuelna\ varijacija\ on\ selected\ designs\ for\ dublja\ realističnost\nSmart\ Komfor\ inovacija:\ akustični\ gornji\ sloj\ for\ walking\ comfort,\ thermal\ comfort,\ sound\ reduction\ and\ easy\ cutting\nRigid\ core:\ ideal\ for\ renovation,\ compatible\ with\ existing\ subfloors,\ resistant\ to\ temperature\ variations\nLightweight\ construction:\ easier\ to\ transport,\ handle\ and\ install\nOd\ poda\ do\ zida:\ create\ besprekorna\ harmonija\ with\ our\ Mural\ Revela\ Collection\n\nUgradnja\ i\ održavanje\n\nFold\ Down\ clic\ system:\ fast,\ secure\ and\ dust\-free\ Ugradnja\n\nNo\ glue\ required:\ perfect\ for\ Ugradnja\ in\ front\ of\ bay\ windows\ or\ on\ sensitive\ surfaces`,
     images: [{ id: '10-1', url: '/images/products/lvt/creation-40-clic.jpg', alt: 'Gerflor Creation 40 Clic', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -489,7 +489,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa clic sistemom i akustikom',
-    description: 'Creation 40 Clic Acoustic LVT kolekcija - vinil sa clic sistemom i zvučnom izolacijom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nwith\ Creation\ 40\ Clic\ Acoustic:\ where\ Dizajn\ meets\ inovacija\nSmart\ Komfor\ inovacija:\nakustični\ gornji\ sloj\ for\ walking\ comfort,\ thermal\ comfort,\ sound\ reduction\ \(79dB\)\ and\ easy\ cutting\nAcoustic\ back\ layer\ for\ impact\ sound\ insulation\ improvement\ \(19dB\)\nRigid\ core:\ ideal\ for\ renovation,\ compatible\ with\ existing\ subfloors,\ resistant\ to\ temperature\ variations\nultra\-realistične\ designs:\ ultra\-realistične\ textures,\ velvet\-touch\ surfaces\ and\ elegant\ ultra\-matt\ finish\nSmart\ Dizajn:\ poboljšana\ vizuelna\ varijacija\ on\ selected\ designs\ for\ dublja\ realističnost\nNovi\ površinski\ utisci:\ raznovrsne\ teksture\ that\ bring\ each\ Dizajn\ to\ life\nAvailable\ formats:\ XL\ daske,\ standardne\ daske,\ and\ pravougaone\ pločice\ \-\ designed\ to\ suit\ every\ space\nRigid\ core:\ ideal\ for\ renovation,\ compatible\ with\ existing\ subfloors,\ resistant\ to\ temperature\ variations\nLightweight\ construction:\ easier\ to\ transport,\ handle\ and\ install\nOd\ poda\ do\ zida:\ create\ besprekorna\ harmonija\ with\ our`,
     images: [{ id: '11-1', url: '/images/products/lvt/creation-40-clic-acoustic.jpg', alt: 'Gerflor Creation 40 Clic Acoustic', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -513,7 +513,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Zen dizajn',
-    description: 'Creation 40 Zen LVT kolekcija - vinil sa Zen dizajnom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nDostupno\ u\ formatima:\ daske\ i\ pločice\n4\ zakošene\ ivice\nSloj\ habanja:\ 3\.60\ mm\nUkupna\ debljina:\ 3\.60\ mm\nVisok\ nivo\ akustične\ izolacije\ \(\-20dB\)\nProtecShield™\ površinska\ obrada:\ poboljšana\ otpornost,\ jednostavno\ čišćenje\n\nUgradnja:\nUklonjiva\ ugradnja\ sa\ lepkom\ \-\ pogodno\ za\ podignute\ podove\nMoguća\ ugradnja\ na\ različite\ podloge\nMoguća\ ugradnja\ na\ azbest\ kontaminirane\ podloge\nUklonjivi\ podovi\ \-\ mogu\ se\ ukloniti\ po\ potrebi\n\nPrimena:\nEvropska\ klasa\ upotrebe:\ 23/32\nIdealno\ za\ zone\ sa\ intenzivnim\ prometom:\ kancelarije,\ hoteli,\ prodavnice\nProtivpožarna\ klasifikacija:\ Bfl\-s1\ \(EN\ 13501\-1\)\n\nOkruženje:\n100%\ reciklabilno\nTVOC\ <10µg/m³\nBez\ ftalata\nKompatibilno\ sa\ REACH\ standardima\nProizvedeno\ u\ Francuskoj`,
     images: [{ id: '12-1', url: '/images/products/lvt/creation-40-zen.jpg', alt: 'Gerflor Creation 40 Zen', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -536,7 +536,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija - pogledajte sve dezene',
-    description: 'Creation 55 LVT kolekcija - vinil u pločama različitih formata. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nSintetičko,\ dekorativno\ i\ fleksibilno\ PVC\ rešenje\ za\ podove\nDostupno\ u\ formatima:\ daske\ i\ pločice\n4\ zakošene\ ivice\nSloj\ habanja:\ 0\.55\ mm\nUkupna\ debljina:\ 2\.5\ mm\nAkustični\ gornji\ sloj\ za\ bolje\ hodanje\ i\ toplotni\ komfor\nProtecShield™\ površinska\ obrada:\ poboljšana\ otpornost,\ jednostavno\ čišćenje\nVelika\ varijacija\ dizajna\ sa\ high\-definition\ štampanim\ dekorativnim\ filmom\n\nUgradnja:\nDry\ Back\ sistem:\ profesionalna\ ugradnja\ za\ dugotrajnu\ performansu\nIdealno\ za\ novu\ gradnju\nLako\ sečenje\ za\ jednostavnu\ ugradnju\n\nPrimena:\nEvropska\ klasa\ upotrebe:\ 13501\-1\nProtivpožarna\ klasifikacija:\ Bfl\-s1\ \(EN\ 13501\-1\)\n\nOkruženje:\n100%\ reciklabilno\n35%\ recikliranog\ sadržaja\nTVOC\ <10µg/m³\nBez\ ftalata\nKompatibilno\ sa\ REACH\ standardima\nA\+\ ocena\ \-\ najviši\ nivo\ zdravstvenih\ standarda\nCertifikovano:\ Floorscore®,\ IAC\ Gold\ \&\ M1`,
     images: [{ id: '13-1', url: '/images/products/lvt/creation-55.jpg', alt: 'Gerflor Creation 55', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -559,7 +559,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa clic sistemom',
-    description: 'Creation 55 Clic LVT kolekcija - vinil sa clic sistemom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nwith\ Creation\ 55\ Clic:\ where\ Dizajn\ meets\ inovacija\nultra\-realistične\ designs:\ ultra\-realistične\ textures,\ velvet\-touch\ surfaces\ and\ elegant\ ultra\-matt\ finish\nNovi\ površinski\ utisci:\ raznovrsne\ teksture\ that\ bring\ each\ Dizajn\ to\ life\nAvailable\ formats:\ XL\ daske,\ standardne\ daske\ and\ pravougaone\ pločice\ \-\ designed\ to\ suit\ every\ space\nSmart\ Dizajn:\ poboljšana\ vizuelna\ varijacija\ on\ selected\ designs\ for\ dublja\ realističnost\nSmart\ Komfor\ inovacija:\ akustični\ gornji\ sloj\ for\ walking\ comfort,\ thermal\ comfort,\ sound\ reduction\ and\ easy\ cutting\nRigid\ core:\ ideal\ for\ renovation,\ compatible\ with\ existing\ subfloors,\ resistant\ to\ temperature\ variations\nLightweight\ construction:\ easier\ to\ transport,\ handle\ and\ install\nOd\ poda\ do\ zida:\ create\ besprekorna\ harmonija\ with\ our\ Mural\ Revela\ Collection\n\nUgradnja\ i\ održavanje\n\nFold\ Down\ clic\ system:\ fast,\ secure\ and\ dust\-free\ Ugradnja\n\nNo\ glue\ required:\ perfect\ for\ Ugradnja\ in\ front\ of\ bay\ windows\ or\ on\ sensitive\ surfaces`,
     images: [{ id: '14-1', url: '/images/products/lvt/creation-55-clic.jpg', alt: 'Gerflor Creation 55 Clic', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -582,7 +582,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa clic sistemom i akustikom',
-    description: 'Creation 55 Clic Acoustic LVT kolekcija - vinil sa clic sistemom i zvučnom izolacijom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nwith\ Creation\ 55\ Clic\ Acoustic:\ where\ Dizajn\ meets\ inovacija\nSmart\ Komfor\ inovacija:\nakustični\ gornji\ sloj\ for\ walking\ comfort,\ thermal\ comfort,\ sound\ reduction\ \(79dB\)\ and\ easy\ cutting\ with\ a\ simple\ cutter\nAcoustic\ back\ layer\ for\ impact\ sound\ insulation\ improvement\ \(19dB\)\nRigid\ core:\ ideal\ for\ renovation,\ compatible\ with\ existing\ subfloors,\ resistant\ to\ temperature\ variations\nultra\-realistične\ designs:\ ultra\-realistične\ textures,\ velvet\-touch\ surfaces\ and\ elegant\ ultra\-matt\ finish\nSmart\ Dizajn:\ poboljšana\ vizuelna\ varijacija\ on\ selected\ designs\ for\ dublja\ realističnost\nNovi\ površinski\ utisci:\ raznovrsne\ teksture\ that\ bring\ each\ Dizajn\ to\ life\nAvailable\ formats:\ XL\ daske,\ standardne\ daske,\ male\ daske\ for\ herringbone,\ and\ pravougaone\ pločice\ \-\ designed\ to\ suit\ every\ space\nLightweight\ construction:\ easier\ to\ transport,\ handle\ and\ install\nOd\ poda\ do\ zida:\ create\ besprekorna\ harmonija\ with\ our\ Mural\ Revela\ Collection\n\nUgradnja\ i\ održavanje`,
     images: [{ id: '15-1', url: '/images/products/lvt/creation-55-clic-acoustic.jpg', alt: 'Gerflor Creation 55 Clic Acoustic', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -606,7 +606,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Looselay sistem',
-    description: 'Creation 55 Looselay LVT kolekcija - vinil bez lepljenja. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Uklonjivi\ podovi\ koji\ odgovaraju\ vašim\ potrebama\ Proizvod:\ 4\ veličine\ Ekskluzivna\ konstrukcija\ «\ Duo\ jezgra\ »,\ ojačano\ staklenim\ vlaknima\ za\ komfor\ i\ stabilnost\ ProtecShield™\ varnish\ :\ prirodan\ izgled\ i\ lako\ za\ čišćenje\ ugradnja\ :\ Looselay\ up\ 30\ m²\ Uklonjiva\ ugradnja\ sa\ lepkom\ \-\ pogodno\ za\ podignute\ podove\ Direktno\ na\ keramiku\ ako\ je\ spoj\ <4mm\ Primena:\ idealno\ moderate\ prometom\ zone\ :\ kancelarije,\ hoteli,\ prodavnice\ \-\ evropska\ klasa\ 33/42\ Okruženje:\ 100%\ reciklabilno\ 35%\ recikliranog\ sadržaja\ TVOC\ <10µg/m3\ Bez\ ftalata`,
     images: [{ id: '16-1', url: '/images/products/lvt/creation-55-looselay.jpg', alt: 'Gerflor Creation 55 Looselay', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -629,7 +629,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Looselay sa akustikom',
-    description: 'Creation 55 Looselay Acoustic LVT kolekcija - vinil bez lepljenja sa zvučnom izolacijom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Okruženje:\nkolekcija\ 2\ formati:\ slab\ \(600x600\ mm\)\ or\ blade\ \(229x1220\ mm\)\ 8\ exclusives\ colors\ Unique\ Duo\ jezgra\ konstrukcija,\ ojačano\ vlaknima\ mat\ Komfor\ i\ stabilnost\ Integrated\ akustični\ backing\ providing\ 19dB\ impact\ zvuk\ insulation\ ProtecShield™\ varnish\ ultra\ matte\ završetak\ i\ jednostavno\ održavanje\ Beveled\ edge\ all\ 4\ sides\ ugradnja\ Repositionable\ screw\-down\ ugradnja\ \-\ kompatibilno\ Tehničke\ karakteristike\ floors\ fastest\ ugradnja\ large\ rooms\ ugradnja\ keramiku\ \(spoj\ <4mm\)\ Primena\ idealno\ moderate\ prometom\ applications\ requiring\ improved\ akustični\ management:\ offices,\ hotels,\ etc\.\ Okruženje\ 100%\ reciklabilno\ end\ život\ 35%\ recikliranog\ sadržaja\ TVOC\ <10μg/m3\ Phthalate\ bez`,
     images: [{ id: '17-1', url: '/images/products/lvt/creation-55-looselay-acoustic.jpg', alt: 'Gerflor Creation 55 Looselay Acoustic', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -653,7 +653,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Zen dizajn',
-    description: 'Creation 55 Zen LVT kolekcija - vinil sa Zen dizajnom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nDostupno\ u\ formatima:\ daske\ i\ pločice\n4\ zakošene\ ivice\nSloj\ habanja:\ 0\.55\ mm\nUkupna\ debljina:\ 4\.25\ mm\nVisok\ nivo\ akustične\ izolacije\ \(\-20dB\)\nProtecShield™\ površinska\ obrada:\ poboljšana\ otpornost,\ jednostavno\ čišćenje\n\nUgradnja:\nUklonjiva\ ugradnja\ sa\ lepkom\ \-\ pogodno\ za\ podignute\ podove\nMoguća\ ugradnja\ na\ različite\ podloge\nMoguća\ ugradnja\ na\ azbest\ kontaminirane\ podloge\nUklonjivi\ podovi\ \-\ mogu\ se\ ukloniti\ po\ potrebi\n\nPrimena:\nEvropska\ klasa\ upotrebe:\ 33/42\nIdealno\ za\ zone\ sa\ intenzivnim\ prometom:\ kancelarije,\ hoteli,\ prodavnice\nOtporno\ na\ visok\ promet\nProtivpožarna\ klasifikacija:\ Bfl\-s1\ \(EN\ 13501\-1\)\n\nOkruženje:\n100%\ reciklabilno\n15%\ recikliranog\ sadržaja\nTVOC\ <10µg/m³\nBez\ ftalata\nKompatibilno\ sa\ REACH\ standardima\nProizvedeno\ u\ Francuskoj`,
     images: [{ id: '18-1', url: '/images/products/lvt/creation-55-zen.jpg', alt: 'Gerflor Creation 55 Zen', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -676,7 +676,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija - pogledajte sve dezene',
-    description: 'Creation 70 LVT kolekcija - vinil u pločama različitih formata. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nKompletna\ ponuda\ formata:\ XL\ pravougaone\ pločice,\ XL\ kvadratne\ pločice,\ standardne\ daske,\ XL\ daske\-\ dizajnirano\ da\ zadovolji\ svaki\ projekat\nProfinjena\ rešenja\ \&\ harmonične\ palete\ boja:\ svaki\ detalj\ osmišljen\ da\ stvori\ ekskluzivan\ prostor\nNovi\ površinski\ utisci:\ ultra\-realistične\ and\ raznovrsne\ teksture\ that\ elevate\ each\ Dizajn\nUltra\-mat\ završetak\ sa\ Protecshield™:\ baršunasti\ dodir\ and\ prirodna\ elegancija\nSmart\ Dizajn\ –\ do\ 3\ m²\ varijacije\ dizajna:\ poboljšana\ vizuelna\ varijacija\ on\ selected\ designs\ for\ dublja\ realističnost\nSmart\ Komfor\ inovacija:\ akustični\ gornji\ sloj\ za\ bolje\ hodanje\ \(79dB\)\ i\ toplotni\ komfor\n4\ zakošene\ ivice:\ autentičan\ drveni\ and\ efekat\ pločica\nOd\ poda\ do\ zida:\ create\ besprekorna\ harmonija\ with\ our\ Mural\ Revela\ Collection\n\nUgradnja\ i\ održavanje\nDry\ Back\ sistem:\ profesionalna\ ugradnja\ for\ dugotrajna\ performansa\nIdealno\ za\ novu\ gradnju\nSmall\ plank\ formats:\ ideal\ for\ refined\ parquet\-style\ layouts\nProtecshield™\ površinska\ obrada:\ poboljšana\ otpornost,\ jednostavno\ čišćenje\nEfficient\ Održavanje`,
     images: [{ id: '19-1', url: '/images/products/lvt/creation-70.jpg', alt: 'Gerflor Creation 70', isPrimary: true, order: 1 }],
     specs: [
       { key: 'thickness', label: 'Ukupna debljina', value: '2,5mm' },
@@ -703,7 +703,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija sa clic sistemom',
-    description: 'Creation 70 Clic LVT kolekcija - vinil sa clic sistemom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nDizajn\ i\ proizvod\nwith\ Creation\ 70\ Clic\ :\ where\ Dizajn\ meets\ inovacija\nultra\-realistične\ designs:\ ultra\-realistične\ textures,\ velvet\-touch\ surfaces\ and\ elegant\ ultra\-matt\ finish\nNovi\ površinski\ utisci:\ raznovrsne\ teksture\ that\ bring\ each\ Dizajn\ to\ life\nAvailable\ formats:\ XL\ daske,\ standardne\ daske\ and\ pravougaone\ pločice\ \-\ designed\ to\ suit\ every\ space\nSmart\ Dizajn:\ poboljšana\ vizuelna\ varijacija\ on\ selected\ designs\ for\ dublja\ realističnost\nSmart\ Komfor\ inovacija:\ akustični\ gornji\ sloj\ for\ walking\ comfort,\ thermal\ comfort,\ sound\ reduction\ and\ easy\ cutting\nRigid\ core:\ ideal\ for\ renovation,\ compatible\ with\ existing\ subfloors,\ resistant\ to\ temperature\ variations\nLightweight\ construction:\ easier\ to\ transport,\ handle\ and\ install\nOd\ poda\ do\ zida:\ create\ besprekorna\ harmonija\ with\ our\ Mural\ Revela\ Collection`,
     images: [{ id: '20-1', url: '/images/products/lvt/creation-70-clic.jpg', alt: 'Gerflor Creation 70 Clic', isPrimary: true, order: 1 }],
     specs: [
       { key: 'wear_layer', label: 'Sloj habanja', value: '0.70mm' },
@@ -728,7 +728,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Connect sistem',
-    description: 'Creation 70 Connect LVT kolekcija - vinil sa Connect sistemom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\ ojačano\ Komfor\ jezgra\ fiberglass\ particles:\ improved\ Komfor\ i\ stabilnost\ PUR\ \+\ Matte\ varnish:\ prirodan\ izgled\ i\ lako\ za\ čišćenje\ ugradnja:\ Ekskluzivna\ Gerflor\ dovetails:\ easy\ ugradnja\ i\ robust\ Adhesive\-bez\ ugradnja:\ ugradnja\ occupied\ area\ even\ case\ rolling\ prometom\ Can\ be\ installed\ Direktno\ over\ keramiku\ \(spoj\ <5mm/<1mm\)\ Primena:\ idealno\ high\-prometom\ zone\ \(chain\ specialist,\ education,\ public\ buildings\)\ Okruženje:\ Made\ Europe\ /\ up\ 55%\ recikliranog\ sadržaja\ /\ 100%\ reciklabilno:\ eco\-responsible\ solution\ TVOC\ <10µg/m3\ /\ phthalate\ bez:\ better\ indoor\ air\ quality`,
     images: [{ id: '21-1', url: '/images/products/lvt/creation-70-connect.jpg', alt: 'Gerflor Creation 70 Connect', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Pločica' },
@@ -751,7 +751,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Megaclic sistem',
-    description: 'Creation 70 Megaclic LVT kolekcija - vinil sa Megaclic sistemom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Okruženje:\nProizvod\ 2\ Large\ Tile\ i\ Plank\ :\ idealno\ za\ realistic\ layout\ i\ Dizajn\ flexibility\ Ultra\-prirodan\ shades:\ closely\ resemble\ raw\ materials\ authentic\ aesthetics\ Durable\ konstrukcija:\ dizajnirano\ high\-prometom\ environments\ Complete\ decorative\ solution:\ kompatibilno\ GTI\ Max,\ includes\ entrance\ mats,\ ramps,\ i\ junctions\ Slip\-otporno\ \&\ lako\ za\ čišćenje:\ ensures\ safety\ i\ Održavanje\ ease\ Rolling\ trolley\ noise\ smanjenje\ \(vs\ keramiku\):\ quieter\ commercial\ use\ ugradnja\ Strong\ MegaClic\ connection:\ ojačano\ vertical\ clic\ system\ robust,\ adhesive\-bez\ ugradnja\ Can\ be\ installed\ directly\ over\ keramiku\ Quick\ renovaciju\ solution:\ no\ glue\ required\ Primena\ High\-prometom\ zone:\ idealno\ za\ retail,\ education,\ public\ buildings\ stvorite\ zones:\ Dizajn\ themed\ atmospheres\ dedicated\ spaces\ \(e\.g\.,\ supermarket\ corners\)\ Mix\ \&\ Match:\ harmonizes\ GTI\ Max\ custom\ layouts\ Okruženje\ Made\ Europe\ Eco\-responsible:\ 100%\ reciklabilno\ i\ includes\ recikliranog\ sadržaja\ Better\ indoor\ air\ quality:\ low\ TVOC\ \(<10\ µg\ /m3\),\ phthalate\-bez`,
     images: [{ id: '22-1', url: '/images/products/lvt/creation-70-megaclic.jpg', alt: 'Gerflor Creation 70 Megaclic', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -774,7 +774,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Zen dizajn',
-    description: 'Creation 70 Zen LVT kolekcija - vinil sa Zen dizajnom. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Proizvod:\nDostupno\ u\ formatima:\ daske\ i\ pločice\n4\ zakošene\ ivice\nSloj\ habanja:\ 0\.70\ mm\nUkupna\ debljina:\ 4\.35\ mm\nVisok\ nivo\ akustične\ izolacije\ \(\-20dB\)\nProtecShield™\ površinska\ obrada:\ poboljšana\ otpornost,\ jednostavno\ čišćenje\n\nUgradnja:\nUklonjiva\ ugradnja\ sa\ lepkom\ \-\ pogodno\ za\ podignute\ podove\nMoguća\ ugradnja\ na\ različite\ podloge\nMoguća\ ugradnja\ na\ azbest\ kontaminirane\ podloge\nUklonjivi\ podovi\ \-\ mogu\ se\ ukloniti\ po\ potrebi\n\nPrimena:\nEvropska\ klasa\ upotrebe:\ 34/42\nIdealno\ za\ zone\ sa\ intenzivnim\ prometom:\ kancelarije,\ hoteli,\ prodavnice\nOtporno\ na\ visok\ promet\nProtivpožarna\ klasifikacija:\ Bfl\-s1\ \(EN\ 13501\-1\)\n\nOkruženje:\n100%\ reciklabilno\n15%\ recikliranog\ sadržaja\nTVOC\ <10µg/m³\nBez\ ftalata\nKompatibilno\ sa\ REACH\ standardima\nProizvedeno\ u\ Francuskoj`,
     images: [{ id: '23-1', url: '/images/products/lvt/creation-70-zen.jpg', alt: 'Gerflor Creation 70 Zen', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
@@ -797,7 +797,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Saga²',
-    description: 'Proizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core » sa pluto jezgrom za komfor i akustične performanse (15 dB smanjenje buke)\nProtecShield™ površinska obrada: lako za čišćenje, bez potrebe za voskom\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <5mm\n\nPrimena:\nIdealno za zone sa visokim prometom: prodavnice, kancelarije, recepcije, itd.\n\nOkruženje:\n100% reciklabilno\n55% recikliranog sadržaja\nPluto: obnovljiva sirovina\nTVOC <10µg/m³\nBez ftalata',
+    description: `Proizvod:\n5\ veličina:\ uključujući\ riblju\ kost\ i\ XL\ daske\nEkskluzivna\ konstrukcija\ «\ Duo\ Core\ »\ sa\ pluto\ jezgrom\ za\ komfor\ i\ akustične\ performanse\ \(15\ dB\ smanjenje\ buke\)\nProtecShield™\ površinska\ obrada:\ lako\ za\ čišćenje,\ bez\ potrebe\ za\ voskom\n\nUgradnja:\nUklonjiva\ ugradnja\ sa\ lepkom\ \-\ pogodno\ za\ podignute\ podove\nDirektno\ na\ keramiku\ ako\ je\ spoj\ <5mm\n\nPrimena:\nIdealno\ za\ zone\ sa\ visokim\ prometom:\ prodavnice,\ kancelarije,\ recepcije,\ itd\.\n\nOkruženje:\n100%\ reciklabilno\n55%\ recikliranog\ sadržaja\nPluto:\ obnovljiva\ sirovina\nTVOC\ <10µg/m³\nBez\ ftalata`,
     images: [{ id: '24-1', url: '/images/products/lvt/creation-saga.jpg', alt: 'Gerflor Creation Saga²', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Kvadratna pločica' },
@@ -826,7 +826,7 @@ export const products: Product[] = [
     categoryId: '6',
     brandId: '6',
     shortDescription: 'LVT kolekcija Looselay sistem',
-    description: 'Creation 70 Looselay LVT kolekcija - vinil bez lepljenja. Pogledajte kompletnu ponudu na Gerflor sajtu.',
+    description: `Uklonjivi\ podovi\ koji\ odgovaraju\ vašim\ potrebama\n\nProizvod:\n5\ veličina:\ uključujući\ riblju\ kost\ i\ XL\ daske\nEkskluzivna\ konstrukcija\ «\ Duo\ Core\ »,\ ojačano\ staklenim\ vlaknima\ za\ komfor\ i\ stabilnost\nProtecShield™\ lak:\ prirodan\ izgled\ i\ lako\ za\ čišćenje\n\nUgradnja:\nUklonjiva\ ugradnja\ sa\ lepkom\ \-\ pogodno\ za\ podignute\ podove\nDirektno\ na\ keramiku\ ako\ je\ spoj\ <4mm\n\nPrimena:\nIdealno\ za\ zone\ sa\ intenzivnim\ prometom:\ kancelarije,\ hoteli,\ prodavnice\ \-\ evropska\ klasa\ 34\-43\n\nOkruženje:\n100%\ reciklabilno\n35%\ recikliranog\ sadržaja\nTVOC\ <10µg/m³\nBez\ ftalata`,
     images: [{ id: '25-1', url: '/images/products/lvt/creation-70-looselay.jpg', alt: 'Gerflor Creation 70 Looselay', isPrimary: true, order: 1 }],
     specs: [
       { key: 'format', label: 'Format', value: 'Ploča' },
