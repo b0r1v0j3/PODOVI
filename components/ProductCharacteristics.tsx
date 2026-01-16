@@ -74,22 +74,49 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
     return null;
   }
 
+  // Merge specs and selectedCharacteristics, prioritizing selectedCharacteristics
+  // to avoid duplicates. If selectedCharacteristics exists, use it as primary source
+  // and only add specs that are not already in selectedCharacteristics.
+  const mergedSpecs = new Map<string, { label: string; value: string }>();
+  
+  if (selectedCharacteristics && Object.keys(selectedCharacteristics).length > 0) {
+    // If we have color-specific characteristics, use them as primary source
+    Object.entries(selectedCharacteristics).forEach(([label, value]) => {
+      mergedSpecs.set(label.toLowerCase(), { label, value });
+    });
+    
+    // Add any specs from collection that are not in selectedCharacteristics
+    if (specs && specs.length > 0) {
+      specs.forEach((spec) => {
+        const key = spec.label.toLowerCase();
+        if (!mergedSpecs.has(key)) {
+          mergedSpecs.set(key, { label: spec.label, value: spec.value });
+        }
+      });
+    }
+  } else {
+    // If no color-specific characteristics, just use collection specs
+    if (specs && specs.length > 0) {
+      specs.forEach((spec) => {
+        mergedSpecs.set(spec.label.toLowerCase(), { label: spec.label, value: spec.value });
+      });
+    }
+  }
+
+  const finalSpecs = Array.from(mergedSpecs.values());
+
+  if (finalSpecs.length === 0) {
+    return null;
+  }
+
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">Karakteristike</h2>
       <dl className="space-y-3">
-        {/* Collection specs */}
-        {specs && specs.length > 0 && specs.map((spec) => (
-          <div key={spec.key} className="border-b border-gray-200 pb-3 last:border-0">
+        {finalSpecs.map((spec, index) => (
+          <div key={`${spec.label}-${index}`} className="border-b border-gray-200 pb-3 last:border-0">
             <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
             <dd className="text-base font-semibold text-gray-900">{spec.value}</dd>
-          </div>
-        ))}
-        {/* Color characteristics */}
-        {selectedCharacteristics && Object.entries(selectedCharacteristics).map(([label, value]) => (
-          <div key={label} className="border-b border-gray-200 pb-3 last:border-0">
-            <dt className="text-sm font-medium text-gray-500 mb-1">{label}</dt>
-            <dd className="text-base font-semibold text-gray-900">{value}</dd>
           </div>
         ))}
       </dl>
