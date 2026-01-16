@@ -10,7 +10,7 @@ import ProductColorSelector from '@/components/ProductColorSelector';
 import ProductImage from '@/components/ProductImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductCharacteristics from '@/components/ProductCharacteristics';
-import type { Product, ProductImage as ProductImageType, ProductSpec } from '@/types';
+import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDetailsSection } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 
@@ -653,11 +653,48 @@ export default async function ProductPage({ params, searchParams }: Props) {
             {/* Description */}
             <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
-              {product.description && (
-                <div className="prose prose-lg max-w-none text-gray-700">
-                  <p>{product.description}</p>
-                </div>
-              )}
+              
+              {/* Parse description into sections */}
+              {(() => {
+                const descriptionSections = product.description 
+                  ? parseDescriptionToSections(product.description)
+                  : [];
+                
+                // Use parsed sections if available, otherwise use product.detailsSections
+                const sectionsToDisplay = descriptionSections.length > 0 
+                  ? descriptionSections 
+                  : (product.detailsSections || []);
+                
+                if (sectionsToDisplay.length > 0) {
+                  return (
+                    <div className="space-y-6">
+                      {sectionsToDisplay.map((section, idx) => (
+                        <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
+                          <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+                          {section.items && section.items.length > 0 && (
+                            <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                              {section.items.map((item, index) => (
+                                <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  );
+                }
+                
+                // Fallback: show description as plain text if no sections found
+                if (product.description) {
+                  return (
+                    <div className="prose prose-lg max-w-none text-gray-700">
+                      <p className="whitespace-pre-line">{product.description}</p>
+                    </div>
+                  );
+                }
+                
+                return null;
+              })()}
             </div>
 
             {/* Specifications */}
@@ -670,7 +707,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       <dt className="text-sm font-medium text-gray-500 mb-1">
                         {spec.label}
                       </dt>
-                      <dd className="text-base font-semibold text-gray-900">
+                      <dd className="text-lg font-semibold text-gray-900">
                         {spec.value}
                       </dd>
                     </div>
