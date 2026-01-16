@@ -20,20 +20,56 @@ def normalize_color_slug(slug):
     # Extract color code and name
     # Format: creation-30-new-collection-0347-ballerina-41870347
     # or: dlw-marmorette-2-mm-0347-ballerina-41870347
+    # or: creation-70-zen-0953-ranch-anthracite-39220953
     match = re.search(r'(\d{4})-(.+?)(?:-\d+)?$', slug)
     if match:
         code = match.group(1)
         name = match.group(2).replace('-', ' ').strip()
+        # Remove any trailing numbers (like -39220953)
+        name = re.sub(r'\s+\d+$', '', name)
         return f"{name}-{code}".lower()
     
     return slug
 
 def find_color_in_colors(colors, target_slug, target_url):
     """Find color in colors array by matching slug or URL"""
-    # Try exact slug match
+    target_slug_lower = target_slug.lower()
+    
+    # Try exact slug match first
     for color in colors:
-        if color.get('slug', '').lower() == target_slug.lower():
+        if color.get('slug', '').lower() == target_slug_lower:
             return color
+    
+    # Try to extract code from target_slug and match by code (most reliable)
+    # Format: creation-70-zen-0953-ranch-anthracite-39220953 -> code: 0953
+    code_match = re.search(r'(\d{4})', target_slug)
+    if code_match:
+        target_code = code_match.group(1)
+        
+        # Find all colors with matching code
+        candidates = [c for c in colors if c.get('code') == target_code]
+        
+        if len(candidates) == 1:
+            # Only one match - return it
+            return candidates[0]
+        elif len(candidates) > 1:
+            # Multiple matches - try to find best match by name
+            # Extract name parts from target_slug (after code)
+            target_after_code = target_slug_lower.split(target_code)[-1] if target_code in target_slug_lower else ''
+            target_name_parts = [p for p in re.findall(r'[a-z]+', target_after_code) if len(p) > 3]
+            
+            for candidate in candidates:
+                color_name = candidate.get('name', '').lower()
+                # Check if any name part matches
+                if any(part in color_name for part in target_name_parts):
+                    return candidate
+                # Check if slug ends match
+                color_slug = candidate.get('slug', '').lower()
+                if target_after_code and any(part in color_slug for part in target_name_parts):
+                    return candidate
+            
+            # If no name match, return first candidate (better than nothing)
+            return candidates[0]
     
     # Try normalized slug match
     normalized_target = normalize_color_slug(target_slug)
@@ -43,21 +79,10 @@ def find_color_in_colors(colors, target_slug, target_url):
             return color
     
     # Try URL match
-    for color in colors:
-        if color.get('url') == target_url:
-            return color
-    
-    # Try by code and name
-    match = re.search(r'(\d{4})-(.+?)(?:-\d+)?$', target_slug)
-    if match:
-        code = match.group(1)
-        name_hint = match.group(2).replace('-', ' ').strip()
-        
+    if target_url:
         for color in colors:
-            if color.get('code') == code:
-                color_name = color.get('name', '').lower().replace('-', ' ').replace('_', ' ')
-                if name_hint.lower() in color_name or color_name in name_hint.lower():
-                    return color
+            if color.get('url') == target_url:
+                return color
     
     return None
 
