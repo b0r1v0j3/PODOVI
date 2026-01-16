@@ -44,10 +44,28 @@ def accept_cookies(driver):
         # Wait a bit for cookie popup to appear
         time.sleep(2)
         
-        # Try multiple ways to accept cookies
+        # First try to find "Accept All" button (most common)
+        try:
+            accept_all_btn = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, 
+                    "//button[contains(text(), 'Accept All')] | "
+                    "//button[normalize-space(text())='Accept All'] | "
+                    "//button[contains(., 'Accept All')]"
+                ))
+            )
+            if accept_all_btn.is_displayed():
+                driver.execute_script("arguments[0].scrollIntoView(true);", accept_all_btn)
+                time.sleep(0.3)
+                driver.execute_script("arguments[0].click();", accept_all_btn)
+                time.sleep(1)
+                print("      ✓ Cookies prihvaćeni (Accept All)")
+                return
+        except:
+            pass
+        
+        # Fallback: Try other selectors
         cookie_selectors = [
             (By.ID, "tarteaucitronPersonalize2"),
-            (By.XPATH, "//button[contains(text(), 'Accept All')]"),
             (By.XPATH, "//button[contains(text(), 'Accept')]"),
             (By.XPATH, "//button[contains(text(), 'I accept')]"),
             (By.XPATH, "//button[contains(@class, 'accept')]"),
@@ -56,10 +74,12 @@ def accept_cookies(driver):
         
         for selector_type, selector_value in cookie_selectors:
             try:
-                cookie_button = WebDriverWait(driver, 3).until(
+                cookie_button = WebDriverWait(driver, 2).until(
                     EC.element_to_be_clickable((selector_type, selector_value))
                 )
                 if cookie_button.is_displayed():
+                    driver.execute_script("arguments[0].scrollIntoView(true);", cookie_button)
+                    time.sleep(0.3)
                     driver.execute_script("arguments[0].click();", cookie_button)
                     time.sleep(1)
                     print("      ✓ Cookies prihvaćeni")
