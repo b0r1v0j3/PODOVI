@@ -66,13 +66,16 @@ export default function ProductColorSelector({
     console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt, colorCode, colorName, characteristics });
     if (imageUrl) {
       setSelectedImage({ url: imageUrl, alt: imageAlt });
+      setCurrentImageIndex(0); // Reset to first image
+      
       if (colorCode && colorName) {
         setSelectedColor({ code: colorCode, name: colorName });
       }
-      // Extract slug from imageAlt or use a fallback
+      
       if (payload.colorSlug) {
         setSelectedColorSlug(payload.colorSlug);
       }
+      
       if (characteristics) {
         setSelectedCharacteristics(characteristics);
         if (onCharacteristicsChange) {
@@ -81,6 +84,42 @@ export default function ProductColorSelector({
       }
     }
   };
+  
+  // Load carpet images (both Color Scan and Zoom) when color is selected
+  useEffect(() => {
+    if (!selectedColorSlug) return;
+    
+    // Check if this is a carpet product (Armonia)
+    if (collectionSlug.includes('armonia')) {
+      // Fetch carpet data
+      fetch('/data/carpet_tiles_complete.json')
+        .then(res => res.json())
+        .then(data => {
+          const carpetColor = data.colors?.find((c: any) => c.slug === selectedColorSlug);
+          if (carpetColor) {
+            const images = [];
+            if (carpetColor.image_url) {
+              images.push({ url: carpetColor.image_url, alt: `${carpetColor.name} - Color Scan` });
+            }
+            if (carpetColor.texture_url) {
+              images.push({ url: carpetColor.texture_url, alt: `${carpetColor.name} - Zoom/Close-up` });
+            }
+            setSelectedImages(images);
+            if (images.length > 0) {
+              setSelectedImage(images[0]);
+            }
+          }
+        })
+        .catch(err => console.error('Error loading carpet images:', err));
+    }
+  }, [selectedColorSlug, collectionSlug]);
+  
+  // Update selected image when currentImageIndex changes
+  useEffect(() => {
+    if (selectedImages.length > 0 && selectedImages[currentImageIndex]) {
+      setSelectedImage(selectedImages[currentImageIndex]);
+    }
+  }, [currentImageIndex, selectedImages]);
 
   const handleModalColorSelect = (payload: {
     imageUrl: string;
