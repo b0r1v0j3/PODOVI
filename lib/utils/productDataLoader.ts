@@ -191,8 +191,8 @@ export function getAllCarpetProducts(): Product[] {
         return {
             id: color.slug,
             name: color.full_name || color.name,
-            // Use collection slug for routing, not individual color slug
-            slug: color.collection_slug || color.collection,
+            // Use collection slug + color parameter for routing
+            slug: `${color.collection_slug || color.collection}?color=${color.slug}`,
             sku: color.code,
             categoryId: '4', // Tekstilne ploče
             brandId: '6', // Gerflor
