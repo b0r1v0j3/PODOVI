@@ -864,8 +864,8 @@
       "format": "Square tile",
       "overall_thickness": "6.50 mm",
       "specs": {
-        "NCS": "TBD",
-        "LRV": "TBD",
+        "NCS": "6010-Y30R",
+        "LRV": "28.9",
         "UNIT_BOX": "20",
         "PILE_WEIGHT": "620 g/m²",
         "SURFACE_YARN": "Solution Dyed Nylon - Econyl®",
@@ -881,7 +881,9 @@
         "Format details": "Square tile",
         "Surface yarn": "Solution Dyed Nylon - Econyl®",
         "Pile weight": "620 g/m²",
-        "Classification (BS EN 13307)": "Class 33"
+        "Classification (BS EN 13307)": "Class 33",
+        "NCS": "6010-Y30R",
+        "LRV": "28.9"
       },
       "texture_url": "/images/products/carpet/56711 - ARMONIA620Polvere-RoomSceneViewColour.jpg",
       "image_count": 2,
