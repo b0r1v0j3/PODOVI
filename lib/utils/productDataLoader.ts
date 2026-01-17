@@ -139,14 +139,62 @@ export function getAllLinoleumProducts(): Product[] {
 
 /**
  * Get all Carpet products from carpet_tiles_complete.json
- * NOTE: We do NOT return individual carpet colors as products!
- * Only collections (from mock-data.ts) are products.
- * Colors are loaded by ColorGrid component from carpet_tiles_complete.json
+ * NOTE: These are returned for display in category grid only!
+ * They should NOT have individual routes - only used in Boje (Colors) tab
  */
 export function getAllCarpetProducts(): Product[] {
-    // Return empty array - carpet colors are NOT individual products
-    // They are part of collections (Armonia 400, 540, 620) defined in mock-data.ts
-    return [];
+    if (carpetProductsCache) {
+        return carpetProductsCache;
+    }
+
+    const colors = (carpetColorsData as any).colors || [];
+    
+    // Transform each color to a Product (for display only, not for routing)
+    const products = colors.map((color: any) => {
+        const specs = Object.entries(color.characteristics || {}).map(([label, value]) => ({
+            key: label.toLowerCase().replace(/\s+/g, '_'),
+            label,
+            value: value as string
+        }));
+
+        // Add specs from color.specs
+        if (color.specs) {
+            if (color.specs.NCS && !specs.find(s => s.key === 'ncs')) {
+                specs.push({ key: 'ncs', label: 'NCS Oznaka', value: color.specs.NCS });
+            }
+            if (color.specs.LRV && !specs.find(s => s.key === 'lrv')) {
+                specs.push({ key: 'lrv', label: 'LRV', value: color.specs.LRV });
+            }
+        }
+
+        return {
+            id: color.slug,
+            name: color.full_name || color.name,
+            slug: color.slug,
+            sku: color.code,
+            categoryId: '4', // Tekstilne ploče
+            brandId: '6', // Gerflor
+            shortDescription: `Gerflor ${color.collection_name} - ${color.name}`,
+            description: color.description,
+            images: [
+                {
+                    id: `${color.slug}-img-1`,
+                    url: color.image_url || '/images/placeholder.svg',
+                    alt: color.name,
+                    isPrimary: true,
+                    order: 1,
+                },
+            ],
+            specs,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        };
+    });
+    
+    carpetProductsCache = products;
+    return products;
 }
 
 /**
