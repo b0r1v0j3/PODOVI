@@ -1,0 +1,2715 @@
+{
+  "total": 144,
+  "welding_rods": [
+    {
+      "welding_rod_ref": "R8970001",
+      "slug": "lino-welding-rod-4mm-mat-40-0001-banana-yellow-r8970001",
+      "code": "0001",
+      "name": "BANANA YELLOW",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0001",
+          "name": "BANANA YELLOW",
+          "collection": "dlw-colorette",
+          "slug": "0001-banana-yellow",
+          "image_url": "/images/products/linoleum/dlw-colorette/0001-banana-yellow/45086 - 0557 URBAN GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970004",
+      "slug": "lino-welding-rod-4mm-mat-40-0004-bluebird-r8970004",
+      "code": "0004",
+      "name": "BLUEBIRD",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0004",
+          "name": "BLUEBIRD",
+          "collection": "dlw-colorette",
+          "slug": "0004-bluebird",
+          "image_url": "/images/products/linoleum/dlw-colorette/0004-bluebird/45171 - 0100 OCEAN BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970006",
+      "slug": "lino-welding-rod-4mm-mat-40-0006-vivid-green-r8970006",
+      "code": "0006",
+      "name": "VIVID GREEN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0006",
+          "name": "VIVID GREEN",
+          "collection": "dlw-colorette",
+          "slug": "0006-vivid-green",
+          "image_url": "/images/products/linoleum/dlw-colorette/0006-vivid-green/45176 - 0003 DARK BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970010",
+      "slug": "lino-welding-rod-4mm-mat-40-0010-pompeji-red-r8970010",
+      "code": "0010",
+      "name": "POMPEJI RED",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0010",
+          "name": "POMPEJI RED",
+          "collection": "dlw-uni-walton",
+          "slug": "0010-pompeji-red",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0010-pompeji-red/45121 - 0010 POMPEJI RED.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970012",
+      "slug": "lino-welding-rod-4mm-mat-40-0012-light-beige-r8970012",
+      "code": "0012",
+      "name": "LIGHT BEIGE",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0012",
+          "name": "LIGHT BEIGE",
+          "collection": "dlw-colorette-acoustic-plus",
+          "slug": "dlw-colorette-acoustic-plus-0012-light-beige",
+          "image_url": "/images/products/linoleum/dlw-colorette-acoustic-plus/0012-light-beige/41631 - 0055-ash-grey.jpg"
+        },
+        {
+          "code": "0012",
+          "name": "LIGHT BEIGE",
+          "collection": "dlw-colorette",
+          "slug": "dlw-colorette-0012-light-beige",
+          "image_url": "/images/products/linoleum/dlw-colorette/0012-light-beige/44861 - 0095 SPRING BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970016",
+      "slug": "lino-welding-rod-4mm-mat-40-0016-deep-orange-r8970016",
+      "code": "0016",
+      "name": "DEEP ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0016",
+          "name": "DEEP ORANGE",
+          "collection": "dlw-colorette",
+          "slug": "0016-deep-orange",
+          "image_url": "/images/products/linoleum/dlw-colorette/0016-deep-orange/58971 - Lino Art Urban 0575 Powder Stone Brown.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970035",
+      "slug": "lino-welding-rod-4mm-mat-40-0035-racing-green-r8970035",
+      "code": "0035",
+      "name": "RACING GREEN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0035",
+          "name": "RACING GREEN",
+          "collection": "dlw-uni-walton",
+          "slug": "0035-racing-green",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0035-racing-green/45371 - 0160 INDUSTRIAL GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970052",
+      "slug": "lino-welding-rod-4mm-mat-40-0052-oxid-grey-r8970052",
+      "code": "0052",
+      "name": "OXID GREY",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0052",
+          "name": "OXID GREY",
+          "collection": "dlw-colorette",
+          "slug": "dlw-colorette-0052-oxid-grey",
+          "image_url": "/images/products/linoleum/dlw-colorette/0052-oxid-grey/44851 - 0085 WARM CONCRETE GREY.jpg"
+        },
+        {
+          "code": "0052",
+          "name": "OXID GREY",
+          "collection": "dlw-colorette-acoustic-plus",
+          "slug": "dlw-colorette-acoustic-plus-0052-oxid-grey",
+          "image_url": "/images/products/linoleum/dlw-colorette-acoustic-plus/0052-oxid-grey/44766 - 0059 STONE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970058",
+      "slug": "lino-welding-rod-4mm-mat-40-0058-aluminium-grey-r8970058",
+      "code": "0058",
+      "name": "ALUMINIUM GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0058",
+          "name": "ALUMINIUM GREY",
+          "collection": "dlw-colorette",
+          "slug": "dlw-colorette-0058-aluminium-grey",
+          "image_url": "/images/products/linoleum/dlw-colorette/0058-aluminium-grey/44881 - 0058 ALUMINIUM GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970060",
+      "slug": "lino-welding-rod-4mm-mat-40-0060-deep-brown-r8970060",
+      "code": "0060",
+      "name": "DEEP BROWN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0060",
+          "name": "DEEP BROWN",
+          "collection": "dlw-uni-walton",
+          "slug": "0060-deep-brown",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0060-deep-brown/45261 - 0091 SHIITAKE MUSHROOM.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970062",
+      "slug": "lino-welding-rod-4mm-mat-40-0062-mediterranean-orange-r8970062",
+      "code": "0062",
+      "name": "MEDITERRANEAN ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0062",
+          "name": "MEDITERRANEAN ORANGE",
+          "collection": "dlw-uni-walton",
+          "slug": "0062-mediterranean-orange",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0062-mediterranean-orange/45146 - 0062 MEDITERRANEAN ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970071",
+      "slug": "lino-welding-rod-4mm-mat-40-0071-straw-beige-r8970071",
+      "code": "0071",
+      "name": "STRAW BEIGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0071",
+          "name": "STRAW BEIGE",
+          "collection": "dlw-colorette",
+          "slug": "0071-straw-beige",
+          "image_url": "/images/products/linoleum/dlw-colorette/0071-straw-beige/58991 - Lino Art Urban 0579 City Clay.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970080",
+      "slug": "lino-welding-rod-4mm-mat-40-0080-elephant-grey-r8970080",
+      "code": "0080",
+      "name": "ELEPHANT GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0080",
+          "name": "ELEPHANT GREY",
+          "collection": "dlw-colorette",
+          "slug": "0080-elephant-grey",
+          "image_url": "/images/products/linoleum/dlw-colorette/0080-elephant-grey/44796 - 0096 MIDNIGHT GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970081",
+      "slug": "lino-welding-rod-4mm-mat-40-0081-private-black-r8970081",
+      "code": "0081",
+      "name": "PRIVATE BLACK",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0081",
+          "name": "PRIVATE BLACK",
+          "collection": "dlw-colorette",
+          "slug": "0081-private-black",
+          "image_url": "/images/products/linoleum/dlw-colorette/0081-private-black/45066 - 0550 BETON SOFT GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970082",
+      "slug": "lino-welding-rod-4mm-mat-40-0082-broken-grey-r8970082",
+      "code": "0082",
+      "name": "BROKEN GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0082",
+          "name": "BROKEN GREY",
+          "collection": "dlw-uni-walton",
+          "slug": "0082-broken-grey",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0082-broken-grey/60721 - Lino Art Moon 0242 Stone.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970085",
+      "slug": "lino-welding-rod-4mm-mat-40-0085-warm-concrete-grey-r8970085",
+      "code": "0085",
+      "name": "WARM CONCRETE GREY",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0085",
+          "name": "WARM CONCRETE GREY",
+          "collection": "dlw-uni-walton",
+          "slug": "dlw-uni-walton-0085-warm-concrete-grey",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0085-warm-concrete-grey/44886 - 0071 STRAW BEIGE.jpg"
+        },
+        {
+          "code": "0085",
+          "name": "WARM CONCRETE GREY",
+          "collection": "dlw-uni-walton-acoustic-plus",
+          "slug": "dlw-uni-walton-acoustic-plus-0085-warm-concrete-grey",
+          "image_url": "/images/products/linoleum/dlw-uni-walton-acoustic-plus/0085-warm-concrete-grey/58976 - Lino Art Urban 0576 Earth Clay.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970088",
+      "slug": "lino-welding-rod-4mm-mat-40-0088-chestnut-r8970088",
+      "code": "0088",
+      "name": "CHESTNUT",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0088",
+          "name": "CHESTNUT",
+          "collection": "dlw-uni-walton",
+          "slug": "0088-chestnut",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0088-chestnut/45406 - 0243 MARBLE BEIGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970110",
+      "slug": "lino-welding-rod-4mm-mat-40-0110-cadillac-pink-r8970110",
+      "code": "0110",
+      "name": "CADILLAC PINK",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0110",
+          "name": "CADILLAC PINK",
+          "collection": "dlw-colorette",
+          "slug": "0110-cadillac-pink",
+          "image_url": "/images/products/linoleum/dlw-colorette/0110-cadillac-pink/44901 - 0110 CADILLAC PINK.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970123",
+      "slug": "lino-welding-rod-4mm-mat-40-0123-poppy-blue-r8970123",
+      "code": "0123",
+      "name": "POPPY BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0123",
+          "name": "POPPY BLUE",
+          "collection": "dlw-colorette",
+          "slug": "0123-poppy-blue",
+          "image_url": "/images/products/linoleum/dlw-colorette/0123-poppy-blue/59011 - Lino Art Urban 0584 Night Blue.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970143",
+      "slug": "lino-welding-rod-4mm-mat-40-0043-light-mud-r8970143",
+      "code": "0043",
+      "name": "LIGHT MUD",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0043",
+          "name": "LIGHT MUD",
+          "collection": "dlw-colorette",
+          "slug": "0043-light-mud",
+          "image_url": "/images/products/linoleum/dlw-colorette/0043-light-mud/45126 - 0035 RACING GREEN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970159",
+      "slug": "lino-welding-rod-4mm-mat-40-0059-stone-grey-r8970159",
+      "code": "0059",
+      "name": "STONE GREY",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0059",
+          "name": "STONE GREY",
+          "collection": "dlw-colorette",
+          "slug": "dlw-colorette-0059-stone-grey",
+          "image_url": "/images/products/linoleum/dlw-colorette/0059-stone-grey/43161 - 0004 BLUEBIRD.jpg"
+        },
+        {
+          "code": "0059",
+          "name": "STONE GREY",
+          "collection": "dlw-colorette-acoustic-plus",
+          "slug": "dlw-colorette-acoustic-plus-0059-stone-grey",
+          "image_url": "/images/products/linoleum/dlw-colorette-acoustic-plus/0059-stone-grey/44781 - 0059 PLUMB GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970170",
+      "slug": "lino-welding-rod-4mm-mat-40-0170-kumquat-orange-r8970170",
+      "code": "0170",
+      "name": "KUMQUAT ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0170",
+          "name": "KUMQUAT ORANGE",
+          "collection": "dlw-colorette",
+          "slug": "0170-kumquat-orange",
+          "image_url": "/images/products/linoleum/dlw-colorette/0170-kumquat-orange/45286 - 0106 HAZELNUT SHAKE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970171",
+      "slug": "lino-welding-rod-4mm-mat-40-0171-sunrise-orange-r8970171",
+      "code": "0171",
+      "name": "SUNRISE ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0171",
+          "name": "SUNRISE ORANGE",
+          "collection": "dlw-colorette",
+          "slug": "0171-sunrise-orange",
+          "image_url": "/images/products/linoleum/dlw-colorette/0171-sunrise-orange/44771 - 0040 LIGHT SAHARA.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970180",
+      "slug": "lino-welding-rod-4mm-mat-40-0080-black-r8970180",
+      "code": "0080",
+      "name": "BLACK",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0080",
+          "name": "BLACK",
+          "collection": "dlw-uni-walton",
+          "slug": "0080-black",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0080-black/45391 - 0173 MELON ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970181",
+      "slug": "lino-welding-rod-4mm-mat-40-0081-nickel-grey-r8970181",
+      "code": "0081",
+      "name": "NICKEL GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0081",
+          "name": "NICKEL GREY",
+          "collection": "dlw-uni-walton",
+          "slug": "0081-nickel-grey",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0081-nickel-grey/45316 - 0122 FLUFFY BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970183",
+      "slug": "lino-welding-rod-4mm-mat-40-0083-architects-grey-r8970183",
+      "code": "0083",
+      "name": "ARCHITECTS GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0083",
+          "name": "ARCHITECTS GREY",
+          "collection": "dlw-uni-walton",
+          "slug": "0083-architects-grey",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0083-architects-grey/45246 - 0083 JUNGLE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970200",
+      "slug": "lino-welding-rod-4mm-mat-40-0100-ocean-blue-r8970200",
+      "code": "0100",
+      "name": "OCEAN BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0100",
+          "name": "OCEAN BLUE",
+          "collection": "dlw-uni-walton",
+          "slug": "0100-ocean-blue",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0100-ocean-blue/45396 - Marmorette - 0211 Pink - Colour scann.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970218",
+      "slug": "lino-welding-rod-4mm-mat-40-0118-power-red-r8970218",
+      "code": "0118",
+      "name": "POWER RED",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0118",
+          "name": "POWER RED",
+          "collection": "dlw-colorette",
+          "slug": "0118-power-red",
+          "image_url": "/images/products/linoleum/dlw-colorette/0118-power-red/60696 - Lino Art Moon 0237 Volcanic.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970231",
+      "slug": "lino-welding-rod-4mm-mat-40-0231-earth-r8970231",
+      "code": "0231",
+      "name": "Earth",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0231",
+          "name": "Earth",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0231-earth",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0231-earth/45206 - 0043 LEAF GREEN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970232",
+      "slug": "lino-welding-rod-4mm-mat-40-0232-mercury-r8970232",
+      "code": "0232",
+      "name": "Mercury",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0232",
+          "name": "Mercury",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0232-mercury",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0232-mercury/60701 - Lino Art Moon 0238 Meteorite.jpg"
+        },
+        {
+          "code": "0132",
+          "name": "SPICY GREEN",
+          "collection": "dlw-colorette",
+          "slug": "0132-spicy-green",
+          "image_url": "/images/products/linoleum/dlw-colorette/0132-spicy-green/44896 - 0081 PRIVATE BLACK.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970233",
+      "slug": "lino-welding-rod-4mm-mat-40-0233-venus-r8970233",
+      "code": "0233",
+      "name": "Venus",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0233",
+          "name": "Venus",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0233-venus",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0233-venus/60711 - Lino Art Moon 0240 Rock.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970234",
+      "slug": "lino-welding-rod-4mm-mat-40-0234-sand-r8970234",
+      "code": "0234",
+      "name": "Sand",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0234",
+          "name": "Sand",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0234-sand",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0234-sand/44786 - 0070 ROCKY BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970235",
+      "slug": "lino-welding-rod-4mm-mat-40-0235-soil-r8970235",
+      "code": "0235",
+      "name": "Soil",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0235",
+          "name": "Soil",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0235-soil",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0235-soil/60681 - Lino Art Moon 0234 Sand.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970236",
+      "slug": "lino-welding-rod-4mm-mat-40-0236-sun-r8970236",
+      "code": "0236",
+      "name": "Sun",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0236",
+          "name": "Sun",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0236-sun",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0236-sun/45291 - 0108 MOKKA BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970237",
+      "slug": "lino-welding-rod-4mm-mat-40-0237-volcanic-r8970237",
+      "code": "0237",
+      "name": "Volcanic",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0237",
+          "name": "Volcanic",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0237-volcanic",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0237-volcanic/44771 - 0040 LIGHT SAHARA.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970238",
+      "slug": "lino-welding-rod-4mm-mat-40-0238-meteorite-r8970238",
+      "code": "0238",
+      "name": "Meteorite",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0238",
+          "name": "Meteorite",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0238-meteorite",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0238-meteorite/45351 - 0146 BEESWAX BEIGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970239",
+      "slug": "lino-welding-rod-4mm-mat-40-0239-shadow-r8970239",
+      "code": "0239",
+      "name": "Shadow",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0239",
+          "name": "Shadow",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0239-shadow",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0239-shadow/45371 - 0160 INDUSTRIAL GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970240",
+      "slug": "lino-welding-rod-4mm-mat-40-0240-rock-r8970240",
+      "code": "0240",
+      "name": "Rock",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0240",
+          "name": "Rock",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0240-rock",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0240-rock/45241 - 0076 PALE YELLOW.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970241",
+      "slug": "lino-welding-rod-4mm-mat-40-0241-green-flash-r8970241",
+      "code": "0241",
+      "name": "Green Flash",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0241",
+          "name": "Green Flash",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0241-green-flash",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0241-green-flash/41621 - 0023 DUSTY BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970242",
+      "slug": "lino-welding-rod-4mm-mat-40-0242-stone-r8970242",
+      "code": "0242",
+      "name": "Stone",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0242",
+          "name": "Stone",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0242-stone",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0242-stone/55031 - SPRING BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970243",
+      "slug": "lino-welding-rod-4mm-mat-40-0243-space-r8970243",
+      "code": "0243",
+      "name": "Space",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0243",
+          "name": "Space",
+          "collection": "dlw-lino-art-moon",
+          "slug": "0243-space",
+          "image_url": "/images/products/linoleum/dlw-lino-art-moon/0243-space/58651 - Marmorette Acoustic 0045 Sand Beige.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970258",
+      "slug": "lino-welding-rod-4mm-mat-40-0058-clay-grey-r8970258",
+      "code": "0058",
+      "name": "CLAY GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0058",
+          "name": "CLAY GREY",
+          "collection": "dlw-uni-walton",
+          "slug": "0058-clay-grey",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0058-clay-grey/44786 - 0070 ROCKY BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970259",
+      "slug": "lino-welding-rod-4mm-mat-40-0059-frost-grey-r8970259",
+      "code": "0059",
+      "name": "FROST GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0059",
+          "name": "FROST GREY",
+          "collection": "dlw-uni-walton",
+          "slug": "0059-frost-grey",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0059-frost-grey/44776 - 0053 ICE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970273",
+      "slug": "lino-welding-rod-4mm-mat-40-0073-sand-yellow-r8970273",
+      "code": "0073",
+      "name": "SAND YELLOW",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0073",
+          "name": "SAND YELLOW",
+          "collection": "dlw-colorette",
+          "slug": "0073-sand-yellow",
+          "image_url": "/images/products/linoleum/dlw-colorette/0073-sand-yellow/44891 - 0073 SAND YELLOW.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970290",
+      "slug": "lino-welding-rod-4mm-mat-40-0090-olive-r8970290",
+      "code": "0090",
+      "name": "OLIVE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0090",
+          "name": "OLIVE",
+          "collection": "dlw-uni-walton",
+          "slug": "0090-olive",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0090-olive/45096 - 0562 TITAN GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970295",
+      "slug": "lino-welding-rod-4mm-mat-40-0095-spring-blue-r8970295",
+      "code": "0095",
+      "name": "SPRING BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0095",
+          "name": "SPRING BLUE",
+          "collection": "dlw-uni-walton",
+          "slug": "0095-spring-blue",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0095-spring-blue/44816 - 0554 CONCRETE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970343",
+      "slug": "lino-welding-rod-4mm-mat-40-0043-neutral-beige-r8970343",
+      "code": "0043",
+      "name": "NEUTRAL BEIGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0043",
+          "name": "NEUTRAL BEIGE",
+          "collection": "dlw-uni-walton",
+          "slug": "0043-neutral-beige",
+          "image_url": "/images/products/linoleum/dlw-uni-walton/0043-neutral-beige/45231 - 0072 GOLDEN YELLOW.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970568",
+      "slug": "lino-welding-rod-4mm-mat-40-0568-asphalt-grey-r8970568",
+      "code": "0568",
+      "name": "Asphalt Grey",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0568",
+          "name": "Asphalt Grey",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0568-asphalt-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0568-asphalt-grey/44786 - 0070 ROCKY BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970569",
+      "slug": "lino-welding-rod-4mm-mat-40-0569-curb-grey-r8970569",
+      "code": "0569",
+      "name": "Curb Grey",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0569",
+          "name": "Curb Grey",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0569-curb-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0569-curb-grey/55026 - SPORTY BLACK.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970570",
+      "slug": "lino-welding-rod-4mm-mat-40-0570-metropolis-grey-r8970570",
+      "code": "0570",
+      "name": "Metropolis Grey",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0570",
+          "name": "Metropolis Grey",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0570-metropolis-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0570-metropolis-grey/45151 - 0080 BLACK.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970571",
+      "slug": "lino-welding-rod-4mm-mat-40-0571-tree-bark-brown-r8970571",
+      "code": "0571",
+      "name": "Tree Bark Brown",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0571",
+          "name": "Tree Bark Brown",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0571-tree-bark-brown",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0571-tree-bark-brown/55016 - PEACH ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970572",
+      "slug": "lino-welding-rod-4mm-mat-40-0572-terracotta-brown-r8970572",
+      "code": "0572",
+      "name": "Terracotta Brown",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0572",
+          "name": "Terracotta Brown",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0572-terracotta-brown",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0572-terracotta-brown/45166 - 0088 CHESTNUT.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970573",
+      "slug": "lino-welding-rod-4mm-mat-40-0573-brick-brown-r8970573",
+      "code": "0573",
+      "name": "Brick Brown",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0573",
+          "name": "Brick Brown",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0573-brick-brown",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0573-brick-brown/44851 - 0085 WARM CONCRETE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970575",
+      "slug": "lino-welding-rod-4mm-mat-40-0575-powder-stone-brown-r8970575",
+      "code": "0575",
+      "name": "Powder Stone Brown",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0575",
+          "name": "Powder Stone Brown",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0575-powder-stone-brown",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0575-powder-stone-brown/45076 - 0552 SILVER GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970576",
+      "slug": "lino-welding-rod-4mm-mat-40-0576-earth-clay-r8970576",
+      "code": "0576",
+      "name": "Earth Clay",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0576",
+          "name": "Earth Clay",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0576-earth-clay",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0576-earth-clay/41631 - 0055-ash-grey.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970577",
+      "slug": "lino-welding-rod-4mm-mat-40-0577-ochre-clay-r8970577",
+      "code": "0577",
+      "name": "Ochre Clay",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0577",
+          "name": "Ochre Clay",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0577-ochre-clay",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0577-ochre-clay/58961 - Lino Art Urban 0572 Terracotta Brown.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970578",
+      "slug": "lino-welding-rod-4mm-mat-40-0578-marine-clay-r8970578",
+      "code": "0578",
+      "name": "Marine Clay",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0578",
+          "name": "Marine Clay",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0578-marine-clay",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0578-marine-clay/45346 - 0145 BANANA WHITE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970579",
+      "slug": "lino-welding-rod-4mm-mat-40-0579-city-clay-r8970579",
+      "code": "0579",
+      "name": "City Clay",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0579",
+          "name": "City Clay",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0579-city-clay",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0579-city-clay/41616 - 0023-dusty-blue.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970580",
+      "slug": "lino-welding-rod-4mm-mat-40-0580-bush-green-r8970580",
+      "code": "0580",
+      "name": "Bush Green",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0580",
+          "name": "Bush Green",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0580-bush-green",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0580-bush-green/58996 - Lino Art Urban 0580 Bush Green.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970582",
+      "slug": "lino-welding-rod-4mm-mat-40-0582-stalk-green-r8970582",
+      "code": "0582",
+      "name": "Stalk Green",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0582",
+          "name": "Stalk Green",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0582-stalk-green",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0582-stalk-green/44781 - 0059 PLUMB GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970583",
+      "slug": "lino-welding-rod-4mm-mat-40-0583-lily-green-r8970583",
+      "code": "0583",
+      "name": "Lily Green",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0583",
+          "name": "Lily Green",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0583-lily-green",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0583-lily-green/58951 - Lino Art Urban 0570 Metropolis Grey.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970584",
+      "slug": "lino-welding-rod-4mm-mat-40-0584-night-blue-r8970584",
+      "code": "0584",
+      "name": "Night Blue",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0584",
+          "name": "Night Blue",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0584-night-blue",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0584-night-blue/60676 - Lino Art Moon 0233 Venus.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970585",
+      "slug": "lino-welding-rod-4mm-mat-40-0585-cloud-blue-r8970585",
+      "code": "0585",
+      "name": "Cloud Blue",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0585",
+          "name": "Cloud Blue",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0585-cloud-blue",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0585-cloud-blue/44791 - 0073 SPICY ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970586",
+      "slug": "lino-welding-rod-4mm-mat-40-0586-light-clay-r8970586",
+      "code": "0586",
+      "name": "Light Clay",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0586",
+          "name": "Light Clay",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0586-light-clay",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0586-light-clay/45411 - 0251 CREAM.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8970587",
+      "slug": "lino-welding-rod-4mm-mat-40-0587-sand-clay-r8970587",
+      "code": "0587",
+      "name": "Sand Clay",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0587",
+          "name": "Sand Clay",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0587-sand-clay",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0587-sand-clay/44806 - 0158 TABAC GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975550",
+      "slug": "lino-welding-rod-4mm-mat-40-0550-beton-soft-grey-r8975550",
+      "code": "0550",
+      "name": "BETON SOFT GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0550",
+          "name": "BETON SOFT GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0550-beton-soft-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0550-beton-soft-grey/45321 - 0128 VIOLET.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975552",
+      "slug": "lino-welding-rod-4mm-mat-40-0552-silver-grey-r8975552",
+      "code": "0552",
+      "name": "SILVER GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0552",
+          "name": "SILVER GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0552-silver-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0552-silver-grey/60716 - Lino Art Moon 0241 Green Flash.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975553",
+      "slug": "lino-welding-rod-4mm-mat-40-0553-dark-concrete-grey-r8975553",
+      "code": "0553",
+      "name": "DARK CONCRETE GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0553",
+          "name": "DARK CONCRETE GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0553-dark-concrete-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0553-dark-concrete-grey/45251 - 0089 PEACAN PIE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975554",
+      "slug": "lino-welding-rod-4mm-mat-40-0554-concrete-grey-r8975554",
+      "code": "0554",
+      "name": "CONCRETE GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0554",
+          "name": "CONCRETE GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0554-concrete-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0554-concrete-grey/58986 - Lino Art Urban 0578 Marine Clay.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975557",
+      "slug": "lino-welding-rod-4mm-mat-40-0557-urban-grey-r8975557",
+      "code": "0557",
+      "name": "URBAN GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0557",
+          "name": "URBAN GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0557-urban-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0557-urban-grey/45186 - 0019 SUNSET ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975560",
+      "slug": "lino-welding-rod-4mm-mat-40-0560-bold-grey-r8975560",
+      "code": "0560",
+      "name": "BOLD GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0560",
+          "name": "BOLD GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0560-bold-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0560-bold-grey/43191 - R8941123.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975562",
+      "slug": "lino-welding-rod-4mm-mat-40-0562-titan-grey-r8975562",
+      "code": "0562",
+      "name": "TITAN GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0562",
+          "name": "TITAN GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0562-titan-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0562-titan-grey/45426 - 0254 MINERAL GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975563",
+      "slug": "lino-welding-rod-4mm-mat-40-0563-zinc-grey-r8975563",
+      "code": "0563",
+      "name": "ZINC GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0563",
+          "name": "ZINC GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0563-zinc-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0563-zinc-grey/58651 - Marmorette Acoustic 0045 Sand Beige.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8975565",
+      "slug": "lino-welding-rod-4mm-mat-40-0565-graphite-grey-r8975565",
+      "code": "0565",
+      "name": "GRAPHITE GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0565",
+          "name": "GRAPHITE GREY",
+          "collection": "dlw-lino-art-urban",
+          "slug": "0565-graphite-grey",
+          "image_url": "/images/products/linoleum/dlw-lino-art-urban/0565-graphite-grey/45281 - 0100 FROG GREEN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980003",
+      "slug": "lino-welding-rod-4mm-mat-40-0003-dark-brown-r8980003",
+      "code": "0003",
+      "name": "DARK BROWN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0003",
+          "name": "DARK BROWN",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0003-dark-brown",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0003-dark-brown/45176 - 0003 DARK BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980011",
+      "slug": "lino-welding-rod-4mm-mat-40-1011-avocado-green-r8980011",
+      "code": "1011",
+      "name": "AVOCADO GREEN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "1011",
+          "name": "AVOCADO GREEN",
+          "collection": "dlw-linodur",
+          "slug": "1011-avocado-green",
+          "image_url": "/images/products/linoleum/dlw-linodur/1011-avocado-green/45186 - 0019 SUNSET ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980018",
+      "slug": "lino-welding-rod-4mm-mat-40-0018-lobster-red-r8980018",
+      "code": "0018",
+      "name": "LOBSTER RED",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0018",
+          "name": "LOBSTER RED",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0018-lobster-red",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0018-lobster-red/60671 - Lino Art Moon 0232 Mercury.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980019",
+      "slug": "lino-welding-rod-4mm-mat-40-0019-sunset-orange-r8980019",
+      "code": "0019",
+      "name": "SUNSET ORANGE",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0019",
+          "name": "SUNSET ORANGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0019-sunset-orange",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0019-sunset-orange/44776 - 0053 ICE GREY.jpg"
+        },
+        {
+          "code": "0019",
+          "name": "SUNSET ORANGE",
+          "collection": "dlw-marmorette-acoustic",
+          "slug": "dlw-marmorette-acoustic-0019-sunset-orange",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acoustic/0019-sunset-orange/45416 - 0252 LIGHT GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980020",
+      "slug": "lino-welding-rod-4mm-mat-40-1020-spring-blue-r8980020",
+      "code": "1020",
+      "name": "SPRING BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "1020",
+          "name": "SPRING BLUE",
+          "collection": "dlw-linodur",
+          "slug": "1020-spring-blue",
+          "image_url": "/images/products/linoleum/dlw-linodur/1020-spring-blue/45216 - 0050 QUARTZ GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980022",
+      "slug": "lino-welding-rod-4mm-mat-40-0022-autumn-blue-r8980022",
+      "code": "0022",
+      "name": "AUTUMN BLUE",
+      "colors_count": 3,
+      "colors": [
+        {
+          "code": "0022",
+          "name": "AUTUMN BLUE",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0022-autumn-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0022-autumn-blue/45141 - 0060 DEEP BROWN.jpg"
+        },
+        {
+          "code": "0022",
+          "name": "AUTUMN BLUE",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0022-autumn-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0022-autumn-blue/44766 - 0059 STONE GREY.jpg"
+        },
+        {
+          "code": "0022",
+          "name": "AUTUMN BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0022-autumn-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0022-autumn-blue/60686 - Lino Art Moon 0235 Soil.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980023",
+      "slug": "lino-welding-rod-4mm-mat-40-0023-dusty-blue-r8980023",
+      "code": "0023",
+      "name": "DUSTY BLUE",
+      "colors_count": 8,
+      "colors": [
+        {
+          "code": "0023",
+          "name": "DUSTY BLUE",
+          "collection": "dlw-marmorette-r10",
+          "slug": "dlw-marmorette-r10-0023-dusty-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-r10/0023-dusty-blue/41621 - 0023 DUSTY BLUE.jpg"
+        },
+        {
+          "code": "0023",
+          "name": "DUSTY BLUE",
+          "collection": "dlw-marmorette-bfl-s1",
+          "slug": "dlw-marmorette-bfl-s1-0023-dusty-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-bfl-s1/0023-dusty-blue/45381 - 0166 CLAY.jpg"
+        },
+        {
+          "code": "0023",
+          "name": "DUSTY BLUE",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0023-dusty-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0023-dusty-blue/58956 - Lino Art Urban 0571 Tree Bark Brown.jpg"
+        },
+        {
+          "code": "0023",
+          "name": "DUSTY BLUE",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0023-dusty-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0023-dusty-blue/59026 - Lino Art Urban 0587 Sand Clay.jpg"
+        },
+        {
+          "code": "0023",
+          "name": "DUSTY BLUE",
+          "collection": "dlw-marmorette-acoustic",
+          "slug": "dlw-marmorette-acoustic-0023-dusty-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acoustic/0023-dusty-blue/58101 - DARK BLUE.jpg"
+        },
+        {
+          "code": "0023",
+          "name": "DUSTY BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0023-dusty-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0023-dusty-blue/45366 - 0155 SMOKED PEARL.jpg"
+        },
+        {
+          "code": "0023",
+          "name": "DUSTY BLUE",
+          "collection": "dlw-marmorette-lch",
+          "slug": "dlw-marmorette-lch-0023-dusty-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-lch/0023-dusty-blue/44776 - 0053 ICE GREY.jpg"
+        },
+        {
+          "code": "0023",
+          "name": "DUSTY BLUE",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0023-dusty-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0023-dusty-blue/45196 - 0028 DIVE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980024",
+      "slug": "lino-welding-rod-4mm-mat-40-1024-speckled-blue-r8980024",
+      "code": "1024",
+      "name": "SPECKLED BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "1024",
+          "name": "SPECKLED BLUE",
+          "collection": "dlw-linodur",
+          "slug": "1024-speckled-blue",
+          "image_url": "/images/products/linoleum/dlw-linodur/1024-speckled-blue/58996 - Lino Art Urban 0580 Bush Green.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980026",
+      "slug": "lino-welding-rod-4mm-mat-40-0026-sky-blue-r8980026",
+      "code": "0026",
+      "name": "SKY BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0026",
+          "name": "SKY BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0026-sky-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0026-sky-blue/44771 - 0040 LIGHT SAHARA.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980028",
+      "slug": "lino-welding-rod-4mm-mat-40-0028-dive-r8980028",
+      "code": "0028",
+      "name": "DIVE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0028",
+          "name": "DIVE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0028-dive",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0028-dive/44781 - 0059 PLUMB GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980040",
+      "slug": "lino-welding-rod-4mm-mat-40-0040-light-sahara-r8980040",
+      "code": "0040",
+      "name": "LIGHT SAHARA",
+      "colors_count": 3,
+      "colors": [
+        {
+          "code": "0040",
+          "name": "LIGHT SAHARA",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0040-light-sahara",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0040-light-sahara/58946 - Lino Art Urban 0569 Curb Grey.jpg"
+        },
+        {
+          "code": "0040",
+          "name": "LIGHT SAHARA",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0040-light-sahara",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0040-light-sahara/44876 - 0043 LIGHT MUD.jpg"
+        },
+        {
+          "code": "0040",
+          "name": "LIGHT SAHARA",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0040-light-sahara",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0040-light-sahara/45266 - 0092 BEACH.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980042",
+      "slug": "lino-welding-rod-4mm-mat-40-0042-shortcrust-r8980042",
+      "code": "0042",
+      "name": "SHORTCRUST",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0042",
+          "name": "SHORTCRUST",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0042-shortcrust",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0042-shortcrust/44786 - 0070 ROCKY BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980043",
+      "slug": "lino-welding-rod-4mm-mat-40-0043-leaf-green-r8980043",
+      "code": "0043",
+      "name": "LEAF GREEN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0043",
+          "name": "LEAF GREEN",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0043-leaf-green",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0043-leaf-green/43181 - 0132 SPICY GREEN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980045",
+      "slug": "lino-welding-rod-4mm-mat-40-0045-sand-beige-r8980045",
+      "code": "0045",
+      "name": "SAND BEIGE",
+      "colors_count": 6,
+      "colors": [
+        {
+          "code": "0045",
+          "name": "SAND BEIGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0045-sand-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0045-sand-beige/60666 - Lino Art Moon 0231 Earth.jpg"
+        },
+        {
+          "code": "0045",
+          "name": "SAND BEIGE",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0045-sand-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0045-sand-beige/41616 - 0023-dusty-blue.jpg"
+        },
+        {
+          "code": "0045",
+          "name": "SAND BEIGE",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0045-sand-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0045-sand-beige/45226 - 0056 FOGGY BLUE.jpg"
+        },
+        {
+          "code": "0045",
+          "name": "SAND BEIGE",
+          "collection": "dlw-marmorette-acoustic",
+          "slug": "dlw-marmorette-acoustic-0045-sand-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acoustic/0045-sand-beige/45216 - 0050 QUARTZ GREY.jpg"
+        },
+        {
+          "code": "0045",
+          "name": "SAND BEIGE",
+          "collection": "dlw-marmorette-r10",
+          "slug": "dlw-marmorette-r10-0045-sand-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-r10/0045-sand-beige/43166 - 0012 LIGHT BEIGE.jpg"
+        },
+        {
+          "code": "0045",
+          "name": "SAND BEIGE",
+          "collection": "dlw-marmorette-bfl-s1",
+          "slug": "dlw-marmorette-bfl-s1-0045-sand-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-bfl-s1/0045-sand-beige/44801 - 0130 ANTIQUE GREEN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980049",
+      "slug": "lino-welding-rod-4mm-mat-40-0049-royal-blue-r8980049",
+      "code": "0049",
+      "name": "ROYAL BLUE",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0049",
+          "name": "ROYAL BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0049-royal-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0049-royal-blue/41616 - 0023-dusty-blue.jpg"
+        },
+        {
+          "code": "0049",
+          "name": "ROYAL BLUE",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0049-royal-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0049-royal-blue/45421 - 0253 PEBBLE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980050",
+      "slug": "lino-welding-rod-4mm-mat-40-0050-quartz-grey-r8980050",
+      "code": "0050",
+      "name": "QUARTZ GREY",
+      "colors_count": 3,
+      "colors": [
+        {
+          "code": "0050",
+          "name": "QUARTZ GREY",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0050-quartz-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0050-quartz-grey/45306 - 0119 TERRACOTTA.jpg"
+        },
+        {
+          "code": "0050",
+          "name": "QUARTZ GREY",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0050-quartz-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0050-quartz-grey/44781 - 0059 PLUMB GREY.jpg"
+        },
+        {
+          "code": "0050",
+          "name": "QUARTZ GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0050-quartz-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0050-quartz-grey/44846 - 0058 CLAY GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980053",
+      "slug": "lino-welding-rod-4mm-mat-40-0053-ice-grey-r8980053",
+      "code": "0053",
+      "name": "ICE GREY",
+      "colors_count": 7,
+      "colors": [
+        {
+          "code": "0053",
+          "name": "ICE GREY",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0053-ice-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0053-ice-grey/44776 - 0053 ICE GREY.jpg"
+        },
+        {
+          "code": "0053",
+          "name": "ICE GREY",
+          "collection": "dlw-marmorette-acoustic",
+          "slug": "dlw-marmorette-acoustic-0053-ice-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acoustic/0053-ice-grey/41631 - 0055-ash-grey.jpg"
+        },
+        {
+          "code": "0053",
+          "name": "ICE GREY",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0053-ice-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0053-ice-grey/44746 - 0022 AUTUMN BLUE.jpg"
+        },
+        {
+          "code": "0053",
+          "name": "ICE GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0053-ice-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0053-ice-grey/44821 - 0553 DARK CONCRETE GREY.jpg"
+        },
+        {
+          "code": "0053",
+          "name": "ICE GREY",
+          "collection": "dlw-marmorette-r10",
+          "slug": "dlw-marmorette-r10-0053-ice-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-r10/0053-ice-grey/60726 - Lino Art Moon 0243 Space.jpg"
+        },
+        {
+          "code": "0053",
+          "name": "ICE GREY",
+          "collection": "dlw-marmorette-bfl-s1",
+          "slug": "dlw-marmorette-bfl-s1-0053-ice-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-bfl-s1/0053-ice-grey/44866 - 0006 VIVID GREEN.jpg"
+        },
+        {
+          "code": "0053",
+          "name": "ICE GREY",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0053-ice-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0053-ice-grey/41616 - 0023-dusty-blue.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980054",
+      "slug": "lino-welding-rod-4mm-mat-40-0054-concrete-patty-r8980054",
+      "code": "0054",
+      "name": "CONCRETE PATTY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0054",
+          "name": "CONCRETE PATTY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0054-concrete-patty",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0054-concrete-patty/58116 - PEBBLE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980055",
+      "slug": "lino-welding-rod-4mm-mat-40-0055-ash-grey-r8980055",
+      "code": "0055",
+      "name": "ASH GREY",
+      "colors_count": 4,
+      "colors": [
+        {
+          "code": "0055",
+          "name": "ASH GREY",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0055-ash-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0055-ash-grey/41631 - 0055-ash-grey.jpg"
+        },
+        {
+          "code": "0055",
+          "name": "ASH GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0055-ash-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0055-ash-grey/45236 - 0075 LIGHT AURORA.jpg"
+        },
+        {
+          "code": "0055",
+          "name": "ASH GREY",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0055-ash-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0055-ash-grey/44776 - 0053 ICE GREY.jpg"
+        },
+        {
+          "code": "0055",
+          "name": "ASH GREY",
+          "collection": "dlw-marmorette-lch",
+          "slug": "dlw-marmorette-lch-0055-ash-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-lch/0055-ash-grey/58981 - Lino Art Urban 0577 Ochre Clay.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980056",
+      "slug": "lino-welding-rod-4mm-mat-40-0056-foggy-blue-r8980056",
+      "code": "0056",
+      "name": "FOGGY BLUE",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0056",
+          "name": "FOGGY BLUE",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0056-foggy-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0056-foggy-blue/45201 - 0042 SHORTCRUST.jpg"
+        },
+        {
+          "code": "0056",
+          "name": "FOGGY BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0056-foggy-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0056-foggy-blue/44796 - 0096 MIDNIGHT GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980059",
+      "slug": "lino-welding-rod-4mm-mat-40-0059-plumb-grey-r8980059",
+      "code": "0059",
+      "name": "PLUMB GREY",
+      "colors_count": 7,
+      "colors": [
+        {
+          "code": "0059",
+          "name": "PLUMB GREY",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0059-plumb-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0059-plumb-grey/44781 - 0059 PLUMB GREY.jpg"
+        },
+        {
+          "code": "0059",
+          "name": "PLUMB GREY",
+          "collection": "dlw-marmorette-acoustic",
+          "slug": "dlw-marmorette-acoustic-0059-plumb-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acoustic/0059-plumb-grey/59006 - Lino Art Urban 0583 Lily Green.jpg"
+        },
+        {
+          "code": "0059",
+          "name": "PLUMB GREY",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0059-plumb-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0059-plumb-grey/45336 - 0136 TURQUISE BAY.jpg"
+        },
+        {
+          "code": "0059",
+          "name": "PLUMB GREY",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0059-plumb-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0059-plumb-grey/60706 - Lino Art Moon 0239 Shadow.jpg"
+        },
+        {
+          "code": "0059",
+          "name": "PLUMB GREY",
+          "collection": "dlw-marmorette-bfl-s1",
+          "slug": "dlw-marmorette-bfl-s1-0059-plumb-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-bfl-s1/0059-plumb-grey/58966 - Lino Art Urban 0573 Brick Brown.jpg"
+        },
+        {
+          "code": "0059",
+          "name": "PLUMB GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0059-plumb-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0059-plumb-grey/58651 - Marmorette Acoustic 0045 Sand Beige.jpg"
+        },
+        {
+          "code": "0059",
+          "name": "PLUMB GREY",
+          "collection": "dlw-marmorette-r10",
+          "slug": "dlw-marmorette-r10-0059-plumb-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-r10/0059-plumb-grey/45401 - 0224 MYSTERY BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980070",
+      "slug": "lino-welding-rod-4mm-mat-40-0070-rocky-brown-r8980070",
+      "code": "0070",
+      "name": "ROCKY BROWN",
+      "colors_count": 6,
+      "colors": [
+        {
+          "code": "0070",
+          "name": "ROCKY BROWN",
+          "collection": "dlw-marmorette-32-mm",
+          "slug": "dlw-marmorette-32-mm-0070-rocky-brown",
+          "image_url": "/images/products/linoleum/dlw-marmorette-32-mm/0070-rocky-brown/58086 - SHIITAKE MUSHROOM.jpg"
+        },
+        {
+          "code": "0070",
+          "name": "ROCKY BROWN",
+          "collection": "dlw-marmorette-r10",
+          "slug": "dlw-marmorette-r10-0070-rocky-brown",
+          "image_url": "/images/products/linoleum/dlw-marmorette-r10/0070-rocky-brown/44781 - 0059 PLUMB GREY.jpg"
+        },
+        {
+          "code": "0070",
+          "name": "ROCKY BROWN",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0070-rocky-brown",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0070-rocky-brown/45331 - 0132 LIME GREEN.jpg"
+        },
+        {
+          "code": "0070",
+          "name": "ROCKY BROWN",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0070-rocky-brown",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0070-rocky-brown/59001 - Lino Art Urban 0582 Stalk Green.jpg"
+        },
+        {
+          "code": "0070",
+          "name": "ROCKY BROWN",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0070-rocky-brown",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0070-rocky-brown/44776 - 0053 ICE GREY.jpg"
+        },
+        {
+          "code": "0070",
+          "name": "ROCKY BROWN",
+          "collection": "dlw-marmorette-bfl-s1",
+          "slug": "dlw-marmorette-bfl-s1-0070-rocky-brown",
+          "image_url": "/images/products/linoleum/dlw-marmorette-bfl-s1/0070-rocky-brown/41621 - 0023 DUSTY BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980072",
+      "slug": "lino-welding-rod-4mm-mat-40-0072-golden-yellow-r8980072",
+      "code": "0072",
+      "name": "GOLDEN YELLOW",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0072",
+          "name": "GOLDEN YELLOW",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0072-golden-yellow",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0072-golden-yellow/44906 - 0170 KUMQUAT ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980073",
+      "slug": "lino-welding-rod-4mm-mat-40-0073-spicy-orange-r8980073",
+      "code": "0073",
+      "name": "SPICY ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0073",
+          "name": "SPICY ORANGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0073-spicy-orange",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0073-spicy-orange/44776 - 0053 ICE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980075",
+      "slug": "lino-welding-rod-4mm-mat-40-0075-light-aurora-r8980075",
+      "code": "0075",
+      "name": "LIGHT AURORA",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0075",
+          "name": "LIGHT AURORA",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0075-light-aurora",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0075-light-aurora/45181 - 0018 LOBSTER RED.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980076",
+      "slug": "lino-welding-rod-4mm-mat-40-0076-pale-yellow-r8980076",
+      "code": "0076",
+      "name": "PALE YELLOW",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0076",
+          "name": "PALE YELLOW",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0076-pale-yellow",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0076-pale-yellow/44786 - 0070 ROCKY BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980083",
+      "slug": "lino-welding-rod-4mm-mat-40-0083-jungle-r8980083",
+      "code": "0083",
+      "name": "JUNGLE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0083",
+          "name": "JUNGLE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0083-jungle",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0083-jungle/55011 - MARBLE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980089",
+      "slug": "lino-welding-rod-4mm-mat-40-0089-peacan-pie-r8980089",
+      "code": "0089",
+      "name": "PEACAN PIE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0089",
+          "name": "PEACAN PIE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0089-peacan-pie",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0089-peacan-pie/58941 - Lino Art Urban 0568 Asphalt Grey.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980090",
+      "slug": "lino-welding-rod-4mm-mat-40-0090-soapstone-r8980090",
+      "code": "0090",
+      "name": "SOAPSTONE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0090",
+          "name": "SOAPSTONE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0090-soapstone",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0090-soapstone/55021 - SPECKLED BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980091",
+      "slug": "lino-welding-rod-4mm-mat-40-0091-shiitake-mushroom-r8980091",
+      "code": "0091",
+      "name": "SHIITAKE MUSHROOM",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0091",
+          "name": "SHIITAKE MUSHROOM",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0091-shiitake-mushroom",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0091-shiitake-mushroom/43166 - 0012 LIGHT BEIGE.jpg"
+        },
+        {
+          "code": "0091",
+          "name": "SHIITAKE MUSHROOM",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0091-shiitake-mushroom",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0091-shiitake-mushroom/41616 - 0023-dusty-blue.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980092",
+      "slug": "lino-welding-rod-4mm-mat-40-0092-beach-r8980092",
+      "code": "0092",
+      "name": "BEACH",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0092",
+          "name": "BEACH",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0092-beach",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0092-beach/45266 - 0092 BEACH.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980096",
+      "slug": "lino-welding-rod-4mm-mat-40-0096-midnight-grey-r8980096",
+      "code": "0096",
+      "name": "MIDNIGHT GREY",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0096",
+          "name": "MIDNIGHT GREY",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0096-midnight-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0096-midnight-grey/43156 - 0001 BANANA YELLOW.jpg"
+        },
+        {
+          "code": "0096",
+          "name": "MIDNIGHT GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0096-midnight-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0096-midnight-grey/44871 - 0016 DEEP ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980098",
+      "slug": "lino-welding-rod-4mm-mat-40-0098-desert-beige-r8980098",
+      "code": "0098",
+      "name": "DESERT BEIGE",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0098",
+          "name": "DESERT BEIGE",
+          "collection": "dlw-marmorette-acoustic",
+          "slug": "dlw-marmorette-acoustic-0098-desert-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acoustic/0098-desert-beige/45106 - 0565 GRAPHITE GREY.jpg"
+        },
+        {
+          "code": "0098",
+          "name": "DESERT BEIGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0098-desert-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0098-desert-beige/44841 - 0083 ARCHITECTS GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980099",
+      "slug": "lino-welding-rod-4mm-mat-40-0099-grey-turquoise-r8980099",
+      "code": "0099",
+      "name": "GREY TURQUOISE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0099",
+          "name": "GREY TURQUOISE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0099-grey-turquoise",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0099-grey-turquoise/44746 - 0022 AUTUMN BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980100",
+      "slug": "lino-welding-rod-4mm-mat-40-0100-frog-green-r8980100",
+      "code": "0100",
+      "name": "FROG GREEN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0100",
+          "name": "FROG GREEN",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0100-frog-green",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0100-frog-green/45131 - 0043 NEUTRAL BEIGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980106",
+      "slug": "lino-welding-rod-4mm-mat-40-0106-hazelnut-shake-r8980106",
+      "code": "0106",
+      "name": "HAZELNUT SHAKE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0106",
+          "name": "HAZELNUT SHAKE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0106-hazelnut-shake",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0106-hazelnut-shake/45286 - 0106 HAZELNUT SHAKE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980108",
+      "slug": "lino-welding-rod-4mm-mat-40-0108-mokka-brown-r8980108",
+      "code": "0108",
+      "name": "MOKKA BROWN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0108",
+          "name": "MOKKA BROWN",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0108-mokka-brown",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0108-mokka-brown/45326 - 0129 CURACAO PETROL.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980117",
+      "slug": "lino-welding-rod-4mm-mat-40-0117-mandarin-orange-r8980117",
+      "code": "0117",
+      "name": "MANDARIN ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0117",
+          "name": "MANDARIN ORANGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0117-mandarin-orange",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0117-mandarin-orange/45296 - 0117 MANDARIN ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980118",
+      "slug": "lino-welding-rod-4mm-mat-40-0118-chili-red-r8980118",
+      "code": "0118",
+      "name": "CHILI RED",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0118",
+          "name": "CHILI RED",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0118-chili-red",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0118-chili-red/45341 - 0138 KHAKI.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980119",
+      "slug": "lino-welding-rod-4mm-mat-40-0119-terracotta-r8980119",
+      "code": "0119",
+      "name": "TERRACOTTA",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0119",
+          "name": "TERRACOTTA",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0119-terracotta",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0119-terracotta/58091 - TERRACOTTA.jpg"
+        },
+        {
+          "code": "0119",
+          "name": "TERRACOTTA",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0119-terracotta",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0119-terracotta/58111 - MILK COFFEE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980121",
+      "slug": "lino-welding-rod-4mm-mat-40-0121-blue-eyes-r8980121",
+      "code": "0121",
+      "name": "BLUE EYES",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0121",
+          "name": "BLUE EYES",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0121-blue-eyes",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0121-blue-eyes/43171 - 0080 ELEPHANT GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980122",
+      "slug": "lino-welding-rod-4mm-mat-40-0122-fluffy-blue-r8980122",
+      "code": "0122",
+      "name": "FLUFFY BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0122",
+          "name": "FLUFFY BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0122-fluffy-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0122-fluffy-blue/45356 - 0148 INK BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980128",
+      "slug": "lino-welding-rod-4mm-mat-40-0128-violet-r8980128",
+      "code": "0128",
+      "name": "VIOLET",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0128",
+          "name": "VIOLET",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0128-violet",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0128-violet/43176 - 0118 POWER RED.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980129",
+      "slug": "lino-welding-rod-4mm-mat-40-0129-curacao-petrol-r8980129",
+      "code": "0129",
+      "name": "CURACAO PETROL",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0129",
+          "name": "CURACAO PETROL",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0129-curacao-petrol",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0129-curacao-petrol/45271 - 0098 DESERT BEIGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980130",
+      "slug": "lino-welding-rod-4mm-mat-40-0130-antique-green-r8980130",
+      "code": "0130",
+      "name": "ANTIQUE GREEN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0130",
+          "name": "ANTIQUE GREEN",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0130-antique-green",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0130-antique-green/58651 - Marmorette Acoustic 0045 Sand Beige.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980132",
+      "slug": "lino-welding-rod-4mm-mat-40-0132-lime-green-r8980132",
+      "code": "0132",
+      "name": "LIME GREEN",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0132",
+          "name": "LIME GREEN",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0132-lime-green",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0132-lime-green/58106 - SMOKED PEARL.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980136",
+      "slug": "lino-welding-rod-4mm-mat-40-0136-turquise-bay-r8980136",
+      "code": "0136",
+      "name": "TURQUISE BAY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0136",
+          "name": "TURQUISE BAY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0136-turquise-bay",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0136-turquise-bay/44786 - 0070 ROCKY BROWN.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980138",
+      "slug": "lino-welding-rod-4mm-mat-40-0138-khaki-r8980138",
+      "code": "0138",
+      "name": "KHAKI",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0138",
+          "name": "KHAKI",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0138-khaki",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0138-khaki/58651 - Marmorette Acoustic 0045 Sand Beige.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980145",
+      "slug": "lino-welding-rod-4mm-mat-40-0145-banana-white-r8980145",
+      "code": "0145",
+      "name": "BANANA WHITE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0145",
+          "name": "BANANA WHITE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0145-banana-white",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0145-banana-white/45211 - 0049 ROYAL BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980146",
+      "slug": "lino-welding-rod-4mm-mat-40-0146-beeswax-beige-r8980146",
+      "code": "0146",
+      "name": "BEESWAX BEIGE",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0146",
+          "name": "BEESWAX BEIGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0146-beeswax-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0146-beeswax-beige/43186 - R8941052.jpg"
+        },
+        {
+          "code": "0146",
+          "name": "BEESEWAX BEIGE",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "0146-beesewax-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0146-beesewax-beige/45301 - 0118 CHILI RED.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980148",
+      "slug": "lino-welding-rod-4mm-mat-40-0148-ink-blue-r8980148",
+      "code": "0148",
+      "name": "INK BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0148",
+          "name": "INK BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0148-ink-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0148-ink-blue/45271 - 0098 DESERT BEIGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980149",
+      "slug": "lino-welding-rod-4mm-mat-40-0149-dark-blue-r8980149",
+      "code": "0149",
+      "name": "DARK BLUE",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0149",
+          "name": "DARK BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0149-dark-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0149-dark-blue/58651 - Marmorette Acoustic 0045 Sand Beige.jpg"
+        },
+        {
+          "code": "0149",
+          "name": "DARK BLUE",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0149-dark-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0149-dark-blue/44756 - 0153 GREYSTONE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980153",
+      "slug": "lino-welding-rod-4mm-mat-40-0153-greystone-grey-r8980153",
+      "code": "0153",
+      "name": "GREYSTONE GREY",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0153",
+          "name": "GREYSTONE GREY",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0153-greystone-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0153-greystone-grey/58096 - BEESEWAX BEIGE.jpg"
+        },
+        {
+          "code": "0153",
+          "name": "GREYSTONE GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0153-greystone-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0153-greystone-grey/58121 - ALUMINIUM GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980155",
+      "slug": "lino-welding-rod-4mm-mat-40-0155-smoked-pearl-r8980155",
+      "code": "0155",
+      "name": "SMOKED PEARL",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0155",
+          "name": "SMOKED PEARL",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0155-smoked-pearl",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0155-smoked-pearl/55006 - AVOCADO GREEN.jpg"
+        },
+        {
+          "code": "0155",
+          "name": "SMOKED PEARL",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0155-smoked-pearl",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0155-smoked-pearl/43186 - R8941052.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980156",
+      "slug": "lino-welding-rod-4mm-mat-40-1056-marble-grey-r8980156",
+      "code": "1056",
+      "name": "MARBLE GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "1056",
+          "name": "MARBLE GREY",
+          "collection": "dlw-linodur",
+          "slug": "1056-marble-grey",
+          "image_url": "/images/products/linoleum/dlw-linodur/1056-marble-grey/45276 - 0099 GREY TURQUOISE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980158",
+      "slug": "lino-welding-rod-4mm-mat-40-0158-tabac-grey-r8980158",
+      "code": "0158",
+      "name": "TABAC GREY",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0158",
+          "name": "TABAC GREY",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0158-tabac-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0158-tabac-grey/44806 - 0158 TABAC GREY.jpg"
+        },
+        {
+          "code": "0158",
+          "name": "TABAC GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0158-tabac-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0158-tabac-grey/44911 - 0171 SUNRISE ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980160",
+      "slug": "lino-welding-rod-4mm-mat-40-0160-industrial-grey-r8980160",
+      "code": "0160",
+      "name": "INDUSTRIAL GREY",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0160",
+          "name": "INDUSTRIAL GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0160-industrial-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0160-industrial-grey/44746 - 0022 AUTUMN BLUE.jpg"
+        },
+        {
+          "code": "0160",
+          "name": "INDUSTRIAL GREY",
+          "collection": "dlw-marmorette-2-mm",
+          "slug": "dlw-marmorette-2-mm-0160-industrial-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-2-mm/0160-industrial-grey/45221 - 0054 CONCRETE PATTY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980164",
+      "slug": "lino-welding-rod-4mm-mat-40-0164-milk-coffee-r8980164",
+      "code": "0164",
+      "name": "MILK COFFEE",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0164",
+          "name": "MILK COFFEE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0164-milk-coffee",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0164-milk-coffee/45376 - 0164 MILK COFFEE.jpg"
+        },
+        {
+          "code": "0164",
+          "name": "MILK COFFEE",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0164-milk-coffee",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0164-milk-coffee/44756 - 0153 GREYSTONE GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980166",
+      "slug": "lino-welding-rod-4mm-mat-40-0166-clay-r8980166",
+      "code": "0166",
+      "name": "CLAY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0166",
+          "name": "CLAY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0166-clay",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0166-clay/44856 - 0090 OLIVE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980172",
+      "slug": "lino-welding-rod-4mm-mat-40-0172-papaya-orange-r8980172",
+      "code": "0172",
+      "name": "PAPAYA ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0172",
+          "name": "PAPAYA ORANGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0172-papaya-orange",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0172-papaya-orange/45211 - 0049 ROYAL BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980173",
+      "slug": "lino-welding-rod-4mm-mat-40-0173-melon-orange-r8980173",
+      "code": "0173",
+      "name": "MELON ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0173",
+          "name": "MELON ORANGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0173-melon-orange",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0173-melon-orange/45216 - 0050 QUARTZ GREY.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980211",
+      "slug": "lino-welding-rod-4mm-mat-40-0211-pink-r8980211",
+      "code": "0211",
+      "name": "PINK",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0211",
+          "name": "PINK",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0211-pink",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0211-pink/45361 - 0149 DARK BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980224",
+      "slug": "lino-welding-rod-4mm-mat-40-0224-mystery-blue-r8980224",
+      "code": "0224",
+      "name": "MYSTERY BLUE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0224",
+          "name": "MYSTERY BLUE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0224-mystery-blue",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0224-mystery-blue/59021 - Lino Art Urban 0586 Light Clay.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980243",
+      "slug": "lino-welding-rod-4mm-mat-40-0243-marble-beige-r8980243",
+      "code": "0243",
+      "name": "MARBLE BEIGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0243",
+          "name": "MARBLE BEIGE",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0243-marble-beige",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0243-marble-beige/45311 - 0121 BLUE EYES.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980251",
+      "slug": "lino-welding-rod-4mm-mat-40-0251-cream-r8980251",
+      "code": "0251",
+      "name": "CREAM",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0251",
+          "name": "CREAM",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0251-cream",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0251-cream/45386 - 0172 PAPAYA ORANGE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980252",
+      "slug": "lino-welding-rod-4mm-mat-40-0252-light-grey-r8980252",
+      "code": "0252",
+      "name": "LIGHT GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0252",
+          "name": "LIGHT GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0252-light-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0252-light-grey/45226 - 0056 FOGGY BLUE.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980253",
+      "slug": "lino-welding-rod-4mm-mat-40-0253-pebble-grey-r8980253",
+      "code": "0253",
+      "name": "PEBBLE GREY",
+      "colors_count": 2,
+      "colors": [
+        {
+          "code": "0253",
+          "name": "PEBBLE GREY",
+          "collection": "dlw-marmorette-acousticplus",
+          "slug": "dlw-marmorette-acousticplus-0253-pebble-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-acousticplus/0253-pebble-grey/44781 - 0059 PLUMB GREY.jpg"
+        },
+        {
+          "code": "0253",
+          "name": "PEBBLE GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "dlw-marmorette-25-mm-0253-pebble-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0253-pebble-grey/60691 - Lino Art Moon 0236 Sun.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980254",
+      "slug": "lino-welding-rod-4mm-mat-40-0254-mineral-grey-r8980254",
+      "code": "0254",
+      "name": "MINERAL GREY",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "0254",
+          "name": "MINERAL GREY",
+          "collection": "dlw-marmorette-25-mm",
+          "slug": "0254-mineral-grey",
+          "image_url": "/images/products/linoleum/dlw-marmorette-25-mm/0254-mineral-grey/41631 - 0055-ash-grey.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980281",
+      "slug": "lino-welding-rod-4mm-mat-40-1081-sporty-black-r8980281",
+      "code": "1081",
+      "name": "SPORTY BLACK",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "1081",
+          "name": "SPORTY BLACK",
+          "collection": "dlw-linodur",
+          "slug": "1081-sporty-black",
+          "image_url": "/images/products/linoleum/dlw-linodur/1081-sporty-black/59016 - Lino Art Urban 0585 Cloud Blue.jpg"
+        }
+      ]
+    },
+    {
+      "welding_rod_ref": "R8980372",
+      "slug": "lino-welding-rod-4mm-mat-40-1072-peach-orange-r8980372",
+      "code": "1072",
+      "name": "PEACH ORANGE",
+      "colors_count": 1,
+      "colors": [
+        {
+          "code": "1072",
+          "name": "PEACH ORANGE",
+          "collection": "dlw-linodur",
+          "slug": "1072-peach-orange",
+          "image_url": "/images/products/linoleum/dlw-linodur/1072-peach-orange/45136 - 0059 FROST GREY.jpg"
+        }
+      ]
+    }
+  ]
+}
