@@ -60,7 +60,9 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
       if (color.characteristics) {
         Object.entries(color.characteristics).forEach(([key, value]) => {
           if (key !== 'Dimenzije' && key !== 'Ukupna debljina') {
-            colorCharacteristics[key] = value;
+            if (typeof value === 'string') {
+              colorCharacteristics[key] = value;
+            }
           }
         });
       }
