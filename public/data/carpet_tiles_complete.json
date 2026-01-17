@@ -1,447 +1,203 @@
 {
-  "total": 26,
+  "total": 6,
   "collections": 3,
   "colors": [
     {
       "collection": "gerflor-armonia-400",
       "collection_name": "Armonia 400",
-      "code": "56147",
-      "name": "ARMONIA 400 BEIGE",
-      "slug": "armonia-400-56147",
-      "image_url": "/images/products/carpet/56147.jpg",
-      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polipropilen\nTežina vlakna: 400 g/m²\nUkupna debljina: 5.8 mm\n\nPrimena:\nIdealno za kancelarije i komercijalne prostore sa umerenim prometom (Klasa 33).\n\nUgradnja:\nMonolitna ili 'quarter-turn' instalacija.\n\nOkruženje:\n100% reciklabilno.",
+      "code": "1801",
+      "name": "1801 INDIGO",
+      "full_name": "1801 INDIGO",
+      "slug": "armonia-400-1801-indigo",
+      "image_url": "/images/products/carpet/1801-indigo.jpg",
+      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju u prostore sa lakim prometom.\n\nProizvod i Dekor:\n• 50×50cm format pločica\n• 100% solution-dyed polipropilen\n• Težina vlakna: 400 g/m²\n• Lako se kombinuje sa Gerflor kolekcijama (Creation i Saga²)\n\nUgradnja:\n• Monolitna ili quarter-turn instalacija\n• Mogućnost ugradnje bez lepka sa konektorima (B-connect)\n\nPrimena:\n• Laka komercijalna upotreba\n• Idealno za kancelarije i poslovne prostore\n\nOdrživost:\n• Proizvedeno u EU\n• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha",
+      "dimension": "50 cm X 50 cm",
+      "format": "Square tile",
+      "overall_thickness": "5.30 mm",
       "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "5.8 mm",
-        "WEIGHT": "400 g/m²",
-        "FIBER": "100% Polypropylene",
-        "USAGE": "33"
+        "NCS": "7020-R80B",
+        "LRV": "45.3",
+        "UNIT_BOX": "24",
+        "PILE_WEIGHT": "400 g/m²",
+        "SURFACE_YARN": "Polypropylene",
+        "INSTALLATION": "Looselay (Tackified)"
+      },
+      "characteristics": {
+        "Length": "50 cm",
+        "Width": "50 cm",
+        "Unit/box": "24",
+        "Overall thickness": "5.30 mm",
+        "Installation system covering": "Looselay (Tackified)",
+        "Format details": "Square tile",
+        "NCS": "7020-R80B",
+        "LRV": "45.3",
+        "Surface yarn": "Polypropylene",
+        "Pile weight": "400 g/m²"
       }
     },
     {
       "collection": "gerflor-armonia-400",
       "collection_name": "Armonia 400",
-      "code": "56148",
-      "name": "ARMONIA 400 GREY",
-      "slug": "armonia-400-56148",
-      "image_url": "/images/products/carpet/56148.jpg",
-      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polipropilen\nTežina vlakna: 400 g/m²\nUkupna debljina: 5.8 mm\n\nPrimena:\nIdealno za kancelarije i komercijalne prostore sa umerenim prometom (Klasa 33).\n\nUgradnja:\nMonolitna ili 'quarter-turn' instalacija.\n\nOkruženje:\n100% reciklabilno.",
+      "code": "6501",
+      "name": "6501 BEIGE",
+      "full_name": "6501 BEIGE",
+      "slug": "armonia-400-6501-beige",
+      "image_url": "/images/products/carpet/6501-beige.jpg",
+      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju u prostore sa lakim prometom.\n\nProizvod i Dekor:\n• 50×50cm format pločica\n• 100% solution-dyed polipropilen\n• Težina vlakna: 400 g/m²\n• Lako se kombinuje sa Gerflor kolekcijama (Creation i Saga²)\n\nUgradnja:\n• Monolitna ili quarter-turn instalacija\n• Mogućnost ugradnje bez lepka sa konektorima (B-connect)\n\nPrimena:\n• Laka komercijalna upotreba\n• Idealno za kancelarije i poslovne prostore\n\nOdrživost:\n• Proizvedeno u EU\n• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha",
+      "dimension": "50 cm X 50 cm",
+      "format": "Square tile",
+      "overall_thickness": "5.30 mm",
       "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "5.8 mm",
-        "WEIGHT": "400 g/m²",
-        "FIBER": "100% Polypropylene",
-        "USAGE": "33"
+        "NCS": "7005-Y80R",
+        "LRV": "35",
+        "UNIT_BOX": "24",
+        "PILE_WEIGHT": "400 g/m²",
+        "SURFACE_YARN": "Polypropylene",
+        "INSTALLATION": "Looselay (Tackified)"
+      },
+      "characteristics": {
+        "Length": "50 cm",
+        "Width": "50 cm",
+        "Unit/box": "24",
+        "Overall thickness": "5.30 mm",
+        "Installation system covering": "Looselay (Tackified)",
+        "Format details": "Square tile",
+        "NCS": "7005-Y80R",
+        "LRV": "35",
+        "Surface yarn": "Polypropylene",
+        "Pile weight": "400 g/m²"
       }
     },
     {
       "collection": "gerflor-armonia-400",
       "collection_name": "Armonia 400",
-      "code": "56149",
-      "name": "ARMONIA 400 BLUE",
-      "slug": "armonia-400-56149",
-      "image_url": "/images/products/carpet/56149.jpg",
-      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polipropilen\nTežina vlakna: 400 g/m²\nUkupna debljina: 5.8 mm\n\nPrimena:\nIdealno za kancelarije i komercijalne prostore sa umerenim prometom (Klasa 33).\n\nUgradnja:\nMonolitna ili 'quarter-turn' instalacija.\n\nOkruženje:\n100% reciklabilno.",
+      "code": "7801",
+      "name": "7801 CACAO",
+      "full_name": "7801 CACAO",
+      "slug": "armonia-400-7801-cacao",
+      "image_url": "/images/products/carpet/7801-cacao.jpg",
+      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju u prostore sa lakim prometom.\n\nProizvod i Dekor:\n• 50×50cm format pločica\n• 100% solution-dyed polipropilen\n• Težina vlakna: 400 g/m²\n• Lako se kombinuje sa Gerflor kolekcijama (Creation i Saga²)\n\nUgradnja:\n• Monolitna ili quarter-turn instalacija\n• Mogućnost ugradnje bez lepka sa konektorima (B-connect)\n\nPrimena:\n• Laka komercijalna upotreba\n• Idealno za kancelarije i poslovne prostore\n\nOdrživost:\n• Proizvedeno u EU\n• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha",
+      "dimension": "50 cm X 50 cm",
+      "format": "Square tile",
+      "overall_thickness": "5.30 mm",
       "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "5.8 mm",
-        "WEIGHT": "400 g/m²",
-        "FIBER": "100% Polypropylene",
-        "USAGE": "33"
+        "NCS": "8005-Y80R",
+        "LRV": "41.4",
+        "UNIT_BOX": "24",
+        "PILE_WEIGHT": "400 g/m²",
+        "SURFACE_YARN": "Polypropylene",
+        "INSTALLATION": "Looselay (Tackified)"
+      },
+      "characteristics": {
+        "Length": "50 cm",
+        "Width": "50 cm",
+        "Unit/box": "24",
+        "Overall thickness": "5.30 mm",
+        "Installation system covering": "Looselay (Tackified)",
+        "Format details": "Square tile",
+        "NCS": "8005-Y80R",
+        "LRV": "41.4",
+        "Surface yarn": "Polypropylene",
+        "Pile weight": "400 g/m²"
       }
     },
     {
       "collection": "gerflor-armonia-400",
       "collection_name": "Armonia 400",
-      "code": "56150",
-      "name": "ARMONIA 400 ANTHRACITE",
-      "slug": "armonia-400-56150",
-      "image_url": "/images/products/carpet/56150.jpg",
-      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polipropilen\nTežina vlakna: 400 g/m²\nUkupna debljina: 5.8 mm\n\nPrimena:\nIdealno za kancelarije i komercijalne prostore sa umerenim prometom (Klasa 33).\n\nUgradnja:\nMonolitna ili 'quarter-turn' instalacija.\n\nOkruženje:\n100% reciklabilno.",
+      "code": "9501",
+      "name": "9501 OMBRA",
+      "full_name": "9501 OMBRA",
+      "slug": "armonia-400-9501-ombra",
+      "image_url": "/images/products/carpet/9501-ombra.jpg",
+      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju u prostore sa lakim prometom.\n\nProizvod i Dekor:\n• 50×50cm format pločica\n• 100% solution-dyed polipropilen\n• Težina vlakna: 400 g/m²\n• Lako se kombinuje sa Gerflor kolekcijama (Creation i Saga²)\n\nUgradnja:\n• Monolitna ili quarter-turn instalacija\n• Mogućnost ugradnje bez lepka sa konektorima (B-connect)\n\nPrimena:\n• Laka komercijalna upotreba\n• Idealno za kancelarije i poslovne prostore\n\nOdrživost:\n• Proizvedeno u EU\n• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha",
+      "dimension": "50 cm X 50 cm",
+      "format": "Square tile",
+      "overall_thickness": "5.30 mm",
       "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "5.8 mm",
-        "WEIGHT": "400 g/m²",
-        "FIBER": "100% Polypropylene",
-        "USAGE": "33"
+        "NCS": "6500-N",
+        "LRV": "31.9",
+        "UNIT_BOX": "24",
+        "PILE_WEIGHT": "400 g/m²",
+        "SURFACE_YARN": "Polypropylene",
+        "INSTALLATION": "Looselay (Tackified)"
+      },
+      "characteristics": {
+        "Length": "50 cm",
+        "Width": "50 cm",
+        "Unit/box": "24",
+        "Overall thickness": "5.30 mm",
+        "Installation system covering": "Looselay (Tackified)",
+        "Format details": "Square tile",
+        "NCS": "6500-N",
+        "LRV": "31.9",
+        "Surface yarn": "Polypropylene",
+        "Pile weight": "400 g/m²"
       }
     },
     {
       "collection": "gerflor-armonia-400",
       "collection_name": "Armonia 400",
-      "code": "56151",
-      "name": "ARMONIA 400 RED",
-      "slug": "armonia-400-56151",
-      "image_url": "/images/products/carpet/56151.jpg",
-      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polipropilen\nTežina vlakna: 400 g/m²\nUkupna debljina: 5.8 mm\n\nPrimena:\nIdealno za kancelarije i komercijalne prostore sa umerenim prometom (Klasa 33).\n\nUgradnja:\nMonolitna ili 'quarter-turn' instalacija.\n\nOkruženje:\n100% reciklabilno.",
+      "code": "9701",
+      "name": "9701 TITANIO",
+      "full_name": "9701 TITANIO",
+      "slug": "armonia-400-9701-titanio",
+      "image_url": "/images/products/carpet/9701-titanio.jpg",
+      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju u prostore sa lakim prometom.\n\nProizvod i Dekor:\n• 50×50cm format pločica\n• 100% solution-dyed polipropilen\n• Težina vlakna: 400 g/m²\n• Lako se kombinuje sa Gerflor kolekcijama (Creation i Saga²)\n\nUgradnja:\n• Monolitna ili quarter-turn instalacija\n• Mogućnost ugradnje bez lepka sa konektorima (B-connect)\n\nPrimena:\n• Laka komercijalna upotreba\n• Idealno za kancelarije i poslovne prostore\n\nOdrživost:\n• Proizvedeno u EU\n• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha",
+      "dimension": "50 cm X 50 cm",
+      "format": "Square tile",
+      "overall_thickness": "5.30 mm",
       "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "5.8 mm",
-        "WEIGHT": "400 g/m²",
-        "FIBER": "100% Polypropylene",
-        "USAGE": "33"
+        "NCS": "9000-N",
+        "LRV": "44.1",
+        "UNIT_BOX": "24",
+        "PILE_WEIGHT": "400 g/m²",
+        "SURFACE_YARN": "Polypropylene",
+        "INSTALLATION": "Looselay (Tackified)"
+      },
+      "characteristics": {
+        "Length": "50 cm",
+        "Width": "50 cm",
+        "Unit/box": "24",
+        "Overall thickness": "5.30 mm",
+        "Installation system covering": "Looselay (Tackified)",
+        "Format details": "Square tile",
+        "NCS": "9000-N",
+        "LRV": "44.1",
+        "Surface yarn": "Polypropylene",
+        "Pile weight": "400 g/m²"
       }
     },
     {
       "collection": "gerflor-armonia-400",
       "collection_name": "Armonia 400",
-      "code": "56152",
-      "name": "ARMONIA 400 BROWN",
-      "slug": "armonia-400-56152",
-      "image_url": "/images/products/carpet/56152.jpg",
-      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polipropilen\nTežina vlakna: 400 g/m²\nUkupna debljina: 5.8 mm\n\nPrimena:\nIdealno za kancelarije i komercijalne prostore sa umerenim prometom (Klasa 33).\n\nUgradnja:\nMonolitna ili 'quarter-turn' instalacija.\n\nOkruženje:\n100% reciklabilno.",
+      "code": "9901",
+      "name": "9901 OXFORD",
+      "full_name": "9901 OXFORD",
+      "slug": "armonia-400-9901-oxford",
+      "image_url": "/images/products/carpet/9901-oxford.jpg",
+      "description": "Proizvod:\nArmonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa 'loop' teksturom donose udobnost i harmoniju u prostore sa lakim prometom.\n\nProizvod i Dekor:\n• 50×50cm format pločica\n• 100% solution-dyed polipropilen\n• Težina vlakna: 400 g/m²\n• Lako se kombinuje sa Gerflor kolekcijama (Creation i Saga²)\n\nUgradnja:\n• Monolitna ili quarter-turn instalacija\n• Mogućnost ugradnje bez lepka sa konektorima (B-connect)\n\nPrimena:\n• Laka komercijalna upotreba\n• Idealno za kancelarije i poslovne prostore\n\nOdrživost:\n• Proizvedeno u EU\n• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha",
+      "dimension": "50 cm X 50 cm",
+      "format": "Square tile",
+      "overall_thickness": "5.30 mm",
       "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "5.8 mm",
-        "WEIGHT": "400 g/m²",
-        "FIBER": "100% Polypropylene",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67689",
-      "name": "ARMONIA 540 DARK GREY",
-      "slug": "armonia-540-67689",
-      "image_url": "/images/products/carpet/67689.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67739",
-      "name": "ARMONIA 540 LIGHT GREY",
-      "slug": "armonia-540-67739",
-      "image_url": "/images/products/carpet/67739.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67740",
-      "name": "ARMONIA 540 BEIGE",
-      "slug": "armonia-540-67740",
-      "image_url": "/images/products/carpet/67740.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67741",
-      "name": "ARMONIA 540 BROWN",
-      "slug": "armonia-540-67741",
-      "image_url": "/images/products/carpet/67741.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67742",
-      "name": "ARMONIA 540 BLUE",
-      "slug": "armonia-540-67742",
-      "image_url": "/images/products/carpet/67742.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67743",
-      "name": "ARMONIA 540 RED",
-      "slug": "armonia-540-67743",
-      "image_url": "/images/products/carpet/67743.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67744",
-      "name": "ARMONIA 540 GREEN",
-      "slug": "armonia-540-67744",
-      "image_url": "/images/products/carpet/67744.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67745",
-      "name": "ARMONIA 540 ORANGE",
-      "slug": "armonia-540-67745",
-      "image_url": "/images/products/carpet/67745.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67746",
-      "name": "ARMONIA 540 PURPLE",
-      "slug": "armonia-540-67746",
-      "image_url": "/images/products/carpet/67746.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67747",
-      "name": "ARMONIA 540 YELLOW",
-      "slug": "armonia-540-67747",
-      "image_url": "/images/products/carpet/67747.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67752",
-      "name": "ARMONIA 540 BLACK",
-      "slug": "armonia-540-67752",
-      "image_url": "/images/products/carpet/67752.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67753",
-      "name": "ARMONIA 540 WHITE",
-      "slug": "armonia-540-67753",
-      "image_url": "/images/products/carpet/67753.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67754",
-      "name": "ARMONIA 540 TAUPE",
-      "slug": "armonia-540-67754",
-      "image_url": "/images/products/carpet/67754.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-540",
-      "collection_name": "Armonia 540",
-      "code": "67755",
-      "name": "ARMONIA 540 SAND",
-      "slug": "armonia-540-67755",
-      "image_url": "/images/products/carpet/67755.jpg",
-      "description": "Proizvod:\nArmonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama. 100% bojen najlon (Solution Dyed).\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Polyamide (Nylon)\nTežina vlakna: 540 g/m²\nUkupna debljina: 6.2 mm\n\nPrimena:\nKlasa 33 za intenzivnu komercijalnu upotrebu. Idealno za kancelarije, hotele i javne objekte.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\nEkološki prihvatljivo.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.2 mm",
-        "WEIGHT": "540 g/m²",
-        "FIBER": "100% Polyamide",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-620",
-      "collection_name": "Armonia 620",
-      "code": "56167",
-      "name": "ARMONIA 620 GREY",
-      "slug": "armonia-620-56167",
-      "image_url": "/images/products/carpet/56167.jpg",
-      "description": "Proizvod:\nArmonia 620 su strukturirane tekstilne ploče premium kvaliteta. Izrađene od 100% recikliranog i reciklabilnog najlonskog vlakna: Econyl®.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Econyl (reciklirani najlon)\nTežina vlakna: 620 g/m²\nUkupna debljina: 6.5 mm\n\nPrimena:\nDizajnirane za maksimalnu izdržljivost i estetski sklad u komercijalnim prostorima. Klasa 33.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\n100% reciklabilno.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.5 mm",
-        "WEIGHT": "620 g/m²",
-        "FIBER": "100% Econyl",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-620",
-      "collection_name": "Armonia 620",
-      "code": "56168",
-      "name": "ARMONIA 620 DARK GREY",
-      "slug": "armonia-620-56168",
-      "image_url": "/images/products/carpet/56168.jpg",
-      "description": "Proizvod:\nArmonia 620 su strukturirane tekstilne ploče premium kvaliteta. Izrađene od 100% recikliranog i reciklabilnog najlonskog vlakna: Econyl®.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Econyl (reciklirani najlon)\nTežina vlakna: 620 g/m²\nUkupna debljina: 6.5 mm\n\nPrimena:\nDizajnirane za maksimalnu izdržljivost i estetski sklad u komercijalnim prostorima. Klasa 33.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\n100% reciklabilno.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.5 mm",
-        "WEIGHT": "620 g/m²",
-        "FIBER": "100% Econyl",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-620",
-      "collection_name": "Armonia 620",
-      "code": "56169",
-      "name": "ARMONIA 620 BEIGE",
-      "slug": "armonia-620-56169",
-      "image_url": "/images/products/carpet/56169.jpg",
-      "description": "Proizvod:\nArmonia 620 su strukturirane tekstilne ploče premium kvaliteta. Izrađene od 100% recikliranog i reciklabilnog najlonskog vlakna: Econyl®.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Econyl (reciklirani najlon)\nTežina vlakna: 620 g/m²\nUkupna debljina: 6.5 mm\n\nPrimena:\nDizajnirane za maksimalnu izdržljivost i estetski sklad u komercijalnim prostorima. Klasa 33.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\n100% reciklabilno.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.5 mm",
-        "WEIGHT": "620 g/m²",
-        "FIBER": "100% Econyl",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-620",
-      "collection_name": "Armonia 620",
-      "code": "56170",
-      "name": "ARMONIA 620 BLUE",
-      "slug": "armonia-620-56170",
-      "image_url": "/images/products/carpet/56170.jpg",
-      "description": "Proizvod:\nArmonia 620 su strukturirane tekstilne ploče premium kvaliteta. Izrađene od 100% recikliranog i reciklabilnog najlonskog vlakna: Econyl®.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Econyl (reciklirani najlon)\nTežina vlakna: 620 g/m²\nUkupna debljina: 6.5 mm\n\nPrimena:\nDizajnirane za maksimalnu izdržljivost i estetski sklad u komercijalnim prostorima. Klasa 33.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\n100% reciklabilno.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.5 mm",
-        "WEIGHT": "620 g/m²",
-        "FIBER": "100% Econyl",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-620",
-      "collection_name": "Armonia 620",
-      "code": "56171",
-      "name": "ARMONIA 620 RED",
-      "slug": "armonia-620-56171",
-      "image_url": "/images/products/carpet/56171.jpg",
-      "description": "Proizvod:\nArmonia 620 su strukturirane tekstilne ploče premium kvaliteta. Izrađene od 100% recikliranog i reciklabilnog najlonskog vlakna: Econyl®.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Econyl (reciklirani najlon)\nTežina vlakna: 620 g/m²\nUkupna debljina: 6.5 mm\n\nPrimena:\nDizajnirane za maksimalnu izdržljivost i estetski sklad u komercijalnim prostorima. Klasa 33.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\n100% reciklabilno.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.5 mm",
-        "WEIGHT": "620 g/m²",
-        "FIBER": "100% Econyl",
-        "USAGE": "33"
-      }
-    },
-    {
-      "collection": "gerflor-armonia-620",
-      "collection_name": "Armonia 620",
-      "code": "56172",
-      "name": "ARMONIA 620 BROWN",
-      "slug": "armonia-620-56172",
-      "image_url": "/images/products/carpet/56172.jpg",
-      "description": "Proizvod:\nArmonia 620 su strukturirane tekstilne ploče premium kvaliteta. Izrađene od 100% recikliranog i reciklabilnog najlonskog vlakna: Econyl®.\n\nKarakteristike:\nFormat: ploče 50x50cm\nSastav: 100% Econyl (reciklirani najlon)\nTežina vlakna: 620 g/m²\nUkupna debljina: 6.5 mm\n\nPrimena:\nDizajnirane za maksimalnu izdržljivost i estetski sklad u komercijalnim prostorima. Klasa 33.\n\nUgradnja:\nMonolitna ili 'quarter-turn'.\n\nOkruženje:\n100% reciklabilno.",
-      "specs": {
-        "FORMAT": "Ploča",
-        "DIMENSION": "50 cm X 50 cm",
-        "OVERALL THICKNESS": "6.5 mm",
-        "WEIGHT": "620 g/m²",
-        "FIBER": "100% Econyl",
-        "USAGE": "33"
+        "NCS": "8500-N",
+        "LRV": "37.4",
+        "UNIT_BOX": "24",
+        "PILE_WEIGHT": "400 g/m²",
+        "SURFACE_YARN": "Polypropylene",
+        "INSTALLATION": "Looselay (Tackified)"
+      },
+      "characteristics": {
+        "Length": "50 cm",
+        "Width": "50 cm",
+        "Unit/box": "24",
+        "Overall thickness": "5.30 mm",
+        "Installation system covering": "Looselay (Tackified)",
+        "Format details": "Square tile",
+        "NCS": "8500-N",
+        "LRV": "37.4",
+        "Surface yarn": "Polypropylene",
+        "Pile weight": "400 g/m²"
       }
     }
   ]
