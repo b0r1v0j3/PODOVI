@@ -395,7 +395,14 @@ Idealno za novu gradnju
 Protecshield™ površinska obrada: poboljšana otpornost, jednostavno čišćenje
 Efikasan protokol održavanja: pojednostavljena nega, maksimalan efekat
 
-Okruženje:`,
+Okruženje:
+100% reciklabilno
+35% recikliranog sadržaja
+TVOC <10µg/m³
+Bez ftalata
+Kompatibilno sa REACH standardima
+A+ ocena - najviši nivo zdravstvenih standarda
+Certifikovano: Floorscore®, IAC Gold & M1`,
     images: [{ id: '8-1', url: '/images/products/lvt/creation-30.jpg', alt: 'Gerflor Creation 30', isPrimary: true, order: 1 }],
     specs: [
       { key: 'thickness', label: 'Ukupna debljina', value: '2.00 mm' },

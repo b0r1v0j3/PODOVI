@@ -71,10 +71,9 @@ def merge_into_lvt_json(collections):
     for color in colors:
         collection = color.get('collection')
         if collection in collections:
-            # Add collection description if not present
-            if 'description' not in color or not color['description'] or len(color['description']) < 100:
-                color['description'] = collections[collection]['description']
-                updated += 1
+            # ALWAYS overwrite description with the latest from mock-data.ts
+            color['description'] = collections[collection]['description']
+            updated += 1
             
             # Add collection-level specs (merge with existing color specs)
             if 'collection_specs' not in color:
