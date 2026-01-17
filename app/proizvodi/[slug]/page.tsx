@@ -106,24 +106,58 @@ function toSpecKey(label: string, fallbackIndex?: number): string {
 function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
   const specs: ProductSpec[] = [];
 
+  // Add collection-level specs first (from collection_specs if available)
+  if ('collection_specs' in color && Array.isArray((color as any).collection_specs)) {
+    const collectionSpecs = (color as any).collection_specs as ProductSpec[];
+    specs.push(...collectionSpecs);
+  }
+
+  // Add color-specific specs (NCS, LRV, packaging) from specs object
+  if ('specs' in color && typeof (color as any).specs === 'object') {
+    const colorSpecs = (color as any).specs;
+
+    if (colorSpecs.NCS) {
+      specs.push({ key: 'ncs', label: 'NCS Oznaka', value: colorSpecs.NCS });
+    }
+    if (colorSpecs.LRV) {
+      specs.push({ key: 'lrv', label: 'LRV', value: colorSpecs.LRV });
+    }
+    if (colorSpecs.packaging) {
+      specs.push({ key: 'packaging', label: 'Pakovanje', value: colorSpecs.packaging });
+    }
+  }
+
+  // Add legacy fields if they exist
   if (color.format) {
-    specs.push({ key: 'format', label: 'Format', value: color.format });
+    // Check if not already added by collection_specs
+    if (!specs.find(s => s.key === 'format')) {
+      specs.push({ key: 'format', label: 'Format', value: color.format });
+    }
   }
   if (color.overall_thickness) {
-    specs.push({ key: 'overall_thickness', label: 'Ukupna debljina', value: color.overall_thickness });
+    if (!specs.find(s => s.key === 'thickness' || s.key === 'overall_thickness')) {
+      specs.push({ key: 'overall_thickness', label: 'Ukupna debljina', value: color.overall_thickness });
+    }
   }
   if (color.dimension) {
-    specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
+    if (!specs.find(s => s.key === 'dimension')) {
+      specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
+    }
   }
   if (color.welding_rod) {
     specs.push({ key: 'welding_rod', label: 'Elektroda za varenje', value: color.welding_rod });
   }
 
+  // Add legacy characteristics
   if (color.characteristics) {
     const entries = Object.entries(color.characteristics);
     entries.forEach(([label, value], index) => {
       if (!value) return;
-      specs.push({ key: toSpecKey(label, index), label, value });
+      const key = toSpecKey(label, index);
+      // Avoid duplicates
+      if (!specs.find(s => s.key === key)) {
+        specs.push({ key, label, value });
+      }
     });
   }
 
@@ -148,9 +182,9 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
 
   const sections: ProductDetailsSection[] = [];
   const lines = description.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-  
+
   let currentSection: ProductDetailsSection | null = null;
-  
+
   // Section titles to look for (case insensitive, with variations) - both English and Serbian
   const sectionTitles = [
     'Design & Product',
@@ -190,18 +224,18 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
     'Environmental',
     'Ekološke karakteristike'
   ];
-  
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    
+
     // Check if this line is a section title (more flexible matching)
     const isSectionTitle = sectionTitles.some(title => {
       const titleLower = title.toLowerCase();
       const lineLower = line.toLowerCase();
-      
+
       // Exact match
       if (lineLower === titleLower) return true;
-      
+
       // Match if line starts with title and either:
       // 1. Ends with colon (":") - e.g., "Proizvod:", "Ugradnja:"
       // 2. Is followed by colon in the original line - e.g., "Product :"
@@ -212,15 +246,15 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
           return true;
         }
       }
-      
+
       // Contains title (for variations like "Technical and environmental")
       if (lineLower.includes(titleLower) && line.length < 60 && (line.endsWith(':') || line.endsWith(' :'))) {
         return true;
       }
-      
+
       return false;
     });
-    
+
     if (isSectionTitle) {
       // Save previous section if exists
       if (currentSection && currentSection.items.length > 0) {
@@ -240,12 +274,12 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
     }
     // If we're before any section, skip intro lines (they're not part of structured sections)
   }
-  
+
   // Add last section if exists
   if (currentSection && currentSection.items.length > 0) {
     sections.push(currentSection);
   }
-  
+
   return sections;
 }
 
@@ -261,12 +295,12 @@ function colorToProduct(source: ColorSource, slug: string, collectionSlugOverrid
 
   const images: ProductImageType[] = primaryImageUrl
     ? [{
-        id: `color-img-${categorySlug}-${color.slug}`,
-        url: primaryImageUrl,
-        alt: name,
-        isPrimary: true,
-        order: 1,
-      }]
+      id: `color-img-${categorySlug}-${color.slug}`,
+      url: primaryImageUrl,
+      alt: name,
+      isPrimary: true,
+      order: 1,
+    }]
     : [];
 
   const specs = buildSpecsFromColor(color);
@@ -307,16 +341,16 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
   // Try to parse slug as collection-slug-color-slug format
   // Example: "gerflor-creation-30-ballerina-41870347"
   // Strategy: Try to find the collection slug first, then extract color slug
-  
+
   // Get all products to find matching collection
   const allProducts = await productRepository.findAll();
-  
+
   // Try to match collection slug from the beginning of the slug
   for (const prod of allProducts) {
     if (slug.startsWith(prod.slug + '-')) {
       // Found collection! Extract color slug
       const colorSlug = slug.substring(prod.slug.length + 1); // +1 for the dash
-      
+
       // Try to find color by its slug
       const colorSource = await loadColorFromJson(colorSlug);
       if (colorSource) {
@@ -337,10 +371,10 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
-  
+
   try {
     const product = await resolveProductBySlug(params.slug);
-    
+
     if (!product) {
       return {
         metadataBase: new URL(baseUrl),
@@ -348,21 +382,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       };
     }
 
-    const category = product.categoryId 
+    const category = product.categoryId
       ? await categoryRepository.findById(product.categoryId)
       : null;
-    const brand = product.brandId 
+    const brand = product.brandId
       ? await brandRepository.findById(product.brandId)
       : null;
     const primaryImage = product.images?.[0];
 
     // Build rich description
-    const priceText = product.price && product.price > 0 
-      ? `Cena: ${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}` 
+    const priceText = product.price && product.price > 0
+      ? `Cena: ${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}`
       : '';
     const brandText = brand ? `${brand.name}` : '';
     const categoryText = category ? `${category.name}` : '';
-    
+
     const description = `${product.shortDescription || product.description || ''} ${priceText}. ${brandText} ${categoryText}`.trim();
 
     // Build keywords
@@ -423,7 +457,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductPage({ params, searchParams }: Props) {
   try {
     const product = await resolveProductBySlug(params.slug);
-    
+
     if (!product) {
       notFound();
     }
@@ -469,336 +503,335 @@ export default async function ProductPage({ params, searchParams }: Props) {
       product.brandId = '6'; // Default to Gerflor
     }
 
-    const category = product.categoryId 
+    const category = product.categoryId
       ? await categoryRepository.findById(product.categoryId)
       : null;
-    const brand = product.brandId 
+    const brand = product.brandId
       ? await brandRepository.findById(product.brandId)
       : null;
-    const primaryImage = product.images && product.images.length > 0 
+    const primaryImage = product.images && product.images.length > 0
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
 
-  // Schema.org structured data
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": product.name,
-    "description": product.description || product.shortDescription || '',
-    "image": primaryImage ? `${baseUrl}${primaryImage.url}` : undefined,
-    "brand": brand ? {
-      "@type": "Brand",
-      "name": brand.name
-    } : undefined,
-    "category": category?.name,
-    "offers": {
-      "@type": "Offer",
-      "price": product.price && product.price > 0 ? product.price : undefined,
-      "priceCurrency": "RSD",
-      "availability": product.inStock 
-        ? "https://schema.org/InStock" 
-        : "https://schema.org/OutOfStock",
-      "url": `${baseUrl}/proizvodi/${product.slug}`,
-      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
-    },
-    "sku": product.sku,
-  };
+    // Schema.org structured data
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "description": product.description || product.shortDescription || '',
+      "image": primaryImage ? `${baseUrl}${primaryImage.url}` : undefined,
+      "brand": brand ? {
+        "@type": "Brand",
+        "name": brand.name
+      } : undefined,
+      "category": category?.name,
+      "offers": {
+        "@type": "Offer",
+        "price": product.price && product.price > 0 ? product.price : undefined,
+        "priceCurrency": "RSD",
+        "availability": product.inStock
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+        "url": `${baseUrl}/proizvodi/${product.slug}`,
+        "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+      },
+      "sku": product.sku,
+    };
 
-  return (
-    <>
-      {/* Schema.org JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaData)
-        }}
-      />
+    return (
+      <>
+        {/* Schema.org JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaData)
+          }}
+        />
 
-      <div className="min-h-screen bg-gray-50">
-        {/* Breadcrumbs */}
-        <div className="bg-white border-b">
-          <div className="container py-4">
-            <Breadcrumbs
-              items={[
-                ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
-                { label: product.name }
-              ]}
-            />
+        <div className="min-h-screen bg-gray-50">
+          {/* Breadcrumbs */}
+          <div className="bg-white border-b">
+            <div className="container py-4">
+              <Breadcrumbs
+                items={[
+                  ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
+                  { label: product.name }
+                ]}
+              />
+            </div>
           </div>
-        </div>
 
-      {/* Product Content */}
-      <div className="container py-12">
-        {(product.categoryId === '6' || product.categoryId === '7') ? (
-          <>
-            {/* LVT and Linoleum products with color selector */}
-            <ProductColorSelector
-              initialImage={primaryImage}
-              collectionSlug={(product as { collectionSlug?: string }).collectionSlug || product.slug}
-              productName={product.name}
-              productPrice={product.price}
-              priceUnit={product.priceUnit}
-              brand={brand ? { name: brand.name, slug: brand.slug } : null}
-              shortDescription={product.shortDescription}
-              specs={product.specs}
-              inStock={product.inStock}
-              productSlug={product.slug}
-              externalLink={product.externalLink}
-            />
+          {/* Product Content */}
+          <div className="container py-12">
+            {(product.categoryId === '6' || product.categoryId === '7') ? (
+              <>
+                {/* LVT and Linoleum products with color selector */}
+                <ProductColorSelector
+                  initialImage={primaryImage}
+                  collectionSlug={(product as { collectionSlug?: string }).collectionSlug || product.slug}
+                  productName={product.name}
+                  productPrice={product.price}
+                  priceUnit={product.priceUnit}
+                  brand={brand ? { name: brand.name, slug: brand.slug } : null}
+                  shortDescription={product.shortDescription}
+                  specs={product.specs}
+                  inStock={product.inStock}
+                  productSlug={product.slug}
+                  externalLink={product.externalLink}
+                />
 
-            {/* Description & Characteristics Side by Side */}
-            <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Description */}
-              <div className="bg-white rounded-2xl shadow-lg p-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
-                
-                {/* Parse description into sections */}
-                {(() => {
-                  const descriptionSections = product.description 
-                    ? parseDescriptionToSections(product.description)
-                    : [];
-                  
-                  // Use parsed sections if available, otherwise use product.detailsSections
-                  const sectionsToDisplay = descriptionSections.length > 0 
-                    ? descriptionSections 
-                    : (product.detailsSections || []);
-                  
-                  if (sectionsToDisplay.length > 0) {
-                    return (
-                      <div className="space-y-6">
-                        {sectionsToDisplay.map((section, idx) => (
-                          <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
-                            {section.items && section.items.length > 0 && (
-                              <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                                {section.items.map((item, index) => (
-                                  <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
-                                ))}
-                              </ul>
-                            )}
+                {/* Description & Characteristics Side by Side */}
+                <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Description */}
+                  <div className="bg-white rounded-2xl shadow-lg p-6">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
+
+                    {/* Parse description into sections */}
+                    {(() => {
+                      const descriptionSections = product.description
+                        ? parseDescriptionToSections(product.description)
+                        : [];
+
+                      // Use parsed sections if available, otherwise use product.detailsSections
+                      const sectionsToDisplay = descriptionSections.length > 0
+                        ? descriptionSections
+                        : (product.detailsSections || []);
+
+                      if (sectionsToDisplay.length > 0) {
+                        return (
+                          <div className="space-y-6">
+                            {sectionsToDisplay.map((section, idx) => (
+                              <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+                                {section.items && section.items.length > 0 && (
+                                  <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                                    {section.items.map((item, index) => (
+                                      <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    );
-                  }
-                  
-                  // Fallback: show description as plain text if no sections found
-                  if (product.description) {
-                    return (
-                      <div className="prose prose-lg max-w-none text-gray-700">
-                        <p className="whitespace-pre-line">{product.description}</p>
-                      </div>
-                    );
-                  }
-                  
-                  return null;
-                })()}
-              </div>
-              
-              {/* Characteristics */}
-              <ProductCharacteristics specs={product.specs} categoryId={product.categoryId} />
-            </div>
-          </>
-        ) : (
-          // Non-LVT products - standard layout
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Image Section */}
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
-                {primaryImage ? (
-                  <ProductImage
-                    src={primaryImage.url}
-                    alt={primaryImage.alt}
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    quality={100}
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    <span>Bez slike</span>
+                        );
+                      }
+
+                      // Fallback: show description as plain text if no sections found
+                      if (product.description) {
+                        return (
+                          <div className="prose prose-lg max-w-none text-gray-700">
+                            <p className="whitespace-pre-line">{product.description}</p>
+                          </div>
+                        );
+                      }
+
+                      return null;
+                    })()}
                   </div>
-                )}
-              </div>
-            </div>
 
-            {/* Info Section */}
-            <div className="space-y-8">
-              {/* Brand */}
-              {brand && (
-                <div className="flex items-center space-x-3">
-                  <span className="text-sm text-gray-500">Brend:</span>
-                  <Link
-                    href={`/brendovi/${brand.slug}`}
-                    className="text-primary-600 hover:text-primary-700 font-semibold"
-                  >
-                    {brand.name}
-                  </Link>
+                  {/* Characteristics */}
+                  <ProductCharacteristics specs={product.specs} categoryId={product.categoryId} />
                 </div>
-              )}
-
-              {/* Title */}
-              <div>
-                <h1 className="text-4xl font-bold text-gray-900 mb-3">
-                  {product.name}
-                </h1>
-                {product.shortDescription && (
-                  <p className="text-xl text-gray-600">
-                    {product.shortDescription}
-                  </p>
-                )}
-              </div>
-
-              {/* Price (if available) */}
-              {product.price && product.price > 0 && (
-                <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
-                  <div className="flex items-baseline space-x-2">
-                    <span className="text-4xl font-bold text-primary-600">
-                      {product.price.toLocaleString('sr-RS')}
-                    </span>
-                    <span className="text-lg text-gray-600">RSD</span>
-                    {product.priceUnit && (
-                      <span className="text-lg text-gray-500">/ {product.priceUnit}</span>
+              </>
+            ) : (
+              // Non-LVT products - standard layout
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* Image Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
+                    {primaryImage ? (
+                      <ProductImage
+                        src={primaryImage.url}
+                        alt={primaryImage.alt}
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={100}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400">
+                        <span>Bez slike</span>
+                      </div>
                     )}
                   </div>
                 </div>
-              )}
 
-              {/* Availability */}
-              <div className="flex items-center space-x-2">
-                <div
-                  className={`w-3 h-3 rounded-full ${
-                    product.inStock ? 'bg-green-500' : 'bg-red-500'
-                  }`}
-                ></div>
-                <span className="text-gray-700">
-                  {product.inStock ? 'Na stanju' : 'Nije dostupno'}
-                </span>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href={`/kontakt?product=${product.slug}`}
-                  className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg px-8 py-4 flex-1"
-                >
-                  Pošaljite upit
-                </Link>
-                {product.externalLink && (
-                  <a
-                    href={product.externalLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-lg px-8 py-4 flex-1"
-                  >
-                    Pogledaj na sajtu proizvođača
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Description & Specs - For Non-LVT/Linoleum Only */}
-        {product.categoryId !== '6' && product.categoryId !== '7' && (
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Description */}
-            <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
-              
-              {/* Parse description into sections */}
-              {(() => {
-                const descriptionSections = product.description 
-                  ? parseDescriptionToSections(product.description)
-                  : [];
-                
-                // Use parsed sections if available, otherwise use product.detailsSections
-                const sectionsToDisplay = descriptionSections.length > 0 
-                  ? descriptionSections 
-                  : (product.detailsSections || []);
-                
-                if (sectionsToDisplay.length > 0) {
-                  return (
-                    <div className="space-y-6">
-                      {sectionsToDisplay.map((section, idx) => (
-                        <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
-                          <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
-                          {section.items && section.items.length > 0 && (
-                            <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                              {section.items.map((item, index) => (
-                                <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      ))}
+                {/* Info Section */}
+                <div className="space-y-8">
+                  {/* Brand */}
+                  {brand && (
+                    <div className="flex items-center space-x-3">
+                      <span className="text-sm text-gray-500">Brend:</span>
+                      <Link
+                        href={`/brendovi/${brand.slug}`}
+                        className="text-primary-600 hover:text-primary-700 font-semibold"
+                      >
+                        {brand.name}
+                      </Link>
                     </div>
-                  );
-                }
-                
-                // Fallback: show description as plain text if no sections found
-                if (product.description) {
-                  return (
-                    <div className="prose prose-lg max-w-none text-gray-700">
-                      <p className="whitespace-pre-line">{product.description}</p>
-                    </div>
-                  );
-                }
-                
-                return null;
-              })()}
-            </div>
+                  )}
 
-            {/* Specifications */}
-            {product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
-                <dl className="space-y-4">
-                  {product.specs.map((spec) => (
-                    <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
-                      <dt className="text-sm font-medium text-gray-500 mb-1">
-                        {spec.label}
-                      </dt>
-                      <dd className="text-lg font-semibold text-gray-900">
-                        {spec.value}
-                      </dd>
+                  {/* Title */}
+                  <div>
+                    <h1 className="text-4xl font-bold text-gray-900 mb-3">
+                      {product.name}
+                    </h1>
+                    {product.shortDescription && (
+                      <p className="text-xl text-gray-600">
+                        {product.shortDescription}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Price (if available) */}
+                  {product.price && product.price > 0 && (
+                    <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
+                      <div className="flex items-baseline space-x-2">
+                        <span className="text-4xl font-bold text-primary-600">
+                          {product.price.toLocaleString('sr-RS')}
+                        </span>
+                        <span className="text-lg text-gray-600">RSD</span>
+                        {product.priceUnit && (
+                          <span className="text-lg text-gray-500">/ {product.priceUnit}</span>
+                        )}
+                      </div>
                     </div>
-                  ))}
-                </dl>
+                  )}
+
+                  {/* Availability */}
+                  <div className="flex items-center space-x-2">
+                    <div
+                      className={`w-3 h-3 rounded-full ${product.inStock ? 'bg-green-500' : 'bg-red-500'
+                        }`}
+                    ></div>
+                    <span className="text-gray-700">
+                      {product.inStock ? 'Na stanju' : 'Nije dostupno'}
+                    </span>
+                  </div>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link
+                      href={`/kontakt?product=${product.slug}`}
+                      className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg px-8 py-4 flex-1"
+                    >
+                      Pošaljite upit
+                    </Link>
+                    {product.externalLink && (
+                      <a
+                        href={product.externalLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-lg px-8 py-4 flex-1"
+                      >
+                        Pogledaj na sajtu proizvođača
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
             )}
+
+            {/* Description & Specs - For Non-LVT/Linoleum Only */}
+            {product.categoryId !== '6' && product.categoryId !== '7' && (
+              <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Description */}
+                <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
+
+                  {/* Parse description into sections */}
+                  {(() => {
+                    const descriptionSections = product.description
+                      ? parseDescriptionToSections(product.description)
+                      : [];
+
+                    // Use parsed sections if available, otherwise use product.detailsSections
+                    const sectionsToDisplay = descriptionSections.length > 0
+                      ? descriptionSections
+                      : (product.detailsSections || []);
+
+                    if (sectionsToDisplay.length > 0) {
+                      return (
+                        <div className="space-y-6">
+                          {sectionsToDisplay.map((section, idx) => (
+                            <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
+                              <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+                              {section.items && section.items.length > 0 && (
+                                <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                                  {section.items.map((item, index) => (
+                                    <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    }
+
+                    // Fallback: show description as plain text if no sections found
+                    if (product.description) {
+                      return (
+                        <div className="prose prose-lg max-w-none text-gray-700">
+                          <p className="whitespace-pre-line">{product.description}</p>
+                        </div>
+                      );
+                    }
+
+                    return null;
+                  })()}
+                </div>
+
+                {/* Specifications */}
+                {product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
+                  <div className="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
+                    <dl className="space-y-4">
+                      {product.specs.map((spec) => (
+                        <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
+                          <dt className="text-sm font-medium text-gray-500 mb-1">
+                            {spec.label}
+                          </dt>
+                          <dd className="text-lg font-semibold text-gray-900">
+                            {spec.value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Certifications & Eco Features - Full Width Below for LVT and Linoleum */}
+            {(product.categoryId === '6' || product.categoryId === '7') && (
+              <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Certifications */}
+                <div className="bg-white rounded-2xl shadow-lg p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                    Sertifikati kvaliteta
+                  </h3>
+                  <CertificationBadges certifications={["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]} />
+                </div>
+
+                {/* Eco Features */}
+                <EcoFeatures
+                  features={product.categoryId === '7'
+                    ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
+                    : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
+                  }
+                  underfloorHeating={true}
+                />
+              </div>
+            )}
+
           </div>
-        )}
-
-        {/* Certifications & Eco Features - Full Width Below for LVT and Linoleum */}
-        {(product.categoryId === '6' || product.categoryId === '7') && (
-          <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Certifications */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
-                Sertifikati kvaliteta
-              </h3>
-              <CertificationBadges certifications={["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]} />
-            </div>
-
-            {/* Eco Features */}
-            <EcoFeatures 
-              features={product.categoryId === '7' 
-                ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
-                : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
-              } 
-              underfloorHeating={true}
-            />
-          </div>
-        )}
-
-      </div>
-      </div>
-    </>
-  );
+        </div>
+      </>
+    );
   } catch (error) {
     console.error('Error rendering product page:', error);
     notFound();
