@@ -1240,7 +1240,26 @@ TVOC <10µg/m³`,
     categoryId: '4',
     brandId: '6',
     shortDescription: 'Tekstilne podne ploče Armonia 400',
-    description: 'Armonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa "loop" teksturom donose udobnost i harmoniju u prostore sa umerenom frekvencijom saobraćaja. Karakteristike: format ploča 50x50cm, 100% bojen polipropilen, težina vlakna: 400 g/m².',
+    description: `Strukturirajte svoje prostore, kreirajte harmoniju.
+
+Armonia 400 je ulaznica u svet Armonia. Pažljivo izrađene u Evropskoj uniji, ove loop carpet ploče donose udobnost i harmoniju u prostore sa lakim prometom:
+
+Proizvod i Dekor:
+• 50×50cm format pločica
+• 100% solution-dyed polipropilen
+• Težina vlakna: 400 g/m²
+• Lako se kombinuje sa Gerflor kolekcijama (Creation i Saga²)
+
+Ugradnja:
+• Monolitna ili quarter-turn instalacija
+• Mogućnost ugradnje bez lepka sa konektorima (B-connect)
+
+Primena:
+• Laka komercijalna upotreba
+
+Održivost:
+• Proizvedeno u EU
+• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha`,
     images: [{ id: '41-1', url: '/images/products/carpet/57526 - Armonia 400.jpg', alt: 'Gerflor Armonia 400', isPrimary: true, order: 1 }],
     documents: [
       { title: 'Technical Datasheet', url: '/documents/carpet/armonia-400-technical-datasheet.pdf' },
@@ -1268,7 +1287,28 @@ TVOC <10µg/m³`,
     categoryId: '4',
     brandId: '6',
     shortDescription: 'Tekstilne podne ploče Armonia 540',
-    description: 'Armonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama (Creation Loose Lay i Saga). Format: ploče 50x50cm. 100% bojen najlon (Solution Dyed). Težina vlakna: 540 g/m². Klasa 33 za intenzivnu komercijalnu upotrebu.',
+    description: `Strukturirajte svoje prostore, kreirajte harmoniju.
+
+Armonia 540 carpet ploče su specijalno dizajnirane da se uklapaju sa našim Creation Loose Lay i Saga kolekcijama za vaše profesionalne prostore:
+
+Proizvod i Dekor:
+• 50×50cm format pločica
+• 100% Nylon solution dyed
+• Težina vlakna: 540 g/m²
+• 14 ekskluzivnih boja koordinisanih sa Création i Saga kolekcijama
+• Savršeno se uklapa sa našim LVT, heterogenim i linoleum kolekcijama
+
+Ugradnja:
+• Monolitna ili quarter-turn instalacija
+• Mogućnost ugradnje bez lepka sa konektorima (B-connect)
+
+Primena:
+• Klasa 33 za intenzivnu komercijalnu upotrebu
+
+Održivost:
+• Third party certified EPD
+• Proizvedeno u EU
+• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha`,
     images: [{ id: '42-1', url: '/images/products/carpet/64676 - JPG 72 dpi-Armonia 540 platino - Office.jpg', alt: 'Gerflor Armonia 540', isPrimary: true, order: 1 }],
     documents: [
       { title: 'Technical Datasheet', url: '/documents/carpet/armonia-540-technical-datasheet.pdf' },
@@ -1296,7 +1336,28 @@ TVOC <10µg/m³`,
     categoryId: '4',
     brandId: '6',
     shortDescription: 'Tekstilne podne ploče Armonia 620',
-    description: 'Armonia 620 su strukturirane tekstilne ploče premium kvaliteta. Izrađene od 100% recikliranog i reciklabilnog najlonskog vlakna: Econyl®. Težina vlakna: 620 g/m². Dizajnirane za maksimalnu izdržljivost i estetski sklad u komercijalnim prostorima.',
+    description: `Strukturirajte svoje prostore, kreirajte harmoniju.
+
+Armonia 620 su strukturirane carpet ploče dizajnirane da se uklapaju sa našim Creation Loose Lay i Saga kolekcijama za vaše profesionalne prostore:
+
+Proizvod i Dekor:
+• 50×50cm format pločica
+• Solution-Dyed Nylon - Econyl® 100% reciklirani
+• Težina vlakna: 620 g/m²
+• 6 ekskluzivnih boja koordinisanih sa Création i Saga kolekcijama
+• Savršeno se uklapa sa našim heterogenim i linoleum kolekcijama
+
+Ugradnja:
+• Monolitna ili quarter-turn instalacija
+• Mogućnost ugradnje bez lepka sa konektorima (B-connect)
+
+Primena:
+• Klasa 33 za intenzivnu komercijalnu upotrebu
+
+Održivost:
+• Third party certified EPD
+• Proizvedeno u EU
+• TVOC <100µg/m³ → kvalitet unutrašnjeg vazduha`,
     images: [{ id: '43-1', url: '/images/products/carpet/40546 - Armonia 620.jpg', alt: 'Gerflor Armonia 620', isPrimary: true, order: 1 }],
     documents: [
       { title: 'Technical Datasheet', url: '/documents/carpet/armonia-620-technical-datasheet.pdf' },
