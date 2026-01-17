@@ -44,22 +44,32 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
     if (color) {
       const colorCharacteristics: Record<string, string> = {};
 
-      // Add characteristics from color.characteristics if exists
-      if (color.characteristics) {
-        Object.assign(colorCharacteristics, color.characteristics);
+      // Add "Dimenzije" FIRST to ensure it's always at the top
+      const dimensionValue = color.dimension || (color.characteristics && color.characteristics['Dimenzije']);
+      if (dimensionValue) {
+        colorCharacteristics['Dimenzije'] = dimensionValue;
       }
 
-      // Add dimension, format, overall_thickness, welding_rod if they exist
-      if (color.dimension) {
-        colorCharacteristics['Dimenzije'] = color.dimension;
+      // Add "Ukupna debljina" SECOND to ensure it's always second
+      const thicknessValue = color.overall_thickness || (color.characteristics && color.characteristics['Ukupna debljina']);
+      if (thicknessValue) {
+        colorCharacteristics['Ukupna debljina'] = thicknessValue;
       }
-      if (color.format) {
+
+      // Add characteristics from color.characteristics if exists (skip Dimenzije and Ukupna debljina to avoid duplicates)
+      if (color.characteristics) {
+        Object.entries(color.characteristics).forEach(([key, value]) => {
+          if (key !== 'Dimenzije' && key !== 'Ukupna debljina') {
+            colorCharacteristics[key] = value;
+          }
+        });
+      }
+
+      // Add other legacy fields if they don't exist yet
+      if (color.format && !colorCharacteristics['Format']) {
         colorCharacteristics['Format'] = color.format;
       }
-      if (color.overall_thickness) {
-        colorCharacteristics['Ukupna debljina'] = color.overall_thickness;
-      }
-      if (color.welding_rod) {
+      if (color.welding_rod && !colorCharacteristics['Elektroda za varenje']) {
         colorCharacteristics['Elektroda za varenje'] = color.welding_rod;
       }
 
