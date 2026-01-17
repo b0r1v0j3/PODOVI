@@ -9,6 +9,7 @@ interface CategoryCardProps {
 export default function CategoryCard({ category }: CategoryCardProps) {
   const isLVT = category.slug === 'lvt' || category.id === '6';
   const isLinoleum = category.slug === 'linoleum' || category.id === '7';
+  const isCarpet = category.slug === 'tekstilne-ploce' || category.id === '4';
   const saharaNoirImage = '/images/products/lvt/colors/creation-55/1742-sahara-noir/pod/1742-sahara-noir-pod.jpg';
 
   return (
@@ -30,8 +31,8 @@ export default function CategoryCard({ category }: CategoryCardProps) {
               />
             </div>
           </div>
-        ) : isLinoleum && category.image ? (
-          // Show Cadillac Pink linoleum image for Linoleum
+        ) : (isLinoleum || isCarpet) && category.image ? (
+          // Show category image for Linoleum and Carpet
           <div className="absolute inset-0 flex items-center justify-center p-4">
             <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
               <Image
