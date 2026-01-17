@@ -1244,7 +1244,7 @@ TVOC <10µg/m³`,
 
 Armonia 400 je ulaznica u svet Armonia. Pažljivo izrađene u Evropskoj uniji, ove loop carpet ploče donose udobnost i harmoniju u prostore sa lakim prometom:
 
-Proizvod i Dekor:
+Proizvod:
 • 50×50cm format pločica
 • 100% solution-dyed polipropilen
 • Težina vlakna: 400 g/m²
@@ -1291,7 +1291,7 @@ Održivost:
 
 Armonia 540 carpet ploče su specijalno dizajnirane da se uklapaju sa našim Creation Loose Lay i Saga kolekcijama za vaše profesionalne prostore:
 
-Proizvod i Dekor:
+Proizvod:
 • 50×50cm format pločica
 • 100% Nylon solution dyed
 • Težina vlakna: 540 g/m²
@@ -1340,7 +1340,7 @@ Održivost:
 
 Armonia 620 su strukturirane carpet ploče dizajnirane da se uklapaju sa našim Creation Loose Lay i Saga kolekcijama za vaše profesionalne prostore:
 
-Proizvod i Dekor:
+Proizvod:
 • 50×50cm format pločica
 • Solution-Dyed Nylon - Econyl® 100% reciklirani
 • Težina vlakna: 620 g/m²
