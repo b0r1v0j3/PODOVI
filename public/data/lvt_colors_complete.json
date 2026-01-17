@@ -2807,7 +2807,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 4040-Y20R"
+        "NCS": "NCS S 4040-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -2850,7 +2851,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -2868,7 +2872,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 4005-Y20R"
+        "NCS": "NCS S 4005-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -2911,7 +2916,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -2929,7 +2937,8 @@
       "format": "Xl Plank",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 4010-Y30R"
+        "NCS": "NCS S 4010-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -2972,7 +2981,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -2990,7 +3002,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 4010-Y30R"
+        "NCS": "NCS S 4010-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3033,7 +3046,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3051,7 +3067,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 5020-Y30R"
+        "NCS": "NCS S 5020-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3094,7 +3111,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3112,7 +3132,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 6020-Y40R"
+        "NCS": "NCS S 6020-Y40R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3155,7 +3176,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3173,7 +3197,8 @@
       "format": "Xl Plank",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 5020-Y20R"
+        "NCS": "NCS S 5020-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3216,7 +3241,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3299,7 +3327,8 @@
       "format": "Xl Plank",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 5010-Y30R"
+        "NCS": "NCS S 5010-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3342,7 +3371,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3360,7 +3392,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 3020-Y20R"
+        "NCS": "NCS S 3020-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3403,7 +3436,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3462,7 +3498,12 @@
           "value": "NCS S 4040-Y20R"
         }
       ],
-      "specs": {}
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3545,7 +3586,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 2010-Y20R"
+        "NCS": "NCS S 2010-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3588,7 +3630,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3606,7 +3651,8 @@
       "format": "Rectangular Tile",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 2002-Y30R"
+        "NCS": "NCS S 2002-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3649,7 +3695,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3708,7 +3757,12 @@
           "value": "NCS S 4040-Y20R"
         }
       ],
-      "specs": {}
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3726,7 +3780,8 @@
       "format": "Xl Plank",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 5020-Y20R"
+        "NCS": "NCS S 5020-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3769,7 +3824,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3852,7 +3910,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 4020-Y20R"
+        "NCS": "NCS S 4020-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3895,7 +3954,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3913,7 +3975,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 3040-Y20R"
+        "NCS": "NCS S 3040-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -3956,7 +4019,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -3974,7 +4040,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 4005-Y20R"
+        "NCS": "NCS S 4005-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -4017,7 +4084,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -4035,7 +4105,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 6010-Y30R"
+        "NCS": "NCS S 6010-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -4078,7 +4149,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -4096,7 +4170,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 5010-Y30R"
+        "NCS": "NCS S 5010-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -4139,7 +4214,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -4157,7 +4235,8 @@
       "format": "Xl Plank",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 4020-Y30R"
+        "NCS": "NCS S 4020-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -4200,7 +4279,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -4283,7 +4365,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 4020-Y20R"
+        "NCS": "NCS S 4020-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -4326,7 +4409,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -4408,7 +4494,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 6010-Y30R"
+        "NCS": "NCS S 6010-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -4451,7 +4538,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -4469,7 +4559,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 5005-Y50R"
+        "NCS": "NCS S 5005-Y50R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -4512,7 +4603,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40",
@@ -4595,7 +4689,8 @@
       "format": "Ploča",
       "overall_thickness": "2.00 mm",
       "specs": {
-        "NCS": "NCS S 3010-Y30R"
+        "NCS": "NCS S 3010-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.40 mm"
       },
       "collection_specs": [
         {
@@ -4638,7 +4733,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4040-Y20R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.40 mm"
+      }
     },
     {
       "collection": "creation-40-clic",
@@ -4679,7 +4777,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -4720,7 +4819,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -4761,7 +4861,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -4802,7 +4903,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -4843,7 +4945,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -4884,7 +4987,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -4925,7 +5029,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -4966,7 +5071,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -5007,7 +5113,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic",
@@ -5048,7 +5155,8 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {}
     },
     {
       "collection": "creation-40-clic-acoustic",
@@ -22754,7 +22862,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/0062-rough-textile-beige/pod/41671%20-%200062-rough-textile-beige-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/0062-rough-textile-beige/pod/41671%20-%200062-rough-textile-beige-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -22792,7 +22900,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/1089-dalma-burgundy/pod/41686%20-%201089-dalma-burgundy-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/1089-dalma-burgundy/pod/41686%20-%201089-dalma-burgundy-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -22830,7 +22938,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/1492-oak-golden-connect/pod/46106%20-%20Oak%20Golden%20-%20Creation%2070%20Connect%20-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/1492-oak-golden-connect/pod/46106%20-%20Oak%20Golden%20-%20Creation%2070%20Connect%20-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -22868,7 +22976,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/0063-rough-textile-grey/pod/41676%20-%200063-rough-textile-grey-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/0063-rough-textile-grey/pod/41676%20-%200063-rough-textile-grey-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -22907,7 +23015,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-connect/0085-dock-grey/pod/46086%20-%200085%20Dock%20Grey-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-connect/0085-dock-grey/ilustracija/60536 - JPG 72 dpi-Pure Concrete Light - Dock Grey - Creation 70-ilustracija.jpg?v=9",
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -22945,7 +23053,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/0088-gentleman-grey-square-tile/pod/42956%20-%20Gentleman%20Grey%20-%20square%20tile-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/0088-gentleman-grey-square-tile/pod/42956%20-%20Gentleman%20Grey%20-%20square%20tile-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -22983,7 +23091,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/1088-dalma-grey/pod/41681%20-%201088-dalma-grey-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/1088-dalma-grey/pod/41681%20-%201088-dalma-grey-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -23021,7 +23129,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/0090-oak-light/pod/46096%20-%20oak%20light-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/0090-oak-light/pod/46096%20-%20oak%20light-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -23059,7 +23167,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/0091-2scr-d9cbffb82c899a8/pod/46101%20-%2078462scr_d9cbffb82c899a8-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/0091-2scr-d9cbffb82c899a8/pod/46101%20-%2078462scr_d9cbffb82c899a8-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -23098,7 +23206,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-connect/0087-0087-dock-taupe-scr/pod/46091%20-%20RS65048_%200087%20Dock%20Taupe-scr-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-connect/0087-0087-dock-taupe-scr/ilustracija/60541 - JPG 72 dpi-Dock-taupe-0087_457x914_Creation-ilustracija.jpg?v=9",
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -23136,7 +23244,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-connect/0089-gentleman-taupe/pod/46081%20-%20Gentleman%20Taupe-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-connect/0089-gentleman-taupe/pod/46081%20-%20Gentleman%20Taupe-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Product:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nInstallation:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nApplication:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nEnvironment:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
+      "description": "Proizvod:\nReinforced comfort core with fiberglass particles: improved comfort and stabilnost\nPUR + Matte varnish: prirodan izgled and lako za čišćenje\nUgradnja:\nExclusive Gerflor dovetails: easy to install and robust\nAdhesive-free installation: installation in occupied area even in case of rolling traffic\nCan be installed direct over ceramic (joint <5mm/<1mm)\nPrimena:\nIdealno za high-traffic areas (chain specialist, education, public buildings)\nOkruženje:\nMade in Europe / up to 55% recikliranog sadržaja / 100% reciklabilno: eco-responsible solution\nTVOC <10µg/m³ / bez ftalata: better indoor air quality",
       "dimension": "70.13 cm X 70.13 cm",
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
@@ -23174,7 +23282,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/0060-arena/pod/50126%20-%20JPG%2072%20dpi-RS60608_Arena%20-%20VDC%20-%20C55LL-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/0060-arena/pod/50126%20-%20JPG%2072%20dpi-RS60608_Arena%20-%20VDC%20-%20C55LL-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "22.86 cm X 122 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23199,7 +23307,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23211,7 +23325,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1572-chips-blue/pod/50136%20-%20JPG%2072%20dpi-Creation%20Looselay%201572%20Chips%20Blue%20600x600%20Sky%20View-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1572-chips-blue/pod/50136%20-%20JPG%2072%20dpi-Creation%20Looselay%201572%20Chips%20Blue%20600x600%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "60 cm X 60 cm",
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
@@ -23236,7 +23350,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23294,7 +23414,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1568-tamo-light-brown/pod/49536%20-%20JPG%2072%20dpi-Creation%20Looselay%201568%20Tamo%20Light%20Brown%20229x1220%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1568-tamo-light-brown/ilustracija/1568-tamo-light-brown-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "22.86 cm X 122 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23335,12 +23455,13 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1568-tamo-light-brown/pod/49536%20-%20JPG%2072%20dpi-Creation%20Looselay%201568%20Tamo%20Light%20Brown%20229x1220%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1568-tamo-light-brown/ilustracija/1568-tamo-light-brown-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "15.24 cm X 91.4 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "specs": {
-        "NCS": "NCS S 5020-Y30R"
+        "NCS": "NCS S 5020-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
         {
@@ -23363,7 +23484,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23376,7 +23500,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1567-tamo-clear/pod/49531%20-%20JPG%2072%20dpi-Creation%20Looselay%201567%20Tamo%20clear%20229x1220%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1567-tamo-clear/ilustracija/1567-tamo-clear-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "22.86 cm X 122 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23416,7 +23540,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1569-marble-clear/pod/50186%20-%20Creation%20Looselay%201569%20Marble%20Clear%20914x914%20Sky%20View-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1569-marble-clear/pod/50186%20-%20Creation%20Looselay%201569%20Marble%20Clear%20914x914%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "22.86 cm X 122 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23454,12 +23578,13 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1567-tamo-clear/pod/49531%20-%20JPG%2072%20dpi-Creation%20Looselay%201567%20Tamo%20clear%20229x1220%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1567-tamo-clear/ilustracija/1567-tamo-clear-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "15.24 cm X 91.4 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "specs": {
-        "NCS": "NCS S 3020-Y20R"
+        "NCS": "NCS S 3020-Y20R",
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
         {
@@ -23482,7 +23607,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23494,7 +23622,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1569-marble-clear/pod/50186%20-%20Creation%20Looselay%201569%20Marble%20Clear%20914x914%20Sky%20View-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1569-marble-clear/pod/50186%20-%20Creation%20Looselay%201569%20Marble%20Clear%20914x914%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "15.24 cm X 91.4 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23519,7 +23647,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23620,7 +23754,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1560-looselay-1560-tamo-dainty/pod/49556%20-%20JPG%2072%20dpi-Creation%20Looselay%201560%20Tamo%20Dainty%20229x1220%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1560-looselay-1560-tamo-dainty/ilustracija/49561 - Creation 70 Looselay_ 1560 Tamo Dainty - Copie-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "22.86 cm X 122 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23645,7 +23779,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23658,7 +23798,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1570-marble-dark/pod/50191%20-%20JPG%2072%20dpi-Creation%20Looselay%201570%20Marble%20Dark%20914x914%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1570-marble-dark/ilustracija/50131 - Creation 70 Looselay_1559 Tamo Light 1570 Marble Dark -ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "22.86 cm X 122 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23695,7 +23835,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1577-urban-street-dark/pod/50201%20-%20JPG%2072%20dpi-Creation%20Looselay%201577%20Urban%20street%20dark%20914x914%20Sky%20View-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1577-urban-street-dark/pod/50201%20-%20JPG%2072%20dpi-Creation%20Looselay%201577%20Urban%20street%20dark%20914x914%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "91.4 cm X 91.4 cm",
       "format": "Xl Square Tile",
       "overall_thickness": "5.00 mm",
@@ -23720,7 +23860,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23733,7 +23879,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1570-marble-dark/pod/50191%20-%20JPG%2072%20dpi-Creation%20Looselay%201570%20Marble%20Dark%20914x914%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1570-marble-dark/ilustracija/50131 - Creation 70 Looselay_1559 Tamo Light 1570 Marble Dark -ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "15.24 cm X 91.4 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23758,7 +23904,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23771,7 +23923,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1573-chips-green/pod/50141%20-%20JPG%2072%20dpi-Creation%20Looselay%201573%20Chips%20Green%20600x600%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1573-chips-green/ilustracija/50146 - Creation 70 Looselay_ Chips Green_Marble Green - Copie-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "60 cm X 60 cm",
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
@@ -23796,7 +23948,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23809,7 +23967,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1571-marble-green/pod/50196%20-%20JPG%2072%20dpi-Creation%20Looselay%201571%20Marble%20Green%20914x914%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1571-marble-green/ilustracija/50146 - Creation 70 Looselay_ Chips Green_Marble Green - Copie-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "91.4 cm X 91.4 cm",
       "format": "Xl Square Tile",
       "overall_thickness": "5.00 mm",
@@ -23834,7 +23992,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23890,7 +24054,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1578-looselay-1578-namou-light-honey/pod/50096%20-%20JPG%2072%20dpi-Creation%2070%20Looselay%201578%20Namou%20light%20honey-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1578-looselay-1578-namou-light-honey/pod/50096%20-%20JPG%2072%20dpi-Creation%2070%20Looselay%201578%20Namou%20light%20honey-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "23.5 cm X 150.5 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23915,7 +24079,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23927,7 +24097,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1579-looselay-1579-namou-honey/pod/50101%20-%20JPG%2072%20dpi-Creation%2070%20Looselay%201579%20Namou%20honey-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1579-looselay-1579-namou-honey/pod/50101%20-%20JPG%2072%20dpi-Creation%2070%20Looselay%201579%20Namou%20honey-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "23.5 cm X 150.5 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23952,7 +24122,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -23964,7 +24140,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1580-namou-dark-honey/pod/50106%20-%20Creation%2070%20Looselay%201580%20Namou%20Dark%20honey-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1580-namou-dark-honey/pod/50106%20-%20Creation%2070%20Looselay%201580%20Namou%20Dark%20honey-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "23.5 cm X 150.5 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -23989,7 +24165,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -24002,7 +24184,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1559-creation-looselay-1559-tamo-light-crop/pod/49541%20-%20JPG%2072%20dpi-Creation%20Looselay%201559%20Tamo%20light%20229x1220%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1559-creation-looselay-1559-tamo-light-crop/ilustracija/50131 - Creation 70 Looselay_1559 Tamo Light 1570 Marble Dark -ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "22.86 cm X 122 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -24084,7 +24266,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1559-creation-looselay-1559-tamo-light-crop/pod/49541%20-%20JPG%2072%20dpi-Creation%20Looselay%201559%20Tamo%20light%20229x1220%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1559-creation-looselay-1559-tamo-light-crop/ilustracija/50131 - Creation 70 Looselay_1559 Tamo Light 1570 Marble Dark -ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "15.24 cm X 91.4 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
@@ -24109,7 +24291,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -24121,7 +24309,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1576-stony-medium/pod/50171%20-%20JPG%2072%20dpi-Creation%20Looselay%201576%20Stony%20Medium%20600x600%20Sky%20View-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1576-stony-medium/pod/50171%20-%20JPG%2072%20dpi-Creation%20Looselay%201576%20Stony%20Medium%20600x600%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "60 cm X 60 cm",
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
@@ -24146,7 +24334,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -24203,12 +24397,13 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1561-tamo-natural/pod/49551%20-%20JPG%2072%20dpi-Creation%20Looselay%201561%20Tamo%20Natural%20229x1220%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1561-tamo-natural/ilustracija/1561-tamo-natural-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "22.86 cm X 122 cm",
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "specs": {
-        "NCS": "NCS S 5010-Y30R"
+        "NCS": "NCS S 5010-Y30R",
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
         {
@@ -24231,7 +24426,10 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -24289,7 +24487,7 @@
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1566-creation-looselay-1566-urban-street-terra/pod/49491%20-%20JPG%2072%20dpi-Creation%20Looselay%201566%20Urban%20Street%20Terra%20600x600%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
       "lifestyle_url": "/images/products/lvt/colors/creation-70-looselay/1566-creation-looselay-1566-urban-street-terra/ilustracija/49486 - Creation 70 1565 Urban Street Terra 1566 Urban Street Cream Picture - Copie-ilustracija.jpg?v=9",
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "60 cm X 60 cm",
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
@@ -24314,7 +24512,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
@@ -24326,7 +24530,7 @@
       "image_url": "/images/products/lvt/colors/creation-70-looselay/1574-chips-terra/pod/50156%20-%20JPG%2072%20dpi-Creation%20Looselay%201574%20Chips%20Terra%20600x600%20Sky%20View-pod.jpg?v=9",
       "texture_url": "/images/products/lvt/colors/creation-70-looselay/1574-chips-terra/pod/50156%20-%20JPG%2072%20dpi-Creation%20Looselay%201574%20Chips%20Terra%20600x600%20Sky%20View-pod.jpg?v=9",
       "image_count": 1,
-      "description": "Proizvod:\nUklonjiva",
+      "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\n\nProizvod:\n5 veličina: uključujući riblju kost i XL daske\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\n\nPrimena:\nIdealno za zone sa intenzivnim prometom: kancelarije, hoteli, prodavnice - evropska klasa 34-43\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "dimension": "60 cm X 60 cm",
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
@@ -24351,7 +24555,13 @@
           "label": "NCS Oznaka",
           "value": "NCS S 4010-Y30R"
         }
-      ]
+      ],
+      "specs": {
+        "THICKNESS OF THE WEARLAYER": "0.70 mm"
+      },
+      "characteristics": {
+        "Debljina sloja habanja": "0.70 mm"
+      }
     },
     {
       "collection": "creation-70-looselay",
