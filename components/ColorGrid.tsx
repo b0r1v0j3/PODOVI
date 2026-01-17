@@ -220,7 +220,13 @@ export default function ColorGrid({
           return;
         }
 
-        const filtered = data.colors.filter((c: Color) => c.collection === collectionName || c.collection === collectionSlug);
+        // Filter by collection - try exact match first, then with/without 'gerflor-' prefix
+        const filtered = data.colors.filter((c: Color) => 
+          c.collection === collectionName || 
+          c.collection === collectionSlug ||
+          c.collection === `gerflor-${collectionName}` ||
+          c.collection.replace('gerflor-', '') === collectionName
+        );
 
         // Normalize urls inside colors to make rendering consistent
         const normalizedColors = filtered.map((c: Color) => ({
