@@ -43,6 +43,8 @@ export default function ProductColorSelector({
   onCharacteristicsChange,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
+  const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
   const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(undefined);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
@@ -101,14 +103,50 @@ export default function ProductColorSelector({
         <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
           <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
             {selectedImage ? (
-              <ProductImage
-                key={selectedImage.url}
-                src={selectedImage.url}
-                alt={selectedImage.alt}
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                quality={100}
-              />
+              <>
+                <ProductImage
+                  key={selectedImage.url}
+                  src={selectedImage.url}
+                  alt={selectedImage.alt}
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={100}
+                />
+                {/* Image switcher arrows - show only if multiple images */}
+                {selectedImages.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => setCurrentImageIndex((currentImageIndex - 1 + selectedImages.length) % selectedImages.length)}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                      aria-label="Prethodna slika"
+                    >
+                      <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => setCurrentImageIndex((currentImageIndex + 1) % selectedImages.length)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                      aria-label="Sledeća slika"
+                    >
+                      <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                    {/* Image indicator dots */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {selectedImages.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentImageIndex(idx)}
+                          className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/50'}`}
+                          aria-label={`Slika ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </>
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-400">
                 <span>Bez slike</span>
