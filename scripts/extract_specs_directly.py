@@ -63,6 +63,34 @@ def extract_specs_from_html(url):
             specs['DIMENSION'] = f"{specs['WIDTH']} X {specs['LENGTH']}"
         elif 'WIDTH OF SHEET' in specs and 'LENGTH OF SHEET' in specs and 'DIMENSION' not in specs:
             specs['DIMENSION'] = f"{specs['WIDTH OF SHEET']} X {specs['LENGTH OF SHEET']}"
+
+        # Extract NCS, LRV, Packaging (Unit/box), Weight
+        # We search specifically for these keys in the parsed specs or raw text if needed
+        # The loop above already captures most "Key: Value" pairs, so we just need to ensure
+        # our filtering allows them or we manually look for them if they are not standard "Key: Value"
+
+        # Additional specific fields to ensure we capture
+        desired_fields = ['NCS', 'LRV', 'UNIT/BOX', 'WEIGHT', 'TOTAL WEIGHT', 'PACKAGING']
+        
+        # Re-scan elements for these specific fields if not already found
+        spec_elements = soup.find_all(['div', 'span', 'p', 'li', 'td'])
+        for elem in spec_elements:
+            text = elem.get_text(strip=True)
+            if ':' in text:
+                parts = text.split(':', 1)
+                key = parts[0].strip().upper()
+                value = parts[1].strip()
+                
+                if any(field in key for field in desired_fields):
+                    # Clean up keys
+                    if 'UNIT/BOX' in key:
+                        specs['PACKAGING'] = f"{value} kom/kutija"
+                    elif 'WEIGHT' in key:
+                        specs['WEIGHT'] = value
+                    else:
+                        specs[key] = value
+
+        print(f"      Debugging specs found: {list(specs.keys())}")
         
         return specs
         
