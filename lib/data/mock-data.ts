@@ -32,7 +32,7 @@ export const categories: Category[] = [
     name: 'Tekstilne ploče',
     slug: 'tekstilne-ploce',
     description: 'Savremene tekstilne podne ploče za kancelarije i objekte',
-    image: '/images/products/carpet/64941 - JPG 72 dpi-Armonia-540-1796 Oceano.jpg',
+    image: '/images/categories/tekstilne-ploce.jpg',
     order: 4,
   },
   {
