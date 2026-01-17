@@ -10,6 +10,7 @@ import ProductColorSelector from '@/components/ProductColorSelector';
 import ProductImage from '@/components/ProductImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductCharacteristics from '@/components/ProductCharacteristics';
+import ProductDocuments from '@/components/ProductDocuments';
 import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDetailsSection } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
@@ -112,19 +113,29 @@ function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
     specs.push(...collectionSpecs);
   }
 
-  // Add color-specific specs (NCS, LRV, packaging) from specs object
+  // Add color-specific specs from specs object
   if ('specs' in color && typeof (color as any).specs === 'object') {
     const colorSpecs = (color as any).specs;
 
-    if (colorSpecs.NCS) {
-      specs.push({ key: 'ncs', label: 'NCS Oznaka', value: colorSpecs.NCS });
-    }
-    if (colorSpecs.LRV) {
-      specs.push({ key: 'lrv', label: 'LRV', value: colorSpecs.LRV });
-    }
-    if (colorSpecs.packaging) {
-      specs.push({ key: 'packaging', label: 'Pakovanje', value: colorSpecs.packaging });
-    }
+    // Mapping for English keys to Serbian labels
+    const specMapping: Record<string, { label: string, key: string }> = {
+      'NCS': { label: 'NCS Oznaka', key: 'ncs' },
+      'LRV': { label: 'LRV', key: 'lrv' },
+      'PACKAGING': { label: 'Pakovanje', key: 'packaging' },
+      'packaging': { label: 'Pakovanje', key: 'packaging' },
+      'WEIGHT': { label: 'Težina', key: 'weight' },
+      'THICKNESS OF THE WEARLAYER': { label: 'Debljina sloja habanja', key: 'wear_layer' }
+    };
+
+    Object.entries(colorSpecs).forEach(([rawKey, value]) => {
+      if (!value) return;
+      const mapping = specMapping[rawKey] || { label: rawKey, key: rawKey.toLowerCase().replace(/\s+/g, '_') };
+
+      // Check if not already added by collection_specs
+      if (!specs.find(s => s.key === mapping.key)) {
+        specs.push({ key: mapping.key, label: mapping.label, value: value as string });
+      }
+    });
   }
 
   // Add legacy fields if they exist
@@ -564,7 +575,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
           {/* Product Content */}
           <div className="container py-12">
-            {(product.categoryId === '6' || product.categoryId === '7') ? (
+            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') ? (
               <>
                 {/* LVT and Linoleum products with color selector */}
                 <ProductColorSelector
@@ -733,7 +744,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
             )}
 
             {/* Description & Specs - For Non-LVT/Linoleum Only */}
-            {product.categoryId !== '6' && product.categoryId !== '7' && (
+            {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && (
               <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Description */}
                 <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
@@ -804,8 +815,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
             )}
 
             {/* Certifications & Eco Features - Full Width Below for LVT and Linoleum */}
-            {(product.categoryId === '6' || product.categoryId === '7') && (
-              <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') && (
+              <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Certifications */}
                 <div className="bg-white rounded-2xl shadow-lg p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -818,13 +829,27 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 </div>
 
                 {/* Eco Features */}
-                <EcoFeatures
-                  features={product.categoryId === '7'
-                    ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
-                    : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
-                  }
-                  underfloorHeating={true}
-                />
+                <div className="bg-white rounded-2xl shadow-lg p-6">
+                  <EcoFeatures
+                    features={product.categoryId === '7'
+                      ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
+                      : product.categoryId === '4'
+                        ? ["Bez ftalata", "100% reciklabilno", "Smanjenje buke", "Laka ugradnja"]
+                        : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
+                    }
+                    underfloorHeating={true}
+                  />
+                </div>
+
+                {/* Technical Documents */}
+                {(product.documents && product.documents.length > 0) && (
+                  <div className="h-full">
+                    <ProductDocuments
+                      initialDocuments={product.documents}
+                      categoryId={product.categoryId}
+                    />
+                  </div>
+                )}
               </div>
             )}
 

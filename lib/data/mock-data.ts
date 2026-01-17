@@ -1242,6 +1242,10 @@ TVOC <10µg/m³`,
     shortDescription: 'Tekstilne podne ploče Armonia 400',
     description: 'Armonia 400 je ulaznica u svet Armonia tekstilnih ploča. Pažljivo izrađene u Evropskoj uniji, ove ploče sa "loop" teksturom donose udobnost i harmoniju u prostore sa umerenom frekvencijom saobraćaja. Karakteristike: format ploča 50x50cm, 100% bojen polipropilen, težina vlakna: 400 g/m².',
     images: [{ id: '41-1', url: '/images/products/carpet/56149.jpg', alt: 'Gerflor Armonia 400', isPrimary: true, order: 1 }],
+    documents: [
+      { title: 'Technical Datasheet', url: '/documents/carpet/armonia-400-technical-datasheet.pdf' },
+      { title: 'Sample Card', url: '/documents/carpet/armonia-400-sample-card.pdf' },
+    ],
     specs: [
       { key: 'type', label: 'Tip', value: 'Tekstilne ploče' },
       { key: 'collection', label: 'Kolekcija', value: 'Armonia 400' },
@@ -1266,6 +1270,10 @@ TVOC <10µg/m³`,
     shortDescription: 'Tekstilne podne ploče Armonia 540',
     description: 'Armonia 540 tekstilne ploče su specijalno dizajnirane da se uklapaju sa našim LVT kolekcijama (Creation Loose Lay i Saga). Format: ploče 50x50cm. 100% bojen najlon (Solution Dyed). Težina vlakna: 540 g/m². Klasa 33 za intenzivnu komercijalnu upotrebu.',
     images: [{ id: '42-1', url: '/images/products/carpet/67689.jpg', alt: 'Gerflor Armonia 540', isPrimary: true, order: 1 }],
+    documents: [
+      { title: 'Technical Datasheet', url: '/documents/carpet/armonia-540-technical-datasheet.pdf' },
+      { title: 'EPD', url: '/documents/carpet/armonia-540-epd.pdf' },
+    ],
     specs: [
       { key: 'type', label: 'Tip', value: 'Tekstilne ploče' },
       { key: 'collection', label: 'Kolekcija', value: 'Armonia 540' },
@@ -1290,6 +1298,9 @@ TVOC <10µg/m³`,
     shortDescription: 'Tekstilne podne ploče Armonia 620',
     description: 'Armonia 620 su strukturirane tekstilne ploče premium kvaliteta. Izrađene od 100% recikliranog i reciklabilnog najlonskog vlakna: Econyl®. Težina vlakna: 620 g/m². Dizajnirane za maksimalnu izdržljivost i estetski sklad u komercijalnim prostorima.',
     images: [{ id: '43-1', url: '/images/products/carpet/56172.jpg', alt: 'Gerflor Armonia 620', isPrimary: true, order: 1 }],
+    documents: [
+      { title: 'Technical Datasheet', url: '/documents/carpet/armonia-620-technical-datasheet.pdf' },
+    ],
     specs: [
       { key: 'type', label: 'Tip', value: 'Tekstilne ploče' },
       { key: 'collection', label: 'Kolekcija', value: 'Armonia 620' },

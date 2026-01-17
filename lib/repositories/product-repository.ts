@@ -1,5 +1,6 @@
 import { Product, ProductFilters } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
+import { getAllGerflorProducts } from '@/lib/utils/productDataLoader';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -11,7 +12,7 @@ export interface IProductRepository {
 }
 
 export class MockProductRepository implements IProductRepository {
-  private products: Product[] = mockProducts;
+  private products: Product[] = [...mockProducts, ...getAllGerflorProducts()];
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {
     let filtered = [...this.products];
@@ -38,7 +39,7 @@ export class MockProductRepository implements IProductRepository {
 
     if (filters?.search) {
       const searchLower = filters.search.toLowerCase();
-      filtered = filtered.filter(p => 
+      filtered = filtered.filter(p =>
         p.name.toLowerCase().includes(searchLower) ||
         p.description.toLowerCase().includes(searchLower) ||
         p.sku.toLowerCase().includes(searchLower)

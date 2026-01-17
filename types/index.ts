@@ -57,6 +57,7 @@ export interface Product {
   coveragePerPackage?: number; // m² per package for calculator
   externalLink?: string; // External link for collections (e.g., Gerflor)
   detailsSections?: ProductDetailsSection[];
+  documents?: { title: string; url: string }[];
   createdAt: Date;
   updatedAt: Date;
 }

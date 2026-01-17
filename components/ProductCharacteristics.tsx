@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import type { ProductSpec } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
+import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 
 interface ProductCharacteristicsProps {
   specs?: ProductSpec[];
@@ -24,12 +26,13 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
 
     // Load color characteristics from JSON
     const isLinoleum = categoryId === '7';
-    const colorsData = isLinoleum ? linoleumColorsData : lvtColorsData;
+    const isCarpet = categoryId === '4';
+    const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
     const colors = (colorsData as { colors?: any[] }).colors || [];
-    
+
     // Try exact match first
     let color = colors.find((c: any) => c.slug === colorSlug);
-    
+
     // If not found, try to find by partial match (in case slug format differs)
     if (!color) {
       color = colors.find((c: any) => {
@@ -37,15 +40,15 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
         return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
       });
     }
-    
+
     if (color) {
       const colorCharacteristics: Record<string, string> = {};
-      
+
       // Add characteristics from color.characteristics if exists
       if (color.characteristics) {
         Object.assign(colorCharacteristics, color.characteristics);
       }
-      
+
       // Add dimension, format, overall_thickness, welding_rod if they exist
       if (color.dimension) {
         colorCharacteristics['Dimenzije'] = color.dimension;
@@ -59,7 +62,7 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
       if (color.welding_rod) {
         colorCharacteristics['Elektroda za varenje'] = color.welding_rod;
       }
-      
+
       if (Object.keys(colorCharacteristics).length > 0) {
         setSelectedCharacteristics(colorCharacteristics);
       } else {
@@ -78,13 +81,13 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
   // to avoid duplicates. If selectedCharacteristics exists, use it as primary source
   // and only add specs that are not already in selectedCharacteristics.
   const mergedSpecs = new Map<string, { label: string; value: string }>();
-  
+
   if (selectedCharacteristics && Object.keys(selectedCharacteristics).length > 0) {
     // If we have color-specific characteristics, use them as primary source
     Object.entries(selectedCharacteristics).forEach(([label, value]) => {
       mergedSpecs.set(label.toLowerCase(), { label, value });
     });
-    
+
     // Add any specs from collection that are not in selectedCharacteristics
     if (specs && specs.length > 0) {
       specs.forEach((spec) => {
@@ -113,12 +116,27 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
     <div className="bg-white rounded-2xl shadow-lg p-6">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">Karakteristike</h2>
       <dl className="space-y-4">
-        {finalSpecs.map((spec, index) => (
-          <div key={`${spec.label}-${index}`} className="border-b border-gray-200 pb-4 last:border-0">
-            <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
-            <dd className="text-lg font-semibold text-gray-900">{spec.value}</dd>
-          </div>
-        ))}
+        {finalSpecs.map((spec, index) => {
+          const isWeldingRod = spec.label === 'Elektroda za varenje';
+
+          return (
+            <div key={`${spec.label}-${index}`} className="border-b border-gray-200 pb-4 last:border-0">
+              <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
+              <dd className="text-lg font-semibold text-gray-900">
+                {isWeldingRod ? (
+                  <Link
+                    href={`/proizvodi/welding-rod/${spec.value}`}
+                    className="text-primary-600 hover:text-primary-700 underline underline-offset-4"
+                  >
+                    {spec.value}
+                  </Link>
+                ) : (
+                  spec.value
+                )}
+              </dd>
+            </div>
+          );
+        })}
       </dl>
     </div>
   );

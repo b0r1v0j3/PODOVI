@@ -8,7 +8,7 @@ import LVTTabs from '@/components/LVTTabs';
 
 interface CategoryPageProps {
   params: { slug: string };
-  searchParams: { 
+  searchParams: {
     search?: string;
     brands?: string;
     priceMin?: string;
@@ -20,7 +20,7 @@ interface CategoryPageProps {
 export async function generateMetadata({ params }: CategoryPageProps) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
   const category = await categoryRepository.findBySlug(params.slug);
-  
+
   if (!category) {
     return {
       metadataBase: new URL(baseUrl),
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: CategoryPageProps) {
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
   const category = await categoryRepository.findBySlug(params.slug);
-  
+
   if (!category) {
     notFound();
   }
@@ -83,17 +83,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   const products = await productRepository.findByCategory(category.id, filters);
   const allBrands = await brandRepository.findAll();
-  
+
   // Get unique brands used in this category
   const categoryProducts = await productRepository.findByCategory(category.id);
   const categoryBrandIds = new Set(categoryProducts.map(p => p.brandId));
   const availableBrands = allBrands.filter(b => categoryBrandIds.has(b.id));
 
-  // For LVT and Linoleum categories, separate collections from colors
-  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum';
+  // For LVT, Linoleum and Carpet categories, separate collections from colors
+  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce';
   let collections: typeof products = [];
   let colors: typeof products = [];
-  
+
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (isLVTCategory) {
@@ -101,7 +101,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Colors are individual color products with 4-digit SKU codes or other patterns
     collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')) ?? false);
     colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')));
-    
+
     // Build brands record for all products
     for (const product of products) {
       if (!brandsRecord[product.brandId]) {
@@ -139,7 +139,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filters Sidebar */}
           <aside className="lg:w-64 flex-shrink-0">
-            <ProductFilters 
+            <ProductFilters
               availableBrands={availableBrands}
               currentFilters={filters}
             />

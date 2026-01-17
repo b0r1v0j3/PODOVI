@@ -1,10 +1,12 @@
 import { Product } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
+import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 
 // Cache for performance
 let lvtProductsCache: Product[] | null = null;
 let linoleumProductsCache: Product[] | null = null;
+let carpetProductsCache: Product[] | null = null;
 
 /**
  * Transform LVT color data from JSON to Product type
@@ -136,10 +138,67 @@ export function getAllLinoleumProducts(): Product[] {
 }
 
 /**
- * Get all Gerflor products (LVT + Linoleum)
+ * Get all Carpet products from carpet_tiles_complete.json
+ */
+export function getAllCarpetProducts(): Product[] {
+    if (carpetProductsCache) {
+        return carpetProductsCache;
+    }
+
+    const colors = (carpetColorsData as any).colors || [];
+    const products = colors.map((color: any) => {
+        const specs = Object.entries(color.characteristics || {}).map(([label, value]) => ({
+            key: label.toLowerCase().replace(/\s+/g, '_'),
+            label,
+            value: value as string
+        }));
+
+        // Add additional specs if they exist in color.specs
+        if (color.specs) {
+            if (color.specs.NCS && !specs.find(s => s.key === 'ncs')) {
+                specs.push({ key: 'ncs', label: 'NCS Oznaka', value: color.specs.NCS });
+            }
+            if (color.specs.LRV && !specs.find(s => s.key === 'lrv')) {
+                specs.push({ key: 'lrv', label: 'LRV', value: color.specs.LRV });
+            }
+        }
+
+        return {
+            id: color.slug,
+            name: color.name,
+            slug: color.slug,
+            sku: color.code,
+            categoryId: '4', // Tekstilne ploče
+            brandId: '6', // Gerflor
+            shortDescription: `Gerflor ${color.collection.replace('-', ' ').toUpperCase()} - ${color.name}`,
+            description: color.description,
+            images: [
+                {
+                    id: `${color.slug}-img-1`,
+                    url: color.image,
+                    alt: color.name,
+                    isPrimary: true,
+                    order: 1,
+                },
+            ],
+            specs,
+            inStock: true,
+            featured: false,
+            documents: color.documents || [],
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        };
+    });
+    carpetProductsCache = products;
+
+    return products;
+}
+
+/**
+ * Get all Gerflor products (LVT + Linoleum + Carpet)
  */
 export function getAllGerflorProducts(): Product[] {
-    return [...getAllLVTProducts(), ...getAllLinoleumProducts()];
+    return [...getAllLVTProducts(), ...getAllLinoleumProducts(), ...getAllCarpetProducts()];
 }
 
 /**
@@ -167,6 +226,8 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return getAllLVTProducts();
     } else if (categoryId === '7') {
         return getAllLinoleumProducts();
+    } else if (categoryId === '4') {
+        return getAllCarpetProducts();
     }
     return getAllGerflorProducts().filter(p => p.categoryId === categoryId);
 }

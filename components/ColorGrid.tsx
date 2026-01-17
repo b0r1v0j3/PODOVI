@@ -61,7 +61,7 @@ function ImageWithFallback({ src, alt, className }: any) {
       src={imgSrc || '/images/placeholder.svg'}
       alt={alt}
       className={className}
-      style={{ 
+      style={{
         position: 'absolute',
         top: 0,
         left: 0,
@@ -113,14 +113,14 @@ export default function ColorGrid({
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
   const hasAutoSelected = useRef(false);
-  
+
   // Pagination settings for compact mode
   // In compact mode, show 12 colors per page (2 rows x 6 columns)
   const itemsPerPage = compact ? 12 : 20;
-  
+
   // Track selected color slug for highlighting
   const [currentSelectedSlug, setCurrentSelectedSlug] = useState<string | undefined>(selectedColorSlug || initialColorSlug);
-  
+
   // Update selected slug when prop changes
   useEffect(() => {
     if (selectedColorSlug) {
@@ -153,14 +153,14 @@ export default function ColorGrid({
   const handleColorClick = (color: Color, event?: React.MouseEvent) => {
     // Update selected slug
     setCurrentSelectedSlug(color.slug);
-    
+
     // If in compact mode (ProductColorSelector), update URL with ?color= parameter and update image
     if (compact) {
       // Update URL with ?color= parameter
       const params = new URLSearchParams(searchParams);
       params.set('color', color.slug);
       router.push(`${pathname}?${params.toString()}`, { scroll: false });
-      
+
       // Also call onColorSelect if provided
       if (onColorSelect) {
         // Use texture_url (pod images) first, then image_url, lifestyle_url as last resort
@@ -170,10 +170,10 @@ export default function ColorGrid({
         const colorCode = color.code || '';
         const colorName = color.name || '';
         const characteristics = buildCharacteristics(color);
-        
+
         // Ensure URL is normalized
         const normalizedUrl = normalizeSrc(imageUrl);
-        
+
         if (normalizedUrl) {
           onColorSelect({ imageUrl: normalizedUrl, imageAlt, colorCode, colorName, characteristics, colorSlug: color.slug });
         } else {
@@ -182,7 +182,7 @@ export default function ColorGrid({
       }
       return;
     }
-    
+
     // If not in compact mode, navigate to individual color page
     // (Link will handle navigation)
   };
@@ -199,7 +199,12 @@ export default function ColorGrid({
 
     // Determine which JSON to load based on collection slug
     const isLinoleum = collectionSlug.startsWith('dlw-');
-    const jsonPath = isLinoleum ? '/data/linoleum_colors_complete.json' : '/data/lvt_colors_complete.json';
+    const isCarpet = collectionSlug.startsWith('armonia-') || collectionSlug.startsWith('gerflor-armonia-');
+    const jsonPath = isLinoleum
+      ? '/data/linoleum_colors_complete.json'
+      : isCarpet
+        ? '/data/carpet_tiles_complete.json'
+        : '/data/lvt_colors_complete.json';
 
     fetch(jsonPath)
       .then(res => {
@@ -252,7 +257,7 @@ export default function ColorGrid({
     }
 
     // If there's an initialColorSlug, use it; otherwise select first color
-    const colorToSelect = initialColorSlug 
+    const colorToSelect = initialColorSlug
       ? filteredColors.find(color => color.slug === initialColorSlug)
       : filteredColors[0];
 
@@ -260,7 +265,7 @@ export default function ColorGrid({
       hasAutoSelected.current = true;
       setCurrentSelectedSlug(colorToSelect.slug);
       handleColorClick(colorToSelect);
-      
+
       // If in compact mode with pagination, navigate to the page containing this color
       if (compact) {
         const index = filteredColors.findIndex(c => c.slug === colorToSelect.slug);
@@ -354,38 +359,37 @@ export default function ColorGrid({
         {paginatedColors.map((color) => {
           const isSelected = currentSelectedSlug === color.slug;
           return (
-          <button
-            key={color.slug}
-            onClick={() => handleColorClick(color)}
-            className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 w-full ${
-              isSelected 
-                ? 'border-red-500 shadow-lg ring-2 ring-red-200' 
-                : 'border-gray-200 hover:border-primary-500'
-            }`}
-          >
-            {/* Image */}
-            <div className="aspect-square relative overflow-hidden bg-gray-100">
-              {(color.texture_url || color.image_url) ? (
-                <ImageWithFallback
-                  src={color.texture_url || color.image_url || ''}
-                  alt={color.full_name}
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
-                  quality={100}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">Bez slike</div>
-              )}
-            </div>
-
-            {/* Info - only show if not compact */}
-            {!compact && (
-              <div className="p-3">
-                <p className="font-semibold text-gray-900 text-sm truncate">{color.code}</p>
-                <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
+            <button
+              key={color.slug}
+              onClick={() => handleColorClick(color)}
+              className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 w-full ${isSelected
+                  ? 'border-red-500 shadow-lg ring-2 ring-red-200'
+                  : 'border-gray-200 hover:border-primary-500'
+                }`}
+            >
+              {/* Image */}
+              <div className="aspect-square relative overflow-hidden bg-gray-100">
+                {(color.texture_url || color.image_url) ? (
+                  <ImageWithFallback
+                    src={color.texture_url || color.image_url || ''}
+                    alt={color.full_name}
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
+                    quality={100}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">Bez slike</div>
+                )}
               </div>
-            )}
-          </button>
+
+              {/* Info - only show if not compact */}
+              {!compact && (
+                <div className="p-3">
+                  <p className="font-semibold text-gray-900 text-sm truncate">{color.code}</p>
+                  <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
+                </div>
+              )}
+            </button>
           );
         })}
       </div>
@@ -405,23 +409,22 @@ export default function ColorGrid({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            
+
             {/* Page Indicators (dots) */}
             <div className="flex items-center gap-1.5">
               {Array.from({ length: totalPages }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToPage(index)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    index === currentPage
+                  className={`h-1.5 rounded-full transition-all ${index === currentPage
                       ? 'w-6 bg-primary-600'
                       : 'w-1.5 bg-gray-300 hover:bg-gray-400'
-                  }`}
+                    }`}
                   aria-label={`Strana ${index + 1}`}
                 />
               ))}
             </div>
-            
+
             <button
               onClick={goToNext}
               disabled={currentPage === totalPages - 1}
