@@ -167,6 +167,27 @@ export function getAllCarpetProducts(): Product[] {
             }
         }
 
+        // Build images array with BOTH images (Color Scan + Zoom)
+        const images = [];
+        if (color.image_url) {
+            images.push({
+                id: `${color.slug}-img-1`,
+                url: color.image_url,
+                alt: `${color.name} - Color Scan`,
+                isPrimary: true,
+                order: 1,
+            });
+        }
+        if (color.texture_url) {
+            images.push({
+                id: `${color.slug}-img-2`,
+                url: color.texture_url,
+                alt: `${color.name} - Zoom/Close-up`,
+                isPrimary: false,
+                order: 2,
+            });
+        }
+
         return {
             id: color.slug,
             name: color.full_name || color.name,
@@ -176,15 +197,13 @@ export function getAllCarpetProducts(): Product[] {
             brandId: '6', // Gerflor
             shortDescription: `Gerflor ${color.collection_name} - ${color.name}`,
             description: color.description,
-            images: [
-                {
-                    id: `${color.slug}-img-1`,
-                    url: color.image_url || '/images/placeholder.svg',
-                    alt: color.name,
-                    isPrimary: true,
-                    order: 1,
-                },
-            ],
+            images: images.length > 0 ? images : [{
+                id: `${color.slug}-img-1`,
+                url: '/images/placeholder.svg',
+                alt: color.name,
+                isPrimary: true,
+                order: 1,
+            }],
             specs,
             inStock: true,
             featured: false,
