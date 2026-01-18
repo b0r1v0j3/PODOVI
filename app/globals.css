@@ -50,7 +50,7 @@
   }
   
   .card-hover {
-    @apply hover:shadow-2xl hover:-translate-y-2 hover:border-primary-200;
+    @apply hover:shadow-2xl hover:-translate-y-2;
   }
   
   .badge {
