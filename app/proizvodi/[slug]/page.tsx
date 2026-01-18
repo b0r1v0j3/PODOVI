@@ -531,32 +531,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '4': 'tekstilne-ploce',
     };
 
-    // Check if slug is a collection slug (starts with 'gerflor-') for LVT/Linoleum/Carpet - redirect immediately
-    if (params.slug.startsWith('gerflor-')) {
-      const collectionSlugWithoutPrefix = params.slug.substring('gerflor-'.length);
-      
-      // Check if it's an LVT collection
-      const lvtColor = lvtColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
-      if (lvtColor) {
-        const { redirect } = await import('next/navigation');
-        redirect('/kategorije/lvt');
-      }
-      
-      // Check if it's a Linoleum collection
-      const linoleumColor = linoleumColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
-      if (linoleumColor) {
-        const { redirect } = await import('next/navigation');
-        redirect('/kategorije/linoleum');
-      }
-      
-      // Check if it's a Carpet collection
-      const carpetColors = (carpetColorsData as any).colors || [];
-      const carpetColor = carpetColors.find((color: any) => color.collection_slug === params.slug || color.collection === params.slug);
-      if (carpetColor) {
-        const { redirect } = await import('next/navigation');
-        redirect('/kategorije/tekstilne-ploce');
-      }
-    }
+    // Collections (gerflor-*) are allowed - they show ProductColorSelector with all colors
+    // Only individual color slugs (without gerflor- prefix) should be redirected
+    // But since we check product.categoryId later, we don't redirect here for collections
 
     const product = await resolveProductBySlug(params.slug);
 
