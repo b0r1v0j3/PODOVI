@@ -71,6 +71,9 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
 
                         if (docsFromIndex.length > 0) {
                             nextDocuments = docsFromIndex;
+                            if (colorSlug && nextDocuments.length > 3) {
+                                nextDocuments = nextDocuments.slice(0, 3);
+                            }
                         }
                     }
                 } catch (error) {

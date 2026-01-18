@@ -1,6 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
+const KEYWORDS = [
+  { regex: /technical\s*datasheet|technical\s*data|data\s*sheet|technical\s*sheet/i, weight: 6 },
+  { regex: /product\s*description|product\s*brochure|brochure/i, weight: 5 },
+  { regex: /installation|installation\s*guidelines|installation\s*guide/i, weight: 4 },
+  { regex: /maintenance|cleaning|care/i, weight: 3 },
+  { regex: /epd|environmental\s*product\s*declaration/i, weight: 3 },
+  { regex: /fire|classification|ce|certificate|certification|dop/i, weight: 2 },
+];
+
 
 function toTitle(raw) {
   const base = raw.replace(/\.[^/.]+$/, '');
@@ -24,6 +33,11 @@ function titleFromUrl(url) {
   if (!url) return '';
   const raw = decodeURIComponent(url.split('/').pop() || '');
   return toTitle(raw);
+}
+
+function scoreDocument(title, url) {
+  const text = `${title} ${url}`.toLowerCase();
+  return KEYWORDS.reduce((score, rule) => (rule.regex.test(text) ? score + rule.weight : score), 0);
 }
 
 
@@ -113,6 +127,7 @@ function buildIndexFromRaw(rawDocuments) {
     const entry = {
       title: title.trim(),
       url: doc.url,
+      _score: scoreDocument(title, doc.url),
     };
 
     const list = index[categoryKey][bestMatch];
@@ -121,10 +136,14 @@ function buildIndexFromRaw(rawDocuments) {
     }
   });
 
-  // Keep all documents mapped to each collection
+  // Keep only top 3 documents per collection
   Object.keys(index).forEach((categoryKey) => {
     Object.keys(index[categoryKey]).forEach((slug) => {
-      index[categoryKey][slug] = index[categoryKey][slug].map(({ _score, ...rest }) => rest);
+      const sorted = index[categoryKey][slug]
+        .sort((a, b) => b._score - a._score)
+        .slice(0, 3)
+        .map(({ _score, ...rest }) => rest);
+      index[categoryKey][slug] = sorted;
     });
   });
 
