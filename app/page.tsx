@@ -17,20 +17,16 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-black via-slate-950 to-black text-white overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden py-20 md:py-24">
         {/* Animated background elements */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTItMnYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTIgMnYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bS0yIDJ2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTQgMHYyaDJ2LTJoLTJ6bS00IDB2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTItMnYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40"></div>
         
-        {/* Floating gradient orbs */}
-        <div className="absolute top-20 right-20 w-72 h-72 bg-primary-600/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        
-        <div className="container py-24 md:py-32 pb-32 md:pb-40 relative z-10">
+        <div className="container py-12 md:py-16 relative z-10">
           <div className="max-w-4xl animate-fadeInUp">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
               Pronađite savršen pod za vaš prostor
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-slate-300 leading-relaxed animate-slideInRight">
+            <p className="text-lg md:text-xl mb-8 text-gray-300 leading-relaxed animate-slideInRight">
               Širok izbor laminata, vinila, parketa i drugih podnih obloga od vodećih evropskih brendova. 
               Kvalitet, izdržljivost i stil za svaki budžet.
             </p>
@@ -43,7 +39,7 @@ export default async function HomePage() {
                   </svg>
                 </span>
               </Link>
-              <Link href="/kontakt" className="btn border-2 border-white/80 text-white hover:bg-white hover:text-slate-900 transition-all duration-300 text-center text-lg px-8 py-4 rounded-xl font-semibold backdrop-blur-sm bg-white/5">
+              <Link href="/kontakt" className="btn border-2 border-white/80 text-white hover:bg-white hover:text-gray-900 transition-all duration-300 text-center text-lg px-8 py-4 rounded-xl font-semibold backdrop-blur-sm bg-white/5">
                 Kontaktirajte nas
               </Link>
             </div>
@@ -59,7 +55,7 @@ export default async function HomePage() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-gradient-to-b from-gray-100 to-white">
         <div className="container">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -82,7 +78,7 @@ export default async function HomePage() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-100">
         <div className="container">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -169,20 +165,16 @@ export default async function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-black via-slate-950 to-black text-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTItMnYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTIgMnYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bS0yIDJ2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTQgMHYyaDJ2LTJoLTJ6bS00IDB2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTItMnYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40"></div>
         
-        {/* Floating gradient orbs */}
-        <div className="absolute top-10 left-10 w-64 h-64 bg-primary-600/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
-        
         <ScrollReveal>
           <div className="container text-center relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Spremni da transformišete vaš prostor?
             </h2>
-            <p className="text-xl md:text-2xl mb-10 text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl mb-10 text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Pošaljite nam upit i naš tim će vam se javiti u najkraćem roku
             </p>
             <Link href="/upiti" className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary-600 rounded-xl hover:bg-primary-700 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary-500/50">
