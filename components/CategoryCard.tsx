@@ -15,13 +15,13 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link 
       href={`/kategorije/${category.slug}`}
-      className="group card card-hover border border-gray-200"
+      className="group card card-hover"
     >
-      <div className="relative h-48 bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
+      <div className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
         {isLVT ? (
           // Show sahara noir pod image for LVT
           <div className="absolute inset-0 flex items-center justify-center p-4">
-            <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
+            <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
               <Image
                 src={saharaNoirImage}
                 alt="Sahara Noir LVT"
@@ -34,7 +34,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
         ) : (isLinoleum || isCarpet) && category.image ? (
           // Show category image for Linoleum and Carpet
           <div className="absolute inset-0 flex items-center justify-center p-4">
-            <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
+            <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
               <Image
                 src={category.image}
                 alt={category.name}

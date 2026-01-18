@@ -46,7 +46,7 @@
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300;
+    @apply bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 transition-all duration-300;
   }
   
   .card-hover {
