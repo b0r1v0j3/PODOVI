@@ -15,6 +15,7 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     : null;
   
   // For LVT, Linoleum, and Carpet categories, link to category page with color parameter (NOT collection page)
+  // BUT: Collections don't have collectionSlug, only individual colors do
   // Map category IDs to category slugs
   const categorySlugMap: Record<string, string> = {
     '6': 'lvt',
@@ -23,12 +24,13 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   };
   
   const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
+  const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   
   let productHref = `/proizvodi/${product.slug}`;
   
-  // For color products (LVT/Linoleum/Carpet), link to category page with color parameter
-  // This ensures that clicking on a color goes to the category page, not individual product pages
-  if (isColorTile) {
+  // For color products (LVT/Linoleum/Carpet), ONLY if they have collectionSlug (individual colors)
+  // Collections don't have collectionSlug, so they will use default href (collection page)
+  if (isColorTile && colorCollectionSlug) {
     const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
     productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
   }
