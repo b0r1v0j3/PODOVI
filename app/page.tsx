@@ -27,7 +27,7 @@ export default async function HomePage() {
               Pronađite savršen pod za vaš prostor
             </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-300 leading-relaxed animate-slideInRight">
-              Širok izbor laminata, vinila, parketa i drugih podnih obloga od vodećih evropskih brendova. 
+              Širok izbor laminata, vinila, parketa i drugih podnih obloga vodećih evropskih brendova. 
               Kvalitet, izdržljivost i stil za svaki budžet.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 relative z-20">
