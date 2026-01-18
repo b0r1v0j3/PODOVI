@@ -118,7 +118,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
-          <p>&copy; {currentYear} Podovi.rs. Sva prava zadržana.</p>
+          <p>&copy; {currentYear} Podovi DOO. Sva prava zadržana.</p>
         </div>
       </div>
     </footer>
