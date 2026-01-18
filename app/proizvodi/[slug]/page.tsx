@@ -643,14 +643,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
       product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
     }
 
-    // Ensure documents are available for collections (LVT/Carpet) when files exist
-    if (!product.documents || product.documents.length === 0) {
-      const collectionDocs = await loadCollectionDocuments(product.categoryId, product.slug);
-      if (collectionDocs.length > 0) {
-        product.documents = collectionDocs;
-      }
-    }
-
     const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
     if (selectedColorSlug) {
       const colorSource = await loadColorFromJson(selectedColorSlug);
