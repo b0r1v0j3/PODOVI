@@ -524,19 +524,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params, searchParams }: Props) {
   try {
-    // For LVT, Linoleum, and Carpet categories, redirect to category page instead of showing individual product pages
-    const product = await resolveProductBySlug(params.slug);
-
-    if (!product) {
-      notFound();
-    }
-
     // Map category IDs to category slugs
     const categorySlugMap: Record<string, string> = {
       '6': 'lvt',
       '7': 'linoleum',
       '4': 'tekstilne-ploce',
     };
+
+    // Check if slug is a collection slug (starts with 'gerflor-') for LVT/Linoleum/Carpet - redirect immediately
+    if (params.slug.startsWith('gerflor-')) {
+      const collectionSlugWithoutPrefix = params.slug.substring('gerflor-'.length);
+      
+      // Check if it's an LVT collection
+      const lvtColor = lvtColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
+      if (lvtColor) {
+        const { redirect } = await import('next/navigation');
+        redirect('/kategorije/lvt');
+      }
+      
+      // Check if it's a Linoleum collection
+      const linoleumColor = linoleumColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
+      if (linoleumColor) {
+        const { redirect } = await import('next/navigation');
+        redirect('/kategorije/linoleum');
+      }
+      
+      // Check if it's a Carpet collection
+      const carpetColors = (carpetColorsData as any).colors || [];
+      const carpetColor = carpetColors.find((color: any) => color.collection_slug === params.slug || color.collection === params.slug);
+      if (carpetColor) {
+        const { redirect } = await import('next/navigation');
+        redirect('/kategorije/tekstilne-ploce');
+      }
+    }
+
+    const product = await resolveProductBySlug(params.slug);
+
+    if (!product) {
+      notFound();
+    }
 
     // If product is from LVT, Linoleum, or Carpet category, redirect to category page
     if (product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') {
