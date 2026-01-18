@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const TYPE_RULES = [
-  { type: 'technical_datasheet', regex: /technical\s*datasheet|technical\s*data\s*sheet|datasheet|technical\s*sheet/i },
-  { type: 'product_description', regex: /product\s*description|product\s*brochure|brochure/i },
+  { type: 'epd', regex: /\bepd\b|environmental\s*(product\s*declaration|datasheet)|fdes/i },
+  { type: 'technical_datasheet', regex: /technical\s*datasheet|technical\s*data\s*sheet|technical\s*sheet|\bdatasheet\b/i },
+  { type: 'product_description', regex: /product\s*description|product\s*brochure|brochure|sample\s*card/i },
   { type: 'installation', regex: /installation|installation\s*guide|installation\s*guidelines/i },
-  { type: 'epd', regex: /epd|environmental\s*product\s*declaration|fdes/i },
   { type: 'maintenance', regex: /maintenance|cleaning|care/i },
   { type: 'other', regex: /.*/i },
 ];
@@ -44,9 +44,27 @@ function normalize(text) {
     .trim();
 }
 
+function stripQuery(value) {
+  if (!value) return '';
+  return value.split('?')[0];
+}
+
+function stripExtension(value) {
+  return value.replace(/\.(pdf|docx?|pptx?|xlsx?|zip)$/i, '');
+}
+
+function sanitizeTitle(value) {
+  const cleaned = stripExtension(stripQuery(value || ''));
+  return cleaned.trim();
+}
+
+function sanitizeUrl(url) {
+  return stripQuery(url || '');
+}
+
 function titleFromUrl(url) {
   if (!url) return '';
-  const raw = decodeURIComponent(url.split('/').pop() || '');
+  const raw = decodeURIComponent(sanitizeUrl(url).split('/').pop() || '');
   return toTitle(raw);
 }
 
@@ -107,12 +125,13 @@ function buildIndexFromRaw(rawDocuments) {
     if (!collections[categoryKey]) {
       return;
     }
-    const baseTitle = (doc.title || '').trim();
-    const fallbackTitle = titleFromUrl(doc.url || '');
+    const sanitizedUrl = sanitizeUrl(doc.url || '');
+    const baseTitle = sanitizeTitle(doc.title || '');
+    const fallbackTitle = titleFromUrl(sanitizedUrl);
     const title = baseTitle && baseTitle !== '(opens in a new window)' ? baseTitle : fallbackTitle;
     const normalizedTitle = normalize(title);
-    const normalizedUrl = normalize(doc.url || '');
-    const combinedText = `${title} ${doc.url || ''}`;
+    const normalizedUrl = normalize(sanitizedUrl);
+    const combinedText = `${title} ${sanitizedUrl}`;
     if (EXCLUDE_PATTERNS.some((pattern) => pattern.test(combinedText))) {
       return;
     }
@@ -165,8 +184,8 @@ function buildIndexFromRaw(rawDocuments) {
 
     const entry = {
       title: title.trim(),
-      url: doc.url,
-      _type: getDocType(title, doc.url),
+      url: sanitizedUrl,
+      _type: getDocType(title, sanitizedUrl),
     };
 
     if (!bestMatch) {
@@ -249,6 +268,12 @@ function ensureDocType(doc) {
   };
 }
 
+const CARPET_INSTALLATION_FALLBACK = {
+  title: 'Installation Guidelines',
+  url: 'https://cdn.gerflor.com/media/2/55104/laying%20direction%20&%20installation%20guidelines%20references.pdf',
+  _type: 'installation',
+};
+
 function selectTopDocuments(localDocs, rawDocs, unmatchedPool, fallbackByType) {
   const selected = [];
   const localByType = localDocs.map(ensureDocType);
@@ -276,6 +301,52 @@ function selectTopDocuments(localDocs, rawDocs, unmatchedPool, fallbackByType) {
       selected.push(fallback);
     }
   });
+
+  return selected.map(({ _type, ...rest }) => rest);
+}
+
+function selectTopDocumentsForCarpet(localDocs, rawDocs) {
+  const selected = [];
+  const used = new Set();
+  const localByType = localDocs.map(ensureDocType);
+  const rawByType = rawDocs.map(ensureDocType);
+
+  const add = (doc) => {
+    if (!doc || !doc.url || used.has(doc.url)) return;
+    used.add(doc.url);
+    selected.push(doc);
+  };
+
+  const pick = (type) => {
+    return localByType.find((doc) => doc._type === type)
+      || rawByType.find((doc) => doc._type === type);
+  };
+
+  add(pick('technical_datasheet'));
+
+  let productDoc = pick('product_description');
+  if (!productDoc) {
+    productDoc = localByType.find((doc) => doc._type === 'epd')
+      || rawByType.find((doc) => doc._type === 'epd');
+  }
+  add(productDoc);
+
+  let installDoc = pick('installation');
+  if (!installDoc) {
+    installDoc = CARPET_INSTALLATION_FALLBACK;
+  }
+  add(installDoc);
+
+  if (selected.length < 3) {
+    const remainder = [...localByType, ...rawByType]
+      .filter((doc) => doc && doc.url && !used.has(doc.url));
+    for (const doc of remainder) {
+      add(doc);
+      if (selected.length >= 3) {
+        break;
+      }
+    }
+  }
 
   return selected.map(({ _type, ...rest }) => rest);
 }
@@ -308,13 +379,18 @@ function mergeIndexes(localIndex, rawIndex, collections, unmatchedDocs) {
   const merged = { lvt: {}, linoleum: {}, carpet: {} };
 
   Object.entries(collections).forEach(([categoryKey, map]) => {
-    const fallbackByType = buildFallbackByType(rawIndex[categoryKey], unmatchedDocs ? unmatchedDocs[categoryKey] : []);
+    const isCarpet = categoryKey === 'carpet';
+    const fallbackByType = isCarpet
+      ? {}
+      : buildFallbackByType(rawIndex[categoryKey], unmatchedDocs ? unmatchedDocs[categoryKey] : []);
 
     Object.keys(map).forEach((slug) => {
       const localDocs = (localIndex[categoryKey] && localIndex[categoryKey][slug]) || [];
       const rawDocs = (rawIndex[categoryKey] && rawIndex[categoryKey][slug]) || [];
       const pool = unmatchedDocs && unmatchedDocs[categoryKey] ? unmatchedDocs[categoryKey] : [];
-      merged[categoryKey][slug] = selectTopDocuments(localDocs, rawDocs, pool, fallbackByType);
+      merged[categoryKey][slug] = isCarpet
+        ? selectTopDocumentsForCarpet(localDocs, rawDocs)
+        : selectTopDocuments(localDocs, rawDocs, pool, fallbackByType);
     });
   });
 
