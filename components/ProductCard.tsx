@@ -13,26 +13,23 @@ export default async function ProductCard({ product }: ProductCardProps) {
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
 
-  // For LVT, Linoleum, and Carpet categories, link to collection page with color parameter
-  const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
+  // For LVT, Linoleum, and Carpet categories, link to category page with color parameter (NOT collection page)
+  // Map category IDs to category slugs
+  const categorySlugMap: Record<string, string> = {
+    '6': 'lvt',
+    '7': 'linoleum',
+    '4': 'tekstilne-ploce',
+  };
+  
   const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
   
   let productHref = `/proizvodi/${product.slug}`;
   
-  // For color products (LVT/Linoleum/Carpet), link to collection with color parameter
-  if (isColorTile && colorCollectionSlug) {
-    let collectionSlug = colorCollectionSlug;
-    // For LVT, ensure gerflor- prefix
-    if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = `gerflor-${collectionSlug}`;
-    }
-    // For Linoleum, ensure gerflor- prefix if not already there
-    if (product.categoryId === '7' && !collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = `gerflor-${collectionSlug}`;
-    }
-    // For Carpet, collection_slug already has gerflor- prefix
-    // Link to collection page with color parameter (product.slug is the color slug)
-    productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
+  // For color products (LVT/Linoleum/Carpet), link to category page with color parameter
+  // This ensures that clicking on a featured product goes to the category page, not individual product pages
+  if (isColorTile) {
+    const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
+    productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
   }
 
   return (
