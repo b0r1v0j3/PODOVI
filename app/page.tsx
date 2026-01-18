@@ -1,29 +1,86 @@
 import Link from 'next/link';
-import { productRepository } from '@/lib/repositories/product-repository';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import ProductCard from '@/components/ProductCard';
 import CategoryCard from '@/components/CategoryCard';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Product } from '@/types';
+import lvtColorsData from '@/public/data/lvt_colors_complete.json';
+import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
+import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 
 export const metadata = {
   title: 'Podovi - Katalog podnih obloga | Početna',
   description: 'Pronađite savršen pod za vaš prostor. Laminat, vinil, parket - najkvalitetnije podne obloge od vodećih svetskih brendova.',
 };
 
+interface ColorFromJSON {
+  collection: string;
+  collection_name: string;
+  code: string;
+  name: string;
+  full_name: string;
+  slug: string;
+  image_url?: string;
+  texture_url?: string;
+  lifestyle_url?: string;
+  description?: string;
+}
+
+// Convert color from JSON to Product format
+function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: string): Product {
+  const imageUrl = color.image_url || color.texture_url || color.lifestyle_url || '';
+  
+  return {
+    id: `color-${color.slug}`,
+    name: color.full_name || `${color.code} ${color.name}`,
+    slug: color.slug,
+    sku: color.code || '',
+    categoryId,
+    brandId,
+    shortDescription: `${color.collection_name} - ${color.name}`,
+    description: color.description || '',
+    images: imageUrl ? [{
+      id: `img-${color.slug}`,
+      url: imageUrl,
+      alt: color.full_name || color.name,
+      isPrimary: true,
+      order: 1,
+    }] : [],
+    specs: [],
+    inStock: true,
+    featured: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+}
+
 export default async function HomePage() {
-  const allFeaturedProducts = await productRepository.findFeatured();
   const categories = await categoryRepository.findAll();
   
-  // Take only one featured product per category
-  const featuredProducts: Product[] = [];
-  const usedCategoryIds = new Set<string>();
+  // Load colors from JSON files
+  const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
+  const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
+  const carpetColors = (carpetColorsData as { colors?: ColorFromJSON[] }).colors || [];
   
-  for (const product of allFeaturedProducts) {
-    if (product.categoryId && !usedCategoryIds.has(product.categoryId)) {
-      featuredProducts.push(product);
-      usedCategoryIds.add(product.categoryId);
-    }
+  // Select one color per category for featured products
+  const featuredProducts: Product[] = [];
+  
+  // LVT - categoryId '6'
+  if (lvtColors.length > 0) {
+    const lvtColor = lvtColors[0]; // First LVT color
+    featuredProducts.push(colorToProduct(lvtColor, '6', '6')); // Gerflor brand ID is '6'
+  }
+  
+  // Linoleum - categoryId '7'
+  if (linoleumColors.length > 0) {
+    const linoleumColor = linoleumColors[0]; // First Linoleum color
+    featuredProducts.push(colorToProduct(linoleumColor, '7', '6')); // Assuming Gerflor or DLW
+  }
+  
+  // Carpet/Tekstilne ploče - categoryId '4'
+  if (carpetColors.length > 0) {
+    const carpetColor = carpetColors[0]; // First Carpet color
+    featuredProducts.push(colorToProduct(carpetColor, '4', '6')); // Gerflor brand ID is '6'
   }
 
   return (
