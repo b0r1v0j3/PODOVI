@@ -343,6 +343,46 @@ function colorToProduct(source: ColorSource, slug: string, collectionSlugOverrid
   };
 }
 
+function collectionFromColor(source: ColorSource, slug: string): Product {
+  const { categorySlug, color } = source;
+  const isLVT = categorySlug === 'lvt';
+  const categoryId = isLVT ? '6' : '7';
+  const brandId = '6';
+  const collectionName = (color.collection_name || color.collection || '').toString() || slug;
+  const primaryImageUrl = isLVT
+    ? (color.texture_url || color.lifestyle_url || color.image_url || '')
+    : (color.texture_url || color.image_url || '');
+
+  const images: ProductImageType[] = primaryImageUrl
+    ? [{
+      id: `collection-img-${categorySlug}-${slug}`,
+      url: primaryImageUrl,
+      alt: collectionName,
+      isPrimary: true,
+      order: 1,
+    }]
+    : [];
+
+  return {
+    id: `collection-${categorySlug}-${slug}`,
+    name: collectionName,
+    slug,
+    sku: color.collection || collectionName,
+    categoryId,
+    brandId,
+    shortDescription: collectionName,
+    description: (color.description && typeof color.description === 'string') ? color.description : '',
+    images,
+    specs: [],
+    price: undefined,
+    priceUnit: undefined,
+    inStock: true,
+    featured: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+}
+
 async function resolveProductBySlug(slug: string): Promise<(Product & { collectionSlug?: string }) | null> {
   // First try to find product by slug directly (for collections)
   const product = await productRepository.findBySlug(slug);
@@ -354,19 +394,28 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
   // Examples: "gerflor-creation-30", "gerflor-dlw-uni-walton", "gerflor-armonia-400"
   if (slug.startsWith('gerflor-')) {
     const collectionSlugWithoutPrefix = slug.substring('gerflor-'.length); // Remove 'gerflor-' prefix
+
+    // Try to find collection by slug without prefix (linoleum collections are stored without prefix)
+    const collectionProduct = await productRepository.findBySlug(collectionSlugWithoutPrefix);
+    if (collectionProduct) {
+      return {
+        ...collectionProduct,
+        slug,
+      };
+    }
     
     // Try to find first color from this collection in LVT JSON
     const lvtColor = lvtColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
     if (lvtColor) {
       const colorSource: ColorSource = { categorySlug: 'lvt', color: lvtColor };
-      return colorToProduct(colorSource, slug, slug); // Use full slug as collectionSlug
+      return collectionFromColor(colorSource, slug);
     }
     
     // Try to find first color from this collection in Linoleum JSON
     const linoleumColor = linoleumColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
     if (linoleumColor) {
       const colorSource: ColorSource = { categorySlug: 'linoleum', color: linoleumColor };
-      return colorToProduct(colorSource, slug, slug); // Use full slug as collectionSlug
+      return collectionFromColor(colorSource, slug);
     }
     
     // Try to find in Carpet JSON (carpet uses collection_slug with 'gerflor-' prefix)
@@ -541,9 +590,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
       notFound();
     }
 
-    // If product is from LVT, Linoleum, or Carpet category but is NOT a collection (slug doesn't start with 'gerflor-'),
-    // redirect to category page. Collections are allowed and will show ProductColorSelector.
-    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') && !params.slug.startsWith('gerflor-')) {
+    // If product is a COLOR (has collectionSlug), redirect to category page.
+    // Collections don't have collectionSlug and should stay on collection page.
+    const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
+    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') && collectionSlugFromProduct) {
       const categorySlug = categorySlugMap[product.categoryId];
       if (categorySlug) {
         const { redirect } = await import('next/navigation');
