@@ -14,6 +14,7 @@ import ProductDocuments from '@/components/ProductDocuments';
 import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDetailsSection } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
+import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 
 export const dynamic = 'force-dynamic';
 
@@ -347,6 +348,62 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
   const product = await productRepository.findBySlug(slug);
   if (product) {
     return product;
+  }
+
+  // Check if slug is a collection slug (starts with 'gerflor-')
+  // Examples: "gerflor-creation-30", "gerflor-dlw-uni-walton", "gerflor-armonia-400"
+  if (slug.startsWith('gerflor-')) {
+    const collectionSlugWithoutPrefix = slug.substring('gerflor-'.length); // Remove 'gerflor-' prefix
+    
+    // Try to find first color from this collection in LVT JSON
+    const lvtColor = lvtColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
+    if (lvtColor) {
+      const colorSource: ColorSource = { categorySlug: 'lvt', color: lvtColor };
+      return colorToProduct(colorSource, slug, slug); // Use full slug as collectionSlug
+    }
+    
+    // Try to find first color from this collection in Linoleum JSON
+    const linoleumColor = linoleumColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
+    if (linoleumColor) {
+      const colorSource: ColorSource = { categorySlug: 'linoleum', color: linoleumColor };
+      return colorToProduct(colorSource, slug, slug); // Use full slug as collectionSlug
+    }
+    
+    // Try to find in Carpet JSON (carpet uses collection_slug with 'gerflor-' prefix)
+    const carpetColors = (carpetColorsData as any).colors || [];
+    const carpetColor = carpetColors.find((color: any) => color.collection_slug === slug || color.collection === slug);
+    if (carpetColor) {
+      // Create a carpet product from first color in collection
+      const specs = Object.entries(carpetColor.characteristics || {}).map(([label, value]) => ({
+        key: label.toLowerCase().replace(/\s+/g, '_'),
+        label,
+        value: value as string
+      }));
+
+      return {
+        id: `carpet-${slug}`,
+        name: carpetColor.collection_name || slug,
+        slug,
+        sku: 'CARPET',
+        categoryId: '4',
+        brandId: '6',
+        shortDescription: carpetColor.collection_name || slug,
+        description: carpetColor.description || '',
+        images: carpetColor.image_url ? [{
+          id: `${slug}-img-1`,
+          url: carpetColor.image_url,
+          alt: carpetColor.collection_name || slug,
+          isPrimary: true,
+          order: 1,
+        }] : [],
+        specs,
+        inStock: true,
+        featured: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        collectionSlug: slug,
+      };
+    }
   }
 
   // Try to parse slug as collection-slug-color-slug format
