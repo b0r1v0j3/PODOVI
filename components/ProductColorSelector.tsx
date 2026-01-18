@@ -46,12 +46,20 @@ export default function ProductColorSelector({
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
-  const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(undefined);
+  const searchParams = useSearchParams();
+  const initialColorSlug = searchParams.get('color') || undefined;
+  const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(initialColorSlug);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
-  const searchParams = useSearchParams();
-  const initialColorSlug = searchParams.get('color') || undefined;
+  
+  // Update selectedColorSlug when URL changes
+  useEffect(() => {
+    const urlColorSlug = searchParams.get('color') || undefined;
+    if (urlColorSlug && urlColorSlug !== selectedColorSlug) {
+      setSelectedColorSlug(urlColorSlug);
+    }
+  }, [searchParams, selectedColorSlug]);
 
   // Update image when color is selected
   const handleColorSelect = (payload: {
