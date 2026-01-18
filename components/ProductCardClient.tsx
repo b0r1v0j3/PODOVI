@@ -14,15 +14,8 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
   
-  // For LVT, Linoleum, and Carpet categories, link to category page with color parameter (NOT collection page)
-  // BUT: Collections don't have collectionSlug, only individual colors do
-  // Map category IDs to category slugs
-  const categorySlugMap: Record<string, string> = {
-    '6': 'lvt',
-    '7': 'linoleum',
-    '4': 'tekstilne-ploce',
-  };
-  
+  // For LVT, Linoleum, and Carpet categories, link to COLLECTION page with color parameter
+  // Collections don't have collectionSlug, only individual colors do
   const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   
@@ -31,8 +24,18 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   // For color products (LVT/Linoleum/Carpet), ONLY if they have collectionSlug (individual colors)
   // Collections don't have collectionSlug, so they will use default href (collection page)
   if (isColorTile && colorCollectionSlug) {
-    const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
-    productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
+    let collectionSlug = colorCollectionSlug;
+    // For LVT, ensure gerflor- prefix
+    if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
+      collectionSlug = `gerflor-${collectionSlug}`;
+    }
+    // For Linoleum, ensure gerflor- prefix if not already there
+    if (product.categoryId === '7' && !collectionSlug.startsWith('gerflor-')) {
+      collectionSlug = `gerflor-${collectionSlug}`;
+    }
+    // For Carpet, collection_slug already has gerflor- prefix
+    // Link to COLLECTION page with color parameter (product.slug is the color slug)
+    productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
   }
   
   return (
