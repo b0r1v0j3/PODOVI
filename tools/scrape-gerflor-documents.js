@@ -14,18 +14,40 @@ async function run() {
   const page = await browser.newPage();
   const allDocuments = [];
 
-  for (const target of targets) {
-    await page.goto(target.url, { waitUntil: 'domcontentloaded' });
+  const acceptCookies = async () => {
+    const selectors = [
+      '#onetrust-accept-btn-handler',
+      'button:has-text("Accept all")',
+      'button:has-text("Accept")',
+      'button:has-text("I agree")',
+      'button:has-text("Allow all")',
+      'button:has-text("Ok")',
+      'button:has-text("OK")',
+      'button:has-text("Agree")',
+      'button:has-text("Prihvati")',
+      'button:has-text("Prihvati sve")',
+    ];
 
-    // Accept cookies if prompt appears
-    const cookieButton = page.locator('button:has-text("Accept"), button:has-text("I agree"), button:has-text("OK")').first();
-    if (await cookieButton.count()) {
-      try {
-        await cookieButton.click({ timeout: 3000 });
-      } catch (error) {
-        // ignore
+    for (const selector of selectors) {
+      const btn = page.locator(selector).first();
+      if (await btn.count()) {
+        try {
+          await btn.click({ timeout: 3000 });
+          await page.waitForTimeout(500);
+          return;
+        } catch (error) {
+          // ignore and try next selector
+        }
       }
     }
+  };
+
+  for (const target of targets) {
+    await page.goto(target.url, { waitUntil: 'networkidle' });
+
+    // Accept cookies if prompt appears
+    await acceptCookies();
+    await page.waitForTimeout(1000);
 
     // Open Documents tab
     const documentsTab = page.locator('button:has-text("Documents"), a:has-text("Documents"), [role="tab"]:has-text("Documents")').first();
