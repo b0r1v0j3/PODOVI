@@ -368,9 +368,9 @@ export default function ColorGrid({
             <button
               key={color.slug}
               onClick={() => handleColorClick(color)}
-              className={`group bg-white rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden border text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-900 w-full ${isSelected
-                  ? 'border-gray-900 ring-2 ring-gray-900/20'
-                  : 'border-gray-200 hover:border-gray-400'
+              className={`group bg-white rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden border text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 w-full ${isSelected
+                  ? 'border-primary-600 ring-2 ring-primary-200'
+                  : 'border-gray-200 hover:border-primary-400'
                 }`}
             >
               {/* Image */}

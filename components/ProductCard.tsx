@@ -69,11 +69,11 @@ export default async function ProductCard({ product }: ProductCardProps) {
       </div>
       <div className="p-6">
         {brand && (
-          <p className="text-[11px] text-gray-500 mb-2 uppercase tracking-wider font-semibold">
+          <p className="text-[11px] text-primary-600 mb-2 uppercase tracking-wider font-semibold">
             {brand.name}
           </p>
         )}
-        <h3 className="font-bold text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-gray-950 transition-colors duration-300">
+        <h3 className="font-bold text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
           {product.name}
         </h3>
         <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
@@ -91,7 +91,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
             </div>
           </div>
         )}
-        <div className="flex items-center text-gray-700 font-semibold text-sm group-hover:text-gray-900 transition-colors duration-300">
+        <div className="flex items-center text-primary-600 font-semibold text-sm group-hover:text-primary-700 transition-colors duration-300">
           <span>Detaljnije</span>
           <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -204,7 +204,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             onClick={() => setActiveTab('collections')}
             className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${
               activeTab === 'collections'
-                ? 'text-gray-900 border-b-2 border-gray-900'
+                ? 'text-primary-600 border-b-2 border-primary-600'
                 : 'text-gray-500 hover:text-gray-900'
             }`}
           >
@@ -214,7 +214,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             onClick={() => setActiveTab('colors')}
             className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${
               activeTab === 'colors'
-                ? 'text-gray-900 border-b-2 border-gray-900'
+                ? 'text-primary-600 border-b-2 border-primary-600'
                 : 'text-gray-500 hover:text-gray-900'
             }`}
           >
