@@ -202,20 +202,20 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         <div className="flex space-x-8">
           <button
             onClick={() => setActiveTab('collections')}
-            className={`pb-4 px-1 font-semibold text-lg transition-colors duration-200 ${
+            className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${
               activeTab === 'collections'
-                ? 'text-primary-600 border-b-2 border-primary-600'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'text-gray-900 border-b-2 border-gray-900'
+                : 'text-gray-500 hover:text-gray-900'
             }`}
           >
             Kolekcije ({collectionsToRender.length})
           </button>
           <button
             onClick={() => setActiveTab('colors')}
-            className={`pb-4 px-1 font-semibold text-lg transition-colors duration-200 ${
+            className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${
               activeTab === 'colors'
-                ? 'text-primary-600 border-b-2 border-primary-600'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'text-gray-900 border-b-2 border-gray-900'
+                : 'text-gray-500 hover:text-gray-900'
             }`}
           >
             Boje ({useJsonColors

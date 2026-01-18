@@ -118,7 +118,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="bg-white border-b">
-        <div className="container py-8">
+        <div className="container py-6">
           <nav className="text-sm text-gray-600 mb-4">
             <a href="/" className="hover:text-primary-600">Početna</a>
             <span className="mx-2">/</span>
@@ -126,10 +126,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             <span className="mx-2">/</span>
             <span className="text-gray-900">{category.name}</span>
           </nav>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3">
             {category.name}
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-base md:text-lg text-gray-600">
             {category.description}
           </p>
         </div>
@@ -137,9 +137,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
       {/* Main Content */}
       <div className="container py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Filters Sidebar */}
-          <aside className="lg:w-64 flex-shrink-0">
+          <aside className="lg:w-60 flex-shrink-0">
             <ProductFilters
               availableBrands={availableBrands}
               currentFilters={filters}

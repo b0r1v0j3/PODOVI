@@ -351,7 +351,7 @@ export default function ColorGrid({
               placeholder="Pretraži po šifri ili nazivu..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="input text-sm py-2 sm:w-64"
             />
             {searchTerm && (
               <button onClick={() => setSearchTerm('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">✕</button>
@@ -368,9 +368,9 @@ export default function ColorGrid({
             <button
               key={color.slug}
               onClick={() => handleColorClick(color)}
-              className={`group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all overflow-hidden border-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 w-full ${isSelected
-                  ? 'border-red-500 shadow-lg ring-2 ring-red-200'
-                  : 'border-gray-200 hover:border-primary-500'
+              className={`group bg-white rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden border text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-900 w-full ${isSelected
+                  ? 'border-gray-900 ring-2 ring-gray-900/20'
+                  : 'border-gray-200 hover:border-gray-400'
                 }`}
             >
               {/* Image */}
@@ -392,6 +392,9 @@ export default function ColorGrid({
               {!compact && (
                 <div className="p-3">
                   <p className="font-semibold text-gray-900 text-sm truncate">{color.code}</p>
+                  {color.collection_name && (
+                    <p className="text-[11px] text-gray-500 truncate mt-0.5">{color.collection_name}</p>
+                  )}
                   <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
                 </div>
               )}

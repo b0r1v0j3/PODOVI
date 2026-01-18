@@ -107,7 +107,7 @@ export default async function HomePage() {
               Kvalitet, izdržljivost i stil za svaki budžet.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 relative z-20">
-              <Link href="/kategorije" className="group btn bg-primary-600 text-white hover:bg-primary-700 hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl hover:shadow-primary-500/50 text-lg px-8 py-4 rounded-xl font-semibold">
+              <Link href="/kategorije" className="btn-primary text-lg px-8 py-4 rounded-xl font-semibold">
                 <span className="flex items-center justify-center">
                   Pregledaj proizvode
                   <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,7 +115,7 @@ export default async function HomePage() {
                   </svg>
                 </span>
               </Link>
-              <Link href="/kontakt" className="btn border-2 border-white/80 text-white hover:bg-white hover:text-gray-900 transition-all duration-300 text-center text-lg px-8 py-4 rounded-xl font-semibold backdrop-blur-sm bg-white/5">
+              <Link href="/kontakt" className="btn border border-white/70 text-white hover:bg-white hover:text-gray-900 text-center text-lg px-8 py-4 rounded-xl font-semibold backdrop-blur-sm bg-white/5">
                 Kontaktirajte nas
               </Link>
             </div>
@@ -135,7 +135,7 @@ export default async function HomePage() {
         <div className="container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Vrste podova
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -158,7 +158,7 @@ export default async function HomePage() {
         <div className="container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Izdvojeni proizvodi
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">

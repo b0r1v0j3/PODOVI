@@ -60,12 +60,12 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
   const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6 sticky top-24">
-      <h2 className="text-lg font-semibold text-gray-900 mb-4">Filteri</h2>
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
+      <h2 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">Filteri</h2>
 
       {/* Search */}
       <div className="mb-6">
-        <label className="label">Pretraga</label>
+        <label className="label text-xs uppercase tracking-wide text-gray-500">Pretraga</label>
         <input
           type="text"
           value={search}
@@ -79,7 +79,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
       {/* Brands */}
       {availableBrands.length > 0 && (
         <div className="mb-6">
-          <label className="label">Brendovi</label>
+          <label className="label text-xs uppercase tracking-wide text-gray-500">Brendovi</label>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {availableBrands.map((brand) => (
               <label key={brand.id} className="flex items-center cursor-pointer">
@@ -98,7 +98,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
 
       {/* Price Range */}
       <div className="mb-6">
-        <label className="label">Cena (RSD/m²)</label>
+        <label className="label text-xs uppercase tracking-wide text-gray-500">Cena (RSD/m²)</label>
         <div className="flex gap-2">
           <input
             type="number"
