@@ -17,24 +17,48 @@ async function run() {
   for (const target of targets) {
     await page.goto(target.url, { waitUntil: 'domcontentloaded' });
 
+    // Accept cookies if prompt appears
+    const cookieButton = page.locator('button:has-text("Accept"), button:has-text("I agree"), button:has-text("OK")').first();
+    if (await cookieButton.count()) {
+      try {
+        await cookieButton.click({ timeout: 3000 });
+      } catch (error) {
+        // ignore
+      }
+    }
+
     // Open Documents tab
-    const documentsTab = page.locator('button:has-text("Documents"), a:has-text("Documents")').first();
+    const documentsTab = page.locator('button:has-text("Documents"), a:has-text("Documents"), [role="tab"]:has-text("Documents")').first();
     if (await documentsTab.count()) {
       await documentsTab.click();
     }
 
     // Click "Show more" until it disappears
     while (true) {
-      const showMore = page.locator('button:has-text("Show more"), a:has-text("Show more")').first();
-      if (!(await showMore.count())) {
-        break;
+      const showMore = page.locator('button:has-text("Show more"), a:has-text("Show more")');
+      const count = await showMore.count();
+      if (!count) break;
+
+      let clicked = false;
+      for (let i = 0; i < count; i += 1) {
+        const button = showMore.nth(i);
+        if (await button.isVisible()) {
+          const isDisabled = await button.getAttribute('disabled');
+          if (isDisabled !== null) {
+            continue;
+          }
+          const handle = await button.elementHandle();
+          if (handle) {
+            await page.evaluate((el) => {
+              el.scrollIntoView({ block: 'center', behavior: 'instant' });
+            }, handle);
+            await page.evaluate((el) => el.click(), handle);
+            clicked = true;
+            break;
+          }
+        }
       }
-      const isDisabled = await showMore.getAttribute('disabled');
-      if (isDisabled !== null) {
-        break;
-      }
-      await showMore.scrollIntoViewIfNeeded();
-      await showMore.click();
+      if (!clicked) break;
       await page.waitForTimeout(1000);
     }
 
