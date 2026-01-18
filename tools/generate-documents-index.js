@@ -3,21 +3,17 @@ const path = require('path');
 
 const TYPE_RULES = [
   { type: 'technical_datasheet', regex: /technical\s*datasheet|technical\s*data\s*sheet|datasheet|technical\s*sheet/i },
-  { type: 'sample_card', regex: /sample\s*card|sample\s*sheet|colour\s*card|color\s*card/i },
   { type: 'product_description', regex: /product\s*description|product\s*brochure|brochure/i },
   { type: 'installation', regex: /installation|installation\s*guide|installation\s*guidelines/i },
   { type: 'epd', regex: /epd|environmental\s*product\s*declaration|fdes/i },
   { type: 'maintenance', regex: /maintenance|cleaning|care/i },
+  { type: 'other', regex: /.*/i },
 ];
 
-const TYPE_PRIORITY = [
+const REQUIRED_TYPES = [
   'technical_datasheet',
-  'sample_card',
   'product_description',
   'installation',
-  'epd',
-  'maintenance',
-  'other',
 ];
 
 const EXCLUDE_PATTERNS = [
@@ -253,81 +249,72 @@ function ensureDocType(doc) {
   };
 }
 
-function selectTopDocuments(localDocs, rawDocs) {
+function selectTopDocuments(localDocs, rawDocs, unmatchedPool, fallbackByType) {
   const selected = [];
-  const usedTypes = new Set();
+  const localByType = localDocs.map(ensureDocType);
+  const rawByType = rawDocs.map(ensureDocType);
+  const poolByType = (unmatchedPool || []).map(ensureDocType);
 
-  localDocs.map(ensureDocType).forEach((doc) => {
-    if (selected.length >= 3) {
+  REQUIRED_TYPES.forEach((type) => {
+    const localMatch = localByType.find((doc) => doc._type === type);
+    if (localMatch) {
+      selected.push(localMatch);
       return;
     }
-    if (!selected.find((item) => item.url === doc.url)) {
-      selected.push(doc);
-      usedTypes.add(doc._type);
+    const rawMatch = rawByType.find((doc) => doc._type === type);
+    if (rawMatch) {
+      selected.push(rawMatch);
+      return;
+    }
+    const poolMatch = poolByType.find((doc) => doc._type === type);
+    if (poolMatch) {
+      selected.push(poolMatch);
+      return;
+    }
+    const fallback = fallbackByType && fallbackByType[type];
+    if (fallback) {
+      selected.push(fallback);
     }
   });
 
-  const rawWithType = rawDocs.map(ensureDocType);
+  return selected.map(({ _type, ...rest }) => rest);
+}
 
-  TYPE_PRIORITY.forEach((type) => {
-    if (selected.length >= 3) {
-      return;
-    }
-    const candidate = rawWithType.find((doc) => doc._type === type && !usedTypes.has(doc._type));
-    if (candidate && !selected.find((item) => item.url === candidate.url)) {
-      selected.push(candidate);
-      usedTypes.add(candidate._type);
-    }
-  });
+function buildFallbackByType(rawIndex, unmatchedPool) {
+  const fallback = {};
+  const candidates = [];
 
-  if (selected.length < 3) {
-    rawWithType.forEach((doc) => {
-      if (selected.length >= 3) {
-        return;
-      }
-      if (!selected.find((item) => item.url === doc.url)) {
-        selected.push(doc);
-      }
+  Object.values(rawIndex || {}).forEach((collectionDocs) => {
+    (collectionDocs || []).forEach((doc) => {
+      candidates.push(ensureDocType(doc));
     });
-  }
+  });
 
-  return selected.slice(0, 3).map(({ _type, ...rest }) => rest);
+  (unmatchedPool || []).forEach((doc) => {
+    candidates.push(ensureDocType(doc));
+  });
+
+  REQUIRED_TYPES.forEach((type) => {
+    const match = candidates.find((doc) => doc._type === type);
+    if (match) {
+      fallback[type] = match;
+    }
+  });
+
+  return fallback;
 }
 
 function mergeIndexes(localIndex, rawIndex, collections, unmatchedDocs) {
   const merged = { lvt: {}, linoleum: {}, carpet: {} };
 
   Object.entries(collections).forEach(([categoryKey, map]) => {
+    const fallbackByType = buildFallbackByType(rawIndex[categoryKey], unmatchedDocs ? unmatchedDocs[categoryKey] : []);
+
     Object.keys(map).forEach((slug) => {
       const localDocs = (localIndex[categoryKey] && localIndex[categoryKey][slug]) || [];
       const rawDocs = (rawIndex[categoryKey] && rawIndex[categoryKey][slug]) || [];
-      const selected = selectTopDocuments(localDocs, rawDocs);
-
-      if (selected.length < 3 && unmatchedDocs && unmatchedDocs[categoryKey]) {
-        const pool = unmatchedDocs[categoryKey].map(ensureDocType);
-        TYPE_PRIORITY.forEach((type) => {
-          if (selected.length >= 3) {
-            return;
-          }
-          const candidate = pool.find((doc) => doc._type === type);
-          if (candidate && !selected.find((item) => item.url === candidate.url)) {
-            selected.push({ title: candidate.title, url: candidate.url });
-          }
-        });
-
-        if (selected.length < 3) {
-          pool.forEach((doc) => {
-            if (selected.length >= 3) {
-              return;
-            }
-            if (!selected.find((item) => item.url === doc.url)) {
-              selected.push({ title: doc.title, url: doc.url });
-            }
-          });
-        }
-      }
-
-      merged[categoryKey][slug] = selected;
+      const pool = unmatchedDocs && unmatchedDocs[categoryKey] ? unmatchedDocs[categoryKey] : [];
+      merged[categoryKey][slug] = selectTopDocuments(localDocs, rawDocs, pool, fallbackByType);
     });
   });
 
