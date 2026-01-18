@@ -383,6 +383,22 @@ function collectionFromColor(source: ColorSource, slug: string): Product {
   };
 }
 
+function normalizeCollectionSlug(categoryId: string, collectionSlug: string): string {
+  if (!collectionSlug) {
+    return collectionSlug;
+  }
+  if (categoryId === '6') {
+    return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
+  }
+  if (categoryId === '7') {
+    return collectionSlug.replace(/^gerflor-/, '');
+  }
+  if (categoryId === '4') {
+    return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
+  }
+  return collectionSlug;
+}
+
 async function resolveProductBySlug(slug: string): Promise<(Product & { collectionSlug?: string }) | null> {
   // First try to find product by slug directly (for collections)
   const product = await productRepository.findBySlug(slug);
@@ -580,9 +596,16 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '4': 'tekstilne-ploce',
     };
 
-    // Collections (gerflor-*) are allowed - they show ProductColorSelector with all colors
-    // Only individual color slugs (without gerflor- prefix) should be redirected
-    // But since we check product.categoryId later, we don't redirect here for collections
+    // If a linoleum collection is accessed with gerflor- prefix, redirect to canonical slug without prefix
+    if (params.slug.startsWith('gerflor-')) {
+      const collectionSlugWithoutPrefix = params.slug.substring('gerflor-'.length);
+      const isLinoleumCollection = linoleumColors.some((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
+      if (isLinoleumCollection) {
+        const { redirect } = await import('next/navigation');
+        const colorParam = typeof searchParams?.color === 'string' && searchParams.color ? `?color=${searchParams.color}` : '';
+        redirect(`/proizvodi/${collectionSlugWithoutPrefix}${colorParam}`);
+      }
+    }
 
     const product = await resolveProductBySlug(params.slug);
 
@@ -590,14 +613,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
       notFound();
     }
 
-    // If product is a COLOR (has collectionSlug), redirect to category page.
+    // If product is a COLOR (has collectionSlug), redirect to COLLECTION page with color parameter.
     // Collections don't have collectionSlug and should stay on collection page.
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
     if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') && collectionSlugFromProduct) {
-      const categorySlug = categorySlugMap[product.categoryId];
-      if (categorySlug) {
+      const normalizedCollectionSlug = normalizeCollectionSlug(product.categoryId, collectionSlugFromProduct);
+      if (normalizedCollectionSlug) {
         const { redirect } = await import('next/navigation');
-        redirect(`/kategorije/${categorySlug}`);
+        redirect(`/proizvodi/${normalizedCollectionSlug}?color=${product.slug}`);
       }
     }
 
