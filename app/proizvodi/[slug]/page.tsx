@@ -541,8 +541,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
       notFound();
     }
 
-    // If product is from LVT, Linoleum, or Carpet category, redirect to category page
-    if (product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') {
+    // If product is from LVT, Linoleum, or Carpet category but is NOT a collection (slug doesn't start with 'gerflor-'),
+    // redirect to category page. Collections are allowed and will show ProductColorSelector.
+    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') && !params.slug.startsWith('gerflor-')) {
       const categorySlug = categorySlugMap[product.categoryId];
       if (categorySlug) {
         const { redirect } = await import('next/navigation');
