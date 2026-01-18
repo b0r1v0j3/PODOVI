@@ -22,10 +22,12 @@ interface LVTTabsProps {
   colors: Product[]; // Legacy fallback for non-JSON categories
   brandsRecord: Record<string, Brand>;
   categorySlug: string; // 'lvt' or 'linoleum'
+  initialColorSlug?: string; // Optional color slug to automatically open and highlight
 }
 
-export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug }: LVTTabsProps) {
-  const [activeTab, setActiveTab] = useState<'collections' | 'colors'>('collections');
+export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug }: LVTTabsProps) {
+  // If initialColorSlug is provided, start with 'colors' tab active
+  const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(initialColorSlug ? 'colors' : 'collections');
   const [colorsFromJSON, setColorsFromJSON] = useState<Product[]>([]);
   const [loadingColors, setLoadingColors] = useState(false);
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
@@ -79,13 +81,18 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
   }, [categorySlug]);
 
-  // Load colors from JSON when colors tab is active
+  // Load colors from JSON when colors tab is active or when initialColorSlug is provided
   useEffect(() => {
     if (!useJsonColors) {
       return;
     }
 
-    if (activeTab === 'colors' && !hasLoadedColors.current && !loadingColors) {
+    // If initialColorSlug is provided, ensure colors tab is active and colors are loaded
+    if (initialColorSlug && activeTab !== 'colors') {
+      setActiveTab('colors');
+    }
+
+    if ((activeTab === 'colors' || initialColorSlug) && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
       const jsonPath = categorySlug === 'linoleum'
         ? '/data/linoleum_colors_complete.json'

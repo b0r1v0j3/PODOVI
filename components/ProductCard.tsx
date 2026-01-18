@@ -13,7 +13,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
 
-  // For LVT, Linoleum, and Carpet categories, always link to category page instead of individual product pages
+  // For LVT, Linoleum, and Carpet categories, always link to category page with color parameter
   // Map category IDs to category slugs
   const categorySlugMap: Record<string, string> = {
     '6': 'lvt',
@@ -24,9 +24,10 @@ export default async function ProductCard({ product }: ProductCardProps) {
   // Check if this is a color product that should link to category
   const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
   
-  // For color products (LVT/Linoleum/Carpet), link to category page
+  // For color products (LVT/Linoleum/Carpet), link to category page with color query parameter
+  // The product.slug is the color slug (e.g., "ballerina-41870347", "0010-pompeji-red")
   const productHref = isColorTile 
-    ? `/kategorije/${categorySlugMap[product.categoryId] || 'lvt'}`
+    ? `/kategorije/${categorySlugMap[product.categoryId] || 'lvt'}?color=${product.slug}`
     : `/proizvodi/${product.slug}`;
 
   return (

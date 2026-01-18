@@ -14,6 +14,7 @@ interface CategoryPageProps {
     priceMin?: string;
     priceMax?: string;
     inStock?: string;
+    color?: string;
   };
 }
 
@@ -153,6 +154,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 colors={colors}
                 brandsRecord={brandsRecord}
                 categorySlug={category.slug}
+                initialColorSlug={searchParams.color}
               />
             ) : (
               <>
