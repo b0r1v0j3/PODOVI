@@ -35,6 +35,16 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     // Link to collection page with color parameter (product.slug is the color slug)
     productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
   }
+  
+  // Debug logging
+  if (isColorTile) {
+    console.log('ProductCardClient:', { 
+      productSlug: product.slug, 
+      collectionSlug: colorCollectionSlug, 
+      productHref,
+      categoryId: product.categoryId 
+    });
+  }
 
   return (
     <Link 
