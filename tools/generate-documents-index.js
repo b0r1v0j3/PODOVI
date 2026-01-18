@@ -1,14 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const KEYWORDS = [
-  { regex: /technical\s*datasheet|technical\s*data|data\s*sheet|technical\s*sheet/i, weight: 5 },
-  { regex: /product\s*description|product\s*brochure|brochure/i, weight: 4 },
-  { regex: /installation|installation\s*guidelines|installation\s*guide/i, weight: 3 },
-  { regex: /maintenance|cleaning|care/i, weight: 2 },
-  { regex: /epd|environmental\s*product\s*declaration/i, weight: 2 },
-  { regex: /fire|classification|ce|certificate|certification/i, weight: 1 },
-];
 
 function toTitle(raw) {
   const base = raw.replace(/\.[^/.]+$/, '');
@@ -28,9 +20,6 @@ function normalize(text) {
     .trim();
 }
 
-function scoreDoc(title) {
-  return KEYWORDS.reduce((score, rule) => (rule.regex.test(title) ? score + rule.weight : score), 0);
-}
 
 function loadCollections() {
   const lvtColors = require('../public/data/lvt_colors_complete.json');
@@ -106,15 +95,9 @@ function buildIndexFromRaw(rawDocuments) {
       return;
     }
 
-    const importanceScore = scoreDoc(title);
-    if (importanceScore === 0) {
-      return;
-    }
-
     const entry = {
       title: title.trim(),
       url: doc.url,
-      _score: importanceScore,
     };
 
     const list = index[categoryKey][bestMatch];
@@ -123,14 +106,10 @@ function buildIndexFromRaw(rawDocuments) {
     }
   });
 
-  // Cap per collection and remove score metadata
+  // Keep all documents mapped to each collection
   Object.keys(index).forEach((categoryKey) => {
     Object.keys(index[categoryKey]).forEach((slug) => {
-      const docs = index[categoryKey][slug]
-        .sort((a, b) => b._score - a._score)
-        .slice(0, 5)
-        .map(({ _score, ...rest }) => rest);
-      index[categoryKey][slug] = docs;
+      index[categoryKey][slug] = index[categoryKey][slug].map(({ _score, ...rest }) => rest);
     });
   });
 
