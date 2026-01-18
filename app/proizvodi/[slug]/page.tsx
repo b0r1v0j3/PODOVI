@@ -995,15 +995,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 </div>
 
                 {/* Technical Documents */}
-                {(product.documents && product.documents.length > 0) && (
-                  <div className="h-full">
-                    <ProductDocuments
-                      initialDocuments={product.documents}
-                      categoryId={product.categoryId}
-                      collectionSlug={product.slug}
-                    />
-                  </div>
-                )}
+                <div className="h-full">
+                  <ProductDocuments
+                    initialDocuments={product.documents}
+                    categoryId={product.categoryId}
+                    collectionSlug={product.slug}
+                  />
+                </div>
               </div>
             )}
 
