@@ -2,9 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const TYPE_RULES = [
+  { type: 'sample_card', regex: /sample\s*card|sample\s*book|color\s*card|colour\s*card/i },
   { type: 'epd', regex: /\bepd\b|environmental\s*(product\s*declaration|datasheet)|fdes/i },
   { type: 'technical_datasheet', regex: /technical\s*datasheet|technical\s*data\s*sheet|technical\s*sheet|\bdatasheet\b/i },
-  { type: 'product_description', regex: /product\s*description|product\s*brochure|brochure|sample\s*card/i },
+  { type: 'product_description', regex: /product\s*description|product\s*brochure|brochure/i },
   { type: 'installation', regex: /installation|installation\s*guide|installation\s*guidelines/i },
   { type: 'maintenance', regex: /maintenance|cleaning|care/i },
   { type: 'other', regex: /.*/i },
@@ -12,9 +13,15 @@ const TYPE_RULES = [
 
 const REQUIRED_TYPES = [
   'technical_datasheet',
-  'product_description',
+  'sample_card',
   'installation',
 ];
+
+const TYPE_TITLES = {
+  technical_datasheet: 'Technical Datasheet',
+  sample_card: 'Sample Card',
+  installation: 'Installation',
+};
 
 const EXCLUDE_PATTERNS = [
   /slip\s*resistance/i,
@@ -268,103 +275,66 @@ function ensureDocType(doc) {
   };
 }
 
-const CARPET_INSTALLATION_FALLBACK = {
-  title: 'Installation Guidelines',
-  url: 'https://cdn.gerflor.com/media/2/55104/laying%20direction%20&%20installation%20guidelines%20references.pdf',
-  _type: 'installation',
-};
 
-function selectTopDocuments(localDocs, rawDocs, unmatchedPool, fallbackByType) {
-  const selected = [];
-  const localByType = localDocs.map(ensureDocType);
-  const rawByType = rawDocs.map(ensureDocType);
-  const poolByType = (unmatchedPool || []).map(ensureDocType);
-
-  REQUIRED_TYPES.forEach((type) => {
-    const localMatch = localByType.find((doc) => doc._type === type);
-    if (localMatch) {
-      selected.push(localMatch);
-      return;
-    }
-    const rawMatch = rawByType.find((doc) => doc._type === type);
-    if (rawMatch) {
-      selected.push(rawMatch);
-      return;
-    }
-    const poolMatch = poolByType.find((doc) => doc._type === type);
-    if (poolMatch) {
-      selected.push(poolMatch);
-      return;
-    }
-    const fallback = fallbackByType && fallbackByType[type];
-    if (fallback) {
-      selected.push(fallback);
-    }
-  });
-
-  return selected.map(({ _type, ...rest }) => rest);
+function toCanonicalDoc(doc, type) {
+  return {
+    title: TYPE_TITLES[type] || doc.title,
+    url: doc.url,
+  };
 }
 
-function selectTopDocumentsForCarpet(localDocs, rawDocs) {
+function selectRequiredDocuments(localDocs, rawDocs, fallbackByType) {
   const selected = [];
   const used = new Set();
   const localByType = localDocs.map(ensureDocType);
   const rawByType = rawDocs.map(ensureDocType);
 
-  const add = (doc) => {
+  const addUnique = (doc) => {
     if (!doc || !doc.url || used.has(doc.url)) return;
     used.add(doc.url);
     selected.push(doc);
   };
 
-  const pick = (type) => {
-    return localByType.find((doc) => doc._type === type)
-      || rawByType.find((doc) => doc._type === type);
-  };
-
-  add(pick('technical_datasheet'));
-
-  let productDoc = pick('product_description');
-  if (!productDoc) {
-    productDoc = localByType.find((doc) => doc._type === 'epd')
-      || rawByType.find((doc) => doc._type === 'epd');
-  }
-  add(productDoc);
-
-  let installDoc = pick('installation');
-  if (!installDoc) {
-    installDoc = CARPET_INSTALLATION_FALLBACK;
-  }
-  add(installDoc);
-
-  if (selected.length < 3) {
-    const remainder = [...localByType, ...rawByType]
-      .filter((doc) => doc && doc.url && !used.has(doc.url));
-    for (const doc of remainder) {
-      add(doc);
-      if (selected.length >= 3) {
-        break;
-      }
+  REQUIRED_TYPES.forEach((type) => {
+    const localMatch = localByType.find((doc) => doc._type === type);
+    if (localMatch) {
+      addUnique(toCanonicalDoc(localMatch, type));
+      return;
     }
-  }
+    const rawMatch = rawByType.find((doc) => doc._type === type);
+    if (rawMatch) {
+      addUnique(toCanonicalDoc(rawMatch, type));
+      return;
+    }
+    const fallback = fallbackByType && fallbackByType[type];
+    if (fallback) {
+      addUnique(toCanonicalDoc(fallback, type));
+    }
+  });
 
-  return selected.map(({ _type, ...rest }) => rest);
+  return selected;
 }
 
-function buildFallbackByType(rawIndex, unmatchedPool) {
-  const fallback = {};
+function buildFallbackByType(localIndexCategory, rawIndexCategory, unmatchedPool) {
   const candidates = [];
-
-  Object.values(rawIndex || {}).forEach((collectionDocs) => {
-    (collectionDocs || []).forEach((doc) => {
-      candidates.push(ensureDocType(doc));
-    });
-  });
 
   (unmatchedPool || []).forEach((doc) => {
     candidates.push(ensureDocType(doc));
   });
 
+  Object.values(localIndexCategory || {}).forEach((collectionDocs) => {
+    (collectionDocs || []).forEach((doc) => {
+      candidates.push(ensureDocType(doc));
+    });
+  });
+
+  Object.values(rawIndexCategory || {}).forEach((collectionDocs) => {
+    (collectionDocs || []).forEach((doc) => {
+      candidates.push(ensureDocType(doc));
+    });
+  });
+
+  const fallback = {};
   REQUIRED_TYPES.forEach((type) => {
     const match = candidates.find((doc) => doc._type === type);
     if (match) {
@@ -379,18 +349,16 @@ function mergeIndexes(localIndex, rawIndex, collections, unmatchedDocs) {
   const merged = { lvt: {}, linoleum: {}, carpet: {} };
 
   Object.entries(collections).forEach(([categoryKey, map]) => {
-    const isCarpet = categoryKey === 'carpet';
-    const fallbackByType = isCarpet
-      ? {}
-      : buildFallbackByType(rawIndex[categoryKey], unmatchedDocs ? unmatchedDocs[categoryKey] : []);
+    const fallbackByType = buildFallbackByType(
+      localIndex[categoryKey],
+      rawIndex[categoryKey],
+      unmatchedDocs ? unmatchedDocs[categoryKey] : []
+    );
 
     Object.keys(map).forEach((slug) => {
       const localDocs = (localIndex[categoryKey] && localIndex[categoryKey][slug]) || [];
       const rawDocs = (rawIndex[categoryKey] && rawIndex[categoryKey][slug]) || [];
-      const pool = unmatchedDocs && unmatchedDocs[categoryKey] ? unmatchedDocs[categoryKey] : [];
-      merged[categoryKey][slug] = isCarpet
-        ? selectTopDocumentsForCarpet(localDocs, rawDocs)
-        : selectTopDocuments(localDocs, rawDocs, pool, fallbackByType);
+      merged[categoryKey][slug] = selectRequiredDocuments(localDocs, rawDocs, fallbackByType);
     });
   });
 
