@@ -29,9 +29,9 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
       collectionSlug = `gerflor-${collectionSlug}`;
     }
-    // For Linoleum, ensure gerflor- prefix if not already there
-    if (product.categoryId === '7' && !collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = `gerflor-${collectionSlug}`;
+    // For Linoleum, use slug WITHOUT gerflor- prefix
+    if (product.categoryId === '7' && collectionSlug.startsWith('gerflor-')) {
+      collectionSlug = collectionSlug.replace(/^gerflor-/, '');
     }
     // For Carpet, collection_slug already has gerflor- prefix
     // Link to COLLECTION page with color parameter (product.slug is the color slug)
