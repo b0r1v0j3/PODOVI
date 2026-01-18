@@ -1,13 +1,32 @@
 const fs = require('fs');
 const path = require('path');
 
-const KEYWORDS = [
-  { regex: /technical\s*datasheet|technical\s*data|data\s*sheet|technical\s*sheet/i, weight: 6 },
-  { regex: /product\s*description|product\s*brochure|brochure/i, weight: 5 },
-  { regex: /installation|installation\s*guidelines|installation\s*guide/i, weight: 4 },
-  { regex: /maintenance|cleaning|care/i, weight: 3 },
-  { regex: /epd|environmental\s*product\s*declaration/i, weight: 3 },
-  { regex: /fire|classification|ce|certificate|certification|dop/i, weight: 2 },
+const TYPE_RULES = [
+  { type: 'technical_datasheet', regex: /technical\s*datasheet|technical\s*data\s*sheet|datasheet|technical\s*sheet/i },
+  { type: 'sample_card', regex: /sample\s*card|sample\s*sheet|colour\s*card|color\s*card/i },
+  { type: 'product_description', regex: /product\s*description|product\s*brochure|brochure/i },
+  { type: 'installation', regex: /installation|installation\s*guide|installation\s*guidelines/i },
+  { type: 'epd', regex: /epd|environmental\s*product\s*declaration|fdes/i },
+  { type: 'maintenance', regex: /maintenance|cleaning|care/i },
+];
+
+const TYPE_PRIORITY = [
+  'technical_datasheet',
+  'sample_card',
+  'product_description',
+  'installation',
+  'epd',
+  'maintenance',
+  'other',
+];
+
+const EXCLUDE_PATTERNS = [
+  /slip\s*resistance/i,
+  /fire\s*certificate/i,
+  /\bdop\b/i,
+  /classification/i,
+  /certificate/i,
+  /certification/i,
 ];
 
 
@@ -35,9 +54,14 @@ function titleFromUrl(url) {
   return toTitle(raw);
 }
 
-function scoreDocument(title, url) {
+function getDocType(title, url) {
   const text = `${title} ${url}`.toLowerCase();
-  return KEYWORDS.reduce((score, rule) => (rule.regex.test(text) ? score + rule.weight : score), 0);
+  for (const rule of TYPE_RULES) {
+    if (rule.regex.test(text)) {
+      return rule.type;
+    }
+  }
+  return 'other';
 }
 
 
@@ -74,6 +98,7 @@ function loadCollections() {
 function buildIndexFromRaw(rawDocuments) {
   const collections = loadCollections();
   const index = { lvt: {}, linoleum: {}, carpet: {} };
+  const unmatched = { lvt: [], linoleum: [], carpet: [] };
 
   Object.entries(collections).forEach(([categoryKey, map]) => {
     Object.entries(map).forEach(([slug, name]) => {
@@ -91,6 +116,10 @@ function buildIndexFromRaw(rawDocuments) {
     const title = baseTitle && baseTitle !== '(opens in a new window)' ? baseTitle : fallbackTitle;
     const normalizedTitle = normalize(title);
     const normalizedUrl = normalize(doc.url || '');
+    const combinedText = `${title} ${doc.url || ''}`;
+    if (EXCLUDE_PATTERNS.some((pattern) => pattern.test(combinedText))) {
+      return;
+    }
 
     let bestMatch = null;
     let bestScore = 0;
@@ -117,18 +146,40 @@ function buildIndexFromRaw(rawDocuments) {
           bestScore = score;
           bestMatch = slug;
         }
+      } else {
+        const tokens = (normalizedName || normalizedSlug)
+          .split(' ')
+          .filter((token) => token && token.length > 2);
+        if (tokens.length > 0) {
+          const tokenScore = tokens.reduce((acc, token) => {
+            if (normalizedTitle.includes(token) || normalizedUrl.includes(token)) {
+              return acc + 1;
+            }
+            return acc;
+          }, 0);
+
+          const minScore = tokens.length <= 2 ? 1 : 2;
+          if (tokenScore >= minScore && tokenScore > bestScore) {
+            bestScore = tokenScore;
+            bestMatch = slug;
+          }
+        }
       }
     });
-
-    if (!bestMatch) {
-      return;
-    }
 
     const entry = {
       title: title.trim(),
       url: doc.url,
-      _score: scoreDocument(title, doc.url),
+      _type: getDocType(title, doc.url),
     };
+
+    if (!bestMatch) {
+      const list = unmatched[categoryKey];
+      if (!list.find((existing) => existing.url === entry.url)) {
+        list.push(entry);
+      }
+      return;
+    }
 
     const list = index[categoryKey][bestMatch];
     if (!list.find((existing) => existing.url === entry.url)) {
@@ -136,18 +187,7 @@ function buildIndexFromRaw(rawDocuments) {
     }
   });
 
-  // Keep only top 3 documents per collection
-  Object.keys(index).forEach((categoryKey) => {
-    Object.keys(index[categoryKey]).forEach((slug) => {
-      const sorted = index[categoryKey][slug]
-        .sort((a, b) => b._score - a._score)
-        .slice(0, 3)
-        .map(({ _score, ...rest }) => rest);
-      index[categoryKey][slug] = sorted;
-    });
-  });
-
-  return index;
+  return { index, unmatched };
 }
 
 function buildIndexFromLocalFiles() {
@@ -203,15 +243,110 @@ function buildIndexFromLocalFiles() {
   return index;
 }
 
+function ensureDocType(doc) {
+  if (doc._type) {
+    return doc;
+  }
+  return {
+    ...doc,
+    _type: getDocType(doc.title || '', doc.url || ''),
+  };
+}
+
+function selectTopDocuments(localDocs, rawDocs) {
+  const selected = [];
+  const usedTypes = new Set();
+
+  localDocs.map(ensureDocType).forEach((doc) => {
+    if (selected.length >= 3) {
+      return;
+    }
+    if (!selected.find((item) => item.url === doc.url)) {
+      selected.push(doc);
+      usedTypes.add(doc._type);
+    }
+  });
+
+  const rawWithType = rawDocs.map(ensureDocType);
+
+  TYPE_PRIORITY.forEach((type) => {
+    if (selected.length >= 3) {
+      return;
+    }
+    const candidate = rawWithType.find((doc) => doc._type === type && !usedTypes.has(doc._type));
+    if (candidate && !selected.find((item) => item.url === candidate.url)) {
+      selected.push(candidate);
+      usedTypes.add(candidate._type);
+    }
+  });
+
+  if (selected.length < 3) {
+    rawWithType.forEach((doc) => {
+      if (selected.length >= 3) {
+        return;
+      }
+      if (!selected.find((item) => item.url === doc.url)) {
+        selected.push(doc);
+      }
+    });
+  }
+
+  return selected.slice(0, 3).map(({ _type, ...rest }) => rest);
+}
+
+function mergeIndexes(localIndex, rawIndex, collections, unmatchedDocs) {
+  const merged = { lvt: {}, linoleum: {}, carpet: {} };
+
+  Object.entries(collections).forEach(([categoryKey, map]) => {
+    Object.keys(map).forEach((slug) => {
+      const localDocs = (localIndex[categoryKey] && localIndex[categoryKey][slug]) || [];
+      const rawDocs = (rawIndex[categoryKey] && rawIndex[categoryKey][slug]) || [];
+      const selected = selectTopDocuments(localDocs, rawDocs);
+
+      if (selected.length < 3 && unmatchedDocs && unmatchedDocs[categoryKey]) {
+        const pool = unmatchedDocs[categoryKey].map(ensureDocType);
+        TYPE_PRIORITY.forEach((type) => {
+          if (selected.length >= 3) {
+            return;
+          }
+          const candidate = pool.find((doc) => doc._type === type);
+          if (candidate && !selected.find((item) => item.url === candidate.url)) {
+            selected.push({ title: candidate.title, url: candidate.url });
+          }
+        });
+
+        if (selected.length < 3) {
+          pool.forEach((doc) => {
+            if (selected.length >= 3) {
+              return;
+            }
+            if (!selected.find((item) => item.url === doc.url)) {
+              selected.push({ title: doc.title, url: doc.url });
+            }
+          });
+        }
+      }
+
+      merged[categoryKey][slug] = selected;
+    });
+  });
+
+  return merged;
+}
+
 const outputPath = path.join(process.cwd(), 'public', 'data', 'documents_index.json');
 const rawPath = path.join(process.cwd(), 'public', 'data', 'gerflor_documents_raw.json');
 
 let index;
+const collections = loadCollections();
+const localIndex = buildIndexFromLocalFiles();
+
 if (fs.existsSync(rawPath)) {
   const rawDocuments = JSON.parse(fs.readFileSync(rawPath, 'utf8'));
-  index = buildIndexFromRaw(rawDocuments);
+  const rawResult = buildIndexFromRaw(rawDocuments);
+  index = mergeIndexes(localIndex, rawResult.index, collections, rawResult.unmatched);
 } else {
-  index = buildIndexFromLocalFiles();
+  index = localIndex;
 }
 
 fs.writeFileSync(outputPath, JSON.stringify(index, null, 2));
