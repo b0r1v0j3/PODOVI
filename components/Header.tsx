@@ -32,7 +32,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100 transition-all duration-300">
       <nav className="container py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}

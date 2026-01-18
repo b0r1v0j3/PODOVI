@@ -16,9 +16,9 @@ export default async function ProductCard({ product }: ProductCardProps) {
   return (
     <Link 
       href={`/proizvodi/${product.slug}`}
-      className="group card hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-primary-100"
+      className="group card card-hover border border-gray-200"
     >
-      <div className="relative h-64 bg-gray-100 overflow-hidden group-hover:scale-105 transition-transform duration-500">
+      <div className="relative h-64 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden group-hover:scale-105 transition-transform duration-500">
         {primaryImage ? (
           <Image
             src={primaryImage.url}
