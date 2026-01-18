@@ -30,6 +30,9 @@ interface ColorFromJSON {
 function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: string): Product {
   const imageUrl = color.image_url || color.texture_url || color.lifestyle_url || '';
   
+  // Get collection slug from color (for LVT/Linoleum use 'collection', for Carpet use 'collection_slug')
+  const collectionSlug = (color as any).collection_slug || color.collection || '';
+  
   return {
     id: `color-${color.slug}`,
     name: color.full_name || `${color.code} ${color.name}`,
@@ -51,7 +54,9 @@ function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: strin
     featured: true,
     createdAt: new Date(),
     updatedAt: new Date(),
-  };
+    // Store collection slug for routing (will be used in ProductCard to link to collection)
+    collectionSlug: collectionSlug as any,
+  } as Product & { collectionSlug?: string };
 }
 
 export default async function HomePage() {

@@ -13,9 +13,46 @@ export default async function ProductCard({ product }: ProductCardProps) {
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
 
+  // Check if this is a color product that should link to collection
+  const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
+  const isColorSku = typeof product.sku === 'string' && /^\d{4}$/.test(product.sku);
+  const isColorTile = (product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') && 
+                      (isColorSku || !!colorCollectionSlug);
+  
+  let productHref = `/proizvodi/${product.slug}`;
+  
+  // If it's a color product with collection slug, link to collection instead
+  if (isColorTile && colorCollectionSlug) {
+    let collectionSlug = colorCollectionSlug;
+    // For LVT, ensure gerflor- prefix
+    if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
+      collectionSlug = `gerflor-${collectionSlug}`;
+    }
+    // For Linoleum, ensure gerflor- prefix if not already there
+    if (product.categoryId === '7' && !collectionSlug.startsWith('gerflor-')) {
+      collectionSlug = `gerflor-${collectionSlug}`;
+    }
+    productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
+  } else if (isColorTile && product.categoryId === '6' && !colorCollectionSlug) {
+    // For LVT without collectionSlug, try to extract from slug or use collection from JSON
+    // This is a fallback - ideally collectionSlug should always be provided
+    const lvtCollectionMatch = product.slug.match(/^(creation|saga)[-\w]+/);
+    if (lvtCollectionMatch) {
+      const baseCollection = lvtCollectionMatch[0];
+      productHref = `/proizvodi/gerflor-${baseCollection}?color=${product.slug}`;
+    }
+  } else if (isColorTile && product.categoryId === '7' && !colorCollectionSlug) {
+    // For Linoleum without collectionSlug, try to extract from slug
+    const linoleumCollectionMatch = product.slug.match(/^(dlw-[\w-]+)/);
+    if (linoleumCollectionMatch) {
+      const baseCollection = linoleumCollectionMatch[0];
+      productHref = `/proizvodi/gerflor-${baseCollection}?color=${product.slug}`;
+    }
+  }
+
   return (
     <Link 
-      href={`/proizvodi/${product.slug}`}
+      href={productHref}
       className="group card card-hover border-0"
     >
       <div className="relative h-64 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden group-hover:scale-105 transition-transform duration-500">
