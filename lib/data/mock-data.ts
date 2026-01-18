@@ -32,7 +32,7 @@ export const categories: Category[] = [
     name: 'Tekstilne ploče',
     slug: 'tekstilne-ploce',
     description: 'Savremene tekstilne podne ploče za kancelarije i objekte',
-    image: '/images/products/carpet/57556 - ARMONIA 400 Beige - Color Scan.jpg',
+    image: '/images/categories/tekstilne-ploce.jpg',
     order: 4,
   },
   {
