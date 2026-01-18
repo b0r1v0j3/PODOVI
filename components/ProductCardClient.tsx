@@ -36,16 +36,6 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
   }
   
-  // Debug logging
-  if (isColorTile) {
-    console.log('ProductCardClient:', { 
-      productSlug: product.slug, 
-      collectionSlug: colorCollectionSlug, 
-      productHref,
-      categoryId: product.categoryId 
-    });
-  }
-
   return (
     <Link 
       href={productHref}
