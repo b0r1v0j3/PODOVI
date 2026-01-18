@@ -13,18 +13,21 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   const primaryImage = product.images && product.images.length > 0 
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
-  const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
-  const isColorSku = typeof product.sku === 'string' && /^\d{4}$/.test(product.sku);
-  const isColorTile = (product.categoryId === '6' || product.categoryId === '7') && isColorSku;
-  let productHref = `/proizvodi/${product.slug}`;
-
-  if (isColorTile && colorCollectionSlug) {
-    let collectionSlug = colorCollectionSlug;
-    if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = `gerflor-${collectionSlug}`;
-    }
-    productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
-  }
+  // For LVT, Linoleum, and Carpet categories, always link to category page instead of individual product pages
+  // Map category IDs to category slugs
+  const categorySlugMap: Record<string, string> = {
+    '6': 'lvt',
+    '7': 'linoleum',
+    '4': 'tekstilne-ploce',
+  };
+  
+  // Check if this is a color product that should link to category
+  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
+  
+  // For color products (LVT/Linoleum/Carpet), link to category page
+  const productHref = isColorTile 
+    ? `/kategorije/${categorySlugMap[product.categoryId] || 'lvt'}`
+    : `/proizvodi/${product.slug}`;
 
   return (
     <Link 

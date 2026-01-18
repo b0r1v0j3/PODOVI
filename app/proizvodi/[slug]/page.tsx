@@ -524,10 +524,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params, searchParams }: Props) {
   try {
+    // For LVT, Linoleum, and Carpet categories, redirect to category page instead of showing individual product pages
     const product = await resolveProductBySlug(params.slug);
 
     if (!product) {
       notFound();
+    }
+
+    // Map category IDs to category slugs
+    const categorySlugMap: Record<string, string> = {
+      '6': 'lvt',
+      '7': 'linoleum',
+      '4': 'tekstilne-ploce',
+    };
+
+    // If product is from LVT, Linoleum, or Carpet category, redirect to category page
+    if (product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') {
+      const categorySlug = categorySlugMap[product.categoryId];
+      if (categorySlug) {
+        const { redirect } = await import('next/navigation');
+        redirect(`/kategorije/${categorySlug}`);
+      }
     }
 
     // Ensure product has required fields with defensive checks
