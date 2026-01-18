@@ -4,6 +4,7 @@ import { categoryRepository } from '@/lib/repositories/category-repository';
 import ProductCard from '@/components/ProductCard';
 import CategoryCard from '@/components/CategoryCard';
 import ScrollReveal from '@/components/ScrollReveal';
+import { Product } from '@/types';
 
 export const metadata = {
   title: 'Podovi - Katalog podnih obloga | Početna',
@@ -11,8 +12,19 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const featuredProducts = await productRepository.findFeatured();
+  const allFeaturedProducts = await productRepository.findFeatured();
   const categories = await categoryRepository.findAll();
+  
+  // Take only one featured product per category
+  const featuredProducts: Product[] = [];
+  const usedCategoryIds = new Set<string>();
+  
+  for (const product of allFeaturedProducts) {
+    if (product.categoryId && !usedCategoryIds.has(product.categoryId)) {
+      featuredProducts.push(product);
+      usedCategoryIds.add(product.categoryId);
+    }
+  }
 
   return (
     <div>
