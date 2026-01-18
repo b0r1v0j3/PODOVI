@@ -251,9 +251,12 @@ function buildIndexFromLocalFiles() {
         }
         const prefix = `${collection}-`;
         const displayBase = base.startsWith(prefix) ? base.slice(prefix.length) : base;
+        const docTitle = toTitle(displayBase);
+        const docUrl = `/documents/carpet/${file}`;
         const doc = {
-          title: toTitle(displayBase),
-          url: `/documents/carpet/${file}`,
+          title: docTitle,
+          url: docUrl,
+          _type: getDocType(docTitle + ' ' + file, docUrl),
         };
         if (!index.carpet[collection]) {
           index.carpet[collection] = [];
@@ -318,10 +321,7 @@ function selectRequiredDocuments(localDocs, rawDocs, fallbackByType) {
 function buildFallbackByType(localIndexCategory, rawIndexCategory, unmatchedPool) {
   const candidates = [];
 
-  (unmatchedPool || []).forEach((doc) => {
-    candidates.push(ensureDocType(doc));
-  });
-
+  // Prioritize local files first, then raw files, then unmatched
   Object.values(localIndexCategory || {}).forEach((collectionDocs) => {
     (collectionDocs || []).forEach((doc) => {
       candidates.push(ensureDocType(doc));
@@ -332,6 +332,10 @@ function buildFallbackByType(localIndexCategory, rawIndexCategory, unmatchedPool
     (collectionDocs || []).forEach((doc) => {
       candidates.push(ensureDocType(doc));
     });
+  });
+
+  (unmatchedPool || []).forEach((doc) => {
+    candidates.push(ensureDocType(doc));
   });
 
   const fallback = {};
