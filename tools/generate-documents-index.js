@@ -20,6 +20,12 @@ function normalize(text) {
     .trim();
 }
 
+function titleFromUrl(url) {
+  if (!url) return '';
+  const raw = decodeURIComponent(url.split('/').pop() || '');
+  return toTitle(raw);
+}
+
 
 function loadCollections() {
   const lvtColors = require('../public/data/lvt_colors_complete.json');
@@ -66,8 +72,11 @@ function buildIndexFromRaw(rawDocuments) {
     if (!collections[categoryKey]) {
       return;
     }
-    const title = doc.title || '';
+    const baseTitle = (doc.title || '').trim();
+    const fallbackTitle = titleFromUrl(doc.url || '');
+    const title = baseTitle && baseTitle !== '(opens in a new window)' ? baseTitle : fallbackTitle;
     const normalizedTitle = normalize(title);
+    const normalizedUrl = normalize(doc.url || '');
 
     let bestMatch = null;
     let bestScore = 0;
@@ -84,6 +93,12 @@ function buildIndexFromRaw(rawDocuments) {
         }
       } else if (normalizedSlug && normalizedTitle.includes(normalizedSlug)) {
         const score = normalizedSlug.length;
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = slug;
+        }
+      } else if (normalizedSlug && normalizedUrl.includes(normalizedSlug)) {
+        const score = normalizedSlug.length - 1;
         if (score > bestScore) {
           bestScore = score;
           bestMatch = slug;
