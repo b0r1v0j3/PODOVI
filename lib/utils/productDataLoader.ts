@@ -128,13 +128,11 @@ export function getAllLinoleumProducts(): Product[] {
         return linoleumProductsCache;
     }
 
-    // Note: linoleum_colors_complete.json structure might differ
-    // Adjust based on actual structure
-    const data = (linoleumColorsData as any).products || (linoleumColorsData as any).colors || [];
-    const products = data.map(transformLinoleumToProduct);
-    linoleumProductsCache = products;
+    // Linoleum colors are loaded directly from JSON in LVTTabs.
+    // Do not add them to the product repository to avoid inflating collection counts.
+    linoleumProductsCache = [];
 
-    return products;
+    return linoleumProductsCache;
 }
 
 /**
