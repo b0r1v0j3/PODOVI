@@ -33,7 +33,7 @@ function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: strin
   // Get collection slug from color (for LVT/Linoleum use 'collection', for Carpet use 'collection_slug')
   const collectionSlug = (color as any).collection_slug || color.collection || '';
   
-  return {
+  const product: Product & { collectionSlug?: string } = {
     id: `color-${color.slug}`,
     name: color.full_name || `${color.code} ${color.name}`,
     slug: color.slug,
@@ -55,8 +55,10 @@ function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: strin
     createdAt: new Date(),
     updatedAt: new Date(),
     // Store collection slug for routing (will be used in ProductCard to link to collection)
-    collectionSlug: collectionSlug as any,
-  } as Product & { collectionSlug?: string };
+    collectionSlug: collectionSlug || undefined,
+  };
+  
+  return product;
 }
 
 export default async function HomePage() {
