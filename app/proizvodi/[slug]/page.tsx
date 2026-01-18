@@ -11,8 +11,6 @@ import ProductImage from '@/components/ProductImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductCharacteristics from '@/components/ProductCharacteristics';
 import ProductDocuments from '@/components/ProductDocuments';
-import path from 'path';
-import { promises as fs } from 'fs';
 import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDetailsSection } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
@@ -49,7 +47,6 @@ type ColorSource = {
   color: ColorFromJSON;
 };
 
-type ProductDocument = { title: string; url: string };
 
 const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
 const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
@@ -387,54 +384,6 @@ function collectionFromColor(source: ColorSource, slug: string): Product {
   };
 }
 
-async function loadCollectionDocuments(categoryId: string, slug: string): Promise<ProductDocument[]> {
-  const collectionSlug = slug.replace(/^gerflor-/, '');
-  const documentsRoot = path.join(process.cwd(), 'public', 'documents');
-
-  const toTitle = (raw: string) => {
-    const withSpaces = raw.replace(/-/g, ' ');
-    return withSpaces.replace(/\b\w/g, (m) => m.toUpperCase());
-  };
-
-  try {
-    if (categoryId === '6') {
-      const lvtDir = path.join(documentsRoot, 'lvt', collectionSlug);
-      const files = await fs.readdir(lvtDir);
-      return files
-        .filter((file) => file.toLowerCase().endsWith('.pdf'))
-        .map((file) => {
-          const baseName = file.replace(/\.[^/.]+$/, '');
-          const title = toTitle(baseName);
-          return {
-            title,
-            url: `/documents/lvt/${collectionSlug}/${file}`,
-          };
-        });
-    }
-
-    if (categoryId === '4') {
-      const carpetDir = path.join(documentsRoot, 'carpet');
-      const files = await fs.readdir(carpetDir);
-      const prefix = `${collectionSlug}-`;
-      return files
-        .filter((file) => file.toLowerCase().endsWith('.pdf'))
-        .filter((file) => file.toLowerCase().includes(collectionSlug.toLowerCase()))
-        .map((file) => {
-          const baseName = file.replace(/\.[^/.]+$/, '');
-          const normalized = baseName.startsWith(prefix) ? baseName.slice(prefix.length) : baseName;
-          const title = toTitle(normalized);
-          return {
-            title,
-            url: `/documents/carpet/${file}`,
-          };
-        });
-    }
-  } catch (error) {
-    // Ignore missing directories
-  }
-
-  return [];
-}
 
 function normalizeCollectionSlug(categoryId: string, collectionSlug: string): string {
   if (!collectionSlug) {
@@ -1059,6 +1008,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     <ProductDocuments
                       initialDocuments={product.documents}
                       categoryId={product.categoryId}
+                      collectionSlug={product.slug}
                     />
                   </div>
                 )}

@@ -14,42 +14,80 @@ interface Document {
 interface ProductDocumentsProps {
     initialDocuments?: Document[];
     categoryId: string;
+    collectionSlug?: string;
 }
 
-export default function ProductDocuments({ initialDocuments = [], categoryId }: ProductDocumentsProps) {
+export default function ProductDocuments({ initialDocuments = [], categoryId, collectionSlug }: ProductDocumentsProps) {
     const searchParams = useSearchParams();
     const [documents, setDocuments] = useState<Document[]>(initialDocuments);
     const colorSlug = searchParams.get('color');
 
     useEffect(() => {
-        if (!colorSlug) {
-            setDocuments(initialDocuments);
-            return;
-        }
+        let isActive = true;
 
-        // Load color documents from JSON
-        const isLinoleum = categoryId === '7';
-        const isCarpet = categoryId === '4';
-        const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
-        const colors = (colorsData as { colors?: any[] }).colors || [];
+        const loadDocuments = async () => {
+            let nextDocuments = initialDocuments;
 
-        // Try exact match first
-        let color = colors.find((c: any) => c.slug === colorSlug);
+            if (colorSlug) {
+                // Load color documents from JSON
+                const isLinoleum = categoryId === '7';
+                const isCarpet = categoryId === '4';
+                const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
+                const colors = (colorsData as { colors?: any[] }).colors || [];
 
-        // If not found, try to find by partial match
-        if (!color) {
-            color = colors.find((c: any) => {
-                const cSlug = c.slug || '';
-                return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
-            });
-        }
+                // Try exact match first
+                let color = colors.find((c: any) => c.slug === colorSlug);
 
-        if (color && color.documents && Array.isArray(color.documents)) {
-            setDocuments(color.documents);
-        } else {
-            setDocuments(initialDocuments);
-        }
-    }, [colorSlug, categoryId, initialDocuments]);
+                // If not found, try to find by partial match
+                if (!color) {
+                    color = colors.find((c: any) => {
+                        const cSlug = c.slug || '';
+                        return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
+                    });
+                }
+
+                if (color && color.documents && Array.isArray(color.documents)) {
+                    nextDocuments = color.documents;
+                }
+            }
+
+            if ((!nextDocuments || nextDocuments.length === 0) && collectionSlug) {
+                try {
+                    const response = await fetch('/data/documents_index.json', { cache: 'no-store' });
+                    if (response.ok) {
+                        const index = await response.json();
+                        const normalizedCollectionSlug = collectionSlug.replace(/^gerflor-/, '');
+                        const categoryKey = categoryId === '6'
+                            ? 'lvt'
+                            : categoryId === '4'
+                                ? 'carpet'
+                                : categoryId === '7'
+                                    ? 'linoleum'
+                                    : '';
+
+                        const docsFromIndex = categoryKey && index?.[categoryKey]?.[normalizedCollectionSlug]
+                            ? index[categoryKey][normalizedCollectionSlug]
+                            : [];
+
+                        if (docsFromIndex.length > 0) {
+                            nextDocuments = docsFromIndex;
+                        }
+                    }
+                } catch (error) {
+                    // Ignore index load errors
+                }
+            }
+
+            if (isActive) {
+                setDocuments(nextDocuments);
+            }
+        };
+
+        loadDocuments();
+        return () => {
+            isActive = false;
+        };
+    }, [colorSlug, categoryId, initialDocuments, collectionSlug]);
 
     if (!documents || documents.length === 0) {
         return null;
