@@ -18,16 +18,45 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   // For local images, use Next.js Image with unoptimized flag
   const imageSrc = primaryImage?.url || '';
   
-  // For LVT, Linoleum, and Carpet categories, link to COLLECTION page with color parameter
+  // For LVT, Linoleum, Carpet, and Vinil categories, link appropriately
   // Collections don't have collectionSlug, only individual colors do
-  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
+  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   
   let productHref = `/proizvodi/${product.slug}`;
   
-  // For color products (LVT/Linoleum/Carpet), ONLY if they have collectionSlug (individual colors)
-  // Collections don't have collectionSlug, so they will use default href (collection page)
-  if (isColorTile && colorCollectionSlug) {
+  // For Vinil: colors link to category with ?color=, collections link to category
+  if (product.categoryId === '2') {
+    // Check if it's a color (SKU is numbers only) or collection (SKU starts with 'GER-')
+    const isVinylColor = /^\d+$/.test(product.sku);
+    const isVinylCollection = product.sku.startsWith('GER-');
+    
+    if (isVinylColor) {
+      // For vinyl colors, find collection slug from specs or slug
+      const collectionSpec = product.specs.find(s => s.key === 'collection');
+      if (collectionSpec) {
+        // Extract collection slug from product slug (e.g., "mipolam-accord-0301-louise" -> "mipolam-accord")
+        const slugParts = product.slug.split('-');
+        // Find where the color code starts (usually after collection name)
+        let collectionSlug = '';
+        for (let i = 0; i < slugParts.length; i++) {
+          if (/^\d{4}$/.test(slugParts[i])) {
+            // Found the color code, everything before is collection
+            collectionSlug = slugParts.slice(0, i).join('-');
+            break;
+          }
+        }
+        if (collectionSlug) {
+          // Link to category page with color parameter
+          productHref = `/kategorije/vinil?color=${product.slug}`;
+        }
+      }
+    } else if (isVinylCollection) {
+      // For vinyl collections, link to category page
+      productHref = `/kategorije/vinil`;
+    }
+  } else if (isColorTile && colorCollectionSlug) {
+    // For LVT/Linoleum/Carpet colors with collectionSlug
     let collectionSlug = colorCollectionSlug;
     // For LVT, ensure gerflor- prefix
     if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
