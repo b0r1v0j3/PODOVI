@@ -15,6 +15,8 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
   const searchParams = useSearchParams();
   
   const isVinilCategory = pathname?.includes('/kategorije/vinil');
+  const isLinoleumCategory = pathname?.includes('/kategorije/linoleum');
+  const showTypeFilter = isVinilCategory || isLinoleumCategory;
   const currentType = searchParams.get('type');
   
   const [search, setSearch] = useState(currentFilters.search || '');
@@ -43,7 +45,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     if (priceMin) params.set('priceMin', priceMin);
     if (priceMax) params.set('priceMax', priceMax);
     if (inStock) params.set('inStock', 'true');
-    if (isVinilCategory && vinylType) params.set('type', vinylType);
+    if (showTypeFilter && vinylType) params.set('type', vinylType);
 
     router.push(`${pathname}?${params.toString()}`);
   };
@@ -66,7 +68,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock || (isVinilCategory && vinylType);
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock || (showTypeFilter && vinylType);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -126,10 +128,12 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
         </div>
       </div>
 
-      {/* Vinyl Type Filter */}
-      {isVinilCategory && (
+      {/* Type Filter (Vinil/Linoleum) */}
+      {showTypeFilter && (
         <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Tip Vinila</label>
+          <label className="label text-xs uppercase tracking-wide text-gray-500">
+            {isVinilCategory ? 'Tip Vinila' : 'Tip Linoleuma'}
+          </label>
           <div className="space-y-2">
             <label className="flex items-center cursor-pointer">
               <input

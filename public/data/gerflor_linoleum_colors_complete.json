@@ -1,0 +1,91 @@
+{
+  "collections": [
+    {
+      "name": "Nerok 55",
+      "slug": "nerok-55",
+      "url": "https://www.gerflor-cee.com/products/nerok-55",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Nerok 70",
+      "slug": "nerok-70",
+      "url": "https://www.gerflor-cee.com/products/nerok-70",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Premium Acoustic",
+      "slug": "premium-acoustic",
+      "url": "https://www.gerflor-cee.com/products/premium-acoustic",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Premium Compact",
+      "slug": "premium-compact",
+      "url": "https://www.gerflor-cee.com/products/premium-compact",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Taralay Impression Acoustic",
+      "slug": "taralay-impression-acoustic",
+      "url": "https://www.gerflor-cee.com/products/taralay-impression-acoustic",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Taralay Impression Compact",
+      "slug": "taralay-impression-compact",
+      "url": "https://www.gerflor-cee.com/products/taralay-impression-compact",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Taralay Impression Hop Acoustic",
+      "slug": "taralay-impression-hop-acoustic",
+      "url": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Taralay Impression Hop Compact",
+      "slug": "taralay-impression-hop-compact",
+      "url": "https://www.gerflor-cee.com/products/taralay-impression-hop-compact",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Taralay Initial Acoustic",
+      "slug": "taralay-initial-acoustic",
+      "url": "https://www.gerflor-cee.com/products/taralay-initial-acoustic",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Taralay Initial Compact",
+      "slug": "taralay-initial-compact",
+      "url": "https://www.gerflor-cee.com/products/taralay-initial-compact",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Taralay Millenium Acoustic Order",
+      "slug": "taralay-millenium-acoustic-order",
+      "url": "https://www.gerflor-cee.com/products/taralay-millenium-acoustic-order",
+      "colorCount": 0,
+      "colors": []
+    },
+    {
+      "name": "Taralay Millenium Compact",
+      "slug": "taralay-millenium-compact",
+      "url": "https://www.gerflor-cee.com/products/taralay-millenium-compact",
+      "colorCount": 0,
+      "colors": []
+    }
+  ],
+  "totalColors": 0,
+  "generatedAt": "2026-01-19T17:00:00.000Z",
+  "note": "This is a placeholder structure. Colors (594 total) need to be scraped from the website or provided manually. Each color should have: code, name, slug, href, sku, collection_slug, collection_name, and optionally image path."
+}
