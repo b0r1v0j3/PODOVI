@@ -78,28 +78,17 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     >
       <div className="relative h-64 bg-gray-100 overflow-hidden">
         {primaryImage ? (
-          isLocalImage ? (
-            <Image
-              src={imageSrc}
-              alt={primaryImage.alt}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              unoptimized={true}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          ) : (
-            <img
-              src={imageSrc}
-              alt={primaryImage.alt}
-              loading="lazy"
-              decoding="async"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              onError={(e) => {
-                console.error('Image failed to load:', primaryImage.url);
-                (e.target as HTMLImageElement).style.display = 'none';
-              }}
-            />
-          )
+          <img
+            src={imageSrc}
+            alt={primaryImage.alt}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            onError={(e) => {
+              console.error('Image failed to load:', primaryImage.url);
+              // Don't hide, just log the error
+            }}
+          />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">
             <span>Bez slike</span>
