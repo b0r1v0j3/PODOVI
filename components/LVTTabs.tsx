@@ -96,7 +96,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
 
     const jsonPath = categorySlug === 'linoleum'
-      ? '/data/linoleum_colors_complete.json'
+      ? '/data/gerflor_linoleum_colors_complete.json'
       : categorySlug === 'vinil'
       ? '/data/vinyl_colors_complete.json'
       : '/data/lvt_colors_complete.json';
@@ -109,8 +109,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         return res.json();
       })
       .then(data => {
-        if (categorySlug === 'vinil' && data.collections) {
-          // For Vinil, count colors from all collections
+        if ((categorySlug === 'vinil' || categorySlug === 'linoleum') && data.collections) {
+          // For Vinil/Linoleum, count colors from all collections
           const total = data.collections.reduce((sum: number, collection: any) => 
             sum + (collection.colors?.length || 0), 0);
           setTotalColorsCount(total);
@@ -149,7 +149,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     if ((activeTab === 'colors' || initialColorSlug) && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
       const jsonPath = categorySlug === 'linoleum'
-        ? '/data/linoleum_colors_complete.json'
+        ? '/data/gerflor_linoleum_colors_complete.json'
         : categorySlug === 'vinil'
         ? '/data/vinyl_colors_complete.json'
         : '/data/lvt_colors_complete.json';
@@ -166,9 +166,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         .then(data => {
           console.log(`LVTTabs: JSON parsed successfully, data:`, data ? `total=${data.total}, colors=${data.colors?.length}` : 'null');
 
-          // Handle different JSON structures: LVT/Linoleum have data.colors, Vinil has data.collections[].colors
+          // Handle different JSON structures: LVT has data.colors, Linoleum/Vinil have data.collections[].colors
           let colorsArray: any[] = [];
-          if (categorySlug === 'vinil' && data.collections && Array.isArray(data.collections)) {
+          if ((categorySlug === 'vinil' || categorySlug === 'linoleum') && data.collections && Array.isArray(data.collections)) {
             // Flatten colors from all collections
             colorsArray = data.collections.flatMap((collection: any) => 
               (collection.colors || []).map((color: any) => ({
@@ -178,7 +178,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 collection: collection.slug
               }))
             );
-            console.log(`LVTTabs: Loaded ${colorsArray.length} colors from ${data.collections.length} collections for Vinil`);
+            console.log(`LVTTabs: Loaded ${colorsArray.length} colors from ${data.collections.length} collections for ${categorySlug}`);
           } else if (data.colors && Array.isArray(data.colors)) {
             colorsArray = data.colors;
             console.log(`LVTTabs: Loaded ${colorsArray.length} colors from JSON for category ${categorySlug}`);
