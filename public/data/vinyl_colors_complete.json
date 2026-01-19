@@ -1011,98 +1011,112 @@
           "name": "Wise",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2401-wise-87952401",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2401-wise.jpg"
         },
         {
           "code": "2408",
           "name": "Halley",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2408-halley-87952408",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2408-halley.jpg"
         },
         {
           "code": "2409",
           "name": "Soho",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2409-soho-87952409",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2409-soho.jpg"
         },
         {
           "code": "2410",
           "name": "Tempel",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2410-tempel-87952410",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2410-tempel.jpg"
         },
         {
           "code": "2411",
           "name": "Catalina",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2411-catalina-87952411",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2411-catalina.jpg"
         },
         {
           "code": "2413",
           "name": "Cineos",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2413-cineos-87952413",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2413-cineos.jpg"
         },
         {
           "code": "2424",
           "name": "Biela",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2424-biela-87952424",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2424-biela.jpg"
         },
         {
           "code": "2425",
           "name": "Neat",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2425-neat-87952425",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2425-neat.jpg"
         },
         {
           "code": "2430",
           "name": "Panstarrs",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2430-panstarrs-87952430",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2430-panstarrs.jpg"
         },
         {
           "code": "2432",
           "name": "Lemmon",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2432-lemmon-87952432",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2432-lemmon.jpg"
         },
         {
           "code": "2441",
           "name": "Helin",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2441-helin-87952441",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2441-helin.jpg"
         },
         {
           "code": "2446",
           "name": "Spacewatch",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2446-spacewatch-87952446",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2446-spacewatch.jpg"
         },
         {
           "code": "2463",
           "name": "Linear",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2463-linear-87952463",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2463-linear.jpg"
         },
         {
           "code": "2496",
           "name": "Skiff",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-astro-2496-skiff-87952496",
-          "collection_slug": "mipolam-astro"
+          "collection_slug": "mipolam-astro",
+          "image": "/images/products/vinyl/mipolam-astro/2496-skiff.jpg"
         }
       ]
     },
