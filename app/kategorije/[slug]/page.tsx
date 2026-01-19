@@ -142,11 +142,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     }
   }
 
-  // Extract vinyl type filter from search params
-  const vinylTypeFilter = category.slug === 'vinil' && searchParams.type 
-    ? (searchParams.type === 'homogeni' ? 'homogeneous' : searchParams.type === 'heterogeni' ? 'heterogeneous' : null)
-    : null;
-
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
