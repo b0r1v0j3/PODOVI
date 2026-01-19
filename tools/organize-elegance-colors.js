@@ -61,13 +61,84 @@ if (!fs.existsSync(eleganceDir)) {
   fs.mkdirSync(eleganceDir, { recursive: true });
 }
 
-// Get all extracted files
+// Also check root directory for new images
+const rootImageFiles = fs.readdirSync(rootDir)
+  .filter(file => {
+    const ext = path.extname(file).toLowerCase();
+    return ext === '.jpg' || ext === '.jpeg' || ext === '.png';
+  })
+  .map(file => path.join(rootDir, file));
+
+console.log(`Found ${rootImageFiles.length} image files in root directory\n`);
+
+// Get all extracted files (including check-elegance-all)
+const checkEleganceAllDir = path.join(rootDir, 'tmp', 'check-elegance-all');
 const extractedDirs = fs.readdirSync(extractDir, { withFileTypes: true })
   .filter(dirent => dirent.isDirectory())
   .map(dirent => dirent.name);
 
+// Also check check-elegance-all directory if it exists
+if (fs.existsSync(checkEleganceAllDir)) {
+  const checkDirs = fs.readdirSync(checkEleganceAllDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => path.join(checkEleganceAllDir, dirent.name));
+  extractedDirs.push(...checkDirs.map(d => path.relative(extractDir, d)));
+}
+
 let organizedCount = 0;
 
+// Function to match and copy image
+function matchAndCopyImage(filePath, fileName) {
+  // Skip collection images
+  if (fileName.includes('collection') || (fileName.includes('elegance') && !fileName.match(/\d{4}/))) {
+    return false;
+  }
+  
+  // Try to match file to a color
+  let matched = false;
+  eleganceCollection.colors.forEach(color => {
+    const colorCode = color.code.toLowerCase();
+    const colorName = color.name.toLowerCase().replace(/\s+/g, '-');
+    const colorNameNoSpaces = color.name.toLowerCase().replace(/\s+/g, '');
+    
+    // Check if file name contains color code or color name
+    if (fileName.includes(colorCode) || 
+        fileName.includes(colorName) ||
+        fileName.includes(color.code) ||
+        fileName.includes(colorNameNoSpaces)) {
+      
+      // Create color filename
+      const colorFileName = `${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+      const destPath = path.join(eleganceDir, colorFileName);
+      
+      // Copy file (use largest if multiple matches)
+      if (!fs.existsSync(destPath)) {
+        fs.copyFileSync(filePath, destPath);
+        console.log(`  ✓ ${color.code} ${color.name} → ${colorFileName}`);
+        organizedCount++;
+        matched = true;
+      } else {
+        // If file exists, check if new one is larger
+        const existingStats = fs.statSync(destPath);
+        const newStats = fs.statSync(filePath);
+        if (newStats.size > existingStats.size) {
+          fs.copyFileSync(filePath, destPath);
+          console.log(`  ↻ ${color.code} ${color.name} → ${colorFileName} (replaced with larger)`);
+          matched = true;
+        }
+      }
+    }
+  });
+  return matched;
+}
+
+// Check root directory images first
+rootImageFiles.forEach(filePath => {
+  const fileName = path.basename(filePath).toLowerCase();
+  matchAndCopyImage(filePath, fileName);
+});
+
+// Check extracted ZIP files
 extractedDirs.forEach(dirName => {
   const dirPath = path.join(extractDir, dirName);
   if (!fs.existsSync(dirPath)) return;
@@ -77,43 +148,7 @@ extractedDirs.forEach(dirName => {
   files.forEach(file => {
     const filePath = path.join(dirPath, file);
     const fileName = file.toLowerCase();
-    
-    // Skip collection images
-    if (fileName.includes('collection') || (fileName.includes('elegance') && !fileName.match(/\d{4}/))) {
-      return;
-    }
-    
-    // Try to match file to a color
-    eleganceCollection.colors.forEach(color => {
-      const colorCode = color.code.toLowerCase();
-      const colorName = color.name.toLowerCase().replace(/\s+/g, '-');
-      
-      // Check if file name contains color code or color name
-      if (fileName.includes(colorCode) || 
-          fileName.includes(colorName) ||
-          fileName.includes(color.code) ||
-          fileName.includes(color.name.toLowerCase().replace(/\s+/g, ''))) {
-        
-        // Create color filename
-        const colorFileName = `${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}.jpg`;
-        const destPath = path.join(eleganceDir, colorFileName);
-        
-        // Copy file (use largest if multiple matches)
-        if (!fs.existsSync(destPath)) {
-          fs.copyFileSync(filePath, destPath);
-          console.log(`  ✓ ${color.code} ${color.name} → ${colorFileName}`);
-          organizedCount++;
-        } else {
-          // If file exists, check if new one is larger
-          const existingStats = fs.statSync(destPath);
-          const newStats = fs.statSync(filePath);
-          if (newStats.size > existingStats.size) {
-            fs.copyFileSync(filePath, destPath);
-            console.log(`  ↻ ${color.code} ${color.name} → ${colorFileName} (replaced with larger)`);
-          }
-        }
-      }
-    });
+    matchAndCopyImage(filePath, fileName);
   });
 });
 

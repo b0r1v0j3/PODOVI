@@ -2187,49 +2187,56 @@
           "name": "LIPICA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6002-lipica-85926002",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6002-lipica.jpg"
         },
         {
           "code": "6005",
           "name": "GHIBLI",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6005-ghibli-85926005",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6005-ghibli.jpg"
         },
         {
           "code": "6006",
           "name": "BLUE SKY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6006-blue-sky-85926006",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6006-blue-sky.jpg"
         },
         {
           "code": "6008",
           "name": "CALICO",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6008-calico-85926008",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6008-calico.jpg"
         },
         {
           "code": "6009",
           "name": "GREY STONE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6009-grey-stone-85926009",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6009-grey-stone.jpg"
         },
         {
           "code": "6010",
           "name": "MIST",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6010-mist-85926010",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6010-mist.jpg"
         },
         {
           "code": "6018",
           "name": "USHUAIA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6018-ushuaia-85926018",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6018-ushuaia.jpg"
         },
         {
           "code": "6025",
@@ -2243,21 +2250,24 @@
           "name": "ACACIA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6027-acacia-85926027",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6027-acacia.jpg"
         },
         {
           "code": "6029",
           "name": "CLOUD",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6029-cloud-85926029",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6029-cloud.jpg"
         },
         {
           "code": "6030",
           "name": "STONEHENGE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6030-stonehenge-85926030",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6030-stonehenge.jpg"
         },
         {
           "code": "6031",
@@ -2278,7 +2288,8 @@
           "name": "MOLE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6034-mole-85926034",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6034-mole.jpg"
         },
         {
           "code": "6036",
@@ -2292,77 +2303,88 @@
           "name": "LAGOON",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6037-lagoon-85926037",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6037-lagoon.jpg"
         },
         {
           "code": "6039",
           "name": "PEBBLE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6039-pebble-85926039",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6039-pebble.jpg"
         },
         {
           "code": "6041",
           "name": "CLAY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6041-clay-85926041",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6041-clay.jpg"
         },
         {
           "code": "6043",
           "name": "WOOD",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6043-wood-85926043",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6043-wood.jpg"
         },
         {
           "code": "6044",
           "name": "SEA STORM",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6044-sea-storm-85926044",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6044-sea-storm.jpg"
         },
         {
           "code": "6045",
           "name": "CHOCOLATE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6045-chocolate-85926045",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6045-chocolate.jpg"
         },
         {
           "code": "6047",
           "name": "SAUGE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6047-sauge-85926047",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6047-sauge.jpg"
         },
         {
           "code": "6050",
           "name": "HURRICANE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6050-hurricane-85926050",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6050-hurricane.jpg"
         },
         {
           "code": "6056",
           "name": "TULUM",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6056-tulum-85926056",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6056-tulum.jpg"
         },
         {
           "code": "6057",
           "name": "MUSK",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6057-musk-85926057",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6057-musk.jpg"
         },
         {
           "code": "6058",
           "name": "VERMIGLIO",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6058-vermiglio-85926058",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6058-vermiglio.jpg"
         },
         {
           "code": "6059",
@@ -2376,14 +2398,16 @@
           "name": "SEGESTA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6065-segesta-85926065",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6065-segesta.jpg"
         },
         {
           "code": "6067",
           "name": "KAKI",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6067-kaki-85926067",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6067-kaki.jpg"
         },
         {
           "code": "6075",

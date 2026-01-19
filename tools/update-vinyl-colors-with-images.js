@@ -76,6 +76,9 @@ updateCollectionImages('mipolam-elegance', 'Mipolam Elegance');
 // Update Mipolam Planet colors
 updateCollectionImages('mipolam-planet', 'Mipolam Planet');
 
+// Update Mipolam Symbioz colors
+updateCollectionImages('mipolam-symbioz', 'Mipolam Symbioz');
+
 // Save updated JSON
 fs.writeFileSync(colorsDataPath, JSON.stringify(colorsData, null, 2));
 
