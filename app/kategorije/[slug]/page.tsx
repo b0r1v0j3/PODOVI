@@ -15,7 +15,6 @@ interface CategoryPageProps {
     priceMax?: string;
     inStock?: string;
     color?: string;
-    type?: string;
   };
 }
 
@@ -91,13 +90,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const categoryBrandIds = new Set(categoryProducts.map(p => p.brandId));
   const availableBrands = allBrands.filter(b => categoryBrandIds.has(b.id));
 
-  // Extract vinyl type filter from search params (must be before use)
-  const vinylTypeFilter = category.slug === 'vinil' && searchParams.type 
-    ? (searchParams.type === 'homogeni' ? 'homogeneous' : searchParams.type === 'heterogeni' ? 'heterogeneous' : null)
-    : null;
-
-  // For LVT, Linoleum, Carpet and Vinil categories, separate collections from colors
-  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil';
+  // For LVT, Linoleum, and Carpet categories, separate collections from colors
+  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce';
   let collections: typeof products = [];
   let colors: typeof products = [];
 
@@ -106,14 +100,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (isLVTCategory) {
     // Collections are products with SKU starting with "GER-" (LVT), "LINOLEUM-" (Linoleum), or "GER-" (Vinil)
     // Colors are individual color products with 4-digit SKU codes or other patterns
-    if (category.slug === 'vinil') {
-      // For Vinil, collections have SKU starting with "GER-", colors loaded from JSON in LVTTabs
-      collections = products.filter(p => p.sku.startsWith('GER-'));
-      colors = []; // Will be loaded from JSON in LVTTabs
-    } else {
-      collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')) ?? false);
-      colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')));  
-    }
+    collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')) ?? false);
+    colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')));
 
     // Build brands record for all products
     for (const product of products) {
@@ -167,7 +155,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 brandsRecord={brandsRecord}
                 categorySlug={category.slug}
                 initialColorSlug={searchParams.color}
-                vinylTypeFilter={vinylTypeFilter || undefined}
               />
             ) : (
               <>

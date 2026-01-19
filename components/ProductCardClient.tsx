@@ -18,29 +18,16 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   // For local images, use Next.js Image with unoptimized flag
   const imageSrc = primaryImage?.url || '';
   
-  // For LVT, Linoleum, Carpet, and Vinil categories, link appropriately
+  // For LVT, Linoleum, and Carpet categories, link to COLLECTION page with color parameter
   // Collections don't have collectionSlug, only individual colors do
-  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
+  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   
   let productHref = `/proizvodi/${product.slug}`;
   
-  // For Vinil: colors link to category with ?color=, collections link to category
-  if (product.categoryId === '2') {
-    // Check if it's a color (SKU is numbers only) or collection (SKU starts with 'GER-')
-    const isVinylColor = /^\d+$/.test(product.sku);
-    const isVinylCollection = product.sku.startsWith('GER-');
-    
-    if (isVinylColor) {
-      // For vinyl colors, link directly to category page with color parameter
-      productHref = `/kategorije/vinil?color=${product.slug}`;
-    } else if (isVinylCollection) {
-      // For vinyl collections, link to category page
-      productHref = `/kategorije/vinil`;
-    }
-  } else if (isColorTile && colorCollectionSlug) {
-    // For color products (LVT/Linoleum/Carpet), ONLY if they have collectionSlug (individual colors)
-    // Collections don't have collectionSlug, so they will use default href (collection page)
+  // For color products (LVT/Linoleum/Carpet), ONLY if they have collectionSlug (individual colors)
+  // Collections don't have collectionSlug, so they will use default href (collection page)
+  if (isColorTile && colorCollectionSlug) {
     let collectionSlug = colorCollectionSlug;
     // For LVT, ensure gerflor- prefix
     if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {

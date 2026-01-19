@@ -615,20 +615,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
       notFound();
     }
 
-    // For Vinil products, redirect to category page
-    if (product.categoryId === '2') {
-      const { redirect } = await import('next/navigation');
-      // Check if it's a color (SKU is numbers only) or collection (SKU starts with 'GER-')
-      const isVinylColor = /^\d+$/.test(product.sku);
-      if (isVinylColor) {
-        // Redirect color to category with color parameter
-        redirect(`/kategorije/vinil?color=${product.slug}`);
-      } else {
-        // Redirect collection to category page
-        redirect(`/kategorije/vinil`);
-      }
-    }
-
     // If product is a COLOR (has collectionSlug), redirect to COLLECTION page with color parameter.
     // Collections don't have collectionSlug and should stay on collection page.
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;

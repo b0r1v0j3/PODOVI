@@ -2,13 +2,11 @@ import { Product } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
-import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 
 // Cache for performance
 let lvtProductsCache: Product[] | null = null;
 let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
-let vinylProductsCache: Product[] | null = null;
 
 /**
  * Transform LVT color data from JSON to Product type
@@ -217,104 +215,12 @@ export function getAllCarpetProducts(): Product[] {
     return products;
 }
 
-/**
- * Transform Vinyl color data from JSON to Product type
- */
-function transformVinylColorToProduct(color: any): Product {
-    const collection = color.collection || '';
-    const code = color.code || '';
-    const name = color.name || '';
-    const slug = color.slug || `${collection}-${code}`;
-    const type = color.type || 'homogeneous'; // 'homogeneous' or 'heterogeneous'
-
-    // Build specs array from characteristics
-    const specs: Array<{ key: string; label: string; value: string }> = [];
-    
-    // Add type first (for filtering)
-    specs.push({ key: 'type', label: 'Tip', value: type === 'homogeneous' ? 'Homogeni' : 'Heterogeni' });
-    
-    // Add characteristics
-    if (color.characteristics) {
-        Object.entries(color.characteristics).forEach(([label, value]) => {
-            specs.push({
-                key: label.toLowerCase().replace(/\s+/g, '_'),
-                label,
-                value: value as string
-            });
-        });
-    }
-
-    // Add collection and code info
-    specs.push({ key: 'collection', label: 'Kolekcija', value: collection });
-    specs.push({ key: 'code', label: 'Šifra', value: code });
-    specs.push({ key: 'color', label: 'Boja', value: name });
-
-    // Build images array
-    const images = [];
-    if (color.image_url) {
-        images.push({
-            id: `${slug}-img-1`,
-            url: color.image_url,
-            alt: name,
-            isPrimary: true,
-            order: 1,
-        });
-    }
-    if (color.texture_url) {
-        images.push({
-            id: `${slug}-img-2`,
-            url: color.texture_url,
-            alt: `${name} - Texture`,
-            isPrimary: false,
-            order: 2,
-        });
-    }
-
-    return {
-        id: slug,
-        name: color.full_name || `${code} ${name}`,
-        slug,
-        sku: code,
-        categoryId: '2', // Vinil
-        brandId: '6', // Gerflor
-        shortDescription: `Gerflor ${color.collection_name} - ${name} (${type === 'homogeneous' ? 'Homogeni' : 'Heterogeni'})`,
-        description: color.description || `Gerflor ${collection} - ${name} (Šifra: ${code})`,
-        images: images.length > 0 ? images : [{
-            id: `${slug}-img-1`,
-            url: '/images/placeholder.svg',
-            alt: name,
-            isPrimary: true,
-            order: 1,
-        }],
-        specs,
-        inStock: true,
-        featured: false,
-        externalLink: `https://www.gerflor-cee.com/products/${collection}`,
-        createdAt: new Date('2024-01-01'),
-        updatedAt: new Date('2024-01-01'),
-    };
-}
-
-/**
- * Get all Vinyl products from vinyl_colors_complete.json
- */
-export function getAllVinylProducts(): Product[] {
-    if (vinylProductsCache) {
-        return vinylProductsCache;
-    }
-
-    const colors = (vinylColorsData as any).colors || [];
-    const products = colors.map(transformVinylColorToProduct);
-    vinylProductsCache = products;
-
-    return products;
-}
 
 /**
  * Get all Gerflor products (LVT + Linoleum + Carpet + Vinyl)
  */
 export function getAllGerflorProducts(): Product[] {
-    return [...getAllLVTProducts(), ...getAllLinoleumProducts(), ...getAllCarpetProducts(), ...getAllVinylProducts()];
+    return [...getAllLVTProducts(), ...getAllLinoleumProducts(), ...getAllCarpetProducts()];
 }
 
 /**
@@ -344,8 +250,5 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return getAllLinoleumProducts();
     } else if (categoryId === '4') {
         return getAllCarpetProducts();
-    } else if (categoryId === '2') {
-        return getAllVinylProducts();
-    }
     return getAllGerflorProducts().filter(p => p.categoryId === categoryId);
 }
