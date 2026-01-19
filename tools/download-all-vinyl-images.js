@@ -2,33 +2,46 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const http = require('http');
 
 async function downloadFile(url, filePath) {
   return new Promise((resolve, reject) => {
-    const protocol = url.startsWith('https') ? https : require('http');
+    const protocol = url.startsWith('https') ? https : http;
     const file = fs.createWriteStream(filePath);
     
     protocol.get(url, (response) => {
+      // Handle redirects
       if (response.statusCode === 301 || response.statusCode === 302) {
         file.close();
-        return downloadFile(response.headers.location, filePath).then(resolve).catch(reject);
+        const location = response.headers.location;
+        if (!location) {
+          reject(new Error(`Redirect response missing Location header (status ${response.statusCode})`));
+          return;
+        }
+        return downloadFile(location, filePath).then(resolve).catch(reject);
       }
       
-      if (response.statusCode !== 200) {
-        file.close();
-        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-        reject(new Error(`HTTP ${response.statusCode}`));
+      // Handle success
+      if (response.statusCode === 200) {
+        response.pipe(file);
+        file.on('finish', () => {
+          file.close();
+          resolve();
+        });
         return;
       }
       
-      response.pipe(file);
-      file.on('finish', () => {
-        file.close();
-        resolve();
-      });
+      // Handle other status codes
+      file.close();
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+      reject(new Error(`HTTP ${response.statusCode}`));
     }).on('error', (err) => {
       file.close();
-      if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
       reject(err);
     });
   });
