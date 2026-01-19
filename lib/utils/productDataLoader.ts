@@ -250,5 +250,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return getAllLinoleumProducts();
     } else if (categoryId === '4') {
         return getAllCarpetProducts();
+    }
+    
     return getAllGerflorProducts().filter(p => p.categoryId === categoryId);
 }
