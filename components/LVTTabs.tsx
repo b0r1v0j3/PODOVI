@@ -136,9 +136,12 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
+            // For Vinil: use image_url directly (texture_url is null)
             // For Linoleum: use texture_url or image_url (no lifestyle_url available)
             const primaryImageUrl = categorySlug === 'lvt' 
               ? (color.texture_url || color.lifestyle_url || color.image_url || '')
+              : categorySlug === 'vinil'
+              ? (color.image_url || '')
               : (color.texture_url || color.image_url || '');
 
             return {
