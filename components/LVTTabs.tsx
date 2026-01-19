@@ -7,6 +7,7 @@ import ProductCardClient from '@/components/ProductCardClient';
 interface ColorFromJSON {
   collection: string;
   collection_name: string;
+  collection_slug?: string; // For Vinil
   code: string;
   name: string;
   full_name: string;
