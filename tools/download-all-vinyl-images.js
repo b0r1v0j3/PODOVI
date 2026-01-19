@@ -5,16 +5,32 @@ const https = require('https');
 
 async function downloadFile(url, filePath) {
   return new Promise((resolve, reject) => {
+    const protocol = url.startsWith('https') ? https : require('http');
     const file = fs.createWriteStream(filePath);
-    https.get(url, (response) => {
-      if (response.statusCode === 200) {
-        response.pipe(file);
-        file.on('finish', () => { file.close(); resolve(); });
-      } else {
+    
+    protocol.get(url, (response) => {
+      if (response.statusCode === 301 || response.statusCode === 302) {
         file.close();
-        reject(new Error(`HTTP ${response.statusCode}`));
+        return downloadFile(response.headers.location, filePath).then(resolve).catch(reject);
       }
-    }).on('error', reject);
+      
+      if (response.statusCode !== 200) {
+        file.close();
+        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+        reject(new Error(`HTTP ${response.statusCode}`));
+        return;
+      }
+      
+      response.pipe(file);
+      file.on('finish', () => {
+        file.close();
+        resolve();
+      });
+    }).on('error', (err) => {
+      file.close();
+      if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+      reject(err);
+    });
   });
 }
 
