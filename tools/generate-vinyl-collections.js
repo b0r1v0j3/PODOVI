@@ -25,9 +25,8 @@ const collections = Object.values(collectionsMap).map((collection, index) => {
   const slug = `gerflor-${collection.slug}`;
   const sku = `GER-${collection.slug.toUpperCase().replace(/-/g, '')}`;
   
-  // Use first color's image as collection image
-  const firstColor = collection.colors[0];
-  const imageUrl = firstColor.image_url || '';
+  // Use collection.jpg as collection image
+  const imageUrl = `/images/products/vinyl/${collection.slug}/collection.jpg`;
 
   return {
     id: `vinil-collection-${index}`,

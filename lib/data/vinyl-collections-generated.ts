@@ -13,7 +13,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-accord-img-1",
-        "url": "/images/products/vinyl/mipolam-accord/mipolam-accord-0301-louise/0301-mipolam-accord-0301-louise.jpg",
+        "url": "/images/products/vinyl/mipolam-accord/collection.jpg",
         "alt": "Mipolam Accord",
         "isPrimary": true,
         "order": 1
@@ -54,7 +54,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-affinity-img-1",
-        "url": "/images/products/vinyl/mipolam-affinity/mipolam-affinity-4401-quartz/4401-mipolam-affinity-4401-quartz.jpg",
+        "url": "/images/products/vinyl/mipolam-affinity/collection.jpg",
         "alt": "Mipolam Affinity",
         "isPrimary": true,
         "order": 1
@@ -95,7 +95,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-affinity-608x608-img-1",
-        "url": "/images/products/vinyl/mipolam-affinity-608x608/mipolam-affinity-608x608-4401-quartz/4401-mipolam-affinity-608x608-4401-quartz.jpg",
+        "url": "/images/products/vinyl/mipolam-affinity-608x608/collection.jpg",
         "alt": "Mipolam Affinity 608x608",
         "isPrimary": true,
         "order": 1
@@ -136,7 +136,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-astro-img-1",
-        "url": "/images/products/vinyl/mipolam-astro/mipolam-astro-2401-wise/2401-mipolam-astro-2401-wise.jpg",
+        "url": "/images/products/vinyl/mipolam-astro/collection.jpg",
         "alt": "Mipolam Astro",
         "isPrimary": true,
         "order": 1
@@ -177,7 +177,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-bioplanet-img-1",
-        "url": "/images/products/vinyl/mipolam-bioplanet/mipolam-bioplanet-5402-ivory-dust/5402-mipolam-bioplanet-5402-ivory-dust.jpg",
+        "url": "/images/products/vinyl/mipolam-bioplanet/collection.jpg",
         "alt": "Mipolam Bioplanet",
         "isPrimary": true,
         "order": 1
@@ -218,7 +218,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-classic-15mm-img-1",
-        "url": "/images/products/vinyl/mipolam-classic-15mm/mipolam-classic-15mm-0002-platinum/0002-mipolam-classic-15mm-0002-platinum.jpg",
+        "url": "/images/products/vinyl/mipolam-classic-15mm/collection.jpg",
         "alt": "Mipolam Classic 15mm",
         "isPrimary": true,
         "order": 1
@@ -259,7 +259,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-classic-2mm-img-1",
-        "url": "/images/products/vinyl/mipolam-classic-2mm/mipolam-classic-2mm-0002-platinum/0002-mipolam-classic-2mm-0002-platinum.jpg",
+        "url": "/images/products/vinyl/mipolam-classic-2mm/collection.jpg",
         "alt": "Mipolam Classic 2mm",
         "isPrimary": true,
         "order": 1
@@ -300,7 +300,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-elegance-img-1",
-        "url": "/images/products/vinyl/mipolam-elegance/mipolam-elegance-0318-grape/0318-mipolam-elegance-0318-grape.jpg",
+        "url": "/images/products/vinyl/mipolam-elegance/collection.jpg",
         "alt": "Mipolam Elegance",
         "isPrimary": true,
         "order": 1
@@ -341,7 +341,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-planet-img-1",
-        "url": "/images/products/vinyl/mipolam-planet/mipolam-planet-5402-ivory-dust/5402-mipolam-planet-5402-ivory-dust.jpg",
+        "url": "/images/products/vinyl/mipolam-planet/collection.jpg",
         "alt": "Mipolam Planet",
         "isPrimary": true,
         "order": 1
@@ -382,7 +382,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-symbioz-img-1",
-        "url": "/images/products/vinyl/mipolam-symbioz/mipolam-symbioz-6001-cotton/6001-mipolam-symbioz-6001-cotton.jpg",
+        "url": "/images/products/vinyl/mipolam-symbioz/collection.jpg",
         "alt": "Mipolam Symbioz",
         "isPrimary": true,
         "order": 1
@@ -423,7 +423,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-mipolam-troplan-img-1",
-        "url": "/images/products/vinyl/mipolam-troplan/mipolam-troplan-1002-beige/1002-mipolam-troplan-1002-beige.jpg",
+        "url": "/images/products/vinyl/mipolam-troplan/collection.jpg",
         "alt": "Mipolam Troplan",
         "isPrimary": true,
         "order": 1
@@ -464,7 +464,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-nerok-55-img-1",
-        "url": "/images/products/vinyl/nerok-55/nerok-55-0476-noma-miel/0476-nerok-55-0476-noma-miel.jpg",
+        "url": "/images/products/vinyl/nerok-55/collection.jpg",
         "alt": "Nerok 55",
         "isPrimary": true,
         "order": 1
@@ -505,7 +505,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-nerok-70-img-1",
-        "url": "/images/products/vinyl/nerok-70/nerok-70-0476-noma-miel/0476-nerok-70-0476-noma-miel.jpg",
+        "url": "/images/products/vinyl/nerok-70/collection.jpg",
         "alt": "Nerok 70",
         "isPrimary": true,
         "order": 1
@@ -546,7 +546,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-premium-acoustic-img-1",
-        "url": "/images/products/vinyl/premium-acoustic/premium-acoustic-0027-cocoon-muslin-hd740027/0027-premium-acoustic-0027-cocoon-muslin-hd740027.jpg",
+        "url": "/images/products/vinyl/premium-acoustic/collection.jpg",
         "alt": "Premium Acoustic",
         "isPrimary": true,
         "order": 1
@@ -587,7 +587,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-premium-compact-img-1",
-        "url": "/images/products/vinyl/premium-compact/premium-compact-0027-cocoon-muslin-hd420027/0027-premium-compact-0027-cocoon-muslin-hd420027.jpg",
+        "url": "/images/products/vinyl/premium-compact/collection.jpg",
         "alt": "Premium Compact",
         "isPrimary": true,
         "order": 1
@@ -628,7 +628,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-taralay-impression-acoustic-img-1",
-        "url": "/images/products/vinyl/taralay-impression-acoustic/taralay-impression-acoustic-0373-noma-ice/0373-taralay-impression-acoustic-0373-noma-ice.jpg",
+        "url": "/images/products/vinyl/taralay-impression-acoustic/collection.jpg",
         "alt": "Taralay Impression Acoustic",
         "isPrimary": true,
         "order": 1
@@ -669,7 +669,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-taralay-impression-compact-img-1",
-        "url": "/images/products/vinyl/taralay-impression-compact/taralay-impression-compact-0373-noma-ice/0373-taralay-impression-compact-0373-noma-ice.jpg",
+        "url": "/images/products/vinyl/taralay-impression-compact/collection.jpg",
         "alt": "Taralay Impression Compact",
         "isPrimary": true,
         "order": 1
@@ -710,7 +710,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-taralay-impression-hop-acoustic-img-1",
-        "url": "/images/products/vinyl/taralay-impression-hop-acoustic/taralay-impression-hop-acoustic-0373-noma-ice/0373-taralay-impression-hop-acoustic-0373-noma-ice.jpg",
+        "url": "/images/products/vinyl/taralay-impression-hop-acoustic/collection.jpg",
         "alt": "Taralay Impression Hop Acoustic",
         "isPrimary": true,
         "order": 1
@@ -751,7 +751,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-taralay-impression-hop-compact-img-1",
-        "url": "/images/products/vinyl/taralay-impression-hop-compact/taralay-impression-hop-compact-0373-noma-ice/0373-taralay-impression-hop-compact-0373-noma-ice.jpg",
+        "url": "/images/products/vinyl/taralay-impression-hop-compact/collection.jpg",
         "alt": "Taralay Impression Hop Compact",
         "isPrimary": true,
         "order": 1
@@ -792,7 +792,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-taralay-initial-acoustic-img-1",
-        "url": "/images/products/vinyl/taralay-initial-acoustic/taralay-initial-acoustic-0035-urban-gris/0035-taralay-initial-acoustic-0035-urban-gris.jpg",
+        "url": "/images/products/vinyl/taralay-initial-acoustic/collection.jpg",
         "alt": "Taralay Initial Acoustic",
         "isPrimary": true,
         "order": 1
@@ -833,7 +833,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-taralay-initial-compact-img-1",
-        "url": "/images/products/vinyl/taralay-initial-compact/taralay-initial-compact-0035-urban-gris/0035-taralay-initial-compact-0035-urban-gris.jpg",
+        "url": "/images/products/vinyl/taralay-initial-compact/collection.jpg",
         "alt": "Taralay Initial Compact",
         "isPrimary": true,
         "order": 1
@@ -874,7 +874,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-taralay-millenium-acoustic-order-img-1",
-        "url": "/images/products/vinyl/taralay-millenium-acoustic-order/taralay-millenium-acoustic-order-3435-nemesis-hd023435/3435-taralay-millenium-acoustic-order-3435-nemesis-hd023435.jpg",
+        "url": "/images/products/vinyl/taralay-millenium-acoustic-order/collection.jpg",
         "alt": "Taralay Millenium Acoustic Order",
         "isPrimary": true,
         "order": 1
@@ -915,7 +915,7 @@ export const vinyl_collections: Product[] = [
     "images": [
       {
         "id": "gerflor-taralay-millenium-compact-img-1",
-        "url": "/images/products/vinyl/taralay-millenium-compact/taralay-millenium-compact-3435-nemesis-hd063435/3435-taralay-millenium-compact-3435-nemesis-hd063435.jpg",
+        "url": "/images/products/vinyl/taralay-millenium-compact/collection.jpg",
         "alt": "Taralay Millenium Compact",
         "isPrimary": true,
         "order": 1
