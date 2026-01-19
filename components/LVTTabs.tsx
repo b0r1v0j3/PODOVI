@@ -108,14 +108,18 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         ? '/data/vinyl_colors_complete.json'
         : '/data/lvt_colors_complete.json';
 
+      console.log(`LVTTabs: Fetching colors from ${jsonPath}...`);
       fetch(jsonPath)
         .then(res => {
+          console.log(`LVTTabs: Fetch response status:`, res.status, res.statusText);
           if (!res.ok) {
             throw new Error(`Failed to fetch colors: ${res.status}`);
           }
           return res.json();
         })
         .then(data => {
+          console.log(`LVTTabs: JSON parsed successfully, data:`, data ? `total=${data.total}, colors=${data.colors?.length}` : 'null');
+
           if (!data || !data.colors || !Array.isArray(data.colors)) {
             console.error('LVTTabs: Invalid data structure', data);
             setLoadingColors(false);
