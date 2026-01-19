@@ -25,9 +25,10 @@ interface LVTTabsProps {
   brandsRecord: Record<string, Brand>;
   categorySlug: string; // 'lvt', 'linoleum', or 'tekstilne-ploce'
   initialColorSlug?: string; // Optional color slug to automatically open and highlight
+  vinylType?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
 }
 
-export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug }: LVTTabsProps) {
+export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType }: LVTTabsProps) {
   // If initialColorSlug is provided, start with 'colors' tab active
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
     initialColorSlug ? 'colors' : 'collections'
@@ -40,12 +41,52 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || categorySlug === 'vinil';
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
   const collectionsToRender = useMemo(() => {
+    let filtered = collections;
+    
     if (!useJsonColors) {
-      return collections;
+      return filtered;
     }
 
-    return collections.filter((product) => !/^\d{4}$/.test(product.sku ?? ''));
-  }, [collections, useJsonColors]);
+    filtered = filtered.filter((product) => !/^\d{4}$/.test(product.sku ?? ''));
+    
+    // Filter by vinyl type if specified
+    if (categorySlug === 'vinil' && vinylType) {
+      const typeFilter = vinylType.toLowerCase();
+      filtered = filtered.filter(p => {
+        const typeSpec = p.specs.find(s => s.key === 'type');
+        if (!typeSpec) return false;
+        const productType = typeSpec.value.toLowerCase();
+        if (typeFilter === 'homogeni') {
+          return productType === 'homogeni';
+        } else if (typeFilter === 'heterogeni') {
+          return productType === 'heterogeni';
+        }
+        return false;
+      });
+    }
+    
+    return filtered;
+  }, [collections, useJsonColors, categorySlug, vinylType]);
+
+  // Filter colors by vinyl type
+  const colorsToRender = useMemo(() => {
+    if (!useJsonColors || categorySlug !== 'vinil' || !vinylType) {
+      return colorsFromJSON;
+    }
+    
+    const typeFilter = vinylType.toLowerCase();
+    return colorsFromJSON.filter(color => {
+      const typeSpec = color.specs.find(s => s.key === 'type');
+      if (!typeSpec) return false;
+      const productType = typeSpec.value.toLowerCase();
+      if (typeFilter === 'homogeni') {
+        return productType === 'homogeni';
+      } else if (typeFilter === 'heterogeni') {
+        return productType === 'heterogeni';
+      }
+      return false;
+    });
+  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors]);
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -216,7 +257,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
           hasLoadedColors.current = true; // Mark as loaded even on error to prevent retry loop
         });
     }
-  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors]);
+  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors, vinylType]);
 
   const renderProducts = (products: Product[], gridKey: string) => {
     if (products.length === 0) {
@@ -272,9 +313,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             Boje ({useJsonColors
               ? (loadingColors
                   ? '...'
-                  : (colorsFromJSON.length > 0
-                      ? colorsFromJSON.length
-                      : (totalColorsCount ?? '...')))
+                  : (colorsToRender.length > 0
+                      ? colorsToRender.length
+                      : (vinylType && categorySlug === 'vinil' ? 0 : (totalColorsCount ?? '...'))))
               : legacyColors.length
             })
           </button>
@@ -301,9 +342,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               ) : (
                 <>
                   <p className="text-gray-600 mb-6">
-                    {colorsFromJSON.length === 0 ? 'Nema' : colorsFromJSON.length} {colorsFromJSON.length === 1 ? 'boja' : 'boja'}
+                    {colorsToRender.length === 0 ? 'Nema' : colorsToRender.length} {colorsToRender.length === 1 ? 'boja' : 'boja'}
                   </p>
-                  {renderProducts(colorsFromJSON, 'colors')}
+                  {renderProducts(colorsToRender, 'colors')}
                 </>
               )
             ) : (
