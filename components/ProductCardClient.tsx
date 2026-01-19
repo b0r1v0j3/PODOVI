@@ -18,14 +18,14 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   // For local images, use Next.js Image with unoptimized flag
   const imageSrc = primaryImage?.url || '';
   
-  // For LVT, Linoleum, and Carpet categories, link to COLLECTION page with color parameter
+  // For LVT, Linoleum, Carpet, and Vinil categories, link to COLLECTION page with color parameter
   // Collections don't have collectionSlug, only individual colors do
-  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
+  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   
   let productHref = `/proizvodi/${product.slug}`;
   
-  // For color products (LVT/Linoleum/Carpet), ONLY if they have collectionSlug (individual colors)
+  // For color products (LVT/Linoleum/Carpet/Vinil), ONLY if they have collectionSlug (individual colors)
   // Collections don't have collectionSlug, so they will use default href (collection page)
   if (isColorTile && colorCollectionSlug) {
     let collectionSlug = colorCollectionSlug;
@@ -38,6 +38,10 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
       collectionSlug = collectionSlug.replace(/^gerflor-/, '');
     }
     // For Carpet, collection_slug already has gerflor- prefix
+    // For Vinil, ensure gerflor- prefix (collections are stored as gerflor-mipolam-accord in mock-data)
+    if (product.categoryId === '2' && !collectionSlug.startsWith('gerflor-')) {
+      collectionSlug = `gerflor-${collectionSlug}`;
+    }
     // Link to COLLECTION page with color parameter (product.slug is the color slug)
     productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
   }
