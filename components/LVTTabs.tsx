@@ -124,6 +124,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             filteredColors = data.colors.filter((color: any) => color.type === vinylTypeFilter);
           }
 
+          console.log(`LVTTabs: Loaded ${filteredColors.length} colors from JSON for category ${categorySlug}`);
+
           // Convert colors from JSON to Product objects
           const colorsAsProducts: Product[] = filteredColors.map((color: ColorFromJSON, index: number) => {
             // Find brand ID (Gerflor = '6')
@@ -166,6 +168,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             } as Product & { collectionSlug: string };
           });
 
+          console.log(`LVTTabs: Converted ${colorsAsProducts.length} colors to Product objects`);
           setColorsFromJSON(colorsAsProducts);
           setLoadingColors(false);
           hasLoadedColors.current = true;
