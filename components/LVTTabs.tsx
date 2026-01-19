@@ -145,28 +145,19 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
 
           console.log(`LVTTabs: Loaded ${data.colors.length} colors from JSON for category ${categorySlug}`);
 
-          // Filter colors by type if Vinil category and filter is set
-          let filteredColors = data.colors;
-          if (categorySlug === 'vinil' && vinylTypeFilter) {
-            filteredColors = data.colors.filter((color: any) => color.type === vinylTypeFilter);
-          }
-
           // Convert colors from JSON to Product objects
-          const colorsAsProducts: Product[] = filteredColors.map((color: ColorFromJSON, index: number) => {
+          const colorsAsProducts: Product[] = data.colors.map((color: ColorFromJSON, index: number) => {
             // Find brand ID (Gerflor = '6')
             const gerflorBrand = Object.values(brandsRecord).find(b => b.slug === 'gerflor');
             const brandId = gerflorBrand?.id || '6';
             
             // Find category ID
-            const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
+            const categoryId = categorySlug === 'linoleum' ? '7' : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
-            // For Vinil: use image_url directly (texture_url is null)
             // For Linoleum: use texture_url or image_url (no lifestyle_url available)
             const primaryImageUrl = categorySlug === 'lvt' 
               ? (color.texture_url || color.lifestyle_url || color.image_url || '')
-              : categorySlug === 'vinil'
-              ? (color.image_url || '')
               : (color.texture_url || color.image_url || '');
 
             return {
@@ -192,7 +183,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               featured: false,
               createdAt: new Date(),
               updatedAt: new Date(),
-              collectionSlug: categorySlug === 'vinil' ? (color.collection_slug || color.collection) : color.collection,
+              collectionSlug: color.collection,
             } as Product & { collectionSlug: string };
           });
 
