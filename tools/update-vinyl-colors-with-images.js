@@ -64,6 +64,9 @@ updateCollectionImages('mipolam-astro', 'Mipolam Astro');
 // Update Mipolam Bioplanet colors
 updateCollectionImages('mipolam-bioplanet', 'Mipolam Bioplanet');
 
+// Update Mipolam Classic 15mm colors
+updateCollectionImages('mipolam-classic-15mm', 'Mipolam Classic 15mm');
+
 // Save updated JSON
 fs.writeFileSync(colorsDataPath, JSON.stringify(colorsData, null, 2));
 
