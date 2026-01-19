@@ -5,8 +5,6 @@ import { brandRepository } from '@/lib/repositories/brand-repository';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import LVTTabs from '@/components/LVTTabs';
-import { getAllVinylProducts } from '@/lib/utils/productDataLoader';
-import { vinyl_colors } from '@/lib/data/vinyl-colors-generated';
 
 interface CategoryPageProps {
   params: { slug: string };
@@ -109,23 +107,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Collections are products with SKU starting with "GER-" (LVT), "LINOLEUM-" (Linoleum), or "GER-" (Vinil)
     // Colors are individual color products with 4-digit SKU codes or other patterns
     if (category.slug === 'vinil') {
-      // For Vinil, collections have SKU starting with "GER-", colors have SKU with numbers only
+      // For Vinil, collections have SKU starting with "GER-", colors loaded from JSON in LVTTabs
       collections = products.filter(p => p.sku.startsWith('GER-'));
-      // Load colors directly from TypeScript file (already imported)
-      let allColors = vinyl_colors.filter(p => /^\d+$/.test(p.sku));
-      // Apply type filter if present
-      if (vinylTypeFilter) {
-        allColors = allColors.filter(p => {
-          // Find the type spec in the product specs
-          const typeSpec = p.specs.find(s => s.key === 'type');
-          if (!typeSpec) return false;
-          const typeValue = typeSpec.value.toLowerCase();
-          return vinylTypeFilter === 'homogeneous' 
-            ? typeValue.includes('homogeni')
-            : typeValue.includes('heterogeni');
-        });
-      }
-      colors = allColors;
+      colors = []; // Will be loaded from JSON in LVTTabs
     } else {
       collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')) ?? false);
       colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')));  
