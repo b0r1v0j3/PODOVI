@@ -4,7 +4,7 @@ const path = require('path');
 const https = require('https');
 const http = require('http');
 
-async function downloadFile(url, filePath) {
+async function downloadFile(url, filePath, maxRedirects = 5) {
   return new Promise((resolve, reject) => {
     const protocol = url.startsWith('https') ? https : http;
     const file = fs.createWriteStream(filePath);
@@ -18,7 +18,11 @@ async function downloadFile(url, filePath) {
           reject(new Error(`Redirect response missing Location header (status ${response.statusCode})`));
           return;
         }
-        return downloadFile(location, filePath).then(resolve).catch(reject);
+        if (maxRedirects <= 0) {
+          reject(new Error(`Too many redirects (redirect loop detected at ${url})`));
+          return;
+        }
+        return downloadFile(location, filePath, maxRedirects - 1).then(resolve).catch(reject);
       }
       
       // Handle success
