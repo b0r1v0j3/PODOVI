@@ -1449,8 +1449,8 @@
       ]
     },
     {
-      "name": "Mipolam Classic 15mm",
-      "slug": "mipolam-classic-15mm",
+      "name": "Mipolam Classic 1.5 mm",
+      "slug": "mipolam-classic-1-5mm",
       "url": "https://www.gerflor-cee.com/products/mipolam-classic-15mm-0002-platinum-41330002",
       "colorCount": 2,
       "colors": [
@@ -1459,16 +1459,16 @@
           "name": "PLATINUM",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-15mm-0002-platinum-41330002",
-          "collection_slug": "mipolam-classic-15mm",
-          "image": "/images/products/vinyl/mipolam-classic-15mm/0002-platinum.jpg"
+          "collection_slug": "mipolam-classic-1-5mm",
+          "image": "/images/products/vinyl/mipolam-classic-1-5mm/0002-platinum.jpg"
         },
         {
           "code": "0005",
           "name": "STEEL",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-15mm-0005-steel-41330005",
-          "collection_slug": "mipolam-classic-15mm",
-          "image": "/images/products/vinyl/mipolam-classic-15mm/0005-steel.jpg"
+          "collection_slug": "mipolam-classic-1-5mm",
+          "image": "/images/products/vinyl/mipolam-classic-1-5mm/0005-steel.jpg"
         }
       ]
     },
