@@ -15,6 +15,7 @@ interface CategoryPageProps {
     priceMax?: string;
     inStock?: string;
     color?: string;
+    type?: string;
   };
 }
 
