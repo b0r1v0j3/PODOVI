@@ -119,7 +119,7 @@ export const brands: Brand[] = [
 ];
 
 export const products: Product[] = [
-  // VINIL KOLEKCIJE - Homogeni (11 collections)
+  // VINIL KOLEKCIJE - Homogeni (11 collections with images)
   {
     id: 'vinil-1',
     name: 'Gerflor Mipolam Accord',
