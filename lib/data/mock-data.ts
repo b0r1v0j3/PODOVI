@@ -122,7 +122,7 @@ export const products: Product[] = [
   // VINIL KOLEKCIJE - Homogeni (11 collections with images)
   {
     id: 'vinil-1',
-    name: 'Gerflor Mipolam Accord',
+    name: 'Mipolam Accord',
     slug: 'gerflor-mipolam-accord',
     sku: 'GER-MIPOLAM-ACCORD',
     categoryId: '2',
@@ -148,7 +148,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-2',
-    name: 'Gerflor Mipolam Affinity',
+    name: 'Mipolam Affinity',
     slug: 'gerflor-mipolam-affinity',
     sku: 'GER-MIPOLAM-AFFINITY',
     categoryId: '2',
@@ -174,7 +174,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-3',
-    name: 'Gerflor Mipolam Affinity 608x608',
+    name: 'Mipolam Affinity 608x608',
     slug: 'gerflor-mipolam-affinity-608x608',
     sku: 'GER-MIPOLAM-AFFINITY-608',
     categoryId: '2',
@@ -200,7 +200,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-4',
-    name: 'Gerflor Mipolam Astro',
+    name: 'Mipolam Astro',
     slug: 'gerflor-mipolam-astro',
     sku: 'GER-MIPOLAM-ASTRO',
     categoryId: '2',
@@ -226,7 +226,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-5',
-    name: 'Gerflor Mipolam Bioplanet',
+    name: 'Mipolam Bioplanet',
     slug: 'gerflor-mipolam-bioplanet',
     sku: 'GER-MIPOLAM-BIOPLANET',
     categoryId: '2',
@@ -252,7 +252,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-6',
-    name: 'Gerflor Mipolam Classic 15mm',
+    name: 'Mipolam Classic 15mm',
     slug: 'gerflor-mipolam-classic-15mm',
     sku: 'GER-MIPOLAM-CLASSIC-15MM',
     categoryId: '2',
@@ -278,7 +278,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-7',
-    name: 'Gerflor Mipolam Classic 2mm',
+    name: 'Mipolam Classic 2mm',
     slug: 'gerflor-mipolam-classic-2mm',
     sku: 'GER-MIPOLAM-CLASSIC-2MM',
     categoryId: '2',
@@ -304,7 +304,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-8',
-    name: 'Gerflor Mipolam Elegance',
+    name: 'Mipolam Elegance',
     slug: 'gerflor-mipolam-elegance',
     sku: 'GER-MIPOLAM-ELEGANCE',
     categoryId: '2',
@@ -330,7 +330,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-9',
-    name: 'Gerflor Mipolam Planet',
+    name: 'Mipolam Planet',
     slug: 'gerflor-mipolam-planet',
     sku: 'GER-MIPOLAM-PLANET',
     categoryId: '2',
@@ -356,7 +356,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-10',
-    name: 'Gerflor Mipolam Symbioz',
+    name: 'Mipolam Symbioz',
     slug: 'gerflor-mipolam-symbioz',
     sku: 'GER-MIPOLAM-SYMBIOZ',
     categoryId: '2',
@@ -382,7 +382,7 @@ export const products: Product[] = [
   },
   {
     id: 'vinil-11',
-    name: 'Gerflor Mipolam Troplan',
+    name: 'Mipolam Troplan',
     slug: 'gerflor-mipolam-troplan',
     sku: 'GER-MIPOLAM-TROPLAN',
     categoryId: '2',
