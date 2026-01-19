@@ -164,8 +164,9 @@ export default function ColorGrid({
       // Also call onColorSelect if provided
       if (onColorSelect) {
         // Use texture_url (pod images) first, then image_url, lifestyle_url as last resort
+        // For Vinil, use image field first
         // URLs are already normalized in the useEffect
-        const imageUrl = color.texture_url || color.image_url || color.lifestyle_url || '';
+        const imageUrl = color.texture_url || color.image_url || (color as any).image || color.lifestyle_url || '';
         const imageAlt = color.full_name || color.name || '';
         const colorCode = color.code || '';
         const colorName = color.name || '';
@@ -200,11 +201,14 @@ export default function ColorGrid({
     // Determine which JSON to load based on collection slug
     const isLinoleum = collectionSlug.startsWith('dlw-');
     const isCarpet = collectionSlug.startsWith('armonia-') || collectionSlug.startsWith('gerflor-armonia-');
+    const isVinil = collectionSlug.startsWith('mipolam-') || collectionSlug.startsWith('gerflor-mipolam-');
     const jsonPath = isLinoleum
       ? '/data/linoleum_colors_complete.json'
       : isCarpet
         ? '/data/carpet_tiles_complete.json'
-        : '/data/lvt_colors_complete.json';
+        : isVinil
+          ? '/data/vinyl_colors_complete.json'
+          : '/data/lvt_colors_complete.json';
 
     fetch(jsonPath)
       .then(res => {
@@ -214,24 +218,47 @@ export default function ColorGrid({
         return res.json();
       })
       .then(data => {
-        if (!data || !data.colors || !Array.isArray(data.colors)) {
+        let filtered: Color[] = [];
+        
+        // Handle different JSON structures
+        if (isVinil && data.collections && Array.isArray(data.collections)) {
+          // Vinil has collections[].colors structure
+          const collection = data.collections.find((col: any) => 
+            col.slug === collectionName || 
+            col.slug === collectionSlug ||
+            col.slug === collectionSlug.replace('gerflor-', '')
+          );
+          
+          if (collection && collection.colors) {
+            filtered = collection.colors.map((color: any) => ({
+              ...color,
+              collection: collection.slug,
+              collection_name: collection.name,
+              collection_slug: collection.slug,
+              full_name: `${color.code} ${color.name}`,
+              slug: `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`,
+              image_url: color.image || color.image_url,
+            })) as Color[];
+          }
+        } else if (data.colors && Array.isArray(data.colors)) {
+          // LVT/Linoleum/Carpet have colors array
+          // Filter by collection - try exact match first, then with/without 'gerflor-' prefix
+          filtered = data.colors.filter((c: Color) => 
+            c.collection === collectionName || 
+            c.collection === collectionSlug ||
+            c.collection === `gerflor-${collectionName}` ||
+            c.collection.replace('gerflor-', '') === collectionName
+          );
+        } else {
           console.error('ColorGrid: Invalid data structure', data);
           setLoading(false);
           return;
         }
 
-        // Filter by collection - try exact match first, then with/without 'gerflor-' prefix
-        const filtered = data.colors.filter((c: Color) => 
-          c.collection === collectionName || 
-          c.collection === collectionSlug ||
-          c.collection === `gerflor-${collectionName}` ||
-          c.collection.replace('gerflor-', '') === collectionName
-        );
-
         // Normalize urls inside colors to make rendering consistent
         const normalizedColors = filtered.map((c: Color) => ({
           ...c,
-          image_url: normalizeSrc(c.image_url),
+          image_url: normalizeSrc(c.image_url || (c as any).image),
           texture_url: normalizeSrc(c.texture_url),
           lifestyle_url: normalizeSrc(c.lifestyle_url),
         }));
@@ -375,9 +402,9 @@ export default function ColorGrid({
             >
               {/* Image */}
               <div className="aspect-square relative overflow-hidden bg-gray-100">
-                {(color.texture_url || color.image_url) ? (
+                {(color.texture_url || color.image_url || (color as any).image) ? (
                   <ImageWithFallback
-                    src={color.texture_url || color.image_url || ''}
+                    src={color.texture_url || color.image_url || (color as any).image || ''}
                     alt={color.full_name}
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                     sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}

@@ -15,6 +15,7 @@ import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDet
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
+import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 
 export const dynamic = 'force-dynamic';
 
@@ -43,13 +44,14 @@ interface ColorFromJSON {
 }
 
 type ColorSource = {
-  categorySlug: 'lvt' | 'linoleum';
+  categorySlug: 'lvt' | 'linoleum' | 'vinil';
   color: ColorFromJSON;
 };
 
 
 const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
 const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
+const vinylCollections = (vinylColorsData as { collections?: any[] }).collections || [];
 
 async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
   const lvtMatch = lvtColors.find(color => color.slug === slug);
@@ -62,10 +64,33 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
     return { categorySlug: 'linoleum', color: linoleumMatch };
   }
 
+  // Try to find in Vinil collections
+  for (const collection of vinylCollections) {
+    const vinylColor = collection.colors?.find((color: any) => {
+      // Match by slug format: collection-slug-color-code-color-name
+      const expectedSlug = `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
+      return expectedSlug === slug || color.code === slug.split('-').pop();
+    });
+    if (vinylColor) {
+      return {
+        categorySlug: 'vinil',
+        color: {
+          ...vinylColor,
+          collection: collection.slug,
+          collection_name: collection.name,
+          collection_slug: collection.slug,
+          full_name: `${vinylColor.code} ${vinylColor.name}`,
+          slug: slug,
+        } as ColorFromJSON
+      };
+    }
+  }
+
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
-  const candidates: Array<{ categorySlug: 'lvt' | 'linoleum'; fileName: string }> = [
+  const candidates: Array<{ categorySlug: 'lvt' | 'linoleum' | 'vinil'; fileName: string }> = [
     { categorySlug: 'lvt', fileName: 'lvt_colors_complete.json' },
     { categorySlug: 'linoleum', fileName: 'linoleum_colors_complete.json' },
+    { categorySlug: 'vinil', fileName: 'vinyl_colors_complete.json' },
   ];
 
   for (const candidate of candidates) {
@@ -77,12 +102,34 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
         continue;
       }
       const data = await response.json();
-      if (!data || !Array.isArray(data.colors)) {
-        continue;
-      }
-      const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
-      if (match) {
-        return { categorySlug: candidate.categorySlug, color: match };
+      // Handle different JSON structures
+      if (candidate.categorySlug === 'vinil' && data.collections) {
+        // Vinil has collections[].colors structure
+        for (const collection of data.collections) {
+          const match = collection.colors?.find((color: any) => {
+            const expectedSlug = `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
+            return expectedSlug === slug || color.code === slug.split('-').pop();
+          });
+          if (match) {
+            return {
+              categorySlug: 'vinil',
+              color: {
+                ...match,
+                collection: collection.slug,
+                collection_name: collection.name,
+                collection_slug: collection.slug,
+                full_name: `${match.code} ${match.name}`,
+                slug: slug,
+              } as ColorFromJSON
+            };
+          }
+        }
+      } else if (data.colors && Array.isArray(data.colors)) {
+        // LVT/Linoleum have colors array
+        const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
+        if (match) {
+          return { categorySlug: candidate.categorySlug, color: match };
+        }
       }
     } catch (error) {
       console.error('Error reading remote color JSON:', candidate.fileName, error);
@@ -299,11 +346,14 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
 function colorToProduct(source: ColorSource, slug: string, collectionSlugOverride?: string): Product & { collectionSlug: string } {
   const { categorySlug, color } = source;
   const isLVT = categorySlug === 'lvt';
-  const categoryId = isLVT ? '6' : '7';
+  const isVinil = categorySlug === 'vinil';
+  const categoryId = isLVT ? '6' : isVinil ? '2' : '7';
   const brandId = '6';
   const name = color.full_name || `${color.code} ${color.name}`.trim();
   const primaryImageUrl = isLVT
     ? (color.texture_url || color.lifestyle_url || color.image_url || '')
+    : isVinil
+    ? ((color as any).image || color.image_url || '')
     : (color.texture_url || color.image_url || '');
 
   const images: ProductImageType[] = primaryImageUrl
@@ -347,11 +397,14 @@ function colorToProduct(source: ColorSource, slug: string, collectionSlugOverrid
 function collectionFromColor(source: ColorSource, slug: string): Product {
   const { categorySlug, color } = source;
   const isLVT = categorySlug === 'lvt';
-  const categoryId = isLVT ? '6' : '7';
+  const isVinil = categorySlug === 'vinil';
+  const categoryId = isLVT ? '6' : isVinil ? '2' : '7';
   const brandId = '6';
   const collectionName = (color.collection_name || color.collection || '').toString() || slug;
   const primaryImageUrl = isLVT
     ? (color.texture_url || color.lifestyle_url || color.image_url || '')
+    : isVinil
+    ? ((color as any).image || color.image_url || '')
     : (color.texture_url || color.image_url || '');
 
   const images: ProductImageType[] = primaryImageUrl
@@ -433,6 +486,24 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
     const linoleumColor = linoleumColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
     if (linoleumColor) {
       const colorSource: ColorSource = { categorySlug: 'linoleum', color: linoleumColor };
+      return collectionFromColor(colorSource, slug);
+    }
+    
+    // Try to find collection in Vinil JSON
+    const vinylCollection = vinylCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
+    if (vinylCollection && vinylCollection.colors && vinylCollection.colors.length > 0) {
+      const firstColor = vinylCollection.colors[0];
+      const colorSource: ColorSource = {
+        categorySlug: 'vinil',
+        color: {
+          ...firstColor,
+          collection: vinylCollection.slug,
+          collection_name: vinylCollection.name,
+          collection_slug: vinylCollection.slug,
+          full_name: `${firstColor.code} ${firstColor.name}`,
+          slug: `${vinylCollection.slug}-${firstColor.code}-${firstColor.name.toLowerCase().replace(/\s+/g, '-')}`,
+        } as ColorFromJSON
+      };
       return collectionFromColor(colorSource, slug);
     }
     
@@ -596,6 +667,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '6': 'lvt',
       '7': 'linoleum',
       '4': 'tekstilne-ploce',
+      '2': 'vinil',
     };
 
     // If a linoleum collection is accessed with gerflor- prefix, redirect to canonical slug without prefix
@@ -618,7 +690,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // If product is a COLOR (has collectionSlug), redirect to COLLECTION page with color parameter.
     // Collections don't have collectionSlug and should stay on collection page.
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
-    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') && collectionSlugFromProduct) {
+    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct) {
       const normalizedCollectionSlug = normalizeCollectionSlug(product.categoryId, collectionSlugFromProduct);
       if (normalizedCollectionSlug) {
         const { redirect } = await import('next/navigation');
@@ -728,7 +800,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
           {/* Product Content */}
           <div className="container py-12">
-            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') ? (
+            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') ? (
               <>
                 {/* LVT and Linoleum products with color selector */}
                 <ProductColorSelector
@@ -967,8 +1039,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Certifications & Eco Features - Full Width Below for LVT and Linoleum */}
-            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4') && (
+            {/* Certifications & Eco Features - Full Width Below for LVT, Linoleum, and Vinil */}
+            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && (
               <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Certifications */}
                 <div className="bg-white rounded-2xl shadow-lg p-6">
