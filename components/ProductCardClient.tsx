@@ -39,7 +39,8 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
       productHref = `/kategorije/vinil`;
     }
   } else if (isColorTile && colorCollectionSlug) {
-    // For LVT/Linoleum/Carpet colors with collectionSlug
+    // For color products (LVT/Linoleum/Carpet), ONLY if they have collectionSlug (individual colors)
+    // Collections don't have collectionSlug, so they will use default href (collection page)
     let collectionSlug = colorCollectionSlug;
     // For LVT, ensure gerflor- prefix
     if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
@@ -67,10 +68,6 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
             loading="lazy"
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            onError={(e) => {
-              console.error('Image failed to load:', primaryImage.url);
-              // Don't hide, just log the error
-            }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">

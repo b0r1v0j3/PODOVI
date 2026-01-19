@@ -111,21 +111,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     if (category.slug === 'vinil') {
       // For Vinil, collections have SKU starting with "GER-", colors have SKU with numbers only
       collections = products.filter(p => p.sku.startsWith('GER-'));
-      // Load colors directly from TypeScript file instead of JSON fetch
-      let allColors = vinyl_colors.filter(p => /^\d+$/.test(p.sku));
-      // Apply type filter if present
-      if (vinylTypeFilter) {
-        allColors = allColors.filter(p => {
-          // Find the type spec in the product specs
-          const typeSpec = p.specs.find(s => s.key === 'type');
-          if (!typeSpec) return false;
-          const typeValue = typeSpec.value.toLowerCase();
-          return vinylTypeFilter === 'homogeneous' 
-            ? typeValue.includes('homogeni')
-            : typeValue.includes('heterogeni');
-        });
-      }
-      colors = allColors;
+      // Colors will be loaded from JSON in LVTTabs component (same as LVT/Linoleum)
+      colors = [];
     } else {
       collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')) ?? false);
       colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')));  
