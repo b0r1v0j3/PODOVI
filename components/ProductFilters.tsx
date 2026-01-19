@@ -14,11 +14,17 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
   const pathname = usePathname();
   const searchParams = useSearchParams();
   
+  const isVinilCategory = pathname?.includes('/kategorije/vinil');
+  const currentType = searchParams.get('type');
+  
   const [search, setSearch] = useState(currentFilters.search || '');
   const [selectedBrands, setSelectedBrands] = useState<string[]>(currentFilters.brandIds || []);
   const [priceMin, setPriceMin] = useState(currentFilters.priceMin?.toString() || '');
   const [priceMax, setPriceMax] = useState(currentFilters.priceMax?.toString() || '');
   const [inStock, setInStock] = useState(currentFilters.inStock || false);
+  const [vinylType, setVinylType] = useState<'homogeni' | 'heterogeni' | null>(
+    currentType === 'homogeni' ? 'homogeni' : currentType === 'heterogeni' ? 'heterogeni' : null
+  );
 
   const applyFilters = () => {
     const params = new URLSearchParams(searchParams);
@@ -29,6 +35,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     params.delete('priceMin');
     params.delete('priceMax');
     params.delete('inStock');
+    params.delete('type');
 
     // Add new filter params
     if (search) params.set('search', search);
@@ -36,6 +43,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     if (priceMin) params.set('priceMin', priceMin);
     if (priceMax) params.set('priceMax', priceMax);
     if (inStock) params.set('inStock', 'true');
+    if (isVinilCategory && vinylType) params.set('type', vinylType);
 
     router.push(`${pathname}?${params.toString()}`);
   };
@@ -46,6 +54,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     setPriceMin('');
     setPriceMax('');
     setInStock(false);
+    setVinylType(null);
     router.push(pathname);
   };
 
@@ -57,7 +66,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock;
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock || (isVinilCategory && vinylType);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -116,6 +125,45 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
           />
         </div>
       </div>
+
+      {/* Vinyl Type Filter */}
+      {isVinilCategory && (
+        <div className="mb-6">
+          <label className="label text-xs uppercase tracking-wide text-gray-500">Tip Vinila</label>
+          <div className="space-y-2">
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="radio"
+                name="vinylType"
+                checked={vinylType === 'homogeni'}
+                onChange={() => setVinylType('homogeni')}
+                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Homogeni</span>
+            </label>
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="radio"
+                name="vinylType"
+                checked={vinylType === 'heterogeni'}
+                onChange={() => setVinylType('heterogeni')}
+                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Heterogeni</span>
+            </label>
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="radio"
+                name="vinylType"
+                checked={vinylType === null}
+                onChange={() => setVinylType(null)}
+                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Svi</span>
+            </label>
+          </div>
+        </div>
+      )}
 
       {/* In Stock */}
       <div className="mb-6">
