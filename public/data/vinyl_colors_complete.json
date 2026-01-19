@@ -2180,7 +2180,8 @@
           "name": "COTTON",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6001-cotton-85926001",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6001-cotton.jpg"
         },
         {
           "code": "6002",
@@ -2243,7 +2244,8 @@
           "name": "TANGELO",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6025-tangelo-85926025",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6025-tangelo.jpg"
         },
         {
           "code": "6027",
@@ -2274,14 +2276,16 @@
           "name": "BREEZE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6031-breeze-85926031",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6031-breeze.jpg"
         },
         {
           "code": "6032",
           "name": "SUNSHINE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6032-sunshine-85926032",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6032-sunshine.jpg"
         },
         {
           "code": "6034",
@@ -2296,7 +2300,8 @@
           "name": "OCEANIA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6036-oceania-85926036",
-          "collection_slug": "mipolam-symbioz"
+          "collection_slug": "mipolam-symbioz",
+          "image": "/images/products/vinyl/mipolam-symbioz/6036-oceania.jpg"
         },
         {
           "code": "6037",
