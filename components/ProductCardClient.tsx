@@ -32,25 +32,8 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     const isVinylCollection = product.sku.startsWith('GER-');
     
     if (isVinylColor) {
-      // For vinyl colors, find collection slug from specs or slug
-      const collectionSpec = product.specs.find(s => s.key === 'collection');
-      if (collectionSpec) {
-        // Extract collection slug from product slug (e.g., "mipolam-accord-0301-louise" -> "mipolam-accord")
-        const slugParts = product.slug.split('-');
-        // Find where the color code starts (usually after collection name)
-        let collectionSlug = '';
-        for (let i = 0; i < slugParts.length; i++) {
-          if (/^\d{4}$/.test(slugParts[i])) {
-            // Found the color code, everything before is collection
-            collectionSlug = slugParts.slice(0, i).join('-');
-            break;
-          }
-        }
-        if (collectionSlug) {
-          // Link to category page with color parameter
-          productHref = `/kategorije/vinil?color=${product.slug}`;
-        }
-      }
+      // For vinyl colors, link directly to category page with color parameter
+      productHref = `/kategorije/vinil?color=${product.slug}`;
     } else if (isVinylCollection) {
       // For vinyl collections, link to category page
       productHref = `/kategorije/vinil`;
