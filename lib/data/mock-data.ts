@@ -2,6 +2,7 @@ import { Category, Brand, Product } from '@/types';
 import { gerflor_products } from './gerflor-products-generated';
 import linoleumProducts from './linoleum-products';
 import { vinyl_collections } from './vinyl-collections-generated';
+import { vinyl_colors } from './vinyl-colors-generated';
 
 export const categories: Category[] = [
   {
@@ -120,8 +121,9 @@ export const brands: Brand[] = [
 ];
 
 export const products: Product[] = [
-  // VINIL KOLEKCIJE - Generated from vinyl_colors_complete.json
+  // VINIL - Generated from vinyl_colors_complete.json
   ...vinyl_collections,
+  ...vinyl_colors,
   // GERFLOR KOLEKCIJE - External links
   // Gerflor LVT Collections - 17 products
   // Links to be added by user one by one
