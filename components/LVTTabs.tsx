@@ -15,17 +15,19 @@ interface ColorFromJSON {
   texture_url?: string;
   lifestyle_url?: string;
   image_count: number;
+  type?: 'homogeneous' | 'heterogeneous'; // For Vinil
 }
 
 interface LVTTabsProps {
   collections: Product[];
   colors: Product[]; // Legacy fallback for non-JSON categories
   brandsRecord: Record<string, Brand>;
-  categorySlug: string; // 'lvt' or 'linoleum'
+  categorySlug: string; // 'lvt', 'linoleum', or 'vinil'
   initialColorSlug?: string; // Optional color slug to automatically open and highlight
+  vinylTypeFilter?: 'homogeneous' | 'heterogeneous' | null; // Filter for Vinil type
 }
 
-export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug }: LVTTabsProps) {
+export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylTypeFilter }: LVTTabsProps) {
   // If initialColorSlug is provided, start with 'colors' tab active
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(initialColorSlug ? 'colors' : 'collections');
   const [colorsFromJSON, setColorsFromJSON] = useState<Product[]>([]);
@@ -33,7 +35,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
   const hasLoadedColors = useRef(false);
   const lastCategorySlug = useRef<string>('');
-  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt';
+  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || categorySlug === 'vinil';
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
   const collectionsToRender = useMemo(() => {
     if (!useJsonColors) {
@@ -52,6 +54,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
 
     const jsonPath = categorySlug === 'linoleum'
       ? '/data/linoleum_colors_complete.json'
+      : categorySlug === 'vinil'
+      ? '/data/vinyl_colors_complete.json'
       : '/data/lvt_colors_complete.json';
 
     fetch(jsonPath)
@@ -112,14 +116,20 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             return;
           }
 
+          // Filter colors by type if Vinil category and filter is set
+          let filteredColors = data.colors;
+          if (categorySlug === 'vinil' && vinylTypeFilter) {
+            filteredColors = data.colors.filter((color: any) => color.type === vinylTypeFilter);
+          }
+
           // Convert colors from JSON to Product objects
-          const colorsAsProducts: Product[] = data.colors.map((color: ColorFromJSON, index: number) => {
+          const colorsAsProducts: Product[] = filteredColors.map((color: ColorFromJSON, index: number) => {
             // Find brand ID (Gerflor = '6')
             const gerflorBrand = Object.values(brandsRecord).find(b => b.slug === 'gerflor');
             const brandId = gerflorBrand?.id || '6';
             
             // Find category ID
-            const categoryId = categorySlug === 'linoleum' ? '7' : '6';
+            const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
             // For Linoleum: use texture_url or image_url (no lifestyle_url available)
