@@ -1,0 +1,45 @@
+NEDOSTAJUĆE SLIKE ZA MIPOLAM ELEGANCE
+=====================================
+
+Trenutno imam: 10 od 33 slika
+
+NEDOSTAJU SLIKE ZA SLEDEĆE BOJE (23):
+
+1. 0322 JICAMA → 0322-jicama.jpg
+2. 0326 JOJOBA → 0326-jojoba.jpg
+3. 0328 ALMOND → 0328-almond.jpg
+4. 0329 HAZELNUT → 0329-hazelnut.jpg
+5. 0331 PLUM → 0331-plum.jpg
+6. 0333 ANANAS → 0333-ananas.jpg
+7. 0336 ACEROLA → 0336-acerola.jpg
+8. 0338 KIWI → 0338-kiwi.jpg
+9. 0340 JAMBOLAN → 0340-jambolan.jpg
+10. 0341 BILBERRY → 0341-bilberry.jpg
+11. 0342 BLUEBERRY → 0342-blueberry.jpg
+12. 0344 NUTMEG → 0344-nutmeg.jpg
+13. 0347 MANGOUSTAN → 0347-mangoustan.jpg
+14. 0348 BLUETTA → 0348-bluetta.jpg
+15. 0349 BLUECROP → 0349-bluecrop.jpg
+16. 0696 GINGER → 0696-ginger.jpg
+17. 0697 GREENSTONE → 0697-greenstone.jpg
+18. 0698 CACAO → 0698-cacao.jpg
+19. 0699 BANANA → 0699-banana.jpg
+20. 0700 MELON → 0700-melon.jpg
+21. 0702 KUMQUAT → 0702-kumquat.jpg
+22. 0704 RASPBERRY GREY → 0704-raspberry-grey.jpg
+23. 0705 PATISSON → 0705-patisson.jpg
+
+VEĆ POSTOJE SLIKE (10):
+- 0318 GRAPE ✓
+- 0319 QUETSCHE ✓
+- 0321 OLIVE ✓
+- 0323 NUT ✓
+- 0324 CHESTNUT ✓
+- 0327 PEAR ✓
+- 0330 LITCHI ✓
+- 0339 APPLE ✓
+- 0343 PECAN ✓
+- 0703 LIME ✓
+
+=====================================
+UKUPNO NEDOSTAJE: 23 slike
