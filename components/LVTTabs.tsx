@@ -29,8 +29,8 @@ interface LVTTabsProps {
 }
 
 export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylTypeFilter }: LVTTabsProps) {
-  // For Vinil, start with 'colors' tab active (same as LVT/Linoleum)
   // If initialColorSlug is provided, start with 'colors' tab active
+  // For Vinil, always start with 'colors' tab (no JSON fetch, colors passed as props)
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
     categorySlug === 'vinil' || initialColorSlug ? 'colors' : 'collections'
   );
@@ -56,10 +56,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       return;
     }
 
+    // For Vinil, use count from props (TypeScript file)
+    if (categorySlug === 'vinil') {
+      setTotalColorsCount(legacyColors.length);
+      return;
+    }
+
     const jsonPath = categorySlug === 'linoleum'
       ? '/data/linoleum_colors_complete.json'
-      : categorySlug === 'vinil'
-      ? '/data/vinyl_colors_complete.json'
       : '/data/lvt_colors_complete.json';
 
     fetch(jsonPath)
@@ -89,9 +93,24 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
   }, [categorySlug]);
 
+  // For Vinil, use colors from props immediately (no JSON fetch)
+  useEffect(() => {
+    if (categorySlug === 'vinil' && legacyColors.length > 0 && !hasLoadedColors.current) {
+      console.log(`LVTTabs: Using ${legacyColors.length} vinyl colors from props`);
+      setColorsFromJSON(legacyColors);
+      setLoadingColors(false);
+      hasLoadedColors.current = true;
+    }
+  }, [categorySlug, legacyColors]);
+
   // Load colors from JSON when colors tab is active or when initialColorSlug is provided
   useEffect(() => {
     if (!useJsonColors) {
+      return;
+    }
+
+    // Skip for Vinil - already loaded above
+    if (categorySlug === 'vinil') {
       return;
     }
 
@@ -104,8 +123,6 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       setLoadingColors(true);
       const jsonPath = categorySlug === 'linoleum'
         ? '/data/linoleum_colors_complete.json'
-        : categorySlug === 'vinil'
-        ? '/data/vinyl_colors_complete.json'
         : '/data/lvt_colors_complete.json';
 
       console.log(`LVTTabs: Fetching colors from ${jsonPath}...`);
