@@ -603,350 +603,400 @@
           "name": "QUARTZ",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4401-quartz-86814401",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4401-quartz.jpg"
         },
         {
           "code": "4402",
           "name": "YUKI",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4402-yuki-86814402",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4402-yuki.jpg"
         },
         {
           "code": "4403",
           "name": "NATURAL SHADE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4403-natural-shade-86814403",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4403-natural-shade.jpg"
         },
         {
           "code": "4404",
           "name": "MILK SHAKE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4404-milk-shake-86814404",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4404-milkshake.jpg"
         },
         {
           "code": "4405",
           "name": "SAND OPAL",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4405-sand-opal-86814405",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4405-sand-opal.jpg"
         },
         {
           "code": "4407",
           "name": "SPEARMINT",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4407-spearmint-86814407",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4407-spearmint.jpg"
         },
         {
           "code": "4408",
           "name": "CRYSTAL ICE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4408-crystal-ice-86814408",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4408-crystal-ice.jpg"
         },
         {
           "code": "4409",
           "name": "MATTE GREY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4409-matte-grey-86814409",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4409-matte-grey.jpg"
         },
         {
           "code": "4410",
           "name": "VIOLET GREY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4410-violet-grey-86814410",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4410-violet-grey.jpg"
         },
         {
           "code": "4411",
           "name": "RAFFIA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4411-raffia-86814411",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4411-raffia.jpg"
         },
         {
           "code": "4412",
           "name": "TUNDRA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4412-tundra-86814412",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4412-tundra.jpg"
         },
         {
           "code": "4413",
           "name": "MARLYN",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4413-marlyn-86814413",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4413-marlyn.jpg"
         },
         {
           "code": "4416",
           "name": "SAPPHIRE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4416-sapphire-86814416",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4416-sapphire.jpg"
         },
         {
           "code": "4417",
           "name": "AQUAMARINE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4417-aquamarine-86814417",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4417-aquamarine.jpg"
         },
         {
           "code": "4420",
           "name": "SILVER GREY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4420-silver-grey-86814420",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4420-silver-grey.jpg"
         },
         {
           "code": "4422",
           "name": "MANGO",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4422-mango-86814422",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4422-mango.jpg"
         },
         {
           "code": "4424",
           "name": "SMOKED OPAL",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4424-smoked-opal-86814424",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4424-smoked-opal.jpg"
         },
         {
           "code": "4425",
           "name": "AMBER",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4425-amber-86814425",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4425-amber.jpg"
         },
         {
           "code": "4426",
           "name": "BALTIC",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4426-baltic-86814426",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4426-baltic.jpg"
         },
         {
           "code": "4427",
           "name": "PINE FOREST",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4427-pine-forest-86814427",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4427-pine-forest.jpg"
         },
         {
           "code": "4428",
           "name": "SANDY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4428-sandy-86814428",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4428-sandy.jpg"
         },
         {
           "code": "4429",
           "name": "GRAY OPAL",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4429-gray-opal-86814429",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4429-gray-opal.jpg"
         },
         {
           "code": "4430",
           "name": "PEARL GREY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4430-pearl-grey-86814430",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4430-pearl-grey.jpg"
         },
         {
           "code": "4431",
           "name": "EXOTIC MUD",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4431-exotic-mud-86814431",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4431-exotic-mud.jpg"
         },
         {
           "code": "4432",
           "name": "CITRINE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4432-citrine-86814432",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4432-citrine.jpg"
         },
         {
           "code": "4433",
           "name": "ASH COAT",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4433-ash-coat-86814433",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4433-ash-coat.jpg"
         },
         {
           "code": "4434",
           "name": "CAST IRON",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4434-cast-iron-86814434",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4434-cast-iron.jpg"
         },
         {
           "code": "4435",
           "name": "BUTTERNUT",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4435-butternut-86814435",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4435-butternut.jpg"
         },
         {
           "code": "4436",
           "name": "SANTORINI",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4436-santorini-86814436",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4436-santorini.jpg"
         },
         {
           "code": "4437",
           "name": "CASHMERE ROSE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4437-cashmere-rose-86814437",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4437-cashmere-rose.jpg"
         },
         {
           "code": "4441",
           "name": "LIGHT GREIGE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4441-light-greige-86814441",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4441-light-greige.jpg"
         },
         {
           "code": "4443",
           "name": "LIME TAUPE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4443-lime-taupe-86814443",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4443-lime-taupe.jpg"
         },
         {
           "code": "4444",
           "name": "HAVANA BROWN",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4444-havana-brown-86814444",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4444-havana-brown.jpg"
         },
         {
           "code": "4445",
           "name": "MOCCA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4445-mocca-86814445",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4445-mocca.jpg"
         },
         {
           "code": "4446",
           "name": "BLUE OCEAN",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4446-blue-ocean-86814446",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4446-blue-ocean.jpg"
         },
         {
           "code": "4447",
           "name": "LIGHT EMERALD",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4447-light-emerald-86814447",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4447-light-emerald.jpg"
         },
         {
           "code": "4448",
           "name": "RUBY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4448-ruby-86814448",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4448-ruby.jpg"
         },
         {
           "code": "4450",
           "name": "STORMY WEATHER",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4450-stormy-weather-86814450",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4450-stormy-weather.jpg"
         },
         {
           "code": "4455",
           "name": "ORANGE SUNLIGHT",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4455-orange-sunlight-86814455",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4455-orange-sunlight.jpg"
         },
         {
           "code": "4457",
           "name": "OLIVINE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4457-olivine-86814457",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4457-olivine.jpg"
         },
         {
           "code": "4459",
           "name": "GREY STORM",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4459-grey-storm-86814459",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4459-grey-storm.jpg"
         },
         {
           "code": "4460",
           "name": "BLACK STONE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4460-black-stone-86814460",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4460-black-stone.jpg"
         },
         {
           "code": "4463",
           "name": "GREIGE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4463-greige-86814463",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4463-greige.jpg"
         },
         {
           "code": "4466",
           "name": "THISTLE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4466-thistle-86814466",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4466-thistle.jpg"
         },
         {
           "code": "4467",
           "name": "CLOVER",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4467-clover-86814467",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4467-clover.jpg"
         },
         {
           "code": "4475",
           "name": "CINABRE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4475-cinabre-86814475",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4475-cinabre.jpg"
         },
         {
           "code": "4476",
           "name": "AMETHYST",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4476-amethyst-86814476",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4476-amethyst.jpg"
         },
         {
           "code": "4481",
           "name": "ROSASPINA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4481-rosaspina-86814481",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4481-rosaspina.jpg"
         },
         {
           "code": "4482",
           "name": "ORCHID",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4482-orchid-86814482",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4482-orchid.jpg"
         },
         {
           "code": "4496",
           "name": "LIGHT SAPPHIRE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4496-light-sapphire-86814496",
-          "collection_slug": "mipolam-affinity-608x608"
+          "collection_slug": "mipolam-affinity-608x608",
+          "image": "/images/products/vinyl/mipolam-affinity-608x608/4496-light-sapphire.jpg"
         }
       ]
     },
