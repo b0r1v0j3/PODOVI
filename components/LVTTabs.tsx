@@ -52,10 +52,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       return;
     }
 
+    // For Vinil, use colors from props (TypeScript file)
+    if (categorySlug === 'vinil' && legacyColors.length > 0) {
+      setTotalColorsCount(legacyColors.length);
+      return;
+    }
+
     const jsonPath = categorySlug === 'linoleum'
       ? '/data/linoleum_colors_complete.json'
-      : categorySlug === 'vinil'
-      ? '/data/vinyl_colors_complete.json'
       : '/data/lvt_colors_complete.json';
 
     fetch(jsonPath)
@@ -73,7 +77,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       .catch(err => {
         console.error('Error loading colors count:', err);
       });
-  }, [categorySlug, useJsonColors]);
+  }, [categorySlug, useJsonColors, legacyColors]);
 
   // Reset loaded state when category changes
   useEffect(() => {
@@ -96,12 +100,19 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       setActiveTab('colors');
     }
 
+    // For Vinil, use colors passed as props (from TypeScript file) instead of fetching JSON
+    if (categorySlug === 'vinil' && legacyColors.length > 0) {
+      console.log(`LVTTabs: Using ${legacyColors.length} vinyl colors from props`);
+      setColorsFromJSON(legacyColors);
+      setLoadingColors(false);
+      hasLoadedColors.current = true;
+      return;
+    }
+
     if ((activeTab === 'colors' || initialColorSlug) && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
       const jsonPath = categorySlug === 'linoleum'
         ? '/data/linoleum_colors_complete.json'
-        : categorySlug === 'vinil'
-        ? '/data/vinyl_colors_complete.json'
         : '/data/lvt_colors_complete.json';
 
       fetch(jsonPath)
@@ -118,30 +129,21 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             return;
           }
 
-          // Filter colors by type if Vinil category and filter is set
-          let filteredColors = data.colors;
-          if (categorySlug === 'vinil' && vinylTypeFilter) {
-            filteredColors = data.colors.filter((color: any) => color.type === vinylTypeFilter);
-          }
-
-          console.log(`LVTTabs: Loaded ${filteredColors.length} colors from JSON for category ${categorySlug}`);
+          console.log(`LVTTabs: Loaded ${data.colors.length} colors from JSON for category ${categorySlug}`);
 
           // Convert colors from JSON to Product objects
-          const colorsAsProducts: Product[] = filteredColors.map((color: ColorFromJSON, index: number) => {
+          const colorsAsProducts: Product[] = data.colors.map((color: ColorFromJSON, index: number) => {
             // Find brand ID (Gerflor = '6')
             const gerflorBrand = Object.values(brandsRecord).find(b => b.slug === 'gerflor');
             const brandId = gerflorBrand?.id || '6';
             
             // Find category ID
-            const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
+            const categoryId = categorySlug === 'linoleum' ? '7' : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
-            // For Vinil: use image_url directly (texture_url is null)
             // For Linoleum: use texture_url or image_url (no lifestyle_url available)
             const primaryImageUrl = categorySlug === 'lvt' 
               ? (color.texture_url || color.lifestyle_url || color.image_url || '')
-              : categorySlug === 'vinil'
-              ? (color.image_url || '')
               : (color.texture_url || color.image_url || '');
 
             return {
@@ -183,7 +185,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
           hasLoadedColors.current = true; // Mark as loaded even on error to prevent retry loop
         });
     }
-  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors]);
+  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors, legacyColors, vinylTypeFilter]);
 
   const renderProducts = (products: Product[], gridKey: string) => {
     if (products.length === 0) {
