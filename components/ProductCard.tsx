@@ -12,6 +12,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
   const primaryImage = product.images && product.images.length > 0 
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
+  const isLocalImage = !!primaryImage?.url?.startsWith('/');
 
   // For LVT, Linoleum, and Carpet featured products, link to COLLECTION page with color parameter
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
@@ -46,6 +47,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
             src={primaryImage.url}
             alt={primaryImage.alt}
             fill
+            unoptimized={isLocalImage}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
