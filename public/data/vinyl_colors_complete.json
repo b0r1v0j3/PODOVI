@@ -1,0 +1,2314 @@
+{
+  "collections": [
+    {
+      "name": "Mipolam Accord",
+      "slug": "mipolam-accord",
+      "url": "https://www.gerflor-cee.com/products/mipolam-accord-0301-louise-85860301",
+      "colorCount": 22,
+      "colors": [
+        {
+          "code": "0301",
+          "name": "LOUISE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0301-louise-85860301",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0301-louise.jpg"
+        },
+        {
+          "code": "0303",
+          "name": "MANITOBA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0303-manitoba-85860303",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0303-manitoba.jpg"
+        },
+        {
+          "code": "0305",
+          "name": "LIGHT SAND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0305-light-sand-85860305",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0305-light-sand.jpg"
+        },
+        {
+          "code": "0306",
+          "name": "INARI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0306-inari-85860306",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0306-inari.jpg"
+        },
+        {
+          "code": "0310",
+          "name": "HURON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0310-huron-85860310",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0310-huron.jpg"
+        },
+        {
+          "code": "0312",
+          "name": "POWELL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0312-powell-85860312",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0312-powell.jpg"
+        },
+        {
+          "code": "0315",
+          "name": "ORANGE RIVER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0315-orange-river-85860315",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0315-orange-river.jpg"
+        },
+        {
+          "code": "0316",
+          "name": "MALAREN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0316-malaren-85860316",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0316-malaren.jpg"
+        },
+        {
+          "code": "0319",
+          "name": "TOBA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0319-toba-85860319",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0319-toba.jpg"
+        },
+        {
+          "code": "0320",
+          "name": "ONTARIO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0320-ontario-85860320",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0320-ontario.jpg"
+        },
+        {
+          "code": "0321",
+          "name": "SALT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0321-salt-85860321",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0321-salt.jpg"
+        },
+        {
+          "code": "0324",
+          "name": "SAND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0324-sand-85860324",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0324-sand.jpg"
+        },
+        {
+          "code": "0330",
+          "name": "KRUGER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0330-kruger-85860330",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0330-kruger.jpg"
+        },
+        {
+          "code": "0332",
+          "name": "DORE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0332-dore-85860332",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0332-dore.jpg"
+        },
+        {
+          "code": "0346",
+          "name": "ROXEN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0346-roxen-85860346",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0346-roxen.jpg"
+        },
+        {
+          "code": "0360",
+          "name": "BALATON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0360-balaton-85860360",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0360-balaton.jpg"
+        },
+        {
+          "code": "0441",
+          "name": "LOCH NESS",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0441-loch-ness-85860441",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0441-loch-ness.jpg"
+        },
+        {
+          "code": "0443",
+          "name": "KRUMME",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0443-krumme-85860443",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0443-krumme.jpg"
+        },
+        {
+          "code": "0447",
+          "name": "GRUNSEE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0447-grunsee-85860447",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0447-grunsee.jpg"
+        },
+        {
+          "code": "0450",
+          "name": "THAMES",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0450-thames-85860450",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0450-thames.jpg"
+        },
+        {
+          "code": "0459",
+          "name": "MISSISSIPI RIVER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0459-mississipi-river-85860459",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0459-mississipi-river.jpg"
+        },
+        {
+          "code": "0463",
+          "name": "BOURGET",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-accord-0463-bourget-85860463",
+          "collection_slug": "mipolam-accord",
+          "image": "/images/products/vinyl/mipolam-accord/0463-bourget.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Affinity",
+      "slug": "mipolam-affinity",
+      "url": "https://www.gerflor-cee.com/products/mipolam-affinity-4401-quartz-86804401",
+      "colorCount": 50,
+      "colors": [
+        {
+          "code": "4401",
+          "name": "QUARTZ",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4401-quartz-86804401",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4402",
+          "name": "YUKI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4402-yuki-86804402",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4403",
+          "name": "NATURAL SHADE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4403-natural-shade-86804403",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4404",
+          "name": "MILKSHAKE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4404-milkshake-86804404",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4405",
+          "name": "SAND OPAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4405-sand-opal-86804405",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4407",
+          "name": "SPEARMINT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4407-spearmint-86804407",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4408",
+          "name": "CRYSTAL ICE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4408-crystal-ice-86804408",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4409",
+          "name": "MATTE GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4409-matte-grey-86804409",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4410",
+          "name": "VIOLET GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4410-violet-grey-86804410",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4411",
+          "name": "RAFFIA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4411-raffia-86804411",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4412",
+          "name": "TUNDRA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4412-tundra-86804412",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4413",
+          "name": "MARLYN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4413-marlyn-86804413",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4416",
+          "name": "SAPPHIRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4416-sapphire-86804416",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4417",
+          "name": "AQUAMARINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4417-aquamarine-86804417",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4420",
+          "name": "SILVER GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4420-silver-grey-86804420",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4422",
+          "name": "MANGO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4422-mango-86804422",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4424",
+          "name": "SMOKED OPAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4424-smoked-opal-86804424",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4425",
+          "name": "AMBER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4425-amber-86804425",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4426",
+          "name": "BALTIC",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4426-baltic-86804426",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4427",
+          "name": "PINE FOREST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4427-pine-forest-86804427",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4428",
+          "name": "SANDY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4428-sandy-86804428",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4429",
+          "name": "GRAY OPAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4429-gray-opal-86804429",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4430",
+          "name": "PEARL GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4430-pearl-grey-86804430",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4431",
+          "name": "EXOTIC MUD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4431-exotic-mud-86804431",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4432",
+          "name": "CITRINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4432-citrine-86804432",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4433",
+          "name": "ASH COAT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4433-ash-coat-86804433",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4434",
+          "name": "CAST IRON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4434-cast-iron-86804434",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4435",
+          "name": "BUTTERNUT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4435-butternut-86804435",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4436",
+          "name": "SANTORINI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4436-santorini-86804436",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4437",
+          "name": "CASHMERE ROSE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4437-cashmere-rose-86804437",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4441",
+          "name": "LIGHT GREIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4441-light-greige-86804441",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4443",
+          "name": "LIME TAUPE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4443-lime-taupe-86804443",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4444",
+          "name": "HAVANA BROWN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4444-havana-brown-86804444",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4445",
+          "name": "MOCCA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4445-mocca-86804445",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4446",
+          "name": "BLUE OCEAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4446-blue-ocean-86804446",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4447",
+          "name": "LIGHT EMERALD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4447-light-emerald-86804447",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4448",
+          "name": "RUBY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4448-ruby-86804448",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4450",
+          "name": "STORMY WEATHER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4450-stormy-weather-86804450",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4455",
+          "name": "ORANGE SUNLIGHT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4455-orange-sunlight-86804455",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4457",
+          "name": "OLIVINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4457-olivine-86804457",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4459",
+          "name": "GREY STORM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4459-grey-storm-86804459",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4460",
+          "name": "BLACK STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4460-black-stone-86804460",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4463",
+          "name": "GREIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4463-greige-86804463",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4466",
+          "name": "THISTLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4466-thistle-86804466",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4467",
+          "name": "CLOVER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4467-clover-86804467",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4475",
+          "name": "CINABRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4475-cinabre-86804475",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4476",
+          "name": "AMETHYST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4476-amethyst-86804476",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4481",
+          "name": "ROSASPINA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4481-rosaspina-86804481",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4482",
+          "name": "ORCHID",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4482-orchid-86804482",
+          "collection_slug": "mipolam-affinity"
+        },
+        {
+          "code": "4496",
+          "name": "LIGHT SAPPHIRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-4496-light-sapphire-86804496",
+          "collection_slug": "mipolam-affinity"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Affinity 608x608",
+      "slug": "mipolam-affinity-608x608",
+      "url": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4401-quartz-86814401",
+      "colorCount": 50,
+      "colors": [
+        {
+          "code": "4401",
+          "name": "QUARTZ",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4401-quartz-86814401",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4402",
+          "name": "YUKI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4402-yuki-86814402",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4403",
+          "name": "NATURAL SHADE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4403-natural-shade-86814403",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4404",
+          "name": "MILK SHAKE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4404-milk-shake-86814404",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4405",
+          "name": "SAND OPAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4405-sand-opal-86814405",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4407",
+          "name": "SPEARMINT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4407-spearmint-86814407",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4408",
+          "name": "CRYSTAL ICE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4408-crystal-ice-86814408",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4409",
+          "name": "MATTE GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4409-matte-grey-86814409",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4410",
+          "name": "VIOLET GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4410-violet-grey-86814410",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4411",
+          "name": "RAFFIA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4411-raffia-86814411",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4412",
+          "name": "TUNDRA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4412-tundra-86814412",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4413",
+          "name": "MARLYN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4413-marlyn-86814413",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4416",
+          "name": "SAPPHIRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4416-sapphire-86814416",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4417",
+          "name": "AQUAMARINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4417-aquamarine-86814417",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4420",
+          "name": "SILVER GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4420-silver-grey-86814420",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4422",
+          "name": "MANGO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4422-mango-86814422",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4424",
+          "name": "SMOKED OPAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4424-smoked-opal-86814424",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4425",
+          "name": "AMBER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4425-amber-86814425",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4426",
+          "name": "BALTIC",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4426-baltic-86814426",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4427",
+          "name": "PINE FOREST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4427-pine-forest-86814427",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4428",
+          "name": "SANDY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4428-sandy-86814428",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4429",
+          "name": "GRAY OPAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4429-gray-opal-86814429",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4430",
+          "name": "PEARL GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4430-pearl-grey-86814430",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4431",
+          "name": "EXOTIC MUD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4431-exotic-mud-86814431",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4432",
+          "name": "CITRINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4432-citrine-86814432",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4433",
+          "name": "ASH COAT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4433-ash-coat-86814433",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4434",
+          "name": "CAST IRON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4434-cast-iron-86814434",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4435",
+          "name": "BUTTERNUT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4435-butternut-86814435",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4436",
+          "name": "SANTORINI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4436-santorini-86814436",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4437",
+          "name": "CASHMERE ROSE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4437-cashmere-rose-86814437",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4441",
+          "name": "LIGHT GREIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4441-light-greige-86814441",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4443",
+          "name": "LIME TAUPE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4443-lime-taupe-86814443",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4444",
+          "name": "HAVANA BROWN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4444-havana-brown-86814444",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4445",
+          "name": "MOCCA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4445-mocca-86814445",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4446",
+          "name": "BLUE OCEAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4446-blue-ocean-86814446",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4447",
+          "name": "LIGHT EMERALD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4447-light-emerald-86814447",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4448",
+          "name": "RUBY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4448-ruby-86814448",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4450",
+          "name": "STORMY WEATHER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4450-stormy-weather-86814450",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4455",
+          "name": "ORANGE SUNLIGHT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4455-orange-sunlight-86814455",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4457",
+          "name": "OLIVINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4457-olivine-86814457",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4459",
+          "name": "GREY STORM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4459-grey-storm-86814459",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4460",
+          "name": "BLACK STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4460-black-stone-86814460",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4463",
+          "name": "GREIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4463-greige-86814463",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4466",
+          "name": "THISTLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4466-thistle-86814466",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4467",
+          "name": "CLOVER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4467-clover-86814467",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4475",
+          "name": "CINABRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4475-cinabre-86814475",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4476",
+          "name": "AMETHYST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4476-amethyst-86814476",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4481",
+          "name": "ROSASPINA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4481-rosaspina-86814481",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4482",
+          "name": "ORCHID",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4482-orchid-86814482",
+          "collection_slug": "mipolam-affinity-608x608"
+        },
+        {
+          "code": "4496",
+          "name": "LIGHT SAPPHIRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-affinity-608x608-4496-light-sapphire-86814496",
+          "collection_slug": "mipolam-affinity-608x608"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Astro",
+      "slug": "mipolam-astro",
+      "url": "https://www.gerflor-cee.com/products/mipolam-astro-2401-wise-87952401",
+      "colorCount": 14,
+      "colors": [
+        {
+          "code": "2401",
+          "name": "Wise",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2401-wise-87952401",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2408",
+          "name": "Halley",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2408-halley-87952408",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2409",
+          "name": "Soho",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2409-soho-87952409",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2410",
+          "name": "Tempel",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2410-tempel-87952410",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2411",
+          "name": "Catalina",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2411-catalina-87952411",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2413",
+          "name": "Cineos",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2413-cineos-87952413",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2424",
+          "name": "Biela",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2424-biela-87952424",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2425",
+          "name": "Neat",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2425-neat-87952425",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2430",
+          "name": "Panstarrs",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2430-panstarrs-87952430",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2432",
+          "name": "Lemmon",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2432-lemmon-87952432",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2441",
+          "name": "Helin",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2441-helin-87952441",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2446",
+          "name": "Spacewatch",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2446-spacewatch-87952446",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2463",
+          "name": "Linear",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2463-linear-87952463",
+          "collection_slug": "mipolam-astro"
+        },
+        {
+          "code": "2496",
+          "name": "Skiff",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-astro-2496-skiff-87952496",
+          "collection_slug": "mipolam-astro"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Bioplanet",
+      "slug": "mipolam-bioplanet",
+      "url": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5402-ivory-dust-88925402",
+      "colorCount": 40,
+      "colors": [
+        {
+          "code": "5402",
+          "name": "IVORY DUST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5402-ivory-dust-88925402",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5403",
+          "name": "MOON DUST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5403-moon-dust-88925403",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5404",
+          "name": "VANILLA SKY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5404-vanilla-sky-88925404",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5406",
+          "name": "MOQUI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5406-moqui-88925406",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5408",
+          "name": "CHALK DUST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5408-chalk-dust-88925408",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5409",
+          "name": "PEBBLE BEACH",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5409-pebble-beach-88925409",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5410",
+          "name": "SILEX",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5410-silex-88925410",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5411",
+          "name": "ATLANTIC GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5411-atlantic-grey-88925411",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5412",
+          "name": "MOON STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5412-moon-stone-88925412",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5413",
+          "name": "RAIN FALL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5413-rain-fall-88925413",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5416",
+          "name": "ACQUAMARINA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5416-acquamarina-88925416",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5417",
+          "name": "FOGGY HILL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5417-foggy-hill-88925417",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5418",
+          "name": "TERRA NERA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5418-terra-nera-88925418",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5420",
+          "name": "STONE POWDER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5420-stone-powder-88925420",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5422",
+          "name": "SUNFLOWER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5422-sunflower-88925422",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5424",
+          "name": "HAWK EYE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5424-hawk-eye-88925424",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5426",
+          "name": "SHADOW",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5426-shadow-88925426",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5427",
+          "name": "GREEN ZEST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5427-green-zest-88925427",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5428",
+          "name": "SHEDDED GROUND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5428-shedded-ground-88925428",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5429",
+          "name": "FOG PATCH",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5429-fog-patch-88925429",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5430",
+          "name": "SIDERAL GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5430-sideral-grey-88925430",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5432",
+          "name": "SUN STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5432-sun-stone-88925432",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5436",
+          "name": "TIGER EYE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5436-tiger-eye-88925436",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5437",
+          "name": "REEF WATER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5437-reef-water-88925437",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5438",
+          "name": "ANDALUSITE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5438-andalusite-88925438",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5439",
+          "name": "MOON WAY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5439-moon-way-88925439",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5441",
+          "name": "CLAY SOIL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5441-clay-soil-88925441",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5443",
+          "name": "WOOD PATH",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5443-wood-path-88925443",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5444",
+          "name": "ROCKY HILL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5444-rocky-hill-88925444",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5445",
+          "name": "TREE BARK",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5445-tree-bark-88925445",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5446",
+          "name": "BLUE NUG",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5446-blue-nug-88925446",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5447",
+          "name": "AVENTURINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5447-aventurine-88925447",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5450",
+          "name": "BLENDED ASHES",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5450-blended-ashes-88925450",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5455",
+          "name": "LAVA FLOW",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5455-lava-flow-88925455",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5456",
+          "name": "INTENSE INDIGO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5456-intense-indigo-88925456",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5459",
+          "name": "STORMY CLOUD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5459-stormy-cloud-88925459",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5460",
+          "name": "LAVA STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5460-lava-stone-88925460",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5466",
+          "name": "ROCKY BLUE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5466-rocky-blue-88925466",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5475",
+          "name": "INTENSE RUBY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5475-intense-ruby-88925475",
+          "collection_slug": "mipolam-bioplanet"
+        },
+        {
+          "code": "5482",
+          "name": "SUGAR DRIP",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-bioplanet-5482-sugar-drip-88925482",
+          "collection_slug": "mipolam-bioplanet"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Classic 15mm",
+      "slug": "mipolam-classic-15mm",
+      "url": "https://www.gerflor-cee.com/products/mipolam-classic-15mm-0002-platinum-41330002",
+      "colorCount": 2,
+      "colors": [
+        {
+          "code": "0002",
+          "name": "PLATINUM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-15mm-0002-platinum-41330002",
+          "collection_slug": "mipolam-classic-15mm"
+        },
+        {
+          "code": "0005",
+          "name": "STEEL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-15mm-0005-steel-41330005",
+          "collection_slug": "mipolam-classic-15mm"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Classic 2mm",
+      "slug": "mipolam-classic-2mm",
+      "url": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0002-platinum-43000002",
+      "colorCount": 14,
+      "colors": [
+        {
+          "code": "0002",
+          "name": "PLATINUM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0002-platinum-43000002",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0003",
+          "name": "IVORY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0003-ivory-43000003",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0005",
+          "name": "STEEL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0005-steel-43000005",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0010",
+          "name": "AZURE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0010-azure-43000010",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0013",
+          "name": "PEWTER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0013-pewter-43000013",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0014",
+          "name": "BROWN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0014-brown-43000014",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0108",
+          "name": "PEPPER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0108-pepper-43000108",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0121",
+          "name": "GREEN LEAF",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0121-green-leaf-43000121",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0122",
+          "name": "PINEAPPLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0122-pineapple-43000122",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0123",
+          "name": "CORALLO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0123-corallo-43000123",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0124",
+          "name": "TORTORA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0124-tortora-43000124",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0125",
+          "name": "TRUFFLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0125-truffle-43000125",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0301",
+          "name": "BEIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0301-beige-43000301",
+          "collection_slug": "mipolam-classic-2mm"
+        },
+        {
+          "code": "0303",
+          "name": "GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0303-grey-43000303",
+          "collection_slug": "mipolam-classic-2mm"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Elegance",
+      "slug": "mipolam-elegance",
+      "url": "https://www.gerflor-cee.com/products/mipolam-elegance-0318-grape-26920318",
+      "colorCount": 33,
+      "colors": [
+        {
+          "code": "0318",
+          "name": "GRAPE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0318-grape-26920318",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0319",
+          "name": "QUETSCHE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0319-quetsche-26920319",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0321",
+          "name": "OLIVE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0321-olive-26920321",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0322",
+          "name": "JICAMA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0322-jicama-26920322",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0323",
+          "name": "NUT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0323-nut-26920323",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0324",
+          "name": "CHESTNUT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0324-chestnut-26920324",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0326",
+          "name": "JOJOBA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0326-jojoba-26920326",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0327",
+          "name": "PEAR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0327-pear-26920327",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0328",
+          "name": "ALMOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0328-almond-26920328",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0329",
+          "name": "HAZELNUT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0329-hazelnut-26920329",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0330",
+          "name": "LITCHI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0330-litchi-26920330",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0331",
+          "name": "PLUM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0331-plum-26920331",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0333",
+          "name": "ANANAS",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0333-ananas-26920333",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0336",
+          "name": "ACEROLA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0336-acerola-26920336",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0338",
+          "name": "KIWI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0338-kiwi-26920338",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0339",
+          "name": "APPLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0339-apple-26920339",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0340",
+          "name": "JAMBOLAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0340-jambolan-26920340",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0341",
+          "name": "BILBERRY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0341-bilberry-26920341",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0342",
+          "name": "BLUEBERRY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0342-blueberry-26920342",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0343",
+          "name": "PECAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0343-pecan-26920343",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0344",
+          "name": "NUTMEG",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0344-nutmeg-26920344",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0347",
+          "name": "MANGOUSTAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0347-mangoustan-26920347",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0348",
+          "name": "BLUETTA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0348-bluetta-26920348",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0349",
+          "name": "BLUECROP",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0349-bluecrop-26920349",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0696",
+          "name": "GINGER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0696-ginger-26920696",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0697",
+          "name": "GREENSTONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0697-greenstone-26920697",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0698",
+          "name": "CACAO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0698-cacao-26920698",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0699",
+          "name": "BANANA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0699-banana-26920699",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0700",
+          "name": "MELON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0700-melon-26920700",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0702",
+          "name": "KUMQUAT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0702-kumquat-26920702",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0703",
+          "name": "LIME",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0703-lime-26920703",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0704",
+          "name": "RASPBERRY GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0704-raspberry-grey-26920704",
+          "collection_slug": "mipolam-elegance"
+        },
+        {
+          "code": "0705",
+          "name": "PATISSON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0705-patisson-26920705",
+          "collection_slug": "mipolam-elegance"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Planet",
+      "slug": "mipolam-planet",
+      "url": "https://www.gerflor-cee.com/products/mipolam-planet-5402-ivory-dust-86925402",
+      "colorCount": 40,
+      "colors": [
+        {
+          "code": "5402",
+          "name": "IVORY DUST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5402-ivory-dust-86925402",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5403",
+          "name": "MOON DUST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5403-moon-dust-86925403",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5404",
+          "name": "VANILLA SKY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5404-vanilla-sky-86925404",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5406",
+          "name": "MOQUI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5406-moqui-86925406",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5408",
+          "name": "CHALK DUST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5408-chalk-dust-86925408",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5409",
+          "name": "PEBBLE BEACH",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5409-pebble-beach-86925409",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5410",
+          "name": "SILEX",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5410-silex-86925410",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5411",
+          "name": "ATLANTIC GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5411-atlantic-grey-86925411",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5412",
+          "name": "MOON STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5412-moon-stone-86925412",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5413",
+          "name": "RAIN FALL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5413-rain-fall-86925413",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5416",
+          "name": "ACQUAMARINA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5416-acquamarina-86925416",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5417",
+          "name": "FOGGY HILL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5417-foggy-hill-86925417",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5418",
+          "name": "TERRA NERA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5418-terra-nera-86925418",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5420",
+          "name": "STONE POWDER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5420-stone-powder-86925420",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5422",
+          "name": "SUNFLOWER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5422-sunflower-86925422",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5424",
+          "name": "HAWK EYE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5424-hawk-eye-86925424",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5426",
+          "name": "SHADOW",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5426-shadow-86925426",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5427",
+          "name": "GREEN ZEST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5427-green-zest-86925427",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5428",
+          "name": "SHEDDED GROUND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5428-shedded-ground-86925428",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5429",
+          "name": "FOG PATCH",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5429-fog-patch-86925429",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5430",
+          "name": "SIDERAL GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5430-sideral-grey-86925430",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5432",
+          "name": "SUN STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5432-sun-stone-86925432",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5436",
+          "name": "TIGER EYE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5436-tiger-eye-86925436",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5437",
+          "name": "REEF WATER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5437-reef-water-86925437",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5438",
+          "name": "ANDALUSITE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5438-andalusite-86925438",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5439",
+          "name": "MOON WAY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5439-moon-way-86925439",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5441",
+          "name": "CLAY SOIL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5441-clay-soil-86925441",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5443",
+          "name": "WOOD PATH",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5443-wood-path-86925443",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5444",
+          "name": "ROCKY HILL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5444-rocky-hill-86925444",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5445",
+          "name": "TREE BARK",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5445-tree-bark-86925445",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5446",
+          "name": "BLUE NUG",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5446-blue-nug-86925446",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5447",
+          "name": "AVENTURINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5447-aventurine-86925447",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5450",
+          "name": "BLENDED ASHES",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5450-blended-ashes-86925450",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5455",
+          "name": "LAVA FLOW",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5455-lava-flow-86925455",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5456",
+          "name": "INTENSE INDIGO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5456-intense-indigo-86925456",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5459",
+          "name": "STORMY CLOUD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5459-stormy-cloud-86925459",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5460",
+          "name": "LAVA STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5460-lava-stone-86925460",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5466",
+          "name": "ROCKY BLUE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5466-rocky-blue-86925466",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5475",
+          "name": "INTENSE RUBY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5475-intense-ruby-86925475",
+          "collection_slug": "mipolam-planet"
+        },
+        {
+          "code": "5482",
+          "name": "SUGAR DRIP",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-planet-5482-sugar-drip-86925482",
+          "collection_slug": "mipolam-planet"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Symbioz",
+      "slug": "mipolam-symbioz",
+      "url": "https://www.gerflor-cee.com/products/mipolam-symbioz-6001-cotton-85926001",
+      "colorCount": 31,
+      "colors": [
+        {
+          "code": "6001",
+          "name": "COTTON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6001-cotton-85926001",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6002",
+          "name": "LIPICA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6002-lipica-85926002",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6005",
+          "name": "GHIBLI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6005-ghibli-85926005",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6006",
+          "name": "BLUE SKY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6006-blue-sky-85926006",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6008",
+          "name": "CALICO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6008-calico-85926008",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6009",
+          "name": "GREY STONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6009-grey-stone-85926009",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6010",
+          "name": "MIST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6010-mist-85926010",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6018",
+          "name": "USHUAIA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6018-ushuaia-85926018",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6025",
+          "name": "TANGELO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6025-tangelo-85926025",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6027",
+          "name": "ACACIA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6027-acacia-85926027",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6029",
+          "name": "CLOUD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6029-cloud-85926029",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6030",
+          "name": "STONEHENGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6030-stonehenge-85926030",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6031",
+          "name": "BREEZE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6031-breeze-85926031",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6032",
+          "name": "SUNSHINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6032-sunshine-85926032",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6034",
+          "name": "MOLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6034-mole-85926034",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6036",
+          "name": "OCEANIA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6036-oceania-85926036",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6037",
+          "name": "LAGOON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6037-lagoon-85926037",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6039",
+          "name": "PEBBLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6039-pebble-85926039",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6041",
+          "name": "CLAY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6041-clay-85926041",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6043",
+          "name": "WOOD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6043-wood-85926043",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6044",
+          "name": "SEA STORM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6044-sea-storm-85926044",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6045",
+          "name": "CHOCOLATE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6045-chocolate-85926045",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6047",
+          "name": "SAUGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6047-sauge-85926047",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6050",
+          "name": "HURRICANE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6050-hurricane-85926050",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6056",
+          "name": "TULUM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6056-tulum-85926056",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6057",
+          "name": "MUSK",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6057-musk-85926057",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6058",
+          "name": "VERMIGLIO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6058-vermiglio-85926058",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6059",
+          "name": "BLACK DIAMOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6059-black-diamond-85926059",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6065",
+          "name": "SEGESTA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6065-segesta-85926065",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6067",
+          "name": "KAKI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6067-kaki-85926067",
+          "collection_slug": "mipolam-symbioz"
+        },
+        {
+          "code": "6075",
+          "name": "CARDINAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-symbioz-6075-cardinal-85926075",
+          "collection_slug": "mipolam-symbioz"
+        }
+      ]
+    },
+    {
+      "name": "Mipolam Troplan",
+      "slug": "mipolam-troplan",
+      "url": "https://www.gerflor-cee.com/products/mipolam-troplan-1002-beige-85931002",
+      "colorCount": 18,
+      "colors": [
+        {
+          "code": "1002",
+          "name": "BEIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1002-beige-85931002",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1003",
+          "name": "LIGHT OCRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1003-light-ocre-85931003",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1004",
+          "name": "EARTH",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1004-earth-85931004",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1006",
+          "name": "BLUE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1006-blue-85931006",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1007",
+          "name": "GREEN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1007-green-85931007",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1009",
+          "name": "LIGHT GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1009-light-grey-85931009",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1010",
+          "name": "GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1010-grey-85931010",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1032",
+          "name": "YELLOW",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1032-yellow-85931032",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1033",
+          "name": "BROWN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1033-brown-85931033",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1035",
+          "name": "OCRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1035-ocre-85931035",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1036",
+          "name": "MEDIUM BLUE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1036-medium-blue-85931036",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1037",
+          "name": "MEDIUM GREEN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1037-medium-green-85931037",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1040",
+          "name": "DARK GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1040-dark-grey-85931040",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1055",
+          "name": "APRICOT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1055-apricot-85931055",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1056",
+          "name": "DARK BLUE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1056-dark-blue-85931056",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1057",
+          "name": "DARK GREEN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1057-dark-green-85931057",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1059",
+          "name": "BLUE GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1059-blue-grey-85931059",
+          "collection_slug": "mipolam-troplan"
+        },
+        {
+          "code": "1060",
+          "name": "ANTHRACITE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-troplan-1060-anthracite-85931060",
+          "collection_slug": "mipolam-troplan"
+        }
+      ]
+    }
+  ],
+  "totalColors": 314,
+  "generatedAt": "2026-01-19T12:41:49.987Z"
+}
