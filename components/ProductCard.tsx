@@ -43,13 +43,12 @@ export default async function ProductCard({ product }: ProductCardProps) {
     >
       <div className="relative h-64 bg-gray-100 overflow-hidden">
         {primaryImage ? (
-          <Image
+          <img
             src={primaryImage.url}
             alt={primaryImage.alt}
-            fill
-            unoptimized={isLocalImage}
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">
