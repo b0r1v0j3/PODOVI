@@ -89,24 +89,31 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
   }, [categorySlug]);
 
+  // For Vinil, load colors immediately from props (no need to wait for tab)
+  useEffect(() => {
+    if (categorySlug === 'vinil' && legacyColors.length > 0 && !hasLoadedColors.current) {
+      console.log(`LVTTabs: Loading ${legacyColors.length} vinyl colors from props`);
+      console.log(`LVTTabs: First color image:`, legacyColors[0]?.images?.[0]?.url);
+      setColorsFromJSON(legacyColors);
+      setLoadingColors(false);
+      hasLoadedColors.current = true;
+    }
+  }, [categorySlug, legacyColors]);
+
   // Load colors from JSON when colors tab is active or when initialColorSlug is provided
   useEffect(() => {
     if (!useJsonColors) {
       return;
     }
 
+    // Skip for Vinil - already loaded above
+    if (categorySlug === 'vinil') {
+      return;
+    }
+
     // If initialColorSlug is provided, ensure colors tab is active and colors are loaded
     if (initialColorSlug && activeTab !== 'colors') {
       setActiveTab('colors');
-    }
-
-    // For Vinil, use colors passed as props (from TypeScript file) instead of fetching JSON
-    if (categorySlug === 'vinil' && legacyColors.length > 0) {
-      console.log(`LVTTabs: Using ${legacyColors.length} vinyl colors from props`);
-      setColorsFromJSON(legacyColors);
-      setLoadingColors(false);
-      hasLoadedColors.current = true;
-      return;
     }
 
     if ((activeTab === 'colors' || initialColorSlug) && !hasLoadedColors.current && !loadingColors) {
