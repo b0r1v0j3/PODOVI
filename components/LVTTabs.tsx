@@ -29,7 +29,10 @@ interface LVTTabsProps {
 
 export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylTypeFilter }: LVTTabsProps) {
   // If initialColorSlug is provided, start with 'colors' tab active
-  const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(initialColorSlug ? 'colors' : 'collections');
+  // For vinil category, always start with 'colors' tab (no collections)
+  const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
+    initialColorSlug || categorySlug === 'vinil' ? 'colors' : 'collections'
+  );
   const [colorsFromJSON, setColorsFromJSON] = useState<Product[]>([]);
   const [loadingColors, setLoadingColors] = useState(false);
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
