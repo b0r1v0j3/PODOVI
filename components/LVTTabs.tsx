@@ -100,6 +100,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       setLoadingColors(true);
       const jsonPath = categorySlug === 'linoleum'
         ? '/data/linoleum_colors_complete.json'
+        : categorySlug === 'vinil'
+        ? '/data/vinyl_colors_complete.json'
         : '/data/lvt_colors_complete.json';
 
       fetch(jsonPath)
