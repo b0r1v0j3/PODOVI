@@ -99,13 +99,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (isLVTCategory) {
-    // Collections are products with SKU starting with "GER-" (LVT) or "LINOLEUM-" (Linoleum)
-    // For Vinil, we don't have separate collection products - all are colors
+    // Collections are products with SKU starting with "GER-" (LVT), "LINOLEUM-" (Linoleum), or "GER-" (Vinil)
     // Colors are individual color products with 4-digit SKU codes or other patterns
     if (category.slug === 'vinil') {
-      // For Vinil, all products are colors (no separate collections)
-      collections = [];
-      colors = products;
+      // For Vinil, collections have SKU starting with "GER-", colors have SKU with numbers only
+      collections = products.filter(p => p.sku.startsWith('GER-'));
+      colors = products.filter(p => /^\d+$/.test(p.sku));
     } else {
       collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')) ?? false);
       colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')));  
