@@ -93,6 +93,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const categoryBrandIds = new Set(categoryProducts.map(p => p.brandId));
   const availableBrands = allBrands.filter(b => categoryBrandIds.has(b.id));
 
+  // Extract vinyl type filter from search params (must be before use)
+  const vinylTypeFilter = category.slug === 'vinil' && searchParams.type 
+    ? (searchParams.type === 'homogeni' ? 'homogeneous' : searchParams.type === 'heterogeni' ? 'heterogeneous' : null)
+    : null;
+
   // For LVT, Linoleum, Carpet and Vinil categories, separate collections from colors
   const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil';
   let collections: typeof products = [];
