@@ -15,6 +15,9 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     : null;
   const isLocalImage = !!primaryImage?.url?.startsWith('/');
   
+  // For local images, use Next.js Image with unoptimized flag
+  const imageSrc = primaryImage?.url || '';
+  
   // For LVT, Linoleum, and Carpet categories, link to COLLECTION page with color parameter
   // Collections don't have collectionSlug, only individual colors do
   const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
@@ -46,17 +49,28 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     >
       <div className="relative h-64 bg-gray-100 overflow-hidden">
         {primaryImage ? (
-          <img
-            src={primaryImage.url.startsWith('http') ? primaryImage.url : primaryImage.url}
-            alt={primaryImage.alt}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            onError={(e) => {
-              console.error('Image failed to load:', primaryImage.url);
-              (e.target as HTMLImageElement).style.display = 'none';
-            }}
-          />
+          isLocalImage ? (
+            <Image
+              src={imageSrc}
+              alt={primaryImage.alt}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              unoptimized={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          ) : (
+            <img
+              src={imageSrc}
+              alt={primaryImage.alt}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              onError={(e) => {
+                console.error('Image failed to load:', primaryImage.url);
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
+          )
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">
             <span>Bez slike</span>
