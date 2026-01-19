@@ -1603,21 +1603,24 @@
           "name": "GRAPE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0318-grape-26920318",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0318-grape.jpg"
         },
         {
           "code": "0319",
           "name": "QUETSCHE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0319-quetsche-26920319",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0319-quetsche.jpg"
         },
         {
           "code": "0321",
           "name": "OLIVE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0321-olive-26920321",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0321-olive.jpg"
         },
         {
           "code": "0322",
@@ -1631,14 +1634,16 @@
           "name": "NUT",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0323-nut-26920323",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0323-nut.jpg"
         },
         {
           "code": "0324",
           "name": "CHESTNUT",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0324-chestnut-26920324",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0324-chestnut.jpg"
         },
         {
           "code": "0326",
@@ -1652,7 +1657,8 @@
           "name": "PEAR",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0327-pear-26920327",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0327-pear.jpg"
         },
         {
           "code": "0328",
@@ -1673,7 +1679,8 @@
           "name": "LITCHI",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0330-litchi-26920330",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0330-litchi.jpg"
         },
         {
           "code": "0331",
@@ -1708,7 +1715,8 @@
           "name": "APPLE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0339-apple-26920339",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0339-apple.jpg"
         },
         {
           "code": "0340",
@@ -1736,7 +1744,8 @@
           "name": "PECAN",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0343-pecan-26920343",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0343-pecan.jpg"
         },
         {
           "code": "0344",
@@ -1813,7 +1822,8 @@
           "name": "LIME",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-elegance-0703-lime-26920703",
-          "collection_slug": "mipolam-elegance"
+          "collection_slug": "mipolam-elegance",
+          "image": "/images/products/vinyl/mipolam-elegance/0703-lime.jpg"
         },
         {
           "code": "0704",

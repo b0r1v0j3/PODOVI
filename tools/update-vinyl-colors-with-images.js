@@ -70,6 +70,9 @@ updateCollectionImages('mipolam-classic-1-5mm', 'Mipolam Classic 1.5 mm');
 // Update Mipolam Classic 2mm colors
 updateCollectionImages('mipolam-classic-2mm', 'Mipolam Classic 2mm');
 
+// Update Mipolam Elegance colors
+updateCollectionImages('mipolam-elegance', 'Mipolam Elegance');
+
 // Save updated JSON
 fs.writeFileSync(colorsDataPath, JSON.stringify(colorsData, null, 2));
 
