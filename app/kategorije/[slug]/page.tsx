@@ -15,6 +15,7 @@ interface CategoryPageProps {
     priceMax?: string;
     inStock?: string;
     color?: string;
+    type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
   };
 }
 
@@ -80,6 +81,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     priceMin: searchParams.priceMin ? parseFloat(searchParams.priceMin) : undefined,
     priceMax: searchParams.priceMax ? parseFloat(searchParams.priceMax) : undefined,
     inStock: searchParams.inStock === 'true' ? true : undefined,
+    type: searchParams.type, // For vinyl type filter
   };
 
   const products = await productRepository.findByCategory(category.id, filters);
@@ -98,10 +100,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (isLVTCategory) {
-    // Collections are products with SKU starting with "GER-" (LVT/Vinil), "LINOLEUM-" (Linoleum)
+    // Collections are products with SKU starting with "GER-" (LVT/Vinil), "LINOLEUM-" (Linoleum), "VINIL-" (Vinil)
     // Colors are individual color products with 4-digit SKU codes or other patterns
-    collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')) ?? false);
-    colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')));
+    collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
+    colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')));
 
     // Build brands record for all products
     for (const product of products) {

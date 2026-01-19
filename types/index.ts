@@ -111,4 +111,5 @@ export interface ProductFilters {
   priceMax?: number;
   inStock?: boolean;
   search?: string;
+  type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
 }

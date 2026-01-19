@@ -46,6 +46,23 @@ export class MockProductRepository implements IProductRepository {
       );
     }
 
+    // Filter by vinyl type (homogeni/heterogeni)
+    if (filters?.type) {
+      const typeFilter = filters.type.toLowerCase();
+      filtered = filtered.filter(p => {
+        const typeSpec = p.specs.find(s => s.key === 'type');
+        if (!typeSpec) return false;
+        const productType = typeSpec.value.toLowerCase();
+        // Map 'homogeni' to 'homogeni', 'heterogeni' to 'heterogeni'
+        if (typeFilter === 'homogeni') {
+          return productType === 'homogeni';
+        } else if (typeFilter === 'heterogeni') {
+          return productType === 'heterogeni';
+        }
+        return false;
+      });
+    }
+
     return filtered;
   }
 

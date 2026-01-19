@@ -170,6 +170,10 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               ? `${color.collection_slug || color.collection}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`
               : color.slug;
 
+            // Determine vinyl type from color or collection
+            // For now, all vinyl collections are homogeneous, but this can be extended
+            const vinylType = color.type === 'heterogeneous' ? 'Heterogeni' : 'Homogeni';
+            
             return {
               id: `color-${categorySlug}-${colorSlug}`,
               name: color.full_name || `${color.code} ${color.name}`,
@@ -186,7 +190,10 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 isPrimary: true,
                 order: 1,
               }] : [],
-              specs: [],
+              specs: categorySlug === 'vinil' ? [
+                { key: 'type', label: 'Tip', value: vinylType },
+                { key: 'collection', label: 'Kolekcija', value: color.collection_name || color.collection },
+              ] : [],
               price: undefined,
               priceUnit: undefined,
               inStock: true,
