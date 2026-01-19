@@ -44,6 +44,14 @@ export const categories: Category[] = [
     order: 5,
   },
   {
+    id: '2',
+    name: 'Vinil',
+    slug: 'vinil',
+    description: 'Profesionalni homogeni i heterogeni vinil podovi',
+    image: '/images/categories/vinil.jpg',
+    order: 6,
+  },
+  {
     id: '7',
     name: 'Linoleum',
     slug: 'linoleum',
