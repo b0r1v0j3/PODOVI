@@ -90,15 +90,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const categoryBrandIds = new Set(categoryProducts.map(p => p.brandId));
   const availableBrands = allBrands.filter(b => categoryBrandIds.has(b.id));
 
-  // For LVT, Linoleum, and Carpet categories, separate collections from colors
-  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce';
+  // For LVT, Linoleum, Carpet, and Vinil categories, separate collections from colors
+  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil';
   let collections: typeof products = [];
   let colors: typeof products = [];
 
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (isLVTCategory) {
-    // Collections are products with SKU starting with "GER-" (LVT), "LINOLEUM-" (Linoleum), or "GER-" (Vinil)
+    // Collections are products with SKU starting with "GER-" (LVT/Vinil), "LINOLEUM-" (Linoleum)
     // Colors are individual color products with 4-digit SKU codes or other patterns
     collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')) ?? false);
     colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-')));

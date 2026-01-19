@@ -37,7 +37,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
   const hasLoadedColors = useRef(false);
   const lastCategorySlug = useRef<string>('');
-  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt';
+  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || categorySlug === 'vinil';
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
   const collectionsToRender = useMemo(() => {
     if (!useJsonColors) {
@@ -56,6 +56,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
 
     const jsonPath = categorySlug === 'linoleum'
       ? '/data/linoleum_colors_complete.json'
+      : categorySlug === 'vinil'
+      ? '/data/vinyl_colors_complete.json'
       : '/data/lvt_colors_complete.json';
 
     fetch(jsonPath)
@@ -66,7 +68,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         return res.json();
       })
       .then(data => {
-        if (data && typeof data.total === 'number') {
+        if (categorySlug === 'vinil' && data.collections) {
+          // For Vinil, count colors from all collections
+          const total = data.collections.reduce((sum: number, collection: any) => 
+            sum + (collection.colors?.length || 0), 0);
+          setTotalColorsCount(total);
+        } else if (data && typeof data.totalColors === 'number') {
+          setTotalColorsCount(data.totalColors);
+        } else if (data && typeof data.total === 'number') {
           setTotalColorsCount(data.total);
         }
       })
@@ -100,6 +109,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       setLoadingColors(true);
       const jsonPath = categorySlug === 'linoleum'
         ? '/data/linoleum_colors_complete.json'
+        : categorySlug === 'vinil'
+        ? '/data/vinyl_colors_complete.json'
         : '/data/lvt_colors_complete.json';
 
       console.log(`LVTTabs: Fetching colors from ${jsonPath}...`);
@@ -114,42 +125,64 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         .then(data => {
           console.log(`LVTTabs: JSON parsed successfully, data:`, data ? `total=${data.total}, colors=${data.colors?.length}` : 'null');
 
-          if (!data || !data.colors || !Array.isArray(data.colors)) {
+          // Handle different JSON structures: LVT/Linoleum have data.colors, Vinil has data.collections[].colors
+          let colorsArray: any[] = [];
+          if (categorySlug === 'vinil' && data.collections && Array.isArray(data.collections)) {
+            // Flatten colors from all collections
+            colorsArray = data.collections.flatMap((collection: any) => 
+              (collection.colors || []).map((color: any) => ({
+                ...color,
+                collection_name: collection.name,
+                collection_slug: collection.slug,
+                collection: collection.slug
+              }))
+            );
+            console.log(`LVTTabs: Loaded ${colorsArray.length} colors from ${data.collections.length} collections for Vinil`);
+          } else if (data.colors && Array.isArray(data.colors)) {
+            colorsArray = data.colors;
+            console.log(`LVTTabs: Loaded ${colorsArray.length} colors from JSON for category ${categorySlug}`);
+          } else {
             console.error('LVTTabs: Invalid data structure', data);
             setLoadingColors(false);
             return;
           }
 
-          console.log(`LVTTabs: Loaded ${data.colors.length} colors from JSON for category ${categorySlug}`);
-
           // Convert colors from JSON to Product objects
-          const colorsAsProducts: Product[] = data.colors.map((color: ColorFromJSON, index: number) => {
+          const colorsAsProducts: Product[] = colorsArray.map((color: any, index: number) => {
             // Find brand ID (Gerflor = '6')
             const gerflorBrand = Object.values(brandsRecord).find(b => b.slug === 'gerflor');
             const brandId = gerflorBrand?.id || '6';
             
             // Find category ID
-            const categoryId = categorySlug === 'linoleum' ? '7' : '6';
+            const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
             // For Linoleum: use texture_url or image_url (no lifestyle_url available)
+            // For Vinil: use image field (local path) or image_url
             const primaryImageUrl = categorySlug === 'lvt' 
               ? (color.texture_url || color.lifestyle_url || color.image_url || '')
+              : categorySlug === 'vinil'
+              ? (color.image || color.image_url || '')
               : (color.texture_url || color.image_url || '');
 
+            // Generate slug for Vinil colors (format: collection-slug-color-code-color-name)
+            const colorSlug = categorySlug === 'vinil' 
+              ? `${color.collection_slug || color.collection}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`
+              : color.slug;
+
             return {
-              id: `color-${categorySlug}-${color.slug}`,
+              id: `color-${categorySlug}-${colorSlug}`,
               name: color.full_name || `${color.code} ${color.name}`,
-              slug: color.slug,
+              slug: colorSlug,
               sku: color.code,
               categoryId: categoryId,
               brandId: brandId,
-              shortDescription: `${color.collection_name} - ${color.name}`,
-              description: `${color.full_name} iz kolekcije ${color.collection_name}`,
+              shortDescription: `${color.collection_name || color.collection} - ${color.name}`,
+              description: `${color.code} ${color.name} iz kolekcije ${color.collection_name || color.collection}`,
               images: primaryImageUrl ? [{
                 id: `color-img-${index}`,
                 url: primaryImageUrl,
-                alt: color.full_name || color.name,
+                alt: color.full_name || `${color.code} ${color.name}`,
                 isPrimary: true,
                 order: 1,
               }] : [],
