@@ -1483,98 +1483,112 @@
           "name": "PLATINUM",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0002-platinum-43000002",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0002-platinum.jpg"
         },
         {
           "code": "0003",
           "name": "IVORY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0003-ivory-43000003",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0003-ivory.jpg"
         },
         {
           "code": "0005",
           "name": "STEEL",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0005-steel-43000005",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0005-steel.jpg"
         },
         {
           "code": "0010",
           "name": "AZURE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0010-azure-43000010",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0010-azure.jpg"
         },
         {
           "code": "0013",
           "name": "PEWTER",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0013-pewter-43000013",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0013-pewter.jpg"
         },
         {
           "code": "0014",
           "name": "BROWN",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0014-brown-43000014",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0014-brown.jpg"
         },
         {
           "code": "0108",
           "name": "PEPPER",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0108-pepper-43000108",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0108-pepper.jpg"
         },
         {
           "code": "0121",
           "name": "GREEN LEAF",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0121-green-leaf-43000121",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0121-green-leaf.jpg"
         },
         {
           "code": "0122",
           "name": "PINEAPPLE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0122-pineapple-43000122",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0122-pineapple.jpg"
         },
         {
           "code": "0123",
           "name": "CORALLO",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0123-corallo-43000123",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0123-corallo.jpg"
         },
         {
           "code": "0124",
           "name": "TORTORA",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0124-tortora-43000124",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0124-tortora.jpg"
         },
         {
           "code": "0125",
           "name": "TRUFFLE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0125-truffle-43000125",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0125-truffle.jpg"
         },
         {
           "code": "0301",
           "name": "BEIGE",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0301-beige-43000301",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0301-beige.jpg"
         },
         {
           "code": "0303",
           "name": "GREY",
           "sku": null,
           "href": "https://www.gerflor-cee.com/products/mipolam-classic-2mm-0303-grey-43000303",
-          "collection_slug": "mipolam-classic-2mm"
+          "collection_slug": "mipolam-classic-2mm",
+          "image": "/images/products/vinyl/mipolam-classic-2mm/0303-grey.jpg"
         }
       ]
     },
