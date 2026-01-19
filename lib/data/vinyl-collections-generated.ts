@@ -1,5 +1,6 @@
 import { Product } from '@/types';
 
+// 23 vinyl collections with lifestyle collection images
 export const vinyl_collections: Product[] = [
   {
     "id": "vinil-collection-0",
