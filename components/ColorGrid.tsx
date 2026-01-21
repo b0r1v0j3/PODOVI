@@ -233,10 +233,17 @@ export default function ColorGrid({
         // Handle different JSON structures
         if (isVinil && data.collections && Array.isArray(data.collections)) {
           // Vinil has collections[].colors structure
+          // Normalize collection slug - remove 'order' suffix if present
+          const normalizedSlug = collectionSlug.replace('gerflor-', '').replace('-order', '');
+          const normalizedCollectionName = collectionName.replace('-order', '');
+          
           const collection = data.collections.find((col: any) => 
             col.slug === collectionName || 
             col.slug === collectionSlug ||
-            col.slug === collectionSlug.replace('gerflor-', '')
+            col.slug === collectionSlug.replace('gerflor-', '') ||
+            col.slug === normalizedSlug ||
+            col.slug === normalizedCollectionName ||
+            (col.slug && col.slug.replace('-order', '') === normalizedSlug)
           );
           
           if (collection && collection.colors) {

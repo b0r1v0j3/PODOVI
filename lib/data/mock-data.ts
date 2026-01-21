@@ -1676,7 +1676,7 @@ Održivost:
   {
     id: 'gerflor-taralay-millenium-acoustic-order',
     name: 'Taralay Millenium Acoustic',
-    slug: 'gerflor-taralay-millenium-acoustic-order',
+    slug: 'gerflor-taralay-millenium-acoustic',
     sku: 'GER-TARALAY-MILLENIUM-ACOUSTIC-ORDER',
     categoryId: '2',
     brandId: '6',
