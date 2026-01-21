@@ -10,6 +10,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   const isLVT = category.slug === 'lvt' || category.id === '6';
   const isLinoleum = category.slug === 'linoleum' || category.id === '7';
   const isCarpet = category.slug === 'tekstilne-ploce' || category.id === '4';
+  const isVinil = category.slug === 'vinil' || category.id === '2';
   const saharaNoirImage = '/images/products/lvt/colors/creation-55/1742-sahara-noir/pod/1742-sahara-noir-pod.jpg';
 
   return (
@@ -31,8 +32,8 @@ export default function CategoryCard({ category }: CategoryCardProps) {
               />
             </div>
           </div>
-        ) : (isLinoleum || isCarpet) && category.image ? (
-          // Show category image for Linoleum and Carpet
+        ) : (isLinoleum || isCarpet || isVinil) && category.image ? (
+          // Show category image for Linoleum, Carpet, and Vinil
           <div className="absolute inset-0 flex items-center justify-center p-4">
             <div className="relative w-full h-full rounded-lg overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-[1.02]">
               <Image
