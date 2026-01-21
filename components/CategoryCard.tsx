@@ -16,7 +16,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link 
       href={`/kategorije/${category.slug}`}
-      className="group card card-hover"
+      className="group card card-hover rounded-xl overflow-hidden"
     >
       <div className="relative h-48 bg-gray-100 overflow-hidden">
         {isLVT ? (
