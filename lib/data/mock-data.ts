@@ -48,7 +48,7 @@ export const categories: Category[] = [
     name: 'Vinil',
     slug: 'vinil',
     description: 'Profesionalni homogeni i heterogeni vinil podovi',
-    image: '/images/products/vinyl/taralay-impression-acoustic/happy-form.jpg',
+    image: '/images/products/vinyl/taralay-impression-acoustic/envol-forest.jpg',
     order: 6,
   },
   {
