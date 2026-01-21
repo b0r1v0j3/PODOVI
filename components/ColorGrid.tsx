@@ -206,7 +206,7 @@ export default function ColorGrid({
       'taralay-impression-acoustic', 'taralay-impression-compact', 
       'taralay-impression-hop-acoustic', 'taralay-impression-hop-compact',
       'taralay-initial-acoustic', 'taralay-initial-compact',
-      'taralay-millenium-acoustic-order', 'taralay-millenium-compact'];
+      'taralay-millenium-acoustic', 'taralay-millenium-compact'];
     const collectionNameWithoutPrefix = collectionSlug.replace('gerflor-', '');
     const isVinil = collectionSlug.startsWith('mipolam-') || 
                     collectionSlug.startsWith('gerflor-mipolam-') ||
