@@ -3633,8 +3633,664 @@
           "image": "/images/products/vinyl/premium-acoustic/brazilia-recife.jpg"
         }
       ]
+    },
+    {
+      "name": "Premium Compact",
+      "slug": "premium-compact",
+      "url": "https://www.gerflor-cee.com/products/premium-compact",
+      "colorCount": 81,
+      "colors": [
+        {
+          "code": "0027",
+          "name": "COCOON MUSLIN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0027-cocoon-muslin-hd420027",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/cocoon-muslin.jpg"
+        },
+        {
+          "code": "0028",
+          "name": "COCOON ORGANZA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0028-cocoon-organza-hd420028",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/cocoon-organza.jpg"
+        },
+        {
+          "code": "0029",
+          "name": "COCOON FLANNEL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0029-cocoon-flannel-hd420029",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/cocoon-flannel.jpg"
+        },
+        {
+          "code": "0030",
+          "name": "COCOON CRINOLIN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0030-cocoon-crinolin-hd420030",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/cocoon-crinolin.jpg"
+        },
+        {
+          "code": "0032",
+          "name": "COCOON SATIN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0032-cocoon-satin-hd420032",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/cocoon-satin.jpg"
+        },
+        {
+          "code": "0051",
+          "name": "BRAZILIA ALVORADA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0051-brazilia-alvorada-hd350051",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-alvorada.jpg"
+        },
+        {
+          "code": "0052",
+          "name": "BRAZILIA OLINDA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0052-brazilia-olinda-hd350052",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-olinda.jpg"
+        },
+        {
+          "code": "0053",
+          "name": "BRAZILIA LIMEIRA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0053-brazilia-limeira-hd350053",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-limeira.jpg"
+        },
+        {
+          "code": "0054",
+          "name": "BRAZILIA BARUERI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0054-brazilia-barueri-hd350054",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-barueri.jpg"
+        },
+        {
+          "code": "0055",
+          "name": "BRAZILIA TERESINA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0055-brazilia-teresina-hd350055",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-teresina.jpg"
+        },
+        {
+          "code": "0056",
+          "name": "BRAZILIA NATAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0056-brazilia-natal-hd350056",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-natal.jpg"
+        },
+        {
+          "code": "0058",
+          "name": "BRAZILIA ARACAJU",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0058-brazilia-aracaju-hd350058",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-aracaju.jpg"
+        },
+        {
+          "code": "0060",
+          "name": "METALLICA DELLIG",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0060-metallica-dellig-hd440060",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-dellig.jpg"
+        },
+        {
+          "code": "0061",
+          "name": "METALLICA ELDIR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0061-metallica-eldir-hd440061",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-eldir.jpg"
+        },
+        {
+          "code": "0062",
+          "name": "METALLICA BEYLA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0062-metallica-beyla-hd440062",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-beyla.jpg"
+        },
+        {
+          "code": "0063",
+          "name": "METALLICA NARFI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0063-metallica-narfi-hd440063",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-narfi.jpg"
+        },
+        {
+          "code": "0064",
+          "name": "METALLICA SUDRI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-0064-metallica-sudri-hd440064",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-sudri.jpg"
+        },
+        {
+          "code": "2151",
+          "name": "POESY SONATE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2151-poesy-sonate-hd572151",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-sonate.jpg"
+        },
+        {
+          "code": "2152",
+          "name": "POESY OCTAVE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2152-poesy-octave-hd572152",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-octave.jpg"
+        },
+        {
+          "code": "2501",
+          "name": "POESY RHAPSODY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2501-poesy-rhapsody-hd572501",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-rhapsody.jpg"
+        },
+        {
+          "code": "2740",
+          "name": "NEOPOLIS HARLEM SOFT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2740-neopolis-harlem-soft-hd362740",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neopolis-harlem-soft.jpg"
+        },
+        {
+          "code": "2741",
+          "name": "NEOPOLIS BROOKLYN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2741-neopolis-brooklyn-hd362741",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neopolis-brooklyn.jpg"
+        },
+        {
+          "code": "2742",
+          "name": "NEOPOLIS TIMES SQUARE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2742-neopolis-times-square-hd362742",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neopolis-times-square.jpg"
+        },
+        {
+          "code": "2743",
+          "name": "NEOPOLIS CENTRAL PARK",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2743-neopolis-central-park-hd362743",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neopolis-central-park.jpg"
+        },
+        {
+          "code": "2744",
+          "name": "NEOPOLIS QUEENS SOFT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2744-neopolis-queens-soft-hd362744",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neopolis-queens-soft.jpg"
+        },
+        {
+          "code": "2745",
+          "name": "NEOPOLIS PLAZA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2745-neopolis-plaza-hd362745",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neopolis-plaza.jpg"
+        },
+        {
+          "code": "2746",
+          "name": "METALLICA YMIR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2746-metallica-ymir-hd442746",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-ymir.jpg"
+        },
+        {
+          "code": "2747",
+          "name": "POESY BALLADE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2747-poesy-ballade-hd572747",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-ballade.jpg"
+        },
+        {
+          "code": "2748",
+          "name": "POESY REFRAIN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2748-poesy-refrain-hd572748",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-refrain.jpg"
+        },
+        {
+          "code": "2749",
+          "name": "POESY LYRIQUE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2749-poesy-lyrique-hd572749",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-lyrique.jpg"
+        },
+        {
+          "code": "2750",
+          "name": "POESY ELLIPSE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2750-poesy-ellipse-hd572750",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-ellipse.jpg"
+        },
+        {
+          "code": "2751",
+          "name": "POESY SLAM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2751-poesy-slam-hd572751",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-slam.jpg"
+        },
+        {
+          "code": "2752",
+          "name": "POESY LITOTE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-2752-poesy-litote-hd572752",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-litote.jpg"
+        },
+        {
+          "code": "3707",
+          "name": "BRAZILIA PARAIBA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-3707-brazilia-paraiba-hd353707",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-paraiba.jpg"
+        },
+        {
+          "code": "3709",
+          "name": "BRAZILIA CEARA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-3709-brazilia-ceara-hd353709",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-ceara.jpg"
+        },
+        {
+          "code": "3791",
+          "name": "OSMOZ SLATE GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-3791-osmoz-slate-grey-hd493791",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-slate-grey.jpg"
+        },
+        {
+          "code": "3792",
+          "name": "OSMOZ STORM GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-3792-osmoz-storm-grey-hd493792",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-storm-grey.jpg"
+        },
+        {
+          "code": "4001",
+          "name": "INDIANA² OFU",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4001-indiana2-ofu-hd474001",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-ofu.jpg"
+        },
+        {
+          "code": "4002",
+          "name": "INDIANA² MANUA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4002-indiana2-manua-hd474002",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-manua.jpg"
+        },
+        {
+          "code": "4003",
+          "name": "INDIANA² TAO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4003-indiana2-tao-hd474003",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-tao.jpg"
+        },
+        {
+          "code": "4009",
+          "name": "INDIANA² TUFOA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4009-indiana2-tufoa-hd474009",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-tufoa.jpg"
+        },
+        {
+          "code": "4045",
+          "name": "INDIANA² DALUPIRI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4045-indiana2-dalupiri-hd474045",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-dalupiri.jpg"
+        },
+        {
+          "code": "4046",
+          "name": "INDIANA² CUBAGUA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4046-indiana2-cubagua-hd474046",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-cubagua.jpg"
+        },
+        {
+          "code": "4047",
+          "name": "INDIANA² OKUZA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4047-indiana2-okuza-hd474047",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-okuza.jpg"
+        },
+        {
+          "code": "4048",
+          "name": "INDIANA² MALABO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4048-indiana2-malabo-hd474048",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-malabo.jpg"
+        },
+        {
+          "code": "4049",
+          "name": "INDIANA² KILMIA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4049-indiana2-kilmia-hd474049",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-kilmia.jpg"
+        },
+        {
+          "code": "4050",
+          "name": "INDIANA² COMORES",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4050-indiana2-comores-hd474050",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-comores.jpg"
+        },
+        {
+          "code": "4051",
+          "name": "INDIANA² MARACA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4051-indiana2-maraca-hd474051",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-maraca.jpg"
+        },
+        {
+          "code": "4052",
+          "name": "INDIANA² CALERO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4052-indiana2-calero-hd474052",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-calero.jpg"
+        },
+        {
+          "code": "4053",
+          "name": "INDIANA² DIWARAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4053-indiana2-diwaran-hd474053",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-diwaran.jpg"
+        },
+        {
+          "code": "4205",
+          "name": "NEOTERRA DORATA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4205-neoterra-dorata-hp944205",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neoterra-dorata.jpg"
+        },
+        {
+          "code": "4206",
+          "name": "NEOTERRA LAZULI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4206-neoterra-lazuli-hp944206",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neoterra-lazuli.jpg"
+        },
+        {
+          "code": "4207",
+          "name": "NEOTERRA PRATO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4207-neoterra-prato-hp944207",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neoterra-prato.jpg"
+        },
+        {
+          "code": "4208",
+          "name": "NEOTERRA SORAYA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4208-neoterra-soraya-hp944208",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/neoterra-soraya.jpg"
+        },
+        {
+          "code": "4343",
+          "name": "INDIANA² TOKELAU",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4343-indiana2-tokelau-hd474343",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-tokelau.jpg"
+        },
+        {
+          "code": "4349",
+          "name": "OSMOZ ANGORA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4349-osmoz-angora-hd494349",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-angora.jpg"
+        },
+        {
+          "code": "4351",
+          "name": "OSMOZ GREIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4351-osmoz-greige-hd494351",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-greige.jpg"
+        },
+        {
+          "code": "4364",
+          "name": "OSMOZ IVORY NEW",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4364-osmoz-ivory-new-hd494364",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-ivory-new.jpg"
+        },
+        {
+          "code": "4365",
+          "name": "OSMOZ ALPAGA NEW",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4365-osmoz-alpaga-new-hd494365",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-alpaga-new.jpg"
+        },
+        {
+          "code": "4378",
+          "name": "OSMOZ IGLOO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4378-osmoz-igloo-hd494378",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-igloo.jpg"
+        },
+        {
+          "code": "4379",
+          "name": "OSMOZ KOUDOU",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4379-osmoz-koudou-hd494379",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-koudou.jpg"
+        },
+        {
+          "code": "4380",
+          "name": "OSMOZ AWARA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4380-osmoz-awara-hd494380",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-awara.jpg"
+        },
+        {
+          "code": "4381",
+          "name": "OSMOZ ROZELLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4381-osmoz-rozelle-hd494381",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-rozelle.jpg"
+        },
+        {
+          "code": "4382",
+          "name": "OSMOZ CYCLADES",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4382-osmoz-cyclades-hd494382",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-cyclades.jpg"
+        },
+        {
+          "code": "4383",
+          "name": "OSMOZ JASMIN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4383-osmoz-jasmin-hd494383",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-jasmin.jpg"
+        },
+        {
+          "code": "4384",
+          "name": "OSMOZ BARBADINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4384-osmoz-barbadine-hd494384",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-barbadine.jpg"
+        },
+        {
+          "code": "4476",
+          "name": "INDIANA² WATTARU",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4476-indiana2-wattaru-hd474476",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-wattaru.jpg"
+        },
+        {
+          "code": "4477",
+          "name": "BRAZILIA MACEIO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-4477-brazilia-maceio-hd354477",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-maceio.jpg"
+        },
+        {
+          "code": "7517",
+          "name": "INDIANA² FAROE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-7517-indiana2-faroe-hd477517",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-faroe.jpg"
+        },
+        {
+          "code": "7737",
+          "name": "OSMOZ PEPPER GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-7737-osmoz-pepper-grey-hd497737",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/osmoz-pepper-grey.jpg"
+        },
+        {
+          "code": "8150",
+          "name": "INDIANA² BALI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8150-indiana2-bali-hd478150",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-bali.jpg"
+        },
+        {
+          "code": "8226",
+          "name": "INDIANA² FIDJI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8226-indiana2-fidji-hd478226",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-fidji.jpg"
+        },
+        {
+          "code": "8257",
+          "name": "METALLICA NYX",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8257-metallica-nyx-hd448257",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-nyx.jpg"
+        },
+        {
+          "code": "8386",
+          "name": "BRAZILIA BOA VISTA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8386-brazilia-boa-vista-hd358386",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-boa-vista.jpg"
+        },
+        {
+          "code": "8621",
+          "name": "POESY ODE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8621-poesy-ode-hd578621",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-ode.jpg"
+        },
+        {
+          "code": "8626",
+          "name": "POESY RIME",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8626-poesy-rime-hd578626",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-rime.jpg"
+        },
+        {
+          "code": "8627",
+          "name": "POESY ALLEGORIE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8627-poesy-allegorie-hd578627",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/poesy-allegorie.jpg"
+        },
+        {
+          "code": "8736",
+          "name": "BRAZILIA RECIFE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8736-brazilia-recife-hd358736",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/brazilia-recife.jpg"
+        },
+        {
+          "code": "8837",
+          "name": "INDIANA² SONGO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-8837-indiana2-songo-hd478837",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/indiana²-songo.jpg"
+        },
+        {
+          "code": "9745",
+          "name": "METALLICA COSMIC",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-9745-metallica-cosmic-hd449745",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-cosmic.jpg"
+        },
+        {
+          "code": "9753",
+          "name": "METALLICA ENERGY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/premium-compact-9753-metallica-energy-hd449753",
+          "collection_slug": "premium-compact",
+          "image": "/images/products/vinyl/premium-compact/metallica-energy.jpg"
+        }
+      ]
     }
   ],
-  "totalColors": 415,
+  "totalColors": 496,
   "generatedAt": "2026-01-19T12:41:49.987Z"
 }
