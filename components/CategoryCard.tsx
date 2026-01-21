@@ -18,14 +18,14 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       href={`/kategorije/${category.slug}`}
       className="group card card-hover"
     >
-      <div className="relative h-48 bg-gray-100 overflow-hidden rounded-t-xl">
+      <div className="relative h-48 bg-gray-100 overflow-hidden">
         {isLVT ? (
           // Show sahara noir pod image for LVT
           <Image
             src={saharaNoirImage}
             alt="Sahara Noir LVT"
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02] rounded-t-xl"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
         ) : (isLinoleum || isCarpet || isVinil) && category.image ? (
@@ -34,7 +34,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             src={category.image}
             alt={category.name}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02] rounded-t-xl"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
         ) : (
@@ -52,7 +52,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
         {/* Decorative gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
-      <div className="p-6 text-center rounded-b-xl">
+      <div className="p-6 text-center">
         <h3 className="font-bold text-xl mb-2 text-gray-900 group-hover:text-primary-600 transition-colors">
           {category.name}
         </h3>
