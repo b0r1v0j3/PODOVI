@@ -6721,6 +6721,406 @@
           "image": "/images/products/vinyl/taralay-initial-acoustic/0980-twist-brown.jpg"
         }
       ]
+    },
+    {
+      "name": "Taralay Initial Compact",
+      "slug": "taralay-initial-compact",
+      "url": "https://www.gerflor-cee.com/products/taralay-initial-compact",
+      "colorCount": 49,
+      "colors": [
+        {
+          "code": "0035",
+          "name": "URBAN GRIS",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0035-urban-gris-22220035",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0035-urban-gris.jpg"
+        },
+        {
+          "code": "0037",
+          "name": "URBAN SOURIS",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0037-urban-souris-22220037",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0037-urban-souris.jpg"
+        },
+        {
+          "code": "0047",
+          "name": "DIVERSION IVOIRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0047-diversion-ivoire-22220047",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0047-diversion-ivoire.jpg"
+        },
+        {
+          "code": "0049",
+          "name": "DIVERSION CARBONE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0049-diversion-carbone-22220049",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0049-diversion-carbone.jpg"
+        },
+        {
+          "code": "0465",
+          "name": "STRADA CIMENT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0465-strada-ciment-22220465",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0465-strada-ciment.jpg"
+        },
+        {
+          "code": "0515",
+          "name": "DIVERSION KIWI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0515-diversion-kiwi-22220515",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0515-diversion-kiwi.jpg"
+        },
+        {
+          "code": "0588",
+          "name": "NOMA CLAIR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0588-noma-clair-22220588",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0588-noma-clair.jpg"
+        },
+        {
+          "code": "0590",
+          "name": "RENZO STEEL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0590-renzo-steel-22220590",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0590-renzo-steel.jpg"
+        },
+        {
+          "code": "0636",
+          "name": "ESTEREL BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0636-esterel-blond-22220636",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0636-esterel-blond.jpg"
+        },
+        {
+          "code": "0698",
+          "name": "NOMA NATUREL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0698-noma-naturel-22220698",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0698-noma-naturel.jpg"
+        },
+        {
+          "code": "0773",
+          "name": "RANCH",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0773-ranch-22220773",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0773-ranch.jpg"
+        },
+        {
+          "code": "0790",
+          "name": "STRADA CHROME",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0790-strada-chrome-22220790",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0790-strada-chrome.jpg"
+        },
+        {
+          "code": "0791",
+          "name": "STRADA METALLIC",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0791-strada-metallic-22220791",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0791-strada-metallic.jpg"
+        },
+        {
+          "code": "0797",
+          "name": "HABANA IVORY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0797-habana-ivory-22220797",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0797-habana-ivory.jpg"
+        },
+        {
+          "code": "0799",
+          "name": "FILAMENT LIGHT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0799-filament-light-22220799",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0799-filament-light.jpg"
+        },
+        {
+          "code": "0824",
+          "name": "DIVERSION SOURIS",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0824-diversion-souris-22220824",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0824-diversion-souris.jpg"
+        },
+        {
+          "code": "0825",
+          "name": "DIVERSION TURQUOISE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0825-diversion-turquoise-22220825",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0825-diversion-turquoise.jpg"
+        },
+        {
+          "code": "0826",
+          "name": "FILAMENT GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0826-filament-grey-22220826",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0826-filament-grey.jpg"
+        },
+        {
+          "code": "0828",
+          "name": "HABANA BEIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0828-habana-beige-22220828",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0828-habana-beige.jpg"
+        },
+        {
+          "code": "0949",
+          "name": "DIVERSION SOLEIL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0949-diversion-soleil-22220949",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0949-diversion-soleil.jpg"
+        },
+        {
+          "code": "0950",
+          "name": "MIAMI SABLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0950-miami-sable-22220950",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0950-miami-sable.jpg"
+        },
+        {
+          "code": "0951",
+          "name": "MIAMI LITCHEE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0951-miami-litchee-22220951",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0951-miami-litchee.jpg"
+        },
+        {
+          "code": "0952",
+          "name": "MIAMI SOLEIL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0952-miami-soleil-22220952",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0952-miami-soleil.jpg"
+        },
+        {
+          "code": "0953",
+          "name": "RANCH ANTHRACITE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0953-ranch-anthracite-22220953",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0953-ranch-anthracite.jpg"
+        },
+        {
+          "code": "0954",
+          "name": "SPIDER DORE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0954-spider-dore-22220954",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0954-spider-dore.jpg"
+        },
+        {
+          "code": "0955",
+          "name": "SPIDER PERLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0955-spider-perle-22220955",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0955-spider-perle.jpg"
+        },
+        {
+          "code": "0956",
+          "name": "SPIDER GRENAT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0956-spider-grenat-22220956",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0956-spider-grenat.jpg"
+        },
+        {
+          "code": "0957",
+          "name": "SPIDER CUIVRE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0957-spider-cuivre-22220957",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0957-spider-cuivre.jpg"
+        },
+        {
+          "code": "0958",
+          "name": "URBAN BEIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0958-urban-beige-22220958",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0958-urban-beige.jpg"
+        },
+        {
+          "code": "0959",
+          "name": "BOSTONIAN BROWN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0959-bostonian-brown-22220959",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0959-bostonian-brown.jpg"
+        },
+        {
+          "code": "0960",
+          "name": "BOSTONIAN GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0960-bostonian-grey-22220960",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0960-bostonian-grey.jpg"
+        },
+        {
+          "code": "0961",
+          "name": "BOSTONIAN HONEY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0961-bostonian-honey-22220961",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0961-bostonian-honey.jpg"
+        },
+        {
+          "code": "0962",
+          "name": "DIVERSION MARINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0962-diversion-marine-22220962",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0962-diversion-marine.jpg"
+        },
+        {
+          "code": "0963",
+          "name": "MIAMI PERLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0963-miami-perle-22220963",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0963-miami-perle.jpg"
+        },
+        {
+          "code": "0964",
+          "name": "MIAMI SOURIS",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0964-miami-souris-22220964",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0964-miami-souris.jpg"
+        },
+        {
+          "code": "0965",
+          "name": "MIAMI FORET",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0965-miami-foret-22220965",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0965-miami-foret.jpg"
+        },
+        {
+          "code": "0966",
+          "name": "MIAMI ABRICOT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0966-miami-abricot-22220966",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0966-miami-abricot.jpg"
+        },
+        {
+          "code": "0967",
+          "name": "MIAMI MER",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0967-miami-mer-22220967",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0967-miami-mer.jpg"
+        },
+        {
+          "code": "0968",
+          "name": "MIAMI CIEL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0968-miami-ciel-22220968",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0968-miami-ciel.jpg"
+        },
+        {
+          "code": "0969",
+          "name": "MIAMI PAON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0969-miami-paon-22220969",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0969-miami-paon.jpg"
+        },
+        {
+          "code": "0970",
+          "name": "MIAMI TAUPE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0970-miami-taupe-22220970",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0970-miami-taupe.jpg"
+        },
+        {
+          "code": "0973",
+          "name": "SPIDER ALU",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0973-spider-alu-22220973",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0973-spider-alu.jpg"
+        },
+        {
+          "code": "0974",
+          "name": "SPIDER SAPHIR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0974-spider-saphir-22220974",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0974-spider-saphir.jpg"
+        },
+        {
+          "code": "0975",
+          "name": "SPIDER EMERAUDE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0975-spider-emeraude-22220975",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0975-spider-emeraude.jpg"
+        },
+        {
+          "code": "0976",
+          "name": "SPIDER QUARTZ",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0976-spider-quartz-22220976",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0976-spider-quartz.jpg"
+        },
+        {
+          "code": "0977",
+          "name": "TWIST GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0977-twist-grey-22220977",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0977-twist-grey.jpg"
+        },
+        {
+          "code": "0978",
+          "name": "TWIST BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0978-twist-blond-22220978",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0978-twist-blond.jpg"
+        },
+        {
+          "code": "0979",
+          "name": "TWIST WHITE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0979-twist-white-22220979",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0979-twist-white.jpg"
+        },
+        {
+          "code": "0980",
+          "name": "TWIST BROWN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0980-twist-brown-22220980",
+          "collection_slug": "taralay-initial-compact",
+          "image": "/images/products/vinyl/taralay-initial-acoustic/0980-twist-brown.jpg"
+        }
+      ]
     }
   ],
   "totalColors": 687,
