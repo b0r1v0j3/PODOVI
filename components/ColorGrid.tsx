@@ -201,7 +201,17 @@ export default function ColorGrid({
     // Determine which JSON to load based on collection slug
     const isLinoleum = collectionSlug.startsWith('dlw-');
     const isCarpet = collectionSlug.startsWith('armonia-') || collectionSlug.startsWith('gerflor-armonia-');
-    const isVinil = collectionSlug.startsWith('mipolam-') || collectionSlug.startsWith('gerflor-mipolam-');
+    // Vinil includes mipolam collections and heterogeneous collections (nerok-55, nerok-70, premium-acoustic, etc.)
+    const heterogeneousSlugs = ['nerok-55', 'nerok-70', 'premium-acoustic', 'premium-compact', 
+      'taralay-impression-acoustic', 'taralay-impression-compact', 
+      'taralay-impression-hop-acoustic', 'taralay-impression-hop-compact',
+      'taralay-initial-acoustic', 'taralay-initial-compact',
+      'taralay-millenium-acoustic-order', 'taralay-millenium-compact'];
+    const collectionNameWithoutPrefix = collectionSlug.replace('gerflor-', '');
+    const isVinil = collectionSlug.startsWith('mipolam-') || 
+                    collectionSlug.startsWith('gerflor-mipolam-') ||
+                    heterogeneousSlugs.includes(collectionNameWithoutPrefix) ||
+                    heterogeneousSlugs.some(slug => collectionSlug.includes(slug));
     const jsonPath = isLinoleum
       ? '/data/linoleum_colors_complete.json'
       : isCarpet
