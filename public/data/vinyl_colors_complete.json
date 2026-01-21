@@ -5833,6 +5833,254 @@
           "image": "/images/products/vinyl/taralay-impression-acoustic/walnut-brown.jpg"
         }
       ]
+    },
+    {
+      "name": "Taralay Impression Hop Acoustic",
+      "slug": "taralay-impression-hop-acoustic",
+      "url": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic",
+      "colorCount": 30,
+      "colors": [
+        {
+          "code": "0373",
+          "name": "NOMA ICE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-0373-noma-ice-29850373",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/noma-ice.jpg"
+        },
+        {
+          "code": "0523",
+          "name": "CEMENTO GENOVA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-0523-cemento-genova-29850523",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/cemento-genova.jpg"
+        },
+        {
+          "code": "0543",
+          "name": "CEMENTO BRESCIA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-0543-cemento-brescia-29850543",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/cemento-brescia.jpg"
+        },
+        {
+          "code": "0680",
+          "name": "INFINITY GREIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-0680-infinity-greige-29850680",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/infinity-greige.jpg"
+        },
+        {
+          "code": "0745",
+          "name": "NEST METAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-0745-nest-metal-29850745",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/nest-metal.jpg"
+        },
+        {
+          "code": "0770",
+          "name": "GENTLEMEN CLEAR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-0770-gentlemen-clear-29850770",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/gentlemen-clear.jpg"
+        },
+        {
+          "code": "0832",
+          "name": "UNI MATT GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-0832-uni-matt-grey-29850832",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/uni-matt-grey.jpg"
+        },
+        {
+          "code": "1024",
+          "name": "CEMENTO NAPOLI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1024-cemento-napoli-29851024",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/cemento-napoli.jpg"
+        },
+        {
+          "code": "1025",
+          "name": "CEMENTO FIRENZE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1025-cemento-firenze-29851025",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/cemento-firenze.jpg"
+        },
+        {
+          "code": "1026",
+          "name": "CEMENTO ROMA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1026-cemento-roma-29851026",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/cemento-roma.jpg"
+        },
+        {
+          "code": "1028",
+          "name": "ROUGH BEIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1028-rough-beige-29851028",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/rough-beige.jpg"
+        },
+        {
+          "code": "1029",
+          "name": "ROUGH GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1029-rough-grey-29851029",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/rough-grey.jpg"
+        },
+        {
+          "code": "1053",
+          "name": "NATURE OAK BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1053-nature-oak-blond-29851053",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/nature-oak-blond.jpg"
+        },
+        {
+          "code": "1055",
+          "name": "NATURE OAK CLEAR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1055-nature-oak-clear-29851055",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/nature-oak-clear.jpg"
+        },
+        {
+          "code": "1056",
+          "name": "NATURE OAK DARK",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1056-nature-oak-dark-29851056",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/nature-oak-dark.jpg"
+        },
+        {
+          "code": "1060",
+          "name": "TERRAZZO NAPOLI",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1060-terrazzo-napoli-29851060",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/terrazzo-napoli.jpg"
+        },
+        {
+          "code": "1063",
+          "name": "FINESSE BROWN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1063-finesse-brown-29851063",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/finesse-brown.jpg"
+        },
+        {
+          "code": "1065",
+          "name": "FINESSE PAILLE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1065-finesse-paille-29851065",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/finesse-paille.jpg"
+        },
+        {
+          "code": "1068",
+          "name": "GENTLEMEN DENIM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1068-gentlemen-denim-29851068",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/gentlemen-denim.jpg"
+        },
+        {
+          "code": "1069",
+          "name": "HABANA 3D TRINIDAD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1069-habana-3d-trinidad-29851069",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/habana-3d-trinidad.jpg"
+        },
+        {
+          "code": "1070",
+          "name": "HABANA 3D VINALES",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1070-habana-3d-vinales-29851070",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/habana-3d-vinales.jpg"
+        },
+        {
+          "code": "1077",
+          "name": "RAINTREE NATURAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1077-raintree-natural-29851077",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/raintree-natural.jpg"
+        },
+        {
+          "code": "1078",
+          "name": "UNI MATT INDIGO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1078-uni-matt-indigo-29851078",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/uni-matt-indigo.jpg"
+        },
+        {
+          "code": "1082",
+          "name": "UNI MATT LIGHT GREEN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1082-uni-matt-light-green-29851082",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/uni-matt-light-green.jpg"
+        },
+        {
+          "code": "1085",
+          "name": "UNI MATT TEAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1085-uni-matt-teal-29851085",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/uni-matt-teal.jpg"
+        },
+        {
+          "code": "1091",
+          "name": "UNI MATT CORAIL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1091-uni-matt-corail-29851091",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/uni-matt-corail.jpg"
+        },
+        {
+          "code": "1093",
+          "name": "CHARME KRAFT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1093-charme-kraft-29851093",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/charme-kraft.jpg"
+        },
+        {
+          "code": "1099",
+          "name": "ENVOL FOREST",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1099-envol-forest-29921099",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/envol-forest.jpg"
+        },
+        {
+          "code": "1104",
+          "name": "WOOD FUSION NATURE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1104-wood-fusion-nature-29921104",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/wood-fusion-nature.jpg"
+        },
+        {
+          "code": "1110",
+          "name": "RIVAU NATURE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-impression-hop-acoustic-1110-rivau-nature-29851110",
+          "collection_slug": "taralay-impression-hop-acoustic",
+          "image": "/images/products/vinyl/taralay-impression-acoustic/rivau-nature.jpg"
+        }
+      ]
     }
   ],
   "totalColors": 687,
