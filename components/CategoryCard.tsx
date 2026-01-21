@@ -18,7 +18,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       href={`/kategorije/${category.slug}`}
       className="group card card-hover"
     >
-      <div className="relative h-48 bg-gray-100 overflow-hidden rounded-t-xl">
+      <div className="relative h-48 bg-gray-100 overflow-hidden">
         {isLVT ? (
           // Show sahara noir pod image for LVT
           <Image
