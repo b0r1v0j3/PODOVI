@@ -18,33 +18,25 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       href={`/kategorije/${category.slug}`}
       className="group card card-hover"
     >
-      <div className="relative h-48 bg-gray-100 overflow-hidden">
+      <div className="relative h-48 bg-gray-100 overflow-hidden rounded-t-xl">
         {isLVT ? (
           // Show sahara noir pod image for LVT
-          <div className="absolute inset-0 flex items-center justify-center p-4">
-            <div className="relative w-full h-full rounded-lg overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-[1.02]">
-              <Image
-                src={saharaNoirImage}
-                alt="Sahara Noir LVT"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
-              />
-            </div>
-          </div>
+          <Image
+            src={saharaNoirImage}
+            alt="Sahara Noir LVT"
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
+          />
         ) : (isLinoleum || isCarpet || isVinil) && category.image ? (
           // Show category image for Linoleum, Carpet, and Vinil
-          <div className="absolute inset-0 flex items-center justify-center p-4">
-            <div className="relative w-full h-full rounded-lg overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-[1.02]">
-              <Image
-                src={category.image}
-                alt={category.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
-              />
-            </div>
-          </div>
+          <Image
+            src={category.image}
+            alt={category.name}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
+          />
         ) : (
           // Show generic icon for other categories
           <div className="absolute inset-0 flex items-center justify-center">
