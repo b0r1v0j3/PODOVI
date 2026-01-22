@@ -249,7 +249,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       {isLVTCategory && availableThickness && availableThickness.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Ukupna debljina (mm)</label>
-          <div className="space-y-2 max-h-64 overflow-y-auto">
+          <div className="space-y-2">
             {availableThickness.map((thickness) => (
               <label key={thickness} className="flex items-center cursor-pointer">
                 <input
