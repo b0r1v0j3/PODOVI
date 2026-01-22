@@ -63,23 +63,24 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
-    // Filter by collections (for LVT products)
+    // Filter by collections (for LVT products) - grouped like Gerflor
     if (filters?.collections && filters.collections.length > 0) {
       filtered = filtered.filter(p => {
-        // Extract collection name from product name (e.g., "Gerflor Creation 30" -> "Creation 30")
         const productName = p.name;
-        // Check if any selected collection matches the product name
+        // Check if any selected collection group matches the product
         return filters.collections!.some(collection => {
-          // Match if product name ends with or contains the collection name
-          // Handle variations like "Creation 30", "Creation 40 Clic", "SAGA²", etc.
-          // Example: "Gerflor Creation 30" should match "Creation 30"
-          // Example: "Gerflor Creation 40 Clic" should match "Creation 40 Clic"
-          // Example: "Gerflor Creation Saga²" should match "SAGA²"
-          if (productName.includes('Creation')) {
-            // For Creation collections, check if the full collection name is in the product name
-            return productName.includes(collection) || productName.endsWith(collection);
-          } else if (productName.includes('Saga') && collection.includes('SAGA')) {
-            return true;
+          if (collection === 'Creation 30') {
+            return productName.includes('Creation 30') && !productName.includes('Zen');
+          } else if (collection === 'Creation 40') {
+            return productName.includes('Creation 40') && !productName.includes('Zen');
+          } else if (collection === 'Creation 55') {
+            return productName.includes('Creation 55') && !productName.includes('Zen');
+          } else if (collection === 'Creation 70') {
+            return productName.includes('Creation 70') && !productName.includes('Zen');
+          } else if (collection === 'Creation Zen') {
+            return productName.includes('Creation') && productName.includes('Zen');
+          } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
+            return productName.includes('Saga');
           }
           return false;
         });

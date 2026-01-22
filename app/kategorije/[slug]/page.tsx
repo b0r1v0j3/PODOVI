@@ -118,25 +118,51 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       }
     }
 
-    // Extract unique LVT collection names for filter
+    // Extract unique LVT collection names for filter (grouped like Gerflor: Creation 30, 40, 55, 70, Zen, SAGA²)
     if (category.slug === 'lvt') {
-      const collectionNames = new Set<string>();
+      const collectionGroups = new Set<string>();
       collections.forEach(p => {
-        // Extract collection name from product name (e.g., "Gerflor Creation 30" -> "Creation 30")
-        // or "Gerflor Creation Saga²" -> "SAGA²"
         const name = p.name;
         if (name.includes('Creation')) {
-          // Extract "Creation 30", "Creation 40 Clic", etc.
-          // Remove "Gerflor " prefix if present
-          const nameWithoutPrefix = name.replace(/^Gerflor\s+/i, '');
-          if (nameWithoutPrefix.startsWith('Creation')) {
-            collectionNames.add(nameWithoutPrefix);
+          // Extract base collection number (30, 40, 55, 70) or Zen
+          if (name.includes('Creation 30')) {
+            collectionGroups.add('Creation 30');
+          } else if (name.includes('Creation 40')) {
+            // Check if it's Zen variant
+            if (name.includes('Zen')) {
+              collectionGroups.add('Creation Zen');
+            } else {
+              collectionGroups.add('Creation 40');
+            }
+          } else if (name.includes('Creation 55')) {
+            // Check if it's Zen variant
+            if (name.includes('Zen')) {
+              collectionGroups.add('Creation Zen');
+            } else {
+              collectionGroups.add('Creation 55');
+            }
+          } else if (name.includes('Creation 70')) {
+            // Check if it's Zen variant
+            if (name.includes('Zen')) {
+              collectionGroups.add('Creation Zen');
+            } else {
+              collectionGroups.add('Creation 70');
+            }
           }
         } else if (name.includes('Saga')) {
-          collectionNames.add('SAGA²');
+          collectionGroups.add('SAGA²');
         }
       });
-      availableCollections = Array.from(collectionNames).sort();
+      // Sort in specific order: Creation 30, 40, 55, 70, Zen, SAGA²
+      const order = ['Creation 30', 'Creation 40', 'Creation 55', 'Creation 70', 'Creation Zen', 'SAGA²'];
+      availableCollections = Array.from(collectionGroups).sort((a, b) => {
+        const indexA = order.indexOf(a);
+        const indexB = order.indexOf(b);
+        if (indexA === -1 && indexB === -1) return a.localeCompare(b);
+        if (indexA === -1) return 1;
+        if (indexB === -1) return -1;
+        return indexA - indexB;
+      });
     }
   }
 
