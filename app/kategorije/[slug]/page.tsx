@@ -151,9 +151,42 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         return indexA - indexB;
       });
 
-      // Use all 10 Gerflor thickness values (as shown on their website)
-      // These are: 2.00, 2.50, 3.60, 4.25, 4.35, 4.50, 4.60, 5.00, 5.50, 6.00
-      availableThickness = ['2.00', '2.50', '3.60', '4.25', '4.35', '4.50', '4.60', '5.00', '5.50', '6.00'];
+      // Extract unique thickness values from our actual data (collections + colors from JSON)
+      const thicknessSet = new Set<string>();
+      
+      // Get thicknesses from collections
+      allCollections.forEach(p => {
+        const thicknessSpec = p.specs.find(s => s.key === 'thickness');
+        if (thicknessSpec) {
+          const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+          const thicknessValue = parseFloat(normalizedValue);
+          if (!isNaN(thicknessValue)) {
+            thicknessSet.add(thicknessValue.toFixed(2));
+          }
+        }
+      });
+      
+      // Get thicknesses from colors in JSON file
+      try {
+        const jsonPath = join(process.cwd(), 'public', 'data', 'lvt_colors_complete.json');
+        const jsonData = JSON.parse(readFileSync(jsonPath, 'utf8'));
+        if (jsonData.colors && Array.isArray(jsonData.colors)) {
+          jsonData.colors.forEach((color: any) => {
+            if (color.overall_thickness) {
+              const normalizedValue = color.overall_thickness.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+              const thicknessValue = parseFloat(normalizedValue);
+              if (!isNaN(thicknessValue)) {
+                thicknessSet.add(thicknessValue.toFixed(2));
+              }
+            }
+          });
+        }
+      } catch (error) {
+        console.error('Error reading LVT colors JSON:', error);
+      }
+      
+      // Sort thickness values numerically
+      availableThickness = Array.from(thicknessSet).sort((a, b) => parseFloat(a) - parseFloat(b));
     }
 
     // Apply collection filter ONLY to collections (not to colors)
