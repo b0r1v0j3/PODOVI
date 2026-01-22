@@ -8,9 +8,10 @@ interface ProductFiltersProps {
   availableBrands: Brand[];
   currentFilters: IProductFilters;
   availableCollections?: string[]; // For LVT collection filter
+  availableThickness?: string[]; // For LVT overall thickness filter
 }
 
-export default function ProductFilters({ availableBrands, currentFilters, availableCollections }: ProductFiltersProps) {
+export default function ProductFilters({ availableBrands, currentFilters, availableCollections, availableThickness }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -19,8 +20,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const isLVTCategory = pathname?.includes('/kategorije/lvt');
   const currentType = searchParams.get('type');
   const currentCollections = searchParams.get('collections');
-  const currentWearLayerMin = searchParams.get('wearLayerMin');
-  const currentWearLayerMax = searchParams.get('wearLayerMax');
+  const currentThickness = searchParams.get('thickness');
   
   const [search, setSearch] = useState(currentFilters.search || '');
   const [selectedBrands, setSelectedBrands] = useState<string[]>(currentFilters.brandIds || []);
@@ -33,8 +33,9 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const [selectedCollections, setSelectedCollections] = useState<string[]>(
     currentCollections ? currentCollections.split(',') : []
   );
-  const [wearLayerMin, setWearLayerMin] = useState(currentWearLayerMin || '');
-  const [wearLayerMax, setWearLayerMax] = useState(currentWearLayerMax || '');
+  const [selectedThickness, setSelectedThickness] = useState<string[]>(
+    currentThickness ? currentThickness.split(',') : []
+  );
 
   // Sync state with URL params when they change externally (e.g., browser back/forward)
   // This ensures state stays in sync with URL, but we skip updates that would cause loops
@@ -51,8 +52,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     const urlInStock = searchParams.get('inStock') === 'true';
     const urlType = searchParams.get('type');
     const urlCollections = searchParams.get('collections')?.split(',').filter(Boolean) || [];
-    const urlWearLayerMin = searchParams.get('wearLayerMin') || '';
-    const urlWearLayerMax = searchParams.get('wearLayerMax') || '';
+    const urlThickness = searchParams.get('thickness')?.split(',').filter(Boolean) || [];
 
     // Only update state if URL values differ (to avoid infinite loops)
     if (urlSearch !== search) setSearch(urlSearch);
@@ -67,9 +67,8 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isLVTCategory && JSON.stringify([...urlCollections].sort()) !== JSON.stringify([...selectedCollections].sort())) {
       setSelectedCollections(urlCollections);
     }
-    if (isLVTCategory) {
-      if (urlWearLayerMin !== wearLayerMin) setWearLayerMin(urlWearLayerMin);
-      if (urlWearLayerMax !== wearLayerMax) setWearLayerMax(urlWearLayerMax);
+    if (isLVTCategory && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
+      setSelectedThickness(urlThickness);
     }
   }, [searchParams]);
 
@@ -97,8 +96,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     params.delete('inStock');
     params.delete('type');
     params.delete('collections');
-    params.delete('wearLayerMin');
-    params.delete('wearLayerMax');
+    params.delete('thickness');
 
     // Add new filter params based on current state - ALL filters are preserved
     if (search) params.set('search', search);
@@ -108,8 +106,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (inStock) params.set('inStock', 'true');
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (isLVTCategory && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
-    if (isLVTCategory && wearLayerMin) params.set('wearLayerMin', wearLayerMin);
-    if (isLVTCategory && wearLayerMax) params.set('wearLayerMax', wearLayerMax);
+    if (isLVTCategory && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
 
     // Debounce for search input (500ms), immediate for other filters
     const delay = search ? 500 : 0;
@@ -131,7 +128,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
             clearTimeout(searchTimeoutRef.current);
           }
         };
-      }, [search, selectedBrands, priceMin, priceMax, inStock, vinylType, selectedCollections, wearLayerMin, wearLayerMax, pathname, router, searchParams, isVinilCategory, isLVTCategory]);
+      }, [search, selectedBrands, priceMin, priceMax, inStock, vinylType, selectedCollections, selectedThickness, pathname, router, searchParams, isVinilCategory, isLVTCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -141,8 +138,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     setInStock(false);
     setVinylType(null);
     setSelectedCollections([]);
-    setWearLayerMin('');
-    setWearLayerMax('');
+    setSelectedThickness([]);
     router.push(pathname);
   };
 
@@ -162,7 +158,15 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock || (isVinilCategory && vinylType) || (isLVTCategory && selectedCollections.length > 0) || (isLVTCategory && (wearLayerMin || wearLayerMax));
+  const toggleThickness = (thickness: string) => {
+    setSelectedThickness(prev => 
+      prev.includes(thickness) 
+        ? prev.filter(t => t !== thickness)
+        : [...prev, thickness]
+    );
+  };
+
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock || (isVinilCategory && vinylType) || (isLVTCategory && selectedCollections.length > 0) || (isLVTCategory && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -241,29 +245,22 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       )}
 
-      {/* Wear Layer Thickness Filter (for LVT) */}
-      {isLVTCategory && (
+      {/* Overall Thickness Filter (for LVT) */}
+      {isLVTCategory && availableThickness && availableThickness.length > 0 && (
         <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Debljina sloja habanja (mm)</label>
-          <div className="flex gap-2">
-            <input
-              type="number"
-              step="0.1"
-              min="0"
-              value={wearLayerMin}
-              onChange={(e) => setWearLayerMin(e.target.value)}
-              placeholder="Od"
-              className="input text-sm"
-            />
-            <input
-              type="number"
-              step="0.1"
-              min="0"
-              value={wearLayerMax}
-              onChange={(e) => setWearLayerMax(e.target.value)}
-              placeholder="Do"
-              className="input text-sm"
-            />
+          <label className="label text-xs uppercase tracking-wide text-gray-500">Ukupna debljina (mm)</label>
+          <div className="space-y-2 max-h-64 overflow-y-auto">
+            {availableThickness.map((thickness) => (
+              <label key={thickness} className="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectedThickness.includes(thickness)}
+                  onChange={() => toggleThickness(thickness)}
+                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                />
+                <span className="ml-2 text-sm text-gray-700">{thickness} mm</span>
+              </label>
+            ))}
           </div>
         </div>
       )}

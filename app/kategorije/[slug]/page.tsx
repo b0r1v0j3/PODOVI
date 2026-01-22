@@ -17,6 +17,7 @@ interface CategoryPageProps {
     color?: string;
     type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
     collections?: string; // For LVT collection filter (comma-separated)
+    thickness?: string; // For overall thickness filter (comma-separated values)
   };
 }
 
@@ -83,8 +84,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     priceMax: searchParams.priceMax ? parseFloat(searchParams.priceMax) : undefined,
     inStock: searchParams.inStock === 'true' ? true : undefined,
     type: searchParams.type, // For vinyl type filter
-    wearLayerMin: searchParams.wearLayerMin ? parseFloat(searchParams.wearLayerMin) : undefined,
-    wearLayerMax: searchParams.wearLayerMax ? parseFloat(searchParams.wearLayerMax) : undefined,
+    thickness: searchParams.thickness ? searchParams.thickness.split(',') : undefined,
     // collections filter will be applied separately after separating collections from colors
   };
 
@@ -102,6 +102,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
+  let availableThickness: string[] = [];
   
   // For non-LVT categories, get filtered products
   const filteredProducts = isLVTCategory ? [] : allProducts;
@@ -147,6 +148,25 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         if (indexB === -1) return -1;
         return indexA - indexB;
       });
+
+      // Extract unique thickness values for filter
+      const thicknessSet = new Set<string>();
+      allCollections.forEach(p => {
+        const thicknessSpec = p.specs.find(s => s.key === 'thickness');
+        if (thicknessSpec) {
+          // Parse thickness value (e.g., "2.00 mm", "2,5mm", "4.60 mm")
+          // Normalize: replace comma with dot, remove spaces and "mm"
+          const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+          const thicknessValue = parseFloat(normalizedValue);
+          if (!isNaN(thicknessValue)) {
+            // Format to 2 decimal places (e.g., "2.00", "2.50", "4.60")
+            const formattedValue = thicknessValue.toFixed(2);
+            thicknessSet.add(formattedValue);
+          }
+        }
+      });
+      // Sort thickness values numerically
+      availableThickness = Array.from(thicknessSet).sort((a, b) => parseFloat(a) - parseFloat(b));
     }
 
     // Apply collection filter ONLY to collections (not to colors)

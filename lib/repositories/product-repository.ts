@@ -89,24 +89,28 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
-    // Filter by wear layer thickness (for LVT products)
-    if (filters?.wearLayerMin !== undefined || filters?.wearLayerMax !== undefined) {
+    // Filter by overall thickness (for LVT products)
+    if (filters?.thickness && filters.thickness.length > 0) {
       filtered = filtered.filter(p => {
-        const wearLayerSpec = p.specs.find(s => s.key === 'wear_layer');
-        if (!wearLayerSpec) return false;
+        const thicknessSpec = p.specs.find(s => s.key === 'thickness');
+        if (!thicknessSpec) return false;
         
-        // Parse wear layer value (e.g., "0.30mm", "0.70 mm", "0.55mm")
-        const wearLayerValue = parseFloat(wearLayerSpec.value.replace(/[^\d.]/g, ''));
-        if (isNaN(wearLayerValue)) return false;
+        // Parse thickness value (e.g., "2.00 mm", "2,5mm", "4.60 mm")
+        // Normalize: replace comma with dot, remove spaces and "mm"
+        const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+        const thicknessValue = parseFloat(normalizedValue);
+        if (isNaN(thicknessValue)) return false;
         
-        // Check if wear layer is within the specified range
-        if (filters.wearLayerMin !== undefined && wearLayerValue < filters.wearLayerMin) {
-          return false;
-        }
-        if (filters.wearLayerMax !== undefined && wearLayerValue > filters.wearLayerMax) {
-          return false;
-        }
-        return true;
+        // Format to match filter values (e.g., "2.00", "2.50", "4.60")
+        const formattedValue = thicknessValue.toFixed(2);
+        
+        // Check if thickness matches any selected value
+        return filters.thickness!.some(selectedThickness => {
+          const selectedValue = parseFloat(selectedThickness);
+          if (isNaN(selectedValue)) return false;
+          const formattedSelected = selectedValue.toFixed(2);
+          return formattedValue === formattedSelected;
+        });
       });
     }
 
