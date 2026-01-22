@@ -118,43 +118,30 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       }
     }
 
-    // Extract unique LVT collection names for filter (grouped like Gerflor: Creation 30, 40, 55, 70, Zen, SAGA²)
+    // Extract unique LVT collection names for filter (grouped like Gerflor: Creation 30, 40, 55, 70, SAGA²)
+    // Zen variants are part of their respective collections (40, 55, 70)
     if (category.slug === 'lvt') {
       const collectionGroups = new Set<string>();
       collections.forEach(p => {
         const name = p.name;
         if (name.includes('Creation')) {
-          // Extract base collection number (30, 40, 55, 70) or Zen
+          // Extract base collection number (30, 40, 55, 70)
+          // Zen variants are included in their base collection
           if (name.includes('Creation 30')) {
             collectionGroups.add('Creation 30');
           } else if (name.includes('Creation 40')) {
-            // Check if it's Zen variant
-            if (name.includes('Zen')) {
-              collectionGroups.add('Creation Zen');
-            } else {
-              collectionGroups.add('Creation 40');
-            }
+            collectionGroups.add('Creation 40');
           } else if (name.includes('Creation 55')) {
-            // Check if it's Zen variant
-            if (name.includes('Zen')) {
-              collectionGroups.add('Creation Zen');
-            } else {
-              collectionGroups.add('Creation 55');
-            }
+            collectionGroups.add('Creation 55');
           } else if (name.includes('Creation 70')) {
-            // Check if it's Zen variant
-            if (name.includes('Zen')) {
-              collectionGroups.add('Creation Zen');
-            } else {
-              collectionGroups.add('Creation 70');
-            }
+            collectionGroups.add('Creation 70');
           }
         } else if (name.includes('Saga')) {
           collectionGroups.add('SAGA²');
         }
       });
-      // Sort in specific order: Creation 30, 40, 55, 70, Zen, SAGA²
-      const order = ['Creation 30', 'Creation 40', 'Creation 55', 'Creation 70', 'Creation Zen', 'SAGA²'];
+      // Sort in specific order: Creation 30, 40, 55, 70, SAGA²
+      const order = ['Creation 30', 'Creation 40', 'Creation 55', 'Creation 70', 'SAGA²'];
       availableCollections = Array.from(collectionGroups).sort((a, b) => {
         const indexA = order.indexOf(a);
         const indexB = order.indexOf(b);

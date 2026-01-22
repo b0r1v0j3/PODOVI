@@ -64,21 +64,23 @@ export class MockProductRepository implements IProductRepository {
     }
 
     // Filter by collections (for LVT products) - grouped like Gerflor
+    // Zen variants are included in their base collections (40, 55, 70)
     if (filters?.collections && filters.collections.length > 0) {
       filtered = filtered.filter(p => {
         const productName = p.name;
         // Check if any selected collection group matches the product
         return filters.collections!.some(collection => {
           if (collection === 'Creation 30') {
-            return productName.includes('Creation 30') && !productName.includes('Zen');
+            return productName.includes('Creation 30');
           } else if (collection === 'Creation 40') {
-            return productName.includes('Creation 40') && !productName.includes('Zen');
+            // Include all Creation 40 variants including Zen
+            return productName.includes('Creation 40');
           } else if (collection === 'Creation 55') {
-            return productName.includes('Creation 55') && !productName.includes('Zen');
+            // Include all Creation 55 variants including Zen
+            return productName.includes('Creation 55');
           } else if (collection === 'Creation 70') {
-            return productName.includes('Creation 70') && !productName.includes('Zen');
-          } else if (collection === 'Creation Zen') {
-            return productName.includes('Creation') && productName.includes('Zen');
+            // Include all Creation 70 variants including Zen
+            return productName.includes('Creation 70');
           } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
             return productName.includes('Saga');
           }
