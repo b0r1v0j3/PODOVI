@@ -576,11 +576,28 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
   return null;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
 
   try {
-    const product = await resolveProductBySlug(params.slug);
+    // If color parameter is present, load the color directly as a product instead of the collection
+    const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
+    let product: (Product & { collectionSlug?: string }) | null = null;
+    
+    if (selectedColorSlug) {
+      // Try to load the color directly as a product
+      const colorSource = await loadColorFromJson(selectedColorSlug);
+      if (colorSource) {
+        // Get the collection slug from the URL params
+        const collectionSlug = params.slug;
+        product = colorToProduct(colorSource, selectedColorSlug, collectionSlug);
+      }
+    }
+    
+    // If color wasn't loaded, try to load the collection/product normally
+    if (!product) {
+      product = await resolveProductBySlug(params.slug);
+    }
 
     if (!product) {
       return {
@@ -619,6 +636,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'LVT'
     ].filter(Boolean).join(', ');
 
+    // Build URL with color parameter if present
+    const urlWithColor = selectedColorSlug 
+      ? `${baseUrl}/proizvodi/${params.slug}?color=${selectedColorSlug}`
+      : `${baseUrl}/proizvodi/${params.slug}`;
+
     return {
       metadataBase: new URL(baseUrl),
       title: `${product.name} - Cena i Karakteristike | Podovi.online`,
@@ -630,7 +652,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: product.shortDescription || product.description || '',
         type: 'website',
         locale: 'sr_RS',
-        url: `${baseUrl}/proizvodi/${params.slug}`,
+        url: urlWithColor,
         siteName: 'Podovi.online',
         images: primaryImage ? [
           {
@@ -648,7 +670,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: primaryImage ? [primaryImage.url] : [],
       },
       alternates: {
-        canonical: `${baseUrl}/proizvodi/${params.slug}`,
+        canonical: urlWithColor,
       },
     };
   } catch (error) {
@@ -682,7 +704,24 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    const product = await resolveProductBySlug(params.slug);
+    // If color parameter is present, load the color directly as a product instead of the collection
+    const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
+    let product: (Product & { collectionSlug?: string }) | null = null;
+    
+    if (selectedColorSlug) {
+      // Try to load the color directly as a product
+      const colorSource = await loadColorFromJson(selectedColorSlug);
+      if (colorSource) {
+        // Get the collection slug from the URL params
+        const collectionSlug = params.slug;
+        product = colorToProduct(colorSource, selectedColorSlug, collectionSlug);
+      }
+    }
+    
+    // If color wasn't loaded, try to load the collection/product normally
+    if (!product) {
+      product = await resolveProductBySlug(params.slug);
+    }
 
     if (!product) {
       notFound();
@@ -690,8 +729,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // If product is a COLOR (has collectionSlug), redirect to COLLECTION page with color parameter.
     // Collections don't have collectionSlug and should stay on collection page.
+    // BUT: If we already have a color parameter in the URL, don't redirect (we're already showing the color)
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
-    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct) {
+    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct && !selectedColorSlug) {
       const normalizedCollectionSlug = normalizeCollectionSlug(product.categoryId, collectionSlugFromProduct);
       if (normalizedCollectionSlug) {
         const { redirect } = await import('next/navigation');
@@ -721,8 +761,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
       ? product.name.replace(/^Gerflor\s+/, '')
       : product.name;
 
-    const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
-    if (selectedColorSlug) {
+    // If we loaded a color directly, the specs are already merged in colorToProduct
+    // If we loaded a collection and there's a color parameter, merge color specs
+    if (selectedColorSlug && product && !product.slug.includes(selectedColorSlug)) {
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (colorSource?.color) {
         const colorSpecs = buildSpecsFromColor(colorSource.color);
@@ -811,7 +852,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 {/* LVT and Linoleum products with color selector */}
                 <ProductColorSelector
                   initialImage={primaryImage}
-                  collectionSlug={(product as { collectionSlug?: string }).collectionSlug || product.slug}
+                  collectionSlug={(product as { collectionSlug?: string }).collectionSlug || params.slug}
                   productName={displayName}
                   productPrice={product.price}
                   priceUnit={product.priceUnit}
