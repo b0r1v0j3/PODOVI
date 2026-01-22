@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { Brand, ProductFilters as IProductFilters } from '@/types';
 
@@ -32,7 +32,17 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     currentCollections ? currentCollections.split(',') : []
   );
 
-  const applyFilters = () => {
+  // Auto-apply filters when values change (with debounce for search)
+  const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isInitialMount = useRef(true);
+
+  useEffect(() => {
+    // Skip auto-apply on initial mount
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
     const params = new URLSearchParams(searchParams);
     
     // Clear all filter params first
@@ -53,8 +63,23 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (isLVTCategory && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
 
-    router.push(`${pathname}?${params.toString()}`);
-  };
+    // Debounce for search input (500ms), immediate for other filters
+    const delay = search ? 500 : 0;
+    
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    searchTimeoutRef.current = setTimeout(() => {
+      router.push(`${pathname}?${params.toString()}`);
+    }, delay);
+
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, [search, selectedBrands, priceMin, priceMax, inStock, vinylType, selectedCollections, pathname, router, searchParams, isVinilCategory, isLVTCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -98,7 +123,6 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Pretraži proizvode..."
           className="input text-sm"
-          onKeyPress={(e) => e.key === 'Enter' && applyFilters()}
         />
       </div>
 
@@ -215,23 +239,17 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </label>
       </div>
 
-      {/* Action Buttons */}
-      <div className="space-y-2">
-        <button
-          onClick={applyFilters}
-          className="btn-primary w-full"
-        >
-          Primeni filtere
-        </button>
-        {hasActiveFilters && (
+      {/* Clear Filters Button */}
+      {hasActiveFilters && (
+        <div className="mt-6">
           <button
             onClick={clearFilters}
             className="btn-outline w-full"
           >
             Obriši filtere
           </button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
