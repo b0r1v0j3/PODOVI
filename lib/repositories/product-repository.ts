@@ -89,6 +89,27 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
+    // Filter by wear layer thickness (for LVT products)
+    if (filters?.wearLayerMin !== undefined || filters?.wearLayerMax !== undefined) {
+      filtered = filtered.filter(p => {
+        const wearLayerSpec = p.specs.find(s => s.key === 'wear_layer');
+        if (!wearLayerSpec) return false;
+        
+        // Parse wear layer value (e.g., "0.30mm", "0.70 mm", "0.55mm")
+        const wearLayerValue = parseFloat(wearLayerSpec.value.replace(/[^\d.]/g, ''));
+        if (isNaN(wearLayerValue)) return false;
+        
+        // Check if wear layer is within the specified range
+        if (filters.wearLayerMin !== undefined && wearLayerValue < filters.wearLayerMin) {
+          return false;
+        }
+        if (filters.wearLayerMax !== undefined && wearLayerValue > filters.wearLayerMax) {
+          return false;
+        }
+        return true;
+      });
+    }
+
     return filtered;
   }
 

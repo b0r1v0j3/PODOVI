@@ -113,4 +113,6 @@ export interface ProductFilters {
   search?: string;
   type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
   collections?: string[]; // For LVT collection filter
+  wearLayerMin?: number; // Minimum wear layer thickness in mm (for LVT)
+  wearLayerMax?: number; // Maximum wear layer thickness in mm (for LVT)
 }

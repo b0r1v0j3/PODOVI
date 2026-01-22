@@ -83,6 +83,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     priceMax: searchParams.priceMax ? parseFloat(searchParams.priceMax) : undefined,
     inStock: searchParams.inStock === 'true' ? true : undefined,
     type: searchParams.type, // For vinyl type filter
+    wearLayerMin: searchParams.wearLayerMin ? parseFloat(searchParams.wearLayerMin) : undefined,
+    wearLayerMax: searchParams.wearLayerMax ? parseFloat(searchParams.wearLayerMax) : undefined,
     // collections filter will be applied separately after separating collections from colors
   };
 
