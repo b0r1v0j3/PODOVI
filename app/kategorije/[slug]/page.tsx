@@ -74,8 +74,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     notFound();
   }
 
-  // Parse filters from search params
-  const filters = {
+  // Parse filters from search params (but exclude collections filter for now)
+  const filtersWithoutCollections = {
     categoryId: category.id,
     search: searchParams.search,
     brandIds: searchParams.brands ? searchParams.brands.split(',') : undefined,
@@ -83,10 +83,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     priceMax: searchParams.priceMax ? parseFloat(searchParams.priceMax) : undefined,
     inStock: searchParams.inStock === 'true' ? true : undefined,
     type: searchParams.type, // For vinyl type filter
-    collections: searchParams.collections ? searchParams.collections.split(',') : undefined, // For LVT collection filter
+    // collections filter will be applied separately after separating collections from colors
   };
 
-  const products = await productRepository.findByCategory(category.id, filters);
+  // Get all products first (without collection filter) to properly separate collections from colors
+  const allProducts = await productRepository.findByCategory(category.id, filtersWithoutCollections);
   const allBrands = await brandRepository.findAll();
 
   // Get unique brands used in this category
@@ -96,8 +97,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   // For LVT, Linoleum, Carpet, and Vinil categories, separate collections from colors
   const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil';
-  let collections: typeof products = [];
-  let colors: typeof products = [];
+  let collections: typeof allProducts = [];
+  let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
 
   // Create brands object for Client Component (serializable)
@@ -105,11 +106,33 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (isLVTCategory) {
     // Collections are products with SKU starting with "GER-" (LVT/Vinil), "LINOLEUM-" (Linoleum), "VINIL-" (Vinil)
     // Colors are individual color products with 4-digit SKU codes or other patterns
-    collections = products.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
-    colors = products.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')));
+    collections = allProducts.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
+    colors = allProducts.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')));
+
+    // Apply collection filter ONLY to collections (not to colors)
+    const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
+    if (selectedCollections.length > 0) {
+      collections = collections.filter(p => {
+        const productName = p.name;
+        return selectedCollections.some(collection => {
+          if (collection === 'Creation 30') {
+            return productName.includes('Creation 30');
+          } else if (collection === 'Creation 40') {
+            return productName.includes('Creation 40');
+          } else if (collection === 'Creation 55') {
+            return productName.includes('Creation 55');
+          } else if (collection === 'Creation 70') {
+            return productName.includes('Creation 70');
+          } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
+            return productName.includes('Saga');
+          }
+          return false;
+        });
+      });
+    }
 
     // Build brands record for all products
-    for (const product of products) {
+    for (const product of allProducts) {
       if (!brandsRecord[product.brandId]) {
         const brand = allBrands.find(b => b.id === product.brandId);
         if (brand) {
