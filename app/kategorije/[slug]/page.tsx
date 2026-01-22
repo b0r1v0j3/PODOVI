@@ -204,7 +204,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           <aside className="lg:w-60 flex-shrink-0">
             <ProductFilters
               availableBrands={availableBrands}
-              currentFilters={filters}
+              currentFilters={filtersWithoutCollections}
               availableCollections={availableCollections}
             />
           </aside>
