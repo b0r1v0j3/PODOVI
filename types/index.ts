@@ -112,4 +112,5 @@ export interface ProductFilters {
   inStock?: boolean;
   search?: string;
   type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
+  collections?: string[]; // For LVT collection filter
 }

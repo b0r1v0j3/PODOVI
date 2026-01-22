@@ -16,6 +16,7 @@ interface CategoryPageProps {
     inStock?: string;
     color?: string;
     type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
+    collections?: string; // For LVT collection filter (comma-separated)
   };
 }
 
@@ -82,6 +83,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     priceMax: searchParams.priceMax ? parseFloat(searchParams.priceMax) : undefined,
     inStock: searchParams.inStock === 'true' ? true : undefined,
     type: searchParams.type, // For vinyl type filter
+    collections: searchParams.collections ? searchParams.collections.split(',') : undefined, // For LVT collection filter
   };
 
   const products = await productRepository.findByCategory(category.id, filters);
@@ -96,6 +98,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil';
   let collections: typeof products = [];
   let colors: typeof products = [];
+  let availableCollections: string[] = [];
 
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
@@ -113,6 +116,27 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           brandsRecord[product.brandId] = brand;
         }
       }
+    }
+
+    // Extract unique LVT collection names for filter
+    if (category.slug === 'lvt') {
+      const collectionNames = new Set<string>();
+      collections.forEach(p => {
+        // Extract collection name from product name (e.g., "Gerflor Creation 30" -> "Creation 30")
+        // or "Gerflor Creation Saga²" -> "SAGA²"
+        const name = p.name;
+        if (name.includes('Creation')) {
+          // Extract "Creation 30", "Creation 40 Clic", etc.
+          // Remove "Gerflor " prefix if present
+          const nameWithoutPrefix = name.replace(/^Gerflor\s+/i, '');
+          if (nameWithoutPrefix.startsWith('Creation')) {
+            collectionNames.add(nameWithoutPrefix);
+          }
+        } else if (name.includes('Saga')) {
+          collectionNames.add('SAGA²');
+        }
+      });
+      availableCollections = Array.from(collectionNames).sort();
     }
   }
 
@@ -145,6 +169,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             <ProductFilters
               availableBrands={availableBrands}
               currentFilters={filters}
+              availableCollections={availableCollections}
             />
           </aside>
 

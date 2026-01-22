@@ -7,15 +7,18 @@ import { Brand, ProductFilters as IProductFilters } from '@/types';
 interface ProductFiltersProps {
   availableBrands: Brand[];
   currentFilters: IProductFilters;
+  availableCollections?: string[]; // For LVT collection filter
 }
 
-export default function ProductFilters({ availableBrands, currentFilters }: ProductFiltersProps) {
+export default function ProductFilters({ availableBrands, currentFilters, availableCollections }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   
   const isVinilCategory = pathname?.includes('/kategorije/vinil');
+  const isLVTCategory = pathname?.includes('/kategorije/lvt');
   const currentType = searchParams.get('type');
+  const currentCollections = searchParams.get('collections');
   
   const [search, setSearch] = useState(currentFilters.search || '');
   const [selectedBrands, setSelectedBrands] = useState<string[]>(currentFilters.brandIds || []);
@@ -24,6 +27,9 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
   const [inStock, setInStock] = useState(currentFilters.inStock || false);
   const [vinylType, setVinylType] = useState<'homogeni' | 'heterogeni' | null>(
     currentType === 'homogeni' ? 'homogeni' : currentType === 'heterogeni' ? 'heterogeni' : null
+  );
+  const [selectedCollections, setSelectedCollections] = useState<string[]>(
+    currentCollections ? currentCollections.split(',') : []
   );
 
   const applyFilters = () => {
@@ -36,6 +42,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     params.delete('priceMax');
     params.delete('inStock');
     params.delete('type');
+    params.delete('collections');
 
     // Add new filter params
     if (search) params.set('search', search);
@@ -44,6 +51,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     if (priceMax) params.set('priceMax', priceMax);
     if (inStock) params.set('inStock', 'true');
     if (isVinilCategory && vinylType) params.set('type', vinylType);
+    if (isLVTCategory && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
 
     router.push(`${pathname}?${params.toString()}`);
   };
@@ -55,6 +63,7 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     setPriceMax('');
     setInStock(false);
     setVinylType(null);
+    setSelectedCollections([]);
     router.push(pathname);
   };
 
@@ -66,7 +75,15 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock || (isVinilCategory && vinylType);
+  const toggleCollection = (collection: string) => {
+    setSelectedCollections(prev => 
+      prev.includes(collection) 
+        ? prev.filter(c => c !== collection)
+        : [...prev, collection]
+    );
+  };
+
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock || (isVinilCategory && vinylType) || (isLVTCategory && selectedCollections.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -125,6 +142,26 @@ export default function ProductFilters({ availableBrands, currentFilters }: Prod
           />
         </div>
       </div>
+
+      {/* Collections Filter (for LVT) */}
+      {isLVTCategory && availableCollections && availableCollections.length > 0 && (
+        <div className="mb-6">
+          <label className="label text-xs uppercase tracking-wide text-gray-500">Kolekcije</label>
+          <div className="space-y-2 max-h-64 overflow-y-auto">
+            {availableCollections.map((collection) => (
+              <label key={collection} className="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectedCollections.includes(collection)}
+                  onChange={() => toggleCollection(collection)}
+                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                />
+                <span className="ml-2 text-sm text-gray-700">{collection}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Vinyl Type Filter */}
       {isVinilCategory && (
