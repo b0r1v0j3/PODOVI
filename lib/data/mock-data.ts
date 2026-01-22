@@ -1091,49 +1091,6 @@ TVOC <10µg/m³`,
   },
   {
     id: '22',
-    name: 'Gerflor Creation 70 Looselay',
-    slug: 'gerflor-creation-70-looselay',
-    sku: 'GER-C70LL',
-    categoryId: '6',
-    brandId: '6',
-    shortDescription: 'LVT kolekcija Looselay sistem',
-    description: `Proizvod:
-Uklonjiva "Looselay" verzija za najprometnije prostore (Klasa 43)
-5 veličina: uključujući format riblje kosti i XL daske
-Ekskluzivna "Duo Core" konstrukcija ojačana vlaknima
-ProtecShield™: prirodan izgled i lako čišćenje
-
-Ugradnja:
-Looselay sistem: brza instalacija bez lepka
-Direktno na keramiku (spoj <4mm)
-Pogodno za podignute podove (pristup kablovima)
-
-Primena:
-Evropska klasa upotrebe: 34/43
-Idealno za ekstremno prometne zone: aerodromi, javne ustanove, tržni centri
-
-Okruženje:
-100% reciklabilno
-35% recikliranog sadržaja
-Bez ftalata
-TVOC <10µg/m³`,
-    images: [{ id: '25-1', url: '/images/products/lvt/creation-70-looselay.jpg', alt: 'Gerflor Creation 70 Looselay', isPrimary: true, order: 1 }],
-    specs: [
-      { key: 'format', label: 'Format', value: 'Ploča' },
-      { key: 'installation', label: 'Tip instalacije', value: 'Looselay' },
-      { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
-      { key: 'ncs', label: 'NCS Oznaka', value: 'NCS S 4010-Y30R' },
-    ],
-    price: 0,
-    priceUnit: 'm²',
-    inStock: true,
-    featured: true,
-    externalLink: 'https://www.gerflor-cee.com/products/new-2025-creation-70-looselay',
-    createdAt: new Date('2024-03-20'),
-    updatedAt: new Date('2024-03-20'),
-  },
-  {
-    id: '25',
     name: 'Gerflor Creation 70 Megaclic',
     slug: 'gerflor-creation-70-megaclic',
     sku: 'GER-C70MC',
@@ -1172,6 +1129,49 @@ TVOC <10µg/m³`,
     inStock: true,
     featured: false,
     externalLink: 'https://www.gerflor-cee.com/products/creation-70-megaclic',
+    createdAt: new Date('2024-03-20'),
+    updatedAt: new Date('2024-03-20'),
+  },
+  {
+    id: '24',
+    name: 'Gerflor Creation 70 Looselay',
+    slug: 'gerflor-creation-70-looselay',
+    sku: 'GER-C70LL',
+    categoryId: '6',
+    brandId: '6',
+    shortDescription: 'LVT kolekcija Looselay sistem',
+    description: `Proizvod:
+Uklonjiva "Looselay" verzija za najprometnije prostore (Klasa 43)
+5 veličina: uključujući format riblje kosti i XL daske
+Ekskluzivna "Duo Core" konstrukcija ojačana vlaknima
+ProtecShield™: prirodan izgled i lako čišćenje
+
+Ugradnja:
+Looselay sistem: brza instalacija bez lepka
+Direktno na keramiku (spoj <4mm)
+Pogodno za podignute podove (pristup kablovima)
+
+Primena:
+Evropska klasa upotrebe: 34/43
+Idealno za ekstremno prometne zone: aerodromi, javne ustanove, tržni centri
+
+Okruženje:
+100% reciklabilno
+35% recikliranog sadržaja
+Bez ftalata
+TVOC <10µg/m³`,
+    images: [{ id: '25-1', url: '/images/products/lvt/creation-70-looselay.jpg', alt: 'Gerflor Creation 70 Looselay', isPrimary: true, order: 1 }],
+    specs: [
+      { key: 'format', label: 'Format', value: 'Ploča' },
+      { key: 'installation', label: 'Tip instalacije', value: 'Looselay' },
+      { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
+      { key: 'ncs', label: 'NCS Oznaka', value: 'NCS S 4010-Y30R' },
+    ],
+    price: 0,
+    priceUnit: 'm²',
+    inStock: true,
+    featured: true,
+    externalLink: 'https://www.gerflor-cee.com/products/new-2025-creation-70-looselay',
     createdAt: new Date('2024-03-20'),
     updatedAt: new Date('2024-03-20'),
   },
@@ -1221,7 +1221,7 @@ Proizvedeno u Francuskoj`,
     updatedAt: new Date('2024-03-20'),
   },
   {
-    id: '24',
+    id: '25',
     name: 'Gerflor Creation Saga²',
     slug: 'gerflor-creation-saga',
     sku: 'GER-CSAGA',
