@@ -716,6 +716,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
       product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
     }
 
+    // Remove "Gerflor" prefix from product name for LVT collections (for display only)
+    const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
+      ? product.name.replace(/^Gerflor\s+/, '')
+      : product.name;
+
     const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
     if (selectedColorSlug) {
       const colorSource = await loadColorFromJson(selectedColorSlug);
@@ -807,7 +812,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 <ProductColorSelector
                   initialImage={primaryImage}
                   collectionSlug={(product as { collectionSlug?: string }).collectionSlug || product.slug}
-                  productName={product.name}
+                  productName={displayName}
                   productPrice={product.price}
                   priceUnit={product.priceUnit}
                   brand={brand ? { name: brand.name, slug: brand.slug } : null}
@@ -911,7 +916,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   {/* Title */}
                   <div>
                     <h1 className="text-4xl font-bold text-gray-900 mb-3">
-                      {product.name}
+                      {displayName}
                     </h1>
                     {product.shortDescription && (
                       <p className="text-xl text-gray-600">

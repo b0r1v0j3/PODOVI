@@ -13,6 +13,11 @@ export default async function ProductCard({ product }: ProductCardProps) {
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
   const isLocalImage = !!primaryImage?.url?.startsWith('/');
+  
+  // Remove "Gerflor" prefix from product name for LVT collections
+  const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
+    ? product.name.replace(/^Gerflor\s+/, '')
+    : product.name;
 
   // For LVT, Linoleum, and Carpet featured products, link to COLLECTION page with color parameter
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
@@ -75,7 +80,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
           </p>
         )}
         <h3 className="font-bold text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
-          {product.name}
+          {displayName}
         </h3>
         <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
           {product.shortDescription}

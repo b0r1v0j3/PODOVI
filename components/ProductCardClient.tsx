@@ -18,6 +18,11 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   // For local images, use Next.js Image with unoptimized flag
   const imageSrc = primaryImage?.url || '';
   
+  // Remove "Gerflor" prefix from product name for LVT collections
+  const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
+    ? product.name.replace(/^Gerflor\s+/, '')
+    : product.name;
+  
   // For LVT, Linoleum, Carpet, and Vinil categories, link to COLLECTION page with color parameter
   // Collections don't have collectionSlug, only individual colors do
   const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
@@ -85,7 +90,7 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
           </p>
         )}
         <h3 className="font-bold text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
-          {product.name}
+          {displayName}
         </h3>
         <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
           {product.shortDescription}
