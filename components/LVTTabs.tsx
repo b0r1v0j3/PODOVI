@@ -34,7 +34,16 @@ interface LVTTabsProps {
   };
 }
 
-export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType, searchParams }: LVTTabsProps) {
+export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType, searchParams: searchParamsProp }: LVTTabsProps) {
+  // Get search params from URL (fallback to prop if provided)
+  const urlSearchParams = useSearchParams();
+  const searchParams = searchParamsProp || {
+    search: urlSearchParams.get('search') || undefined,
+    brands: urlSearchParams.get('brands') || undefined,
+    collections: urlSearchParams.get('collections') || undefined,
+    thickness: urlSearchParams.get('thickness') || undefined,
+  };
+  
   // If initialColorSlug is provided, start with 'colors' tab active
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
     initialColorSlug ? 'colors' : 'collections'
