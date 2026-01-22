@@ -26,7 +26,6 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const [selectedBrands, setSelectedBrands] = useState<string[]>(currentFilters.brandIds || []);
   const [priceMin, setPriceMin] = useState(currentFilters.priceMin?.toString() || '');
   const [priceMax, setPriceMax] = useState(currentFilters.priceMax?.toString() || '');
-  const [inStock, setInStock] = useState(currentFilters.inStock || false);
   const [vinylType, setVinylType] = useState<'homogeni' | 'heterogeni' | null>(
     currentType === 'homogeni' ? 'homogeni' : currentType === 'heterogeni' ? 'heterogeni' : null
   );
@@ -49,7 +48,6 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     const urlBrands = searchParams.get('brands')?.split(',').filter(Boolean) || [];
     const urlPriceMin = searchParams.get('priceMin') || '';
     const urlPriceMax = searchParams.get('priceMax') || '';
-    const urlInStock = searchParams.get('inStock') === 'true';
     const urlType = searchParams.get('type');
     const urlCollections = searchParams.get('collections')?.split(',').filter(Boolean) || [];
     const urlThickness = searchParams.get('thickness')?.split(',').filter(Boolean) || [];
@@ -59,7 +57,6 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (JSON.stringify([...urlBrands].sort()) !== JSON.stringify([...selectedBrands].sort())) setSelectedBrands(urlBrands);
     if (urlPriceMin !== priceMin) setPriceMin(urlPriceMin);
     if (urlPriceMax !== priceMax) setPriceMax(urlPriceMax);
-    if (urlInStock !== inStock) setInStock(urlInStock);
     if (isVinilCategory) {
       const newType = urlType === 'homogeni' ? 'homogeni' : urlType === 'heterogeni' ? 'heterogeni' : null;
       if (newType !== vinylType) setVinylType(newType);
@@ -93,7 +90,6 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     params.delete('brands');
     params.delete('priceMin');
     params.delete('priceMax');
-    params.delete('inStock');
     params.delete('type');
     params.delete('collections');
     params.delete('thickness');
@@ -103,7 +99,6 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (selectedBrands.length > 0) params.set('brands', selectedBrands.join(','));
     if (priceMin) params.set('priceMin', priceMin);
     if (priceMax) params.set('priceMax', priceMax);
-    if (inStock) params.set('inStock', 'true');
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (isLVTCategory && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
     if (isLVTCategory && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
@@ -128,14 +123,13 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
             clearTimeout(searchTimeoutRef.current);
           }
         };
-      }, [search, selectedBrands, priceMin, priceMax, inStock, vinylType, selectedCollections, selectedThickness, pathname, router, searchParams, isVinilCategory, isLVTCategory]);
+      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, pathname, router, searchParams, isVinilCategory, isLVTCategory]);
 
   const clearFilters = () => {
     setSearch('');
     setSelectedBrands([]);
     setPriceMin('');
     setPriceMax('');
-    setInStock(false);
     setVinylType(null);
     setSelectedCollections([]);
     setSelectedThickness([]);
@@ -166,7 +160,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || inStock || (isVinilCategory && vinylType) || (isLVTCategory && selectedCollections.length > 0) || (isLVTCategory && selectedThickness.length > 0);
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (isLVTCategory && selectedCollections.length > 0) || (isLVTCategory && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -303,19 +297,6 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
           </div>
         </div>
       )}
-
-      {/* In Stock */}
-      <div className="mb-6">
-        <label className="flex items-center cursor-pointer">
-          <input
-            type="checkbox"
-            checked={inStock}
-            onChange={(e) => setInStock(e.target.checked)}
-            className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-          />
-          <span className="ml-2 text-sm text-gray-700">Samo na stanju</span>
-        </label>
-      </div>
 
       {/* Clear Filters Button */}
       {hasActiveFilters && (
