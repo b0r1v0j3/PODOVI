@@ -720,6 +720,7 @@ TVOC <10µg/m³
 Floorscore®, IAC Gold & M1 sertifikovano`,
     images: [{ id: '13-1', url: '/images/products/lvt/creation-55.jpg', alt: 'Gerflor Creation 55', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '2.50 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Lepljenje' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
