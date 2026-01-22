@@ -134,7 +134,10 @@ export default function ColorGrid({
     if (collectionName.startsWith('creation-')) {
       const parts = collectionName.split('-');
       if (parts.length >= 2) {
+        // Handle "looselay-acoustic" or "clic-acoustic" - need to include "acoustic" in collection name
         if (parts.length >= 4 && parts[2] === 'clic' && parts[3] === 'acoustic') {
+          collectionName = parts.slice(0, 4).join('-');
+        } else if (parts.length >= 4 && parts[2] === 'looselay' && parts[3] === 'acoustic') {
           collectionName = parts.slice(0, 4).join('-');
         } else if (
           parts.length >= 3 &&
