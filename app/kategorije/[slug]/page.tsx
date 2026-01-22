@@ -118,7 +118,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const collectionGroups = new Set<string>();
       allCollections.forEach(p => {
         const name = p.name;
-        if (name.includes('Creation')) {
+        // Check for Saga first (since "Creation Saga²" contains both "Creation" and "Saga")
+        if (name.includes('Saga') || name.includes('SAGA')) {
+          collectionGroups.add('SAGA²');
+        } else if (name.includes('Creation')) {
           // Extract base collection number (30, 40, 55, 70)
           // Zen variants are included in their base collection
           if (name.includes('Creation 30')) {
@@ -130,8 +133,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           } else if (name.includes('Creation 70')) {
             collectionGroups.add('Creation 70');
           }
-        } else if (name.includes('Saga')) {
-          collectionGroups.add('SAGA²');
         }
       });
       // Sort in specific order: Creation 30, 40, 55, 70, SAGA²
