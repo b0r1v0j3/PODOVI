@@ -4393,6 +4393,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -4434,6 +4439,11 @@
         "NCS": "NCS S 6020-Y40R"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -4477,6 +4487,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -4518,6 +4533,11 @@
         "NCS": "NCS S 5010-Y30R"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -4561,6 +4581,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -4602,6 +4627,11 @@
         "NCS": "NCS S 5020-Y30R"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -4645,6 +4675,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -4686,6 +4721,11 @@
         "NCS": "NCS S 6010-Y30R"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -4729,6 +4769,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -4770,6 +4815,11 @@
         "NCS": "NCS S 4010-Y30R"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -4813,6 +4863,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -4864,6 +4919,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -4913,6 +4973,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -4964,6 +5029,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5013,6 +5083,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5064,6 +5139,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5113,6 +5193,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5164,6 +5249,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5213,6 +5303,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5264,6 +5359,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5313,6 +5413,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5364,6 +5469,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5414,6 +5524,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5459,6 +5574,11 @@
       "overall_thickness": "5.50 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5513,6 +5633,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5562,6 +5687,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5613,6 +5743,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5658,6 +5793,11 @@
       "overall_thickness": "5.50 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5707,6 +5847,11 @@
       "format": "XL",
       "overall_thickness": "5.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5761,6 +5906,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5811,6 +5961,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5856,6 +6011,11 @@
       "format": "XL",
       "overall_thickness": "5.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -5910,6 +6070,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -5960,6 +6125,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6005,6 +6175,11 @@
       "format": "XL",
       "overall_thickness": "5.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6059,6 +6234,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6108,6 +6288,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6159,6 +6344,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6208,6 +6398,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6259,6 +6454,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6309,6 +6509,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6354,6 +6559,11 @@
       "format": "XL",
       "overall_thickness": "5.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6408,6 +6618,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6453,6 +6668,11 @@
       "overall_thickness": "5.50 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6507,6 +6727,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6556,6 +6781,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6607,6 +6837,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6656,6 +6891,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6707,6 +6947,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6752,6 +6997,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6807,6 +7057,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6849,6 +7104,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -6898,6 +7158,11 @@
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6946,6 +7211,11 @@
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -6992,6 +7262,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7041,6 +7316,11 @@
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7087,6 +7367,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7135,6 +7420,11 @@
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7182,6 +7472,11 @@
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7228,6 +7523,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7277,6 +7577,11 @@
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7323,6 +7628,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7378,6 +7688,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7419,6 +7734,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7467,6 +7787,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7522,6 +7847,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7563,6 +7893,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7612,6 +7947,11 @@
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7658,6 +7998,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7706,6 +8051,11 @@
       "overall_thickness": "3.60 mm",
       "description": "Proizvod:\nElegancija i performanse za prostore sa srednjim prometom\nDostupno u Formatima: daske i pločice\n4 zakošene ivice za autentičan izgled\nSloj habanja: 0.40 mm\nVisok nivo akustične izolacije (-20dB)\nProtecShield™: prirodan izgled i lako čišćenje\n\nUgradnja:\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nMoguća ugradnja na različite podloge (čak i na stare podove sa ostacima lepka)\nIdealno za brze renovacije\n\nPrimena:\nEvropska klasa upotrebe: 23/32\nIdealno za stambene prostore i kancelarije\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³\nProizvedeno u Francuskoj",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7760,6 +8110,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "3.60 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7802,6 +8157,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7848,6 +8208,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7900,6 +8265,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -7946,6 +8316,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -7994,6 +8369,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8040,6 +8420,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8088,6 +8473,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8134,6 +8524,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8182,6 +8577,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8229,6 +8629,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8270,6 +8675,11 @@
       "format": "Xl Plank",
       "overall_thickness": "2.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8322,6 +8732,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8368,6 +8783,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8416,6 +8836,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8462,6 +8887,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8510,6 +8940,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8556,6 +8991,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8604,6 +9044,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8651,6 +9096,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8692,6 +9142,11 @@
       "format": "XL",
       "overall_thickness": "2.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8744,6 +9199,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8790,6 +9250,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8838,6 +9303,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -8879,6 +9349,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8925,6 +9400,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -8977,6 +9457,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9023,6 +9508,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9071,6 +9561,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9118,6 +9613,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9159,6 +9659,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9206,6 +9711,11 @@
       "overall_thickness": "2.50 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9251,6 +9761,11 @@
       "format": "XL",
       "overall_thickness": "2.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9303,6 +9818,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9349,6 +9869,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9397,6 +9922,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9443,6 +9973,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9491,6 +10026,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9537,6 +10077,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9585,6 +10130,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9626,6 +10176,11 @@
       "format": "XL",
       "overall_thickness": "2.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9678,6 +10233,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9724,6 +10284,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9772,6 +10337,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9813,6 +10383,11 @@
       "format": "XL",
       "overall_thickness": "2.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9865,6 +10440,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -9906,6 +10486,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -9952,6 +10537,11 @@
       "format": "Xl Plank",
       "overall_thickness": "2.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10004,6 +10594,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10045,6 +10640,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10097,6 +10697,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10138,6 +10743,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10185,6 +10795,11 @@
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10230,6 +10845,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10282,6 +10902,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10328,6 +10953,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10376,6 +11006,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10423,6 +11058,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10464,6 +11104,11 @@
       "format": "XL",
       "overall_thickness": "2.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10511,6 +11156,11 @@
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10556,6 +11206,11 @@
       "overall_thickness": "2.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove\nDostupno u Formatima: daske i pločice\n4 zakošene ivice\nSloj habanja: 0.55 mm\nUkupna debljina: 2.5 mm\nProtecShield™: poboljšana otpornost na ogrebotine i fleke\nVelika varijacija dizajna za realističan izgled drveta i kamena\n\nUgradnja:\nDry Back sistem: klasična ugradnja lepljenjem za dugotrajnu stabilnost\nIdealno za novogradnju i velike površine\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore: prodavnice, hoteli, kancelarije\n\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nBez ftalata\nTVOC <10µg/m³\nFloorscore®, IAC Gold & M1 sertifikovano",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10608,6 +11263,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10649,6 +11309,11 @@
       "format": "XL",
       "overall_thickness": "2.50 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10701,6 +11366,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10747,6 +11417,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10795,6 +11470,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10841,6 +11521,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10889,6 +11574,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -10935,6 +11625,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -10983,6 +11678,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11029,6 +11729,11 @@
         "WEIGHT": "23997 g/m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11077,6 +11782,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11123,6 +11833,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11167,6 +11882,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11213,6 +11933,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11253,6 +11978,11 @@
       "overall_thickness": "5.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11302,6 +12032,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11342,6 +12077,11 @@
       "overall_thickness": "5.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11386,6 +12126,11 @@
       "overall_thickness": "5.00 mm",
       "dimension": "21.2 cm X 123.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11435,6 +12180,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11479,6 +12229,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11525,6 +12280,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11570,6 +12330,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11610,6 +12375,11 @@
       "overall_thickness": "5.00 mm",
       "dimension": "21.2 cm X 123.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11654,6 +12424,11 @@
       "overall_thickness": "5.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11703,6 +12478,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11748,6 +12528,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11788,6 +12573,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11842,6 +12632,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11891,6 +12686,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -11942,6 +12742,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -11991,6 +12796,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12042,6 +12852,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12092,6 +12907,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12137,6 +12957,11 @@
       "format": "Ploča",
       "overall_thickness": "6.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12191,6 +13016,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12240,6 +13070,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12291,6 +13126,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12340,6 +13180,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12391,6 +13236,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12440,6 +13290,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12491,6 +13346,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12540,6 +13400,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12591,6 +13456,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12641,6 +13511,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12686,6 +13561,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12740,6 +13620,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12785,6 +13670,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12839,6 +13729,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12888,6 +13783,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -12939,6 +13839,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -12984,6 +13889,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13033,6 +13943,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13087,6 +14002,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13137,6 +14057,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13182,6 +14107,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "21.2 cm X 123.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13236,6 +14166,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13281,6 +14216,11 @@
       "format": "Ploča",
       "overall_thickness": "6.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13335,6 +14275,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13385,6 +14330,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13430,6 +14380,11 @@
       "dimension": "21.2 cm X 123.9 cm",
       "description": "Proizvod:\nSintetičko rešenje sa integrisanom akustičnom podlogom (19dB) - Klasa 33/42\nSmart Comfort inovacija: akustični gornji sloj za udobnost pri hodu i toplotnu izolaciju\nRigid core: idealno za renoviranje, otporno na temperaturne promene\nUltra-realistične teksture: mat završna obrada i prirodan izgled\nDostupno u Formatima: XL daske, standardne daske i pločice, Herringbone\nOd poda do zida: stvorite harmoniju sa našom Mural Revela kolekcijom\n\nUgradnja:\nFold Down Clic sistem: brza i sigurna ugradnja\nBez lepka: postavljanje direktno na većinu podloga\nMogućnost sečenja skalpelom (bez buke i prašine)\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore gde je bitna akustika (kancelarije, hoteli)\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13484,6 +14439,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13529,6 +14489,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13583,6 +14548,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13628,6 +14598,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13677,6 +14652,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13731,6 +14711,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13780,6 +14765,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13831,6 +14821,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13881,6 +14876,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -13926,6 +14926,11 @@
       "format": "Ploča",
       "overall_thickness": "6.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -13980,6 +14985,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14025,6 +15035,11 @@
       "dimension": "21.2 cm X 123.9 cm",
       "description": "Proizvod:\nSintetičko rešenje sa integrisanom akustičnom podlogom (19dB) - Klasa 33/42\nSmart Comfort inovacija: akustični gornji sloj za udobnost pri hodu i toplotnu izolaciju\nRigid core: idealno za renoviranje, otporno na temperaturne promene\nUltra-realistične teksture: mat završna obrada i prirodan izgled\nDostupno u Formatima: XL daske, standardne daske i pločice, Herringbone\nOd poda do zida: stvorite harmoniju sa našom Mural Revela kolekcijom\n\nUgradnja:\nFold Down Clic sistem: brza i sigurna ugradnja\nBez lepka: postavljanje direktno na većinu podloga\nMogućnost sečenja skalpelom (bez buke i prašine)\n\nPrimena:\nEvropska klasa upotrebe: 33/42\nIdealno za komercijalne prostore gde je bitna akustika (kancelarije, hoteli)\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14079,6 +15094,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14124,6 +15144,11 @@
       "overall_thickness": "6.00 mm",
       "dimension": "38.9 cm X 72.9 cm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14178,6 +15203,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14227,6 +15257,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14278,6 +15313,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14327,6 +15367,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14378,6 +15423,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14427,6 +15477,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14478,6 +15533,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14527,6 +15587,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14578,6 +15643,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14622,6 +15692,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14668,6 +15743,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14712,6 +15792,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14758,6 +15843,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14803,6 +15893,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14842,6 +15937,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14891,6 +15991,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -14930,6 +16035,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -14975,6 +16085,11 @@
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15017,6 +16132,11 @@
       "overall_thickness": "4.50 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15061,6 +16181,11 @@
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15103,6 +16228,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15148,6 +16278,11 @@
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15191,6 +16326,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15236,6 +16376,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15279,6 +16424,11 @@
       "overall_thickness": "4.50 mm",
       "format": "Xl Square Tile",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15328,6 +16478,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15372,6 +16527,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15418,6 +16578,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15457,6 +16622,11 @@
       "overall_thickness": "4.50 mm",
       "format": "Xl Square Tile",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15501,6 +16671,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15544,6 +16719,11 @@
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15586,6 +16766,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15631,6 +16816,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15673,6 +16863,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15717,6 +16912,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Uklonjivi podovi koji odgovaraju vašim potrebama\nProizvod:\n4 veličine\nEkskluzivna konstrukcija « Duo Core », ojačano staklenim vlaknima za komfor i stabilnost\nProtecShield™ lak: prirodan izgled i lako za čišćenje\nUgradnja:\nLooselay do 30m²\nUklonjiva ugradnja sa lepkom - pogodno za podignute podove\nDirektno na keramiku ako je spoj <4mm\nPrimena:\nIdealno za zone sa umerenim prometom : kancelarije, hoteli, prodavnice - evropska klasa 33/42\nOkruženje:\n100% reciklabilno\n35% recikliranog sadržaja\nTVOC <10µg/m³\nBez ftalata",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15765,6 +16965,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -16243,6 +17448,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16297,6 +17507,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16339,6 +17554,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -16386,6 +17606,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -16435,6 +17660,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16482,6 +17712,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16528,6 +17763,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -16577,6 +17817,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16623,6 +17868,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -16672,6 +17922,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16719,6 +17974,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -16768,6 +18028,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16814,6 +18079,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -16862,6 +18132,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16909,6 +18184,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16955,6 +18235,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -17004,6 +18289,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -17050,6 +18340,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -17098,6 +18393,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -17145,6 +18445,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -17200,6 +18505,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -17241,6 +18551,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -17290,6 +18605,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -17337,6 +18657,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -17392,6 +18717,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -17433,6 +18763,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -17482,6 +18817,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -17528,6 +18868,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -17576,6 +18921,11 @@
       "overall_thickness": "4.25 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -17629,6 +18979,11 @@
         "PACKAGING": "11 komada / 3.37 m²"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.25 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -20825,6 +22180,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -20878,6 +22238,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -20923,6 +22288,11 @@
       "format": "Xl Plank",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -20977,6 +22347,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21022,6 +22397,11 @@
       "format": "Rectangular Tile",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21076,6 +22456,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21125,6 +22510,11 @@
         "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21176,6 +22566,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21221,6 +22616,11 @@
       "format": "Xl Plank",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21270,6 +22670,11 @@
       "format": "Xl Plank",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21324,6 +22729,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21374,6 +22784,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21419,6 +22834,11 @@
       "format": "Rectangular Tile",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21473,6 +22893,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21523,6 +22948,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21568,6 +22998,11 @@
       "format": "Xl Plank",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21617,6 +23052,11 @@
       "format": "Rectangular Tile",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21671,6 +23111,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21721,6 +23166,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21766,6 +23216,11 @@
       "format": "Rectangular Tile",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21820,6 +23275,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21865,6 +23325,11 @@
       "format": "Rectangular Tile",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -21919,6 +23384,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -21968,6 +23438,11 @@
         "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22019,6 +23494,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -22068,6 +23548,11 @@
         "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22119,6 +23604,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -22164,6 +23654,11 @@
       "format": "Xl Plank",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22218,6 +23713,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -22267,6 +23767,11 @@
         "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22318,6 +23823,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -22367,6 +23877,11 @@
         "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22418,6 +23933,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -22463,6 +23983,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Pločica"
@@ -22502,6 +24027,11 @@
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22543,6 +24073,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Pločica"
@@ -22582,6 +24117,11 @@
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22624,6 +24164,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Pločica"
@@ -22663,6 +24208,11 @@
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22704,6 +24254,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Pločica"
@@ -22744,6 +24299,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Pločica"
@@ -22783,6 +24343,11 @@
       "overall_thickness": "5.00 mm",
       "format": "Xl Square Tile",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22825,6 +24390,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Pločica"
@@ -22865,6 +24435,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Pločica"
@@ -22904,6 +24479,11 @@
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22947,6 +24527,11 @@
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -22996,6 +24581,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23040,6 +24630,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23081,6 +24676,11 @@
         "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23126,6 +24726,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23162,6 +24767,11 @@
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23205,6 +24815,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23244,6 +24859,11 @@
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23289,6 +24909,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23332,6 +24957,11 @@
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23377,6 +25007,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23421,6 +25056,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23457,6 +25097,11 @@
       "format": "Xl Square Tile",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23502,6 +25147,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23545,6 +25195,11 @@
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23590,6 +25245,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23634,6 +25294,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23676,6 +25341,11 @@
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23720,6 +25390,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23762,6 +25437,11 @@
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23807,6 +25487,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23844,6 +25529,11 @@
       "format": "Xl Square Tile",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23889,6 +25579,11 @@
       "overall_thickness": "5.00 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -23931,6 +25626,11 @@
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -23975,6 +25675,11 @@
       "format": "Xl Square Tile",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24024,6 +25729,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24069,6 +25779,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24109,6 +25824,11 @@
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24152,6 +25872,11 @@
       "format": "Kvadratna pločica",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24201,6 +25926,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24241,6 +25971,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24288,6 +26023,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24333,6 +26073,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24380,6 +26125,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24425,6 +26175,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24472,6 +26227,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24517,6 +26277,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24564,6 +26329,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24609,6 +26379,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24656,6 +26431,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24701,6 +26481,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24748,6 +26533,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24793,6 +26583,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24840,6 +26635,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24886,6 +26686,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -24930,6 +26735,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -24977,6 +26787,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25022,6 +26837,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25069,6 +26889,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25113,6 +26938,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25159,6 +26989,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25204,6 +27039,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25248,6 +27088,11 @@
       "overall_thickness": "6.00 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25300,6 +27145,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "6.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25341,6 +27191,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25396,6 +27251,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25438,6 +27298,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25485,6 +27350,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25534,6 +27404,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25581,6 +27456,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25627,6 +27507,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25676,6 +27561,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25722,6 +27612,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25771,6 +27666,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25818,6 +27718,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25867,6 +27772,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -25913,6 +27823,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -25961,6 +27876,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26008,6 +27928,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26054,6 +27979,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -26103,6 +28033,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26149,6 +28084,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -26197,6 +28137,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26244,6 +28189,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -26299,6 +28249,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26340,6 +28295,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -26389,6 +28349,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26436,6 +28401,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -26485,6 +28455,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26531,6 +28506,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -26580,6 +28560,11 @@
       "format": "Kvadratna pločica",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26626,6 +28611,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -26674,6 +28664,11 @@
       "overall_thickness": "4.35 mm",
       "format": "Kvadratna pločica",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -26728,6 +28723,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.35 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -26773,7 +28773,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26794,7 +28801,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26815,7 +28829,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26836,7 +28857,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26857,7 +28885,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26878,7 +28913,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26899,7 +28941,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26920,7 +28969,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26943,7 +28999,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26964,7 +29027,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -26986,7 +29056,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27008,7 +29085,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27029,7 +29113,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27050,7 +29141,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27071,7 +29169,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27092,7 +29197,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27114,7 +29226,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27137,7 +29256,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27159,7 +29285,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27182,7 +29315,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27203,7 +29343,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27224,7 +29371,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-saga2",
@@ -27246,7 +29400,14 @@
       },
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
-      }
+      },
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.60 mm"
+        }
+      ]
     },
     {
       "collection": "creation-40-clic",
@@ -27267,6 +29428,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27312,6 +29478,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -27355,6 +29526,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27400,6 +29576,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -27443,6 +29624,11 @@
         "THICKNESS OF THE WEARLAYER": "0.45 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27488,6 +29674,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -27528,6 +29719,11 @@
       "overall_thickness": "4.50 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -27564,6 +29760,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove sa Clic sistemom\nDostupno u Formatima: XL daske, standardne daske i pločice - dizajnirano za svaki prostor\n4 zakošene ivice\nSloj habanja: 0.40 mm\nUltra-realistične teksture: mat završna obrada za prirodan izgled\nSmart Comfort: akustični gornji sloj za udobnost pri hodu i toplotnu izolaciju\nRigid core: idealno za renoviranje, kompatibilno sa postojećim podlogama, otporno na temperaturne promene\nOd poda do zida: stvorite harmoniju sa našom Mural Revela kolekcijom\n\nUgradnja:\nFold Down Clic sistem: brza, sigurna i ugradnja bez prašine\nBez lepka: savršeno za ugradnju preko postojeće keramike ili osetljivih podloga\nLako sečenje i rukovanje\n\nPrimena:\nEvropska klasa upotrebe: 32/41\nIdealno za stambene i lake komercijalne prostore\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27608,6 +29809,11 @@
       "overall_thickness": "4.50 mm",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -27644,6 +29850,11 @@
       "overall_thickness": "4.50 mm",
       "description": "Proizvod:\nSintetičko, dekorativno i fleksibilno PVC rešenje za podove sa Clic sistemom\nDostupno u Formatima: XL daske, standardne daske i pločice - dizajnirano za svaki prostor\n4 zakošene ivice\nSloj habanja: 0.40 mm\nUltra-realistične teksture: mat završna obrada za prirodan izgled\nSmart Comfort: akustični gornji sloj za udobnost pri hodu i toplotnu izolaciju\nRigid core: idealno za renoviranje, kompatibilno sa postojećim podlogama, otporno na temperaturne promene\nOd poda do zida: stvorite harmoniju sa našom Mural Revela kolekcijom\n\nUgradnja:\nFold Down Clic sistem: brza, sigurna i ugradnja bez prašine\nBez lepka: savršeno za ugradnju preko postojeće keramike ili osetljivih podloga\nLako sečenje i rukovanje\n\nPrimena:\nEvropska klasa upotrebe: 32/41\nIdealno za stambene i lake komercijalne prostore\n\nOkruženje:\n100% reciklabilno\nBez ftalata\nTVOC <10µg/m³",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "4.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27685,6 +29896,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27730,6 +29946,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -27773,6 +29994,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27818,6 +30044,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -27861,6 +30092,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27906,6 +30142,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -27949,6 +30190,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -27994,6 +30240,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -28037,6 +30288,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -28082,6 +30338,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -28126,6 +30387,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -28165,6 +30431,11 @@
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -28208,6 +30479,11 @@
       "format": "Ploča",
       "overall_thickness": "5.00 mm",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -28256,6 +30532,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -28300,6 +30581,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -28343,6 +30629,11 @@
         "THICKNESS OF THE WEARLAYER": "0.70 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.00 mm"
+        },
         {
           "key": "format",
           "label": "Format",
