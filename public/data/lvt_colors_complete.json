@@ -15811,6 +15811,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15861,6 +15866,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -15906,6 +15916,11 @@
       "overall_thickness": "5.50 mm",
       "format": "Xl Plank",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -15956,6 +15971,11 @@
       "format": "Xl Plank",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16005,6 +16025,11 @@
       "format": "Xl Square Tile",
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16053,6 +16078,11 @@
       "overall_thickness": "5.50 mm",
       "format": "Xl Square Tile",
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
@@ -16107,6 +16137,11 @@
       },
       "collection_specs": [
         {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
+        {
           "key": "format",
           "label": "Format",
           "value": "Ploča"
@@ -16156,6 +16191,11 @@
         "THICKNESS OF THE WEARLAYER": "0.55 mm"
       },
       "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "5.50 mm"
+        },
         {
           "key": "format",
           "label": "Format",
