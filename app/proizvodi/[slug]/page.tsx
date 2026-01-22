@@ -195,8 +195,9 @@ function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
     }
   }
   if (color.overall_thickness) {
+    // Use 'thickness' key to match with product specs from mock-data.ts
     if (!specs.find(s => s.key === 'thickness' || s.key === 'overall_thickness')) {
-      specs.push({ key: 'overall_thickness', label: 'Ukupna debljina', value: color.overall_thickness });
+      specs.push({ key: 'thickness', label: 'Ukupna debljina', value: color.overall_thickness });
     }
   }
   if (color.dimension) {

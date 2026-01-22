@@ -1,0 +1,731 @@
+[
+  {
+    "code": "0027",
+    "name": "COCOON MUSLIN",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0027-cocoon-muslin-hd420027",
+    "slug": "premium-compact-0027-cocoon-muslin",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0028",
+    "name": "COCOON ORGANZA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0028-cocoon-organza-hd420028",
+    "slug": "premium-compact-0028-cocoon-organza",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0029",
+    "name": "COCOON FLANNEL",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0029-cocoon-flannel-hd420029",
+    "slug": "premium-compact-0029-cocoon-flannel",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0030",
+    "name": "COCOON CRINOLIN",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0030-cocoon-crinolin-hd420030",
+    "slug": "premium-compact-0030-cocoon-crinolin",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0032",
+    "name": "COCOON SATIN",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0032-cocoon-satin-hd420032",
+    "slug": "premium-compact-0032-cocoon-satin",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0051",
+    "name": "BRAZILIA ALVORADA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0051-brazilia-alvorada-hd350051",
+    "slug": "premium-compact-0051-brazilia-alvorada",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0052",
+    "name": "BRAZILIA OLINDA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0052-brazilia-olinda-hd350052",
+    "slug": "premium-compact-0052-brazilia-olinda",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0053",
+    "name": "BRAZILIA LIMEIRA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0053-brazilia-limeira-hd350053",
+    "slug": "premium-compact-0053-brazilia-limeira",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0054",
+    "name": "BRAZILIA BARUERI",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0054-brazilia-barueri-hd350054",
+    "slug": "premium-compact-0054-brazilia-barueri",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0055",
+    "name": "BRAZILIA TERESINA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0055-brazilia-teresina-hd350055",
+    "slug": "premium-compact-0055-brazilia-teresina",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0056",
+    "name": "BRAZILIA NATAL",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0056-brazilia-natal-hd350056",
+    "slug": "premium-compact-0056-brazilia-natal",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0058",
+    "name": "BRAZILIA ARACAJU",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0058-brazilia-aracaju-hd350058",
+    "slug": "premium-compact-0058-brazilia-aracaju",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0060",
+    "name": "METALLICA DELLIG",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0060-metallica-dellig-hd440060",
+    "slug": "premium-compact-0060-metallica-dellig",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0061",
+    "name": "METALLICA ELDIR",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0061-metallica-eldir-hd440061",
+    "slug": "premium-compact-0061-metallica-eldir",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0062",
+    "name": "METALLICA BEYLA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0062-metallica-beyla-hd440062",
+    "slug": "premium-compact-0062-metallica-beyla",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0063",
+    "name": "METALLICA NARFI",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0063-metallica-narfi-hd440063",
+    "slug": "premium-compact-0063-metallica-narfi",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "0064",
+    "name": "METALLICA SUDRI",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-0064-metallica-sudri-hd440064",
+    "slug": "premium-compact-0064-metallica-sudri",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2151",
+    "name": "POESY SONATE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2151-poesy-sonate-hd572151",
+    "slug": "premium-compact-2151-poesy-sonate",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2152",
+    "name": "POESY OCTAVE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2152-poesy-octave-hd572152",
+    "slug": "premium-compact-2152-poesy-octave",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2501",
+    "name": "POESY RHAPSODY",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2501-poesy-rhapsody-hd572501",
+    "slug": "premium-compact-2501-poesy-rhapsody",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2740",
+    "name": "NEOPOLIS HARLEM SOFT",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2740-neopolis-harlem-soft-hd362740",
+    "slug": "premium-compact-2740-neopolis-harlem-soft",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2741",
+    "name": "NEOPOLIS BROOKLYN",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2741-neopolis-brooklyn-hd362741",
+    "slug": "premium-compact-2741-neopolis-brooklyn",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2742",
+    "name": "NEOPOLIS TIMES SQUARE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2742-neopolis-times-square-hd362742",
+    "slug": "premium-compact-2742-neopolis-times-square",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2743",
+    "name": "NEOPOLIS CENTRAL PARK",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2743-neopolis-central-park-hd362743",
+    "slug": "premium-compact-2743-neopolis-central-park",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2744",
+    "name": "NEOPOLIS QUEENS SOFT",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2744-neopolis-queens-soft-hd362744",
+    "slug": "premium-compact-2744-neopolis-queens-soft",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2745",
+    "name": "NEOPOLIS PLAZA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2745-neopolis-plaza-hd362745",
+    "slug": "premium-compact-2745-neopolis-plaza",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2746",
+    "name": "METALLICA YMIR",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2746-metallica-ymir-hd442746",
+    "slug": "premium-compact-2746-metallica-ymir",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2747",
+    "name": "POESY BALLADE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2747-poesy-ballade-hd572747",
+    "slug": "premium-compact-2747-poesy-ballade",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2748",
+    "name": "POESY REFRAIN",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2748-poesy-refrain-hd572748",
+    "slug": "premium-compact-2748-poesy-refrain",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2749",
+    "name": "POESY LYRIQUE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2749-poesy-lyrique-hd572749",
+    "slug": "premium-compact-2749-poesy-lyrique",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2750",
+    "name": "POESY ELLIPSE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2750-poesy-ellipse-hd572750",
+    "slug": "premium-compact-2750-poesy-ellipse",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2751",
+    "name": "POESY SLAM",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2751-poesy-slam-hd572751",
+    "slug": "premium-compact-2751-poesy-slam",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "2752",
+    "name": "POESY LITOTE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-2752-poesy-litote-hd572752",
+    "slug": "premium-compact-2752-poesy-litote",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "3707",
+    "name": "BRAZILIA PARAIBA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-3707-brazilia-paraiba-hd353707",
+    "slug": "premium-compact-3707-brazilia-paraiba",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "3709",
+    "name": "BRAZILIA CEARA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-3709-brazilia-ceara-hd353709",
+    "slug": "premium-compact-3709-brazilia-ceara",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "3791",
+    "name": "OSMOZ SLATE GREY",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-3791-osmoz-slate-grey-hd493791",
+    "slug": "premium-compact-3791-osmoz-slate-grey",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "3792",
+    "name": "OSMOZ STORM GREY",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-3792-osmoz-storm-grey-hd493792",
+    "slug": "premium-compact-3792-osmoz-storm-grey",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4001",
+    "name": "INDIANA² OFU",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4001-indiana2-ofu-hd474001",
+    "slug": "premium-compact-4001-indiana²-ofu",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4002",
+    "name": "INDIANA² MANUA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4002-indiana2-manua-hd474002",
+    "slug": "premium-compact-4002-indiana²-manua",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4003",
+    "name": "INDIANA² TAO",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4003-indiana2-tao-hd474003",
+    "slug": "premium-compact-4003-indiana²-tao",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4009",
+    "name": "INDIANA² TUFOA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4009-indiana2-tufoa-hd474009",
+    "slug": "premium-compact-4009-indiana²-tufoa",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4045",
+    "name": "INDIANA² DALUPIRI",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4045-indiana2-dalupiri-hd474045",
+    "slug": "premium-compact-4045-indiana²-dalupiri",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4046",
+    "name": "INDIANA² CUBAGUA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4046-indiana2-cubagua-hd474046",
+    "slug": "premium-compact-4046-indiana²-cubagua",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4047",
+    "name": "INDIANA² OKUZA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4047-indiana2-okuza-hd474047",
+    "slug": "premium-compact-4047-indiana²-okuza",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4048",
+    "name": "INDIANA² MALABO",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4048-indiana2-malabo-hd474048",
+    "slug": "premium-compact-4048-indiana²-malabo",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4049",
+    "name": "INDIANA² KILMIA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4049-indiana2-kilmia-hd474049",
+    "slug": "premium-compact-4049-indiana²-kilmia",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4050",
+    "name": "INDIANA² COMORES",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4050-indiana2-comores-hd474050",
+    "slug": "premium-compact-4050-indiana²-comores",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4051",
+    "name": "INDIANA² MARACA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4051-indiana2-maraca-hd474051",
+    "slug": "premium-compact-4051-indiana²-maraca",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4052",
+    "name": "INDIANA² CALERO",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4052-indiana2-calero-hd474052",
+    "slug": "premium-compact-4052-indiana²-calero",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4053",
+    "name": "INDIANA² DIWARAN",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4053-indiana2-diwaran-hd474053",
+    "slug": "premium-compact-4053-indiana²-diwaran",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4205",
+    "name": "NEOTERRA DORATA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4205-neoterra-dorata-hp944205",
+    "slug": "premium-compact-4205-neoterra-dorata",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4206",
+    "name": "NEOTERRA LAZULI",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4206-neoterra-lazuli-hp944206",
+    "slug": "premium-compact-4206-neoterra-lazuli",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4207",
+    "name": "NEOTERRA PRATO",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4207-neoterra-prato-hp944207",
+    "slug": "premium-compact-4207-neoterra-prato",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4208",
+    "name": "NEOTERRA SORAYA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4208-neoterra-soraya-hp944208",
+    "slug": "premium-compact-4208-neoterra-soraya",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4343",
+    "name": "INDIANA² TOKELAU",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4343-indiana2-tokelau-hd474343",
+    "slug": "premium-compact-4343-indiana²-tokelau",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4349",
+    "name": "OSMOZ ANGORA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4349-osmoz-angora-hd494349",
+    "slug": "premium-compact-4349-osmoz-angora",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4351",
+    "name": "OSMOZ GREIGE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4351-osmoz-greige-hd494351",
+    "slug": "premium-compact-4351-osmoz-greige",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4364",
+    "name": "OSMOZ IVORY NEW",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4364-osmoz-ivory-new-hd494364",
+    "slug": "premium-compact-4364-osmoz-ivory-new",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4365",
+    "name": "OSMOZ ALPAGA NEW",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4365-osmoz-alpaga-new-hd494365",
+    "slug": "premium-compact-4365-osmoz-alpaga-new",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4378",
+    "name": "OSMOZ IGLOO",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4378-osmoz-igloo-hd494378",
+    "slug": "premium-compact-4378-osmoz-igloo",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4379",
+    "name": "OSMOZ KOUDOU",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4379-osmoz-koudou-hd494379",
+    "slug": "premium-compact-4379-osmoz-koudou",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4380",
+    "name": "OSMOZ AWARA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4380-osmoz-awara-hd494380",
+    "slug": "premium-compact-4380-osmoz-awara",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4381",
+    "name": "OSMOZ ROZELLE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4381-osmoz-rozelle-hd494381",
+    "slug": "premium-compact-4381-osmoz-rozelle",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4382",
+    "name": "OSMOZ CYCLADES",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4382-osmoz-cyclades-hd494382",
+    "slug": "premium-compact-4382-osmoz-cyclades",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4383",
+    "name": "OSMOZ JASMIN",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4383-osmoz-jasmin-hd494383",
+    "slug": "premium-compact-4383-osmoz-jasmin",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4384",
+    "name": "OSMOZ BARBADINE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4384-osmoz-barbadine-hd494384",
+    "slug": "premium-compact-4384-osmoz-barbadine",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4476",
+    "name": "INDIANA² WATTARU",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4476-indiana2-wattaru-hd474476",
+    "slug": "premium-compact-4476-indiana²-wattaru",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "4477",
+    "name": "BRAZILIA MACEIO",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-4477-brazilia-maceio-hd354477",
+    "slug": "premium-compact-4477-brazilia-maceio",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "7517",
+    "name": "INDIANA² FAROE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-7517-indiana2-faroe-hd477517",
+    "slug": "premium-compact-7517-indiana²-faroe",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "7737",
+    "name": "OSMOZ PEPPER GREY",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-7737-osmoz-pepper-grey-hd497737",
+    "slug": "premium-compact-7737-osmoz-pepper-grey",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8150",
+    "name": "INDIANA² BALI",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8150-indiana2-bali-hd478150",
+    "slug": "premium-compact-8150-indiana²-bali",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8226",
+    "name": "INDIANA² FIDJI",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8226-indiana2-fidji-hd478226",
+    "slug": "premium-compact-8226-indiana²-fidji",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8257",
+    "name": "METALLICA NYX",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8257-metallica-nyx-hd448257",
+    "slug": "premium-compact-8257-metallica-nyx",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8386",
+    "name": "BRAZILIA BOA VISTA",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8386-brazilia-boa-vista-hd358386",
+    "slug": "premium-compact-8386-brazilia-boa-vista",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8621",
+    "name": "POESY ODE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8621-poesy-ode-hd578621",
+    "slug": "premium-compact-8621-poesy-ode",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8626",
+    "name": "POESY RIME",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8626-poesy-rime-hd578626",
+    "slug": "premium-compact-8626-poesy-rime",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8627",
+    "name": "POESY ALLEGORIE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8627-poesy-allegorie-hd578627",
+    "slug": "premium-compact-8627-poesy-allegorie",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8736",
+    "name": "BRAZILIA RECIFE",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8736-brazilia-recife-hd358736",
+    "slug": "premium-compact-8736-brazilia-recife",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "8837",
+    "name": "INDIANA² SONGO",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-8837-indiana2-songo-hd478837",
+    "slug": "premium-compact-8837-indiana²-songo",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "9745",
+    "name": "METALLICA COSMIC",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-9745-metallica-cosmic-hd449745",
+    "slug": "premium-compact-9745-metallica-cosmic",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  },
+  {
+    "code": "9753",
+    "name": "METALLICA ENERGY",
+    "href": "https://www.gerflor-cee.com/products/premium-compact-9753-metallica-energy-hd449753",
+    "slug": "premium-compact-9753-metallica-energy",
+    "sku": null,
+    "collection_slug": "premium-compact",
+    "collection_name": "Premium Compact"
+  }
+]

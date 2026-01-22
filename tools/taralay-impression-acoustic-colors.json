@@ -1,0 +1,866 @@
+[
+  {
+    "code": "0373",
+    "name": "NOMA ICE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0373-noma-ice-20000373",
+    "slug": "taralay-impression-acoustic-0373-noma-ice",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0519",
+    "name": "NOMA BEIGE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0519-noma-beige-20000519",
+    "slug": "taralay-impression-acoustic-0519-noma-beige",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0523",
+    "name": "CEMENTO GENOVA",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0523-cemento-genova-20000523",
+    "slug": "taralay-impression-acoustic-0523-cemento-genova",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0524",
+    "name": "CEMENTO CAPRI",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0524-cemento-capri-20000524",
+    "slug": "taralay-impression-acoustic-0524-cemento-capri",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0543",
+    "name": "CEMENTO BRESCIA",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0543-cemento-brescia-20000543",
+    "slug": "taralay-impression-acoustic-0543-cemento-brescia",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0680",
+    "name": "INFINITY GREIGE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0680-infinity-greige-20000680",
+    "slug": "taralay-impression-acoustic-0680-infinity-greige",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0720",
+    "name": "INFINITY AUBE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0720-infinity-aube-20000720",
+    "slug": "taralay-impression-acoustic-0720-infinity-aube",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0723",
+    "name": "CHARME PECAN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0723-charme-pecan-20000723",
+    "slug": "taralay-impression-acoustic-0723-charme-pecan",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0725",
+    "name": "SYCAMORE LIGHT BROWN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0725-sycamore-light-brown-20000725",
+    "slug": "taralay-impression-acoustic-0725-sycamore-light-brown",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0727",
+    "name": "SYCAMORE VANILLA",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0727-sycamore-vanilla-20000727",
+    "slug": "taralay-impression-acoustic-0727-sycamore-vanilla",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0736",
+    "name": "RICE CHAMPA",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0736-rice-champa-20000736",
+    "slug": "taralay-impression-acoustic-0736-rice-champa",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0737",
+    "name": "RICE SOURIS",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0737-rice-souris-20000737",
+    "slug": "taralay-impression-acoustic-0737-rice-souris",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0745",
+    "name": "NEST METAL",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0745-nest-metal-20000745",
+    "slug": "taralay-impression-acoustic-0745-nest-metal",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0755",
+    "name": "KUBES WHITE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0755-kubes-white-20000755",
+    "slug": "taralay-impression-acoustic-0755-kubes-white",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0760",
+    "name": "MOON ISLAND",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0760-moon-island-20000760",
+    "slug": "taralay-impression-acoustic-0760-moon-island",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0763",
+    "name": "RICE GREIGE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0763-rice-greige-20000763",
+    "slug": "taralay-impression-acoustic-0763-rice-greige",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0770",
+    "name": "GENTLEMEN CLEAR",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0770-gentlemen-clear-20000770",
+    "slug": "taralay-impression-acoustic-0770-gentlemen-clear",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0773",
+    "name": "PORTOBELLO",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0773-portobello-20000773",
+    "slug": "taralay-impression-acoustic-0773-portobello",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0832",
+    "name": "UNI MATT GREY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0832-uni-matt-grey-20000832",
+    "slug": "taralay-impression-acoustic-0832-uni-matt-grey",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0848",
+    "name": "UNI MATT WHITE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0848-uni-matt-white-20000848",
+    "slug": "taralay-impression-acoustic-0848-uni-matt-white",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "0923",
+    "name": "HAPPY ROAD",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-0923-happy-road-29880923",
+    "slug": "taralay-impression-acoustic-0923-happy-road",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1024",
+    "name": "CEMENTO NAPOLI",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1024-cemento-napoli-20001024",
+    "slug": "taralay-impression-acoustic-1024-cemento-napoli",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1025",
+    "name": "CEMENTO FIRENZE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1025-cemento-firenze-20001025",
+    "slug": "taralay-impression-acoustic-1025-cemento-firenze",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1026",
+    "name": "CEMENTO ROMA",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1026-cemento-roma-20001026",
+    "slug": "taralay-impression-acoustic-1026-cemento-roma",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1027",
+    "name": "KUBES CORAIL",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1027-kubes-corail-20001027",
+    "slug": "taralay-impression-acoustic-1027-kubes-corail",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1028",
+    "name": "ROUGH BEIGE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1028-rough-beige-20001028",
+    "slug": "taralay-impression-acoustic-1028-rough-beige",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1029",
+    "name": "ROUGH GREY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1029-rough-grey-20001029",
+    "slug": "taralay-impression-acoustic-1029-rough-grey",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1030",
+    "name": "KUBES FUSCHIA",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1030-kubes-fuschia-20001030",
+    "slug": "taralay-impression-acoustic-1030-kubes-fuschia",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1031",
+    "name": "KUBES CARMINE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1031-kubes-carmine-20001031",
+    "slug": "taralay-impression-acoustic-1031-kubes-carmine",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1035",
+    "name": "NIDO GREY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1035-nido-grey-20001035",
+    "slug": "taralay-impression-acoustic-1035-nido-grey",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1036",
+    "name": "NIDO BRICK",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1036-nido-brick-20001036",
+    "slug": "taralay-impression-acoustic-1036-nido-brick",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1037",
+    "name": "NIDO TEAL",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1037-nido-teal-20001037",
+    "slug": "taralay-impression-acoustic-1037-nido-teal",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1038",
+    "name": "JUNGLE COPPER",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1038-jungle-copper-20001038",
+    "slug": "taralay-impression-acoustic-1038-jungle-copper",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1039",
+    "name": "JUNGLE GREEN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1039-jungle-green-20001039",
+    "slug": "taralay-impression-acoustic-1039-jungle-green",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1040",
+    "name": "JUNGLE GREY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1040-jungle-grey-20001040",
+    "slug": "taralay-impression-acoustic-1040-jungle-grey",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1041",
+    "name": "CHESS BLACK &AMP; WHITE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1041-chess-black-white-20001041",
+    "slug": "taralay-impression-acoustic-1041-chess-black-amp-white",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1042",
+    "name": "FLIPKUBE INDIGO",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1042-flipkube-indigo-20001042",
+    "slug": "taralay-impression-acoustic-1042-flipkube-indigo",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1043",
+    "name": "FLIPKUBE GARDEN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1043-flipkube-garden-20001043",
+    "slug": "taralay-impression-acoustic-1043-flipkube-garden",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1044",
+    "name": "FLIPKUBE LAGOON",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1044-flipkube-lagoon-20001044",
+    "slug": "taralay-impression-acoustic-1044-flipkube-lagoon",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1045",
+    "name": "FLIPKUBE WHITE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1045-flipkube-white-20001045",
+    "slug": "taralay-impression-acoustic-1045-flipkube-white",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1046",
+    "name": "KUBES ANIS",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1046-kubes-anis-20001046",
+    "slug": "taralay-impression-acoustic-1046-kubes-anis",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1047",
+    "name": "KUBES LEMON",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1047-kubes-lemon-20001047",
+    "slug": "taralay-impression-acoustic-1047-kubes-lemon",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1048",
+    "name": "METALLIC GOLD",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1048-metallic-gold-20001048",
+    "slug": "taralay-impression-acoustic-1048-metallic-gold",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1049",
+    "name": "METALLIC SILVER",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1049-metallic-silver-20001049",
+    "slug": "taralay-impression-acoustic-1049-metallic-silver",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1050",
+    "name": "KUBES INDIGO",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1050-kubes-indigo-20001050",
+    "slug": "taralay-impression-acoustic-1050-kubes-indigo",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1051",
+    "name": "NEST BLUE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1051-nest-blue-20001051",
+    "slug": "taralay-impression-acoustic-1051-nest-blue",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1052",
+    "name": "NEST WHITE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1052-nest-white-20001052",
+    "slug": "taralay-impression-acoustic-1052-nest-white",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1053",
+    "name": "NATURE OAK BLOND",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1053-nature-oak-blond-20001053",
+    "slug": "taralay-impression-acoustic-1053-nature-oak-blond",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1054",
+    "name": "NATURE OAK BROWN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1054-nature-oak-brown-20001054",
+    "slug": "taralay-impression-acoustic-1054-nature-oak-brown",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1055",
+    "name": "NATURE OAK CLEAR",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1055-nature-oak-clear-20001055",
+    "slug": "taralay-impression-acoustic-1055-nature-oak-clear",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1056",
+    "name": "NATURE OAK DARK",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1056-nature-oak-dark-20001056",
+    "slug": "taralay-impression-acoustic-1056-nature-oak-dark",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1057",
+    "name": "RIVERSIDE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1057-riverside-20001057",
+    "slug": "taralay-impression-acoustic-1057-riverside",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1058",
+    "name": "TERRAZZO BLACK &AMP; WHITE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1058-terrazzo-black-white-20001058",
+    "slug": "taralay-impression-acoustic-1058-terrazzo-black-amp-white",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1059",
+    "name": "TERRAZZO BRESCIA",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1059-terrazzo-brescia-20001059",
+    "slug": "taralay-impression-acoustic-1059-terrazzo-brescia",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1060",
+    "name": "TERRAZZO NAPOLI",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1060-terrazzo-napoli-20001060",
+    "slug": "taralay-impression-acoustic-1060-terrazzo-napoli",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1062",
+    "name": "NIDO BEIGE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1062-nido-beige-20001062",
+    "slug": "taralay-impression-acoustic-1062-nido-beige",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1063",
+    "name": "FINESSE BROWN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1063-finesse-brown-20001063",
+    "slug": "taralay-impression-acoustic-1063-finesse-brown",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1064",
+    "name": "FINESSE NATURE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1064-finesse-nature-20001064",
+    "slug": "taralay-impression-acoustic-1064-finesse-nature",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1065",
+    "name": "FINESSE PAILLE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1065-finesse-paille-20001065",
+    "slug": "taralay-impression-acoustic-1065-finesse-paille",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1066",
+    "name": "FINESSE POUDRE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1066-finesse-poudre-20001066",
+    "slug": "taralay-impression-acoustic-1066-finesse-poudre",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1067",
+    "name": "GENTLEMEN B&AMP;W",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1067-gentlemen-bw-20001067",
+    "slug": "taralay-impression-acoustic-1067-gentlemen-bampw",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1068",
+    "name": "GENTLEMEN DENIM",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1068-gentlemen-denim-20001068",
+    "slug": "taralay-impression-acoustic-1068-gentlemen-denim",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1069",
+    "name": "HABANA 3D TRINIDAD",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1069-habana-3d-trinidad-20001069",
+    "slug": "taralay-impression-acoustic-1069-habana-3d-trinidad",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1070",
+    "name": "HABANA 3D VINALES",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1070-habana-3d-vinales-20001070",
+    "slug": "taralay-impression-acoustic-1070-habana-3d-vinales",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1071",
+    "name": "PURE WOOL TAUPE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1071-pure-wool-taupe-20001071",
+    "slug": "taralay-impression-acoustic-1071-pure-wool-taupe",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1072",
+    "name": "PURE WOOL GREY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1072-pure-wool-grey-20001072",
+    "slug": "taralay-impression-acoustic-1072-pure-wool-grey",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1073",
+    "name": "PURE WOOL BEIGE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1073-pure-wool-beige-20001073",
+    "slug": "taralay-impression-acoustic-1073-pure-wool-beige",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1074",
+    "name": "PURE WOOL TEAL",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1074-pure-wool-teal-20001074",
+    "slug": "taralay-impression-acoustic-1074-pure-wool-teal",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1075",
+    "name": "FLIPKUBE PURPLE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1075-flipkube-purple-20001075",
+    "slug": "taralay-impression-acoustic-1075-flipkube-purple",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1076",
+    "name": "RAINTREE GREY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1076-raintree-grey-20001076",
+    "slug": "taralay-impression-acoustic-1076-raintree-grey",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1077",
+    "name": "RAINTREE NATURAL",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1077-raintree-natural-20001077",
+    "slug": "taralay-impression-acoustic-1077-raintree-natural",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1078",
+    "name": "UNI MATT INDIGO",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1078-uni-matt-indigo-20001078",
+    "slug": "taralay-impression-acoustic-1078-uni-matt-indigo",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1079",
+    "name": "UNI MATT DARK GREEN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1079-uni-matt-dark-green-20001079",
+    "slug": "taralay-impression-acoustic-1079-uni-matt-dark-green",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1080",
+    "name": "UNI MATT GREEN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1080-uni-matt-green-20001080",
+    "slug": "taralay-impression-acoustic-1080-uni-matt-green",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1081",
+    "name": "UNI MATT LAGOON",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1081-uni-matt-lagoon-20001081",
+    "slug": "taralay-impression-acoustic-1081-uni-matt-lagoon",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1082",
+    "name": "UNI MATT LIGHT GREEN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1082-uni-matt-light-green-20001082",
+    "slug": "taralay-impression-acoustic-1082-uni-matt-light-green",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1083",
+    "name": "UNI MATT NAVY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1083-uni-matt-navy-20001083",
+    "slug": "taralay-impression-acoustic-1083-uni-matt-navy",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1084",
+    "name": "UNI MATT JUNGLE GREY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1084-uni-matt-jungle-grey-20001084",
+    "slug": "taralay-impression-acoustic-1084-uni-matt-jungle-grey",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1085",
+    "name": "UNI MATT TEAL",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1085-uni-matt-teal-20001085",
+    "slug": "taralay-impression-acoustic-1085-uni-matt-teal",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1086",
+    "name": "UNI MATT POUDRE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1086-uni-matt-poudre-20001086",
+    "slug": "taralay-impression-acoustic-1086-uni-matt-poudre",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1087",
+    "name": "UNI MATT YELLOW",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1087-uni-matt-yellow-20001087",
+    "slug": "taralay-impression-acoustic-1087-uni-matt-yellow",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1088",
+    "name": "UNI MATT DARK BEIGE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1088-uni-matt-dark-beige-20001088",
+    "slug": "taralay-impression-acoustic-1088-uni-matt-dark-beige",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1089",
+    "name": "UNI MATT COPPER",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1089-uni-matt-copper-20001089",
+    "slug": "taralay-impression-acoustic-1089-uni-matt-copper",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1090",
+    "name": "UNI MATT BRICK",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1090-uni-matt-brick-20001090",
+    "slug": "taralay-impression-acoustic-1090-uni-matt-brick",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1091",
+    "name": "UNI MATT CORAIL",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1091-uni-matt-corail-20001091",
+    "slug": "taralay-impression-acoustic-1091-uni-matt-corail",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1092",
+    "name": "UNI MATT LIGHT BEIGE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1092-uni-matt-light-beige-20001092",
+    "slug": "taralay-impression-acoustic-1092-uni-matt-light-beige",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1093",
+    "name": "CHARME KRAFT",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1093-charme-kraft-20001093",
+    "slug": "taralay-impression-acoustic-1093-charme-kraft",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1098",
+    "name": "ENVOL BLACK &AMP; WHITE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1098-envol-black-white-29881098",
+    "slug": "taralay-impression-acoustic-1098-envol-black-amp-white",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1099",
+    "name": "ENVOL FOREST",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1099-envol-forest-29881099",
+    "slug": "taralay-impression-acoustic-1099-envol-forest",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1100",
+    "name": "HABANA 3D BLOSSOM",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1100-habana-3d-blossom-29881100",
+    "slug": "taralay-impression-acoustic-1100-habana-3d-blossom",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1101",
+    "name": "HAPPY FORM",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1101-happy-form-29881101",
+    "slug": "taralay-impression-acoustic-1101-happy-form",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1102",
+    "name": "HAPPY NUMBER BLUE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1102-happy-number-blue-29881102",
+    "slug": "taralay-impression-acoustic-1102-happy-number-blue",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1103",
+    "name": "HAPPY NUMBER GREY",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1103-happy-number-grey-29881103",
+    "slug": "taralay-impression-acoustic-1103-happy-number-grey",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1104",
+    "name": "WOOD FUSION NATURE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1104-wood-fusion-nature-29881104",
+    "slug": "taralay-impression-acoustic-1104-wood-fusion-nature",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1110",
+    "name": "RIVAU NATURE",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1110-rivau-nature-20001110",
+    "slug": "taralay-impression-acoustic-1110-rivau-nature",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  },
+  {
+    "code": "1314",
+    "name": "WALNUT BROWN",
+    "href": "https://www.gerflor-cee.com/products/taralay-impression-acoustic-1314-walnut-brown-20001314",
+    "slug": "taralay-impression-acoustic-1314-walnut-brown",
+    "sku": null,
+    "collection_slug": "taralay-impression-acoustic",
+    "collection_name": "Taralay Impression Acoustic"
+  }
+]
