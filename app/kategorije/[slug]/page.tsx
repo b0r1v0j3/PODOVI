@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: CategoryPageProps) {
     };
   }
 
-  const products = await productRepository.findByCategory(category.id);
-  const productCount = products.length;
+  const allCategoryProducts = await productRepository.findByCategory(category.id);
+  const productCount = allCategoryProducts.length;
 
   return {
     metadataBase: new URL(baseUrl),
@@ -100,6 +100,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
+  
+  // For non-LVT categories, get filtered products
+  const filteredProducts = isLVTCategory ? [] : allProducts;
 
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
@@ -224,11 +227,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               <>
                 <div className="mb-6 flex items-center justify-between">
                   <p className="text-gray-600">
-                    {products.length === 0 ? 'Nema' : products.length} {products.length === 1 ? 'proizvod' : 'proizvoda'}
+                    {filteredProducts.length === 0 ? 'Nema' : filteredProducts.length} {filteredProducts.length === 1 ? 'proizvod' : 'proizvoda'}
                   </p>
                 </div>
 
-                {products.length === 0 ? (
+                {filteredProducts.length === 0 ? (
                   <div className="bg-white rounded-lg shadow-sm p-12 text-center">
                     <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
@@ -242,7 +245,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {products.map((product) => (
+                    {filteredProducts.map((product) => (
                       <ProductCard key={product.id} product={product} />
                     ))}
                   </div>
