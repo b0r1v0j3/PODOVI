@@ -26,9 +26,15 @@ interface LVTTabsProps {
   categorySlug: string; // 'lvt', 'linoleum', or 'tekstilne-ploce'
   initialColorSlug?: string; // Optional color slug to automatically open and highlight
   vinylType?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
+  searchParams?: {
+    search?: string;
+    brands?: string;
+    collections?: string;
+    thickness?: string;
+  };
 }
 
-export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType }: LVTTabsProps) {
+export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType, searchParams }: LVTTabsProps) {
   // If initialColorSlug is provided, start with 'colors' tab active
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
     initialColorSlug ? 'colors' : 'collections'
@@ -68,25 +74,91 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     return filtered;
   }, [collections, useJsonColors, categorySlug, vinylType]);
 
-  // Filter colors by vinyl type
+  // Filter colors by all active filters
   const colorsToRender = useMemo(() => {
-    if (!useJsonColors || categorySlug !== 'vinil' || !vinylType) {
-      return colorsFromJSON;
-    }
+    let filtered = colorsFromJSON;
     
-    const typeFilter = vinylType.toLowerCase();
-    return colorsFromJSON.filter(color => {
-      const typeSpec = color.specs.find(s => s.key === 'type');
-      if (!typeSpec) return false;
-      const productType = typeSpec.value.toLowerCase();
-      if (typeFilter === 'homogeni') {
-        return productType === 'homogeni';
-      } else if (typeFilter === 'heterogeni') {
-        return productType === 'heterogeni';
-      }
-      return false;
-    });
-  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors]);
+    if (!useJsonColors) {
+      return filtered;
+    }
+
+    // Filter by vinyl type (for Vinil category)
+    if (categorySlug === 'vinil' && vinylType) {
+      const typeFilter = vinylType.toLowerCase();
+      filtered = filtered.filter(color => {
+        const typeSpec = color.specs.find(s => s.key === 'type');
+        if (!typeSpec) return false;
+        const productType = typeSpec.value.toLowerCase();
+        if (typeFilter === 'homogeni') {
+          return productType === 'homogeni';
+        } else if (typeFilter === 'heterogeni') {
+          return productType === 'heterogeni';
+        }
+        return false;
+      });
+    }
+
+    // Filter by search term
+    if (searchParams?.search) {
+      const searchTerm = searchParams.search.toLowerCase();
+      filtered = filtered.filter(color => {
+        const searchableText = `${color.name} ${color.sku} ${color.shortDescription || ''}`.toLowerCase();
+        return searchableText.includes(searchTerm);
+      });
+    }
+
+    // Filter by brands
+    if (searchParams?.brands) {
+      const selectedBrandIds = searchParams.brands.split(',');
+      filtered = filtered.filter(color => {
+        return selectedBrandIds.includes(color.brandId);
+      });
+    }
+
+    // Filter by collections (for LVT)
+    if (categorySlug === 'lvt' && searchParams?.collections) {
+      const selectedCollections = searchParams.collections.split(',');
+      filtered = filtered.filter(color => {
+        const collectionName = (color as any).collectionSlug || color.collectionSlug || '';
+        const collectionNameWithoutPrefix = collectionName.replace('gerflor-', '');
+        
+        return selectedCollections.some(collection => {
+          if (collection === 'Creation 30') {
+            return collectionNameWithoutPrefix.includes('creation-30');
+          } else if (collection === 'Creation 40') {
+            return collectionNameWithoutPrefix.includes('creation-40');
+          } else if (collection === 'Creation 55') {
+            return collectionNameWithoutPrefix.includes('creation-55');
+          } else if (collection === 'Creation 70') {
+            return collectionNameWithoutPrefix.includes('creation-70');
+          } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
+            return collectionNameWithoutPrefix.includes('saga');
+          }
+          return false;
+        });
+      });
+    }
+
+    // Filter by thickness (for LVT)
+    if (categorySlug === 'lvt' && searchParams?.thickness) {
+      const selectedThicknesses = searchParams.thickness.split(',');
+      filtered = filtered.filter(color => {
+        // Get thickness from specs
+        const thicknessSpec = color.specs.find(s => s.key === 'thickness');
+        if (thicknessSpec) {
+          const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+          const thicknessValue = parseFloat(normalizedValue);
+          if (!isNaN(thicknessValue)) {
+            const thicknessStr = thicknessValue.toFixed(2);
+            return selectedThicknesses.includes(thicknessStr);
+          }
+        }
+        return false;
+      });
+    }
+
+    return filtered;
+  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors, searchParams]);
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -215,6 +287,39 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             // For now, all vinyl collections are homogeneous, but this can be extended
             const productVinylType = color.type === 'heterogeneous' ? 'Heterogeni' : 'Homogeni';
             
+            // Build specs from color data
+            const specs: any[] = [];
+            
+            // Add collection_specs if available (includes thickness, format, etc.)
+            if (color.collection_specs && Array.isArray(color.collection_specs)) {
+              specs.push(...color.collection_specs);
+            }
+            
+            // Add overall_thickness as thickness spec if not already in collection_specs
+            if (color.overall_thickness && !specs.find(s => s.key === 'thickness')) {
+              specs.push({ key: 'thickness', label: 'Ukupna debljina', value: color.overall_thickness });
+            }
+            
+            // Add format if available
+            if (color.format && !specs.find(s => s.key === 'format')) {
+              specs.push({ key: 'format', label: 'Format', value: color.format });
+            }
+            
+            // Add dimension if available
+            if (color.dimension && !specs.find(s => s.key === 'dimension')) {
+              specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
+            }
+            
+            // Add vinyl-specific specs
+            if (categorySlug === 'vinil') {
+              if (!specs.find(s => s.key === 'type')) {
+                specs.push({ key: 'type', label: 'Tip', value: productVinylType });
+              }
+              if (!specs.find(s => s.key === 'collection')) {
+                specs.push({ key: 'collection', label: 'Kolekcija', value: color.collection_name || color.collection });
+              }
+            }
+            
             return {
               id: `color-${categorySlug}-${colorSlug}`,
               name: color.full_name || `${color.code} ${color.name}`,
@@ -231,10 +336,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 isPrimary: true,
                 order: 1,
               }] : [],
-              specs: categorySlug === 'vinil' ? [
-                { key: 'type', label: 'Tip', value: productVinylType },
-                { key: 'collection', label: 'Kolekcija', value: color.collection_name || color.collection },
-              ] : [],
+              specs: specs,
               price: undefined,
               priceUnit: undefined,
               inStock: true,

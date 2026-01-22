@@ -270,6 +270,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 categorySlug={category.slug}
                 initialColorSlug={searchParams.color}
                 vinylType={searchParams.type}
+                searchParams={{
+                  search: searchParams.search,
+                  brands: searchParams.brands,
+                  collections: searchParams.collections,
+                  thickness: searchParams.thickness,
+                }}
               />
             ) : (
               <>
