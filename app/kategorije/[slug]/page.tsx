@@ -1,4 +1,6 @@
 import { notFound } from 'next/navigation';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
@@ -149,24 +151,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         return indexA - indexB;
       });
 
-      // Extract unique thickness values for filter
-      const thicknessSet = new Set<string>();
-      allCollections.forEach(p => {
-        const thicknessSpec = p.specs.find(s => s.key === 'thickness');
-        if (thicknessSpec) {
-          // Parse thickness value (e.g., "2.00 mm", "2,5mm", "4.60 mm")
-          // Normalize: replace comma with dot, remove spaces and "mm"
-          const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
-          const thicknessValue = parseFloat(normalizedValue);
-          if (!isNaN(thicknessValue)) {
-            // Format to 2 decimal places (e.g., "2.00", "2.50", "4.60")
-            const formattedValue = thicknessValue.toFixed(2);
-            thicknessSet.add(formattedValue);
-          }
-        }
-      });
-      // Sort thickness values numerically
-      availableThickness = Array.from(thicknessSet).sort((a, b) => parseFloat(a) - parseFloat(b));
+      // Use all 10 Gerflor thickness values (as shown on their website)
+      // These are: 2.00, 2.50, 3.60, 4.25, 4.35, 4.50, 4.60, 5.00, 5.50, 6.00
+      availableThickness = ['2.00', '2.50', '3.60', '4.25', '4.35', '4.50', '4.60', '5.00', '5.50', '6.00'];
     }
 
     // Apply collection filter ONLY to collections (not to colors)
