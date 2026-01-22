@@ -109,46 +109,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (isLVTCategory) {
     // Collections are products with SKU starting with "GER-" (LVT/Vinil), "LINOLEUM-" (Linoleum), "VINIL-" (Vinil)
     // Colors are individual color products with 4-digit SKU codes or other patterns
-    collections = allProducts.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
+    const allCollections = allProducts.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
     colors = allProducts.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')));
 
-    // Apply collection filter ONLY to collections (not to colors)
-    const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
-    if (selectedCollections.length > 0) {
-      collections = collections.filter(p => {
-        const productName = p.name;
-        return selectedCollections.some(collection => {
-          if (collection === 'Creation 30') {
-            return productName.includes('Creation 30');
-          } else if (collection === 'Creation 40') {
-            return productName.includes('Creation 40');
-          } else if (collection === 'Creation 55') {
-            return productName.includes('Creation 55');
-          } else if (collection === 'Creation 70') {
-            return productName.includes('Creation 70');
-          } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
-            return productName.includes('Saga');
-          }
-          return false;
-        });
-      });
-    }
-
-    // Build brands record for all products
-    for (const product of allProducts) {
-      if (!brandsRecord[product.brandId]) {
-        const brand = allBrands.find(b => b.id === product.brandId);
-        if (brand) {
-          brandsRecord[product.brandId] = brand;
-        }
-      }
-    }
-
-    // Extract unique LVT collection names for filter (grouped like Gerflor: Creation 30, 40, 55, 70, SAGA²)
-    // Zen variants are part of their respective collections (40, 55, 70)
+    // Extract unique LVT collection names for filter FIRST (before filtering)
+    // This ensures all collections remain visible in the filter dropdown
     if (category.slug === 'lvt') {
       const collectionGroups = new Set<string>();
-      collections.forEach(p => {
+      allCollections.forEach(p => {
         const name = p.name;
         if (name.includes('Creation')) {
           // Extract base collection number (30, 40, 55, 70)
@@ -176,6 +144,42 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         if (indexB === -1) return -1;
         return indexA - indexB;
       });
+    }
+
+    // Apply collection filter ONLY to collections (not to colors)
+    // This happens AFTER extracting availableCollections so filter options remain visible
+    const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
+    if (selectedCollections.length > 0) {
+      collections = allCollections.filter(p => {
+        const productName = p.name;
+        return selectedCollections.some(collection => {
+          if (collection === 'Creation 30') {
+            return productName.includes('Creation 30');
+          } else if (collection === 'Creation 40') {
+            return productName.includes('Creation 40');
+          } else if (collection === 'Creation 55') {
+            return productName.includes('Creation 55');
+          } else if (collection === 'Creation 70') {
+            return productName.includes('Creation 70');
+          } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
+            return productName.includes('Saga');
+          }
+          return false;
+        });
+      });
+    } else {
+      // If no collection filter is selected, show all collections
+      collections = allCollections;
+    }
+
+    // Build brands record for all products
+    for (const product of allProducts) {
+      if (!brandsRecord[product.brandId]) {
+        const brand = allBrands.find(b => b.id === product.brandId);
+        if (brand) {
+          brandsRecord[product.brandId] = brand;
+        }
+      }
     }
   }
 
