@@ -32,6 +32,37 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     currentCollections ? currentCollections.split(',') : []
   );
 
+  // Sync state with URL params when they change externally (e.g., browser back/forward)
+  // This ensures state stays in sync with URL, but we skip updates that would cause loops
+  const isSyncingRef = useRef(false);
+  
+  useEffect(() => {
+    // Skip if we're currently applying filters (to avoid loops)
+    if (isSyncingRef.current) return;
+    
+    const urlSearch = searchParams.get('search') || '';
+    const urlBrands = searchParams.get('brands')?.split(',').filter(Boolean) || [];
+    const urlPriceMin = searchParams.get('priceMin') || '';
+    const urlPriceMax = searchParams.get('priceMax') || '';
+    const urlInStock = searchParams.get('inStock') === 'true';
+    const urlType = searchParams.get('type');
+    const urlCollections = searchParams.get('collections')?.split(',').filter(Boolean) || [];
+
+    // Only update state if URL values differ (to avoid infinite loops)
+    if (urlSearch !== search) setSearch(urlSearch);
+    if (JSON.stringify([...urlBrands].sort()) !== JSON.stringify([...selectedBrands].sort())) setSelectedBrands(urlBrands);
+    if (urlPriceMin !== priceMin) setPriceMin(urlPriceMin);
+    if (urlPriceMax !== priceMax) setPriceMax(urlPriceMax);
+    if (urlInStock !== inStock) setInStock(urlInStock);
+    if (isVinilCategory) {
+      const newType = urlType === 'homogeni' ? 'homogeni' : urlType === 'heterogeni' ? 'heterogeni' : null;
+      if (newType !== vinylType) setVinylType(newType);
+    }
+    if (isLVTCategory && JSON.stringify([...urlCollections].sort()) !== JSON.stringify([...selectedCollections].sort())) {
+      setSelectedCollections(urlCollections);
+    }
+  }, [searchParams]);
+
   // Auto-apply filters when values change (with debounce for search)
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isInitialMount = useRef(true);
@@ -43,9 +74,12 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       return;
     }
 
+    // Mark that we're syncing to prevent URL sync from triggering
+    isSyncingRef.current = true;
+
     const params = new URLSearchParams(searchParams);
     
-    // Clear all filter params first
+    // Clear only filter params we control, keep other params (like 'color' for LVT tabs)
     params.delete('search');
     params.delete('brands');
     params.delete('priceMin');
@@ -54,7 +88,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     params.delete('type');
     params.delete('collections');
 
-    // Add new filter params
+    // Add new filter params based on current state - ALL filters are preserved
     if (search) params.set('search', search);
     if (selectedBrands.length > 0) params.set('brands', selectedBrands.join(','));
     if (priceMin) params.set('priceMin', priceMin);
@@ -72,6 +106,10 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
 
     searchTimeoutRef.current = setTimeout(() => {
       router.push(`${pathname}?${params.toString()}`);
+      // Reset sync flag after navigation
+      setTimeout(() => {
+        isSyncingRef.current = false;
+      }, 100);
     }, delay);
 
     return () => {
