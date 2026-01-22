@@ -236,6 +236,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               availableBrands={availableBrands}
               currentFilters={filtersWithoutCollections}
               availableCollections={availableCollections}
+              availableThickness={availableThickness}
             />
           </aside>
 
