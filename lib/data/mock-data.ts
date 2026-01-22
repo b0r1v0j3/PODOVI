@@ -531,7 +531,7 @@ A\+ ocena - najviši nivo zdravstvenih standarda
 Certifikovano: Floorscore®, IAC Gold \& M1`,
     images: [{ id: '9-1', url: '/images/products/lvt/creation-40.jpg', alt: 'Gerflor Creation 40', isPrimary: true, order: 1 }],
     specs: [
-      { key: 'thickness', label: 'Ukupna debljina', value: '2.00 mm' },
+      { key: 'thickness', label: 'Ukupna debljina', value: '2.50 mm' },
       { key: 'wear_layer', label: 'Sloj habanja', value: '0.40mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'usage_class', label: 'Klasa upotrebe', value: '23-32' },
@@ -581,6 +581,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '10-1', url: '/images/products/lvt/creation-40-clic.jpg', alt: 'Gerflor Creation 40 Clic', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '4.50 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Click sistem' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
@@ -625,6 +626,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '11-1', url: '/images/products/lvt/creation-40-clic-acoustic.jpg', alt: 'Gerflor Creation 40 Clic Acoustic', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '5.50 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'acoustic', label: 'Akustična izolacija', value: 'Da' },
       { key: 'installation', label: 'Tip instalacije', value: 'Click sistem' },
@@ -671,6 +673,7 @@ TVOC <10µg/m³
 Proizvedeno u Francuskoj`,
     images: [{ id: '12-1', url: '/images/products/lvt/creation-40-zen.jpg', alt: 'Gerflor Creation 40 Zen', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '3.60 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Lepljenje' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
@@ -763,6 +766,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '14-1', url: '/images/products/lvt/creation-55-clic.jpg', alt: 'Gerflor Creation 55 Clic', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '5.00 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Click sistem' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
@@ -807,6 +811,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '15-1', url: '/images/products/lvt/creation-55-clic-acoustic.jpg', alt: 'Gerflor Creation 55 Clic Acoustic', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '6.00 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'acoustic', label: 'Akustična izolacija', value: 'Da' },
       { key: 'installation', label: 'Tip instalacije', value: 'Click sistem' },
@@ -852,6 +857,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '16-1', url: '/images/products/lvt/creation-55-looselay.jpg', alt: 'Gerflor Creation 55 Looselay', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '4.50 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Looselay' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
@@ -896,6 +902,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '17-1', url: '/images/products/lvt/creation-55-looselay-acoustic.jpg', alt: 'Gerflor Creation 55 Looselay Acoustic', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '5.50 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'acoustic', label: 'Akustična izolacija', value: 'Da' },
       { key: 'installation', label: 'Tip instalacije', value: 'Looselay' },
@@ -942,6 +949,7 @@ TVOC <10µg/m³
 Proizvedeno u Francuskoj`,
     images: [{ id: '18-1', url: '/images/products/lvt/creation-55-zen.jpg', alt: 'Gerflor Creation 55 Zen', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '4.25 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Lepljenje' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
@@ -985,7 +993,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '19-1', url: '/images/products/lvt/creation-70.jpg', alt: 'Gerflor Creation 70', isPrimary: true, order: 1 }],
     specs: [
-      { key: 'thickness', label: 'Ukupna debljina', value: '2,5mm' },
+      { key: 'thickness', label: 'Ukupna debljina', value: '2.50 mm' },
       { key: 'wear_layer', label: 'Sloj habanja', value: '0.70mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'usage_class', label: 'Klasa upotrebe', value: '34-43' },
@@ -1032,6 +1040,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '20-1', url: '/images/products/lvt/creation-70-clic.jpg', alt: 'Gerflor Creation 70 Clic', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '5.00 mm' },
       { key: 'wear_layer', label: 'Sloj habanja', value: '0.70mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'usage_class', label: 'Klasa upotrebe', value: '34-43' },
@@ -1077,6 +1086,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '21-1', url: '/images/products/lvt/creation-70-connect.jpg', alt: 'Gerflor Creation 70 Connect', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '5.00 mm' },
       { key: 'format', label: 'Format', value: 'Pločica' },
       { key: 'installation', label: 'Tip instalacije', value: 'Connect sistem' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
@@ -1119,6 +1129,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '22-1', url: '/images/products/lvt/creation-70-megaclic.jpg', alt: 'Gerflor Creation 70 Megaclic', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '6.00 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Click sistem' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
@@ -1162,6 +1173,7 @@ Bez ftalata
 TVOC <10µg/m³`,
     images: [{ id: '25-1', url: '/images/products/lvt/creation-70-looselay.jpg', alt: 'Gerflor Creation 70 Looselay', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '5.00 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Looselay' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
@@ -1207,6 +1219,7 @@ TVOC <10µg/m³
 Proizvedeno u Francuskoj`,
     images: [{ id: '23-1', url: '/images/products/lvt/creation-70-zen.jpg', alt: 'Gerflor Creation 70 Zen', isPrimary: true, order: 1 }],
     specs: [
+      { key: 'thickness', label: 'Ukupna debljina', value: '4.35 mm' },
       { key: 'format', label: 'Format', value: 'Ploča' },
       { key: 'installation', label: 'Tip instalacije', value: 'Lepljenje' },
       { key: 'surface', label: 'Površinska obrada', value: 'Protecshield® PUR' },
