@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Product, Brand } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 
@@ -128,7 +129,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     if (categorySlug === 'lvt' && searchParams?.collections) {
       const selectedCollections = searchParams.collections.split(',');
       filtered = filtered.filter(color => {
-        const collectionName = (color as any).collectionSlug || color.collectionSlug || '';
+        const collectionName = (color as any).collectionSlug || '';
         const collectionNameWithoutPrefix = collectionName.replace('gerflor-', '');
         
         return selectedCollections.some(collection => {
