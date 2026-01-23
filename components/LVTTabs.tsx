@@ -305,7 +305,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       setActiveTab('colors');
     }
 
-    if ((activeTab === 'colors' || initialColorSlug) && !hasLoadedColors.current && !loadingColors) {
+    // Load colors immediately when component mounts (for linoleum and vinil)
+    // This ensures colors are ready when user clicks the "Boje" tab
+    if (useJsonColors && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
       const jsonPath = categorySlug === 'linoleum'
         ? '/data/gerflor_linoleum_colors_complete.json'
