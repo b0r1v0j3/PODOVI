@@ -239,26 +239,6 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       )}
 
-      {/* Overall Thickness Filter (for LVT and Vinil) */}
-      {(isLVTCategory || isVinilCategory) && availableThickness && availableThickness.length > 0 && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Debljina</label>
-          <div className="space-y-2">
-            {availableThickness.map((thickness) => (
-              <label key={thickness} className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedThickness.includes(thickness)}
-                  onChange={() => toggleThickness(thickness)}
-                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-                />
-                <span className="ml-2 text-sm text-gray-700">{thickness} mm</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Vinyl Type Filter */}
       {isVinilCategory && (
         <div className="mb-6">
@@ -294,6 +274,26 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
               />
               <span className="ml-2 text-sm text-gray-700">Svi</span>
             </label>
+          </div>
+        </div>
+      )}
+
+      {/* Overall Thickness Filter (for LVT and Vinil) */}
+      {(isLVTCategory || isVinilCategory) && availableThickness && availableThickness.length > 0 && (
+        <div className="mb-6">
+          <label className="label text-xs uppercase tracking-wide text-gray-500">Debljina</label>
+          <div className="space-y-2">
+            {availableThickness.map((thickness) => (
+              <label key={thickness} className="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectedThickness.includes(thickness)}
+                  onChange={() => toggleThickness(thickness)}
+                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                />
+                <span className="ml-2 text-sm text-gray-700">{thickness} mm</span>
+              </label>
+            ))}
           </div>
         </div>
       )}

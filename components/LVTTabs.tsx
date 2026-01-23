@@ -293,9 +293,12 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               ? `${color.collection_slug || color.collection}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`
               : color.slug;
 
-            // Determine vinyl type from color or collection
-            // For now, all vinyl collections are homogeneous, but this can be extended
-            const productVinylType = color.type === 'heterogeneous' ? 'Heterogeni' : 'Homogeni';
+            // Determine vinyl type from collection slug
+            // Homogeni collections: mipolam-* (Mipolam Accord, Mipolam Affinity, etc.)
+            // Heterogeni collections: nerok-*, premium-*, taralay-* (Nerok, Premium, Taralay)
+            const collectionSlug = (color.collection_slug || color.collection || '').toLowerCase();
+            const isHomogeniCollection = collectionSlug.startsWith('mipolam-');
+            const productVinylType = isHomogeniCollection ? 'Homogeni' : 'Heterogeni';
             
             // Build specs from color data
             const specs: any[] = [];
@@ -322,7 +325,11 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             
             // Add vinyl-specific specs
             if (categorySlug === 'vinil') {
-              if (!specs.find(s => s.key === 'type')) {
+              // Always set the correct type based on collection slug, even if it exists in collection_specs
+              const existingTypeIndex = specs.findIndex(s => s.key === 'type');
+              if (existingTypeIndex >= 0) {
+                specs[existingTypeIndex] = { key: 'type', label: 'Tip', value: productVinylType };
+              } else {
                 specs.push({ key: 'type', label: 'Tip', value: productVinylType });
               }
               if (!specs.find(s => s.key === 'collection')) {
