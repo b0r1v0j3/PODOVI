@@ -69,7 +69,12 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
     const vinylColor = collection.colors?.find((color: any) => {
       // Match by slug format: collection-slug-color-code-color-name
       const expectedSlug = `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
-      return expectedSlug === slug || color.code === slug.split('-').pop();
+      // Also try matching without collection prefix (for color parameter)
+      const colorOnlySlug = `${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
+      return expectedSlug === slug || 
+             colorOnlySlug === slug || 
+             slug.endsWith(`-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`) ||
+             color.code === slug.split('-').pop();
     });
     if (vinylColor) {
       return {
@@ -704,21 +709,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // If color parameter is present, redirect to category page with color parameter
-    // This ensures all color links go to category pages for consistency
-    const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
-    if (selectedColorSlug) {
-      // Try to load the color to determine its category
-      const colorSource = await loadColorFromJson(selectedColorSlug);
-      if (colorSource) {
-        const { redirect } = await import('next/navigation');
-        // Map categorySlug directly to category slug (they're the same)
-        const categorySlug = colorSource.categorySlug;
-        redirect(`/kategorije/${categorySlug}?color=${selectedColorSlug}`);
-      }
-    }
-    
     // Load the collection/product normally
+    const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
     const product = await resolveProductBySlug(params.slug);
 
     if (!product) {
