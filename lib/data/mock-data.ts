@@ -1437,7 +1437,7 @@ Održivost:
     createdAt: new Date('2024-03-20'),
     updatedAt: new Date('2024-03-20'),
   },
-  // Gerflor Linoleum Collections - 12 collections (594 colors total)
+  // Gerflor Heterogeni Vinil Collections
   {
     id: 'gerflor-nerok-55',
     name: 'Nerok 55',
@@ -1445,8 +1445,8 @@ Održivost:
     sku: 'GER-NEROK-55',
     categoryId: '2',
     brandId: '6',
-    shortDescription: 'Nerok 55 - Linoleum podovi',
-    description: 'Nerok 55 - profesionalni linoleum podovi.',
+    shortDescription: 'Nerok 55 - Heterogeni vinil podovi',
+    description: 'Nerok 55 - profesionalni heterogeni vinil podovi.',
     images: [{
       id: 'nerok-55-img',
       url: '/images/products/vinyl/nerok-55/collection.jpg',
