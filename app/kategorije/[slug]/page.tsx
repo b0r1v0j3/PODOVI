@@ -160,8 +160,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Extract unique thickness values from our actual data (collections + colors from JSON)
     // For LVT: from collections specs and JSON colors
     // For Vinil: from collections specs and JSON colors (if available)
+    // For Linoleum: from collections specs
     // IMPORTANT: Use allProductsForThickness (without filters) to ensure all options remain visible
-    if (category.slug === 'lvt' || category.slug === 'vinil') {
+    if (category.slug === 'lvt' || category.slug === 'vinil' || category.slug === 'linoleum') {
       const thicknessSet = new Set<string>();
       const thicknessSetHomogeni = new Set<string>();
       const thicknessSetHeterogeni = new Set<string>();
@@ -197,47 +198,59 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       
       // Get thicknesses from colors in JSON file
       try {
-        const jsonFileName = category.slug === 'lvt' ? 'lvt_colors_complete.json' : 'vinyl_colors_complete.json';
-        const jsonPath = join(process.cwd(), 'public', 'data', jsonFileName);
-        const jsonData = JSON.parse(readFileSync(jsonPath, 'utf8'));
+        let jsonFileName: string;
+        if (category.slug === 'lvt') {
+          jsonFileName = 'lvt_colors_complete.json';
+        } else if (category.slug === 'vinil') {
+          jsonFileName = 'vinyl_colors_complete.json';
+        } else if (category.slug === 'linoleum') {
+          jsonFileName = 'linoleum_colors_complete.json';
+        } else {
+          jsonFileName = '';
+        }
         
-        if (category.slug === 'vinil' && jsonData.collections && Array.isArray(jsonData.collections)) {
-          // For Vinil: process collections structure
-          jsonData.collections.forEach((collection: any) => {
-            const collectionSlug = (collection.slug || '').toLowerCase();
-            const isHomogeniCollection = collectionSlug.startsWith('mipolam-');
-            
-            if (collection.colors && Array.isArray(collection.colors)) {
-              collection.colors.forEach((color: any) => {
-                const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
-                if (thicknessValue) {
-                  const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
-                  const parsedValue = parseFloat(normalizedValue);
-                  if (!isNaN(parsedValue)) {
-                    const thicknessStr = parsedValue.toFixed(2);
-                    thicknessSet.add(thicknessStr);
-                    if (isHomogeniCollection) {
-                      thicknessSetHomogeni.add(thicknessStr);
-                    } else {
-                      thicknessSetHeterogeni.add(thicknessStr);
+        if (jsonFileName) {
+          const jsonPath = join(process.cwd(), 'public', 'data', jsonFileName);
+          const jsonData = JSON.parse(readFileSync(jsonPath, 'utf8'));
+          
+          if (category.slug === 'vinil' && jsonData.collections && Array.isArray(jsonData.collections)) {
+            // For Vinil: process collections structure
+            jsonData.collections.forEach((collection: any) => {
+              const collectionSlug = (collection.slug || '').toLowerCase();
+              const isHomogeniCollection = collectionSlug.startsWith('mipolam-');
+              
+              if (collection.colors && Array.isArray(collection.colors)) {
+                collection.colors.forEach((color: any) => {
+                  const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
+                  if (thicknessValue) {
+                    const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+                    const parsedValue = parseFloat(normalizedValue);
+                    if (!isNaN(parsedValue)) {
+                      const thicknessStr = parsedValue.toFixed(2);
+                      thicknessSet.add(thicknessStr);
+                      if (isHomogeniCollection) {
+                        thicknessSetHomogeni.add(thicknessStr);
+                      } else {
+                        thicknessSetHeterogeni.add(thicknessStr);
+                      }
                     }
                   }
-                }
-              });
-            }
-          });
-        } else if (jsonData.colors && Array.isArray(jsonData.colors)) {
-          // For LVT: process colors array
-          jsonData.colors.forEach((color: any) => {
-            const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
-            if (thicknessValue) {
-              const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
-              const parsedValue = parseFloat(normalizedValue);
-              if (!isNaN(parsedValue)) {
-                thicknessSet.add(parsedValue.toFixed(2));
+                });
               }
-            }
-          });
+            });
+          } else if (jsonData.colors && Array.isArray(jsonData.colors)) {
+            // For LVT and Linoleum: process colors array
+            jsonData.colors.forEach((color: any) => {
+              const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
+              if (thicknessValue) {
+                const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+                const parsedValue = parseFloat(normalizedValue);
+                if (!isNaN(parsedValue)) {
+                  thicknessSet.add(parsedValue.toFixed(2));
+                }
+              }
+            });
+          }
         }
       } catch (error) {
         console.error(`Error reading ${category.slug} colors JSON:`, error);

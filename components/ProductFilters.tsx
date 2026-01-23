@@ -19,6 +19,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   
   const isVinilCategory = pathname?.includes('/kategorije/vinil');
   const isLVTCategory = pathname?.includes('/kategorije/lvt');
+  const isLinoleumCategory = pathname?.includes('/kategorije/linoleum');
   const currentType = searchParams.get('type');
   const currentCollections = searchParams.get('collections');
   const currentThickness = searchParams.get('thickness');
@@ -65,7 +66,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isLVTCategory && JSON.stringify([...urlCollections].sort()) !== JSON.stringify([...selectedCollections].sort())) {
       setSelectedCollections(urlCollections);
     }
-    if ((isLVTCategory || isVinilCategory) && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
+    if ((isLVTCategory || isVinilCategory || isLinoleumCategory) && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
       setSelectedThickness(urlThickness);
     }
   }, [searchParams]);
@@ -140,7 +141,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
             clearTimeout(searchTimeoutRef.current);
           }
         };
-      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, pathname, router, searchParams, isVinilCategory, isLVTCategory]);
+      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -295,8 +296,8 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       )}
 
-      {/* Overall Thickness Filter (for LVT and Vinil) */}
-      {(isLVTCategory || isVinilCategory) && availableThickness && availableThickness.length > 0 && (
+      {/* Overall Thickness Filter (for LVT, Vinil, and Linoleum) */}
+      {(isLVTCategory || isVinilCategory || isLinoleumCategory) && availableThickness && availableThickness.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Debljina</label>
           <div className="space-y-2">

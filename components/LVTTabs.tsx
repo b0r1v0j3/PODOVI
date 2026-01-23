@@ -184,8 +184,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       });
     }
 
-    // Filter by thickness (for LVT and Vinil)
-    if ((categorySlug === 'lvt' || categorySlug === 'vinil') && searchParams?.thickness) {
+    // Filter by thickness (for LVT, Vinil, and Linoleum)
+    if ((categorySlug === 'lvt' || categorySlug === 'vinil' || categorySlug === 'linoleum') && searchParams?.thickness) {
       const selectedThicknesses = searchParams.thickness.split(',');
       filtered = filtered.filter(color => {
         // Get thickness from specs - check multiple possible keys

@@ -90,7 +90,7 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
-    // Filter by overall thickness (for LVT and Vinil products)
+    // Filter by overall thickness (for LVT, Vinil, and Linoleum products)
     if (filters?.thickness && filters.thickness.length > 0) {
       filtered = filtered.filter(p => {
         const thicknessSpec = p.specs.find(s => s.key === 'thickness');
