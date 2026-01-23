@@ -92,6 +92,41 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       return filtered;
     }
 
+    // For Vinil: ensure thickness is added from collections if missing
+    // This ensures thickness is always available even if collections prop changes
+    if (categorySlug === 'vinil') {
+      filtered = filtered.map(color => {
+        // If thickness already exists, return color as is
+        if (color.specs.find(s => s.key === 'thickness')) {
+          return color;
+        }
+        
+        // Try to find matching collection and add thickness
+        const collectionSlug = ((color as any).collectionSlug || '').toLowerCase();
+        const matchingCollection = collections.find(c => {
+          const collectionSlugFromProduct = c.slug.toLowerCase().replace('gerflor-', '');
+          const collectionNameFromProduct = c.name.toLowerCase();
+          const colorCollectionName = ((color as any).collection_name || (color as any).collection || '').toLowerCase();
+          
+          return collectionSlugFromProduct === collectionSlug || 
+                 collectionNameFromProduct === colorCollectionName ||
+                 collectionSlugFromProduct === collectionSlug.replace(/\s+/g, '-');
+        });
+        
+        if (matchingCollection) {
+          const thicknessSpec = matchingCollection.specs.find(s => s.key === 'thickness');
+          if (thicknessSpec) {
+            return {
+              ...color,
+              specs: [...color.specs, { key: 'thickness', label: 'Ukupna debljina', value: thicknessSpec.value }]
+            };
+          }
+        }
+        
+        return color;
+      });
+    }
+
     // Filter by vinyl type (for Vinil category)
     if (categorySlug === 'vinil' && vinylType) {
       const typeFilter = vinylType.toLowerCase();
@@ -181,7 +216,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
 
     return filtered;
-  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors, searchParams]);
+  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors, searchParams, collections]);
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -469,9 +504,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             Boje ({useJsonColors
               ? (loadingColors
                   ? '...'
-                  : (colorsToRender.length > 0
-                      ? colorsToRender.length
-                      : (vinylType && categorySlug === 'vinil' ? 0 : (totalColorsCount ?? '...'))))
+                  : colorsToRender.length)
               : legacyColors.length
             })
           </button>
