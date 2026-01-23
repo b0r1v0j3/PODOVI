@@ -9,9 +9,10 @@ interface ProductFiltersProps {
   currentFilters: IProductFilters;
   availableCollections?: string[]; // For LVT collection filter
   availableThickness?: string[]; // For LVT overall thickness filter
+  availableThicknessByType?: { homogeni: string[]; heterogeni: string[] }; // For Vinil thickness by type
 }
 
-export default function ProductFilters({ availableBrands, currentFilters, availableCollections, availableThickness }: ProductFiltersProps) {
+export default function ProductFilters({ availableBrands, currentFilters, availableCollections, availableThickness, availableThicknessByType }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -68,6 +69,22 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       setSelectedThickness(urlThickness);
     }
   }, [searchParams]);
+
+  // Auto-remove incompatible thicknesses when vinyl type changes
+  useEffect(() => {
+    if (isVinilCategory && availableThicknessByType && vinylType && selectedThickness.length > 0) {
+      const availableForType = vinylType === 'homogeni' 
+        ? availableThicknessByType.homogeni 
+        : vinylType === 'heterogeni' 
+        ? availableThicknessByType.heterogeni 
+        : [];
+      
+      const validThicknesses = selectedThickness.filter(t => availableForType.includes(t));
+      if (validThicknesses.length !== selectedThickness.length) {
+        setSelectedThickness(validThicknesses);
+      }
+    }
+  }, [vinylType, isVinilCategory, availableThicknessByType]);
 
   // Auto-apply filters when values change (with debounce for search)
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -283,17 +300,35 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Debljina</label>
           <div className="space-y-2">
-            {availableThickness.map((thickness) => (
-              <label key={thickness} className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedThickness.includes(thickness)}
-                  onChange={() => toggleThickness(thickness)}
-                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-                />
-                <span className="ml-2 text-sm text-gray-700">{thickness} mm</span>
-              </label>
-            ))}
+            {availableThickness.map((thickness) => {
+              // For Vinil: check if thickness is available for selected type
+              let isDisabled = false;
+              if (isVinilCategory && availableThicknessByType && vinylType) {
+                if (vinylType === 'homogeni') {
+                  isDisabled = !availableThicknessByType.homogeni.includes(thickness);
+                } else if (vinylType === 'heterogeni') {
+                  isDisabled = !availableThicknessByType.heterogeni.includes(thickness);
+                }
+              }
+              
+              return (
+                <label 
+                  key={thickness} 
+                  className={`flex items-center ${isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedThickness.includes(thickness)}
+                    onChange={() => !isDisabled && toggleThickness(thickness)}
+                    disabled={isDisabled}
+                    className="rounded border-gray-300 text-primary-600 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  />
+                  <span className={`ml-2 text-sm ${isDisabled ? 'text-gray-400' : 'text-gray-700'}`}>
+                    {thickness} mm
+                  </span>
+                </label>
+              );
+            })}
           </div>
         </div>
       )}

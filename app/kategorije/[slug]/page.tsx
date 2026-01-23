@@ -109,6 +109,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
   let availableThickness: string[] = [];
+  let availableThicknessByType: { homogeni: string[]; heterogeni: string[] } = { homogeni: [], heterogeni: [] };
   
   // For non-LVT categories, get filtered products
   const filteredProducts = isLVTCategory ? [] : allProducts;
@@ -162,6 +163,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // IMPORTANT: Use allProductsForThickness (without filters) to ensure all options remain visible
     if (category.slug === 'lvt' || category.slug === 'vinil') {
       const thicknessSet = new Set<string>();
+      const thicknessSetHomogeni = new Set<string>();
+      const thicknessSetHeterogeni = new Set<string>();
       
       // Get all collections from unfiltered products to calculate available thickness
       const allCollectionsForThickness = allProductsForThickness.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
@@ -173,7 +176,21 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
           const thicknessValue = parseFloat(normalizedValue);
           if (!isNaN(thicknessValue)) {
-            thicknessSet.add(thicknessValue.toFixed(2));
+            const thicknessStr = thicknessValue.toFixed(2);
+            thicknessSet.add(thicknessStr);
+            
+            // For Vinil: separate by type
+            if (category.slug === 'vinil') {
+              const typeSpec = p.specs.find(s => s.key === 'type');
+              if (typeSpec) {
+                const productType = typeSpec.value.toLowerCase();
+                if (productType === 'homogeni') {
+                  thicknessSetHomogeni.add(thicknessStr);
+                } else if (productType === 'heterogeni') {
+                  thicknessSetHeterogeni.add(thicknessStr);
+                }
+              }
+            }
           }
         }
       });
@@ -183,9 +200,35 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         const jsonFileName = category.slug === 'lvt' ? 'lvt_colors_complete.json' : 'vinyl_colors_complete.json';
         const jsonPath = join(process.cwd(), 'public', 'data', jsonFileName);
         const jsonData = JSON.parse(readFileSync(jsonPath, 'utf8'));
-        if (jsonData.colors && Array.isArray(jsonData.colors)) {
+        
+        if (category.slug === 'vinil' && jsonData.collections && Array.isArray(jsonData.collections)) {
+          // For Vinil: process collections structure
+          jsonData.collections.forEach((collection: any) => {
+            const collectionSlug = (collection.slug || '').toLowerCase();
+            const isHomogeniCollection = collectionSlug.startsWith('mipolam-');
+            
+            if (collection.colors && Array.isArray(collection.colors)) {
+              collection.colors.forEach((color: any) => {
+                const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
+                if (thicknessValue) {
+                  const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+                  const parsedValue = parseFloat(normalizedValue);
+                  if (!isNaN(parsedValue)) {
+                    const thicknessStr = parsedValue.toFixed(2);
+                    thicknessSet.add(thicknessStr);
+                    if (isHomogeniCollection) {
+                      thicknessSetHomogeni.add(thicknessStr);
+                    } else {
+                      thicknessSetHeterogeni.add(thicknessStr);
+                    }
+                  }
+                }
+              });
+            }
+          });
+        } else if (jsonData.colors && Array.isArray(jsonData.colors)) {
+          // For LVT: process colors array
           jsonData.colors.forEach((color: any) => {
-            // Try different possible field names for thickness
             const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
             if (thicknessValue) {
               const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
@@ -202,6 +245,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       
       // Sort thickness values numerically
       availableThickness = Array.from(thicknessSet).sort((a, b) => parseFloat(a) - parseFloat(b));
+      
+      // For Vinil: also sort by type
+      if (category.slug === 'vinil') {
+        availableThicknessByType = {
+          homogeni: Array.from(thicknessSetHomogeni).sort((a, b) => parseFloat(a) - parseFloat(b)),
+          heterogeni: Array.from(thicknessSetHeterogeni).sort((a, b) => parseFloat(a) - parseFloat(b))
+        };
+      }
     }
 
     // Apply collection filter ONLY to collections (not to colors) - only for LVT
@@ -277,6 +328,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               currentFilters={filtersWithoutCollections}
               availableCollections={availableCollections}
               availableThickness={availableThickness}
+              availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
             />
           </aside>
 
