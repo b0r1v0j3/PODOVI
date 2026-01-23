@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter, usePathname } from 'next/navigation';
 import { Product, Brand } from '@/types';
 
 interface ProductCardClientProps {
@@ -11,8 +10,6 @@ interface ProductCardClientProps {
 }
 
 export default function ProductCardClient({ product, brand }: ProductCardClientProps) {
-  const router = useRouter();
-  const pathname = usePathname();
   const primaryImage = product.images && product.images.length > 0 
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
@@ -26,51 +23,33 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     ? product.name.replace(/^Gerflor\s+/, '')
     : product.name;
   
-  // For LVT, Linoleum, Carpet, and Vinil categories, link to COLLECTION page with color parameter
+  // Map category IDs to category slugs
+  const categorySlugMap: Record<string, string> = {
+    '6': 'lvt',
+    '7': 'linoleum',
+    '4': 'tekstilne-ploce',
+    '2': 'vinil',
+  };
+  
+  // For LVT, Linoleum, Carpet, and Vinil categories, link to category page with color parameter
   // Collections don't have collectionSlug, only individual colors do
   const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   
   let productHref = `/proizvodi/${product.slug}`;
-  let isColorLink = false;
   
   // For color products (LVT/Linoleum/Carpet/Vinil), ONLY if they have collectionSlug (individual colors)
+  // Always link to category page with color parameter for consistency
   // Collections don't have collectionSlug, so they will use default href (collection page)
   if (isColorTile && colorCollectionSlug) {
-    let collectionSlug = colorCollectionSlug;
-    // For LVT, ensure gerflor- prefix
-    if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = `gerflor-${collectionSlug}`;
-    }
-    // For Linoleum, use slug WITHOUT gerflor- prefix
-    if (product.categoryId === '7' && collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = collectionSlug.replace(/^gerflor-/, '');
-    }
-    // For Carpet, collection_slug already has gerflor- prefix
-    // For Vinil, ensure gerflor- prefix (collections are stored as gerflor-mipolam-accord in mock-data)
-    if (product.categoryId === '2' && !collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = `gerflor-${collectionSlug}`;
-    }
-    // Link to COLLECTION page with color parameter (product.slug is the color slug)
-    productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
-    isColorLink = true;
+    const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
+    // Always use category URL with color parameter
+    productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
   }
-  
-  // For color links from category pages, use router.push to ensure single navigation step
-  // This prevents browser from creating intermediate history entries
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (isColorLink && pathname?.startsWith('/kategorije/')) {
-      e.preventDefault();
-      // Use push (not replace) to maintain category page in history
-      // but ensure it's a single navigation step to avoid intermediate entries
-      router.push(productHref);
-    }
-  };
   
   return (
     <Link 
       href={productHref}
-      onClick={handleClick}
       className="group card card-hover"
     >
       <div className="relative h-64 bg-gray-100 overflow-hidden">
