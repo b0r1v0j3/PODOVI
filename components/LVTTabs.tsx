@@ -149,18 +149,31 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       });
     }
 
-    // Filter by thickness (for LVT)
-    if (categorySlug === 'lvt' && searchParams?.thickness) {
+    // Filter by thickness (for LVT and Vinil)
+    if ((categorySlug === 'lvt' || categorySlug === 'vinil') && searchParams?.thickness) {
       const selectedThicknesses = searchParams.thickness.split(',');
       filtered = filtered.filter(color => {
-        // Get thickness from specs
-        const thicknessSpec = color.specs.find(s => s.key === 'thickness');
+        // Get thickness from specs - check multiple possible keys
+        const thicknessSpec = color.specs.find(s => 
+          s.key === 'thickness' || 
+          s.key === 'overall_thickness' || 
+          s.key === 'debljina'
+        );
         if (thicknessSpec) {
           const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
           const thicknessValue = parseFloat(normalizedValue);
           if (!isNaN(thicknessValue)) {
             const thicknessStr = thicknessValue.toFixed(2);
-            return selectedThicknesses.includes(thicknessStr);
+            return selectedThicknesses.some(selected => {
+              // Normalize selected thickness value for comparison
+              const normalizedSelected = selected.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+              const selectedValue = parseFloat(normalizedSelected);
+              if (!isNaN(selectedValue)) {
+                const selectedStr = selectedValue.toFixed(2);
+                return thicknessStr === selectedStr;
+              }
+              return false;
+            });
           }
         }
         return false;
@@ -334,6 +347,30 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               }
               if (!specs.find(s => s.key === 'collection')) {
                 specs.push({ key: 'collection', label: 'Kolekcija', value: color.collection_name || color.collection });
+              }
+              
+              // Add thickness from collection if not already present
+              if (!specs.find(s => s.key === 'thickness')) {
+                // Find matching collection by slug
+                // Try multiple matching strategies:
+                // 1. Direct match after removing 'gerflor-' prefix
+                // 2. Match by collection name
+                const matchingCollection = collections.find(c => {
+                  const collectionSlugFromProduct = c.slug.toLowerCase().replace('gerflor-', '');
+                  const collectionNameFromProduct = c.name.toLowerCase();
+                  const colorCollectionName = (color.collection_name || color.collection || '').toLowerCase();
+                  
+                  return collectionSlugFromProduct === collectionSlug || 
+                         collectionNameFromProduct === colorCollectionName ||
+                         collectionSlugFromProduct === collectionSlug.replace(/\s+/g, '-');
+                });
+                
+                if (matchingCollection) {
+                  const thicknessSpec = matchingCollection.specs.find(s => s.key === 'thickness');
+                  if (thicknessSpec) {
+                    specs.push({ key: 'thickness', label: 'Ukupna debljina', value: thicknessSpec.value });
+                  }
+                }
               }
             }
             
