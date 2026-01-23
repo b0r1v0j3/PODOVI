@@ -19,26 +19,27 @@ export default async function ProductCard({ product }: ProductCardProps) {
     ? product.name.replace(/^Gerflor\s+/, '')
     : product.name;
 
-  // For LVT, Linoleum, and Carpet featured products, link to COLLECTION page with color parameter
+  // Map category IDs to category slugs
+  const categorySlugMap: Record<string, string> = {
+    '6': 'lvt',
+    '7': 'linoleum',
+    '4': 'tekstilne-ploce',
+    '2': 'vinil',
+  };
+  
+  // For LVT, Linoleum, Carpet, and Vinil categories, link to category page with color parameter
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
-  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4';
+  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
   
   let productHref = `/proizvodi/${product.slug}`;
   
-  // For featured color products (LVT/Linoleum/Carpet), link to collection with color parameter
+  // For color products (LVT/Linoleum/Carpet/Vinil), ONLY if they have collectionSlug (individual colors)
+  // Always link to category page with color parameter for consistency
+  // Collections don't have collectionSlug, so they will use default href (collection page)
   if (isColorTile && colorCollectionSlug) {
-    let collectionSlug = colorCollectionSlug;
-    // For LVT, ensure gerflor- prefix
-    if (product.categoryId === '6' && !collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = `gerflor-${collectionSlug}`;
-    }
-    // For Linoleum, use slug WITHOUT gerflor- prefix
-    if (product.categoryId === '7' && collectionSlug.startsWith('gerflor-')) {
-      collectionSlug = collectionSlug.replace(/^gerflor-/, '');
-    }
-    // For Carpet, collection_slug already has gerflor- prefix
-    // Link to COLLECTION page with color parameter (product.slug is the color slug)
-    productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
+    const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
+    // Always use category URL with color parameter
+    productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
   }
 
   return (

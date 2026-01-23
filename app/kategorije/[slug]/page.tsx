@@ -150,8 +150,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         if (indexB === -1) return -1;
         return indexA - indexB;
       });
+    }
 
-      // Extract unique thickness values from our actual data (collections + colors from JSON)
+    // Extract unique thickness values from our actual data (collections + colors from JSON)
+    // For LVT: from collections specs and JSON colors
+    // For Vinil: from collections specs and JSON colors (if available)
+    if (category.slug === 'lvt' || category.slug === 'vinil') {
       const thicknessSet = new Set<string>();
       
       // Get thicknesses from collections
@@ -168,50 +172,58 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       
       // Get thicknesses from colors in JSON file
       try {
-        const jsonPath = join(process.cwd(), 'public', 'data', 'lvt_colors_complete.json');
+        const jsonFileName = category.slug === 'lvt' ? 'lvt_colors_complete.json' : 'vinyl_colors_complete.json';
+        const jsonPath = join(process.cwd(), 'public', 'data', jsonFileName);
         const jsonData = JSON.parse(readFileSync(jsonPath, 'utf8'));
         if (jsonData.colors && Array.isArray(jsonData.colors)) {
           jsonData.colors.forEach((color: any) => {
-            if (color.overall_thickness) {
-              const normalizedValue = color.overall_thickness.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
-              const thicknessValue = parseFloat(normalizedValue);
-              if (!isNaN(thicknessValue)) {
-                thicknessSet.add(thicknessValue.toFixed(2));
+            // Try different possible field names for thickness
+            const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
+            if (thicknessValue) {
+              const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+              const parsedValue = parseFloat(normalizedValue);
+              if (!isNaN(parsedValue)) {
+                thicknessSet.add(parsedValue.toFixed(2));
               }
             }
           });
         }
       } catch (error) {
-        console.error('Error reading LVT colors JSON:', error);
+        console.error(`Error reading ${category.slug} colors JSON:`, error);
       }
       
       // Sort thickness values numerically
       availableThickness = Array.from(thicknessSet).sort((a, b) => parseFloat(a) - parseFloat(b));
     }
 
-    // Apply collection filter ONLY to collections (not to colors)
+    // Apply collection filter ONLY to collections (not to colors) - only for LVT
     // This happens AFTER extracting availableCollections so filter options remain visible
-    const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
-    if (selectedCollections.length > 0) {
-      collections = allCollections.filter(p => {
-        const productName = p.name;
-        return selectedCollections.some(collection => {
-          if (collection === 'Creation 30') {
-            return productName.includes('Creation 30');
-          } else if (collection === 'Creation 40') {
-            return productName.includes('Creation 40');
-          } else if (collection === 'Creation 55') {
-            return productName.includes('Creation 55');
-          } else if (collection === 'Creation 70') {
-            return productName.includes('Creation 70');
-          } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
-            return productName.includes('Saga');
-          }
-          return false;
+    if (category.slug === 'lvt') {
+      const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
+      if (selectedCollections.length > 0) {
+        collections = allCollections.filter(p => {
+          const productName = p.name;
+          return selectedCollections.some(collection => {
+            if (collection === 'Creation 30') {
+              return productName.includes('Creation 30');
+            } else if (collection === 'Creation 40') {
+              return productName.includes('Creation 40');
+            } else if (collection === 'Creation 55') {
+              return productName.includes('Creation 55');
+            } else if (collection === 'Creation 70') {
+              return productName.includes('Creation 70');
+            } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
+              return productName.includes('Saga');
+            }
+            return false;
+          });
         });
-      });
+      } else {
+        // If no collection filter is selected, show all collections
+        collections = allCollections;
+      }
     } else {
-      // If no collection filter is selected, show all collections
+      // For Vinil and other categories, show all collections (no collection filter)
       collections = allCollections;
     }
 

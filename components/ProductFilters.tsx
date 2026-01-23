@@ -64,7 +64,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isLVTCategory && JSON.stringify([...urlCollections].sort()) !== JSON.stringify([...selectedCollections].sort())) {
       setSelectedCollections(urlCollections);
     }
-    if (isLVTCategory && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
+    if ((isLVTCategory || isVinilCategory) && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
       setSelectedThickness(urlThickness);
     }
   }, [searchParams]);
@@ -101,7 +101,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (priceMax) params.set('priceMax', priceMax);
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (isLVTCategory && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
-    if (isLVTCategory && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
+    if ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
 
     // Debounce for search input (500ms), immediate for other filters
     const delay = search ? 500 : 0;
@@ -160,7 +160,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (isLVTCategory && selectedCollections.length > 0) || (isLVTCategory && selectedThickness.length > 0);
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (isLVTCategory && selectedCollections.length > 0) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -219,7 +219,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       </div>
 
-      {/* Collections Filter (for LVT) */}
+      {/* Collections Filter (for LVT only) */}
       {isLVTCategory && availableCollections && availableCollections.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Kolekcije</label>
@@ -239,8 +239,8 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       )}
 
-      {/* Overall Thickness Filter (for LVT) */}
-      {isLVTCategory && availableThickness && availableThickness.length > 0 && (
+      {/* Overall Thickness Filter (for LVT and Vinil) */}
+      {(isLVTCategory || isVinilCategory) && availableThickness && availableThickness.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Debljina</label>
           <div className="space-y-2">

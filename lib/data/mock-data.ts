@@ -139,6 +139,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Accord' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -165,6 +166,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Affinity' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -191,6 +193,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Affinity 608x608' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -217,6 +220,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Astro' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -243,6 +247,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Bioplanet' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -269,6 +274,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Classic 1.5 mm' },
+      { key: 'thickness', label: 'Debljina', value: '1.50 mm' },
     ],
     inStock: true,
     featured: false,
@@ -295,6 +301,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Classic 2mm' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -321,6 +328,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Elegance' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -347,6 +355,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Planet' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -373,6 +382,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Symbioz' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -399,6 +409,7 @@ export const products: Product[] = [
     specs: [
       { key: 'type', label: 'Tip', value: 'Homogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Troplan' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,

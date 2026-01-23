@@ -63,13 +63,14 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
-    // Filter by collections (for LVT products) - grouped like Gerflor
-    // Zen variants are included in their base collections (40, 55, 70)
+    // Filter by collections (for LVT products only)
+    // For LVT: grouped like Gerflor (Creation 30, Creation 40, etc.)
     if (filters?.collections && filters.collections.length > 0) {
       filtered = filtered.filter(p => {
         const productName = p.name;
-        // Check if any selected collection group matches the product
+        // Check if any selected collection matches the product
         return filters.collections!.some(collection => {
+          // LVT collection filtering (grouped)
           if (collection === 'Creation 30') {
             return productName.includes('Creation 30');
           } else if (collection === 'Creation 40') {
@@ -89,7 +90,7 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
-    // Filter by overall thickness (for LVT products)
+    // Filter by overall thickness (for LVT and Vinil products)
     if (filters?.thickness && filters.thickness.length > 0) {
       filtered = filtered.filter(p => {
         const thicknessSpec = p.specs.find(s => s.key === 'thickness');

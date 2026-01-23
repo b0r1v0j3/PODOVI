@@ -704,39 +704,34 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // If color parameter is present, load the color directly as a product instead of the collection
+    // If color parameter is present, redirect to category page with color parameter
+    // This ensures all color links go to category pages for consistency
     const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
-    let product: (Product & { collectionSlug?: string }) | null = null;
-    
     if (selectedColorSlug) {
-      // Try to load the color directly as a product
+      // Try to load the color to determine its category
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (colorSource) {
-        // Get the collection slug from the URL params
-        const collectionSlug = params.slug;
-        product = colorToProduct(colorSource, selectedColorSlug, collectionSlug);
+        const { redirect } = await import('next/navigation');
+        // Map categorySlug directly to category slug (they're the same)
+        const categorySlug = colorSource.categorySlug;
+        redirect(`/kategorije/${categorySlug}?color=${selectedColorSlug}`);
       }
     }
     
-    // If color wasn't loaded, try to load the collection/product normally
-    if (!product) {
-      product = await resolveProductBySlug(params.slug);
-    }
+    // Load the collection/product normally
+    const product = await resolveProductBySlug(params.slug);
 
     if (!product) {
       notFound();
     }
 
-    // If product is a COLOR (has collectionSlug), redirect to COLLECTION page with color parameter.
+    // If product is a COLOR (has collectionSlug), redirect to CATEGORY page with color parameter.
     // Collections don't have collectionSlug and should stay on collection page.
-    // BUT: If we already have a color parameter in the URL, don't redirect (we're already showing the color)
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
-    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct && !selectedColorSlug) {
-      const normalizedCollectionSlug = normalizeCollectionSlug(product.categoryId, collectionSlugFromProduct);
-      if (normalizedCollectionSlug) {
-        const { redirect } = await import('next/navigation');
-        redirect(`/proizvodi/${normalizedCollectionSlug}?color=${product.slug}`);
-      }
+    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct) {
+      const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
+      const { redirect } = await import('next/navigation');
+      redirect(`/kategorije/${categorySlug}?color=${product.slug}`);
     }
 
     // Ensure product has required fields with defensive checks
