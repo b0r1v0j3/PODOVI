@@ -71,11 +71,6 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
             Nema na stanju
           </div>
         )}
-        {product.featured && (
-          <div className="absolute top-3 left-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-lg">
-            Izdvojeno
-          </div>
-        )}
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
