@@ -92,9 +92,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       return filtered;
     }
 
-    // For Vinil: ensure thickness is added from collections if missing
+    // For Vinil and Linoleum: ensure thickness is added from collections if missing
     // This ensures thickness is always available even if collections prop changes
-    if (categorySlug === 'vinil') {
+    if (categorySlug === 'vinil' || categorySlug === 'linoleum') {
       filtered = filtered.map(color => {
         // If thickness already exists, return color as is
         if (color.specs.find(s => s.key === 'thickness')) {
@@ -328,13 +328,13 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
-            // For Linoleum: use texture_url or image_url (no lifestyle_url available)
+            // For Linoleum: use image, texture_url, or image_url (gerflor_linoleum uses 'image' field)
             // For Vinil: use image field (local path) or image_url
             const primaryImageUrl = categorySlug === 'lvt' 
               ? (color.texture_url || color.lifestyle_url || color.image_url || '')
               : categorySlug === 'vinil'
               ? (color.image || color.image_url || '')
-              : (color.texture_url || color.image_url || '');
+              : (color.image || color.texture_url || color.image_url || '');
 
             // Generate slug for Vinil colors (format: collection-slug-color-code-color-name)
             const colorSlug = categorySlug === 'vinil' 
