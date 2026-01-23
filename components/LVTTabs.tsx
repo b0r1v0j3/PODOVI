@@ -305,7 +305,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       setActiveTab('colors');
     }
 
-    // Load colors immediately when component mounts (for linoleum and vinil)
+    // Load colors immediately when component mounts (for LVT, linoleum, and vinil)
     // This ensures colors are ready when user clicks the "Boje" tab
     if (useJsonColors && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
