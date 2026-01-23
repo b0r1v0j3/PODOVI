@@ -119,7 +119,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (priceMax) params.set('priceMax', priceMax);
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (isLVTCategory && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
-    if ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
+    if ((isLVTCategory || isVinilCategory || isLinoleumCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
 
     // Debounce for search input (500ms), immediate for other filters
     const delay = search ? 500 : 0;

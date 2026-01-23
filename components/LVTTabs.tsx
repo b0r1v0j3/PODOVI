@@ -81,8 +81,37 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       });
     }
     
+    // Filter by thickness (for LVT, Vinil, and Linoleum)
+    if ((categorySlug === 'lvt' || categorySlug === 'vinil' || categorySlug === 'linoleum') && searchParams?.thickness) {
+      const selectedThicknesses = searchParams.thickness.split(',');
+      filtered = filtered.filter(collection => {
+        const thicknessSpec = collection.specs.find(s => 
+          s.key === 'thickness' || 
+          s.key === 'overall_thickness' || 
+          s.key === 'debljina'
+        );
+        if (thicknessSpec) {
+          const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+          const thicknessValue = parseFloat(normalizedValue);
+          if (!isNaN(thicknessValue)) {
+            const thicknessStr = thicknessValue.toFixed(2);
+            return selectedThicknesses.some(selected => {
+              const normalizedSelected = selected.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
+              const selectedValue = parseFloat(normalizedSelected);
+              if (!isNaN(selectedValue)) {
+                const selectedStr = selectedValue.toFixed(2);
+                return thicknessStr === selectedStr;
+              }
+              return false;
+            });
+          }
+        }
+        return false;
+      });
+    }
+    
     return filtered;
-  }, [collections, useJsonColors, categorySlug, vinylType]);
+  }, [collections, useJsonColors, categorySlug, vinylType, searchParams]);
 
   // Filter colors by all active filters
   const colorsToRender = useMemo(() => {
