@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 import { Product, Brand } from '@/types';
 
 interface ProductCardClientProps {
@@ -10,6 +11,8 @@ interface ProductCardClientProps {
 }
 
 export default function ProductCardClient({ product, brand }: ProductCardClientProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const primaryImage = product.images && product.images.length > 0 
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
@@ -29,6 +32,7 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   
   let productHref = `/proizvodi/${product.slug}`;
+  let isColorLink = false;
   
   // For color products (LVT/Linoleum/Carpet/Vinil), ONLY if they have collectionSlug (individual colors)
   // Collections don't have collectionSlug, so they will use default href (collection page)
@@ -49,11 +53,24 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     }
     // Link to COLLECTION page with color parameter (product.slug is the color slug)
     productHref = `/proizvodi/${collectionSlug}?color=${product.slug}`;
+    isColorLink = true;
   }
+  
+  // For color links from category pages, use router.push to ensure single navigation step
+  // This prevents browser from creating intermediate history entries
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isColorLink && pathname?.startsWith('/kategorije/')) {
+      e.preventDefault();
+      // Use push (not replace) to maintain category page in history
+      // but ensure it's a single navigation step to avoid intermediate entries
+      router.push(productHref);
+    }
+  };
   
   return (
     <Link 
       href={productHref}
+      onClick={handleClick}
       className="group card card-hover"
     >
       <div className="relative h-64 bg-gray-100 overflow-hidden">

@@ -160,9 +160,11 @@ export default function ColorGrid({
     // If in compact mode (ProductColorSelector), update URL with ?color= parameter and update image
     if (compact) {
       // Update URL with ?color= parameter
+      // Use replace instead of push to avoid creating unnecessary history entries
+      // when changing colors on the same page
       const params = new URLSearchParams(searchParams);
       params.set('color', color.slug);
-      router.push(`${pathname}?${params.toString()}`, { scroll: false });
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
       // Also call onColorSelect if provided
       if (onColorSelect) {
