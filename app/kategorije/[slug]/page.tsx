@@ -99,6 +99,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const categoryBrandIds = new Set(categoryProducts.map(p => p.brandId));
   const availableBrands = allBrands.filter(b => categoryBrandIds.has(b.id));
 
+  // Get ALL products without any filters to calculate available thickness options
+  // This ensures all thickness options remain visible even when one is selected
+  const allProductsForThickness = await productRepository.findByCategory(category.id);
+
   // For LVT, Linoleum, Carpet, and Vinil categories, separate collections from colors
   const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil';
   let collections: typeof allProducts = [];
@@ -155,11 +159,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Extract unique thickness values from our actual data (collections + colors from JSON)
     // For LVT: from collections specs and JSON colors
     // For Vinil: from collections specs and JSON colors (if available)
+    // IMPORTANT: Use allProductsForThickness (without filters) to ensure all options remain visible
     if (category.slug === 'lvt' || category.slug === 'vinil') {
       const thicknessSet = new Set<string>();
       
-      // Get thicknesses from collections
-      allCollections.forEach(p => {
+      // Get all collections from unfiltered products to calculate available thickness
+      const allCollectionsForThickness = allProductsForThickness.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
+      
+      // Get thicknesses from collections (using unfiltered products)
+      allCollectionsForThickness.forEach(p => {
         const thicknessSpec = p.specs.find(s => s.key === 'thickness');
         if (thicknessSpec) {
           const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();

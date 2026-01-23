@@ -1457,6 +1457,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Nerok 55' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1483,6 +1484,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Nerok 70' },
+      { key: 'thickness', label: 'Debljina', value: '3.40 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1509,6 +1511,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Premium Acoustic' },
+      { key: 'thickness', label: 'Debljina', value: '3.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1535,6 +1538,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Premium Compact' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1561,6 +1565,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Taralay Impression Acoustic' },
+      { key: 'thickness', label: 'Debljina', value: '3.35 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1587,6 +1592,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Taralay Impression Compact' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1613,6 +1619,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Taralay Impression Hop Acoustic' },
+      { key: 'thickness', label: 'Debljina', value: '4.35 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1639,6 +1646,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Taralay Impression Hop Compact' },
+      { key: 'thickness', label: 'Debljina', value: '2.30 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1665,6 +1673,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Taralay Initial Acoustic' },
+      { key: 'thickness', label: 'Debljina', value: '3.35 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1691,6 +1700,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Taralay Initial Compact' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1717,6 +1727,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Taralay Millenium Acoustic' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
@@ -1743,6 +1754,7 @@ Održivost:
     specs: [
       { key: 'type', label: 'Tip', value: 'Heterogeni' },
       { key: 'collection', label: 'Kolekcija', value: 'Taralay Millenium Compact' },
+      { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
     ],
     inStock: true,
     featured: false,
