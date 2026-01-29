@@ -42,16 +42,18 @@ interface ColorGridProps {
 
 function normalizeSrc(raw?: string | null) {
   if (!raw) return '';
-  let p = String(raw);
+  let p = String(raw).trim();
   try {
     p = decodeURI(p);
   } catch (e) {
     // ignore
   }
   p = p.replace(/\\/g, '/');
-  // remove duplicate slashes but keep leading '/'
-  p = p.replace(/\/\/+/g, '/');
-  if (!p.startsWith('/')) p = '/' + p;
+  // remove duplicate slashes but keep leading '/' (only for relative paths)
+  if (!p.startsWith('http://') && !p.startsWith('https://')) {
+    p = p.replace(/\/\/+/g, '/');
+    if (!p.startsWith('/')) p = '/' + p;
+  }
   return p;
 }
 
@@ -309,7 +311,7 @@ export default function ColorGrid({
         setColors([]);
         setLoading(false);
       });
-  }, [collectionSlug]);
+  }, [collectionSlug, customColors]);
 
   const filteredColors = useMemo(() => {
     return colors.filter(color =>

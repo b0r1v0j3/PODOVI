@@ -16,9 +16,12 @@ const COLLECTION_RUMBA = 'Rumba';
 const COLLECTION_TANGO = 'Tango';
 const COLLECTION_TANGO_CLASSIC = 'Tango Classic';
 const COLLECTION_SALSA = 'Salsa';
+const COLLECTION_SALSA_ART = 'Salsa Art';
 const COLLECTION_SALSA_PREMIUM = 'Salsa Premium';
 const COLLECTION_STEP = 'Step XL & L';
 const COLLECTION_PRIVILEGE = 'Privilege';
+const COLLECTION_PRIVILEGE_WALTZ = 'Privilege Waltz';
+const COLLECTION_SOMMER_EUROPARQUET = 'Sommer Europarquet';
 
 /** Kolekcije koje su "header" proizvodi (SKU počinje sa PARKET-). */
 export const PARKET_HEADER_COLLECTIONS = [
@@ -72,20 +75,36 @@ export function getParketCollectionBySlug(slug: string): string | null {
   ];
   if (tangoClassicSlugs.some((t) => s === t || s.startsWith(t + '-'))) return COLLECTION_TANGO_CLASSIC;
 
-  // Privilege: luksuzne nijanse (bez strip)
-  const privilegeSlugs = [
-    'hrast-royal-antique-white',
-    'hrast-royal-grey',
-    'hrast-vivid',
+  // Privilege Waltz: nijanse iz TH_Privilege_Waltz (Essence, Misty, Soft Brown, Soft Beige)
+  const privilegeWaltzSlugs = [
     'hrast-essence',
     'hrast-misty-brown',
     'hrast-misty-grey',
+    'hrast-soft-brown-1-strip',
     'hrast-soft-beige',
+  ];
+  if (privilegeWaltzSlugs.some((pw) => s === pw)) return COLLECTION_PRIVILEGE_WALTZ;
+
+  // Sommer Europarquet: Europarquet dekori (Bronze, Espresso, Golden, Original, Polar)
+  const sommerEuroparquetSlugs = [
     'hrast-bronze',
     'hrast-espresso',
     'hrast-golden',
     'hrast-original',
     'hrast-polar',
+  ];
+  if (sommerEuroparquetSlugs.some((e) => s === e)) return COLLECTION_SOMMER_EUROPARQUET;
+
+  // Salsa Art: White Canvas, Black Canvas itd. (3-strip sa canvas u nazivu)
+  if (s.includes('white-canvas') && s.includes('3-strip')) return COLLECTION_SALSA_ART;
+  if (s.includes('black-canvas') && s.includes('3-strip')) return COLLECTION_SALSA_ART;
+  if (s === 'jasen-white-canvas-3-strip') return COLLECTION_SALSA_ART;
+
+  // Privilege: luksuzne nijanse (Royal, Vivid – bez Waltz / Europarquet)
+  const privilegeSlugs = [
+    'hrast-royal-antique-white',
+    'hrast-royal-grey',
+    'hrast-vivid',
   ];
   if (privilegeSlugs.some((p) => s === p)) return COLLECTION_PRIVILEGE;
 
