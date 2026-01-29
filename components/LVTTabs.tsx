@@ -47,8 +47,15 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
 
   // If initialColorSlug is provided, start with 'colors' tab active
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
-    initialColorSlug ? 'colors' : 'collections'
+    initialColorSlug || (searchParams.collections) ? 'colors' : 'collections'
   );
+
+  // Effect to switch to colors tab if collections filter is applied via URL
+  useEffect(() => {
+    if (searchParams.collections) {
+      setActiveTab('colors');
+    }
+  }, [searchParams.collections]);
   const [colorsFromJSON, setColorsFromJSON] = useState<Product[]>([]);
   const [loadingColors, setLoadingColors] = useState(false);
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
