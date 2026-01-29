@@ -1,6 +1,7 @@
 import { Product, ProductFilters } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
 import { getAllGerflorProducts } from '@/lib/utils/productDataLoader';
+import { tarkettProducts } from '@/lib/data/tarkett-products';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -12,7 +13,7 @@ export interface IProductRepository {
 }
 
 export class MockProductRepository implements IProductRepository {
-  private products: Product[] = [...mockProducts, ...getAllGerflorProducts()];
+  private products: Product[] = [...mockProducts, ...getAllGerflorProducts(), ...tarkettProducts];
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {
     let filtered = [...this.products];
@@ -95,16 +96,16 @@ export class MockProductRepository implements IProductRepository {
       filtered = filtered.filter(p => {
         const thicknessSpec = p.specs.find(s => s.key === 'thickness');
         if (!thicknessSpec) return false;
-        
+
         // Parse thickness value (e.g., "2.00 mm", "2,5mm", "4.60 mm")
         // Normalize: replace comma with dot, remove spaces and "mm"
         const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
         const thicknessValue = parseFloat(normalizedValue);
         if (isNaN(thicknessValue)) return false;
-        
+
         // Format to match filter values (e.g., "2.00", "2.50", "4.60")
         const formattedValue = thicknessValue.toFixed(2);
-        
+
         // Check if thickness matches any selected value
         return filters.thickness!.some(selectedThickness => {
           const selectedValue = parseFloat(selectedThickness);

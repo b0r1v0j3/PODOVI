@@ -9,11 +9,11 @@ interface ProductCardProps {
 
 export default async function ProductCard({ product }: ProductCardProps) {
   const brand = await brandRepository.findById(product.brandId);
-  const primaryImage = product.images && product.images.length > 0 
+  const primaryImage = product.images && product.images.length > 0
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
   const isLocalImage = !!primaryImage?.url?.startsWith('/');
-  
+
   // Remove "Gerflor" prefix from product name for LVT collections
   const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
     ? product.name.replace(/^Gerflor\s+/, '')
@@ -26,13 +26,13 @@ export default async function ProductCard({ product }: ProductCardProps) {
     '4': 'tekstilne-ploce',
     '2': 'vinil',
   };
-  
+
   // For LVT, Linoleum, Carpet, and Vinil categories, link to category page with color parameter
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
-  
+
   let productHref = `/proizvodi/${product.slug}`;
-  
+
   // For color products (LVT/Linoleum/Carpet/Vinil), ONLY if they have collectionSlug (individual colors)
   // Always link to category page with color parameter for consistency
   // Collections don't have collectionSlug, so they will use default href (collection page)
@@ -43,7 +43,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
   }
 
   return (
-    <Link 
+    <Link
       href={productHref}
       className="group card card-hover"
     >

@@ -29,10 +29,10 @@ interface ColorFromJSON {
 // Convert color from JSON to Product format
 function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: string): Product {
   const imageUrl = color.image_url || color.texture_url || color.lifestyle_url || '';
-  
+
   // Get collection slug from color (for LVT/Linoleum use 'collection', for Carpet use 'collection_slug')
   const collectionSlug = (color as any).collection_slug || color.collection || '';
-  
+
   const product: Product & { collectionSlug?: string } = {
     id: `color-${color.slug}`,
     name: color.full_name || `${color.code} ${color.name}`,
@@ -57,33 +57,33 @@ function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: strin
     // Store collection slug for routing (will be used in ProductCard to link to collection)
     collectionSlug: collectionSlug || undefined,
   };
-  
+
   return product;
 }
 
 export default async function HomePage() {
   const categories = await categoryRepository.findAll();
-  
+
   // Load colors from JSON files
   const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
   const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
   const carpetColors = (carpetColorsData as { colors?: ColorFromJSON[] }).colors || [];
-  
+
   // Select one color per category for featured products
   const featuredProducts: Product[] = [];
-  
+
   // LVT - categoryId '6'
   if (lvtColors.length > 0) {
     const lvtColor = lvtColors[0]; // First LVT color
     featuredProducts.push(colorToProduct(lvtColor, '6', '6')); // Gerflor brand ID is '6'
   }
-  
+
   // Linoleum - categoryId '7'
   if (linoleumColors.length > 0) {
     const linoleumColor = linoleumColors[0]; // First Linoleum color
     featuredProducts.push(colorToProduct(linoleumColor, '7', '6')); // Assuming Gerflor or DLW
   }
-  
+
   // Carpet/Tekstilne ploče - categoryId '4'
   if (carpetColors.length > 0) {
     const carpetColor = carpetColors[0]; // First Carpet color
@@ -96,14 +96,14 @@ export default async function HomePage() {
       <section className="relative bg-black text-white overflow-hidden py-20 md:py-24">
         {/* Animated background elements */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTItMnYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTIgMnYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bS0yIDJ2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTQgMHYyaDJ2LTJoLTJ6bS00IDB2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTItMnYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40"></div>
-        
+
         <div className="container py-12 md:py-16 relative z-10">
           <div className="max-w-4xl animate-fadeInUp">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
               Pronađite savršen pod za vaš prostor
             </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-300 leading-relaxed animate-slideInRight">
-              Širok izbor laminata, vinila, parketa i drugih podnih obloga vodećih evropskih brendova. 
+              Širok izbor laminata, vinila, parketa i drugih podnih obloga vodećih evropskih brendova.
               Kvalitet, izdržljivost i stil za svaki budžet.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 relative z-20">
@@ -121,11 +121,11 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-        
+
         {/* Bottom wave decoration */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-            <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="white"/>
+            <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="white" />
           </svg>
         </div>
       </section>
@@ -244,7 +244,7 @@ export default async function HomePage() {
       <section className="py-20 bg-black text-white relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTItMnYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTIgMnYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bS0yIDJ2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTQgMHYyaDJ2LTJoLTJ6bS00IDB2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTItMnYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40"></div>
-        
+
         <ScrollReveal>
           <div className="container text-center relative z-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">

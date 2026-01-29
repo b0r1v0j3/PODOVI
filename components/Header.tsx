@@ -18,17 +18,15 @@ export default function Header() {
   const navLinkClass = (href: string) => {
     const active = isActive(href);
     return `text-gray-800 hover:text-primary-700 transition-all duration-200 
-            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-2 py-1 ${
-              active ? 'text-primary-700 ring-2 ring-primary-600 ring-offset-2' : ''
-            }`;
+            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-2 py-1 ${active ? 'text-primary-700 ring-2 ring-primary-600 ring-offset-2' : ''
+      }`;
   };
 
   const mobileNavLinkClass = (href: string) => {
     const active = isActive(href);
     return `block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
-            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm ${
-              active ? 'text-primary-700 font-semibold' : ''
-            }`;
+            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm ${active ? 'text-primary-700 font-semibold' : ''
+      }`;
   };
 
   return (
@@ -52,39 +50,38 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className={navLinkClass('/')}
               aria-current={isActive('/') ? 'page' : undefined}
             >
               Početna
             </Link>
-            <Link 
-              href="/kategorije" 
+            <Link
+              href="/kategorije"
               className={navLinkClass('/kategorije')}
               aria-current={isActive('/kategorije') ? 'page' : undefined}
             >
               Kategorije
             </Link>
-            <Link 
-              href="/brendovi" 
+            <Link
+              href="/brendovi"
               className={navLinkClass('/brendovi')}
               aria-current={isActive('/brendovi') ? 'page' : undefined}
             >
               Brendovi
             </Link>
-            <Link 
-              href="/kontakt" 
+            <Link
+              href="/kontakt"
               className={navLinkClass('/kontakt')}
               aria-current={isActive('/kontakt') ? 'page' : undefined}
             >
               Kontakt
             </Link>
-            <Link 
-              href="/upiti" 
-              className={`btn-primary focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
-                isActive('/upiti') ? 'ring-2 ring-primary-600 ring-offset-2' : ''
-              }`}
+            <Link
+              href="/upiti"
+              className={`btn-primary focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${isActive('/upiti') ? 'ring-2 ring-primary-600 ring-offset-2' : ''
+                }`}
               aria-current={isActive('/upiti') ? 'page' : undefined}
             >
               Pošalji upit
@@ -113,44 +110,44 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div 
-            id="mobile-menu" 
+          <div
+            id="mobile-menu"
             className="md:hidden mt-4 pb-4 space-y-3 animate-fadeIn"
           >
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className={mobileNavLinkClass('/')}
               aria-current={isActive('/') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Početna
             </Link>
-            <Link 
-              href="/kategorije" 
+            <Link
+              href="/kategorije"
               className={mobileNavLinkClass('/kategorije')}
               aria-current={isActive('/kategorije') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Kategorije
             </Link>
-            <Link 
-              href="/brendovi" 
+            <Link
+              href="/brendovi"
               className={mobileNavLinkClass('/brendovi')}
               aria-current={isActive('/brendovi') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Brendovi
             </Link>
-            <Link 
-              href="/kontakt" 
+            <Link
+              href="/kontakt"
               className={mobileNavLinkClass('/kontakt')}
               aria-current={isActive('/kontakt') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
               Kontakt
             </Link>
-            <Link 
-              href="/upiti" 
+            <Link
+              href="/upiti"
               className="block btn-primary text-center focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               aria-current={isActive('/upiti') ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
