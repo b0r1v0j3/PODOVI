@@ -157,6 +157,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       });
     }
 
+    // Parket: kolekcije iz spec "collection" (Allegro, Privilege, Rumba, itd.)
+    if (category.slug === 'parket') {
+      const names = allCollections
+        .map(p => p.specs?.find(s => s.key === 'collection')?.value || p.name)
+        .filter((v): v is string => Boolean(v));
+      availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
+    }
+
     // Extract unique thickness values from our actual data (collections + colors from JSON)
     // For LVT: from collections specs and JSON colors
     // For Vinil: from collections specs and JSON colors (if available)
@@ -268,7 +276,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       }
     }
 
-    // Apply collection filter ONLY to collections (not to colors) - only for LVT
+    // Apply collection filter ONLY to collections (not to colors) - for LVT and Parket
     // This happens AFTER extracting availableCollections so filter options remain visible
     if (category.slug === 'lvt') {
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
@@ -291,7 +299,16 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           });
         });
       } else {
-        // If no collection filter is selected, show all collections
+        collections = allCollections;
+      }
+    } else if (category.slug === 'parket') {
+      const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
+      if (selectedCollections.length > 0) {
+        collections = allCollections.filter(p => {
+          const collectionName = p.specs?.find(s => s.key === 'collection')?.value || p.name;
+          return selectedCollections.includes(collectionName);
+        });
+      } else {
         collections = allCollections;
       }
     } else {

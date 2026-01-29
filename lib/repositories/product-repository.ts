@@ -64,28 +64,26 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
-    // Filter by collections (for LVT products only)
-    // For LVT: grouped like Gerflor (Creation 30, Creation 40, etc.)
+    // Filter by collections (LVT grouped names; Parket and ostalo po spec "collection")
     if (filters?.collections && filters.collections.length > 0) {
       filtered = filtered.filter(p => {
         const productName = p.name;
-        // Check if any selected collection matches the product
+        const specCollection = p.specs?.find(s => s.key === 'collection')?.value;
         return filters.collections!.some(collection => {
           // LVT collection filtering (grouped)
           if (collection === 'Creation 30') {
             return productName.includes('Creation 30');
           } else if (collection === 'Creation 40') {
-            // Include all Creation 40 variants including Zen
             return productName.includes('Creation 40');
           } else if (collection === 'Creation 55') {
-            // Include all Creation 55 variants including Zen
             return productName.includes('Creation 55');
           } else if (collection === 'Creation 70') {
-            // Include all Creation 70 variants including Zen
             return productName.includes('Creation 70');
           } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
             return productName.includes('Saga');
           }
+          // Parket i ostale kategorije: podudaranje po spec "collection"
+          if (specCollection && specCollection === collection) return true;
           return false;
         });
       });
