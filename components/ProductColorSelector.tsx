@@ -95,6 +95,17 @@ export default function ProductColorSelector({
     }
   };
 
+  // Kad imamo customColors (parket) i ?color= u URL-u, odmah postavi sliku na tu boju
+  useEffect(() => {
+    if (!customColors?.length || !initialColorSlug) return;
+    const color = customColors.find((c: any) => c.slug === initialColorSlug);
+    if (color?.image_url) {
+      setSelectedImage({ url: color.image_url, alt: color.name || color.full_name || '' });
+      setSelectedImages([{ url: color.image_url, alt: color.name || color.full_name || '' }]);
+      if (color.code && color.name) setSelectedColor({ code: color.code, name: color.name });
+    }
+  }, [customColors, initialColorSlug]);
+
   // Load carpet images (both Color Scan and Zoom) when color is selected
   useEffect(() => {
     if (!selectedColorSlug) return;
@@ -314,6 +325,7 @@ export default function ProductColorSelector({
                 compact={true}
                 limit={12}
                 onColorsLoaded={setColorsCount}
+                initialColorSlug={initialColorSlug}
                 selectedColorSlug={selectedColorSlug}
                 customColors={customColors}
               />

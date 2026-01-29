@@ -8,8 +8,10 @@
  * - Salsa Premium: premium 3-strip (Jasper, Moonstone, White Lightning)
  * - Step XL & L: Baron, Sienna 3-strip
  * - Privilege: luksuzne nijanse (Royal, Misty, Essence, Vivid, Soft Beige, Bronze, Espresso, Golden, Original, Polar)
+ * - Allegro: Elegant 3-strip (nijanse siene do svetlih – kao na Tarkett Allegro)
  */
 
+const COLLECTION_ALLEGRO = 'Allegro';
 const COLLECTION_RUMBA = 'Rumba';
 const COLLECTION_TANGO = 'Tango';
 const COLLECTION_TANGO_CLASSIC = 'Tango Classic';
@@ -40,6 +42,9 @@ export const PARKET_HEADER_COLLECTIONS = [
 export function getParketCollectionBySlug(slug: string): string | null {
   if (!slug || typeof slug !== 'string') return null;
   const s = slug.toLowerCase();
+
+  // Allegro: Elegant 3-strip (siena do svetlih nijansi)
+  if (s.includes('elegant') && s.includes('3-strip')) return COLLECTION_ALLEGRO;
 
   // Step XL & L: Baron, Sienna 3-strip
   if (s.includes('baron')) return COLLECTION_STEP;

@@ -4,6 +4,7 @@ import { join } from 'path';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
+import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import LVTTabs from '@/components/LVTTabs';
@@ -157,11 +158,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       });
     }
 
-    // Parket: kolekcije iz spec "collection" (Allegro, Privilege, Rumba, itd.)
+    // Parket: kolekcije iz spec "collection", za varijante (collection "Parket") koristimo efektivnu kolekciju iz mapiranja
     if (category.slug === 'parket') {
       const names = allCollections
-        .map(p => p.specs?.find(s => s.key === 'collection')?.value || p.name)
-        .filter((v): v is string => Boolean(v));
+        .map(p => {
+          const specVal = p.specs?.find(s => s.key === 'collection')?.value;
+          return getEffectiveParketCollection(p.slug, specVal) || specVal || p.name;
+        })
+        .filter((v): v is string => Boolean(v) && v !== 'Parket');
       availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
     }
 
@@ -305,7 +309,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
       if (selectedCollections.length > 0) {
         collections = allCollections.filter(p => {
-          const collectionName = p.specs?.find(s => s.key === 'collection')?.value || p.name;
+          const specVal = p.specs?.find(s => s.key === 'collection')?.value;
+          const collectionName = getEffectiveParketCollection(p.slug, specVal) || specVal || p.name;
           return selectedCollections.includes(collectionName);
         });
       } else {
