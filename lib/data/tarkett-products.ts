@@ -1,4 +1,4 @@
-import { Product } from './types';
+import { Product } from '@/types';
 
 export const tarkettProducts: Product[] = [
   {
@@ -8,10 +8,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-chocolate-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-chocolate-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Chocolate.jpg",
+    "shortDescription": "oak-chocolate-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-chocolate-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Chocolate.jpg",
+        "alt": "Hrast CHOCOLATE 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-cocoa-3-strip",
@@ -20,10 +45,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-cocoa-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-cocoa-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_OAK_COCOA.jpg",
+    "shortDescription": "oak-cocoa-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-cocoa-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_OAK_COCOA.jpg",
+        "alt": "Hrast COCOA 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-copper-original-3-strip",
@@ -32,10 +82,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-copper-original-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-copper-original-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Copper.jpg",
+    "shortDescription": "oak-copper-original-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-copper-original-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Copper.jpg",
+        "alt": "Hrast COPPER ORIGINAL 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-cotton-3-strip",
@@ -44,10 +119,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-cotton-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-cotton-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Cotton.jpg",
+    "shortDescription": "oak-cotton-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-cotton-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Cotton.jpg",
+        "alt": "Hrast COTTON 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-elegant-high-gloss-3-strip",
@@ -56,10 +156,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-elegant-high-gloss-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-elegant-high-gloss-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_High_Gloss.jpg",
+    "shortDescription": "oak-elegant-high-gloss-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-elegant-high-gloss-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_High_Gloss.jpg",
+        "alt": "Hrast ELEGANT HIGH GLOSS  3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-elegant-matt-3-strip",
@@ -68,10 +193,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-elegant-matt-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-elegant-matt-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_Matt.jpg",
+    "shortDescription": "oak-elegant-matt-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-elegant-matt-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_Matt.jpg",
+        "alt": "Hrast ELEGANT MATT 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-elegant-shiny-3-strip",
@@ -80,10 +230,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-elegant-shiny-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-elegant-shiny-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_Shiny.jpg",
+    "shortDescription": "oak-elegant-shiny-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-elegant-shiny-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_Shiny.jpg",
+        "alt": "Hrast ELEGANT SHINY 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-iceberg-3-strip",
@@ -92,10 +267,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-iceberg-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-iceberg-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_OAK_ICEBERG_BR.jpg",
+    "shortDescription": "oak-iceberg-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-iceberg-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_OAK_ICEBERG_BR.jpg",
+        "alt": "Hrast ICEBERG 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-linen-3-strip",
@@ -104,10 +304,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-linen-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-linen-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Linen.jpg",
+    "shortDescription": "oak-linen-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-linen-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Linen.jpg",
+        "alt": "Hrast LINEN 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-nordic-elegant-3-strip",
@@ -116,10 +341,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-nordic-elegant-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-nordic-elegant-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Nordic_Elegant.jpg",
+    "shortDescription": "oak-nordic-elegant-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-nordic-elegant-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Nordic_Elegant.jpg",
+        "alt": "Hrast NORDIC ELEGANT 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-original-high-gloss-3-strip",
@@ -128,10 +378,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-original-high-gloss-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-original-high-gloss-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_HG.jpg",
+    "shortDescription": "oak-original-high-gloss-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-original-high-gloss-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_HG.jpg",
+        "alt": "Hrast ORIGINAL HIGH GLOSS 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-original-matt-3-strip",
@@ -140,10 +415,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-original-matt-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-original-matt-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Matt.jpg",
+    "shortDescription": "oak-original-matt-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-original-matt-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Matt.jpg",
+        "alt": "Hrast ORIGINAL MATT 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-original-shiny-3-strip",
@@ -152,10 +452,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-original-shiny-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-original-shiny-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Shiny.jpg",
+    "shortDescription": "oak-original-shiny-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-original-shiny-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Shiny.jpg",
+        "alt": "Hrast ORIGINAL SHINY 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-robust-white-3-strip",
@@ -164,10 +489,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-robust-white-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-robust-white-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Robust_white.jpg",
+    "shortDescription": "oak-robust-white-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-robust-white-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Robust_white.jpg",
+        "alt": "Hrast ROBUST WHITE 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-sienna-3-strip",
@@ -176,10 +526,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-sienna-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-sienna-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Sienna.jpg",
+    "shortDescription": "oak-sienna-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-sienna-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Sienna.jpg",
+        "alt": "Hrast SIENNA 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-supreme-matt-3-strip",
@@ -188,10 +563,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-supreme-matt-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-supreme-matt-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Supreme_Matt.jpg",
+    "shortDescription": "oak-supreme-matt-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-supreme-matt-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Supreme_Matt.jpg",
+        "alt": "Hrast SUPREME MATT 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-vivid-3-strip",
@@ -200,10 +600,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-vivid-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-vivid-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Vivid.jpg",
+    "shortDescription": "oak-vivid-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-vivid-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Vivid.jpg",
+        "alt": "Hrast VIVID 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "ash-silky-white-3-strip",
@@ -212,10 +637,35 @@ export const tarkettProducts: Product[] = [
     "sku": "ash-silky-white-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "ash-silky-white-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Ash_Silky_White.jpg",
+    "shortDescription": "ash-silky-white-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "ash-silky-white-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Ash_Silky_White.jpg",
+        "alt": "Jasen SILKY WHITE 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:35.782Z"),
+    updatedAt: new Date("2026-01-29T19:17:35.782Z")
   },
   {
     "id": "oak-jasper-3-strip",
@@ -224,10 +674,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-jasper-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-jasper-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Jasper.jpg",
+    "shortDescription": "oak-jasper-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-jasper-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Jasper.jpg",
+        "alt": "Hrast JASPER 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:36.024Z"),
+    updatedAt: new Date("2026-01-29T19:17:36.024Z")
   },
   {
     "id": "oak-moonstone-3-strip",
@@ -236,10 +711,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-moonstone-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-moonstone-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Moonstone.jpg",
+    "shortDescription": "oak-moonstone-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-moonstone-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Moonstone.jpg",
+        "alt": "Hrast MOONSTONE 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:36.024Z"),
+    updatedAt: new Date("2026-01-29T19:17:36.024Z")
   },
   {
     "id": "oak-white-lightning-3-strip",
@@ -248,10 +748,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-white-lightning-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-white-lightning-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_WHITE_LIGHTNING.jpg",
+    "shortDescription": "oak-white-lightning-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-white-lightning-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_WHITE_LIGHTNING.jpg",
+        "alt": "Hrast WHITE LIGHTNING 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:36.174Z"),
+    updatedAt: new Date("2026-01-29T19:17:36.174Z")
   },
   {
     "id": "ash-ivory-dreams-3-strip",
@@ -260,10 +785,35 @@ export const tarkettProducts: Product[] = [
     "sku": "ash-ivory-dreams-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "ash-ivory-dreams-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_IVORY_DREAMS.jpg",
+    "shortDescription": "ash-ivory-dreams-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "ash-ivory-dreams-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_IVORY_DREAMS.jpg",
+        "alt": "Jasen IVORY DREAMS 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:36.174Z"),
+    updatedAt: new Date("2026-01-29T19:17:36.174Z")
   },
   {
     "id": "ash-white-canvas-3-strip",
@@ -272,10 +822,35 @@ export const tarkettProducts: Product[] = [
     "sku": "ash-white-canvas-3-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "ash-white-canvas-3-strip",
-    "image": "https://media.tarkett-image.com/large/TH_3_Strip_White_Canvas.jpg",
+    "shortDescription": "ash-white-canvas-3-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "ash-white-canvas-3-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_3_Strip_White_Canvas.jpg",
+        "alt": "Jasen WHITE CANVAS 3 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:36.174Z"),
+    updatedAt: new Date("2026-01-29T19:17:36.174Z")
   },
   {
     "id": "oak-antique-white-1-strip",
@@ -284,10 +859,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-antique-white-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-antique-white-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Antique_White.jpg",
+    "shortDescription": "oak-antique-white-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-antique-white-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Antique_White.jpg",
+        "alt": "Hrast ANTIQUE WHITE 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:37.067Z"),
+    updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
     "id": "oak-bourbon-1-strip",
@@ -296,10 +896,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-bourbon-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-bourbon-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Bourbon.jpg",
+    "shortDescription": "oak-bourbon-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-bourbon-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Bourbon.jpg",
+        "alt": "Hrast BOURBON 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:37.067Z"),
+    updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
     "id": "oak-copper-1-strip",
@@ -308,10 +933,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-copper-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-copper-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Copper.jpg",
+    "shortDescription": "oak-copper-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-copper-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Copper.jpg",
+        "alt": "Hrast COPPER 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:37.067Z"),
+    updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
     "id": "oak-cumin-1-strip",
@@ -320,10 +970,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-cumin-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-cumin-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Cumin.jpg",
+    "shortDescription": "oak-cumin-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-cumin-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Cumin.jpg",
+        "alt": "Hrast CUMIN 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:37.067Z"),
+    updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
     "id": "oak-mocha-1-strip",
@@ -332,10 +1007,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-mocha-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-mocha-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Mocha.jpg",
+    "shortDescription": "oak-mocha-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-mocha-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Mocha.jpg",
+        "alt": "Hrast MOCHA 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:37.067Z"),
+    updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
     "id": "oak-premium-1-strip",
@@ -344,10 +1044,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-premium-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-premium-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Premium.jpg",
+    "shortDescription": "oak-premium-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-premium-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Premium.jpg",
+        "alt": "Hrast PREMIUM 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:37.067Z"),
+    updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
     "id": "oak-schwarzwald-1-strip",
@@ -356,10 +1081,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-schwarzwald-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-schwarzwald-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Schwarzwald.jpg",
+    "shortDescription": "oak-schwarzwald-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-schwarzwald-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Schwarzwald.jpg",
+        "alt": "Hrast SCHWARZWALD 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:37.067Z"),
+    updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
     "id": "hrast-almond",
@@ -368,10 +1118,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-almond",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-almond",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Almond.jpg",
+    "shortDescription": "hrast-almond - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-almond-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Almond.jpg",
+        "alt": "Hrast Almond",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.257Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.257Z")
   },
   {
     "id": "hrast-bright",
@@ -380,10 +1155,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-bright",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-bright",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Bright.jpg",
+    "shortDescription": "hrast-bright - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-bright-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Bright.jpg",
+        "alt": "Hrast Bright",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.257Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.257Z")
   },
   {
     "id": "hrast-copper",
@@ -392,10 +1192,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-copper",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-copper",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Copper.jpg",
+    "shortDescription": "hrast-copper - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-copper-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Copper.jpg",
+        "alt": "Hrast Copper",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.257Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.257Z")
   },
   {
     "id": "hrast-cottage",
@@ -404,10 +1229,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-cottage",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-cottage",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Cottage.jpg",
+    "shortDescription": "hrast-cottage - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-cottage-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Cottage.jpg",
+        "alt": "Hrast Cottage",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.257Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.257Z")
   },
   {
     "id": "hrast-sepia",
@@ -416,10 +1266,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-sepia",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-sepia",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Sepia.jpg",
+    "shortDescription": "hrast-sepia - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-sepia-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Sepia.jpg",
+        "alt": "Hrast Sepia",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.257Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.257Z")
   },
   {
     "id": "hrast-sienna",
@@ -428,10 +1303,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-sienna",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-sienna",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Sienna.jpg",
+    "shortDescription": "hrast-sienna - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-sienna-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Sienna.jpg",
+        "alt": "Hrast Sienna",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.257Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.257Z")
   },
   {
     "id": "oak-copper-1-strip",
@@ -440,10 +1340,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-copper-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-copper-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Copper.jpg",
+    "shortDescription": "oak-copper-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-copper-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Copper.jpg",
+        "alt": "Hrast COPPER 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.406Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.406Z")
   },
   {
     "id": "oak-forest-1-strip",
@@ -452,10 +1377,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-forest-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-forest-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Forest.jpg",
+    "shortDescription": "oak-forest-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-forest-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Forest.jpg",
+        "alt": "Hrast FOREST 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.406Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.406Z")
   },
   {
     "id": "oak-lava-1-strip",
@@ -464,10 +1414,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-lava-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-lava-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Lava.jpg",
+    "shortDescription": "oak-lava-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-lava-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Lava.jpg",
+        "alt": "Hrast LAVA 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.406Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.406Z")
   },
   {
     "id": "oak-monsoon-1-strip",
@@ -476,10 +1451,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-monsoon-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-monsoon-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Monsoon.jpg",
+    "shortDescription": "oak-monsoon-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-monsoon-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Monsoon.jpg",
+        "alt": "Hrast MONSOON 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.406Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.406Z")
   },
   {
     "id": "oak-premium-1-strip",
@@ -488,10 +1488,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-premium-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-premium-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Premium.jpg",
+    "shortDescription": "oak-premium-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-premium-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Premium.jpg",
+        "alt": "Hrast PREMIUM 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.406Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.406Z")
   },
   {
     "id": "oak-snow-1-strip",
@@ -500,10 +1525,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-snow-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-snow-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Oak_Snow.jpg",
+    "shortDescription": "oak-snow-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-snow-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Oak_Snow.jpg",
+        "alt": "Hrast SNOW 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.406Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.406Z")
   },
   {
     "id": "hrast-baron-brown",
@@ -512,10 +1562,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-baron-brown",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-baron-brown",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Brown.jpg",
+    "shortDescription": "hrast-baron-brown - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-baron-brown-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Brown.jpg",
+        "alt": "Hrast Baron Brown",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.556Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.556Z")
   },
   {
     "id": "hrast-baron-sienna",
@@ -524,10 +1599,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-baron-sienna",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-baron-sienna",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Sienna.jpg",
+    "shortDescription": "hrast-baron-sienna - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-baron-sienna-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Sienna.jpg",
+        "alt": "Hrast Baron Sienna",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.556Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.556Z")
   },
   {
     "id": "oak-copper-1-strip",
@@ -536,10 +1636,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-copper-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-copper-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Step_Oak_Copper.jpg",
+    "shortDescription": "oak-copper-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-copper-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Step_Oak_Copper.jpg",
+        "alt": "Hrast COPPER 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.556Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.556Z")
   },
   {
     "id": "oak-premium-1-strip",
@@ -548,10 +1673,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-premium-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-premium-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_1_Step_Oak_Premium.jpg",
+    "shortDescription": "oak-premium-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-premium-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Step_Oak_Premium.jpg",
+        "alt": "Hrast PREMIUM 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.556Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.556Z")
   },
   {
     "id": "hrast-royal-antique-white",
@@ -560,10 +1710,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-royal-antique-white",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-royal-antique-white",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Royal_Antique_White.jpg",
+    "shortDescription": "hrast-royal-antique-white - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-royal-antique-white-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Royal_Antique_White.jpg",
+        "alt": "Hrast Royal Antique White",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.556Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.556Z")
   },
   {
     "id": "hrast-royal-grey",
@@ -572,10 +1747,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-royal-grey",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-royal-grey",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Royal_Grey.jpg",
+    "shortDescription": "hrast-royal-grey - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-royal-grey-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Royal_Grey.jpg",
+        "alt": "Hrast Royal Grey",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.556Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.556Z")
   },
   {
     "id": "hrast-vivid",
@@ -584,10 +1784,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-vivid",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-vivid",
-    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Rustic.jpg",
+    "shortDescription": "hrast-vivid - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-vivid-img",
+        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Rustic.jpg",
+        "alt": "Hrast Vivid",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.556Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.556Z")
   },
   {
     "id": "hrast-essence",
@@ -596,10 +1821,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-essence",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-essence",
-    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Essence.jpg",
+    "shortDescription": "hrast-essence - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-essence-img",
+        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Essence.jpg",
+        "alt": "Hrast Essence",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.700Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.700Z")
   },
   {
     "id": "hrast-misty-brown",
@@ -608,10 +1858,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-misty-brown",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-misty-brown",
-    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Misty Brown.jpg",
+    "shortDescription": "hrast-misty-brown - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-misty-brown-img",
+        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Misty Brown.jpg",
+        "alt": "Hrast Misty Brown",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.700Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.700Z")
   },
   {
     "id": "hrast-misty-grey",
@@ -620,10 +1895,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-misty-grey",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-misty-grey",
-    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Misty Grey.jpg",
+    "shortDescription": "hrast-misty-grey - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-misty-grey-img",
+        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Misty Grey.jpg",
+        "alt": "Hrast Misty Grey",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.700Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.700Z")
   },
   {
     "id": "oak-soft-brown-1-strip",
@@ -632,10 +1932,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-soft-brown-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-soft-brown-1-strip",
-    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Soft Brown.jpg",
+    "shortDescription": "oak-soft-brown-1-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-soft-brown-1-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Soft Brown.jpg",
+        "alt": "Hrast SOFT BROWN 1 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.700Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.700Z")
   },
   {
     "id": "hrast-soft-beige",
@@ -644,10 +1969,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-soft-beige",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-soft-beige",
-    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Soft Beige.jpg",
+    "shortDescription": "hrast-soft-beige - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-soft-beige-img",
+        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Soft Beige.jpg",
+        "alt": "Hrast Soft Beige",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.700Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.700Z")
   },
   {
     "id": "505814005",
@@ -656,10 +2006,35 @@ export const tarkettProducts: Product[] = [
     "sku": "505814005",
     "categoryId": "3",
     "brandId": "3",
-    "description": "505814005",
-    "image": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Brown.jpg",
+    "shortDescription": "505814005 - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "505814005-img",
+        "url": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Brown.jpg",
+        "alt": "WINTER 832 OAK BROWN 1S",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.828Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.828Z")
   },
   {
     "id": "505814002",
@@ -668,10 +2043,35 @@ export const tarkettProducts: Product[] = [
     "sku": "505814002",
     "categoryId": "3",
     "brandId": "3",
-    "description": "505814002",
-    "image": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Rustic_Coffee.jpg",
+    "shortDescription": "505814002 - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "505814002-img",
+        "url": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Rustic_Coffee.jpg",
+        "alt": "WINTER 832 OAK RUSTIC COFFEE",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.828Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.828Z")
   },
   {
     "id": "505814003",
@@ -680,10 +2080,35 @@ export const tarkettProducts: Product[] = [
     "sku": "505814003",
     "categoryId": "3",
     "brandId": "3",
-    "description": "505814003",
-    "image": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Rustic_Silver.jpg",
+    "shortDescription": "505814003 - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "505814003-img",
+        "url": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Rustic_Silver.jpg",
+        "alt": "WINTER 832 RUSTIC SILVER",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.828Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.828Z")
   },
   {
     "id": "oak-essence-2-strip",
@@ -692,10 +2117,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-essence-2-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-essence-2-strip",
-    "image": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Essence.jpg",
+    "shortDescription": "oak-essence-2-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-essence-2-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Essence.jpg",
+        "alt": "Hrast ESSENCE 2 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.977Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.977Z")
   },
   {
     "id": "oak-sand-ro-2-strip",
@@ -704,10 +2154,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-sand-ro-2-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-sand-ro-2-strip",
-    "image": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Sand.jpg",
+    "shortDescription": "oak-sand-ro-2-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-sand-ro-2-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Sand.jpg",
+        "alt": "Hrast SAND RO 2 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.977Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.977Z")
   },
   {
     "id": "oak-sienna-ro-2-strip",
@@ -716,10 +2191,35 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-sienna-ro-2-strip",
     "categoryId": "3",
     "brandId": "3",
-    "description": "oak-sienna-ro-2-strip",
-    "image": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Sienna_RO.jpg",
+    "shortDescription": "oak-sienna-ro-2-strip - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "oak-sienna-ro-2-strip-img",
+        "url": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Sienna_RO.jpg",
+        "alt": "Hrast SIENNA RO 2 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:38.977Z"),
+    updatedAt: new Date("2026-01-29T19:17:38.977Z")
   },
   {
     "id": "hrast-bronze",
@@ -728,10 +2228,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-bronze",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-bronze",
-    "image": "https://media.tarkett-image.com/large/TH_Sinteros_Europarquet_OAK_BRONZE.jpg",
+    "shortDescription": "hrast-bronze - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-bronze-img",
+        "url": "https://media.tarkett-image.com/large/TH_Sinteros_Europarquet_OAK_BRONZE.jpg",
+        "alt": "Hrast Bronze",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:39.172Z"),
+    updatedAt: new Date("2026-01-29T19:17:39.172Z")
   },
   {
     "id": "hrast-espresso",
@@ -740,10 +2265,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-espresso",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-espresso",
-    "image": "https://media.tarkett-image.com/large/TH_eUROPARQUET_Oak_ESPRESSO.jpg",
+    "shortDescription": "hrast-espresso - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-espresso-img",
+        "url": "https://media.tarkett-image.com/large/TH_eUROPARQUET_Oak_ESPRESSO.jpg",
+        "alt": "Hrast Espresso",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:39.172Z"),
+    updatedAt: new Date("2026-01-29T19:17:39.172Z")
   },
   {
     "id": "hrast-golden",
@@ -752,10 +2302,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-golden",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-golden",
-    "image": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Golden.jpg",
+    "shortDescription": "hrast-golden - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-golden-img",
+        "url": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Golden.jpg",
+        "alt": "Hrast Golden",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:39.172Z"),
+    updatedAt: new Date("2026-01-29T19:17:39.172Z")
   },
   {
     "id": "hrast-original",
@@ -764,10 +2339,35 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-original",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-original",
-    "image": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Original.jpg",
+    "shortDescription": "hrast-original - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-original-img",
+        "url": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Original.jpg",
+        "alt": "Hrast Original",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:39.172Z"),
+    updatedAt: new Date("2026-01-29T19:17:39.172Z")
   },
   {
     "id": "hrast-polar",
@@ -776,9 +2376,34 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-polar",
     "categoryId": "3",
     "brandId": "3",
-    "description": "hrast-polar",
-    "image": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Polar.jpg",
+    "shortDescription": "hrast-polar - Visokokvalitetni Tarkett parket.",
+    "description": "Tarkett Parket.",
+    "images": [
+      {
+        "id": "hrast-polar-img",
+        "url": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Polar.jpg",
+        "alt": "Hrast Polar",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "manufacturer",
+        "label": "Proizvođač",
+        "value": "Tarkett"
+      },
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Parket"
+      }
+    ],
     "price": 0,
-    "stock": 0
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    createdAt: new Date("2026-01-29T19:17:39.172Z"),
+    updatedAt: new Date("2026-01-29T19:17:39.172Z")
   }
 ];

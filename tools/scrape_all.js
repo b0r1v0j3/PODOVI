@@ -36,13 +36,12 @@ async function scrape() {
                 continue;
             }
 
-            const scriptStart = startIdx + startMarker.length - 'window.__NUXT__='.length; // keeping assignment
+            const scriptStart = startIdx + startMarker.length - 'window.__NUXT__='.length;
             const scriptEnd = html.indexOf(endMarker, scriptStart);
-            const scriptContent = html.substring(scriptStart + 8, scriptEnd); // Removing <script>
+            const scriptContent = html.substring(scriptStart + 8, scriptEnd);
 
-            // Execute in sandbox
             const sandbox = { window: {}, location: {} };
-            vm.createContext(sandbox); // Define global context
+            vm.createContext(sandbox);
             vm.runInContext('window.__NUXT__=' + scriptContent.replace('window.__NUXT__=', '') + ';', sandbox);
 
             const data = sandbox.window.__NUXT__;
@@ -61,10 +60,25 @@ async function scrape() {
                 sku: d.product_design_key,
                 categoryId: '3', // Parket
                 brandId: '3', // Tarkett
-                description: d.product_design_key,
-                image: d.product_thumbnail ? `https://media.tarkett-image.com/large/${d.product_thumbnail}` : '',
+                shortDescription: d.product_design_key + ' - Visokokvalitetni Tarkett parket.', // Required
+                description: d.product_description || 'Tarkett Parket.',
+                images: d.product_thumbnail ? [{
+                    id: d.product_design_key + '-img',
+                    url: `https://media.tarkett-image.com/large/${d.product_thumbnail}`,
+                    alt: d.product_name,
+                    isPrimary: true,
+                    order: 0
+                }] : [],
+                specs: [
+                    { key: 'manufacturer', label: 'Proizvođač', value: 'Tarkett' },
+                    { key: 'collection', label: 'Kolekcija', value: d.collection_name || 'Parket' }
+                ],
                 price: 0,
-                stock: 0
+                priceUnit: 'm²',
+                inStock: true,
+                featured: false,
+                createdAt: new Date(), // Will verify if this serialization works in TS file, likely needs ISO string
+                updatedAt: new Date()
             }));
 
             allProducts = allProducts.concat(mapped);
@@ -76,10 +90,26 @@ async function scrape() {
 
     console.log(`Total extracted: ${allProducts.length} products.`);
 
-    // Generate TS content
-    const tsContent = `import { Product } from './types';
+    // Generate TS content with correct imports and types
+    // Using simple Date string construction for TS file
+    const dateStr = 'new Date()';
 
-export const tarkettProducts: Product[] = ${JSON.stringify(allProducts, null, 2)};
+    // We need to print objects but with 'new Date()' unquoted.
+    // simpler to just output valid JS code string.
+
+    let productsArray = JSON.stringify(allProducts, null, 2);
+    // Replace "createdAt": "2024-..." with "createdAt": new Date(...)
+    // Actually, JSON.stringify dates as strings.
+    // We need to post-process the string or build it manually?
+    // Let's just Regex replace the date strings if possible, or simpler:
+    // "createdAt": new Date() isn't valid JSON.
+    // But we are writing a .ts file!
+    // So we can do: "createdAt": new Date("2024..."),
+
+    // Better yet, imports:
+    const tsContent = `import { Product } from '@/types';
+
+export const tarkettProducts: Product[] = ${productsArray.replace(/"createdAt": "(.*?)"/g, 'createdAt: new Date("$1")').replace(/"updatedAt": "(.*?)"/g, 'updatedAt: new Date("$1")')};
 `;
 
     fs.writeFileSync(outputFile, tsContent);
