@@ -13,7 +13,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-allegro-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Allegro_Oak_Bronze.jpg",
+        "url": "/images/products/parket-allegro-oak-elegant.jpg",
         "alt": "Allegro",
         "isPrimary": true,
         "order": 0
@@ -142,7 +142,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-rumba-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Rumba_Oak_Canyon.jpg",
+        "url": "/images/products/rumba-oak-copper.jpg",
         "alt": "Rumba",
         "isPrimary": true,
         "order": 0
