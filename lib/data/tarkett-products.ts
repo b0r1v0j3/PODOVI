@@ -99,7 +99,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-privilege-waltz-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Nobile_Oak_Select.jpg",
+        "url": "/images/products/parket-privilege-waltz.jpg",
         "alt": "Privilege Waltz",
         "isPrimary": true,
         "order": 0
