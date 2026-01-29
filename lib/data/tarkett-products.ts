@@ -1,143 +1,688 @@
-import { Product } from '@/types';
+import { Product } from './types';
 
 export const tarkettProducts: Product[] = [
-    {
-        id: 'tarkett-parket-1',
-        name: 'Salsa Art',
-        slug: 'tarkett-salsa-art',
-        sku: 'TARKETT-SALSA-ART',
-        categoryId: '3', // Parket
-        brandId: '3',    // Tarkett
-        shortDescription: 'Višeslojni parket jedinstvenog dizajna i umetničkog izraza',
-        description: `Salsa Art kolekcija parketa donosi umetnost u vaš dom. 
-    Svaka daska je pažljivo obrađena kako bi se istakla prirodna lepota drveta.
-    
-    Karakteristike:
-    - Jedinstven izgled svake daske
-    - Površinska obrada koja naglašava strukturu drveta
-    - Jednostavna i brza ugradnja zahvaljujući T-Lock sistemu
-    - Pogodan za podno grejanje (uz poštovanje propisa)
-    - Dugotrajnost i otpornost na habanje`,
-        images: [
-            {
-                id: 'salsa-art-1',
-                url: 'https://media.tarkett-image.com/larges/780005.jpg',
-                alt: 'Salsa Art Parket',
-                isPrimary: true,
-                order: 1
-            }
-        ],
-        specs: [
-            { key: 'wood_species', label: 'Vrsta drveta', value: 'Hrast' },
-            { key: 'installation', label: 'Tip instalacije', value: 'T-Lock klik sistem' },
-            { key: 'surface', label: 'Površinska obrada', value: 'Proteco Strong lak' },
-            { key: 'dimensions', label: 'Dimenzije', value: '14mm x 194mm x 2283mm' },
-            { key: 'wear_layer', label: 'Debljina habajućeg sloja', value: '3.6 mm' },
-        ],
-        detailsSections: [
-            {
-                title: 'Opis kolekcije',
-                items: [
-                    'Ekskluzivni dizajni inspirisani prirodom',
-                    'Višeslojna konstrukcija za veću stabilnost',
-                    'Ekološki prihvatljiv proizvod',
-                    'Garancija 30 godina'
-                ]
-            }
-        ],
-        price: 0,
-        priceUnit: 'm²',
-        inStock: true,
-        featured: true,
-        externalLink: 'https://www.tarkett.rs/sr_RS/kolekcija-C000966-salsa',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    {
-        id: 'tarkett-parket-2',
-        name: 'Tarkett Hrast',
-        slug: 'tarkett-hrast-parket',
-        sku: 'TARKETT-HRAST',
-        categoryId: '3', // Parket
-        brandId: '3',    // Tarkett
-        shortDescription: 'Klasičan hrastov parket vrhunskog kvaliteta',
-        description: `Hrast je simbol snage i izdržljivosti. Tarkett hrastov parket nudi bezvremensku eleganciju i toplinu.
-    Idealan izbor za svaki enterijer, od tradicionalnog do modernog.`,
-        images: [
-            {
-                id: 'tarkett-hrast-1',
-                url: 'https://media.tarkett-image.com/larges/7876101_001.jpg',
-                alt: 'Tarkett Hrast Parket',
-                isPrimary: true,
-                order: 1
-            }
-        ],
-        specs: [
-            { key: 'wood_species', label: 'Vrsta drveta', value: 'Hrast' },
-            { key: 'installation', label: 'Tip instalacije', value: 'T-Lock klik sistem' },
-            { key: 'surface', label: 'Površinska obrada', value: 'Lak ili Ulje' },
-            { key: 'wear_layer', label: 'Debljina habajućeg sloja', value: '3.6 mm' },
-        ],
-        detailsSections: [
-            {
-                title: 'Prednosti',
-                items: [
-                    'Prirodan izgled i osećaj',
-                    'Mogućnost reparacije (brušenja)',
-                    'Odlična toplotna i zvučna izolacija',
-                    'Povećava vrednost nekretnine'
-                ]
-            }
-        ],
-        price: 0,
-        priceUnit: 'm²',
-        inStock: true,
-        featured: false,
-        externalLink: 'https://www.tarkett.rs/sr_RS/kategorija-rs_C01012-parket',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    {
-        id: 'tarkett-parket-3',
-        name: 'Salsa Premium',
-        slug: 'tarkett-salsa-premium',
-        sku: 'TARKETT-SALSA-PREMIUM',
-        categoryId: '3', // Parket
-        brandId: '3',    // Tarkett
-        shortDescription: 'Luksuzan parket sa naglašenom strukturom',
-        description: `Salsa Premium je kolekcija za one koji traže nešto više. 
-    Posebne tehnike obrade površine daju ovom parketu jedinstveni karakter.`,
-        images: [
-            {
-                id: 'salsa-premium-1',
-                url: 'https://media.tarkett-image.com/larges/7877046_001.jpg',
-                alt: 'Salsa Premium Parket',
-                isPrimary: true,
-                order: 1
-            }
-        ],
-        specs: [
-            { key: 'wood_species', label: 'Vrsta drveta', value: 'Jasen / Hrast' },
-            { key: 'installation', label: 'Tip instalacije', value: 'T-Lock klik sistem' },
-            { key: 'surface', label: 'Površinska obrada', value: 'Proteco Natura' },
-            { key: 'wear_layer', label: 'Debljina habajućeg sloja', value: '3.6 mm' },
-        ],
-        detailsSections: [
-            {
-                title: 'Karakteristike',
-                items: [
-                    'Sofisticiran dizajn',
-                    'Visoka otpornost',
-                    'Jednostavno održavanje'
-                ]
-            }
-        ],
-        price: 0,
-        priceUnit: 'm²',
-        inStock: true,
-        featured: true,
-        externalLink: 'https://www.tarkett.rs/sr_RS/kolekcija-C000966-salsa',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    }
+  {
+    "id": "oak-chocolate-3-strip",
+    "name": "Hrast CHOCOLATE 3 Strip",
+    "slug": "hrast-chocolate-3-strip",
+    "sku": "oak-chocolate-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-chocolate-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Chocolate.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-cocoa-3-strip",
+    "name": "Hrast COCOA 3 Strip",
+    "slug": "hrast-cocoa-3-strip",
+    "sku": "oak-cocoa-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-cocoa-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_OAK_COCOA.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-copper-original-3-strip",
+    "name": "Hrast COPPER ORIGINAL 3 Strip",
+    "slug": "hrast-copper-original-3-strip",
+    "sku": "oak-copper-original-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-copper-original-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Copper.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-cotton-3-strip",
+    "name": "Hrast COTTON 3 Strip",
+    "slug": "hrast-cotton-3-strip",
+    "sku": "oak-cotton-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-cotton-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Cotton.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-elegant-high-gloss-3-strip",
+    "name": "Hrast ELEGANT HIGH GLOSS  3 Strip",
+    "slug": "hrast-elegant-high-gloss-3-strip",
+    "sku": "oak-elegant-high-gloss-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-elegant-high-gloss-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_High_Gloss.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-elegant-matt-3-strip",
+    "name": "Hrast ELEGANT MATT 3 Strip",
+    "slug": "hrast-elegant-matt-3-strip",
+    "sku": "oak-elegant-matt-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-elegant-matt-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_Matt.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-elegant-shiny-3-strip",
+    "name": "Hrast ELEGANT SHINY 3 Strip",
+    "slug": "hrast-elegant-shiny-3-strip",
+    "sku": "oak-elegant-shiny-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-elegant-shiny-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_Shiny.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-iceberg-3-strip",
+    "name": "Hrast ICEBERG 3 Strip",
+    "slug": "hrast-iceberg-3-strip",
+    "sku": "oak-iceberg-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-iceberg-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_OAK_ICEBERG_BR.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-linen-3-strip",
+    "name": "Hrast LINEN 3 Strip",
+    "slug": "hrast-linen-3-strip",
+    "sku": "oak-linen-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-linen-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Linen.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-nordic-elegant-3-strip",
+    "name": "Hrast NORDIC ELEGANT 3 Strip",
+    "slug": "hrast-nordic-elegant-3-strip",
+    "sku": "oak-nordic-elegant-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-nordic-elegant-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Nordic_Elegant.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-original-high-gloss-3-strip",
+    "name": "Hrast ORIGINAL HIGH GLOSS 3 Strip",
+    "slug": "hrast-original-high-gloss-3-strip",
+    "sku": "oak-original-high-gloss-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-original-high-gloss-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_HG.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-original-matt-3-strip",
+    "name": "Hrast ORIGINAL MATT 3 Strip",
+    "slug": "hrast-original-matt-3-strip",
+    "sku": "oak-original-matt-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-original-matt-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Matt.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-original-shiny-3-strip",
+    "name": "Hrast ORIGINAL SHINY 3 Strip",
+    "slug": "hrast-original-shiny-3-strip",
+    "sku": "oak-original-shiny-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-original-shiny-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Shiny.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-robust-white-3-strip",
+    "name": "Hrast ROBUST WHITE 3 Strip",
+    "slug": "hrast-robust-white-3-strip",
+    "sku": "oak-robust-white-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-robust-white-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Robust_white.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-sienna-3-strip",
+    "name": "Hrast SIENNA 3 Strip",
+    "slug": "hrast-sienna-3-strip",
+    "sku": "oak-sienna-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-sienna-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Sienna.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-supreme-matt-3-strip",
+    "name": "Hrast SUPREME MATT 3 Strip",
+    "slug": "hrast-supreme-matt-3-strip",
+    "sku": "oak-supreme-matt-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-supreme-matt-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Supreme_Matt.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-vivid-3-strip",
+    "name": "Hrast VIVID 3 Strip",
+    "slug": "hrast-vivid-3-strip",
+    "sku": "oak-vivid-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-vivid-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Vivid.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "ash-silky-white-3-strip",
+    "name": "Jasen SILKY WHITE 3 Strip",
+    "slug": "jasen-silky-white-3-strip",
+    "sku": "ash-silky-white-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "ash-silky-white-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Ash_Silky_White.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-jasper-3-strip",
+    "name": "Hrast JASPER 3 Strip",
+    "slug": "hrast-jasper-3-strip",
+    "sku": "oak-jasper-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-jasper-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Jasper.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-moonstone-3-strip",
+    "name": "Hrast MOONSTONE 3 Strip",
+    "slug": "hrast-moonstone-3-strip",
+    "sku": "oak-moonstone-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-moonstone-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Moonstone.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-white-lightning-3-strip",
+    "name": "Hrast WHITE LIGHTNING 3 Strip",
+    "slug": "hrast-white-lightning-3-strip",
+    "sku": "oak-white-lightning-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-white-lightning-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_WHITE_LIGHTNING.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "ash-ivory-dreams-3-strip",
+    "name": "Jasen IVORY DREAMS 3 Strip",
+    "slug": "jasen-ivory-dreams-3-strip",
+    "sku": "ash-ivory-dreams-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "ash-ivory-dreams-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_IVORY_DREAMS.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "ash-white-canvas-3-strip",
+    "name": "Jasen WHITE CANVAS 3 Strip",
+    "slug": "jasen-white-canvas-3-strip",
+    "sku": "ash-white-canvas-3-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "ash-white-canvas-3-strip",
+    "image": "https://media.tarkett-image.com/large/TH_3_Strip_White_Canvas.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-antique-white-1-strip",
+    "name": "Hrast ANTIQUE WHITE 1 Strip",
+    "slug": "hrast-antique-white-1-strip",
+    "sku": "oak-antique-white-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-antique-white-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Antique_White.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-bourbon-1-strip",
+    "name": "Hrast BOURBON 1 Strip",
+    "slug": "hrast-bourbon-1-strip",
+    "sku": "oak-bourbon-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-bourbon-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Bourbon.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-copper-1-strip",
+    "name": "Hrast COPPER 1 Strip",
+    "slug": "hrast-copper-1-strip",
+    "sku": "oak-copper-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-copper-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Copper.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-cumin-1-strip",
+    "name": "Hrast CUMIN 1 Strip",
+    "slug": "hrast-cumin-1-strip",
+    "sku": "oak-cumin-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-cumin-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Cumin.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-mocha-1-strip",
+    "name": "Hrast MOCHA 1 Strip",
+    "slug": "hrast-mocha-1-strip",
+    "sku": "oak-mocha-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-mocha-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Mocha.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-premium-1-strip",
+    "name": "Hrast PREMIUM 1 Strip",
+    "slug": "hrast-premium-1-strip",
+    "sku": "oak-premium-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-premium-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Premium.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-schwarzwald-1-strip",
+    "name": "Hrast SCHWARZWALD 1 Strip",
+    "slug": "hrast-schwarzwald-1-strip",
+    "sku": "oak-schwarzwald-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-schwarzwald-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Schwarzwald.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-almond",
+    "name": "Hrast Almond",
+    "slug": "hrast-almond",
+    "sku": "hrast-almond",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-almond",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Almond.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-bright",
+    "name": "Hrast Bright",
+    "slug": "hrast-bright",
+    "sku": "hrast-bright",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-bright",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Bright.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-copper",
+    "name": "Hrast Copper",
+    "slug": "hrast-copper",
+    "sku": "hrast-copper",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-copper",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Copper.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-cottage",
+    "name": "Hrast Cottage",
+    "slug": "hrast-cottage",
+    "sku": "hrast-cottage",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-cottage",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Cottage.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-sepia",
+    "name": "Hrast Sepia",
+    "slug": "hrast-sepia",
+    "sku": "hrast-sepia",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-sepia",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Sepia.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-sienna",
+    "name": "Hrast Sienna",
+    "slug": "hrast-sienna",
+    "sku": "hrast-sienna",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-sienna",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Sienna.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-copper-1-strip",
+    "name": "Hrast COPPER 1 Strip",
+    "slug": "hrast-copper-1-strip",
+    "sku": "oak-copper-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-copper-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Copper.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-forest-1-strip",
+    "name": "Hrast FOREST 1 Strip",
+    "slug": "hrast-forest-1-strip",
+    "sku": "oak-forest-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-forest-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Forest.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-lava-1-strip",
+    "name": "Hrast LAVA 1 Strip",
+    "slug": "hrast-lava-1-strip",
+    "sku": "oak-lava-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-lava-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Lava.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-monsoon-1-strip",
+    "name": "Hrast MONSOON 1 Strip",
+    "slug": "hrast-monsoon-1-strip",
+    "sku": "oak-monsoon-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-monsoon-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Monsoon.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-premium-1-strip",
+    "name": "Hrast PREMIUM 1 Strip",
+    "slug": "hrast-premium-1-strip",
+    "sku": "oak-premium-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-premium-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Premium.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-snow-1-strip",
+    "name": "Hrast SNOW 1 Strip",
+    "slug": "hrast-snow-1-strip",
+    "sku": "oak-snow-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-snow-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Oak_Snow.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-baron-brown",
+    "name": "Hrast Baron Brown",
+    "slug": "hrast-baron-brown",
+    "sku": "hrast-baron-brown",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-baron-brown",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Brown.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-baron-sienna",
+    "name": "Hrast Baron Sienna",
+    "slug": "hrast-baron-sienna",
+    "sku": "hrast-baron-sienna",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-baron-sienna",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Sienna.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-copper-1-strip",
+    "name": "Hrast COPPER 1 Strip",
+    "slug": "hrast-copper-1-strip",
+    "sku": "oak-copper-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-copper-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Step_Oak_Copper.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-premium-1-strip",
+    "name": "Hrast PREMIUM 1 Strip",
+    "slug": "hrast-premium-1-strip",
+    "sku": "oak-premium-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-premium-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_1_Step_Oak_Premium.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-royal-antique-white",
+    "name": "Hrast Royal Antique White",
+    "slug": "hrast-royal-antique-white",
+    "sku": "hrast-royal-antique-white",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-royal-antique-white",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Royal_Antique_White.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-royal-grey",
+    "name": "Hrast Royal Grey",
+    "slug": "hrast-royal-grey",
+    "sku": "hrast-royal-grey",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-royal-grey",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Royal_Grey.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-vivid",
+    "name": "Hrast Vivid",
+    "slug": "hrast-vivid",
+    "sku": "hrast-vivid",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-vivid",
+    "image": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Rustic.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-essence",
+    "name": "Hrast Essence",
+    "slug": "hrast-essence",
+    "sku": "hrast-essence",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-essence",
+    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Essence.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-misty-brown",
+    "name": "Hrast Misty Brown",
+    "slug": "hrast-misty-brown",
+    "sku": "hrast-misty-brown",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-misty-brown",
+    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Misty Brown.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-misty-grey",
+    "name": "Hrast Misty Grey",
+    "slug": "hrast-misty-grey",
+    "sku": "hrast-misty-grey",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-misty-grey",
+    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Misty Grey.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-soft-brown-1-strip",
+    "name": "Hrast SOFT BROWN 1 Strip",
+    "slug": "hrast-soft-brown-1-strip",
+    "sku": "oak-soft-brown-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-soft-brown-1-strip",
+    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Soft Brown.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-soft-beige",
+    "name": "Hrast Soft Beige",
+    "slug": "hrast-soft-beige",
+    "sku": "hrast-soft-beige",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-soft-beige",
+    "image": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Soft Beige.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "505814005",
+    "name": "WINTER 832 OAK BROWN 1S",
+    "slug": "winter-832-oak-brown-1s",
+    "sku": "505814005",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "505814005",
+    "image": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Brown.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "505814002",
+    "name": "WINTER 832 OAK RUSTIC COFFEE",
+    "slug": "winter-832-oak-rustic-coffee",
+    "sku": "505814002",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "505814002",
+    "image": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Rustic_Coffee.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "505814003",
+    "name": "WINTER 832 RUSTIC SILVER",
+    "slug": "winter-832-rustic-silver",
+    "sku": "505814003",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "505814003",
+    "image": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Rustic_Silver.jpg",
+    "price": 0,
+    "stock": 0
+  }
 ];
