@@ -104,13 +104,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const allProductsForThickness = await productRepository.findByCategory(category.id);
 
   // For LVT, Linoleum, Carpet, and Vinil categories, separate collections from colors
-  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil';
+  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket';
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
   let availableThickness: string[] = [];
   let availableThicknessByType: { homogeni: string[]; heterogeni: string[] } = { homogeni: [], heterogeni: [] };
-  
+
   // For non-LVT categories, get filtered products
   const filteredProducts = isLVTCategory ? [] : allProducts;
 
@@ -119,8 +119,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (isLVTCategory) {
     // Collections are products with SKU starting with "GER-" (LVT/Vinil), "LINOLEUM-" (Linoleum), "VINIL-" (Vinil)
     // Colors are individual color products with 4-digit SKU codes or other patterns
-    const allCollections = allProducts.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
-    colors = allProducts.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')));
+    const allCollections = allProducts.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')) ?? false);
+    colors = allProducts.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')));
 
     // Extract unique LVT collection names for filter FIRST (before filtering)
     // This ensures all collections remain visible in the filter dropdown
@@ -166,10 +166,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const thicknessSet = new Set<string>();
       const thicknessSetHomogeni = new Set<string>();
       const thicknessSetHeterogeni = new Set<string>();
-      
+
       // Get all collections from unfiltered products to calculate available thickness
       const allCollectionsForThickness = allProductsForThickness.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
-      
+
       // Get thicknesses from collections (using unfiltered products)
       allCollectionsForThickness.forEach(p => {
         const thicknessSpec = p.specs.find(s => s.key === 'thickness');
@@ -179,7 +179,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           if (!isNaN(thicknessValue)) {
             const thicknessStr = thicknessValue.toFixed(2);
             thicknessSet.add(thicknessStr);
-            
+
             // For Vinil: separate by type
             if (category.slug === 'vinil') {
               const typeSpec = p.specs.find(s => s.key === 'type');
@@ -195,7 +195,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           }
         }
       });
-      
+
       // Get thicknesses from colors in JSON file
       try {
         let jsonFileName: string;
@@ -208,17 +208,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         } else {
           jsonFileName = '';
         }
-        
+
         if (jsonFileName) {
           const jsonPath = join(process.cwd(), 'public', 'data', jsonFileName);
           const jsonData = JSON.parse(readFileSync(jsonPath, 'utf8'));
-          
+
           if (category.slug === 'vinil' && jsonData.collections && Array.isArray(jsonData.collections)) {
             // For Vinil: process collections structure
             jsonData.collections.forEach((collection: any) => {
               const collectionSlug = (collection.slug || '').toLowerCase();
               const isHomogeniCollection = collectionSlug.startsWith('mipolam-');
-              
+
               if (collection.colors && Array.isArray(collection.colors)) {
                 collection.colors.forEach((color: any) => {
                   const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
@@ -255,10 +255,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       } catch (error) {
         console.error(`Error reading ${category.slug} colors JSON:`, error);
       }
-      
+
       // Sort thickness values numerically
       availableThickness = Array.from(thicknessSet).sort((a, b) => parseFloat(a) - parseFloat(b));
-      
+
       // For Vinil: also sort by type
       if (category.slug === 'vinil') {
         availableThicknessByType = {

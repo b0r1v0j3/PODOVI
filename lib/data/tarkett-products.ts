@@ -2,6 +2,413 @@ import { Product } from '@/types';
 
 export const tarkettProducts: Product[] = [
   {
+    "id": "parket-salsa",
+    "name": "Salsa",
+    "slug": "salsa",
+    "sku": "PARKET-SALSA",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa parket kolekcija",
+    "description": "Salsa parket kolekcija",
+    "images": [
+      {
+        "id": "parket-salsa-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Salsa",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Salsa"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-salsa-premium",
+    "name": "Salsa Premium",
+    "slug": "salsa-premium",
+    "sku": "PARKET-SALSA-PREMIUM",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Premium Salsa kolekcija",
+    "description": "Premium Salsa kolekcija",
+    "images": [
+      {
+        "id": "parket-salsa-premium-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Salsa Premium",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Salsa Premium"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-salsa-art",
+    "name": "Salsa Art",
+    "slug": "salsa-art",
+    "sku": "PARKET-SALSA-ART",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Umetnička Salsa kolekcija",
+    "description": "Umetnička Salsa kolekcija",
+    "images": [
+      {
+        "id": "parket-salsa-art-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Salsa Art",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Salsa Art"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-tango",
+    "name": "Tango",
+    "slug": "tango",
+    "sku": "PARKET-TANGO",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Tango parket - elegancija u svakom koraku",
+    "description": "Tango parket - elegancija u svakom koraku",
+    "images": [
+      {
+        "id": "parket-tango-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Tango",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Tango"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-tango-classic",
+    "name": "Tango Classic",
+    "slug": "tango-classic",
+    "sku": "PARKET-TANGO-CLASSIC",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Klasični Tango dizajn",
+    "description": "Klasični Tango dizajn",
+    "images": [
+      {
+        "id": "parket-tango-classic-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Tango Classic",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Tango Classic"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-rumba",
+    "name": "Rumba",
+    "slug": "rumba",
+    "sku": "PARKET-RUMBA",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Rumba kolekcija za moderne prostore",
+    "description": "Rumba kolekcija za moderne prostore",
+    "images": [
+      {
+        "id": "parket-rumba-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Rumba",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Rumba"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-step",
+    "name": "Step XL & L",
+    "slug": "step-xl-and-l",
+    "sku": "PARKET-STEP",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step kolekcija velikih formata",
+    "description": "Step kolekcija velikih formata",
+    "images": [
+      {
+        "id": "parket-step-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Step XL & L",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Step XL & L"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-privilege",
+    "name": "Privilege",
+    "slug": "privilege",
+    "sku": "PARKET-PRIVILEGE",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Privilege kolekcija",
+    "description": "Privilege kolekcija",
+    "images": [
+      {
+        "id": "parket-privilege-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Privilege",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Privilege"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-privilege-waltz",
+    "name": "Privilege Waltz",
+    "slug": "privilege-waltz",
+    "sku": "PARKET-PRIVILEGE-WALTZ",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Privilege Waltz varijanta",
+    "description": "Privilege Waltz varijanta",
+    "images": [
+      {
+        "id": "parket-privilege-waltz-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Privilege Waltz",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Privilege Waltz"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-allegro",
+    "name": "Allegro",
+    "slug": "allegro",
+    "sku": "PARKET-ALLEGRO",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Allegro parket",
+    "description": "Allegro parket",
+    "images": [
+      {
+        "id": "parket-allegro-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Allegro",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Allegro"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-sommer",
+    "name": "Sommer Europarquet",
+    "slug": "sommer-europarquet",
+    "sku": "PARKET-SOMMER",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Sommer Europarquet ekonomična opcija",
+    "description": "Sommer Europarquet ekonomična opcija",
+    "images": [
+      {
+        "id": "parket-sommer-img",
+        "url": "/images/categories/parket.jpg",
+        "alt": "Sommer Europarquet",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Sommer Europarquet"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
     "id": "oak-chocolate-3-strip",
     "name": "Hrast CHOCOLATE 3 Strip",
     "slug": "hrast-chocolate-3-strip",
