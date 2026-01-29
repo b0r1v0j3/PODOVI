@@ -16,6 +16,7 @@ import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
+import { getEffectiveParketCollection, getParketCollectionBySlug } from '@/lib/data/parket-collection-mapping';
 
 export const dynamic = 'force-dynamic';
 
@@ -241,10 +242,21 @@ function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSpec[] {
   return Array.from(merged.values());
 }
 
-/** Skriva "Kolekcija: Parket" kad je vrednost zapravo kategorija, ne kolekcija (pogrešan import). */
-function filterSpecsForDisplay(specs: ProductSpec[] | undefined): ProductSpec[] {
+/** Za parket varijante zamenjuje "Parket" (kategorija) pravom kolekcijom iz mapiranja. */
+function filterSpecsForDisplay(
+  specs: ProductSpec[] | undefined,
+  options?: { categoryId?: string; productSlug?: string }
+): ProductSpec[] {
   if (!specs || !Array.isArray(specs)) return [];
-  return specs.filter(s => !(s.key === 'collection' && s.value === 'Parket'));
+  return specs
+    .map((s) => {
+      if (s.key === 'collection' && s.value === 'Parket' && options?.categoryId === '3' && options?.productSlug) {
+        const effective = getEffectiveParketCollection(options.productSlug, 'Parket');
+        if (effective) return { ...s, value: effective };
+      }
+      return s;
+    })
+    .filter((s) => !(s.key === 'collection' && s.value === 'Parket'));
 }
 
 function parseDescriptionToSections(description: string): ProductDetailsSection[] {
@@ -772,17 +784,17 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // Special Parket Redirect: If visiting a variant directly, redirect to Collection Header Page with ?color=variant
     if (product.categoryId === '3') {
-      // Check if it is a variant (Not a header) via SKU check
-      // Headers start with PARKET-
       if (product.sku && !product.sku.startsWith('PARKET-')) {
-        // It's a variant. Find its collection.
         const collectionSpec = product.specs.find(s => s.key === 'collection');
-        if (collectionSpec) {
+        const collectionName = collectionSpec?.value === 'Parket'
+          ? getParketCollectionBySlug(product.slug)
+          : collectionSpec?.value;
+        if (collectionName) {
           const { tarkettProducts } = await import('@/lib/data/tarkett-products');
           const collectionHeader = tarkettProducts.find(p =>
             p.categoryId === '3' &&
             p.sku.startsWith('PARKET-') &&
-            p.specs.find(s => s.key === 'collection' && s.value === collectionSpec.value)
+            p.specs.some(s => s.key === 'collection' && s.value === collectionName)
           );
           if (collectionHeader) {
             const { redirect } = await import('next/navigation');
@@ -849,18 +861,18 @@ export default async function ProductPage({ params, searchParams }: Props) {
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
 
-    // Prepare customColors for Parket items
+    // Prepare customColors for Parket items (varijante grupisane po efektivnoj kolekciji)
     let customColors: any[] | undefined = undefined;
     if (product.categoryId === '3') {
       const { tarkettProducts } = await import('@/lib/data/tarkett-products');
       const collectionSpec = product.specs.find(s => s.key === 'collection');
       if (collectionSpec) {
         const collectionName = collectionSpec.value;
-        const variants = tarkettProducts.filter(p =>
-          p.categoryId === '3' &&
-          p.specs.some(s => s.key === 'collection' && s.value === collectionName) &&
-          !p.sku.startsWith('PARKET-')
-        );
+        const variants = tarkettProducts.filter(p => {
+          if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) return false;
+          const effective = getEffectiveParketCollection(p.slug, p.specs.find(s => s.key === 'collection')?.value);
+          return effective === collectionName;
+        });
 
         if (variants.length > 0) {
           customColors = variants.map(v => ({
@@ -946,7 +958,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   priceUnit={product.priceUnit}
                   brand={brand ? { name: brand.name, slug: brand.slug } : null}
                   shortDescription={product.shortDescription}
-                  specs={filterSpecsForDisplay(product.specs)}
+                  specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug })}
                   inStock={product.inStock}
                   productSlug={product.slug}
                   externalLink={product.externalLink}
@@ -1156,7 +1168,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
                 {/* Specifications */}
                 {(() => {
-                  const displaySpecs = filterSpecsForDisplay(product.specs);
+                  const displaySpecs = filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug });
                   return displaySpecs.length > 0 && (
                   <div className="bg-white rounded-2xl shadow-lg p-8">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>

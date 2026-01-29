@@ -2,6 +2,7 @@ import { Product, ProductFilters } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
 import { getAllGerflorProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
+import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -64,13 +65,15 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
-    // Filter by collections (LVT grouped names; Parket and ostalo po spec "collection")
+    // Filter by collections (LVT grouped names; Parket po efektivnoj kolekciji iz mapiranja)
     if (filters?.collections && filters.collections.length > 0) {
       filtered = filtered.filter(p => {
         const productName = p.name;
         const specCollection = p.specs?.find(s => s.key === 'collection')?.value;
+        const effectiveParket = p.categoryId === '3' && specCollection === 'Parket'
+          ? getEffectiveParketCollection(p.slug, specCollection)
+          : specCollection;
         return filters.collections!.some(collection => {
-          // LVT collection filtering (grouped)
           if (collection === 'Creation 30') {
             return productName.includes('Creation 30');
           } else if (collection === 'Creation 40') {
@@ -82,8 +85,7 @@ export class MockProductRepository implements IProductRepository {
           } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
             return productName.includes('Saga');
           }
-          // Parket i ostale kategorije: podudaranje po spec "collection"
-          if (specCollection && specCollection === collection) return true;
+          if (effectiveParket && effectiveParket === collection) return true;
           return false;
         });
       });
