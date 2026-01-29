@@ -10,45 +10,54 @@ interface ProductCardClientProps {
 }
 
 export default function ProductCardClient({ product, brand }: ProductCardClientProps) {
-  const primaryImage = product.images && product.images.length > 0 
+  const primaryImage = product.images && product.images.length > 0
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
   const isLocalImage = !!primaryImage?.url?.startsWith('/');
-  
+
   // For local images, use Next.js Image with unoptimized flag
   const imageSrc = primaryImage?.url || '';
-  
+
   // Remove "Gerflor" prefix from product name for LVT collections
   const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
     ? product.name.replace(/^Gerflor\s+/, '')
     : product.name;
-  
+
   // Map category IDs to category slugs
   const categorySlugMap: Record<string, string> = {
     '6': 'lvt',
     '7': 'linoleum',
     '4': 'tekstilne-ploce',
     '2': 'vinil',
+    '3': 'parket',
   };
-  
-  // For LVT, Linoleum, Carpet, and Vinil categories, link to category page with color parameter
-  // Collections don't have collectionSlug, only individual colors do
-  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
+
+  // Logic to determine if we should link to a category filter (for variants or headers) vs single product page
+  // 1. Color Tiles (LVT/Linoleum/etc variants): Link to category?color=slug
+  // 2. Parket Headers (Collection Hubs): Link to category?collections=name
+
+  const isColorTileCategory = ['6', '7', '4', '2'].includes(product.categoryId);
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
-  
+  const isParket = product.categoryId === '3';
+
   let productHref = `/proizvodi/${product.slug}`;
-  
-  // For color products (LVT/Linoleum/Carpet/Vinil), ONLY if they have collectionSlug (individual colors)
-  // Always link to category page with color parameter for consistency
-  // Collections don't have collectionSlug, so they will use default href (collection page)
-  if (isColorTile && colorCollectionSlug) {
+
+  if (isColorTileCategory && colorCollectionSlug) {
     const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
-    // Always use category URL with color parameter
     productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
+  } else if (isParket) {
+    // Parket Collection Headers have SKU starting with 'PARKET-' (e.g., 'PARKET-SALSA')
+    // and do not have 'OAK' or specific variant identifiers in SKU (though some headers might be simple)
+    // Best check: It starts with PARKET- and doesn't trigger variant logic (which we don't have yet for parket variants linking)
+    // For now, if it starts with PARKET- and name matches a collection name, it's a header.
+    // We assume PARKET- prefix indicates our collection headers.
+    if (product.sku && product.sku.startsWith('PARKET-') && !product.sku.includes('OAK') && !product.sku.includes('ASH')) {
+      productHref = `/kategorije/parket?collections=${encodeURIComponent(product.name)}`;
+    }
   }
-  
+
   return (
-    <Link 
+    <Link
       href={productHref}
       className="group card card-hover"
     >
