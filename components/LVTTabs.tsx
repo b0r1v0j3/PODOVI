@@ -44,7 +44,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     collections: urlSearchParams.get('collections') || undefined,
     thickness: urlSearchParams.get('thickness') || undefined,
   };
-  
+
   // If initialColorSlug is provided, start with 'colors' tab active
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
     initialColorSlug ? 'colors' : 'collections'
@@ -58,13 +58,13 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
   const collectionsToRender = useMemo(() => {
     let filtered = collections;
-    
+
     if (!useJsonColors) {
       return filtered;
     }
 
     filtered = filtered.filter((product) => !/^\d{4}$/.test(product.sku ?? ''));
-    
+
     // Filter by vinyl type if specified
     if (categorySlug === 'vinil' && vinylType) {
       const typeFilter = vinylType.toLowerCase();
@@ -80,14 +80,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         return false;
       });
     }
-    
+
     // Filter by thickness (for LVT, Vinil, and Linoleum)
     if ((categorySlug === 'lvt' || categorySlug === 'vinil' || categorySlug === 'linoleum') && searchParams?.thickness) {
       const selectedThicknesses = searchParams.thickness.split(',');
       filtered = filtered.filter(collection => {
-        const thicknessSpec = collection.specs.find(s => 
-          s.key === 'thickness' || 
-          s.key === 'overall_thickness' || 
+        const thicknessSpec = collection.specs.find(s =>
+          s.key === 'thickness' ||
+          s.key === 'overall_thickness' ||
           s.key === 'debljina'
         );
         if (thicknessSpec) {
@@ -109,14 +109,14 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         return false;
       });
     }
-    
+
     return filtered;
   }, [collections, useJsonColors, categorySlug, vinylType, searchParams]);
 
   // Filter colors by all active filters
   const colorsToRender = useMemo(() => {
     let filtered = colorsFromJSON;
-    
+
     if (!useJsonColors) {
       return filtered;
     }
@@ -129,19 +129,19 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         if (color.specs.find(s => s.key === 'thickness')) {
           return color;
         }
-        
+
         // Try to find matching collection and add thickness
         const collectionSlug = ((color as any).collectionSlug || '').toLowerCase();
         const matchingCollection = collections.find(c => {
           const collectionSlugFromProduct = c.slug.toLowerCase().replace('gerflor-', '');
           const collectionNameFromProduct = c.name.toLowerCase();
           const colorCollectionName = ((color as any).collection_name || (color as any).collection || '').toLowerCase();
-          
-          return collectionSlugFromProduct === collectionSlug || 
-                 collectionNameFromProduct === colorCollectionName ||
-                 collectionSlugFromProduct === collectionSlug.replace(/\s+/g, '-');
+
+          return collectionSlugFromProduct === collectionSlug ||
+            collectionNameFromProduct === colorCollectionName ||
+            collectionSlugFromProduct === collectionSlug.replace(/\s+/g, '-');
         });
-        
+
         if (matchingCollection) {
           const thicknessSpec = matchingCollection.specs.find(s => s.key === 'thickness');
           if (thicknessSpec) {
@@ -151,7 +151,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             };
           }
         }
-        
+
         return color;
       });
     }
@@ -189,27 +189,37 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       });
     }
 
-    // Filter by collections (for LVT)
-    if (categorySlug === 'lvt' && searchParams?.collections) {
+    // Filter by collections (for LVT and generic categories like Parket)
+    if (searchParams?.collections) {
       const selectedCollections = searchParams.collections.split(',');
       filtered = filtered.filter(color => {
-        const collectionName = (color as any).collectionSlug || '';
-        const collectionNameWithoutPrefix = collectionName.replace('gerflor-', '');
-        
-        return selectedCollections.some(collection => {
-          if (collection === 'Creation 30') {
-            return collectionNameWithoutPrefix.includes('creation-30');
-          } else if (collection === 'Creation 40') {
-            return collectionNameWithoutPrefix.includes('creation-40');
-          } else if (collection === 'Creation 55') {
-            return collectionNameWithoutPrefix.includes('creation-55');
-          } else if (collection === 'Creation 70') {
-            return collectionNameWithoutPrefix.includes('creation-70');
-          } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
-            return collectionNameWithoutPrefix.includes('saga');
-          }
-          return false;
-        });
+        // LVT Logic using collectionSlug prop
+        if (categorySlug === 'lvt') {
+          const collectionName = (color as any).collectionSlug || '';
+          const collectionNameWithoutPrefix = collectionName.replace('gerflor-', '');
+
+          return selectedCollections.some(collection => {
+            if (collection === 'Creation 30') {
+              return collectionNameWithoutPrefix.includes('creation-30');
+            } else if (collection === 'Creation 40') {
+              return collectionNameWithoutPrefix.includes('creation-40');
+            } else if (collection === 'Creation 55') {
+              return collectionNameWithoutPrefix.includes('creation-55');
+            } else if (collection === 'Creation 70') {
+              return collectionNameWithoutPrefix.includes('creation-70');
+            } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
+              return collectionNameWithoutPrefix.includes('saga');
+            }
+            return false;
+          });
+        }
+
+        // Generic Logic (Parket) - Check specs
+        const collectionSpec = color.specs.find(s => s.key === 'collection');
+        if (collectionSpec) {
+          return selectedCollections.includes(collectionSpec.value);
+        }
+        return false;
       });
     }
 
@@ -218,9 +228,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       const selectedThicknesses = searchParams.thickness.split(',');
       filtered = filtered.filter(color => {
         // Get thickness from specs - check multiple possible keys
-        const thicknessSpec = color.specs.find(s => 
-          s.key === 'thickness' || 
-          s.key === 'overall_thickness' || 
+        const thicknessSpec = color.specs.find(s =>
+          s.key === 'thickness' ||
+          s.key === 'overall_thickness' ||
           s.key === 'debljina'
         );
         if (thicknessSpec) {
@@ -245,7 +255,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
 
     return filtered;
-  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors, searchParams, collections]);
+  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors, searchParams, collections, legacyColors]); // Added legacyColors dependency
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -257,8 +267,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     const jsonPath = categorySlug === 'linoleum'
       ? '/data/gerflor_linoleum_colors_complete.json'
       : categorySlug === 'vinil'
-      ? '/data/vinyl_colors_complete.json'
-      : '/data/lvt_colors_complete.json';
+        ? '/data/vinyl_colors_complete.json'
+        : '/data/lvt_colors_complete.json';
 
     fetch(jsonPath)
       .then(res => {
@@ -270,7 +280,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       .then(data => {
         if ((categorySlug === 'vinil' || categorySlug === 'linoleum') && data.collections) {
           // For Vinil/Linoleum, count colors from all collections
-          const total = data.collections.reduce((sum: number, collection: any) => 
+          const total = data.collections.reduce((sum: number, collection: any) =>
             sum + (collection.colors?.length || 0), 0);
           setTotalColorsCount(total);
         } else if (data && typeof data.totalColors === 'number') {
@@ -312,8 +322,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       const jsonPath = categorySlug === 'linoleum'
         ? '/data/gerflor_linoleum_colors_complete.json'
         : categorySlug === 'vinil'
-        ? '/data/vinyl_colors_complete.json'
-        : '/data/lvt_colors_complete.json';
+          ? '/data/vinyl_colors_complete.json'
+          : '/data/lvt_colors_complete.json';
 
       console.log(`LVTTabs: Fetching colors from ${jsonPath}...`);
       fetch(jsonPath)
@@ -331,7 +341,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
           let colorsArray: any[] = [];
           if ((categorySlug === 'vinil' || categorySlug === 'linoleum') && data.collections && Array.isArray(data.collections)) {
             // Flatten colors from all collections
-            colorsArray = data.collections.flatMap((collection: any) => 
+            colorsArray = data.collections.flatMap((collection: any) =>
               (collection.colors || []).map((color: any) => ({
                 ...color,
                 collection_name: collection.name,
@@ -354,21 +364,21 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             // Find brand ID (Gerflor = '6')
             const gerflorBrand = Object.values(brandsRecord).find(b => b.slug === 'gerflor');
             const brandId = gerflorBrand?.id || '6';
-            
+
             // Find category ID
             const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
             // For Linoleum: use image, texture_url, or image_url (gerflor_linoleum uses 'image' field)
             // For Vinil: use image field (local path) or image_url
-            const primaryImageUrl = categorySlug === 'lvt' 
+            const primaryImageUrl = categorySlug === 'lvt'
               ? (color.texture_url || color.lifestyle_url || color.image_url || '')
               : categorySlug === 'vinil'
-              ? (color.image || color.image_url || '')
-              : (color.image || color.texture_url || color.image_url || '');
+                ? (color.image || color.image_url || '')
+                : (color.image || color.texture_url || color.image_url || '');
 
             // Generate slug for Vinil colors (format: collection-slug-color-code-color-name)
-            const colorSlug = categorySlug === 'vinil' 
+            const colorSlug = categorySlug === 'vinil'
               ? `${color.collection_slug || color.collection}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`
               : color.slug;
 
@@ -378,30 +388,30 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             const collectionSlug = (color.collection_slug || color.collection || '').toLowerCase();
             const isHomogeniCollection = collectionSlug.startsWith('mipolam-');
             const productVinylType = isHomogeniCollection ? 'Homogeni' : 'Heterogeni';
-            
+
             // Build specs from color data
             const specs: any[] = [];
-            
+
             // Add collection_specs if available (includes thickness, format, etc.)
             if (color.collection_specs && Array.isArray(color.collection_specs)) {
               specs.push(...color.collection_specs);
             }
-            
+
             // Add overall_thickness as thickness spec if not already in collection_specs
             if (color.overall_thickness && !specs.find(s => s.key === 'thickness')) {
               specs.push({ key: 'thickness', label: 'Ukupna debljina', value: color.overall_thickness });
             }
-            
+
             // Add format if available
             if (color.format && !specs.find(s => s.key === 'format')) {
               specs.push({ key: 'format', label: 'Format', value: color.format });
             }
-            
+
             // Add dimension if available
             if (color.dimension && !specs.find(s => s.key === 'dimension')) {
               specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
             }
-            
+
             // Add vinyl-specific specs
             if (categorySlug === 'vinil') {
               // Always set the correct type based on collection slug, even if it exists in collection_specs
@@ -414,7 +424,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               if (!specs.find(s => s.key === 'collection')) {
                 specs.push({ key: 'collection', label: 'Kolekcija', value: color.collection_name || color.collection });
               }
-              
+
               // Add thickness from collection if not already present
               if (!specs.find(s => s.key === 'thickness')) {
                 // Find matching collection by slug
@@ -425,12 +435,12 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                   const collectionSlugFromProduct = c.slug.toLowerCase().replace('gerflor-', '');
                   const collectionNameFromProduct = c.name.toLowerCase();
                   const colorCollectionName = (color.collection_name || color.collection || '').toLowerCase();
-                  
-                  return collectionSlugFromProduct === collectionSlug || 
-                         collectionNameFromProduct === colorCollectionName ||
-                         collectionSlugFromProduct === collectionSlug.replace(/\s+/g, '-');
+
+                  return collectionSlugFromProduct === collectionSlug ||
+                    collectionNameFromProduct === colorCollectionName ||
+                    collectionSlugFromProduct === collectionSlug.replace(/\s+/g, '-');
                 });
-                
+
                 if (matchingCollection) {
                   const thicknessSpec = matchingCollection.specs.find(s => s.key === 'thickness');
                   if (thicknessSpec) {
@@ -439,7 +449,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 }
               }
             }
-            
+
             return {
               id: `color-${categorySlug}-${colorSlug}`,
               name: color.full_name || `${color.code} ${color.name}`,
@@ -516,26 +526,24 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         <div className="flex space-x-8">
           <button
             onClick={() => setActiveTab('collections')}
-            className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${
-              activeTab === 'collections'
-                ? 'text-primary-600 border-b-2 border-primary-600'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
+            className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${activeTab === 'collections'
+              ? 'text-primary-600 border-b-2 border-primary-600'
+              : 'text-gray-500 hover:text-gray-900'
+              }`}
           >
             Kolekcije ({collectionsToRender.length})
           </button>
           <button
             onClick={() => setActiveTab('colors')}
-            className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${
-              activeTab === 'colors'
-                ? 'text-primary-600 border-b-2 border-primary-600'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
+            className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${activeTab === 'colors'
+              ? 'text-primary-600 border-b-2 border-primary-600'
+              : 'text-gray-500 hover:text-gray-900'
+              }`}
           >
             Boje ({useJsonColors
               ? (loadingColors
-                  ? '...'
-                  : colorsToRender.length)
+                ? '...'
+                : colorsToRender.length)
               : legacyColors.length
             })
           </button>
@@ -572,6 +580,67 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 <p className="text-gray-600 mb-6">
                   {legacyColors.length === 0 ? 'Nema' : legacyColors.length} {legacyColors.length === 1 ? 'boja' : 'boja'}
                 </p>
+
+                {/* Collection Header for Parket/Generic */}
+                {searchParams?.collections && searchParams.collections.split(',').length === 1 && (
+                  (() => {
+                    const selectedCollectionName = searchParams.collections;
+                    const collectionProduct = collections.find(c =>
+                      c.name === selectedCollectionName ||
+                      c.slug === selectedCollectionName ||
+                      c.slug === selectedCollectionName.toLowerCase() ||
+                      c.name.toLowerCase() === selectedCollectionName.toLowerCase()
+                    );
+                    if (collectionProduct) {
+                      return (
+                        <div className="mb-12 bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                          <div className="grid grid-cols-1 lg:grid-cols-2">
+                            <div className="relative h-64 lg:h-auto min-h-[300px]">
+                              <img
+                                src={collectionProduct.images[0]?.url || '/images/placeholder.jpg'}
+                                alt={collectionProduct.name}
+                                className="absolute inset-0 w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="p-8 lg:p-10 flex flex-col justify-center">
+                              <h2 className="text-3xl font-bold text-gray-900 mb-4">{collectionProduct.name}</h2>
+
+                              {/* Description - handle HTML content safely */}
+                              <div
+                                className="prose prose-sm text-gray-600 mb-6"
+                                dangerouslySetInnerHTML={{ __html: collectionProduct.description }}
+                              />
+
+                              {/* Features */}
+                              {collectionProduct.detailsSections?.find(s => s.title === 'Ključne karakteristike') && (
+                                <div className="bg-gray-50 rounded-lg p-5">
+                                  <h3 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wider">
+                                    Ključne karakteristike
+                                  </h3>
+                                  <ul className="space-y-2">
+                                    {collectionProduct.detailsSections
+                                      .find(s => s.title === 'Ključne karakteristike')
+                                      ?.items.map((item, idx) => (
+                                        <li key={idx} className="flex items-start">
+                                          <svg className="w-5 h-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                          </svg>
+                                          <span className="text-sm text-gray-700">{item}</span>
+                                        </li>
+                                      ))
+                                    }
+                                  </ul>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })()
+                )}
+
                 {renderProducts(legacyColors, 'colors-legacy')}
               </>
             )}
