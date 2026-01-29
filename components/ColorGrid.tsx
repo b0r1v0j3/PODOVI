@@ -36,6 +36,8 @@ interface ColorGridProps {
   limit?: number;
   onColorsLoaded?: (count: number) => void;
   selectedColorSlug?: string; // Slug of currently selected color for highlighting
+
+  customColors?: Color[]; // Optional custom colors to use instead of fetching
 }
 
 function normalizeSrc(raw?: string | null) {
@@ -104,12 +106,13 @@ export default function ColorGrid({
   limit,
   onColorsLoaded,
   selectedColorSlug,
+  customColors,
 }: ColorGridProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [colors, setColors] = useState<Color[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [colors, setColors] = useState<Color[]>(customColors || []);
+  const [loading, setLoading] = useState(!customColors);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
   const hasAutoSelected = useRef(false);
@@ -194,6 +197,16 @@ export default function ColorGrid({
   };
 
   useEffect(() => {
+    // If custom colors provided, use them and skip fetch
+    if (customColors) {
+      setColors(customColors);
+      setLoading(false);
+      if (onColorsLoaded) {
+        onColorsLoaded(customColors.length);
+      }
+      return;
+    }
+
     // Validate collectionSlug
     if (!collectionSlug || typeof collectionSlug !== 'string') {
       console.error('ColorGrid: Invalid collectionSlug', collectionSlug);
@@ -207,16 +220,16 @@ export default function ColorGrid({
     const isLinoleum = collectionSlug.startsWith('dlw-');
     const isCarpet = collectionSlug.startsWith('armonia-') || collectionSlug.startsWith('gerflor-armonia-');
     // Vinil includes mipolam collections and heterogeneous collections (nerok-55, nerok-70, premium-acoustic, etc.)
-    const heterogeneousSlugs = ['nerok-55', 'nerok-70', 'premium-acoustic', 'premium-compact', 
-      'taralay-impression-acoustic', 'taralay-impression-compact', 
+    const heterogeneousSlugs = ['nerok-55', 'nerok-70', 'premium-acoustic', 'premium-compact',
+      'taralay-impression-acoustic', 'taralay-impression-compact',
       'taralay-impression-hop-acoustic', 'taralay-impression-hop-compact',
       'taralay-initial-acoustic', 'taralay-initial-compact',
       'taralay-millenium-acoustic', 'taralay-millenium-compact'];
     const collectionNameWithoutPrefix = collectionSlug.replace('gerflor-', '');
-    const isVinil = collectionSlug.startsWith('mipolam-') || 
-                    collectionSlug.startsWith('gerflor-mipolam-') ||
-                    heterogeneousSlugs.includes(collectionNameWithoutPrefix) ||
-                    heterogeneousSlugs.some(slug => collectionSlug.includes(slug));
+    const isVinil = collectionSlug.startsWith('mipolam-') ||
+      collectionSlug.startsWith('gerflor-mipolam-') ||
+      heterogeneousSlugs.includes(collectionNameWithoutPrefix) ||
+      heterogeneousSlugs.some(slug => collectionSlug.includes(slug));
     const jsonPath = isLinoleum
       ? '/data/linoleum_colors_complete.json'
       : isCarpet
@@ -234,23 +247,23 @@ export default function ColorGrid({
       })
       .then(data => {
         let filtered: Color[] = [];
-        
+
         // Handle different JSON structures
         if (isVinil && data.collections && Array.isArray(data.collections)) {
           // Vinil has collections[].colors structure
           // Normalize collection slug - remove 'order' suffix if present
           const normalizedSlug = collectionSlug.replace('gerflor-', '').replace('-order', '');
           const normalizedCollectionName = collectionName.replace('-order', '');
-          
-          const collection = data.collections.find((col: any) => 
-            col.slug === collectionName || 
+
+          const collection = data.collections.find((col: any) =>
+            col.slug === collectionName ||
             col.slug === collectionSlug ||
             col.slug === collectionSlug.replace('gerflor-', '') ||
             col.slug === normalizedSlug ||
             col.slug === normalizedCollectionName ||
             (col.slug && col.slug.replace('-order', '') === normalizedSlug)
           );
-          
+
           if (collection && collection.colors) {
             filtered = collection.colors.map((color: any) => ({
               ...color,
@@ -265,8 +278,8 @@ export default function ColorGrid({
         } else if (data.colors && Array.isArray(data.colors)) {
           // LVT/Linoleum/Carpet have colors array
           // Filter by collection - try exact match first, then with/without 'gerflor-' prefix
-          filtered = data.colors.filter((c: Color) => 
-            c.collection === collectionName || 
+          filtered = data.colors.filter((c: Color) =>
+            c.collection === collectionName ||
             c.collection === collectionSlug ||
             c.collection === `gerflor-${collectionName}` ||
             c.collection.replace('gerflor-', '') === collectionName
@@ -418,8 +431,8 @@ export default function ColorGrid({
               key={color.slug}
               onClick={() => handleColorClick(color)}
               className={`group bg-white rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden border text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 w-full ${isSelected
-                  ? 'border-primary-600 ring-2 ring-primary-200'
-                  : 'border-gray-200 hover:border-primary-400'
+                ? 'border-primary-600 ring-2 ring-primary-200'
+                : 'border-gray-200 hover:border-primary-400'
                 }`}
             >
               {/* Image */}
@@ -475,8 +488,8 @@ export default function ColorGrid({
                   key={index}
                   onClick={() => goToPage(index)}
                   className={`h-1.5 rounded-full transition-all ${index === currentPage
-                      ? 'w-6 bg-primary-600'
-                      : 'w-1.5 bg-gray-300 hover:bg-gray-400'
+                    ? 'w-6 bg-primary-600'
+                    : 'w-1.5 bg-gray-300 hover:bg-gray-400'
                     }`}
                   aria-label={`Strana ${index + 1}`}
                 />

@@ -71,10 +71,10 @@ async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
       const expectedSlug = `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
       // Also try matching without collection prefix (for color parameter)
       const colorOnlySlug = `${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
-      return expectedSlug === slug || 
-             colorOnlySlug === slug || 
-             slug.endsWith(`-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`) ||
-             color.code === slug.split('-').pop();
+      return expectedSlug === slug ||
+        colorOnlySlug === slug ||
+        slug.endsWith(`-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`) ||
+        color.code === slug.split('-').pop();
     });
     if (vinylColor) {
       return {
@@ -359,8 +359,8 @@ function colorToProduct(source: ColorSource, slug: string, collectionSlugOverrid
   const primaryImageUrl = isLVT
     ? (color.texture_url || color.lifestyle_url || color.image_url || '')
     : isVinil
-    ? ((color as any).image || color.image_url || '')
-    : (color.texture_url || color.image_url || '');
+      ? ((color as any).image || color.image_url || '')
+      : (color.texture_url || color.image_url || '');
 
   const images: ProductImageType[] = primaryImageUrl
     ? [{
@@ -410,8 +410,8 @@ function collectionFromColor(source: ColorSource, slug: string): Product {
   const primaryImageUrl = isLVT
     ? (color.texture_url || color.lifestyle_url || color.image_url || '')
     : isVinil
-    ? ((color as any).image || color.image_url || '')
-    : (color.texture_url || color.image_url || '');
+      ? ((color as any).image || color.image_url || '')
+      : (color.texture_url || color.image_url || '');
 
   const images: ProductImageType[] = primaryImageUrl
     ? [{
@@ -480,21 +480,21 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
         slug,
       };
     }
-    
+
     // Try to find first color from this collection in LVT JSON
     const lvtColor = lvtColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
     if (lvtColor) {
       const colorSource: ColorSource = { categorySlug: 'lvt', color: lvtColor };
       return collectionFromColor(colorSource, slug);
     }
-    
+
     // Try to find first color from this collection in Linoleum JSON
     const linoleumColor = linoleumColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
     if (linoleumColor) {
       const colorSource: ColorSource = { categorySlug: 'linoleum', color: linoleumColor };
       return collectionFromColor(colorSource, slug);
     }
-    
+
     // Try to find collection in Vinil JSON
     const vinylCollection = vinylCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
     if (vinylCollection && vinylCollection.colors && vinylCollection.colors.length > 0) {
@@ -512,7 +512,7 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
       };
       return collectionFromColor(colorSource, slug);
     }
-    
+
     // Try to find in Carpet JSON (carpet uses collection_slug with 'gerflor-' prefix)
     const carpetColors = (carpetColorsData as any).colors || [];
     const carpetColor = carpetColors.find((color: any) => color.collection_slug === slug || color.collection === slug);
@@ -588,7 +588,10 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     // If color parameter is present, load the color directly as a product instead of the collection
     const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
     let product: (Product & { collectionSlug?: string }) | null = null;
-    
+
+    // Import Tarkett products for Parket logic
+    const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+
     if (selectedColorSlug) {
       // Try to load the color directly as a product
       const colorSource = await loadColorFromJson(selectedColorSlug);
@@ -596,9 +599,44 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
         // Get the collection slug from the URL params
         const collectionSlug = params.slug;
         product = colorToProduct(colorSource, selectedColorSlug, collectionSlug);
+      } else {
+        // Try to find in Tarkett products (Parket)
+        const parketColor = tarkettProducts.find(p => p.slug === selectedColorSlug);
+        if (parketColor) {
+          // We found a Parket variant. We should show the Collection Page but tailored.
+          // Actually, for Parket, the "Product" IS the collection header with specs merged?
+          // LVT does: colorToProduct creates a Product object representing the VARIANT but with collection context.
+
+          // Find the collection header for this variant
+          const collectionNameSpec = parketColor.specs.find(s => s.key === 'collection');
+          if (collectionNameSpec) {
+            const collectionHeader = tarkettProducts.find(p =>
+              p.categoryId === '3' &&
+              p.sku.startsWith('PARKET-') &&
+              p.specs.find(s => s.key === 'collection' && s.value === collectionNameSpec.value)
+            );
+
+            if (collectionHeader) {
+              product = {
+                ...collectionHeader,
+                name: parketColor.name,
+                images: parketColor.images,
+                specs: parketColor.specs, // Use variant specs
+                description: parketColor.description || collectionHeader.description,
+                slug: params.slug, // Keep URL slug
+                collectionSlug: collectionHeader.slug,
+              };
+            }
+          }
+
+          if (!product) {
+            // Fallback if header not found
+            product = parketColor;
+          }
+        }
       }
     }
-    
+
     // If color wasn't loaded, try to load the collection/product normally
     if (!product) {
       product = await resolveProductBySlug(params.slug);
@@ -642,7 +680,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     ].filter(Boolean).join(', ');
 
     // Build URL with color parameter if present
-    const urlWithColor = selectedColorSlug 
+    const urlWithColor = selectedColorSlug
       ? `${baseUrl}/proizvodi/${params.slug}?color=${selectedColorSlug}`
       : `${baseUrl}/proizvodi/${params.slug}`;
 
@@ -726,6 +764,28 @@ export default async function ProductPage({ params, searchParams }: Props) {
       redirect(`/kategorije/${categorySlug}?color=${product.slug}`);
     }
 
+    // Special Parket Redirect: If visiting a variant directly, redirect to Collection Header Page with ?color=variant
+    if (product.categoryId === '3') {
+      // Check if it is a variant (Not a header) via SKU check
+      // Headers start with PARKET-
+      if (product.sku && !product.sku.startsWith('PARKET-')) {
+        // It's a variant. Find its collection.
+        const collectionSpec = product.specs.find(s => s.key === 'collection');
+        if (collectionSpec) {
+          const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+          const collectionHeader = tarkettProducts.find(p =>
+            p.categoryId === '3' &&
+            p.sku.startsWith('PARKET-') &&
+            p.specs.find(s => s.key === 'collection' && s.value === collectionSpec.value)
+          );
+          if (collectionHeader) {
+            const { redirect } = await import('next/navigation');
+            redirect(`/proizvodi/${collectionHeader.slug}?color=${product.slug}`);
+          }
+        }
+      }
+    }
+
     // Ensure product has required fields with defensive checks
     if (!product.images || !Array.isArray(product.images)) {
       product.images = [];
@@ -782,6 +842,41 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const primaryImage = product.images && product.images.length > 0
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
+
+    // Prepare customColors for Parket items
+    let customColors: any[] | undefined = undefined;
+    if (product.categoryId === '3') {
+      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+      const collectionSpec = product.specs.find(s => s.key === 'collection');
+      if (collectionSpec) {
+        const collectionName = collectionSpec.value;
+        const variants = tarkettProducts.filter(p =>
+          p.categoryId === '3' &&
+          p.specs.some(s => s.key === 'collection' && s.value === collectionName) &&
+          !p.sku.startsWith('PARKET-')
+        );
+
+        if (variants.length > 0) {
+          customColors = variants.map(v => ({
+            collection: collectionName,
+            collection_name: collectionName,
+            code: v.sku,
+            name: v.name,
+            full_name: v.name,
+            slug: v.slug,
+            image_url: v.images[0]?.url || '',
+            texture_url: v.images[0]?.url || '',
+            image_count: v.images.length,
+            characteristics: v.specs.reduce((acc, spec) => {
+              acc[spec.label] = spec.value;
+              return acc;
+            }, {} as Record<string, string>)
+          }));
+        }
+      }
+    }
+
+
 
     // Schema.org structured data
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';

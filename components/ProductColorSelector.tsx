@@ -26,6 +26,7 @@ interface ProductColorSelectorProps {
   productSlug: string;
   externalLink?: string;
   onCharacteristicsChange?: (characteristics: Record<string, string> | null) => void;
+  customColors?: any[];
 }
 
 export default function ProductColorSelector({
@@ -41,6 +42,7 @@ export default function ProductColorSelector({
   productSlug,
   externalLink,
   onCharacteristicsChange,
+  customColors,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -52,7 +54,7 @@ export default function ProductColorSelector({
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
-  
+
   // Update selectedColorSlug when URL changes
   useEffect(() => {
     const urlColorSlug = searchParams.get('color') || undefined;
@@ -75,15 +77,15 @@ export default function ProductColorSelector({
     if (imageUrl) {
       setSelectedImage({ url: imageUrl, alt: imageAlt });
       setCurrentImageIndex(0); // Reset to first image
-      
+
       if (colorCode && colorName) {
         setSelectedColor({ code: colorCode, name: colorName });
       }
-      
+
       if (payload.colorSlug) {
         setSelectedColorSlug(payload.colorSlug);
       }
-      
+
       if (characteristics) {
         setSelectedCharacteristics(characteristics);
         if (onCharacteristicsChange) {
@@ -92,11 +94,11 @@ export default function ProductColorSelector({
       }
     }
   };
-  
+
   // Load carpet images (both Color Scan and Zoom) when color is selected
   useEffect(() => {
     if (!selectedColorSlug) return;
-    
+
     // Check if this is a carpet product (Armonia)
     if (collectionSlug.includes('armonia')) {
       // Fetch carpet data
@@ -121,7 +123,7 @@ export default function ProductColorSelector({
         .catch(err => console.error('Error loading carpet images:', err));
     }
   }, [selectedColorSlug, collectionSlug]);
-  
+
   // Update selected image when currentImageIndex changes
   useEffect(() => {
     if (selectedImages.length > 0 && selectedImages[currentImageIndex]) {
@@ -200,7 +202,7 @@ export default function ProductColorSelector({
               </div>
             )}
           </div>
-          
+
           {/* Selected Color Info */}
           {selectedColor && (
             <div className="mt-4 text-center">
@@ -271,9 +273,8 @@ export default function ProductColorSelector({
             {/* Availability */}
             <div className="flex items-center space-x-2">
               <div
-                className={`w-3 h-3 rounded-full ${
-                  inStock ? 'bg-green-500' : 'bg-red-500'
-                }`}
+                className={`w-3 h-3 rounded-full ${inStock ? 'bg-green-500' : 'bg-red-500'
+                  }`}
               ></div>
               <span className="text-gray-700">
                 {inStock ? 'Na stanju' : 'Nije dostupno'}
@@ -311,16 +312,15 @@ export default function ProductColorSelector({
                 collectionSlug={collectionSlug}
                 onColorSelect={handleColorSelect}
                 compact={true}
-                initialColorSlug={initialColorSlug}
                 limit={12}
                 onColorsLoaded={setColorsCount}
                 selectedColorSlug={selectedColorSlug}
+                customColors={customColors}
               />
             </div>
           </div>
         </div>
       </div>
-
 
       {isColorsModalOpen && (
         <div className="fixed inset-0 z-[60]">
@@ -349,6 +349,7 @@ export default function ProductColorSelector({
                 compact={false}
                 initialColorSlug={initialColorSlug}
                 selectedColorSlug={selectedColorSlug}
+                customColors={customColors}
               />
             </div>
           </div>
