@@ -241,6 +241,12 @@ function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSpec[] {
   return Array.from(merged.values());
 }
 
+/** Skriva "Kolekcija: Parket" kad je vrednost zapravo kategorija, ne kolekcija (pogrešan import). */
+function filterSpecsForDisplay(specs: ProductSpec[] | undefined): ProductSpec[] {
+  if (!specs || !Array.isArray(specs)) return [];
+  return specs.filter(s => !(s.key === 'collection' && s.value === 'Parket'));
+}
+
 function parseDescriptionToSections(description: string): ProductDetailsSection[] {
   if (!description || typeof description !== 'string') {
     return [];
@@ -929,21 +935,22 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
           {/* Product Content */}
           <div className="container py-12">
-            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') ? (
+            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2' || product.categoryId === '3') ? (
               <>
-                {/* LVT and Linoleum products with color selector */}
+                {/* LVT, Linoleum, Parket: layout sa color selectorom */}
                 <ProductColorSelector
                   initialImage={primaryImage}
                   collectionSlug={(product as { collectionSlug?: string }).collectionSlug || params.slug}
                   productName={displayName}
-                  productPrice={product.price}
+                  productPrice={product.price && product.price > 0 ? product.price : undefined}
                   priceUnit={product.priceUnit}
                   brand={brand ? { name: brand.name, slug: brand.slug } : null}
                   shortDescription={product.shortDescription}
-                  specs={product.specs}
+                  specs={filterSpecsForDisplay(product.specs)}
                   inStock={product.inStock}
                   productSlug={product.slug}
                   externalLink={product.externalLink}
+                  customColors={customColors}
                 />
 
                 {/* Description & Characteristics Side by Side */}
@@ -996,7 +1003,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   </div>
 
                   {/* Characteristics */}
-                  <ProductCharacteristics specs={product.specs} categoryId={product.categoryId} />
+                  <ProductCharacteristics specs={filterSpecsForDisplay(product.specs)} categoryId={product.categoryId} />
                 </div>
               </>
             ) : (
@@ -1148,11 +1155,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 </div>
 
                 {/* Specifications */}
-                {product.specs && Array.isArray(product.specs) && product.specs.length > 0 && (
+                {(() => {
+                  const displaySpecs = filterSpecsForDisplay(product.specs);
+                  return displaySpecs.length > 0 && (
                   <div className="bg-white rounded-2xl shadow-lg p-8">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
                     <dl className="space-y-4">
-                      {product.specs.map((spec) => (
+                      {displaySpecs.map((spec) => (
                         <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
                           <dt className="text-sm font-medium text-gray-500 mb-1">
                             {spec.label}
@@ -1164,7 +1173,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       ))}
                     </dl>
                   </div>
-                )}
+                  );
+                })()}
               </div>
             )}
 

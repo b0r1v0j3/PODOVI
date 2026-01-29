@@ -18,7 +18,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const searchParams = useSearchParams();
   
   const isVinilCategory = pathname?.includes('/kategorije/vinil');
-  const isLVTCategory = pathname?.includes('/kategorije/lvt');
+  const isLVTCategory = pathname?.includes('/kategorije/lvt') || pathname?.includes('/kategorije/parket');
   const isLinoleumCategory = pathname?.includes('/kategorije/linoleum');
   const currentType = searchParams.get('type');
   const currentCollections = searchParams.get('collections');
