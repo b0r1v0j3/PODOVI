@@ -684,5 +684,101 @@ export const tarkettProducts: Product[] = [
     "image": "https://media.tarkett-image.com/large/TH_Winter_832_Oak_Rustic_Silver.jpg",
     "price": 0,
     "stock": 0
+  },
+  {
+    "id": "oak-essence-2-strip",
+    "name": "Hrast ESSENCE 2 Strip",
+    "slug": "hrast-essence-2-strip",
+    "sku": "oak-essence-2-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-essence-2-strip",
+    "image": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Essence.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-sand-ro-2-strip",
+    "name": "Hrast SAND RO 2 Strip",
+    "slug": "hrast-sand-ro-2-strip",
+    "sku": "oak-sand-ro-2-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-sand-ro-2-strip",
+    "image": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Sand.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "oak-sienna-ro-2-strip",
+    "name": "Hrast SIENNA RO 2 Strip",
+    "slug": "hrast-sienna-ro-2-strip",
+    "sku": "oak-sienna-ro-2-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "oak-sienna-ro-2-strip",
+    "image": "https://media.tarkett-image.com/large/TH_2_Strip_Allegro_Oak_Sienna_RO.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-bronze",
+    "name": "Hrast Bronze",
+    "slug": "hrast-bronze",
+    "sku": "hrast-bronze",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-bronze",
+    "image": "https://media.tarkett-image.com/large/TH_Sinteros_Europarquet_OAK_BRONZE.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-espresso",
+    "name": "Hrast Espresso",
+    "slug": "hrast-espresso",
+    "sku": "hrast-espresso",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-espresso",
+    "image": "https://media.tarkett-image.com/large/TH_eUROPARQUET_Oak_ESPRESSO.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-golden",
+    "name": "Hrast Golden",
+    "slug": "hrast-golden",
+    "sku": "hrast-golden",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-golden",
+    "image": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Golden.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-original",
+    "name": "Hrast Original",
+    "slug": "hrast-original",
+    "sku": "hrast-original",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-original",
+    "image": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Original.jpg",
+    "price": 0,
+    "stock": 0
+  },
+  {
+    "id": "hrast-polar",
+    "name": "Hrast Polar",
+    "slug": "hrast-polar",
+    "sku": "hrast-polar",
+    "categoryId": "3",
+    "brandId": "3",
+    "description": "hrast-polar",
+    "image": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Polar.jpg",
+    "price": 0,
+    "stock": 0
   }
 ];
