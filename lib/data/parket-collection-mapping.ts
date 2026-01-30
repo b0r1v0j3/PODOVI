@@ -82,15 +82,9 @@ export function getParketCollectionBySlug(slug: string): string | null {
   ];
   if (tangoClassicSlugs.some((t) => s === t || s.startsWith(t + '-'))) return COLLECTION_TANGO_CLASSIC;
 
-  // Privilege Waltz: nijanse iz TH_Privilege_Waltz (Essence, Misty, Soft Brown, Soft Beige)
-  const privilegeWaltzSlugs = [
-    'hrast-essence',
-    'hrast-misty-brown',
-    'hrast-misty-grey',
-    'hrast-soft-brown-1-strip',
-    'hrast-soft-beige',
-  ];
-  if (privilegeWaltzSlugs.some((pw) => s === pw)) return COLLECTION_PRIVILEGE_WALTZ;
+  // Privilege Waltz: 5 dezena (Hrast Essence, Misty Brown/Grey, Soft Brown 1 Strip, Soft Beige)
+  const privilegeWaltzSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_PRIVILEGE_WALTZ] ?? [];
+  if (privilegeWaltzSlugList.includes(s)) return COLLECTION_PRIVILEGE_WALTZ;
 
   // Sommer Europarquet: Europarquet dekori (Bronze, Espresso, Golden, Original, Polar)
   const sommerEuroparquetSlugs = [
@@ -171,6 +165,13 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'prestige-oak-royal-grey',
     'prestige-oak-white',
     'privilege-prestige-oak',
+  ],
+  [COLLECTION_PRIVILEGE_WALTZ]: [
+    'hrast-essence',
+    'hrast-misty-brown',
+    'hrast-misty-grey',
+    'hrast-soft-brown-1-strip',
+    'hrast-soft-beige',
   ],
 };
 

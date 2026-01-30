@@ -114,32 +114,45 @@ export const tarkettProducts: Product[] = [
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Privilege Waltz Parket",
-    "description": "Privilege Waltz kolekcija donosi elegantan i prefinjen izgled vašem prostoru.",
+    "description": "Privilege Waltz parket predstavlja spoj vrhunskog kvaliteta i estetike. Mirna, besprekorna selekcija drveta u toplim, sofisticiranim, pastelnim tonovima dolazi u impresivnom formatu širokih i dugih dasaka parketa.\n\nSvaki element ove parket kolekcije pažljivo je osmišljen za one koji traže besprekornu eleganciju i luksuz u svom prostoru.",
     "images": [
       {
         "id": "parket-privilege-waltz-img",
-        "url": "/images/products/parket-privilege-waltz.jpg",
+        "url": "/images/products/hrast-essence.jpg",
         "alt": "Privilege Waltz",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Privilege Waltz"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege Waltz" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,652 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "7,5 kg/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "length", "label": "Dužina", "value": "2280 mm" },
+      { "key": "width", "label": "Širina", "value": "194 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
     ],
     "detailsSections": [
       {
         "title": "Ključne karakteristike",
-        "items": ["Elegancija i stil", "Otpornost i dugotrajnost", "Jednostavno održavanje"]
+        "items": [
+          "Najfiniji izbor dasaka parketa Premium i Markant klase",
+          "Impresivan format. Široka i duga (1 lamelna) daska parketa sa oborenim ivicama sa sve 4 strane",
+          "Dezen naglašava prirodnu lepotu drveta",
+          "Snažna i postojana završna obrada. Proteco Plus Mat lak za besprekoran izgled površine",
+          "Mogućnost prilagođavanja dezena prema zahtevima projekta ili klijenta"
+        ]
+      },
+      {
+        "title": "Tehničke i ekološke specifikacije",
+        "items": []
       }
     ],
     "price": 0,
@@ -2313,28 +2326,20 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-essence",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-essence - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Parket - Hrast Essence",
+    "description": "Privilege Waltz parket predstavlja spoj vrhunskog kvaliteta i estetike.",
     "images": [
       {
         "id": "hrast-essence-img",
-        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Essence.jpg",
+        "url": "/images/products/hrast-essence.jpg",
         "alt": "Hrast Essence",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege Waltz" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,652 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2350,28 +2355,20 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-misty-brown",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-misty-brown - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Parket - Hrast Misty Brown",
+    "description": "Privilege Waltz parket predstavlja spoj vrhunskog kvaliteta i estetike.",
     "images": [
       {
         "id": "hrast-misty-brown-img",
-        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Misty Brown.jpg",
+        "url": "/images/products/hrast-misty-brown.jpg",
         "alt": "Hrast Misty Brown",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege Waltz" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,652 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2387,28 +2384,20 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-misty-grey",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-misty-grey - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Parket - Hrast Misty Grey",
+    "description": "Privilege Waltz parket predstavlja spoj vrhunskog kvaliteta i estetike.",
     "images": [
       {
         "id": "hrast-misty-grey-img",
-        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Misty Grey.jpg",
+        "url": "/images/products/hrast-misty-grey.jpg",
         "alt": "Hrast Misty Grey",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege Waltz" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,652 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2418,41 +2407,33 @@ export const tarkettProducts: Product[] = [
     updatedAt: new Date("2026-01-29T19:17:38.700Z")
   },
   {
-    "id": "oak-soft-brown-1-strip",
+    "id": "hrast-soft-brown-1-strip",
     "name": "Hrast SOFT BROWN 1 Strip",
     "slug": "hrast-soft-brown-1-strip",
     "sku": "oak-soft-brown-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-soft-brown-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Parket - Hrast SOFT BROWN 1 Strip",
+    "description": "Privilege Waltz parket predstavlja spoj vrhunskog kvaliteta i estetike.",
     "images": [
       {
-        "id": "oak-soft-brown-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Soft Brown.jpg",
+        "id": "hrast-soft-brown-1-strip-img",
+        "url": "/images/products/hrast-soft-brown-1-strip.jpg",
         "alt": "Hrast SOFT BROWN 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege Waltz" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,652 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
-    createdAt: new Date("2026-01-29T19:17:38.700Z"),
-    updatedAt: new Date("2026-01-29T19:17:38.700Z")
+    "createdAt": new Date("2026-01-29T19:17:38.700Z"),
+    "updatedAt": new Date("2026-01-29T19:17:38.700Z")
   },
   {
     "id": "hrast-soft-beige",
@@ -2461,35 +2442,27 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-soft-beige",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-soft-beige - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Parket - Hrast Soft Beige",
+    "description": "Privilege Waltz parket predstavlja spoj vrhunskog kvaliteta i estetike.",
     "images": [
       {
         "id": "hrast-soft-beige-img",
-        "url": "https://media.tarkett-image.com/large/TH_Privilege_Waltz_Oak Soft Beige.jpg",
+        "url": "/images/products/hrast-soft-beige.jpg",
         "alt": "Hrast Soft Beige",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege Waltz" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,652 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
-    createdAt: new Date("2026-01-29T19:17:38.700Z"),
-    updatedAt: new Date("2026-01-29T19:17:38.700Z")
+    "createdAt": new Date("2026-01-29T19:17:38.700Z"),
+    "updatedAt": new Date("2026-01-29T19:17:38.700Z")
   },
   {
     "id": "hrast-bronze",
