@@ -183,12 +183,11 @@ export default function ProductColorSelector({
 
   return (
     <>
-      {/* Main Grid - dno slike i dno Boja u istoj liniji, bez supljine */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 items-stretch">
-        {/* Left Column - Slika (kvadrat) → Video (kvadrat) → Opis (kvadrat) */}
-        <div className="flex flex-col gap-6 w-full min-h-0">
-          {/* Kvadrat 1: slika + naziv boje + link */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
+      {/* Prvi red: SAMO slika (levo) i Info + Boje (desno) – ista visina, dno u istoj liniji */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mb-6">
+        {/* Levo: samo kvadrat sa slikom */}
+        <div className="flex flex-col min-h-0">
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col h-full">
           <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
             {selectedImage ? (
               <>
@@ -271,28 +270,9 @@ export default function ProductColorSelector({
           )}
 
           </div>
-
-          {/* Kvadrat 2: video (zasebna kartica) */}
-          {videoEmbedUrl && (
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
-                <iframe
-                  src={videoEmbedUrl}
-                  title="Video kolekcije"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  loading="lazy"
-                  className="w-full h-full"
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Kvadrat 3: opis (leftColumnBottom) */}
-          {leftColumnBottom}
         </div>
 
-        {/* Right Column - Info gore, Boje dole (u istoj liniji sa dnom slike) */}
+        {/* Desno: Info + Boje – Boje raste da dno bude u liniji sa dnom slike */}
         <div className="flex flex-col gap-6 h-full min-h-0">
           {/* Product Info + CTA */}
           <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4 flex-shrink-0">
@@ -358,8 +338,8 @@ export default function ProductColorSelector({
             </div>
           </div>
 
-          {/* Colors Section - raste da popuni prostor, min-height da bude u liniji sa slikom (posebno parket) */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-[280px] lg:min-h-[320px]">
+          {/* Boje – flex-1 da popuni visinu, dno u liniji sa dnom slike */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0">
             <div className="flex items-start justify-between gap-4 mb-4 flex-shrink-0">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
@@ -386,11 +366,34 @@ export default function ProductColorSelector({
               />
             </div>
           </div>
-
-          {/* Tehničke specifikacije (parket) – odmah ispod Boja, bez praznog prostora */}
-          {rightColumnBottom}
         </div>
       </div>
+
+      {/* Ispod prvog reda: video, opis, Tehničke spec (parket) */}
+      {(videoEmbedUrl || leftColumnBottom || rightColumnBottom) ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <div className="flex flex-col gap-6">
+            {videoEmbedUrl && (
+              <div className="bg-white rounded-2xl shadow-lg p-6">
+                <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+                  <iframe
+                    src={videoEmbedUrl}
+                    title="Video kolekcije"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+            )}
+            {leftColumnBottom}
+          </div>
+          <div>
+            {rightColumnBottom}
+          </div>
+        </div>
+      ) : null}
 
       {isColorsModalOpen && (
         <div className="fixed inset-0 z-[60]">
