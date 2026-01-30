@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product, Brand } from '@/types';
+import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 
 interface ProductCardClientProps {
   product: Product;
@@ -50,17 +51,13 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     if (product.sku && product.sku.startsWith('PARKET-') && !product.sku.includes('OAK') && !product.sku.includes('ASH')) {
       productHref = `/kategorije/parket?collections=${encodeURIComponent(product.name)}`;
     } else {
-      // Parket Variant
-      // Link directly to Category with BOTH collections (for context) and color (for selection)
-      // This mimics LVT behavior where you see the collection header + variants
-      // We need to find the collection name from specs
+      // Parket Variant: koristi efektivnu kolekciju (varijante imaju spec "Parket", mapiranje daje Rumba/Tango itd.)
       const collectionSpec = product.specs?.find(s => s.key === 'collection');
-      const collectionName = collectionSpec?.value;
+      const collectionName = getEffectiveParketCollection(product.slug, collectionSpec?.value);
 
       if (collectionName) {
         productHref = `/kategorije/parket?collections=${encodeURIComponent(collectionName)}&color=${product.slug}`;
       } else {
-        // Fallback if no collection spec found (shouldn't happen for Parket)
         productHref = `/proizvodi/${product.slug}`;
       }
     }

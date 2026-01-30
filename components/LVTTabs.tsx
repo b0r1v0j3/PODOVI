@@ -197,7 +197,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
 
     // Filter by collections (for LVT and generic categories like Parket)
-    if (searchParams?.collections) {
+    // Za Parket: boje su već filtrirane po efektivnoj kolekciji na serveru (category page), preskačemo da ne bismo izfiltrirali sve (spec ima "Parket")
+    if (searchParams?.collections && categorySlug !== 'parket') {
       const selectedCollections = searchParams.collections.split(',');
       filtered = filtered.filter(color => {
         // LVT Logic using collectionSlug prop
@@ -221,7 +222,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
           });
         }
 
-        // Generic Logic (Parket) - Check specs
+        // Ostale kategorije (linoleum, vinil) – po spec kolekciji
         const collectionSpec = color.specs.find(s => s.key === 'collection');
         if (collectionSpec) {
           return selectedCollections.includes(collectionSpec.value);
@@ -651,9 +652,9 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
 
 
                 {(() => {
-                  // Filter legacy colors if collection filter is active
+                  // Za Parket: boje su već filtrirane po efektivnoj kolekciji na serveru, ne filtriraj ponovo (spec ima "Parket")
                   let filteredLegacyColors = legacyColors;
-                  if (searchParams?.collections) {
+                  if (searchParams?.collections && categorySlug !== 'parket') {
                     const selectedCollections = searchParams.collections.split(',');
                     filteredLegacyColors = legacyColors.filter(color => {
                       const collectionSpec = color.specs.find(s => s.key === 'collection');

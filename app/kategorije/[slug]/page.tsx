@@ -313,6 +313,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           const collectionName = getEffectiveParketCollection(p.slug, specVal) || specVal || p.name;
           return selectedCollections.includes(collectionName);
         });
+        // Za Parket, filtriraj i "boje" (varijante) po efektivnoj kolekciji da LVTTabs prikaže ispravne varijante
+        colors = colors.filter(p => {
+          const specVal = p.specs?.find(s => s.key === 'collection')?.value;
+          const effective = getEffectiveParketCollection(p.slug, specVal);
+          return effective && selectedCollections.includes(effective);
+        });
       } else {
         collections = allCollections;
       }
