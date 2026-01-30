@@ -1137,17 +1137,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     </div>
                   )}
 
-                  {/* Availability */}
-                  <div className="flex items-center space-x-2">
-                    <div
-                      className={`w-3 h-3 rounded-full ${product.inStock ? 'bg-green-500' : 'bg-red-500'
-                        }`}
-                    ></div>
-                    <span className="text-gray-700">
-                      {product.inStock ? 'Na stanju' : 'Nije dostupno'}
-                    </span>
-                  </div>
-
                   {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link

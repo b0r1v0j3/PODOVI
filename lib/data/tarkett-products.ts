@@ -170,7 +170,7 @@ export const tarkettProducts: Product[] = [
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Rumba Parket",
-    "description": "Rumba parket je savršen izbor za moderne enterijere, nudeći izdržljivost i stil.",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost. Na raspolaganju vam je šest različitih nijansi drveta: od svetlih, bež i pepeljastih nijansi, do tamnijih, bogatih tonova. Parket se postavlja uz jednostavan T-Lock sistem - brzo, bezbedno i lako. Površinska zaštita Proteco Strong obezbeđuje dodatnu otpornost na habanja i ogrebotine, čime direktno štedite novac i vreme potrebno za održavanje parketa. Kao kod svih Tarkett parketa, u pitanju je višeslojni parket napravljen od pažljivo sušenog drveta. Uz garanciju od 30 godina, možete da se opustite i zaboravite na neprijatna iznenađenja poput razdvajanja ili odlepljivanja parketa.",
     "images": [
       {
         "id": "parket-rumba-img",
@@ -181,21 +181,30 @@ export const tarkettProducts: Product[] = [
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Rumba"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak, Proteco Natura" },
+      { "key": "thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "area_per_box", "label": "Površina po kutiji", "value": "0,860 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "weight", "label": "Ukupna masa", "value": "7,5 kg/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "wood_species", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "length", "label": "Dužina", "value": "1200 mm" },
+      { "key": "width", "label": "Širina", "value": "120 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
     ],
     "detailsSections": [
       {
         "title": "Ključne karakteristike",
-        "items": ["Moderan dizajn", "Visoka otpornost", "Prirodni materijali"]
+        "items": [
+          "Male dimenzije parket dasaka",
+          "Visoka otpornost na habanja i oštećenja",
+          "Jednostavna ugradnja parketa i ekonomično održavanje",
+          "Odgovarajući asortiman lajsni parketa",
+          "Garancija 30 godina"
+        ]
       }
     ],
     "price": 0,
@@ -1845,28 +1854,20 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-copper-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-copper-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Rumba - Hrast COPPER 1 Strip",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost.",
     "images": [
       {
         "id": "oak-copper-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Copper.jpg",
+        "url": "/images/products/rumba-oak-copper.jpg",
         "alt": "Hrast COPPER 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -1919,28 +1920,20 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-lava-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-lava-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Rumba - Hrast LAVA 1 Strip",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost.",
     "images": [
       {
         "id": "oak-lava-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Lava.jpg",
+        "url": "/images/products/rumba-oak-lava.jpg",
         "alt": "Hrast LAVA 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -1993,28 +1986,20 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-premium-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-premium-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Rumba - Hrast PREMIUM 1 Strip",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost.",
     "images": [
       {
         "id": "oak-premium-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Premium.jpg",
+        "url": "/images/products/rumba-oak-premium.jpg",
         "alt": "Hrast PREMIUM 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2030,28 +2015,20 @@ export const tarkettProducts: Product[] = [
     "sku": "oak-snow-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-snow-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Rumba - Hrast SNOW 1 Strip",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost.",
     "images": [
       {
         "id": "oak-snow-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Oak_Snow.jpg",
+        "url": "/images/products/rumba-oak-snow.jpg",
         "alt": "Hrast SNOW 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" }
     ],
     "price": 0,
     "priceUnit": "m²",

@@ -68,6 +68,10 @@ export function getParketCollectionBySlug(slug: string): string | null {
   // 2-strip → Salsa
   if (s.includes('2-strip')) return COLLECTION_SALSA;
 
+  // Rumba: 6 dezena (Hrast Copper, Forest, Lava, Monsoon, Premium, Snow 1 Strip)
+  const rumbaSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_RUMBA] ?? [];
+  if (rumbaSlugList.includes(s)) return COLLECTION_RUMBA;
+
   // 1-strip → Tango
   if (s.includes('1-strip')) return COLLECTION_TANGO;
 
@@ -172,6 +176,14 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'hrast-misty-grey',
     'hrast-soft-brown-1-strip',
     'hrast-soft-beige',
+  ],
+  [COLLECTION_RUMBA]: [
+    'hrast-copper-1-strip',
+    'hrast-forest-1-strip',
+    'hrast-lava-1-strip',
+    'hrast-monsoon-1-strip',
+    'hrast-premium-1-strip',
+    'hrast-snow-1-strip',
   ],
 };
 

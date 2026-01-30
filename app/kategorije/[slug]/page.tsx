@@ -4,7 +4,7 @@ import { join } from 'path';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
-import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
+import { getEffectiveParketCollection, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import LVTTabs from '@/components/LVTTabs';
@@ -325,6 +325,24 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     } else {
       // For Vinil and other categories, show all collections (no collection filter)
       collections = allCollections;
+    }
+
+    // Za parket: na karticama varijanti prikaži naziv i sliku kolekcije, ne varijante (npr. "Privilege Waltz" umesto "Hrast Essence")
+    if (category.slug === 'parket') {
+      colors = colors.map((variant) => {
+        const specVal = variant.specs?.find((s) => s.key === 'collection')?.value;
+        const collectionName = getEffectiveParketCollection(variant.slug, specVal);
+        if (!collectionName) return variant;
+        const collectionSlug = getParketCollectionSlug(collectionName);
+        const headerProduct = collections.find((c) => c.slug === collectionSlug);
+        if (!headerProduct?.images?.length) return variant;
+        return {
+          ...variant,
+          name: headerProduct.name,
+          images: headerProduct.images,
+          shortDescription: headerProduct.shortDescription ?? variant.shortDescription,
+        };
+      });
     }
 
     // Build brands record for all products
