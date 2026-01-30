@@ -888,15 +888,22 @@ export default async function ProductPage({ params, searchParams }: Props) {
       if (collectionSpec) {
         const collectionName = collectionSpec.value;
         const explicitSlugs = getParketCollectionVariantSlugs(collectionName);
-        const variants = explicitSlugs.length > 0
-          ? tarkettProducts.filter(p =>
-              p.categoryId === '3' && !p.sku.startsWith('PARKET-') && explicitSlugs.includes(p.slug)
-            )
-          : tarkettProducts.filter(p => {
+        let variants: typeof tarkettProducts = [];
+        if (explicitSlugs.length > 0) {
+          const seen = new Set<string>();
+          for (const p of tarkettProducts) {
+            if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) continue;
+            if (!explicitSlugs.includes(p.slug) || seen.has(p.slug)) continue;
+            seen.add(p.slug);
+            variants.push(p);
+          }
+        } else {
+          variants = tarkettProducts.filter(p => {
               if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) return false;
               const effective = getEffectiveParketCollection(p.slug, p.specs.find(s => s.key === 'collection')?.value);
               return effective === collectionName;
             });
+        }
 
         if (variants.length > 0) {
           customColors = variants.map(v => ({
