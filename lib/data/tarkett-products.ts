@@ -69,7 +69,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-privilege-img",
-        "url": "/images/products/galloni-oak.jpg",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Nobile_Oak_Select.jpg",
         "alt": "Privilege",
         "isPrimary": true,
         "order": 0
@@ -3007,7 +3007,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - GALLONI OAK",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "galloni-oak-img", "url": "/images/products/galloni-oak.jpg", "alt": "GALLONI OAK", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,564 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3021,7 +3024,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - GALLONI OAK BROWN GREY",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "galloni-oak-brown-grey-img", "url": "/images/products/galloni-oak-brown-grey.jpg", "alt": "GALLONI OAK BROWN GREY", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,564 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3035,7 +3041,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - GALLONI OAK ROYAL GREY",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "galloni-oak-royal-grey-img", "url": "/images/products/galloni-oak-royal-grey.jpg", "alt": "GALLONI OAK ROYAL GREY", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,564 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3049,7 +3058,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - Hrast GALLONI OAK WHITE 1 Strip",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "hrast-galloni-oak-white-1-strip-img", "url": "/images/products/hrast-galloni-oak-white-1-strip.jpg", "alt": "Hrast GALLONI OAK WHITE 1 Strip", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,564 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3063,7 +3075,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - Hrast NOBILE OAK SELECT 1 Strip",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "hrast-nobile-oak-select-1-strip-img", "url": "/images/products/hrast-nobile-oak-select-1-strip.jpg", "alt": "Hrast NOBILE OAK SELECT 1 Strip", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,512 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3077,7 +3092,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - Hrast NOBILE OAK SELECT WHITE 1 Strip",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "hrast-nobile-oak-select-white-1-strip-img", "url": "/images/products/hrast-nobile-oak-select-white-1-strip.jpg", "alt": "Hrast NOBILE OAK SELECT WHITE 1 Strip", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,512 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3091,7 +3109,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - PRESTIGE OAK ANTIQUE",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "prestige-oak-antique-img", "url": "/images/products/prestige-oak-antique.jpg", "alt": "PRESTIGE OAK ANTIQUE", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,720 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3105,7 +3126,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - PRESTIGE OAK BROWN GREY",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "prestige-oak-brown-grey-img", "url": "/images/products/prestige-oak-brown-grey.jpg", "alt": "PRESTIGE OAK BROWN GREY", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,720 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3119,7 +3143,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - PRESTIGE OAK ROYAL GREY",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "prestige-oak-royal-grey-img", "url": "/images/products/prestige-oak-royal-grey.jpg", "alt": "PRESTIGE OAK ROYAL GREY", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,720 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3133,7 +3160,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - PRESTIGE OAK WHITE",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "prestige-oak-white-img", "url": "/images/products/prestige-oak-white.jpg", "alt": "PRESTIGE OAK WHITE", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,720 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
@@ -3147,7 +3177,10 @@ export const tarkettProducts: Product[] = [
     "shortDescription": "Parket - PRIVILEGE PRESTIGE OAK",
     "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
     "images": [{ "id": "privilege-prestige-oak-img", "url": "/images/products/privilege-prestige-oak.jpg", "alt": "PRIVILEGE PRESTIGE OAK", "isPrimary": true, "order": 0 }],
-    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,720 m²" }
+    ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   }
