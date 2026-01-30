@@ -47,19 +47,11 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
   } else if (isParket) {
     // Parket Collection Headers have SKU starting with 'PARKET-' (e.g., 'PARKET-SALSA')
-    // We link them to the Product Page directly (where variants will be shown via customColors)
     if (product.sku && product.sku.startsWith('PARKET-') && !product.sku.includes('OAK') && !product.sku.includes('ASH')) {
-      productHref = `/proizvodi/${product.slug}`;
+      productHref = `/kategorije/parket?collections=${encodeURIComponent(product.name)}`;
     } else {
       // Parket Variant
-      // Link to Collection Header + color param
-      // Try to find collection name from specs or similar?
-      // ProductCardClient doesn't have full specs easily accessible or parsing logic might be complex.
-      // BUT, we can try to guess collection slug from name or specs if passed.
-      // Actually, we don't have collectionSlug in props easily.
-      // If we can't reliably determine collection, linking to variant page is safer, 
-      // and ProductPage will redirect to Collection?color=variant.
-      // So linking to /proizvodi/variant-slug is fine, because we implemented the redirect in Page.tsx!
+      // Link to Product Page (which will redirect to Category with color param)
       productHref = `/proizvodi/${product.slug}`;
     }
   }

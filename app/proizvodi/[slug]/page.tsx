@@ -782,25 +782,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
       redirect(`/kategorije/${categorySlug}?color=${product.slug}`);
     }
 
-    // Special Parket Redirect: If visiting a variant directly, redirect to Collection Header Page with ?color=variant
+    // Special Parket Redirect: If visiting a variant directly, redirect to Category Page with ?color=variant
     if (product.categoryId === '3') {
+      // Check if it is a variant (Not a header) via SKU check
+      // Headers start with PARKET-
       if (product.sku && !product.sku.startsWith('PARKET-')) {
-        const collectionSpec = product.specs.find(s => s.key === 'collection');
-        const collectionName = collectionSpec?.value === 'Parket'
-          ? getParketCollectionBySlug(product.slug)
-          : collectionSpec?.value;
-        if (collectionName) {
-          const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-          const collectionHeader = tarkettProducts.find(p =>
-            p.categoryId === '3' &&
-            p.sku.startsWith('PARKET-') &&
-            p.specs.some(s => s.key === 'collection' && s.value === collectionName)
-          );
-          if (collectionHeader) {
-            const { redirect } = await import('next/navigation');
-            redirect(`/proizvodi/${collectionHeader.slug}?color=${product.slug}`);
-          }
-        }
+        const { redirect } = await import('next/navigation');
+        redirect(`/kategorije/parket?color=${product.slug}`);
       }
     }
 
@@ -1170,21 +1158,21 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 {(() => {
                   const displaySpecs = filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug });
                   return displaySpecs.length > 0 && (
-                  <div className="bg-white rounded-2xl shadow-lg p-8">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
-                    <dl className="space-y-4">
-                      {displaySpecs.map((spec) => (
-                        <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
-                          <dt className="text-sm font-medium text-gray-500 mb-1">
-                            {spec.label}
-                          </dt>
-                          <dd className="text-lg font-semibold text-gray-900">
-                            {spec.value}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
+                    <div className="bg-white rounded-2xl shadow-lg p-8">
+                      <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
+                      <dl className="space-y-4">
+                        {displaySpecs.map((spec) => (
+                          <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
+                            <dt className="text-sm font-medium text-gray-500 mb-1">
+                              {spec.label}
+                            </dt>
+                            <dd className="text-lg font-semibold text-gray-900">
+                              {spec.value}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
                   );
                 })()}
               </div>

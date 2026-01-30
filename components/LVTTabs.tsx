@@ -648,7 +648,24 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                   })()
                 )}
 
-                {renderProducts(legacyColors, 'colors-legacy')}
+
+
+                {(() => {
+                  // Filter legacy colors if collection filter is active
+                  let filteredLegacyColors = legacyColors;
+                  if (searchParams?.collections) {
+                    const selectedCollections = searchParams.collections.split(',');
+                    filteredLegacyColors = legacyColors.filter(color => {
+                      const collectionSpec = color.specs.find(s => s.key === 'collection');
+                      if (collectionSpec) {
+                        return selectedCollections.includes(collectionSpec.value);
+                      }
+                      return false;
+                    });
+                  }
+
+                  return renderProducts(filteredLegacyColors, 'colors-legacy');
+                })()}
               </>
             )}
           </div>
