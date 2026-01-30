@@ -22,9 +22,9 @@ interface ColorFromJSON {
 
 interface LVTTabsProps {
   collections: Product[];
-  colors: Product[]; // Legacy fallback for non-JSON categories
+  colors: Product[]; // Legacy fallback for non-JSON categories (Parket)
   brandsRecord: Record<string, Brand>;
-  categorySlug: string; // 'lvt', 'linoleum', or 'tekstilne-ploce'
+  categorySlug: string; // 'lvt' | 'linoleum' | 'vinil' | 'tekstilne-ploce' | 'parket'
   initialColorSlug?: string; // Optional color slug to automatically open and highlight
   vinylType?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
   searchParams?: {
@@ -197,8 +197,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
 
     // Filter by collections (for LVT and generic categories like Parket)
-    // Za Parket: boje su već filtrirane po efektivnoj kolekciji na serveru (category page), preskačemo da ne bismo izfiltrirali sve (spec ima "Parket")
-    if (searchParams?.collections && categorySlug !== 'parket') {
+    // Za Parket: boje su već filtrirane po efektivnoj kolekciji na serveru (category page), preskačemo
+    if (searchParams?.collections && (categorySlug as string) !== 'parket') {
       const selectedCollections = searchParams.collections.split(',');
       filtered = filtered.filter(color => {
         // LVT Logic using collectionSlug prop
