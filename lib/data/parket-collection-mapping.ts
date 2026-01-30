@@ -125,3 +125,23 @@ export function getEffectiveParketCollection(
   if (specCollectionValue && specCollectionValue !== 'Parket') return specCollectionValue;
   return getParketCollectionBySlug(slug) || specCollectionValue || '';
 }
+
+/** Mapiranje imena kolekcije na slug (za URL /proizvodi/{slug} kao LVT). */
+const PARKET_COLLECTION_NAME_TO_SLUG: Record<string, string> = {
+  [COLLECTION_ALLEGRO]: 'allegro',
+  [COLLECTION_PRIVILEGE]: 'privilege',
+  [COLLECTION_PRIVILEGE_WALTZ]: 'privilege-waltz',
+  [COLLECTION_RUMBA]: 'rumba',
+  [COLLECTION_SALSA]: 'salsa',
+  [COLLECTION_SALSA_ART]: 'salsa-art',
+  [COLLECTION_SALSA_PREMIUM]: 'salsa-premium',
+  [COLLECTION_SOMMER_EUROPARQUET]: 'sommer-europarquet',
+  [COLLECTION_STEP]: 'step-xl-and-l',
+  [COLLECTION_TANGO]: 'tango',
+  [COLLECTION_TANGO_CLASSIC]: 'tango-classic',
+};
+
+export function getParketCollectionSlug(collectionName: string): string | null {
+  if (!collectionName || typeof collectionName !== 'string') return null;
+  return PARKET_COLLECTION_NAME_TO_SLUG[collectionName] ?? null;
+}

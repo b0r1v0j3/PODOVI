@@ -16,7 +16,7 @@ import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
-import { getEffectiveParketCollection, getParketCollectionBySlug } from '@/lib/data/parket-collection-mapping';
+import { getEffectiveParketCollection, getParketCollectionBySlug, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
 
 export const dynamic = 'force-dynamic';
 
@@ -782,20 +782,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
       redirect(`/kategorije/${categorySlug}?color=${product.slug}`);
     }
 
-    // Special Parket Redirect: If visiting a variant directly, redirect to Category Page with ?color=variant
-    if (product.categoryId === '3') {
-      // Check if it is a variant (Not a header) via SKU check
-      // Headers start with PARKET-
-      if (product.sku && !product.sku.startsWith('PARKET-')) {
-        const collectionSpec = product.specs.find(s => s.key === 'collection');
-        const collectionName = collectionSpec?.value;
-
+    // Parket variant: redirect na stranicu kolekcije sa ?color= (kao LVT) – /proizvodi/allegro?color=hrast-elegant-shiny-3-strip
+    if (product.categoryId === '3' && product.sku && !product.sku.startsWith('PARKET-')) {
+      const collectionSpec = product.specs.find(s => s.key === 'collection');
+      const collectionName = getEffectiveParketCollection(product.slug, collectionSpec?.value);
+      const collectionSlug = collectionName ? getParketCollectionSlug(collectionName) : null;
+      if (collectionSlug) {
         const { redirect } = await import('next/navigation');
-        if (collectionName) {
-          redirect(`/kategorije/parket?collections=${encodeURIComponent(collectionName)}&color=${product.slug}`);
-        } else {
-          redirect(`/kategorije/parket?color=${product.slug}`);
-        }
+        redirect(`/proizvodi/${collectionSlug}?color=${encodeURIComponent(product.slug)}`);
       }
     }
 
@@ -822,7 +816,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       : product.name;
 
     // If we loaded a color directly, the specs are already merged in colorToProduct
-    // If we loaded a collection and there's a color parameter, merge color specs
+    // If we loaded a collection and there's a color parameter, merge color specs (LVT/Linoleum/Vinil from JSON)
     if (selectedColorSlug && product && !product.slug.includes(selectedColorSlug)) {
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (colorSource?.color) {
@@ -830,9 +824,26 @@ export default async function ProductPage({ params, searchParams }: Props) {
         if (colorSpecs.length > 0) {
           product.specs = mergeSpecs(product.specs, colorSpecs);
         }
-        // Update description from color if available
         if (colorSource.color.description && typeof colorSource.color.description === 'string' && colorSource.color.description.trim()) {
           product.description = colorSource.color.description.trim();
+        }
+      }
+      // Parket: merge selected variant (slika, naziv, opis) u kolekciju – prikaz kao LVT
+      if (product.categoryId === '3' && product.sku?.startsWith('PARKET-')) {
+        const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+        const parketVariant = tarkettProducts.find(p => p.categoryId === '3' && p.slug === selectedColorSlug);
+        if (parketVariant) {
+          product.name = parketVariant.name;
+          product.shortDescription = parketVariant.shortDescription || product.shortDescription;
+          product.description = (parketVariant.description && typeof parketVariant.description === 'string' && parketVariant.description.trim())
+            ? parketVariant.description.trim()
+            : product.description;
+          if (parketVariant.images && parketVariant.images.length > 0) {
+            product.images = parketVariant.images;
+          }
+          if (parketVariant.specs && parketVariant.specs.length > 0) {
+            product.specs = mergeSpecs(product.specs, parketVariant.specs);
+          }
         }
       }
     }

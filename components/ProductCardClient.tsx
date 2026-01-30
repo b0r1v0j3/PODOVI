@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product, Brand } from '@/types';
-import { getEffectiveParketCollection, PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping';
+import { getEffectiveParketCollection, getParketCollectionSlug, PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping';
 
 interface ProductCardClientProps {
   product: Product;
@@ -54,12 +54,13 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     if (isParketCollectionHeader) {
       productHref = `/kategorije/parket?collections=${encodeURIComponent(product.name)}`;
     } else {
-      // Parket Variant: koristi efektivnu kolekciju (varijante imaju spec "Parket", mapiranje daje Rumba/Tango itd.)
+      // Parket Variant: link na stranicu proizvoda kolekcije sa ?color= (kao LVT) – /proizvodi/allegro?color=hrast-elegant-shiny-3-strip
       const collectionSpec = product.specs?.find(s => s.key === 'collection');
       const collectionName = getEffectiveParketCollection(product.slug, collectionSpec?.value);
+      const collectionSlug = collectionName ? getParketCollectionSlug(collectionName) : null;
 
-      if (collectionName) {
-        productHref = `/kategorije/parket?collections=${encodeURIComponent(collectionName)}&color=${product.slug}`;
+      if (collectionSlug) {
+        productHref = `/proizvodi/${collectionSlug}?color=${encodeURIComponent(product.slug)}`;
       } else {
         productHref = `/proizvodi/${product.slug}`;
       }
