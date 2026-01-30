@@ -787,8 +787,15 @@ export default async function ProductPage({ params, searchParams }: Props) {
       // Check if it is a variant (Not a header) via SKU check
       // Headers start with PARKET-
       if (product.sku && !product.sku.startsWith('PARKET-')) {
+        const collectionSpec = product.specs.find(s => s.key === 'collection');
+        const collectionName = collectionSpec?.value;
+
         const { redirect } = await import('next/navigation');
-        redirect(`/kategorije/parket?color=${product.slug}`);
+        if (collectionName) {
+          redirect(`/kategorije/parket?collections=${encodeURIComponent(collectionName)}&color=${product.slug}`);
+        } else {
+          redirect(`/kategorije/parket?color=${product.slug}`);
+        }
       }
     }
 

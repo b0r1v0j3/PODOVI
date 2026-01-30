@@ -51,8 +51,18 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
       productHref = `/kategorije/parket?collections=${encodeURIComponent(product.name)}`;
     } else {
       // Parket Variant
-      // Link to Product Page (which will redirect to Category with color param)
-      productHref = `/proizvodi/${product.slug}`;
+      // Link directly to Category with BOTH collections (for context) and color (for selection)
+      // This mimics LVT behavior where you see the collection header + variants
+      // We need to find the collection name from specs
+      const collectionSpec = product.specs?.find(s => s.key === 'collection');
+      const collectionName = collectionSpec?.value;
+
+      if (collectionName) {
+        productHref = `/kategorije/parket?collections=${encodeURIComponent(collectionName)}&color=${product.slug}`;
+      } else {
+        // Fallback if no collection spec found (shouldn't happen for Parket)
+        productHref = `/proizvodi/${product.slug}`;
+      }
     }
   }
 
