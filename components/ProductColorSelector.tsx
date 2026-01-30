@@ -289,16 +289,20 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title: za parket prikaži kolekciju običnim tekstom (kao ostalo na sajtu), boja ispod slike */}
+            {/* Title: za parket prikaži kolekciju + ime boje (nikad slug); za ostale productName + shortDescription */}
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {collectionDisplayName || productName}
               </h1>
-              {shortDescription && (
+              {collectionDisplayName ? (
+                <p className="text-lg text-gray-600">
+                  {collectionDisplayName} – {productName}
+                </p>
+              ) : shortDescription ? (
                 <p className="text-lg text-gray-600">
                   {shortDescription}
                 </p>
-              )}
+              ) : null}
             </div>
 
             {/* Price (if available) */}

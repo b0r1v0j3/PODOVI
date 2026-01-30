@@ -65,7 +65,11 @@ export function getParketCollectionBySlug(slug: string): string | null {
   if (s.includes('moonstone') && s.includes('3-strip')) return COLLECTION_SALSA_PREMIUM;
   if (s.includes('white-lightning')) return COLLECTION_SALSA_PREMIUM;
 
-  // 2-strip → Salsa
+  // Salsa: 18 dezena (Hrast Chocolate, Cocoa, Copper Original, Cotton, Elegant High Gloss/Matt/Shiny, Iceberg, Linen, Nordic Elegant, Original High Gloss/Matt/Shiny, Robust White, Sienna, Supreme Matt, Vivid, Jasen Silky White)
+  const salsaSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_SALSA] ?? [];
+  if (salsaSlugList.includes(s)) return COLLECTION_SALSA;
+
+  // 2-strip → Salsa (ostale 2-strip kolekcije)
   if (s.includes('2-strip')) return COLLECTION_SALSA;
 
   // Rumba: 6 dezena (Hrast Copper, Forest, Lava, Monsoon, Premium, Snow 1 Strip)
@@ -192,6 +196,26 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'hrast-monsoon-1-strip',
     'hrast-premium-1-strip',
     'hrast-snow-1-strip',
+  ],
+  [COLLECTION_SALSA]: [
+    'hrast-chocolate-3-strip',
+    'hrast-cocoa-3-strip',
+    'hrast-copper-original-3-strip',
+    'hrast-cotton-3-strip',
+    'hrast-elegant-high-gloss-3-strip',
+    'hrast-elegant-matt-3-strip',
+    'hrast-elegant-shiny-3-strip',
+    'hrast-iceberg-3-strip',
+    'hrast-linen-3-strip',
+    'hrast-nordic-elegant-3-strip',
+    'hrast-original-high-gloss-3-strip',
+    'hrast-original-matt-3-strip',
+    'hrast-original-shiny-3-strip',
+    'hrast-robust-white-3-strip',
+    'hrast-sienna-3-strip',
+    'hrast-supreme-matt-3-strip',
+    'hrast-vivid-3-strip',
+    'jasen-silky-white-3-strip',
   ],
 };
 

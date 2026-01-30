@@ -480,6 +480,22 @@ function normalizeCollectionSlug(categoryId: string, collectionSlug: string): st
 }
 
 async function resolveProductBySlug(slug: string): Promise<(Product & { collectionSlug?: string }) | null> {
+  // Parket kolekcija (rumba, allegro, privilege, ...): učitaj header iz Tarkett podataka da naslov i kolekcija budu tačni (ne "Parket" iz baze)
+  const parketCollectionName = getParketCollectionNameBySlug(slug);
+  if (parketCollectionName) {
+    const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+    const header = tarkettProducts.find(
+      (p) =>
+        p.categoryId === '3' &&
+        p.sku &&
+        String(p.sku).startsWith('PARKET-') &&
+        p.slug === slug
+    );
+    if (header) {
+      return { ...header, collectionSlug: undefined };
+    }
+  }
+
   // First try to find product by slug directly (for collections)
   const product = await productRepository.findBySlug(slug);
   if (product) {
