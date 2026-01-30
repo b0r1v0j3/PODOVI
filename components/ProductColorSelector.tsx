@@ -29,6 +29,8 @@ interface ProductColorSelectorProps {
   customColors?: any[];
   /** Za parket: naziv kolekcije prikazan iznad (kao LVT "Creation 30"). Ispod slike ostaje boja/varijanta. */
   collectionDisplayName?: string;
+  /** YouTube embed URL (npr. za kolekciju) – prikazuje se ispod slike, u širini slike, play na sajtu. */
+  videoEmbedUrl?: string;
 }
 
 export default function ProductColorSelector({
@@ -46,6 +48,7 @@ export default function ProductColorSelector({
   onCharacteristicsChange,
   customColors,
   collectionDisplayName,
+  videoEmbedUrl,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -242,6 +245,20 @@ export default function ProductColorSelector({
                   <p className="text-base text-gray-700">{selectedColor.name}</p>
                 </>
               )}
+            </div>
+          )}
+
+          {/* Video kolekcije – ugrađen player u širini slike, play na sajtu */}
+          {videoEmbedUrl && (
+            <div className="mt-4 w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+              <iframe
+                src={videoEmbedUrl}
+                title="Video kolekcije"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                className="w-full h-full"
+              />
             </div>
           )}
 

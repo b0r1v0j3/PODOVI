@@ -11,7 +11,7 @@ import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 interface ProductCharacteristicsProps {
   specs?: ProductSpec[];
   categoryId: string;
-  /** Naslov sekcije (npr. "Tehničke i ekološke specifikacije" za Parket) */
+  /** Naslov sekcije (npr. "Tehničke specifikacije" za Parket) */
   title?: string;
 }
 

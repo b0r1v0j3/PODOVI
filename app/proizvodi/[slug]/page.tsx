@@ -305,7 +305,7 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
     'Technical',
     'Technical and environmental',
     'Tehničke karakteristike',
-    'Tehničke i ekološke specifikacije',
+    'Tehničke specifikacije',
     'Environmental',
     'Ekološke karakteristike'
   ];
@@ -1000,6 +1000,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   externalLink={product.externalLink}
                   customColors={product.categoryId === '3' ? (customColors ?? []) : customColors}
                   collectionDisplayName={product.categoryId === '3' ? (product.specs.find(s => s.key === 'collection')?.value) : undefined}
+                  videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                 />
 
                 {/* Description & Characteristics Side by Side */}
@@ -1055,7 +1056,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     )}
                   </div>
 
-                  {/* Characteristics / Tehničke i ekološke specifikacije (Parket) */}
+                  {/* Characteristics / Tehničke specifikacije (Parket) */}
                   <ProductCharacteristics
                     specs={
                       product.categoryId === '3'
@@ -1065,7 +1066,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         : filterSpecsForDisplay(product.specs)
                     }
                     categoryId={product.categoryId}
-                    title={product.categoryId === '3' ? 'Tehničke i ekološke specifikacije' : undefined}
+                    title={product.categoryId === '3' ? 'Tehničke specifikacije' : undefined}
                   />
                 </div>
               </>

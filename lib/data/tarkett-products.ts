@@ -46,7 +46,7 @@ export const tarkettProducts: Product[] = [
         ]
       },
       {
-        "title": "Tehničke i ekološke specifikacije",
+        "title": "Tehničke specifikacije",
         "items": []
       }
     ],
@@ -95,7 +95,7 @@ export const tarkettProducts: Product[] = [
         ]
       },
       {
-        "title": "Tehničke i ekološke specifikacije",
+        "title": "Tehničke specifikacije",
         "items": []
       }
     ],
@@ -151,7 +151,7 @@ export const tarkettProducts: Product[] = [
         ]
       },
       {
-        "title": "Tehničke i ekološke specifikacije",
+        "title": "Tehničke specifikacije",
         "items": []
       }
     ],
