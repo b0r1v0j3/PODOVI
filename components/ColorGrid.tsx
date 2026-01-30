@@ -209,6 +209,15 @@ export default function ColorGrid({
       return;
     }
 
+    // Parket kolekcije (allegro, privilege, ...) – NIKAD ne učitavati iz LVT JSON-a (prikazivalo bi winter-832)
+    const parketCollectionSlugs = ['allegro', 'privilege', 'privilege-waltz', 'rumba', 'salsa', 'salsa-art', 'salsa-premium', 'sommer-europarquet', 'step-xl-and-l', 'tango', 'tango-classic'];
+    if (collectionSlug && parketCollectionSlugs.includes(collectionSlug)) {
+      setColors([]);
+      setLoading(false);
+      if (onColorsLoaded) onColorsLoaded(0);
+      return;
+    }
+
     // Validate collectionSlug
     if (!collectionSlug || typeof collectionSlug !== 'string') {
       console.error('ColorGrid: Invalid collectionSlug', collectionSlug);
