@@ -248,20 +248,6 @@ export default function ProductColorSelector({
             </div>
           )}
 
-          {/* Video kolekcije – ugrađen player u širini slike, play na sajtu */}
-          {videoEmbedUrl && (
-            <div className="mt-4 w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
-              <iframe
-                src={videoEmbedUrl}
-                title="Video kolekcije"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                className="w-full h-full"
-              />
-            </div>
-          )}
-
           {/* External Link Button - Below Image */}
           {externalLink && (
             <div className="mt-4">
@@ -373,6 +359,24 @@ export default function ProductColorSelector({
           </div>
         </div>
       </div>
+
+      {/* Video kolekcije – zaseban kvadrat ispod slike i boja, ista širina kao slika */}
+      {videoEmbedUrl && (
+        <div className="mt-6 w-full lg:w-1/2">
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+              <iframe
+                src={videoEmbedUrl}
+                title="Video kolekcije"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {isColorsModalOpen && (
         <div className="fixed inset-0 z-[60]">
