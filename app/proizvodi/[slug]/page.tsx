@@ -890,13 +890,18 @@ export default async function ProductPage({ params, searchParams }: Props) {
         const explicitSlugs = getParketCollectionVariantSlugs(collectionName);
         let variants: typeof tarkettProducts = [];
         if (explicitSlugs.length > 0) {
-          const seen = new Set<string>();
+          // Za Allegro koristimo unose sa id hrast-* (lokalne slike, tačna Tarkett imena); jedan po slug-u
+          const bySlug = new Map<string, (typeof tarkettProducts)[0]>();
           for (const p of tarkettProducts) {
             if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) continue;
-            if (!explicitSlugs.includes(p.slug) || seen.has(p.slug)) continue;
-            seen.add(p.slug);
-            variants.push(p);
+            if (!explicitSlugs.includes(p.slug)) continue;
+            const prefer = p.id.startsWith('hrast-');
+            const existing = bySlug.get(p.slug);
+            if (!existing || (prefer && !existing.id.startsWith('hrast-'))) {
+              bySlug.set(p.slug, p);
+            }
           }
+          variants = explicitSlugs.map(slug => bySlug.get(slug)).filter(Boolean) as typeof tarkettProducts;
         } else {
           variants = tarkettProducts.filter(p => {
               if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) return false;

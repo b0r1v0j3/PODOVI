@@ -3155,18 +3155,18 @@ export const tarkettProducts: Product[] = [
   },
   {
     "id": "hrast-sand-ro-2-strip",
-    "name": "Hrast SAND - RO 2 Strip",
+    "name": "Hrast SAND RO 2 Strip",
     "slug": "hrast-sand-ro-2-strip",
     "sku": "hrast-sand-ro-2-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "Hrast SAND - RO 2 Strip - Allegro Parket",
+    "shortDescription": "Hrast SAND RO 2 Strip - Allegro Parket",
     "description": "Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
     "images": [
       {
         "id": "hrast-sand-ro-2-strip-img",
         "url": "/images/products/hrast-sand-ro-2-strip.jpg",
-        "alt": "Hrast SAND - RO 2 Strip",
+        "alt": "Hrast SAND RO 2 Strip",
         "isPrimary": true,
         "order": 0
       }
@@ -3184,18 +3184,18 @@ export const tarkettProducts: Product[] = [
   },
   {
     "id": "hrast-sienna-ro-2-strip",
-    "name": "Hrast SIENNA - RO 2 Strip",
+    "name": "Hrast SIENNA RO 2 Strip",
     "slug": "hrast-sienna-ro-2-strip",
     "sku": "hrast-sienna-ro-2-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "Hrast SIENNA - RO 2 Strip - Allegro Parket",
+    "shortDescription": "Hrast SIENNA RO 2 Strip - Allegro Parket",
     "description": "Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
     "images": [
       {
         "id": "hrast-sienna-ro-2-strip-img",
         "url": "/images/products/hrast-sienna-ro-2-strip.jpg",
-        "alt": "Hrast SIENNA - RO 2 Strip",
+        "alt": "Hrast SIENNA RO 2 Strip",
         "isPrimary": true,
         "order": 0
       }
