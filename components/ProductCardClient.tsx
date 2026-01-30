@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product, Brand } from '@/types';
-import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
+import { getEffectiveParketCollection, PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping';
 
 interface ProductCardClientProps {
   product: Product;
@@ -47,8 +47,11 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
     const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
     productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
   } else if (isParket) {
-    // Parket Collection Headers have SKU starting with 'PARKET-' (e.g., 'PARKET-SALSA')
-    if (product.sku && product.sku.startsWith('PARKET-') && !product.sku.includes('OAK') && !product.sku.includes('ASH')) {
+    // Parket Collection Headers: SKU PARKET-* ili ime u listi header kolekcija → link samo na ?collections= (otvara kolekciju, ne karticu boje)
+    const isParketCollectionHeader =
+      (product.sku && product.sku.startsWith('PARKET-') && !product.sku.includes('OAK') && !product.sku.includes('ASH')) ||
+      (PARKET_HEADER_COLLECTIONS as readonly string[]).includes(product.name);
+    if (isParketCollectionHeader) {
       productHref = `/kategorije/parket?collections=${encodeURIComponent(product.name)}`;
     } else {
       // Parket Variant: koristi efektivnu kolekciju (varijante imaju spec "Parket", mapiranje daje Rumba/Tango itd.)
