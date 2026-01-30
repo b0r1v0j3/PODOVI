@@ -97,15 +97,9 @@ export function getParketCollectionBySlug(slug: string): string | null {
   const privilegeWaltzSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_PRIVILEGE_WALTZ] ?? [];
   if (privilegeWaltzSlugList.includes(s)) return COLLECTION_PRIVILEGE_WALTZ;
 
-  // Sommer Europarquet: Europarquet dekori (Bronze, Espresso, Golden, Original, Polar)
-  const sommerEuroparquetSlugs = [
-    'hrast-bronze',
-    'hrast-espresso',
-    'hrast-golden',
-    'hrast-original',
-    'hrast-polar',
-  ];
-  if (sommerEuroparquetSlugs.some((e) => s === e)) return COLLECTION_SOMMER_EUROPARQUET;
+  // Sommer Europarquet: 5 dekora (Hrast Bronze, Espresso, Golden, Original, Polar)
+  const sommerEuroparquetSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_SOMMER_EUROPARQUET] ?? [];
+  if (sommerEuroparquetSlugList.includes(s)) return COLLECTION_SOMMER_EUROPARQUET;
 
   // Salsa Art: White Canvas, Black Canvas itd. (3-strip sa canvas u nazivu)
   if (s.includes('white-canvas') && s.includes('3-strip')) return COLLECTION_SALSA_ART;
@@ -225,6 +219,13 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'hrast-supreme-matt-3-strip',
     'hrast-vivid-3-strip',
     'jasen-silky-white-3-strip',
+  ],
+  [COLLECTION_SOMMER_EUROPARQUET]: [
+    'hrast-bronze',
+    'hrast-espresso',
+    'hrast-golden',
+    'hrast-original',
+    'hrast-polar',
   ],
 };
 

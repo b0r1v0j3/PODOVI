@@ -1028,7 +1028,7 @@ export const tarkettProducts: Product[] = [
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Sommer Europarquet Parket",
-    "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore.",
+    "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore. Dostupan u više atraktivnih dekora, sa različitim završnim obradama i dimenzijama, Europarquet kombinuje prirodnu lepotu drveta sa dugotrajnošću i jednostavnom ugradnjom. Pouzdan izbor za funkcionalne i estetski usklađene enterijere.",
     "images": [
       {
         "id": "parket-sommer-europarquet-img",
@@ -1039,27 +1039,174 @@ export const tarkettProducts: Product[] = [
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Sommer Europarquet"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Sommer Europarquet" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Classic Lak" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "13,20 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "7 kg/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "length", "label": "Dužina", "value": "2283 mm" },
+      { "key": "width", "label": "Širina", "value": "194 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
     ],
     "detailsSections": [
       {
         "title": "Ključne karakteristike",
-        "items": ["Jednostavna ugradnja parketa i ekonomično održavanje", "Lakirani sloj sprečava nakupljanje i širenje bakterija", "Ekološka odgovornost u svim procesima", "Garancija 30 godina"]
+        "items": [
+          "Jednostavna ugradnja parketa i ekonomično održavanje",
+          "Lakirani sloj sprečava nakupljanje i širenje bakterija",
+          "Ekološka odgovornost u svim procesima (C2C, FSC, ISO 14001)",
+          "Garancija 30 godina"
+        ]
+      },
+      {
+        "title": "Tehničke specifikacije",
+        "items": []
       }
     ],
     "price": 0,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-bronze",
+    "name": "Hrast Bronze",
+    "slug": "hrast-bronze",
+    "sku": "550049180",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Sommer Europarquet - Hrast Bronze",
+    "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore.",
+    "images": [{ "id": "hrast-bronze-img", "url": "/images/products/hrast-bronze.jpg", "alt": "Hrast Bronze", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Sommer Europarquet" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Classic Lak" },
+      { "key": "ref", "label": "Ref", "value": "550049180" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "13,20 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-espresso",
+    "name": "Hrast Espresso",
+    "slug": "hrast-espresso",
+    "sku": "550049181",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Sommer Europarquet - Hrast Espresso",
+    "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore.",
+    "images": [{ "id": "hrast-espresso-img", "url": "/images/products/hrast-espresso.jpg", "alt": "Hrast Espresso", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Sommer Europarquet" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Classic Lak" },
+      { "key": "ref", "label": "Ref", "value": "550049181" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "13,20 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-golden",
+    "name": "Hrast Golden",
+    "slug": "hrast-golden",
+    "sku": "550049182",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Sommer Europarquet - Hrast Golden",
+    "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore.",
+    "images": [{ "id": "hrast-golden-img", "url": "/images/products/hrast-golden.jpg", "alt": "Hrast Golden", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Sommer Europarquet" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Classic Lak" },
+      { "key": "ref", "label": "Ref", "value": "550049182" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "13,20 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-original",
+    "name": "Hrast Original",
+    "slug": "hrast-original",
+    "sku": "550049183",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Sommer Europarquet - Hrast Original",
+    "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore.",
+    "images": [{ "id": "hrast-original-img", "url": "/images/products/hrast-original.jpg", "alt": "Hrast Original", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Sommer Europarquet" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Classic Lak" },
+      { "key": "ref", "label": "Ref", "value": "550049183" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "13,20 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-polar",
+    "name": "Hrast Polar",
+    "slug": "hrast-polar",
+    "sku": "550049184",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Sommer Europarquet - Hrast Polar",
+    "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore.",
+    "images": [{ "id": "hrast-polar-img", "url": "/images/products/hrast-polar.jpg", "alt": "Hrast Polar", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Sommer Europarquet" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Classic Lak" },
+      { "key": "ref", "label": "Ref", "value": "550049184" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "13,20 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
     "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
