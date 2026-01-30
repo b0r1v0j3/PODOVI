@@ -2,7 +2,7 @@
  * Mapiranje parket varijanti (boja/dezena) na Tarkett kolekcije.
  * Izvor: https://www.tarkett.rs/sr_RS/kategorija-rs_C01012-parket
  * - Rumba: 3-strip hrast (npr. Oak Copper, Chocolate, Cocoa)
- * - Tango: 1-strip hrast
+ * - Tango: 7 dezena 1-strip (Antique White, Bourbon, Copper, Cumin, Mocha, Premium, Schwarzwald)
  * - Tango Classic: klasične nijanse (Almond, Sepia, Sienna, Cottage, Bright, Copper - bez strip)
  * - Salsa: 2-strip hrast
  * - Salsa Premium: premium 3-strip (Jasper, Moonstone, White Lightning)
@@ -232,6 +232,15 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'hrast-golden',
     'hrast-original',
     'hrast-polar',
+  ],
+  [COLLECTION_TANGO]: [
+    'hrast-antique-white-1-strip',
+    'hrast-bourbon-1-strip',
+    'tango-hrast-copper-1-strip',
+    'hrast-cumin-1-strip',
+    'hrast-mocha-1-strip',
+    'tango-hrast-premium-1-strip',
+    'hrast-schwarzwald-1-strip',
   ],
 };
 

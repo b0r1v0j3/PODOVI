@@ -1408,27 +1408,30 @@ export const tarkettProducts: Product[] = [
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Tango Parket",
-    "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta.",
+    "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta. Prirodna struktura drveta dodatno se tretira bojom i brušenjem, stvarajući raznovrsne dezene i stilove - od dasaka koje imaju egzotičan šmek, preko tradicionalnih, modernih, retro i rustičnih. U okviru parket Tango kolekcije, na raspolaganju imate preko deset nijansi parketa (uz odgovarajući asortiman lajsni), te najzad možete da kreirate ambijent kakav ste oduvek želeli. U pitanju je Tarkett parket koji je izdržljiv i dugotrajan, a instalacija parketa je brza i jednostavna uz T-Lock sistem, a parket je spreman za upotrebu odmah nakon ugradnje. Zbog površinske zaštite (Proteco Strong lak), čišćenje parketa je lako, a održavanje ekonomično. Udobnost, privlačan dizajn i 30 godina Tarkett garancije čine Tango parkete sjajnim izborom.",
     "images": [
       {
         "id": "parket-tango-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Tango_Oak_Baron.jpg",
+        "url": "/images/products/hrast-antique-white-1-strip.jpg",
         "alt": "Tango",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Tango"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "povrsinski_tretman", "label": "Površinski tretman", "value": "Proteco Natura, Proteco Lak" },
+      { "key": "ukupna_debljina", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "povrsina_po_kutiji", "label": "Površina po kutiji", "value": "2,180 m²" },
+      { "key": "debljina_habajuceg_sloja", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "ukupna_masa", "label": "Ukupna masa", "value": "7,5 kg/m²" },
+      { "key": "sistem_zakljucavanja", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "tip_formata", "label": "Tip formata", "value": "Daska" },
+      { "key": "duzina", "label": "Dužina", "value": "2215 mm" },
+      { "key": "sirina", "label": "Širina", "value": "164 mm" },
+      { "key": "broj_artikala_po_kutiji", "label": "Broj artikala po kutiji", "value": "6" }
     ],
     "detailsSections": [
       {
@@ -2338,34 +2341,26 @@ export const tarkettProducts: Product[] = [
     updatedAt: new Date("2026-01-29T19:17:36.174Z")
   },
   {
-    "id": "oak-antique-white-1-strip",
+    "id": "hrast-antique-white-1-strip",
     "name": "Hrast ANTIQUE WHITE 1 Strip",
     "slug": "hrast-antique-white-1-strip",
     "sku": "oak-antique-white-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-antique-white-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango - Hrast ANTIQUE WHITE 1 Strip",
+    "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta.",
     "images": [
       {
-        "id": "oak-antique-white-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Antique_White.jpg",
+        "id": "hrast-antique-white-1-strip-img",
+        "url": "/images/products/hrast-antique-white-1-strip.jpg",
         "alt": "Hrast ANTIQUE WHITE 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2412,34 +2407,26 @@ export const tarkettProducts: Product[] = [
     updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
-    "id": "oak-copper-1-strip",
+    "id": "tango-hrast-copper-1-strip",
     "name": "Hrast COPPER 1 Strip",
-    "slug": "hrast-copper-1-strip",
+    "slug": "tango-hrast-copper-1-strip",
     "sku": "oak-copper-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-copper-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango - Hrast COPPER 1 Strip",
+    "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta.",
     "images": [
       {
-        "id": "oak-copper-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Copper.jpg",
+        "id": "tango-hrast-copper-1-strip-img",
+        "url": "/images/products/tango-hrast-copper-1-strip.jpg",
         "alt": "Hrast COPPER 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2486,34 +2473,26 @@ export const tarkettProducts: Product[] = [
     updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
-    "id": "oak-mocha-1-strip",
+    "id": "hrast-mocha-1-strip",
     "name": "Hrast MOCHA 1 Strip",
     "slug": "hrast-mocha-1-strip",
     "sku": "oak-mocha-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-mocha-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango - Hrast MOCHA 1 Strip",
+    "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta.",
     "images": [
       {
-        "id": "oak-mocha-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Mocha.jpg",
+        "id": "hrast-mocha-1-strip-img",
+        "url": "/images/products/hrast-mocha-1-strip.jpg",
         "alt": "Hrast MOCHA 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2560,34 +2539,26 @@ export const tarkettProducts: Product[] = [
     updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
-    "id": "oak-schwarzwald-1-strip",
+    "id": "hrast-schwarzwald-1-strip",
     "name": "Hrast SCHWARZWALD 1 Strip",
     "slug": "hrast-schwarzwald-1-strip",
     "sku": "oak-schwarzwald-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-schwarzwald-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango - Hrast SCHWARZWALD 1 Strip",
+    "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta.",
     "images": [
       {
-        "id": "oak-schwarzwald-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Schwarzwald.jpg",
+        "id": "hrast-schwarzwald-1-strip-img",
+        "url": "/images/products/hrast-schwarzwald-1-strip.jpg",
         "alt": "Hrast SCHWARZWALD 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",
