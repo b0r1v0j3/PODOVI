@@ -358,9 +358,9 @@ export default function ProductColorSelector({
             </div>
           </div>
 
-          {/* Colors Section - spušten dole, u liniji sa dnom slike */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0 mt-auto">
-            <div className="flex items-start justify-between gap-4 mb-4">
+          {/* Colors Section - raste da popuni prostor, min-height da bude u liniji sa slikom (posebno parket) */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-[280px] lg:min-h-[320px]">
+            <div className="flex items-start justify-between gap-4 mb-4 flex-shrink-0">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
                 <p className="text-sm text-gray-500">{colorsCountLabel} {colorsCount === 1 ? 'boja' : 'boja'}</p>
@@ -373,7 +373,7 @@ export default function ProductColorSelector({
                 Pogledaj sve →
               </button>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-h-0">
               <ColorGrid
                 collectionSlug={collectionSlug}
                 onColorSelect={handleColorSelect}
