@@ -148,3 +148,16 @@ export function getParketCollectionSlug(collectionName: string): string | null {
   if (!collectionName || typeof collectionName !== 'string') return null;
   return PARKET_COLLECTION_NAME_TO_SLUG[collectionName] ?? null;
 }
+
+/**
+ * Eksplicitna lista slugova varijanti po kolekciji (kao na Tarkett.rs).
+ * Koristi se za prikaz boja na stranici kolekcije i za redirect nevažećeg ?color=.
+ */
+const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
+  [COLLECTION_ALLEGRO]: ['hrast-essence-2-strip', 'hrast-sand-ro-2-strip', 'hrast-sienna-ro-2-strip'],
+};
+
+export function getParketCollectionVariantSlugs(collectionName: string): string[] {
+  if (!collectionName || typeof collectionName !== 'string') return [];
+  return PARKET_COLLECTION_VARIANT_SLUGS[collectionName] ?? [];
+}

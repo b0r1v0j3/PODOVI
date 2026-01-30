@@ -17,7 +17,7 @@ import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
-import { getEffectiveParketCollection, getParketCollectionBySlug, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
+import { getEffectiveParketCollection, getParketCollectionBySlug, getParketCollectionSlug, getParketCollectionVariantSlugs } from '@/lib/data/parket-collection-mapping';
 
 export const dynamic = 'force-dynamic';
 
@@ -767,11 +767,22 @@ export default async function ProductPage({ params, searchParams }: Props) {
     }
 
     // Load the collection/product normally
-    const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
+    let selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
     const product = await resolveProductBySlug(params.slug);
 
     if (!product) {
       notFound();
+    }
+
+    // Parket kolekcija: ako je ?color= varijanta koja ne pripada ovoj kolekciji, redirect na prvu validnu boju
+    if (product.categoryId === '3' && product.sku?.startsWith('PARKET-') && selectedColorSlug) {
+      const collectionSpec = product.specs.find(s => s.key === 'collection');
+      const collectionName = collectionSpec?.value;
+      const validSlugs = collectionName ? getParketCollectionVariantSlugs(collectionName) : [];
+      if (validSlugs.length > 0 && !validSlugs.includes(selectedColorSlug)) {
+        const { redirect } = await import('next/navigation');
+        redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(validSlugs[0])}`);
+      }
     }
 
     // If product is a COLOR (has collectionSlug), redirect to CATEGORY page with color parameter.
@@ -832,16 +843,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // Parket: merge selected variant (slika, naziv, opis) u kolekciju – prikaz kao LVT
+    // Parket: merge selected variant (slika, naziv) u kolekciju – opis i karakteristike uvek iz header-a (kao na Tarkett.rs)
     if (selectedColorSlug && product && product.categoryId === '3' && product.sku?.startsWith('PARKET-')) {
       const { tarkettProducts } = await import('@/lib/data/tarkett-products');
       const parketVariant = tarkettProducts.find(p => p.categoryId === '3' && p.slug === selectedColorSlug);
       if (parketVariant) {
         product.name = parketVariant.name;
         product.shortDescription = parketVariant.shortDescription || product.shortDescription;
-        product.description = (parketVariant.description && typeof parketVariant.description === 'string' && parketVariant.description.trim())
-          ? parketVariant.description.trim()
-          : product.description;
+        // Opis i detailsSections ostaju iz kolekcije (header) – na Tarkett.rs sve varijante dele isti opis i karakteristike
         if (parketVariant.images && parketVariant.images.length > 0) {
           product.images = parketVariant.images;
         }
@@ -871,18 +880,23 @@ export default async function ProductPage({ params, searchParams }: Props) {
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
 
-    // Prepare customColors for Parket items (varijante grupisane po efektivnoj kolekciji)
+    // Prepare customColors for Parket (samo varijante koje pripadaju ovoj kolekciji – kao na Tarkett.rs)
     let customColors: any[] | undefined = undefined;
     if (product.categoryId === '3') {
       const { tarkettProducts } = await import('@/lib/data/tarkett-products');
       const collectionSpec = product.specs.find(s => s.key === 'collection');
       if (collectionSpec) {
         const collectionName = collectionSpec.value;
-        const variants = tarkettProducts.filter(p => {
-          if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) return false;
-          const effective = getEffectiveParketCollection(p.slug, p.specs.find(s => s.key === 'collection')?.value);
-          return effective === collectionName;
-        });
+        const explicitSlugs = getParketCollectionVariantSlugs(collectionName);
+        const variants = explicitSlugs.length > 0
+          ? tarkettProducts.filter(p =>
+              p.categoryId === '3' && !p.sku.startsWith('PARKET-') && explicitSlugs.includes(p.slug)
+            )
+          : tarkettProducts.filter(p => {
+              if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) return false;
+              const effective = getEffectiveParketCollection(p.slug, p.specs.find(s => s.key === 'collection')?.value);
+              return effective === collectionName;
+            });
 
         if (variants.length > 0) {
           customColors = variants.map(v => ({
