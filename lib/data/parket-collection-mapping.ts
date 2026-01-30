@@ -6,7 +6,7 @@
  * - Tango Classic: klasične nijanse (Almond, Sepia, Sienna, Cottage, Bright, Copper - bez strip)
  * - Salsa: 2-strip hrast
  * - Salsa Premium: premium 3-strip (Jasper, Moonstone, White Lightning)
- * - Step XL & L: Baron, Sienna 3-strip
+ * - Step XL & L: 7 boja (Baron Brown/Sienna, Royal Antique White/Grey, Copper 1 Strip, Premium 1 Strip, Vivid)
  * - Privilege: luksuzne nijanse (Royal, Misty, Essence, Vivid, Soft Beige, Bronze, Espresso, Golden, Original, Polar)
  * - Allegro: Elegant 3-strip (nijanse siene do svetlih – kao na Tarkett Allegro)
  */
@@ -56,9 +56,9 @@ export function getParketCollectionBySlug(slug: string): string | null {
   const privilegeSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_PRIVILEGE] ?? [];
   if (privilegeSlugList.includes(s)) return COLLECTION_PRIVILEGE;
 
-  // Step XL & L: Baron, Sienna 3-strip
-  if (s.includes('baron')) return COLLECTION_STEP;
-  if (s === 'hrast-sienna-3-strip') return COLLECTION_STEP;
+  // Step XL & L: 7 boja (Baron Brown/Sienna, Royal Antique White/Grey, Copper 1 Strip, Premium 1 Strip, Vivid)
+  const stepSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_STEP] ?? [];
+  if (stepSlugList.includes(s)) return COLLECTION_STEP;
 
   // Salsa Art: 3 dezena (Hrast White Lightning, Jasen Ivory Dreams, Jasen White Canvas)
   const salsaArtSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_SALSA_ART] ?? [];
@@ -110,7 +110,6 @@ export function getParketCollectionBySlug(slug: string): string | null {
   const privilegeSlugs = [
     'hrast-royal-antique-white',
     'hrast-royal-grey',
-    'hrast-vivid',
   ];
   if (privilegeSlugs.some((p) => s === p)) return COLLECTION_PRIVILEGE;
 
@@ -179,6 +178,15 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'prestige-oak-white',
     'privilege-prestige-oak',
   ],
+  [COLLECTION_STEP]: [
+    'hrast-baron-brown',
+    'hrast-baron-sienna',
+    'hrast-royal-antique-white',
+    'hrast-royal-grey',
+    'hrast-copper-1-strip',
+    'hrast-premium-1-strip',
+    'hrast-vivid',
+  ],
   [COLLECTION_PRIVILEGE_WALTZ]: [
     'hrast-essence',
     'hrast-misty-brown',
@@ -187,11 +195,9 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'hrast-soft-beige',
   ],
   [COLLECTION_RUMBA]: [
-    'hrast-copper-1-strip',
     'hrast-forest-1-strip',
     'hrast-lava-1-strip',
     'hrast-monsoon-1-strip',
-    'hrast-premium-1-strip',
     'hrast-snow-1-strip',
   ],
   [COLLECTION_SALSA_ART]: [

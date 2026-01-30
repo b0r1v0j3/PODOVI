@@ -1254,6 +1254,153 @@ export const tarkettProducts: Product[] = [
     "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
   {
+    "id": "hrast-baron-brown-step",
+    "name": "Hrast Baron Brown",
+    "slug": "hrast-baron-brown",
+    "sku": "550049170",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step XL & L - Hrast Baron Brown",
+    "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer.",
+    "images": [{ "id": "hrast-baron-brown-img", "url": "/images/products/hrast-baron-brown.jpg", "alt": "Hrast Baron Brown", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Step XL & L" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-baron-sienna-step",
+    "name": "Hrast Baron Sienna",
+    "slug": "hrast-baron-sienna",
+    "sku": "550049171",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step XL & L - Hrast Baron Sienna",
+    "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer.",
+    "images": [{ "id": "hrast-baron-sienna-img", "url": "/images/products/hrast-baron-sienna.jpg", "alt": "Hrast Baron Sienna", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Step XL & L" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-royal-antique-white-step",
+    "name": "Hrast Royal Antique White",
+    "slug": "hrast-royal-antique-white",
+    "sku": "550049172",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step XL & L - Hrast Royal Antique White",
+    "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer.",
+    "images": [{ "id": "hrast-royal-antique-white-img", "url": "/images/products/hrast-royal-antique-white.jpg", "alt": "Hrast Royal Antique White", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Step XL & L" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-royal-grey-step",
+    "name": "Hrast Royal Grey",
+    "slug": "hrast-royal-grey",
+    "sku": "550049173",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step XL & L - Hrast Royal Grey",
+    "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer.",
+    "images": [{ "id": "hrast-royal-grey-img", "url": "/images/products/hrast-royal-grey.jpg", "alt": "Hrast Royal Grey", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Step XL & L" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-copper-1-strip-step",
+    "name": "Hrast COPPER 1 Strip",
+    "slug": "hrast-copper-1-strip",
+    "sku": "550049174",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step XL & L - Hrast COPPER 1 Strip",
+    "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer.",
+    "images": [{ "id": "hrast-copper-1-strip-img", "url": "/images/products/hrast-copper-1-strip.jpg", "alt": "Hrast COPPER 1 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Step XL & L" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-premium-1-strip-step",
+    "name": "Hrast PREMIUM 1 Strip",
+    "slug": "hrast-premium-1-strip",
+    "sku": "550049175",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step XL & L - Hrast PREMIUM 1 Strip",
+    "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer.",
+    "images": [{ "id": "hrast-premium-1-strip-img", "url": "/images/products/hrast-premium-1-strip.jpg", "alt": "Hrast PREMIUM 1 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Step XL & L" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-vivid-step",
+    "name": "Hrast Vivid",
+    "slug": "hrast-vivid",
+    "sku": "550049176",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step XL & L - Hrast Vivid",
+    "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer.",
+    "images": [{ "id": "hrast-vivid-img", "url": "/images/products/hrast-vivid.jpg", "alt": "Hrast Vivid", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Step XL & L" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
     "id": "parket-tango",
     "name": "Tango",
     "slug": "tango",
