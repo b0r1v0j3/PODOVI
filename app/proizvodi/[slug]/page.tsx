@@ -1022,8 +1022,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   ) : undefined}
                 />
 
-                {/* Description + Tehničke spec samo za ne-parket (parket ima Opis u levoj koloni, Tehničke spec u desnoj) */}
-                {product.categoryId !== '3' && (
+                {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne – vinil ima opširniji blok dole (Gerflor sadržaj) */}
+                {product.categoryId !== '3' && product.categoryId !== '2' && (
                 <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div className="bg-white rounded-2xl shadow-lg p-6">
                     <>
@@ -1171,7 +1171,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Description & Specs - For Non-LVT/Linoleum/Parket Only (Parket ima svoj blok gore) */}
+            {/* Description & Specs - Za vinil (2) i ostale kategorije koje nisu LVT/Linoleum/Tekstilne/Parket – opširni opisi i karakteristike (Gerflor itd.) */}
             {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && product.categoryId !== '3' && (
               <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Description */}
