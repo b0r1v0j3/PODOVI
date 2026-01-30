@@ -838,11 +838,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
       product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
     }
 
-    // Remove "Gerflor" prefix from product name for LVT collections (for display only)
-    const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
-      ? product.name.replace(/^Gerflor\s+/, '')
-      : product.name;
-
     // If we loaded a color directly, the specs are already merged in colorToProduct
     // If we loaded a collection and there's a color parameter, merge color specs (LVT/Linoleum/Vinil from JSON)
     // IMPORTANT: Skip this for Parket (categoryId '3') to avoid loading LVT colors (like "Winter 832") by mistake
@@ -875,6 +870,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
         }
       }
     }
+
+    // displayName: posle parket merge-a da podnaslov bude "Parket – ime izabrane boje", ne kolekcije
+    const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
+      ? product.name.replace(/^Gerflor\s+/, '')
+      : product.name;
 
     if (!product.slug || typeof product.slug !== 'string') {
       product.slug = params.slug;
