@@ -781,7 +781,7 @@ export const tarkettProducts: Product[] = [
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Salsa Art Parket",
-    "description": "Majstorski dizajnirana kolekcija parketa Salsa Art kombinuje prirodno drvo sa posebnim načinima tretiranja površinske strukture - sve radi dobijanja novog, autentičnog izgleda. Parket je dostupan u različitim nijansama - od belih i krem nijansi, do braon i crne, što vam otvara mnogobrojne mogućnosti dizajna.",
+    "description": "Majstorski dizajnirana kolekcija parketa Salsa Art kombinuje prirodno drvo sa posebnim načinima tretiranja površinske strukture - sve radi dobijanja novog, autentičnog izgleda. Parket je dostupan u različitim nijansama - od belih i krem nijansi, do braon i crne, što vam otvara mnogobrojne mogućnosti dizajna. Uz Salsa Art parket, možete da kreirate tačno onakav ambijent kakav ste zamislili - moderan, retro, minimalistički ili rustičan. Zahvaljujući T-Lock sistemu, parket se izuzetno lako i brzo postavlja, a moguća je i instalacija preko podnog grejanja. Površina je fabrički lakirana Proteco Strong lakom, što čini parket otpornim na ogrebotine, habanja i oštećenja, a vama štedi novac i omogućava znatno lakše održavanje. Tarkett se ističe po ekološkom pristupu proizvodnje: Salsa kolekcija parketa podrazumeva višeslojne parkete, gde je potrošnja drveta u procesu proizvodnje znatno smanjena.",
     "images": [
       {
         "id": "parket-salsa-art-img",
@@ -792,27 +792,121 @@ export const tarkettProducts: Product[] = [
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Salsa Art"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Salsa Art" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "7,5 kg/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Jasen, Hrast" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "length", "label": "Dužina", "value": "2283 mm" },
+      { "key": "width", "label": "Širina", "value": "194 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
     ],
     "detailsSections": [
       {
         "title": "Ključne karakteristike",
-        "items": ["Mogućnost različitih kombinacija boja i dezena", "Izdržljiv i otporan pod", "Jednostavna ugradnja parketa i ekonomično održavanje", "Odgovarajući asortiman paket lajsni", "Garancija 30 godina"]
+        "items": [
+          "Mogućnost različitih kombinacija boja i dezena",
+          "Izdržljiv i otporan pod",
+          "Jednostavna ugradnja parketa i ekonomično održavanje",
+          "Odgovarajući asortiman parket lajsni",
+          "Garancija 30 godina"
+        ]
+      },
+      {
+        "title": "Tehničke specifikacije",
+        "items": []
       }
     ],
     "price": 0,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-white-lightning-3-strip",
+    "name": "Hrast WHITE LIGHTNING 3 Strip",
+    "slug": "hrast-white-lightning-3-strip",
+    "sku": "550049160",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa Art - Hrast WHITE LIGHTNING 3 Strip",
+    "description": "Majstorski dizajnirana kolekcija parketa Salsa Art kombinuje prirodno drvo sa posebnim načinima tretiranja površinske strukture - sve radi dobijanja novog, autentičnog izgleda.",
+    "images": [{ "id": "hrast-white-lightning-3-strip-img", "url": "/images/products/hrast-white-lightning-3-strip.jpg", "alt": "Hrast WHITE LIGHTNING 3 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Salsa Art" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
+      { "key": "ref", "label": "Ref", "value": "550049160" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "jasen-ivory-dreams-3-strip",
+    "name": "Jasen IVORY DREAMS 3 Strip",
+    "slug": "jasen-ivory-dreams-3-strip",
+    "sku": "550049161",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa Art - Jasen IVORY DREAMS 3 Strip",
+    "description": "Majstorski dizajnirana kolekcija parketa Salsa Art kombinuje prirodno drvo sa posebnim načinima tretiranja površinske strukture - sve radi dobijanja novog, autentičnog izgleda.",
+    "images": [{ "id": "jasen-ivory-dreams-3-strip-img", "url": "/images/products/jasen-ivory-dreams-3-strip.jpg", "alt": "Jasen IVORY DREAMS 3 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Salsa Art" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Jasen" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
+      { "key": "ref", "label": "Ref", "value": "550049161" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "jasen-white-canvas-3-strip",
+    "name": "Jasen WHITE CANVAS 3 Strip",
+    "slug": "jasen-white-canvas-3-strip",
+    "sku": "550049162",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa Art - Jasen WHITE CANVAS 3 Strip",
+    "description": "Majstorski dizajnirana kolekcija parketa Salsa Art kombinuje prirodno drvo sa posebnim načinima tretiranja površinske strukture - sve radi dobijanja novog, autentičnog izgleda.",
+    "images": [{ "id": "jasen-white-canvas-3-strip-img", "url": "/images/products/jasen-white-canvas-3-strip.jpg", "alt": "Jasen WHITE CANVAS 3 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Salsa Art" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Jasen" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
+      { "key": "ref", "label": "Ref", "value": "550049162" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
     "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },

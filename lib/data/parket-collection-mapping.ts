@@ -60,6 +60,10 @@ export function getParketCollectionBySlug(slug: string): string | null {
   if (s.includes('baron')) return COLLECTION_STEP;
   if (s === 'hrast-sienna-3-strip') return COLLECTION_STEP;
 
+  // Salsa Art: 3 dezena (Hrast White Lightning, Jasen Ivory Dreams, Jasen White Canvas)
+  const salsaArtSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_SALSA_ART] ?? [];
+  if (salsaArtSlugList.includes(s)) return COLLECTION_SALSA_ART;
+
   // Salsa Premium: premium 3-strip dezeni
   if (s.includes('jasper') && s.includes('3-strip')) return COLLECTION_SALSA_PREMIUM;
   if (s.includes('moonstone') && s.includes('3-strip')) return COLLECTION_SALSA_PREMIUM;
@@ -196,6 +200,11 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'hrast-monsoon-1-strip',
     'hrast-premium-1-strip',
     'hrast-snow-1-strip',
+  ],
+  [COLLECTION_SALSA_ART]: [
+    'hrast-white-lightning-3-strip',
+    'jasen-ivory-dreams-3-strip',
+    'jasen-white-canvas-3-strip',
   ],
   [COLLECTION_SALSA]: [
     'hrast-chocolate-3-strip',
