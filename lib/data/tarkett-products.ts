@@ -82,9 +82,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,720 m², 0,564 m², 1,512 m²" },
       { "key": "locking_system", "label": "Sistem zaključavanja", "value": "Utor-pero" },
       { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
-      { "key": "length", "label": "Dužina", "value": "600 mm, 470 mm" },
-      { "key": "width", "label": "Širina", "value": "120 mm" }
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
     ],
     "detailsSections": [
       {
