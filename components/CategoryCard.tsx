@@ -11,7 +11,9 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   const isLinoleum = category.slug === 'linoleum' || category.id === '7';
   const isCarpet = category.slug === 'tekstilne-ploce' || category.id === '4';
   const isVinil = category.slug === 'vinil' || category.id === '2';
+  const isParket = category.slug === 'parket' || category.id === '3';
   const saharaNoirImage = '/images/products/lvt/colors/creation-55/1742-sahara-noir/pod/1742-sahara-noir-pod.jpg';
+  const parketImage = '/images/products/galloni-oak.jpg';
 
   return (
     <Link 
@@ -28,8 +30,17 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
+        ) : isParket ? (
+          // Parket: use local image so it always loads on homepage and categories page
+          <Image
+            src={parketImage}
+            alt={category.name}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
+          />
         ) : (isLinoleum || isCarpet || isVinil) && category.image ? (
-          // Show category image for Linoleum, Carpet, and Vinil
+          // Show category image for Linoleum, Carpet, Vinil
           <Image
             src={category.image}
             alt={category.name}

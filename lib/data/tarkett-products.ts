@@ -2755,12 +2755,12 @@ export const tarkettProducts: Product[] = [
   {
     "id": "oak-copper-1-strip",
     "name": "Hrast COPPER 1 Strip",
-    "slug": "hrast-copper-1-strip",
-    "sku": "oak-copper-1-strip",
+    "slug": "rumba-hrast-copper-1-strip",
+    "sku": "550048039",
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Rumba - Hrast COPPER 1 Strip",
-    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost.",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost. Na raspolaganju vam je šest različitih nijansi drveta: od svetlih, bež i pepeljastih nijansi, do tamnijih, bogatih tonova.",
     "images": [
       {
         "id": "oak-copper-1-strip-img",
@@ -2772,7 +2772,14 @@ export const tarkettProducts: Product[] = [
     ],
     "specs": [
       { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
-      { "key": "collection", "label": "Kolekcija", "value": "Rumba" }
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
+      { "key": "reference", "label": "Ref.", "value": "550048039" },
+      { "key": "format", "label": "Format", "value": "Daska 120 x 1200 mm, 2 midi oborene ivice" },
+      { "key": "locking", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "installation", "label": "Ugradnja", "value": "Glue-Down/Floating" },
+      { "key": "thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "area_per_box", "label": "Površina po kutiji", "value": "0,860 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2785,31 +2792,30 @@ export const tarkettProducts: Product[] = [
     "id": "oak-forest-1-strip",
     "name": "Hrast FOREST 1 Strip",
     "slug": "hrast-forest-1-strip",
-    "sku": "oak-forest-1-strip",
+    "sku": "550048036",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-forest-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Rumba - Hrast FOREST 1 Strip",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost. Na raspolaganju vam je šest različitih nijansi drveta: od svetlih, bež i pepeljastih nijansi, do tamnijih, bogatih tonova.",
     "images": [
       {
         "id": "oak-forest-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Forest.jpg",
+        "url": "/images/products/rumba-oak-forest.jpg",
         "alt": "Hrast FOREST 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
+      { "key": "reference", "label": "Ref.", "value": "550048036" },
+      { "key": "format", "label": "Format", "value": "Daska 120 x 1200 mm, 2 midi oborene ivice" },
+      { "key": "locking", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "installation", "label": "Ugradnja", "value": "Glue-Down/Floating" },
+      { "key": "thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "area_per_box", "label": "Površina po kutiji", "value": "0,860 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2851,31 +2857,30 @@ export const tarkettProducts: Product[] = [
     "id": "oak-monsoon-1-strip",
     "name": "Hrast MONSOON 1 Strip",
     "slug": "hrast-monsoon-1-strip",
-    "sku": "oak-monsoon-1-strip",
+    "sku": "550048038",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-monsoon-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Rumba - Hrast MONSOON 1 Strip",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost. Na raspolaganju vam je šest različitih nijansi drveta: od svetlih, bež i pepeljastih nijansi, do tamnijih, bogatih tonova.",
     "images": [
       {
         "id": "oak-monsoon-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Rumba_Oak_Monsoon.jpg",
+        "url": "/images/products/rumba-oak-monsoon.jpg",
         "alt": "Hrast MONSOON 1 Strip",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
+      { "key": "reference", "label": "Ref.", "value": "550048038" },
+      { "key": "format", "label": "Format", "value": "Daska 120 x 1200 mm, 2 midi oborene ivice" },
+      { "key": "locking", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "installation", "label": "Ugradnja", "value": "Glue-Down/Floating" },
+      { "key": "thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "area_per_box", "label": "Površina po kutiji", "value": "0,860 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2917,11 +2922,11 @@ export const tarkettProducts: Product[] = [
     "id": "oak-snow-1-strip",
     "name": "Hrast SNOW 1 Strip",
     "slug": "hrast-snow-1-strip",
-    "sku": "oak-snow-1-strip",
+    "sku": "550048035",
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Rumba - Hrast SNOW 1 Strip",
-    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost.",
+    "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost. Na raspolaganju vam je šest različitih nijansi drveta: od svetlih, bež i pepeljastih nijansi, do tamnijih, bogatih tonova.",
     "images": [
       {
         "id": "oak-snow-1-strip-img",
@@ -2933,7 +2938,14 @@ export const tarkettProducts: Product[] = [
     ],
     "specs": [
       { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
-      { "key": "collection", "label": "Kolekcija", "value": "Rumba" }
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
+      { "key": "reference", "label": "Ref.", "value": "550048035" },
+      { "key": "format", "label": "Format", "value": "Daska 120 x 1200 mm, 2 midi oborene ivice" },
+      { "key": "locking", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "installation", "label": "Ugradnja", "value": "Glue-Down/Floating" },
+      { "key": "thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "area_per_box", "label": "Površina po kutiji", "value": "0,860 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",

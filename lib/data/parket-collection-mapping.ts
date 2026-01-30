@@ -195,9 +195,11 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'hrast-soft-beige',
   ],
   [COLLECTION_RUMBA]: [
+    'rumba-hrast-copper-1-strip',
     'hrast-forest-1-strip',
     'hrast-lava-1-strip',
     'hrast-monsoon-1-strip',
+    'rumba-hrast-premium-1-strip',
     'hrast-snow-1-strip',
   ],
   [COLLECTION_SALSA_ART]: [
@@ -255,4 +257,13 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
 export function getParketCollectionVariantSlugs(collectionName: string): string[] {
   if (!collectionName || typeof collectionName !== 'string') return [];
   return PARKET_COLLECTION_VARIANT_SLUGS[collectionName] ?? [];
+}
+
+/** Svi slugovi varijanti (boja) koji pripadaju nekoj parket kolekciji. Za filtriranje taba Boje na /kategorije/parket. */
+export function getAllParketVariantSlugs(): string[] {
+  const set = new Set<string>();
+  for (const slugs of Object.values(PARKET_COLLECTION_VARIANT_SLUGS)) {
+    slugs.forEach((s) => set.add(s));
+  }
+  return Array.from(set);
 }
