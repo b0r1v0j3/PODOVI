@@ -17,7 +17,7 @@ import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
-import { getEffectiveParketCollection, getParketCollectionBySlug, getParketCollectionSlug, getParketCollectionVariantSlugs } from '@/lib/data/parket-collection-mapping';
+import { getEffectiveParketCollection, getParketCollectionBySlug, getParketCollectionNameBySlug, getParketCollectionSlug, getParketCollectionVariantSlugs } from '@/lib/data/parket-collection-mapping';
 
 export const dynamic = 'force-dynamic';
 
@@ -884,16 +884,15 @@ export default async function ProductPage({ params, searchParams }: Props) {
     let customColors: any[] | undefined = undefined;
     if (product.categoryId === '3') {
       const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-      const collectionSpec = product.specs.find(s => s.key === 'collection');
-      if (collectionSpec) {
-        const collectionName = collectionSpec.value;
+      const collectionSpec = product.specs?.find(s => s.key === 'collection');
+      const collectionName = collectionSpec?.value ?? getParketCollectionNameBySlug(params.slug);
+      if (collectionName) {
         const explicitSlugs = getParketCollectionVariantSlugs(collectionName);
         let variants: typeof tarkettProducts = [];
         if (explicitSlugs.length > 0) {
-          // Za Allegro koristimo unose sa id hrast-* (lokalne slike, tačna Tarkett imena); jedan po slug-u
           const bySlug = new Map<string, (typeof tarkettProducts)[0]>();
           for (const p of tarkettProducts) {
-            if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) continue;
+            if (p.categoryId !== '3' || (p.sku && p.sku.startsWith('PARKET-'))) continue;
             if (!explicitSlugs.includes(p.slug)) continue;
             const prefer = p.id.startsWith('hrast-');
             const existing = bySlug.get(p.slug);
@@ -902,12 +901,19 @@ export default async function ProductPage({ params, searchParams }: Props) {
             }
           }
           variants = explicitSlugs.map(slug => bySlug.get(slug)).filter(Boolean) as typeof tarkettProducts;
-        } else {
-          variants = tarkettProducts.filter(p => {
-              if (p.categoryId !== '3' || p.sku.startsWith('PARKET-')) return false;
-              const effective = getEffectiveParketCollection(p.slug, p.specs.find(s => s.key === 'collection')?.value);
+          if (variants.length === 0) {
+            variants = tarkettProducts.filter(p => {
+              if (p.categoryId !== '3' || (p.sku && p.sku.startsWith('PARKET-'))) return false;
+              const effective = getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value);
               return effective === collectionName;
             });
+          }
+        } else {
+          variants = tarkettProducts.filter(p => {
+            if (p.categoryId !== '3' || (p.sku && p.sku.startsWith('PARKET-'))) return false;
+            const effective = getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value);
+            return effective === collectionName;
+          });
         }
 
         if (variants.length > 0) {
@@ -918,10 +924,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
             name: v.name,
             full_name: v.name,
             slug: v.slug,
-            image_url: v.images[0]?.url || '',
-            texture_url: v.images[0]?.url || '',
-            image_count: v.images.length,
-            characteristics: v.specs.reduce((acc, spec) => {
+            image_url: v.images?.[0]?.url || '',
+            texture_url: v.images?.[0]?.url || '',
+            image_count: v.images?.length ?? 0,
+            characteristics: (v.specs || []).reduce((acc, spec) => {
               acc[spec.label] = spec.value;
               return acc;
             }, {} as Record<string, string>)

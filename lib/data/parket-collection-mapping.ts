@@ -151,6 +151,14 @@ export function getParketCollectionSlug(collectionName: string): string | null {
   return PARKET_COLLECTION_NAME_TO_SLUG[collectionName] ?? null;
 }
 
+/** Za slug kolekcije (npr. 'rumba') vraća ime kolekcije ('Rumba'). Za prikaz boja na stranici proizvoda. */
+export function getParketCollectionNameBySlug(collectionSlug: string): string | null {
+  if (!collectionSlug || typeof collectionSlug !== 'string') return null;
+  const s = collectionSlug.toLowerCase();
+  const entry = (Object.entries(PARKET_COLLECTION_NAME_TO_SLUG) as [string, string][]).find(([, slug]) => slug === s);
+  return entry ? entry[0] : null;
+}
+
 /**
  * Eksplicitna lista slugova varijanti po kolekciji (kao na Tarkett.rs).
  * Koristi se za prikaz boja na stranici kolekcije i za redirect nevažećeg ?color=.

@@ -548,7 +548,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               : 'text-gray-500 hover:text-gray-900'
               }`}
           >
-            {(categorySlug as string) === 'parket' ? 'Proizvodi' : 'Boje'} ({useJsonColors
+            Boje ({useJsonColors
               ? (loadingColors
                 ? '...'
                 : colorsToRender.length)
@@ -586,31 +586,34 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             ) : (
               <>
                 <p className="text-gray-600 mb-6">
-                  {legacyColors.length === 0
-                    ? 'Nema'
-                    : (categorySlug as string) === 'parket'
-                      ? `${legacyColors.length} ${legacyColors.length === 1 ? 'proizvod' : 'proizvoda'}`
-                      : `${legacyColors.length} ${legacyColors.length === 1 ? 'boja' : 'boja'}`
-                  }
+                  {legacyColors.length === 0 ? 'Nema' : legacyColors.length} {legacyColors.length === 1 ? 'boja' : 'boja'}
                 </p>
 
-                {/* Za Parket: bez velikog bloka kolekcije – prikaz kao LVT (samo grid proizvoda) */}
-
-
                 {(() => {
-                  // Za Parket: boje su već filtrirane po efektivnoj kolekciji na serveru, ne filtriraj ponovo (spec ima "Parket")
                   let filteredLegacyColors = legacyColors;
                   if (searchParams?.collections && categorySlug !== 'parket') {
                     const selectedCollections = searchParams.collections.split(',');
                     filteredLegacyColors = legacyColors.filter(color => {
                       const collectionSpec = color.specs.find(s => s.key === 'collection');
-                      if (collectionSpec) {
-                        return selectedCollections.includes(collectionSpec.value);
-                      }
+                      if (collectionSpec) return selectedCollections.includes(collectionSpec.value);
                       return false;
                     });
                   }
 
+                  if ((categorySlug as string) === 'parket') {
+                    return (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                        {filteredLegacyColors.map((product) => (
+                          <ProductCardClient
+                            key={product.id}
+                            product={product}
+                            brand={brandsRecord[product.brandId] || null}
+                            compact
+                          />
+                        ))}
+                      </div>
+                    );
+                  }
                   return renderProducts(filteredLegacyColors, 'colors-legacy');
                 })()}
               </>

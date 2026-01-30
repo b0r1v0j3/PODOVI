@@ -8,9 +8,11 @@ import { getEffectiveParketCollection, getParketCollectionSlug, PARKET_HEADER_CO
 interface ProductCardClientProps {
   product: Product;
   brand: Brand | null;
+  /** Kompaktna kartica (samo slika + naziv + link) – za tab Boje na parket kategoriji */
+  compact?: boolean;
 }
 
-export default function ProductCardClient({ product, brand }: ProductCardClientProps) {
+export default function ProductCardClient({ product, brand, compact = false }: ProductCardClientProps) {
   const primaryImage = product.images && product.images.length > 0
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
@@ -66,6 +68,40 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
         productHref = `/proizvodi/${product.slug}`;
       }
     }
+  }
+
+  if (compact) {
+    return (
+      <Link href={productHref} className="group block rounded-lg border border-gray-200 bg-white overflow-hidden hover:border-primary-500 hover:shadow-md transition-all duration-200">
+        <div className="relative aspect-square bg-gray-100 overflow-hidden">
+          {primaryImage ? (
+            <img
+              src={imageSrc}
+              alt={primaryImage.alt}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">Bez slike</div>
+          )}
+        </div>
+        <div className="p-3">
+          {brand && (
+            <p className="text-[10px] text-primary-600 uppercase tracking-wider font-semibold mb-0.5">{brand.name}</p>
+          )}
+          <p className="font-semibold text-sm text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-colors">
+            {displayName}
+          </p>
+          <span className="inline-flex items-center text-primary-600 text-xs font-medium mt-1 group-hover:text-primary-700">
+            Detaljnije
+            <svg className="w-3 h-3 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </Link>
+    );
   }
 
   return (
