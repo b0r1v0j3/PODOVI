@@ -1001,10 +1001,19 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   customColors={product.categoryId === '3' ? (customColors ?? []) : customColors}
                   collectionDisplayName={product.categoryId === '3' ? (product.specs.find(s => s.key === 'collection')?.value) : undefined}
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
+                  rightColumnBottom={product.categoryId === '3' ? (
+                    <ProductCharacteristics
+                      specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
+                        (s) => s.key !== 'collection' && s.key !== 'type'
+                      )}
+                      categoryId={product.categoryId}
+                      title="Tehničke specifikacije"
+                    />
+                  ) : undefined}
                 />
 
-                {/* Description & Characteristics Side by Side */}
-                <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Description (parket: samo Opis; ostale kategorije: Opis + Tehničke spec u gridu) */}
+                <div className={`mt-8 grid grid-cols-1 ${product.categoryId === '3' ? '' : 'lg:grid-cols-2'} gap-6`}>
                   {/* Description (Parket: Prikaži više + Ključne karakteristike uvek ispod; ostale kategorije: kao do sada) */}
                   <div className="bg-white rounded-2xl shadow-lg p-6">
                     {product.categoryId === '3' ? (
@@ -1056,18 +1065,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     )}
                   </div>
 
-                  {/* Characteristics / Tehničke specifikacije (Parket) */}
-                  <ProductCharacteristics
-                    specs={
-                      product.categoryId === '3'
-                        ? filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
-                          (s) => s.key !== 'collection' && s.key !== 'type'
-                        )
-                        : filterSpecsForDisplay(product.specs)
-                    }
-                    categoryId={product.categoryId}
-                    title={product.categoryId === '3' ? 'Tehničke specifikacije' : undefined}
-                  />
+                  {/* Tehničke specifikacije samo za ne-parket (parket ih ima gore u desnoj koloni ispod Boja) */}
+                  {product.categoryId !== '3' && (
+                    <ProductCharacteristics
+                      specs={filterSpecsForDisplay(product.specs)}
+                      categoryId={product.categoryId}
+                    />
+                  )}
                 </div>
               </>
             ) : (

@@ -31,6 +31,8 @@ interface ProductColorSelectorProps {
   collectionDisplayName?: string;
   /** YouTube embed URL (npr. za kolekciju) – prikazuje se ispod slike, u širini slike, play na sajtu. */
   videoEmbedUrl?: string;
+  /** Sadržaj ispod Boja u desnoj koloni (npr. Tehničke specifikacije za parket). */
+  rightColumnBottom?: React.ReactNode;
 }
 
 export default function ProductColorSelector({
@@ -49,6 +51,7 @@ export default function ProductColorSelector({
   customColors,
   collectionDisplayName,
   videoEmbedUrl,
+  rightColumnBottom,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -357,6 +360,9 @@ export default function ProductColorSelector({
               />
             </div>
           </div>
+
+          {/* Tehničke specifikacije (parket) – odmah ispod Boja, bez praznog prostora */}
+          {rightColumnBottom}
         </div>
       </div>
 
