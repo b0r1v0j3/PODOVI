@@ -37,7 +37,17 @@ export const tarkettProducts: Product[] = [
     "detailsSections": [
       {
         "title": "Ključne karakteristike",
-        "items": ["Dezeni parketa čije se nijanse kreću od dubokih tonova siene do suptilnih svetlih nijansi", "Višeslojni parket sa površinskim premazom za unutrašnju upotrebu (EN 13489:2023)", "Drvena podna obloga za unutrašnju upotrebu usklađena sa harmonizovanim standardom EN 14342:2013", "Sistemi ocenjivanja i provere stalnosti svojstava (AVCP): Sistem 4", "Usaglašeni standard: EN 14342:2013"]
+        "items": [
+          "Dezeni parketa čije se nijanse kreću od dubokih tonova siene do suptilnih svetlih nijansi",
+          "Višeslojni parket sa površinskim premazom za unutrašnju upotrebu (EN 13489:2023)",
+          "Drvena podna obloga za unutrašnju upotrebu usklađena sa harmonizovanim standardom EN 14342:2013",
+          "Sistemi ocenjivanja i provere stalnosti svojstava (AVCP): Sistem 4",
+          "Usaglašeni standard: EN 14342:2013"
+        ]
+      },
+      {
+        "title": "Tehničke i ekološke specifikacije",
+        "items": []
       }
     ],
     "price": 0,
@@ -3113,5 +3123,92 @@ export const tarkettProducts: Product[] = [
     "featured": false,
     createdAt: new Date("2026-01-29T19:17:35.782Z"),
     updatedAt: new Date("2026-01-29T19:17:35.782Z")
+  },
+  {
+    "id": "hrast-essence-2-strip",
+    "name": "Hrast ESSENCE 2 Strip",
+    "slug": "hrast-essence-2-strip",
+    "sku": "hrast-essence-2-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Hrast ESSENCE 2 Strip - Allegro Parket",
+    "description": "Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
+    "images": [
+      {
+        "id": "hrast-essence-2-strip-img",
+        "url": "/images/products/hrast-essence-2-strip.jpg",
+        "alt": "Hrast ESSENCE 2 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Allegro" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:17:35.782Z"),
+    "updatedAt": new Date("2026-01-29T19:17:35.782Z")
+  },
+  {
+    "id": "hrast-sand-ro-2-strip",
+    "name": "Hrast SAND - RO 2 Strip",
+    "slug": "hrast-sand-ro-2-strip",
+    "sku": "hrast-sand-ro-2-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Hrast SAND - RO 2 Strip - Allegro Parket",
+    "description": "Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
+    "images": [
+      {
+        "id": "hrast-sand-ro-2-strip-img",
+        "url": "/images/products/hrast-sand-ro-2-strip.jpg",
+        "alt": "Hrast SAND - RO 2 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Allegro" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:17:35.782Z"),
+    "updatedAt": new Date("2026-01-29T19:17:35.782Z")
+  },
+  {
+    "id": "hrast-sienna-ro-2-strip",
+    "name": "Hrast SIENNA - RO 2 Strip",
+    "slug": "hrast-sienna-ro-2-strip",
+    "sku": "hrast-sienna-ro-2-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Hrast SIENNA - RO 2 Strip - Allegro Parket",
+    "description": "Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
+    "images": [
+      {
+        "id": "hrast-sienna-ro-2-strip-img",
+        "url": "/images/products/hrast-sienna-ro-2-strip.jpg",
+        "alt": "Hrast SIENNA - RO 2 Strip",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Allegro" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:17:35.782Z"),
+    "updatedAt": new Date("2026-01-29T19:17:35.782Z")
   }
 ];

@@ -1,0 +1,475 @@
+export const tarkettProducts: Product[] = [
+  {
+    "id": "parket-allegro",
+    "name": "Allegro",
+    "slug": "allegro",
+    "sku": "PARKET-ALLEGRO",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Allegro Parket",
+    "description": "Kolekcija Allegro parketa donosi spoj boja i uzoraka gde je svaka daska savršeno usklađena. Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.\n\nNijanse parketa se kreću od dubokih tonova siene do suptilnih svetlih nijansi. Raznovrsnost boja i tekstura stvara skladan i ujedinjen estetski doživljaj, pretvarajući prostor u elegantno okruženje.\n\nVelike dimenzije dasaka parketa (širina 194 mm, dužina 2283 mm) i T-lock sistem zaključavanja omogućavaju jednostavnu i brzu instalaciju. Površina parketa, brušena i mat lakirana, naglašava prirodni karakter drveta.",
+    "images": [
+      {
+        "id": "parket-allegro-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Allegro_Oak_Bronze.jpg", 
+        "alt": "Allegro",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Allegro"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Dezeni parketa čije se nijanse  kreću od dubokih tonova siene do suptilnih svetlih nijansi","Višeslojni parket sa površinskim premazom za unutrašnju upotrebu (EN 13489:2023)","Drvena podna obloga za unutrašnju upotrebu usklađena sa harmonizovanim standardom EN 14342:2013","Sistemi ocenjivanja i provere stalnosti svojstava (AVCP): Sistem 4","Usaglašeni standard: EN 14342:2013"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-privilege",
+    "name": "Privilege",
+    "slug": "privilege",
+    "sku": "PARKET-PRIVILEGE",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Privilege Parket",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.Ovaj luksuzni parket stvoriće bogatstvo i toplinu kraljevskog poda u vašem domu, udoban za hodanje, izdržljiv i sa dugim vekom trajanja. Smatramo da je najvažnije odabrati vrstu poda čiji izgled najviše odgovara vama i vašem životnom stilu. Parket kolekcija Privilege upravo nudi privilegiju luksuza.",
+    "images": [
+      {
+        "id": "parket-privilege-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Nobile_Oak_Select.jpg", 
+        "alt": "Privilege",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Privilege"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Naglašena prirodna struktura drveta","Visoka otpornost na habanja i oštećenja","Jednostavna ugradnja parketa i ekonomično održavanje","Odgovarajući asortiman parket lajsni","Garancija 30 godina"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-privilege-waltz",
+    "name": "Privilege Waltz",
+    "slug": "privilege-waltz",
+    "sku": "PARKET-PRIVILEGE-WALTZ",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Privilege Waltz Parket",
+    "description": "Privilege Waltz kolekcija donosi elegantan i prefinjen izgled vašem prostoru.",
+    "images": [
+      {
+        "id": "parket-privilege-waltz-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Nobile_Oak_Select.jpg", 
+        "alt": "Privilege Waltz",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Privilege Waltz"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Elegancija i stil","Otpornost i dugotrajnost","Jednostavno održavanje"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-rumba",
+    "name": "Rumba",
+    "slug": "rumba",
+    "sku": "PARKET-RUMBA",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Rumba Parket",
+    "description": "Rumba parket je savršen izbor za moderne enterijere, nudeći izdržljivost i stil.",
+    "images": [
+      {
+        "id": "parket-rumba-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Rumba_Oak_Canyon.jpg", 
+        "alt": "Rumba",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Rumba"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Moderan dizajn","Visoka otpornost","Prirodni materijali"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-salsa",
+    "name": "Salsa",
+    "slug": "salsa",
+    "sku": "PARKET-SALSA",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa Parket",
+    "description": "Ukoliko želite da unesete dinamiku i radost u vaš dom, parket iz kolekcije Salsa je pravi izbor za vas. Odlikuje ga razigranost drvnih vrsta, živopisne teksture i tople boje koje će oplemeniti svaki prostor. Bilo da se radi o klasičnom ili modernom uređenju, Salsa parket donosi energiju i karakter. Zahvaljujući T-Lock sistemu, ugradnja je brza i jednostavna, a površinska zaštita osigurava dugotrajnost.",
+    "images": [
+      {
+        "id": "parket-salsa-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Salsa_Oak_Elegant_Shiny.jpg", 
+        "alt": "Salsa",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Salsa"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Širok izbor dezena i drvnih vrsta","Otporan na habanja i oštećenja","Jednostavna ugradnja parketa i ekonomično održavanje","Odgovarajući asortiman parket lajsni","Garancija 30 godina"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-salsa-art",
+    "name": "Salsa Art",
+    "slug": "salsa-art",
+    "sku": "PARKET-SALSA-ART",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa Art Parket",
+    "description": "Majstorski dizajnirana kolekcija parketa Salsa Art kombinuje prirodno drvo sa posebnim načinima tretiranja površinske strukture - sve radi dobijanja novog, autentičnog izgleda. Parket je dostupan u različitim nijansama - od belih i krem nijansi, do braon i crne, što vam otvara mnogobrojne mogućnosti dizajna.",
+    "images": [
+      {
+        "id": "parket-salsa-art-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Salsa_Art_White_Canvas_P1.jpg", 
+        "alt": "Salsa Art",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Salsa Art"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Mogućnost različitih kombinacija boja i dezena","Izdržljiv i otporan pod","Jednostavna ugradnja parketa i ekonomično održavanje","Odgovarajući asortiman paket lajsni","Garancija 30 godina"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-salsa-premium",
+    "name": "Salsa Premium",
+    "slug": "salsa-premium",
+    "sku": "PARKET-SALSA-PREMIUM",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa Premium Parket",
+    "description": "Želite parket koji će vašem prostoru pružiti dašak luksuza? Salsa Premium je savršen parket za sve koji traže savršen spoj bogate tradicije, savremenih boja i tekstura. Posebna uljana površinska zaštita (Protecto Hardwax Oil) naglašava prirodnu strukturu drveta.",
+    "images": [
+      {
+        "id": "parket-salsa-premium-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Salsa_Premium_Oak_Jasper.jpg", 
+        "alt": "Salsa Premium",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Salsa Premium"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Naglašena prirodna struktura drveta","Visoka otpornost na oštećenja i habanja","Jednostavna ugradnja parketa i ekonomično održavanje","Odgovarajući asortiman parket lajsni","Garancija 30 godina"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-sommer-europarquet",
+    "name": "Sommer Europarquet",
+    "slug": "sommer-europarquet",
+    "sku": "PARKET-SOMMER-EUROPARQUET",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Sommer Europarquet Parket",
+    "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore.",
+    "images": [
+      {
+        "id": "parket-sommer-europarquet-img",
+        "url": "https://media.tarkett-image.com/large/IN_TEE_SOMMER_EUROPARQUET_OAK%20BEIGE.jpg", 
+        "alt": "Sommer Europarquet",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Sommer Europarquet"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Jednostavna ugradnja parketa i ekonomično održavanje","Lakirani sloj sprečava nakupljanje i širenje bakterija","Ekološka odgovornost u svim procesima","Garancija 30 godina"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-step-xl-and-l",
+    "name": "Step XL & L",
+    "slug": "step-xl-and-l",
+    "sku": "PARKET-STEP-XL-AND-L",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Step XL & L Parket",
+    "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer.",
+    "images": [
+      {
+        "id": "parket-step-xl-and-l-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Step_Baron_Oak_Sienna_.jpg", 
+        "alt": "Step XL & L",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Step XL & L"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Privlačni dezeni parketa","Izuzetna otpornost na habanje i oštećenja","Jednostavna ugradnja parketa i ekonomično održavanje","Odgovarajući asortiman parket lajsni","Garancija 30 godina"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-tango",
+    "name": "Tango",
+    "slug": "tango",
+    "sku": "PARKET-TANGO",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Tango Parket",
+    "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta.",
+    "images": [
+      {
+        "id": "parket-tango-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Tango_Oak_Baron.jpg", 
+        "alt": "Tango",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Tango"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Širok izbor dezena parketa","Izdržljiv i otporan parket","Jednostavna ugradnja parketa i ekonomično održavanje","Odgovarajući asortiman parket lajsni","Garancija 30 godina"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "parket-tango-classic",
+    "name": "Tango Classic",
+    "slug": "tango-classic",
+    "sku": "PARKET-TANGO-CLASSIC",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Tango Classic Parket",
+    "description": "Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket. Izuzetno kvalitetan parket, Tango Classic vam pruža i mogućnost stilizovanja svog ličnog prostora uz izbor od šest različitih nijansi drveta.",
+    "images": [
+      {
+        "id": "parket-tango-classic-img",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Tango_Classic_Oak_Sepia_L.jpg", 
+        "alt": "Tango Classic",
+        "isPrimary": true,
+        "order": 0
+      }
+    ],
+    "specs": [
+      {
+        "key": "collection",
+        "label": "Kolekcija",
+        "value": "Tango Classic"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Parket"
+      }
+    ],
+    "detailsSections": [
+      {
+        "title": "Ključne karakteristike",
+        "items": ["Naglašena prirodna struktura drveta","Visoka otpornost na oštećenja i habanja","Jednostavna ugradnja parketa i ekonomično održavanje","Odgovarajući asortiman parket lajsni","Garancija 30 godina"]
+      }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  }
+

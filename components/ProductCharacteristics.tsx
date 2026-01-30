@@ -106,7 +106,17 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
     if (specs && specs.length > 0) {
       specs.forEach((spec) => {
         const key = spec.label.toLowerCase();
-        if (!mergedSpecs.has(key)) {
+        // Check if key already exists (simple check)
+        if (mergedSpecs.has(key)) return;
+
+        // Check for similar keys (e.g. "Ukupna debljina" vs "Debljina")
+        const alreadyExists = Array.from(mergedSpecs.keys()).some(existingKey => {
+          return existingKey.includes(key) || key.includes(existingKey) ||
+            (existingKey === 'ukupna debljina' && key === 'debljina') ||
+            (existingKey === 'debljina' && key === 'ukupna debljina');
+        });
+
+        if (!alreadyExists) {
           mergedSpecs.set(key, { label: spec.label, value: spec.value });
         }
       });

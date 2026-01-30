@@ -48,6 +48,9 @@ export function getParketCollectionBySlug(slug: string): string | null {
 
   // Allegro: Elegant 3-strip (siena do svetlih nijansi)
   if (s.includes('elegant') && s.includes('3-strip')) return COLLECTION_ALLEGRO;
+  if (s === 'hrast-essence-2-strip') return COLLECTION_ALLEGRO;
+  if (s === 'hrast-sand-ro-2-strip') return COLLECTION_ALLEGRO;
+  if (s === 'hrast-sienna-ro-2-strip') return COLLECTION_ALLEGRO;
 
   // Step XL & L: Baron, Sienna 3-strip
   if (s.includes('baron')) return COLLECTION_STEP;

@@ -818,7 +818,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // If we loaded a color directly, the specs are already merged in colorToProduct
     // If we loaded a collection and there's a color parameter, merge color specs (LVT/Linoleum/Vinil from JSON)
-    if (selectedColorSlug && product && !product.slug.includes(selectedColorSlug)) {
+    // IMPORTANT: Skip this for Parket (categoryId '3') to avoid loading LVT colors (like "Winter 832") by mistake
+    if (selectedColorSlug && product && !product.slug.includes(selectedColorSlug) && product.categoryId !== '3') {
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (colorSource?.color) {
         const colorSpecs = buildSpecsFromColor(colorSource.color);
@@ -829,25 +830,27 @@ export default async function ProductPage({ params, searchParams }: Props) {
           product.description = colorSource.color.description.trim();
         }
       }
-      // Parket: merge selected variant (slika, naziv, opis) u kolekciju – prikaz kao LVT
-      if (product.categoryId === '3' && product.sku?.startsWith('PARKET-')) {
-        const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-        const parketVariant = tarkettProducts.find(p => p.categoryId === '3' && p.slug === selectedColorSlug);
-        if (parketVariant) {
-          product.name = parketVariant.name;
-          product.shortDescription = parketVariant.shortDescription || product.shortDescription;
-          product.description = (parketVariant.description && typeof parketVariant.description === 'string' && parketVariant.description.trim())
-            ? parketVariant.description.trim()
-            : product.description;
-          if (parketVariant.images && parketVariant.images.length > 0) {
-            product.images = parketVariant.images;
-          }
-          if (parketVariant.specs && parketVariant.specs.length > 0) {
-            product.specs = mergeSpecs(product.specs, parketVariant.specs);
-          }
+    }
+
+    // Parket: merge selected variant (slika, naziv, opis) u kolekciju – prikaz kao LVT
+    if (selectedColorSlug && product && product.categoryId === '3' && product.sku?.startsWith('PARKET-')) {
+      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+      const parketVariant = tarkettProducts.find(p => p.categoryId === '3' && p.slug === selectedColorSlug);
+      if (parketVariant) {
+        product.name = parketVariant.name;
+        product.shortDescription = parketVariant.shortDescription || product.shortDescription;
+        product.description = (parketVariant.description && typeof parketVariant.description === 'string' && parketVariant.description.trim())
+          ? parketVariant.description.trim()
+          : product.description;
+        if (parketVariant.images && parketVariant.images.length > 0) {
+          product.images = parketVariant.images;
+        }
+        if (parketVariant.specs && parketVariant.specs.length > 0) {
+          product.specs = mergeSpecs(product.specs, parketVariant.specs);
         }
       }
     }
+
     if (!product.slug || typeof product.slug !== 'string') {
       product.slug = params.slug;
     }
@@ -1030,8 +1033,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     specs={
                       product.categoryId === '3'
                         ? filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
-                            (s) => s.key !== 'collection' && s.key !== 'type'
-                          )
+                          (s) => s.key !== 'collection' && s.key !== 'type'
+                        )
                         : filterSpecsForDisplay(product.specs)
                     }
                     categoryId={product.categoryId}
