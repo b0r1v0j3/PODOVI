@@ -8,7 +8,7 @@ export const categories: Category[] = [
     name: 'Parket',
     slug: 'parket',
     description: 'Prirodni drveni parketi za elegantne prostore',
-    image: '/images/categories/parket.jpg',
+    image: '/images/products/galloni-oak.jpg',
     order: 1,
   },
   {
