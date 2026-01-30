@@ -27,6 +27,8 @@ interface ProductColorSelectorProps {
   externalLink?: string;
   onCharacteristicsChange?: (characteristics: Record<string, string> | null) => void;
   customColors?: any[];
+  /** Za parket: naziv kolekcije prikazan iznad (kao LVT "Creation 30"). Ispod slike ostaje boja/varijanta. */
+  collectionDisplayName?: string;
 }
 
 export default function ProductColorSelector({
@@ -43,6 +45,7 @@ export default function ProductColorSelector({
   externalLink,
   onCharacteristicsChange,
   customColors,
+  collectionDisplayName,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -268,11 +271,19 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title */}
+            {/* Title: za parket prikaži samo kolekciju (kao LVT "Creation 30"); boja je ispod slike */}
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                {productName}
-              </h1>
+              {collectionDisplayName ? (
+                <div className="bg-primary-50 border border-primary-200 rounded-xl px-4 py-3 mb-2 inline-block">
+                  <h1 className="text-2xl font-bold text-primary-700">
+                    {collectionDisplayName}
+                  </h1>
+                </div>
+              ) : (
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                  {productName}
+                </h1>
+              )}
               {shortDescription && (
                 <p className="text-lg text-gray-600">
                   {shortDescription}

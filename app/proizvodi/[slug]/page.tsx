@@ -999,6 +999,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   productSlug={product.slug}
                   externalLink={product.externalLink}
                   customColors={product.categoryId === '3' ? (customColors ?? []) : customColors}
+                  collectionDisplayName={product.categoryId === '3' ? (product.specs.find(s => s.key === 'collection')?.value) : undefined}
                 />
 
                 {/* Description & Characteristics Side by Side */}
