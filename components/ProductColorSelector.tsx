@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
 
@@ -49,11 +49,25 @@ export default function ProductColorSelector({
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<{ code: string; name: string } | null>(null);
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const initialColorSlug = searchParams.get('color') || undefined;
   const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(initialColorSlug);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
+
+  // Parket: ako je u URL-u ?color= koji nije u customColors (npr. winter-832), redirect na prvu validnu boju
+  useEffect(() => {
+    if (!customColors || customColors.length === 0) return;
+    const urlColor = searchParams.get('color') || '';
+    if (!urlColor) return;
+    const validSlugs = customColors.map((c: { slug?: string }) => c.slug).filter((s): s is string => Boolean(s));
+    const firstSlug = validSlugs[0];
+    if (firstSlug && !validSlugs.includes(urlColor)) {
+      router.replace(`${pathname}?color=${encodeURIComponent(firstSlug)}`);
+    }
+  }, [customColors, searchParams, pathname, router]);
 
   // Update selectedColorSlug when URL changes
   useEffect(() => {

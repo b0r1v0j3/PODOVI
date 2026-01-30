@@ -998,7 +998,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   inStock={product.inStock}
                   productSlug={product.slug}
                   externalLink={product.externalLink}
-                  customColors={customColors}
+                  customColors={product.categoryId === '3' ? (customColors ?? []) : customColors}
                 />
 
                 {/* Description & Characteristics Side by Side */}
