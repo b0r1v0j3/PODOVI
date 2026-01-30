@@ -880,44 +880,26 @@ export default async function ProductPage({ params, searchParams }: Props) {
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
 
-    // Prepare customColors for Parket (samo varijante koje pripadaju ovoj kolekciji – kao na Tarkett.rs)
+    // Prepare customColors for Parket – isto kao Allegro, Privilege, Privilege Waltz: iz params.slug (kolekcija) uvek gradimo listu boja
     let customColors: any[] | undefined = undefined;
     if (product.categoryId === '3') {
       const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-      const collectionSpec = product.specs?.find(s => s.key === 'collection');
-      const collectionName = collectionSpec?.value ?? getParketCollectionNameBySlug(params.slug) ?? (params.slug === 'rumba' ? 'Rumba' : null);
+      const collectionName = getParketCollectionNameBySlug(params.slug) ?? product.specs?.find(s => s.key === 'collection')?.value ?? null;
       if (collectionName) {
         const explicitSlugs = getParketCollectionVariantSlugs(collectionName);
-        let variants: typeof tarkettProducts = [];
-        if (explicitSlugs.length > 0) {
-          const bySlug = new Map<string, (typeof tarkettProducts)[0]>();
-          for (const p of tarkettProducts) {
-            if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) continue;
-            if (!explicitSlugs.includes(p.slug)) continue;
-            const effective = getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value);
-            if (effective !== collectionName) continue;
-            const prefer = p.id.startsWith('hrast-');
-            const existing = bySlug.get(p.slug);
-            if (!existing || (prefer && !existing.id.startsWith('hrast-'))) {
-              bySlug.set(p.slug, p);
-            }
-          }
-          variants = explicitSlugs.map(slug => bySlug.get(slug)).filter(Boolean) as typeof tarkettProducts;
-          if (variants.length === 0) {
-            variants = tarkettProducts.filter(p => {
+        const variants = explicitSlugs.length > 0
+          ? (explicitSlugs
+              .map(slug => tarkettProducts.find(p =>
+                p.categoryId === '3' &&
+                !(p.sku && String(p.sku).startsWith('PARKET-')) &&
+                p.slug === slug &&
+                getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName
+              ))
+              .filter(Boolean) as typeof tarkettProducts)
+          : tarkettProducts.filter(p => {
               if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) return false;
-              const effective = getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value);
-              return effective === collectionName;
+              return getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName;
             });
-          }
-        } else {
-          variants = tarkettProducts.filter(p => {
-            if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) return false;
-            const effective = getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value);
-            return effective === collectionName;
-          });
-        }
-
         if (variants.length > 0) {
           customColors = variants.map(v => ({
             collection: collectionName,
