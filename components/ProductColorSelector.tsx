@@ -289,14 +289,14 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title: za parket prikaži kolekciju + ime boje (nikad slug); za ostale productName + shortDescription */}
+            {/* Title: za parket prikaži kolekciju (h1), ispod "Parket – ime boje" (npr. Parket – Hrast ESSENCE 2 Strip); za ostale productName + shortDescription */}
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {collectionDisplayName || productName}
               </h1>
               {collectionDisplayName ? (
                 <p className="text-lg text-gray-600">
-                  {collectionDisplayName} – {productName}
+                  Parket – {productName}
                 </p>
               ) : shortDescription ? (
                 <p className="text-lg text-gray-600">
