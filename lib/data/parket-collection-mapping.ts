@@ -52,6 +52,10 @@ export function getParketCollectionBySlug(slug: string): string | null {
   if (s === 'hrast-sand-ro-2-strip') return COLLECTION_ALLEGRO;
   if (s === 'hrast-sienna-ro-2-strip') return COLLECTION_ALLEGRO;
 
+  // Privilege: 11 dezena (Galloni Oak, Nobile Oak Select, Prestige Oak…)
+  const privilegeSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_PRIVILEGE] ?? [];
+  if (privilegeSlugList.includes(s)) return COLLECTION_PRIVILEGE;
+
   // Step XL & L: Baron, Sienna 3-strip
   if (s.includes('baron')) return COLLECTION_STEP;
   if (s === 'hrast-sienna-3-strip') return COLLECTION_STEP;
@@ -155,6 +159,19 @@ export function getParketCollectionSlug(collectionName: string): string | null {
  */
 const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
   [COLLECTION_ALLEGRO]: ['hrast-essence-2-strip', 'hrast-sand-ro-2-strip', 'hrast-sienna-ro-2-strip'],
+  [COLLECTION_PRIVILEGE]: [
+    'galloni-oak',
+    'galloni-oak-brown-grey',
+    'galloni-oak-royal-grey',
+    'hrast-galloni-oak-white-1-strip',
+    'hrast-nobile-oak-select-1-strip',
+    'hrast-nobile-oak-select-white-1-strip',
+    'prestige-oak-antique',
+    'prestige-oak-brown-grey',
+    'prestige-oak-royal-grey',
+    'prestige-oak-white',
+    'privilege-prestige-oak',
+  ],
 };
 
 export function getParketCollectionVariantSlugs(collectionName: string): string[] {

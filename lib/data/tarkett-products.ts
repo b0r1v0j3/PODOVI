@@ -65,32 +65,40 @@ export const tarkettProducts: Product[] = [
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Privilege Parket",
-    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.Ovaj luksuzni parket stvoriće bogatstvo i toplinu kraljevskog poda u vašem domu, udoban za hodanje, izdržljiv i sa dugim vekom trajanja. Smatramo da je najvažnije odabrati vrstu poda čiji izgled najviše odgovara vama i vašem životnom stilu. Parket kolekcija Privilege upravo nudi privilegiju luksuza.",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas. Ovaj luksuzni parket stvoriće bogatstvo i toplinu kraljevskog poda u vašem domu, udoban za hodanje, izdržljiv i sa dugim vekom trajanja. Smatramo da je najvažnije odabrati vrstu poda čiji izgled najviše odgovara vama i vašem životnom stilu. Parket kolekcija Privilege upravo nudi privilegiju luksuza.",
     "images": [
       {
         "id": "parket-privilege-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Nobile_Oak_Select.jpg",
+        "url": "/images/products/galloni-oak.jpg",
         "alt": "Privilege",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Privilege"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Privilege" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Lak" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "0,720 m², 0,564 m², 1,512 m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "Utor-pero" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "length", "label": "Dužina", "value": "600 mm, 470 mm" },
+      { "key": "width", "label": "Širina", "value": "120 mm" }
     ],
     "detailsSections": [
       {
         "title": "Ključne karakteristike",
-        "items": ["Naglašena prirodna struktura drveta", "Visoka otpornost na habanja i oštećenja", "Jednostavna ugradnja parketa i ekonomično održavanje", "Odgovarajući asortiman parket lajsni", "Garancija 30 godina"]
+        "items": [
+          "Različite dimenzije parket dasaka",
+          "Visoka otpornost na habanja i oštećenja",
+          "Jednostavna ugradnja parketa i ekonomično održavanje",
+          "Prirodna lepota drveta"
+        ]
+      },
+      {
+        "title": "Tehničke i ekološke specifikacije",
+        "items": []
       }
     ],
     "price": 0,
@@ -2909,7 +2917,7 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-essence-2-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "Hrast ESSENCE 2 Strip - Allegro Parket",
+    "shortDescription": "Parket - Hrast ESSENCE 2 Strip",
     "description": "Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
     "images": [
       {
@@ -2938,7 +2946,7 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-sand-ro-2-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "Hrast SAND RO 2 Strip - Allegro Parket",
+    "shortDescription": "Parket - Hrast SAND RO 2 Strip",
     "description": "Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
     "images": [
       {
@@ -2967,7 +2975,7 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-sienna-ro-2-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "Hrast SIENNA RO 2 Strip - Allegro Parket",
+    "shortDescription": "Parket - Hrast SIENNA RO 2 Strip",
     "description": "Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
     "images": [
       {
@@ -2988,5 +2996,159 @@ export const tarkettProducts: Product[] = [
     "featured": false,
     "createdAt": new Date("2026-01-29T19:17:35.782Z"),
     "updatedAt": new Date("2026-01-29T19:17:35.782Z")
+  },
+  {
+    "id": "galloni-oak",
+    "name": "GALLONI OAK",
+    "slug": "galloni-oak",
+    "sku": "galloni-oak",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - GALLONI OAK",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "galloni-oak-img", "url": "/images/products/galloni-oak.jpg", "alt": "GALLONI OAK", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "galloni-oak-brown-grey",
+    "name": "GALLONI OAK BROWN GREY",
+    "slug": "galloni-oak-brown-grey",
+    "sku": "galloni-oak-brown-grey",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - GALLONI OAK BROWN GREY",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "galloni-oak-brown-grey-img", "url": "/images/products/galloni-oak-brown-grey.jpg", "alt": "GALLONI OAK BROWN GREY", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "galloni-oak-royal-grey",
+    "name": "GALLONI OAK ROYAL GREY",
+    "slug": "galloni-oak-royal-grey",
+    "sku": "galloni-oak-royal-grey",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - GALLONI OAK ROYAL GREY",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "galloni-oak-royal-grey-img", "url": "/images/products/galloni-oak-royal-grey.jpg", "alt": "GALLONI OAK ROYAL GREY", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-galloni-oak-white-1-strip",
+    "name": "Hrast GALLONI OAK WHITE 1 Strip",
+    "slug": "hrast-galloni-oak-white-1-strip",
+    "sku": "hrast-galloni-oak-white-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - Hrast GALLONI OAK WHITE 1 Strip",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "hrast-galloni-oak-white-1-strip-img", "url": "/images/products/hrast-galloni-oak-white-1-strip.jpg", "alt": "Hrast GALLONI OAK WHITE 1 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-nobile-oak-select-1-strip",
+    "name": "Hrast NOBILE OAK SELECT 1 Strip",
+    "slug": "hrast-nobile-oak-select-1-strip",
+    "sku": "hrast-nobile-oak-select-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - Hrast NOBILE OAK SELECT 1 Strip",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "hrast-nobile-oak-select-1-strip-img", "url": "/images/products/hrast-nobile-oak-select-1-strip.jpg", "alt": "Hrast NOBILE OAK SELECT 1 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-nobile-oak-select-white-1-strip",
+    "name": "Hrast NOBILE OAK SELECT WHITE 1 Strip",
+    "slug": "hrast-nobile-oak-select-white-1-strip",
+    "sku": "hrast-nobile-oak-select-white-1-strip",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - Hrast NOBILE OAK SELECT WHITE 1 Strip",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "hrast-nobile-oak-select-white-1-strip-img", "url": "/images/products/hrast-nobile-oak-select-white-1-strip.jpg", "alt": "Hrast NOBILE OAK SELECT WHITE 1 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "prestige-oak-antique",
+    "name": "PRESTIGE OAK ANTIQUE",
+    "slug": "prestige-oak-antique",
+    "sku": "prestige-oak-antique",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - PRESTIGE OAK ANTIQUE",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "prestige-oak-antique-img", "url": "/images/products/prestige-oak-antique.jpg", "alt": "PRESTIGE OAK ANTIQUE", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "prestige-oak-brown-grey",
+    "name": "PRESTIGE OAK BROWN GREY",
+    "slug": "prestige-oak-brown-grey",
+    "sku": "prestige-oak-brown-grey",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - PRESTIGE OAK BROWN GREY",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "prestige-oak-brown-grey-img", "url": "/images/products/prestige-oak-brown-grey.jpg", "alt": "PRESTIGE OAK BROWN GREY", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "prestige-oak-royal-grey",
+    "name": "PRESTIGE OAK ROYAL GREY",
+    "slug": "prestige-oak-royal-grey",
+    "sku": "prestige-oak-royal-grey",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - PRESTIGE OAK ROYAL GREY",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "prestige-oak-royal-grey-img", "url": "/images/products/prestige-oak-royal-grey.jpg", "alt": "PRESTIGE OAK ROYAL GREY", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "prestige-oak-white",
+    "name": "PRESTIGE OAK WHITE",
+    "slug": "prestige-oak-white",
+    "sku": "prestige-oak-white",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - PRESTIGE OAK WHITE",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "prestige-oak-white-img", "url": "/images/products/prestige-oak-white.jpg", "alt": "PRESTIGE OAK WHITE", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "privilege-prestige-oak",
+    "name": "PRIVILEGE PRESTIGE OAK",
+    "slug": "privilege-prestige-oak",
+    "sku": "privilege-prestige-oak",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Parket - PRIVILEGE PRESTIGE OAK",
+    "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.",
+    "images": [{ "id": "privilege-prestige-oak-img", "url": "/images/products/privilege-prestige-oak.jpg", "alt": "PRIVILEGE PRESTIGE OAK", "isPrimary": true, "order": 0 }],
+    "specs": [{ "key": "collection", "label": "Kolekcija", "value": "Privilege" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   }
 ];
