@@ -283,6 +283,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-chocolate-3-strip-img", "url": "/images/products/hrast-chocolate-3-strip.jpg", "alt": "Hrast CHOCOLATE 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049131" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -561,6 +562,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-original-high-gloss-3-strip-img", "url": "/images/products/hrast-original-high-gloss-3-strip.jpg", "alt": "Hrast ORIGINAL HIGH GLOSS 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
       { "key": "ref", "label": "Ref", "value": "550049154" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -727,6 +729,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-vivid-3-strip-img", "url": "/images/products/hrast-vivid-3-strip.jpg", "alt": "Hrast VIVID 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049128" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
