@@ -1454,27 +1454,30 @@ export const tarkettProducts: Product[] = [
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Tango Classic Parket",
-    "description": "Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket. Izuzetno kvalitetan parket, Tango Classic vam pruža i mogućnost stilizovanja svog ličnog prostora uz izbor od šest različitih nijansi drveta.",
+    "description": "Svi znamo da je pod važan deo enterijera koji može da doprinese stvaranju toplog ambijenta i pretvori jednu kuću u istinski dom. Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket. Izuzetno kvalitetan parket, Tango Classic vam pruža i mogućnost stilizovanja svog ličnog prostora uz izbor od šest različitih nijansi drveta. Svi parketi su tretirani posebnim Osmo Hardwax uljem koje naglašava prirodnu teksturu drveta, a uz Protecto Strong površinski tretman pojačana je otpornost parketa na habanja i oštećenja, čime je olakšano čišćenje poda. Brza ugradnja parketa, lako održavanje, mogućnost ugradnje preko podnog grejanja, udobnost - Tango Classic nudi vam sve za čim ste tragali! Oslonite se na Tarkett: nudimo vam 30 godina garancije, bezbedne i zdrave podove za vas i vašu porodicu.",
     "images": [
       {
         "id": "parket-tango-classic-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Tango_Classic_Oak_Sepia_L.jpg",
+        "url": "/images/products/hrast-almond.jpg",
         "alt": "Tango Classic",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Tango Classic"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango Classic" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "povrsinski_tretman", "label": "Površinski tretman", "value": "Proteco Hardwax ulje" },
+      { "key": "ukupna_debljina", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "povrsina_po_kutiji", "label": "Površina po kutiji", "value": "1,182 m²" },
+      { "key": "debljina_habajuceg_sloja", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "ukupna_masa", "label": "Ukupna masa", "value": "7,5 kg/m²" },
+      { "key": "sistem_zakljucavanja", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "tip_formata", "label": "Tip formata", "value": "Daska" },
+      { "key": "duzina", "label": "Dužina", "value": "1200 mm" },
+      { "key": "sirina", "label": "Širina", "value": "164 mm" },
+      { "key": "broj_artikala_po_kutiji", "label": "Broj artikala po kutiji", "value": "6" }
     ],
     "detailsSections": [
       {
@@ -2574,28 +2577,20 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-almond",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-almond - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango Classic - Hrast Almond",
+    "description": "Svi znamo da je pod važan deo enterijera koji može da doprinese stvaranju toplog ambijenta i pretvori jednu kuću u istinski dom. Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket.",
     "images": [
       {
         "id": "hrast-almond-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Almond.jpg",
+        "url": "/images/products/hrast-almond.jpg",
         "alt": "Hrast Almond",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango Classic" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2611,28 +2606,20 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-bright",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-bright - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango Classic - Hrast Bright",
+    "description": "Svi znamo da je pod važan deo enterijera koji može da doprinese stvaranju toplog ambijenta i pretvori jednu kuću u istinski dom. Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket.",
     "images": [
       {
         "id": "hrast-bright-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Bright.jpg",
+        "url": "/images/products/hrast-bright.jpg",
         "alt": "Hrast Bright",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango Classic" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2648,28 +2635,20 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-copper",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-copper - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango Classic - Hrast Copper",
+    "description": "Svi znamo da je pod važan deo enterijera koji može da doprinese stvaranju toplog ambijenta i pretvori jednu kuću u istinski dom. Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket.",
     "images": [
       {
         "id": "hrast-copper-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Copper.jpg",
+        "url": "/images/products/hrast-copper.jpg",
         "alt": "Hrast Copper",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango Classic" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2685,28 +2664,20 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-cottage",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-cottage - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango Classic - Hrast Cottage",
+    "description": "Svi znamo da je pod važan deo enterijera koji može da doprinese stvaranju toplog ambijenta i pretvori jednu kuću u istinski dom. Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket.",
     "images": [
       {
         "id": "hrast-cottage-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Cottage.jpg",
+        "url": "/images/products/hrast-cottage.jpg",
         "alt": "Hrast Cottage",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango Classic" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2759,28 +2730,20 @@ export const tarkettProducts: Product[] = [
     "sku": "hrast-sienna",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "hrast-sienna - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango Classic - Hrast Sienna",
+    "description": "Svi znamo da je pod važan deo enterijera koji može da doprinese stvaranju toplog ambijenta i pretvori jednu kuću u istinski dom. Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket.",
     "images": [
       {
         "id": "hrast-sienna-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Sienna.jpg",
+        "url": "/images/products/hrast-sienna.jpg",
         "alt": "Hrast Sienna",
         "isPrimary": true,
         "order": 0
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Tango Classic" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" }
     ],
     "price": 0,
     "priceUnit": "m²",

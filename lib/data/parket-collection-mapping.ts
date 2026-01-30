@@ -242,6 +242,14 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'tango-hrast-premium-1-strip',
     'hrast-schwarzwald-1-strip',
   ],
+  [COLLECTION_TANGO_CLASSIC]: [
+    'hrast-almond',
+    'hrast-bright',
+    'hrast-copper',
+    'hrast-cottage',
+    'hrast-sepia',
+    'hrast-sienna',
+  ],
 };
 
 export function getParketCollectionVariantSlugs(collectionName: string): string[] {
