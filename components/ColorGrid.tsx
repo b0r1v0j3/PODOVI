@@ -289,11 +289,14 @@ export default function ColorGrid({
         } else if (data.colors && Array.isArray(data.colors)) {
           // LVT/Linoleum/Carpet have colors array
           // Filter by collection - try exact match first, then with/without 'gerflor-' prefix
+          // Saga: slug je gerflor-creation-saga, u JSON-u je creation-saga2
+          const sagaMatch = (collectionName === 'creation-saga' || collectionSlug === 'gerflor-creation-saga') ? 'creation-saga2' : null;
           filtered = data.colors.filter((c: Color) =>
             c.collection === collectionName ||
             c.collection === collectionSlug ||
             c.collection === `gerflor-${collectionName}` ||
-            c.collection.replace('gerflor-', '') === collectionName
+            c.collection.replace('gerflor-', '') === collectionName ||
+            (sagaMatch !== null && c.collection === sagaMatch)
           );
         } else {
           console.error('ColorGrid: Invalid data structure', data);
