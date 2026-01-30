@@ -885,15 +885,17 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (product.categoryId === '3') {
       const { tarkettProducts } = await import('@/lib/data/tarkett-products');
       const collectionSpec = product.specs?.find(s => s.key === 'collection');
-      const collectionName = collectionSpec?.value ?? getParketCollectionNameBySlug(params.slug);
+      const collectionName = collectionSpec?.value ?? getParketCollectionNameBySlug(params.slug) ?? (params.slug === 'rumba' ? 'Rumba' : null);
       if (collectionName) {
         const explicitSlugs = getParketCollectionVariantSlugs(collectionName);
         let variants: typeof tarkettProducts = [];
         if (explicitSlugs.length > 0) {
           const bySlug = new Map<string, (typeof tarkettProducts)[0]>();
           for (const p of tarkettProducts) {
-            if (p.categoryId !== '3' || (p.sku && p.sku.startsWith('PARKET-'))) continue;
+            if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) continue;
             if (!explicitSlugs.includes(p.slug)) continue;
+            const effective = getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value);
+            if (effective !== collectionName) continue;
             const prefer = p.id.startsWith('hrast-');
             const existing = bySlug.get(p.slug);
             if (!existing || (prefer && !existing.id.startsWith('hrast-'))) {
@@ -903,14 +905,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
           variants = explicitSlugs.map(slug => bySlug.get(slug)).filter(Boolean) as typeof tarkettProducts;
           if (variants.length === 0) {
             variants = tarkettProducts.filter(p => {
-              if (p.categoryId !== '3' || (p.sku && p.sku.startsWith('PARKET-'))) return false;
+              if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) return false;
               const effective = getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value);
               return effective === collectionName;
             });
           }
         } else {
           variants = tarkettProducts.filter(p => {
-            if (p.categoryId !== '3' || (p.sku && p.sku.startsWith('PARKET-'))) return false;
+            if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) return false;
             const effective = getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value);
             return effective === collectionName;
           });

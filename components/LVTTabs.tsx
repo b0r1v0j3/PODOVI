@@ -599,21 +599,6 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                       return false;
                     });
                   }
-
-                  if ((categorySlug as string) === 'parket') {
-                    return (
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-                        {filteredLegacyColors.map((product) => (
-                          <ProductCardClient
-                            key={product.id}
-                            product={product}
-                            brand={brandsRecord[product.brandId] || null}
-                            compact
-                          />
-                        ))}
-                      </div>
-                    );
-                  }
                   return renderProducts(filteredLegacyColors, 'colors-legacy');
                 })()}
               </>

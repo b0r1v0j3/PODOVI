@@ -327,23 +327,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       collections = allCollections;
     }
 
-    // Za parket: na karticama varijanti prikaži naziv i sliku kolekcije, ne varijante (npr. "Privilege Waltz" umesto "Hrast Essence")
-    if (category.slug === 'parket') {
-      colors = colors.map((variant) => {
-        const specVal = variant.specs?.find((s) => s.key === 'collection')?.value;
-        const collectionName = getEffectiveParketCollection(variant.slug, specVal);
-        if (!collectionName) return variant;
-        const collectionSlug = getParketCollectionSlug(collectionName);
-        const headerProduct = collections.find((c) => c.slug === collectionSlug);
-        if (!headerProduct?.images?.length) return variant;
-        return {
-          ...variant,
-          name: headerProduct.name,
-          images: headerProduct.images,
-          shortDescription: headerProduct.shortDescription ?? variant.shortDescription,
-        };
-      });
-    }
+    // Za parket u tabu Boje prikazujemo stvarne boje (varijante) sa njihovim imenom i slikom, kao na Tekstilne ploče – bez preslikavanja na kolekciju.
 
     // Build brands record for all products
     for (const product of allProducts) {
