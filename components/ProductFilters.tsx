@@ -118,7 +118,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (priceMin) params.set('priceMin', priceMin);
     if (priceMax) params.set('priceMax', priceMax);
     if (isVinilCategory && vinylType) params.set('type', vinylType);
-    if (isLVTCategory && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
+    if (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
     if ((isLVTCategory || isVinilCategory || isLinoleumCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
 
     // Debounce for search input (500ms), immediate for other filters
@@ -178,7 +178,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (isLVTCategory && selectedCollections.length > 0) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -237,8 +237,8 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       </div>
 
-      {/* Collections Filter (for LVT only) */}
-      {isLVTCategory && availableCollections && availableCollections.length > 0 && (
+      {/* Collections Filter (samo LVT, ne Parket) */}
+      {pathname?.includes('/kategorije/lvt') && availableCollections && availableCollections.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Kolekcije</label>
           <div className="space-y-2 max-h-64 overflow-y-auto">
