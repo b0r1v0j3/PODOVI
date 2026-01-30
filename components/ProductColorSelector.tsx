@@ -231,11 +231,17 @@ export default function ProductColorSelector({
             )}
           </div>
 
-          {/* Selected Color Info */}
+          {/* Ispod slike: za parket samo naziv boje (bez koda/sluga); za LVT kod + naziv */}
           {selectedColor && (
             <div className="mt-4 text-center">
-              <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
-              <p className="text-base text-gray-700">{selectedColor.name}</p>
+              {customColors?.length ? (
+                <p className="text-base text-gray-700">{selectedColor.name}</p>
+              ) : (
+                <>
+                  <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
+                  <p className="text-base text-gray-700">{selectedColor.name}</p>
+                </>
+              )}
             </div>
           )}
 
@@ -271,19 +277,11 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title: za parket prikaži samo kolekciju (kao LVT "Creation 30"); boja je ispod slike */}
+            {/* Title: za parket prikaži kolekciju običnim tekstom (kao ostalo na sajtu), boja ispod slike */}
             <div>
-              {collectionDisplayName ? (
-                <div className="bg-primary-50 border border-primary-200 rounded-xl px-4 py-3 mb-2 inline-block">
-                  <h1 className="text-2xl font-bold text-primary-700">
-                    {collectionDisplayName}
-                  </h1>
-                </div>
-              ) : (
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                  {productName}
-                </h1>
-              )}
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                {collectionDisplayName || productName}
+              </h1>
               {shortDescription && (
                 <p className="text-lg text-gray-600">
                   {shortDescription}
