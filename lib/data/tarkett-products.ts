@@ -118,7 +118,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-privilege-waltz-img",
-        "url": "/images/products/hrast-essence.jpg",
+        "url": "/images/products/parket-privilege-waltz.jpg",
         "alt": "Privilege Waltz",
         "isPrimary": true,
         "order": 0
