@@ -4,7 +4,7 @@ import { join } from 'path';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
-import { getEffectiveParketCollection, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
+import { getEffectiveParketCollection, getAllParketVariantSlugs, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import LVTTabs from '@/components/LVTTabs';
@@ -121,7 +121,21 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Collections are products with SKU starting with "GER-" (LVT/Vinil), "LINOLEUM-" (Linoleum), "VINIL-" (Vinil)
     // Colors are individual color products with 4-digit SKU codes or other patterns
     const allCollections = allProducts.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')) ?? false);
-    colors = allProducts.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')));
+    if (category.slug === 'parket') {
+      // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
+      const validSlugs = new Set(getAllParketVariantSlugs());
+      const seen = new Set<string>();
+      colors = allProducts
+        .filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')))
+        .filter(p => {
+          if (!validSlugs.has(p.slug)) return false;
+          if (seen.has(p.slug)) return false;
+          seen.add(p.slug);
+          return true;
+        });
+    } else {
+      colors = allProducts.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')));
+    }
 
     // Extract unique LVT collection names for filter FIRST (before filtering)
     // This ensures all collections remain visible in the filter dropdown

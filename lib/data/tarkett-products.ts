@@ -2844,7 +2844,8 @@ export const tarkettProducts: Product[] = [
     ],
     "specs": [
       { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
-      { "key": "collection", "label": "Kolekcija", "value": "Rumba" }
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" }
     ],
     "price": 0,
     "priceUnit": "m²",
@@ -2890,17 +2891,17 @@ export const tarkettProducts: Product[] = [
     updatedAt: new Date("2026-01-29T19:17:38.406Z")
   },
   {
-    "id": "oak-premium-1-strip",
+    "id": "rumba-oak-premium-1-strip",
     "name": "Hrast PREMIUM 1 Strip",
-    "slug": "hrast-premium-1-strip",
-    "sku": "oak-premium-1-strip",
+    "slug": "rumba-hrast-premium-1-strip",
+    "sku": "550048050",
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Rumba - Hrast PREMIUM 1 Strip",
     "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost.",
     "images": [
       {
-        "id": "oak-premium-1-strip-img",
+        "id": "rumba-oak-premium-1-strip-img",
         "url": "/images/products/rumba-oak-premium.jpg",
         "alt": "Hrast PREMIUM 1 Strip",
         "isPrimary": true,
