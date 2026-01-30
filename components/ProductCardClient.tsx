@@ -52,7 +52,8 @@ export default function ProductCardClient({ product, brand }: ProductCardClientP
       (product.sku && product.sku.startsWith('PARKET-') && !product.sku.includes('OAK') && !product.sku.includes('ASH')) ||
       (PARKET_HEADER_COLLECTIONS as readonly string[]).includes(product.name);
     if (isParketCollectionHeader) {
-      productHref = `/kategorije/parket?collections=${encodeURIComponent(product.name)}`;
+      // Kao LVT: klik na kolekciju otvara stranicu proizvoda kolekcije (Allegro + grid varijanti), ne kategoriju
+      productHref = `/proizvodi/${product.slug}`;
     } else {
       // Parket Variant: link na stranicu proizvoda kolekcije sa ?color= (kao LVT) – /proizvodi/allegro?color=hrast-elegant-shiny-3-strip
       const collectionSpec = product.specs?.find(s => s.key === 'collection');
