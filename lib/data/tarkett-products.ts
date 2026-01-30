@@ -1412,7 +1412,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-tango-img",
-        "url": "/images/products/hrast-antique-white-1-strip.jpg",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Tango_Oak_Baron.jpg",
         "alt": "Tango",
         "isPrimary": true,
         "order": 0
@@ -1458,7 +1458,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-tango-classic-img",
-        "url": "/images/products/hrast-almond.jpg",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Tango_Classic_Oak_Sepia_L.jpg",
         "alt": "Tango Classic",
         "isPrimary": true,
         "order": 0
