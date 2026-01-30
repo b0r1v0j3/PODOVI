@@ -64,10 +64,9 @@ export function getParketCollectionBySlug(slug: string): string | null {
   const salsaArtSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_SALSA_ART] ?? [];
   if (salsaArtSlugList.includes(s)) return COLLECTION_SALSA_ART;
 
-  // Salsa Premium: premium 3-strip dezeni
-  if (s.includes('jasper') && s.includes('3-strip')) return COLLECTION_SALSA_PREMIUM;
-  if (s.includes('moonstone') && s.includes('3-strip')) return COLLECTION_SALSA_PREMIUM;
-  if (s.includes('white-lightning')) return COLLECTION_SALSA_PREMIUM;
+  // Salsa Premium: 2 dezena (Hrast Jasper, Hrast Moonstone)
+  const salsaPremiumSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_SALSA_PREMIUM] ?? [];
+  if (salsaPremiumSlugList.includes(s)) return COLLECTION_SALSA_PREMIUM;
 
   // Salsa: 18 dezena (Hrast Chocolate, Cocoa, Copper Original, Cotton, Elegant High Gloss/Matt/Shiny, Iceberg, Linen, Nordic Elegant, Original High Gloss/Matt/Shiny, Robust White, Sienna, Supreme Matt, Vivid, Jasen Silky White)
   const salsaSlugList = PARKET_COLLECTION_VARIANT_SLUGS[COLLECTION_SALSA] ?? [];
@@ -206,6 +205,7 @@ const PARKET_COLLECTION_VARIANT_SLUGS: Record<string, string[]> = {
     'jasen-ivory-dreams-3-strip',
     'jasen-white-canvas-3-strip',
   ],
+  [COLLECTION_SALSA_PREMIUM]: ['hrast-jasper-3-strip', 'hrast-moonstone-3-strip'],
   [COLLECTION_SALSA]: [
     'hrast-chocolate-3-strip',
     'hrast-cocoa-3-strip',

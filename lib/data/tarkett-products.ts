@@ -918,7 +918,7 @@ export const tarkettProducts: Product[] = [
     "categoryId": "3",
     "brandId": "3",
     "shortDescription": "Salsa Premium Parket",
-    "description": "Želite parket koji će vašem prostoru pružiti dašak luksuza? Salsa Premium je savršen parket za sve koji traže savršen spoj bogate tradicije, savremenih boja i tekstura. Posebna uljana površinska zaštita (Protecto Hardwax Oil) naglašava prirodnu strukturu drveta.",
+    "description": "Želite parket koji će vašem prostoru pružiti dašak luksuza? Salsa Premium je savršen parket za sve koji traže savršen spoj bogate tradicije, savremenih boja i tekstura. Posebna uljana površinska zaštita (Protecto Hardwax Oil) naglašava prirodnu strukturu drveta, a pritom olakšava održavanje poda, štedeći vam vreme i novac. Kao i svi Tarkett parketi, i Salsa Premium dolazi uz odgovarajući asortiman lajsni, uz 30 godina garancije. Pred vama je bogat izbor parket dizajna - odaberite jedno od osam različitih idejnih rešenja. Uz T-lock sistem uklapanja, instalacija i uklanjanje poda nikada nisu bili jednostavniji. Salsa Premium parket omogućava vam da kreirate tačno onakav ambijent kakav ste zamislili - uz beskompromisnu udobnost, stabilnost i stil. Vodonepropusna površina olakšava čišćenje, a sam parket je ekološki dizajniran i čuva vaše zdravlje.",
     "images": [
       {
         "id": "parket-salsa-premium-img",
@@ -929,27 +929,94 @@ export const tarkettProducts: Product[] = [
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Salsa Premium"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Salsa Premium" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Hardwax ulje" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "7,5 kg/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "length", "label": "Dužina", "value": "2283 mm" },
+      { "key": "width", "label": "Širina", "value": "194 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
     ],
     "detailsSections": [
       {
         "title": "Ključne karakteristike",
-        "items": ["Naglašena prirodna struktura drveta", "Visoka otpornost na oštećenja i habanja", "Jednostavna ugradnja parketa i ekonomično održavanje", "Odgovarajući asortiman parket lajsni", "Garancija 30 godina"]
+        "items": [
+          "Naglašena prirodna struktura drveta",
+          "Visoka otpornost na oštećenja i habanja",
+          "Jednostavna ugradnja parketa i ekonomično održavanje",
+          "Odgovarajući asortiman parket lajsni",
+          "Garancija 30 godina"
+        ]
+      },
+      {
+        "title": "Tehničke specifikacije",
+        "items": []
       }
     ],
     "price": 0,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-jasper-3-strip",
+    "name": "Hrast JASPER 3 Strip",
+    "slug": "hrast-jasper-3-strip",
+    "sku": "550049170",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa Premium - Hrast JASPER 3 Strip",
+    "description": "Želite parket koji će vašem prostoru pružiti dašak luksuza? Salsa Premium je savršen parket za sve koji traže savršen spoj bogate tradicije, savremenih boja i tekstura.",
+    "images": [{ "id": "hrast-jasper-3-strip-img", "url": "/images/products/hrast-jasper-3-strip.jpg", "alt": "Hrast JASPER 3 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Salsa Premium" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Hardwax ulje" },
+      { "key": "ref", "label": "Ref", "value": "550049170" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"),
+    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "hrast-moonstone-3-strip",
+    "name": "Hrast MOONSTONE 3 Strip",
+    "slug": "hrast-moonstone-3-strip",
+    "sku": "550049171",
+    "categoryId": "3",
+    "brandId": "3",
+    "shortDescription": "Salsa Premium - Hrast MOONSTONE 3 Strip",
+    "description": "Želite parket koji će vašem prostoru pružiti dašak luksuza? Salsa Premium je savršen parket za sve koji traže savršen spoj bogate tradicije, savremenih boja i tekstura.",
+    "images": [{ "id": "hrast-moonstone-3-strip-img", "url": "/images/products/hrast-moonstone-3-strip.jpg", "alt": "Hrast MOONSTONE 3 Strip", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Salsa Premium" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Hardwax ulje" },
+      { "key": "ref", "label": "Ref", "value": "550049171" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
+    ],
+    "price": 0,
+    "priceUnit": "m²",
+    "inStock": true,
+    "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
     "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
