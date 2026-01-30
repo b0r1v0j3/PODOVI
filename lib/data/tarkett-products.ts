@@ -226,7 +226,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-salsa-img",
-        "url": "/images/products/hrast-chocolate-3-strip.jpg",
+        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Salsa_Oak_Elegant_Shiny.jpg",
         "alt": "Salsa",
         "isPrimary": true,
         "order": 0
@@ -310,6 +310,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-cocoa-3-strip-img", "url": "/images/products/hrast-cocoa-3-strip.jpg", "alt": "Hrast COCOA 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049133" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -334,7 +335,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Salsa - Hrast COPPER ORIGINAL 3 Strip",
     "description": "Parket kolekcija Salsa donosi autentičan izraz prirodnih materijala – hrasta i jasena – kroz parket sa lamelama manjih dimenzija.",
-    "images": [{ "id": "hrast-copper-original-3-strip-img", "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Copper_Original.jpg", "alt": "Hrast COPPER ORIGINAL 3 Strip", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "hrast-copper-original-3-strip-img", "url": "/images/products/hrast-copper-original-3-strip.jpg", "alt": "Hrast COPPER ORIGINAL 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
@@ -364,6 +365,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-cotton-3-strip-img", "url": "/images/products/hrast-cotton-3-strip.jpg", "alt": "Hrast COTTON 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049140" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -391,6 +393,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-elegant-high-gloss-3-strip-img", "url": "/images/products/hrast-elegant-high-gloss-3-strip.jpg", "alt": "Hrast ELEGANT HIGH GLOSS 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
       { "key": "ref", "label": "Ref", "value": "550049129" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -418,6 +421,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-elegant-matt-3-strip-img", "url": "/images/products/hrast-elegant-matt-3-strip.jpg", "alt": "Hrast ELEGANT MATT 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049126" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -445,6 +449,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-elegant-shiny-3-strip-img", "url": "/images/products/hrast-elegant-shiny-3-strip.jpg", "alt": "Hrast ELEGANT SHINY 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
       { "key": "ref", "label": "Ref", "value": "550049127" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -472,6 +477,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-iceberg-3-strip-img", "url": "/images/products/hrast-iceberg-3-strip.jpg", "alt": "Hrast ICEBERG 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049124" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -499,6 +505,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-linen-3-strip-img", "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Linen.jpg", "alt": "Hrast LINEN 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049143" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -526,6 +533,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-nordic-elegant-3-strip-img", "url": "/images/products/hrast-nordic-elegant-3-strip.jpg", "alt": "Hrast NORDIC ELEGANT 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
       { "key": "ref", "label": "Ref", "value": "550049132" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -580,6 +588,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-original-matt-3-strip-img", "url": "/images/products/hrast-original-matt-3-strip.jpg", "alt": "Hrast ORIGINAL MATT 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049152" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -607,6 +616,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-original-shiny-3-strip-img", "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Shiny.jpg", "alt": "Hrast ORIGINAL SHINY 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
       { "key": "ref", "label": "Ref", "value": "550049153" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -661,6 +671,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-sienna-3-strip-img", "url": "/images/products/hrast-sienna-3-strip.jpg", "alt": "Hrast SIENNA 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049145" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -688,6 +699,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "hrast-supreme-matt-3-strip-img", "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Supreme_Matt.jpg", "alt": "Hrast SUPREME MATT 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
       { "key": "ref", "label": "Ref", "value": "550049142" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
@@ -742,6 +754,7 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "jasen-silky-white-3-strip-img", "url": "/images/products/jasen-silky-white-3-strip.jpg", "alt": "Jasen SILKY WHITE 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Jasen" },
       { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Lak" },
       { "key": "ref", "label": "Ref", "value": "550049139" },
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
