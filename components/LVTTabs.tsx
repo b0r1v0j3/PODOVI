@@ -548,7 +548,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
               : 'text-gray-500 hover:text-gray-900'
               }`}
           >
-            Boje ({useJsonColors
+            {(categorySlug as string) === 'parket' ? 'Proizvodi' : 'Boje'} ({useJsonColors
               ? (loadingColors
                 ? '...'
                 : colorsToRender.length)
@@ -586,7 +586,12 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             ) : (
               <>
                 <p className="text-gray-600 mb-6">
-                  {legacyColors.length === 0 ? 'Nema' : legacyColors.length} {legacyColors.length === 1 ? 'boja' : 'boja'}
+                  {legacyColors.length === 0
+                    ? 'Nema'
+                    : (categorySlug as string) === 'parket'
+                      ? `${legacyColors.length} ${legacyColors.length === 1 ? 'proizvod' : 'proizvoda'}`
+                      : `${legacyColors.length} ${legacyColors.length === 1 ? 'boja' : 'boja'}`
+                  }
                 </p>
 
                 {/* Collection Header for Parket/Generic */}
