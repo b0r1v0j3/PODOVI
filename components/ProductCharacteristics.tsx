@@ -11,9 +11,11 @@ import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 interface ProductCharacteristicsProps {
   specs?: ProductSpec[];
   categoryId: string;
+  /** Naslov sekcije (npr. "Tehničke i ekološke specifikacije" za Parket) */
+  title?: string;
 }
 
-export default function ProductCharacteristics({ specs, categoryId }: ProductCharacteristicsProps) {
+export default function ProductCharacteristics({ specs, categoryId, title }: ProductCharacteristicsProps) {
   const searchParams = useSearchParams();
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const colorSlug = searchParams.get('color');
@@ -126,7 +128,7 @@ export default function ProductCharacteristics({ specs, categoryId }: ProductCha
 
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">Karakteristike</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">{title ?? 'Karakteristike'}</h2>
       <dl className="space-y-4">
         {finalSpecs.map((spec, index) => {
           const isWeldingRod = spec.label === 'Elektroda za varenje';

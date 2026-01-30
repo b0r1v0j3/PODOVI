@@ -20,21 +20,24 @@ export const tarkettProducts: Product[] = [
       }
     ],
     "specs": [
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Allegro"
-      },
-      {
-        "key": "type",
-        "label": "Tip",
-        "value": "Parket"
-      }
+      { "key": "collection", "label": "Kolekcija", "value": "Allegro" },
+      { "key": "type", "label": "Tip", "value": "Parket" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,658 m²" },
+      { "key": "wear_layer", "label": "Debljina habajućeg sloja", "value": "2,80 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "7,5 kg/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "length", "label": "Dužina", "value": "2283 mm" },
+      { "key": "width", "label": "Širina", "value": "194 mm" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" }
     ],
     "detailsSections": [
       {
         "title": "Ključne karakteristike",
-        "items": ["Dezeni parketa čije se nijanse  kreću od dubokih tonova siene do suptilnih svetlih nijansi", "Višeslojni parket sa površinskim premazom za unutrašnju upotrebu (EN 13489:2023)", "Drvena podna obloga za unutrašnju upotrebu usklađena sa harmonizovanim standardom EN 14342:2013", "Sistemi ocenjivanja i provere stalnosti svojstava (AVCP): Sistem 4", "Usaglašeni standard: EN 14342:2013"]
+        "items": ["Dezeni parketa čije se nijanse kreću od dubokih tonova siene do suptilnih svetlih nijansi", "Višeslojni parket sa površinskim premazom za unutrašnju upotrebu (EN 13489:2023)", "Drvena podna obloga za unutrašnju upotrebu usklađena sa harmonizovanim standardom EN 14342:2013", "Sistemi ocenjivanja i provere stalnosti svojstava (AVCP): Sistem 4", "Usaglašeni standard: EN 14342:2013"]
       }
     ],
     "price": 0,

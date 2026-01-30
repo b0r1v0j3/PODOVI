@@ -1025,8 +1025,18 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     )}
                   </div>
 
-                  {/* Characteristics */}
-                  <ProductCharacteristics specs={filterSpecsForDisplay(product.specs)} categoryId={product.categoryId} />
+                  {/* Characteristics / Tehničke i ekološke specifikacije (Parket) */}
+                  <ProductCharacteristics
+                    specs={
+                      product.categoryId === '3'
+                        ? filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
+                            (s) => s.key !== 'collection' && s.key !== 'type'
+                          )
+                        : filterSpecsForDisplay(product.specs)
+                    }
+                    categoryId={product.categoryId}
+                    title={product.categoryId === '3' ? 'Tehničke i ekološke specifikacije' : undefined}
+                  />
                 </div>
               </>
             ) : (
@@ -1127,8 +1137,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Description & Specs - For Non-LVT/Linoleum Only */}
-            {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && (
+            {/* Description & Specs - For Non-LVT/Linoleum/Parket Only (Parket ima svoj blok gore) */}
+            {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && product.categoryId !== '3' && (
               <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Description */}
                 <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
