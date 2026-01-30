@@ -183,10 +183,10 @@ export default function ProductColorSelector({
 
   return (
     <>
-      {/* Main Grid - Image Left, Info + Colors Right; items-start da leva kolona ne razvlači prazan prostor */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 items-start">
-        {/* Left Column - Slika (kvadrat) → Video (kvadrat) → Opis (kvadrat), bez supljine */}
-        <div className="flex flex-col gap-6 w-full">
+      {/* Main Grid - dno slike i dno Boja u istoj liniji, bez supljine */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 items-stretch">
+        {/* Left Column - Slika (kvadrat) → Video (kvadrat) → Opis (kvadrat) */}
+        <div className="flex flex-col gap-6 w-full min-h-0">
           {/* Kvadrat 1: slika + naziv boje + link */}
           <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
           <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
@@ -292,10 +292,10 @@ export default function ProductColorSelector({
           {leftColumnBottom}
         </div>
 
-        {/* Right Column - Info + Colors Stacked */}
-        <div className="flex flex-col gap-6">
+        {/* Right Column - Info gore, Boje dole (u istoj liniji sa dnom slike) */}
+        <div className="flex flex-col gap-6 h-full min-h-0">
           {/* Product Info + CTA */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4">
+          <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4 flex-shrink-0">
             {/* Brand */}
             {brand && (
               <div className="flex items-center space-x-3">
@@ -347,19 +347,19 @@ export default function ProductColorSelector({
               </span>
             </div>
 
-            {/* CTA Button - Only "Pošaljite upit" */}
+            {/* CTA Button - Pošaljite upit (veći, istaknut) */}
             <div>
               <a
                 href={`/kontakt?product=${productSlug}`}
-                className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-base px-6 py-3 w-full"
+                className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg font-semibold px-6 py-4 w-full rounded-xl"
               >
                 Pošaljite upit
               </a>
             </div>
           </div>
 
-          {/* Colors Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1">
+          {/* Colors Section - spušten dole, u liniji sa dnom slike */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0 mt-auto">
             <div className="flex items-start justify-between gap-4 mb-4">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
