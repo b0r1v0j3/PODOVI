@@ -1010,22 +1010,24 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       title="Tehničke specifikacije"
                     />
                   ) : undefined}
-                />
-
-                {/* Description (parket: samo Opis; ostale kategorije: Opis + Tehničke spec u gridu) */}
-                <div className={`mt-8 grid grid-cols-1 ${product.categoryId === '3' ? '' : 'lg:grid-cols-2'} gap-6`}>
-                  {/* Description (Parket: Prikaži više + Ključne karakteristike uvek ispod; ostale kategorije: kao do sada) */}
-                  <div className="bg-white rounded-2xl shadow-lg p-6">
-                    {product.categoryId === '3' ? (
+                  leftColumnBottom={product.categoryId === '3' ? (
+                    <div className="bg-white rounded-2xl shadow-lg p-6">
                       <ProductDescriptionWithCharacteristics
                         description={product.description || ''}
                         characteristicsSection={product.detailsSections?.find(
                           (s) => s.title === 'Ključne karakteristike'
                         )}
                       />
-                    ) : (
-                      <>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
+                    </div>
+                  ) : undefined}
+                />
+
+                {/* Description + Tehničke spec samo za ne-parket (parket ima Opis u levoj koloni, Tehničke spec u desnoj) */}
+                {product.categoryId !== '3' && (
+                <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-white rounded-2xl shadow-lg p-6">
+                    <>
+                      <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
                         {(() => {
                           const descriptionSections = product.description
                             ? parseDescriptionToSections(product.description)
@@ -1061,18 +1063,15 @@ export default async function ProductPage({ params, searchParams }: Props) {
                           }
                           return null;
                         })()}
-                      </>
-                    )}
+                    </>
                   </div>
 
-                  {/* Tehničke specifikacije samo za ne-parket (parket ih ima gore u desnoj koloni ispod Boja) */}
-                  {product.categoryId !== '3' && (
-                    <ProductCharacteristics
-                      specs={filterSpecsForDisplay(product.specs)}
-                      categoryId={product.categoryId}
-                    />
-                  )}
+                  <ProductCharacteristics
+                    specs={filterSpecsForDisplay(product.specs)}
+                    categoryId={product.categoryId}
+                  />
                 </div>
+                )}
               </>
             ) : (
               // Non-LVT products - standard layout

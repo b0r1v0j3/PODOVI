@@ -33,6 +33,8 @@ interface ProductColorSelectorProps {
   videoEmbedUrl?: string;
   /** Sadržaj ispod Boja u desnoj koloni (npr. Tehničke specifikacije za parket). */
   rightColumnBottom?: React.ReactNode;
+  /** Sadržaj ispod slike/videa u levoj koloni (npr. Opis za parket) – ispunjava prostor, bez supljine. */
+  leftColumnBottom?: React.ReactNode;
 }
 
 export default function ProductColorSelector({
@@ -52,6 +54,7 @@ export default function ProductColorSelector({
   collectionDisplayName,
   videoEmbedUrl,
   rightColumnBottom,
+  leftColumnBottom,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -180,10 +183,12 @@ export default function ProductColorSelector({
 
   return (
     <>
-      {/* Main Grid - Image Left, Info + Colors Right */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        {/* Left Column - Image + External Link */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
+      {/* Main Grid - Image Left, Info + Colors Right; items-start da leva kolona ne razvlači prazan prostor */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 items-start">
+        {/* Left Column - Slika (kvadrat) → Video (kvadrat) → Opis (kvadrat), bez supljine */}
+        <div className="flex flex-col gap-6 w-full">
+          {/* Kvadrat 1: slika + naziv boje + link */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
           <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
             {selectedImage ? (
               <>
@@ -264,6 +269,27 @@ export default function ProductColorSelector({
               </a>
             </div>
           )}
+
+          </div>
+
+          {/* Kvadrat 2: video (zasebna kartica) */}
+          {videoEmbedUrl && (
+            <div className="bg-white rounded-2xl shadow-lg p-6">
+              <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+                <iframe
+                  src={videoEmbedUrl}
+                  title="Video kolekcije"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                  className="w-full h-full"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Kvadrat 3: opis (leftColumnBottom) */}
+          {leftColumnBottom}
         </div>
 
         {/* Right Column - Info + Colors Stacked */}
@@ -365,24 +391,6 @@ export default function ProductColorSelector({
           {rightColumnBottom}
         </div>
       </div>
-
-      {/* Video kolekcije – zaseban kvadrat ispod slike i boja, ista širina kao slika */}
-      {videoEmbedUrl && (
-        <div className="mt-6 w-full lg:w-1/2">
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
-              <iframe
-                src={videoEmbedUrl}
-                title="Video kolekcije"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                className="w-full h-full"
-              />
-            </div>
-          </div>
-        </div>
-      )}
 
       {isColorsModalOpen && (
         <div className="fixed inset-0 z-[60]">
