@@ -594,66 +594,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                   }
                 </p>
 
-                {/* Collection Header for Parket/Generic */}
-                {searchParams?.collections && searchParams.collections.split(',').length === 1 && (
-                  (() => {
-                    const selectedCollectionName = searchParams.collections;
-                    const collectionProduct = collections.find(c =>
-                      c.name === selectedCollectionName ||
-                      c.slug === selectedCollectionName ||
-                      c.slug === selectedCollectionName.toLowerCase() ||
-                      c.name.toLowerCase() === selectedCollectionName.toLowerCase()
-                    );
-                    if (collectionProduct) {
-                      return (
-                        <div className="mb-12 bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
-                          <div className="grid grid-cols-1 lg:grid-cols-2">
-                            <div className="relative h-64 lg:h-auto min-h-[300px]">
-                              <img
-                                src={collectionProduct.images[0]?.url || '/images/placeholder.jpg'}
-                                alt={collectionProduct.name}
-                                className="absolute inset-0 w-full h-full object-cover"
-                              />
-                            </div>
-                            <div className="p-8 lg:p-10 flex flex-col justify-center">
-                              <h2 className="text-3xl font-bold text-gray-900 mb-4">{collectionProduct.name}</h2>
-
-                              {/* Description - handle HTML content safely */}
-                              <div
-                                className="prose prose-sm text-gray-600 mb-6"
-                                dangerouslySetInnerHTML={{ __html: collectionProduct.description }}
-                              />
-
-                              {/* Features */}
-                              {collectionProduct.detailsSections?.find(s => s.title === 'Ključne karakteristike') && (
-                                <div className="bg-gray-50 rounded-lg p-5">
-                                  <h3 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wider">
-                                    Ključne karakteristike
-                                  </h3>
-                                  <ul className="space-y-2">
-                                    {collectionProduct.detailsSections
-                                      .find(s => s.title === 'Ključne karakteristike')
-                                      ?.items.map((item, idx) => (
-                                        <li key={idx} className="flex items-start">
-                                          <svg className="w-5 h-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                          </svg>
-                                          <span className="text-sm text-gray-700">{item}</span>
-                                        </li>
-                                      ))
-                                    }
-                                  </ul>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    }
-                    return null;
-                  })()
-                )}
-
+                {/* Za Parket: bez velikog bloka kolekcije – prikaz kao LVT (samo grid proizvoda) */}
 
 
                 {(() => {
