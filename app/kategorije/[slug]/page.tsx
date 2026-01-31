@@ -185,17 +185,20 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         .filter((v): v is string => Boolean(v) && v !== 'Parket');
       availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
 
-      // Parket: vrsta drveta (Hrast / Jasen) iz spec wood_type ili wood_species na varijantama (colors)
-      const woodCounts: Record<string, number> = {};
-      colors.forEach(p => {
+      // Parket: vrsta drveta (Hrast / Jasen) – iz spec wood_type/wood_species ili iz slug-a (hrast-*, jasen-*, *-oak)
+      const getWoodTypes = (p: { specs?: { key: string; value: string }[]; slug: string }): string[] => {
         const spec = p.specs?.find(s => s.key === 'wood_type' || s.key === 'wood_species');
         const raw = spec?.value?.trim();
-        if (!raw) return;
-        raw.split(',').forEach(part => {
-          const value = part.trim();
-          if (value) {
-            woodCounts[value] = (woodCounts[value] ?? 0) + 1;
-          }
+        if (raw) return raw.split(',').map(part => part.trim()).filter(Boolean);
+        const s = (p.slug || '').toLowerCase();
+        if (s.startsWith('jasen') || s.includes('-jasen-')) return ['Jasen'];
+        if (s.startsWith('hrast') || s.includes('-hrast-') || s.includes('oak')) return ['Hrast'];
+        return ['Hrast'];
+      };
+      const woodCounts: Record<string, number> = {};
+      colors.forEach(p => {
+        getWoodTypes(p).forEach(value => {
+          woodCounts[value] = (woodCounts[value] ?? 0) + 1;
         });
       });
       availableWoodTypes = Object.entries(woodCounts)
@@ -356,13 +359,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       } else {
         collections = allCollections;
       }
-      // Parket: filtriraj boje po vrsti drveta (Hrast / Jasen)
+      // Parket: filtriraj boje po vrsti drveta (Hrast / Jasen) – spec ili infer iz slug-a
       if (searchParams.woodType) {
         const wt = searchParams.woodType;
         colors = colors.filter(p => {
           const spec = p.specs?.find(s => s.key === 'wood_type' || s.key === 'wood_species');
-          const raw = spec?.value ?? '';
-          return raw.split(',').map(s => s.trim()).includes(wt);
+          const raw = spec?.value?.trim();
+          if (raw) return raw.split(',').map(s => s.trim()).includes(wt);
+          const s = (p.slug || '').toLowerCase();
+          if (wt === 'Jasen') return s.startsWith('jasen') || s.includes('-jasen-');
+          if (wt === 'Hrast') return s.startsWith('hrast') || s.includes('-hrast-') || s.includes('oak');
+          return false;
         });
       }
     } else {
