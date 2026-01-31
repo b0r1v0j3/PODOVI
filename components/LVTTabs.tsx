@@ -32,6 +32,7 @@ interface LVTTabsProps {
     brands?: string;
     collections?: string;
     thickness?: string;
+    woodType?: string;
   };
 }
 
