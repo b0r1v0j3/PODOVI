@@ -372,6 +372,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           return false;
         };
         colors = colors.filter(p => selectedWoodTypes.some(wt => matchWood(p, wt)));
+        // Prikaži samo kolekcije koje imaju bar jednu varijantu izabrane vrste drveta
+        const collectionNamesWithSelectedWood = new Set(
+          colors.map(p => getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value)).filter(Boolean)
+        );
+        collections = collections.filter(p => {
+          const specVal = p.specs?.find(s => s.key === 'collection')?.value;
+          const name = getEffectiveParketCollection(p.slug, specVal) || specVal || p.name;
+          return collectionNamesWithSelectedWood.has(name);
+        });
       }
     } else {
       // For Vinil and other categories, show all collections (no collection filter)
