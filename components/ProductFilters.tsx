@@ -125,6 +125,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
     if ((isLVTCategory || isVinilCategory || isLinoleumCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
+    if (isParketCategory && currentWoodType) params.set('woodType', currentWoodType);
 
     // Debounce for search input (500ms), immediate for other filters
     const delay = search ? 500 : 0;
@@ -146,7 +147,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
             clearTimeout(searchTimeoutRef.current);
           }
         };
-      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, woodType, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isParketCategory]);
+      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, currentWoodType, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isParketCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -183,7 +184,14 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || (isParketCategory && woodType) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
+  const setWoodType = (value: string | null) => {
+    const params = new URLSearchParams(searchParams);
+    if (value) params.set('woodType', value);
+    else params.delete('woodType');
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || (isParketCategory && currentWoodType) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -271,7 +279,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
               <input
                 type="radio"
                 name="woodType"
-                checked={woodType === null}
+                checked={!currentWoodType}
                 onChange={() => setWoodType(null)}
                 className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
               />
@@ -282,7 +290,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
                 <input
                   type="radio"
                   name="woodType"
-                  checked={woodType === w.value}
+                  checked={currentWoodType === w.value}
                   onChange={() => setWoodType(w.value)}
                   className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                 />
