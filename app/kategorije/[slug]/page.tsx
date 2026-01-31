@@ -184,6 +184,23 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         })
         .filter((v): v is string => Boolean(v) && v !== 'Parket');
       availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
+
+      // Parket: vrsta drveta (Hrast / Jasen) iz spec wood_type ili wood_species na varijantama (colors)
+      const woodCounts: Record<string, number> = {};
+      colors.forEach(p => {
+        const spec = p.specs?.find(s => s.key === 'wood_type' || s.key === 'wood_species');
+        const raw = spec?.value?.trim();
+        if (!raw) return;
+        raw.split(',').forEach(part => {
+          const value = part.trim();
+          if (value) {
+            woodCounts[value] = (woodCounts[value] ?? 0) + 1;
+          }
+        });
+      });
+      availableWoodTypes = Object.entries(woodCounts)
+        .map(([value, count]) => ({ value, count }))
+        .sort((a, b) => a.value.localeCompare(b.value));
     }
 
     // Extract unique thickness values from our actual data (collections + colors from JSON)
@@ -338,6 +355,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         });
       } else {
         collections = allCollections;
+      }
+      // Parket: filtriraj boje po vrsti drveta (Hrast / Jasen)
+      if (searchParams.woodType) {
+        const wt = searchParams.woodType;
+        colors = colors.filter(p => {
+          const spec = p.specs?.find(s => s.key === 'wood_type' || s.key === 'wood_species');
+          const raw = spec?.value ?? '';
+          return raw.split(',').map(s => s.trim()).includes(wt);
+        });
       }
     } else {
       // For Vinil and other categories, show all collections (no collection filter)
