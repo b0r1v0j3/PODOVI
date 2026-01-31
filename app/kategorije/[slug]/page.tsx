@@ -359,10 +359,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       } else {
         collections = allCollections;
       }
-      // Parket: filtriraj boje po vrsti drveta (Hrast / Jasen) – spec ili infer iz slug-a
-      if (searchParams.woodType) {
-        const wt = searchParams.woodType;
-        colors = colors.filter(p => {
+      // Parket: filtriraj boje po vrstama drveta (Hrast / Jasen) – više izbora, spec ili infer iz slug-a
+      const selectedWoodTypes = searchParams.woodType?.split(',').map(s => s.trim()).filter(Boolean) || [];
+      if (selectedWoodTypes.length > 0) {
+        const matchWood = (p: { specs?: { key: string; value: string }[]; slug: string }, wt: string): boolean => {
           const spec = p.specs?.find(s => s.key === 'wood_type' || s.key === 'wood_species');
           const raw = spec?.value?.trim();
           if (raw) return raw.split(',').map(s => s.trim()).includes(wt);
@@ -370,7 +370,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           if (wt === 'Jasen') return s.startsWith('jasen') || s.includes('-jasen-');
           if (wt === 'Hrast') return s.startsWith('hrast') || s.includes('-hrast-') || s.includes('oak');
           return false;
-        });
+        };
+        colors = colors.filter(p => selectedWoodTypes.some(wt => matchWood(p, wt)));
       }
     } else {
       // For Vinil and other categories, show all collections (no collection filter)

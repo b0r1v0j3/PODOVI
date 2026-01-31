@@ -25,7 +25,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const currentType = searchParams.get('type');
   const currentCollections = searchParams.get('collections');
   const currentThickness = searchParams.get('thickness');
-  const currentWoodType = searchParams.get('woodType');
+  const currentWoodTypes = searchParams.get('woodType')?.split(',').filter(Boolean) || [];
   
   const [search, setSearch] = useState(currentFilters.search || '');
   const [selectedBrands, setSelectedBrands] = useState<string[]>(currentFilters.brandIds || []);
@@ -40,6 +40,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const [selectedThickness, setSelectedThickness] = useState<string[]>(
     currentThickness ? currentThickness.split(',') : []
   );
+  const [selectedWoodTypes, setSelectedWoodTypes] = useState<string[]>(currentWoodTypes);
 
   // Sync state with URL params when they change externally (e.g., browser back/forward)
   // This ensures state stays in sync with URL, but we skip updates that would cause loops
@@ -125,7 +126,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
     if ((isLVTCategory || isVinilCategory || isLinoleumCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
-    if (isParketCategory && currentWoodType) params.set('woodType', currentWoodType);
+    if (isParketCategory && selectedWoodTypes.length > 0) params.set('woodType', selectedWoodTypes.join(','));
 
     // Debounce for search input (500ms), immediate for other filters
     const delay = search ? 500 : 0;
@@ -184,14 +185,13 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const setWoodType = (value: string | null) => {
-    const params = new URLSearchParams(searchParams);
-    if (value) params.set('woodType', value);
-    else params.delete('woodType');
-    router.push(`${pathname}?${params.toString()}`);
+  const toggleWoodType = (value: string) => {
+    setSelectedWoodTypes(prev =>
+      prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]
+    );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || (isParketCategory && currentWoodType) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || (isParketCategory && selectedWoodTypes.length > 0) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -270,28 +270,17 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       )}
 
-      {/* Vrsta drveta (samo Parket) */}
+      {/* Vrsta drveta (samo Parket) – više izbora kao brendovi */}
       {isParketCategory && availableWoodTypes && availableWoodTypes.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Vrsta drveta</label>
           <div className="space-y-2">
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="radio"
-                name="woodType"
-                checked={!currentWoodType}
-                onChange={() => setWoodType(null)}
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-              />
-              <span className="ml-2 text-sm text-gray-700">Svi</span>
-            </label>
             {availableWoodTypes.map((w) => (
               <label key={w.value} className="flex items-center cursor-pointer">
                 <input
-                  type="radio"
-                  name="woodType"
-                  checked={currentWoodType === w.value}
-                  onChange={() => setWoodType(w.value)}
+                  type="checkbox"
+                  checked={selectedWoodTypes.includes(w.value)}
+                  onChange={() => toggleWoodType(w.value)}
                   className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                 />
                 <span className="ml-2 text-sm text-gray-700">{w.value} ({w.count})</span>
