@@ -21,6 +21,7 @@ interface CategoryPageProps {
     type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
     collections?: string; // For LVT collection filter (comma-separated)
     thickness?: string; // For overall thickness filter (comma-separated values)
+    woodType?: string; // For Parket: Hrast | Jasen
   };
 }
 
