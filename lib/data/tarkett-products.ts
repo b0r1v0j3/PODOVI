@@ -2902,7 +2902,14 @@ export const tarkettProducts: Product[] = [
     ],
     "specs": [
       { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
-      { "key": "collection", "label": "Kolekcija", "value": "Rumba" }
+      { "key": "collection", "label": "Kolekcija", "value": "Rumba" },
+      { "key": "surface_treatment", "label": "Površinski tretman", "value": "Proteco Natura" },
+      { "key": "reference", "label": "Ref.", "value": "550048050" },
+      { "key": "format", "label": "Format", "value": "Daska 120 x 1200 mm, 2 midi oborene ivice" },
+      { "key": "locking", "label": "Sistem zaključavanja", "value": "T-Lock" },
+      { "key": "installation", "label": "Ugradnja", "value": "Glue-Down/Floating" },
+      { "key": "thickness", "label": "Ukupna debljina", "value": "14 mm" },
+      { "key": "area_per_box", "label": "Površina po kutiji", "value": "0,860 m²" }
     ],
     "price": 0,
     "priceUnit": "m²",
