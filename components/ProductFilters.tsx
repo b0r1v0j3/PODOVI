@@ -148,7 +148,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
             clearTimeout(searchTimeoutRef.current);
           }
         };
-      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, currentWoodType, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isParketCategory]);
+      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, selectedWoodTypes, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isParketCategory]);
 
   const clearFilters = () => {
     setSearch('');
