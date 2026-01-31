@@ -2756,7 +2756,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-copper-1-strip-img",
-        "url": "/images/products/rumba-oak-copper-variant.jpg",
+        "url": "/images/products/rumba-oak-copper.jpg",
         "alt": "Hrast COPPER 1 Strip",
         "isPrimary": true,
         "order": 0
