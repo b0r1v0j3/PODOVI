@@ -8,21 +8,24 @@ interface ProductFiltersProps {
   availableBrands: Brand[];
   currentFilters: IProductFilters;
   availableCollections?: string[]; // For LVT collection filter
+  availableWoodTypes?: { value: string; count: number }[]; // For Parket: Hrast / Jasen
   availableThickness?: string[]; // For LVT overall thickness filter
   availableThicknessByType?: { homogeni: string[]; heterogeni: string[] }; // For Vinil thickness by type
 }
 
-export default function ProductFilters({ availableBrands, currentFilters, availableCollections, availableThickness, availableThicknessByType }: ProductFiltersProps) {
+export default function ProductFilters({ availableBrands, currentFilters, availableCollections, availableWoodTypes, availableThickness, availableThicknessByType }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   
   const isVinilCategory = pathname?.includes('/kategorije/vinil');
   const isLVTCategory = pathname?.includes('/kategorije/lvt') || pathname?.includes('/kategorije/parket');
+  const isParketCategory = pathname?.includes('/kategorije/parket');
   const isLinoleumCategory = pathname?.includes('/kategorije/linoleum');
   const currentType = searchParams.get('type');
   const currentCollections = searchParams.get('collections');
   const currentThickness = searchParams.get('thickness');
+  const currentWoodType = searchParams.get('woodType');
   
   const [search, setSearch] = useState(currentFilters.search || '');
   const [selectedBrands, setSelectedBrands] = useState<string[]>(currentFilters.brandIds || []);
@@ -53,6 +56,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     const urlType = searchParams.get('type');
     const urlCollections = searchParams.get('collections')?.split(',').filter(Boolean) || [];
     const urlThickness = searchParams.get('thickness')?.split(',').filter(Boolean) || [];
+    const urlWoodType = searchParams.get('woodType');
 
     // Only update state if URL values differ (to avoid infinite loops)
     if (urlSearch !== search) setSearch(urlSearch);
@@ -111,6 +115,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     params.delete('type');
     params.delete('collections');
     params.delete('thickness');
+    params.delete('woodType');
 
     // Add new filter params based on current state - ALL filters are preserved
     if (search) params.set('search', search);
@@ -141,7 +146,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
             clearTimeout(searchTimeoutRef.current);
           }
         };
-      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory]);
+      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, woodType, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isParketCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -178,7 +183,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || (isParketCategory && woodType) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -251,6 +256,37 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
                   className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                 />
                 <span className="ml-2 text-sm text-gray-700">{collection}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Vrsta drveta (samo Parket) */}
+      {isParketCategory && availableWoodTypes && availableWoodTypes.length > 0 && (
+        <div className="mb-6">
+          <label className="label text-xs uppercase tracking-wide text-gray-500">Vrsta drveta</label>
+          <div className="space-y-2">
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="radio"
+                name="woodType"
+                checked={woodType === null}
+                onChange={() => setWoodType(null)}
+                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Svi</span>
+            </label>
+            {availableWoodTypes.map((w) => (
+              <label key={w.value} className="flex items-center cursor-pointer">
+                <input
+                  type="radio"
+                  name="woodType"
+                  checked={woodType === w.value}
+                  onChange={() => setWoodType(w.value)}
+                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                />
+                <span className="ml-2 text-sm text-gray-700">{w.value} ({w.count})</span>
               </label>
             ))}
           </div>

@@ -88,6 +88,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     inStock: searchParams.inStock === 'true' ? true : undefined,
     type: searchParams.type, // For vinyl type filter
     thickness: searchParams.thickness ? searchParams.thickness.split(',') : undefined,
+    woodType: searchParams.woodType, // For Parket: Hrast | Jasen
     // collections filter will be applied separately after separating collections from colors
   };
 
@@ -109,6 +110,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
+  let availableWoodTypes: { value: string; count: number }[] = [];
   let availableThickness: string[] = [];
   let availableThicknessByType: { homogeni: string[]; heterogeni: string[] } = { homogeni: [], heterogeni: [] };
 
@@ -384,6 +386,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               availableBrands={availableBrands}
               currentFilters={filtersWithoutCollections}
               availableCollections={availableCollections}
+              availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
               availableThickness={availableThickness}
               availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
             />
@@ -404,6 +407,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   brands: searchParams.brands,
                   collections: searchParams.collections,
                   thickness: searchParams.thickness,
+                  woodType: searchParams.woodType,
                 }}
               />
             ) : (

@@ -114,4 +114,5 @@ export interface ProductFilters {
   type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
   collections?: string[]; // For LVT collection filter
   thickness?: string[]; // For overall thickness filter (for LVT) - array of thickness values like "2.00", "2.50", etc.
+  woodType?: string; // For Parket: 'Hrast' | 'Jasen'
 }
