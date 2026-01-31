@@ -2505,17 +2505,17 @@ export const tarkettProducts: Product[] = [
     updatedAt: new Date("2026-01-29T19:17:37.067Z")
   },
   {
-    "id": "oak-premium-1-strip",
+    "id": "tango-oak-premium-1-strip",
     "name": "Hrast PREMIUM 1 Strip",
-    "slug": "hrast-premium-1-strip",
+    "slug": "tango-hrast-premium-1-strip",
     "sku": "oak-premium-1-strip",
     "categoryId": "3",
     "brandId": "3",
-    "shortDescription": "oak-premium-1-strip - Visokokvalitetni Tarkett parket.",
-    "description": "Tarkett Parket.",
+    "shortDescription": "Tango - Hrast PREMIUM 1 Strip",
+    "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta.",
     "images": [
       {
-        "id": "oak-premium-1-strip-img",
+        "id": "tango-oak-premium-1-strip-img",
         "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Premium.jpg",
         "alt": "Hrast PREMIUM 1 Strip",
         "isPrimary": true,
@@ -2523,16 +2523,8 @@ export const tarkettProducts: Product[] = [
       }
     ],
     "specs": [
-      {
-        "key": "manufacturer",
-        "label": "Proizvođač",
-        "value": "Tarkett"
-      },
-      {
-        "key": "collection",
-        "label": "Kolekcija",
-        "value": "Parket"
-      }
+      { "key": "manufacturer", "label": "Proizvođač", "value": "Tarkett" },
+      { "key": "collection", "label": "Kolekcija", "value": "Tango" }
     ],
     "price": 0,
     "priceUnit": "m²",
