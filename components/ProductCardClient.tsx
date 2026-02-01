@@ -122,12 +122,14 @@ export default function ProductCardClient({ product, brand, compact = false }: P
     >
       <div className="relative h-64 bg-gray-100 overflow-hidden">
         {primaryImage ? (
-          <img
-            src={imageSrc}
+          <Image
+            src={imageSrc.startsWith('/') ? imageSrc : '/images/placeholder.svg'}
             alt={primaryImage.alt}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={90}
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            unoptimized={!imageSrc.startsWith('/')}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">

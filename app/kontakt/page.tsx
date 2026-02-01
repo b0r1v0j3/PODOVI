@@ -1,9 +1,12 @@
 "use client";
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { ContactFormData } from '@/types';
 
 export default function ContactPage() {
+  const searchParams = useSearchParams();
+  const prefillDone = useRef(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -15,6 +18,26 @@ export default function ContactPage() {
     subject: '',
     message: '',
   });
+
+  // Prefill from URL: ?product=slug&color=color&ref=ref (samo pri prvom učitavanju)
+  useEffect(() => {
+    if (prefillDone.current) return;
+    const product = searchParams.get('product') || '';
+    const color = searchParams.get('color') || '';
+    const ref = searchParams.get('ref') || '';
+    if (!product && !color && !ref) return;
+    prefillDone.current = true;
+    const lines: string[] = [];
+    if (product) lines.push(`Proizvod: ${product}`);
+    if (color) lines.push(`Boja/varijanta: ${color}`);
+    if (ref) lines.push(`Ref: ${ref}`);
+    const prefill = lines.join('\n') + '\n\n';
+    setFormData((prev) => ({
+      ...prev,
+      subject: product ? `Upit za proizvod: ${product}` : prev.subject,
+      message: prefill,
+    }));
+  }, [searchParams]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

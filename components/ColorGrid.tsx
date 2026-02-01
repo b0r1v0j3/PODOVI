@@ -65,6 +65,8 @@ function ImageWithFallback({ src, alt, className }: any) {
       src={imgSrc || '/images/placeholder.svg'}
       alt={alt}
       className={className}
+      loading="lazy"
+      decoding="async"
       style={{
         position: 'absolute',
         top: 0,

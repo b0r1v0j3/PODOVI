@@ -4384,5 +4384,141 @@ export const tarkettProducts: Product[] = [
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+
+  // Laminat – Giant 1233 4V (Tarkett) – 6 dezena
+  {
+    "id": "giant-1233-4v",
+    "name": "Giant 1233 4V",
+    "slug": "giant-1233-4v",
+    "sku": "LAM-GIANT-1233-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Giant 1233 4V Laminat",
+    "description": "Kolekcija čiji je dizajn stvoren da traje, on je večit. Laminat Giant stvara sofisticiran enterijer i daje svojim vlasnicima pravo estetsko uživanje.\n\nKreiran je sa posebnom pažnjom i svaka njegova ploča poseduje jedinstveni pečat prirode.\n\nPogodan za primene u ugostiteljstvu i poslovnim prostorima.",
+    "images": [{ "id": "giant-1233-4v-img", "url": "/images/products/giant-1233-4v.jpg", "alt": "Giant 1233 4V", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "33 Heavy" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "12 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "10330 g/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "2-lock" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+    ],
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Kolekcija čiji je dizajn stvoren da traje.", "Laminat Giant stvara sofisticiran enterijer.", "Svaka ploča poseduje jedinstveni pečat prirode."] },
+      { "title": "Tehničke specifikacije", "items": [] }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "giant-1233-4v-red-oak",
+    "name": "Giant 1233 4V Red Oak",
+    "slug": "giant-1233-4v-red-oak",
+    "sku": "506000001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Giant 1233 4V Red Oak",
+    "description": "Kolekcija čiji je dizajn stvoren da traje. Laminat Giant 1233 4V Red Oak – sofisticiran enterijer sa jedinstvenim pečatom prirode.",
+    "images": [{ "id": "giant-1233-4v-red-oak-img", "url": "/images/products/giant-1233-4v-red-oak.jpg", "alt": "Giant 1233 4V Red Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "506000001" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "giant-1233-4v-sunset-oak",
+    "name": "Giant 1233 4V Sunset Oak",
+    "slug": "giant-1233-4v-sunset-oak",
+    "sku": "506000002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Giant 1233 4V Sunset Oak",
+    "description": "Kolekcija čiji je dizajn stvoren da traje. Laminat Giant 1233 4V Sunset Oak.",
+    "images": [{ "id": "giant-1233-4v-sunset-oak-img", "url": "/images/products/giant-1233-4v-sunset-oak.jpg", "alt": "Giant 1233 4V Sunset Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "506000002" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "giant-1233-4v-oak-ashes",
+    "name": "Giant 1233 4V Oak Ashes",
+    "slug": "giant-1233-4v-oak-ashes",
+    "sku": "506000003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Giant 1233 4V Oak Ashes",
+    "description": "Kolekcija čiji je dizajn stvoren da traje. Laminat Giant 1233 4V Oak Ashes.",
+    "images": [{ "id": "giant-1233-4v-oak-ashes-img", "url": "/images/products/giant-1233-4v-oak-ashes.jpg", "alt": "Giant 1233 4V Oak Ashes", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "506000003" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "giant-1233-4v-oak-cloud",
+    "name": "Giant 1233 4V Oak Cloud",
+    "slug": "giant-1233-4v-oak-cloud",
+    "sku": "506000004",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Giant 1233 4V Oak Cloud",
+    "description": "Kolekcija čiji je dizajn stvoren da traje. Laminat Giant 1233 4V Oak Cloud.",
+    "images": [{ "id": "giant-1233-4v-oak-cloud-img", "url": "/images/products/giant-1233-4v-oak-cloud.jpg", "alt": "Giant 1233 4V Oak Cloud", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "506000004" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "giant-1233-4v-oak-light-beige",
+    "name": "Giant 1233 4V Oak Light Beige",
+    "slug": "giant-1233-4v-oak-light-beige",
+    "sku": "506000005",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Giant 1233 4V Oak Light Beige",
+    "description": "Kolekcija čiji je dizajn stvoren da traje. Laminat Giant 1233 4V Oak Light Beige.",
+    "images": [{ "id": "giant-1233-4v-oak-light-beige-img", "url": "/images/products/giant-1233-4v-oak-light-beige.jpg", "alt": "Giant 1233 4V Oak Light Beige", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "506000005" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "giant-1233-4v-oak-stone",
+    "name": "Giant 1233 4V Oak Stone",
+    "slug": "giant-1233-4v-oak-stone",
+    "sku": "506000006",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Giant 1233 4V Oak Stone",
+    "description": "Kolekcija čiji je dizajn stvoren da traje. Laminat Giant 1233 4V Oak Stone.",
+    "images": [{ "id": "giant-1233-4v-oak-stone-img", "url": "/images/products/giant-1233-4v-oak-stone.jpg", "alt": "Giant 1233 4V Oak Stone", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "506000006" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   }
 ];

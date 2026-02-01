@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white text-lg font-semibold mb-4">O nama</h3>
             <p className="text-sm">
-              Vodeci uvoznik i distributer kvalitetnih podnih obloga u Srbiji. 
+              Vodeći uvoznik i distributer kvalitetnih podnih obloga u Srbiji. 
               Nudimo širok asortiman proizvoda od renomiranih evropskih brendova.
             </p>
           </div>
