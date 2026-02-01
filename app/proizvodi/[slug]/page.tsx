@@ -12,6 +12,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductCharacteristics from '@/components/ProductCharacteristics';
 import ProductDescriptionWithCharacteristics from '@/components/ProductDescriptionWithCharacteristics';
 import ProductDocuments from '@/components/ProductDocuments';
+import ProductInquiryStickyCTA from '@/components/ProductInquiryStickyCTA';
 import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDetailsSection } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
