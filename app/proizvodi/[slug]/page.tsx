@@ -1101,9 +1101,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     <div className="bg-white rounded-2xl shadow-lg p-6">
                       <ProductDescriptionWithCharacteristics
                         description={product.description || ''}
-                        characteristicsSection={product.detailsSections?.find(
-                          (s) => s.title === 'Ključne karakteristike'
-                        )}
                       />
                     </div>
                   ) : undefined}

@@ -500,8 +500,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
   }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors, vinylType, collections]);
 
-  // Za Parket: jedna kolona u tabu Kolekcije. Laminat kao ostale kategorije (grid 3 kolone).
-  const isCollectionsSingleColumn = categorySlug === 'parket';
+  // Kolekcije: grid kao ostale kategorije (2–3 kolone). Parket isto kao ceo sajt.
+  const isCollectionsSingleColumn = false;
 
   const renderProducts = (products: Product[], gridKey: string, singleColumn = false) => {
     if (products.length === 0) {
