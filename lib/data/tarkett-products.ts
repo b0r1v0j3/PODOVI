@@ -4404,7 +4404,9 @@ export const tarkettProducts: Product[] = [
       { "key": "overall_thickness", "label": "Ukupna debljina", "value": "12 mm" },
       { "key": "mass", "label": "Ukupna masa", "value": "10330 g/m²" },
       { "key": "locking_system", "label": "Sistem zaključavanja", "value": "2-lock" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,470 m²" }
     ],
     "detailsSections": [
       { "title": "Ključne karakteristike", "items": ["Kolekcija čiji je dizajn stvoren da traje.", "Laminat Giant stvara sofisticiran enterijer.", "Svaka ploča poseduje jedinstveni pečat prirode."] },
@@ -4417,7 +4419,7 @@ export const tarkettProducts: Product[] = [
     "id": "giant-1233-4v-red-oak",
     "name": "Giant 1233 4V Red Oak",
     "slug": "giant-1233-4v-red-oak",
-    "sku": "506000001",
+    "sku": "505834004",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Giant 1233 4V Red Oak",
@@ -4425,8 +4427,14 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "giant-1233-4v-red-oak-img", "url": "/images/products/giant-1233-4v-red-oak.jpg", "alt": "Giant 1233 4V Red Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
-      { "key": "ref", "label": "Ref.", "value": "506000001" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+      { "key": "ref", "label": "Ref.", "value": "505834004" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije daske", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "in_register", "label": "U registru", "value": "Da" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,470 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "48" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
@@ -4435,7 +4443,7 @@ export const tarkettProducts: Product[] = [
     "id": "giant-1233-4v-sunset-oak",
     "name": "Giant 1233 4V Sunset Oak",
     "slug": "giant-1233-4v-sunset-oak",
-    "sku": "506000002",
+    "sku": "505834002",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Giant 1233 4V Sunset Oak",
@@ -4443,8 +4451,14 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "giant-1233-4v-sunset-oak-img", "url": "/images/products/giant-1233-4v-sunset-oak.jpg", "alt": "Giant 1233 4V Sunset Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
-      { "key": "ref", "label": "Ref.", "value": "506000002" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+      { "key": "ref", "label": "Ref.", "value": "505834002" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije daske", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "in_register", "label": "U registru", "value": "Da" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,470 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "48" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
@@ -4453,7 +4467,7 @@ export const tarkettProducts: Product[] = [
     "id": "giant-1233-4v-oak-ashes",
     "name": "Giant 1233 4V Oak Ashes",
     "slug": "giant-1233-4v-oak-ashes",
-    "sku": "506000003",
+    "sku": "505834003",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Giant 1233 4V Oak Ashes",
@@ -4461,8 +4475,14 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "giant-1233-4v-oak-ashes-img", "url": "/images/products/giant-1233-4v-oak-ashes.jpg", "alt": "Giant 1233 4V Oak Ashes", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
-      { "key": "ref", "label": "Ref.", "value": "506000003" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+      { "key": "ref", "label": "Ref.", "value": "505834003" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije daske", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "in_register", "label": "U registru", "value": "Da" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,470 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "48" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
@@ -4471,7 +4491,7 @@ export const tarkettProducts: Product[] = [
     "id": "giant-1233-4v-oak-cloud",
     "name": "Giant 1233 4V Oak Cloud",
     "slug": "giant-1233-4v-oak-cloud",
-    "sku": "506000004",
+    "sku": "505834000",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Giant 1233 4V Oak Cloud",
@@ -4479,8 +4499,14 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "giant-1233-4v-oak-cloud-img", "url": "/images/products/giant-1233-4v-oak-cloud.jpg", "alt": "Giant 1233 4V Oak Cloud", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
-      { "key": "ref", "label": "Ref.", "value": "506000004" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+      { "key": "ref", "label": "Ref.", "value": "505834000" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije daske", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "in_register", "label": "U registru", "value": "Da" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,470 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "48" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
@@ -4489,7 +4515,7 @@ export const tarkettProducts: Product[] = [
     "id": "giant-1233-4v-oak-light-beige",
     "name": "Giant 1233 4V Oak Light Beige",
     "slug": "giant-1233-4v-oak-light-beige",
-    "sku": "506000005",
+    "sku": "505834001",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Giant 1233 4V Oak Light Beige",
@@ -4515,8 +4541,14 @@ export const tarkettProducts: Product[] = [
     "images": [{ "id": "giant-1233-4v-oak-stone-img", "url": "/images/products/giant-1233-4v-oak-stone.jpg", "alt": "Giant 1233 4V Oak Stone", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233 4V" },
-      { "key": "ref", "label": "Ref.", "value": "506000006" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska" }
+      { "key": "ref", "label": "Ref.", "value": "505834005" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije daske", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "in_register", "label": "U registru", "value": "Da" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,470 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "48" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
