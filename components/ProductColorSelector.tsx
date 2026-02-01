@@ -37,6 +37,10 @@ interface ProductColorSelectorProps {
   rightColumnBottom?: React.ReactNode;
   /** Sadržaj ispod slike/videa u levoj koloni (npr. Opis za parket) – ispunjava prostor, bez supljine. */
   leftColumnBottom?: React.ReactNode;
+  /** Ref proizvoda za link upita (kontakt?product=&color=&ref=). */
+  inquiryRef?: string;
+  /** Da li je glavna slika hero/LCP – samo jedna po stranici ima priority. */
+  imagePriority?: boolean;
 }
 
 export default function ProductColorSelector({
@@ -58,6 +62,8 @@ export default function ProductColorSelector({
   videoEmbedUrl,
   rightColumnBottom,
   leftColumnBottom,
+  inquiryRef,
+  imagePriority,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -201,6 +207,7 @@ export default function ProductColorSelector({
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   quality={100}
+                  priority={imagePriority}
                 />
                 {/* Image switcher arrows - show only if multiple images */}
                 {selectedImages.length > 1 && (
@@ -323,10 +330,16 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* CTA Button - Pošaljite upit (veći, istaknut) */}
+            {/* CTA Button - Pošaljite upit (veći, istaknut) – prefill: proizvod + boja + ref */}
             <div>
               <a
-                href={`/kontakt?product=${productSlug}`}
+                href={(() => {
+                  const params = new URLSearchParams();
+                  params.set('product', productSlug);
+                  if (selectedColorSlug) params.set('color', selectedColorSlug);
+                  if (inquiryRef) params.set('ref', inquiryRef);
+                  return `/kontakt?${params.toString()}`;
+                })()}
                 className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg font-semibold px-6 py-4 w-full rounded-xl"
               >
                 Pošaljite upit
