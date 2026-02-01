@@ -106,8 +106,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // This ensures all thickness options remain visible even when one is selected
   const allProductsForThickness = await productRepository.findByCategory(category.id);
 
-  // For LVT, Linoleum, Carpet, and Vinil categories, separate collections from colors
-  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket';
+  // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat – separate collections from colors
+  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat';
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
@@ -121,15 +121,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (isLVTCategory) {
-    // Collections are products with SKU starting with "GER-" (LVT/Vinil), "LINOLEUM-" (Linoleum), "VINIL-" (Vinil)
-    // Colors are individual color products with 4-digit SKU codes or other patterns
-    const allCollections = allProducts.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')) ?? false);
+    // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat)
+    // Colors: products without those SKU prefixes
+    const hasCollectionSku = (p: { sku?: string | null }) =>
+      (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-')) ?? false;
+    const allCollections = allProducts.filter(p => hasCollectionSku(p));
     if (category.slug === 'parket') {
       // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
       const validSlugs = new Set(getAllParketVariantSlugs());
       const seen = new Set<string>();
       colors = allProducts
-        .filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')))
+        .filter(p => !hasCollectionSku(p))
         .filter(p => {
           if (!validSlugs.has(p.slug)) return false;
           if (seen.has(p.slug)) return false;
@@ -137,7 +139,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           return true;
         });
     } else {
-      colors = allProducts.filter(p => !(p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-')));
+      colors = allProducts.filter(p => !hasCollectionSku(p));
     }
 
     // Extract unique LVT collection names for filter FIRST (before filtering)
@@ -173,6 +175,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         if (indexB === -1) return -1;
         return indexA - indexB;
       });
+    }
+
+    // Laminat: kolekcije iz LAM- proizvoda (spec "collection" ili name)
+    if (category.slug === 'laminat') {
+      const names = allCollections
+        .filter(p => p.sku?.startsWith('LAM-'))
+        .map(p => p.specs?.find(s => s.key === 'collection')?.value || p.name)
+        .filter((v): v is string => Boolean(v));
+      availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
     }
 
     // Parket: kolekcije iz spec "collection", za varijante (collection "Parket") koristimo efektivnu kolekciju iz mapiranja
@@ -338,6 +349,20 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             }
             return false;
           });
+        });
+      } else {
+        collections = allCollections;
+      }
+    } else if (category.slug === 'laminat') {
+      const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
+      if (selectedCollections.length > 0) {
+        collections = allCollections.filter(p => {
+          const name = p.specs?.find(s => s.key === 'collection')?.value || p.name;
+          return selectedCollections.includes(name);
+        });
+        colors = colors.filter(p => {
+          const name = p.specs?.find(s => s.key === 'collection')?.value;
+          return name && selectedCollections.includes(name);
         });
       } else {
         collections = allCollections;

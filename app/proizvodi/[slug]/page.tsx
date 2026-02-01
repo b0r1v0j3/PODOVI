@@ -765,6 +765,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
   try {
     // Map category IDs to category slugs
     const categorySlugMap: Record<string, string> = {
+      '1': 'laminat',
       '6': 'lvt',
       '7': 'linoleum',
       '4': 'tekstilne-ploce',
@@ -801,6 +802,20 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
+    // Laminat kolekcija: ako je ?color= varijanta koja ne pripada ovoj kolekciji, redirect na prvu validnu boju
+    if (product.categoryId === '1' && product.sku?.startsWith('LAM-') && selectedColorSlug) {
+      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+      const collectionName = product.specs?.find(s => s.key === 'collection')?.value;
+      const variants = collectionName
+        ? tarkettProducts.filter(p => p.categoryId === '1' && !p.sku?.startsWith('LAM-') && p.specs?.find(s => s.key === 'collection')?.value === collectionName)
+        : [];
+      const validSlugs = variants.map(p => p.slug);
+      if (validSlugs.length > 0 && !validSlugs.includes(selectedColorSlug)) {
+        const { redirect } = await import('next/navigation');
+        redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(validSlugs[0])}`);
+      }
+    }
+
     // If product is a COLOR (has collectionSlug), redirect to CATEGORY page with color parameter.
     // Collections don't have collectionSlug and should stay on collection page.
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
@@ -815,6 +830,16 @@ export default async function ProductPage({ params, searchParams }: Props) {
       const collectionSpec = product.specs.find(s => s.key === 'collection');
       const collectionName = getEffectiveParketCollection(product.slug, collectionSpec?.value);
       const collectionSlug = collectionName ? getParketCollectionSlug(collectionName) : null;
+      if (collectionSlug) {
+        const { redirect } = await import('next/navigation');
+        redirect(`/proizvodi/${collectionSlug}?color=${encodeURIComponent(product.slug)}`);
+      }
+    }
+
+    // Laminat variant: redirect na stranicu kolekcije sa ?color= – /proizvodi/blues-1033-4v?color=blues-1033-4v-bourbon-oak
+    if (product.categoryId === '1' && product.sku && !product.sku.startsWith('LAM-')) {
+      const collectionName = product.specs?.find(s => s.key === 'collection')?.value;
+      const collectionSlug = collectionName ? collectionName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') : null;
       if (collectionSlug) {
         const { redirect } = await import('next/navigation');
         redirect(`/proizvodi/${collectionSlug}?color=${encodeURIComponent(product.slug)}`);
@@ -871,6 +896,22 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
+    // Laminat: merge selected variant (slika, naziv, spec) u kolekciju – isto kao parket
+    if (selectedColorSlug && product && product.categoryId === '1' && product.sku?.startsWith('LAM-')) {
+      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+      const laminatVariant = tarkettProducts.find(p => p.categoryId === '1' && !p.sku?.startsWith('LAM-') && p.slug === selectedColorSlug);
+      if (laminatVariant) {
+        product.name = laminatVariant.name;
+        product.shortDescription = laminatVariant.shortDescription || product.shortDescription;
+        if (laminatVariant.images && laminatVariant.images.length > 0) {
+          product.images = laminatVariant.images;
+        }
+        if (laminatVariant.specs && laminatVariant.specs.length > 0) {
+          product.specs = mergeSpecs(product.specs, laminatVariant.specs);
+        }
+      }
+    }
+
     // displayName: posle parket merge-a da podnaslov bude "Parket – ime izabrane boje", ne kolekcije
     const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
       ? product.name.replace(/^Gerflor\s+/, '')
@@ -916,6 +957,34 @@ export default async function ProductPage({ params, searchParams }: Props) {
               if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) return false;
               return getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName;
             });
+        if (variants.length > 0) {
+          customColors = variants.map(v => ({
+            collection: collectionName,
+            collection_name: collectionName,
+            code: v.sku,
+            name: v.name,
+            full_name: v.name,
+            slug: v.slug,
+            image_url: v.images?.[0]?.url || '',
+            texture_url: v.images?.[0]?.url || '',
+            image_count: v.images?.length ?? 0,
+            characteristics: (v.specs || []).reduce((acc, spec) => {
+              acc[spec.label] = spec.value;
+              return acc;
+            }, {} as Record<string, string>)
+          }));
+        }
+      }
+    }
+
+    // Laminat: customColors iz varijanti iste kolekcije (spec collection === product collection)
+    if (product.categoryId === '1' && product.sku?.startsWith('LAM-')) {
+      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
+      const collectionName = product.specs?.find(s => s.key === 'collection')?.value ?? null;
+      if (collectionName) {
+        const variants = tarkettProducts.filter(p =>
+          p.categoryId === '1' && !p.sku?.startsWith('LAM-') && p.specs?.find(s => s.key === 'collection')?.value === collectionName
+        );
         if (variants.length > 0) {
           customColors = variants.map(v => ({
             collection: collectionName,

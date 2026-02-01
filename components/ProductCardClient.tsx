@@ -28,6 +28,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
 
   // Map category IDs to category slugs
   const categorySlugMap: Record<string, string> = {
+    '1': 'laminat',
     '6': 'lvt',
     '7': 'linoleum',
     '4': 'tekstilne-ploce',
@@ -37,17 +38,27 @@ export default function ProductCardClient({ product, brand, compact = false }: P
 
   // Logic to determine if we should link to a category filter (for variants or headers) vs single product page
   // 1. Color Tiles (LVT/Linoleum/etc variants): Link to category?color=slug
-  // 2. Parket Headers (Collection Hubs): Link to category?collections=name
+  // 2. Parket / Laminat Headers (Collection Hubs): Link to product page; variants: product?color=slug
 
   const isColorTileCategory = ['6', '7', '4', '2'].includes(product.categoryId);
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   const isParket = product.categoryId === '3';
+  const isLaminat = product.categoryId === '1';
 
   let productHref = `/proizvodi/${product.slug}`;
 
   if (isColorTileCategory && colorCollectionSlug) {
     const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
     productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
+  } else if (isLaminat) {
+    const isLaminatCollectionHeader = product.sku?.startsWith('LAM-');
+    if (isLaminatCollectionHeader) {
+      productHref = `/proizvodi/${product.slug}`;
+    } else {
+      const collectionName = product.specs?.find(s => s.key === 'collection')?.value;
+      const collectionSlug = collectionName ? collectionName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') : product.slug;
+      productHref = `/proizvodi/${collectionSlug}?color=${encodeURIComponent(product.slug)}`;
+    }
   } else if (isParket) {
     // Parket Collection Headers: SKU PARKET-* ili ime u listi header kolekcija → link samo na ?collections= (otvara kolekciju, ne karticu boje)
     const isParketCollectionHeader =

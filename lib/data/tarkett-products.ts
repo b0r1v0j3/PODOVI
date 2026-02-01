@@ -4048,5 +4048,189 @@ export const tarkettProducts: Product[] = [
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+
+  // Laminat – Blues 1033 4V (Tarkett)
+  {
+    "id": "blues-1033-4v",
+    "name": "Blues 1033 4V",
+    "slug": "blues-1033-4v",
+    "sku": "LAM-BLUES-1033-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Blues 1033 4V Laminat",
+    "description": "Kolekcija sa autentičnom snagom drveta. Lepota koja je skrivena u detaljima, a na vama je da odaberete dezen kojim ćete dati vašem prostoru poseban pečat.\n\nLaminat iz ove kolekcije odlikuju daske sa oborenim ivicama sa sve 4 strane.\n\nPojačana otpornost na izlivanje tečnosti i vlagu.",
+    "images": [{ "id": "blues-1033-4v-img", "url": "/images/products/blues-1033-4v-bourbon-oak.jpg", "alt": "Blues 1033 4V", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "33 Heavy" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "10 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "8430 g/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "2-lock" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" }
+    ],
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Pojačana otpornost na izlivanje tečnosti i vlagu.", "Pogodno za kuhinju.", "Daske sa oborenim ivicama sa sve 4 strane."] },
+      { "title": "Tehničke specifikacije", "items": [] }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "blues-1033-4v-bourbon-oak",
+    "name": "Blues 1033 4V Bourbon Oak",
+    "slug": "blues-1033-4v-bourbon-oak",
+    "sku": "505830000",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Blues 1033 4V Bourbon Oak",
+    "description": "Kolekcija sa autentičnom snagom drveta. Laminat Blues 1033 4V Bourbon Oak – daske sa oborenim ivicama sa sve 4 strane, pojačana otpornost na vlagu.",
+    "images": [{ "id": "blues-1033-4v-bourbon-oak-img", "url": "/images/products/blues-1033-4v-bourbon-oak.jpg", "alt": "Blues 1033 4V Bourbon Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505830000" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "blues-1033-4v-crossroad-oak",
+    "name": "Blues 1033 4V Crossroad Oak",
+    "slug": "blues-1033-4v-crossroad-oak",
+    "sku": "505830005",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Blues 1033 4V Crossroad Oak",
+    "description": "Kolekcija sa autentičnom snagom drveta. Laminat Blues 1033 4V Crossroad Oak.",
+    "images": [{ "id": "blues-1033-4v-crossroad-oak-img", "url": "/images/products/blues-1033-4v-crossroad-oak.jpg", "alt": "Blues 1033 4V Crossroad Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505830005" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "blues-1033-4v-delta-oak",
+    "name": "Blues 1033 4V Delta Oak",
+    "slug": "blues-1033-4v-delta-oak",
+    "sku": "505830004",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Blues 1033 4V Delta Oak",
+    "description": "Kolekcija sa autentičnom snagom drveta. Laminat Blues 1033 4V Delta Oak.",
+    "images": [{ "id": "blues-1033-4v-delta-oak-img", "url": "/images/products/blues-1033-4v-delta-oak.jpg", "alt": "Blues 1033 4V Delta Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505830004" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "blues-1033-4v-riverside-oak",
+    "name": "Blues 1033 4V Riverside Oak",
+    "slug": "blues-1033-4v-riverside-oak",
+    "sku": "505830006",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Blues 1033 4V Riverside Oak",
+    "description": "Kolekcija sa autentičnom snagom drveta. Laminat Blues 1033 4V Riverside Oak.",
+    "images": [{ "id": "blues-1033-4v-riverside-oak-img", "url": "/images/products/blues-1033-4v-riverside-oak.jpg", "alt": "Blues 1033 4V Riverside Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505830006" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "blues-1033-4v-south-chicago",
+    "name": "Blues 1033 4V South Chicago",
+    "slug": "blues-1033-4v-south-chicago",
+    "sku": "505830002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Blues 1033 4V South Chicago",
+    "description": "Kolekcija sa autentičnom snagom drveta. Laminat Blues 1033 4V South Chicago.",
+    "images": [{ "id": "blues-1033-4v-south-chicago-img", "url": "/images/products/blues-1033-4v-south-chicago.jpg", "alt": "Blues 1033 4V South Chicago", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505830002" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "blues-1033-4v-voodoo-oak",
+    "name": "Blues 1033 4V Voodoo Oak",
+    "slug": "blues-1033-4v-voodoo-oak",
+    "sku": "505830007",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Blues 1033 4V Voodoo Oak",
+    "description": "Kolekcija sa autentičnom snagom drveta. Laminat Blues 1033 4V Voodoo Oak.",
+    "images": [{ "id": "blues-1033-4v-voodoo-oak-img", "url": "/images/products/blues-1033-4v-voodoo-oak.jpg", "alt": "Blues 1033 4V Voodoo Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505830007" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "blues-1033-4v-white-room",
+    "name": "Blues 1033 4V White Room",
+    "slug": "blues-1033-4v-white-room",
+    "sku": "505830001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Blues 1033 4V White Room",
+    "description": "Kolekcija sa autentičnom snagom drveta. Laminat Blues 1033 4V White Room.",
+    "images": [{ "id": "blues-1033-4v-white-room-img", "url": "/images/products/blues-1033-4v-white-room.jpg", "alt": "Blues 1033 4V White Room", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505830001" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   }
 ];
