@@ -381,9 +381,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           return name && selectedCollections.includes(name);
         });
       } else {
-        collections = Array.from(byCollectionName.values()).sort((a, b) =>
-          (a.specs?.find(s => s.key === 'collection')?.value || a.name).localeCompare(b.specs?.find(s => s.key === 'collection')?.value || b.name)
-        );
+        collections = Array.from(byCollectionName.values())
+          .filter((p): p is (typeof allProducts)[0] => !!p.sku?.startsWith('LAM-'))
+          .sort((a, b) =>
+            (a.specs?.find(s => s.key === 'collection')?.value || a.name).localeCompare(b.specs?.find(s => s.key === 'collection')?.value || b.name)
+          );
       }
     } else if (category.slug === 'parket') {
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
