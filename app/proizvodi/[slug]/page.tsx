@@ -1244,8 +1244,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Description & Specs - Za vinil (2) i ostale kategorije koje nisu LVT/Linoleum/Tekstilne/Parket – opširni opisi i karakteristike (Gerflor itd.) */}
-            {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && product.categoryId !== '3' && (
+            {/* Description & Specs - Za vinil (2) i ostale kategorije koje nisu LVT/Linoleum/Tekstilne/Parket/Laminat – opširni opisi i karakteristike (Gerflor itd.) */}
+            {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && product.categoryId !== '3' && product.categoryId !== '1' && (
               <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Description */}
                 <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
