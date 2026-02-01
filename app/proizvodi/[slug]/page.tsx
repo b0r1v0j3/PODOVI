@@ -986,7 +986,12 @@ export default async function ProductPage({ params, searchParams }: Props) {
           p.categoryId === '1' && !p.sku?.startsWith('LAM-') && p.specs?.find(s => s.key === 'collection')?.value === collectionName
         );
         if (variants.length > 0) {
-          customColors = variants.map(v => ({
+          const bySlug = new Map<string, typeof variants[0]>();
+          for (const v of variants) {
+            if (v.slug && !bySlug.has(v.slug)) bySlug.set(v.slug, v);
+          }
+          const uniqueVariants = Array.from(bySlug.values());
+          customColors = uniqueVariants.map(v => ({
             collection: collectionName,
             collection_name: collectionName,
             code: v.sku,

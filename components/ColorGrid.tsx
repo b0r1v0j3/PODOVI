@@ -199,13 +199,26 @@ export default function ColorGrid({
   };
 
   useEffect(() => {
-    // If custom colors provided, use them and skip fetch
-    if (customColors) {
-      setColors(customColors);
+    // If custom colors provided, use them and skip fetch (dedupe by slug)
+    if (customColors && customColors.length > 0) {
+      const seen = new Set<string>();
+      const deduped = customColors.filter((c: Color) => {
+        if (!c.slug) return true;
+        if (seen.has(c.slug)) return false;
+        seen.add(c.slug);
+        return true;
+      });
+      setColors(deduped);
       setLoading(false);
       if (onColorsLoaded) {
-        onColorsLoaded(customColors.length);
+        onColorsLoaded(deduped.length);
       }
+      return;
+    }
+    if (customColors && customColors.length === 0) {
+      setColors([]);
+      setLoading(false);
+      if (onColorsLoaded) onColorsLoaded(0);
       return;
     }
 
