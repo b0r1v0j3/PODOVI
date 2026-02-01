@@ -500,7 +500,10 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     }
   }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors, vinylType, collections]);
 
-  const renderProducts = (products: Product[], gridKey: string) => {
+  // Za Laminat i Parket: jedna kolona u tabu Kolekcije da nema "4 kvadrata" i duplikata
+  const isCollectionsSingleColumn = categorySlug === 'laminat' || categorySlug === 'parket';
+
+  const renderProducts = (products: Product[], gridKey: string, singleColumn = false) => {
     if (products.length === 0) {
       return (
         <div className="bg-white rounded-lg shadow-sm p-12 text-center">
@@ -516,8 +519,11 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
         </div>
       );
     }
+    const gridClass = singleColumn
+      ? 'grid grid-cols-1 gap-6 max-w-2xl'
+      : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6';
     return (
-      <div key={gridKey} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div key={gridKey} className={gridClass}>
         {products.map((product) => {
           const brand = brandsRecord[product.brandId] || null;
           return (
@@ -566,7 +572,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             <p className="text-gray-600 mb-6">
               {collectionsToRender.length === 0 ? 'Nema' : collectionsToRender.length} {collectionsToRender.length === 1 ? 'kolekcija' : 'kolekcija'}
             </p>
-            {renderProducts(collectionsToRender, 'collections')}
+            {renderProducts(collectionsToRender, 'collections', isCollectionsSingleColumn)}
           </div>
         ) : (
           <div>

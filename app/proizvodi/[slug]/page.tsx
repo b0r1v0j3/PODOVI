@@ -1005,7 +1005,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-
+    // Laminat: ako kolekcija nema sliku, koristi prvu varijantu da slika nikad ne nestane
+    if (product.categoryId === '1' && !primaryImage && customColors && customColors.length > 0) {
+      const firstImg = (customColors[0] as { image_url?: string; texture_url?: string }).image_url || (customColors[0] as { texture_url?: string }).texture_url;
+      if (firstImg) {
+        primaryImage = { url: firstImg, alt: product.name };
+      }
+    }
 
     // Schema.org structured data
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';

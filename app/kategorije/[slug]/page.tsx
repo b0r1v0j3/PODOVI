@@ -354,18 +354,26 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         collections = allCollections;
       }
     } else if (category.slug === 'laminat') {
+      // Laminat: samo LAM- proizvodi (header po kolekciji), jedna kartica po kolekciji – bez duplikata
+      const laminatHeaders = allCollections.filter(p => p.sku?.startsWith('LAM-'));
+      const byCollectionName = new Map<string, (typeof allProducts)[0]>();
+      for (const p of laminatHeaders) {
+        const name = p.specs?.find(s => s.key === 'collection')?.value || p.name;
+        if (!byCollectionName.has(name)) byCollectionName.set(name, p);
+      }
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
       if (selectedCollections.length > 0) {
-        collections = allCollections.filter(p => {
-          const name = p.specs?.find(s => s.key === 'collection')?.value || p.name;
-          return selectedCollections.includes(name);
-        });
+        collections = selectedCollections
+          .map(name => byCollectionName.get(name))
+          .filter((p): p is (typeof allProducts)[0] => p != null);
         colors = colors.filter(p => {
           const name = p.specs?.find(s => s.key === 'collection')?.value;
           return name && selectedCollections.includes(name);
         });
       } else {
-        collections = allCollections;
+        collections = Array.from(byCollectionName.values()).sort((a, b) =>
+          (a.specs?.find(s => s.key === 'collection')?.value || a.name).localeCompare(b.specs?.find(s => s.key === 'collection')?.value || b.name)
+        );
       }
     } else if (category.slug === 'parket') {
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
