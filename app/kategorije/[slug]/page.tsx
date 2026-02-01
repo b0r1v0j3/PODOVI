@@ -140,6 +140,16 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         });
     } else {
       colors = allProducts.filter(p => !hasCollectionSku(p));
+      // Laminat: jedan proizvod po slug-u u tabu Boje (bez duplikata)
+      if (category.slug === 'laminat') {
+        const seen = new Set<string>();
+        colors = colors.filter(p => {
+          if (!p.slug) return true;
+          if (seen.has(p.slug)) return false;
+          seen.add(p.slug);
+          return true;
+        });
+      }
     }
 
     // Extract unique LVT collection names for filter FIRST (before filtering)
