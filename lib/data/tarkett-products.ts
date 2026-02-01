@@ -4060,7 +4060,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Blues 1033 4V Laminat",
     "description": "Kolekcija sa autentičnom snagom drveta. Lepota koja je skrivena u detaljima, a na vama je da odaberete dezen kojim ćete dati vašem prostoru poseban pečat.\n\nLaminat iz ove kolekcije odlikuju daske sa oborenim ivicama sa sve 4 strane.\n\nPojačana otpornost na izlivanje tečnosti i vlagu.",
-    "images": [{ "id": "blues-1033-4v-img", "url": "/images/products/blues-1033-4v-bourbon-oak.jpg", "alt": "Blues 1033 4V", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "blues-1033-4v-img", "url": "/images/products/blues-1033-4v.jpg", "alt": "Blues 1033 4V", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
       { "key": "type", "label": "Tip", "value": "Laminat" },

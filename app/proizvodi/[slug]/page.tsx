@@ -1058,9 +1058,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
           {/* Product Content */}
           <div className="container py-12">
-            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2' || product.categoryId === '3') ? (
+            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2' || product.categoryId === '3' || product.categoryId === '1') ? (
               <>
-                {/* LVT, Linoleum, Parket: layout sa color selectorom */}
+                {/* LVT, Linoleum, Parket, Laminat: layout sa color selectorom */}
                 <ProductColorSelector
                   initialImage={primaryImage}
                   collectionSlug={(product as { collectionSlug?: string }).collectionSlug || params.slug}
@@ -1073,10 +1073,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   inStock={product.inStock}
                   productSlug={product.slug}
                   externalLink={product.externalLink}
-                  customColors={product.categoryId === '3' ? (customColors ?? []) : customColors}
-                  collectionDisplayName={product.categoryId === '3' ? (product.specs.find(s => s.key === 'collection')?.value) : undefined}
+                  customColors={(product.categoryId === '3' || product.categoryId === '1') ? (customColors ?? []) : customColors}
+                  collectionDisplayName={(product.categoryId === '3' || product.categoryId === '1') ? (product.specs.find(s => s.key === 'collection')?.value) : undefined}
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
-                  rightColumnBottom={product.categoryId === '3' ? (
+                  rightColumnBottom={(product.categoryId === '3' || product.categoryId === '1') ? (
                     <ProductCharacteristics
                       specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
                         (s) => s.key !== 'collection' && s.key !== 'type'
@@ -1085,7 +1085,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       title="Tehničke specifikacije"
                     />
                   ) : undefined}
-                  leftColumnBottom={product.categoryId === '3' ? (
+                  leftColumnBottom={(product.categoryId === '3' || product.categoryId === '1') ? (
                     <div className="bg-white rounded-2xl shadow-lg p-6">
                       <ProductDescriptionWithCharacteristics
                         description={product.description || ''}
@@ -1097,8 +1097,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   ) : undefined}
                 />
 
-                {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne – vinil ima opširniji blok dole (Gerflor sadržaj) */}
-                {product.categoryId !== '3' && product.categoryId !== '2' && (
+                {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne – Parket i Laminat imaju u leftColumnBottom */}
+                {product.categoryId !== '3' && product.categoryId !== '2' && product.categoryId !== '1' && (
                 <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div className="bg-white rounded-2xl shadow-lg p-6">
                     <>
