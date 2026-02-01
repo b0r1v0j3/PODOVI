@@ -27,8 +27,10 @@ interface ProductColorSelectorProps {
   externalLink?: string;
   onCharacteristicsChange?: (characteristics: Record<string, string> | null) => void;
   customColors?: any[];
-  /** Za parket: naziv kolekcije prikazan iznad (kao LVT "Creation 30"). Ispod slike ostaje boja/varijanta. */
+  /** Za parket/laminat: naziv kolekcije prikazan iznad (kao LVT "Creation 30"). Ispod slike ostaje boja/varijanta. */
   collectionDisplayName?: string;
+  /** Kada je collectionDisplayName setovan: label ispod (npr. "Parket" ili "Laminat") – "Parket – ime boje" / "Laminat – ime boje". */
+  collectionCategoryLabel?: string;
   /** YouTube embed URL (npr. za kolekciju) – prikazuje se ispod slike, u širini slike, play na sajtu. */
   videoEmbedUrl?: string;
   /** Sadržaj ispod Boja u desnoj koloni (npr. Tehničke specifikacije za parket). */
@@ -52,6 +54,7 @@ export default function ProductColorSelector({
   onCharacteristicsChange,
   customColors,
   collectionDisplayName,
+  collectionCategoryLabel,
   videoEmbedUrl,
   rightColumnBottom,
   leftColumnBottom,
@@ -289,14 +292,14 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title: za parket prikaži kolekciju (h1), ispod "Parket – ime boje" (npr. Parket – Hrast ESSENCE 2 Strip); za ostale productName + shortDescription */}
+            {/* Title: za parket/laminat prikaži kolekciju (h1), ispod "Parket – ime boje" ili "Laminat – ime boje"; za ostale productName + shortDescription */}
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {collectionDisplayName || productName}
               </h1>
               {collectionDisplayName ? (
                 <p className="text-lg text-gray-600">
-                  Parket – {productName}
+                  {collectionCategoryLabel || 'Parket'} – {productName}
                 </p>
               ) : shortDescription ? (
                 <p className="text-lg text-gray-600">

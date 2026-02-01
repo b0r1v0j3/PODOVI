@@ -1075,6 +1075,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   externalLink={product.externalLink}
                   customColors={(product.categoryId === '3' || product.categoryId === '1') ? (customColors ?? []) : customColors}
                   collectionDisplayName={(product.categoryId === '3' || product.categoryId === '1') ? (product.specs.find(s => s.key === 'collection')?.value) : undefined}
+                  collectionCategoryLabel={product.categoryId === '3' ? 'Parket' : product.categoryId === '1' ? 'Laminat' : undefined}
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                   rightColumnBottom={(product.categoryId === '3' || product.categoryId === '1') ? (
                     <ProductCharacteristics

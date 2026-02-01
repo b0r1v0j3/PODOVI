@@ -4092,7 +4092,8 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
       { "key": "ref", "label": "Ref.", "value": "505830000" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
       { "key": "edges", "label": "Ivice", "value": "4 strane" },
       { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
@@ -4114,7 +4115,8 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
       { "key": "ref", "label": "Ref.", "value": "505830005" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
       { "key": "edges", "label": "Ivice", "value": "4 strane" },
       { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
@@ -4136,7 +4138,8 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
       { "key": "ref", "label": "Ref.", "value": "505830004" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
       { "key": "edges", "label": "Ivice", "value": "4 strane" },
       { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
@@ -4158,7 +4161,8 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
       { "key": "ref", "label": "Ref.", "value": "505830006" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
       { "key": "edges", "label": "Ivice", "value": "4 strane" },
       { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
@@ -4180,7 +4184,8 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
       { "key": "ref", "label": "Ref.", "value": "505830002" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
       { "key": "edges", "label": "Ivice", "value": "4 strane" },
       { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
@@ -4202,7 +4207,8 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
       { "key": "ref", "label": "Ref.", "value": "505830007" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
       { "key": "edges", "label": "Ivice", "value": "4 strane" },
       { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
@@ -4224,7 +4230,8 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Blues 1033 4V" },
       { "key": "ref", "label": "Ref.", "value": "505830001" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska 1380 x 191 mm" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
       { "key": "edges", "label": "Ivice", "value": "4 strane" },
       { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,581 m²" },
