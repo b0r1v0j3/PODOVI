@@ -721,7 +721,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
     return {
       metadataBase: new URL(baseUrl),
-      title: `${product.name} - Cena i Karakteristike | Podovi.online`,
+      title: `${product.name} - Cena i tehničke specifikacije | Podovi.online`,
       description: description.substring(0, 160), // SEO limit
       keywords,
       authors: [{ name: 'Podovi.online' }],
@@ -1068,12 +1068,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
           </div>
 
           {/* Product Content */}
-          <div className="container py-12">
+          <div className="container py-12 pb-20 md:pb-12">
             {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2' || product.categoryId === '3' || product.categoryId === '1') ? (
               <>
                 {/* LVT, Linoleum, Parket, Laminat: layout sa color selectorom */}
                 <ProductColorSelector
                   initialImage={primaryImage}
+                  imagePriority={true}
                   collectionSlug={(product as { collectionSlug?: string }).collectionSlug || params.slug}
                   productName={displayName}
                   productPrice={product.price && product.price > 0 ? product.price : undefined}
@@ -1107,6 +1108,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       />
                     </div>
                   ) : undefined}
+                  inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                 />
 
                 {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne – Parket i Laminat imaju u leftColumnBottom */}
@@ -1173,6 +1175,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
                         quality={100}
+                        priority={true}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -1224,10 +1227,17 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     </div>
                   )}
 
-                  {/* CTA Buttons */}
+                  {/* CTA Buttons – prefill: proizvod + boja + ref */}
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
-                      href={`/kontakt?product=${product.slug}`}
+                      href={(() => {
+                        const p = new URLSearchParams();
+                        p.set('product', product.slug);
+                        if (searchParams?.color) p.set('color', searchParams.color);
+                        const refSpec = product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.');
+                        if (refSpec?.value) p.set('ref', refSpec.value);
+                        return `/kontakt?${p.toString()}`;
+                      })()}
                       className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg px-8 py-4 flex-1"
                     >
                       Pošaljite upit
@@ -1247,7 +1257,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Description & Specs - Za vinil (2) i ostale kategorije koje nisu LVT/Linoleum/Tekstilne/Parket/Laminat – opširni opisi i karakteristike (Gerflor itd.) */}
+            {/* Description & Specs - Za vinil (2) i ostale kategorije koje nisu LVT/Linoleum/Tekstilne/Parket/Laminat – opširni opisi i tehničke specifikacije (Gerflor itd.) */}
             {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && product.categoryId !== '3' && product.categoryId !== '1' && (
               <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Description */}
@@ -1302,7 +1312,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   const displaySpecs = filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug });
                   return displaySpecs.length > 0 && (
                     <div className="bg-white rounded-2xl shadow-lg p-8">
-                      <h2 className="text-2xl font-bold text-gray-900 mb-6">Karakteristike</h2>
+                      <h2 className="text-2xl font-bold text-gray-900 mb-6">Tehničke specifikacije</h2>
                       <dl className="space-y-4">
                         {displaySpecs.map((spec) => (
                           <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
@@ -1360,6 +1370,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
             )}
 
           </div>
+          {/* Sticky CTA na mobilnom: Pošalji upit – vodi na kontakt sa prefill (product, color, ref) */}
+          <ProductInquiryStickyCTA
+            productSlug={params.slug}
+            inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
+          />
         </div>
       </>
     );
