@@ -4239,5 +4239,150 @@ export const tarkettProducts: Product[] = [
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+
+  // Laminat – Easy Line 832 4V (Tarkett) – 5 boja
+  {
+    "id": "easy-line-832-4v",
+    "name": "Easy Line 832 4V",
+    "slug": "easy-line-832-4v",
+    "sku": "LAM-EASY-LINE-832-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Easy Line 832 4V Laminat",
+    "description": "Kolekcija koja balansira stil i kvalitet. Easy Line 832 ima sve što vam je potrebno za kreiranje lepih enterijera uz minimalne troškove. Proizvedeni u Nemačkoj, naši laminat podovi ispunjavaju najviše standarde sa visokom otpornošću na habanje, ogrebotine i mrlje zahvaljujući svom melaminskom zaštitnom sloju.\n\nNaš laminat se može postaviti na 3 različita načina. Dostupan je u bezvremenskom dezenu hrasta, sivih dezena i crveno-braon nijansi.",
+    "images": [{ "id": "easy-line-832-4v-img", "url": "/images/products/easy-line-832-4v.jpg", "alt": "Easy Line 832 4V", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "iso_type", "label": "ISO vrsta proizvoda", "value": "Laminirane podne obloge (EN 13329)" },
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "32 General" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "8 mm" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "5G" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,110 m²" }
+    ],
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Bezvremenski dezeni", "Široka paleta boja", "Visoka otpornost: pogodno za kuhinju", "Novi sistem zaključavanja", "PEFC, Carb2, M1 i A+ francuski VOC rejting"] },
+      { "title": "Tehničke specifikacije", "items": [] }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "easy-line-832-4v-aberdeen-oak-brown",
+    "name": "Easy Line 832 4V Aberdeen Oak BROWN",
+    "slug": "easy-line-832-4v-aberdeen-oak-brown",
+    "sku": "510037014",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Easy Line 832 4V Aberdeen Oak BROWN",
+    "description": "Kolekcija koja balansira stil i kvalitet. Easy Line 832 4V Aberdeen Oak BROWN.",
+    "images": [{ "id": "easy-line-832-4v-aberdeen-oak-brown-img", "url": "/images/products/easy-line-832-4v-aberdeen-oak-brown.jpg", "alt": "Easy Line 832 4V Aberdeen Oak BROWN", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510037014" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,110 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "easy-line-832-4v-empire-oak-grey",
+    "name": "Easy Line 832 4V Empire Oak GREY",
+    "slug": "easy-line-832-4v-empire-oak-grey",
+    "sku": "510037001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Easy Line 832 4V Empire Oak GREY",
+    "description": "Kolekcija koja balansira stil i kvalitet. Easy Line 832 4V Empire Oak GREY.",
+    "images": [{ "id": "easy-line-832-4v-empire-oak-grey-img", "url": "/images/products/easy-line-832-4v-empire-oak-grey.jpg", "alt": "Easy Line 832 4V Empire Oak GREY", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510037001" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,110 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "easy-line-832-4v-kingsley-oak-beige",
+    "name": "Easy Line 832 4V Kingsley Oak BEIGE",
+    "slug": "easy-line-832-4v-kingsley-oak-beige",
+    "sku": "510037005",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Easy Line 832 4V Kingsley Oak BEIGE",
+    "description": "Kolekcija koja balansira stil i kvalitet. Easy Line 832 4V Kingsley Oak BEIGE.",
+    "images": [{ "id": "easy-line-832-4v-kingsley-oak-beige-img", "url": "/images/products/easy-line-832-4v-kingsley-oak-beige.jpg", "alt": "Easy Line 832 4V Kingsley Oak BEIGE", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510037005" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,110 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "easy-line-832-4v-sierra-oak-beige",
+    "name": "Easy Line 832 4V Sierra Oak BEIGE",
+    "slug": "easy-line-832-4v-sierra-oak-beige",
+    "sku": "510037003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Easy Line 832 4V Sierra Oak BEIGE",
+    "description": "Kolekcija koja balansira stil i kvalitet. Easy Line 832 4V Sierra Oak BEIGE.",
+    "images": [{ "id": "easy-line-832-4v-sierra-oak-beige-img", "url": "/images/products/easy-line-832-4v-sierra-oak-beige.jpg", "alt": "Easy Line 832 4V Sierra Oak BEIGE", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510037003" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,110 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+  {
+    "id": "easy-line-832-4v-turnberry-oak-nature",
+    "name": "Easy Line 832 4V Turnberry Oak NATURE",
+    "slug": "easy-line-832-4v-turnberry-oak-nature",
+    "sku": "510037002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Easy Line 832 4V Turnberry Oak NATURE",
+    "description": "Kolekcija koja balansira stil i kvalitet. Easy Line 832 4V Turnberry Oak NATURE.",
+    "images": [{ "id": "easy-line-832-4v-turnberry-oak-nature-img", "url": "/images/products/easy-line-832-4v-turnberry-oak-nature.jpg", "alt": "Easy Line 832 4V Turnberry Oak NATURE", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510037002" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1380 x 191 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "2,110 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   }
 ];
