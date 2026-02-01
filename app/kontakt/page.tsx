@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, FormEvent, useEffect, useRef } from 'react';
+import { useState, FormEvent, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ContactFormData } from '@/types';
 
-export default function ContactPage() {
+function ContactPageContent() {
   const searchParams = useSearchParams();
   const prefillDone = useRef(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -282,5 +282,25 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-gray-50 min-h-screen">
+        <div className="bg-white border-b">
+          <div className="container py-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Kontaktirajte nas</h1>
+            <p className="text-lg text-gray-600">Učitavanje...</p>
+          </div>
+        </div>
+        <div className="container py-12">
+          <div className="animate-pulse h-96 bg-gray-200 rounded-lg" />
+        </div>
+      </div>
+    }>
+      <ContactPageContent />
+    </Suspense>
   );
 }
