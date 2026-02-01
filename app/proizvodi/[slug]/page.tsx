@@ -933,7 +933,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const brand = product.brandId
       ? await brandRepository.findById(product.brandId)
       : null;
-    const primaryImage = product.images && product.images.length > 0
+    let primaryImage: { url: string; alt: string } | null = product.images && product.images.length > 0
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
 
