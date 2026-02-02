@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run validate:images && next build",
     "start": "next start",
     "lint": "next lint",
     "check:images": "node tools/check-images.js",
+    "validate:images": "node scripts/validate-images.js",
     "normalize:colors": "node tools/normalize-json.js",
     "suggest:unknowns": "node tools/suggest-fixes-unknowns.js"
   },
