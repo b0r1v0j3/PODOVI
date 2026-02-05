@@ -69,7 +69,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-privilege-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Nobile_Oak_Select.jpg",
+        "url": "/images/products/parket-privilege.jpg",
         "alt": "Privilege",
         "isPrimary": true,
         "order": 0
@@ -226,7 +226,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-salsa-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Salsa_Oak_Elegant_Shiny.jpg",
+        "url": "/images/products/parket-salsa.jpg",
         "alt": "Salsa",
         "isPrimary": true,
         "order": 0
@@ -785,7 +785,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-salsa-art-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Salsa_Art_White_Canvas_P1.jpg",
+        "url": "/images/products/parket-salsa-art.jpg",
         "alt": "Salsa Art",
         "isPrimary": true,
         "order": 0
@@ -922,7 +922,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-salsa-premium-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Salsa_Premium_Oak_Jasper.jpg",
+        "url": "/images/products/parket-salsa-premium.jpg",
         "alt": "Salsa Premium",
         "isPrimary": true,
         "order": 0
@@ -1032,7 +1032,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-sommer-europarquet-img",
-        "url": "https://media.tarkett-image.com/large/IN_TEE_SOMMER_EUROPARQUET_OAK%20BEIGE.jpg",
+        "url": "/images/products/parket-sommer-europarquet.jpg",
         "alt": "Sommer Europarquet",
         "isPrimary": true,
         "order": 0
@@ -1222,7 +1222,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-step-xl-and-l-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Step_Baron_Oak_Sienna_.jpg",
+        "url": "/images/products/parket-step-xl-l.jpg",
         "alt": "Step XL & L",
         "isPrimary": true,
         "order": 0
@@ -1412,7 +1412,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-tango-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Tango_Oak_Baron.jpg",
+        "url": "/images/products/parket-tango.jpg",
         "alt": "Tango",
         "isPrimary": true,
         "order": 0
@@ -1458,7 +1458,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "parket-tango-classic-img",
-        "url": "https://media.tarkett-image.com/large/IN_SEE_Parket_Tango_Classic_Oak_Sepia_L.jpg",
+        "url": "/images/products/parket-tango-classic.jpg",
         "alt": "Tango Classic",
         "isPrimary": true,
         "order": 0
