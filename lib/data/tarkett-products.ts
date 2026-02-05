@@ -5185,70 +5185,151 @@ export const tarkettProducts: Product[] = [
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Frontier 1033 4V Laminat",
-    "description": "Laminat iz kolekcije Frontier 1033 4V. Povećana otpornost na vlagu i habanje, 10mm debljina.",
-    "images": [],
+    "description": "Za one koji žele da transformišu svoj prostor, kolekcija Frontier 1033 4V predstavlja odličan izbor. Sa svojim elegantnim izgledom unosi toplinu prirodnog drveta i osećaj luksuza u enterijere, a zahvaljujući povećanoj otpornosti na vodu do 24h i visokoj otpornosti na habanje, idealna je za prostore koji prate ritam savremenog života.",
+    "images": [{ "id": "frontier-1033-4v-img", "url": "/images/products/frontier-1033-4v.jpg", "alt": "Frontier 1033 4V", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
       { "key": "type", "label": "Tip", "value": "Laminat" },
-      { "key": "thickness", "label": "Debljina", "value": "10mm" },
-      { "key": "class", "label": "Klasa", "value": "33" }
+      { "key": "iso_type", "label": "ISO vrsta proizvoda", "value": "Laminirane podne obloge (EN 13329)" },
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "33 Heavy" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "10 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "7810 g/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "2-lock" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "7" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,282 m²" }
+    ],
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Otpornost na vodu do 24h", "Visoka otpornost na habanje"] },
+      { "title": "Tehničke specifikacije", "items": [] }
+    ],
+    "documents": [{ "title": "Tehnički list", "url": "/docs/frontier-1033-4v-datasheet.pdf" }],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "frontier-1033-4v-africa",
+    "name": "Frontier 1033 4V Africa",
+    "slug": "frontier-1033-4v-africa",
+    "sku": "505845005",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Frontier 1033 4V Africa",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Africa. Otpornost na vodu do 24h i visoka otpornost na habanje.",
+    "images": [{ "id": "img-frontier-africa", "url": "/images/products/frontier-1033-4v-africa.jpg", "alt": "Frontier 1033 4V Africa", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
+      { "key": "ref", "label": "Ref", "value": "505845005" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "7" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,282 m²" },
+      { "key": "packs_per_pallet", "label": "Pakovanja u paleti", "value": "60" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "frontier-1033-4v-oak-nature",
-    "name": "Frontier 1033 4V Oak Nature",
-    "slug": "frontier-1033-4v-oak-nature",
-    "sku": "510041001",
+    "id": "frontier-1033-4v-legacy",
+    "name": "Frontier 1033 4V Legacy",
+    "slug": "frontier-1033-4v-legacy",
+    "sku": "505845002",
     "categoryId": "1",
     "brandId": "3",
-    "shortDescription": "Laminat Frontier 1033 4V Oak Nature",
-    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Nature. Povećana otpornost na vlagu i habanje.",
-    "images": [{ "id": "img-frontier-oak-nature", "url": "/images/products/blues-1033-4v.jpg", "alt": "Frontier 1033 4V Oak Nature", "isPrimary": true, "order": 0 }],
+    "shortDescription": "Laminat Frontier 1033 4V Legacy",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Legacy. Otpornost na vodu do 24h i visoka otpornost na habanje.",
+    "images": [{ "id": "img-frontier-legacy", "url": "/images/products/frontier-1033-4v-legacy.jpg", "alt": "Frontier 1033 4V Legacy", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "10mm" },
-      { "key": "class", "label": "Klasa", "value": "33" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+      { "key": "ref", "label": "Ref", "value": "505845002" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "7" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,282 m²" },
+      { "key": "packs_per_pallet", "label": "Pakovanja u paleti", "value": "60" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "frontier-1033-4v-oak-grey",
-    "name": "Frontier 1033 4V Oak Grey",
-    "slug": "frontier-1033-4v-oak-grey",
-    "sku": "510041002",
+    "id": "frontier-1033-4v-polar",
+    "name": "Frontier 1033 4V Polar",
+    "slug": "frontier-1033-4v-polar",
+    "sku": "505845000",
     "categoryId": "1",
     "brandId": "3",
-    "shortDescription": "Laminat Frontier 1033 4V Oak Grey",
-    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Grey. Povećana otpornost na vlagu i habanje.",
-    "images": [{ "id": "img-frontier-oak-grey", "url": "/images/products/blues-1033-4v.jpg", "alt": "Frontier 1033 4V Oak Grey", "isPrimary": true, "order": 0 }],
+    "shortDescription": "Laminat Frontier 1033 4V Polar",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Polar. Otpornost na vodu do 24h i visoka otpornost na habanje.",
+    "images": [{ "id": "img-frontier-polar", "url": "/images/products/frontier-1033-4v-polar.jpg", "alt": "Frontier 1033 4V Polar", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "10mm" },
-      { "key": "class", "label": "Klasa", "value": "33" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+      { "key": "ref", "label": "Ref", "value": "505845000" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "7" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,282 m²" },
+      { "key": "packs_per_pallet", "label": "Pakovanja u paleti", "value": "60" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "frontier-1033-4v-oak-brown",
-    "name": "Frontier 1033 4V Oak Brown",
-    "slug": "frontier-1033-4v-oak-brown",
-    "sku": "510041003",
+    "id": "frontier-1033-4v-rainforest",
+    "name": "Frontier 1033 4V Rainforest",
+    "slug": "frontier-1033-4v-rainforest",
+    "sku": "505845004",
     "categoryId": "1",
     "brandId": "3",
-    "shortDescription": "Laminat Frontier 1033 4V Oak Brown",
-    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Brown. Povećana otpornost na vlagu i habanje.",
-    "images": [{ "id": "img-frontier-oak-brown", "url": "/images/products/blues-1033-4v.jpg", "alt": "Frontier 1033 4V Oak Brown", "isPrimary": true, "order": 0 }],
+    "shortDescription": "Laminat Frontier 1033 4V Rainforest",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Rainforest. Otpornost na vodu do 24h i visoka otpornost na habanje.",
+    "images": [{ "id": "img-frontier-rainforest", "url": "/images/products/frontier-1033-4v-rainforest.jpg", "alt": "Frontier 1033 4V Rainforest", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "10mm" },
-      { "key": "class", "label": "Klasa", "value": "33" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+      { "key": "ref", "label": "Ref", "value": "505845004" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "7" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,282 m²" },
+      { "key": "packs_per_pallet", "label": "Pakovanja u paleti", "value": "60" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "frontier-1033-4v-road",
+    "name": "Frontier 1033 4V Road",
+    "slug": "frontier-1033-4v-road",
+    "sku": "505845003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Frontier 1033 4V Road",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Road. Otpornost na vodu do 24h i visoka otpornost na habanje.",
+    "images": [{ "id": "img-frontier-road", "url": "/images/products/frontier-1033-4v-road.jpg", "alt": "Frontier 1033 4V Road", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
+      { "key": "ref", "label": "Ref", "value": "505845003" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "7" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,282 m²" },
+      { "key": "packs_per_pallet", "label": "Pakovanja u paleti", "value": "60" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "frontier-1033-4v-vulcano",
+    "name": "Frontier 1033 4V Vulcano",
+    "slug": "frontier-1033-4v-vulcano",
+    "sku": "505845001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Frontier 1033 4V Vulcano",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Vulcano. Otpornost na vodu do 24h i visoka otpornost na habanje.",
+    "images": [{ "id": "img-frontier-vulcano", "url": "/images/products/frontier-1033-4v-vulcano.jpg", "alt": "Frontier 1033 4V Vulcano", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
+      { "key": "ref", "label": "Ref", "value": "505845001" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj artikala po kutiji", "value": "7" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,282 m²" },
+      { "key": "packs_per_pallet", "label": "Pakovanja u paleti", "value": "60" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
@@ -5545,26 +5626,7 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
 
-  // Laminat - Journey 731
-  {
-    "id": "journey-731",
-    "name": "Journey 731",
-    "slug": "journey-731",
-    "sku": "LAM-JOURNEY-731",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Journey 731 Laminat",
-    "description": "Laminat iz kolekcije Journey 731. Klasičan dizajn, 7mm debljina, klasa 31.",
-    "images": [],
-    "specs": [
-      { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
-      { "key": "type", "label": "Tip", "value": "Laminat" },
-      { "key": "thickness", "label": "Debljina", "value": "7mm" },
-      { "key": "class", "label": "Klasa", "value": "31" }
-    ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
-  },
+  // Laminat - Journey 731 4V (varijante)
   {
     "id": "journey-731-black-sea-oak",
     "name": "Journey 731 Black Sea Oak",
