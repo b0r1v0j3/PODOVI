@@ -4714,10 +4714,29 @@ export const tarkettProducts: Product[] = [
 
   // Laminat - Winter 832
   {
+    "id": "winter-832",
+    "name": "Winter 832",
+    "slug": "winter-832",
+    "sku": "LAM-WINTER-832",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Winter 832 Laminat",
+    "description": "Laminat iz kolekcije Winter 832. Debljina 8mm, klasa 32.",
+    "images": [],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "32" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
     "id": "winter-832-hrast-braon-1s",
     "name": "Winter 832 Hrast Braon 1s",
     "slug": "winter-832-hrast-braon-1s",
-    "sku": "LAM-Winter-510036001",
+    "sku": "510036001",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Hrast Braon 1s",
@@ -4736,7 +4755,7 @@ export const tarkettProducts: Product[] = [
     "id": "winter-832-oak-rustic-coffee",
     "name": "Winter 832 Oak Rustic Coffee",
     "slug": "winter-832-oak-rustic-coffee",
-    "sku": "LAM-Winter-510036002",
+    "sku": "510036002",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Oak Rustic Coffee",
@@ -4755,7 +4774,7 @@ export const tarkettProducts: Product[] = [
     "id": "winter-832-oak-rustic-silver",
     "name": "Winter 832 Oak Rustic Silver",
     "slug": "winter-832-oak-rustic-silver",
-    "sku": "LAM-Winter-510036003",
+    "sku": "510036003",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Oak Rustic Silver",
@@ -4774,7 +4793,7 @@ export const tarkettProducts: Product[] = [
     "id": "winter-832-oak-plank",
     "name": "Winter 832 Oak Plank",
     "slug": "winter-832-oak-plank",
-    "sku": "LAM-Winter-510036004",
+    "sku": "510036004",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Oak Plank",
@@ -4792,10 +4811,29 @@ export const tarkettProducts: Product[] = [
 
   // Laminat - Roads 833 4V
   {
+    "id": "roads-833-4v",
+    "name": "Roads 833 4V",
+    "slug": "roads-833-4v",
+    "sku": "LAM-ROADS-833-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Roads 833 4V Laminat",
+    "description": "Laminat iz kolekcije Roads 833 4V. Izdržljiv, klasa 33, 8mm debljina.",
+    "images": [],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "33" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
     "id": "roads-833-4v-bridge",
     "name": "Roads 833 4V Bridge",
     "slug": "roads-833-4v-bridge",
-    "sku": "LAM-Roads-Bridge",
+    "sku": "Roads-Bridge",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V Bridge",
@@ -4814,7 +4852,7 @@ export const tarkettProducts: Product[] = [
     "id": "roads-833-4v-mountain-oak",
     "name": "Roads 833 4V Mountain Oak",
     "slug": "roads-833-4v-mountain-oak",
-    "sku": "LAM-Roads-MountainOak",
+    "sku": "Roads-MountainOak",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V Mountain Oak",
@@ -4833,7 +4871,7 @@ export const tarkettProducts: Product[] = [
     "id": "roads-833-4v-nebraska",
     "name": "Roads 833 4V Nebraska",
     "slug": "roads-833-4v-nebraska",
-    "sku": "LAM-Roads-Nebraska",
+    "sku": "Roads-Nebraska",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V Nebraska",
@@ -4852,7 +4890,7 @@ export const tarkettProducts: Product[] = [
     "id": "roads-833-4v-tundra",
     "name": "Roads 833 4V Tundra",
     "slug": "roads-833-4v-tundra",
-    "sku": "LAM-Roads-Tundra",
+    "sku": "Roads-Tundra",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V Tundra",
@@ -4871,7 +4909,7 @@ export const tarkettProducts: Product[] = [
     "id": "roads-833-4v-west-coast",
     "name": "Roads 833 4V West Coast",
     "slug": "roads-833-4v-west-coast",
-    "sku": "LAM-Roads-WestCoast",
+    "sku": "Roads-WestCoast",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V West Coast",
@@ -4889,10 +4927,29 @@ export const tarkettProducts: Product[] = [
 
   // Laminat - River 1233 4V
   {
+    "id": "river-1233-4v",
+    "name": "River 1233 4V",
+    "slug": "river-1233-4v",
+    "sku": "LAM-RIVER-1233-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "River 1233 4V Laminat",
+    "description": "Laminat iz kolekcije River 1233 4V. 12mm debljina, klasa 33, vlagootporan (WR).",
+    "images": [],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
     "id": "river-1233-4v-bistra",
     "name": "River 1233 4V Bistra",
     "slug": "river-1233-4v-bistra",
-    "sku": "LAM-River-Bistra",
+    "sku": "River-Bistra",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Bistra (WR)",
@@ -4911,7 +4968,7 @@ export const tarkettProducts: Product[] = [
     "id": "river-1233-4v-drava",
     "name": "River 1233 4V Drava",
     "slug": "river-1233-4v-drava",
-    "sku": "LAM-River-Drava",
+    "sku": "River-Drava",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Drava (WR)",
@@ -4930,7 +4987,7 @@ export const tarkettProducts: Product[] = [
     "id": "river-1233-4v-una",
     "name": "River 1233 4V Una",
     "slug": "river-1233-4v-una",
-    "sku": "LAM-River-Una",
+    "sku": "River-Una",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Una (WR)",
@@ -4949,7 +5006,7 @@ export const tarkettProducts: Product[] = [
     "id": "river-1233-4v-tara",
     "name": "River 1233 4V Tara",
     "slug": "river-1233-4v-tara",
-    "sku": "LAM-River-Tara",
+    "sku": "River-Tara",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Tara (WR)",
@@ -4968,7 +5025,7 @@ export const tarkettProducts: Product[] = [
     "id": "river-1233-4v-vit",
     "name": "River 1233 4V Vit",
     "slug": "river-1233-4v-vit",
-    "sku": "LAM-River-Vit",
+    "sku": "River-Vit",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Vit (WR)",
@@ -4985,6 +5042,25 @@ export const tarkettProducts: Product[] = [
   },
 
   // Laminat - Timeless 1232 4V
+  {
+    "id": "timeless-1232-4v",
+    "name": "Timeless 1232 4V",
+    "slug": "timeless-1232-4v",
+    "sku": "LAM-TIMELESS-1232-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Timeless 1232 4V Laminat",
+    "description": "Laminat iz kolekcije Timeless 1232 4V. Autentična tekstura, 12mm debljina.",
+    "images": [],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "32" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
   {
     "id": "timeless-1232-4v-oak-traditional",
     "name": "Timeless 1232 4V Oak Traditional",
@@ -5102,10 +5178,29 @@ export const tarkettProducts: Product[] = [
 
   // Laminat - Frontier 1033 4V
   {
+    "id": "frontier-1033-4v",
+    "name": "Frontier 1033 4V",
+    "slug": "frontier-1033-4v",
+    "sku": "LAM-FRONTIER-1033-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Frontier 1033 4V Laminat",
+    "description": "Laminat iz kolekcije Frontier 1033 4V. Povećana otpornost na vlagu i habanje, 10mm debljina.",
+    "images": [],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
     "id": "frontier-1033-4v-oak-nature",
     "name": "Frontier 1033 4V Oak Nature",
     "slug": "frontier-1033-4v-oak-nature",
-    "sku": "LAM-510041001",
+    "sku": "510041001",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Frontier 1033 4V Oak Nature",
@@ -5124,7 +5219,7 @@ export const tarkettProducts: Product[] = [
     "id": "frontier-1033-4v-oak-grey",
     "name": "Frontier 1033 4V Oak Grey",
     "slug": "frontier-1033-4v-oak-grey",
-    "sku": "LAM-510041002",
+    "sku": "510041002",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Frontier 1033 4V Oak Grey",
@@ -5143,7 +5238,7 @@ export const tarkettProducts: Product[] = [
     "id": "frontier-1033-4v-oak-brown",
     "name": "Frontier 1033 4V Oak Brown",
     "slug": "frontier-1033-4v-oak-brown",
-    "sku": "LAM-510041003",
+    "sku": "510041003",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Frontier 1033 4V Oak Brown",
@@ -5160,6 +5255,25 @@ export const tarkettProducts: Product[] = [
   },
 
   // Laminat - Woodstock Longboards 1033 4V
+  {
+    "id": "woodstock-longboards-1033-4v",
+    "name": "Woodstock Longboards 1033 4V",
+    "slug": "woodstock-longboards-1033-4v",
+    "sku": "LAM-WOODSTOCK-LONGBOARDS-1033-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Woodstock Longboards 1033 4V Laminat",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska (2050mm), 10mm debljina.",
+    "images": [],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
   {
     "id": "woodstock-longboards-1033-4v-birkdale-oak-bronze",
     "name": "Woodstock Longboards 1033 4V Birkdale Oak Bronze",
@@ -5318,7 +5432,7 @@ export const tarkettProducts: Product[] = [
     "id": "easy-line-832-kingsley-oak-grey",
     "name": "Easy Line 832 Kingsley Oak Grey",
     "slug": "easy-line-832-kingsley-oak-grey",
-    "sku": "LAM-EASYLINE-KINGSLEYGREY",
+    "sku": "EASYLINE-KINGSLEYGREY",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Easy Line 832 Kingsley Oak Grey",
@@ -5337,7 +5451,7 @@ export const tarkettProducts: Product[] = [
     "id": "easy-line-832-oak-natural",
     "name": "Easy Line 832 Oak Natural",
     "slug": "easy-line-832-oak-natural",
-    "sku": "LAM-EASYLINE-OAKNATURAL",
+    "sku": "EASYLINE-OAKNATURAL",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Easy Line 832 Oak Natural",
@@ -5415,7 +5529,7 @@ export const tarkettProducts: Product[] = [
     "id": "giant-1233-oak-brown",
     "name": "Giant 1233 Oak Brown",
     "slug": "giant-1233-oak-brown",
-    "sku": "LAM-GIANT-OAKBROWN",
+    "sku": "GIANT-OAKBROWN",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Giant 1233 Oak Brown",
@@ -5432,6 +5546,25 @@ export const tarkettProducts: Product[] = [
   },
 
   // Laminat - Journey 731
+  {
+    "id": "journey-731",
+    "name": "Journey 731",
+    "slug": "journey-731",
+    "sku": "LAM-JOURNEY-731",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Journey 731 Laminat",
+    "description": "Laminat iz kolekcije Journey 731. Klasičan dizajn, 7mm debljina, klasa 31.",
+    "images": [],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "thickness", "label": "Debljina", "value": "7mm" },
+      { "key": "class", "label": "Klasa", "value": "31" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
   {
     "id": "journey-731-black-sea-oak",
     "name": "Journey 731 Black Sea Oak",
@@ -5455,7 +5588,7 @@ export const tarkettProducts: Product[] = [
     "id": "journey-731-oak-carpatian",
     "name": "Journey 731 Oak Carpatian",
     "slug": "journey-731-oak-carpatian",
-    "sku": "LAM-JOURNEY-CARPATIAN",
+    "sku": "JOURNEY-CARPATIAN",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Journey 731 Oak Carpatian",
@@ -5474,7 +5607,7 @@ export const tarkettProducts: Product[] = [
     "id": "journey-731-old-mountain",
     "name": "Journey 731 Old Mountain",
     "slug": "journey-731-old-mountain",
-    "sku": "LAM-JOURNEY-OLDMOUNTAIN",
+    "sku": "JOURNEY-OLDMOUNTAIN",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Journey 731 Old Mountain",
@@ -5493,7 +5626,7 @@ export const tarkettProducts: Product[] = [
     "id": "journey-731-oak-adriatic",
     "name": "Journey 731 Oak Adriatic",
     "slug": "journey-731-oak-adriatic",
-    "sku": "LAM-JOURNEY-OAKADRIATIC",
+    "sku": "JOURNEY-OAKADRIATIC",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Journey 731 Oak Adriatic",

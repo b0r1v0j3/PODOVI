@@ -149,6 +149,26 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           seen.add(p.slug);
           return true;
         });
+
+        // Takođe dedup kolekcija (za svaki slučaj) i BACKFILL slika iz varijanti ako header nema sliku
+        const byCollectionName = new Map<string, typeof collections[0]>();
+        for (const p of collections) {
+          const collectionName = p.specs?.find(s => s.key === 'collection')?.value || p.name;
+
+          // Try to find a better image if current one is missing
+          let productToStore = p;
+          if ((!p.images || p.images.length === 0) && colors.length > 0) {
+            const variant = colors.find(c => c.specs?.find(s => s.key === 'collection')?.value === collectionName);
+            if (variant && variant.images && variant.images.length > 0) {
+              productToStore = { ...p, images: variant.images };
+            }
+          }
+
+          if (!byCollectionName.has(collectionName)) {
+            byCollectionName.set(collectionName, productToStore);
+          }
+        }
+        collections = Array.from(byCollectionName.values());
       }
     }
 
