@@ -503,7 +503,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Salsa - Hrast LINEN 3 Strip",
     "description": "Parket kolekcija Salsa donosi autentičan izraz prirodnih materijala – hrasta i jasena – kroz parket sa lamelama manjih dimenzija.",
-    "images": [{ "id": "hrast-linen-3-strip-img", "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Linen.jpg", "alt": "Hrast LINEN 3 Strip", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "hrast-linen-3-strip-img", "url": "/images/products/hrast-linen-3-strip.jpg", "alt": "Hrast LINEN 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
       { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
@@ -615,7 +615,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Salsa - Hrast ORIGINAL SHINY 3 Strip",
     "description": "Parket kolekcija Salsa donosi autentičan izraz prirodnih materijala – hrasta i jasena – kroz parket sa lamelama manjih dimenzija.",
-    "images": [{ "id": "hrast-original-shiny-3-strip-img", "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Shiny.jpg", "alt": "Hrast ORIGINAL SHINY 3 Strip", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "hrast-original-shiny-3-strip-img", "url": "/images/products/hrast-original-shiny-3-strip.jpg", "alt": "Hrast ORIGINAL SHINY 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
       { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
@@ -698,7 +698,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Salsa - Hrast SUPREME MATT 3 Strip",
     "description": "Parket kolekcija Salsa donosi autentičan izraz prirodnih materijala – hrasta i jasena – kroz parket sa lamelama manjih dimenzija.",
-    "images": [{ "id": "hrast-supreme-matt-3-strip-img", "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Supreme_Matt.jpg", "alt": "Hrast SUPREME MATT 3 Strip", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "hrast-supreme-matt-3-strip-img", "url": "/images/products/hrast-supreme-matt-3-strip.jpg", "alt": "Hrast SUPREME MATT 3 Strip", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Salsa" },
       { "key": "wood_type", "label": "Vrste drveta", "value": "Hrast" },
@@ -1504,7 +1504,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-chocolate-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Chocolate.jpg",
+        "url": "/images/products/hrast-chocolate-3-strip.jpg",
         "alt": "Hrast CHOCOLATE 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1541,7 +1541,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-cocoa-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_OAK_COCOA.jpg",
+        "url": "/images/products/hrast-cocoa-3-strip.jpg",
         "alt": "Hrast COCOA 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1578,7 +1578,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-copper-original-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Copper.jpg",
+        "url": "/images/products/hrast-copper-original-3-strip.jpg",
         "alt": "Hrast COPPER ORIGINAL 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1615,7 +1615,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-cotton-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Cotton.jpg",
+        "url": "/images/products/hrast-cotton-3-strip.jpg",
         "alt": "Hrast COTTON 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1652,7 +1652,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-elegant-high-gloss-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_High_Gloss.jpg",
+        "url": "/images/products/hrast-elegant-high-gloss-3-strip.jpg",
         "alt": "Hrast ELEGANT HIGH GLOSS  3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1689,7 +1689,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-elegant-matt-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_Matt.jpg",
+        "url": "/images/products/hrast-elegant-matt-3-strip.jpg",
         "alt": "Hrast ELEGANT MATT 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1726,7 +1726,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-elegant-shiny-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Elegant_Shiny.jpg",
+        "url": "/images/products/hrast-elegant-shiny-3-strip.jpg",
         "alt": "Hrast ELEGANT SHINY 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1763,7 +1763,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-iceberg-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_OAK_ICEBERG_BR.jpg",
+        "url": "/images/products/hrast-iceberg-3-strip.jpg",
         "alt": "Hrast ICEBERG 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1800,7 +1800,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-linen-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Linen.jpg",
+        "url": "/images/products/hrast-linen-3-strip.jpg",
         "alt": "Hrast LINEN 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1874,7 +1874,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-original-high-gloss-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_HG.jpg",
+        "url": "/images/products/hrast-original-high-gloss-3-strip.jpg",
         "alt": "Hrast ORIGINAL HIGH GLOSS 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1948,7 +1948,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-original-shiny-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Original_Shiny.jpg",
+        "url": "/images/products/hrast-original-shiny-3-strip.jpg",
         "alt": "Hrast ORIGINAL SHINY 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -1985,7 +1985,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-robust-white-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Robust_white.jpg",
+        "url": "/images/products/hrast-robust-white-3-strip.jpg",
         "alt": "Hrast ROBUST WHITE 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -2059,7 +2059,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-supreme-matt-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Oak_Supreme_Matt.jpg",
+        "url": "/images/products/hrast-supreme-matt-3-strip.jpg",
         "alt": "Hrast SUPREME MATT 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -2133,7 +2133,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "ash-silky-white-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Salsa_Ash_Silky_White.jpg",
+        "url": "/images/products/jasen-silky-white-3-strip.jpg",
         "alt": "Jasen SILKY WHITE 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -2170,7 +2170,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-jasper-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Jasper.jpg",
+        "url": "/images/products/hrast-jasper-3-strip.jpg",
         "alt": "Hrast JASPER 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -2207,7 +2207,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-moonstone-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_Oak_Moonstone.jpg",
+        "url": "/images/products/hrast-moonstone-3-strip.jpg",
         "alt": "Hrast MOONSTONE 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -2244,7 +2244,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-white-lightning-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_WHITE_LIGHTNING.jpg",
+        "url": "/images/products/hrast-white-lightning-3-strip.jpg",
         "alt": "Hrast WHITE LIGHTNING 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -2281,7 +2281,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "ash-ivory-dreams-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_IVORY_DREAMS.jpg",
+        "url": "/images/products/jasen-ivory-dreams-3-strip.jpg",
         "alt": "Jasen IVORY DREAMS 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -2318,7 +2318,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "ash-white-canvas-3-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_3_Strip_White_Canvas.jpg",
+        "url": "/images/products/jasen-white-canvas-3-strip.jpg",
         "alt": "Jasen WHITE CANVAS 3 Strip",
         "isPrimary": true,
         "order": 0
@@ -2384,7 +2384,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-bourbon-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Bourbon.jpg",
+        "url": "/images/products/hrast-bourbon-1-strip.jpg",
         "alt": "Hrast BOURBON 1 Strip",
         "isPrimary": true,
         "order": 0
@@ -2450,7 +2450,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-cumin-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Cumin.jpg",
+        "url": "/images/products/hrast-cumin-1-strip.jpg",
         "alt": "Hrast CUMIN 1 Strip",
         "isPrimary": true,
         "order": 0
@@ -2516,7 +2516,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "tango-oak-premium-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Oak_Premium.jpg",
+        "url": "/images/products/hrast-premium-1-strip.jpg",
         "alt": "Hrast PREMIUM 1 Strip",
         "isPrimary": true,
         "order": 0
@@ -2690,7 +2690,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-sepia-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Tango_Classic_Oak_Sepia.jpg",
+        "url": "/images/products/hrast-sepia.jpg",
         "alt": "Hrast Sepia",
         "isPrimary": true,
         "order": 0
@@ -2966,7 +2966,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-baron-brown-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Brown.jpg",
+        "url": "/images/products/hrast-baron-brown.jpg",
         "alt": "Hrast Baron Brown",
         "isPrimary": true,
         "order": 0
@@ -3003,7 +3003,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-baron-sienna-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Baron_Sienna.jpg",
+        "url": "/images/products/hrast-baron-sienna.jpg",
         "alt": "Hrast Baron Sienna",
         "isPrimary": true,
         "order": 0
@@ -3040,7 +3040,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-copper-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Step_Oak_Copper.jpg",
+        "url": "/images/products/hrast-copper-1-strip.jpg",
         "alt": "Hrast COPPER 1 Strip",
         "isPrimary": true,
         "order": 0
@@ -3077,7 +3077,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "oak-premium-1-strip-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Step_Oak_Premium.jpg",
+        "url": "/images/products/hrast-premium-1-strip.jpg",
         "alt": "Hrast PREMIUM 1 Strip",
         "isPrimary": true,
         "order": 0
@@ -3114,7 +3114,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-royal-antique-white-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Royal_Antique_White.jpg",
+        "url": "/images/products/hrast-royal-antique-white.jpg",
         "alt": "Hrast Royal Antique White",
         "isPrimary": true,
         "order": 0
@@ -3151,7 +3151,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-royal-grey-img",
-        "url": "https://media.tarkett-image.com/large/TH_1_Strip_Step_Oak_Royal_Grey.jpg",
+        "url": "/images/products/hrast-royal-grey.jpg",
         "alt": "Hrast Royal Grey",
         "isPrimary": true,
         "order": 0
@@ -3370,7 +3370,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-bronze-img",
-        "url": "https://media.tarkett-image.com/large/TH_Sinteros_Europarquet_OAK_BRONZE.jpg",
+        "url": "/images/products/hrast-bronze.jpg",
         "alt": "Hrast Bronze",
         "isPrimary": true,
         "order": 0
@@ -3407,7 +3407,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-espresso-img",
-        "url": "https://media.tarkett-image.com/large/TH_eUROPARQUET_Oak_ESPRESSO.jpg",
+        "url": "/images/products/hrast-espresso.jpg",
         "alt": "Hrast Espresso",
         "isPrimary": true,
         "order": 0
@@ -3444,7 +3444,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-golden-img",
-        "url": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Golden.jpg",
+        "url": "/images/products/hrast-golden.jpg",
         "alt": "Hrast Golden",
         "isPrimary": true,
         "order": 0
@@ -3481,7 +3481,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-original-img",
-        "url": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Original.jpg",
+        "url": "/images/products/hrast-original.jpg",
         "alt": "Hrast Original",
         "isPrimary": true,
         "order": 0
@@ -3518,7 +3518,7 @@ export const tarkettProducts: Product[] = [
     "images": [
       {
         "id": "hrast-polar-img",
-        "url": "https://media.tarkett-image.com/large/TH_Europarquet_Oak_Polar.jpg",
+        "url": "/images/products/hrast-polar.jpg",
         "alt": "Hrast Polar",
         "isPrimary": true,
         "order": 0
