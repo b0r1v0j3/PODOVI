@@ -4722,7 +4722,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Hrast Braon 1s",
     "description": "Laminat iz kolekcije Winter 832, dezen Hrast Braon 1s. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-winter-832-hrast-braon-1s", "url": "/images/products/winter-832-hrast-braon-1s.jpg", "alt": "Winter 832 Hrast Braon 1s", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-winter-832-hrast-braon-1s", "url": "/images/products/blues-1033-4v.jpg", "alt": "Winter 832 Hrast Braon 1s", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4741,7 +4741,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Oak Rustic Coffee",
     "description": "Laminat iz kolekcije Winter 832, dezen Oak Rustic Coffee. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-winter-832-oak-rustic-coffee", "url": "/images/products/winter-832-oak-rustic-coffee.jpg", "alt": "Winter 832 Oak Rustic Coffee", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-winter-832-oak-rustic-coffee", "url": "/images/products/blues-1033-4v.jpg", "alt": "Winter 832 Oak Rustic Coffee", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4760,7 +4760,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Oak Rustic Silver",
     "description": "Laminat iz kolekcije Winter 832, dezen Oak Rustic Silver. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-winter-832-oak-rustic-silver", "url": "/images/products/winter-832-oak-rustic-silver.jpg", "alt": "Winter 832 Oak Rustic Silver", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-winter-832-oak-rustic-silver", "url": "/images/products/blues-1033-4v.jpg", "alt": "Winter 832 Oak Rustic Silver", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4779,7 +4779,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Oak Plank",
     "description": "Laminat iz kolekcije Winter 832, dezen Oak Plank. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-winter-832-oak-plank", "url": "/images/products/winter-832-oak-plank.jpg", "alt": "Winter 832 Oak Plank", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-winter-832-oak-plank", "url": "/images/products/blues-1033-4v.jpg", "alt": "Winter 832 Oak Plank", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4800,7 +4800,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V Bridge",
     "description": "Laminat iz kolekcije Roads 833 4V, dezen Bridge. Izdržljiv, klasa 33, 8mm debljina.",
-    "images": [{ "id": "img-roads-833-bridge", "url": "/images/products/roads-833-4v-bridge.jpg", "alt": "Roads 833 4V Bridge", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-roads-833-bridge", "url": "/images/products/blues-1033-4v.jpg", "alt": "Roads 833 4V Bridge", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4819,7 +4819,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V Mountain Oak",
     "description": "Laminat iz kolekcije Roads 833 4V, dezen Mountain Oak. Izdržljiv, klasa 33, 8mm debljina.",
-    "images": [{ "id": "img-roads-833-mountain-oak", "url": "/images/products/roads-833-4v-mountain-oak.jpg", "alt": "Roads 833 4V Mountain Oak", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-roads-833-mountain-oak", "url": "/images/products/blues-1033-4v.jpg", "alt": "Roads 833 4V Mountain Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4838,7 +4838,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V Nebraska",
     "description": "Laminat iz kolekcije Roads 833 4V, dezen Nebraska. Izdržljiv, klasa 33, 8mm debljina.",
-    "images": [{ "id": "img-roads-833-nebraska", "url": "/images/products/roads-833-4v-nebraska.jpg", "alt": "Roads 833 4V Nebraska", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-roads-833-nebraska", "url": "/images/products/blues-1033-4v.jpg", "alt": "Roads 833 4V Nebraska", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4857,7 +4857,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V Tundra",
     "description": "Laminat iz kolekcije Roads 833 4V, dezen Tundra. Izdržljiv, klasa 33, 8mm debljina.",
-    "images": [{ "id": "img-roads-833-tundra", "url": "/images/products/roads-833-4v-tundra.jpg", "alt": "Roads 833 4V Tundra", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-roads-833-tundra", "url": "/images/products/blues-1033-4v.jpg", "alt": "Roads 833 4V Tundra", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4876,7 +4876,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Roads 833 4V West Coast",
     "description": "Laminat iz kolekcije Roads 833 4V, dezen West Coast. Izdržljiv, klasa 33, 8mm debljina.",
-    "images": [{ "id": "img-roads-833-west-coast", "url": "/images/products/roads-833-4v-west-coast.jpg", "alt": "Roads 833 4V West Coast", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-roads-833-west-coast", "url": "/images/products/blues-1033-4v.jpg", "alt": "Roads 833 4V West Coast", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -4897,7 +4897,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Bistra (WR)",
     "description": "Laminat iz kolekcije River 1233 4V, dezen Bistra. 12mm debljina, klasa 33, vlagootporan (WR).",
-    "images": [{ "id": "img-river-1233-bistra", "url": "/images/products/river-1233-4v-bistra.jpg", "alt": "River 1233 4V Bistra", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-river-1233-bistra", "url": "/images/products/blues-1033-4v.jpg", "alt": "River 1233 4V Bistra", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -4916,7 +4916,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Drava (WR)",
     "description": "Laminat iz kolekcije River 1233 4V, dezen Drava. 12mm debljina, klasa 33, vlagootporan (WR).",
-    "images": [{ "id": "img-river-1233-drava", "url": "/images/products/river-1233-4v-drava.jpg", "alt": "River 1233 4V Drava", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-river-1233-drava", "url": "/images/products/blues-1033-4v.jpg", "alt": "River 1233 4V Drava", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -4935,7 +4935,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Una (WR)",
     "description": "Laminat iz kolekcije River 1233 4V, dezen Una. 12mm debljina, klasa 33, vlagootporan (WR).",
-    "images": [{ "id": "img-river-1233-una", "url": "/images/products/river-1233-4v-una.jpg", "alt": "River 1233 4V Una", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-river-1233-una", "url": "/images/products/blues-1033-4v.jpg", "alt": "River 1233 4V Una", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -4954,7 +4954,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Tara (WR)",
     "description": "Laminat iz kolekcije River 1233 4V, dezen Tara. 12mm debljina, klasa 33, vlagootporan (WR).",
-    "images": [{ "id": "img-river-1233-tara", "url": "/images/products/river-1233-4v-tara.jpg", "alt": "River 1233 4V Tara", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-river-1233-tara", "url": "/images/products/blues-1033-4v.jpg", "alt": "River 1233 4V Tara", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -4973,7 +4973,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat River 1233 4V Vit (WR)",
     "description": "Laminat iz kolekcije River 1233 4V, dezen Vit. 12mm debljina, klasa 33, vlagootporan (WR).",
-    "images": [{ "id": "img-river-1233-vit", "url": "/images/products/river-1233-4v-vit.jpg", "alt": "River 1233 4V Vit", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-river-1233-vit", "url": "/images/products/blues-1033-4v.jpg", "alt": "River 1233 4V Vit", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5070,7 +5070,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Southern",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Southern. Topla osunčana nijansa.",
-    "images": [{ "id": "img-timeless-southern", "url": "/images/products/timeless-1232-4v-southern.jpg", "alt": "Timeless 1232 4V Southern", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-timeless-southern", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Southern", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
