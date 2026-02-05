@@ -93,21 +93,27 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-black text-white overflow-hidden py-20 md:py-24">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTItMnYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTIgMnYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bS0yIDJ2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTQgMHYyaDJ2LTJoLTJ6bS00IDB2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTItMnYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40"></div>
+      <section className="relative bg-gray-900 text-white overflow-hidden py-20 md:py-32">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed transform scale-105"
+            style={{ backgroundImage: "url('/images/products/blues-1033-4v-white-room.jpg')" }}
+          ></div>
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+        </div>
 
-        <div className="container py-12 md:py-16 relative z-10">
+        <div className="container relative z-10">
           <div className="max-w-4xl animate-fadeInUp">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
-              Pronađite savršen pod za vaš prostor
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+              Pronađite savršen pod <br className="hidden md:block" />za vaš prostor
             </h1>
-            <p className="text-lg md:text-xl mb-8 text-gray-300 leading-relaxed animate-slideInRight">
-              Širok izbor laminata, vinila, parketa i drugih podnih obloga vodećih evropskih brendova.
-              Kvalitet, izdržljivost i stil za svaki budžet.
+            <p className="text-lg md:text-2xl mb-10 text-gray-100 leading-relaxed max-w-2xl animate-slideInRight drop-shadow-md font-light">
+              Širok izbor laminata, vinila, parketa i drugih podnih obloga od vodećih evropskih brendova.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 relative z-20">
-              <Link href="/kategorije" className="btn-primary text-lg px-8 py-4 rounded-xl font-semibold">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/kategorije" className="btn-primary text-lg px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-primary-600/50 hover:scale-105 transition-all duration-300">
                 <span className="flex items-center justify-center">
                   Pregledaj proizvode
                   <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,7 +121,7 @@ export default async function HomePage() {
                   </svg>
                 </span>
               </Link>
-              <Link href="/kontakt" className="btn border border-white/70 text-white hover:bg-white hover:text-gray-900 text-center text-lg px-8 py-4 rounded-xl font-semibold backdrop-blur-sm bg-white/5">
+              <Link href="/kontakt" className="btn border-2 border-white/30 text-white hover:bg-white hover:text-gray-900 text-center text-lg px-8 py-4 rounded-xl font-semibold backdrop-blur-sm bg-black/20 hover:border-white transition-all duration-300">
                 Kontaktirajte nas
               </Link>
             </div>
@@ -123,7 +129,7 @@ export default async function HomePage() {
         </div>
 
         {/* Bottom wave decoration */}
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute bottom-0 left-0 right-0 z-20">
           <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
             <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="white" />
           </svg>
