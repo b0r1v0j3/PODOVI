@@ -4710,5 +4710,802 @@ export const tarkettProducts: Product[] = [
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+  },
+
+  // Laminat - Winter 832
+  {
+    "id": "winter-832-hrast-braon-1s",
+    "name": "Winter 832 Hrast Braon 1s",
+    "slug": "winter-832-hrast-braon-1s",
+    "sku": "LAM-Winter-510036001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Winter 832 Hrast Braon 1s",
+    "description": "Laminat iz kolekcije Winter 832, dezen Hrast Braon 1s. Debljina 8mm, klasa 32.",
+    "images": [{ "id": "img-winter-832-hrast-braon-1s", "url": "/images/products/winter-832-hrast-braon-1s.jpg", "alt": "Winter 832 Hrast Braon 1s", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "winter-832-oak-rustic-coffee",
+    "name": "Winter 832 Oak Rustic Coffee",
+    "slug": "winter-832-oak-rustic-coffee",
+    "sku": "LAM-Winter-510036002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Winter 832 Oak Rustic Coffee",
+    "description": "Laminat iz kolekcije Winter 832, dezen Oak Rustic Coffee. Debljina 8mm, klasa 32.",
+    "images": [{ "id": "img-winter-832-oak-rustic-coffee", "url": "/images/products/winter-832-oak-rustic-coffee.jpg", "alt": "Winter 832 Oak Rustic Coffee", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "winter-832-oak-rustic-silver",
+    "name": "Winter 832 Oak Rustic Silver",
+    "slug": "winter-832-oak-rustic-silver",
+    "sku": "LAM-Winter-510036003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Winter 832 Oak Rustic Silver",
+    "description": "Laminat iz kolekcije Winter 832, dezen Oak Rustic Silver. Debljina 8mm, klasa 32.",
+    "images": [{ "id": "img-winter-832-oak-rustic-silver", "url": "/images/products/winter-832-oak-rustic-silver.jpg", "alt": "Winter 832 Oak Rustic Silver", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "winter-832-oak-plank",
+    "name": "Winter 832 Oak Plank",
+    "slug": "winter-832-oak-plank",
+    "sku": "LAM-Winter-510036004",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Winter 832 Oak Plank",
+    "description": "Laminat iz kolekcije Winter 832, dezen Oak Plank. Debljina 8mm, klasa 32.",
+    "images": [{ "id": "img-winter-832-oak-plank", "url": "/images/products/winter-832-oak-plank.jpg", "alt": "Winter 832 Oak Plank", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat - Roads 833 4V
+  {
+    "id": "roads-833-4v-bridge",
+    "name": "Roads 833 4V Bridge",
+    "slug": "roads-833-4v-bridge",
+    "sku": "LAM-Roads-Bridge",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V Bridge",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen Bridge. Izdržljiv, klasa 33, 8mm debljina.",
+    "images": [{ "id": "img-roads-833-bridge", "url": "/images/products/roads-833-4v-bridge.jpg", "alt": "Roads 833 4V Bridge", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-mountain-oak",
+    "name": "Roads 833 4V Mountain Oak",
+    "slug": "roads-833-4v-mountain-oak",
+    "sku": "LAM-Roads-MountainOak",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V Mountain Oak",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen Mountain Oak. Izdržljiv, klasa 33, 8mm debljina.",
+    "images": [{ "id": "img-roads-833-mountain-oak", "url": "/images/products/roads-833-4v-mountain-oak.jpg", "alt": "Roads 833 4V Mountain Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-nebraska",
+    "name": "Roads 833 4V Nebraska",
+    "slug": "roads-833-4v-nebraska",
+    "sku": "LAM-Roads-Nebraska",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V Nebraska",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen Nebraska. Izdržljiv, klasa 33, 8mm debljina.",
+    "images": [{ "id": "img-roads-833-nebraska", "url": "/images/products/roads-833-4v-nebraska.jpg", "alt": "Roads 833 4V Nebraska", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-tundra",
+    "name": "Roads 833 4V Tundra",
+    "slug": "roads-833-4v-tundra",
+    "sku": "LAM-Roads-Tundra",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V Tundra",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen Tundra. Izdržljiv, klasa 33, 8mm debljina.",
+    "images": [{ "id": "img-roads-833-tundra", "url": "/images/products/roads-833-4v-tundra.jpg", "alt": "Roads 833 4V Tundra", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-west-coast",
+    "name": "Roads 833 4V West Coast",
+    "slug": "roads-833-4v-west-coast",
+    "sku": "LAM-Roads-WestCoast",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V West Coast",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen West Coast. Izdržljiv, klasa 33, 8mm debljina.",
+    "images": [{ "id": "img-roads-833-west-coast", "url": "/images/products/roads-833-4v-west-coast.jpg", "alt": "Roads 833 4V West Coast", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat - River 1233 4V
+  {
+    "id": "river-1233-4v-bistra",
+    "name": "River 1233 4V Bistra",
+    "slug": "river-1233-4v-bistra",
+    "sku": "LAM-River-Bistra",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V Bistra (WR)",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Bistra. 12mm debljina, klasa 33, vlagootporan (WR).",
+    "images": [{ "id": "img-river-1233-bistra", "url": "/images/products/river-1233-4v-bistra.jpg", "alt": "River 1233 4V Bistra", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-drava",
+    "name": "River 1233 4V Drava",
+    "slug": "river-1233-4v-drava",
+    "sku": "LAM-River-Drava",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V Drava (WR)",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Drava. 12mm debljina, klasa 33, vlagootporan (WR).",
+    "images": [{ "id": "img-river-1233-drava", "url": "/images/products/river-1233-4v-drava.jpg", "alt": "River 1233 4V Drava", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-una",
+    "name": "River 1233 4V Una",
+    "slug": "river-1233-4v-una",
+    "sku": "LAM-River-Una",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V Una (WR)",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Una. 12mm debljina, klasa 33, vlagootporan (WR).",
+    "images": [{ "id": "img-river-1233-una", "url": "/images/products/river-1233-4v-una.jpg", "alt": "River 1233 4V Una", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-tara",
+    "name": "River 1233 4V Tara",
+    "slug": "river-1233-4v-tara",
+    "sku": "LAM-River-Tara",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V Tara (WR)",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Tara. 12mm debljina, klasa 33, vlagootporan (WR).",
+    "images": [{ "id": "img-river-1233-tara", "url": "/images/products/river-1233-4v-tara.jpg", "alt": "River 1233 4V Tara", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-vit",
+    "name": "River 1233 4V Vit",
+    "slug": "river-1233-4v-vit",
+    "sku": "LAM-River-Vit",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V Vit (WR)",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Vit. 12mm debljina, klasa 33, vlagootporan (WR).",
+    "images": [{ "id": "img-river-1233-vit", "url": "/images/products/river-1233-4v-vit.jpg", "alt": "River 1233 4V Vit", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat - Timeless 1232 4V
+  {
+    "id": "timeless-1232-4v-oak-traditional",
+    "name": "Timeless 1232 4V Oak Traditional",
+    "slug": "timeless-1232-4v-oak-traditional",
+    "sku": "505833000",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Timeless 1232 4V Oak Traditional",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Oak Traditional. Klasična lepota hrasta sa autentičnom teksturom.",
+    "images": [{ "id": "img-timeless-oak-traditional", "url": "/images/products/timeless-1232-4v-oak-traditional.jpg", "alt": "Timeless 1232 4V Oak Traditional", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "timeless-1232-4v-oak-epoque",
+    "name": "Timeless 1232 4V Oak Epoque",
+    "slug": "timeless-1232-4v-oak-epoque",
+    "sku": "505833001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Timeless 1232 4V Oak Epoque",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Oak Epoque. Patinirani, starinski izgled.",
+    "images": [{ "id": "img-timeless-oak-epoque", "url": "/images/products/timeless-1232-4v-oak-epoque.jpg", "alt": "Timeless 1232 4V Oak Epoque", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "timeless-1232-4v-canadian",
+    "name": "Timeless 1232 4V Canadian",
+    "slug": "timeless-1232-4v-canadian",
+    "sku": "505833002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Timeless 1232 4V Canadian",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Canadian. Topli crvenkasti tonovi.",
+    "images": [{ "id": "img-timeless-canadian", "url": "/images/products/timeless-1232-4v-canadian.jpg", "alt": "Timeless 1232 4V Canadian", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "timeless-1232-4v-shadow-oak",
+    "name": "Timeless 1232 4V Shadow Oak",
+    "slug": "timeless-1232-4v-shadow-oak",
+    "sku": "505833003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Timeless 1232 4V Shadow Oak",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Shadow Oak. Sivi modernistički tonovi.",
+    "images": [{ "id": "img-timeless-shadow-oak", "url": "/images/products/timeless-1232-4v-shadow-oak.jpg", "alt": "Timeless 1232 4V Shadow Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "timeless-1232-4v-southern",
+    "name": "Timeless 1232 4V Southern",
+    "slug": "timeless-1232-4v-southern",
+    "sku": "505833004",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Timeless 1232 4V Southern",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Southern. Topla osunčana nijansa.",
+    "images": [{ "id": "img-timeless-southern", "url": "/images/products/timeless-1232-4v-southern.jpg", "alt": "Timeless 1232 4V Southern", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "timeless-1232-4v-darkwood",
+    "name": "Timeless 1232 4V Darkwood",
+    "slug": "timeless-1232-4v-darkwood",
+    "sku": "505833005",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Timeless 1232 4V Darkwood",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Darkwood. Luksuzna tamna nijansa.",
+    "images": [{ "id": "img-timeless-darkwood", "url": "/images/products/timeless-1232-4v-darkwood.jpg", "alt": "Timeless 1232 4V Darkwood", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat - Frontier 1033 4V
+  {
+    "id": "frontier-1033-4v-oak-nature",
+    "name": "Frontier 1033 4V Oak Nature",
+    "slug": "frontier-1033-4v-oak-nature",
+    "sku": "LAM-510041001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Frontier 1033 4V Oak Nature",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Nature. Povećana otpornost na vlagu i habanje.",
+    "images": [{ "id": "img-frontier-oak-nature", "url": "/images/products/frontier-1033-4v-oak-nature.jpg", "alt": "Frontier 1033 4V Oak Nature", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "frontier-1033-4v-oak-grey",
+    "name": "Frontier 1033 4V Oak Grey",
+    "slug": "frontier-1033-4v-oak-grey",
+    "sku": "LAM-510041002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Frontier 1033 4V Oak Grey",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Grey. Povećana otpornost na vlagu i habanje.",
+    "images": [{ "id": "img-frontier-oak-grey", "url": "/images/products/frontier-1033-4v-oak-grey.jpg", "alt": "Frontier 1033 4V Oak Grey", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "frontier-1033-4v-oak-brown",
+    "name": "Frontier 1033 4V Oak Brown",
+    "slug": "frontier-1033-4v-oak-brown",
+    "sku": "LAM-510041003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Frontier 1033 4V Oak Brown",
+    "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Brown. Povećana otpornost na vlagu i habanje.",
+    "images": [{ "id": "img-frontier-oak-brown", "url": "/images/products/frontier-1033-4v-oak-brown.jpg", "alt": "Frontier 1033 4V Oak Brown", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat - Woodstock Longboards 1033 4V
+  {
+    "id": "woodstock-longboards-1033-4v-birkdale-oak-bronze",
+    "name": "Woodstock Longboards 1033 4V Birkdale Oak Bronze",
+    "slug": "woodstock-longboards-1033-4v-birkdale-oak-bronze",
+    "sku": "510046050",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Birkdale Oak Bronze",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Birkdale Oak Bronze.",
+    "images": [{ "id": "img-woodstock-birkdale-bronze", "url": "/images/products/woodstock-longboards-1033-4v-birkdale-oak-bronze.jpg", "alt": "Woodstock Longboards Birkdale Oak Bronze", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "2050 x 246 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "woodstock-longboards-1033-4v-chatillon-oak-brown",
+    "name": "Woodstock Longboards 1033 4V Chatillon Oak Brown",
+    "slug": "woodstock-longboards-1033-4v-chatillon-oak-brown",
+    "sku": "510048051",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Chatillon Oak Brown",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Chatillon Oak Brown.",
+    "images": [{ "id": "img-woodstock-chatillon-brown", "url": "/images/products/woodstock-longboards-1033-4v-chatillon-oak-brown.jpg", "alt": "Woodstock Longboards Chatillon Oak Brown", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "2050 x 246 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "woodstock-longboards-1033-4v-chatillon-oak-sand",
+    "name": "Woodstock Longboards 1033 4V Chatillon Oak Sand",
+    "slug": "woodstock-longboards-1033-4v-chatillon-oak-sand",
+    "sku": "510048048",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Chatillon Oak Sand",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Chatillon Oak Sand.",
+    "images": [{ "id": "img-woodstock-chatillon-sand", "url": "/images/products/woodstock-longboards-1033-4v-chatillon-oak-sand.jpg", "alt": "Woodstock Longboards Chatillon Oak Sand", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "2050 x 246 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "woodstock-longboards-1033-4v-nomad-oak-light",
+    "name": "Woodstock Longboards 1033 4V Nomad Oak Light",
+    "slug": "woodstock-longboards-1033-4v-nomad-oak-light",
+    "sku": "510048052",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Nomad Oak Light",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Nomad Oak Light.",
+    "images": [{ "id": "img-woodstock-nomad-light", "url": "/images/products/woodstock-longboards-1033-4v-nomad-oak-light.jpg", "alt": "Woodstock Longboards Nomad Oak Light", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "2050 x 246 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "woodstock-longboards-1033-4v-summit-oak-cream",
+    "name": "Woodstock Longboards 1033 4V Summit Oak Cream",
+    "slug": "woodstock-longboards-1033-4v-summit-oak-cream",
+    "sku": "510046053",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Summit Oak Cream",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Summit Oak Cream.",
+    "images": [{ "id": "img-woodstock-summit-cream", "url": "/images/products/woodstock-longboards-1033-4v-summit-oak-cream.jpg", "alt": "Woodstock Longboards Summit Oak Cream", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "2050 x 246 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "woodstock-longboards-1033-4v-summit-oak-grey",
+    "name": "Woodstock Longboards 1033 4V Summit Oak Grey",
+    "slug": "woodstock-longboards-1033-4v-summit-oak-grey",
+    "sku": "510046046",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Summit Oak Grey",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Summit Oak Grey.",
+    "images": [{ "id": "img-woodstock-summit-grey", "url": "/images/products/woodstock-longboards-1033-4v-summit-oak-grey.jpg", "alt": "Woodstock Longboards Summit Oak Grey", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "2050 x 246 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "woodstock-longboards-1033-4v-summit-oak-titan",
+    "name": "Woodstock Longboards 1033 4V Summit Oak Titan",
+    "slug": "woodstock-longboards-1033-4v-summit-oak-titan",
+    "sku": "510046054",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Summit Oak Titan",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Summit Oak Titan.",
+    "images": [{ "id": "img-woodstock-summit-titan", "url": "/images/products/woodstock-longboards-1033-4v-summit-oak-titan.jpg", "alt": "Woodstock Longboards Summit Oak Titan", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "2050 x 246 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "woodstock-longboards-1033-4v-summit-oak-white",
+    "name": "Woodstock Longboards 1033 4V Summit Oak White",
+    "slug": "woodstock-longboards-1033-4v-summit-oak-white",
+    "sku": "510046047",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Summit Oak White",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Summit Oak White.",
+    "images": [{ "id": "img-woodstock-summit-white", "url": "/images/products/woodstock-longboards-1033-4v-summit-oak-white.jpg", "alt": "Woodstock Longboards Summit Oak White", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "thickness", "label": "Debljina", "value": "10mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "2050 x 246 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat - Easy Line 832
+  {
+    "id": "easy-line-832-kingsley-oak-grey",
+    "name": "Easy Line 832 Kingsley Oak Grey",
+    "slug": "easy-line-832-kingsley-oak-grey",
+    "sku": "LAM-EASYLINE-KINGSLEYGREY",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Easy Line 832 Kingsley Oak Grey",
+    "description": "Laminat iz kolekcije Easy Line 832, dezen Kingsley Oak Grey. Sofisticirana siva varijanta, odličan izbor za moderne enterijere. Debljina 8mm, klasa 32.",
+    "images": [{ "id": "img-easy-line-kingsley-grey", "url": "/images/products/easy-line-832-kingsley-oak-grey.jpg", "alt": "Easy Line 832 Kingsley Oak Grey", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "easy-line-832-oak-natural",
+    "name": "Easy Line 832 Oak Natural",
+    "slug": "easy-line-832-oak-natural",
+    "sku": "LAM-EASYLINE-OAKNATURAL",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Easy Line 832 Oak Natural",
+    "description": "Laminat iz kolekcije Easy Line 832, dezen Oak Natural. Klasična topla nijansa hrasta. Debljina 8mm, klasa 32.",
+    "images": [{ "id": "img-easy-line-oak-natural", "url": "/images/products/easy-line-832-oak-natural.jpg", "alt": "Easy Line 832 Oak Natural", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "easy-line-832-red-brown-oak",
+    "name": "Easy Line 832 Red-Brown Oak",
+    "slug": "easy-line-832-red-brown-oak",
+    "sku": "42255533",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Easy Line 832 Red-Brown Oak",
+    "description": "Laminat iz kolekcije Easy Line 832, dezen Red-Brown Oak. Tradicionalna crvenkasta nijansa. Debljina 8mm, klasa 32.",
+    "images": [{ "id": "img-easy-line-red-brown-oak", "url": "/images/products/easy-line-832-red-brown-oak.jpg", "alt": "Easy Line 832 Red-Brown Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
+      { "key": "thickness", "label": "Debljina", "value": "8mm" },
+      { "key": "class", "label": "Klasa", "value": "32" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat - Giant 1233
+  {
+    "id": "giant-1233-oak-ashes",
+    "name": "Giant 1233 Oak Ashes",
+    "slug": "giant-1233-oak-ashes",
+    "sku": "505834003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Giant 1233 Oak Ashes",
+    "description": "Laminat iz kolekcije Giant 1233. Oak Ashes – pepeljasto siva nijansa. Izuzetna debljina od 12mm i klasa 33.",
+    "images": [{ "id": "img-giant-oak-ashes", "url": "/images/products/giant-1233-oak-ashes.jpg", "alt": "Giant 1233 Oak Ashes", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "giant-1233-oak-light-beige",
+    "name": "Giant 1233 Oak Light Beige",
+    "slug": "giant-1233-oak-light-beige",
+    "sku": "505834001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Giant 1233 Oak Light Beige",
+    "description": "Laminat iz kolekcije Giant 1233. Oak Light Beige – svetla bež nijansa. Izuzetna debljina od 12mm i klasa 33.",
+    "images": [{ "id": "img-giant-oak-light-beige", "url": "/images/products/giant-1233-oak-light-beige.jpg", "alt": "Giant 1233 Oak Light Beige", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "giant-1233-oak-brown",
+    "name": "Giant 1233 Oak Brown",
+    "slug": "giant-1233-oak-brown",
+    "sku": "LAM-GIANT-OAKBROWN",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Giant 1233 Oak Brown",
+    "description": "Laminat iz kolekcije Giant 1233. Oak Brown – klasik braon nijansa. Izuzetna debljina od 12mm i klasa 33.",
+    "images": [{ "id": "img-giant-oak-brown", "url": "/images/products/giant-1233-oak-brown.jpg", "alt": "Giant 1233 Oak Brown", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
+      { "key": "thickness", "label": "Debljina", "value": "12mm" },
+      { "key": "class", "label": "Klasa", "value": "33" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat - Journey 731
+  {
+    "id": "journey-731-black-sea-oak",
+    "name": "Journey 731 Black Sea Oak",
+    "slug": "journey-731-black-sea-oak",
+    "sku": "505842000",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Journey 731 Black Sea Oak",
+    "description": "Laminat iz kolekcije Journey 731. Black Sea Oak – dramatičan tamniji dezen. Debljina 7mm, klasa 31.",
+    "images": [{ "id": "img-journey-black-sea-oak", "url": "/images/products/journey-731-black-sea-oak.jpg", "alt": "Journey 731 Black Sea Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
+      { "key": "thickness", "label": "Debljina", "value": "7mm" },
+      { "key": "class", "label": "Klasa", "value": "31" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "journey-731-oak-carpatian",
+    "name": "Journey 731 Oak Carpatian",
+    "slug": "journey-731-oak-carpatian",
+    "sku": "LAM-JOURNEY-CARPATIAN",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Journey 731 Oak Carpatian",
+    "description": "Laminat iz kolekcije Journey 731. Oak Carpatian – rustični hrast. Debljina 7mm, klasa 31.",
+    "images": [{ "id": "img-journey-oak-carpatian", "url": "/images/products/journey-731-oak-carpatian.jpg", "alt": "Journey 731 Oak Carpatian", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
+      { "key": "thickness", "label": "Debljina", "value": "7mm" },
+      { "key": "class", "label": "Klasa", "value": "31" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "journey-731-old-mountain",
+    "name": "Journey 731 Old Mountain",
+    "slug": "journey-731-old-mountain",
+    "sku": "LAM-JOURNEY-OLDMOUNTAIN",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Journey 731 Old Mountain",
+    "description": "Laminat iz kolekcije Journey 731. Old Mountain – izgled starog drveta. Debljina 7mm, klasa 31.",
+    "images": [{ "id": "img-journey-old-mountain", "url": "/images/products/journey-731-old-mountain.jpg", "alt": "Journey 731 Old Mountain", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
+      { "key": "thickness", "label": "Debljina", "value": "7mm" },
+      { "key": "class", "label": "Klasa", "value": "31" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+  {
+    "id": "journey-731-oak-adriatic",
+    "name": "Journey 731 Oak Adriatic",
+    "slug": "journey-731-oak-adriatic",
+    "sku": "LAM-JOURNEY-OAKADRIATIC",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Journey 731 Oak Adriatic",
+    "description": "Laminat iz kolekcije Journey 731. Oak Adriatic – svetla mediteranska nijansa. Debljina 7mm, klasa 31.",
+    "images": [{ "id": "img-journey-oak-adriatic", "url": "/images/products/journey-731-oak-adriatic.jpg", "alt": "Journey 731 Oak Adriatic", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
+      { "key": "thickness", "label": "Debljina", "value": "7mm" },
+      { "key": "class", "label": "Klasa", "value": "31" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   }
 ];
