@@ -4994,7 +4994,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Oak Traditional",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Oak Traditional. Klasična lepota hrasta sa autentičnom teksturom.",
-    "images": [{ "id": "img-timeless-oak-traditional", "url": "/images/products/timeless-1232-4v-oak-traditional.jpg", "alt": "Timeless 1232 4V Oak Traditional", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-timeless-oak-traditional", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Oak Traditional", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5013,7 +5013,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Oak Epoque",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Oak Epoque. Patinirani, starinski izgled.",
-    "images": [{ "id": "img-timeless-oak-epoque", "url": "/images/products/timeless-1232-4v-oak-epoque.jpg", "alt": "Timeless 1232 4V Oak Epoque", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-timeless-oak-epoque", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Oak Epoque", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5032,7 +5032,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Canadian",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Canadian. Topli crvenkasti tonovi.",
-    "images": [{ "id": "img-timeless-canadian", "url": "/images/products/timeless-1232-4v-canadian.jpg", "alt": "Timeless 1232 4V Canadian", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-timeless-canadian", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Canadian", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5051,7 +5051,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Shadow Oak",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Shadow Oak. Sivi modernistički tonovi.",
-    "images": [{ "id": "img-timeless-shadow-oak", "url": "/images/products/timeless-1232-4v-shadow-oak.jpg", "alt": "Timeless 1232 4V Shadow Oak", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-timeless-shadow-oak", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Shadow Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5089,7 +5089,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Darkwood",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Darkwood. Luksuzna tamna nijansa.",
-    "images": [{ "id": "img-timeless-darkwood", "url": "/images/products/timeless-1232-4v-darkwood.jpg", "alt": "Timeless 1232 4V Darkwood", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-timeless-darkwood", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Darkwood", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5110,7 +5110,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Frontier 1033 4V Oak Nature",
     "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Nature. Povećana otpornost na vlagu i habanje.",
-    "images": [{ "id": "img-frontier-oak-nature", "url": "/images/products/frontier-1033-4v-oak-nature.jpg", "alt": "Frontier 1033 4V Oak Nature", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-frontier-oak-nature", "url": "/images/products/blues-1033-4v.jpg", "alt": "Frontier 1033 4V Oak Nature", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5129,7 +5129,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Frontier 1033 4V Oak Grey",
     "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Grey. Povećana otpornost na vlagu i habanje.",
-    "images": [{ "id": "img-frontier-oak-grey", "url": "/images/products/frontier-1033-4v-oak-grey.jpg", "alt": "Frontier 1033 4V Oak Grey", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-frontier-oak-grey", "url": "/images/products/blues-1033-4v.jpg", "alt": "Frontier 1033 4V Oak Grey", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5148,7 +5148,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Frontier 1033 4V Oak Brown",
     "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Oak Brown. Povećana otpornost na vlagu i habanje.",
-    "images": [{ "id": "img-frontier-oak-brown", "url": "/images/products/frontier-1033-4v-oak-brown.jpg", "alt": "Frontier 1033 4V Oak Brown", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-frontier-oak-brown", "url": "/images/products/blues-1033-4v.jpg", "alt": "Frontier 1033 4V Oak Brown", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5169,7 +5169,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Woodstock Longboards Birkdale Oak Bronze",
     "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Birkdale Oak Bronze.",
-    "images": [{ "id": "img-woodstock-birkdale-bronze", "url": "/images/products/woodstock-longboards-1033-4v-birkdale-oak-bronze.jpg", "alt": "Woodstock Longboards Birkdale Oak Bronze", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-woodstock-birkdale-bronze", "url": "/images/products/blues-1033-4v.jpg", "alt": "Woodstock Longboards Birkdale Oak Bronze", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5188,7 +5188,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Woodstock Longboards Chatillon Oak Brown",
     "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Chatillon Oak Brown.",
-    "images": [{ "id": "img-woodstock-chatillon-brown", "url": "/images/products/woodstock-longboards-1033-4v-chatillon-oak-brown.jpg", "alt": "Woodstock Longboards Chatillon Oak Brown", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-woodstock-chatillon-brown", "url": "/images/products/blues-1033-4v.jpg", "alt": "Woodstock Longboards Chatillon Oak Brown", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5207,7 +5207,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Woodstock Longboards Chatillon Oak Sand",
     "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Chatillon Oak Sand.",
-    "images": [{ "id": "img-woodstock-chatillon-sand", "url": "/images/products/woodstock-longboards-1033-4v-chatillon-oak-sand.jpg", "alt": "Woodstock Longboards Chatillon Oak Sand", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-woodstock-chatillon-sand", "url": "/images/products/blues-1033-4v.jpg", "alt": "Woodstock Longboards Chatillon Oak Sand", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5226,7 +5226,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Woodstock Longboards Nomad Oak Light",
     "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Nomad Oak Light.",
-    "images": [{ "id": "img-woodstock-nomad-light", "url": "/images/products/woodstock-longboards-1033-4v-nomad-oak-light.jpg", "alt": "Woodstock Longboards Nomad Oak Light", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-woodstock-nomad-light", "url": "/images/products/blues-1033-4v.jpg", "alt": "Woodstock Longboards Nomad Oak Light", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5245,7 +5245,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Woodstock Longboards Summit Oak Cream",
     "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Summit Oak Cream.",
-    "images": [{ "id": "img-woodstock-summit-cream", "url": "/images/products/woodstock-longboards-1033-4v-summit-oak-cream.jpg", "alt": "Woodstock Longboards Summit Oak Cream", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-woodstock-summit-cream", "url": "/images/products/blues-1033-4v.jpg", "alt": "Woodstock Longboards Summit Oak Cream", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5264,7 +5264,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Woodstock Longboards Summit Oak Grey",
     "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Summit Oak Grey.",
-    "images": [{ "id": "img-woodstock-summit-grey", "url": "/images/products/woodstock-longboards-1033-4v-summit-oak-grey.jpg", "alt": "Woodstock Longboards Summit Oak Grey", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-woodstock-summit-grey", "url": "/images/products/blues-1033-4v.jpg", "alt": "Woodstock Longboards Summit Oak Grey", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5283,7 +5283,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Woodstock Longboards Summit Oak Titan",
     "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Summit Oak Titan.",
-    "images": [{ "id": "img-woodstock-summit-titan", "url": "/images/products/woodstock-longboards-1033-4v-summit-oak-titan.jpg", "alt": "Woodstock Longboards Summit Oak Titan", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-woodstock-summit-titan", "url": "/images/products/blues-1033-4v.jpg", "alt": "Woodstock Longboards Summit Oak Titan", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5302,7 +5302,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Woodstock Longboards Summit Oak White",
     "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V. Duga daska, dezen Summit Oak White.",
-    "images": [{ "id": "img-woodstock-summit-white", "url": "/images/products/woodstock-longboards-1033-4v-summit-oak-white.jpg", "alt": "Woodstock Longboards Summit Oak White", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-woodstock-summit-white", "url": "/images/products/blues-1033-4v.jpg", "alt": "Woodstock Longboards Summit Oak White", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
       { "key": "thickness", "label": "Debljina", "value": "10mm" },
@@ -5323,7 +5323,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Easy Line 832 Kingsley Oak Grey",
     "description": "Laminat iz kolekcije Easy Line 832, dezen Kingsley Oak Grey. Sofisticirana siva varijanta, odličan izbor za moderne enterijere. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-easy-line-kingsley-grey", "url": "/images/products/easy-line-832-kingsley-oak-grey.jpg", "alt": "Easy Line 832 Kingsley Oak Grey", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-easy-line-kingsley-grey", "url": "/images/products/easy-line-832-4v-kingsley-oak-beige.jpg", "alt": "Easy Line 832 Kingsley Oak Grey", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -5342,7 +5342,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Easy Line 832 Oak Natural",
     "description": "Laminat iz kolekcije Easy Line 832, dezen Oak Natural. Klasična topla nijansa hrasta. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-easy-line-oak-natural", "url": "/images/products/easy-line-832-oak-natural.jpg", "alt": "Easy Line 832 Oak Natural", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-easy-line-oak-natural", "url": "/images/products/easy-line-832-4v-turnberry-oak-nature.jpg", "alt": "Easy Line 832 Oak Natural", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -5361,7 +5361,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Easy Line 832 Red-Brown Oak",
     "description": "Laminat iz kolekcije Easy Line 832, dezen Red-Brown Oak. Tradicionalna crvenkasta nijansa. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-easy-line-red-brown-oak", "url": "/images/products/easy-line-832-red-brown-oak.jpg", "alt": "Easy Line 832 Red-Brown Oak", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-easy-line-red-brown-oak", "url": "/images/products/easy-line-832-4v-aberdeen-oak-brown.jpg", "alt": "Easy Line 832 Red-Brown Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -5382,7 +5382,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Giant 1233 Oak Ashes",
     "description": "Laminat iz kolekcije Giant 1233. Oak Ashes – pepeljasto siva nijansa. Izuzetna debljina od 12mm i klasa 33.",
-    "images": [{ "id": "img-giant-oak-ashes", "url": "/images/products/giant-1233-oak-ashes.jpg", "alt": "Giant 1233 Oak Ashes", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-giant-oak-ashes", "url": "/images/products/giant-1233-4v-oak-ashes.jpg", "alt": "Giant 1233 Oak Ashes", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5401,7 +5401,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Giant 1233 Oak Light Beige",
     "description": "Laminat iz kolekcije Giant 1233. Oak Light Beige – svetla bež nijansa. Izuzetna debljina od 12mm i klasa 33.",
-    "images": [{ "id": "img-giant-oak-light-beige", "url": "/images/products/giant-1233-oak-light-beige.jpg", "alt": "Giant 1233 Oak Light Beige", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-giant-oak-light-beige", "url": "/images/products/giant-1233-4v-oak-light-beige.jpg", "alt": "Giant 1233 Oak Light Beige", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5420,7 +5420,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Giant 1233 Oak Brown",
     "description": "Laminat iz kolekcije Giant 1233. Oak Brown – klasik braon nijansa. Izuzetna debljina od 12mm i klasa 33.",
-    "images": [{ "id": "img-giant-oak-brown", "url": "/images/products/giant-1233-oak-brown.jpg", "alt": "Giant 1233 Oak Brown", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-giant-oak-brown", "url": "/images/products/giant-1233-4v.jpg", "alt": "Giant 1233 Oak Brown", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5441,7 +5441,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Journey 731 Black Sea Oak",
     "description": "Laminat iz kolekcije Journey 731. Black Sea Oak – dramatičan tamniji dezen. Debljina 7mm, klasa 31.",
-    "images": [{ "id": "img-journey-black-sea-oak", "url": "/images/products/journey-731-black-sea-oak.jpg", "alt": "Journey 731 Black Sea Oak", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-journey-black-sea-oak", "url": "/images/products/journey-731-4v-black-sea-oak.jpg", "alt": "Journey 731 Black Sea Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
       { "key": "thickness", "label": "Debljina", "value": "7mm" },
@@ -5460,7 +5460,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Journey 731 Oak Carpatian",
     "description": "Laminat iz kolekcije Journey 731. Oak Carpatian – rustični hrast. Debljina 7mm, klasa 31.",
-    "images": [{ "id": "img-journey-oak-carpatian", "url": "/images/products/journey-731-oak-carpatian.jpg", "alt": "Journey 731 Oak Carpatian", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-journey-oak-carpatian", "url": "/images/products/journey-731-4v-oak-carpatian.jpg", "alt": "Journey 731 Oak Carpatian", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
       { "key": "thickness", "label": "Debljina", "value": "7mm" },
@@ -5479,7 +5479,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Journey 731 Old Mountain",
     "description": "Laminat iz kolekcije Journey 731. Old Mountain – izgled starog drveta. Debljina 7mm, klasa 31.",
-    "images": [{ "id": "img-journey-old-mountain", "url": "/images/products/journey-731-old-mountain.jpg", "alt": "Journey 731 Old Mountain", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-journey-old-mountain", "url": "/images/products/journey-731-4v-old-mountain.jpg", "alt": "Journey 731 Old Mountain", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
       { "key": "thickness", "label": "Debljina", "value": "7mm" },
@@ -5498,7 +5498,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Journey 731 Oak Adriatic",
     "description": "Laminat iz kolekcije Journey 731. Oak Adriatic – svetla mediteranska nijansa. Debljina 7mm, klasa 31.",
-    "images": [{ "id": "img-journey-oak-adriatic", "url": "/images/products/journey-731-oak-adriatic.jpg", "alt": "Journey 731 Oak Adriatic", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-journey-oak-adriatic", "url": "/images/products/journey-731-4v-oak-adriatic.jpg", "alt": "Journey 731 Oak Adriatic", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
       { "key": "thickness", "label": "Debljina", "value": "7mm" },
