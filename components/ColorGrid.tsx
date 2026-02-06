@@ -341,16 +341,20 @@ export default function ColorGrid({
   }, [collectionSlug, customColors]);
 
   // Preload all color images for instant switching (avoids white flash on color change)
+  // Store URLs in state to render hidden img elements in DOM
+  const [preloadUrls, setPreloadUrls] = useState<string[]>([]);
+
   useEffect(() => {
     if (colors.length === 0) return;
 
+    const urls: string[] = [];
     colors.forEach((color: Color) => {
       const imageUrl = color.texture_url || color.image_url || (color as any).image;
       if (imageUrl) {
-        const img = new window.Image();
-        img.src = imageUrl;
+        urls.push(imageUrl);
       }
     });
+    setPreloadUrls(urls);
   }, [colors]);
 
   const filteredColors = useMemo(() => {
@@ -440,6 +444,12 @@ export default function ColorGrid({
 
   return (
     <div className="space-y-6">
+      {/* Hidden preload images - browser downloads these in background */}
+      <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', visibility: 'hidden' }}>
+        {preloadUrls.map((url, idx) => (
+          <img key={idx} src={url} alt="" />
+        ))}
+      </div>
       {/* Header - only show if not compact */}
       {!compact && (
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

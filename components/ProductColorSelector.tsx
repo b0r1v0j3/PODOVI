@@ -91,16 +91,20 @@ export default function ProductColorSelector({
   }, [customColors, searchParams, pathname, router]);
 
   // Preload all color images for instant switching (avoids white flash on color change)
+  // Store URLs in state so we can render hidden img elements in DOM
+  const [preloadUrls, setPreloadUrls] = useState<string[]>([]);
+
   useEffect(() => {
     if (!customColors?.length) return;
 
+    const urls: string[] = [];
     customColors.forEach((color: { image_url?: string; texture_url?: string }) => {
       const imageUrl = color.image_url || color.texture_url;
       if (imageUrl) {
-        const img = new window.Image();
-        img.src = imageUrl;
+        urls.push(imageUrl);
       }
     });
+    setPreloadUrls(urls);
   }, [customColors]);
 
   // Update selectedColorSlug when URL changes
@@ -205,6 +209,12 @@ export default function ProductColorSelector({
 
   return (
     <>
+      {/* Hidden preload images - browser downloads these in background */}
+      <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', visibility: 'hidden' }}>
+        {preloadUrls.map((url, idx) => (
+          <img key={idx} src={url} alt="" />
+        ))}
+      </div>
       {/* Prvi red: SAMO slika (levo) i Info + Boje (desno) – ista visina, dno u istoj liniji */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mb-6">
         {/* Levo: samo kvadrat sa slikom */}
