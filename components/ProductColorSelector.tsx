@@ -90,22 +90,6 @@ export default function ProductColorSelector({
     }
   }, [customColors, searchParams, pathname, router]);
 
-  // Preload all color images for instant switching (avoids white flash on color change)
-  // Store URLs in state so we can render hidden img elements in DOM
-  const [preloadUrls, setPreloadUrls] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (!customColors?.length) return;
-
-    const urls: string[] = [];
-    customColors.forEach((color: { image_url?: string; texture_url?: string }) => {
-      const imageUrl = color.image_url || color.texture_url;
-      if (imageUrl) {
-        urls.push(imageUrl);
-      }
-    });
-    setPreloadUrls(urls);
-  }, [customColors]);
 
   // Update selectedColorSlug when URL changes
   useEffect(() => {
@@ -209,68 +193,84 @@ export default function ProductColorSelector({
 
   return (
     <>
-      {/* Hidden preload images - browser downloads these in background */}
-      <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', visibility: 'hidden' }}>
-        {preloadUrls.map((url, idx) => (
-          <img key={idx} src={url} alt="" />
-        ))}
-      </div>
       {/* Prvi red: SAMO slika (levo) i Info + Boje (desno) – ista visina, dno u istoj liniji */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mb-6">
         {/* Levo: samo kvadrat sa slikom */}
         <div className="flex flex-col min-h-0">
           <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col h-full">
             <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
-              {selectedImage ? (
+              {/* Pre-render ALL color images - instant switching via CSS display */}
+              {customColors && customColors.length > 0 ? (
                 <>
-                  <ProductImage
-                    key={selectedImage.url}
-                    src={selectedImage.url}
-                    alt={selectedImage.alt}
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    quality={100}
-                    priority={imagePriority}
-                  />
-                  {/* Image switcher arrows - show only if multiple images */}
-                  {selectedImages.length > 1 && (
-                    <>
-                      <button
-                        onClick={() => setCurrentImageIndex((currentImageIndex - 1 + selectedImages.length) % selectedImages.length)}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
-                        aria-label="Prethodna slika"
-                      >
-                        <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                      </button>
-                      <button
-                        onClick={() => setCurrentImageIndex((currentImageIndex + 1) % selectedImages.length)}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
-                        aria-label="Sledeća slika"
-                      >
-                        <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-                      {/* Image indicator dots */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                        {selectedImages.map((_, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => setCurrentImageIndex(idx)}
-                            className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/50'}`}
-                            aria-label={`Slika ${idx + 1}`}
-                          />
-                        ))}
-                      </div>
-                    </>
-                  )}
+                  {customColors.map((color: { slug?: string; image_url?: string; texture_url?: string; name?: string; full_name?: string }) => {
+                    const imgUrl = color.image_url || color.texture_url;
+                    const isActive = color.slug === selectedColorSlug ||
+                      (color.slug === customColors[0]?.slug && !selectedColorSlug);
+                    if (!imgUrl) return null;
+                    return (
+                      <img
+                        key={color.slug}
+                        src={imgUrl}
+                        alt={color.name || color.full_name || ''}
+                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-150"
+                        style={{
+                          opacity: isActive ? 1 : 0,
+                          zIndex: isActive ? 10 : 1
+                        }}
+                        loading="eager"
+                      />
+                    );
+                  })}
                 </>
+              ) : selectedImage ? (
+                <ProductImage
+                  key={selectedImage.url}
+                  src={selectedImage.url}
+                  alt={selectedImage.alt}
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={100}
+                  priority={imagePriority}
+                />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-400">
                   <span>Bez slike</span>
                 </div>
+              )}
+
+              {/* Image switcher arrows - show only if multiple images */}
+              {selectedImages.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setCurrentImageIndex((currentImageIndex - 1 + selectedImages.length) % selectedImages.length)}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all z-20"
+                    aria-label="Prethodna slika"
+                  >
+                    <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setCurrentImageIndex((currentImageIndex + 1) % selectedImages.length)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all z-20"
+                    aria-label="Sledeća slika"
+                  >
+                    <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                  {/* Image indicator dots */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                    {selectedImages.map((_: { url: string; alt: string }, idx: number) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentImageIndex(idx)}
+                        className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/50'}`}
+                        aria-label={`Slika ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </>
               )}
             </div>
 
