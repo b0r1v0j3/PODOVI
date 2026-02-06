@@ -358,6 +358,26 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       }
     }
 
+    // Laminat: extract thickness values from product specs
+    if (category.slug === 'laminat') {
+      const thicknessSet = new Set<string>();
+
+      // Get thickness from all laminate products (collections + colors)
+      allProducts.forEach(p => {
+        const thicknessSpec = p.specs.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
+        if (thicknessSpec) {
+          // Normalize: "8 mm" -> "8", "10mm" -> "10"
+          const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
+          const thicknessValue = parseFloat(normalizedValue);
+          if (!isNaN(thicknessValue)) {
+            thicknessSet.add(thicknessValue.toString());
+          }
+        }
+      });
+
+      availableThickness = Array.from(thicknessSet).sort((a, b) => parseFloat(a) - parseFloat(b));
+    }
+
     // Apply collection filter ONLY to collections (not to colors) - for LVT and Parket
     // This happens AFTER extracting availableCollections so filter options remain visible
     if (category.slug === 'lvt') {
@@ -406,6 +426,21 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           .sort((a, b) =>
             (a.specs?.find(s => s.key === 'collection')?.value || a.name).localeCompare(b.specs?.find(s => s.key === 'collection')?.value || b.name)
           );
+      }
+
+      // Laminat: filter by thickness
+      const selectedThickness = searchParams.thickness ? searchParams.thickness.split(',') : [];
+      if (selectedThickness.length > 0) {
+        const matchThickness = (p: { specs: { key: string; value: string }[] }): boolean => {
+          const thicknessSpec = p.specs.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
+          if (!thicknessSpec) return false;
+          const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
+          const thicknessValue = parseFloat(normalizedValue);
+          if (isNaN(thicknessValue)) return false;
+          return selectedThickness.includes(thicknessValue.toString());
+        };
+        collections = collections.filter(matchThickness);
+        colors = colors.filter(matchThickness);
       }
     } else if (category.slug === 'parket') {
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
