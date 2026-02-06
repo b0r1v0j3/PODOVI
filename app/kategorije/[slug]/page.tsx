@@ -364,7 +364,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
       // Get thickness from all laminate products (collections + colors)
       allProducts.forEach(p => {
-        const thicknessSpec = p.specs.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
+        const thicknessSpec = p.specs?.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
         if (thicknessSpec) {
           // Normalize: "8 mm" -> "8", "10mm" -> "10"
           const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
@@ -441,12 +441,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           }
         }
       });
-
-      // DEBUG: Log thickness map contents
-      console.log('DEBUG: collectionThicknessMap size:', collectionThicknessMap.size);
-      console.log('DEBUG: byCollectionName size:', byCollectionName.size);
-      console.log('DEBUG: laminatHeaders count:', laminatHeaders.length);
-      console.log('DEBUG: colors before filter:', colors.length);
 
       const selectedThickness = searchParams.thickness ? searchParams.thickness.split(',') : [];
       if (selectedThickness.length > 0) {
