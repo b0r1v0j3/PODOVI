@@ -721,18 +721,16 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       : `${baseUrl}/proizvodi/${params.slug}`;
 
     // Build Open Graph title with category and price (for social sharing)
+    // Format: "Laminat | 1.299 RSD/m²"
     const ogPriceText = product.price && product.price > 0
-      ? ` | ${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}`
+      ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}`
       : '';
-    const ogCategoryText = categoryText ? `${categoryText} | ` : '';
-    const ogTitle = `${ogCategoryText}${product.name}${ogPriceText}`;
+    const ogTitle = categoryText && ogPriceText
+      ? `${categoryText} | ${ogPriceText}`
+      : categoryText || product.name;
 
-    // Build Open Graph description - category, brand, short description
-    const ogDescription = [
-      categoryText && brandText ? `${categoryText} - ${brandText}` : categoryText || brandText,
-      product.shortDescription || product.description || '',
-      priceText
-    ].filter(Boolean).join('. ').substring(0, 200);
+    // Build Open Graph description - just the product name
+    const ogDescription = product.name;
 
     return {
       metadataBase: new URL(baseUrl),
