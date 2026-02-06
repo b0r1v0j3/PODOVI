@@ -720,6 +720,20 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       ? `${baseUrl}/proizvodi/${params.slug}?color=${selectedColorSlug}`
       : `${baseUrl}/proizvodi/${params.slug}`;
 
+    // Build Open Graph title with category and price (for social sharing)
+    const ogPriceText = product.price && product.price > 0
+      ? ` | ${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}`
+      : '';
+    const ogCategoryText = categoryText ? `${categoryText} | ` : '';
+    const ogTitle = `${ogCategoryText}${product.name}${ogPriceText}`;
+
+    // Build Open Graph description - category, brand, short description
+    const ogDescription = [
+      categoryText && brandText ? `${categoryText} - ${brandText}` : categoryText || brandText,
+      product.shortDescription || product.description || '',
+      priceText
+    ].filter(Boolean).join('. ').substring(0, 200);
+
     return {
       metadataBase: new URL(baseUrl),
       title: `${product.name} - Cena i tehničke specifikacije | Podovi.online`,
@@ -727,8 +741,8 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       keywords,
       authors: [{ name: 'Podovi.online' }],
       openGraph: {
-        title: product.name,
-        description: product.shortDescription || product.description || '',
+        title: ogTitle,
+        description: ogDescription,
         type: 'website',
         locale: 'sr_RS',
         url: urlWithColor,
@@ -744,8 +758,8 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       },
       twitter: {
         card: 'summary_large_image',
-        title: product.name,
-        description: product.shortDescription || product.description || '',
+        title: ogTitle,
+        description: ogDescription,
         images: primaryImage ? [primaryImage.url] : [],
       },
       alternates: {
