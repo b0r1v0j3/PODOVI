@@ -17,16 +17,17 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  
+
   const isVinilCategory = pathname?.includes('/kategorije/vinil');
   const isLVTCategory = pathname?.includes('/kategorije/lvt') || pathname?.includes('/kategorije/parket');
   const isParketCategory = pathname?.includes('/kategorije/parket');
   const isLinoleumCategory = pathname?.includes('/kategorije/linoleum');
+  const isLaminatCategory = pathname?.includes('/kategorije/laminat');
   const currentType = searchParams.get('type');
   const currentCollections = searchParams.get('collections');
   const currentThickness = searchParams.get('thickness');
   const currentWoodTypes = searchParams.get('woodType')?.split(',').filter(Boolean) || [];
-  
+
   const [search, setSearch] = useState(currentFilters.search || '');
   const [selectedBrands, setSelectedBrands] = useState<string[]>(currentFilters.brandIds || []);
   const [priceMin, setPriceMin] = useState(currentFilters.priceMin?.toString() || '');
@@ -45,11 +46,11 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   // Sync state with URL params when they change externally (e.g., browser back/forward)
   // This ensures state stays in sync with URL, but we skip updates that would cause loops
   const isSyncingRef = useRef(false);
-  
+
   useEffect(() => {
     // Skip if we're currently applying filters (to avoid loops)
     if (isSyncingRef.current) return;
-    
+
     const urlSearch = searchParams.get('search') || '';
     const urlBrands = searchParams.get('brands')?.split(',').filter(Boolean) || [];
     const urlPriceMin = searchParams.get('priceMin') || '';
@@ -71,7 +72,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isLVTCategory && JSON.stringify([...urlCollections].sort()) !== JSON.stringify([...selectedCollections].sort())) {
       setSelectedCollections(urlCollections);
     }
-    if ((isLVTCategory || isVinilCategory || isLinoleumCategory) && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
+    if ((isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
       setSelectedThickness(urlThickness);
     }
   }, [searchParams]);
@@ -79,12 +80,12 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   // Auto-remove incompatible thicknesses when vinyl type changes
   useEffect(() => {
     if (isVinilCategory && availableThicknessByType && vinylType && selectedThickness.length > 0) {
-      const availableForType = vinylType === 'homogeni' 
-        ? availableThicknessByType.homogeni 
-        : vinylType === 'heterogeni' 
-        ? availableThicknessByType.heterogeni 
-        : [];
-      
+      const availableForType = vinylType === 'homogeni'
+        ? availableThicknessByType.homogeni
+        : vinylType === 'heterogeni'
+          ? availableThicknessByType.heterogeni
+          : [];
+
       const validThicknesses = selectedThickness.filter(t => availableForType.includes(t));
       if (validThicknesses.length !== selectedThickness.length) {
         setSelectedThickness(validThicknesses);
@@ -107,7 +108,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     isSyncingRef.current = true;
 
     const params = new URLSearchParams(searchParams);
-    
+
     // Clear only filter params we control, keep other params (like 'color' for LVT tabs)
     params.delete('search');
     params.delete('brands');
@@ -125,12 +126,12 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (priceMax) params.set('priceMax', priceMax);
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
-    if ((isLVTCategory || isVinilCategory || isLinoleumCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
+    if ((isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
     if (isParketCategory && selectedWoodTypes.length > 0) params.set('woodType', selectedWoodTypes.join(','));
 
     // Debounce for search input (500ms), immediate for other filters
     const delay = search ? 500 : 0;
-    
+
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
     }
@@ -143,12 +144,12 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       }, 100);
     }, delay);
 
-        return () => {
-          if (searchTimeoutRef.current) {
-            clearTimeout(searchTimeoutRef.current);
-          }
-        };
-      }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, selectedWoodTypes, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isParketCategory]);
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, selectedWoodTypes, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isLaminatCategory, isParketCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -162,24 +163,24 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   };
 
   const toggleBrand = (brandId: string) => {
-    setSelectedBrands(prev => 
-      prev.includes(brandId) 
+    setSelectedBrands(prev =>
+      prev.includes(brandId)
         ? prev.filter(id => id !== brandId)
         : [...prev, brandId]
     );
   };
 
   const toggleCollection = (collection: string) => {
-    setSelectedCollections(prev => 
-      prev.includes(collection) 
+    setSelectedCollections(prev =>
+      prev.includes(collection)
         ? prev.filter(c => c !== collection)
         : [...prev, collection]
     );
   };
 
   const toggleThickness = (thickness: string) => {
-    setSelectedThickness(prev => 
-      prev.includes(thickness) 
+    setSelectedThickness(prev =>
+      prev.includes(thickness)
         ? prev.filter(t => t !== thickness)
         : [...prev, thickness]
     );
@@ -191,7 +192,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || (isParketCategory && selectedWoodTypes.length > 0) || ((isLVTCategory || isVinilCategory) && selectedThickness.length > 0);
+  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || (isParketCategory && selectedWoodTypes.length > 0) || ((isLVTCategory || isVinilCategory || isLaminatCategory) && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -329,8 +330,8 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       )}
 
-      {/* Overall Thickness Filter (for LVT, Vinil, and Linoleum) */}
-      {(isLVTCategory || isVinilCategory || isLinoleumCategory) && availableThickness && availableThickness.length > 0 && (
+      {/* Overall Thickness Filter (for LVT, Vinil, Linoleum, and Laminat) */}
+      {(isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && availableThickness && availableThickness.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Debljina</label>
           <div className="space-y-2">
@@ -344,10 +345,10 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
                   isDisabled = !availableThicknessByType.heterogeni.includes(thickness);
                 }
               }
-              
+
               return (
-                <label 
-                  key={thickness} 
+                <label
+                  key={thickness}
                   className={`flex items-center ${isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
                 >
                   <input
