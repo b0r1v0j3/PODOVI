@@ -47,21 +47,9 @@ export default function ProductCardClient({ product, brand, compact = false }: P
 
   let productHref = `/proizvodi/${product.slug}`;
 
-
-  // For color tile categories (LVT, Linoleum, Vinil, Tekstilne ploče), determine collection slug
-  // First try collectionSlug property, then fall back to collection spec
-  let effectiveCollectionSlug = colorCollectionSlug;
-  if (isColorTileCategory && !effectiveCollectionSlug) {
-    const collectionSpec = product.specs?.find(s => s.key === 'collection')?.value;
-    if (collectionSpec) {
-      effectiveCollectionSlug = collectionSpec.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-    }
-  }
-
-  if (isColorTileCategory && effectiveCollectionSlug) {
-    // Link to collection product page with color parameter (same pattern as Parket/Laminat)
-    // This way the collection page can display the color detail
-    productHref = `/proizvodi/${effectiveCollectionSlug}?color=${encodeURIComponent(product.slug)}`;
+  if (isColorTileCategory) {
+    // Link directly to color product page - the product page will load and display the color
+    productHref = `/proizvodi/${product.slug}`;
   } else if (isLaminat) {
     const isLaminatCollectionHeader = product.sku?.startsWith('LAM-');
     if (isLaminatCollectionHeader) {

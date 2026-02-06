@@ -817,14 +817,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // If product is a COLOR (has collectionSlug), redirect to COLLECTION PAGE with color parameter.
-    // Collections don't have collectionSlug and should stay on collection page.
-    // This is consistent with Parket and Laminat behavior.
-    const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
-    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct) {
-      const { redirect } = await import('next/navigation');
-      redirect(`/proizvodi/${collectionSlugFromProduct}?color=${encodeURIComponent(product.slug)}`);
-    }
+    // NOTE: Colors for LVT/Linoleum/Vinil/Tekstilne are now displayed directly on their product page
+    // No redirect needed - the product page loads the color from JSON and displays it
 
     // Parket variant: redirect na stranicu kolekcije sa ?color= (kao LVT) – /proizvodi/allegro?color=hrast-elegant-shiny-3-strip
     if (product.categoryId === '3' && product.sku && !product.sku.startsWith('PARKET-')) {
