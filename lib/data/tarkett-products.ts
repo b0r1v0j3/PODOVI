@@ -5116,35 +5116,26 @@ export const tarkettProducts: Product[] = [
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Timeless 1232 4V Laminat",
-    "description": "Laminat iz kolekcije Timeless 1232 4V. Autentična tekstura, 12mm debljina.",
-    "images": [],
+    "description": "Kao što sama reč kaže, Timeless – bezvremenski, nema roka trajanja. Kolekcija odiše neprolaznom lepotom klasičnog. Dizajn je kreiran sa posebnom pažnjom sa čvrstim osloncem na sve trendove.\n\nSavršen pod za strastvene ljubitelje prirode i posvećene entuzijaste stila.",
+    "images": [{ "id": "timeless-1232-4v-img", "url": "/images/products/timeless-1232-4v-oak-traditional.jpg", "alt": "Timeless 1232 4V", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "type", "label": "Tip", "value": "Laminat" },
-      { "key": "thickness", "label": "Debljina", "value": "12mm" },
-      { "key": "class", "label": "Klasa", "value": "32" }
+      { "key": "iso_type", "label": "ISO vrsta proizvoda", "value": "Laminirane podne obloge (EN 13329)" },
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "32 General" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "12 mm" },
+      { "key": "mass", "label": "Ukupna masa", "value": "10940 g/m²" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "2-lock" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
-  },
-  {
-    "id": "timeless-1232-4v-oak-traditional",
-    "name": "Timeless 1232 4V Oak Traditional",
-    "slug": "timeless-1232-4v-oak-traditional",
-    "sku": "505833000",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Timeless 1232 4V Oak Traditional",
-    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Oak Traditional. Klasična lepota hrasta sa autentičnom teksturom.",
-    "images": [{ "id": "img-timeless-oak-traditional", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Oak Traditional", "isPrimary": true, "order": 0 }],
-    "specs": [
-      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "12mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Prirodan izgled drveta", "Pogodan za hotelske sobe, poslovne prostore, kancelarije, dnevne sobe"] },
+      { "title": "Tehničke specifikacije", "items": [] }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
     "id": "timeless-1232-4v-oak-epoque",
@@ -5155,34 +5146,44 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Oak Epoque",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Oak Epoque. Patinirani, starinski izgled.",
-    "images": [{ "id": "img-timeless-oak-epoque", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Oak Epoque", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "timeless-1232-4v-oak-epoque-img", "url": "/images/products/timeless-1232-4v-oak-epoque.jpg", "alt": "Timeless 1232 4V Oak Epoque", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "12mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+      { "key": "ref", "label": "Ref.", "value": "505833001" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
-    "id": "timeless-1232-4v-canadian",
-    "name": "Timeless 1232 4V Canadian",
-    "slug": "timeless-1232-4v-canadian",
-    "sku": "505833002",
+    "id": "timeless-1232-4v-oak-traditional",
+    "name": "Timeless 1232 4V Oak Traditional",
+    "slug": "timeless-1232-4v-oak-traditional",
+    "sku": "505833000",
     "categoryId": "1",
     "brandId": "3",
-    "shortDescription": "Laminat Timeless 1232 4V Canadian",
-    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Canadian. Topli crvenkasti tonovi.",
-    "images": [{ "id": "img-timeless-canadian", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Canadian", "isPrimary": true, "order": 0 }],
+    "shortDescription": "Laminat Timeless 1232 4V Oak Traditional",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Oak Traditional. Klasična lepota hrasta sa autentičnom teksturom.",
+    "images": [{ "id": "timeless-1232-4v-oak-traditional-img", "url": "/images/products/timeless-1232-4v-oak-traditional.jpg", "alt": "Timeless 1232 4V Oak Traditional", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "12mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+      { "key": "ref", "label": "Ref.", "value": "505833000" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
     "id": "timeless-1232-4v-shadow-oak",
@@ -5193,34 +5194,68 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Shadow Oak",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Shadow Oak. Sivi modernistički tonovi.",
-    "images": [{ "id": "img-timeless-shadow-oak", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Shadow Oak", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "timeless-1232-4v-shadow-oak-img", "url": "/images/products/timeless-1232-4v-shadow-oak.jpg", "alt": "Timeless 1232 4V Shadow Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "12mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+      { "key": "ref", "label": "Ref.", "value": "505833003" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
-    "id": "timeless-1232-4v-southern",
-    "name": "Timeless 1232 4V Southern",
-    "slug": "timeless-1232-4v-southern",
+    "id": "timeless-1232-4v-canadian-oak",
+    "name": "Timeless 1233 4V Canadian Oak",
+    "slug": "timeless-1232-4v-canadian-oak",
+    "sku": "505833002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Timeless 1233 4V Canadian Oak",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Canadian Oak. Topli crvenkasti tonovi.",
+    "images": [{ "id": "timeless-1232-4v-canadian-oak-img", "url": "/images/products/timeless-1232-4v-canadian-oak.jpg", "alt": "Timeless 1233 4V Canadian Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505833002" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
+  },
+  {
+    "id": "timeless-1232-4v-southern-oak",
+    "name": "Timeless 1233 4V Southern Oak",
+    "slug": "timeless-1232-4v-southern-oak",
     "sku": "505833004",
     "categoryId": "1",
     "brandId": "3",
-    "shortDescription": "Laminat Timeless 1232 4V Southern",
-    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Southern. Topla osunčana nijansa.",
-    "images": [{ "id": "img-timeless-southern", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Southern", "isPrimary": true, "order": 0 }],
+    "shortDescription": "Laminat Timeless 1233 4V Southern Oak",
+    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Southern Oak. Topla osunčana nijansa.",
+    "images": [{ "id": "timeless-1232-4v-southern-oak-img", "url": "/images/products/timeless-1232-4v-southern-oak.jpg", "alt": "Timeless 1233 4V Southern Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "12mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+      { "key": "ref", "label": "Ref.", "value": "505833004" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
     "id": "timeless-1232-4v-darkwood",
@@ -5231,15 +5266,20 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Timeless 1232 4V Darkwood",
     "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Darkwood. Luksuzna tamna nijansa.",
-    "images": [{ "id": "img-timeless-darkwood", "url": "/images/products/blues-1033-4v.jpg", "alt": "Timeless 1232 4V Darkwood", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "timeless-1232-4v-darkwood-img", "url": "/images/products/timeless-1232-4v-darkwood.jpg", "alt": "Timeless 1232 4V Darkwood", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
-      { "key": "thickness", "label": "Debljina", "value": "12mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" }
+      { "key": "ref", "label": "Ref.", "value": "505833005" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
 
   // Laminat - Frontier 1033 4V
