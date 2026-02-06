@@ -431,8 +431,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       // Laminat: filter by thickness
       // Build a map of collection name -> thickness value from collection headers
       const collectionThicknessMap = new Map<string, string>();
-      for (const [collName, collProduct] of byCollectionName) {
-        const thicknessSpec = collProduct.specs?.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
+      byCollectionName.forEach((collProduct, collName) => {
+        const thicknessSpec = collProduct.specs?.find((s: { key: string; value: string }) => s.key === 'thickness' || s.key === 'overall_thickness');
         if (thicknessSpec) {
           const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
           const thicknessValue = parseFloat(normalizedValue);
@@ -440,7 +440,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             collectionThicknessMap.set(collName, thicknessValue.toString());
           }
         }
-      }
+      });
 
       const selectedThickness = searchParams.thickness ? searchParams.thickness.split(',') : [];
       if (selectedThickness.length > 0) {
