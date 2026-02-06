@@ -861,9 +861,26 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // If we loaded a color directly, the specs are already merged in colorToProduct
     // If we loaded a collection and there's a color parameter, merge color specs (LVT/Linoleum/Vinil from JSON)
     // IMPORTANT: Skip this for Parket (categoryId '3') to avoid loading LVT colors (like "Winter 832") by mistake
-    if (selectedColorSlug && product && !product.slug.includes(selectedColorSlug) && product.categoryId !== '3') {
+    if (selectedColorSlug && product && !product.slug.includes(selectedColorSlug) && product.categoryId !== '3' && product.categoryId !== '1') {
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (colorSource?.color) {
+        // Merge name and image from selected color (same pattern as Parket/Laminat)
+        product.name = colorSource.color.full_name || `${colorSource.color.code} ${colorSource.color.name}`;
+        product.shortDescription = `${colorSource.color.collection_name} - ${colorSource.color.name}`;
+
+        // Get color image
+        const colorImageUrl = colorSource.color.texture_url || colorSource.color.lifestyle_url || colorSource.color.image_url;
+        if (colorImageUrl) {
+          product.images = [{
+            id: `color-img-${selectedColorSlug}`,
+            url: colorImageUrl,
+            alt: product.name,
+            isPrimary: true,
+            order: 1,
+          }];
+        }
+
+        // Merge specs
         const colorSpecs = buildSpecsFromColor(colorSource.color);
         if (colorSpecs.length > 0) {
           product.specs = mergeSpecs(product.specs, colorSpecs);

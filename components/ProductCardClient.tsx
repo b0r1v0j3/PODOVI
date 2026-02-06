@@ -47,9 +47,13 @@ export default function ProductCardClient({ product, brand, compact = false }: P
 
   let productHref = `/proizvodi/${product.slug}`;
 
-  if (isColorTileCategory) {
-    // Link directly to color product page - the product page will load and display the color
-    productHref = `/proizvodi/${product.slug}`;
+  if (isColorTileCategory && colorCollectionSlug) {
+    // Link to collection page with color parameter (same pattern as Parket/Laminat)
+    // Collection slug needs 'gerflor-' prefix for LVT to match the collection page URL
+    const normalizedCollectionSlug = product.categoryId === '6' && !colorCollectionSlug.startsWith('gerflor-')
+      ? `gerflor-${colorCollectionSlug}`
+      : colorCollectionSlug;
+    productHref = `/proizvodi/${normalizedCollectionSlug}?color=${encodeURIComponent(product.slug)}`;
   } else if (isLaminat) {
     const isLaminatCollectionHeader = product.sku?.startsWith('LAM-');
     if (isLaminatCollectionHeader) {
