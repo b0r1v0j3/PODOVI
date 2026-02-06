@@ -4903,92 +4903,74 @@ export const tarkettProducts: Product[] = [
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Winter 832 Laminat",
-    "description": "Laminat iz kolekcije Winter 832. Debljina 8mm, klasa 32.",
-    "images": [],
+    "description": "Nova kolekcija laminata Winter 832 donosi elegantan spoj prirodne estetike, funkcionalnosti i ekonomičnosti. Namenjena je projektima koji traže dugotrajno i pouzdano rešenje, bez kompromisa kada je reč o izgledu prostora. Sa modernim dezenima inspirisanim teksturama drveta, ova kolekcija donosi toplinu i šarm prirode u svaki dom, ili poslovni prostor.",
+    "images": [{ "id": "winter-832-img", "url": "/images/products/winter-832-collection.jpg", "alt": "Winter 832", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
       { "key": "type", "label": "Tip", "value": "Laminat" },
-      { "key": "thickness", "label": "Debljina", "value": "8mm" },
-      { "key": "class", "label": "Klasa", "value": "32" }
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "32 General" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Prirodan izgled drveta", "Funkcionalan", "Brza ugradnja", "Jednostavno održavanje", "Ekonomično rešenje"] },
+      { "title": "Tehničke specifikacije", "items": [] }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-02-06T04:40:00.000Z"), "updatedAt": new Date("2026-02-06T04:40:00.000Z")
   },
   {
-    "id": "winter-832-hrast-braon-1s",
-    "name": "Winter 832 Hrast Braon 1s",
-    "slug": "winter-832-hrast-braon-1s",
-    "sku": "510036001",
+    "id": "winter-832-oak-brown-1s",
+    "name": "Winter 832 Oak Brown 1S",
+    "slug": "winter-832-oak-brown-1s",
+    "sku": "505814005",
     "categoryId": "1",
     "brandId": "3",
-    "shortDescription": "Laminat Winter 832 Hrast Braon 1s",
-    "description": "Laminat iz kolekcije Winter 832, dezen Hrast Braon 1s. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-winter-832-hrast-braon-1s", "url": "/images/products/blues-1033-4v.jpg", "alt": "Winter 832 Hrast Braon 1s", "isPrimary": true, "order": 0 }],
+    "shortDescription": "Laminat Winter 832 Oak Brown 1S",
+    "description": "Laminat iz kolekcije Winter 832, dezen Oak Brown 1S.",
+    "images": [{ "id": "winter-832-oak-brown-1s-img", "url": "/images/products/winter-832-oak-brown.jpg", "alt": "Winter 832 Oak Brown 1S", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
-      { "key": "thickness", "label": "Debljina", "value": "8mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+      { "key": "ref", "label": "Ref.", "value": "505814005" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "createdAt": new Date("2026-02-06T04:40:00.000Z"), "updatedAt": new Date("2026-02-06T04:40:00.000Z")
   },
   {
     "id": "winter-832-oak-rustic-coffee",
     "name": "Winter 832 Oak Rustic Coffee",
     "slug": "winter-832-oak-rustic-coffee",
-    "sku": "510036002",
+    "sku": "505814002",
     "categoryId": "1",
     "brandId": "3",
     "shortDescription": "Laminat Winter 832 Oak Rustic Coffee",
-    "description": "Laminat iz kolekcije Winter 832, dezen Oak Rustic Coffee. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-winter-832-oak-rustic-coffee", "url": "/images/products/blues-1033-4v.jpg", "alt": "Winter 832 Oak Rustic Coffee", "isPrimary": true, "order": 0 }],
+    "description": "Laminat iz kolekcije Winter 832, dezen Oak Rustic Coffee.",
+    "images": [{ "id": "winter-832-oak-rustic-coffee-img", "url": "/images/products/winter-832-oak-rustic-coffee.jpg", "alt": "Winter 832 Oak Rustic Coffee", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
-      { "key": "thickness", "label": "Debljina", "value": "8mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+      { "key": "ref", "label": "Ref.", "value": "505814002" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "createdAt": new Date("2026-02-06T04:40:00.000Z"), "updatedAt": new Date("2026-02-06T04:40:00.000Z")
   },
   {
     "id": "winter-832-oak-rustic-silver",
-    "name": "Winter 832 Oak Rustic Silver",
+    "name": "Winter 832 Rustic Silver",
     "slug": "winter-832-oak-rustic-silver",
-    "sku": "510036003",
+    "sku": "505814003",
     "categoryId": "1",
     "brandId": "3",
-    "shortDescription": "Laminat Winter 832 Oak Rustic Silver",
-    "description": "Laminat iz kolekcije Winter 832, dezen Oak Rustic Silver. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-winter-832-oak-rustic-silver", "url": "/images/products/blues-1033-4v.jpg", "alt": "Winter 832 Oak Rustic Silver", "isPrimary": true, "order": 0 }],
+    "shortDescription": "Laminat Winter 832 Rustic Silver",
+    "description": "Laminat iz kolekcije Winter 832, dezen Rustic Silver.",
+    "images": [{ "id": "winter-832-oak-rustic-silver-img", "url": "/images/products/winter-832-oak-rustic-silver.jpg", "alt": "Winter 832 Rustic Silver", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
-      { "key": "thickness", "label": "Debljina", "value": "8mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
+      { "key": "ref", "label": "Ref.", "value": "505814003" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" }
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
-  },
-  {
-    "id": "winter-832-oak-plank",
-    "name": "Winter 832 Oak Plank",
-    "slug": "winter-832-oak-plank",
-    "sku": "510036004",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Winter 832 Oak Plank",
-    "description": "Laminat iz kolekcije Winter 832, dezen Oak Plank. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-winter-832-oak-plank", "url": "/images/products/blues-1033-4v.jpg", "alt": "Winter 832 Oak Plank", "isPrimary": true, "order": 0 }],
-    "specs": [
-      { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
-      { "key": "thickness", "label": "Debljina", "value": "8mm" },
-      { "key": "class", "label": "Klasa", "value": "32" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 194 mm" }
-    ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "createdAt": new Date("2026-02-06T04:40:00.000Z"), "updatedAt": new Date("2026-02-06T04:40:00.000Z")
   },
 
   // Laminat - River 1233 4V
