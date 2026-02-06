@@ -5923,5 +5923,171 @@ export const tarkettProducts: Product[] = [
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+  },
+
+  // Laminat - Woodstock Longboards 1033 4V
+  {
+    "id": "woodstock-longboards-1033-4v",
+    "name": "Woodstock Longboards 1033 4V",
+    "slug": "woodstock-longboards-1033-4v",
+    "sku": "LAM-WOODSTOCK-LB-1033-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Woodstock Longboards 1033 4V Laminat",
+    "description": "Značajna debljina proizvoda od 10 mm, obezbeđuje dugotrajnu izdržljivost, ispunjavajući zahteve prometnih komercijalnih prostora. Uključivanje brzog i jednostavnog 5G klik sistema garantuje besprekornu instalaciju, štedeći dragoceno vreme i trud.\n\nWoodstock Longboard 1033 4V stvara zadivljujuće enterijere povezane sa pravim parketom od tvrdog drveta.\n\nZahvaljujući izdržljivosti i jednostavnoj instalaciji pomoću 5G klik sistema, ovo je idealan izbor za projekte renoviranja.",
+    "images": [{ "id": "woodstock-longboards-img", "url": "/images/products/woodstock-collection.jpg", "alt": "Woodstock Longboards 1033 4V", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "residential_class", "label": "Rezidencijalna klasifikacija", "value": "23 Teška" },
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "33 Heavy" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "10 mm" },
+      { "key": "edges", "label": "Oborene ivice", "value": "4 strane" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "5G" }
+    ],
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Klasa 33 (srednje prometne komercijalne površine)", "5G klik sistem", "Duge i široke daske (1845 mm)", "Ističu prostorne zapremine", "Embossing-In-Register dizajni za autentične teksture", "Proizvedeno u Nemačkoj"] },
+      { "title": "Tehničke specifikacije", "items": [] }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+  },
+  {
+    "id": "woodstock-chatillon-oak-brown",
+    "name": "Chatillon Oak BROWN",
+    "slug": "woodstock-chatillon-oak-brown",
+    "sku": "510048051",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Chatillon Oak Brown",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V, dezen Chatillon Oak Brown.",
+    "images": [{ "id": "woodstock-chatillon-oak-brown-img", "url": "/images/products/woodstock-chatillon-oak-brown.jpg", "alt": "Chatillon Oak BROWN", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510048051" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1845 x 244 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "Tekstura" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "4" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+  },
+  {
+    "id": "woodstock-chatillon-oak-sand",
+    "name": "Chatillon Oak SAND",
+    "slug": "woodstock-chatillon-oak-sand",
+    "sku": "510048048",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Chatillon Oak Sand",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V, dezen Chatillon Oak Sand.",
+    "images": [{ "id": "woodstock-chatillon-oak-sand-img", "url": "/images/products/woodstock-chatillon-oak-sand.jpg", "alt": "Chatillon Oak SAND", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510048048" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1845 x 244 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "Tekstura" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "4" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+  },
+  {
+    "id": "woodstock-nomad-oak-light",
+    "name": "Nomad Oak LIGHT",
+    "slug": "woodstock-nomad-oak-light",
+    "sku": "510048052",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Nomad Oak Light",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V, dezen Nomad Oak Light.",
+    "images": [{ "id": "woodstock-nomad-oak-light-img", "url": "/images/products/woodstock-nomad-oak-light.jpg", "alt": "Nomad Oak LIGHT", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510048052" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1845 x 244 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "Tekstura" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "4" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+  },
+  {
+    "id": "woodstock-summit-oak-cream",
+    "name": "Summit Oak CREAM",
+    "slug": "woodstock-summit-oak-cream",
+    "sku": "510046053",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Summit Oak Cream",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V, dezen Summit Oak Cream.",
+    "images": [{ "id": "woodstock-summit-oak-cream-img", "url": "/images/products/woodstock-summit-oak-cream.jpg", "alt": "Summit Oak CREAM", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510046053" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1845 x 244 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "4" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+  },
+  {
+    "id": "woodstock-summit-oak-grey",
+    "name": "Summit Oak GREY",
+    "slug": "woodstock-summit-oak-grey",
+    "sku": "510046046",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Summit Oak Grey",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V, dezen Summit Oak Grey.",
+    "images": [{ "id": "woodstock-summit-oak-grey-img", "url": "/images/products/woodstock-summit-oak-grey.jpg", "alt": "Summit Oak GREY", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510046046" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1845 x 244 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "4" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+  },
+  {
+    "id": "woodstock-summit-oak-white",
+    "name": "Summit Oak WHITE",
+    "slug": "woodstock-summit-oak-white",
+    "sku": "510046047",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Woodstock Longboards Summit Oak White",
+    "description": "Laminat iz kolekcije Woodstock Longboards 1033 4V, dezen Summit Oak White.",
+    "images": [{ "id": "woodstock-summit-oak-white-img", "url": "/images/products/woodstock-summit-oak-white.jpg", "alt": "Summit Oak WHITE", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Woodstock Longboards 1033 4V" },
+      { "key": "ref", "label": "Ref.", "value": "510046047" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1845 x 244 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "4" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
   }
 ];
