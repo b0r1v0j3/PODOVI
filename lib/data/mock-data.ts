@@ -63,24 +63,6 @@ export const categories: Category[] = [
 
 export const brands: Brand[] = [
   {
-    id: '1',
-    name: 'Egger',
-    slug: 'egger',
-    logo: '/images/brands/egger.png',
-    description: 'Vodeći evropski proizvođač laminata i podnih obloga',
-    website: 'https://www.egger.com',
-    countryOfOrigin: 'Austrija',
-  },
-  {
-    id: '2',
-    name: 'Quick-Step',
-    slug: 'quick-step',
-    logo: '/images/brands/quick-step.png',
-    description: 'Belgijska kompanija sa preko 40 godina iskustva',
-    website: 'https://www.quick-step.com',
-    countryOfOrigin: 'Belgija',
-  },
-  {
     id: '3',
     name: 'Tarkett',
     slug: 'tarkett',
@@ -88,24 +70,6 @@ export const brands: Brand[] = [
     description: 'Globalni lider u proizvodnji inovativnih podnih rešenja',
     website: 'https://www.tarkett.com',
     countryOfOrigin: 'Francuska',
-  },
-  {
-    id: '4',
-    name: 'Balterio',
-    slug: 'balterio',
-    logo: '/images/brands/balterio.png',
-    description: 'Premium belgijski laminat poznat po izdržljivosti',
-    website: 'https://www.balterio.com',
-    countryOfOrigin: 'Belgija',
-  },
-  {
-    id: '5',
-    name: 'Kronotex',
-    slug: 'kronotex',
-    logo: '/images/brands/kronotex.png',
-    description: 'Nemački kvalitet po pristupačnim cenama',
-    website: 'https://www.kronotex.com',
-    countryOfOrigin: 'Nemačka',
   },
   {
     id: '6',
