@@ -80,6 +80,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   }
 
   // Parse filters from search params (but exclude collections filter for now)
+  // For laminat: don't apply thickness filter here - we handle it manually since laminat uses 'overall_thickness' spec
+  const isLaminat = category.slug === 'laminat';
   const filtersWithoutCollections = {
     categoryId: category.id,
     search: searchParams.search,
@@ -88,7 +90,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     priceMax: searchParams.priceMax ? parseFloat(searchParams.priceMax) : undefined,
     inStock: searchParams.inStock === 'true' ? true : undefined,
     type: searchParams.type, // For vinyl type filter
-    thickness: searchParams.thickness ? searchParams.thickness.split(',') : undefined,
+    // Laminat: don't filter by thickness in repository (we do it manually); others: use repository filter
+    thickness: isLaminat ? undefined : (searchParams.thickness ? searchParams.thickness.split(',') : undefined),
     woodType: searchParams.woodType, // For Parket: Hrast | Jasen
     // collections filter will be applied separately after separating collections from colors
   };
