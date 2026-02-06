@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white text-lg font-semibold mb-4">O nama</h3>
             <p className="text-sm">
-              Vodeći uvoznik i distributer kvalitetnih podnih obloga u Srbiji. 
+              Vodeći uvoznik i distributer kvalitetnih podnih obloga u Srbiji.
               Nudimo širok asortiman proizvoda od renomiranih evropskih brendova.
             </p>
           </div>
@@ -97,14 +97,14 @@ export default function Footer() {
                 <svg className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-primary-400 group-hover:text-primary-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:podovidoo@gmail.com" className="hover:text-white transition-colors duration-200">podovidoo@gmail.com</a>
+                <a href="mailto:prodaja@podovi.online" className="hover:text-white transition-colors duration-200">prodaja@podovi.online</a>
               </li>
               <li className="flex items-start group">
                 <svg className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-primary-400 group-hover:text-primary-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <a 
+                <a
                   href="https://www.google.com/maps/place/Podovi+doo/@45.2573343,19.8190724,17z/data=!3m1!4b1!4m6!3m5!1s0x475b112b635bb5e5:0xd096487f1e881485!8m2!3d45.2573306!4d19.8239433!16s%2Fg%2F11ymw3vs8b?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"

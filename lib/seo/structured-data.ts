@@ -16,8 +16,8 @@ export function generateProductSchema(product: Product, brand: Brand | null, cat
       '@type': 'Offer',
       price: product.price,
       priceCurrency: 'RSD',
-      availability: product.inStock 
-        ? 'https://schema.org/InStock' 
+      availability: product.inStock
+        ? 'https://schema.org/InStock'
         : 'https://schema.org/OutOfStock',
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
@@ -42,7 +42,7 @@ export function generateOrganizationSchema() {
     description: 'Vodeći uvoznik i distributer kvalitetnih podnih obloga u Srbiji',
     url: 'https://podovi.rs',
     logo: 'https://podovi.rs/logo.png',
-    email: 'podovidoo@gmail.com',
+    email: 'prodaja@podovi.online',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+381-21-2982-444',

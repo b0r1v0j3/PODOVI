@@ -120,8 +120,8 @@ function ContactPageContent() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Email</h3>
-                  <a href="mailto:podovidoo@gmail.com" className="text-gray-600 hover:text-primary-600 transition">
-                    podovidoo@gmail.com
+                  <a href="mailto:prodaja@podovi.online" className="text-gray-600 hover:text-primary-600 transition">
+                    prodaja@podovi.online
                   </a>
                 </div>
               </div>
@@ -137,7 +137,7 @@ function ContactPageContent() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Adresa</h3>
-                  <a 
+                  <a
                     href="https://www.google.com/maps/place/Podovi+doo/@45.2573343,19.8190724,17z/data=!3m1!4b1!4m6!3m5!1s0x475b112b635bb5e5:0xd096487f1e881485!8m2!3d45.2573306!4d19.8239433!16s%2Fg%2F11ymw3vs8b?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
