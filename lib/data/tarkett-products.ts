@@ -5884,5 +5884,162 @@ export const tarkettProducts: Product[] = [
     ],
     "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+  },
+
+  // Laminat – Roads 833 4V (Tarkett) – 5 dezena
+  {
+    "id": "roads-833-4v",
+    "name": "Roads 833 4V",
+    "slug": "roads-833-4v",
+    "sku": "LAM-ROADS-833-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Roads 833 4V Laminat",
+    "description": "Kolekcija laminata Roads nudi širok spektar mogućnosti visokokvalitetnih laminata za stambene i poslovne prostore. Sa fokusom na izdržljivost, stil i pristupačnost, Roads laminati su dizajnirani da izdrže svakodnevno habanje, a da i dalje zadrže svoju estetsku privlačnost.\n\nPored svog atraktivnog izgleda, Roads laminati se lako postavljaju i održavaju, što ih čini praktičnim izborom za domaćinstva i manje i srednje komercijalne prostore. Kolekcija takođe sadrži opcije otporne na vlagu i ogrebotine, pružajući dodatni mir kako vlasnicima kuća tako i vlasnicima preduzeća.",
+    "images": [{ "id": "roads-833-4v-img", "url": "/images/products/roads-833-4v.jpg", "alt": "Roads 833 4V", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "iso_type", "label": "ISO vrsta proizvoda", "value": "Laminirane podne obloge (EN 13329)" },
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "33 Heavy" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "8 mm" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "2-lock" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Prirodan izgled drveta", "Pogodan za hotelske sobe, poslovne prostore, kancelarije, dnevne sobe"] },
+      { "title": "Tehničke specifikacije", "items": [] }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-bridge",
+    "name": "Roads 833 4V Bridge",
+    "slug": "roads-833-4v-bridge",
+    "sku": "505841000",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V Bridge",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen Bridge. Klasa 33.",
+    "images": [{ "id": "roads-833-4v-bridge-img", "url": "/images/products/roads-833-4v-bridge.jpg", "alt": "Roads 833 4V Bridge", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505841000" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-mountain-oak",
+    "name": "Roads 833 4V Mountain Oak",
+    "slug": "roads-833-4v-mountain-oak",
+    "sku": "505841004",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V Mountain Oak",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen Mountain Oak. Klasa 33.",
+    "images": [{ "id": "roads-833-4v-mountain-oak-img", "url": "/images/products/roads-833-4v-mountain-oak.jpg", "alt": "Roads 833 4V Mountain Oak", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505841004" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-nebraska",
+    "name": "Roads 833 4V Nebraska",
+    "slug": "roads-833-4v-nebraska",
+    "sku": "505841001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V Nebraska",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen Nebraska. Klasa 33.",
+    "images": [{ "id": "roads-833-4v-nebraska-img", "url": "/images/products/roads-833-4v-nebraska.jpg", "alt": "Roads 833 4V Nebraska", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505841001" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-tundra",
+    "name": "Roads 833 4V Tundra",
+    "slug": "roads-833-4v-tundra",
+    "sku": "505841003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V Tundra",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen Tundra. Klasa 33.",
+    "images": [{ "id": "roads-833-4v-tundra-img", "url": "/images/products/roads-833-4v-tundra.jpg", "alt": "Roads 833 4V Tundra", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505841003" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+  },
+  {
+    "id": "roads-833-4v-west-coast",
+    "name": "Roads 833 4V West coast",
+    "slug": "roads-833-4v-west-coast",
+    "sku": "505841002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat Roads 833 4V West coast",
+    "description": "Laminat iz kolekcije Roads 833 4V, dezen West coast. Klasa 33.",
+    "images": [{ "id": "roads-833-4v-west-coast-img", "url": "/images/products/roads-833-4v-west-coast.jpg", "alt": "Roads 833 4V West coast", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "Roads 833 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505841002" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "8" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
   }
 ];
