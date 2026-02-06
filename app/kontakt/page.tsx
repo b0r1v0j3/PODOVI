@@ -27,6 +27,7 @@ function ContactPageContent() {
     const ref = searchParams.get('ref') || '';
     const img = searchParams.get('img') || '';
     const category = searchParams.get('category') || '';
+    const name = searchParams.get('name') || '';
 
     if (!product && !color && !ref) return;
     prefillDone.current = true;
@@ -46,10 +47,10 @@ function ContactPageContent() {
 
     setFormData((prev) => ({
       ...prev,
-      subject: product ? `Upit za: ${product}${color ? ` (${color})` : ''}` : prev.subject,
-      message: prefill,
+      subject: name ? `Upit za: ${name}` : (product ? `Upit za: ${product}${color ? ` (${color})` : ''}` : prev.subject),
+      message: '', // Message empty
       // Set product context
-      productName: product + (color ? ` - ${color}` : ''),
+      productName: name || (product + (color ? ` - ${color}` : '')),
       productImage: img,
       productCategory: category,
       productUrl: typeof window !== 'undefined' ? window.location.href : undefined, // Capture current URL? No, referrer needed.
