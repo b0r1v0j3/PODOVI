@@ -4386,6 +4386,188 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-01-29T19:27:42.038Z"), "updatedAt": new Date("2026-01-29T19:27:42.038Z")
   },
 
+  // Laminat – River 1233 4V WR (Tarkett) – 6 dezena
+  {
+    "id": "river-1233-4v",
+    "name": "River 1233 4V",
+    "slug": "river-1233-4v",
+    "sku": "LAM-RIVER-1233-4V",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "River 1233 4V Laminat",
+    "description": "Kolekcija laminata River nudi širok spektar mogućnosti visokokvalitetnih laminata za stambene i poslovne prostore. Sa fokusom na izdržljivost, stil i pristupačnost, River laminati su dizajnirani da izdrže svakodnevno habanje, a da i dalje zadrže svoju estetsku privlačnost.\n\nPored svog atraktivnog izgleda, River laminati se lako postavljaju i održavaju, što ih čini praktičnim izborom za domaćinstva i manje i srednje komercijalne prostore. Kolekcija takođe sadrži opcije otporne na vlagu i ogrebotine, pružajući dodatni mir kako vlasnicima kuća tako i vlasnicima preduzeća.",
+    "images": [{ "id": "river-1233-4v-img", "url": "/images/products/river-1233-4v.jpg", "alt": "River 1233 4V", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "iso_type", "label": "ISO vrsta proizvoda", "value": "Laminirane podne obloge (EN 13329)" },
+      { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "33 Heavy" },
+      { "key": "overall_thickness", "label": "Ukupna debljina", "value": "12 mm" },
+      { "key": "locking_system", "label": "Sistem zaključavanja", "value": "2-lock" },
+      { "key": "installation", "label": "Način ugradnje", "value": "Klik" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,215 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "45" }
+    ],
+    "detailsSections": [
+      { "title": "Ključne karakteristike", "items": ["Prirodan izgled drveta", "Pogodan za hotelske sobe, poslovne prostore, kancelarije, dnevne sobe"] },
+      { "title": "Tehničke specifikacije", "items": [] }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "createdAt": new Date("2026-02-06T03:00:00.000Z"), "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-bistra",
+    "name": "River 1233 4V WR Bistra",
+    "slug": "river-1233-4v-bistra",
+    "sku": "505840004",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V WR Bistra",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Bistra. Otporan na vlagu, klasa 33.",
+    "images": [{ "id": "river-1233-4v-bistra-img", "url": "/images/products/river-1233-4v-bistra.jpg", "alt": "River 1233 4V WR Bistra", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505840004" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,215 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "45" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:00:00.000Z"), "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-drava",
+    "name": "River 1233 4V WR Drava",
+    "slug": "river-1233-4v-drava",
+    "sku": "505840002",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V WR Drava",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Drava. Otporan na vlagu, klasa 33.",
+    "images": [{ "id": "river-1233-4v-drava-img", "url": "/images/products/river-1233-4v-drava.jpg", "alt": "River 1233 4V WR Drava", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505840002" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,215 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "45" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:00:00.000Z"), "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-strumica",
+    "name": "River 1233 4V WR Strumica",
+    "slug": "river-1233-4v-strumica",
+    "sku": "505840005",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V WR Strumica",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Strumica. Otporan na vlagu, klasa 33.",
+    "images": [{ "id": "river-1233-4v-strumica-img", "url": "/images/products/river-1233-4v-strumica.jpg", "alt": "River 1233 4V WR Strumica", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505840005" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,215 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "45" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:00:00.000Z"), "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-tara",
+    "name": "River 1233 4V WR Tara",
+    "slug": "river-1233-4v-tara",
+    "sku": "505840001",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V WR Tara",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Tara. Otporan na vlagu, klasa 33.",
+    "images": [{ "id": "river-1233-4v-tara-img", "url": "/images/products/river-1233-4v-tara.jpg", "alt": "River 1233 4V WR Tara", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505840001" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,215 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "45" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:00:00.000Z"), "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-una",
+    "name": "River 1233 4V WR Una",
+    "slug": "river-1233-4v-una",
+    "sku": "505840000",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V WR Una",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Una. Otporan na vlagu, klasa 33.",
+    "images": [{ "id": "river-1233-4v-una-img", "url": "/images/products/river-1233-4v-una.jpg", "alt": "River 1233 4V WR Una", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505840000" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,215 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "45" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:00:00.000Z"), "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+  },
+  {
+    "id": "river-1233-4v-vit",
+    "name": "River 1233 4V WR Vit",
+    "slug": "river-1233-4v-vit",
+    "sku": "505840003",
+    "categoryId": "1",
+    "brandId": "3",
+    "shortDescription": "Laminat River 1233 4V WR Vit",
+    "description": "Laminat iz kolekcije River 1233 4V, dezen Vit. Otporan na vlagu, klasa 33.",
+    "images": [{ "id": "river-1233-4v-vit-img", "url": "/images/products/river-1233-4v-vit.jpg", "alt": "River 1233 4V WR Vit", "isPrimary": true, "order": 0 }],
+    "specs": [
+      { "key": "collection", "label": "Kolekcija", "value": "River 1233 4V" },
+      { "key": "ref", "label": "Ref.", "value": "505840003" },
+      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 157 mm" },
+      { "key": "edges", "label": "Ivice", "value": "4 strane" },
+      { "key": "surface", "label": "Površina", "value": "U registru" },
+      { "key": "installation", "label": "Ugradnja", "value": "Klik" },
+      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,215 m²" },
+      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "45" }
+    ],
+    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "createdAt": new Date("2026-02-06T03:00:00.000Z"), "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+  },
+
   // Laminat – Giant 1233 4V (Tarkett) – 6 dezena
   {
     "id": "giant-1233-4v",
