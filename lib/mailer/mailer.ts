@@ -38,9 +38,9 @@ export class EmailMailer implements IMailer {
               📦 Informacije o proizvodu
             </h3>
             
-            <div style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="display: flex; align-items: flex-start;">
               ${inquiry.productImage ? `
-                <div style="flex-shrink: 0;">
+                <div style="flex-shrink: 0; margin-right: 24px;">
                   <img src="${inquiry.productImage}" alt="${inquiry.productName}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #cbd5e1;">
                 </div>
               ` : ''}
@@ -52,8 +52,8 @@ export class EmailMailer implements IMailer {
                 ${inquiry.quantityM2 ? `<p style="margin: 0 0 5px 0;"><strong>Količina:</strong> <span style="background: #dbeafe; padding: 2px 6px; border-radius: 4px; color: #1e40af; font-weight: bold;">${inquiry.quantityM2} m²</span></p>` : ''}
                 
                 ${inquiry.productUrl ? `
-                  <div style="margin-top: 15px;">
-                    <a href="${inquiry.productUrl}" style="background-color: #2563eb; color: white; padding: 8px 16px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; display: inline-block;">
+                  <div style="margin-top: 20px;">
+                    <a href="${inquiry.productUrl}" style="background-color: #2563eb; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; display: inline-block;">
                       Pogledaj proizvod na sajtu →
                     </a>
                   </div>
@@ -172,20 +172,20 @@ export class EmailMailer implements IMailer {
               � Informacije o proizvodu
             </h3>
             
-            <div style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="display: flex; align-items: flex-start;">
               ${contact.productImage ? `
-                <div style="flex-shrink: 0;">
+                <div style="flex-shrink: 0; margin-right: 24px;">
                   <img src="${contact.productImage}" alt="${contact.productName}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #cbd5e1;">
                 </div>
               ` : ''}
               
               <div>
-                <p style="margin: 0 0 5px 0;"><strong>Naziv:</strong> <span style="font-size: 16px; color: #111827;">${contact.productName}</span></p>
-                ${contact.productCategory ? `<p style="margin: 0 0 5px 0;"><strong>Tip:</strong> ${contact.productCategory}</p>` : ''}
+                <p style="margin: 0 0 8px 0;"><strong>Naziv:</strong> <span style="font-size: 16px; color: #111827;">${contact.productName}</span></p>
+                ${contact.productCategory ? `<p style="margin: 0 0 8px 0;"><strong>Tip:</strong> ${contact.productCategory}</p>` : ''}
                 
                 ${contact.productUrl ? `
-                  <div style="margin-top: 15px;">
-                    <a href="${contact.productUrl}" style="background-color: #2563eb; color: white; padding: 8px 16px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; display: inline-block;">
+                  <div style="margin-top: 20px;">
+                    <a href="${contact.productUrl}" style="background-color: #2563eb; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; display: inline-block;">
                       Pogledaj proizvod na sajtu →
                     </a>
                   </div>
