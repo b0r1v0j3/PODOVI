@@ -5290,15 +5290,6 @@ export const tarkettProducts: Product[] = [
 
   // Laminat - Easy Line 832
   {
-    "id": "easy-line-832-kingsley-oak-grey",
-    "name": "Easy Line 832 Kingsley Oak Grey",
-    "slug": "easy-line-832-kingsley-oak-grey",
-    "sku": "EASYLINE-KINGSLEYGREY",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Easy Line 832 Kingsley Oak Grey",
-    "description": "Laminat iz kolekcije Easy Line 832, dezen Kingsley Oak Grey. Sofisticirana siva varijanta, odličan izbor za moderne enterijere. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-easy-line-kingsley-grey", "url": "/images/products/easy-line-832-4v-kingsley-oak-beige.jpg", "alt": "Easy Line 832 Kingsley Oak Grey", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -5309,15 +5300,6 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "easy-line-832-oak-natural",
-    "name": "Easy Line 832 Oak Natural",
-    "slug": "easy-line-832-oak-natural",
-    "sku": "EASYLINE-OAKNATURAL",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Easy Line 832 Oak Natural",
-    "description": "Laminat iz kolekcije Easy Line 832, dezen Oak Natural. Klasična topla nijansa hrasta. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-easy-line-oak-natural", "url": "/images/products/easy-line-832-4v-turnberry-oak-nature.jpg", "alt": "Easy Line 832 Oak Natural", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -5328,15 +5310,6 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "easy-line-832-red-brown-oak",
-    "name": "Easy Line 832 Red-Brown Oak",
-    "slug": "easy-line-832-red-brown-oak",
-    "sku": "42255533",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Easy Line 832 Red-Brown Oak",
-    "description": "Laminat iz kolekcije Easy Line 832, dezen Red-Brown Oak. Tradicionalna crvenkasta nijansa. Debljina 8mm, klasa 32.",
-    "images": [{ "id": "img-easy-line-red-brown-oak", "url": "/images/products/easy-line-832-4v-aberdeen-oak-brown.jpg", "alt": "Easy Line 832 Red-Brown Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Easy Line 832" },
       { "key": "thickness", "label": "Debljina", "value": "8mm" },
@@ -5349,15 +5322,6 @@ export const tarkettProducts: Product[] = [
 
   // Laminat - Giant 1233
   {
-    "id": "giant-1233-oak-ashes",
-    "name": "Giant 1233 Oak Ashes",
-    "slug": "giant-1233-oak-ashes",
-    "sku": "505834003",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Giant 1233 Oak Ashes",
-    "description": "Laminat iz kolekcije Giant 1233. Oak Ashes – pepeljasto siva nijansa. Izuzetna debljina od 12mm i klasa 33.",
-    "images": [{ "id": "img-giant-oak-ashes", "url": "/images/products/giant-1233-4v-oak-ashes.jpg", "alt": "Giant 1233 Oak Ashes", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5368,15 +5332,6 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "giant-1233-oak-light-beige",
-    "name": "Giant 1233 Oak Light Beige",
-    "slug": "giant-1233-oak-light-beige",
-    "sku": "505834001",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Giant 1233 Oak Light Beige",
-    "description": "Laminat iz kolekcije Giant 1233. Oak Light Beige – svetla bež nijansa. Izuzetna debljina od 12mm i klasa 33.",
-    "images": [{ "id": "img-giant-oak-light-beige", "url": "/images/products/giant-1233-4v-oak-light-beige.jpg", "alt": "Giant 1233 Oak Light Beige", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5387,15 +5342,6 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "giant-1233-oak-brown",
-    "name": "Giant 1233 Oak Brown",
-    "slug": "giant-1233-oak-brown",
-    "sku": "GIANT-OAKBROWN",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Giant 1233 Oak Brown",
-    "description": "Laminat iz kolekcije Giant 1233. Oak Brown – klasik braon nijansa. Izuzetna debljina od 12mm i klasa 33.",
-    "images": [{ "id": "img-giant-oak-brown", "url": "/images/products/giant-1233-4v.jpg", "alt": "Giant 1233 Oak Brown", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Giant 1233" },
       { "key": "thickness", "label": "Debljina", "value": "12mm" },
@@ -5408,15 +5354,6 @@ export const tarkettProducts: Product[] = [
 
   // Laminat - Journey 731 4V (varijante)
   {
-    "id": "journey-731-black-sea-oak",
-    "name": "Journey 731 Black Sea Oak",
-    "slug": "journey-731-black-sea-oak",
-    "sku": "505842000",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Journey 731 Black Sea Oak",
-    "description": "Laminat iz kolekcije Journey 731. Black Sea Oak – dramatičan tamniji dezen. Debljina 7mm, klasa 31.",
-    "images": [{ "id": "img-journey-black-sea-oak", "url": "/images/products/journey-731-4v-black-sea-oak.jpg", "alt": "Journey 731 Black Sea Oak", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
       { "key": "thickness", "label": "Debljina", "value": "7mm" },
@@ -5427,15 +5364,6 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "journey-731-oak-carpatian",
-    "name": "Journey 731 Oak Carpatian",
-    "slug": "journey-731-oak-carpatian",
-    "sku": "JOURNEY-CARPATIAN",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Journey 731 Oak Carpatian",
-    "description": "Laminat iz kolekcije Journey 731. Oak Carpatian – rustični hrast. Debljina 7mm, klasa 31.",
-    "images": [{ "id": "img-journey-oak-carpatian", "url": "/images/products/journey-731-4v-oak-carpatian.jpg", "alt": "Journey 731 Oak Carpatian", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
       { "key": "thickness", "label": "Debljina", "value": "7mm" },
@@ -5446,15 +5374,6 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "journey-731-old-mountain",
-    "name": "Journey 731 Old Mountain",
-    "slug": "journey-731-old-mountain",
-    "sku": "JOURNEY-OLDMOUNTAIN",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Journey 731 Old Mountain",
-    "description": "Laminat iz kolekcije Journey 731. Old Mountain – izgled starog drveta. Debljina 7mm, klasa 31.",
-    "images": [{ "id": "img-journey-old-mountain", "url": "/images/products/journey-731-4v-old-mountain.jpg", "alt": "Journey 731 Old Mountain", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
       { "key": "thickness", "label": "Debljina", "value": "7mm" },
@@ -5465,15 +5384,6 @@ export const tarkettProducts: Product[] = [
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
-    "id": "journey-731-oak-adriatic",
-    "name": "Journey 731 Oak Adriatic",
-    "slug": "journey-731-oak-adriatic",
-    "sku": "JOURNEY-OAKADRIATIC",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Journey 731 Oak Adriatic",
-    "description": "Laminat iz kolekcije Journey 731. Oak Adriatic – svetla mediteranska nijansa. Debljina 7mm, klasa 31.",
-    "images": [{ "id": "img-journey-oak-adriatic", "url": "/images/products/journey-731-4v-oak-adriatic.jpg", "alt": "Journey 731 Oak Adriatic", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Journey 731" },
       { "key": "thickness", "label": "Debljina", "value": "7mm" },
