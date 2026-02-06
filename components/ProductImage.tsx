@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 interface ProductImageProps {
@@ -15,6 +15,25 @@ interface ProductImageProps {
 
 export default function ProductImage({ src, alt, className, sizes, quality = 90, priority = false }: ProductImageProps) {
   const [hasError, setHasError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [displayedSrc, setDisplayedSrc] = useState(src);
+  const previousSrcRef = useRef(src);
+
+  // When src changes, keep old image visible until new one loads
+  useEffect(() => {
+    if (src !== previousSrcRef.current) {
+      setIsLoaded(false); // Start loading new image
+      setHasError(false);
+      previousSrcRef.current = src;
+    }
+  }, [src]);
+
+  // Update displayed src only after new image loads
+  const handleLoad = () => {
+    setIsLoaded(true);
+    setDisplayedSrc(src); // Update to new image
+  };
+
   const effectiveSrc = src && !hasError ? src : '/images/placeholder.svg';
 
   // Za placeholder ili nakon greške koristimo običan img da ne zahtevamo Next/Image optimizaciju
@@ -31,17 +50,37 @@ export default function ProductImage({ src, alt, className, sizes, quality = 90,
   const isLocal = effectiveSrc.startsWith('/');
 
   return (
-    <Image
-      src={effectiveSrc}
-      alt={alt}
-      fill
-      className={className}
-      sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
-      quality={quality}
-      priority={priority}
-      unoptimized={!isLocal}
-      onError={() => setHasError(true)}
-      style={{ objectFit: 'cover' }}
-    />
+    <>
+      {/* Current/Old image - stays visible */}
+      <Image
+        key={displayedSrc}
+        src={displayedSrc}
+        alt={alt}
+        fill
+        className={`${className || ''} transition-opacity duration-200`}
+        style={{ objectFit: 'cover', opacity: isLoaded || displayedSrc === src ? 1 : 1 }}
+        sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
+        quality={quality}
+        priority={priority}
+        unoptimized={!displayedSrc.startsWith('/')}
+        onError={() => setHasError(true)}
+      />
+      {/* New image loading in background - hidden until loaded */}
+      {src !== displayedSrc && (
+        <Image
+          key={src}
+          src={src}
+          alt={alt}
+          fill
+          className={className}
+          style={{ objectFit: 'cover', opacity: 0 }}
+          sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
+          quality={quality}
+          unoptimized={!isLocal}
+          onLoad={handleLoad}
+          onError={() => setHasError(true)}
+        />
+      )}
+    </>
   );
 }
