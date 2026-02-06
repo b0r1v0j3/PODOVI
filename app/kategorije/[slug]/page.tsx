@@ -359,11 +359,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     }
 
     // Laminat: extract thickness values from product specs
+    // IMPORTANT: Use allProductsForThickness (without filters) to ensure all options remain visible
     if (category.slug === 'laminat') {
       const thicknessSet = new Set<string>();
 
-      // Get thickness from all laminate products (collections + colors)
-      allProducts.forEach(p => {
+      // Get thickness from all laminate products (using unfiltered products)
+      allProductsForThickness.forEach(p => {
         const thicknessSpec = p.specs?.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
         if (thicknessSpec) {
           // Normalize: "8 mm" -> "8", "10mm" -> "10"
