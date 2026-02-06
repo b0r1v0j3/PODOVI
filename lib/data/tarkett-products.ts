@@ -4908,14 +4908,17 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Winter 832" },
       { "key": "type", "label": "Tip", "value": "Laminat" },
+      { "key": "thickness", "label": "Ukupna debljina", "value": "8 mm" },
+      { "key": "dimensions", "label": "Dimenzije", "value": "1290 x 190 mm" },
       { "key": "commercial_class", "label": "Komercijalna klasifikacija", "value": "32 General" },
-      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" }
+      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,961 m²" },
+      { "key": "surface_per_pallet", "label": "Površina po paleti", "value": "109,8 m²" }
     ],
     "detailsSections": [
       { "title": "Ključne karakteristike", "items": ["Prirodan izgled drveta", "Funkcionalan", "Brza ugradnja", "Jednostavno održavanje", "Ekonomično rešenje"] },
       { "title": "Tehničke specifikacije", "items": [] }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "price": 1100, "priceUnit": "m²", "inStock": true, "featured": true,
     "createdAt": new Date("2026-02-06T04:40:00.000Z"), "updatedAt": new Date("2026-02-06T04:40:00.000Z")
   },
   {
@@ -4933,7 +4936,7 @@ export const tarkettProducts: Product[] = [
       { "key": "ref", "label": "Ref.", "value": "505814005" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 1100, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:40:00.000Z"), "updatedAt": new Date("2026-02-06T04:40:00.000Z")
   },
   {
@@ -4951,7 +4954,7 @@ export const tarkettProducts: Product[] = [
       { "key": "ref", "label": "Ref.", "value": "505814002" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 1100, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:40:00.000Z"), "updatedAt": new Date("2026-02-06T04:40:00.000Z")
   },
   {
@@ -4969,7 +4972,7 @@ export const tarkettProducts: Product[] = [
       { "key": "ref", "label": "Ref.", "value": "505814003" },
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 1100, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:40:00.000Z"), "updatedAt": new Date("2026-02-06T04:40:00.000Z")
   },
 
@@ -5116,7 +5119,7 @@ export const tarkettProducts: Product[] = [
       { "title": "Ključne karakteristike", "items": ["Prirodan izgled drveta", "Pogodan za hotelske sobe, poslovne prostore, kancelarije, dnevne sobe"] },
       { "title": "Tehničke specifikacije", "items": [] }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "price": 2050, "priceUnit": "m²", "inStock": true, "featured": true,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
@@ -5140,7 +5143,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2050, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
@@ -5164,7 +5167,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2050, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
@@ -5188,7 +5191,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2050, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
@@ -5212,7 +5215,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2050, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
   {
@@ -5236,7 +5239,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2050, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
   },
 
@@ -5269,7 +5272,7 @@ export const tarkettProducts: Product[] = [
       { "title": "Tehničke specifikacije", "items": [] }
     ],
     "documents": [{ "title": "Tehnički list", "url": "/docs/frontier-1033-4v-datasheet.pdf" }],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "price": 1600, "priceUnit": "m²", "inStock": true, "featured": true,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"), "updatedAt": new Date("2026-02-05T12:00:00.000Z")
   },
   {
@@ -5821,7 +5824,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 1350, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
   },
   {
@@ -5846,7 +5849,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 1350, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
   },
   {
@@ -5871,7 +5874,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 1350, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
   },
   {
@@ -5896,7 +5899,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 1350, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
   },
   {
@@ -5921,7 +5924,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,960 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "56" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 1350, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"), "updatedAt": new Date("2026-02-06T03:30:00.000Z")
   },
 
@@ -5949,7 +5952,7 @@ export const tarkettProducts: Product[] = [
       { "title": "Ključne karakteristike", "items": ["Klasa 33 (srednje prometne komercijalne površine)", "5G klik sistem", "Duge i široke daske (1845 mm)", "Ističu prostorne zapremine", "Embossing-In-Register dizajni za autentične teksture", "Proizvedeno u Nemačkoj"] },
       { "title": "Tehničke specifikacije", "items": [] }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": true,
+    "price": 2150, "priceUnit": "m²", "inStock": true, "featured": true,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
   },
   {
@@ -5972,7 +5975,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2150, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
   },
   {
@@ -5995,7 +5998,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2150, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
   },
   {
@@ -6018,7 +6021,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2150, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
   },
   {
@@ -6041,7 +6044,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2150, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
   },
   {
@@ -6064,7 +6067,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2150, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
   },
   {
@@ -6087,7 +6090,7 @@ export const tarkettProducts: Product[] = [
       { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,8 m²" },
       { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "42" }
     ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
+    "price": 2150, "priceUnit": "m²", "inStock": true, "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"), "updatedAt": new Date("2026-02-06T04:45:00.000Z")
   }
 ];
