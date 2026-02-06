@@ -91,6 +91,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
         <div className="relative aspect-square bg-gray-100 overflow-hidden">
           {primaryImage ? (
             <img
+              key={imageSrc}
               src={imageSrc}
               alt={primaryImage.alt}
               loading="lazy"
@@ -127,6 +128,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
       <div className="relative h-64 bg-gray-100 overflow-hidden">
         {primaryImage ? (
           <Image
+            key={imageSrc}
             src={imageSrc.startsWith('/') ? imageSrc : '/images/placeholder.svg'}
             alt={primaryImage.alt}
             fill
