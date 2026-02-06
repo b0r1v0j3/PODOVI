@@ -26,37 +26,66 @@ export class EmailMailer implements IMailer {
 
   async sendInquiryEmail(inquiry: Inquiry): Promise<void> {
     const html = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
-          🏠 Novi upit za proizvod
-        </h2>
-        
-        <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h3 style="margin-top: 0; color: #374151;">Podaci o klijentu</h3>
-          <p><strong>Ime i prezime:</strong> ${inquiry.fullName}</p>
-          <p><strong>Email:</strong> <a href="mailto:${inquiry.email}">${inquiry.email}</a></p>
-          <p><strong>Telefon:</strong> <a href="tel:${inquiry.phone}">${inquiry.phone}</a></p>
-          <p><strong>Grad:</strong> ${inquiry.city}</p>
-          <p><strong>Preferirani kontakt:</strong> ${inquiry.preferredContact.join(', ')}</p>
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; line-height: 1.6; color: #374151;">
+        <div style="background-color: #2563eb; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
+          <h2 style="color: white; margin: 0; font-size: 24px;">🏠 Novi upit za proizvod</h2>
         </div>
         
-        <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h3 style="margin-top: 0; color: #92400e;">Proizvod</h3>
-          <p><strong>Naziv:</strong> ${inquiry.productName}</p>
-          <p><strong>SKU:</strong> ${inquiry.productSku || 'N/A'}</p>
-          ${inquiry.quantityM2 ? `<p><strong>Količina:</strong> ${inquiry.quantityM2} m²</p>` : ''}
-          ${inquiry.productUrl ? `<p><a href="${inquiry.productUrl}" style="color: #2563eb;">Pogledaj proizvod →</a></p>` : ''}
+        <div style="border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; padding: 30px;">
+          
+          <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #e2e8f0;">
+            <h3 style="margin-top: 0; color: #1e40af; font-size: 18px; border-bottom: 1px solid #cbd5e1; padding-bottom: 10px; margin-bottom: 15px;">
+              📦 Informacije o proizvodu
+            </h3>
+            
+            <div style="display: flex; gap: 20px; align-items: flex-start;">
+              ${inquiry.productImage ? `
+                <div style="flex-shrink: 0;">
+                  <img src="${inquiry.productImage}" alt="${inquiry.productName}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #cbd5e1;">
+                </div>
+              ` : ''}
+              
+              <div>
+                <p style="margin: 0 0 5px 0;"><strong>Naziv:</strong> <span style="font-size: 16px; color: #111827;">${inquiry.productName}</span></p>
+                <p style="margin: 0 0 5px 0;"><strong>SKU:</strong> ${inquiry.productSku || 'N/A'}</p>
+                ${inquiry.productCategory ? `<p style="margin: 0 0 5px 0;"><strong>Tip:</strong> ${inquiry.productCategory}</p>` : ''}
+                ${inquiry.quantityM2 ? `<p style="margin: 0 0 5px 0;"><strong>Količina:</strong> <span style="background: #dbeafe; padding: 2px 6px; border-radius: 4px; color: #1e40af; font-weight: bold;">${inquiry.quantityM2} m²</span></p>` : ''}
+                
+                ${inquiry.productUrl ? `
+                  <div style="margin-top: 15px;">
+                    <a href="${inquiry.productUrl}" style="background-color: #2563eb; color: white; padding: 8px 16px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; display: inline-block;">
+                      Pogledaj proizvod na sajtu →
+                    </a>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+
+          <div style="background: #f9fafb; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #e5e7eb;">
+            <h3 style="margin-top: 0; color: #374151; font-size: 18px; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 15px;">
+              👤 Podaci o klijentu
+            </h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <p style="margin: 5px 0;"><strong>Ime i prezime:</strong> ${inquiry.fullName}</p>
+              <p style="margin: 5px 0;"><strong>Grad:</strong> ${inquiry.city}</p>
+              <p style="margin: 5px 0;"><strong>Telefon:</strong> <a href="tel:${inquiry.phone}" style="color: #2563eb; text-decoration: none;">${inquiry.phone}</a></p>
+              <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${inquiry.email}" style="color: #2563eb; text-decoration: none;">${inquiry.email}</a></p>
+            </div>
+            <p style="margin: 15px 0 0 0;"><strong>Preferirani kontakt:</strong> ${inquiry.preferredContact.map(c => `
+              <span style="background: #f3f4f6; color: #4b5563; padding: 2px 8px; border-radius: 12px; font-size: 13px; border: 1px solid #d1d5db; margin-right: 5px;">${c}</span>
+            `).join('')}</p>
+          </div>
+          
+          <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; border-left: 4px solid #2563eb;">
+            <h3 style="margin-top: 0; color: #3730a3; font-size: 16px;">✉️ Poruka klijenta</h3>
+            <p style="white-space: pre-wrap; margin-bottom: 0; color: #4b5563;">${inquiry.message}</p>
+          </div>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #9ca3af; text-align: center;">
+            <p>ID upita: ${inquiry.id} • Vreme: ${new Date().toLocaleString('sr-RS', { timeZone: 'Europe/Belgrade' })}</p>
+          </div>
         </div>
-        
-        <div style="background: #e0e7ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h3 style="margin-top: 0; color: #3730a3;">Poruka</h3>
-          <p style="white-space: pre-wrap;">${inquiry.message}</p>
-        </div>
-        
-        <p style="color: #6b7280; font-size: 12px; margin-top: 30px;">
-          ID upita: ${inquiry.id}<br>
-          Vreme: ${new Date().toLocaleString('sr-RS', { timeZone: 'Europe/Belgrade' })}
-        </p>
       </div>
     `;
 
@@ -64,7 +93,7 @@ export class EmailMailer implements IMailer {
       from: `"Podovi - Upiti" <${this.adminEmail}>`,
       to: this.adminEmail,
       replyTo: inquiry.email,
-      subject: `🏠 Novi upit: ${inquiry.productName} - ${inquiry.fullName}`,
+      subject: `🏠 Novi upit: ${inquiry.productName} (${inquiry.fullName})`,
       html,
     });
 
@@ -73,45 +102,53 @@ export class EmailMailer implements IMailer {
 
   async sendInquiryConfirmation(inquiry: Inquiry): Promise<void> {
     const html = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
-          Hvala na Vašem upitu! 🏠
-        </h2>
-        
-        <p>Poštovani <strong>${inquiry.fullName}</strong>,</p>
-        
-        <p>Vaš upit za proizvod <strong>${inquiry.productName}</strong> je uspešno primljen.</p>
-        
-        <p>Naš tim će Vas kontaktirati u najkraćem mogućem roku putem izabranog načina kontakta 
-        (${inquiry.preferredContact.join(' ili ')}).</p>
-        
-        <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h3 style="margin-top: 0; color: #374151;">Detalji Vašeg upita</h3>
-          <p><strong>Proizvod:</strong> ${inquiry.productName}</p>
-          ${inquiry.quantityM2 ? `<p><strong>Količina:</strong> ${inquiry.quantityM2} m²</p>` : ''}
-          <p><strong>Vaša poruka:</strong></p>
-          <p style="white-space: pre-wrap; color: #6b7280;">${inquiry.message}</p>
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; line-height: 1.6; color: #374151;">
+        <div style="text-align: center; padding: 30px 0;">
+          <h2 style="color: #2563eb; font-size: 28px; margin: 0;">Hvala na Vašem upitu!</h2>
+          <p style="font-size: 16px; color: #6b7280; margin-top: 10px;">Potvrđujemo prijem vašeg upita.</p>
         </div>
         
-        <p>Ukoliko imate dodatnih pitanja, slobodno nas kontaktirajte:</p>
-        <ul>
-          <li>Email: <a href="mailto:prodaja@podovi.online">prodaja@podovi.online</a></li>
-          <li>Telefon: <a href="tel:+381641234567">064 123 4567</a></li>
-        </ul>
+        <div style="background: #ffffff; border-radius: 8px; border: 1px solid #e5e7eb; padding: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+          <p>Poštovani/a <strong>${inquiry.fullName}</strong>,</p>
+          
+          <p>Uspešno smo primili Vaš upit za proizvod. Naš tim prodaje će Vas kontaktirati u najkraćem mogućem roku putem izabranog kanala (${inquiry.preferredContact.join(' ili ')}).</p>
+          
+          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 25px 0; border: 1px solid #edf2f7; display: flex; gap: 20px;">
+            ${inquiry.productImage ? `
+              <div style="flex-shrink: 0;">
+                <img src="${inquiry.productImage}" alt="${inquiry.productName}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1;">
+              </div>
+            ` : ''}
+            <div>
+              <p style="margin: 0; color: #64748b; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Proizvod</p>
+              <h3 style="margin: 4px 0 8px 0; color: #0f172a; font-size: 18px;">${inquiry.productName}</h3>
+              <div style="font-size: 14px; color: #475569;">
+                ${inquiry.quantityM2 ? `<span>Količina: <strong>${inquiry.quantityM2} m²</strong></span>` : ''}
+              </div>
+            </div>
+          </div>
+          
+          <p>Ukoliko imate bilo kakvih dodatnih pitanja u međuvremenu, slobodno nas pozovite ili pišite.</p>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <p style="margin: 0;"><strong>Kontakt prodaje:</strong></p>
+            <ul style="list-style: none; padding: 0; margin-top: 10px;">
+              <li style="margin-bottom: 8px;">📧 <a href="mailto:prodaja@podovi.online" style="color: #2563eb; text-decoration: none;">prodaja@podovi.online</a></li>
+              <li>📞 <a href="tel:+381641234567" style="color: #2563eb; text-decoration: none;">064 123 4567</a></li>
+            </ul>
+          </div>
+        </div>
         
-        <p style="margin-top: 30px;">Srdačan pozdrav,<br><strong>Tim Podovi</strong></p>
-        
-        <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
-        <p style="color: #9ca3af; font-size: 12px;">
-          Ovaj email je automatski generisan. Molimo ne odgovarajte direktno na ovu poruku.
-        </p>
+        <div style="text-align: center; margin-top: 30px; color: #9ca3af; font-size: 12px;">
+          <p>&copy; ${new Date().getFullYear()} Podovi doo. Sva prava zadržana.</p>
+        </div>
       </div>
     `;
 
     await this.transporter.sendMail({
-      from: `"Podovi" <${this.adminEmail}>`,
+      from: `"Podovi Podrška" <${this.adminEmail}>`,
       to: inquiry.email,
-      subject: `Potvrda upita - ${inquiry.productName}`,
+      subject: `Potvrda prijema upita - ${inquiry.productName}`,
       html,
     });
 
@@ -119,27 +156,66 @@ export class EmailMailer implements IMailer {
   }
 
   async sendContactEmail(contact: ContactFormData): Promise<void> {
+    const isProductInquiry = !!contact.productName;
+
     const html = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
-          📬 Nova kontakt poruka
-        </h2>
-        
-        <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <p><strong>Od:</strong> ${contact.fullName}</p>
-          <p><strong>Email:</strong> <a href="mailto:${contact.email}">${contact.email}</a></p>
-          <p><strong>Telefon:</strong> <a href="tel:${contact.phone}">${contact.phone}</a></p>
-          <p><strong>Tema:</strong> ${contact.subject}</p>
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; line-height: 1.6; color: #374151;">
+        <div style="background-color: ${isProductInquiry ? '#2563eb' : '#4b5563'}; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
+          <h2 style="color: white; margin: 0; font-size: 24px;">${isProductInquiry ? '🏠 Upit za proizvod' : '📬 Nova kontakt poruka'}</h2>
         </div>
         
-        <div style="background: #e0e7ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h3 style="margin-top: 0; color: #3730a3;">Poruka</h3>
-          <p style="white-space: pre-wrap;">${contact.message}</p>
+        <div style="border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; padding: 30px;">
+          
+          ${isProductInquiry ? `
+          <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #e2e8f0;">
+            <h3 style="margin-top: 0; color: #1e40af; font-size: 18px; border-bottom: 1px solid #cbd5e1; padding-bottom: 10px; margin-bottom: 15px;">
+              � Informacije o proizvodu
+            </h3>
+            
+            <div style="display: flex; gap: 20px; align-items: flex-start;">
+              ${contact.productImage ? `
+                <div style="flex-shrink: 0;">
+                  <img src="${contact.productImage}" alt="${contact.productName}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #cbd5e1;">
+                </div>
+              ` : ''}
+              
+              <div>
+                <p style="margin: 0 0 5px 0;"><strong>Naziv:</strong> <span style="font-size: 16px; color: #111827;">${contact.productName}</span></p>
+                ${contact.productCategory ? `<p style="margin: 0 0 5px 0;"><strong>Tip:</strong> ${contact.productCategory}</p>` : ''}
+                
+                ${contact.productUrl ? `
+                  <div style="margin-top: 15px;">
+                    <a href="${contact.productUrl}" style="background-color: #2563eb; color: white; padding: 8px 16px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; display: inline-block;">
+                      Pogledaj proizvod na sajtu →
+                    </a>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+          ` : ''}
+
+          <div style="background: #f9fafb; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #e5e7eb;">
+            <h3 style="margin-top: 0; color: #374151; font-size: 18px; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 15px;">
+              👤 Podaci o pošiljaocu
+            </h3>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+              <p style="margin: 5px 0;"><strong>Ime i prezime:</strong> ${contact.fullName}</p>
+              <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${contact.email}" style="color: #2563eb; text-decoration: none;">${contact.email}</a></p>
+              <p style="margin: 5px 0;"><strong>Telefon:</strong> <a href="tel:${contact.phone}" style="color: #2563eb; text-decoration: none;">${contact.phone}</a></p>
+              ${!isProductInquiry ? `<p style="margin: 5px 0;"><strong>Tema:</strong> ${contact.subject}</p>` : ''}
+            </div>
+          </div>
+          
+          <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; border-left: 4px solid ${isProductInquiry ? '#2563eb' : '#4b5563'};">
+            <h3 style="margin-top: 0; color: #3730a3; font-size: 16px;">✉️ Poruka</h3>
+            <p style="white-space: pre-wrap; margin-bottom: 0; color: #4b5563;">${contact.message}</p>
+          </div>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #9ca3af; text-align: center;">
+            <p>Vreme: ${new Date().toLocaleString('sr-RS', { timeZone: 'Europe/Belgrade' })}</p>
+          </div>
         </div>
-        
-        <p style="color: #6b7280; font-size: 12px; margin-top: 30px;">
-          Vreme: ${new Date().toLocaleString('sr-RS', { timeZone: 'Europe/Belgrade' })}
-        </p>
       </div>
     `;
 
@@ -147,7 +223,9 @@ export class EmailMailer implements IMailer {
       from: `"Podovi - Kontakt" <${this.adminEmail}>`,
       to: this.adminEmail,
       replyTo: contact.email,
-      subject: `📬 Kontakt: ${contact.subject} - ${contact.fullName}`,
+      subject: isProductInquiry
+        ? `🏠 Upit za: ${contact.productName} (${contact.fullName})`
+        : `📬 Kontakt: ${contact.subject} - ${contact.fullName}`,
       html,
     });
 

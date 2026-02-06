@@ -11,6 +11,8 @@ interface InquiryModalProps {
     name: string;
     sku: string;
     url: string;
+    image?: string;
+    category?: string;
   };
   calculatedData?: {
     area: number;
@@ -28,12 +30,14 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
     productName: product.name,
     productSku: product.sku,
     productUrl: product.url,
+    productImage: product.image,
+    productCategory: product.category,
     fullName: '',
     phone: '',
     email: '',
     city: '',
     quantityM2: '',
-    message: calculatedData 
+    message: calculatedData
       ? `Zainteresovan/a sam za ${calculatedData.packages} paketa (${calculatedData.area.toFixed(2)} m² + 5% otpada).`
       : '',
     preferredContact: [],
@@ -96,7 +100,7 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         {/* Overlay */}
-        <div 
+        <div
           className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"
           onClick={onClose}
         />
@@ -120,21 +124,38 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
           ) : (
             <>
               <div className="bg-white px-6 pt-6 pb-4">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      Pošalji upit
-                    </h3>
-                    <p className="text-sm text-gray-600 mt-1">
-                      {product.name}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">
-                      SKU: {product.sku}
-                    </p>
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex gap-4">
+                    {product.image && (
+                      <div className="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 leading-tight">
+                        Pošalji upit
+                      </h3>
+                      <p className="font-medium text-primary-600 mt-1">
+                        {product.name}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
+                        <span>SKU: {product.sku}</span>
+                        {product.category && (
+                          <>
+                            <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+                            <span>{product.category}</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
                   </div>
                   <button
                     onClick={onClose}
-                    className="text-gray-400 hover:text-gray-500"
+                    className="text-gray-400 hover:text-gray-500 p-1"
                   >
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -251,11 +272,10 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
                           key={method.value}
                           type="button"
                           onClick={() => togglePreferredContact(method.value)}
-                          className={`p-3 rounded-lg border-2 text-sm font-medium transition-colors ${
-                            formData.preferredContact.includes(method.value)
+                          className={`p-3 rounded-lg border-2 text-sm font-medium transition-colors ${formData.preferredContact.includes(method.value)
                               ? 'border-primary-600 bg-primary-50 text-primary-700'
                               : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
-                          }`}
+                            }`}
                         >
                           <span className="block mb-1">{method.icon}</span>
                           {method.label}

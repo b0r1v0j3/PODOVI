@@ -9,6 +9,8 @@ interface InquiryButtonProps {
     name: string;
     sku: string;
     url: string;
+    image?: string;
+    category?: string;
   };
   calculatedData?: {
     area: number;

@@ -19,23 +19,42 @@ function ContactPageContent() {
     message: '',
   });
 
-  // Prefill from URL: ?product=slug&color=color&ref=ref (samo pri prvom učitavanju)
+  // Prefill from URL: ?product=slug&color=color&ref=ref&img=url&category=cat
   useEffect(() => {
     if (prefillDone.current) return;
     const product = searchParams.get('product') || '';
     const color = searchParams.get('color') || '';
     const ref = searchParams.get('ref') || '';
+    const img = searchParams.get('img') || '';
+    const category = searchParams.get('category') || '';
+
     if (!product && !color && !ref) return;
     prefillDone.current = true;
+
+    // Build message with details
     const lines: string[] = [];
     if (product) lines.push(`Proizvod: ${product}`);
     if (color) lines.push(`Boja/varijanta: ${color}`);
+    if (category) lines.push(`Kategorija: ${category}`);
     if (ref) lines.push(`Ref: ${ref}`);
+
+    // Clean product name for display (remove slugs if possible or just use as is)
+    // Ideally we would have passed a clean name, but slug is okay for now.
+    // Use the product slug as name if real name not available.
+
     const prefill = lines.join('\n') + '\n\n';
+
     setFormData((prev) => ({
       ...prev,
-      subject: product ? `Upit za proizvod: ${product}` : prev.subject,
+      subject: product ? `Upit za: ${product}${color ? ` (${color})` : ''}` : prev.subject,
       message: prefill,
+      // Set product context
+      productName: product + (color ? ` - ${color}` : ''),
+      productImage: img,
+      productCategory: category,
+      productUrl: typeof window !== 'undefined' ? window.location.href : undefined, // Capture current URL? No, referrer needed.
+      // Better to construct product URL if possible:
+      // productUrl: `/proizvodi/${product}?color=${color}` 
     }));
   }, [searchParams]);
 
@@ -45,12 +64,20 @@ function ContactPageContent() {
     setError(null);
 
     try {
+      // Construct product URL properly before sending
+      const product = searchParams.get('product');
+      const color = searchParams.get('color');
+      const finalFormData = {
+        ...formData,
+        productUrl: product ? `${window.location.origin}/proizvodi/${product}${color ? `?color=${color}` : ''}` : undefined
+      };
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(finalFormData),
       });
 
       if (!response.ok) {
@@ -65,6 +92,12 @@ function ContactPageContent() {
         phone: '',
         subject: '',
         message: '',
+        // Reset product fields too? Usually fine to keep or clear.
+        // Let's clear to avoid confusion if they send another general msg.
+        productName: undefined,
+        productImage: undefined,
+        productCategory: undefined,
+        productUrl: undefined
       });
 
       setTimeout(() => {
@@ -115,7 +148,7 @@ function ContactPageContent() {
               <div className="flex items-start">
                 <div className="flex-shrink-0">
                   <svg className="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div className="ml-4">
@@ -185,6 +218,25 @@ function ContactPageContent() {
               {isSuccess && (
                 <div className="mb-6 bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-lg">
                   Vaša poruka je uspešno poslata. Kontaktiraćemo vas uskoro!
+                </div>
+              )}
+
+              {formData.productName && (
+                <div className="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-4 flex gap-4 items-center">
+                  {formData.productImage && (
+                    <div className="w-20 h-20 flex-shrink-0 bg-white rounded-md border border-blue-100 overflow-hidden">
+                      <img src={formData.productImage} className="w-full h-full object-cover" alt="Proizvod" />
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-sm text-blue-600 font-semibold mb-1">Upit za proizvod:</p>
+                    <h3 className="text-lg font-bold text-blue-900 leading-tight">{formData.productName}</h3>
+                    {formData.productCategory && (
+                      <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mt-2">
+                        {formData.productCategory}
+                      </span>
+                    )}
+                  </div>
                 </div>
               )}
 

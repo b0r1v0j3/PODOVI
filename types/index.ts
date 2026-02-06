@@ -70,6 +70,8 @@ export interface Inquiry {
   productName: string;
   productSku: string;
   productUrl: string;
+  productImage?: string;
+  productCategory?: string;
   fullName: string;
   phone: string;
   email: string;
@@ -86,6 +88,8 @@ export interface InquiryFormData {
   productName: string;
   productSku: string;
   productUrl: string;
+  productImage?: string;
+  productCategory?: string;
   fullName: string;
   phone: string;
   email: string;
@@ -101,6 +105,11 @@ export interface ContactFormData {
   phone: string;
   subject: string;
   message: string;
+  // Optional product context
+  productName?: string;
+  productUrl?: string;
+  productImage?: string;
+  productCategory?: string;
 }
 
 // Filter types for category listing

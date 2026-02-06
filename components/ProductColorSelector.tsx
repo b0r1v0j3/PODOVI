@@ -361,6 +361,9 @@ export default function ProductColorSelector({
                   params.set('product', productSlug);
                   if (selectedColorSlug) params.set('color', selectedColorSlug);
                   if (inquiryRef) params.set('ref', inquiryRef);
+                  if (selectedImage?.url) params.set('img', selectedImage.url);
+                  // Use category label if available, otherwise fallback to generic
+                  params.set('category', collectionCategoryLabel || (collectionSlug.includes('lvt') ? 'LVT' : collectionSlug.includes('linoleum') ? 'Linoleum' : 'Podna obloga'));
                   return `/kontakt?${params.toString()}`;
                 })()}
                 className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg font-semibold px-6 py-4 w-full rounded-xl"

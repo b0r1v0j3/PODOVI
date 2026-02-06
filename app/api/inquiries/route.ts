@@ -28,6 +28,8 @@ export async function POST(request: NextRequest) {
       productName: data.productName,
       productSku: data.productSku,
       productUrl: data.productUrl,
+      productImage: data.productImage,
+      productCategory: data.productCategory,
       fullName: data.fullName,
       phone: data.phone,
       email: data.email,
@@ -48,10 +50,10 @@ export async function POST(request: NextRequest) {
     ]);
 
     return NextResponse.json(
-      { 
-        success: true, 
+      {
+        success: true,
         inquiryId: inquiry.id,
-        message: 'Upit je uspešno poslat' 
+        message: 'Upit je uspešno poslat'
       },
       { status: 201 }
     );
