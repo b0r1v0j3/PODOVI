@@ -45,13 +45,19 @@ function ContactPageContent() {
 
     const prefill = lines.join('\n') + '\n\n';
 
+    // Ensure absolute URL
+    let fullImgUrl = img;
+    if (img && !img.startsWith('http') && typeof window !== 'undefined') {
+      fullImgUrl = `${window.location.origin}${img.startsWith('/') ? '' : '/'}${img}`;
+    }
+
     setFormData((prev) => ({
       ...prev,
       subject: name ? `Upit za: ${name}` : (product ? `Upit za: ${product}${color ? ` (${color})` : ''}` : prev.subject),
       message: '', // Message empty
       // Set product context
       productName: name || (product + (color ? ` - ${color}` : '')),
-      productImage: img,
+      productImage: fullImgUrl,
       productCategory: category,
       productUrl: typeof window !== 'undefined' ? window.location.href : undefined, // Capture current URL? No, referrer needed.
       // Better to construct product URL if possible:

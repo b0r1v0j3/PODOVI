@@ -366,11 +366,24 @@ export default function ProductColorSelector({
                   const category = collectionCategoryLabel || (collectionSlug.includes('lvt') ? 'LVT' : collectionSlug.includes('linoleum') ? 'Linoleum' : 'Podna obloga');
                   params.set('category', category);
 
-                  // Construct nice name
+                  // Construct nice name: deduplicate collection name if present in color name
                   let niceName = collectionDisplayName || productName;
+
                   if (selectedColor?.name) {
-                    niceName += ` - ${selectedColor.name}`;
+                    let variantName = selectedColor.name;
+                    // Check if variant name starts with the collection/product name (case insensitive)
+                    if (niceName && variantName.toLowerCase().startsWith(niceName.toLowerCase())) {
+                      // Remove the repeated prefix
+                      variantName = variantName.substring(niceName.length).trim();
+                      // Remove any leading separators like "- " or space
+                      variantName = variantName.replace(/^[-–—\s]+/, '');
+                    }
+
+                    if (variantName) {
+                      niceName = `${niceName} - ${variantName}`;
+                    }
                   }
+
                   params.set('name', niceName);
 
                   return `/kontakt?${params.toString()}`;
