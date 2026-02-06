@@ -429,19 +429,38 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       }
 
       // Laminat: filter by thickness
+      // Build a map of collection name -> thickness value from collection headers
+      const collectionThicknessMap = new Map<string, string>();
+      for (const [collName, collProduct] of byCollectionName) {
+        const thicknessSpec = collProduct.specs?.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
+        if (thicknessSpec) {
+          const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
+          const thicknessValue = parseFloat(normalizedValue);
+          if (!isNaN(thicknessValue)) {
+            collectionThicknessMap.set(collName, thicknessValue.toString());
+          }
+        }
+      }
+
       const selectedThickness = searchParams.thickness ? searchParams.thickness.split(',') : [];
       if (selectedThickness.length > 0) {
-        const matchThickness = (p: { specs?: { key: string; value: string }[] }): boolean => {
-          if (!p.specs) return false;
-          const thicknessSpec = p.specs.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
+        // Filter collections by their direct thickness spec
+        collections = collections.filter(p => {
+          const thicknessSpec = p.specs?.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
           if (!thicknessSpec) return false;
           const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
           const thicknessValue = parseFloat(normalizedValue);
           if (isNaN(thicknessValue)) return false;
           return selectedThickness.includes(thicknessValue.toString());
-        };
-        collections = collections.filter(matchThickness);
-        colors = colors.filter(matchThickness);
+        });
+
+        // Filter colors by their collection's thickness (since variants don't have thickness spec)
+        colors = colors.filter(p => {
+          const collName = p.specs?.find(s => s.key === 'collection')?.value;
+          if (!collName) return false;
+          const thickness = collectionThicknessMap.get(collName);
+          return thickness && selectedThickness.includes(thickness);
+        });
       }
     } else if (category.slug === 'parket') {
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
