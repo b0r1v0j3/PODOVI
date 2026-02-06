@@ -817,13 +817,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // If product is a COLOR (has collectionSlug), redirect to CATEGORY page with color parameter.
+    // If product is a COLOR (has collectionSlug), redirect to COLLECTION PAGE with color parameter.
     // Collections don't have collectionSlug and should stay on collection page.
+    // This is consistent with Parket and Laminat behavior.
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
     if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct) {
-      const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
       const { redirect } = await import('next/navigation');
-      redirect(`/kategorije/${categorySlug}?color=${product.slug}`);
+      redirect(`/proizvodi/${collectionSlugFromProduct}?color=${encodeURIComponent(product.slug)}`);
     }
 
     // Parket variant: redirect na stranicu kolekcije sa ?color= (kao LVT) – /proizvodi/allegro?color=hrast-elegant-shiny-3-strip
@@ -947,17 +947,17 @@ export default async function ProductPage({ params, searchParams }: Props) {
         const explicitSlugs = getParketCollectionVariantSlugs(collectionName);
         const variants = explicitSlugs.length > 0
           ? (explicitSlugs
-              .map(slug => tarkettProducts.find(p =>
-                p.categoryId === '3' &&
-                !(p.sku && String(p.sku).startsWith('PARKET-')) &&
-                p.slug === slug &&
-                getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName
-              ))
-              .filter(Boolean) as typeof tarkettProducts)
+            .map(slug => tarkettProducts.find(p =>
+              p.categoryId === '3' &&
+              !(p.sku && String(p.sku).startsWith('PARKET-')) &&
+              p.slug === slug &&
+              getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName
+            ))
+            .filter(Boolean) as typeof tarkettProducts)
           : tarkettProducts.filter(p => {
-              if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) return false;
-              return getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName;
-            });
+            if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) return false;
+            return getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName;
+          });
         if (variants.length > 0) {
           customColors = variants.map(v => ({
             collection: collectionName,
@@ -1114,10 +1114,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
                 {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne – Parket i Laminat imaju u leftColumnBottom */}
                 {product.categoryId !== '3' && product.categoryId !== '2' && product.categoryId !== '1' && (
-                <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div className="bg-white rounded-2xl shadow-lg p-6">
-                    <>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
+                  <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-2xl shadow-lg p-6">
+                      <>
+                        <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
                         {(() => {
                           const descriptionSections = product.description
                             ? parseDescriptionToSections(product.description)
@@ -1153,14 +1153,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
                           }
                           return null;
                         })()}
-                    </>
-                  </div>
+                      </>
+                    </div>
 
-                  <ProductCharacteristics
-                    specs={filterSpecsForDisplay(product.specs)}
-                    categoryId={product.categoryId}
-                  />
-                </div>
+                    <ProductCharacteristics
+                      specs={filterSpecsForDisplay(product.specs)}
+                      categoryId={product.categoryId}
+                    />
+                  </div>
                 )}
               </>
             ) : (
