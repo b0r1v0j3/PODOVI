@@ -442,6 +442,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         }
       });
 
+      // DEBUG: Log thickness map contents
+      console.log('DEBUG: collectionThicknessMap size:', collectionThicknessMap.size);
+      console.log('DEBUG: byCollectionName size:', byCollectionName.size);
+      console.log('DEBUG: laminatHeaders count:', laminatHeaders.length);
+      console.log('DEBUG: colors before filter:', colors.length);
+
       const selectedThickness = searchParams.thickness ? searchParams.thickness.split(',') : [];
       if (selectedThickness.length > 0) {
         // Filter collections by their direct thickness spec
