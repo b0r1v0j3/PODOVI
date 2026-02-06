@@ -340,6 +340,19 @@ export default function ColorGrid({
       });
   }, [collectionSlug, customColors]);
 
+  // Preload all color images for instant switching (avoids white flash on color change)
+  useEffect(() => {
+    if (colors.length === 0) return;
+
+    colors.forEach((color: Color) => {
+      const imageUrl = color.texture_url || color.image_url || (color as any).image;
+      if (imageUrl) {
+        const img = new window.Image();
+        img.src = imageUrl;
+      }
+    });
+  }, [colors]);
+
   const filteredColors = useMemo(() => {
     return colors.filter(color =>
       (color.full_name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
