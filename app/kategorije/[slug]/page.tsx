@@ -431,7 +431,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       // Laminat: filter by thickness
       const selectedThickness = searchParams.thickness ? searchParams.thickness.split(',') : [];
       if (selectedThickness.length > 0) {
-        const matchThickness = (p: { specs: { key: string; value: string }[] }): boolean => {
+        const matchThickness = (p: { specs?: { key: string; value: string }[] }): boolean => {
+          if (!p.specs) return false;
           const thicknessSpec = p.specs.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
           if (!thicknessSpec) return false;
           const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
