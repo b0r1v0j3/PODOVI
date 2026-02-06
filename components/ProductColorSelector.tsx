@@ -307,8 +307,8 @@ export default function ProductColorSelector({
 
         {/* Desno: Info + Boje – Boje raste da dno bude u liniji sa dnom slike */}
         <div className="flex flex-col gap-6 h-full min-h-0">
-          {/* Product Info + CTA */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4 flex-shrink-0">
+          {/* Product Info + CTA - Na mobilnom ide POSLE boja (order-2), na desktopu normalno */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4 flex-shrink-0 order-2 lg:order-1">
             {/* Brand */}
             {brand && (
               <div className="flex items-center space-x-3">
@@ -370,8 +370,8 @@ export default function ProductColorSelector({
             </div>
           </div>
 
-          {/* Boje – flex-1 da popuni visinu, dno u liniji sa dnom slike */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0">
+          {/* Boje – Na mobilnom ide PRVO (order-1), na desktopu DRUGO (order-2) */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0 order-1 lg:order-2">
             <div className="flex items-start justify-between gap-4 mb-4 flex-shrink-0">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
