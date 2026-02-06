@@ -16,7 +16,7 @@ export const categories: Category[] = [
     name: 'Laminat',
     slug: 'laminat',
     description: 'Visokokvalitetni laminat podovi za svaki prostor',
-    image: '/images/categories/laminat.jpg',
+    image: '/images/products/frontier-1033-4v-polar.jpg',
     order: 2,
   },
   {
