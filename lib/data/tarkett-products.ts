@@ -5117,7 +5117,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Timeless 1232 4V Laminat",
     "description": "Kao što sama reč kaže, Timeless – bezvremenski, nema roka trajanja. Kolekcija odiše neprolaznom lepotom klasičnog. Dizajn je kreiran sa posebnom pažnjom sa čvrstim osloncem na sve trendove.\n\nSavršen pod za strastvene ljubitelje prirode i posvećene entuzijaste stila.",
-    "images": [{ "id": "timeless-1232-4v-img", "url": "/images/products/timeless-1232-4v-oak-traditional.jpg", "alt": "Timeless 1232 4V", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "timeless-1232-4v-img", "url": "/images/products/timeless-1232-4v-darkwood.jpg", "alt": "Timeless 1232 4V", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "type", "label": "Tip", "value": "Laminat" },
@@ -5246,30 +5246,6 @@ export const tarkettProducts: Product[] = [
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
       { "key": "ref", "label": "Ref.", "value": "505833004" },
-      { "key": "format_type", "label": "Tip formata", "value": "Daska" },
-      { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" },
-      { "key": "edges", "label": "Ivice", "value": "4 strane" },
-      { "key": "surface", "label": "Površina", "value": "U registru" },
-      { "key": "items_per_box", "label": "Broj dasaka u kutiji", "value": "6" },
-      { "key": "surface_per_box", "label": "Površina po kutiji", "value": "1,496 m²" },
-      { "key": "packages_per_pallet", "label": "Pakovanja u paleti", "value": "52" }
-    ],
-    "price": 0, "priceUnit": "m²", "inStock": true, "featured": false,
-    "createdAt": new Date("2026-02-06T04:30:00.000Z"), "updatedAt": new Date("2026-02-06T04:30:00.000Z")
-  },
-  {
-    "id": "timeless-1232-4v-darkwood",
-    "name": "Timeless 1232 4V Darkwood",
-    "slug": "timeless-1232-4v-darkwood",
-    "sku": "505833005",
-    "categoryId": "1",
-    "brandId": "3",
-    "shortDescription": "Laminat Timeless 1232 4V Darkwood",
-    "description": "Laminat iz kolekcije Timeless 1232 4V, dezen Darkwood. Luksuzna tamna nijansa.",
-    "images": [{ "id": "timeless-1232-4v-darkwood-img", "url": "/images/products/timeless-1232-4v-darkwood.jpg", "alt": "Timeless 1232 4V Darkwood", "isPrimary": true, "order": 0 }],
-    "specs": [
-      { "key": "collection", "label": "Kolekcija", "value": "Timeless 1232 4V" },
-      { "key": "ref", "label": "Ref.", "value": "505833005" },
       { "key": "format_type", "label": "Tip formata", "value": "Daska" },
       { "key": "dimensions", "label": "Dimenzije", "value": "1292 x 193 mm" },
       { "key": "edges", "label": "Ivice", "value": "4 strane" },
