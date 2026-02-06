@@ -90,6 +90,19 @@ export default function ProductColorSelector({
     }
   }, [customColors, searchParams, pathname, router]);
 
+  // Preload all color images for instant switching (avoids white flash on color change)
+  useEffect(() => {
+    if (!customColors?.length) return;
+
+    customColors.forEach((color: { image_url?: string; texture_url?: string }) => {
+      const imageUrl = color.image_url || color.texture_url;
+      if (imageUrl) {
+        const img = new window.Image();
+        img.src = imageUrl;
+      }
+    });
+  }, [customColors]);
+
   // Update selectedColorSlug when URL changes
   useEffect(() => {
     const urlColorSlug = searchParams.get('color') || undefined;
@@ -197,87 +210,87 @@ export default function ProductColorSelector({
         {/* Levo: samo kvadrat sa slikom */}
         <div className="flex flex-col min-h-0">
           <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col h-full">
-          <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
-            {selectedImage ? (
-              <>
-                <ProductImage
-                  key={selectedImage.url}
-                  src={selectedImage.url}
-                  alt={selectedImage.alt}
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={100}
-                  priority={imagePriority}
-                />
-                {/* Image switcher arrows - show only if multiple images */}
-                {selectedImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={() => setCurrentImageIndex((currentImageIndex - 1 + selectedImages.length) % selectedImages.length)}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
-                      aria-label="Prethodna slika"
-                    >
-                      <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => setCurrentImageIndex((currentImageIndex + 1) % selectedImages.length)}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
-                      aria-label="Sledeća slika"
-                    >
-                      <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                    {/* Image indicator dots */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                      {selectedImages.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentImageIndex(idx)}
-                          className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/50'}`}
-                          aria-label={`Slika ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </>
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-400">
-                <span>Bez slike</span>
-              </div>
-            )}
-          </div>
-
-          {/* Ispod slike: za parket samo naziv boje (bez koda/sluga); za LVT kod + naziv */}
-          {selectedColor && (
-            <div className="mt-4 text-center">
-              {customColors?.length ? (
-                <p className="text-base text-gray-700">{selectedColor.name}</p>
-              ) : (
+            <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
+              {selectedImage ? (
                 <>
-                  <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
-                  <p className="text-base text-gray-700">{selectedColor.name}</p>
+                  <ProductImage
+                    key={selectedImage.url}
+                    src={selectedImage.url}
+                    alt={selectedImage.alt}
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={100}
+                    priority={imagePriority}
+                  />
+                  {/* Image switcher arrows - show only if multiple images */}
+                  {selectedImages.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => setCurrentImageIndex((currentImageIndex - 1 + selectedImages.length) % selectedImages.length)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                        aria-label="Prethodna slika"
+                      >
+                        <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={() => setCurrentImageIndex((currentImageIndex + 1) % selectedImages.length)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                        aria-label="Sledeća slika"
+                      >
+                        <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                      {/* Image indicator dots */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                        {selectedImages.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentImageIndex(idx)}
+                            className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/50'}`}
+                            aria-label={`Slika ${idx + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </>
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  <span>Bez slike</span>
+                </div>
               )}
             </div>
-          )}
 
-          {/* External Link Button - Below Image */}
-          {externalLink && (
-            <div className="mt-4">
-              <a
-                href={externalLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-base px-6 py-3 w-full"
-              >
-                Pogledaj na sajtu proizvođača
-              </a>
-            </div>
-          )}
+            {/* Ispod slike: za parket samo naziv boje (bez koda/sluga); za LVT kod + naziv */}
+            {selectedColor && (
+              <div className="mt-4 text-center">
+                {customColors?.length ? (
+                  <p className="text-base text-gray-700">{selectedColor.name}</p>
+                ) : (
+                  <>
+                    <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
+                    <p className="text-base text-gray-700">{selectedColor.name}</p>
+                  </>
+                )}
+              </div>
+            )}
+
+            {/* External Link Button - Below Image */}
+            {externalLink && (
+              <div className="mt-4">
+                <a
+                  href={externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-base px-6 py-3 w-full"
+                >
+                  Pogledaj na sajtu proizvođača
+                </a>
+              </div>
+            )}
 
           </div>
         </div>
