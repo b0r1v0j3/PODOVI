@@ -35,3 +35,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# archived scripts & cleanup (historical one-off utilities)
+/archive/
+
+# old zip archives (product image sources)
+/archive-old-zips/
+/archive-zips/
+
+# editor configs
+.cursor/

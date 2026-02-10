@@ -109,11 +109,14 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div
-            id="mobile-menu"
-            className="md:hidden mt-4 pb-4 space-y-3 animate-fadeIn"
-          >
+        <div
+          id="mobile-menu"
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen
+              ? 'max-h-[400px] opacity-100 mt-4 pb-4'
+              : 'max-h-0 opacity-0'
+            }`}
+        >
+          <div className="space-y-3">
             <Link
               href="/"
               className={mobileNavLinkClass('/')}
@@ -155,7 +158,7 @@ export default function Header() {
               Pošalji upit
             </Link>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   );

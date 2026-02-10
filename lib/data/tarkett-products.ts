@@ -5211,7 +5211,7 @@ export const tarkettProducts: Product[] = [
     "brandId": "3",
     "shortDescription": "Laminat Frontier 1033 4V Polar",
     "description": "Laminat iz kolekcije Frontier 1033 4V, dezen Polar. Otpornost na vodu do 24h i visoka otpornost na habanje.",
-    "images": [{ "id": "img-frontier-polar", "url": "/images/products/frontier-1033-4v-polar.jpg", "alt": "Frontier 1033 4V Polar", "isPrimary": true, "order": 0 }],
+    "images": [{ "id": "img-frontier-polar", "url": "/images/products/frontier-1033-4v.jpg", "alt": "Frontier 1033 4V Polar", "isPrimary": true, "order": 0 }],
     "specs": [
       { "key": "collection", "label": "Kolekcija", "value": "Frontier 1033 4V" },
       { "key": "ref", "label": "Ref", "value": "505845000" },

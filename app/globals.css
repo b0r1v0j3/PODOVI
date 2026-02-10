@@ -164,4 +164,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Better touch targets on mobile */
+  @media (max-width: 768px) {
+    .btn, .btn-primary, .btn-secondary, .btn-outline {
+      min-height: 44px;
+    }
+  }
 }
