@@ -1,0 +1,192 @@
+---
+description: PODOVI site architecture — data flow from JSON to rendered product pages
+---
+
+# PODOVI Site Architecture & Data Flow
+
+> **Read this FIRST before making ANY product data or page changes.**
+
+## Core Principle
+
+Data flows through a strict 4-step pipeline. **Missing ANY step = data won't display.**
+
+```
+JSON data file → resolve-product.ts → Product object → page.tsx → UI components
+```
+
+---
+
+## 1. Data Sources (JSON files in `/public/data/`)
+
+| File | Category | Brand | Key Fields |
+|------|----------|-------|------------|
+| `bloq_carpet_tiles.json` | Tekstilne (4) | BLOQ (8) | `colors[]` with `collection_slug`, `collection_name`, `characteristics`, `description`, `collection_description_sr`, `color_range_text`, `documents`, `backing_variants` |
+| `carpet_tiles_complete.json` | Tekstilne (4) | Gerflor (6) | `colors[]` with `collection_slug`, `characteristics` |
+| `lvt_colors_complete.json` | LVT (6) | Gerflor (6) | `colors[]` with `collection`, `specs`, `documents` |
+| `linoleum_colors_complete.json` | Linoleum (7) | Gerflor (6) | `colors[]` with `collection`, `specs`, `documents` |
+| `vinyl_colors_complete.json` | Vinil (2) | Gerflor (6) | `collections[]` with `colors[]` inside |
+| `documents_index.json` | All | — | Fallback doc lookup by category + collection |
+| `welding_rods.json` | Accessories | — | Welding rod products |
+
+Other data: `lib/data/tarkett-products.ts` (Parket cat 3, Laminat cat 1), `lib/repositories/product-repository.ts` (DB products).
+
+### Category IDs
+- `1` = Laminat, `2` = Vinil, `3` = Parket, `4` = Tekstilne ploče, `6` = LVT, `7` = Linoleum
+
+### Brand IDs
+- `6` = Gerflor, `8` = BLOQ
+
+---
+
+## 2. Product Resolution (`lib/product-page/resolve-product.ts`)
+
+**This is the MOST CRITICAL file.** It converts raw JSON data → `Product` object.
+
+`resolveProductBySlug(slug)` tries these in order:
+1. Parket collection check (Tarkett products)
+2. DB product lookup (`productRepository.findBySlug`)
+3. `gerflor-*` slug: tries LVT → Linoleum → Vinil → Carpet JSON
+4. `bloq-*` slug: finds first matching color in `bloq_carpet_tiles.json`, builds Product
+5. Collection-color format: matches collection then extracts color
+6. Direct color slug lookup
+
+### ⚠️ CRITICAL: When adding new fields to JSON
+You MUST also update `resolve-product.ts` to map those fields into the returned `Product` object. The `Product` type (`types/index.ts` line 42-63) defines what fields are available:
+
+```typescript
+interface Product {
+  id, name, slug, sku, categoryId, brandId,
+  shortDescription, description,      // ← text content
+  images: ProductImage[],              // ← hero/product images
+  specs: ProductSpec[],                // ← { key, label, value }[]
+  price?, priceUnit?,
+  inStock, featured,
+  externalLink?,
+  detailsSections?,                    // ← parsed description sections
+  documents?: { title, url }[],       // ← PDF links (tech sheets, brochures)
+  createdAt, updatedAt
+}
+```
+
+**If a field isn't in this type, the page component can't use it.**
+
+---
+
+## 3. Product Page Module (`lib/product-page/`)
+
+| File | Purpose |
+|------|---------|
+| `resolve-product.ts` | Slug → Product object (main resolver) |
+| `prepare-colors.ts` | Builds color swatches for `ProductColorSelector`; handles `mergeSelectedColor` when user picks a color |
+| `color-helpers.ts` | Low-level helpers: `loadColorFromJson`, `colorToProduct`, `collectionFromColor`, `buildSpecsFromColor` |
+| `spec-helpers.ts` | `filterSpecsForDisplay()` (hides internal specs), `parseDescriptionToSections()` (splits description into titled sections) |
+| `types.ts` | `ColorFromJSON`, `ColorSource`, `Props` types |
+| `index.ts` | Barrel exports |
+
+### ⚠️ CRITICAL: `mergeSelectedColor` in `prepare-colors.ts`
+When a user selects a color (?color=xxx), this function **overwrites** `product.name`, `product.images`, `product.specs`, and `product.description` with the selected color's data. If you add new fields that should update on color change, update this function too.
+
+### ⚠️ CRITICAL: `prepareCustomColors` in `prepare-colors.ts`
+This builds the color swatch list for `ProductColorSelector`. For BLOQ: reads `bloq_carpet_tiles.json`, maps colors to `{ collection, code, name, slug, image_url, characteristics }`. New fields needed in swatches must be added here.
+
+---
+
+## 4. Product Detail Page (`app/proizvodi/[slug]/page.tsx`)
+
+### Page Structure (for color-selector categories: LVT, Linoleum, Tekstilne, Vinil, Parket, Laminat)
+
+```
+ProductColorSelector (hero image + color swatches + CTA)
+  └── passes: initialImage, specs, customColors, brand, price, etc.
+
+Description + Specs grid (for cat 6, 7, 4 — NOT parket/vinil/laminat):
+  ├── DescriptionSection → reads product.description
+  │     └── parseDescriptionToSections() splits into titled sub-sections
+  └── ProductCharacteristics → reads product.specs
+
+Certifications row (for cat 6, 7, 4, 2):
+  ├── CertificationBadges (hardcoded per category)
+  ├── EcoFeatures (hardcoded per category)
+  └── ProductDocuments → reads product.documents
+        └── Also searches JSON for color-level docs via ?color= param
+```
+
+### Component → Product Field Mapping
+
+| Component | Reads | File |
+|-----------|-------|------|
+| `ProductColorSelector` | `specs`, `images`, `customColors`, `brand`, `price`, `shortDescription` | `components/ProductColorSelector.tsx` |
+| `DescriptionSection` | `product.description` (parsed into sections) | inline in `page.tsx` |
+| `ProductCharacteristics` | `product.specs` (filtered) | `components/ProductCharacteristics.tsx` |
+| `ProductDocuments` | `product.documents` + searches JSON by color slug | `components/ProductDocuments.tsx` |
+| `CertificationBadges` | hardcoded certifications array | `components/CertificationBadges.tsx` |
+| `EcoFeatures` | hardcoded features per category | `components/EcoFeatures.tsx` |
+| `ProductActions` | `product` (favorites, share) | `components/ProductActions.tsx` |
+| `ProductInquiryStickyCTA` | `productSlug`, `inquiryRef` | `components/ProductInquiryStickyCTA.tsx` |
+
+---
+
+## 5. Checklist: Adding New Data to a Product
+
+> [!IMPORTANT]
+> Follow ALL steps. Missing any one = data won't appear on site.
+
+### Step 1: Update JSON Data
+- Edit the relevant JSON file in `/public/data/`
+- Or create an enrichment script in `/scripts/` and run it
+
+### Step 2: Update Product Type (if needed)
+- If adding a completely new field type, add it to `Product` interface in `types/index.ts`
+
+### Step 3: Update Resolver
+- In `lib/product-page/resolve-product.ts`, find the block that handles your product category/brand
+- Map the new JSON field → Product field in the returned object
+
+### Step 4: Update Color Merge (if field changes per color)
+- In `lib/product-page/prepare-colors.ts` → `mergeSelectedColor()`, add logic to update the field when user selects a different color
+
+### Step 5: Update Component Display
+- In `app/proizvodi/[slug]/page.tsx`, ensure the component that should display this data receives it as a prop
+- If an existing component handles it (e.g. `ProductDocuments` for docs), make sure that component can find the new data
+
+### Step 6: Update Client Components (if they search JSON directly)
+- Components like `ProductDocuments.tsx` import JSON directly on the client side
+- If data comes from a new JSON source (e.g. `bloq_carpet_tiles.json`), add that import to the component
+
+### Step 7: Build & Verify
+- Run `npx next build` to check for type errors
+- Test locally with `npx next dev`
+- Push → Vercel auto-deploys
+
+---
+
+## 6. Category Pages (`app/kategorije/[slug]/page.tsx`)
+
+Category listing pages use `CategoryTabs` component. Product cards come from:
+- DB products via `productRepository`
+- BLOQ products via `getAllBloqCarpetProducts()` in `lib/bloq-carpet-products.ts`
+- Tarkett products for Parket/Laminat
+
+The `ProductCardClient` component renders each card.
+
+---
+
+## 7. Common Gotchas
+
+1. **"Data in JSON but not on page"**: You forgot Step 3 (update resolver)
+2. **"Shows on page load but disappears when switching colors"**: You forgot Step 4 (update `mergeSelectedColor`)
+3. **"Works for Gerflor carpet but not BLOQ"**: The resolver has SEPARATE code paths for Gerflor carpet (line ~101) vs BLOQ (line ~139). Both need updating.
+4. **"ProductDocuments shows docs for Gerflor but not BLOQ"**: `ProductDocuments.tsx` is a CLIENT component that imports JSON directly. If you added a new JSON source, you must import it there too.
+5. **"Description shows bullet points instead of paragraphs"**: `parseDescriptionToSections()` in `spec-helpers.ts` parses descriptions with "Keyword:" headers into titled sub-sections. Plain paragraph text renders as-is.
+6. **Bundle size increase**: Client components that import JSON directly (like `ProductDocuments`) increase the JS bundle. Consider moving to API routes if bundle grows too large.
+
+---
+
+## 8. Maintenance Rule
+
+> [!IMPORTANT]
+> After every significant architecture change (new data source, new component, new category, new resolver path, changed data flow), you MUST:
+> 1. Update THIS workflow file (`.agent/workflows/podovi-architecture.md`) to reflect the new state
+> 2. Update `README.md` if project structure, scripts, or setup changed
+> 3. Do this as part of the same commit — not as a separate task
+
