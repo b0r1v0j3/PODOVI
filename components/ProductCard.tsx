@@ -88,6 +88,21 @@ export default async function ProductCard({ product }: ProductCardProps) {
     && product.shortDescription !== displayName
     && product.shortDescription.length > 5;
 
+  // Strip category name and product name from shortDescription to avoid redundancy
+  // e.g. "Blues 1033 4V Laminat" on the Laminat page → redundant
+  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Podna obloga'];
+  let cleanShortDesc = product.shortDescription || '';
+  for (const catName of categoryNames) {
+    cleanShortDesc = cleanShortDesc.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();
+    cleanShortDesc = cleanShortDesc.replace(new RegExp(`^${catName}\\s*[-–]\\s*`, 'i'), '').trim();
+  }
+  // If after stripping, it's the same as the name, it's not useful
+  const isCleanDescUseful = cleanShortDesc
+    && cleanShortDesc !== product.name
+    && cleanShortDesc !== displayName
+    && cleanShortDesc.length > 5
+    && isShortDescUseful;
+
   return (
     <Link
       href={productHref}
@@ -146,9 +161,9 @@ export default async function ProductCard({ product }: ProductCardProps) {
         )}
 
         {/* Short description — only if it adds info beyond the name */}
-        {isShortDescUseful && specChips.length === 0 && (
+        {isCleanDescUseful && specChips.length === 0 && (
           <p className="text-sm text-gray-500 mb-3 line-clamp-2 leading-relaxed">
-            {product.shortDescription}
+            {cleanShortDesc}
           </p>
         )}
 
