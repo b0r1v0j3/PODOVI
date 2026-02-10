@@ -102,7 +102,9 @@ export class SupabaseProductRepository implements IProductRepository {
     );
 
     // Merge BLOQ carpet tile products from JSON for category 4 (Tekstilne ploče)
-    if (!filters?.categoryId || filters.categoryId === '4') {
+    // Note: categoryId may be a UUID or legacy '4' string depending on caller
+    const legacyCategoryId = filters?.categoryId ? mapCategoryId(filters.categoryId) : undefined;
+    if (!filters?.categoryId || legacyCategoryId === '4' || filters.categoryId === '4') {
       let bloqProducts = getAllBloqCarpetProducts();
       // Apply same filters to BLOQ products
       if (filters?.search) {
