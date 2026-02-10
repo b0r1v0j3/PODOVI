@@ -20,7 +20,7 @@ interface ColorFromJSON {
   type?: 'homogeneous' | 'heterogeneous'; // For Vinil
 }
 
-interface LVTTabsProps {
+interface CategoryTabsProps {
   collections: Product[];
   colors: Product[]; // Legacy fallback for non-JSON categories (Parket)
   brandsRecord: Record<string, Brand>;
@@ -36,7 +36,7 @@ interface LVTTabsProps {
   };
 }
 
-export default function LVTTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType, searchParams: searchParamsProp }: LVTTabsProps) {
+export default function CategoryTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType, searchParams: searchParamsProp }: CategoryTabsProps) {
   // Get search params from URL (fallback to prop if provided)
   const urlSearchParams = useSearchParams();
   const searchParams = searchParamsProp || {
@@ -328,17 +328,17 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       const categoryParam2 = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : 'lvt';
       const jsonPath = `/api/colors?category=${categoryParam2}`;
 
-      console.log(`LVTTabs: Fetching colors from ${jsonPath}...`);
+      console.log(`CategoryTabs: Fetching colors from ${jsonPath}...`);
       fetch(jsonPath)
         .then(res => {
-          console.log(`LVTTabs: Fetch response status:`, res.status, res.statusText);
+          console.log(`CategoryTabs: Fetch response status:`, res.status, res.statusText);
           if (!res.ok) {
             throw new Error(`Failed to fetch colors: ${res.status}`);
           }
           return res.json();
         })
         .then(data => {
-          console.log(`LVTTabs: JSON parsed successfully, data:`, data ? `total=${data.total}, colors=${data.colors?.length}` : 'null');
+          console.log(`CategoryTabs: JSON parsed successfully, data:`, data ? `total=${data.total}, colors=${data.colors?.length}` : 'null');
 
           // Handle different JSON structures: LVT has data.colors, Linoleum/Vinil have data.collections[].colors
           let colorsArray: any[] = [];
@@ -352,12 +352,12 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
                 collection: collection.slug
               }))
             );
-            console.log(`LVTTabs: Loaded ${colorsArray.length} colors from ${data.collections.length} collections for ${categorySlug}`);
+            console.log(`CategoryTabs: Loaded ${colorsArray.length} colors from ${data.collections.length} collections for ${categorySlug}`);
           } else if (data.colors && Array.isArray(data.colors)) {
             colorsArray = data.colors;
-            console.log(`LVTTabs: Loaded ${colorsArray.length} colors from JSON for category ${categorySlug}`);
+            console.log(`CategoryTabs: Loaded ${colorsArray.length} colors from JSON for category ${categorySlug}`);
           } else {
-            console.error('LVTTabs: Invalid data structure', data);
+            console.error('CategoryTabs: Invalid data structure', data);
             setLoadingColors(false);
             return;
           }
@@ -480,7 +480,7 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
             } as Product & { collectionSlug: string };
           });
 
-          console.log(`LVTTabs: Converted ${colorsAsProducts.length} colors to Product objects`);
+          console.log(`CategoryTabs: Converted ${colorsAsProducts.length} colors to Product objects`);
           setColorsFromJSON(colorsAsProducts);
           setLoadingColors(false);
           hasLoadedColors.current = true;

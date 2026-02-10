@@ -7,7 +7,7 @@ import { brandRepository } from '@/lib/repositories/brand-repository';
 import { getEffectiveParketCollection, getAllParketVariantSlugs, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
-import LVTTabs from '@/components/LVTTabs';
+import CategoryTabs from '@/components/CategoryTabs';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface CategoryPageProps {
@@ -111,7 +111,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const allProductsForThickness = await productRepository.findByCategory(category.id);
 
   // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat – separate collections from colors
-  const isLVTCategory = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat';
+  const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat';
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
@@ -120,11 +120,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let availableThicknessByType: { homogeni: string[]; heterogeni: string[] } = { homogeni: [], heterogeni: [] };
 
   // For non-LVT categories, get filtered products
-  const filteredProducts = isLVTCategory ? [] : allProducts;
+  const filteredProducts = hasCollectionTabs ? [] : allProducts;
 
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
-  if (isLVTCategory) {
+  if (hasCollectionTabs) {
     // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat)
     // Colors: products without those SKU prefixes
     const hasCollectionSku = (p: { sku?: string | null }) =>
@@ -475,7 +475,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           const collectionName = getEffectiveParketCollection(p.slug, specVal) || specVal || p.name;
           return selectedCollections.includes(collectionName);
         });
-        // Za Parket, filtriraj i "boje" (varijante) po efektivnoj kolekciji da LVTTabs prikaže ispravne varijante
+        // Za Parket, filtriraj i "boje" (varijante) po efektivnoj kolekciji da CategoryTabs prikaže ispravne varijante
         colors = colors.filter(p => {
           const specVal = p.specs?.find(s => s.key === 'collection')?.value;
           const effective = getEffectiveParketCollection(p.slug, specVal);
@@ -563,8 +563,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
           {/* Products Grid */}
           <div className="flex-1">
-            {isLVTCategory ? (
-              <LVTTabs
+            {hasCollectionTabs ? (
+              <CategoryTabs
                 collections={collections}
                 colors={colors}
                 brandsRecord={brandsRecord}
