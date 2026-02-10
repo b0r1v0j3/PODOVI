@@ -363,23 +363,20 @@ export default function ProductColorSelector({
             {/* Title: za parket/laminat prikaži kolekciju (h1), ispod "Parket – ime boje" ili "Laminat – ime boje"; za ostale productName + shortDescription */}
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                {collectionDisplayName || productName}
+                {collectionDisplayName
+                  ? (() => {
+                    let variantName = productName;
+                    if (collectionDisplayName && variantName.toLowerCase().startsWith(collectionDisplayName.toLowerCase())) {
+                      variantName = variantName.substring(collectionDisplayName.length).trim().replace(/^[-\u2013\u2014\s]+/, '');
+                    }
+                    return variantName || productName;
+                  })()
+                  : productName}
               </h1>
               {collectionDisplayName ? (
-                <>
-                  <p className="text-lg text-gray-600">
-                    {(() => {
-                      let variantName = productName;
-                      if (collectionDisplayName && variantName.toLowerCase().startsWith(collectionDisplayName.toLowerCase())) {
-                        variantName = variantName.substring(collectionDisplayName.length).trim().replace(/^[-\u2013\u2014\s]+/, '');
-                      }
-                      return variantName || productName;
-                    })()}
-                  </p>
-                  <p className="text-base text-gray-500">
-                    {collectionCategoryLabel || 'Parket'} {collectionDisplayName}
-                  </p>
-                </>
+                <p className="text-lg text-gray-500">
+                  {collectionDisplayName}
+                </p>
               ) : shortDescription ? (
                 <p className="text-lg text-gray-600">
                   {shortDescription}
