@@ -14,6 +14,8 @@ export interface IProductRepository {
   findFeatured(): Promise<Product[]>;
 }
 
+import { mapCategoryId, mapBrandId, mapCategoryIdToUUID, mapBrandIdToUUID } from './id-mapping';
+
 // =========================================
 // Transform DB rows → Product interface
 // =========================================
@@ -23,8 +25,8 @@ function toProduct(row: any, images: any[] = [], specs: any[] = []): Product {
     name: row.name,
     slug: row.slug,
     sku: row.sku || '',
-    categoryId: row.category_id,
-    brandId: row.brand_id,
+    categoryId: mapCategoryId(row.category_id),
+    brandId: mapBrandId(row.brand_id),
     shortDescription: row.short_description || '',
     description: row.description || '',
     images: images.map(img => ({
@@ -64,11 +66,11 @@ export class SupabaseProductRepository implements IProductRepository {
 
     // Apply filters via SQL
     if (filters?.categoryId) {
-      query = query.eq('category_id', filters.categoryId);
+      query = query.eq('category_id', mapCategoryIdToUUID(filters.categoryId));
     }
 
     if (filters?.brandIds && filters.brandIds.length > 0) {
-      query = query.in('brand_id', filters.brandIds);
+      query = query.in('brand_id', filters.brandIds.map(mapBrandIdToUUID));
     }
 
     if (filters?.priceMin !== undefined) {
@@ -177,7 +179,7 @@ export class SupabaseProductRepository implements IProductRepository {
     const { data, error } = await supabase
       .from('products')
       .select('*, product_images(*), product_specs(*)')
-      .eq('brand_id', brandId);
+      .eq('brand_id', mapBrandIdToUUID(brandId));
 
     if (error) {
       console.error('SupabaseProductRepository.findByBrand error:', error.message);

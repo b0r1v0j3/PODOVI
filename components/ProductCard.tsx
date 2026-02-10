@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '@/types';
 import { brandRepository } from '@/lib/repositories/brand-repository';
+import ProductCardOverlay from './ProductCardOverlay';
 
 interface ProductCardProps {
   product: Product;

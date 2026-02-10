@@ -1,6 +1,7 @@
 import { Brand } from '@/types';
 import { brands as mockBrands } from '@/lib/data/mock-data';
 import { supabase } from '@/lib/supabase/client';
+import { mapBrandIdToUUID } from './id-mapping';
 
 export interface IBrandRepository {
   findAll(): Promise<Brand[]>;
@@ -51,10 +52,11 @@ export class SupabaseBrandRepository implements IBrandRepository {
   }
 
   async findById(id: string): Promise<Brand | null> {
+    const uuid = mapBrandIdToUUID(id);
     const { data, error } = await supabase
       .from('brands')
       .select('*')
-      .eq('id', id)
+      .eq('id', uuid)
       .single();
 
     if (error || !data) return null;

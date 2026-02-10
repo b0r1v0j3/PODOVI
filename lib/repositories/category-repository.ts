@@ -1,6 +1,7 @@
 import { Category } from '@/types';
 import { categories as mockCategories } from '@/lib/data/mock-data';
 import { supabase } from '@/lib/supabase/client';
+import { mapCategoryIdToUUID } from './id-mapping';
 
 export interface ICategoryRepository {
   findAll(): Promise<Category[]>;
@@ -52,10 +53,11 @@ export class SupabaseCategoryRepository implements ICategoryRepository {
   }
 
   async findById(id: string): Promise<Category | null> {
+    const uuid = mapCategoryIdToUUID(id);
     const { data, error } = await supabase
       .from('categories')
       .select('*')
-      .eq('id', id)
+      .eq('id', uuid)
       .single();
 
     if (error || !data) return null;
