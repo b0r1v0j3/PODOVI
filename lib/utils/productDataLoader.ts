@@ -247,8 +247,8 @@ export function getAllBloqCarpetProducts(): Product[] {
         const collName = first.collection_name || collSlug;
         const description = first.description || '';
 
-        // Use first color's image as collection image
-        const imageUrl = first.image_url || '';
+        // Use downloaded roomshot image as collection hero image
+        const imageUrl = `/images/products/bloq-roomshots/${collSlug}-roomshot.jpg`;
 
         collectionProducts.push({
             id: `bloq-coll-${collSlug}`,
