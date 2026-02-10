@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -101,24 +101,24 @@ export class SupabaseProductRepository implements IProductRepository {
       toProduct(row, row.product_images || [], row.product_specs || [])
     );
 
-    // Merge BLOQ carpet tile products from JSON for category 4 (Tekstilne ploče)
+    // Merge BLOQ + Gerflor carpet tile products from JSON for category 4 (Tekstilne ploče)
     // Note: categoryId may be a UUID or legacy '4' string depending on caller
     const legacyCategoryId = filters?.categoryId ? mapCategoryId(filters.categoryId) : undefined;
     if (!filters?.categoryId || legacyCategoryId === '4' || filters.categoryId === '4') {
-      let bloqProducts = getAllBloqCarpetProducts();
-      // Apply same filters to BLOQ products
+      let jsonProducts = [...getAllBloqCarpetProducts(), ...getAllCarpetProducts()];
+      // Apply same filters to JSON products
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
-        bloqProducts = bloqProducts.filter(p =>
+        jsonProducts = jsonProducts.filter(p =>
           p.name.toLowerCase().includes(searchLower) ||
           p.description.toLowerCase().includes(searchLower) ||
           p.sku.toLowerCase().includes(searchLower)
         );
       }
       if (filters?.brandIds && filters.brandIds.length > 0) {
-        bloqProducts = bloqProducts.filter(p => filters.brandIds!.includes(p.brandId));
+        jsonProducts = jsonProducts.filter(p => filters.brandIds!.includes(p.brandId));
       }
-      products = [...products, ...bloqProducts];
+      products = [...products, ...jsonProducts];
     }
 
     // Post-fetch filters that require specs data
