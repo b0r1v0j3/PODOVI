@@ -888,8 +888,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // LVT/Linoleum/Vinil/Tekstilne colors: redirect to collection page with ?color= parameter
     // This ensures standalone color URLs redirect to the collection context
+    // Skip for BLOQ collection products (they ARE collection pages, not colors)
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
-    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct) {
+    const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
+    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct && !isBloqCollection) {
       // Normalize collection slug (add gerflor- prefix for LVT if missing)
       let normalizedCollectionSlug = collectionSlugFromProduct;
       if (product.categoryId === '6' && !collectionSlugFromProduct.startsWith('gerflor-')) {
