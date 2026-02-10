@@ -66,8 +66,8 @@ export default async function ProductCard({ product }: ProductCardProps) {
             </svg>
           </div>
         )}
-        {/* Favorite & Compare buttons - visible on hover */}
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {/* Favorite & Compare buttons - always visible on mobile, hover on desktop */}
+        <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
           <ProductCardOverlay product={product} />
         </div>
         {/* Overlay on hover */}
