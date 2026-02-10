@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import GlobalSearch from './GlobalSearch';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -78,6 +79,10 @@ export default function Header() {
             >
               Kontakt
             </Link>
+
+            {/* Global Search */}
+            <GlobalSearch />
+
             <Link
               href="/upiti"
               className={`btn-primary focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${isActive('/upiti') ? 'ring-2 ring-primary-600 ring-offset-2' : ''
@@ -88,32 +93,35 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="md:hidden p-2 text-gray-800 hover:text-primary-700 transition-colors
-                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Zatvori meni" : "Otvori meni"}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+          {/* Mobile: search + menu */}
+          <div className="md:hidden flex items-center gap-1">
+            <GlobalSearch />
+            <button
+              type="button"
+              className="p-2 text-gray-800 hover:text-primary-700 transition-colors
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-md"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Zatvori meni" : "Otvori meni"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         <div
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen
-              ? 'max-h-[400px] opacity-100 mt-4 pb-4'
-              : 'max-h-0 opacity-0'
+            ? 'max-h-[400px] opacity-100 mt-4 pb-4'
+            : 'max-h-0 opacity-0'
             }`}
         >
           <div className="space-y-3">

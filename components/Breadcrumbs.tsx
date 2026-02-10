@@ -7,17 +7,23 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
+  variant?: 'light' | 'dark';
 }
 
-export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+export default function Breadcrumbs({ items, variant = 'light' }: BreadcrumbsProps) {
+  const isDark = variant === 'dark';
+
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
       <ol className="flex flex-wrap items-center space-x-2 text-sm">
         <li>
           <Link
             href="/"
-            className="text-gray-600 hover:text-primary-700 transition-colors
-                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+            className={`transition-colors
+                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm ${isDark
+                ? 'text-gray-300 hover:text-white'
+                : 'text-gray-600 hover:text-primary-700'
+              }`}
           >
             Početna
           </Link>
@@ -28,19 +34,19 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
 
           return (
             <li key={index} className="flex items-center space-x-2">
-              <svg 
-                className="h-4 w-4 text-gray-400" 
-                fill="none" 
-                viewBox="0 0 24 24" 
+              <svg
+                className={`h-4 w-4 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}
+                fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
                 aria-hidden="true"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-              
+
               {isLast || !item.href ? (
                 <span
-                  className="text-gray-900 font-medium"
+                  className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}
                   aria-current={isLast ? 'page' : undefined}
                 >
                   {item.label}
@@ -48,8 +54,11 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
               ) : (
                 <Link
                   href={item.href}
-                  className="text-gray-600 hover:text-primary-700 transition-colors
-                             focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm"
+                  className={`transition-colors
+                             focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm ${isDark
+                      ? 'text-gray-300 hover:text-white'
+                      : 'text-gray-600 hover:text-primary-700'
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -61,3 +70,4 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
     </nav>
   );
 }
+

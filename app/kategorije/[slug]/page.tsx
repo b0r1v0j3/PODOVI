@@ -8,6 +8,7 @@ import { getEffectiveParketCollection, getAllParketVariantSlugs, getParketCollec
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import LVTTabs from '@/components/LVTTabs';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface CategoryPageProps {
   params: { slug: string };
@@ -527,23 +528,23 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="bg-white border-b">
-        <div className="container py-6">
-          <nav className="text-sm text-gray-600 mb-4">
-            <a href="/" className="hover:text-primary-600">Početna</a>
-            <span className="mx-2">/</span>
-            <a href="/kategorije" className="hover:text-primary-600">Kategorije</a>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900">{category.name}</span>
-          </nav>
-          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3">
+      <section className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTItMnYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTIgMnYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bS0yIDJ2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTQgMHYyaDJ2LTJoLTJ6bS00IDB2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTItMnYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40"></div>
+        <div className="container py-12 md:py-16 relative z-10">
+          <div className="mb-4">
+            <Breadcrumbs items={[
+              { label: 'Kategorije', href: '/kategorije' },
+              { label: category.name }
+            ]} variant="dark" />
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">
             {category.name}
           </h1>
-          <p className="text-base md:text-lg text-gray-600">
+          <p className="text-lg text-gray-300 max-w-2xl">
             {category.description}
           </p>
         </div>
-      </div>
+      </section>
 
       {/* Main Content */}
       <div className="container py-8">
