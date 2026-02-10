@@ -220,6 +220,8 @@ export function getAllCarpetProducts(): Product[] {
 
 /**
  * Get all BLOQ Carpet products from bloq_carpet_tiles.json
+ * Returns both collection-level products (with BLOQ- SKU prefix for category page collection tab)
+ * and individual color products
  */
 export function getAllBloqCarpetProducts(): Product[] {
     if (bloqCarpetCache) {
@@ -228,7 +230,52 @@ export function getAllBloqCarpetProducts(): Product[] {
 
     const colors = (bloqCarpetData as any).colors || [];
 
-    const products = colors.map((color: any) => {
+    // Group colors by collection to create collection-level products
+    const collectionMap = new Map<string, any[]>();
+    for (const color of colors) {
+        const key = color.collection_slug || color.collection;
+        if (!collectionMap.has(key)) {
+            collectionMap.set(key, []);
+        }
+        collectionMap.get(key)!.push(color);
+    }
+
+    // Create collection-level products (shown in "Kolekcije" tab)
+    const collectionProducts: Product[] = [];
+    Array.from(collectionMap.entries()).forEach(([collSlug, collColors]) => {
+        const first = collColors[0];
+        const collName = first.collection_name || collSlug;
+        const description = first.description || '';
+
+        // Use first color's image as collection image
+        const imageUrl = first.image_url || '';
+
+        collectionProducts.push({
+            id: `bloq-coll-${collSlug}`,
+            name: `BLOQ ${collName}`,
+            slug: collSlug,
+            sku: `BLOQ-${collSlug.toUpperCase()}`, // BLOQ- prefix so hasCollectionSku picks it up
+            categoryId: '4',
+            brandId: '8',
+            shortDescription: `BLOQ ${collName} - ${collColors.length} boja`,
+            description,
+            images: imageUrl ? [{
+                id: `bloq-coll-${collSlug}-img`,
+                url: imageUrl,
+                alt: `BLOQ ${collName}`,
+                isPrimary: true,
+                order: 1,
+            }] : [],
+            specs: [],
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        });
+    });
+
+    // Create individual color products
+    const colorProducts = colors.map((color: any) => {
         const specs = Object.entries(color.characteristics || {}).map(([label, value]) => ({
             key: label.toLowerCase().replace(/\s+/g, '_'),
             label,
@@ -271,8 +318,8 @@ export function getAllBloqCarpetProducts(): Product[] {
         };
     });
 
-    bloqCarpetCache = products;
-    return products;
+    bloqCarpetCache = [...collectionProducts, ...colorProducts];
+    return bloqCarpetCache;
 }
 
 /**

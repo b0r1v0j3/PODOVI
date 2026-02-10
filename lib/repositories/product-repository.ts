@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -101,6 +101,24 @@ export class SupabaseProductRepository implements IProductRepository {
       toProduct(row, row.product_images || [], row.product_specs || [])
     );
 
+    // Merge BLOQ carpet tile products from JSON for category 4 (Tekstilne ploče)
+    if (!filters?.categoryId || filters.categoryId === '4') {
+      let bloqProducts = getAllBloqCarpetProducts();
+      // Apply same filters to BLOQ products
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        bloqProducts = bloqProducts.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        bloqProducts = bloqProducts.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      products = [...products, ...bloqProducts];
+    }
+
     // Post-fetch filters that require specs data
     if (filters?.type) {
       const typeFilter = filters.type.toLowerCase();
@@ -176,6 +194,10 @@ export class SupabaseProductRepository implements IProductRepository {
   }
 
   async findByBrand(brandId: string): Promise<Product[]> {
+    // For BLOQ brand (id 8), return products from JSON
+    if (brandId === '8') {
+      return getAllBloqCarpetProducts();
+    }
     const { data, error } = await supabase
       .from('products')
       .select('*, product_images(*), product_specs(*)')
@@ -210,7 +232,7 @@ export class SupabaseProductRepository implements IProductRepository {
 // Mock implementation (kept as fallback)
 // =========================================
 export class MockProductRepository implements IProductRepository {
-  private products: Product[] = [...mockProducts, ...getAllGerflorProducts(), ...tarkettProducts];
+  private products: Product[] = [...mockProducts, ...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...tarkettProducts];
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {
     let filtered = [...this.products];

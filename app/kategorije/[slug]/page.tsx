@@ -128,7 +128,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat)
     // Colors: products without those SKU prefixes
     const hasCollectionSku = (p: { sku?: string | null }) =>
-      (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-')) ?? false;
+      (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-') || p.sku?.startsWith('BLOQ-')) ?? false;
     const allCollections = allProducts.filter(p => hasCollectionSku(p));
     if (category.slug === 'parket') {
       // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
