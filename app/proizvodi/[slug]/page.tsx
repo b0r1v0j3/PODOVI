@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { productRepository } from '@/lib/repositories/product-repository';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import CertificationBadges from '@/components/CertificationBadges';
@@ -14,693 +13,39 @@ import ProductDescriptionWithCharacteristics from '@/components/ProductDescripti
 import ProductDocuments from '@/components/ProductDocuments';
 import ProductInquiryStickyCTA from '@/components/ProductInquiryStickyCTA';
 import ProductActions from '@/components/ProductActions';
-import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDetailsSection } from '@/types';
-import lvtColorsData from '@/public/data/lvt_colors_complete.json';
-import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
-import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
-import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
-import { getEffectiveParketCollection, getParketCollectionBySlug, getParketCollectionNameBySlug, getParketCollectionSlug, getParketCollectionVariantSlugs } from '@/lib/data/parket-collection-mapping';
+import type { Product } from '@/types';
+import {
+  Props,
+  resolveProductBySlug,
+  loadColorFromJson,
+  colorToProduct,
+  linoleumColors,
+  filterSpecsForDisplay,
+  parseDescriptionToSections,
+  prepareCustomColors,
+  mergeSelectedColor,
+} from '@/lib/product-page';
 
 export const dynamic = 'force-dynamic';
 
-interface Props {
-  params: { slug: string };
-  searchParams?: { color?: string };
-}
-
-interface ColorFromJSON {
-  collection: string;
-  collection_name: string;
-  code: string;
-  name: string;
-  full_name: string;
-  slug: string;
-  image_url?: string;
-  texture_url?: string;
-  lifestyle_url?: string;
-  image_count: number;
-  welding_rod?: string;
-  dimension?: string;
-  format?: string;
-  overall_thickness?: string;
-  characteristics?: Record<string, string>;
-  description?: string;
-}
-
-type ColorSource = {
-  categorySlug: 'lvt' | 'linoleum' | 'vinil';
-  color: ColorFromJSON;
-};
-
-
-const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
-const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
-const vinylCollections = (vinylColorsData as { collections?: any[] }).collections || [];
-
-async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
-  const lvtMatch = lvtColors.find(color => color.slug === slug);
-  if (lvtMatch) {
-    return { categorySlug: 'lvt', color: lvtMatch };
-  }
-
-  const linoleumMatch = linoleumColors.find(color => color.slug === slug);
-  if (linoleumMatch) {
-    return { categorySlug: 'linoleum', color: linoleumMatch };
-  }
-
-  // Try to find in Vinil collections
-  for (const collection of vinylCollections) {
-    const vinylColor = collection.colors?.find((color: any) => {
-      // Match by slug format: collection-slug-color-code-color-name
-      const expectedSlug = `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
-      // Also try matching without collection prefix (for color parameter)
-      const colorOnlySlug = `${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
-      return expectedSlug === slug ||
-        colorOnlySlug === slug ||
-        slug.endsWith(`-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`) ||
-        color.code === slug.split('-').pop();
-    });
-    if (vinylColor) {
-      return {
-        categorySlug: 'vinil',
-        color: {
-          ...vinylColor,
-          collection: collection.slug,
-          collection_name: collection.name,
-          collection_slug: collection.slug,
-          full_name: `${vinylColor.code} ${vinylColor.name}`,
-          slug: slug,
-        } as ColorFromJSON
-      };
-    }
-  }
-
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
-  const candidates: Array<{ categorySlug: 'lvt' | 'linoleum' | 'vinil'; fileName: string }> = [
-    { categorySlug: 'lvt', fileName: 'lvt_colors_complete.json' },
-    { categorySlug: 'linoleum', fileName: 'linoleum_colors_complete.json' },
-    { categorySlug: 'vinil', fileName: 'vinyl_colors_complete.json' },
-  ];
-
-  for (const candidate of candidates) {
-    try {
-      const response = await fetch(`${baseUrl}/data/${candidate.fileName}`, {
-        cache: 'no-store',
-      });
-      if (!response.ok) {
-        continue;
-      }
-      const data = await response.json();
-      // Handle different JSON structures
-      if (candidate.categorySlug === 'vinil' && data.collections) {
-        // Vinil has collections[].colors structure
-        for (const collection of data.collections) {
-          const match = collection.colors?.find((color: any) => {
-            const expectedSlug = `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
-            return expectedSlug === slug || color.code === slug.split('-').pop();
-          });
-          if (match) {
-            return {
-              categorySlug: 'vinil',
-              color: {
-                ...match,
-                collection: collection.slug,
-                collection_name: collection.name,
-                collection_slug: collection.slug,
-                full_name: `${match.code} ${match.name}`,
-                slug: slug,
-              } as ColorFromJSON
-            };
-          }
-        }
-      } else if (data.colors && Array.isArray(data.colors)) {
-        // LVT/Linoleum have colors array
-        const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
-        if (match) {
-          return { categorySlug: candidate.categorySlug, color: match };
-        }
-      }
-    } catch (error) {
-      console.error('Error reading remote color JSON:', candidate.fileName, error);
-    }
-  }
-
-  return null;
-}
-
-function toSpecKey(label: string, fallbackIndex?: number): string {
-  const normalized = label
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-  if (normalized) {
-    return normalized;
-  }
-  if (typeof fallbackIndex === 'number') {
-    return `spec-${fallbackIndex}`;
-  }
-  return 'spec';
-}
-
-function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
-  const specs: ProductSpec[] = [];
-
-  // Add collection-level specs first (from collection_specs if available)
-  if ('collection_specs' in color && Array.isArray((color as any).collection_specs)) {
-    const collectionSpecs = (color as any).collection_specs as ProductSpec[];
-    specs.push(...collectionSpecs);
-  }
-
-  // Add color-specific specs from specs object
-  if ('specs' in color && typeof (color as any).specs === 'object') {
-    const colorSpecs = (color as any).specs;
-
-    // Mapping for English keys to Serbian labels
-    const specMapping: Record<string, { label: string, key: string }> = {
-      'NCS': { label: 'NCS Oznaka', key: 'ncs' },
-      'LRV': { label: 'LRV', key: 'lrv' },
-      'PACKAGING': { label: 'Pakovanje', key: 'packaging' },
-      'packaging': { label: 'Pakovanje', key: 'packaging' },
-      'WEIGHT': { label: 'Težina', key: 'weight' },
-      'THICKNESS OF THE WEARLAYER': { label: 'Debljina sloja habanja', key: 'wear_layer' }
-    };
-
-    Object.entries(colorSpecs).forEach(([rawKey, value]) => {
-      if (!value) return;
-      const mapping = specMapping[rawKey] || { label: rawKey, key: rawKey.toLowerCase().replace(/\s+/g, '_') };
-
-      // Check if not already added by collection_specs
-      if (!specs.find(s => s.key === mapping.key)) {
-        specs.push({ key: mapping.key, label: mapping.label, value: value as string });
-      }
-    });
-  }
-
-  // Add legacy fields if they exist
-  if (color.format) {
-    // Check if not already added by collection_specs
-    if (!specs.find(s => s.key === 'format')) {
-      specs.push({ key: 'format', label: 'Format', value: color.format });
-    }
-  }
-  if (color.overall_thickness) {
-    // Use 'thickness' key to match with product specs from mock-data.ts
-    if (!specs.find(s => s.key === 'thickness' || s.key === 'overall_thickness')) {
-      specs.push({ key: 'thickness', label: 'Ukupna debljina', value: color.overall_thickness });
-    }
-  }
-  if (color.dimension) {
-    if (!specs.find(s => s.key === 'dimension')) {
-      specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
-    }
-  }
-  if (color.welding_rod) {
-    specs.push({ key: 'welding_rod', label: 'Elektroda za varenje', value: color.welding_rod });
-  }
-
-  // Add legacy characteristics
-  if (color.characteristics) {
-    const entries = Object.entries(color.characteristics);
-    entries.forEach(([label, value], index) => {
-      if (!value) return;
-      const key = toSpecKey(label, index);
-      // Avoid duplicates
-      if (!specs.find(s => s.key === key)) {
-        specs.push({ key, label, value });
-      }
-    });
-  }
-
-  return specs;
-}
-
-function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSpec[] {
-  const merged = new Map<string, ProductSpec>();
-  for (const spec of base) {
-    merged.set(spec.key, spec);
-  }
-  for (const spec of extra) {
-    merged.set(spec.key, spec);
-  }
-  return Array.from(merged.values());
-}
-
-/** Za parket varijante zamenjuje "Parket" (kategorija) pravom kolekcijom iz mapiranja. */
-function filterSpecsForDisplay(
-  specs: ProductSpec[] | undefined,
-  options?: { categoryId?: string; productSlug?: string }
-): ProductSpec[] {
-  if (!specs || !Array.isArray(specs)) return [];
-  return specs
-    .map((s) => {
-      if (s.key === 'collection' && s.value === 'Parket' && options?.categoryId === '3' && options?.productSlug) {
-        const effective = getEffectiveParketCollection(options.productSlug, 'Parket');
-        if (effective) return { ...s, value: effective };
-      }
-      return s;
-    })
-    .filter((s) => !(s.key === 'collection' && s.value === 'Parket'));
-}
-
-function parseDescriptionToSections(description: string): ProductDetailsSection[] {
-  if (!description || typeof description !== 'string') {
-    return [];
-  }
-
-  const sections: ProductDetailsSection[] = [];
-  const lines = description.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-
-  let currentSection: ProductDetailsSection | null = null;
-
-  // Section titles to look for (case insensitive, with variations) - both English and Serbian
-  const sectionTitles = [
-    'Design & Product',
-    'Product & Design',
-    'Product',
-    'Product :',
-    'Proizvod',
-    'Proizvod:',
-    'Dizajn i proizvod',
-    'Installation & Maintenance',
-    'Installation',
-    'Installation :',
-    'Ugradnja',
-    'Ugradnja:',
-    'Ugradnja i održavanje',
-    'Maintenance',
-    'Održavanje',
-    'Market Application',
-    'Application',
-    'Application :',
-    'Primena',
-    'Primena:',
-    'Environment',
-    'Environment :',
-    'Okruženje',
-    'Okruženje:',
-    'Sustainability',
-    'Sustainability & Comfort',
-    'Održivost',
-    'Održivost i komfor',
-    'Comfort',
-    'Komfor',
-    'Technical',
-    'Technical and environmental',
-    'Tehničke karakteristike',
-    'Tehničke specifikacije',
-    'Environmental',
-    'Ekološke karakteristike'
-  ];
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    // Check if this line is a section title (more flexible matching)
-    const isSectionTitle = sectionTitles.some(title => {
-      const titleLower = title.toLowerCase();
-      const lineLower = line.toLowerCase();
-
-      // Exact match
-      if (lineLower === titleLower) return true;
-
-      // Match if line starts with title and either:
-      // 1. Ends with colon (":") - e.g., "Proizvod:", "Ugradnja:"
-      // 2. Is followed by colon in the original line - e.g., "Product :"
-      // 3. Line is short (< 30 chars) and starts with title - for single word sections
-      if (lineLower.startsWith(titleLower)) {
-        // Check if it ends with colon or is short single-word section
-        if (line.endsWith(':') || line.endsWith(' :') || (line.length < 30 && !line.includes(' '))) {
-          return true;
-        }
-      }
-
-      // Contains title (for variations like "Technical and environmental")
-      if (lineLower.includes(titleLower) && line.length < 60 && (line.endsWith(':') || line.endsWith(' :'))) {
-        return true;
-      }
-
-      return false;
-    });
-
-    if (isSectionTitle) {
-      // Save previous section if exists
-      if (currentSection && currentSection.items.length > 0) {
-        sections.push(currentSection);
-      }
-      // Start new section
-      currentSection = {
-        title: line,
-        items: []
-      };
-    } else if (currentSection) {
-      // Add as bullet point to current section
-      // Skip very short lines that might be just separators or empty
-      if (line.length > 3 && !line.match(/^[-=]+$/)) {
-        currentSection.items.push(line);
-      }
-    }
-    // If we're before any section, skip intro lines (they're not part of structured sections)
-  }
-
-  // Add last section if exists
-  if (currentSection && currentSection.items.length > 0) {
-    sections.push(currentSection);
-  }
-
-  return sections;
-}
-
-// Helper: strip collection sub-type prefixes from color names
-// e.g. "LOOSELAY 0374 PARKER STATION" → "PARKER STATION"
-function cleanColorName(rawName: string): string {
-  const subTypes = ['LOOSELAY', 'CLIC', 'ZEN', 'CONNECT', 'MEGACLIC', 'ACOUSTIC'];
-  let clean = (rawName || '').trim();
-  for (const st of subTypes) {
-    if (clean.toUpperCase().startsWith(st + ' ')) {
-      clean = clean.substring(st.length).trim();
-      // Also strip any leading duplicated code number (e.g., "0374 PARKER STATION" → "PARKER STATION")
-      clean = clean.replace(/^\d{4}\s+/, '');
-      break;
-    }
-  }
-  return clean;
-}
-
-function colorToProduct(source: ColorSource, slug: string, collectionSlugOverride?: string): Product & { collectionSlug: string } {
-  const { categorySlug, color } = source;
-  const isLVT = categorySlug === 'lvt';
-  const isVinil = categorySlug === 'vinil';
-  const categoryId = isLVT ? '6' : isVinil ? '2' : '7';
-  const brandId = '6';
-  const cleanName = cleanColorName(color.name);
-  const name = color.code ? `${color.code} ${cleanName}` : cleanName;
-  const primaryImageUrl = isLVT
-    ? (color.texture_url || color.lifestyle_url || color.image_url || '')
-    : isVinil
-      ? ((color as any).image || color.image_url || '')
-      : (color.texture_url || color.image_url || '');
-
-  const images: ProductImageType[] = primaryImageUrl
-    ? [{
-      id: `color-img-${categorySlug}-${color.slug}`,
-      url: primaryImageUrl,
-      alt: name,
-      isPrimary: true,
-      order: 1,
-    }]
-    : [];
-
-  const specs = buildSpecsFromColor(color);
-
-  // Use description from JSON if available, otherwise generate default
-  const description = (color.description && typeof color.description === 'string' && color.description.trim())
-    ? color.description.trim()
-    : `${name} iz kolekcije ${color.collection_name}`;
-
-  return {
-    id: `color-${categorySlug}-${color.slug}`,
-    name,
-    slug,
-    sku: color.code,
-    categoryId,
-    brandId,
-    shortDescription: `${color.collection_name} - ${cleanName}`,
-    // Note: cleanName computed above from cleanColorName(color.name)
-    description,
-    images,
-    specs,
-    price: undefined,
-    priceUnit: undefined,
-    inStock: true,
-    featured: false,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    collectionSlug: collectionSlugOverride || color.collection,
-  };
-}
-
-function collectionFromColor(source: ColorSource, slug: string): Product {
-  const { categorySlug, color } = source;
-  const isLVT = categorySlug === 'lvt';
-  const isVinil = categorySlug === 'vinil';
-  const categoryId = isLVT ? '6' : isVinil ? '2' : '7';
-  const brandId = '6';
-  const collectionName = (color.collection_name || color.collection || '').toString() || slug;
-  const primaryImageUrl = isLVT
-    ? (color.texture_url || color.lifestyle_url || color.image_url || '')
-    : isVinil
-      ? ((color as any).image || color.image_url || '')
-      : (color.texture_url || color.image_url || '');
-
-  const images: ProductImageType[] = primaryImageUrl
-    ? [{
-      id: `collection-img-${categorySlug}-${slug}`,
-      url: primaryImageUrl,
-      alt: collectionName,
-      isPrimary: true,
-      order: 1,
-    }]
-    : [];
-
-  return {
-    id: `collection-${categorySlug}-${slug}`,
-    name: collectionName,
-    slug,
-    sku: color.collection || collectionName,
-    categoryId,
-    brandId,
-    shortDescription: collectionName,
-    description: (color.description && typeof color.description === 'string') ? color.description : '',
-    images,
-    specs: [],
-    price: undefined,
-    priceUnit: undefined,
-    inStock: true,
-    featured: false,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-}
-
-
-function normalizeCollectionSlug(categoryId: string, collectionSlug: string): string {
-  if (!collectionSlug) {
-    return collectionSlug;
-  }
-  if (categoryId === '6') {
-    return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
-  }
-  if (categoryId === '7') {
-    return collectionSlug.replace(/^gerflor-/, '');
-  }
-  if (categoryId === '4') {
-    return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
-  }
-  return collectionSlug;
-}
-
-async function resolveProductBySlug(slug: string): Promise<(Product & { collectionSlug?: string }) | null> {
-  // Parket kolekcija (rumba, allegro, privilege, ...): učitaj header iz Tarkett podataka da naslov i kolekcija budu tačni (ne "Parket" iz baze)
-  const parketCollectionName = getParketCollectionNameBySlug(slug);
-  if (parketCollectionName) {
-    const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-    const header = tarkettProducts.find(
-      (p) =>
-        p.categoryId === '3' &&
-        p.sku &&
-        String(p.sku).startsWith('PARKET-') &&
-        p.slug === slug
-    );
-    if (header) {
-      return { ...header, collectionSlug: undefined };
-    }
-  }
-
-  // First try to find product by slug directly (for collections)
-  const product = await productRepository.findBySlug(slug);
-  if (product) {
-    return product;
-  }
-
-  // Check if slug is a collection slug (starts with 'gerflor-')
-  // Examples: "gerflor-creation-30", "gerflor-dlw-uni-walton", "gerflor-armonia-400"
-  if (slug.startsWith('gerflor-')) {
-    const collectionSlugWithoutPrefix = slug.substring('gerflor-'.length); // Remove 'gerflor-' prefix
-
-    // Try to find collection by slug without prefix (linoleum collections are stored without prefix)
-    const collectionProduct = await productRepository.findBySlug(collectionSlugWithoutPrefix);
-    if (collectionProduct) {
-      return {
-        ...collectionProduct,
-        slug,
-      };
-    }
-
-    // Try to find first color from this collection in LVT JSON
-    const lvtColor = lvtColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
-    if (lvtColor) {
-      const colorSource: ColorSource = { categorySlug: 'lvt', color: lvtColor };
-      return collectionFromColor(colorSource, slug);
-    }
-
-    // Try to find first color from this collection in Linoleum JSON
-    const linoleumColor = linoleumColors.find((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
-    if (linoleumColor) {
-      const colorSource: ColorSource = { categorySlug: 'linoleum', color: linoleumColor };
-      return collectionFromColor(colorSource, slug);
-    }
-
-    // Try to find collection in Vinil JSON
-    const vinylCollection = vinylCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
-    if (vinylCollection && vinylCollection.colors && vinylCollection.colors.length > 0) {
-      const firstColor = vinylCollection.colors[0];
-      const colorSource: ColorSource = {
-        categorySlug: 'vinil',
-        color: {
-          ...firstColor,
-          collection: vinylCollection.slug,
-          collection_name: vinylCollection.name,
-          collection_slug: vinylCollection.slug,
-          full_name: `${firstColor.code} ${firstColor.name}`,
-          slug: `${vinylCollection.slug}-${firstColor.code}-${firstColor.name.toLowerCase().replace(/\s+/g, '-')}`,
-        } as ColorFromJSON
-      };
-      return collectionFromColor(colorSource, slug);
-    }
-
-    // Try to find in Carpet JSON (carpet uses collection_slug with 'gerflor-' prefix)
-    const carpetColors = (carpetColorsData as any).colors || [];
-    const carpetColor = carpetColors.find((color: any) => color.collection_slug === slug || color.collection === slug);
-    if (carpetColor) {
-      // Create a carpet product from first color in collection
-      const specs = Object.entries(carpetColor.characteristics || {}).map(([label, value]) => ({
-        key: label.toLowerCase().replace(/\s+/g, '_'),
-        label,
-        value: value as string
-      }));
-
-      return {
-        id: `carpet-${slug}`,
-        name: carpetColor.collection_name || slug,
-        slug,
-        sku: 'CARPET',
-        categoryId: '4',
-        brandId: '6',
-        shortDescription: carpetColor.collection_name || slug,
-        description: carpetColor.description || '',
-        images: carpetColor.image_url ? [{
-          id: `${slug}-img-1`,
-          url: carpetColor.image_url,
-          alt: carpetColor.collection_name || slug,
-          isPrimary: true,
-          order: 1,
-        }] : [],
-        specs,
-        inStock: true,
-        featured: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        collectionSlug: slug,
-      };
-    }
-  }
-
-  // Check if slug is a BLOQ collection slug (e.g., "bloq-assembly", "bloq-flow")
-  if (slug.startsWith('bloq-')) {
-    const bloqColors = (bloqCarpetData as any).colors || [];
-    const bloqColor = bloqColors.find((color: any) => color.collection_slug === slug || color.collection === slug);
-    if (bloqColor) {
-      const specs = Object.entries(bloqColor.characteristics || {}).map(([label, value]) => ({
-        key: label.toLowerCase().replace(/\s+/g, '_'),
-        label,
-        value: value as string
-      }));
-
-      return {
-        id: `bloq-${slug}`,
-        name: `BLOQ ${bloqColor.collection_name || slug}`,
-        slug,
-        sku: 'BLOQ-CARPET',
-        categoryId: '4',
-        brandId: '8',
-        shortDescription: `BLOQ ${bloqColor.collection_name || slug}`,
-        description: bloqColor.description || '',
-        images: bloqColor.image_url ? [{
-          id: `${slug}-img-1`,
-          url: bloqColor.image_url,
-          alt: `BLOQ ${bloqColor.collection_name || slug}`,
-          isPrimary: true,
-          order: 1,
-        }] : [],
-        specs,
-        inStock: true,
-        featured: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        collectionSlug: slug,
-      };
-    }
-  }
-
-  // Try to parse slug as collection-slug-color-slug format
-  // Example: "gerflor-creation-30-ballerina-41870347"
-  // Strategy: Try to find the collection slug first, then extract color slug
-
-  // Get all products to find matching collection
-  const allProducts = await productRepository.findAll();
-
-  // Try to match collection slug from the beginning of the slug
-  for (const prod of allProducts) {
-    if (slug.startsWith(prod.slug + '-')) {
-      // Found collection! Extract color slug
-      const colorSlug = slug.substring(prod.slug.length + 1); // +1 for the dash
-
-      // Try to find color by its slug
-      const colorSource = await loadColorFromJson(colorSlug);
-      if (colorSource) {
-        const colorProduct = colorToProduct(colorSource, slug, prod.slug);
-        return colorProduct;
-      }
-    }
-  }
-
-  // Fallback: try to load color by slug directly (for backward compatibility)
-  const colorSource = await loadColorFromJson(slug);
-  if (colorSource) {
-    return colorToProduct(colorSource, slug);
-  }
-
-  return null;
-}
+// ─── Metadata ────────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
 
   try {
-    // If color parameter is present, load the color directly as a product instead of the collection
     const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
     let product: (Product & { collectionSlug?: string }) | null = null;
 
-    // Import Tarkett products for Parket logic
     const { tarkettProducts } = await import('@/lib/data/tarkett-products');
 
     if (selectedColorSlug) {
-      // Try to load the color directly as a product
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (colorSource) {
-        // Get the collection slug from the URL params
-        const collectionSlug = params.slug;
-        product = colorToProduct(colorSource, selectedColorSlug, collectionSlug);
+        product = colorToProduct(colorSource, selectedColorSlug, params.slug);
       } else {
-        // Try to find in Tarkett products (Parket)
         const parketColor = tarkettProducts.find(p => p.slug === selectedColorSlug);
         if (parketColor) {
-          // We found a Parket variant. We should show the Collection Page but tailored.
-          // Actually, for Parket, the "Product" IS the collection header with specs merged?
-          // LVT does: colorToProduct creates a Product object representing the VARIANT but with collection context.
-
-          // Find the collection header for this variant
           const collectionNameSpec = parketColor.specs.find(s => s.key === 'collection');
           if (collectionNameSpec) {
             const collectionHeader = tarkettProducts.find(p =>
@@ -708,91 +53,61 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
               p.sku.startsWith('PARKET-') &&
               p.specs.find(s => s.key === 'collection' && s.value === collectionNameSpec.value)
             );
-
             if (collectionHeader) {
               product = {
                 ...collectionHeader,
                 name: parketColor.name,
                 images: parketColor.images,
-                specs: parketColor.specs, // Use variant specs
+                specs: parketColor.specs,
                 description: parketColor.description || collectionHeader.description,
-                slug: params.slug, // Keep URL slug
+                slug: params.slug,
                 collectionSlug: collectionHeader.slug,
               };
             }
           }
-
           if (!product) {
-            // Fallback if header not found
             product = parketColor;
           }
         }
       }
     }
 
-    // If color wasn't loaded, try to load the collection/product normally
     if (!product) {
       product = await resolveProductBySlug(params.slug);
     }
 
     if (!product) {
-      return {
-        metadataBase: new URL(baseUrl),
-        title: 'Proizvod nije pronađen',
-      };
+      return { metadataBase: new URL(baseUrl), title: 'Proizvod nije pronađen' };
     }
 
-    const category = product.categoryId
-      ? await categoryRepository.findById(product.categoryId)
-      : null;
-    const brand = product.brandId
-      ? await brandRepository.findById(product.brandId)
-      : null;
+    const category = product.categoryId ? await categoryRepository.findById(product.categoryId) : null;
+    const brand = product.brandId ? await brandRepository.findById(product.brandId) : null;
     const primaryImage = product.images?.[0];
 
-    // Build rich description
     const priceText = product.price && product.price > 0
       ? `Cena: ${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}`
       : '';
     const brandText = brand ? `${brand.name}` : '';
     const categoryText = category ? `${category.name}` : '';
-
     const description = `${product.shortDescription || product.description || ''} ${priceText}. ${brandText} ${categoryText}`.trim();
+    const keywords = [product.name, brandText, categoryText, 'podovi', 'podne obloge', 'Srbija', 'laminat', 'vinil', 'LVT'].filter(Boolean).join(', ');
 
-    // Build keywords
-    const keywords = [
-      product.name,
-      brandText,
-      categoryText,
-      'podovi',
-      'podne obloge',
-      'Srbija',
-      'laminat',
-      'vinil',
-      'LVT'
-    ].filter(Boolean).join(', ');
-
-    // Build URL with color parameter if present
     const urlWithColor = selectedColorSlug
       ? `${baseUrl}/proizvodi/${params.slug}?color=${selectedColorSlug}`
       : `${baseUrl}/proizvodi/${params.slug}`;
 
-    // Build Open Graph title with category and price (for social sharing)
-    // Format: "Laminat | 1.299 RSD/m²"
     const ogPriceText = product.price && product.price > 0
       ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}`
       : '';
     const ogTitle = categoryText && ogPriceText
       ? `${categoryText} | ${ogPriceText}`
       : categoryText || product.name;
-
-    // Build Open Graph description - just the product name
     const ogDescription = product.name;
 
     return {
       metadataBase: new URL(baseUrl),
       title: `${product.name} - Cena i tehničke specifikacije | Podovi.online`,
-      description: description.substring(0, 160), // SEO limit
+      description: description.substring(0, 160),
       keywords,
       authors: [{ name: 'Podovi.online' }],
       openGraph: {
@@ -802,14 +117,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
         locale: 'sr_RS',
         url: urlWithColor,
         siteName: 'Podovi.online',
-        images: primaryImage ? [
-          {
-            url: primaryImage.url,
-            width: 1200,
-            height: 630,
-            alt: primaryImage.alt || product.name,
-          }
-        ] : [],
+        images: primaryImage ? [{ url: primaryImage.url, width: 1200, height: 630, alt: primaryImage.alt || product.name }] : [],
       },
       twitter: {
         card: 'summary_large_image',
@@ -817,23 +125,18 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
         description: ogDescription,
         images: primaryImage ? [primaryImage.url] : [],
       },
-      alternates: {
-        canonical: urlWithColor,
-      },
+      alternates: { canonical: urlWithColor },
     };
   } catch (error) {
     console.error('Error generating metadata:', error);
-    return {
-      metadataBase: new URL(baseUrl),
-      title: 'Proizvod | Podovi.online',
-      description: '',
-    };
+    return { metadataBase: new URL(baseUrl), title: 'Proizvod | Podovi.online', description: '' };
   }
 }
 
+// ─── Page Component ──────────────────────────────────────────────────────────
+
 export default async function ProductPage({ params, searchParams }: Props) {
   try {
-    // Map category IDs to category slugs
     const categorySlugMap: Record<string, string> = {
       '1': 'laminat',
       '6': 'lvt',
@@ -842,10 +145,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '2': 'vinil',
     };
 
-    // If a linoleum collection is accessed with gerflor- prefix, redirect to canonical slug without prefix
+    // ── Linoleum redirect: /proizvodi/gerflor-xxx → /proizvodi/xxx ──
     if (params.slug.startsWith('gerflor-')) {
       const collectionSlugWithoutPrefix = params.slug.substring('gerflor-'.length);
-      const isLinoleumCollection = linoleumColors.some((color: ColorFromJSON) => color.collection === collectionSlugWithoutPrefix);
+      const isLinoleumCollection = linoleumColors.some(color => color.collection === collectionSlugWithoutPrefix);
       if (isLinoleumCollection) {
         const { redirect } = await import('next/navigation');
         const colorParam = typeof searchParams?.color === 'string' && searchParams.color ? `?color=${searchParams.color}` : '';
@@ -853,16 +156,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // Load the collection/product normally
+    // ── Resolve product ──
     let selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
     const product = await resolveProductBySlug(params.slug);
+    if (!product) notFound();
 
-    if (!product) {
-      notFound();
-    }
-
-    // Parket kolekcija: ako je ?color= varijanta koja ne pripada ovoj kolekciji, redirect na prvu validnu boju
+    // ── Parket: redirect invalid color to first valid ──
     if (product.categoryId === '3' && product.sku?.startsWith('PARKET-') && selectedColorSlug) {
+      const { getParketCollectionVariantSlugs } = await import('@/lib/data/parket-collection-mapping');
       const collectionSpec = product.specs.find(s => s.key === 'collection');
       const collectionName = collectionSpec?.value;
       const validSlugs = collectionName ? getParketCollectionVariantSlugs(collectionName) : [];
@@ -872,7 +173,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // Laminat kolekcija: ako je ?color= varijanta koja ne pripada ovoj kolekciji, redirect na prvu validnu boju
+    // ── Laminat: redirect invalid color to first valid ──
     if (product.categoryId === '1' && product.sku?.startsWith('LAM-') && selectedColorSlug) {
       const { tarkettProducts } = await import('@/lib/data/tarkett-products');
       const collectionName = product.specs?.find(s => s.key === 'collection')?.value;
@@ -886,13 +187,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // LVT/Linoleum/Vinil/Tekstilne colors: redirect to collection page with ?color= parameter
-    // This ensures standalone color URLs redirect to the collection context
-    // Skip for BLOQ collection products (they ARE collection pages, not colors)
+    // ── Redirect color-tiles to collection page with ?color= ──
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
     const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
     if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct && !isBloqCollection) {
-      // Normalize collection slug (add gerflor- prefix for LVT if missing)
       let normalizedCollectionSlug = collectionSlugFromProduct;
       if (product.categoryId === '6' && !collectionSlugFromProduct.startsWith('gerflor-')) {
         normalizedCollectionSlug = `gerflor-${collectionSlugFromProduct}`;
@@ -900,8 +198,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
       const { redirect } = await import('next/navigation');
       redirect(`/proizvodi/${normalizedCollectionSlug}?color=${encodeURIComponent(product.slug)}`);
     }
-    // Parket variant: redirect na stranicu kolekcije sa ?color= (kao LVT) – /proizvodi/allegro?color=hrast-elegant-shiny-3-strip
+
+    // ── Parket variant: redirect to collection page with ?color= ──
     if (product.categoryId === '3' && product.sku && !product.sku.startsWith('PARKET-')) {
+      const { getEffectiveParketCollection, getParketCollectionSlug } = await import('@/lib/data/parket-collection-mapping');
       const collectionSpec = product.specs.find(s => s.key === 'collection');
       const collectionName = getEffectiveParketCollection(product.slug, collectionSpec?.value);
       const collectionSlug = collectionName ? getParketCollectionSlug(collectionName) : null;
@@ -911,7 +211,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // Laminat variant: redirect na stranicu kolekcije sa ?color= – /proizvodi/blues-1033-4v?color=blues-1033-4v-bourbon-oak
+    // ── Laminat variant: redirect to collection page with ?color= ──
     if (product.categoryId === '1' && product.sku && !product.sku.startsWith('LAM-')) {
       const collectionName = product.specs?.find(s => s.key === 'collection')?.value;
       const collectionSlug = collectionName ? collectionName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') : null;
@@ -921,16 +221,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // Ensure product has required fields with defensive checks
-    if (!product.images || !Array.isArray(product.images)) {
-      product.images = [];
-    }
-    if (!product.specs || !Array.isArray(product.specs)) {
-      product.specs = [];
-    }
-    if (!product.name || typeof product.name !== 'string') {
-      product.name = 'Proizvod';
-    }
+    // ── Defensive defaults ──
+    if (!product.images || !Array.isArray(product.images)) product.images = [];
+    if (!product.specs || !Array.isArray(product.specs)) product.specs = [];
+    if (!product.name || typeof product.name !== 'string') product.name = 'Proizvod';
     if (!product.shortDescription || typeof product.shortDescription !== 'string') {
       product.shortDescription = (product.description && typeof product.description === 'string') ? product.description : '';
     }
@@ -938,196 +232,31 @@ export default async function ProductPage({ params, searchParams }: Props) {
       product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
     }
 
-    // If we loaded a color directly, the specs are already merged in colorToProduct
-    // If we loaded a collection and there's a color parameter, merge color specs (LVT/Linoleum/Vinil from JSON)
-    // IMPORTANT: Skip this for Parket (categoryId '3') to avoid loading LVT colors (like "Winter 832") by mistake
-    if (selectedColorSlug && product && !product.slug.includes(selectedColorSlug) && product.categoryId !== '3' && product.categoryId !== '1') {
-      const colorSource = await loadColorFromJson(selectedColorSlug);
-      if (colorSource?.color) {
-        // Clean color name using shared helper
-        const cleanedName = cleanColorName(colorSource.color.name);
-        const colorCode = colorSource.color.code || '';
-        const cleanFullName = colorCode ? `${colorCode} ${cleanedName}` : cleanedName;
-
-        // Merge name and image from selected color (same pattern as Parket/Laminat)
-        product.name = cleanFullName;
-        product.shortDescription = `${colorSource.color.collection_name} - ${cleanedName}`;
-
-        // Get color image
-        const colorImageUrl = colorSource.color.texture_url || colorSource.color.lifestyle_url || colorSource.color.image_url;
-        if (colorImageUrl) {
-          product.images = [{
-            id: `color-img-${selectedColorSlug}`,
-            url: colorImageUrl,
-            alt: product.name,
-            isPrimary: true,
-            order: 1,
-          }];
-        }
-
-        // Merge specs
-        const colorSpecs = buildSpecsFromColor(colorSource.color);
-        if (colorSpecs.length > 0) {
-          product.specs = mergeSpecs(product.specs, colorSpecs);
-        }
-        if (colorSource.color.description && typeof colorSource.color.description === 'string' && colorSource.color.description.trim()) {
-          product.description = colorSource.color.description.trim();
-        }
-      }
+    // ── Merge selected color variant ──
+    if (selectedColorSlug) {
+      await mergeSelectedColor(product, selectedColorSlug);
     }
 
-    // Parket: merge selected variant (slika, naziv) u kolekciju – opis i karakteristike uvek iz header-a (kao na Tarkett.rs)
-    if (selectedColorSlug && product && product.categoryId === '3' && product.sku?.startsWith('PARKET-')) {
-      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-      const parketVariant = tarkettProducts.find(p => p.categoryId === '3' && p.slug === selectedColorSlug);
-      if (parketVariant) {
-        product.name = parketVariant.name;
-        product.shortDescription = parketVariant.shortDescription || product.shortDescription;
-        // Opis i detailsSections ostaju iz kolekcije (header) – na Tarkett.rs sve varijante dele isti opis i karakteristike
-        if (parketVariant.images && parketVariant.images.length > 0) {
-          product.images = parketVariant.images;
-        }
-        if (parketVariant.specs && parketVariant.specs.length > 0) {
-          product.specs = mergeSpecs(product.specs, parketVariant.specs);
-        }
-      }
-    }
-
-    // Laminat: merge selected variant (slika, naziv, spec) u kolekciju – isto kao parket
-    if (selectedColorSlug && product && product.categoryId === '1' && product.sku?.startsWith('LAM-')) {
-      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-      const laminatVariant = tarkettProducts.find(p => p.categoryId === '1' && !p.sku?.startsWith('LAM-') && p.slug === selectedColorSlug);
-      if (laminatVariant) {
-        product.name = laminatVariant.name;
-        product.shortDescription = laminatVariant.shortDescription || product.shortDescription;
-        if (laminatVariant.images && laminatVariant.images.length > 0) {
-          product.images = laminatVariant.images;
-        }
-        if (laminatVariant.specs && laminatVariant.specs.length > 0) {
-          product.specs = mergeSpecs(product.specs, laminatVariant.specs);
-        }
-      }
-    }
-
-    // displayName: posle parket merge-a da podnaslov bude "Parket – ime izabrane boje", ne kolekcije
+    // ── Display name: strip "Gerflor " prefix for LVT ──
     const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
       ? product.name.replace(/^Gerflor\s+/, '')
       : product.name;
 
-    if (!product.slug || typeof product.slug !== 'string') {
-      product.slug = params.slug;
-    }
-    if (!product.categoryId || typeof product.categoryId !== 'string') {
-      product.categoryId = '6'; // Default to LVT
-    }
-    if (!product.brandId || typeof product.brandId !== 'string') {
-      product.brandId = '6'; // Default to Gerflor
-    }
+    if (!product.slug || typeof product.slug !== 'string') product.slug = params.slug;
+    if (!product.categoryId || typeof product.categoryId !== 'string') product.categoryId = '6';
+    if (!product.brandId || typeof product.brandId !== 'string') product.brandId = '6';
 
-    const category = product.categoryId
-      ? await categoryRepository.findById(product.categoryId)
-      : null;
-    const brand = product.brandId
-      ? await brandRepository.findById(product.brandId)
-      : null;
+    // ── Load related data ──
+    const category = product.categoryId ? await categoryRepository.findById(product.categoryId) : null;
+    const brand = product.brandId ? await brandRepository.findById(product.brandId) : null;
     let primaryImage: { url: string; alt: string } | null = product.images && product.images.length > 0
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;
 
-    // Prepare customColors for Parket – isto kao Allegro, Privilege, Privilege Waltz: iz params.slug (kolekcija) uvek gradimo listu boja
-    let customColors: any[] | undefined = undefined;
-    if (product.categoryId === '3') {
-      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-      const collectionName = getParketCollectionNameBySlug(params.slug) ?? product.specs?.find(s => s.key === 'collection')?.value ?? null;
-      if (collectionName) {
-        const explicitSlugs = getParketCollectionVariantSlugs(collectionName);
-        const variants = explicitSlugs.length > 0
-          ? (explicitSlugs
-            .map(slug => tarkettProducts.find(p =>
-              p.categoryId === '3' &&
-              !(p.sku && String(p.sku).startsWith('PARKET-')) &&
-              p.slug === slug &&
-              getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName
-            ))
-            .filter(Boolean) as typeof tarkettProducts)
-          : tarkettProducts.filter(p => {
-            if (p.categoryId !== '3' || (p.sku && String(p.sku).startsWith('PARKET-'))) return false;
-            return getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value) === collectionName;
-          });
-        if (variants.length > 0) {
-          customColors = variants.map(v => ({
-            collection: collectionName,
-            collection_name: collectionName,
-            code: v.sku,
-            name: v.name,
-            full_name: v.name,
-            slug: v.slug,
-            image_url: v.images?.[0]?.url || '',
-            texture_url: v.images?.[0]?.url || '',
-            image_count: v.images?.length ?? 0,
-            characteristics: (v.specs || []).reduce((acc, spec) => {
-              acc[spec.label] = spec.value;
-              return acc;
-            }, {} as Record<string, string>)
-          }));
-        }
-      }
-    }
+    // ── Prepare color variants ──
+    const customColors = await prepareCustomColors(product, params.slug);
 
-    // Laminat: customColors iz varijanti iste kolekcije (spec collection === product collection)
-    if (product.categoryId === '1' && product.sku?.startsWith('LAM-')) {
-      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
-      const collectionName = product.specs?.find(s => s.key === 'collection')?.value ?? null;
-      if (collectionName) {
-        const variants = tarkettProducts.filter(p =>
-          p.categoryId === '1' && !p.sku?.startsWith('LAM-') && p.specs?.find(s => s.key === 'collection')?.value === collectionName
-        );
-        if (variants.length > 0) {
-          const bySlug = new Map<string, typeof variants[0]>();
-          for (const v of variants) {
-            if (v.slug && !bySlug.has(v.slug)) bySlug.set(v.slug, v);
-          }
-          const uniqueVariants = Array.from(bySlug.values());
-          customColors = uniqueVariants.map(v => ({
-            collection: collectionName,
-            collection_name: collectionName,
-            code: v.sku,
-            name: v.name,
-            full_name: v.name,
-            slug: v.slug,
-            image_url: v.images?.[0]?.url || '',
-            texture_url: v.images?.[0]?.url || '',
-            image_count: v.images?.length ?? 0,
-            characteristics: (v.specs || []).reduce((acc, spec) => {
-              acc[spec.label] = spec.value;
-              return acc;
-            }, {} as Record<string, string>)
-          }));
-        }
-      }
-    }
-
-    // BLOQ Carpet: customColors from bloq_carpet_tiles.json for the matching collection
-    if (product.categoryId === '4' && (product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-'))) {
-      const bloqColors = (bloqCarpetData as any).colors || [];
-      const collectionColors = bloqColors.filter((c: any) => c.collection_slug === params.slug);
-      if (collectionColors.length > 0) {
-        customColors = collectionColors.map((c: any) => ({
-          collection: c.collection_slug,
-          collection_name: c.collection_name,
-          code: c.code,
-          name: c.name,
-          full_name: c.full_name || c.name,
-          slug: c.slug,
-          image_url: c.image_url || '',
-          texture_url: c.image_url || '',
-          image_count: c.image_url ? 1 : 0,
-          characteristics: c.characteristics || {},
-        }));
-      }
-    }
-
-    // Laminat: ako kolekcija nema sliku, koristi prvu varijantu da slika nikad ne nestane
+    // ── Laminat: fallback image from first variant ──
     if (product.categoryId === '1' && !primaryImage && customColors && customColors.length > 0) {
       const firstImg = (customColors[0] as { image_url?: string; texture_url?: string }).image_url || (customColors[0] as { texture_url?: string }).texture_url;
       if (firstImg) {
@@ -1135,7 +264,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // Schema.org structured data
+    // ── Schema.org ──
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
     const schemaData = {
       "@context": "https://schema.org",
@@ -1143,33 +272,26 @@ export default async function ProductPage({ params, searchParams }: Props) {
       "name": product.name,
       "description": product.description || product.shortDescription || '',
       "image": primaryImage ? `${baseUrl}${primaryImage.url}` : undefined,
-      "brand": brand ? {
-        "@type": "Brand",
-        "name": brand.name
-      } : undefined,
+      "brand": brand ? { "@type": "Brand", "name": brand.name } : undefined,
       "category": category?.name,
       "offers": {
         "@type": "Offer",
         "price": product.price && product.price > 0 ? product.price : undefined,
         "priceCurrency": "RSD",
-        "availability": product.inStock
-          ? "https://schema.org/InStock"
-          : "https://schema.org/OutOfStock",
+        "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
         "url": `${baseUrl}/proizvodi/${product.slug}`,
         "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
       },
       "sku": product.sku,
     };
 
+    // ── Determine if this is a "color selector" category ──
+    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1'].includes(product.categoryId);
+
     return (
       <>
         {/* Schema.org JSON-LD */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaData)
-          }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
         <div className="min-h-screen bg-gray-50">
           {/* Breadcrumbs */}
@@ -1186,9 +308,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
           {/* Product Content */}
           <div className="container py-12 pb-20 md:pb-12">
-            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2' || product.categoryId === '3' || product.categoryId === '1') ? (
+            {isColorSelectorCategory ? (
               <>
-                {/* LVT, Linoleum, Parket, Laminat: layout sa color selectorom */}
+                {/* LVT, Linoleum, Parket, Laminat, Vinil, Tekstilne: layout sa color selectorom */}
                 <ProductColorSelector
                   initialImage={primaryImage}
                   imagePriority={true}
@@ -1229,50 +351,12 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   productId={product.id}
                 />
 
-                {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne – Parket i Laminat imaju u leftColumnBottom */}
+                {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne */}
                 {product.categoryId !== '3' && product.categoryId !== '2' && product.categoryId !== '1' && (
                   <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="bg-white rounded-2xl shadow-lg p-6">
-                      <>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
-                        {(() => {
-                          const descriptionSections = product.description
-                            ? parseDescriptionToSections(product.description)
-                            : [];
-                          const sectionsToDisplay = descriptionSections.length > 0
-                            ? descriptionSections
-                            : (product.detailsSections || []);
-
-                          if (sectionsToDisplay.length > 0) {
-                            return (
-                              <div className="space-y-6">
-                                {sectionsToDisplay.map((section, idx) => (
-                                  <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
-                                    <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
-                                    {section.items && section.items.length > 0 && (
-                                      <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                                        {section.items.map((item, index) => (
-                                          <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
-                                        ))}
-                                      </ul>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            );
-                          }
-                          if (product.description) {
-                            return (
-                              <div className="prose prose-lg max-w-none text-gray-700">
-                                <p className="whitespace-pre-line">{product.description}</p>
-                              </div>
-                            );
-                          }
-                          return null;
-                        })()}
-                      </>
+                      <DescriptionSection product={product} />
                     </div>
-
                     <ProductCharacteristics
                       specs={filterSpecsForDisplay(product.specs)}
                       categoryId={product.categoryId}
@@ -1281,7 +365,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 )}
               </>
             ) : (
-              // Non-LVT products - standard layout
+              /* Non-color-selector categories - standard layout */
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 {/* Image Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
@@ -1305,47 +389,33 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
                 {/* Info Section */}
                 <div className="space-y-8">
-                  {/* Brand */}
                   {brand && (
                     <div className="flex items-center space-x-3">
                       <span className="text-sm text-gray-500">Brend:</span>
-                      <Link
-                        href={`/brendovi/${brand.slug}`}
-                        className="text-primary-600 hover:text-primary-700 font-semibold"
-                      >
+                      <Link href={`/brendovi/${brand.slug}`} className="text-primary-600 hover:text-primary-700 font-semibold">
                         {brand.name}
                       </Link>
                     </div>
                   )}
 
-                  {/* Title */}
                   <div>
-                    <h1 className="text-4xl font-bold text-gray-900 mb-3">
-                      {displayName}
-                    </h1>
+                    <h1 className="text-4xl font-bold text-gray-900 mb-3">{displayName}</h1>
                     {product.shortDescription && (
-                      <p className="text-xl text-gray-600">
-                        {product.shortDescription}
-                      </p>
+                      <p className="text-xl text-gray-600">{product.shortDescription}</p>
                     )}
                   </div>
 
-                  {/* Price (if available) */}
                   {product.price && product.price > 0 && (
                     <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
                       <div className="flex items-baseline space-x-2">
-                        <span className="text-4xl font-bold text-primary-600">
-                          {product.price.toLocaleString('sr-RS')}
-                        </span>
+                        <span className="text-4xl font-bold text-primary-600">{product.price.toLocaleString('sr-RS')}</span>
                         <span className="text-lg text-gray-600">RSD</span>
-                        {product.priceUnit && (
-                          <span className="text-lg text-gray-500">/ {product.priceUnit}</span>
-                        )}
+                        {product.priceUnit && <span className="text-lg text-gray-500">/ {product.priceUnit}</span>}
                       </div>
                     </div>
                   )}
 
-                  {/* CTA Buttons – prefill: proizvod + boja + ref */}
+                  {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
                       href={(() => {
@@ -1372,63 +442,19 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     )}
                   </div>
 
-                  {/* Favorite, Compare, Share */}
                   <ProductActions product={product} />
                 </div>
               </div>
             )}
 
-            {/* Description & Specs - Za vinil (2) i ostale kategorije koje nisu LVT/Linoleum/Tekstilne/Parket/Laminat – opširni opisi i tehničke specifikacije (Gerflor itd.) */}
+            {/* Description & Specs - Za vinil i ostale kategorije */}
             {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && product.categoryId !== '3' && product.categoryId !== '1' && (
               <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Description */}
                 <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
-
-                  {/* Parse description into sections */}
-                  {(() => {
-                    const descriptionSections = product.description
-                      ? parseDescriptionToSections(product.description)
-                      : [];
-
-                    // Use parsed sections if available, otherwise use product.detailsSections
-                    const sectionsToDisplay = descriptionSections.length > 0
-                      ? descriptionSections
-                      : (product.detailsSections || []);
-
-                    if (sectionsToDisplay.length > 0) {
-                      return (
-                        <div className="space-y-6">
-                          {sectionsToDisplay.map((section, idx) => (
-                            <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
-                              <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
-                              {section.items && section.items.length > 0 && (
-                                <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                                  {section.items.map((item, index) => (
-                                    <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
-                                  ))}
-                                </ul>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      );
-                    }
-
-                    // Fallback: show description as plain text if no sections found
-                    if (product.description) {
-                      return (
-                        <div className="prose prose-lg max-w-none text-gray-700">
-                          <p className="whitespace-pre-line">{product.description}</p>
-                        </div>
-                      );
-                    }
-
-                    return null;
-                  })()}
+                  <DescriptionSection product={product} />
                 </div>
 
-                {/* Specifications */}
                 {(() => {
                   const displaySpecs = filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug });
                   return displaySpecs.length > 0 && (
@@ -1437,12 +463,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       <dl className="space-y-4">
                         {displaySpecs.map((spec) => (
                           <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
-                            <dt className="text-sm font-medium text-gray-500 mb-1">
-                              {spec.label}
-                            </dt>
-                            <dd className="text-lg font-semibold text-gray-900">
-                              {spec.value}
-                            </dd>
+                            <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
+                            <dd className="text-lg font-semibold text-gray-900">{spec.value}</dd>
                           </div>
                         ))}
                       </dl>
@@ -1452,10 +474,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Certifications & Eco Features - Full Width Below for LVT, Linoleum, and Vinil */}
+            {/* Certifications & Eco Features - Full Width Below for LVT, Linoleum, Vinil, Tekstilne */}
             {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && (
               <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Certifications */}
                 <div className="bg-white rounded-2xl shadow-lg p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                     <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1466,7 +487,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   <CertificationBadges certifications={["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]} />
                 </div>
 
-                {/* Eco Features */}
                 <div className="bg-white rounded-2xl shadow-lg p-6">
                   <EcoFeatures
                     features={product.categoryId === '7'
@@ -1479,7 +499,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   />
                 </div>
 
-                {/* Technical Documents */}
                 <div className="h-full">
                   <ProductDocuments
                     initialDocuments={product.documents}
@@ -1491,7 +510,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
             )}
 
           </div>
-          {/* Sticky CTA na mobilnom: Pošalji upit – vodi na kontakt sa prefill (product, color, ref) */}
+          {/* Sticky CTA na mobilnom */}
           <ProductInquiryStickyCTA
             productSlug={params.slug}
             inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
@@ -1503,4 +522,50 @@ export default async function ProductPage({ params, searchParams }: Props) {
     console.error('Error rendering product page:', error);
     notFound();
   }
+}
+
+// ─── Sub-components (inline, used only in this page) ─────────────────────────
+
+function DescriptionSection({ product }: { product: Product }) {
+  const descriptionSections = product.description
+    ? parseDescriptionToSections(product.description)
+    : [];
+  const sectionsToDisplay = descriptionSections.length > 0
+    ? descriptionSections
+    : (product.detailsSections || []);
+
+  if (sectionsToDisplay.length > 0) {
+    return (
+      <>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
+        <div className="space-y-6">
+          {sectionsToDisplay.map((section, idx) => (
+            <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+              {section.items && section.items.length > 0 && (
+                <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                  {section.items.map((item, index) => (
+                    <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  }
+
+  if (product.description) {
+    return (
+      <>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
+        <div className="prose prose-lg max-w-none text-gray-700">
+          <p className="whitespace-pre-line">{product.description}</p>
+        </div>
+      </>
+    );
+  }
+
+  return null;
 }

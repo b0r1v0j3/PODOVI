@@ -7,8 +7,8 @@
 - **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
 - **Language**: TypeScript
 - **Styling**: [TailwindCSS 3](https://tailwindcss.com/)
-- **Database**: Supabase (PostgreSQL)
-- **Email**: Nodemailer
+- **Database**: [Supabase](https://supabase.com/) (PostgreSQL)
+- **Email**: Nodemailer (Gmail SMTP)
 - **Analytics**: Google Analytics 4
 - **Deployment**: Vercel
 
@@ -17,6 +17,9 @@
 ```bash
 # Install dependencies
 npm install
+
+# Copy env file and fill in values
+cp .env.example .env.local
 
 # Run in development
 npm run dev
@@ -49,14 +52,20 @@ npm start
 - **🔗 Share**: Share product pages via native Web Share API (mobile) or clipboard copy (desktop)
 - Product card overlay with Favorite/Compare buttons (always visible on mobile, hover on desktop)
 
+### Search & Discovery
+- **🔍 Global Search**: Full-text search across all products with instant results
+- **🧮 Flooring Calculator**: Calculate how much material is needed based on room dimensions
+
 ### Contact & Inquiries
 - Contact form with product pre-fill from product pages
-- Email notifications via SMTP (Nodemailer)
+- **Inquiry modal** accessible from product pages
+- Email notifications via Gmail SMTP (Nodemailer)
+- **WhatsApp button** for quick customer communication
 
 ### SEO & Performance
 - Structured data (Organization, Website, Product schemas)
 - Dynamic meta tags and Open Graph images
-- Sitemap generation
+- Sitemap generation (`/sitemap.xml`) & robots.txt (`/robots.txt`)
 - Optimized images with Next.js Image component
 
 ## Project Structure
@@ -65,6 +74,7 @@ npm start
 PODOVI/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx            # Homepage
+│   ├── layout.tsx          # Root layout (providers, analytics, header/footer)
 │   ├── kategorije/         # Categories (Laminat, Vinil, Parket, etc.)
 │   ├── proizvodi/          # Individual product pages
 │   ├── brendovi/           # Brand pages (Tarkett, Gerflor)
@@ -72,21 +82,49 @@ PODOVI/
 │   ├── omiljeni/           # Favorites page
 │   ├── uporedi/            # Product comparison page
 │   ├── upiti/              # Inquiry page
-│   └── api/                # API routes (contact, inquiries, products, colors)
+│   ├── api/                # API routes
+│   │   ├── colors/         #   Color/variant data endpoint
+│   │   ├── contact/        #   Contact form submission
+│   │   ├── inquiries/      #   Product inquiry submission
+│   │   ├── products/       #   Product data endpoint
+│   │   └── search/         #   Global product search
+│   ├── sitemap.ts          # Dynamic sitemap generation
+│   ├── robots.ts           # Robots.txt generation
+│   ├── error.tsx           # Error boundary
+│   ├── global-error.tsx    # Global error boundary
+│   └── not-found.tsx       # 404 page
 │
 ├── components/             # React components
 │   ├── Header.tsx          # Site navigation with favorites badge
 │   ├── Footer.tsx          # Site footer
-│   ├── ColorGrid.tsx       # Color variant grid for collections
-│   ├── ProductCard.tsx     # Product card with overlay buttons
+│   ├── GlobalSearch.tsx    # Full-text product search
+│   ├── ProductCard.tsx     # Product card (server component)
+│   ├── ProductCardClient.tsx   # Product card (client component)
 │   ├── ProductCardOverlay.tsx  # Favorite + Compare buttons overlay
 │   ├── ProductActions.tsx  # Favorite + Compare + Share for detail pages
 │   ├── ProductColorSelector.tsx # Color selector with image switching
-│   ├── ProductFilters.tsx  # Category page filters
+│   ├── ProductFilters.tsx  # Category page filters (search, brand, price, etc.)
+│   ├── ProductImage.tsx    # Optimized product image component
+│   ├── ProductCharacteristics.tsx # Product specs table
+│   ├── ProductDocuments.tsx     # Downloadable PDF documents section
+│   ├── ProductInquiryStickyCTA.tsx # Sticky inquiry CTA on product detail
+│   ├── ColorGrid.tsx       # Color variant grid for collections
 │   ├── FavoriteButton.tsx  # Heart toggle button
 │   ├── CompareButton.tsx   # Compare toggle button
 │   ├── CompareBar.tsx      # Sticky bottom comparison bar
-│   └── ...                 # Additional components
+│   ├── InquiryButton.tsx   # Inquiry trigger button
+│   ├── InquiryModal.tsx    # Inquiry form modal
+│   ├── FlooringCalculator.tsx  # Material quantity calculator
+│   ├── ShareButtons.tsx    # Share via Web Share API / clipboard
+│   ├── WhatsAppButton.tsx  # Direct WhatsApp link button
+│   ├── CategoryCard.tsx    # Category card on homepage
+│   ├── BrandCard.tsx       # Brand card on homepage
+│   ├── Breadcrumbs.tsx     # Breadcrumb navigation
+│   ├── CertificationBadges.tsx  # Product certification badges
+│   ├── EcoFeatures.tsx     # Eco-friendly features display
+│   ├── LVTTabs.tsx         # LVT category tabbed layout
+│   ├── ScrollReveal.tsx    # Scroll-based animation wrapper
+│   └── GoogleAnalytics.tsx # GA4 script injection
 │
 ├── lib/
 │   ├── context/            # React Context providers
@@ -97,9 +135,19 @@ PODOVI/
 │   │   ├── tarkett-products.ts  # Tarkett brand products
 │   │   ├── gerflor-products-generated.ts  # Auto-generated Gerflor catalog
 │   │   ├── linoleum-products.ts # Linoleum products
-│   │   └── parket-collection-mapping.ts # Parket variants mapping
+│   │   ├── parket-collection-mapping.ts # Parket variants mapping
+│   │   ├── lvt-detailed-info.ts # LVT detailed specifications
+│   │   └── lvt-extra.ts    # Additional LVT data
 │   ├── repositories/       # Data access layer (repository pattern)
-│   └── seo/                # SEO utilities & structured data
+│   │   ├── product-repository.ts   # Product CRUD & queries
+│   │   ├── category-repository.ts  # Category data access
+│   │   ├── brand-repository.ts     # Brand data access
+│   │   ├── inquiry-repository.ts   # Inquiry persistence (Supabase)
+│   │   └── id-mapping.ts          # ID mapping utilities
+│   ├── mailer/             # Email sending utilities
+│   ├── seo/                # SEO utilities & structured data
+│   ├── supabase/           # Supabase client configuration
+│   └── utils/              # General utility functions
 │
 ├── public/
 │   ├── data/               # JSON color/variant data files
@@ -112,15 +160,53 @@ PODOVI/
 │   └── images/             # Product images
 │       └── products/bloq-roomshots/  # BLOQ collection hero images (18 roomshots)
 │
+├── supabase/
+│   └── migration.sql       # Database schema migration
+│
 ├── types/                  # TypeScript type definitions
-├── scripts/                # Active utility scripts
-│   ├── validate-images.js  # Image path validator (used in build)
-│   └── test-email.ts       # Email sending test
-├── tools/                  # Active dev tools
-│   ├── check-images.js     # Image checker
-│   ├── normalize-json.js   # JSON normalizer
-│   └── suggest-fixes-unknowns.js  # Unknown product fix suggestions
+│
+├── scripts/                # Utility scripts
+│   ├── validate-images.js          # Image path validator (runs before build)
+│   ├── generate-bloq-data.js       # Generate BLOQ product data
+│   ├── download-bloq-images.ps1    # Download BLOQ roomshot images
+│   ├── update-bloq-image-paths.js  # Update BLOQ image references
+│   ├── seed-database.ts            # Seed Supabase database
+│   ├── run-migration.mjs           # Run database migration
+│   └── test-email.ts               # Email sending test
+│
+├── tools/                  # Dev tools
+│   ├── check-images.js             # Image checker
+│   ├── normalize-json.js           # JSON normalizer
+│   └── suggest-fixes-unknowns.js   # Unknown product fix suggestions
+│
 └── archive/                # Historical scripts (not in git)
+```
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────┐
+│                    Next.js App Router                │
+│  ┌───────────┐  ┌───────────┐  ┌─────────────────┐  │
+│  │   Pages   │  │   API     │  │   Components    │  │
+│  │ /kategorije│  │ /api/     │  │ ProductCard     │  │
+│  │ /proizvodi │  │  search   │  │ ProductFilters  │  │
+│  │ /brendovi  │  │  contact  │  │ GlobalSearch    │  │
+│  │ /omiljeni  │  │  products │  │ InquiryModal    │  │
+│  │ /uporedi   │  │  colors   │  │ CompareBar      │  │
+│  │ /kontakt   │  │  inquiries│  │ ...             │  │
+│  └─────┬─────┘  └─────┬─────┘  └────────┬────────┘  │
+│        │              │                  │           │
+│  ┌─────▼──────────────▼──────────────────▼────────┐  │
+│  │              Repository Layer                  │  │
+│  │  product / category / brand / inquiry repos    │  │
+│  └─────────────────────┬──────────────────────────┘  │
+│                        │                             │
+│  ┌─────────────────────▼──────────────────────────┐  │
+│  │           Data Sources                         │  │
+│  │  Static TS files  │  JSON files  │  Supabase   │  │
+│  └────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────┘
 ```
 
 ## Product Categories
@@ -148,6 +234,7 @@ PODOVI/
 | `npm run dev` | Start development server |
 | `npm run build` | Validate images + build production |
 | `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
 | `npm run check:images` | Check product image paths |
 | `npm run validate:images` | Validate all image paths exist (runs before build) |
 | `npm run normalize:colors` | Normalize JSON color data |
@@ -158,12 +245,37 @@ PODOVI/
 Copy `.env.example` to `.env.local`:
 
 ```env
-SMTP_HOST=        # SMTP server for email
-SMTP_PORT=        # SMTP port
-SMTP_USER=        # SMTP username
-SMTP_PASS=        # SMTP password
+# Gmail SMTP Configuration for inquiry emails
+# Create an App Password at: https://myaccount.google.com/apppasswords
+# (Requires 2-Factor Authentication to be enabled on the Gmail account)
+GMAIL_USER=prodaja@podovi.online
+GMAIL_APP_PASSWORD=your-16-character-app-password
+
+# Optional: Override admin email if different from GMAIL_USER
+# ADMIN_EMAIL=prodaja@podovi.online
+```
+
+Additional variables used in `.env.local`:
+
+```env
 NEXT_PUBLIC_BASE_URL=https://www.podovi.online
 NEXT_PUBLIC_GA_MEASUREMENT_ID=  # Google Analytics 4
 NEXT_PUBLIC_SUPABASE_URL=       # Supabase project URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=  # Supabase anonymous key
 ```
+
+## Database
+
+The project uses **Supabase** (PostgreSQL) for storing product inquiries. The schema migration is in `supabase/migration.sql`.
+
+```bash
+# Run migration
+node scripts/run-migration.mjs
+
+# Seed database with product data
+npx tsx scripts/seed-database.ts
+```
+
+## License
+
+Private — All rights reserved.

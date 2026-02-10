@@ -65,6 +65,39 @@
     @apply badge bg-yellow-100 text-yellow-800 shadow-sm;
   }
 
+  /* Category-specific badge colors for product cards */
+  .badge-lvt {
+    @apply bg-blue-600 text-white;
+  }
+
+  .badge-laminat {
+    @apply bg-amber-600 text-white;
+  }
+
+  .badge-parket {
+    @apply bg-amber-800 text-white;
+  }
+
+  .badge-linoleum {
+    @apply bg-emerald-600 text-white;
+  }
+
+  .badge-vinil {
+    @apply bg-violet-600 text-white;
+  }
+
+  .badge-tekstilne {
+    @apply bg-teal-600 text-white;
+  }
+
+  .badge-deking {
+    @apply bg-orange-700 text-white;
+  }
+
+  .spec-chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs font-medium;
+  }
+
   .glass {
     @apply bg-white/80 backdrop-blur-md border border-white/20;
   }

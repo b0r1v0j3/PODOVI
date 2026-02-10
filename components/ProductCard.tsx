@@ -2,10 +2,48 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '@/types';
 import { brandRepository } from '@/lib/repositories/brand-repository';
+import { categoryRepository } from '@/lib/repositories/category-repository';
 import ProductCardOverlay from './ProductCardOverlay';
 
 interface ProductCardProps {
   product: Product;
+}
+
+// Category badge configuration
+const categoryBadgeConfig: Record<string, { label: string; className: string }> = {
+  '1': { label: 'Laminat', className: 'badge-laminat' },
+  '2': { label: 'Vinil', className: 'badge-vinil' },
+  '3': { label: 'Parket', className: 'badge-parket' },
+  '4': { label: 'Tekstilne ploče', className: 'badge-tekstilne' },
+  '5': { label: 'Deking', className: 'badge-deking' },
+  '6': { label: 'LVT', className: 'badge-lvt' },
+  '7': { label: 'Linoleum', className: 'badge-linoleum' },
+};
+
+// Keys to extract from specs for chip display
+const SPEC_CHIP_KEYS = [
+  { key: 'thickness', label: 'Debljina' },
+  { key: 'overall_thickness', label: 'Debljina' },
+  { key: 'wear_layer', label: 'Sloj habanja' },
+  { key: 'format', label: 'Format' },
+  { key: 'dimension', label: 'Dimenzije' },
+  { key: 'klasa_upotrebe', label: 'Klasa' },
+];
+
+function getSpecChips(specs: Product['specs']): { label: string; value: string }[] {
+  if (!specs || specs.length === 0) return [];
+  const chips: { label: string; value: string }[] = [];
+  const seen = new Set<string>();
+
+  for (const config of SPEC_CHIP_KEYS) {
+    if (chips.length >= 2) break; // Max 2 chips
+    const spec = specs.find(s => s.key === config.key);
+    if (spec && spec.value && spec.value !== 'N/A' && !seen.has(config.label)) {
+      seen.add(config.label);
+      chips.push({ label: config.label, value: spec.value });
+    }
+  }
+  return chips;
 }
 
 export default async function ProductCard({ product }: ProductCardProps) {
@@ -13,7 +51,6 @@ export default async function ProductCard({ product }: ProductCardProps) {
   const primaryImage = product.images && product.images.length > 0
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
-  const isLocalImage = !!primaryImage?.url?.startsWith('/');
 
   // Remove "Gerflor" prefix from product name for LVT collections
   const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
@@ -34,14 +71,22 @@ export default async function ProductCard({ product }: ProductCardProps) {
 
   let productHref = `/proizvodi/${product.slug}`;
 
-  // For color products (LVT/Linoleum/Carpet/Vinil), ONLY if they have collectionSlug (individual colors)
-  // Always link to category page with color parameter for consistency
-  // Collections don't have collectionSlug, so they will use default href (collection page)
   if (isColorTile && colorCollectionSlug) {
     const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
-    // Always use category URL with color parameter
     productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
   }
+
+  // Badge config
+  const badge = categoryBadgeConfig[product.categoryId];
+
+  // Spec chips
+  const specChips = getSpecChips(product.specs);
+
+  // Determine if shortDescription is just the product/collection name (not useful)
+  const isShortDescUseful = product.shortDescription
+    && product.shortDescription !== product.name
+    && product.shortDescription !== displayName
+    && product.shortDescription.length > 5;
 
   return (
     <Link
@@ -66,37 +111,65 @@ export default async function ProductCard({ product }: ProductCardProps) {
             </svg>
           </div>
         )}
-        {/* Favorite & Compare buttons - always visible on mobile, hover on desktop */}
+        {/* Category badge */}
+        {badge && (
+          <span className={`absolute top-3 left-3 z-10 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider shadow-sm ${badge.className}`}>
+            {badge.label}
+          </span>
+        )}
+        {/* Favorite & Compare buttons */}
         <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
           <ProductCardOverlay product={product} />
         </div>
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
       </div>
-      <div className="p-6">
+      <div className="p-5">
         {brand && (
-          <p className="text-[11px] text-primary-600 mb-2 uppercase tracking-wider font-semibold">
+          <p className="text-[11px] text-primary-600 mb-1.5 uppercase tracking-wider font-semibold">
             {brand.name}
           </p>
         )}
-        <h3 className="font-bold text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+        <h3 className="font-bold text-lg mb-1.5 line-clamp-2 text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
           {displayName}
         </h3>
-        <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
-          {product.shortDescription}
-        </p>
-        {product.price && product.price > 0 && (
-          <div className="flex items-baseline justify-between mb-4">
-            <div>
-              <span className="text-2xl font-bold text-gray-900">
-                {product.price.toLocaleString('sr-RS')}
+
+        {/* Spec chips */}
+        {specChips.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-2.5">
+            {specChips.map((chip) => (
+              <span key={chip.label} className="spec-chip">
+                {chip.value}
               </span>
-              <span className="text-sm text-gray-500 ml-1">
-                RSD/{product.priceUnit}
-              </span>
-            </div>
+            ))}
           </div>
         )}
+
+        {/* Short description — only if it adds info beyond the name */}
+        {isShortDescUseful && specChips.length === 0 && (
+          <p className="text-sm text-gray-500 mb-3 line-clamp-2 leading-relaxed">
+            {product.shortDescription}
+          </p>
+        )}
+
+        {/* Price or "Cena na upit" */}
+        {product.price && product.price > 0 ? (
+          <div className="flex items-baseline mb-3">
+            <span className="text-2xl font-bold text-gray-900">
+              {product.price.toLocaleString('sr-RS')}
+            </span>
+            <span className="text-sm text-gray-500 ml-1">
+              RSD/{product.priceUnit}
+            </span>
+          </div>
+        ) : (
+          <div className="mb-3">
+            <span className="text-sm font-medium text-gray-400 italic">
+              Cena na upit
+            </span>
+          </div>
+        )}
+
         <div className="flex items-center text-primary-600 font-semibold text-sm group-hover:text-primary-700 transition-colors duration-300">
           <span>Detaljnije</span>
           <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
