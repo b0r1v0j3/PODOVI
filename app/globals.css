@@ -153,6 +153,22 @@
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.3s ease-out;
+  }
+
   /* Scroll reveal animation */
   .scroll-reveal {
     opacity: 0;
@@ -167,7 +183,11 @@
 
   /* Better touch targets on mobile */
   @media (max-width: 768px) {
-    .btn, .btn-primary, .btn-secondary, .btn-outline {
+
+    .btn,
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline {
       min-height: 44px;
     }
   }
