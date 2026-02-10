@@ -604,8 +604,10 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
         collectionSlug: slug,
       };
     }
+  }
 
-    // Try to find in BLOQ Carpet JSON (bloq uses collection_slug with 'bloq-' prefix)
+  // Check if slug is a BLOQ collection slug (e.g., "bloq-assembly", "bloq-flow")
+  if (slug.startsWith('bloq-')) {
     const bloqColors = (bloqCarpetData as any).colors || [];
     const bloqColor = bloqColors.find((color: any) => color.collection_slug === slug || color.collection === slug);
     if (bloqColor) {
@@ -617,17 +619,17 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
 
       return {
         id: `bloq-${slug}`,
-        name: bloqColor.collection_name || slug,
+        name: `BLOQ ${bloqColor.collection_name || slug}`,
         slug,
         sku: 'BLOQ-CARPET',
         categoryId: '4',
         brandId: '8',
-        shortDescription: bloqColor.collection_name || slug,
+        shortDescription: `BLOQ ${bloqColor.collection_name || slug}`,
         description: bloqColor.description || '',
         images: bloqColor.image_url ? [{
           id: `${slug}-img-1`,
           url: bloqColor.image_url,
-          alt: bloqColor.collection_name || slug,
+          alt: `BLOQ ${bloqColor.collection_name || slug}`,
           isPrimary: true,
           order: 1,
         }] : [],
