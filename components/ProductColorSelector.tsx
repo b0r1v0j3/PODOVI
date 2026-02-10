@@ -279,11 +279,21 @@ export default function ProductColorSelector({
               )}
             </div>
 
-            {/* Ispod slike: za parket samo naziv boje (bez koda/sluga); za LVT kod + naziv */}
+            {/* Ispod slike: samo ime boje (varijanta), bez kolekcije */}
             {selectedColor && (
               <div className="mt-4 text-center">
                 {customColors?.length ? (
-                  <p className="text-base text-gray-700">{selectedColor.name}</p>
+                  <p className="text-base text-gray-700">
+                    {(() => {
+                      // Strip collection name prefix from variant name
+                      let name = selectedColor.name;
+                      const collName = collectionDisplayName || productName;
+                      if (collName && name.toLowerCase().startsWith(collName.toLowerCase())) {
+                        name = name.substring(collName.length).trim().replace(/^[-–—\s]+/, '');
+                      }
+                      return name || selectedColor.name;
+                    })()}
+                  </p>
                 ) : (
                   <>
                     <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
@@ -292,6 +302,29 @@ export default function ProductColorSelector({
                 )}
               </div>
             )}
+
+            {/* Favorite & Share – below image */}
+            <div className="flex items-center justify-center gap-3 mt-4">
+              {productId && <FavoriteButton productId={productId} size="md" />}
+              <button
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({ title: productName, url: window.location.href }).catch(() => { });
+                  } else {
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                      alert('Link kopiran!');
+                    });
+                  }
+                }}
+                className="inline-flex items-center justify-center gap-1.5 rounded-lg font-medium transition-all duration-200 border px-3 py-1.5 text-sm bg-white text-gray-700 border-gray-300 hover:bg-primary-50 hover:border-primary-400 hover:text-primary-700"
+                title="Podeli"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                Podeli
+              </button>
+            </div>
 
             {/* External Link Button - Below Image */}
             {externalLink && (
@@ -333,9 +366,21 @@ export default function ProductColorSelector({
                 {collectionDisplayName || productName}
               </h1>
               {collectionDisplayName ? (
-                <p className="text-lg text-gray-600">
-                  {collectionCategoryLabel || 'Parket'} – {productName}
-                </p>
+                <>
+                  <p className="text-lg text-gray-600">
+                    {(() => {
+                      // Extract just the variant name from productName by stripping collection prefix
+                      let variantName = productName;
+                      if (collectionDisplayName && variantName.toLowerCase().startsWith(collectionDisplayName.toLowerCase())) {
+                        variantName = variantName.substring(collectionDisplayName.length).trim().replace(/^[-–—\s]+/, '');
+                      }
+                      return variantName || productName;
+                    })()}
+                  </p>
+                  <p className="text-base text-gray-500">
+                    {collectionCategoryLabel || 'Parket'} kolekcija
+                  </p>
+                </>
               ) : shortDescription ? (
                 <p className="text-lg text-gray-600">
                   {shortDescription}
@@ -398,28 +443,7 @@ export default function ProductColorSelector({
                 Pošaljite upit
               </a>
 
-              {/* Favorite & Share row */}
-              <div className="flex items-center gap-2 mt-3">
-                {productId && <FavoriteButton productId={productId} size="md" />}
-                <button
-                  onClick={() => {
-                    if (navigator.share) {
-                      navigator.share({ title: productName, url: window.location.href }).catch(() => { });
-                    } else {
-                      navigator.clipboard.writeText(window.location.href).then(() => {
-                        alert('Link kopiran!');
-                      });
-                    }
-                  }}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg font-medium transition-all duration-200 border px-3 py-1.5 text-sm bg-white text-gray-700 border-gray-300 hover:bg-primary-50 hover:border-primary-400 hover:text-primary-700"
-                  title="Podeli"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                  </svg>
-                  Podeli
-                </button>
-              </div>
+
             </div>
           </div>
 
