@@ -13,6 +13,7 @@ import ProductCharacteristics from '@/components/ProductCharacteristics';
 import ProductDescriptionWithCharacteristics from '@/components/ProductDescriptionWithCharacteristics';
 import ProductDocuments from '@/components/ProductDocuments';
 import ProductInquiryStickyCTA from '@/components/ProductInquiryStickyCTA';
+import ProductActions from '@/components/ProductActions';
 import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDetailsSection } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
@@ -1309,6 +1310,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       </a>
                     )}
                   </div>
+
+                  {/* Favorite, Compare, Share */}
+                  <ProductActions product={product} />
                 </div>
               </div>
             )}

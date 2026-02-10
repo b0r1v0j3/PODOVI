@@ -66,8 +66,12 @@ export default async function ProductCard({ product }: ProductCardProps) {
             </svg>
           </div>
         )}
+        {/* Favorite & Compare buttons - visible on hover */}
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <ProductCardOverlay product={product} />
+        </div>
         {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
       </div>
       <div className="p-6">
         {brand && (
