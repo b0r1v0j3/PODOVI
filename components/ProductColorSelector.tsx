@@ -149,7 +149,7 @@ export default function ProductColorSelector({
     // Check if this is a carpet product (Armonia)
     if (collectionSlug.includes('armonia')) {
       // Fetch carpet data
-      fetch('/data/carpet_tiles_complete.json')
+      fetch('/api/colors?category=tekstilne-ploce')
         .then(res => res.json())
         .then(data => {
           const carpetColor = data.colors?.find((c: any) => c.slug === selectedColorSlug);

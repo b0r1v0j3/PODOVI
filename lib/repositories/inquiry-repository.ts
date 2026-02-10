@@ -1,4 +1,5 @@
 import { Inquiry } from '@/types';
+import { supabase } from '@/lib/supabase/client';
 
 export interface IInquiryRepository {
   create(inquiry: Omit<Inquiry, 'id' | 'createdAt'>): Promise<Inquiry>;
@@ -7,7 +8,109 @@ export interface IInquiryRepository {
   updateStatus(id: string, status: Inquiry['status']): Promise<Inquiry>;
 }
 
-// Mock implementation for now
+// =========================================
+// Transform DB row → Inquiry interface
+// =========================================
+function toInquiry(row: any): Inquiry {
+  return {
+    id: row.id,
+    productId: row.product_id || '',
+    productName: row.product_name || '',
+    productSku: row.product_sku || '',
+    productUrl: row.product_url || '',
+    productImage: row.product_image || undefined,
+    productCategory: row.product_category || undefined,
+    fullName: row.full_name,
+    phone: row.phone,
+    email: row.email,
+    city: row.city,
+    quantityM2: row.quantity_m2 ? parseFloat(row.quantity_m2) : undefined,
+    message: row.message,
+    preferredContact: row.preferred_contact || [],
+    status: row.status || 'new',
+    createdAt: new Date(row.created_at),
+  };
+}
+
+// =========================================
+// Supabase implementation
+// =========================================
+export class SupabaseInquiryRepository implements IInquiryRepository {
+  async create(data: Omit<Inquiry, 'id' | 'createdAt'>): Promise<Inquiry> {
+    const row = {
+      product_id: data.productId,
+      product_name: data.productName,
+      product_sku: data.productSku,
+      product_url: data.productUrl,
+      product_image: data.productImage || null,
+      product_category: data.productCategory || null,
+      full_name: data.fullName,
+      phone: data.phone,
+      email: data.email,
+      city: data.city,
+      quantity_m2: data.quantityM2 || null,
+      message: data.message,
+      preferred_contact: data.preferredContact,
+      status: data.status || 'new',
+    };
+
+    const { data: inserted, error } = await supabase
+      .from('inquiries')
+      .insert(row)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('SupabaseInquiryRepository.create error:', error.message);
+      throw new Error(`Failed to create inquiry: ${error.message}`);
+    }
+
+    console.log('✅ Nova upit sačuvan u Supabase:', inserted.id);
+    return toInquiry(inserted);
+  }
+
+  async findById(id: string): Promise<Inquiry | null> {
+    const { data, error } = await supabase
+      .from('inquiries')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error || !data) return null;
+    return toInquiry(data);
+  }
+
+  async findAll(): Promise<Inquiry[]> {
+    const { data, error } = await supabase
+      .from('inquiries')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('SupabaseInquiryRepository.findAll error:', error.message);
+      return [];
+    }
+    return (data || []).map(toInquiry);
+  }
+
+  async updateStatus(id: string, status: Inquiry['status']): Promise<Inquiry> {
+    const { data, error } = await supabase
+      .from('inquiries')
+      .update({ status })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error || !data) {
+      throw new Error(`Upit sa ID ${id} nije pronađen ili ažuriranje nije uspelo`);
+    }
+    return toInquiry(data);
+  }
+}
+
+// =========================================
+// Mock implementation (kept as fallback)
+// =========================================
 export class MockInquiryRepository implements IInquiryRepository {
   private inquiries: Inquiry[] = [];
 
@@ -17,7 +120,7 @@ export class MockInquiryRepository implements IInquiryRepository {
       id: `INQ-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       createdAt: new Date(),
     };
-    
+
     this.inquiries.push(inquiry);
     console.log('✅ Nova upit sačuvan:', inquiry);
     return inquiry;
@@ -41,5 +144,8 @@ export class MockInquiryRepository implements IInquiryRepository {
   }
 }
 
-// Singleton instance
-export const inquiryRepository = new MockInquiryRepository();
+// Switch: use Supabase by default, set USE_MOCK=true to use mock data
+const USE_MOCK = process.env.USE_MOCK_DATA === 'true';
+export const inquiryRepository = USE_MOCK
+  ? new MockInquiryRepository()
+  : new SupabaseInquiryRepository();

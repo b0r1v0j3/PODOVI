@@ -40,8 +40,8 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     name: 'Podovi DOO',
     description: 'Vodeći uvoznik i distributer kvalitetnih podnih obloga u Srbiji',
-    url: 'https://podovi.rs',
-    logo: 'https://podovi.rs/logo.png',
+    url: 'https://podovi.online',
+    logo: 'https://podovi.online/logo.png',
     email: 'prodaja@podovi.online',
     contactPoint: {
       '@type': 'ContactPoint',
@@ -77,11 +77,11 @@ export function generateWebsiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Podovi.rs',
-    url: 'https://podovi.rs',
+    name: 'Podovi.online',
+    url: 'https://podovi.online',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://podovi.rs/kategorije?search={search_term_string}',
+      target: 'https://podovi.online/kategorije?search={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };
@@ -97,7 +97,7 @@ export function generateProductListSchema(products: Product[], category?: Catego
     itemListElement: products.map((product, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      url: `https://podovi.rs/proizvodi/${product.slug}`,
+      url: `https://podovi.online/proizvodi/${product.slug}`,
       name: product.name,
     })),
   };

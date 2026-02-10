@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo/structured-data";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,6 +49,17 @@ export default function RootLayout({
   return (
     <html lang="sr">
       <body className={inter.className}>
+        <GoogleAnalytics />
+        {/* Organization + WebSite structured data (site-wide) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              generateOrganizationSchema(),
+              generateWebsiteSchema(),
+            ]),
+          }}
+        />
         {/* Skip to main content link for accessibility */}
         <a
           href="#main-content"

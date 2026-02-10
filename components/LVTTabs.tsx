@@ -273,11 +273,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
       return;
     }
 
-    const jsonPath = categorySlug === 'linoleum'
-      ? '/data/gerflor_linoleum_colors_complete.json'
-      : categorySlug === 'vinil'
-        ? '/data/vinyl_colors_complete.json'
-        : '/data/lvt_colors_complete.json';
+    const categoryParam = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : 'lvt';
+    const jsonPath = `/api/colors?category=${categoryParam}`;
 
     fetch(jsonPath)
       .then(res => {
@@ -328,11 +325,8 @@ export default function LVTTabs({ collections, colors: legacyColors, brandsRecor
     // This ensures colors are ready when user clicks the "Boje" tab
     if (useJsonColors && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
-      const jsonPath = categorySlug === 'linoleum'
-        ? '/data/gerflor_linoleum_colors_complete.json'
-        : categorySlug === 'vinil'
-          ? '/data/vinyl_colors_complete.json'
-          : '/data/lvt_colors_complete.json';
+      const categoryParam2 = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : 'lvt';
+      const jsonPath = `/api/colors?category=${categoryParam2}`;
 
       console.log(`LVTTabs: Fetching colors from ${jsonPath}...`);
       fetch(jsonPath)

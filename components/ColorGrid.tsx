@@ -242,7 +242,7 @@ export default function ColorGrid({
 
     const collectionName = getCollectionName(collectionSlug);
 
-    // Determine which JSON to load based on collection slug
+    // Determine which category to load from API
     const isLinoleum = collectionSlug.startsWith('dlw-');
     const isCarpet = collectionSlug.startsWith('armonia-') || collectionSlug.startsWith('gerflor-armonia-');
     // Vinil includes mipolam collections and heterogeneous collections (nerok-55, nerok-70, premium-acoustic, etc.)
@@ -256,13 +256,8 @@ export default function ColorGrid({
       collectionSlug.startsWith('gerflor-mipolam-') ||
       heterogeneousSlugs.includes(collectionNameWithoutPrefix) ||
       heterogeneousSlugs.some(slug => collectionSlug.includes(slug));
-    const jsonPath = isLinoleum
-      ? '/data/linoleum_colors_complete.json'
-      : isCarpet
-        ? '/data/carpet_tiles_complete.json'
-        : isVinil
-          ? '/data/vinyl_colors_complete.json'
-          : '/data/lvt_colors_complete.json';
+    const categoryParam = isLinoleum ? 'linoleum' : isCarpet ? 'tekstilne-ploce' : isVinil ? 'vinil' : 'lvt';
+    const jsonPath = `/api/colors?category=${categoryParam}`;
 
     fetch(jsonPath)
       .then(res => {
