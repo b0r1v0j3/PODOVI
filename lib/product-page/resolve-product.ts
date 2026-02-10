@@ -146,6 +146,26 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                 value: value as string
             }));
 
+            // Use enriched description if available
+            const descriptionParts: string[] = [];
+            if (bloqColor.collection_description_sr) {
+                descriptionParts.push(bloqColor.collection_description_sr);
+            }
+            if (bloqColor.color_range_text) {
+                descriptionParts.push(`\nPaleta boja:\n${bloqColor.color_range_text}`);
+            }
+            if (bloqColor.backing_variants && Array.isArray(bloqColor.backing_variants) && bloqColor.backing_variants.length > 0) {
+                descriptionParts.push(`\nDostupne podloge: ${bloqColor.backing_variants.join(', ')}`);
+            }
+            const enrichedDescription = descriptionParts.length > 0
+                ? descriptionParts.join('\n')
+                : (bloqColor.description || '');
+
+            // Map documents from JSON
+            const documents = Array.isArray(bloqColor.documents)
+                ? bloqColor.documents.map((doc: any) => ({ title: doc.title || '', url: doc.url || '' }))
+                : [];
+
             return {
                 id: `bloq-${slug}`,
                 name: `BLOQ ${bloqColor.collection_name || slug}`,
@@ -154,7 +174,7 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                 categoryId: '4',
                 brandId: '8',
                 shortDescription: `BLOQ ${bloqColor.collection_name || slug}`,
-                description: bloqColor.description || '',
+                description: enrichedDescription,
                 images: bloqColor.image_url ? [{
                     id: `${slug}-img-1`,
                     url: bloqColor.image_url,
@@ -163,6 +183,7 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                     order: 1,
                 }] : [],
                 specs,
+                documents,
                 inStock: true,
                 featured: false,
                 createdAt: new Date(),

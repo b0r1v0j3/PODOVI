@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
+import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 
 interface Document {
     title: string;
@@ -44,6 +45,18 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
                         const cSlug = c.slug || '';
                         return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
                     });
+                }
+
+                // If not found in standard data, try BLOQ data
+                if (!color && isCarpet) {
+                    const bloqColors = (bloqCarpetData as any).colors || [];
+                    color = bloqColors.find((c: any) => c.slug === colorSlug);
+                    if (!color) {
+                        color = bloqColors.find((c: any) => {
+                            const cSlug = c.slug || '';
+                            return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
+                        });
+                    }
                 }
 
                 if (color && color.documents && Array.isArray(color.documents)) {
