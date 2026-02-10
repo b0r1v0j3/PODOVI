@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
+import FavoriteButton from './FavoriteButton';
 
 import { ProductSpec } from '@/types';
 
@@ -41,6 +42,8 @@ interface ProductColorSelectorProps {
   inquiryRef?: string;
   /** Da li je glavna slika hero/LCP – samo jedna po stranici ima priority. */
   imagePriority?: boolean;
+  /** Product ID for Favorite button */
+  productId?: string;
 }
 
 export default function ProductColorSelector({
@@ -64,6 +67,7 @@ export default function ProductColorSelector({
   leftColumnBottom,
   inquiryRef,
   imagePriority,
+  productId,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -393,6 +397,29 @@ export default function ProductColorSelector({
               >
                 Pošaljite upit
               </a>
+
+              {/* Favorite & Share row */}
+              <div className="flex items-center gap-2 mt-3">
+                {productId && <FavoriteButton productId={productId} size="md" />}
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({ title: productName, url: window.location.href }).catch(() => { });
+                    } else {
+                      navigator.clipboard.writeText(window.location.href).then(() => {
+                        alert('Link kopiran!');
+                      });
+                    }
+                  }}
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg font-medium transition-all duration-200 border px-3 py-1.5 text-sm bg-white text-gray-700 border-gray-300 hover:bg-primary-50 hover:border-primary-400 hover:text-primary-700"
+                  title="Podeli"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                  </svg>
+                  Podeli
+                </button>
+              </div>
             </div>
           </div>
 

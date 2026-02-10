@@ -1166,6 +1166,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     </div>
                   ) : undefined}
                   inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
+                  productId={product.id}
                 />
 
                 {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne – Parket i Laminat imaju u leftColumnBottom */}
