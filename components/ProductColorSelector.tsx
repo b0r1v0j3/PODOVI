@@ -369,16 +369,15 @@ export default function ProductColorSelector({
                 <>
                   <p className="text-lg text-gray-600">
                     {(() => {
-                      // Extract just the variant name from productName by stripping collection prefix
                       let variantName = productName;
                       if (collectionDisplayName && variantName.toLowerCase().startsWith(collectionDisplayName.toLowerCase())) {
-                        variantName = variantName.substring(collectionDisplayName.length).trim().replace(/^[-–—\s]+/, '');
+                        variantName = variantName.substring(collectionDisplayName.length).trim().replace(/^[-\u2013\u2014\s]+/, '');
                       }
                       return variantName || productName;
                     })()}
                   </p>
                   <p className="text-base text-gray-500">
-                    {collectionCategoryLabel || 'Parket'} kolekcija
+                    {collectionCategoryLabel || 'Parket'} {collectionDisplayName}
                   </p>
                 </>
               ) : shortDescription ? (

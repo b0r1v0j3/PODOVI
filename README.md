@@ -7,7 +7,9 @@
 - **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
 - **Language**: TypeScript
 - **Styling**: [TailwindCSS 3](https://tailwindcss.com/)
+- **Database**: Supabase (PostgreSQL)
 - **Email**: Nodemailer
+- **Analytics**: Google Analytics 4
 - **Deployment**: Vercel
 
 ## Getting Started
@@ -26,6 +28,37 @@ npm run build
 npm start
 ```
 
+## Key Features
+
+### Product Catalog
+- Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking)
+- Browse by **brand** (Tarkett, Gerflor)
+- **Product filters**: search, brand, price range, stock status, color, collection, thickness, wood type
+- **Color variant selector** with instant image switching (no page reload)
+- **Product detail pages** with image galleries, specs, and inquiry CTA
+
+### Product Interactions
+- **❤️ Favorites**: Save products to a favorites list (persisted in localStorage)
+  - Heart icon in header nav with count badge
+  - Dedicated `/omiljeni` page showing all saved products
+  - Favorite button on product cards and detail pages
+- **📊 Compare**: Side-by-side product comparison (up to 3 products)
+  - Compare button on product cards (overlay on hover)
+  - Sticky `CompareBar` at bottom when products are selected
+  - Dedicated `/uporedi` page with full comparison table
+- **🔗 Share**: Share product pages via native Web Share API (mobile) or clipboard copy (desktop)
+- Product card overlay with Favorite/Compare buttons (always visible on mobile, hover on desktop)
+
+### Contact & Inquiries
+- Contact form with product pre-fill from product pages
+- Email notifications via SMTP (Nodemailer)
+
+### SEO & Performance
+- Structured data (Organization, Website, Product schemas)
+- Dynamic meta tags and Open Graph images
+- Sitemap generation
+- Optimized images with Next.js Image component
+
 ## Project Structure
 
 ```
@@ -36,27 +69,36 @@ PODOVI/
 │   ├── proizvodi/          # Individual product pages
 │   ├── brendovi/           # Brand pages (Tarkett, Gerflor)
 │   ├── kontakt/            # Contact page with form
+│   ├── omiljeni/           # Favorites page
+│   ├── uporedi/            # Product comparison page
 │   ├── upiti/              # Inquiry page
-│   └── api/                # API routes (contact, inquiries)
+│   └── api/                # API routes (contact, inquiries, products, colors)
 │
 ├── components/             # React components
-│   ├── Header.tsx          # Site navigation
+│   ├── Header.tsx          # Site navigation with favorites badge
 │   ├── Footer.tsx          # Site footer
 │   ├── ColorGrid.tsx       # Color variant grid for collections
-│   ├── ProductCard.tsx     # Product card (server)
-│   ├── ProductCardClient.tsx # Product card (client-side interactions)
+│   ├── ProductCard.tsx     # Product card with overlay buttons
+│   ├── ProductCardOverlay.tsx  # Favorite + Compare buttons overlay
+│   ├── ProductActions.tsx  # Favorite + Compare + Share for detail pages
+│   ├── ProductColorSelector.tsx # Color selector with image switching
 │   ├── ProductFilters.tsx  # Category page filters
-│   ├── InquiryModal.tsx    # Product inquiry form modal
-│   └── ...                 # 23 total components
+│   ├── FavoriteButton.tsx  # Heart toggle button
+│   ├── CompareButton.tsx   # Compare toggle button
+│   ├── CompareBar.tsx      # Sticky bottom comparison bar
+│   └── ...                 # Additional components
 │
 ├── lib/
+│   ├── context/            # React Context providers
+│   │   ├── CompareContext.tsx   # Comparison state (localStorage)
+│   │   └── FavoritesContext.tsx # Favorites state (localStorage)
 │   ├── data/               # Product data files
 │   │   ├── mock-data.ts    # Categories, brands, vinyl & LVT products
 │   │   ├── tarkett-products.ts  # Tarkett brand products
 │   │   ├── gerflor-products-generated.ts  # Auto-generated Gerflor catalog
 │   │   └── linoleum-products.ts # Linoleum products
 │   ├── repositories/       # Data access layer (repository pattern)
-│   └── seo/                # SEO utilities
+│   └── seo/                # SEO utilities & structured data
 │
 ├── public/
 │   ├── data/               # JSON color/variant data files
@@ -82,12 +124,12 @@ PODOVI/
 
 | Category | Serbian | ID |
 |----------|---------|-----|
-| Parket | Parket | 3 |
 | Laminat | Laminat | 1 |
-| LVT | LVT | 6 |
+| Vinil | Vinyl | 2 |
+| Parket | Parket | 3 |
 | Tekstilne ploče | Carpet tiles | 4 |
 | Deking | Decking | 5 |
-| Vinil | Vinyl | 2 |
+| LVT | LVT | 6 |
 | Linoleum | Linoleum | 7 |
 
 ## Brands
@@ -117,4 +159,7 @@ SMTP_PORT=        # SMTP port
 SMTP_USER=        # SMTP username
 SMTP_PASS=        # SMTP password
 NEXT_PUBLIC_BASE_URL=https://www.podovi.online
+NEXT_PUBLIC_GA_MEASUREMENT_ID=  # Google Analytics 4
+NEXT_PUBLIC_SUPABASE_URL=       # Supabase project URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY=  # Supabase anonymous key
 ```
