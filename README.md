@@ -32,7 +32,7 @@ npm start
 
 ### Product Catalog
 - Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking)
-- Browse by **brand** (Tarkett, Gerflor)
+- Browse by **brand** (Tarkett, Gerflor, BLOQ)
 - **Product filters**: search, brand, price range, stock status, color, collection, thickness, wood type
 - **Color variant selector** with instant image switching (no page reload)
 - **Product detail pages** with image galleries, specs, and inquiry CTA
@@ -96,7 +96,8 @@ PODOVI/
 │   │   ├── mock-data.ts    # Categories, brands, vinyl & LVT products
 │   │   ├── tarkett-products.ts  # Tarkett brand products
 │   │   ├── gerflor-products-generated.ts  # Auto-generated Gerflor catalog
-│   │   └── linoleum-products.ts # Linoleum products
+│   │   ├── linoleum-products.ts # Linoleum products
+│   │   └── parket-collection-mapping.ts # Parket variants mapping
 │   ├── repositories/       # Data access layer (repository pattern)
 │   └── seo/                # SEO utilities & structured data
 │
@@ -105,9 +106,11 @@ PODOVI/
 │   │   ├── lvt_colors_complete.json
 │   │   ├── vinyl_colors_complete.json
 │   │   ├── linoleum_colors_complete.json
-│   │   └── carpet_tiles_complete.json
+│   │   ├── carpet_tiles_complete.json  # Gerflor carpet tiles (26 colors)
+│   │   └── bloq_carpet_tiles.json      # BLOQ carpet tiles (18 collections, 210 colors)
 │   ├── documents/          # Product PDF documents (231 files)
 │   └── images/             # Product images
+│       └── products/bloq-roomshots/  # BLOQ collection hero images (18 roomshots)
 │
 ├── types/                  # TypeScript type definitions
 ├── scripts/                # Active utility scripts
@@ -136,6 +139,7 @@ PODOVI/
 
 - **Tarkett** (ID: 3) — Global flooring leader
 - **Gerflor** (ID: 6) — French vinyl/commercial flooring specialist
+- **BLOQ** (ID: 8) — Dutch premium carpet tile manufacturer (18 collections, 210 colors)
 
 ## npm Scripts
 
