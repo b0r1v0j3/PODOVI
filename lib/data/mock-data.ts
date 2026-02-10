@@ -80,6 +80,15 @@ export const brands: Brand[] = [
     website: 'https://www.gerflor-cee.com/',
     countryOfOrigin: 'Francuska',
   },
+  {
+    id: '8',
+    name: 'BLOQ',
+    slug: 'bloq',
+    logo: '/images/brands/bloq.png',
+    description: 'Holandski proizvođač premium tekstilnih ploča za komercijalne i poslovne prostore',
+    website: 'https://bloq.nl',
+    countryOfOrigin: 'Holandija',
+  },
 ];
 
 export const products: Product[] = [

@@ -18,6 +18,7 @@ import type { Product, ProductImage as ProductImageType, ProductSpec, ProductDet
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
+import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import { getEffectiveParketCollection, getParketCollectionBySlug, getParketCollectionNameBySlug, getParketCollectionSlug, getParketCollectionVariantSlugs } from '@/lib/data/parket-collection-mapping';
 
@@ -592,6 +593,41 @@ async function resolveProductBySlug(slug: string): Promise<(Product & { collecti
           id: `${slug}-img-1`,
           url: carpetColor.image_url,
           alt: carpetColor.collection_name || slug,
+          isPrimary: true,
+          order: 1,
+        }] : [],
+        specs,
+        inStock: true,
+        featured: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        collectionSlug: slug,
+      };
+    }
+
+    // Try to find in BLOQ Carpet JSON (bloq uses collection_slug with 'bloq-' prefix)
+    const bloqColors = (bloqCarpetData as any).colors || [];
+    const bloqColor = bloqColors.find((color: any) => color.collection_slug === slug || color.collection === slug);
+    if (bloqColor) {
+      const specs = Object.entries(bloqColor.characteristics || {}).map(([label, value]) => ({
+        key: label.toLowerCase().replace(/\s+/g, '_'),
+        label,
+        value: value as string
+      }));
+
+      return {
+        id: `bloq-${slug}`,
+        name: bloqColor.collection_name || slug,
+        slug,
+        sku: 'BLOQ-CARPET',
+        categoryId: '4',
+        brandId: '8',
+        shortDescription: bloqColor.collection_name || slug,
+        description: bloqColor.description || '',
+        images: bloqColor.image_url ? [{
+          id: `${slug}-img-1`,
+          url: bloqColor.image_url,
+          alt: bloqColor.collection_name || slug,
           isPrimary: true,
           order: 1,
         }] : [],

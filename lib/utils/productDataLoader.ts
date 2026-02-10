@@ -2,11 +2,13 @@ import { Product } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
+import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 
 // Cache for performance
 let lvtProductsCache: Product[] | null = null;
 let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
+let bloqCarpetCache: Product[] | null = null;
 
 /**
  * Transform LVT color data from JSON to Product type
@@ -146,7 +148,7 @@ export function getAllCarpetProducts(): Product[] {
     }
 
     const colors = (carpetColorsData as any).colors || [];
-    
+
     // Transform each color to a Product (for display only, not for routing)
     const products = colors.map((color: any) => {
         const specs = Object.entries(color.characteristics || {}).map(([label, value]) => ({
@@ -210,11 +212,68 @@ export function getAllCarpetProducts(): Product[] {
             updatedAt: new Date('2024-01-01'),
         };
     });
-    
+
     carpetProductsCache = products;
     return products;
 }
 
+
+/**
+ * Get all BLOQ Carpet products from bloq_carpet_tiles.json
+ */
+export function getAllBloqCarpetProducts(): Product[] {
+    if (bloqCarpetCache) {
+        return bloqCarpetCache;
+    }
+
+    const colors = (bloqCarpetData as any).colors || [];
+
+    const products = colors.map((color: any) => {
+        const specs = Object.entries(color.characteristics || {}).map(([label, value]) => ({
+            key: label.toLowerCase().replace(/\s+/g, '_'),
+            label,
+            value: value as string
+        }));
+
+        const images = [];
+        if (color.image_url) {
+            images.push({
+                id: `${color.slug}-img-1`,
+                url: color.image_url,
+                alt: `${color.name}`,
+                isPrimary: true,
+                order: 1,
+            });
+        }
+
+        return {
+            id: color.slug,
+            name: color.full_name || color.name,
+            slug: `${color.collection_slug || color.collection}?color=${color.slug}`,
+            sku: color.code,
+            categoryId: '4', // Tekstilne ploče
+            brandId: '8', // BLOQ
+            shortDescription: `BLOQ ${color.collection_name} - ${color.name}`,
+            description: color.description,
+            images: images.length > 0 ? images : [{
+                id: `${color.slug}-img-1`,
+                url: '/images/placeholder.svg',
+                alt: color.name,
+                isPrimary: true,
+                order: 1,
+            }],
+            specs,
+            inStock: true,
+            featured: false,
+            externalLink: color.external_url || 'https://bloq.nl/products',
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        };
+    });
+
+    bloqCarpetCache = products;
+    return products;
+}
 
 /**
  * Get all Gerflor products (LVT + Linoleum + Carpet + Vinyl)
@@ -227,7 +286,8 @@ export function getAllGerflorProducts(): Product[] {
  * Get a specific product by slug
  */
 export function getProductBySlug(slug: string): Product | undefined {
-    return getAllGerflorProducts().find(p => p.slug === slug || p.id === slug);
+    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts()];
+    return allProducts.find(p => p.slug === slug || p.id === slug);
 }
 
 /**
@@ -249,8 +309,8 @@ export function getProductsByCategory(categoryId: string): Product[] {
     } else if (categoryId === '7') {
         return getAllLinoleumProducts();
     } else if (categoryId === '4') {
-        return getAllCarpetProducts();
+        return [...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
     }
-    
-    return getAllGerflorProducts().filter(p => p.categoryId === categoryId);
+
+    return [...getAllGerflorProducts(), ...getAllBloqCarpetProducts()].filter(p => p.categoryId === categoryId);
 }
