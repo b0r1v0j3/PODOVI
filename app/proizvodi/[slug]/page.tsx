@@ -1107,6 +1107,26 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
+    // BLOQ Carpet: customColors from bloq_carpet_tiles.json for the matching collection
+    if (product.categoryId === '4' && (product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-'))) {
+      const bloqColors = (bloqCarpetData as any).colors || [];
+      const collectionColors = bloqColors.filter((c: any) => c.collection_slug === params.slug);
+      if (collectionColors.length > 0) {
+        customColors = collectionColors.map((c: any) => ({
+          collection: c.collection_slug,
+          collection_name: c.collection_name,
+          code: c.code,
+          name: c.name,
+          full_name: c.full_name || c.name,
+          slug: c.slug,
+          image_url: c.image_url || '',
+          texture_url: c.image_url || '',
+          image_count: c.image_url ? 1 : 0,
+          characteristics: c.characteristics || {},
+        }));
+      }
+    }
+
     // Laminat: ako kolekcija nema sliku, koristi prvu varijantu da slika nikad ne nestane
     if (product.categoryId === '1' && !primaryImage && customColors && customColors.length > 0) {
       const firstImg = (customColors[0] as { image_url?: string; texture_url?: string }).image_url || (customColors[0] as { texture_url?: string }).texture_url;
@@ -1182,7 +1202,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   inStock={product.inStock}
                   productSlug={product.slug}
                   externalLink={product.externalLink}
-                  customColors={(product.categoryId === '3' || product.categoryId === '1') ? (customColors ?? []) : customColors}
+                  customColors={(product.categoryId === '3' || product.categoryId === '1' || (product.categoryId === '4' && product.sku?.startsWith('BLOQ'))) ? (customColors ?? []) : customColors}
                   collectionDisplayName={(product.categoryId === '3' || product.categoryId === '1') ? (product.specs.find(s => s.key === 'collection')?.value) : undefined}
                   collectionCategoryLabel={product.categoryId === '3' ? 'Parket' : product.categoryId === '1' ? 'Laminat' : undefined}
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
