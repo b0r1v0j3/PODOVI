@@ -212,19 +212,20 @@ export default function ProductColorSelector({
                         key={color.slug}
                         src={imgUrl}
                         alt={color.name || color.full_name || ''}
-                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-150"
+                        className="absolute inset-0 w-full h-full object-cover"
                         style={{
                           opacity: isActive ? 1 : 0,
-                          zIndex: isActive ? 10 : 1
+                          zIndex: isActive ? 10 : 1,
+                          transition: 'opacity 200ms ease-in-out',
                         }}
                         loading="eager"
+                        decoding="async"
                       />
                     );
                   })}
                 </>
               ) : selectedImage ? (
                 <ProductImage
-                  key={selectedImage.url}
                   src={selectedImage.url}
                   alt={selectedImage.alt}
                   className="object-cover"

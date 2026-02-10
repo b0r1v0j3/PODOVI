@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 
 interface ProductImageProps {
@@ -15,26 +15,25 @@ interface ProductImageProps {
 
 export default function ProductImage({ src, alt, className, sizes, quality = 90, priority = false }: ProductImageProps) {
   const [hasError, setHasError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  // displayedSrc = the image currently visible to the user
   const [displayedSrc, setDisplayedSrc] = useState(src);
-  const previousSrcRef = useRef(src);
+  // pendingSrc = a new image loading in the background (null if nothing is loading)
+  const [pendingSrc, setPendingSrc] = useState<string | null>(null);
 
-  // When src changes, keep old image visible until new one loads
+  // When src prop changes, start loading the new image in the background
   useEffect(() => {
-    if (src !== previousSrcRef.current) {
-      setIsLoaded(false); // Start loading new image
+    if (src !== displayedSrc && src !== pendingSrc) {
+      setPendingSrc(src);
       setHasError(false);
-      previousSrcRef.current = src;
     }
-  }, [src]);
+  }, [src, displayedSrc, pendingSrc]);
 
-  // Update displayed src only after new image loads
-  const handleLoad = () => {
-    setIsLoaded(true);
-    setDisplayedSrc(src); // Update to new image
-  };
-
-  const effectiveSrc = src && !hasError ? src : '/images/placeholder.svg';
+  // Called when the hidden (pending) image finishes loading
+  const handlePendingLoad = useCallback(() => {
+    // Swap: the pending image becomes the displayed image
+    setDisplayedSrc(pendingSrc!);
+    setPendingSrc(null);
+  }, [pendingSrc]);
 
   // Za placeholder ili nakon greške koristimo običan img da ne zahtevamo Next/Image optimizaciju
   if (hasError || !src) {
@@ -47,37 +46,34 @@ export default function ProductImage({ src, alt, className, sizes, quality = 90,
     );
   }
 
-  const isLocal = effectiveSrc.startsWith('/');
-
   return (
     <>
-      {/* Current/Old image - stays visible */}
+      {/* Currently displayed image - always visible, stable */}
       <Image
-        key={displayedSrc}
         src={displayedSrc}
         alt={alt}
         fill
-        className={`${className || ''} transition-opacity duration-200`}
-        style={{ objectFit: 'cover', opacity: isLoaded || displayedSrc === src ? 1 : 1 }}
+        className={`${className || ''}`}
+        style={{ objectFit: 'cover', zIndex: 1 }}
         sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
         quality={quality}
         priority={priority}
         unoptimized={!displayedSrc.startsWith('/')}
         onError={() => setHasError(true)}
       />
-      {/* New image loading in background - hidden until loaded */}
-      {src !== displayedSrc && (
+      {/* New image loading invisibly in background - swaps in once loaded */}
+      {pendingSrc && (
         <Image
-          key={src}
-          src={src}
+          key={pendingSrc}
+          src={pendingSrc}
           alt={alt}
           fill
           className={className}
-          style={{ objectFit: 'cover', opacity: 0 }}
+          style={{ objectFit: 'cover', opacity: 0, zIndex: 2 }}
           sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
           quality={quality}
-          unoptimized={!isLocal}
-          onLoad={handleLoad}
+          unoptimized={!pendingSrc.startsWith('/')}
+          onLoad={handlePendingLoad}
           onError={() => setHasError(true)}
         />
       )}
