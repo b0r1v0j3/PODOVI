@@ -57,7 +57,27 @@ export function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
             'PACKAGING': { label: 'Pakovanje', key: 'packaging' },
             'packaging': { label: 'Pakovanje', key: 'packaging' },
             'WEIGHT': { label: 'Težina', key: 'weight' },
-            'THICKNESS OF THE WEARLAYER': { label: 'Debljina sloja habanja', key: 'wear_layer' }
+            'THICKNESS OF THE WEARLAYER': { label: 'Debljina sloja habanja', key: 'wear_layer' },
+            // BLOQ-specific spec keys
+            'FIBRE': { label: 'Vlakno', key: 'fibre' },
+            'Fibre': { label: 'Vlakno', key: 'fibre' },
+            'CLASSIFICATION': { label: 'Klasa upotrebe', key: 'classification' },
+            'Classification': { label: 'Klasa upotrebe', key: 'classification' },
+            'FIRE_RESISTANCE': { label: 'Otpornost na vatru', key: 'fire_resistance' },
+            'Fire Resistance': { label: 'Otpornost na vatru', key: 'fire_resistance' },
+            'DIMENSIONAL_STABILITY': { label: 'Dimenzionalna stabilnost', key: 'dimensional_stability' },
+            'Dimensional Stability': { label: 'Dimenzionalna stabilnost', key: 'dimensional_stability' },
+            'Fibre Supplier': { label: 'Dobavljač vlakna', key: 'fibre_supplier' },
+            'TILE_SIZE': { label: 'Dimenzije ploče', key: 'tile_size' },
+            'Tile Size': { label: 'Dimenzije ploče', key: 'tile_size' },
+            'PILE_WEIGHT': { label: 'Težina flora', key: 'pile_weight' },
+            'Pile Weight': { label: 'Težina flora', key: 'pile_weight' },
+            'TOTAL_WEIGHT': { label: 'Ukupna težina', key: 'total_weight' },
+            'Total Weight': { label: 'Ukupna težina', key: 'total_weight' },
+            'BACKING': { label: 'Podloga', key: 'backing' },
+            'Backing': { label: 'Podloga', key: 'backing' },
+            'PILE_HEIGHT': { label: 'Visina flora', key: 'pile_height' },
+            'Pile Height': { label: 'Visina flora', key: 'pile_height' },
         };
 
         Object.entries(colorSpecs).forEach(([rawKey, value]) => {
@@ -284,6 +304,8 @@ export function collectionFromColor(source: ColorSource, slug: string): Product 
         }]
         : [];
 
+    const specs = buildSpecsFromColor(color);
+
     return {
         id: `collection-${categorySlug}-${slug}`,
         name: collectionName,
@@ -294,7 +316,7 @@ export function collectionFromColor(source: ColorSource, slug: string): Product 
         shortDescription: collectionName,
         description: (color.description && typeof color.description === 'string') ? color.description : '',
         images,
-        specs: [],
+        specs,
         price: undefined,
         priceUnit: undefined,
         inStock: true,

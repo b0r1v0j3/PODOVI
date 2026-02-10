@@ -49,6 +49,27 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
     // First try to find product by slug directly (for collections)
     const product = await productRepository.findBySlug(slug);
     if (product) {
+        // Enrich DB product with richer JSON data if available (e.g., Vinil collections)
+        const slugWithoutPrefix = slug.startsWith('gerflor-') ? slug.substring('gerflor-'.length) : slug;
+        const vinylCollectionForEnrich = vinylCollections.find((col: any) => col.slug === slugWithoutPrefix || col.slug === slug);
+        if (vinylCollectionForEnrich && vinylCollectionForEnrich.colors && vinylCollectionForEnrich.colors.length > 0) {
+            const firstVinylColor = vinylCollectionForEnrich.colors[0];
+            const jsonDesc = firstVinylColor.description || vinylCollectionForEnrich.description || '';
+            const jsonChars = firstVinylColor.characteristics || vinylCollectionForEnrich.characteristics || {};
+
+            // Use JSON description if it's richer than DB description
+            if (jsonDesc && jsonDesc.length > (product.description || '').length) {
+                product.description = jsonDesc;
+            }
+            // Add specs from JSON characteristics if DB has none
+            if ((!product.specs || product.specs.length === 0) && Object.keys(jsonChars).length > 0) {
+                product.specs = Object.entries(jsonChars).map(([label, value]) => ({
+                    key: label.toLowerCase().replace(/\s+/g, '_'),
+                    label,
+                    value: value as string,
+                }));
+            }
+        }
         return product;
     }
 
@@ -60,6 +81,26 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         // Try to find collection by slug without prefix (linoleum collections are stored without prefix)
         const collectionProduct = await productRepository.findBySlug(collectionSlugWithoutPrefix);
         if (collectionProduct) {
+            // Check if Vinil JSON has a richer description than what's in the DB
+            const vinylCollectionForDesc = vinylCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
+            if (vinylCollectionForDesc && vinylCollectionForDesc.colors && vinylCollectionForDesc.colors.length > 0) {
+                const firstVinylColor = vinylCollectionForDesc.colors[0];
+                const jsonDesc = firstVinylColor.description || vinylCollectionForDesc.description || '';
+                const jsonChars = firstVinylColor.characteristics || vinylCollectionForDesc.characteristics || {};
+
+                // Use JSON description if it's richer than DB description
+                if (jsonDesc && jsonDesc.length > (collectionProduct.description || '').length) {
+                    collectionProduct.description = jsonDesc;
+                }
+                // Add specs from JSON characteristics if DB has none
+                if ((!collectionProduct.specs || collectionProduct.specs.length === 0) && Object.keys(jsonChars).length > 0) {
+                    collectionProduct.specs = Object.entries(jsonChars).map(([label, value]) => ({
+                        key: label.toLowerCase().replace(/\s+/g, '_'),
+                        label,
+                        value: value as string,
+                    }));
+                }
+            }
             return {
                 ...collectionProduct,
                 slug,
@@ -146,16 +187,16 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                 value: value as string
             }));
 
-            // Use enriched description if available
+            // Use enriched description if available — format with section headers for parseDescriptionToSections()
             const descriptionParts: string[] = [];
             if (bloqColor.collection_description_sr) {
-                descriptionParts.push(bloqColor.collection_description_sr);
+                descriptionParts.push(`Opis:\n${bloqColor.collection_description_sr}`);
             }
             if (bloqColor.color_range_text) {
-                descriptionParts.push(`\nPaleta boja:\n${bloqColor.color_range_text}`);
+                descriptionParts.push(`Paleta boja:\n${bloqColor.color_range_text}`);
             }
             if (bloqColor.backing_variants && Array.isArray(bloqColor.backing_variants) && bloqColor.backing_variants.length > 0) {
-                descriptionParts.push(`\nDostupne podloge: ${bloqColor.backing_variants.join(', ')}`);
+                descriptionParts.push(`Dostupne podloge:\n${bloqColor.backing_variants.join(', ')}`);
             }
             const enrichedDescription = descriptionParts.length > 0
                 ? descriptionParts.join('\n')
@@ -165,6 +206,13 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
             const documents = Array.isArray(bloqColor.documents)
                 ? bloqColor.documents.map((doc: any) => ({ title: doc.title || '', url: doc.url || '' }))
                 : [];
+            // Build a meaningful short description from collection description
+            const shortDescBase = bloqColor.collection_description_sr
+                ? bloqColor.collection_description_sr.split(/[.!]/)[0].trim()
+                : `Premium tekstilne ploče`;
+            const shortDesc = shortDescBase.length > 120
+                ? shortDescBase.substring(0, 117) + '...'
+                : shortDescBase;
 
             return {
                 id: `bloq-${slug}`,
@@ -173,7 +221,7 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                 sku: 'BLOQ-CARPET',
                 categoryId: '4',
                 brandId: '8',
-                shortDescription: `BLOQ ${bloqColor.collection_name || slug}`,
+                shortDescription: shortDesc,
                 description: enrichedDescription,
                 images: bloqColor.image_url ? [{
                     id: `${slug}-img-1`,

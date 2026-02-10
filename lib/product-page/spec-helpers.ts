@@ -65,7 +65,18 @@ export function parseDescriptionToSections(description: string): ProductDetailsS
         'Tehničke karakteristike',
         'Tehničke specifikacije',
         'Environmental',
-        'Ekološke karakteristike'
+        'Ekološke karakteristike',
+        // BLOQ-specific section headers
+        'Opis',
+        'Opis:',
+        'Paleta boja',
+        'Paleta boja:',
+        'Dostupne podloge',
+        'Dostupne podloge:',
+        'Karakteristike',
+        'Karakteristike:',
+        'Prednosti',
+        'Prednosti:',
     ];
 
     for (let i = 0; i < lines.length; i++) {

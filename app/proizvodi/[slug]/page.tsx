@@ -225,8 +225,20 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (!product.images || !Array.isArray(product.images)) product.images = [];
     if (!product.specs || !Array.isArray(product.specs)) product.specs = [];
     if (!product.name || typeof product.name !== 'string') product.name = 'Proizvod';
-    if (!product.shortDescription || typeof product.shortDescription !== 'string') {
-      product.shortDescription = (product.description && typeof product.description === 'string') ? product.description : '';
+    if (!product.shortDescription || typeof product.shortDescription !== 'string' || product.shortDescription === product.name) {
+      // Generate a meaningful shortDescription based on category
+      const categoryDescMap: Record<string, string> = {
+        '1': 'Laminat pod visokog kvaliteta',
+        '2': 'Profesionalni vinil pod',
+        '3': 'Parket pod prirodnog drveta',
+        '4': product.brandId === '8' ? 'Premium tekstilne ploče za poslovne prostore' : 'Tekstilne ploče za profesionalnu upotrebu',
+        '6': 'LVT luksuzne vinil ploče',
+        '7': 'Linoleum pod od prirodnih materijala',
+      };
+      const fallback = categoryDescMap[product.categoryId] || '';
+      product.shortDescription = (product.description && typeof product.description === 'string' && product.description.length < 200)
+        ? product.description
+        : fallback;
     }
     if (!product.description || typeof product.description !== 'string') {
       product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
@@ -484,18 +496,24 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     </svg>
                     Sertifikati kvaliteta
                   </h3>
-                  <CertificationBadges certifications={["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]} />
+                  <CertificationBadges certifications={
+                    product.brandId === '8'
+                      ? ["Cradle to Cradle Silver", "Indoor Air Comfort Gold", "BREEAM A+", "GreenTag Level A", "CE"]
+                      : ["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]
+                  } />
                 </div>
 
                 <div className="bg-white rounded-2xl shadow-lg p-6">
                   <EcoFeatures
-                    features={product.categoryId === '7'
-                      ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
-                      : product.categoryId === '4'
-                        ? ["Bez ftalata", "100% reciklabilno", "Smanjenje buke", "Laka ugradnja"]
-                        : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
+                    features={product.brandId === '8'
+                      ? ["Cradle to Cradle Silver", "ECONYL® reciklirana vlakna", "70% reciklirani materijali u podlozi", "Smanjenje buke"]
+                      : product.categoryId === '7'
+                        ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
+                        : product.categoryId === '4'
+                          ? ["Bez ftalata", "100% reciklabilno", "Smanjenje buke", "Laka ugradnja"]
+                          : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
                     }
-                    underfloorHeating={true}
+                    underfloorHeating={product.brandId !== '8'}
                   />
                 </div>
 

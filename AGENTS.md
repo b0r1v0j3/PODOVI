@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 10.02.2026
+> **Poslednje ažuriranje:** 11.02.2026
 
 ---
 
@@ -155,7 +155,17 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Downloadovani roomshot-ovi za sve 18 BLOQ kolekcija
 - Ažuriran `getAllBloqCarpetProducts()` da koristi roomshot umesto tile slike
 
+**Poboljšanje sadržaja proizvoda (11.02.2026)**
+- Obogaćeno 23 Gerflor Vinil kolekcija profesionalnim srpskim opisima i tehničkim specifikacijama (900+ boja)
+- BLOQ opisi formirani u strukturirane sekcije (Opis, Paleta boja, Dostupne podloge) za `parseDescriptionToSections()`
+- BLOQ spec ključevi prevedeni na srpski (FIBRE→Vlakno, CLASSIFICATION→Klasa upotrebe, itd.)
+- Diferencirane certifikacije (Cradle to Cradle, BREEAM za BLOQ vs Gerflor sertifikati) i eko-karakteristike
+- Fiksiran `collectionFromColor()` da pravilno prosleđuje specs
+- Implementirano JSON→DB enrichment za Vinil kolekcije u `resolve-product.ts`
+- Poboljšan `shortDescription` fallback logic
+
 ### 🔲 TODO
+- [ ] Poboljšati SEO meta description i OG tagove za sve kategorije
 - [ ] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
 - [ ] Izvući detaljne specifikacije iz PDF tech datasheet-ova (debljina, akustika, težina)
 - [ ] Dodati "Dostupne podloge" prikaz za Trinity kolekcije
@@ -191,6 +201,15 @@ PODOVI/
 │
 └── scripts/                # Utility skripte (enrichment, image validation)
 ```
+
+## 8. ⚡ COMMON GOTCHAS
+> Lekcije naučene iz prethodnih grešaka — čitaj ovo da ne ponavljaš iste greške.
+
+1. **DB vs JSON priority**: `productRepository.findBySlug(slug)` je PRVI pokušaj u resolveru. Ako DB ima proizvod, JSON podaci se ne koriste automatski. Za obogaćivanje, moraš EKSPLICITNO proveriti i merge-ovati JSON podatke u DB proizvod.
+2. **`read_url_content` ne prikazuje sve**: Crawler tool flatuje HTML sekcije. Koristi `Select-String` na raw HTML-u da potvrdiš da li je sadržaj zaista renderovan.
+3. **Next.js dev server kešira agresivno**: Posle promene `resolve-product.ts`, moraš restartovati dev server ili obrisati `.next/` direktorijum.
+4. **Slug prefix konvencije**: Vinil i LVT koriste `gerflor-` prefix u slug-u, ali JSON fajlovi čuvaju slug BEZ prefixa. Uvek proveri oba oblika.
+5. **`parseDescriptionToSections()`**: Sekcioni naslovi moraju biti na ZASEBNOJ LINIJI i moraju se završavati sa `:`. Linija mora tačno da se poklopi sa `sectionTitles` nizom u `spec-helpers.ts`.
 
 ---
 
