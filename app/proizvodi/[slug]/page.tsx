@@ -369,13 +369,30 @@ function parseDescriptionToSections(description: string): ProductDetailsSection[
   return sections;
 }
 
+// Helper: strip collection sub-type prefixes from color names
+// e.g. "LOOSELAY 0374 PARKER STATION" → "PARKER STATION"
+function cleanColorName(rawName: string): string {
+  const subTypes = ['LOOSELAY', 'CLIC', 'ZEN', 'CONNECT', 'MEGACLIC', 'ACOUSTIC'];
+  let clean = (rawName || '').trim();
+  for (const st of subTypes) {
+    if (clean.toUpperCase().startsWith(st + ' ')) {
+      clean = clean.substring(st.length).trim();
+      // Also strip any leading duplicated code number (e.g., "0374 PARKER STATION" → "PARKER STATION")
+      clean = clean.replace(/^\d{4}\s+/, '');
+      break;
+    }
+  }
+  return clean;
+}
+
 function colorToProduct(source: ColorSource, slug: string, collectionSlugOverride?: string): Product & { collectionSlug: string } {
   const { categorySlug, color } = source;
   const isLVT = categorySlug === 'lvt';
   const isVinil = categorySlug === 'vinil';
   const categoryId = isLVT ? '6' : isVinil ? '2' : '7';
   const brandId = '6';
-  const name = color.full_name || `${color.code} ${color.name}`.trim();
+  const cleanName = cleanColorName(color.name);
+  const name = color.code ? `${color.code} ${cleanName}` : cleanName;
   const primaryImageUrl = isLVT
     ? (color.texture_url || color.lifestyle_url || color.image_url || '')
     : isVinil
@@ -406,7 +423,8 @@ function colorToProduct(source: ColorSource, slug: string, collectionSlugOverrid
     sku: color.code,
     categoryId,
     brandId,
-    shortDescription: `${color.collection_name} - ${color.name}`,
+    shortDescription: `${color.collection_name} - ${cleanName}`,
+    // Note: cleanName computed above from cleanColorName(color.name)
     description,
     images,
     specs,
@@ -885,9 +903,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (selectedColorSlug && product && !product.slug.includes(selectedColorSlug) && product.categoryId !== '3' && product.categoryId !== '1') {
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (colorSource?.color) {
+        // Clean color name using shared helper
+        const cleanedName = cleanColorName(colorSource.color.name);
+        const colorCode = colorSource.color.code || '';
+        const cleanFullName = colorCode ? `${colorCode} ${cleanedName}` : cleanedName;
+
         // Merge name and image from selected color (same pattern as Parket/Laminat)
-        product.name = colorSource.color.full_name || `${colorSource.color.code} ${colorSource.color.name}`;
-        product.shortDescription = `${colorSource.color.collection_name} - ${colorSource.color.name}`;
+        product.name = cleanFullName;
+        product.shortDescription = `${colorSource.color.collection_name} - ${cleanedName}`;
 
         // Get color image
         const colorImageUrl = colorSource.color.texture_url || colorSource.color.lifestyle_url || colorSource.color.image_url;
