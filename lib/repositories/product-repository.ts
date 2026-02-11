@@ -121,6 +121,33 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...jsonProducts];
     }
 
+    // Merge EGGER products from mock-data for categories 1 (Laminat), 8 (Ugradnja), 9 (Lajsne), 10 (Alati)
+    const eggerCategories = ['1', '8', '9', '10'];
+    if (!filters?.categoryId || eggerCategories.includes(legacyCategoryId || '') || eggerCategories.includes(filters.categoryId)) {
+      let eggerProducts = mockProducts.filter(p => p.brandId === '9');
+      // If filtering by category, only include matching EGGER products
+      if (filters?.categoryId) {
+        const catId = legacyCategoryId || filters.categoryId;
+        eggerProducts = eggerProducts.filter(p => p.categoryId === catId);
+      }
+      // Apply same filters to EGGER products
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        eggerProducts = eggerProducts.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        eggerProducts = eggerProducts.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      // Deduplicate by slug (avoid if somehow already in DB)
+      const existingSlugs = new Set(products.map(p => p.slug));
+      eggerProducts = eggerProducts.filter(p => !existingSlugs.has(p.slug));
+      products = [...products, ...eggerProducts];
+    }
+
     // Post-fetch filters that require specs data
     if (filters?.type) {
       const typeFilter = filters.type.toLowerCase();
@@ -176,7 +203,11 @@ export class SupabaseProductRepository implements IProductRepository {
       .eq('slug', slug)
       .single();
 
-    if (error || !data) return null;
+    if (error || !data) {
+      // Fallback: check mock-data for EGGER products
+      const mockProduct = mockProducts.find(p => p.slug === slug);
+      return mockProduct || null;
+    }
     return toProduct(data, data.product_images || [], data.product_specs || []);
   }
 
@@ -199,6 +230,10 @@ export class SupabaseProductRepository implements IProductRepository {
     // For BLOQ brand (id 8), return products from JSON
     if (brandId === '8') {
       return getAllBloqCarpetProducts();
+    }
+    // For EGGER brand (id 9), return products from mock-data
+    if (brandId === '9') {
+      return mockProducts.filter(p => p.brandId === '9');
     }
     const { data, error } = await supabase
       .from('products')
