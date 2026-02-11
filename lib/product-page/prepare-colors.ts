@@ -96,10 +96,20 @@ export async function prepareCustomColors(
     }
 
     // EGGER: customColors from egger-decors.json
+    // Some product variants share decors: NS Aqua/Aqua Plus use NatureSense decors, AD Plus uses AquaDura decors
     if (product.sku?.startsWith('EGGER-')) {
+        const slugToCollection: Record<string, string> = {
+            'egger-naturesense': 'egger-naturesense',
+            'egger-naturesense-herringbone': 'egger-naturesense-herringbone',
+            'egger-naturesense-aqua': 'egger-naturesense',
+            'egger-naturesense-aqua-plus': 'egger-naturesense',
+            'egger-aquadura': 'egger-aquadura',
+            'egger-aquadura-plus': 'egger-aquadura',
+        };
+        const collectionKey = slugToCollection[product.slug] || product.slug;
         const eggerData = await import('@/public/data/egger-decors.json');
         const allColors = (eggerData as any).colors || (eggerData as any).default?.colors || [];
-        const collectionColors = allColors.filter((c: any) => c.collection === product.slug);
+        const collectionColors = allColors.filter((c: any) => c.collection === collectionKey);
         if (collectionColors.length > 0) {
             return collectionColors.map((c: any) => ({
                 collection: c.collection,
