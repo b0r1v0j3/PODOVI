@@ -57,7 +57,9 @@ export interface Product {
   coveragePerPackage?: number; // m² per package for calculator
   externalLink?: string; // External link for collections (e.g., Gerflor)
   detailsSections?: ProductDetailsSection[];
-  documents?: { title: string; url: string }[];
+  documents?: { title: string; url: string; type?: string }[];
+  benefits?: string[]; // Key selling points, displayed as checkmark list
+  compatibleAccessories?: string[]; // Slugs of compatible accessory products
   createdAt: Date;
   updatedAt: Date;
 }

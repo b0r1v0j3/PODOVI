@@ -95,6 +95,27 @@ export async function prepareCustomColors(
         }
     }
 
+    // EGGER: customColors from egger-decors.json
+    if (product.sku?.startsWith('EGGER-')) {
+        const eggerData = await import('@/public/data/egger-decors.json');
+        const allColors = (eggerData as any).colors || (eggerData as any).default?.colors || [];
+        const collectionColors = allColors.filter((c: any) => c.collection === product.slug);
+        if (collectionColors.length > 0) {
+            return collectionColors.map((c: any) => ({
+                collection: c.collection,
+                collection_name: c.collection_name,
+                code: c.code,
+                name: c.name,
+                full_name: c.full_name || `${c.code} ${c.name}`,
+                slug: c.slug,
+                image_url: c.image_url || '',
+                texture_url: c.texture_url || c.image_url || '',
+                image_count: c.image_count || 1,
+                characteristics: c.characteristics || {},
+            }));
+        }
+    }
+
     // BLOQ Carpet: customColors from bloq_carpet_tiles.json
     if (product.categoryId === '4' && (product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-'))) {
         const bloqColors = (bloqCarpetData as any).colors || [];
@@ -186,6 +207,35 @@ export async function mergeSelectedColor(
             }
             if (laminatVariant.specs && laminatVariant.specs.length > 0) {
                 product.specs = mergeSpecs(product.specs, laminatVariant.specs);
+            }
+        }
+    }
+
+    // EGGER: merge selected color from egger-decors.json
+    if (selectedColorSlug && product.sku?.startsWith('EGGER-')) {
+        const eggerData = await import('@/public/data/egger-decors.json');
+        const allColors = (eggerData as any).colors || (eggerData as any).default?.colors || [];
+        const eggerColor = allColors.find((c: any) => c.slug === selectedColorSlug);
+        if (eggerColor) {
+            product.name = `${eggerColor.code} ${eggerColor.name}`;
+            product.shortDescription = `${eggerColor.collection_name} — ${eggerColor.name}`;
+            if (eggerColor.image_url) {
+                product.images = [{
+                    id: `egger-color-${selectedColorSlug}`,
+                    url: eggerColor.image_url,
+                    alt: `${eggerColor.code} ${eggerColor.name}`,
+                    isPrimary: true,
+                    order: 1,
+                }];
+            }
+            // Merge characteristics as specs
+            if (eggerColor.characteristics) {
+                const colorSpecs = Object.entries(eggerColor.characteristics).map(
+                    ([key, value]) => ({ key: key.toLowerCase(), label: key, value: String(value) })
+                );
+                if (colorSpecs.length > 0) {
+                    product.specs = mergeSpecs(product.specs, colorSpecs);
+                }
             }
         }
     }

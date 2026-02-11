@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 11.02.2026
+> **Poslednje ažuriranje:** 11.02.2026 (EGGER integracija)
 
 ---
 
@@ -37,7 +37,7 @@ Podovi.online je **katalog podnih obloga** za tržište Srbije. Sajt služi kao 
 ### Ključni principi:
 - **Nije e-commerce** — nema korpu ni checkout. Korisnici šalju upite za proizvode
 - **Sajt je na srpskom jeziku** — sav sadržaj, nazivi, specifikacije su na srpskom
-- **Multi-brand** — Tarkett, Gerflor, BLOQ — svaki brend ima drugačiju strukturu podataka
+- **Multi-brand** — Tarkett, Gerflor, BLOQ, EGGER — svaki brend ima drugačiju strukturu podataka
 - **Data-driven** — proizvodi dolaze iz kombinacije JSON fajlova, TypeScript data fajlova i Supabase baze
 - **SEO optimizovan** — structured data, sitemap, meta tagovi za svaku stranicu
 
@@ -83,13 +83,24 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 ### Kategorije:
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
-| Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
+| Laminat | 1 | Tarkett (3), EGGER (9) | `lib/data/tarkett-products.ts`, `lib/data/mock-data.ts` |
 | Vinil | 2 | Gerflor (6) | `vinyl_colors_complete.json` |
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | — | Supabase |
 | LVT | 6 | Gerflor (6) | `lvt_colors_complete.json` |
 | Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` |
+| Ugradnja | 8 | EGGER (9) | `lib/data/mock-data.ts` |
+| Lajsne | 9 | EGGER (9) | `lib/data/mock-data.ts` |
+| Alati | 10 | EGGER (9) | `lib/data/mock-data.ts` |
+
+### EGGER (6 kolekcija podova + 6 pribora):
+| Kategorija | Kolekcije |
+|---|---|
+| NatureSense (Laminat, cat 1) | NatureSense, Herringbone, Aqua, Aqua+ |
+| AquaDura (Laminat, cat 1) | AquaDura, AquaDura+ |
+| Ugradnja (cat 8) | Silenzio Easy, Silenzio Easy SD, Silenzio Professional SD, Silenzio Duo |
+| Lajsne (cat 9) | Lajsna CUBICAL 8cm, Profil 3-u-1 |
 
 ### BLOQ Carpet Tiles (18 kolekcija, 210 boja):
 | Familija | Kolekcije |
@@ -164,7 +175,25 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Implementirano JSON→DB enrichment za Vinil kolekcije u `resolve-product.ts`
 - Poboljšan `shortDescription` fallback logic
 
+**EGGER integracija — Faza 1 (11.02.2026)**
+- Dodat EGGER brend (id: 9, slug: 'egger', Austrija)
+- Dodate nove kategorije: "Ugradnja" (id: 8), "Lajsne" (id: 9), "Alati" (id: 10)
+- Dodato 4 NatureSense laminat kolekcije + 2 AquaDura kolekcije (sve u cat 1 — Laminat)
+- Dodato 4 podloge u Ugradnja (cat 8) + 2 lajsne/profili u Lajsne (cat 9)
+- Preuzete slike sa EGGER CDN (logo SVG, 6 slika kolekcija)
+- Ažurirana kategorijska stranica za prepoznavanje EGGER- SKU prefiksa
+
+**EGGER integracija — Faza 1.5: Obogaćivanje podataka + UI (11.02.2026)**
+- Product tip proširen sa `benefits`, `compatibleAccessories`, `documents.type`
+- Obogaćeno 6 EGGER kolekcija: 10-13 specs, 6-7 prednosti, kompatibilan pribor, 4-5 PDF dokumenata
+- PDF dokumenti sa EGGER CDN-a: uputstva za ugradnju (srpski), garancija (srpski), čišćenje (srpski), TDS, EHD
+- Nova komponenta `ProductBenefits.tsx` — zeleni gradient card sa checkmark listom
+- Nova komponenta `RecommendedAccessories.tsx` — grid kartica sa slikama i hover efektima
+- Product stranica proširena: prednosti → pribor → dokumenti → sertifikati za EGGER
+
 ### 🔲 TODO
+- [ ] EGGER Faza 2: Scraping individualnih dekora sa egger.com
+- [ ] EGGER Faza 3: Preostali pribor (još lajsni, lepkovi, silikoni, alati, čišćenje, popravka)
 - [ ] Poboljšati SEO meta description i OG tagove za sve kategorije
 - [ ] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
 - [ ] Izvući detaljne specifikacije iz PDF tech datasheet-ova (debljina, akustika, težina)

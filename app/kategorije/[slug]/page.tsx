@@ -111,7 +111,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const allProductsForThickness = await productRepository.findByCategory(category.id);
 
   // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat – separate collections from colors
-  const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat';
+  const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat' || category.slug === 'ugradnja' || category.slug === 'lajsne' || category.slug === 'alati';
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
@@ -125,10 +125,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (hasCollectionTabs) {
-    // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat)
+    // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat), EGGER- (EGGER)
     // Colors: products without those SKU prefixes
     const hasCollectionSku = (p: { sku?: string | null }) =>
-      (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-') || p.sku?.startsWith('BLOQ-')) ?? false;
+      (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-') || p.sku?.startsWith('BLOQ-') || p.sku?.startsWith('EGGER-')) ?? false;
     const allCollections = allProducts.filter(p => hasCollectionSku(p));
     if (category.slug === 'parket') {
       // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
