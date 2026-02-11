@@ -37,13 +37,10 @@ export async function generateMetadata({ params }: CategoryPageProps) {
     };
   }
 
-  const allCategoryProducts = await productRepository.findByCategory(category.id);
-  const productCount = allCategoryProducts.length;
-
   return {
     metadataBase: new URL(baseUrl),
-    title: `${category.name} - ${productCount} Proizvoda | Podovi.online`,
-    description: `${category.description} Pregledajte našu ponudu od ${productCount} proizvoda u kategoriji ${category.name}.`,
+    title: `${category.name} Podovi | Podovi.online`,
+    description: `${category.description}`,
     keywords: `${category.name}, podovi, podne obloge, laminat, vinil, parket, Srbija`,
     openGraph: {
       title: `${category.name} - Podovi.online`,
