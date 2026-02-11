@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata = {
   title: 'Brendovi - Podovi',
-  description: 'Radimo sa vodećim evropskim proizvođačima podnih obloga. Egger, Quick-Step, Tarkett, Balterio, Kronotex i mnogi drugi.',
+  description: 'Radimo sa vodećim evropskim proizvođačima podnih obloga. Quick-Step, Tarkett, Balterio, Kronotex i mnogi drugi.',
 };
 
 export default async function BrandsPage() {

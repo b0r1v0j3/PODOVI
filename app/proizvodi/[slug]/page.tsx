@@ -538,7 +538,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Benefits + Accessories + Documents — for products with enriched data (e.g. EGGER) */}
+            {/* Benefits + Accessories + Documents — for products with enriched data */}
             {(product.benefits || accessoryProducts.length > 0 || (product.documents && product.documents.length > 0 && !['6', '7', '4', '2'].includes(product.categoryId))) && (
               <div className="mt-8 space-y-6">
                 {/* Benefits */}
@@ -589,20 +589,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   </div>
                 )}
 
-                {/* EGGER Certifications */}
-                {product.brandId === '9' && (
-                  <div className="bg-white rounded-2xl shadow-lg p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                      <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                      </svg>
-                      Sertifikati kvaliteta
-                    </h3>
-                    <CertificationBadges certifications={[
-                      "Blue Angel", "EU Ecolabel", "TÜV PROFiCERT", "M1", "CE"
-                    ]} />
-                  </div>
-                )}
+
               </div>
             )}
 

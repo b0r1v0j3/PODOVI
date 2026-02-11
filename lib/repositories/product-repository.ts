@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllEggerColorProducts } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -121,50 +121,7 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...jsonProducts];
     }
 
-    // Merge EGGER products from mock-data for categories 1 (Laminat), 8 (Ugradnja), 9 (Lajsne), 10 (Alati)
-    const eggerCategories = ['1', '8', '9', '10'];
-    if (!filters?.categoryId || eggerCategories.includes(legacyCategoryId || '') || eggerCategories.includes(filters.categoryId)) {
-      let eggerProducts = mockProducts.filter(p => p.brandId === '9');
-      // If filtering by category, only include matching EGGER products
-      if (filters?.categoryId) {
-        const catId = legacyCategoryId || filters.categoryId;
-        eggerProducts = eggerProducts.filter(p => p.categoryId === catId);
-      }
-      // Apply same filters to EGGER products
-      if (filters?.search) {
-        const searchLower = filters.search.toLowerCase();
-        eggerProducts = eggerProducts.filter(p =>
-          p.name.toLowerCase().includes(searchLower) ||
-          p.description.toLowerCase().includes(searchLower) ||
-          p.sku.toLowerCase().includes(searchLower)
-        );
-      }
-      if (filters?.brandIds && filters.brandIds.length > 0) {
-        eggerProducts = eggerProducts.filter(p => filters.brandIds!.includes(p.brandId));
-      }
-      // Deduplicate by slug (avoid if somehow already in DB)
-      const existingSlugs = new Set(products.map(p => p.slug));
-      eggerProducts = eggerProducts.filter(p => !existingSlugs.has(p.slug));
-      products = [...products, ...eggerProducts];
-    }
 
-    // Merge EGGER individual color products from egger-decors.json for Laminat Boje tab
-    if (!filters?.categoryId || legacyCategoryId === '1' || filters.categoryId === '1') {
-      let eggerColors = getAllEggerColorProducts();
-      if (filters?.search) {
-        const searchLower = filters.search.toLowerCase();
-        eggerColors = eggerColors.filter(p =>
-          p.name.toLowerCase().includes(searchLower) ||
-          p.sku.toLowerCase().includes(searchLower)
-        );
-      }
-      if (filters?.brandIds && filters.brandIds.length > 0) {
-        eggerColors = eggerColors.filter(p => filters.brandIds!.includes(p.brandId));
-      }
-      const existingSlugs = new Set(products.map(p => p.slug));
-      eggerColors = eggerColors.filter(p => !existingSlugs.has(p.slug));
-      products = [...products, ...eggerColors];
-    }
 
     // Post-fetch filters that require specs data
     if (filters?.type) {
@@ -222,7 +179,7 @@ export class SupabaseProductRepository implements IProductRepository {
       .single();
 
     if (error || !data) {
-      // Fallback: check mock-data for EGGER products
+      // Fallback: check mock-data and Tarkett products
       const mockProduct = mockProducts.find(p => p.slug === slug);
       return mockProduct || null;
     }
@@ -249,10 +206,7 @@ export class SupabaseProductRepository implements IProductRepository {
     if (brandId === '8') {
       return getAllBloqCarpetProducts();
     }
-    // For EGGER brand (id 9), return products from mock-data
-    if (brandId === '9') {
-      return mockProducts.filter(p => p.brandId === '9');
-    }
+
     const { data, error } = await supabase
       .from('products')
       .select('*, product_images(*), product_specs(*)')

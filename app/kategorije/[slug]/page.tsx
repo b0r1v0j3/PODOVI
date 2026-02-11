@@ -122,10 +122,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (hasCollectionTabs) {
-    // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat), EGGER- (EGGER)
+    // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat)
     // Colors: products without those SKU prefixes
     const hasCollectionSku = (p: { sku?: string | null }) =>
-      (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-') || p.sku?.startsWith('BLOQ-') || p.sku?.startsWith('EGGER-')) ?? false;
+      (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-') || p.sku?.startsWith('BLOQ-')) ?? false;
     const allCollections = allProducts.filter(p => hasCollectionSku(p));
     if (category.slug === 'parket') {
       // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
@@ -211,7 +211,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Laminat: kolekcije iz LAM- proizvoda (spec "collection" ili name)
     if (category.slug === 'laminat') {
       const names = allCollections
-        .filter(p => p.sku?.startsWith('LAM-') || p.sku?.startsWith('EGGER-'))
+        .filter(p => p.sku?.startsWith('LAM-'))
         .map(p => p.specs?.find(s => s.key === 'collection')?.value || p.specs?.find(s => s.key === 'brand_line')?.value || p.name)
         .filter((v): v is string => Boolean(v));
       availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
@@ -406,8 +406,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         collections = allCollections;
       }
     } else if (category.slug === 'laminat') {
-      // Laminat: LAM- i EGGER- proizvodi (header po kolekciji), jedna kartica po kolekciji – bez duplikata
-      const isLaminatCollection = (p: { sku?: string | null }) => p.sku?.startsWith('LAM-') || p.sku?.startsWith('EGGER-');
+      // Laminat: LAM- proizvodi (header po kolekciji), jedna kartica po kolekciji – bez duplikata
+      const isLaminatCollection = (p: { sku?: string | null }) => p.sku?.startsWith('LAM-');
       const laminatHeaders = allCollections.filter(p => isLaminatCollection(p));
       const byCollectionName = new Map<string, (typeof allProducts)[0]>();
       for (const p of laminatHeaders) {

@@ -3,14 +3,14 @@ import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
-import eggerDecorsData from '@/public/data/egger-decors.json';
+
 
 // Cache for performance
 let lvtProductsCache: Product[] | null = null;
 let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
 let bloqCarpetCache: Product[] | null = null;
-let eggerColorCache: Product[] | null = null;
+
 
 /**
  * Transform LVT color data from JSON to Product type
@@ -324,68 +324,7 @@ export function getAllBloqCarpetProducts(): Product[] {
     return bloqCarpetCache;
 }
 
-/**
- * Get all EGGER individual color products from egger-decors.json
- * Returns individual color products for display in Boje tab on Laminat category page
- */
-export function getAllEggerColorProducts(): Product[] {
-    if (eggerColorCache) return eggerColorCache;
 
-    const allColors = (eggerDecorsData as any).colors || [];
-
-    // Slug-to-collection mapping for routing
-    const collectionSlugMap: Record<string, string> = {
-        'egger-naturesense': 'egger-naturesense',
-        'egger-naturesense-herringbone': 'egger-naturesense-herringbone',
-        'egger-aquadura': 'egger-aquadura',
-    };
-
-    // Deduplicate by slug (same decor in multiple collections)
-    const seen = new Set<string>();
-    const products: Product[] = [];
-
-    for (const color of allColors) {
-        if (seen.has(color.slug)) continue;
-        seen.add(color.slug);
-
-        const collectionSlug = color.collection || 'egger-naturesense';
-        const specs: Array<{ key: string; label: string; value: string }> = [
-            { key: 'collection', label: 'Kolekcija', value: color.collection_name || '' },
-            { key: 'code', label: 'Šifra', value: color.code || '' },
-        ];
-        if (color.characteristics) {
-            for (const [label, value] of Object.entries(color.characteristics)) {
-                specs.push({ key: label.toLowerCase().replace(/\s+/g, '_'), label, value: value as string });
-            }
-        }
-
-        products.push({
-            id: `egger-color-${color.slug}`,
-            name: color.full_name || `${color.code} ${color.name}`,
-            slug: `${collectionSlug}?color=${color.slug}`,
-            sku: color.code,
-            categoryId: '1', // Laminat
-            brandId: '9', // EGGER
-            shortDescription: `EGGER ${color.collection_name} - ${color.name}`,
-            description: '',
-            images: [{
-                id: `${color.slug}-img-1`,
-                url: color.image_url || `/images/products/egger/decors/${color.slug}.webp`,
-                alt: color.name || color.full_name,
-                isPrimary: true,
-                order: 1,
-            }],
-            specs,
-            inStock: true,
-            featured: false,
-            createdAt: new Date('2024-01-01'),
-            updatedAt: new Date('2024-01-01'),
-        });
-    }
-
-    eggerColorCache = products;
-    return products;
-}
 
 /**
  * Get all Gerflor products (LVT + Linoleum + Carpet + Vinyl)
@@ -422,9 +361,6 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return getAllLinoleumProducts();
     } else if (categoryId === '4') {
         return [...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
-    } else if (categoryId === '1') {
-        // Laminat: return EGGER individual color products
-        return getAllEggerColorProducts();
     }
 
     return [...getAllGerflorProducts(), ...getAllBloqCarpetProducts()].filter(p => p.categoryId === categoryId);
