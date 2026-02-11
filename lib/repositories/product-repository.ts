@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllEggerColorProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -146,6 +146,24 @@ export class SupabaseProductRepository implements IProductRepository {
       const existingSlugs = new Set(products.map(p => p.slug));
       eggerProducts = eggerProducts.filter(p => !existingSlugs.has(p.slug));
       products = [...products, ...eggerProducts];
+    }
+
+    // Merge EGGER individual color products from egger-decors.json for Laminat Boje tab
+    if (!filters?.categoryId || legacyCategoryId === '1' || filters.categoryId === '1') {
+      let eggerColors = getAllEggerColorProducts();
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        eggerColors = eggerColors.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        eggerColors = eggerColors.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      const existingSlugs = new Set(products.map(p => p.slug));
+      eggerColors = eggerColors.filter(p => !existingSlugs.has(p.slug));
+      products = [...products, ...eggerColors];
     }
 
     // Post-fetch filters that require specs data
