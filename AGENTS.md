@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 11.02.2026 (EGGER integracija)
+> **Poslednje ažuriranje:** 11.02.2026 (EGGER Faza 2 — 284 dekora)
 
 ---
 
@@ -191,8 +191,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Nova komponenta `RecommendedAccessories.tsx` — grid kartica sa slikama i hover efektima
 - Product stranica proširena: prednosti → pribor → dokumenti → sertifikati za EGGER
 
+**EGGER integracija — Faza 2: Dekori kao boje (11.02.2026)**
+- Scrape-ovano svih 284 EGGER dekora sa API-ja (`api.www.egger.com/pimebp/decor-search/api/searchPage`)
+- Generisan `public/data/egger-decors.json` (284 boja u Color formatu)
+- Mapirano 16 API kolekcija → 3 sajt kolekcije: NatureSense (238), AquaDura (40), Herringbone (6)
+- Dodata EGGER grana u `prepare-colors.ts` (prepareCustomColors + mergeSelectedColor)
+- Skripta `scripts/generate-egger-decor-data.js` za regenerisanje podataka
+
 ### 🔲 TODO
-- [ ] EGGER Faza 2: Scraping individualnih dekora sa egger.com
 - [ ] EGGER Faza 3: Preostali pribor (još lajsni, lepkovi, silikoni, alati, čišćenje, popravka)
 - [ ] Poboljšati SEO meta description i OG tagove za sve kategorije
 - [ ] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
@@ -239,6 +245,7 @@ PODOVI/
 3. **Next.js dev server kešira agresivno**: Posle promene `resolve-product.ts`, moraš restartovati dev server ili obrisati `.next/` direktorijum.
 4. **Slug prefix konvencije**: Vinil i LVT koriste `gerflor-` prefix u slug-u, ali JSON fajlovi čuvaju slug BEZ prefixa. Uvek proveri oba oblika.
 5. **`parseDescriptionToSections()`**: Sekcioni naslovi moraju biti na ZASEBNOJ LINIJI i moraju se završavati sa `:`. Linija mora tačno da se poklopi sa `sectionTitles` nizom u `spec-helpers.ts`.
+6. **AŽURIRAJ AGENTS.md PRE git push**: Svaka značajna promena MORA da ažurira AGENTS.md changelog i TODO listu kao deo istog commit-a. Ne push-uj bez ažuriranog AGENTS.md.
 
 ---
 
