@@ -157,7 +157,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         // Takođe dedup kolekcija (za svaki slučaj) i BACKFILL slika iz varijanti ako header nema sliku
         const byCollectionName = new Map<string, typeof collections[0]>();
         for (const p of collections) {
-          const collectionName = p.specs?.find(s => s.key === 'collection')?.value || p.name;
+          const collectionName = p.specs?.find(s => s.key === 'collection')?.value || p.specs?.find(s => s.key === 'brand_line')?.value || p.name;
 
           // Try to find a better image if current one is missing
           let productToStore = p;
@@ -214,8 +214,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Laminat: kolekcije iz LAM- proizvoda (spec "collection" ili name)
     if (category.slug === 'laminat') {
       const names = allCollections
-        .filter(p => p.sku?.startsWith('LAM-'))
-        .map(p => p.specs?.find(s => s.key === 'collection')?.value || p.name)
+        .filter(p => p.sku?.startsWith('LAM-') || p.sku?.startsWith('EGGER-'))
+        .map(p => p.specs?.find(s => s.key === 'collection')?.value || p.specs?.find(s => s.key === 'brand_line')?.value || p.name)
         .filter((v): v is string => Boolean(v));
       availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
     }

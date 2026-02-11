@@ -247,6 +247,7 @@ PODOVI/
 5. **`parseDescriptionToSections()`**: Sekcioni naslovi moraju biti na ZASEBNOJ LINIJI i moraju se završavati sa `:`. Linija mora tačno da se poklopi sa `sectionTitles` nizom u `spec-helpers.ts`.
 6. **AŽURIRAJ AGENTS.md PRE git push**: Svaka značajna promena MORA da ažurira AGENTS.md changelog i TODO listu kao deo istog commit-a. Ne push-uj bez ažuriranog AGENTS.md.
 7. **Mock-data proizvodi MORAJU biti merge-ovani u SupabaseProductRepository**: Sajt koristi Supabase kao primarni izvor podataka. Proizvodi u `mock-data.ts` se NEĆE prikazati na sajtu osim ako nisu EKSPLICITNO merge-ovani u `SupabaseProductRepository.findAll()`. Pogledaj BLOQ (cat 4) i EGGER (cat 1,8,9,10) blokove za primer. Bez ovog koraka proizvodi postoje u kodu ali su nevidljivi na sajtu!
+8. **EGGER koristi `brand_line` spec, ne `collection`**: Tarkett laminat koristi `collection` spec key za kolekciju. EGGER koristi `brand_line`. Kategorijska stranica MORA da proveri oba ključa pri grupiranju (`p.specs?.find(s => s.key === 'collection')?.value || p.specs?.find(s => s.key === 'brand_line')?.value`). Isto važi za SKU filter — mora da uključi `EGGER-` pored `LAM-`.
 
 ---
 
