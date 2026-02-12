@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
@@ -97,6 +97,15 @@ export default function ProductColorSelector({
     }
   }, [customColors, searchParams, pathname, router]);
 
+  // Compute clean collection name: strip brand prefix from originalProductName
+  // e.g. "Gerflor Creation 40 Clic" → "Creation 40 Clic", "BLOQ Solace" → "Solace"
+  const collectionName = useMemo(() => {
+    const name = originalProductName || productName;
+    if (brand?.name && name.toLowerCase().startsWith(brand.name.toLowerCase() + ' ')) {
+      return name.substring(brand.name.length + 1);
+    }
+    return name;
+  }, [originalProductName, productName, brand]);
 
   // Update selectedColorSlug when URL changes
   useEffect(() => {
@@ -382,18 +391,18 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title: color name in h1 when selected, otherwise collection/product name; subtitle = stable collection context */}
+            {/* Title: color name in h1 when selected, otherwise collection name; subtitle = collection name */}
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {selectedColor
                   ? (selectedColor.name.startsWith(selectedColor.code)
                     ? selectedColor.name.substring(selectedColor.code.length).trim()
                     : selectedColor.name)
-                  : (originalProductName || productName)}
+                  : collectionName}
               </h1>
-              {(collectionDisplayName || originalProductName) ? (
+              {(collectionDisplayName || collectionName !== productName) ? (
                 <p className="text-lg text-gray-500">
-                  {collectionDisplayName || originalProductName}
+                  {collectionDisplayName || collectionName}
                 </p>
               ) : shortDescription ? (
                 <p className="text-lg text-gray-600">
