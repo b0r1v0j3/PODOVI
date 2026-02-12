@@ -309,27 +309,28 @@ export default function ProductColorSelector({
               {/* Levo: ime boje */}
               <div className="flex-1 min-w-0">
                 {selectedColor ? (
-                  customColors?.length ? (
+                  <div className="flex items-baseline gap-2">
+                    {selectedColor.code && (
+                      <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
+                    )}
                     <p className="text-base text-gray-700 truncate">
                       {(() => {
                         let name = selectedColor.name;
-                        const collName = collectionDisplayName || productName;
-                        if (collName && name.toLowerCase().startsWith(collName.toLowerCase())) {
-                          name = name.substring(collName.length).trim().replace(/^[-–—\s]+/, '');
+                        // Strip code prefix if name starts with code
+                        if (selectedColor.code && name.startsWith(selectedColor.code)) {
+                          name = name.substring(selectedColor.code.length).trim();
+                        }
+                        // Strip collection prefix for customColors (parket/laminat)
+                        if (customColors?.length) {
+                          const collName = collectionDisplayName || productName;
+                          if (collName && name.toLowerCase().startsWith(collName.toLowerCase())) {
+                            name = name.substring(collName.length).trim().replace(/^[-–—\s]+/, '');
+                          }
                         }
                         return name || selectedColor.name;
                       })()}
                     </p>
-                  ) : (
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
-                      <p className="text-base text-gray-700 truncate">
-                        {selectedColor.name.startsWith(selectedColor.code)
-                          ? selectedColor.name.substring(selectedColor.code.length).trim()
-                          : selectedColor.name}
-                      </p>
-                    </div>
-                  )
+                  </div>
                 ) : null}
               </div>
 
