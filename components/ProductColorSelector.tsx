@@ -375,18 +375,20 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title: za parket/laminat prikaži kolekciju (h1), ispod "Parket – ime boje" ili "Laminat – ime boje"; za ostale productName + shortDescription */}
+            {/* Title: show selected color name in h1 when a color is selected; collection/product name as subtitle */}
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                {collectionDisplayName
-                  ? (() => {
-                    let variantName = productName;
-                    if (collectionDisplayName && variantName.toLowerCase().startsWith(collectionDisplayName.toLowerCase())) {
-                      variantName = variantName.substring(collectionDisplayName.length).trim().replace(/^[-\u2013\u2014\s]+/, '');
-                    }
-                    return variantName || productName;
-                  })()
-                  : productName}
+                {selectedColor
+                  ? selectedColor.name
+                  : collectionDisplayName
+                    ? (() => {
+                      let variantName = productName;
+                      if (collectionDisplayName && variantName.toLowerCase().startsWith(collectionDisplayName.toLowerCase())) {
+                        variantName = variantName.substring(collectionDisplayName.length).trim().replace(/^[-\u2013\u2014\s]+/, '');
+                      }
+                      return variantName || productName;
+                    })()
+                    : productName}
               </h1>
               {collectionDisplayName ? (
                 <p className="text-lg text-gray-500">
@@ -398,16 +400,6 @@ export default function ProductColorSelector({
                 </p>
               ) : null}
             </div>
-
-            {/* Selected color name */}
-            {selectedColor && (
-              <div className="flex items-center gap-2 py-1">
-                <span className="text-sm text-gray-500">Boja:</span>
-                <span className="text-base font-semibold text-gray-900 transition-all duration-200">
-                  {selectedColor.code} {selectedColor.name}
-                </span>
-              </div>
-            )}
 
             {/* Price or "Cena na upit" */}
             {productPrice && productPrice > 0 ? (
