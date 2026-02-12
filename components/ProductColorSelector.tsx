@@ -400,6 +400,10 @@ export default function ProductColorSelector({
                 <p className="text-lg text-gray-500">
                   {collectionDisplayName}
                 </p>
+              ) : selectedColor ? (
+                <p className="text-lg text-gray-500">
+                  {productName}
+                </p>
               ) : shortDescription ? (
                 <p className="text-lg text-gray-600">
                   {shortDescription}
