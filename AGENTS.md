@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 11.02.2026 (EGGER brend uklonjen, dokumentacija očišćena)
+> **Poslednje ažuriranje:** 12.02.2026 (Fix image flicker na color change)
 
 ---
 
@@ -176,6 +176,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Dodat fallback brand map u `page.tsx` za brendove koji nisu u Supabase (BLOQ `'8'`, Tarkett `'3'`)
 - ⚠️ **Gotcha**: Kad dodaješ novi brend, moraš ažurirati i `id-mapping.ts` I fallback u `page.tsx`
 
+**Fix image flicker na color change (12.02.2026)**
+- Uklonjen redundantni async fetch u `ProductColorSelector.tsx` koji je za Armonia trkao sa instant `handleColorSelect`
+- Dodat CSS cross-fade za glatku tranziciju slika kad `customColors` nije dostupan
+- Zamenjeno `ProductImage` sa native `<img>` za instant switching bez re-mount-ovanja
+- Uklonjen stale `console.log` iz `handleColorSelect`
+
 ### 🔲 TODO
 - [ ] Poboljšati SEO meta description i OG tagove za sve kategorije
 - [ ] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
@@ -226,6 +232,7 @@ PODOVI/
 6. **AŽURIRAJ AGENTS.md PRE git push**: Svaka značajna promena MORA da ažurira AGENTS.md changelog i TODO listu kao deo istog commit-a. Ne push-uj bez ažuriranog AGENTS.md.
 7. **Mock-data proizvodi MORAJU biti merge-ovani u SupabaseProductRepository**: Sajt koristi Supabase kao primarni izvor podataka. Proizvodi u `mock-data.ts` se NEĆE prikazati na sajtu osim ako nisu EKSPLICITNO merge-ovani u `SupabaseProductRepository.findAll()`. Pogledaj BLOQ (cat 4) blok za primer. Bez ovog koraka proizvodi postoje u kodu ali su nevidljivi na sajtu!
 8. **Kad brišeš brend** — moraš očistiti SVE slojeve: JSON fajlove, slike, resolver grane, prepare-colors grane, product-repository merge blokove, mock-data, kategorije u Supabase, AGENTS.md i workflow dokumentaciju. Napravi checklist pre nego što počneš.
+9. **Async fetch u `useEffect` ne sme da prepisuje stanje koje `handleColorSelect` postavlja.** Ako `ColorGrid.onColorSelect` već daje tačnu sliku, nemoj praviti još jedan fetch koji menja istu state varijablu — to pravi race condition i flicker. Uvek koristi callback podatke kad su dovoljni.
 
 ---
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
@@ -103,8 +103,13 @@ export default function ProductColorSelector({
     }
   }, [searchParams, selectedColorSlug]);
 
+  // Track the previous image for cross-fade
+  const [prevImage, setPrevImage] = useState<{ url: string; alt: string } | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   // Update image when color is selected
-  const handleColorSelect = (payload: {
+  const handleColorSelect = useCallback((payload: {
     imageUrl: string;
     imageAlt: string;
     colorCode?: string;
@@ -113,8 +118,17 @@ export default function ProductColorSelector({
     colorSlug?: string;
   }) => {
     const { imageUrl, imageAlt, colorCode, colorName, characteristics } = payload;
-    console.log('ProductColorSelector: Color selected', { imageUrl, imageAlt, colorCode, colorName, characteristics });
     if (imageUrl) {
+      // Start cross-fade: save current as prev, set new image
+      if (selectedImage && selectedImage.url !== imageUrl) {
+        setPrevImage(selectedImage);
+        setIsTransitioning(true);
+        if (transitionTimeoutRef.current) clearTimeout(transitionTimeoutRef.current);
+        transitionTimeoutRef.current = setTimeout(() => {
+          setPrevImage(null);
+          setIsTransitioning(false);
+        }, 250);
+      }
       setSelectedImage({ url: imageUrl, alt: imageAlt });
       setCurrentImageIndex(0); // Reset to first image
 
@@ -133,7 +147,7 @@ export default function ProductColorSelector({
         }
       }
     }
-  };
+  }, [selectedImage, onCharacteristicsChange]);
 
   // Kad imamo customColors (parket) i ?color= u URL-u, odmah postavi sliku na tu boju
   useEffect(() => {
@@ -146,41 +160,19 @@ export default function ProductColorSelector({
     }
   }, [customColors, initialColorSlug]);
 
-  // Load carpet images (both Color Scan and Zoom) when color is selected
-  useEffect(() => {
-    if (!selectedColorSlug) return;
-
-    // Check if this is a carpet product (Armonia)
-    if (collectionSlug.includes('armonia')) {
-      // Fetch carpet data
-      fetch('/api/colors?category=tekstilne-ploce')
-        .then(res => res.json())
-        .then(data => {
-          const carpetColor = data.colors?.find((c: any) => c.slug === selectedColorSlug);
-          if (carpetColor) {
-            const images = [];
-            if (carpetColor.image_url) {
-              images.push({ url: carpetColor.image_url, alt: `${carpetColor.name} - Color Scan` });
-            }
-            if (carpetColor.texture_url) {
-              images.push({ url: carpetColor.texture_url, alt: `${carpetColor.name} - Zoom/Close-up` });
-            }
-            setSelectedImages(images);
-            if (images.length > 0) {
-              setSelectedImage(images[0]);
-            }
-          }
-        })
-        .catch(err => console.error('Error loading carpet images:', err));
-    }
-  }, [selectedColorSlug, collectionSlug]);
-
   // Update selected image when currentImageIndex changes
   useEffect(() => {
     if (selectedImages.length > 0 && selectedImages[currentImageIndex]) {
       setSelectedImage(selectedImages[currentImageIndex]);
     }
   }, [currentImageIndex, selectedImages]);
+
+  // Clean up transition timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (transitionTimeoutRef.current) clearTimeout(transitionTimeoutRef.current);
+    };
+  }, []);
 
   const handleModalColorSelect = (payload: {
     imageUrl: string;
@@ -229,14 +221,35 @@ export default function ProductColorSelector({
                   })}
                 </>
               ) : selectedImage ? (
-                <ProductImage
-                  src={selectedImage.url}
-                  alt={selectedImage.alt}
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={100}
-                  priority={imagePriority}
-                />
+                <>
+                  {/* Previous image fading out for smooth cross-fade */}
+                  {prevImage && isTransitioning && (
+                    <img
+                      src={prevImage.url}
+                      alt={prevImage.alt}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{
+                        zIndex: 5,
+                        opacity: 0,
+                        transition: 'opacity 250ms ease-in-out',
+                      }}
+                    />
+                  )}
+                  {/* Current image */}
+                  <img
+                    key={selectedImage.url}
+                    src={selectedImage.url}
+                    alt={selectedImage.alt}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{
+                      zIndex: 10,
+                      opacity: 1,
+                      transition: 'opacity 200ms ease-in-out',
+                    }}
+                    loading="eager"
+                    decoding="async"
+                  />
+                </>
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-400">
                   <span>Bez slike</span>
