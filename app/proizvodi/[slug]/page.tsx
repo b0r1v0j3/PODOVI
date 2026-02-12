@@ -357,8 +357,16 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   productSlug={product.slug}
                   externalLink={product.externalLink}
                   customColors={(product.categoryId === '3' || product.categoryId === '1' || (product.categoryId === '4' && product.sku?.startsWith('BLOQ'))) ? (customColors ?? []) : customColors}
-                  collectionDisplayName={(product.categoryId === '3' || product.categoryId === '1') ? (product.specs.find(s => s.key === 'collection')?.value) : undefined}
-                  collectionCategoryLabel={product.categoryId === '3' ? 'Parket' : product.categoryId === '1' ? 'Laminat' : undefined}
+                  collectionDisplayName={product.specs.find(s => s.key === 'collection')?.value}
+                  collectionCategoryLabel={
+                    product.categoryId === '3' ? 'Parket'
+                      : product.categoryId === '1' ? 'Laminat'
+                        : product.categoryId === '6' ? 'LVT'
+                          : product.categoryId === '7' ? 'Linoleum'
+                            : product.categoryId === '2' ? 'Vinil'
+                              : product.categoryId === '4' ? 'Tekstilne ploče'
+                                : undefined
+                  }
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                   rightColumnBottom={(product.categoryId === '3' || product.categoryId === '1') ? (
                     <ProductCharacteristics
