@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Product, Brand } from '@/types';
 import { getEffectiveParketCollection, getParketCollectionSlug, PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping';
+import ProductCardOverlay from './ProductCardOverlay';
 
 interface ProductCardClientProps {
   product: Product;
@@ -151,6 +152,10 @@ export default function ProductCardClient({ product, brand, compact = false }: P
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">Bez slike</div>
           )}
+          {/* Favorite & Compare buttons */}
+          <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+            <ProductCardOverlay product={product} />
+          </div>
         </div>
         <div className="p-3">
           {brand && (
@@ -198,8 +203,12 @@ export default function ProductCardClient({ product, brand, compact = false }: P
             {badge.label}
           </span>
         )}
+        {/* Favorite & Compare buttons */}
+        <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          <ProductCardOverlay product={product} />
+        </div>
         {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
       </div>
       <div className="p-5">
         {brand && (

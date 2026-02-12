@@ -19,7 +19,7 @@ export const CATEGORY_LEGACY_TO_UUID: Record<string, string> = Object.fromEntrie
 );
 
 export const BRAND_UUID_TO_LEGACY: Record<string, string> = {
-    '636c864b-47eb-4e1b-aa1a-e3bab2a0ee96': '1',  // Tarkett
+    '636c864b-47eb-4e1b-aa1a-e3bab2a0ee96': '3',  // Tarkett (legacy ID 3, used in tarkett-products.ts)
     'a347a773-07a3-4cbe-a114-26cd8bace2ec': '6',  // Gerflor
 };
 

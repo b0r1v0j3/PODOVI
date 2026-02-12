@@ -262,7 +262,16 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // ── Load related data ──
     const category = product.categoryId ? await categoryRepository.findById(product.categoryId) : null;
-    const brand = product.brandId ? await brandRepository.findById(product.brandId) : null;
+    let brand = product.brandId ? await brandRepository.findById(product.brandId) : null;
+
+    // Fallback brand map for brands not yet in Supabase
+    if (!brand && product.brandId) {
+      const FALLBACK_BRANDS: Record<string, { id: string; name: string; slug: string; logo: string; description: string }> = {
+        '3': { id: '3', name: 'Tarkett', slug: 'tarkett', logo: '/images/brands/tarkett-logo.png', description: 'Tarkett' },
+        '8': { id: '8', name: 'BLOQ', slug: 'bloq', logo: '/images/brands/bloq-logo.png', description: 'BLOQ' },
+      };
+      brand = FALLBACK_BRANDS[product.brandId] || null;
+    }
     let primaryImage: { url: string; alt: string } | null = product.images && product.images.length > 0
       ? (product.images.find(img => img.isPrimary) || product.images[0])
       : null;

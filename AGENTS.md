@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 11.02.2026 (EGGER fix: product-repository merge)
+> **Poslednje ažuriranje:** 11.02.2026 (EGGER brend uklonjen, dokumentacija očišćena)
 
 ---
 
@@ -37,7 +37,7 @@ Podovi.online je **katalog podnih obloga** za tržište Srbije. Sajt služi kao 
 ### Ključni principi:
 - **Nije e-commerce** — nema korpu ni checkout. Korisnici šalju upite za proizvode
 - **Sajt je na srpskom jeziku** — sav sadržaj, nazivi, specifikacije su na srpskom
-- **Multi-brand** — Tarkett, Gerflor, BLOQ, EGGER — svaki brend ima drugačiju strukturu podataka
+- **Multi-brand** — Tarkett, Gerflor, BLOQ — svaki brend ima drugačiju strukturu podataka
 - **Data-driven** — proizvodi dolaze iz kombinacije JSON fajlova, TypeScript data fajlova i Supabase baze
 - **SEO optimizovan** — structured data, sitemap, meta tagovi za svaku stranicu
 
@@ -83,24 +83,13 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 ### Kategorije:
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
-| Laminat | 1 | Tarkett (3), EGGER (9) | `lib/data/tarkett-products.ts`, `lib/data/mock-data.ts` |
+| Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Vinil | 2 | Gerflor (6) | `vinyl_colors_complete.json` |
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | — | Supabase |
 | LVT | 6 | Gerflor (6) | `lvt_colors_complete.json` |
 | Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` |
-| Ugradnja | 8 | EGGER (9) | `lib/data/mock-data.ts` |
-| Lajsne | 9 | EGGER (9) | `lib/data/mock-data.ts` |
-| Alati | 10 | EGGER (9) | `lib/data/mock-data.ts` |
-
-### EGGER (6 kolekcija podova + 6 pribora):
-| Kategorija | Kolekcije |
-|---|---|
-| NatureSense (Laminat, cat 1) | NatureSense, Herringbone, Aqua, Aqua+ |
-| AquaDura (Laminat, cat 1) | AquaDura, AquaDura+ |
-| Ugradnja (cat 8) | Silenzio Easy, Silenzio Easy SD, Silenzio Professional SD, Silenzio Duo |
-| Lajsne (cat 9) | Lajsna CUBICAL 8cm, Profil 3-u-1 |
 
 ### BLOQ Carpet Tiles (18 kolekcija, 210 boja):
 | Familija | Kolekcije |
@@ -175,36 +164,25 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Implementirano JSON→DB enrichment za Vinil kolekcije u `resolve-product.ts`
 - Poboljšan `shortDescription` fallback logic
 
-**EGGER integracija — Faza 1 (11.02.2026)**
-- Dodat EGGER brend (id: 9, slug: 'egger', Austrija)
-- Dodate nove kategorije: "Ugradnja" (id: 8), "Lajsne" (id: 9), "Alati" (id: 10)
-- Dodato 4 NatureSense laminat kolekcije + 2 AquaDura kolekcije (sve u cat 1 — Laminat)
-- Dodato 4 podloge u Ugradnja (cat 8) + 2 lajsne/profili u Lajsne (cat 9)
-- Preuzete slike sa EGGER CDN (logo SVG, 6 slika kolekcija)
-- Ažurirana kategorijska stranica za prepoznavanje EGGER- SKU prefiksa
+**EGGER brend uklonjen (11.02.2026)**
+- EGGER brend (id: 9) potpuno uklonjen iz projekta
+- Uklonjene kategorije: "Ugradnja" (id: 8), "Lajsne" (id: 9), "Alati" (id: 10)
+- Obrisani svi EGGER fajlovi: `egger-decors.json`, `generate-egger-decor-data.js`, EGGER slike
+- Očišćeni resolver, prepare-colors, product-repository, mock-data od EGGER grana
+- Očišćen AGENTS.md od svih EGGER referenci
 
-**EGGER integracija — Faza 1.5: Obogaćivanje podataka + UI (11.02.2026)**
-- Product tip proširen sa `benefits`, `compatibleAccessories`, `documents.type`
-- Obogaćeno 6 EGGER kolekcija: 10-13 specs, 6-7 prednosti, kompatibilan pribor, 4-5 PDF dokumenata
-- PDF dokumenti sa EGGER CDN-a: uputstva za ugradnju (srpski), garancija (srpski), čišćenje (srpski), TDS, EHD
-- Nova komponenta `ProductBenefits.tsx` — zeleni gradient card sa checkmark listom
-- Nova komponenta `RecommendedAccessories.tsx` — grid kartica sa slikama i hover efektima
-- Product stranica proširena: prednosti → pribor → dokumenti → sertifikati za EGGER
-
-**EGGER integracija — Faza 2: Dekori kao boje (11.02.2026)**
-- Scrape-ovano svih 284 EGGER dekora sa API-ja (`api.www.egger.com/pimebp/decor-search/api/searchPage`)
-- Generisan `public/data/egger-decors.json` (284 boja u Color formatu)
-- Mapirano 16 API kolekcija → 3 sajt kolekcije: NatureSense (238), AquaDura (40), Herringbone (6)
-- Dodata EGGER grana u `prepare-colors.ts` (prepareCustomColors + mergeSelectedColor)
-- Skripta `scripts/generate-egger-decor-data.js` za regenerisanje podataka
+**Brend prikaz fiksan za Tarkett i BLOQ (12.02.2026)**
+- Ispravljeno `id-mapping.ts`: Tarkett UUID mapiran na legacy `'3'` (bilo pogrešno `'1'`)
+- Dodat fallback brand map u `page.tsx` za brendove koji nisu u Supabase (BLOQ `'8'`, Tarkett `'3'`)
+- ⚠️ **Gotcha**: Kad dodaješ novi brend, moraš ažurirati i `id-mapping.ts` I fallback u `page.tsx`
 
 ### 🔲 TODO
-- [ ] EGGER Faza 3: Preostali pribor (još lajsni, lepkovi, silikoni, alati, čišćenje, popravka)
 - [ ] Poboljšati SEO meta description i OG tagove za sve kategorije
 - [ ] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
 - [ ] Izvući detaljne specifikacije iz PDF tech datasheet-ova (debljina, akustika, težina)
 - [ ] Dodati "Dostupne podloge" prikaz za Trinity kolekcije
 - [ ] Razmotriti prebacivanje klijentskih JSON import-ova na API rute (bundle size)
+- [ ] Proveriti da li su kategorije 8, 9, 10 obrisane iz Supabase baze (bile su EGGER-ove)
 
 ---
 
@@ -246,8 +224,8 @@ PODOVI/
 4. **Slug prefix konvencije**: Vinil i LVT koriste `gerflor-` prefix u slug-u, ali JSON fajlovi čuvaju slug BEZ prefixa. Uvek proveri oba oblika.
 5. **`parseDescriptionToSections()`**: Sekcioni naslovi moraju biti na ZASEBNOJ LINIJI i moraju se završavati sa `:`. Linija mora tačno da se poklopi sa `sectionTitles` nizom u `spec-helpers.ts`.
 6. **AŽURIRAJ AGENTS.md PRE git push**: Svaka značajna promena MORA da ažurira AGENTS.md changelog i TODO listu kao deo istog commit-a. Ne push-uj bez ažuriranog AGENTS.md.
-7. **Mock-data proizvodi MORAJU biti merge-ovani u SupabaseProductRepository**: Sajt koristi Supabase kao primarni izvor podataka. Proizvodi u `mock-data.ts` se NEĆE prikazati na sajtu osim ako nisu EKSPLICITNO merge-ovani u `SupabaseProductRepository.findAll()`. Pogledaj BLOQ (cat 4) i EGGER (cat 1,8,9,10) blokove za primer. Bez ovog koraka proizvodi postoje u kodu ali su nevidljivi na sajtu!
-8. **EGGER koristi `brand_line` spec, ne `collection`**: Tarkett laminat koristi `collection` spec key za kolekciju. EGGER koristi `brand_line`. Kategorijska stranica MORA da proveri oba ključa pri grupiranju (`p.specs?.find(s => s.key === 'collection')?.value || p.specs?.find(s => s.key === 'brand_line')?.value`). Isto važi za SKU filter — mora da uključi `EGGER-` pored `LAM-`.
+7. **Mock-data proizvodi MORAJU biti merge-ovani u SupabaseProductRepository**: Sajt koristi Supabase kao primarni izvor podataka. Proizvodi u `mock-data.ts` se NEĆE prikazati na sajtu osim ako nisu EKSPLICITNO merge-ovani u `SupabaseProductRepository.findAll()`. Pogledaj BLOQ (cat 4) blok za primer. Bez ovog koraka proizvodi postoje u kodu ali su nevidljivi na sajtu!
+8. **Kad brišeš brend** — moraš očistiti SVE slojeve: JSON fajlove, slike, resolver grane, prepare-colors grane, product-repository merge blokove, mock-data, kategorije u Supabase, AGENTS.md i workflow dokumentaciju. Napravi checklist pre nego što počneš.
 
 ---
 
@@ -257,12 +235,17 @@ PODOVI/
 ### Prioritet: Visok
 - [ ] **SEO poboljšanja** — dodati collection-level opise u meta tagove
 - [ ] **Bundle size optimizacija** — ProductDocuments importuje ceo bloq JSON (~700KB) na klijentu
+- [ ] **Čišćenje mrtvih kategorija** — proveriti da li su kategorije 8, 9, 10 (Ugradnja, Lajsne, Alati) obrisane iz Supabase baze. Bile su samo za EGGER — mogu izazvati prazne stranice.
+- [ ] **Dead code čišćenje** — proveriti `mock-data.ts` i ostale fajlove za nekorišćeni kod posle EGGER brisanja
 
 ### Prioritet: Srednji
 - [ ] **Filteri za BLOQ** — dodati filter po kolekciji/familiji na kategorijskoj stranici
 - [ ] **PDF viewer** — pregled PDF dokumenata inline umesto download-a
 - [ ] **Breadcrumbs poboljšanje** — dodati kolekciju u breadcrumbs za BLOQ
+- [ ] **Unified data source** — proizvodi dolaze iz 4 izvora (JSON, TS fajlovi, Supabase, hardcoded). Razmotriti migraciju svega u Supabase za lakše održavanje
+- [ ] **Automatski health check** — skripta koja proverava da svaki proizvod u bazi ima sliku, opis i bar 3 specifikacije
 
 ### Prioritet: Nizak
 - [ ] **Uporedni prikaz** — dodati BLOQ proizvode u compare funkcionalnost
 - [ ] **Welding rod matching** — automatsko povezivanje welding rod-ova sa bojama
+- [ ] **Workflow za brisanje brenda** — napraviti `.agent/workflows/remove-brand.md` sa checklist-om svih mesta za čišćenje
