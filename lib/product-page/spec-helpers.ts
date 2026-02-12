@@ -122,7 +122,9 @@ export function parseDescriptionToSections(description: string): ProductDetailsS
             // Add as bullet point to current section
             // Skip very short lines that might be just separators or empty
             if (line.length > 3 && !line.match(/^[-=]+$/)) {
-                currentSection.items.push(line);
+                // Strip leading bullet markers (•, -, *) since rendering already uses list-disc
+                const cleanedLine = line.replace(/^[•\-\*]\s*/, '');
+                currentSection.items.push(cleanedLine || line);
             }
         }
         // If we're before any section, skip intro lines (they're not part of structured sections)
