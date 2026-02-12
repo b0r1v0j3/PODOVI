@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 12.02.2026 (Fix image flicker na color change)
+> **Poslednje ažuriranje:** 12.02.2026 (Rework title/subtitle: brend stripovan, color name u h1, duple tačke fiks)
 
 ---
 
@@ -182,6 +182,17 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Zamenjeno `ProductImage` sa native `<img>` za instant switching bez re-mount-ovanja
 - Uklonjen stale `console.log` iz `handleColorSelect`
 
+**Rework title/subtitle na product page (12.02.2026)**
+- h1 prikazuje **ime boje** kad je izabrana (stripovan šifra prefiks), inače **ime kolekcije** (stripovan brend)
+- Subtitle uvek prikazuje ime kolekcije bez brenda (brend je već prikazan iznad kao link)
+- Dodat `originalProductName` prop u `page.tsx` — čuva originalni naziv proizvoda PRE `mergeSelectedColor`
+- Dodat `collectionName` useMemo u `ProductColorSelector` — stripuje brend prefiks dinamički koristeći `brand.name`
+- Ujednačen prikaz šifre/imena boje ispod slike za sve tipove proizvoda (BLOQ, Gerflor, Parket — svi imaju bold šifru)
+
+**Fix duplih tačaka u opisu (12.02.2026)**
+- `parseDescriptionToSections()` sada stripuje vodeće `•`, `-`, `*` karaktere iz stavki
+- Rendering koristi `list-disc` koji dodaje svoju tačku, pa izvorni bullet karakter pravio duplu tačku
+
 ### 🔲 TODO
 - [ ] Poboljšati SEO meta description i OG tagove za sve kategorije
 - [ ] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
@@ -233,6 +244,8 @@ PODOVI/
 7. **Mock-data proizvodi MORAJU biti merge-ovani u SupabaseProductRepository**: Sajt koristi Supabase kao primarni izvor podataka. Proizvodi u `mock-data.ts` se NEĆE prikazati na sajtu osim ako nisu EKSPLICITNO merge-ovani u `SupabaseProductRepository.findAll()`. Pogledaj BLOQ (cat 4) blok za primer. Bez ovog koraka proizvodi postoje u kodu ali su nevidljivi na sajtu!
 8. **Kad brišeš brend** — moraš očistiti SVE slojeve: JSON fajlove, slike, resolver grane, prepare-colors grane, product-repository merge blokove, mock-data, kategorije u Supabase, AGENTS.md i workflow dokumentaciju. Napravi checklist pre nego što počneš.
 9. **Async fetch u `useEffect` ne sme da prepisuje stanje koje `handleColorSelect` postavlja.** Ako `ColorGrid.onColorSelect` već daje tačnu sliku, nemoj praviti još jedan fetch koji menja istu state varijablu — to pravi race condition i flicker. Uvek koristi callback podatke kad su dovoljni.
+10. **`mergeSelectedColor()` menja `product.name` u ime boje.** Nikad ne koristi `productName` kao izvor za ime kolekcije posle merge-a. Uvek sačuvaj originalni naziv PRE poziva `mergeSelectedColor()` i prosledi ga kao `originalProductName`.
+11. **Brend se ne ponavlja u naslovu/podnaslovu.** Brend (Gerflor, Tarkett, BLOQ) je već prikazan iznad kao link. U h1 i subtitle koristi `collectionName` koji stripuje brend prefiks. Logika: `name.startsWith(brand.name + ' ')` → strip.
 
 ---
 
