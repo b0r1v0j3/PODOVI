@@ -399,6 +399,16 @@ export default function ProductColorSelector({
               ) : null}
             </div>
 
+            {/* Selected color name */}
+            {selectedColor && (
+              <div className="flex items-center gap-2 py-1">
+                <span className="text-sm text-gray-500">Boja:</span>
+                <span className="text-base font-semibold text-gray-900 transition-all duration-200">
+                  {selectedColor.code} {selectedColor.name}
+                </span>
+              </div>
+            )}
+
             {/* Price or "Cena na upit" */}
             {productPrice && productPrice > 0 ? (
               <div className="bg-primary-50 border border-primary-200 rounded-xl p-4">
