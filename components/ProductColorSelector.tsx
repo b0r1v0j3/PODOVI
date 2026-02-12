@@ -311,7 +311,11 @@ export default function ProductColorSelector({
                   ) : (
                     <div className="flex items-baseline gap-2">
                       <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
-                      <p className="text-base text-gray-700 truncate">{selectedColor.name}</p>
+                      <p className="text-base text-gray-700 truncate">
+                        {selectedColor.name.startsWith(selectedColor.code)
+                          ? selectedColor.name.substring(selectedColor.code.length).trim()
+                          : selectedColor.name}
+                      </p>
                     </div>
                   )
                 ) : null}
@@ -379,7 +383,9 @@ export default function ProductColorSelector({
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {selectedColor
-                  ? selectedColor.name
+                  ? (selectedColor.name.startsWith(selectedColor.code)
+                    ? selectedColor.name.substring(selectedColor.code.length).trim()
+                    : selectedColor.name)
                   : collectionDisplayName
                     ? (() => {
                       let variantName = productName;
