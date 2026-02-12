@@ -11,38 +11,38 @@ interface Props {
 const linoleumColors = (linoleumColorsData as { colors?: any[] }).colors || [];
 
 function getColorsByWeldingRod(weldingRodRef: string) {
-  return linoleumColors.filter(color => 
+  return linoleumColors.filter(color =>
     color.welding_rod && color.welding_rod.toLowerCase() === weldingRodRef.toLowerCase()
   );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const colors = getColorsByWeldingRod(params.ref);
-  
+
   if (colors.length === 0) {
     return {
       title: 'Elektroda za varenje nije pronađena',
     };
   }
-  
+
   const firstColor = colors[0];
-  
+
   return {
-    title: `Elektroda za varenje ${params.ref.toUpperCase()} - ${colors.length} boja | Podovi.online`,
+    title: `Elektroda za varenje ${params.ref.toUpperCase()} - ${colors.length} boja | podovi.online`,
     description: `Elektroda za varenje ${params.ref.toUpperCase()} za ${colors.length} boja linoleuma. Pogledajte sve boje koje koriste ovu elektrodu.`,
   };
 }
 
 export default async function WeldingRodPage({ params }: Props) {
   const colors = getColorsByWeldingRod(params.ref);
-  
+
   if (colors.length === 0) {
     notFound();
   }
-  
+
   const firstColor = colors[0];
   const weldingRodRef = firstColor.welding_rod || params.ref;
-  
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container">
@@ -55,7 +55,7 @@ export default async function WeldingRodPage({ params }: Props) {
             <span className="mx-2">/</span>
             <span className="text-gray-900">Elektroda za varenje {weldingRodRef}</span>
           </nav>
-          
+
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             ELEKTRODA ZA VARENJE {weldingRodRef.toUpperCase()}
           </h1>
@@ -63,13 +63,13 @@ export default async function WeldingRodPage({ params }: Props) {
             Prikazano {colors.length} boja koje koriste ovu elektrodu za varenje
           </p>
         </div>
-        
+
         {/* Colors Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
           {colors.map((color) => {
             const slug = color.slug || `${color.code}-${color.name}`.toLowerCase().replace(/\s+/g, '-');
             const imageUrl = color.image_url || color.texture_url || '/images/placeholder.svg';
-            
+
             return (
               <Link
                 key={color.slug || color.code}
@@ -103,7 +103,7 @@ export default async function WeldingRodPage({ params }: Props) {
             );
           })}
         </div>
-        
+
         {/* Info Box */}
         <div className="mt-12 bg-white rounded-lg shadow-md p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">

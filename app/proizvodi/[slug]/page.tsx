@@ -113,15 +113,15 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       }
     }
 
-    // ── Build title: "ColorName - CollectionName | Podovi.online" ──
+    // ── Build title: "ColorName - CollectionName | podovi.online" ──
     const brandText = brand ? brand.name : '';
     const categoryText = category ? category.name : '';
     let pageTitle: string;
     if (collectionName && collectionName !== cleanName) {
-      // "BALLERINA - Creation 40 Clic | Podovi.online"
-      pageTitle = `${cleanName} - ${collectionName} | Podovi.online`;
+      // "BALLERINA - Creation 40 Clic | podovi.online"
+      pageTitle = `${cleanName} - ${collectionName} | podovi.online`;
     } else {
-      pageTitle = `${cleanName} | Podovi.online`;
+      pageTitle = `${cleanName} | podovi.online`;
     }
 
     // ── Meta description: proper sentence ──
@@ -131,7 +131,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       metaDescription = `${shortDesc}${brandText ? ` | ${brandText}` : ''}${categoryText ? ` | ${categoryText}` : ''}`;
     } else {
       const parts = [cleanName, collectionName, brandText, categoryText].filter(Boolean);
-      metaDescription = `${parts.join(' - ')}. Cena, tehničke specifikacije i dostupne boje na Podovi.online.`;
+      metaDescription = `${parts.join(' - ')}. Cena, tehničke specifikacije i dostupne boje na podovi.online.`;
     }
 
     // ── OG tags ──
@@ -148,14 +148,14 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       title: pageTitle,
       description: metaDescription.substring(0, 160),
       keywords,
-      authors: [{ name: 'Podovi.online' }],
+      authors: [{ name: 'podovi.online' }],
       openGraph: {
         title: ogTitle,
         description: ogDescription,
         type: 'website',
         locale: 'sr_RS',
         url: urlWithColor,
-        siteName: 'Podovi.online',
+        siteName: 'podovi.online',
         images: primaryImage ? [{ url: primaryImage.url, width: 1200, height: 630, alt: primaryImage.alt || product.name }] : [],
       },
       twitter: {
@@ -168,7 +168,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     };
   } catch (error) {
     console.error('Error generating metadata:', error);
-    return { metadataBase: new URL(baseUrl), title: 'Proizvod | Podovi.online', description: '' };
+    return { metadataBase: new URL(baseUrl), title: 'Proizvod | podovi.online', description: '' };
   }
 }
 

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "sr_RS",
     url: "https://podovi.online",
-    siteName: "Podovi.online",
+    siteName: "podovi.online",
     images: [
       {
         url: "/og-image.jpg",

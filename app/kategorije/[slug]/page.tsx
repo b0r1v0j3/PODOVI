@@ -39,16 +39,16 @@ export async function generateMetadata({ params }: CategoryPageProps) {
 
   return {
     metadataBase: new URL(baseUrl),
-    title: `${category.name} Podovi | Podovi.online`,
+    title: `${category.name} Podovi | podovi.online`,
     description: `${category.description}`,
     keywords: `${category.name}, podovi, podne obloge, laminat, vinil, parket, Srbija`,
     openGraph: {
-      title: `${category.name} - Podovi.online`,
+      title: `${category.name} - podovi.online`,
       description: category.description,
       type: 'website',
       locale: 'sr_RS',
       url: `${baseUrl}/kategorije/${params.slug}`,
-      siteName: 'Podovi.online',
+      siteName: 'podovi.online',
       images: category.image ? [
         {
           url: category.image,
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: CategoryPageProps) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${category.name} - Podovi.online`,
+      title: `${category.name} - podovi.online`,
       description: category.description,
       images: category.image ? [category.image] : [],
     },
