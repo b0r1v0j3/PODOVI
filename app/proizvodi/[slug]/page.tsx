@@ -86,30 +86,67 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     const brand = product.brandId ? await brandRepository.findById(product.brandId) : null;
     const primaryImage = product.images?.[0];
 
-    const priceText = product.price && product.price > 0
-      ? `Cena: ${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}`
-      : '';
-    const brandText = brand ? `${brand.name}` : '';
-    const categoryText = category ? `${category.name}` : '';
-    const description = `${product.shortDescription || product.description || ''} ${priceText}. ${brandText} ${categoryText}`.trim();
-    const keywords = [product.name, brandText, categoryText, 'podovi', 'podne obloge', 'Srbija', 'laminat', 'vinil', 'LVT'].filter(Boolean).join(', ');
+    // ── Clean product name: strip color code prefix and brand prefix ──
+    let cleanName = product.name;
+    // Strip color code prefix (e.g., "0347 BALLERINA" → "BALLERINA")
+    const codeMatch = cleanName.match(/^(\d{3,5})\s+(.+)$/);
+    if (codeMatch) {
+      cleanName = codeMatch[2];
+    }
+    // Strip brand prefix (e.g., "Gerflor Creation 40 Clic" → "Creation 40 Clic")
+    if (brand?.name && cleanName.toLowerCase().startsWith(brand.name.toLowerCase() + ' ')) {
+      cleanName = cleanName.substring(brand.name.length + 1);
+    }
+
+    // ── Collection name for context ──
+    const collectionSpec = product.specs?.find((s: { key: string }) => s.key === 'collection');
+    let collectionName = collectionSpec?.value || '';
+    // Fallback: if no collection spec and a color was selected, resolve parent product name
+    if (!collectionName && selectedColorSlug) {
+      const parentProduct = await resolveProductBySlug(params.slug);
+      if (parentProduct) {
+        collectionName = parentProduct.name;
+        // Strip brand prefix from parent name too
+        if (brand?.name && collectionName.toLowerCase().startsWith(brand.name.toLowerCase() + ' ')) {
+          collectionName = collectionName.substring(brand.name.length + 1);
+        }
+      }
+    }
+
+    // ── Build title: "ColorName - CollectionName | Podovi.online" ──
+    const brandText = brand ? brand.name : '';
+    const categoryText = category ? category.name : '';
+    let pageTitle: string;
+    if (collectionName && collectionName !== cleanName) {
+      // "BALLERINA - Creation 40 Clic | Podovi.online"
+      pageTitle = `${cleanName} - ${collectionName} | Podovi.online`;
+    } else {
+      pageTitle = `${cleanName} | Podovi.online`;
+    }
+
+    // ── Meta description: proper sentence ──
+    const shortDesc = product.shortDescription || '';
+    let metaDescription: string;
+    if (shortDesc) {
+      metaDescription = `${shortDesc}${brandText ? ` | ${brandText}` : ''}${categoryText ? ` | ${categoryText}` : ''}`;
+    } else {
+      const parts = [cleanName, collectionName, brandText, categoryText].filter(Boolean);
+      metaDescription = `${parts.join(' - ')}. Cena, tehničke specifikacije i dostupne boje na Podovi.online.`;
+    }
+
+    // ── OG tags ──
+    const ogTitle = [cleanName, collectionName, brandText].filter(Boolean).join(' - ');
+    const ogDescription = shortDesc || metaDescription;
+    const keywords = [cleanName, collectionName, brandText, categoryText, 'podovi', 'podne obloge', 'Srbija'].filter(Boolean).join(', ');
 
     const urlWithColor = selectedColorSlug
       ? `${baseUrl}/proizvodi/${params.slug}?color=${selectedColorSlug}`
       : `${baseUrl}/proizvodi/${params.slug}`;
 
-    const ogPriceText = product.price && product.price > 0
-      ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit || 'm²'}`
-      : '';
-    const ogTitle = categoryText && ogPriceText
-      ? `${categoryText} | ${ogPriceText}`
-      : categoryText || product.name;
-    const ogDescription = product.name;
-
     return {
       metadataBase: new URL(baseUrl),
-      title: `${product.name} - Cena i tehničke specifikacije | Podovi.online`,
-      description: description.substring(0, 160),
+      title: pageTitle,
+      description: metaDescription.substring(0, 160),
       keywords,
       authors: [{ name: 'Podovi.online' }],
       openGraph: {

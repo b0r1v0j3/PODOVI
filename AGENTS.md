@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 12.02.2026 (Rework title/subtitle: brend stripovan, color name u h1, duple tačke fiks)
+> **Poslednje ažuriranje:** 12.02.2026 (SEO metadata fix: tab title, OG tags, meta description)
 
 ---
 
@@ -192,9 +192,15 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 **Fix duplih tačaka u opisu (12.02.2026)**
 - `parseDescriptionToSections()` sada stripuje vodeće `•`, `-`, `*` karaktere iz stavki
 - Rendering koristi `list-disc` koji dodaje svoju tačku, pa izvorni bullet karakter pravio duplu tačku
+**SEO metadata poboljšanje (12.02.2026)**
+- `generateMetadata()` u `page.tsx` kompletno prepisan
+- Tab title: stripuje šifru boje i brend prefiks, format "BALLERINA - Creation 40 Clic | Podovi.online"
+- OG title: uključuje ime boje, kolekciju i brend
+- Meta description: koristi `shortDescription` sa brendom i kategorijom, bez usamljenih tačaka
+- Fallback za collection name: ako `collection` spec ne postoji, resolvuje parent product
 
 ### 🔲 TODO
-- [ ] Poboljšati SEO meta description i OG tagove za sve kategorije
+- [x] Poboljšati SEO meta description i OG tagove za sve kategorije
 - [ ] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
 - [ ] Izvući detaljne specifikacije iz PDF tech datasheet-ova (debljina, akustika, težina)
 - [ ] Dodati "Dostupne podloge" prikaz za Trinity kolekcije
