@@ -246,6 +246,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
       product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
     }
 
+    // ── Save original name before color merge (merge overwrites product.name with color name) ──
+    const originalProductName = product.name;
+
     // ── Merge selected color variant ──
     if (selectedColorSlug) {
       await mergeSelectedColor(product, selectedColorSlug);
@@ -348,6 +351,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   imagePriority={true}
                   collectionSlug={(product as { collectionSlug?: string }).collectionSlug || params.slug}
                   productName={displayName}
+                  originalProductName={originalProductName}
                   productPrice={product.price && product.price > 0 ? product.price : undefined}
                   priceUnit={product.priceUnit}
                   brand={brand ? { name: brand.name, slug: brand.slug } : null}

@@ -15,6 +15,8 @@ interface ProductColorSelectorProps {
   } | null;
   collectionSlug: string;
   productName: string;
+  /** Original product/collection name before color merge — stable reference for subtitle */
+  originalProductName?: string;
   productPrice?: number;
   priceUnit?: string;
   brand?: {
@@ -50,6 +52,7 @@ export default function ProductColorSelector({
   initialImage,
   collectionSlug,
   productName,
+  originalProductName,
   productPrice,
   priceUnit,
   brand,
@@ -379,30 +382,18 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title: show selected color name in h1 when a color is selected; collection/product name as subtitle */}
+            {/* Title: color name in h1 when selected, otherwise collection/product name; subtitle = stable collection context */}
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {selectedColor
                   ? (selectedColor.name.startsWith(selectedColor.code)
                     ? selectedColor.name.substring(selectedColor.code.length).trim()
                     : selectedColor.name)
-                  : collectionDisplayName
-                    ? (() => {
-                      let variantName = productName;
-                      if (collectionDisplayName && variantName.toLowerCase().startsWith(collectionDisplayName.toLowerCase())) {
-                        variantName = variantName.substring(collectionDisplayName.length).trim().replace(/^[-\u2013\u2014\s]+/, '');
-                      }
-                      return variantName || productName;
-                    })()
-                    : productName}
+                  : (originalProductName || productName)}
               </h1>
-              {collectionDisplayName ? (
+              {(collectionDisplayName || originalProductName) ? (
                 <p className="text-lg text-gray-500">
-                  {collectionDisplayName}
-                </p>
-              ) : selectedColor ? (
-                <p className="text-lg text-gray-500">
-                  {productName}
+                  {collectionDisplayName || originalProductName}
                 </p>
               ) : shortDescription ? (
                 <p className="text-lg text-gray-600">
