@@ -178,6 +178,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 **BLOQ brend fix (15.02.2026)**
 - Ažuriran `SupabaseBrandRepository` da merge-uje mock brendove (BLOQ) sa DB rezultatima
+- **Fix duplikata**: Dedup logic promenjen na `slug` (umesto `id`) jer DB koristi UUID a mock legacy ID
 - Uklonjen EGGER i legacy kategorije iz `mock-data.ts` (čišćenje zaostalih podataka)
 
 

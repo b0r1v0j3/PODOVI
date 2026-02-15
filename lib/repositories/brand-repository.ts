@@ -42,9 +42,9 @@ export class SupabaseBrandRepository implements IBrandRepository {
     const dbBrands = (data || []).map(toBrand);
 
     // Merge with mock brands (BLOQ, etc.) that might not be in DB yet
-    // Prefer DB version if duplicate ID exists
-    const dbBrandIds = new Set(dbBrands.map(b => b.id));
-    const uniqueMockBrands = mockBrands.filter(mb => !dbBrandIds.has(mb.id));
+    // Prefer DB version if duplicate SLUG exists (DB has UUIDs, Mock has legacy IDs)
+    const dbBrandSlugs = new Set(dbBrands.map(b => b.slug));
+    const uniqueMockBrands = mockBrands.filter(mb => !dbBrandSlugs.has(mb.slug));
 
     return [...dbBrands, ...uniqueMockBrands].sort((a, b) => a.name.localeCompare(b.name));
   }
