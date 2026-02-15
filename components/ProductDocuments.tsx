@@ -2,10 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import lvtColorsData from '@/public/data/lvt_colors_complete.json';
-import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
-import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 
 interface Document {
     title: string;
@@ -30,37 +26,16 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
             let nextDocuments = initialDocuments;
 
             if (colorSlug) {
-                // Load color documents from JSON
-                const isLinoleum = categoryId === '7';
-                const isCarpet = categoryId === '4';
-                const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
-                const colors = (colorsData as { colors?: any[] }).colors || [];
-
-                // Try exact match first
-                let color = colors.find((c: any) => c.slug === colorSlug);
-
-                // If not found, try to find by partial match
-                if (!color) {
-                    color = colors.find((c: any) => {
-                        const cSlug = c.slug || '';
-                        return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
-                    });
-                }
-
-                // If not found in standard data, try BLOQ data
-                if (!color && isCarpet) {
-                    const bloqColors = (bloqCarpetData as any).colors || [];
-                    color = bloqColors.find((c: any) => c.slug === colorSlug);
-                    if (!color) {
-                        color = bloqColors.find((c: any) => {
-                            const cSlug = c.slug || '';
-                            return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
-                        });
+                try {
+                    const res = await fetch(`/api/color-data?color=${encodeURIComponent(colorSlug)}&categoryId=${encodeURIComponent(categoryId)}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.documents && data.documents.length > 0) {
+                            nextDocuments = data.documents;
+                        }
                     }
-                }
-
-                if (color && color.documents && Array.isArray(color.documents)) {
-                    nextDocuments = color.documents;
+                } catch {
+                    // Ignore fetch errors, fall through to collection-level docs
                 }
             }
 

@@ -176,6 +176,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Dodat fallback brand map u `page.tsx` za brendove koji nisu u Supabase (BLOQ `'8'`, Tarkett `'3'`)
 - ⚠️ **Gotcha**: Kad dodaješ novi brend, moraš ažurirati i `id-mapping.ts` I fallback u `page.tsx`
 
+**BLOQ brend fix (15.02.2026)**
+- Ažuriran `SupabaseBrandRepository` da merge-uje mock brendove (BLOQ) sa DB rezultatima
+- Uklonjen EGGER i legacy kategorije iz `mock-data.ts` (čišćenje zaostalih podataka)
+
+
 **Fix image flicker na color change (12.02.2026)**
 - Uklonjen redundantni async fetch u `ProductColorSelector.tsx` koji je za Armonia trkao sa instant `handleColorSelect`
 - Dodat CSS cross-fade za glatku tranziciju slika kad `customColors` nije dostupan

@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import type { ProductSpec } from '@/types';
-import lvtColorsData from '@/public/data/lvt_colors_complete.json';
-import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
-import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 
 interface ProductCharacteristicsProps {
   specs?: ProductSpec[];
@@ -26,65 +23,26 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
       return;
     }
 
-    // Load color characteristics from JSON
-    const isLinoleum = categoryId === '7';
-    const isCarpet = categoryId === '4';
-    const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
-    const colors = (colorsData as { colors?: any[] }).colors || [];
+    let isActive = true;
 
-    // Try exact match first
-    let color = colors.find((c: any) => c.slug === colorSlug);
-
-    // If not found, try to find by partial match (in case slug format differs)
-    if (!color) {
-      color = colors.find((c: any) => {
-        const cSlug = c.slug || '';
-        return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
-      });
-    }
-
-    if (color) {
-      const colorCharacteristics: Record<string, string> = {};
-
-      // Add "Dimenzije" FIRST to ensure it's always at the top
-      const dimensionValue = color.dimension || (color.characteristics && color.characteristics['Dimenzije']);
-      if (dimensionValue) {
-        colorCharacteristics['Dimenzije'] = dimensionValue;
-      }
-
-      // Add "Ukupna debljina" SECOND to ensure it's always second
-      const thicknessValue = color.overall_thickness || (color.characteristics && color.characteristics['Ukupna debljina']);
-      if (thicknessValue) {
-        colorCharacteristics['Ukupna debljina'] = thicknessValue;
-      }
-
-      // Add characteristics from color.characteristics if exists (skip Dimenzije and Ukupna debljina to avoid duplicates)
-      if (color.characteristics) {
-        Object.entries(color.characteristics).forEach(([key, value]) => {
-          if (key !== 'Dimenzije' && key !== 'Ukupna debljina') {
-            if (typeof value === 'string') {
-              colorCharacteristics[key] = value;
-            }
+    const loadCharacteristics = async () => {
+      try {
+        const res = await fetch(`/api/color-data?color=${encodeURIComponent(colorSlug)}&categoryId=${encodeURIComponent(categoryId)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.characteristics && Object.keys(data.characteristics).length > 0) {
+            if (isActive) setSelectedCharacteristics(data.characteristics);
+            return;
           }
-        });
+        }
+      } catch {
+        // Ignore fetch errors
       }
+      if (isActive) setSelectedCharacteristics(null);
+    };
 
-      // Add other legacy fields if they don't exist yet
-      if (color.format && !colorCharacteristics['Format']) {
-        colorCharacteristics['Format'] = color.format;
-      }
-      if (color.welding_rod && !colorCharacteristics['Elektroda za varenje']) {
-        colorCharacteristics['Elektroda za varenje'] = color.welding_rod;
-      }
-
-      if (Object.keys(colorCharacteristics).length > 0) {
-        setSelectedCharacteristics(colorCharacteristics);
-      } else {
-        setSelectedCharacteristics(null);
-      }
-    } else {
-      setSelectedCharacteristics(null);
-    }
+    loadCharacteristics();
+    return () => { isActive = false; };
   }, [colorSlug, categoryId]);
 
   if ((!specs || specs.length === 0) && !selectedCharacteristics) {

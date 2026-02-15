@@ -35,9 +35,18 @@ export class SupabaseBrandRepository implements IBrandRepository {
 
     if (error) {
       console.error('SupabaseBrandRepository.findAll error:', error.message);
-      return [];
+      // Fallback to mock data if DB fails
+      return mockBrands;
     }
-    return (data || []).map(toBrand);
+
+    const dbBrands = (data || []).map(toBrand);
+
+    // Merge with mock brands (BLOQ, etc.) that might not be in DB yet
+    // Prefer DB version if duplicate ID exists
+    const dbBrandIds = new Set(dbBrands.map(b => b.id));
+    const uniqueMockBrands = mockBrands.filter(mb => !dbBrandIds.has(mb.id));
+
+    return [...dbBrands, ...uniqueMockBrands].sort((a, b) => a.name.localeCompare(b.name));
   }
 
   async findBySlug(slug: string): Promise<Brand | null> {
@@ -47,20 +56,37 @@ export class SupabaseBrandRepository implements IBrandRepository {
       .eq('slug', slug)
       .single();
 
-    if (error || !data) return null;
+    if (error || !data) {
+      // Fallback: check mock-data
+      const mockBrand = mockBrands.find(b => b.slug === slug);
+      return mockBrand || null;
+    }
     return toBrand(data);
   }
 
   async findById(id: string): Promise<Brand | null> {
-    const uuid = mapBrandIdToUUID(id);
-    const { data, error } = await supabase
-      .from('brands')
-      .select('*')
-      .eq('id', uuid)
-      .single();
+    // Try to map ID to UUID for Supabase lookup
+    // If it's a legacy ID like '8' (BLOQ) that might not be in DB or ID mapping, 
+    // we should check mock data first or handle the mapping failure gracefully.
+    try {
+      const uuid = mapBrandIdToUUID(id);
+      const { data, error } = await supabase
+        .from('brands')
+        .select('*')
+        .eq('id', uuid)
+        .single();
 
-    if (error || !data) return null;
-    return toBrand(data);
+      if (!error && data) {
+        return toBrand(data);
+      }
+    } catch (e) {
+      // ID mapping might fail for pure mock IDs if not in id-mapping.ts
+      // Continue to mock check
+    }
+
+    // Fallback: check mock-data
+    const mockBrand = mockBrands.find(b => b.id === id);
+    return mockBrand || null;
   }
 }
 

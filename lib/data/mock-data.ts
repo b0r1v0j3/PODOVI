@@ -59,30 +59,7 @@ export const categories: Category[] = [
     image: '/images/products/linoleum/dlw-colorette/0110-cadillac-pink/44901 - 0110 CADILLAC PINK.jpg',
     order: 7,
   },
-  {
-    id: '8',
-    name: 'Ugradnja',
-    slug: 'ugradnja',
-    description: 'Podloge, lepkovi, silikoni, prajmeri i proizvodi za čišćenje i popravku podova',
-    image: '/images/categories/ugradnja.jpg',
-    order: 8,
-  },
-  {
-    id: '9',
-    name: 'Lajsne',
-    slug: 'lajsne',
-    description: 'Podne lajsne i profili za savršen prelaz između poda i zida',
-    image: '/images/categories/lajsne.jpg',
-    order: 9,
-  },
-  {
-    id: '10',
-    name: 'Alati',
-    slug: 'alati',
-    description: 'Alati za profesionalno postavljanje laminatnih i hibridnih podova',
-    image: '/images/categories/alati.jpg',
-    order: 10,
-  },
+  // Categories 8, 9, 10 (Egger specific) removed
 ];
 
 export const brands: Brand[] = [
@@ -112,15 +89,6 @@ export const brands: Brand[] = [
     description: 'Holandski proizvođač premium tekstilnih ploča za komercijalne i poslovne prostore',
     website: 'https://bloq.nl',
     countryOfOrigin: 'Holandija',
-  },
-  {
-    id: '9',
-    name: 'EGGER',
-    slug: 'egger',
-    logo: '/images/brands/egger.svg',
-    description: 'Austrijski proizvođač vrhunskih laminatnih i hibridnih podova sa više od 60 godina tradicije. NatureSense laminati i AquaDura hibridni podovi za svaki prostor.',
-    website: 'https://www.egger.com/sr/podne-obloge/',
-    countryOfOrigin: 'Austrija',
   },
 ];
 
