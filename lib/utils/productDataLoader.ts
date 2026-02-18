@@ -1,3 +1,4 @@
+import { Product } from '@/types';
 import { formatLvtSpecs } from '@/lib/product-page/spec-helpers';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';

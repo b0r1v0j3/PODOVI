@@ -1,4 +1,4 @@
-import type { Product } from '@/types';
+import type { Product, ProductSpec } from '@/types';
 import type { ColorFromJSON } from './types';
 import {
     loadColorFromJson,
@@ -53,7 +53,7 @@ export async function prepareCustomColors(
                     image_url: v.images?.[0]?.url || '',
                     texture_url: v.images?.[0]?.url || '',
                     image_count: v.images?.length ?? 0,
-                    characteristics: (v.specs || []).reduce((acc, spec) => {
+                    characteristics: (v.specs || []).reduce((acc: Record<string, string>, spec: ProductSpec) => {
                         acc[spec.label] = spec.value;
                         return acc;
                     }, {} as Record<string, string>)
@@ -86,7 +86,7 @@ export async function prepareCustomColors(
                     image_url: v.images?.[0]?.url || '',
                     texture_url: v.images?.[0]?.url || '',
                     image_count: v.images?.length ?? 0,
-                    characteristics: (v.specs || []).reduce((acc, spec) => {
+                    characteristics: (v.specs || []).reduce((acc: Record<string, string>, spec: ProductSpec) => {
                         acc[spec.label] = spec.value;
                         return acc;
                     }, {} as Record<string, string>)
@@ -123,7 +123,7 @@ export async function prepareCustomColors(
         const collectionName = product.specs?.find(s => s.key === 'collection')?.value ?? null;
         if (collectionName) {
             const variants = getAllTarkettLVTProducts().filter(p =>
-                p.specs?.find(s => s.key === 'collection')?.value === collectionName
+                p.specs?.find((s: ProductSpec) => s.key === 'collection')?.value === collectionName
             );
             if (variants.length > 0) {
                 return variants.map(v => ({
@@ -136,7 +136,7 @@ export async function prepareCustomColors(
                     image_url: v.images?.[0]?.url || '',
                     texture_url: v.images?.[0]?.url || '',
                     image_count: v.images?.length ?? 0,
-                    characteristics: (v.specs || []).reduce((acc, spec) => {
+                    characteristics: (v.specs || []).reduce((acc: Record<string, string>, spec: ProductSpec) => {
                         acc[spec.label] = spec.value;
                         return acc;
                     }, {} as Record<string, string>)

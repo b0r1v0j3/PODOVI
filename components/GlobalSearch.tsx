@@ -185,6 +185,7 @@ export default function GlobalSearch() {
                         aria-expanded={isOpen}
                         role="combobox"
                         aria-autocomplete="list"
+                        aria-controls="search-results-list"
                     />
                     {isLoading && (
                         <div className="absolute right-3 top-1/2 -translate-y-1/2">
