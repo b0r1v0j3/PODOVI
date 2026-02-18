@@ -141,7 +141,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
           {primaryImage ? (
             <Image
               key={imageSrc}
-              src={imageSrc.startsWith('/') ? imageSrc : '/images/placeholder.svg'}
+              src={imageSrc || '/images/placeholder.svg'}
               alt={primaryImage.alt}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
@@ -184,7 +184,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
         {primaryImage ? (
           <Image
             key={imageSrc}
-            src={imageSrc.startsWith('/') ? imageSrc : '/images/placeholder.svg'}
+            src={imageSrc || '/images/placeholder.svg'}
             alt={primaryImage.alt}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -52,9 +52,8 @@ export default async function ProductCard({ product }: ProductCardProps) {
     ? (product.images.find(img => img.isPrimary) || product.images[0])
     : null;
 
-  if (product.id.includes('essence') || product.id.includes('progressive')) {
-    console.log(`[ProductCard] ${product.id} - Images: ${product.images?.length}, Primary: ${primaryImage?.url}`);
-  }
+
+
 
   // Remove "Gerflor" prefix from product name for LVT collections
   const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
