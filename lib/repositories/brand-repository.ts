@@ -1,7 +1,7 @@
 import { Brand } from '@/types';
 import { brands as mockBrands } from '@/lib/data/mock-data';
 import { supabase } from '@/lib/supabase/client';
-import { mapBrandIdToUUID } from './id-mapping';
+import { mapBrandIdToUUID, mapBrandId } from './id-mapping';
 
 export interface IBrandRepository {
   findAll(): Promise<Brand[]>;
@@ -14,7 +14,7 @@ export interface IBrandRepository {
 // =========================================
 function toBrand(row: any): Brand {
   return {
-    id: row.id,
+    id: mapBrandId(row.id),
     name: row.name,
     slug: row.slug,
     logo: row.logo || '',

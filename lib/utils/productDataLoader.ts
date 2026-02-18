@@ -6,6 +6,7 @@ import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
 import tarkettCollectionSpecsData from '@/public/data/tarkett_collection_specs.json';
+import tarkettCollectionDetails from '@/public/data/tarkett_collection_details.json';
 
 let tarkettLvtCache: Product[] | null = null;
 let lvtProductsCache: Product[] | null = null;
@@ -193,21 +194,33 @@ export function getTarkettLVTCollections(): Product[] {
                 });
             }
         }
+
         // Always include the collection name spec
         collSpecs.push({ key: 'collection', label: 'Kolekcija', value: displayName });
 
+        // Add detailed sections if available
+        const detailsData = (tarkettCollectionDetails as Record<string, any>)[collKey];
+        const detailsSections: Product['detailsSections'] = [];
+        if (detailsData) {
+            detailsSections.push({
+                title: detailsData.title || 'Ključne karakteristike',
+                items: detailsData.items || []
+            });
+        }
+
         return {
             id: `tarkett-${collKey}`,
-            name: `Tarkett ${displayName}`,
+            name: displayName,
             slug: `tarkett-${collKey}`,
             sku: `TARKETT-${collKey.toUpperCase()}`,
             categoryId: '6',
             brandId: '3',
-            shortDescription: `Tarkett ${displayName} – ${items.length} dizajna`,
-            description: first.description || `Tarkett ${displayName} LVT kolekcija`,
+            shortDescription: `${displayName} – ${items.length} dizajna`,
+            description: first.description || `${displayName} LVT kolekcija`,
             images: [collectionImage],
             specs: collSpecs,
             documents: documents,
+            detailsSections: detailsSections.length > 0 ? detailsSections : undefined,
             price: 0,
             priceUnit: 'm²' as const,
             inStock: true,

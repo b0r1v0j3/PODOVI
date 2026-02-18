@@ -54,9 +54,9 @@ export default function InquiryPage() {
                   2
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Kliknite "Pošalji upit"</h3>
+                  <h3 className="font-semibold text-gray-900 mb-1">Kliknite &quot;Pošalji upit&quot;</h3>
                   <p className="text-gray-600">
-                    Na stranici proizvoda kliknite na dugme "Pošalji upit"
+                    Na stranici proizvoda kliknite na dugme &quot;Pošalji upit&quot;
                   </p>
                 </div>
               </div>

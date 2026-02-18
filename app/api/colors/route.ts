@@ -8,6 +8,19 @@ import { supabase } from '@/lib/supabase/client';
  * - For "vinil": returns { collections: [{ slug, name, colors: [...] }] } (nested format)
  * - For everything else: returns { colors: [...] } (flat format)
  */
+// Import Tarkett data directly from JSON file
+import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
+
+type TarkettProduct = {
+    id: string;
+    name: string;
+    description?: string;
+    images?: string[];
+    specs?: any;
+    brandId?: string;
+    collection: string;
+};
+
 export async function GET(request: NextRequest) {
     const category = request.nextUrl.searchParams.get('category') || 'lvt';
     const collection = request.nextUrl.searchParams.get('collection'); // optional filter
@@ -68,7 +81,7 @@ export async function GET(request: NextRequest) {
 
         // For all other categories (lvt, linoleum, tekstilne-ploce), return flat format
         // This matches lvt_colors_complete.json / linoleum_colors_complete.json structure
-        const flatColors = colors.map(c => ({
+        let flatColors = colors.map(c => ({
             collection: c.collection_slug,
             collection_name: c.collection_name,
             code: c.code,
@@ -87,7 +100,56 @@ export async function GET(request: NextRequest) {
             specs: c.specs,
             collection_specs: c.collection_specs,
             characteristics: c.characteristics,
+            brandId: '6' // Gerflor brand ID
         }));
+
+        // Merge Tarkett LVT colors if category is 'lvt'
+        if (category === 'lvt') {
+            const tarkettColors = (tarkettLvtData as TarkettProduct[]).map(p => {
+                // Determine image URL (pod view is preferred)
+                let imageUrl = '';
+                if (p.images && p.images.length > 0) {
+                    imageUrl = p.images[0];
+                }
+
+                // Clean name roughly similar to productDataLoader
+                let cleanName = p.name || '';
+                cleanName = cleanName.replace(/^(Ess\d+-|iD\s*\d+-|Tarkett\s*)/i, '').replace(/-0v$/i, '').trim();
+
+                // Collection name map (simplified from productDataLoader)
+                // We use the raw collection slug as 'collection' key
+
+                return {
+                    collection: p.collection, // e.g. 'id-inspiration-55'
+                    collection_name: p.collection, // Can be improved with map
+                    code: p.id, // Using ID as code effectively
+                    name: cleanName,
+                    full_name: p.name,
+                    slug: p.id,
+                    image_url: imageUrl,
+                    texture_url: imageUrl, // Mapping same image to texture
+                    image_count: p.images?.length || 0,
+                    lifestyle_url: null,
+                    welding_rod: null,
+                    dimension: null,
+                    format: null,
+                    overall_thickness: p.specs?.total_thickness || null,
+                    description: p.description,
+                    specs: p.specs,
+                    collection_specs: null,
+                    characteristics: null,
+                    brandId: '3' // Tarkett brand ID
+                };
+            });
+
+            // Filter by collection if requested
+            if (collection) {
+                const filteredTarkett = tarkettColors.filter(c => c.collection === collection);
+                flatColors = [...flatColors, ...filteredTarkett];
+            } else {
+                flatColors = [...flatColors, ...tarkettColors];
+            }
+        }
 
         return NextResponse.json({
             total: flatColors.length,

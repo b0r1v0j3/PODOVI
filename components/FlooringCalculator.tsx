@@ -7,8 +7,8 @@ interface FlooringCalculatorProps {
   coveragePerPackage?: number; // m² po pakovanju
 }
 
-export default function FlooringCalculator({ 
-  productName, 
+export default function FlooringCalculator({
+  productName,
   coveragePerPackage = 2.25,
 }: FlooringCalculatorProps) {
   const [area, setArea] = useState<string>('');
@@ -88,13 +88,13 @@ export default function FlooringCalculator({
               </svg>
               Rezultat proračuna:
             </h4>
-            
+
             <div className="space-y-2.5">
               <div className="flex justify-between items-center pb-2 border-b border-gray-100">
                 <span className="text-sm text-gray-600">Vaša površina:</span>
                 <span className="font-semibold text-gray-900">{areaNumber.toFixed(2)} m²</span>
               </div>
-              
+
               <div className="flex justify-between items-center pb-2 border-b border-gray-100">
                 <span className="text-sm text-gray-600">
                   Otpad ({WASTE_PERCENTAGE}%):
@@ -104,12 +104,12 @@ export default function FlooringCalculator({
                 </span>
                 <span className="font-semibold text-primary-600">+{wasteAmount.toFixed(2)} m²</span>
               </div>
-              
+
               <div className="flex justify-between items-center pb-2 border-b-2 border-primary-200">
                 <span className="text-sm font-medium text-gray-700">Ukupno potrebno:</span>
                 <span className="font-bold text-lg text-gray-900">{totalAreaWithWaste.toFixed(2)} m²</span>
               </div>
-              
+
               <div className="bg-primary-50 rounded-lg p-3 mt-3">
                 <div className="flex justify-between items-center">
                   <span className="text-base font-semibold text-gray-900">
@@ -136,7 +136,7 @@ export default function FlooringCalculator({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <p className="text-xs text-blue-800">
-                <strong>Preporuka:</strong> Uračunali smo samo <strong>5% otpada</strong> (umesto standardnih 10%), što znači 
+                <strong>Preporuka:</strong> Uračunali smo samo <strong>5% otpada</strong> (umesto standardnih 10%), što znači
                 <strong> uštedu za vas</strong>. Za prostorije sa dosta uglova ili dijagonalno postavljanje, razmotrite dodavanje još 1-2 paketa.
               </p>
             </div>
@@ -145,7 +145,7 @@ export default function FlooringCalculator({
           {/* CTA dugme */}
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
             <p className="text-sm text-gray-700 text-center">
-              💡 <strong>Kliknite na dugme "Pošalji upit"</strong> gore na stranici da pošaljete upit za {packagesNeeded} paketa
+              💡 <strong>Kliknite na dugme &quot;Pošalji upit&quot;</strong> gore na stranici da pošaljete upit za {packagesNeeded} paketa
             </p>
           </div>
         </div>

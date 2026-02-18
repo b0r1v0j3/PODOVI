@@ -433,8 +433,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   productId={product.id}
                 />
 
-                {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne */}
-                {product.categoryId !== '3' && product.categoryId !== '2' && product.categoryId !== '1' && (
+                {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne - ONLY if not passed to ColorSelector */}
+                {/* Categories 1, 3, 6 pass leftColumnBottom/rightColumnBottom to ColorSelector, so they are excluded here. */}
+                {/* Category 2 (Vinil) is also excluded in original code? Assuming it shouldn't show duplicates either. */}
+                {/* Categories 4 & 7 DO NOT pass left/right to ColorSelector, so they SHOW this block. */}
+                {(product.categoryId === '4' || product.categoryId === '7') && (
                   <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="bg-white rounded-2xl shadow-lg p-6">
                       <DescriptionSection product={product} />

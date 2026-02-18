@@ -559,7 +559,7 @@ export default function ColorGrid({
 
       {filteredColors.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-600">Nije pronađena nijed na boja sa "{searchTerm}"</p>
+          <p className="text-gray-600">Nije pronađena nijedna boja sa &quot;{searchTerm}&quot;</p>
           <button onClick={() => setSearchTerm('')} className="mt-4 text-primary-600 hover:text-primary-700 font-medium">Očisti pretragu</button>
         </div>
       )}

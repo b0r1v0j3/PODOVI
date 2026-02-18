@@ -75,6 +75,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if ((isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
       setSelectedThickness(urlThickness);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   // Auto-remove incompatible thicknesses when vinyl type changes
@@ -91,10 +92,9 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         setSelectedThickness(validThicknesses);
       }
     }
-  }, [vinylType, isVinilCategory, availableThicknessByType]);
+  }, [vinylType, isVinilCategory, availableThicknessByType, selectedThickness]);
 
   // Auto-apply filters when values change (with debounce for search)
-  const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -132,11 +132,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     // Debounce for search input (500ms), immediate for other filters
     const delay = search ? 500 : 0;
 
-    if (searchTimeoutRef.current) {
-      clearTimeout(searchTimeoutRef.current);
-    }
-
-    searchTimeoutRef.current = setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       router.push(`${pathname}?${params.toString()}`);
       // Reset sync flag after navigation
       setTimeout(() => {
@@ -145,9 +141,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     }, delay);
 
     return () => {
-      if (searchTimeoutRef.current) {
-        clearTimeout(searchTimeoutRef.current);
-      }
+      clearTimeout(timeoutId);
     };
   }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedThickness, selectedWoodTypes, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isLaminatCategory, isParketCategory]);
 
