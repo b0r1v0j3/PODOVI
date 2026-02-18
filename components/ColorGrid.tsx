@@ -480,7 +480,7 @@ export default function ColorGrid({
               className={`group bg-white rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden border text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 w-full ${isSelected
                 ? 'border-primary-600 ring-2 ring-primary-200'
                 : 'border-gray-200 hover:border-primary-400'
-                }`}
+                } hover:shadow-lg hover:scale-105 duration-200`}
             >
               {/* Image */}
               <div className="aspect-square relative overflow-hidden bg-gray-100">
