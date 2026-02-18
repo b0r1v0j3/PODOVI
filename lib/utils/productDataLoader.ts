@@ -1,15 +1,75 @@
 import { Product } from '@/types';
+import { formatLvtSpecs } from '@/lib/product-page/spec-helpers';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
+import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
 
-
-// Cache for performance
+let tarkettLvtCache: Product[] | null = null;
 let lvtProductsCache: Product[] | null = null;
 let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
 let bloqCarpetCache: Product[] | null = null;
+
+export function getAllTarkettLVTProducts(): Product[] {
+    if (tarkettLvtCache) {
+        return tarkettLvtCache;
+    }
+
+    // JSON is already in Product format from integrate_lvt_data.js
+    // We just need to ensure Dates are Date objects
+    tarkettLvtCache = (tarkettLvtData as any[]).map(p => ({
+        ...p,
+        slug: p.id, // ID from integration script is the slug
+        sku: p.specs?.sap_sku_number || p.id,
+        categoryId: '6', // LVT
+        brandId: '3', // Tarkett (legacy ID)
+        specs: formatLvtSpecs(p.specs || {}),
+        createdAt: new Date(p.createdAt || '2024-01-01'),
+        updatedAt: new Date(p.updatedAt || '2024-01-01'),
+    }));
+
+    return tarkettLvtCache;
+}
+
+// ... (existing getAll functions)
+
+
+/**
+ * Get a specific product by slug
+ */
+export function getProductBySlug(slug: string): Product | undefined {
+    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts()];
+    return allProducts.find(p => p.slug === slug || p.id === slug);
+}
+
+/**
+ * Get products by collection
+ */
+export function getProductsByCollection(collection: string): Product[] {
+    return [...getAllLVTProducts(), ...getAllTarkettLVTProducts()].filter(p => {
+        const collectionSpec = p.specs?.find(s => s.key === 'collection');
+        return collectionSpec?.value === collection;
+    });
+}
+
+/**
+ * Get products by category
+ */
+export function getProductsByCategory(categoryId: string): Product[] {
+    if (categoryId === '6') {
+        // Return both Gerflor LVT and Tarkett LVT
+        return [...getAllLVTProducts(), ...getAllTarkettLVTProducts()];
+    } else if (categoryId === '7') {
+        return getAllLinoleumProducts();
+    } else if (categoryId === '4') {
+        return [...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
+    }
+
+    return [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts()].filter(p => p.categoryId === categoryId);
+}
+
 
 
 /**
@@ -333,35 +393,4 @@ export function getAllGerflorProducts(): Product[] {
     return [...getAllLVTProducts(), ...getAllLinoleumProducts(), ...getAllCarpetProducts()];
 }
 
-/**
- * Get a specific product by slug
- */
-export function getProductBySlug(slug: string): Product | undefined {
-    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts()];
-    return allProducts.find(p => p.slug === slug || p.id === slug);
-}
 
-/**
- * Get products by collection
- */
-export function getProductsByCollection(collection: string): Product[] {
-    return getAllLVTProducts().filter(p => {
-        const collectionSpec = p.specs?.find(s => s.key === 'collection');
-        return collectionSpec?.value === collection;
-    });
-}
-
-/**
- * Get products by category
- */
-export function getProductsByCategory(categoryId: string): Product[] {
-    if (categoryId === '6') {
-        return getAllLVTProducts();
-    } else if (categoryId === '7') {
-        return getAllLinoleumProducts();
-    } else if (categoryId === '4') {
-        return [...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
-    }
-
-    return [...getAllGerflorProducts(), ...getAllBloqCarpetProducts()].filter(p => p.categoryId === categoryId);
-}

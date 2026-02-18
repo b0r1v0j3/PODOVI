@@ -28,9 +28,11 @@ export interface ColorFromJSON {
     description?: string;
     collection_specs?: ProductSpec[];
     specs?: Record<string, string>;
+    brandId?: string;
 }
 
 export type ColorSource = {
     categorySlug: 'lvt' | 'linoleum' | 'vinil';
     color: ColorFromJSON;
+    brandId?: string;
 };

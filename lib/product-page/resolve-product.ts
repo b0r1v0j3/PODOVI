@@ -241,6 +241,26 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         }
     }
 
+    // Check if slug is a Tarkett product slug (e.g., "tarkett-essence-30", "tarkett-id-inspiration-55")
+    if (slug.startsWith('tarkett-')) {
+        const tarkettSlugWithoutPrefix = slug.substring('tarkett-'.length);
+
+        // Try to find in repository by slug without prefix
+        const tarkettProduct = await productRepository.findBySlug(tarkettSlugWithoutPrefix);
+        if (tarkettProduct) {
+            return {
+                ...tarkettProduct,
+                slug, // Keep the original slug with prefix for URL consistency
+            };
+        }
+
+        // Also try the full slug (some Tarkett products may be stored with prefix)
+        const tarkettProductFull = await productRepository.findBySlug(slug);
+        if (tarkettProductFull) {
+            return tarkettProductFull;
+        }
+    }
+
     // Try to parse slug as collection-slug-color-slug format
     // Example: "gerflor-creation-30-ballerina-41870347"
     // Strategy: Try to find the collection slug first, then extract color slug

@@ -88,7 +88,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | — | Supabase |
-| LVT | 6 | Gerflor (6) | `lvt_colors_complete.json` |
+| LVT | 6 | Gerflor (6), Tarkett | `lvt_colors_complete.json`, `tarkett_lvt_products.json` |
 | Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` |
 
 ### BLOQ Carpet Tiles (18 kolekcija, 210 boja):
@@ -175,6 +175,20 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Ispravljeno `id-mapping.ts`: Tarkett UUID mapiran na legacy `'3'` (bilo pogrešno `'1'`)
 - Dodat fallback brand map u `page.tsx` za brendove koji nisu u Supabase (BLOQ `'8'`, Tarkett `'3'`)
 - ⚠️ **Gotcha**: Kad dodaješ novi brend, moraš ažurirati i `id-mapping.ts` I fallback u `page.tsx`
+
+**Integracija LVT/SPC podataka (18.02.2026)**
+- Scrapovan Tarkett LVT/SPC (549 proizvoda) sa `tools/scrape_tarkett_deep.js`
+- Konvertovani podaci u `public/data/tarkett_lvt_products.json`
+- Implementiran `getAllTarkettLVTProducts` u `productDataLoader.ts` sa LVT mapiranjem
+- Ažuriran `product-repository.ts` da merge-uje nove LVT podatke
+- Dodat `formatLvtSpecs` u `spec-helpers.ts`
+- Verifikovan prikaz na sajtu (Proizvod: Beton GREY)
+
+**Refaktoring color-helpers i resolve-product (18.02.2026)**
+- Dodat `brandId` u `ColorFromJSON` i `ColorSource` (`types.ts`)
+- `colorToProduct` i `collectionFromColor` koriste dinamički `brandId` (default: Gerflor '6')
+- Dodata podrška za `tarkett-` prefiks u `resolve-product.ts`
+- Build verified (exit code 0)
 
 **BLOQ brend fix (15.02.2026)**
 - Ažuriran `SupabaseBrandRepository` da merge-uje mock brendove (BLOQ) sa DB rezultatima

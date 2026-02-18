@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getProductBySlug as getJsonProductBySlug } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -104,6 +104,8 @@ export class SupabaseProductRepository implements IProductRepository {
     // Merge BLOQ + Gerflor carpet tile products from JSON for category 4 (Tekstilne ploče)
     // Note: categoryId may be a UUID or legacy '4' string depending on caller
     const legacyCategoryId = filters?.categoryId ? mapCategoryId(filters.categoryId) : undefined;
+
+    // Category 4: Carpet Tiles
     if (!filters?.categoryId || legacyCategoryId === '4' || filters.categoryId === '4') {
       let jsonProducts = [...getAllBloqCarpetProducts(), ...getAllCarpetProducts()];
       // Apply same filters to JSON products
@@ -119,6 +121,24 @@ export class SupabaseProductRepository implements IProductRepository {
         jsonProducts = jsonProducts.filter(p => filters.brandIds!.includes(p.brandId));
       }
       products = [...products, ...jsonProducts];
+    }
+
+    // Category 6: LVT (Add Tarkett LVT)
+    if (!filters?.categoryId || legacyCategoryId === '6' || filters.categoryId === '6') {
+      let lvtJsonProducts = getAllTarkettLVTProducts();
+
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        lvtJsonProducts = lvtJsonProducts.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        lvtJsonProducts = lvtJsonProducts.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      products = [...products, ...lvtJsonProducts];
     }
 
 
@@ -179,8 +199,12 @@ export class SupabaseProductRepository implements IProductRepository {
       .single();
 
     if (error || !data) {
-      // Fallback: check mock-data and Tarkett products
-      const mockProduct = mockProducts.find(p => p.slug === slug);
+      // Fallback: check JSON products (Gerflor, Bloq, Tarkett LVT)
+      const jsonProduct = getJsonProductBySlug(slug);
+      if (jsonProduct) return jsonProduct;
+
+      // Fallback: check mock-data and legacy Tarkett products
+      const mockProduct = mockProducts.find(p => p.slug === slug) || tarkettProducts.find(p => p.slug === slug);
       return mockProduct || null;
     }
     return toProduct(data, data.product_images || [], data.product_specs || []);
@@ -241,7 +265,7 @@ export class SupabaseProductRepository implements IProductRepository {
 // Mock implementation (kept as fallback)
 // =========================================
 export class MockProductRepository implements IProductRepository {
-  private products: Product[] = [...mockProducts, ...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...tarkettProducts];
+  private products: Product[] = [...mockProducts, ...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...tarkettProducts, ...getAllTarkettLVTProducts()];
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {
     let filtered = [...this.products];

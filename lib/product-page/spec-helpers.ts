@@ -18,6 +18,50 @@ export function filterSpecsForDisplay(
         .filter((s) => !(s.key === 'collection' && s.value === 'Parket'));
 }
 
+export function formatLvtSpecs(specs: Record<string, string>): ProductSpec[] {
+    const relevantKeys: Record<string, string> = {
+        'total_thickness': 'Ukupna debljina',
+        'wear_layer_thickness': 'Debljina habajućeg sloja',
+        'total_weight': 'Ukupna masa',
+        'classification': 'Klasa upotrebe',
+        'laying_direction': 'Pravac polaganja',
+        'underfloor_heating': 'Podno grejanje',
+        'slip_resistance': 'Otpornost na klizanje',
+        'impact_sound_reduction': 'Zvučna izolacija',
+        'fire_resistance': 'Otpornost na požar',
+        'chemical_resistance': 'Otpornost na hemikalije',
+        'castor_chair_resistance': 'Otpornost na točkiće',
+        'residual_indentation': 'Rezidualni otisak',
+        'surface_treatment': 'Površinski tretman'
+    };
+
+    const formattedSpecs: ProductSpec[] = [];
+
+    for (const [key, value] of Object.entries(specs)) {
+        // Check if key is relevant or if we should display it anyway
+        // For LVT we want to display most technical specs
+        // Skip empty values
+        if (!value || value === '-') continue;
+
+        // Map key to label if possible, otherwise use key formatted
+        let label = relevantKeys[key];
+
+        if (!label) {
+            // Basic formatting for unknown keys: replace _ with space, capitalize
+            label = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        }
+
+        formattedSpecs.push({
+            key: key,
+            label: label,
+            value: value
+        });
+    }
+
+    return formattedSpecs;
+}
+
+
 export function parseDescriptionToSections(description: string): ProductDetailsSection[] {
     if (!description || typeof description !== 'string') {
         return [];

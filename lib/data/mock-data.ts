@@ -59,7 +59,7 @@ export const categories: Category[] = [
     image: '/images/products/linoleum/dlw-colorette/0110-cadillac-pink/44901 - 0110 CADILLAC PINK.jpg',
     order: 7,
   },
-  // Categories 8, 9, 10 (Egger specific) removed
+
 ];
 
 export const brands: Brand[] = [
