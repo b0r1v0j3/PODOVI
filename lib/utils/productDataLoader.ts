@@ -1,5 +1,5 @@
-import { Product } from '@/types';
 import { formatLvtSpecs } from '@/lib/product-page/spec-helpers';
+import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
@@ -100,6 +100,8 @@ export function getAllTarkettLVTProducts(): Product[] {
                 ...formatLvtSpecs(p.specs || {}),
                 { key: 'collection', label: 'Kolekcija', value: TARKETT_COLLECTION_NAMES[p.collection] || p.collection || '' },
             ],
+            shortDescription: p.shortDescription || enrichShortDescription({ ...p, name: cleanName.trim(), categoryId: '6', brandId: '3', specs: [...formatLvtSpecs(p.specs || {}), { key: 'collection', label: 'Kolekcija', value: TARKETT_COLLECTION_NAMES[p.collection] || p.collection || '' }] } as any),
+            description: p.description || enrichProductDescription({ ...p, name: cleanName.trim(), categoryId: '6', brandId: '3', specs: [...formatLvtSpecs(p.specs || {}), { key: 'collection', label: 'Kolekcija', value: TARKETT_COLLECTION_NAMES[p.collection] || p.collection || '' }] } as any),
             createdAt: new Date(p.createdAt || '2024-01-01'),
             updatedAt: new Date(p.updatedAt || '2024-01-01'),
         };
@@ -216,7 +218,7 @@ export function getTarkettLVTCollections(): Product[] {
             categoryId: '6',
             brandId: '3',
             shortDescription: `${displayName} – ${items.length} dizajna`,
-            description: first.description || `${displayName} LVT kolekcija`,
+            description: first.description || enrichProductDescription({ name: displayName, categoryId: '6', brandId: '3', specs: collSpecs } as any),
             images: [collectionImage],
             specs: collSpecs,
             documents: documents,
@@ -315,7 +317,7 @@ function transformLVTColorToProduct(color: any): Product {
         categoryId: '6', // LVT
         brandId: '6', // Gerflor
         shortDescription: `Gerflor ${collection.replace('-', ' ').toUpperCase()} - ${name}`,
-        description: color.description || `Gerflor ${collection} - ${name} (Šifra: ${code})`,
+        description: color.description || enrichProductDescription({ name: `${code} ${name}`, categoryId: '6', brandId: '6', specs } as any),
         images: [
             {
                 id: `${slug}-img-1`,
@@ -348,8 +350,8 @@ function transformLinoleumToProduct(product: any, index: number): Product {
         sku: `LINOLEUM-${String(index + 1).padStart(2, '0')}`,
         categoryId: '7', // Linoleum
         brandId: '6', // Gerflor
-        shortDescription: product.shortDescription || product.description || name,
-        description: product.description || name,
+        shortDescription: product.shortDescription || product.description || enrichShortDescription({ ...product, categoryId: '7', specs: product.specs || [] } as any),
+        description: product.description || enrichProductDescription({ ...product, name, categoryId: '7', specs: product.specs || [], brandId: '6' } as any),
         images: product.images || [
             {
                 id: `${slug}-img-1`,
@@ -458,8 +460,8 @@ export function getAllCarpetProducts(): Product[] {
             sku: color.code,
             categoryId: '4', // Tekstilne ploče
             brandId: '6', // Gerflor
-            shortDescription: `Gerflor ${color.collection_name} - ${color.name}`,
-            description: color.description,
+            shortDescription: enrichShortDescription({ ...color, name: color.full_name || color.name, categoryId: '4', brandId: '6', specs } as any),
+            description: color.description || enrichProductDescription({ name: color.full_name || color.name, categoryId: '4', brandId: '6', specs } as any),
             images: images.length > 0 ? images : [{
                 id: `${color.slug}-img-1`,
                 url: '/images/placeholder.svg',
@@ -520,7 +522,7 @@ export function getAllBloqCarpetProducts(): Product[] {
             categoryId: '4',
             brandId: '8',
             shortDescription: `BLOQ ${collName} - ${collColors.length} boja`,
-            description,
+            description: description || enrichProductDescription({ name: `BLOQ ${collName}`, categoryId: '4', brandId: '8', specs: [] } as any),
             images: imageUrl ? [{
                 id: `bloq-coll-${collSlug}-img`,
                 url: imageUrl,
@@ -562,8 +564,8 @@ export function getAllBloqCarpetProducts(): Product[] {
             sku: color.code,
             categoryId: '4', // Tekstilne ploče
             brandId: '8', // BLOQ
-            shortDescription: `BLOQ ${color.collection_name} - ${color.name}`,
-            description: color.description,
+            shortDescription: enrichShortDescription({ ...color, name: color.full_name || color.name, categoryId: '4', brandId: '8', specs } as any),
+            description: color.description || enrichProductDescription({ name: color.full_name || color.name, categoryId: '4', brandId: '8', specs } as any),
             images: images.length > 0 ? images : [{
                 id: `${color.slug}-img-1`,
                 url: '/images/placeholder.svg',

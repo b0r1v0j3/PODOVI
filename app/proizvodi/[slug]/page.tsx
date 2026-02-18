@@ -27,6 +27,7 @@ import {
   prepareCustomColors,
   mergeSelectedColor,
 } from '@/lib/product-page';
+import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 
 export const dynamic = 'force-dynamic';
 
@@ -266,22 +267,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (!product.specs || !Array.isArray(product.specs)) product.specs = [];
     if (!product.name || typeof product.name !== 'string') product.name = 'Proizvod';
     if (!product.shortDescription || typeof product.shortDescription !== 'string' || product.shortDescription === product.name) {
-      // Generate a meaningful shortDescription based on category
-      const categoryDescMap: Record<string, string> = {
-        '1': 'Laminat pod visokog kvaliteta',
-        '2': 'Profesionalni vinil pod',
-        '3': 'Parket pod prirodnog drveta',
-        '4': product.brandId === '8' ? 'Premium tekstilne ploče za poslovne prostore' : 'Tekstilne ploče za profesionalnu upotrebu',
-        '6': 'LVT luksuzne vinil ploče',
-        '7': 'Linoleum pod od prirodnih materijala',
-      };
-      const fallback = categoryDescMap[product.categoryId] || '';
-      product.shortDescription = (product.description && typeof product.description === 'string' && product.description.length < 200)
-        ? product.description
-        : fallback;
+      product.shortDescription = enrichShortDescription(product);
     }
-    if (!product.description || typeof product.description !== 'string') {
-      product.description = (product.shortDescription && typeof product.shortDescription === 'string') ? product.shortDescription : '';
+    if (!product.description || typeof product.description !== 'string' || product.description.length < 50 || product.description === product.name) {
+      product.description = enrichProductDescription(product);
     }
 
     // ── Save original name before color merge (merge overwrites product.name with color name) ──

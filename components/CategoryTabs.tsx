@@ -39,12 +39,12 @@ interface CategoryTabsProps {
 export default function CategoryTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType, searchParams: searchParamsProp }: CategoryTabsProps) {
   // Get search params from URL (fallback to prop if provided)
   const urlSearchParams = useSearchParams();
-  const searchParams = searchParamsProp || {
+  const searchParams = useMemo(() => searchParamsProp || {
     search: urlSearchParams.get('search') || undefined,
     brands: urlSearchParams.get('brands') || undefined,
     collections: urlSearchParams.get('collections') || undefined,
     thickness: urlSearchParams.get('thickness') || undefined,
-  };
+  }, [searchParamsProp, urlSearchParams]);
 
   // If initialColorSlug is provided, start with 'colors' tab active
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
