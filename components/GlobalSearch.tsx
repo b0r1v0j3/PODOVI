@@ -211,8 +211,8 @@ export default function GlobalSearch() {
 
             {/* Mobile expanded search */}
             {mobileExpanded && (
-                <div className="md:hidden fixed inset-x-0 top-0 z-[60] bg-white shadow-lg p-4">
-                    <div className="flex items-center gap-3">
+                <div className="md:hidden fixed inset-0 z-[60] bg-white flex flex-col">
+                    <div className="flex items-center gap-3 p-4 border-b">
                         <div className="relative flex-1">
                             <svg
                                 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
@@ -227,7 +227,7 @@ export default function GlobalSearch() {
                                 onChange={(e) => setQuery(e.target.value)}
                                 onKeyDown={handleKeyDown}
                                 placeholder="Pretraži proizvode..."
-                                className="w-full pl-9 pr-3 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg
+                                className="w-full pl-9 pr-3 py-3 text-base bg-gray-50 border border-gray-200 rounded-lg
                            focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400
                            transition-all duration-200"
                                 aria-label="Pretraži proizvode"
@@ -240,18 +240,35 @@ export default function GlobalSearch() {
                         </div>
                         <button
                             onClick={() => { closeAndReset(); }}
-                            className="text-sm text-gray-500 hover:text-gray-700 font-medium flex-shrink-0"
+                            className="text-base text-gray-500 hover:text-gray-700 font-medium px-2"
                         >
                             Otkaži
                         </button>
                     </div>
 
-                    {/* Mobile results */}
-                    {isOpen && results && (
-                        <div className="mt-3 max-h-[70vh] overflow-y-auto border-t pt-3">
-                            {renderResults()}
-                        </div>
-                    )}
+                    {/* Mobile results area */}
+                    <div className="flex-1 overflow-y-auto p-4">
+                        {query.length < 2 && !results ? (
+                            <div className="space-y-6">
+                                <div>
+                                    <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Popularno</h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {['LVT', 'Laminat', 'Parket', 'Vodootporno', 'Hrast', 'Tamno sivo', 'Belo'].map(term => (
+                                            <button
+                                                key={term}
+                                                onClick={() => { setQuery(term); fetchResults(term); }}
+                                                className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary-50 hover:text-primary-600 transition-colors"
+                                            >
+                                                {term}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            renderResults()
+                        )}
+                    </div>
                 </div>
             )}
 

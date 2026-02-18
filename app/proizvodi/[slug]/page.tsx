@@ -15,6 +15,9 @@ import ProductInquiryStickyCTA from '@/components/ProductInquiryStickyCTA';
 import ProductActions from '@/components/ProductActions';
 import ProductBenefits from '@/components/ProductBenefits';
 import RecommendedAccessories from '@/components/RecommendedAccessories';
+import RelatedProducts from '@/components/RelatedProducts';
+import RecentlyViewed from '@/components/RecentlyViewed';
+import ProductViewTracker from '@/components/ProductViewTracker';
 import type { Product } from '@/types';
 import {
   Props,
@@ -355,6 +358,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
         {/* Schema.org JSON-LD */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
+        <ProductViewTracker product={{
+          id: product.id,
+          name: displayName,
+          slug: product.slug,
+          images: product.images,
+          price: product.price
+        }} />
+
         <div className="min-h-screen bg-gray-50">
           {/* Breadcrumbs */}
           <div className="bg-white border-b">
@@ -645,6 +656,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
             )}
 
           </div>
+
+          <RelatedProducts
+            currentProductId={product.id}
+            categoryId={product.categoryId}
+            currentProductSlug={product.slug}
+          />
+          <RecentlyViewed />
+
           {/* Sticky CTA na mobilnom */}
           <ProductInquiryStickyCTA
             productSlug={params.slug}

@@ -9,6 +9,7 @@ import CompareBar from "@/components/CompareBar";
 import { CompareProvider } from "@/lib/context/CompareContext";
 import { FavoritesProvider } from "@/lib/context/FavoritesContext";
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo/structured-data";
+import BackToTop from "@/components/BackToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -82,6 +83,7 @@ export default function RootLayout({
               </main>
               <Footer />
               <WhatsAppButton />
+              <BackToTop />
               <CompareBar />
             </div>
           </FavoritesProvider>

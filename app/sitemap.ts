@@ -4,7 +4,7 @@ import { categoryRepository } from '@/lib/repositories/category-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://podovi.rs';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://podovi.online';
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

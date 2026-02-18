@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://podovi.rs/sitemap.xml',
+    sitemap: 'https://podovi.online/sitemap.xml',
   };
 }
