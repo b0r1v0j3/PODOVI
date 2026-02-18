@@ -61,7 +61,7 @@ export function getAllTarkettLVTProducts(): Product[] {
         cleanName = cleanName.replace(/-/g, ' ');
 
         // Standardize capitalization (Title Case)
-        cleanName = cleanName.toLowerCase().replace(/(?:^|\s)\S/g, function (a) { return a.toUpperCase(); });
+        cleanName = cleanName.toLowerCase().replace(/(?:^|\s)\S/g, function (a: string) { return a.toUpperCase(); });
 
         // Remove multiple spaces
         cleanName = cleanName.replace(/\s+/g, ' ').trim();
