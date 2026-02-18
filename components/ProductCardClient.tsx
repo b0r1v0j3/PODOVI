@@ -136,7 +136,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
 
   if (compact) {
     return (
-      <Link href={productHref} className="group block rounded-lg border border-gray-200 bg-white overflow-hidden hover:border-primary-500 hover:shadow-md transition-all duration-200">
+      <Link href={productHref} className="group block rounded-lg border border-gray-200 bg-white overflow-hidden card-hover transition-all duration-300">
         <div className="relative aspect-square bg-gray-100 overflow-hidden">
           {primaryImage ? (
             <Image

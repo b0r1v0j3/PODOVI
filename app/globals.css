@@ -8,7 +8,30 @@
   }
 
   body {
-    @apply bg-gray-50 text-gray-900 antialiased;
+    @apply bg-gray-50 text-gray-900 antialiased leading-relaxed;
+    font-size: 16px;
+    /* Explicit base size */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight text-gray-900;
+  }
+
+  h1 {
+    @apply text-4xl font-extrabold md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl font-bold md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl font-bold;
   }
 
   html {
@@ -50,7 +73,7 @@
   }
 
   .card-hover {
-    @apply hover:shadow-xl hover:-translate-y-1;
+    @apply hover:shadow-2xl hover:-translate-y-1 hover:border-primary-200;
   }
 
   .badge {
