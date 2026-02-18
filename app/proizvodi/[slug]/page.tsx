@@ -410,7 +410,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                                 : undefined
                   }
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
-                  rightColumnBottom={(product.categoryId === '3' || product.categoryId === '1') ? (
+                  rightColumnBottom={(product.categoryId === '3' || product.categoryId === '1' || product.categoryId === '6') ? (
                     <ProductCharacteristics
                       specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
                         (s) => s.key !== 'collection' && s.key !== 'type'
@@ -419,7 +419,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       title="Tehničke specifikacije"
                     />
                   ) : undefined}
-                  leftColumnBottom={(product.categoryId === '3' || product.categoryId === '1') ? (
+                  leftColumnBottom={(product.categoryId === '3' || product.categoryId === '1' || product.categoryId === '6') ? (
                     <div className="bg-white rounded-2xl shadow-lg p-6">
                       <ProductDescriptionWithCharacteristics
                         description={product.description || ''}
