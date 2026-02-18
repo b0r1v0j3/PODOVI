@@ -125,7 +125,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat)
     // Colors: products without those SKU prefixes
     const hasCollectionSku = (p: { sku?: string | null }) =>
-      (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-') || p.sku?.startsWith('BLOQ-')) ?? false;
+      (p.sku?.startsWith('GER-') || p.sku?.startsWith('TARKETT-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-') || p.sku?.startsWith('BLOQ-')) ?? false;
     const allCollections = allProducts.filter(p => hasCollectionSku(p));
     if (category.slug === 'parket') {
       // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
@@ -178,13 +178,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     if (category.slug === 'lvt') {
       const collectionGroups = new Set<string>();
       allCollections.forEach(p => {
+        // For Tarkett collections: use the 'collection' spec value
+        const collSpec = p.specs?.find((s: { key: string }) => s.key === 'collection')?.value;
+        if (p.sku?.startsWith('TARKETT-') && collSpec) {
+          collectionGroups.add(collSpec);
+          return;
+        }
+        // For Gerflor collections: use name-based matching
         const name = p.name;
-        // Check for Saga first (since "Creation Saga²" contains both "Creation" and "Saga")
         if (name.includes('Saga') || name.includes('SAGA')) {
           collectionGroups.add('SAGA²');
         } else if (name.includes('Creation')) {
-          // Extract base collection number (30, 40, 55, 70)
-          // Zen variants are included in their base collection
           if (name.includes('Creation 30')) {
             collectionGroups.add('Creation 30');
           } else if (name.includes('Creation 40')) {
@@ -196,11 +200,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           }
         }
       });
-      // Sort in specific order: Creation 30, 40, 55, 70, SAGA²
-      const order = ['Creation 30', 'Creation 40', 'Creation 55', 'Creation 70', 'SAGA²'];
+      // Sort: Gerflor first (Creation order), then Tarkett alphabetically
+      const gerflorOrder = ['Creation 30', 'Creation 40', 'Creation 55', 'Creation 70', 'SAGA²'];
       availableCollections = Array.from(collectionGroups).sort((a, b) => {
-        const indexA = order.indexOf(a);
-        const indexB = order.indexOf(b);
+        const indexA = gerflorOrder.indexOf(a);
+        const indexB = gerflorOrder.indexOf(b);
         if (indexA === -1 && indexB === -1) return a.localeCompare(b);
         if (indexA === -1) return 1;
         if (indexB === -1) return -1;
@@ -386,21 +390,27 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
       if (selectedCollections.length > 0) {
         collections = allCollections.filter(p => {
+          // For Tarkett: match by collection spec value
+          const collSpec = p.specs?.find((s: { key: string }) => s.key === 'collection')?.value;
+          if (p.sku?.startsWith('TARKETT-') && collSpec) {
+            return selectedCollections.includes(collSpec);
+          }
+          // For Gerflor: match by product name
           const productName = p.name;
           return selectedCollections.some(collection => {
-            if (collection === 'Creation 30') {
-              return productName.includes('Creation 30');
-            } else if (collection === 'Creation 40') {
-              return productName.includes('Creation 40');
-            } else if (collection === 'Creation 55') {
-              return productName.includes('Creation 55');
-            } else if (collection === 'Creation 70') {
-              return productName.includes('Creation 70');
-            } else if (collection === 'SAGA²' || collection.includes('SAGA')) {
-              return productName.includes('Saga');
-            }
+            if (collection === 'Creation 30') return productName.includes('Creation 30');
+            if (collection === 'Creation 40') return productName.includes('Creation 40');
+            if (collection === 'Creation 55') return productName.includes('Creation 55');
+            if (collection === 'Creation 70') return productName.includes('Creation 70');
+            if (collection === 'SAGA²' || collection.includes('SAGA')) return productName.includes('Saga');
             return false;
           });
+        });
+        // Also filter Tarkett colors by their collection spec
+        colors = colors.filter(p => {
+          const collSpec = p.specs?.find((s: { key: string }) => s.key === 'collection')?.value;
+          if (!collSpec) return true; // Keep non-Tarkett colors
+          return selectedCollections.includes(collSpec);
         });
       } else {
         collections = allCollections;

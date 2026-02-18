@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getProductBySlug as getJsonProductBySlug } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -123,9 +123,10 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...jsonProducts];
     }
 
-    // Category 6: LVT (Add Tarkett LVT)
+    // Category 6: LVT (Add Tarkett LVT products + collection headers)
     if (!filters?.categoryId || legacyCategoryId === '6' || filters.categoryId === '6') {
       let lvtJsonProducts = getAllTarkettLVTProducts();
+      let lvtCollections = getTarkettLVTCollections();
 
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
@@ -134,11 +135,16 @@ export class SupabaseProductRepository implements IProductRepository {
           p.description.toLowerCase().includes(searchLower) ||
           p.sku.toLowerCase().includes(searchLower)
         );
+        lvtCollections = lvtCollections.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower)
+        );
       }
       if (filters?.brandIds && filters.brandIds.length > 0) {
         lvtJsonProducts = lvtJsonProducts.filter(p => filters.brandIds!.includes(p.brandId));
+        lvtCollections = lvtCollections.filter(p => filters.brandIds!.includes(p.brandId));
       }
-      products = [...products, ...lvtJsonProducts];
+      products = [...products, ...lvtCollections, ...lvtJsonProducts];
     }
 
 

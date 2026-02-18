@@ -12,6 +12,26 @@ let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
 let bloqCarpetCache: Product[] | null = null;
 
+// Display names for Tarkett collections
+const TARKETT_COLLECTION_NAMES: Record<string, string> = {
+    'id-inspiration-55': 'iD Inspiration 55',
+    'id-inspiration-high-traffic-70': 'iD Inspiration 70 HT',
+    'id-inspiration-30': 'iD Inspiration 30',
+    'id-inspiration-click-solid-30': 'iD Inspiration Click Solid 30',
+    'id-inspiration-click-solid-55': 'iD Inspiration Click Solid 55',
+    'modulart-7': 'ModularT 7',
+    'id-square-loose-lay': 'iD Square Loose-Lay',
+    'id-mixonomi': 'iD Mixonomi',
+    'id-inspiration-loose-lay': 'iD Inspiration Loose-Lay',
+    'essence': 'Essence',
+    'id-tilt': 'iD Tilt',
+    'modulart-ll8': 'ModularT LL8',
+    'id-inspiration-click-ht-70': 'iD Inspiration Click HT 70',
+    'ideal-spc-50': 'iDeal SPC 50',
+    'id-tilt-hit': 'iD Tilt HIT',
+    'progressive-house': 'Progressive House',
+};
+
 export function getAllTarkettLVTProducts(): Product[] {
     if (tarkettLvtCache) {
         return tarkettLvtCache;
@@ -25,12 +45,60 @@ export function getAllTarkettLVTProducts(): Product[] {
         sku: p.specs?.sap_sku_number || p.id,
         categoryId: '6', // LVT
         brandId: '3', // Tarkett (legacy ID)
-        specs: formatLvtSpecs(p.specs || {}),
+        specs: [
+            ...formatLvtSpecs(p.specs || {}),
+            { key: 'collection', label: 'Kolekcija', value: TARKETT_COLLECTION_NAMES[p.collection] || p.collection || '' },
+        ],
         createdAt: new Date(p.createdAt || '2024-01-01'),
         updatedAt: new Date(p.updatedAt || '2024-01-01'),
     }));
 
     return tarkettLvtCache;
+}
+
+let tarkettCollectionCache: Product[] | null = null;
+
+/**
+ * Auto-generate Tarkett collection header products from grouped data.
+ * These have TARKETT- SKU prefix so the category page shows them as collection cards.
+ */
+export function getTarkettLVTCollections(): Product[] {
+    if (tarkettCollectionCache) return tarkettCollectionCache;
+
+    const products = getAllTarkettLVTProducts();
+    const groups: Record<string, Product[]> = {};
+    for (const p of products) {
+        const col = (p as any).collection || 'unknown';
+        if (!groups[col]) groups[col] = [];
+        groups[col].push(p);
+    }
+
+    tarkettCollectionCache = Object.entries(groups).map(([collKey, items]) => {
+        const displayName = TARKETT_COLLECTION_NAMES[collKey] || collKey;
+        const first = items[0];
+        return {
+            id: `tarkett-${collKey}`,
+            name: `Tarkett ${displayName}`,
+            slug: `tarkett-${collKey}`,
+            sku: `TARKETT-${collKey.toUpperCase()}`,
+            categoryId: '6',
+            brandId: '3',
+            shortDescription: `Tarkett ${displayName} – ${items.length} dizajna`,
+            description: first.description || `Tarkett ${displayName} LVT kolekcija`,
+            images: first.images?.slice(0, 1) || [],
+            specs: [
+                { key: 'collection', label: 'Kolekcija', value: displayName },
+            ],
+            price: 0,
+            priceUnit: 'm²' as const,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    return tarkettCollectionCache;
 }
 
 // ... (existing getAll functions)
