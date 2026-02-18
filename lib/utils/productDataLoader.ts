@@ -46,13 +46,54 @@ export function getAllTarkettLVTProducts(): Product[] {
             return img; // already a ProductImage
         });
 
+        // Clean up the name
+        // Clean up the name
+        let cleanName = p.name || '';
+        // Remove known technical prefixes like "Ess30-", "iD 30-", etc.
+        cleanName = cleanName.replace(/^(Ess\d+-|iD\s*\d+-|Tarkett\s*)/i, '');
+        // Remove technical suffixes like "-0v"
+        cleanName = cleanName.replace(/-0v$/i, '');
+        // Remove dimensions like "33,3x66,6" or "50x50" or "1200x200mm"
+        cleanName = cleanName.replace(/\d+([.,]\d+)?\s*x\s*\d+([.,]\d+)?\s*(mm)?/gi, '');
+        // Remove trailing hyphens or spaces
+        cleanName = cleanName.replace(/[-–]\s*$/g, '').trim();
+        // Replace remaining hyphens with spaces (e.g. "Cement-Grey" -> "Cement Grey")
+        cleanName = cleanName.replace(/-/g, ' ');
+
+        // Standardize capitalization (Title Case)
+        cleanName = cleanName.toLowerCase().replace(/(?:^|\s)\S/g, function (a) { return a.toUpperCase(); });
+
+        // Remove multiple spaces
+        cleanName = cleanName.replace(/\s+/g, ' ').trim();
+
+        // Map documents from meta
+        const documents = (p.meta?.documents || []).map((docUrl: string) => {
+            const fileName = docUrl.split('/').pop() || 'Dokument';
+            // Create a readable title from filename
+            let title = fileName.replace(/_/g, ' ').replace(/-/g, ' ').replace('.pdf', '');
+            // Generic titles based on keywords
+            if (title.toLowerCase().includes('dop')) title = 'Izjava o svojstvima (DoP)';
+            else if (title.toLowerCase().includes('dataseet') || title.toLowerCase().includes('ds')) title = 'Tehnički list';
+            else if (title.toLowerCase().includes('brochure')) title = 'Brošura';
+            else if (title.toLowerCase().includes('maintenance')) title = 'Uputstvo za održavanje';
+            else if (title.toLowerCase().includes('installation')) title = 'Uputstvo za ugradnju';
+
+            return {
+                title: title,
+                url: docUrl,
+                type: 'pdf'
+            };
+        });
+
         return {
             ...p,
+            name: cleanName.trim(), // Use the cleaned name
             slug: p.id,
             sku: p.specs?.sap_sku_number || p.id,
             categoryId: '6',
             brandId: '3',
             images,
+            documents, // Add documents
             specs: [
                 ...formatLvtSpecs(p.specs || {}),
                 { key: 'collection', label: 'Kolekcija', value: TARKETT_COLLECTION_NAMES[p.collection] || p.collection || '' },
@@ -87,6 +128,22 @@ export function getTarkettLVTCollections(): Product[] {
         const first = items[0];
         // Use first product's primary image as collection card image
         const primaryImage = first.images?.[0];
+
+        // Aggregate unique documents from all products in the collection
+        const allDocs = items.flatMap(i => i.documents || []);
+        // Deduplicate documents by URL
+        const uniqueDocsMap = new Map();
+        for (const doc of allDocs) {
+            if (!uniqueDocsMap.has(doc.url)) {
+                uniqueDocsMap.set(doc.url, doc);
+            }
+        }
+        const documents = Array.from(uniqueDocsMap.values());
+
+        // Extract key specs from the first product to populate the collection specs
+        const keySpecs = ['total_thickness', 'wear_layer_thickness', 'classification_commercial_iso_10874', 'classification_domestic_iso_10874', 'total_weight', 'surface_treatment'];
+        const additionalSpecs = (first.specs || []).filter(s => keySpecs.includes(s.key) || s.key === 'collection');
+
         return {
             id: `tarkett-${collKey}`,
             name: `Tarkett ${displayName}`,
@@ -97,9 +154,8 @@ export function getTarkettLVTCollections(): Product[] {
             shortDescription: `Tarkett ${displayName} – ${items.length} dizajna`,
             description: first.description || `Tarkett ${displayName} LVT kolekcija`,
             images: primaryImage ? [primaryImage] : [],
-            specs: [
-                { key: 'collection', label: 'Kolekcija', value: displayName },
-            ],
+            specs: additionalSpecs.length > 0 ? additionalSpecs : [{ key: 'collection', label: 'Kolekcija', value: displayName }],
+            documents: documents, // Include documents
             price: 0,
             priceUnit: 'm²' as const,
             inStock: true,
