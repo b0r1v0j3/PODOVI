@@ -37,21 +37,30 @@ export function getAllTarkettLVTProducts(): Product[] {
         return tarkettLvtCache;
     }
 
-    // JSON is already in Product format from integrate_lvt_data.js
-    // We just need to ensure Dates are Date objects
-    tarkettLvtCache = (tarkettLvtData as any[]).map(p => ({
-        ...p,
-        slug: p.id, // ID from integration script is the slug
-        sku: p.specs?.sap_sku_number || p.id,
-        categoryId: '6', // LVT
-        brandId: '3', // Tarkett (legacy ID)
-        specs: [
-            ...formatLvtSpecs(p.specs || {}),
-            { key: 'collection', label: 'Kolekcija', value: TARKETT_COLLECTION_NAMES[p.collection] || p.collection || '' },
-        ],
-        createdAt: new Date(p.createdAt || '2024-01-01'),
-        updatedAt: new Date(p.updatedAt || '2024-01-01'),
-    }));
+    tarkettLvtCache = (tarkettLvtData as any[]).map(p => {
+        // Convert plain URL strings to ProductImage objects
+        const images = (p.images || []).map((img: string | any, idx: number) => {
+            if (typeof img === 'string') {
+                return { id: `${p.id}-img-${idx}`, url: img, alt: p.name || '', isPrimary: idx === 0, order: idx };
+            }
+            return img; // already a ProductImage
+        });
+
+        return {
+            ...p,
+            slug: p.id,
+            sku: p.specs?.sap_sku_number || p.id,
+            categoryId: '6',
+            brandId: '3',
+            images,
+            specs: [
+                ...formatLvtSpecs(p.specs || {}),
+                { key: 'collection', label: 'Kolekcija', value: TARKETT_COLLECTION_NAMES[p.collection] || p.collection || '' },
+            ],
+            createdAt: new Date(p.createdAt || '2024-01-01'),
+            updatedAt: new Date(p.updatedAt || '2024-01-01'),
+        };
+    });
 
     return tarkettLvtCache;
 }
@@ -76,6 +85,8 @@ export function getTarkettLVTCollections(): Product[] {
     tarkettCollectionCache = Object.entries(groups).map(([collKey, items]) => {
         const displayName = TARKETT_COLLECTION_NAMES[collKey] || collKey;
         const first = items[0];
+        // Use first product's primary image as collection card image
+        const primaryImage = first.images?.[0];
         return {
             id: `tarkett-${collKey}`,
             name: `Tarkett ${displayName}`,
@@ -85,7 +96,7 @@ export function getTarkettLVTCollections(): Product[] {
             brandId: '3',
             shortDescription: `Tarkett ${displayName} – ${items.length} dizajna`,
             description: first.description || `Tarkett ${displayName} LVT kolekcija`,
-            images: first.images?.slice(0, 1) || [],
+            images: primaryImage ? [primaryImage] : [],
             specs: [
                 { key: 'collection', label: 'Kolekcija', value: displayName },
             ],
@@ -108,7 +119,7 @@ export function getTarkettLVTCollections(): Product[] {
  * Get a specific product by slug
  */
 export function getProductBySlug(slug: string): Product | undefined {
-    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts()];
+    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts(), ...getTarkettLVTCollections()];
     return allProducts.find(p => p.slug === slug || p.id === slug);
 }
 
