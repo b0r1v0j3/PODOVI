@@ -117,6 +117,34 @@ export async function prepareCustomColors(
         }
     }
 
+    // Tarkett LVT: customColors from tarkett_lvt_products.json
+    if (product.categoryId === '6' && product.sku?.startsWith('TARKETT-')) {
+        const { getAllTarkettLVTProducts } = await import('@/lib/utils/productDataLoader');
+        const collectionName = product.specs?.find(s => s.key === 'collection')?.value ?? null;
+        if (collectionName) {
+            const variants = getAllTarkettLVTProducts().filter(p =>
+                p.specs?.find(s => s.key === 'collection')?.value === collectionName
+            );
+            if (variants.length > 0) {
+                return variants.map(v => ({
+                    collection: collectionName,
+                    collection_name: collectionName,
+                    code: v.sku,
+                    name: v.name,
+                    full_name: v.name,
+                    slug: v.slug,
+                    image_url: v.images?.[0]?.url || '',
+                    texture_url: v.images?.[0]?.url || '',
+                    image_count: v.images?.length ?? 0,
+                    characteristics: (v.specs || []).reduce((acc, spec) => {
+                        acc[spec.label] = spec.value;
+                        return acc;
+                    }, {} as Record<string, string>)
+                }));
+            }
+        }
+    }
+
     return undefined;
 }
 

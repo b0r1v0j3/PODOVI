@@ -229,7 +229,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // ── Redirect color-tiles to collection page with ?color= ──
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
     const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
-    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct && !isBloqCollection) {
+    const isTarkettCollection = product.sku?.startsWith('TARKETT-');
+    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
       let normalizedCollectionSlug = collectionSlugFromProduct;
       if (product.categoryId === '6' && !collectionSlugFromProduct.startsWith('gerflor-')) {
         normalizedCollectionSlug = `gerflor-${collectionSlugFromProduct}`;
