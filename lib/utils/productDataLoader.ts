@@ -125,6 +125,7 @@ export function getTarkettLVTCollections(): Product[] {
 
     tarkettCollectionCache = Object.entries(groups).map(([collKey, items]) => {
         const displayName = TARKETT_COLLECTION_NAMES[collKey] || collKey;
+        const first = items[0];
         // Find the first product that has images to use as the collection representative
         const productWithImage = items.find(i => i.images && i.images.length > 0) || items[0];
         const primaryImage = productWithImage.images?.find(img => img.isPrimary) || productWithImage.images?.[0];
