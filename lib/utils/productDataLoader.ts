@@ -5,6 +5,7 @@ import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
+import tarkettCollectionSpecsData from '@/public/data/tarkett_collection_specs.json';
 
 let tarkettLvtCache: Product[] | null = null;
 let lvtProductsCache: Product[] | null = null;
@@ -126,9 +127,16 @@ export function getTarkettLVTCollections(): Product[] {
     tarkettCollectionCache = Object.entries(groups).map(([collKey, items]) => {
         const displayName = TARKETT_COLLECTION_NAMES[collKey] || collKey;
         const first = items[0];
-        // Find the first product that has images to use as the collection representative
-        const productWithImage = items.find(i => i.images && i.images.length > 0) || items[0];
-        const primaryImage = productWithImage.images?.find(img => img.isPrimary) || productWithImage.images?.[0];
+
+        // Use locally downloaded collection image
+        const localImagePath = `/images/tarkett/collections/${collKey}.jpg`;
+        const collectionImage = {
+            id: `tarkett-${collKey}-cover`,
+            url: localImagePath,
+            alt: `Tarkett ${displayName}`,
+            isPrimary: true,
+            order: 0,
+        };
 
         // Aggregate unique documents from all products in the collection
         const allDocs = items.flatMap(i => i.documents || []);
@@ -141,9 +149,52 @@ export function getTarkettLVTCollections(): Product[] {
         }
         const documents = Array.from(uniqueDocsMap.values());
 
-        // Extract key specs from the first product to populate the collection specs
-        const keySpecs = ['total_thickness', 'wear_layer_thickness', 'classification_commercial_iso_10874', 'classification_domestic_iso_10874', 'total_weight', 'surface_treatment'];
-        const additionalSpecs = (first.specs || []).filter(s => keySpecs.includes(s.key) || s.key === 'collection');
+        // Load accurate collection specs from extracted JSON
+        const collSpecData = (tarkettCollectionSpecsData as Record<string, any>)[collKey];
+        const collSpecs: Product['specs'] = [];
+
+        // Spec key -> Serbian label mapping
+        const specLabels: Record<string, string> = {
+            total_thickness: 'Ukupna debljina',
+            wear_layer_thickness: 'Zaštitni sloj',
+            basis_weight: 'Težina',
+            total_weight: 'Ukupna težina',
+            classification_commercial_iso_10874: 'Klasa (komercijalna)',
+            classification_domestic_iso_10874: 'Klasa (rezidencijalna)',
+            surface_treatment: 'Površinska obrada',
+            slip_resistance_en_13893: 'Otpornost na klizanje',
+            reaction_fire_en_13501: 'Reakcija na vatru',
+            underfloor_heating: 'Podno grejanje',
+            impact_sound_insulation: 'Zvučna izolacija',
+            installation_method: 'Način ugradnje',
+            format: 'Format',
+            format_type: 'Tip formata',
+            residual_indentation: 'Rezidualni utisak',
+            castor_chair_effect_iso_4918: 'Otpornost na točkiće',
+            furniture_leg_effect_iso_16581: 'Otpornost na nameštaj',
+            chemical_resistance_iso_26987: 'Hemijska otpornost',
+            electrical_propensity: 'Elektrostatika',
+            colour_fastness_light: 'Postojanost boje',
+            thermal_resistance: 'Termička otpornost',
+            phtalate_content: 'Sadržaj ftalata',
+            country_origin: 'Zemlja porekla',
+            laying_direction: 'Pravac polaganja',
+            pattern_type: 'Tip dezena',
+            bevelled_edges: 'Oborene ivice',
+            product_type_norm_iso: 'Tip proizvoda (ISO)',
+        };
+
+        if (collSpecData?.specs) {
+            for (const [key, value] of Object.entries(collSpecData.specs)) {
+                collSpecs.push({
+                    key,
+                    label: specLabels[key] || key,
+                    value: value as string,
+                });
+            }
+        }
+        // Always include the collection name spec
+        collSpecs.push({ key: 'collection', label: 'Kolekcija', value: displayName });
 
         return {
             id: `tarkett-${collKey}`,
@@ -154,9 +205,9 @@ export function getTarkettLVTCollections(): Product[] {
             brandId: '3',
             shortDescription: `Tarkett ${displayName} – ${items.length} dizajna`,
             description: first.description || `Tarkett ${displayName} LVT kolekcija`,
-            images: primaryImage ? [primaryImage] : [],
-            specs: additionalSpecs.length > 0 ? additionalSpecs : [{ key: 'collection', label: 'Kolekcija', value: displayName }],
-            documents: documents, // Include documents
+            images: [collectionImage],
+            specs: collSpecs,
+            documents: documents,
             price: 0,
             priceUnit: 'm²' as const,
             inStock: true,
