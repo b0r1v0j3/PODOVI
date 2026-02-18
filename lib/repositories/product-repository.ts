@@ -128,6 +128,49 @@ export class SupabaseProductRepository implements IProductRepository {
       let lvtJsonProducts = getAllTarkettLVTProducts();
       let lvtCollections = getTarkettLVTCollections();
 
+      // Implement Local Collection Images
+      const collectionImagesModule = await import('@/public/data/collection_images.json').then(m => m.default || m).catch(() => ({}));
+      const collectionImages = collectionImagesModule as Record<string, string>;
+
+      lvtCollections = lvtCollections.map(c => {
+        let localImg: string | undefined;
+
+        // 1. Try exact name match or name without "Tarkett " prefix
+        const nameWithoutPrefix = c.name.replace(/^Tarkett\s+/i, '');
+        localImg = collectionImages[c.name] || collectionImages[nameWithoutPrefix];
+
+        // 2. Try case-insensitive matching for name
+        if (!localImg) {
+          const lowerName = nameWithoutPrefix.toLowerCase();
+          const matchingKey = Object.keys(collectionImages).find(k => k.toLowerCase() === lowerName);
+          if (matchingKey) localImg = collectionImages[matchingKey];
+        }
+
+        // 3. Try matching by slug part
+        // c.slug is like "tarkett-id-inspiration-55"
+        // collectionImages key is like "kolekcija-c000770-id-inspiration-55"
+        if (!localImg && c.slug) {
+          const slugPart = c.slug.replace(/^tarkett-/i, '');
+          // Look for a key that contains this slug part
+          const matchingKey = Object.keys(collectionImages).find(k => k.includes(slugPart));
+          if (matchingKey) localImg = collectionImages[matchingKey];
+        }
+
+        if (localImg) {
+          return {
+            ...c,
+            images: [{
+              id: 'local-' + c.id,
+              url: localImg,
+              alt: c.name,
+              isPrimary: true,
+              order: 0
+            }, ...c.images.slice(1)]
+          };
+        }
+        return c;
+      });
+
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
         lvtJsonProducts = lvtJsonProducts.filter(p =>
