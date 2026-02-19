@@ -364,9 +364,8 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
 
           // Convert colors from JSON to Product objects
           const colorsAsProducts: Product[] = colorsArray.map((color: any, index: number) => {
-            // Find brand ID (Gerflor = '6')
-            const gerflorBrand = Object.values(brandsRecord).find(b => b.slug === 'gerflor');
-            const brandId = gerflorBrand?.id || '6';
+            // Use brandId from JSON/API if available, otherwise default to Gerflor (6)
+            const brandId = color.brandId || (Object.values(brandsRecord).find(b => b.slug === 'gerflor')?.id || '6');
 
             // Find category ID
             const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
