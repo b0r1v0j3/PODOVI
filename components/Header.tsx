@@ -34,7 +34,7 @@ export default function Header() {
 
   return (
     <header className="bg-white/70 backdrop-blur-xl shadow-sm sticky top-0 z-50 border-b border-white/20 transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
-      <nav className="container h-[48px] md:h-[52px] flex items-center">
+      <nav className="container min-h-[48px] md:h-[52px] flex flex-wrap md:flex-nowrap items-center py-2 md:py-0">
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <Link href="/" className="flex items-center group mr-8">
@@ -128,8 +128,8 @@ export default function Header() {
         {/* Mobile Navigation */}
         <div
           id="mobile-menu"
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen
-            ? 'max-h-[400px] opacity-100 mt-4 pb-4'
+          className={`w-full md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen
+            ? 'max-h-[400px] opacity-100 mt-4 pb-4 border-t border-gray-100'
             : 'max-h-0 opacity-0'
             }`}
         >

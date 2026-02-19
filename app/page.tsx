@@ -107,9 +107,7 @@ export default async function HomePage() {
 
         <div className="container relative z-10">
           <div className="max-w-4xl animate-fadeInUp">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary-600/30 border border-primary-500/50 text-primary-300 text-sm font-semibold tracking-wider mb-6 backdrop-blur-sm">
-              PREMIUM PODNE OBLOGE
-            </span>
+
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white drop-shadow-2xl">
               Pronađite savršen pod <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
