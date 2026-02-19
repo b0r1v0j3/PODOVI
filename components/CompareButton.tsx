@@ -32,7 +32,7 @@ export default function CompareButton({ product, size = 'sm' }: CompareButtonPro
             disabled={!active && isFull}
             title={active ? 'Ukloni iz poređenja' : isFull ? 'Maksimalno 3 proizvoda' : 'Uporedi'}
             className={`
-        inline-flex items-center justify-center gap-1 rounded-lg font-medium
+        inline-flex items-center justify-center gap-1 rounded-full font-medium
         transition-all duration-200 border
         ${sizeClasses}
         ${active

@@ -4,9 +4,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto">
-      {/* Gradient accent bar */}
-      <div className="h-1 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600"></div>
+    <footer className="mt-auto bg-[#F5F5F7]">
+      {/* Minimalist separator line instead of gradient */}
+      <div className="h-px bg-[#D2D2D7]"></div>
 
       <div className="bg-gray-900 text-gray-300">
         <div className="container py-12">

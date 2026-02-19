@@ -8,9 +8,12 @@
   }
 
   body {
-    @apply bg-gray-50 text-gray-900 antialiased leading-relaxed;
-    font-size: 16px;
-    /* Explicit base size */
+    /* Apple's signature light gray background */
+    @apply bg-[#F5F5F7] text-[#1D1D1F] antialiased leading-relaxed;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 17px;
+    /* Apple uses slightly larger base text */
+    letter-spacing: -0.0125em;
   }
 
   h1,
@@ -19,19 +22,21 @@
   h4,
   h5,
   h6 {
-    @apply tracking-tight text-gray-900;
+    @apply tracking-tight font-semibold text-[#1D1D1F];
+    letter-spacing: -0.025em;
+    /* Tighter headings */
   }
 
   h1 {
-    @apply text-4xl font-extrabold md:text-5xl lg:text-6xl;
+    @apply text-5xl md:text-6xl lg:text-7xl font-semibold;
   }
 
   h2 {
-    @apply text-3xl font-bold md:text-4xl;
+    @apply text-4xl md:text-5xl font-semibold;
   }
 
   h3 {
-    @apply text-2xl font-bold;
+    @apply text-2xl md:text-3xl font-semibold;
   }
 
   html {
@@ -41,210 +46,137 @@
 
 @layer components {
   .container {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-[1200px] px-6 md:px-8;
+    /* Slightly wider, more breathing room */
   }
 
+  /* Apple-style Button */
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center px-6 py-3 text-[15px] font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
   }
 
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-500/50 focus:ring-primary-500 active:bg-primary-800 transform hover:scale-[1.02];
+    @apply btn bg-[#0071E3] text-white hover:bg-[#0077ED] active:scale-95 shadow-sm hover:shadow-md;
+    /* Using Apple Blue #0071E3 as primary for that true Apple feel, or stick to Red if brand requires. 
+       Let's stick to the brand RED but make it vibrant. */
+    @apply bg-primary-600 hover:bg-primary-500 hover:shadow-primary-500/30;
   }
 
   .btn-secondary {
-    @apply btn bg-gray-700 text-white hover:bg-gray-800 hover:shadow-lg focus:ring-gray-700 active:bg-gray-900 transform hover:scale-[1.02];
+    @apply btn bg-[#E8E8ED] text-[#1D1D1F] hover:bg-[#D2D2D7] active:scale-95;
   }
 
   .btn-outline {
-    @apply btn border border-gray-300 text-gray-900 hover:bg-gray-100 hover:border-gray-400 focus:ring-primary-500 active:bg-gray-100 transform hover:scale-[1.02];
+    @apply btn border border-[#D2D2D7] text-[#1D1D1F] bg-transparent hover:border-[#1D1D1F] hover:bg-transparent active:scale-95;
+  }
+
+  .btn-link {
+    @apply text-[#0066CC] hover:underline hover:text-[#004499] transition-colors duration-200 font-medium text-[15px];
   }
 
   .input {
-    @apply block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition-all duration-200;
+    @apply block w-full px-4 py-3 bg-white border border-[#D2D2D7] rounded-xl text-[#1D1D1F] placeholder-gray-500 focus:outline-none focus:border-[#0071E3] focus:ring-4 focus:ring-[#0071E3]/10 transition-all duration-200;
   }
 
   .label {
-    @apply block text-sm font-semibold text-gray-800 mb-2;
+    @apply block text-[13px] font-medium text-[#86868B] mb-2 uppercase tracking-wide;
   }
 
+  /* Apple Cards */
   .card {
-    @apply bg-white rounded-xl shadow-sm overflow-hidden border border-transparent transition-all duration-300;
+    @apply bg-white rounded-2xl overflow-hidden border border-transparent transition-all duration-500;
+    /* Soft shadow, barely visible */
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
   }
 
   .card-hover {
-    @apply hover:shadow-2xl hover:-translate-y-1 hover:border-primary-200;
+    @apply hover:scale-[1.01] hover:shadow-2xl;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+
+    &:hover {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
   }
 
   .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+    @apply inline-flex items-center px-3 py-1 rounded-full text-[12px] font-semibold tracking-wide uppercase;
   }
 
   .badge-success {
-    @apply badge bg-green-100 text-green-800 shadow-sm;
+    @apply badge bg-green-100 text-green-700;
   }
 
   .badge-warning {
-    @apply badge bg-yellow-100 text-yellow-800 shadow-sm;
+    @apply badge bg-yellow-100 text-yellow-700;
   }
 
-  /* Category-specific badge colors for product cards */
+  /* Category Badges - smoother tones */
   .badge-lvt {
-    @apply bg-blue-600 text-white;
+    @apply bg-blue-50 text-blue-700;
   }
 
   .badge-laminat {
-    @apply bg-amber-600 text-white;
+    @apply bg-orange-50 text-orange-700;
   }
 
   .badge-parket {
-    @apply bg-amber-800 text-white;
+    @apply bg-amber-50 text-amber-700;
   }
 
   .badge-linoleum {
-    @apply bg-emerald-600 text-white;
+    @apply bg-emerald-50 text-emerald-700;
   }
 
   .badge-vinil {
-    @apply bg-violet-600 text-white;
+    @apply bg-purple-50 text-purple-700;
   }
 
   .badge-tekstilne {
-    @apply bg-teal-600 text-white;
+    @apply bg-teal-50 text-teal-700;
   }
 
   .badge-deking {
-    @apply bg-orange-700 text-white;
+    @apply bg-gray-100 text-gray-700;
   }
 
   .spec-chip {
-    @apply inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs font-medium;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 bg-[#F5F5F7] text-[#1D1D1F] rounded-lg text-[13px] font-medium;
   }
 
+  /* Glassmorphism */
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-white/70 backdrop-blur-xl border-b border-white/20;
+    /* Apple uses simpler saturation boost sometimes */
+    @apply supports-[backdrop-filter]:bg-white/60;
   }
 
   .glass-dark {
-    @apply bg-black/20 backdrop-blur-md border border-white/10;
+    @apply bg-[#1D1D1F]/70 backdrop-blur-xl;
   }
 
-  @keyframes fadeIn {
+  /* Typography Utilities */
+  .text-apple-gray {
+    @apply text-[#86868B];
+  }
+
+  .text-apple-dark {
+    @apply text-[#1D1D1F];
+  }
+
+  /* Animations */
+  @keyframes fadeScale {
     from {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: scale(0.98);
     }
 
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1);
     }
   }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes pulse-glow {
-
-    0%,
-    100% {
-      box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
-    }
-
-    50% {
-      box-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
-    }
-  }
-
-  .animate-fadeIn {
-    animation: fadeIn 0.5s ease-out;
-  }
-
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out;
-  }
-
-  .animate-slideInRight {
-    animation: slideInRight 0.5s ease-out;
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(100%);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-slideUp {
-    animation: slideUp 0.3s ease-out;
-  }
-
-  /* Scroll reveal animation */
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Better touch targets on mobile */
-  @media (max-width: 768px) {
-
-    .btn,
-    .btn-primary,
-    .btn-secondary,
-    .btn-outline {
-      min-height: 44px;
-    }
+  .animate-fadeScale {
+    animation: fadeScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }

@@ -178,9 +178,9 @@ export default function ProductCardClient({ product, brand, compact = false }: P
   return (
     <Link
       href={productHref}
-      className="group card card-hover"
+      className="group card card-hover block h-full bg-white"
     >
-      <div className="relative h-64 bg-gray-100 overflow-hidden">
+      <div className="relative aspect-[4/3] bg-[#F5F5F7] overflow-hidden">
         {primaryImage ? (
           <Image
             key={imageSrc}
@@ -210,19 +210,19 @@ export default function ProductCardClient({ product, brand, compact = false }: P
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
       </div>
-      <div className="p-5">
+      <div className="p-5 flex flex-col h-[calc(100%-aspect-[4/3])]">
         {brand && (
-          <p className="text-[11px] text-primary-600 mb-1.5 uppercase tracking-wider font-semibold">
+          <p className="text-[11px] font-semibold tracking-wider text-[#86868B] uppercase mb-2">
             {brand.name}
           </p>
         )}
-        <h3 className="font-bold text-lg mb-1.5 line-clamp-2 text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+        <h3 className="text-[17px] font-semibold text-[#1D1D1F] mb-2 leading-tight group-hover:text-[#0071E3] transition-colors duration-300">
           {displayName}
         </h3>
 
         {/* Spec chips */}
         {specChips.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-2.5">
+          <div className="flex flex-wrap gap-1.5 mb-3">
             {specChips.map((chip) => (
               <span key={chip.label} className="spec-chip">
                 {chip.value}
@@ -233,34 +233,33 @@ export default function ProductCardClient({ product, brand, compact = false }: P
 
         {/* Short description — only if it adds info beyond the name */}
         {cleanedDesc && specChips.length === 0 && (
-          <p className="text-sm text-gray-500 mb-3 line-clamp-2 leading-relaxed">
+          <p className="text-[13px] text-[#86868B] mb-4 line-clamp-2 leading-relaxed">
             {cleanedDesc}
           </p>
         )}
 
         {/* Price or "Cena na upit" */}
-        {product.price && product.price > 0 ? (
-          <div className="flex items-baseline mb-3">
-            <span className="text-2xl font-bold text-gray-900">
-              {product.price.toLocaleString('sr-RS')}
-            </span>
-            <span className="text-sm text-gray-500 ml-1">
-              RSD/{product.priceUnit}
-            </span>
-          </div>
-        ) : (
-          <div className="mb-3">
-            <span className="text-sm font-medium text-gray-400 italic">
-              Cena na upit
-            </span>
-          </div>
-        )}
-
-        <div className="flex items-center text-primary-600 font-semibold text-sm group-hover:text-primary-700 transition-colors duration-300">
-          <span>Detaljnije</span>
-          <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+        <div className="mt-auto pt-4 border-t border-[#F5F5F7]">
+          {product.price && product.price > 0 ? (
+            <div className="flex items-baseline justify-between">
+              <span className="text-lg font-semibold text-[#1D1D1F]">
+                {product.price.toLocaleString('sr-RS')}
+                <span className="text-xs font-normal text-[#86868B] ml-1">RSD/{product.priceUnit}</span>
+              </span>
+              <span className="text-[#0071E3] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
+                Detaljnije &rarr;
+              </span>
+            </div>
+          ) : (
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium text-[#86868B] italic">
+                Cena na upit
+              </span>
+              <span className="text-[#0071E3] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
+                Detaljnije &rarr;
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </Link>

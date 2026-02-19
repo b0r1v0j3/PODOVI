@@ -20,35 +20,27 @@ export default function Header() {
 
   const navLinkClass = (href: string) => {
     const active = isActive(href);
-    return `text-gray-800 hover:text-primary-700 transition-all duration-200 
-            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm px-2 py-1 ${active ? 'text-primary-700 ring-2 ring-primary-600 ring-offset-2' : ''
+    return `text-[13px] font-medium tracking-wide transition-colors duration-200 
+            focus:outline-none rounded-md px-3 py-2 ${active ? 'text-[#1d1d1f]' : 'text-[#424245] hover:text-[#1d1d1f]'
       }`;
   };
 
   const mobileNavLinkClass = (href: string) => {
     const active = isActive(href);
-    return `block text-gray-800 hover:text-primary-700 transition-colors duration-200 py-2
-            focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm ${active ? 'text-primary-700 font-semibold' : ''
+    return `block text-[17px] font-medium text-[#1d1d1f] hover:text-[#0066CC] transition-colors duration-200 py-3 border-b border-gray-100 last:border-0
+            ${active ? 'text-[#0066CC]' : ''
       }`;
   };
 
   return (
-    <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100 transition-all duration-300">
-      <nav className="container py-4">
-        <div className="flex items-center justify-between">
+    <header className="bg-white/70 backdrop-blur-xl shadow-sm sticky top-0 z-50 border-b border-white/20 transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
+      <nav className="container h-[48px] md:h-[52px] flex items-center">
+        <div className="flex items-center justify-between w-full">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative">
-              <div className="text-2xl md:text-3xl font-bold lowercase tracking-tight">
-                <span className="text-gray-900 relative inline-block pb-2">
-                  podovi
-                  <div className="absolute -bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 
-                                  transform origin-center transition-transform duration-300 group-hover:scale-x-110 rounded-full"></div>
-                </span>
-              </div>
-              {/* Subtle shadow effect */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-primary-600/20 blur-sm"></div>
-            </div>
+          <Link href="/" className="flex items-center group mr-8">
+            <span className="text-xl md:text-2xl font-semibold tracking-tight text-[#1d1d1f]">
+              podovi
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -103,8 +95,7 @@ export default function Header() {
 
             <Link
               href="/upiti"
-              className={`btn-primary focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${isActive('/upiti') ? 'ring-2 ring-primary-600 ring-offset-2' : ''
-                }`}
+              className={`btn-primary px-4 py-1.5 text-xs rounded-full ${isActive('/upiti') ? '' : ''}`}
               aria-current={isActive('/upiti') ? 'page' : undefined}
             >
               Pošalji upit

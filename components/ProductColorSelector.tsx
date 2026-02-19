@@ -347,7 +347,7 @@ export default function ProductColorSelector({
                       });
                     }
                   }}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg font-medium transition-all duration-200 border px-3 py-1.5 text-sm bg-white text-gray-700 border-gray-300 hover:bg-primary-50 hover:border-primary-400 hover:text-primary-700"
+                  className="btn bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E8E8ED] border-0 gap-1.5 px-3 py-1.5 text-[13px] font-medium rounded-full transition-all"
                   title="Podeli"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -476,7 +476,7 @@ export default function ProductColorSelector({
 
                   return `/kontakt?${params.toString()}`;
                 })()}
-                className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg font-semibold px-6 py-4 w-full rounded-xl"
+                className="btn-primary text-center text-[17px] font-semibold px-8 py-4 w-full rounded-full shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all"
               >
                 Pošaljite upit
               </a>
