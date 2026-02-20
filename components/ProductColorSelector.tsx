@@ -531,8 +531,8 @@ export default function ProductColorSelector({
 
       {/* Ispod prvog reda: video, opis, Tehničke spec (parket) */}
       {(videoEmbedUrl || leftColumnBottom || rightColumnBottom) ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="flex flex-col gap-6">
+        <div className="flex flex-col lg:flex-row gap-6 mb-8 items-start">
+          <div className="flex flex-col gap-6 w-full lg:w-[50%] lg:flex-1">
             {videoEmbedUrl && (
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
@@ -549,7 +549,7 @@ export default function ProductColorSelector({
             )}
             {leftColumnBottom}
           </div>
-          <div>
+          <div className="flex flex-col gap-6 w-full lg:w-[50%] lg:flex-1">
             {rightColumnBottom}
           </div>
         </div>

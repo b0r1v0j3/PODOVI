@@ -354,6 +354,49 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // ── Determine if this is a "color selector" category ──
     const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1'].includes(product.categoryId);
 
+    // ── Helper JSX logic to populate masonry columns neatly ──
+    const sharedCertsAndEco = (['6', '7', '4', '2'].includes(product.categoryId)) ? (
+      <>
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+            Sertifikati kvaliteta
+          </h3>
+          <CertificationBadges certifications={
+            product.brandId === '8'
+              ? ["Cradle to Cradle Silver", "Indoor Air Comfort Gold", "BREEAM A+", "GreenTag Level A", "CE"]
+              : ["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]
+          } />
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          <EcoFeatures
+            features={product.brandId === '8'
+              ? ["Cradle to Cradle Silver", "ECONYL® reciklirana vlakna", "70% reciklirani materijali u podlozi", "Smanjenje buke"]
+              : product.categoryId === '7'
+                ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
+                : product.categoryId === '4'
+                  ? ["Bez ftalata", "100% reciklabilno", "Smanjenje buke", "Laka ugradnja"]
+                  : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
+            }
+            underfloorHeating={product.brandId !== '8'}
+          />
+        </div>
+      </>
+    ) : null;
+
+    const sharedDocs = (['6', '7', '4', '2'].includes(product.categoryId)) ? (
+      <div className="bg-white rounded-2xl shadow-lg p-6 h-full">
+        <ProductDocuments
+          initialDocuments={product.documents}
+          categoryId={product.categoryId}
+          collectionSlug={product.slug}
+        />
+      </div>
+    ) : null;
+
     return (
       <>
         {/* Schema.org JSON-LD */}
@@ -416,23 +459,29 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   }
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                   rightColumnBottom={(product.categoryId === '3' || product.categoryId === '1' || product.categoryId === '6') ? (
-                    <ProductCharacteristics
-                      specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
-                        (s) => s.key !== 'collection' && s.key !== 'type'
-                      )}
-                      categoryId={product.categoryId}
-                      title="Tehničke specifikacije"
-                    />
+                    <>
+                      <ProductCharacteristics
+                        specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
+                          (s) => s.key !== 'collection' && s.key !== 'type'
+                        )}
+                        categoryId={product.categoryId}
+                        title="Tehničke specifikacije"
+                      />
+                      {product.categoryId === '6' && sharedDocs}
+                    </>
                   ) : undefined}
                   leftColumnBottom={(product.categoryId === '3' || product.categoryId === '1' || product.categoryId === '6') ? (
-                    <div className="bg-white rounded-2xl shadow-lg p-6">
-                      <ProductDescriptionWithCharacteristics
-                        description={product.description || ''}
-                        characteristicsSection={product.detailsSections?.find(
-                          (s) => s.title === 'Ključne karakteristike'
-                        )}
-                      />
-                    </div>
+                    <>
+                      <div className="bg-white rounded-2xl shadow-lg p-6">
+                        <ProductDescriptionWithCharacteristics
+                          description={product.description || ''}
+                          characteristicsSection={product.detailsSections?.find(
+                            (s) => s.title === 'Ključne karakteristike'
+                          )}
+                        />
+                      </div>
+                      {product.categoryId === '6' && sharedCertsAndEco}
+                    </>
                   ) : undefined}
                   inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                   productId={product.id}
@@ -443,14 +492,21 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 {/* Category 2 (Vinil) is also excluded in original code? Assuming it shouldn't show duplicates either. */}
                 {/* Categories 4 & 7 DO NOT pass left/right to ColorSelector, so they SHOW this block. */}
                 {(product.categoryId === '4' || product.categoryId === '7') && (
-                  <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="bg-white rounded-2xl shadow-lg p-6">
-                      <DescriptionSection product={product} />
+                  <div className="mt-8 flex flex-col lg:flex-row gap-6 mb-8 items-start align-top">
+                    <div className="flex flex-col gap-6 w-full lg:w-[50%] lg:flex-1">
+                      <div className="bg-white rounded-2xl shadow-lg p-6">
+                        <DescriptionSection product={product} />
+                      </div>
+                      {sharedCertsAndEco}
                     </div>
-                    <ProductCharacteristics
-                      specs={filterSpecsForDisplay(product.specs)}
-                      categoryId={product.categoryId}
-                    />
+
+                    <div className="flex flex-col gap-6 w-full lg:w-[50%] lg:flex-1">
+                      <ProductCharacteristics
+                        specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug })}
+                        categoryId={product.categoryId}
+                      />
+                      {sharedDocs}
+                    </div>
                   </div>
                 )}
               </>
@@ -549,73 +605,49 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Description & Specs - Za vinil i ostale kategorije */}
+            {/* Description & Specs - Za vinil (2) i ostale generičke kategorije */}
             {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && product.categoryId !== '3' && product.categoryId !== '1' && (
-              <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
-                  <DescriptionSection product={product} />
+              <div className="mt-16 flex flex-col lg:flex-row gap-6 items-start align-top">
+                <div className="flex flex-col gap-6 w-full lg:w-[66%]">
+                  <div className="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
+                    <DescriptionSection product={product} />
+                  </div>
+
+                  {/* Cca categories 2 (Vinil) have valid certs/eco features */}
+                  {product.categoryId === '2' && (
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      {sharedCertsAndEco}
+                    </div>
+                  )}
                 </div>
 
                 {(() => {
                   const displaySpecs = filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug });
-                  return displaySpecs.length > 0 && (
-                    <div className="bg-white rounded-2xl shadow-lg p-8">
-                      <h2 className="text-2xl font-bold text-gray-900 mb-6">Tehničke specifikacije</h2>
-                      <dl className="space-y-4">
-                        {displaySpecs.map((spec) => (
-                          <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
-                            <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
-                            <dd className="text-lg font-semibold text-gray-900">{spec.value}</dd>
-                          </div>
-                        ))}
-                      </dl>
+                  return (
+                    <div className="flex flex-col gap-6 w-full lg:w-[33%]">
+                      {displaySpecs.length > 0 && (
+                        <div className="bg-white rounded-2xl shadow-lg p-8 h-full">
+                          <h2 className="text-2xl font-bold text-gray-900 mb-6">Tehničke specifikacije</h2>
+                          <dl className="space-y-4">
+                            {displaySpecs.map((spec) => (
+                              <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
+                                <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
+                                <dd className="text-lg font-semibold text-gray-900">{spec.value}</dd>
+                              </div>
+                            ))}
+                          </dl>
+                        </div>
+                      )}
+
+                      {product.categoryId === '2' && sharedDocs}
                     </div>
                   );
                 })()}
               </div>
             )}
 
-            {/* Certifications & Eco Features - Full Width Below for LVT, Linoleum, Vinil, Tekstilne */}
-            {(product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && (
-              <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="bg-white rounded-2xl shadow-lg p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                    Sertifikati kvaliteta
-                  </h3>
-                  <CertificationBadges certifications={
-                    product.brandId === '8'
-                      ? ["Cradle to Cradle Silver", "Indoor Air Comfort Gold", "BREEAM A+", "GreenTag Level A", "CE"]
-                      : ["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]
-                  } />
-                </div>
-
-                <div className="bg-white rounded-2xl shadow-lg p-6">
-                  <EcoFeatures
-                    features={product.brandId === '8'
-                      ? ["Cradle to Cradle Silver", "ECONYL® reciklirana vlakna", "70% reciklirani materijali u podlozi", "Smanjenje buke"]
-                      : product.categoryId === '7'
-                        ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
-                        : product.categoryId === '4'
-                          ? ["Bez ftalata", "100% reciklabilno", "Smanjenje buke", "Laka ugradnja"]
-                          : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
-                    }
-                    underfloorHeating={product.brandId !== '8'}
-                  />
-                </div>
-
-                <div className="h-full">
-                  <ProductDocuments
-                    initialDocuments={product.documents}
-                    categoryId={product.categoryId}
-                    collectionSlug={product.slug}
-                  />
-                </div>
-              </div>
-            )}
+            {/* Certifications & Eco Features are now rendered alongside Descriptions in the Flex Masonry layout! */}
 
             {/* Benefits + Accessories + Documents — for products with enriched data */}
             {(product.benefits || accessoryProducts.length > 0 || (product.documents && product.documents.length > 0 && !['6', '7', '4', '2'].includes(product.categoryId))) && (
