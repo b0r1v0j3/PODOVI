@@ -19,16 +19,16 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link
       href={`/kategorije/${category.slug}`}
-      className="group card card-hover block rounded-xl overflow-hidden"
+      className="group card card-hover block rounded-[1.25rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 bg-white"
     >
-      <div className="relative h-48 bg-gray-100 overflow-hidden">
+      <div className="relative h-48 bg-gray-50 overflow-hidden">
         {isLVT ? (
           // Show sahara noir pod image for LVT
           <Image
             src={saharaNoirImage}
             alt="Sahara Noir LVT"
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
         ) : isParket ? (
@@ -37,7 +37,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             src={parketImage}
             alt={category.name}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
         ) : (isLinoleum || isCarpet || isVinil || isLaminat) && category.image ? (
@@ -46,7 +46,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             src={category.image}
             alt={category.name}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
         ) : (
@@ -62,13 +62,13 @@ export default function CategoryCard({ category }: CategoryCardProps) {
           </div>
         )}
         {/* Decorative gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
       <div className="p-6 text-center">
-        <h3 className="font-bold text-xl mb-2 text-gray-900 group-hover:text-primary-600 transition-colors">
+        <h3 className="font-semibold text-xl mb-2 text-gray-900 group-hover:text-primary-600 transition-colors tracking-tight">
           {category.name}
         </h3>
-        <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+        <p className="text-[15px] text-gray-500 line-clamp-2 leading-relaxed font-light">
           {category.description}
         </p>
       </div>
