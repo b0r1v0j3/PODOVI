@@ -31,6 +31,7 @@ interface CategoryTabsProps {
     search?: string;
     brands?: string;
     collections?: string;
+    family?: string;
     thickness?: string;
     woodType?: string;
   };
@@ -43,6 +44,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
     search: urlSearchParams.get('search') || undefined,
     brands: urlSearchParams.get('brands') || undefined,
     collections: urlSearchParams.get('collections') || undefined,
+    family: urlSearchParams.get('family') || undefined,
     thickness: urlSearchParams.get('thickness') || undefined,
   }, [searchParamsProp, urlSearchParams]);
 

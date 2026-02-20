@@ -21,6 +21,7 @@ interface CategoryPageProps {
     color?: string;
     type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
     collections?: string; // For LVT collection filter (comma-separated)
+    family?: string; // For BLOQ family filter (comma-separated)
     thickness?: string; // For overall thickness filter (comma-separated values)
     woodType?: string; // For Parket: Hrast | Jasen
   };
@@ -91,7 +92,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Laminat: don't filter by thickness in repository (we do it manually); others: use repository filter
     thickness: isLaminat ? undefined : (searchParams.thickness ? searchParams.thickness.split(',') : undefined),
     woodType: searchParams.woodType, // For Parket: Hrast | Jasen
-    // collections filter will be applied separately after separating collections from colors
+    // collections and family filter will be applied separately after separating collections from colors
   };
 
   // Get all products first (without collection filter) to properly separate collections from colors
@@ -112,6 +113,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
+  let availableFamilies: string[] = [];
   let availableWoodTypes: { value: string; count: number }[] = [];
   let availableThickness: string[] = [];
   let availableThicknessByType: { homogeni: string[]; heterogeni: string[] } = { homogeni: [], heterogeni: [] };
@@ -250,6 +252,19 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       availableWoodTypes = Object.entries(woodCounts)
         .map(([value, count]) => ({ value, count }))
         .sort((a, b) => a.value.localeCompare(b.value));
+    }
+
+    // Tekstilne ploče: extract BLOQ families (brand 8)
+    if (category.slug === 'tekstilne-ploce') {
+      const familySet = new Set<string>();
+      allCollections.forEach(p => {
+        if (p.brandId !== '8') return; // Only BLOQ
+        const familySpec = p.specs?.find((s: { key: string }) => s.key === 'family')?.value;
+        if (familySpec) {
+          familySet.add(familySpec);
+        }
+      });
+      availableFamilies = Array.from(familySet).sort((a, b) => a.localeCompare(b));
     }
 
     // Extract unique thickness values from our actual data (collections + colors from JSON)
@@ -515,6 +530,24 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           return collectionNamesWithSelectedWood.has(name);
         });
       }
+    } else if (category.slug === 'tekstilne-ploce') {
+      const selectedFamilies = searchParams.family ? searchParams.family.split(',') : [];
+      if (selectedFamilies.length > 0) {
+        // Obuhvati i BLOQ (porodice) i ostale (npr. Gerflor nema family filter)
+        collections = allCollections.filter(p => {
+          if (p.brandId !== '8') return true; // Gerflor prođe nepovređen
+          const familySpec = p.specs?.find(s => s.key === 'family')?.value;
+          return familySpec && selectedFamilies.includes(familySpec);
+        });
+
+        colors = colors.filter(p => {
+          if (p.brandId !== '8') return true;
+          const familySpec = p.specs?.find(s => s.key === 'family')?.value;
+          return familySpec && selectedFamilies.includes(familySpec);
+        });
+      } else {
+        collections = allCollections;
+      }
     } else {
       // For Vinil and other categories, show all collections (no collection filter)
       collections = allCollections;
@@ -563,6 +596,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               availableBrands={availableBrands}
               currentFilters={filtersWithoutCollections}
               availableCollections={availableCollections}
+              availableFamilies={category.slug === 'tekstilne-ploce' ? availableFamilies : undefined}
               availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
               availableThickness={availableThickness}
               availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
@@ -583,6 +617,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   search: searchParams.search,
                   brands: searchParams.brands,
                   collections: searchParams.collections,
+                  family: searchParams.family,
                   thickness: searchParams.thickness,
                   woodType: searchParams.woodType,
                 }}

@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 12.02.2026 (SEO metadata fix: tab title, OG tags, meta description)
+> **Poslednje ažuriranje:** 20.02.2026 (Standardizacija formata boja)
 
 ---
 
@@ -135,6 +135,16 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Filteri za BLOQ i Tekstilne ploče (20.02.2026)**
+- Dodata mogućnost filtriranja po "Familiji" u sidebar filtere na stranici Kategorija > Tekstilne ploče
+- Ažuriran `productDataLoader.ts` da učitava `parent_collection` kao `family` spec
+- Podržano prenošenje i čitanje iz `searchParams` URL parametara preko komponente `CategoryTabs` i `ProductFilters` 
+
+**Standardizacija naziva boja (20.02.2026)**
+- Dodata `formatProductName` utility funkcija u `productDataLoader.ts`
+- Boje iz JSON fajlova (Tarkett, Gerflor LVT/Linoleum/Carpet, BLOQ) se sada automatski formatiraju u Title Case
+- Uklonjeni su redundantni kodovi i prefiksi iz samog naziva boje prilikom učitavanja (npr. "0347 BALLERINA" -> "Ballerina")
 
 **Obogaćivanje BLOQ podataka (10.02.2026)**
 - Dodati opisi kolekcija (EN + SR) za svih 18 BLOQ kolekcija
@@ -272,6 +282,7 @@ PODOVI/
 9. **Async fetch u `useEffect` ne sme da prepisuje stanje koje `handleColorSelect` postavlja.** Ako `ColorGrid.onColorSelect` već daje tačnu sliku, nemoj praviti još jedan fetch koji menja istu state varijablu — to pravi race condition i flicker. Uvek koristi callback podatke kad su dovoljni.
 10. **`mergeSelectedColor()` menja `product.name` u ime boje.** Nikad ne koristi `productName` kao izvor za ime kolekcije posle merge-a. Uvek sačuvaj originalni naziv PRE poziva `mergeSelectedColor()` i prosledi ga kao `originalProductName`.
 11. **Brend se ne ponavlja u naslovu/podnaslovu.** Brend (Gerflor, Tarkett, BLOQ) je već prikazan iznad kao link. U h1 i subtitle koristi `collectionName` koji stripuje brend prefiks. Logika: `name.startsWith(brand.name + ' ')` → strip.
+12. **Formatiranje naziva boja:** Uvek propusti sirova imena boja iz JSON-a kroz `formatProductName` utility iz `productDataLoader.ts`. Ovo osigurava konzistentan Title Case i uklanja šifre iz naziva.
 
 ---
 
@@ -285,7 +296,6 @@ PODOVI/
 - [ ] **Dead code čišćenje** — proveriti `mock-data.ts` i ostale fajlove za nekorišćeni kod posle EGGER brisanja
 
 ### Prioritet: Srednji
-- [ ] **Filteri za BLOQ** — dodati filter po kolekciji/familiji na kategorijskoj stranici
 - [ ] **PDF viewer** — pregled PDF dokumenata inline umesto download-a
 - [ ] **Breadcrumbs poboljšanje** — dodati kolekciju u breadcrumbs za BLOQ
 - [ ] **Unified data source** — proizvodi dolaze iz 4 izvora (JSON, TS fajlovi, Supabase, hardcoded). Razmotriti migraciju svega u Supabase za lakše održavanje

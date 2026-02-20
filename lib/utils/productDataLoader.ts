@@ -35,6 +35,41 @@ const TARKETT_COLLECTION_NAMES: Record<string, string> = {
     'progressive-house': 'Progressive House',
 };
 
+/**
+ * Utility to standardize and clean up product color names.
+ * Removes redundant codes, technical prefixes/suffixes, and applies Title Case.
+ */
+export function formatProductName(rawName: string, code?: string): string {
+    let cleanName = rawName || '';
+
+    // If code is provided, remove it from the beginning of the name
+    if (code) {
+        // Escape code for regex to be safe
+        const escapedCode = code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const codeRegex = new RegExp(`^${escapedCode}[\\s\\-_]*`, 'i');
+        cleanName = cleanName.replace(codeRegex, '');
+    }
+
+    // Remove known technical prefixes like "Ess30-", "iD 30-", etc.
+    cleanName = cleanName.replace(/^(Ess\d+-|iD\s*\d+-|Tarkett\s*)/i, '');
+    // Remove technical suffixes like "-0v"
+    cleanName = cleanName.replace(/-0v$/i, '');
+    // Remove dimensions like "33,3x66,6" or "50x50" or "1200x200mm"
+    cleanName = cleanName.replace(/\d+([.,]\d+)?\s*x\s*\d+([.,]\d+)?\s*(mm|cm)?/gi, '');
+    // Remove trailing hyphens, en-dashes, or underscores
+    cleanName = cleanName.replace(/[-–_]\s*$/g, '').trim();
+    // Replace remaining hyphens and underscores with spaces
+    cleanName = cleanName.replace(/[-_]/g, ' ');
+
+    // Standardize capitalization (Title Case)
+    cleanName = cleanName.toLowerCase().replace(/(?:^|\s)\S/g, a => a.toUpperCase());
+
+    // Remove multiple spaces
+    cleanName = cleanName.replace(/\s+/g, ' ').trim();
+
+    return cleanName;
+}
+
 export function getAllTarkettLVTProducts(): Product[] {
     if (tarkettLvtCache) {
         return tarkettLvtCache;
@@ -49,25 +84,8 @@ export function getAllTarkettLVTProducts(): Product[] {
             return img; // already a ProductImage
         });
 
-        // Clean up the name
-        // Clean up the name
-        let cleanName = p.name || '';
-        // Remove known technical prefixes like "Ess30-", "iD 30-", etc.
-        cleanName = cleanName.replace(/^(Ess\d+-|iD\s*\d+-|Tarkett\s*)/i, '');
-        // Remove technical suffixes like "-0v"
-        cleanName = cleanName.replace(/-0v$/i, '');
-        // Remove dimensions like "33,3x66,6" or "50x50" or "1200x200mm"
-        cleanName = cleanName.replace(/\d+([.,]\d+)?\s*x\s*\d+([.,]\d+)?\s*(mm)?/gi, '');
-        // Remove trailing hyphens or spaces
-        cleanName = cleanName.replace(/[-–]\s*$/g, '').trim();
-        // Replace remaining hyphens with spaces (e.g. "Cement-Grey" -> "Cement Grey")
-        cleanName = cleanName.replace(/-/g, ' ');
-
-        // Standardize capitalization (Title Case)
-        cleanName = cleanName.toLowerCase().replace(/(?:^|\s)\S/g, function (a: string) { return a.toUpperCase(); });
-
-        // Remove multiple spaces
-        cleanName = cleanName.replace(/\s+/g, ' ').trim();
+        // Clean up the name using our shared utility
+        const cleanName = formatProductName(p.name, p.specs?.sap_sku_number);
 
         // Map documents from meta
         const documents = (p.meta?.documents || []).map((docUrl: string) => {
@@ -305,20 +323,21 @@ function transformLVTColorToProduct(color: any): Product {
         }
     }
 
-    // Add basic color info
+    // Build basic color info
+    const formattedName = formatProductName(name, code);
     specs.push({ key: 'collection', label: 'Kolekcija', value: collection });
     specs.push({ key: 'code', label: 'Šifra', value: code });
-    specs.push({ key: 'color', label: 'Boja', value: name });
+    specs.push({ key: 'color', label: 'Boja', value: formattedName });
 
     return {
         id: slug,
-        name: `${code} ${name}`,
+        name: formattedName,
         slug,
         sku: code,
         categoryId: '6', // LVT
         brandId: '6', // Gerflor
-        shortDescription: `Gerflor ${collection.replace('-', ' ').toUpperCase()} - ${name}`,
-        description: color.description || enrichProductDescription({ name: `${code} ${name}`, categoryId: '6', brandId: '6', specs } as any),
+        shortDescription: `Gerflor ${collection.replace('-', ' ').toUpperCase()} - ${formattedName}`,
+        description: color.description || enrichProductDescription({ name: formattedName, categoryId: '6', brandId: '6', specs } as any),
         images: [
             {
                 id: `${slug}-img-1`,
@@ -343,16 +362,17 @@ function transformLVTColorToProduct(color: any): Product {
 function transformLinoleumToProduct(product: any, index: number): Product {
     const slug = product.slug || `linoleum-${index}`;
     const name = product.name || `Linoleum Product ${index}`;
+    const formattedName = formatProductName(name);
 
     return {
         id: slug,
-        name,
+        name: formattedName,
         slug,
         sku: `LINOLEUM-${String(index + 1).padStart(2, '0')}`,
         categoryId: '7', // Linoleum
         brandId: '6', // Gerflor
-        shortDescription: product.shortDescription || product.description || enrichShortDescription({ ...product, categoryId: '7', specs: product.specs || [] } as any),
-        description: product.description || enrichProductDescription({ ...product, name, categoryId: '7', specs: product.specs || [], brandId: '6' } as any),
+        shortDescription: product.shortDescription || product.description || enrichShortDescription({ ...product, name: formattedName, categoryId: '7', specs: product.specs || [] } as any),
+        description: product.description || enrichProductDescription({ ...product, name: formattedName, categoryId: '7', specs: product.specs || [], brandId: '6' } as any),
         images: product.images || [
             {
                 id: `${slug}-img-1`,
@@ -453,20 +473,22 @@ export function getAllCarpetProducts(): Product[] {
             });
         }
 
+        const formattedName = formatProductName(color.full_name || color.name, color.code);
+
         return {
             id: color.slug,
-            name: color.full_name || color.name,
+            name: formattedName,
             // Use collection slug + color parameter for routing
             slug: `${color.collection_slug || color.collection}?color=${color.slug}`,
             sku: color.code,
             categoryId: '4', // Tekstilne ploče
             brandId: '6', // Gerflor
-            shortDescription: enrichShortDescription({ ...color, name: color.full_name || color.name, categoryId: '4', brandId: '6', specs } as any),
-            description: color.description || enrichProductDescription({ name: color.full_name || color.name, categoryId: '4', brandId: '6', specs } as any),
+            shortDescription: enrichShortDescription({ ...color, name: formattedName, categoryId: '4', brandId: '6', specs } as any),
+            description: color.description || enrichProductDescription({ name: formattedName, categoryId: '4', brandId: '6', specs } as any),
             images: images.length > 0 ? images : [{
                 id: `${color.slug}-img-1`,
                 url: '/images/placeholder.svg',
-                alt: color.name,
+                alt: formattedName,
                 isPrimary: true,
                 order: 1,
             }],
@@ -531,7 +553,7 @@ export function getAllBloqCarpetProducts(): Product[] {
                 isPrimary: true,
                 order: 1,
             }] : [],
-            specs: [],
+            specs: first.parent_collection ? [{ key: 'family', label: 'Familija', value: first.parent_collection }] : [],
             inStock: true,
             featured: false,
             createdAt: new Date('2024-01-01'),
@@ -547,6 +569,10 @@ export function getAllBloqCarpetProducts(): Product[] {
             value: value as string
         }));
 
+        if (color.parent_collection && !specs.find(s => s.key === 'family')) {
+            specs.push({ key: 'family', label: 'Familija', value: color.parent_collection });
+        }
+
         const images = [];
         if (color.image_url) {
             images.push({
@@ -558,19 +584,21 @@ export function getAllBloqCarpetProducts(): Product[] {
             });
         }
 
+        const formattedName = formatProductName(color.full_name || color.name, color.code);
+
         return {
             id: color.slug,
-            name: color.full_name || color.name,
+            name: formattedName,
             slug: `${color.collection_slug || color.collection}?color=${color.slug}`,
             sku: color.code,
             categoryId: '4', // Tekstilne ploče
             brandId: '8', // BLOQ
-            shortDescription: enrichShortDescription({ ...color, name: color.full_name || color.name, categoryId: '4', brandId: '8', specs } as any),
-            description: color.description || enrichProductDescription({ name: color.full_name || color.name, categoryId: '4', brandId: '8', specs } as any),
+            shortDescription: enrichShortDescription({ ...color, name: formattedName, categoryId: '4', brandId: '8', specs } as any),
+            description: color.description || enrichProductDescription({ name: formattedName, categoryId: '4', brandId: '8', specs } as any),
             images: images.length > 0 ? images : [{
                 id: `${color.slug}-img-1`,
                 url: '/images/placeholder.svg',
-                alt: color.name,
+                alt: formattedName,
                 isPrimary: true,
                 order: 1,
             }],
