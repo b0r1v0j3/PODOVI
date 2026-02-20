@@ -33,12 +33,12 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white/70 backdrop-blur-xl shadow-sm sticky top-0 z-50 border-b border-white/20 transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
-      <nav className="container min-h-[48px] md:h-[52px] flex flex-wrap md:flex-nowrap items-center py-2 md:py-0">
-        <div className="flex items-center justify-between w-full">
+    <header className="bg-white/70 backdrop-blur-md backdrop-saturate-150 border-b border-black/5 sticky top-0 z-50 transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
+      <nav className="container h-[44px] md:h-[48px] flex flex-wrap md:flex-nowrap items-center justify-between">
+        <div className="flex items-center justify-between w-full h-full">
           {/* Logo */}
           <Link href="/" className="flex items-center group mr-8">
-            <span className="text-xl md:text-2xl font-semibold tracking-tight text-[#1d1d1f]">
+            <span className="text-xl md:text-2xl font-semibold tracking-tighter text-[#1D1D1F]">
               podovi
             </span>
           </Link>

@@ -136,6 +136,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**Apple-Style Vizuelni Redizajn sajta - Faza 2 (20.02.2026)**
+- Drastično redizajniran Hero deo na početnoj strani (`page.tsx`) u stilu Apple-ovog minimalizma.
+- Redizajniran sistem prikaza kategorija u asimetrični *Bento-box* raspored.
+- Potpuno preuređene 'Why Choose Us' i CTA sekcije (minimalistički layout, `#F5F5F7` teme).
+- Optimizovana visina glavne navigacije (`Header.tsx`) za preciznije iOS/macOS staklo efekat (`44px`/`48px`).
+
 **Filteri za BLOQ i Tekstilne ploče (20.02.2026)**
 - Dodata mogućnost filtriranja po "Familiji" u sidebar filtere na stranici Kategorija > Tekstilne ploče
 - Ažuriran `productDataLoader.ts` da učitava `parent_collection` kao `family` spec
