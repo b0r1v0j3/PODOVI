@@ -361,7 +361,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
         <ProductViewTracker product={{
           id: product.id,
-          name: displayName,
+          name: (() => {
+            const rawCollection = product.specs?.find((s: any) => s.key === 'collection')?.value || (product as { collectionSlug?: string }).collectionSlug;
+            const { collection, color } = splitProductTitle(displayName, rawCollection);
+            return collection && collection.toLowerCase() !== color.toLowerCase() ? `${color} (${collection})` : color;
+          })(),
           slug: product.slug,
           images: product.images,
           price: product.price

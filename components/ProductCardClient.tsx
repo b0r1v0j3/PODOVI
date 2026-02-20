@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Product, Brand } from '@/types';
 import { getEffectiveParketCollection, getParketCollectionSlug, PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping';
 import ProductCardOverlay from './ProductCardOverlay';
+import { splitProductTitle } from '@/lib/utils/name-parser';
 
 interface ProductCardClientProps {
   product: Product;
@@ -132,7 +133,12 @@ export default function ProductCardClient({ product, brand, compact = false }: P
   // Badge, chips, cleaned description
   const badge = categoryBadgeConfig[product.categoryId];
   const specChips = getSpecChips(product.specs);
-  const cleanedDesc = cleanShortDescription(product.shortDescription, product.name, displayName);
+
+  // Split the Product Title
+  const rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
+  const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, rawCollectionName);
+
+  const cleanedDesc = cleanShortDescription(product.shortDescription, splitColor, displayName);
 
   if (compact) {
     return (
@@ -161,8 +167,13 @@ export default function ProductCardClient({ product, brand, compact = false }: P
           {brand && (
             <p className="text-[10px] text-primary-600 uppercase tracking-wider font-semibold mb-0.5">{brand.name}</p>
           )}
+          {splitCollection && splitCollection.toLowerCase() !== splitColor.toLowerCase() && (
+            <p className="text-[11px] font-medium text-gray-500 mb-0.5 leading-tight truncate">
+              {splitCollection}
+            </p>
+          )}
           <p className="font-semibold text-sm text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-colors">
-            {displayName}
+            {splitColor}
           </p>
           <span className="inline-flex items-center text-primary-600 text-xs font-medium mt-1 group-hover:text-primary-700">
             Detaljnije
@@ -211,13 +222,21 @@ export default function ProductCardClient({ product, brand, compact = false }: P
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
       </div>
       <div className="p-5 flex flex-col h-[calc(100%-aspect-[4/3])]">
-        {brand && (
-          <p className="text-[11px] font-semibold tracking-wider text-[#86868B] uppercase mb-2">
-            {brand.name}
+        <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+          {brand && (
+            <span className="text-[11px] font-bold tracking-wider text-[#86868B] uppercase">
+              {brand.name}
+            </span>
+          )}
+        </div>
+
+        {splitCollection && splitCollection.toLowerCase() !== splitColor.toLowerCase() && (
+          <p className="text-[13px] font-medium text-gray-500 mb-0.5 leading-tight truncate">
+            {splitCollection}
           </p>
         )}
         <h3 className="text-[17px] font-semibold text-[#1D1D1F] mb-2 leading-tight group-hover:text-[#0071E3] transition-colors duration-300">
-          {displayName}
+          {splitColor}
         </h3>
 
         {/* Spec chips */}

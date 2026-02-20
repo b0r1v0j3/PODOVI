@@ -3,6 +3,7 @@
 import { useCompare } from '@/lib/context/CompareContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import { splitProductTitle } from '@/lib/utils/name-parser';
 
 export default function CompareBar() {
     const { compareItems, removeFromCompare, clearAll } = useCompare();
@@ -19,8 +20,20 @@ export default function CompareBar() {
                             Poređenje ({compareItems.length}/3):
                         </span>
                         <div className="flex items-center gap-2 overflow-x-auto">
-                            {compareItems.map(product => {
+                            {compareItems.map((product: any) => {
                                 const img = product.images?.[0]?.url;
+
+                                let displayName = product.name;
+                                if (product.categoryId === '6' && product.name.startsWith('Gerflor ')) {
+                                    displayName = product.name.replace(/^Gerflor\s+/, '');
+                                }
+
+                                const rawCollection = product.specs?.find((s: any) => s.key === 'collection')?.value || product.collectionSlug;
+                                const { collection, color } = splitProductTitle(displayName, rawCollection);
+                                const formattedName = collection && collection.toLowerCase() !== color.toLowerCase()
+                                    ? `${color} (${collection})`
+                                    : color;
+
                                 return (
                                     <div key={product.id} className="relative flex items-center gap-2 bg-gray-50 rounded-lg px-2 py-1.5 min-w-0 flex-shrink-0">
                                         {img && img.startsWith('/') && (
@@ -28,8 +41,8 @@ export default function CompareBar() {
                                                 <Image src={img} alt={product.name} fill className="object-cover" sizes="32px" />
                                             </div>
                                         )}
-                                        <span className="text-xs font-medium text-gray-700 truncate max-w-[100px]">
-                                            {product.name}
+                                        <span className="text-xs font-medium text-gray-700 truncate max-w-[100px]" title={formattedName}>
+                                            {formattedName}
                                         </span>
                                         <button
                                             onClick={() => removeFromCompare(product.id)}
