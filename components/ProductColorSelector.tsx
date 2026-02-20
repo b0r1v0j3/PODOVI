@@ -5,6 +5,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
 import FavoriteButton from './FavoriteButton';
+import { splitProductTitle } from '@/lib/utils/name-parser';
 
 import { ProductSpec } from '@/types';
 
@@ -320,14 +321,10 @@ export default function ProductColorSelector({
                         if (selectedColor.code && name.startsWith(selectedColor.code)) {
                           name = name.substring(selectedColor.code.length).trim();
                         }
-                        // Strip collection prefix for customColors (parket/laminat)
-                        if (customColors?.length) {
-                          const collName = collectionDisplayName || productName;
-                          if (collName && name.toLowerCase().startsWith(collName.toLowerCase())) {
-                            name = name.substring(collName.length).trim().replace(/^[-–—\s]+/, '');
-                          }
-                        }
-                        return name || selectedColor.name;
+
+                        const collName = collectionDisplayName || collectionName;
+                        const { color } = splitProductTitle(name, collName);
+                        return color;
                       })()}
                     </p>
                   </div>
@@ -392,24 +389,40 @@ export default function ProductColorSelector({
               </div>
             )}
 
-            {/* Title: color name in h1 when selected, otherwise collection name; subtitle = collection name */}
+            {/* Title: color name in h1 when selected, otherwise split color name; subtitle = collection name */}
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                {selectedColor
-                  ? (selectedColor.name.startsWith(selectedColor.code)
-                    ? selectedColor.name.substring(selectedColor.code.length).trim()
-                    : selectedColor.name)
-                  : collectionName}
+              <h1 className="text-3xl font-bold text-gray-900 mb-1 tracking-tight">
+                {(() => {
+                  let rawName = selectedColor
+                    ? (selectedColor.name.startsWith(selectedColor.code) ? selectedColor.name.substring(selectedColor.code.length).trim() : selectedColor.name)
+                    : productName;
+
+                  const { color } = splitProductTitle(rawName, collectionDisplayName || collectionName);
+                  return color;
+                })()}
               </h1>
-              {(collectionDisplayName || collectionName !== productName) ? (
-                <p className="text-lg text-gray-500">
-                  {collectionDisplayName || collectionName}
-                </p>
-              ) : shortDescription ? (
-                <p className="text-lg text-gray-600">
-                  {shortDescription}
-                </p>
-              ) : null}
+
+              {(() => {
+                let rawName = selectedColor
+                  ? (selectedColor.name.startsWith(selectedColor.code) ? selectedColor.name.substring(selectedColor.code.length).trim() : selectedColor.name)
+                  : productName;
+                const { collection } = splitProductTitle(rawName, collectionDisplayName || collectionName);
+
+                if (collection) {
+                  return (
+                    <p className="text-lg text-gray-500 font-medium mb-3">
+                      {collection}
+                    </p>
+                  );
+                } else if (shortDescription) {
+                  return (
+                    <p className="text-lg text-gray-600 mb-3">
+                      {shortDescription}
+                    </p>
+                  );
+                }
+                return null;
+              })()}
             </div>
 
             {/* Price or "Cena na upit" */}

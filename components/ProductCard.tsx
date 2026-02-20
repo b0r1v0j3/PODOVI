@@ -4,6 +4,7 @@ import { Product } from '@/types';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import ProductCardOverlay from './ProductCardOverlay';
+import { splitProductTitle } from '@/lib/utils/name-parser';
 
 interface ProductCardProps {
   product: Product;
@@ -85,10 +86,15 @@ export default async function ProductCard({ product }: ProductCardProps) {
   // Spec chips
   const specChips = getSpecChips(product.specs);
 
+  // Split Name Logic
+  const rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
+  const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, rawCollectionName);
+
   // Determine if shortDescription is just the product/collection name (not useful)
   const isShortDescUseful = product.shortDescription
     && product.shortDescription !== product.name
     && product.shortDescription !== displayName
+    && product.shortDescription !== splitColor
     && product.shortDescription.length > 5;
 
   // Strip category name and product name from shortDescription to avoid redundancy
@@ -103,6 +109,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
   const isCleanDescUseful = cleanShortDesc
     && cleanShortDesc !== product.name
     && cleanShortDesc !== displayName
+    && cleanShortDesc !== splitColor
     && cleanShortDesc.length > 5
     && isShortDescUseful;
 
@@ -143,13 +150,21 @@ export default async function ProductCard({ product }: ProductCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
       </div>
       <div className="p-5 flex flex-col h-[calc(100%-aspect-[4/3])]">
-        {brand && (
-          <p className="text-[11px] font-semibold tracking-wider text-[#86868B] uppercase mb-2">
-            {brand.name}
+        <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+          {brand && (
+            <span className="text-[11px] font-bold tracking-wider text-[#86868B] uppercase">
+              {brand.name}
+            </span>
+          )}
+        </div>
+
+        {splitCollection && splitCollection.toLowerCase() !== splitColor.toLowerCase() && (
+          <p className="text-[13px] font-medium text-gray-500 mb-0.5 leading-tight truncate">
+            {splitCollection}
           </p>
         )}
         <h3 className="text-[17px] font-semibold text-[#1D1D1F] mb-2 leading-tight group-hover:text-[#0071E3] transition-colors duration-300">
-          {displayName}
+          {splitColor}
         </h3>
 
         {/* Spec chips */}

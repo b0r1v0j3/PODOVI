@@ -31,6 +31,7 @@ import {
   mergeSelectedColor,
 } from '@/lib/product-page';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
+import { splitProductTitle } from '@/lib/utils/name-parser';
 
 export const dynamic = 'force-dynamic';
 
@@ -484,7 +485,19 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   )}
 
                   <div>
-                    <h1 className="text-4xl font-bold text-gray-900 mb-3">{displayName}</h1>
+                    {(() => {
+                      const collectionName = product.specs?.find((s: any) => s.key === 'collection')?.value;
+                      const fallbackCollection = (product as { collectionSlug?: string }).collectionSlug;
+                      const { collection, color } = splitProductTitle(displayName, collectionName || fallbackCollection);
+                      return (
+                        <>
+                          <h1 className="text-4xl font-bold text-gray-900 mb-2">{color}</h1>
+                          {collection && (
+                            <p className="text-xl text-gray-500 font-medium mb-4">{collection}</p>
+                          )}
+                        </>
+                      );
+                    })()}
                     {product.shortDescription && (
                       <p className="text-xl text-gray-600">{product.shortDescription}</p>
                     )}
