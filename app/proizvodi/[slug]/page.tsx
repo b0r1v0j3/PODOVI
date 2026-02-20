@@ -1,24 +1,27 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { categoryRepository } from '@/lib/repositories/category-repository';
-import { brandRepository } from '@/lib/repositories/brand-repository';
-import CertificationBadges from '@/components/CertificationBadges';
-import EcoFeatures from '@/components/EcoFeatures';
-import ProductColorSelector from '@/components/ProductColorSelector';
-import ProductImage from '@/components/ProductImage';
+import { Product } from '@/types';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import ProductCharacteristics from '@/components/ProductCharacteristics';
-import ProductDescriptionWithCharacteristics from '@/components/ProductDescriptionWithCharacteristics';
-import ProductDocuments from '@/components/ProductDocuments';
-import ProductInquiryStickyCTA from '@/components/ProductInquiryStickyCTA';
+import ProductColorSelector from '@/components/ProductColorSelector';
+import ColorGrid from '@/components/ColorGrid';
 import ProductActions from '@/components/ProductActions';
-import ProductBenefits from '@/components/ProductBenefits';
+import ProductDocuments from '@/components/ProductDocuments';
 import RecommendedAccessories from '@/components/RecommendedAccessories';
+import EcoFeatures from '@/components/EcoFeatures';
+import CertificationBadges from '@/components/CertificationBadges';
 import RelatedProducts from '@/components/RelatedProducts';
 import RecentlyViewed from '@/components/RecentlyViewed';
+import ProductInquiryStickyCTA from '@/components/ProductInquiryStickyCTA';
 import ProductViewTracker from '@/components/ProductViewTracker';
-import type { Product } from '@/types';
+import ProductDetailsTabs from '@/components/ProductDetailsTabs';
+import ProductImage from '@/components/ProductImage';
+import ProductCharacteristics from '@/components/ProductCharacteristics';
+import ProductDescriptionWithCharacteristics from '@/components/ProductDescriptionWithCharacteristics';
+import ProductBenefits from '@/components/ProductBenefits';
+import { categoryRepository } from '@/lib/repositories/category-repository';
+import { brandRepository } from '@/lib/repositories/brand-repository';
 import {
   Props,
   resolveProductBySlug,
@@ -458,57 +461,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
                                 : undefined
                   }
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
-                  rightColumnBottom={(product.categoryId === '3' || product.categoryId === '1' || product.categoryId === '6') ? (
-                    <>
-                      <ProductCharacteristics
-                        specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug }).filter(
-                          (s) => s.key !== 'collection' && s.key !== 'type'
-                        )}
-                        categoryId={product.categoryId}
-                        title="Tehničke specifikacije"
-                      />
-                      {product.categoryId === '6' && sharedDocs}
-                    </>
-                  ) : undefined}
-                  leftColumnBottom={(product.categoryId === '3' || product.categoryId === '1' || product.categoryId === '6') ? (
-                    <>
-                      <div className="bg-white rounded-2xl shadow-lg p-6">
-                        <ProductDescriptionWithCharacteristics
-                          description={product.description || ''}
-                          characteristicsSection={product.detailsSections?.find(
-                            (s) => s.title === 'Ključne karakteristike'
-                          )}
-                        />
-                      </div>
-                      {product.categoryId === '6' && sharedCertsAndEco}
-                    </>
-                  ) : undefined}
                   inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                   productId={product.id}
                 />
-
-                {/* Description + Tehničke spec za LVT/Linoleum/Tekstilne - ONLY if not passed to ColorSelector */}
-                {/* Categories 1, 3, 6 pass leftColumnBottom/rightColumnBottom to ColorSelector, so they are excluded here. */}
-                {/* Category 2 (Vinil) is also excluded in original code? Assuming it shouldn't show duplicates either. */}
-                {/* Categories 4 & 7 DO NOT pass left/right to ColorSelector, so they SHOW this block. */}
-                {(product.categoryId === '4' || product.categoryId === '7') && (
-                  <div className="mt-8 flex flex-col lg:flex-row gap-6 mb-8 items-start align-top">
-                    <div className="flex flex-col gap-6 w-full lg:w-[50%] lg:flex-1">
-                      <div className="bg-white rounded-2xl shadow-lg p-6">
-                        <DescriptionSection product={product} />
-                      </div>
-                      {sharedCertsAndEco}
-                    </div>
-
-                    <div className="flex flex-col gap-6 w-full lg:w-[50%] lg:flex-1">
-                      <ProductCharacteristics
-                        specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug })}
-                        categoryId={product.categoryId}
-                      />
-                      {sharedDocs}
-                    </div>
-                  </div>
-                )}
               </>
             ) : (
               /* Non-color-selector categories - standard layout */
@@ -605,47 +560,80 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Description & Specs - Za vinil (2) i ostale generičke kategorije */}
-            {product.categoryId !== '6' && product.categoryId !== '7' && product.categoryId !== '4' && product.categoryId !== '3' && product.categoryId !== '1' && (
-              <div className="mt-16 flex flex-col lg:flex-row gap-6 items-start align-top">
-                <div className="flex flex-col gap-6 w-full lg:w-[66%]">
-                  <div className="bg-white rounded-2xl shadow-lg p-8">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Opis proizvoda</h2>
-                    <DescriptionSection product={product} />
-                  </div>
+            {/* Product Details Tabs (Universal Layout) */}
+            {(() => {
+              const displaySpecs = filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug });
+              const useFilteredSpecs = (product.categoryId === '3' || product.categoryId === '1' || product.categoryId === '6')
+                ? displaySpecs.filter((s) => s.key !== 'collection' && s.key !== 'type')
+                : displaySpecs;
 
-                  {/* Cca categories 2 (Vinil) have valid certs/eco features */}
-                  {product.categoryId === '2' && (
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              const tabs = [];
+
+              // Tab 1: Description
+              const descriptionContent = (product.categoryId === '3' || product.categoryId === '1' || product.categoryId === '6') ? (
+                <ProductDescriptionWithCharacteristics
+                  description={product.description || ''}
+                  characteristicsSection={product.detailsSections?.find(
+                    (s) => s.title === 'Ključne karakteristike'
+                  )}
+                />
+              ) : (
+                <DescriptionSection product={product} />
+              );
+
+              tabs.push({
+                id: 'description',
+                label: 'Opis proizvoda',
+                content: (
+                  <div className="text-gray-700">
+                    {descriptionContent}
+                  </div>
+                )
+              });
+
+              // Tab 2: Specifications
+              if (useFilteredSpecs.length > 0) {
+                tabs.push({
+                  id: 'specs',
+                  label: 'Tehničke specifikacije',
+                  content: (
+                    <ProductCharacteristics
+                      specs={useFilteredSpecs}
+                      categoryId={product.categoryId}
+                      title=""
+                    />
+                  )
+                });
+              }
+
+              // Tab 3: Certificates & Eco
+              if (sharedCertsAndEco) {
+                tabs.push({
+                  id: 'eco',
+                  label: 'Sertifikati i Eko',
+                  content: (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {sharedCertsAndEco}
                     </div>
-                  )}
-                </div>
+                  )
+                });
+              }
 
-                {(() => {
-                  const displaySpecs = filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug });
-                  return (
-                    <div className="flex flex-col gap-6 w-full lg:w-[33%]">
-                      {displaySpecs.length > 0 && (
-                        <div className="bg-white rounded-2xl shadow-lg p-8 h-full">
-                          <h2 className="text-2xl font-bold text-gray-900 mb-6">Tehničke specifikacije</h2>
-                          <dl className="space-y-4">
-                            {displaySpecs.map((spec) => (
-                              <div key={spec.key} className="border-b border-gray-200 pb-4 last:border-0">
-                                <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
-                                <dd className="text-lg font-semibold text-gray-900">{spec.value}</dd>
-                              </div>
-                            ))}
-                          </dl>
-                        </div>
-                      )}
-
-                      {product.categoryId === '2' && sharedDocs}
+              // Tab 4: Documents
+              if (sharedDocs) {
+                tabs.push({
+                  id: 'docs',
+                  label: 'Dokumentacija',
+                  content: (
+                    <div className="w-full">
+                      {sharedDocs}
                     </div>
-                  );
-                })()}
-              </div>
-            )}
+                  )
+                });
+              }
+
+              return <ProductDetailsTabs tabs={tabs} />;
+            })()}
 
             {/* Certifications & Eco Features are now rendered alongside Descriptions in the Flex Masonry layout! */}
 

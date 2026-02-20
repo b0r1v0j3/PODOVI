@@ -37,10 +37,6 @@ interface ProductColorSelectorProps {
   collectionCategoryLabel?: string;
   /** YouTube embed URL (npr. za kolekciju) – prikazuje se ispod slike, u širini slike, play na sajtu. */
   videoEmbedUrl?: string;
-  /** Sadržaj ispod Boja u desnoj koloni (npr. Tehničke specifikacije za parket). */
-  rightColumnBottom?: React.ReactNode;
-  /** Sadržaj ispod slike/videa u levoj koloni (npr. Opis za parket) – ispunjava prostor, bez supljine. */
-  leftColumnBottom?: React.ReactNode;
   /** Ref proizvoda za link upita (kontakt?product=&color=&ref=). */
   inquiryRef?: string;
   /** Da li je glavna slika hero/LCP – samo jedna po stranici ima priority. */
@@ -67,8 +63,6 @@ export default function ProductColorSelector({
   collectionDisplayName,
   collectionCategoryLabel,
   videoEmbedUrl,
-  rightColumnBottom,
-  leftColumnBottom,
   inquiryRef,
   imagePriority,
   productId,
@@ -529,31 +523,23 @@ export default function ProductColorSelector({
         </div>
       </div>
 
-      {/* Ispod prvog reda: video, opis, Tehničke spec (parket) */}
-      {(videoEmbedUrl || leftColumnBottom || rightColumnBottom) ? (
-        <div className="flex flex-col lg:flex-row gap-6 mb-8 items-start">
-          <div className="flex flex-col gap-6 w-full lg:w-[50%] lg:flex-1">
-            {videoEmbedUrl && (
-              <div className="bg-white rounded-2xl shadow-lg p-6">
-                <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
-                  <iframe
-                    src={videoEmbedUrl}
-                    title="Video kolekcije"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    loading="lazy"
-                    className="w-full h-full"
-                  />
-                </div>
-              </div>
-            )}
-            {leftColumnBottom}
-          </div>
-          <div className="flex flex-col gap-6 w-full lg:w-[50%] lg:flex-1">
-            {rightColumnBottom}
+      {/* Ispod prvog reda: Video Embed (if available) */}
+      {videoEmbedUrl && (
+        <div className="w-full mb-8">
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="w-full max-w-4xl mx-auto aspect-video rounded-xl overflow-hidden bg-gray-100">
+              <iframe
+                src={videoEmbedUrl}
+                title="Video kolekcije"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                className="w-full h-full"
+              />
+            </div>
           </div>
         </div>
-      ) : null}
+      )}
 
       {isColorsModalOpen && (
         <div className="fixed inset-0 z-[60]">
