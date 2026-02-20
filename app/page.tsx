@@ -107,11 +107,6 @@ export default async function HomePage() {
 
         <div className="container relative z-10">
           <div className="max-w-4xl animate-fadeInUp mt-10">
-            {/* Added a subtle badge above title */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 w-fit animate-fadeScale">
-              <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span>
-              <span className="text-sm font-medium tracking-wide">Najširi asortiman u Srbiji</span>
-            </div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg tracking-tight">
               Pronađite savršen pod <br />
