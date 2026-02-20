@@ -10,6 +10,7 @@ interface ProductViewTrackerProps {
         slug: string;
         images: { url: string; isPrimary?: boolean }[];
         price?: number;
+        url?: string;
     };
 }
 
@@ -24,7 +25,8 @@ export default function ProductViewTracker({ product }: ProductViewTrackerProps)
             name: product.name,
             slug: product.slug,
             image: imageUrl,
-            price: product.price
+            price: product.price,
+            url: product.url
         });
     }, [product]);
 

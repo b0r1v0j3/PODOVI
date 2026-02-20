@@ -10,6 +10,7 @@ interface ViewedProduct {
     slug: string;
     image: string;
     price?: number;
+    url?: string;
     timestamp: number;
 }
 
@@ -44,7 +45,7 @@ export default function RecentlyViewed() {
                         {products.map((product) => (
                             <Link
                                 key={product.id}
-                                href={`/proizvodi/${product.slug}`}
+                                href={product.url || `/proizvodi/${product.slug}`}
                                 className="flex-shrink-0 w-48 snap-start group"
                             >
                                 <div className="aspect-square relative rounded-lg overflow-hidden bg-gray-100 mb-2 border border-gray-200">
@@ -74,7 +75,7 @@ export default function RecentlyViewed() {
 }
 
 // Helper to add product to history
-export function addToRecentlyViewed(product: { id: string; name: string; slug: string; image: string; price?: number }) {
+export function addToRecentlyViewed(product: { id: string; name: string; slug: string; image: string; price?: number; url?: string }) {
     if (typeof window === 'undefined') return;
     try {
         const stored = localStorage.getItem('recentlyViewed');

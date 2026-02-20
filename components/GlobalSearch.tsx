@@ -11,6 +11,7 @@ interface SearchProduct {
     categoryId: string;
     image: string;
     price?: number;
+    url?: string;
 }
 
 interface SearchCategory {
@@ -106,7 +107,7 @@ export default function GlobalSearch() {
     const getAllItems = (): { type: string; href: string }[] => {
         if (!results) return [];
         const items: { type: string; href: string }[] = [];
-        results.products.forEach(p => items.push({ type: 'product', href: `/proizvodi/${p.slug}` }));
+        results.products.forEach(p => items.push({ type: 'product', href: p.url || `/proizvodi/${p.slug}` }));
         results.categories.forEach(c => items.push({ type: 'category', href: `/kategorije/${c.slug}` }));
         results.brands.forEach(b => items.push({ type: 'brand', href: `/brendovi/${b.slug}` }));
         return items;
@@ -315,7 +316,7 @@ export default function GlobalSearch() {
                             return (
                                 <Link
                                     key={product.id}
-                                    href={`/proizvodi/${product.slug}`}
+                                    href={product.url || `/proizvodi/${product.slug}`}
                                     onClick={handleResultClick}
                                     className={`flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors ${idx === activeIndex ? 'bg-primary-50' : ''
                                         }`}

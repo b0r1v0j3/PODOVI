@@ -69,15 +69,22 @@ export default async function ProductCard({ product }: ProductCardProps) {
     '2': 'vinil',
   };
 
-  // For LVT, Linoleum, Carpet, and Vinil categories, link to category page with color parameter
+  // Extract collection slug
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
-  const isColorTile = product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2';
+  const isColorTileCategory = ['2', '4', '6', '7'].includes(product.categoryId);
+  const isProductColorCategory = ['1', '3'].includes(product.categoryId); // Laminat, Parket
 
   let productHref = `/proizvodi/${product.slug}`;
 
-  if (isColorTile && colorCollectionSlug) {
-    const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
-    productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
+  if (colorCollectionSlug) {
+    if (isColorTileCategory) {
+      // LVT, Linoleum, Carpet, Vinil link directly to the collection color selector logic inside category pages
+      const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
+      productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
+    } else if (isProductColorCategory) {
+      // Laminat and Parket link to the master collection product page with a color query
+      productHref = `/proizvodi/${colorCollectionSlug}?color=${product.slug}`;
+    }
   }
 
   // Badge config

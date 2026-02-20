@@ -28,9 +28,25 @@ export async function GET(request: NextRequest) {
             ? `${color} (${collection})`
             : color;
 
+        let url = `/proizvodi/${p.slug}`;
+        if (rawCollection) {
+            const isColorTile = ['2', '4', '6', '7'].includes(p.categoryId);
+            const isProductColor = ['1', '3'].includes(p.categoryId);
+
+            if (isColorTile) {
+                const categorySlugMap: Record<string, string> = {
+                    '6': 'lvt', '7': 'linoleum', '4': 'tekstilne-ploce', '2': 'vinil'
+                };
+                url = `/kategorije/${categorySlugMap[p.categoryId] || 'lvt'}?color=${p.slug}`;
+            } else if (isProductColor) {
+                url = `/proizvodi/${rawCollection}?color=${p.slug}`;
+            }
+        }
+
         return {
             id: p.id,
             slug: p.slug,
+            url: url,
             name: formattedName,
             categoryId: p.categoryId,
             image: p.images?.[0]?.url || '/images/placeholder.svg',
