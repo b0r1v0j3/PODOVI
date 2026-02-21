@@ -264,6 +264,11 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
+    "documents": [
+      { "title": "Uputstvo za ugradnju (T-Lock)", "url": "https://media.tarkett-image.com/docs/IG_EN_Tarkett_Wood_T-Lock_Installation_Instructions.pdf", "type": "pdf" },
+      { "title": "Vodič za održavanje parketa", "url": "https://media.tarkett-image.com/docs/MI_EN_Tarkett_Wood_Maintenance_Instructions.pdf", "type": "pdf" },
+      { "title": "Sertifikat o stalnosti svojstava", "url": "#", "type": "pdf" }
+    ],
     "price": 0,
     "priceUnit": "m²",
     "inStock": true,

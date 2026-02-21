@@ -75,6 +75,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
   const isProductColorCategory = ['1', '3'].includes(product.categoryId); // Laminat, Parket
 
   let productHref = `/proizvodi/${product.slug}`;
+  let rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
 
   if (colorCollectionSlug) {
     if (isColorTileCategory) {
@@ -85,6 +86,12 @@ export default async function ProductCard({ product }: ProductCardProps) {
       // Laminat and Parket link to the master collection product page with a color query
       productHref = `/proizvodi/${colorCollectionSlug}?color=${product.slug}`;
     }
+  } else if (isProductColorCategory) {
+    // If collectionSlug is missing (e.g. Supabase), we compute it from the name
+    const dSlug = rawCollectionName ? rawCollectionName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') : null;
+    if (dSlug && product.slug !== dSlug) {
+      productHref = `/proizvodi/${dSlug}?color=${product.slug}`;
+    }
   }
 
   // Badge config
@@ -94,8 +101,8 @@ export default async function ProductCard({ product }: ProductCardProps) {
   const specChips = getSpecChips(product.specs);
 
   // Split Name Logic
-  const rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
   const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, rawCollectionName);
+
 
   // Determine if shortDescription is just the product/collection name (not useful)
   const isShortDescUseful = product.shortDescription

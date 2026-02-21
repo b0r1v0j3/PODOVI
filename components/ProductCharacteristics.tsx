@@ -95,8 +95,8 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">{title ?? 'Tehničke specifikacije'}</h2>
+    <div className="w-full">
+      {title && <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>}
       <dl className="space-y-4">
         {finalSpecs.map((spec, index) => {
           const isWeldingRod = spec.label === 'Elektroda za varenje';

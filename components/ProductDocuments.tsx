@@ -85,23 +85,23 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
     }
 
     return (
-        <div className="bg-white rounded-2xl shadow-lg p-6 h-full">
-            <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="w-full">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+                <svg className="w-7 h-7 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 Tehnička dokumentacija
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 max-w-3xl">
                 {documents.map((doc, index) => (
                     <a
                         key={`${doc.url}-${index}`}
                         href={doc.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center p-4 border border-gray-100 rounded-xl hover:bg-primary-50 hover:border-primary-200 transition-all duration-300"
+                        className="group flex flex-row items-center p-5 bg-white border border-gray-100 rounded-[1.25rem] shadow-sm hover:shadow-md hover:border-red-100 transition-all duration-300"
                     >
-                        <div className="bg-red-50 p-2.5 rounded-lg group-hover:bg-red-100 transition-colors mr-4">
+                        <div className="bg-red-50 p-3 rounded-xl group-hover:bg-red-100 transition-colors mr-5 shrink-0">
                             <svg className="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A1 1 0 0111 2.293l4.707 4.707a1 1 0 01.293.707V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                             </svg>
@@ -112,7 +112,7 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
                             </p>
                             <p className="text-xs text-gray-500 mt-0.5">PDF dokument</p>
                         </div>
-                        <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-6 h-6 text-gray-300 group-hover:text-red-500 transition-colors ml-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
                     </a>

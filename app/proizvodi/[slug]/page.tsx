@@ -360,8 +360,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // ── Helper JSX logic to populate masonry columns neatly ──
     const sharedCertsAndEco = (['6', '7', '4', '2'].includes(product.categoryId)) ? (
       <>
-        <div className="bg-white rounded-2xl shadow-lg p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+        <div className="w-full">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
             </svg>
@@ -374,7 +374,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
           } />
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+        <div className="w-full pt-2">
           <EcoFeatures
             features={product.brandId === '8'
               ? ["Cradle to Cradle Silver", "ECONYL® reciklirana vlakna", "70% reciklirani materijali u podlozi", "Smanjenje buke"]
@@ -390,7 +390,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       </>
     ) : null;
 
-    const sharedDocs = (['6', '7', '4', '2'].includes(product.categoryId)) ? (
+    const sharedDocs = (product.documents && product.documents.length > 0) ? (
       <div className="bg-white rounded-2xl shadow-lg p-6 h-full">
         <ProductDocuments
           initialDocuments={product.documents}
@@ -436,6 +436,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
               <>
                 {/* LVT, Linoleum, Parket, Laminat, Vinil, Tekstilne: layout sa color selectorom */}
                 <ProductColorSelector
+                  key={`${product.slug}`}
                   initialImage={primaryImage}
                   imagePriority={true}
                   collectionSlug={(product as { collectionSlug?: string }).collectionSlug || params.slug}
@@ -650,43 +651,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   <RecommendedAccessories accessories={accessoryProducts} />
                 )}
 
-                {/* Documents — for products NOT already showing docs above (LVT/Lin/Carpet/Vinil) */}
-                {product.documents && product.documents.length > 0 && !['6', '7', '4', '2'].includes(product.categoryId) && (
-                  <div className="bg-white rounded-2xl shadow-lg p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                      <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      Dokumentacija
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {product.documents.map((doc, index) => (
-                        <a
-                          key={index}
-                          href={doc.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-primary-400 hover:bg-primary-50 transition-all group"
-                        >
-                          <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
-                            <svg className="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                            </svg>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-gray-900 group-hover:text-primary-600 truncate">
-                              {doc.title}
-                            </p>
-                            <p className="text-xs text-gray-500">PDF</p>
-                          </div>
-                          <svg className="w-4 h-4 text-gray-400 group-hover:text-primary-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                          </svg>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                {/* Removed duplicate Documents block from here as it is now shown in Product Details Tabs for all products */}
 
 
               </div>

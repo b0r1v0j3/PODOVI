@@ -39,7 +39,8 @@ export async function GET(request: NextRequest) {
                 };
                 url = `/kategorije/${categorySlugMap[p.categoryId] || 'lvt'}?color=${p.slug}`;
             } else if (isProductColor) {
-                url = `/proizvodi/${rawCollection}?color=${p.slug}`;
+                const dSlug = rawCollection.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                url = `/proizvodi/${dSlug}?color=${p.slug}`;
             }
         }
 
