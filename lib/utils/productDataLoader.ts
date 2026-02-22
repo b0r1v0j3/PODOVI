@@ -8,12 +8,14 @@ import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
 import tarkettCollectionSpecsData from '@/public/data/tarkett_collection_specs.json';
 import tarkettCollectionDetails from '@/public/data/tarkett_collection_details.json';
+import tisDekingProducts from '@/public/data/tis_deking_products.json';
 
 let tarkettLvtCache: Product[] | null = null;
 let lvtProductsCache: Product[] | null = null;
 let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
 let bloqCarpetCache: Product[] | null = null;
+let dekingProductsCache: Product[] | null = null;
 
 // Display names for Tarkett collections
 const TARKETT_COLLECTION_NAMES: Record<string, string> = {
@@ -261,7 +263,7 @@ export function getTarkettLVTCollections(): Product[] {
  * Get a specific product by slug
  */
 export function getProductBySlug(slug: string): Product | undefined {
-    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts(), ...getTarkettLVTCollections()];
+    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts(), ...getTarkettLVTCollections(), ...getAllDekingProducts()];
     return allProducts.find(p => p.slug === slug || p.id === slug);
 }
 
@@ -286,9 +288,11 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return getAllLinoleumProducts();
     } else if (categoryId === '4') {
         return [...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
+    } else if (categoryId === '5') {
+        return getAllDekingProducts();
     }
 
-    return [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts()].filter(p => p.categoryId === categoryId);
+    return [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts(), ...getAllDekingProducts()].filter(p => p.categoryId === categoryId);
 }
 
 
@@ -617,11 +621,68 @@ export function getAllBloqCarpetProducts(): Product[] {
 
 
 
-/**
- * Get all Gerflor products (LVT + Linoleum + Carpet + Vinyl)
- */
 export function getAllGerflorProducts(): Product[] {
     return [...getAllLVTProducts(), ...getAllLinoleumProducts(), ...getAllCarpetProducts()];
+}
+
+/**
+ * Get all TimberTech Deking products from tis_deking_products.json
+ */
+export function getAllDekingProducts(): Product[] {
+    if (dekingProductsCache) {
+        return dekingProductsCache;
+    }
+
+    const dekingList = (tisDekingProducts as any[]).map(p => {
+        const slug = (p.name as string).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+        // Convert specs object back to array
+        const specsArray: Array<{ key: string; label: string; value: string }> = [];
+        if (p.specs) {
+            for (const [key, value] of Object.entries(p.specs)) {
+                specsArray.push({
+                    key: key.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+                    label: key,
+                    value: value as string
+                });
+            }
+        }
+        // Force the collection spec as required by the site
+        if (!specsArray.find(s => s.key === 'collection')) {
+            specsArray.push({ key: 'collection', label: 'Kolekcija', value: p.collection || 'TimberTech' });
+        }
+
+        const images = p.imageUrl ? [{
+            id: `${slug}-img-1`,
+            url: p.imageUrl,
+            alt: p.name,
+            isPrimary: true,
+            order: 1
+        }] : [];
+
+        return {
+            id: p.id,
+            name: p.name,
+            slug: slug,
+            sku: p.specs['Šifra artikla'] || p.id,
+            categoryId: p.categoryId || '5', // 5 is Deking
+            brandId: p.brandId || '10',
+            shortDescription: p.description || p.name,
+            description: p.description || enrichProductDescription({ name: p.name, categoryId: '5', brandId: '10', specs: specsArray } as any),
+            images: images,
+            specs: specsArray,
+            detailsSections: undefined,
+            price: 0,
+            priceUnit: 'm²' as const,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01')
+        } as Product;
+    });
+
+    dekingProductsCache = dekingList;
+    return dekingList;
 }
 
 

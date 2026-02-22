@@ -25,16 +25,17 @@ JSON data file → resolve-product.ts → Product object → page.tsx → UI com
 | `lvt_colors_complete.json` | LVT (6) | Gerflor (6) | `colors[]` with `collection`, `specs`, `documents` |
 | `linoleum_colors_complete.json` | Linoleum (7) | Gerflor (6) | `colors[]` with `collection`, `specs`, `documents` |
 | `vinyl_colors_complete.json` | Vinil (2) | Gerflor (6) | `collections[]` with `colors[]` inside |
+| `tis_deking_products.json` | Deking (5) | TimberTech (10)| array of products with `categoryId`, `brandId`, `specs`, `images` |
 | `documents_index.json` | All | — | Fallback doc lookup by category + collection |
 | `welding_rods.json` | Accessories | — | Welding rod products |
 
 Other data: `lib/data/tarkett-products.ts` (Parket cat 3, Laminat cat 1), `lib/repositories/product-repository.ts` (DB products), `lib/data/mock-data.ts` (EGGER products: NatureSense+AquaDura laminat cat 1, podloge cat 8, lajsne cat 9).
 
 ### Category IDs
-- `1` = Laminat, `2` = Vinil, `3` = Parket, `4` = Tekstilne ploče, `6` = LVT, `7` = Linoleum, `8` = Ugradnja, `9` = Lajsne, `10` = Alati
+- `1` = Laminat, `2` = Vinil, `3` = Parket, `4` = Tekstilne ploče, `5` = Deking, `6` = LVT, `7` = Linoleum, `8` = Ugradnja, `9` = Lajsne, `10` = Alati
 
 ### Brand IDs
-- `6` = Gerflor, `8` = BLOQ, `9` = EGGER
+- `6` = Gerflor, `8` = BLOQ, `9` = EGGER, `10` = TimberTech
 
 ---
 

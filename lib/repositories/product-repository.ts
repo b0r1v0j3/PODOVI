@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -121,6 +121,24 @@ export class SupabaseProductRepository implements IProductRepository {
         jsonProducts = jsonProducts.filter(p => filters.brandIds!.includes(p.brandId));
       }
       products = [...products, ...jsonProducts];
+    }
+
+    // Category 5: Deking (Add TimberTech Deking products)
+    if (!filters?.categoryId || legacyCategoryId === '5' || filters.categoryId === '5') {
+      let dekingProducts = getAllDekingProducts();
+
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        dekingProducts = dekingProducts.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        dekingProducts = dekingProducts.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      products = [...products, ...dekingProducts];
     }
 
     // Category 6: LVT (Add Tarkett LVT products + collection headers)
@@ -279,6 +297,10 @@ export class SupabaseProductRepository implements IProductRepository {
     if (brandId === '8') {
       return getAllBloqCarpetProducts();
     }
+    // For TimberTech brand (id 10), return products from JSON
+    if (brandId === '10') {
+      return getAllDekingProducts();
+    }
 
     const { data, error } = await supabase
       .from('products')
@@ -314,7 +336,7 @@ export class SupabaseProductRepository implements IProductRepository {
 // Mock implementation (kept as fallback)
 // =========================================
 export class MockProductRepository implements IProductRepository {
-  private products: Product[] = [...mockProducts, ...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...tarkettProducts, ...getAllTarkettLVTProducts()];
+  private products: Product[] = [...mockProducts, ...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...tarkettProducts, ...getAllTarkettLVTProducts(), ...getAllDekingProducts()];
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {
     let filtered = [...this.products];

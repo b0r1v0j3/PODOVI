@@ -87,7 +87,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Vinil | 2 | Gerflor (6) | `vinyl_colors_complete.json` |
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
-| Deking | 5 | — | Supabase |
+| Deking | 5 | TimberTech (10) | `tis_deking_products.json` |
 | LVT | 6 | Gerflor (6), Tarkett | `lvt_colors_complete.json`, `tarkett_lvt_products.json` |
 | Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` |
 
@@ -135,6 +135,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Dodavanje Deking (TimberTech) proizvoda sa TIS (22.02.2026)**
+- Scrapovano 12 proizvoda (EDGE i EDGE+ profili) sa deking sekcije `tis.rs` sajta koristeći prilagođeni js scraper.
+- Konvertovano u JSON format u `public/data/tis_deking_products.json`.
+- Integrisani podaci u funkcije `productDataLoader.ts`.
+- Implementiran novi logički blok za Category 5 (Deking) u `product-repository.ts`.
+- Podržan TimberTech brand fallback u `proizvodi/[slug]/page.tsx` i dodeljen mu je ID 10.
+- Izmenjen kod kako bi Deking proizvodi ignorisali kolekcijsko preusmeravanje, što dozvoljava prikaz direktnih detaljnih stranica bez padanja sistema.
 
 **Apple-Style Vizuelni Redizajn sajta - Faza 2 (20.02.2026)**
 - Drastično redizajniran Hero deo na početnoj strani (`page.tsx`) u stilu Apple-ovog minimalizma.

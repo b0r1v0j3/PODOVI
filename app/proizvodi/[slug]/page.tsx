@@ -190,6 +190,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '7': 'linoleum',
       '4': 'tekstilne-ploce',
       '2': 'vinil',
+      '5': 'deking',
     };
 
     // ── Linoleum redirect: /proizvodi/gerflor-xxx → /proizvodi/xxx ──
@@ -238,7 +239,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
     const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
     const isTarkettCollection = product.sku?.startsWith('TARKETT-');
-    if ((product.categoryId === '6' || product.categoryId === '7' || product.categoryId === '4' || product.categoryId === '2') && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
+    // For deking (category 5), since we don't have separate collection pages, we should not redirect
+    const shouldRedirectCollection = ['6', '7', '4', '2'].includes(product.categoryId);
+
+    if (shouldRedirectCollection && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
       let normalizedCollectionSlug = collectionSlugFromProduct;
       if (product.categoryId === '6' && !collectionSlugFromProduct.startsWith('gerflor-')) {
         normalizedCollectionSlug = `gerflor-${collectionSlugFromProduct}`;
@@ -306,6 +310,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       const FALLBACK_BRANDS: Record<string, { id: string; name: string; slug: string; logo: string; description: string }> = {
         '3': { id: '3', name: 'Tarkett', slug: 'tarkett', logo: '/images/brands/tarkett-logo.png', description: 'Tarkett' },
         '8': { id: '8', name: 'BLOQ', slug: 'bloq', logo: '/images/brands/bloq-logo.png', description: 'BLOQ' },
+        '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/brands/timbertech-logo.png', description: 'TimberTech' },
       };
       brand = FALLBACK_BRANDS[product.brandId] || null;
     }
@@ -355,7 +360,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     };
 
     // ── Determine if this is a "color selector" category ──
-    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1'].includes(product.categoryId);
+    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1', '5'].includes(product.categoryId);
 
     // ── Helper JSX logic to populate masonry columns neatly ──
     const sharedCertsAndEco = (['6', '7', '4', '2'].includes(product.categoryId)) ? (
