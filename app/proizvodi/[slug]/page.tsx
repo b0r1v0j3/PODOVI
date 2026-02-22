@@ -481,7 +481,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       <ProductImage
                         src={primaryImage.url}
                         alt={primaryImage.alt}
-                        className="object-cover"
+                        className={product.categoryId === '5' ? 'object-cover object-left' : 'object-cover'}
                         sizes="(max-width: 768px) 100vw, 50vw"
                         quality={100}
                         priority={true}
@@ -524,7 +524,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     )}
                   </div>
 
-                  {product.price && product.price > 0 && (
+                  {(product.price !== undefined && product.price > 0) ? (
                     <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
                       <div className="flex items-baseline space-x-2">
                         <span className="text-4xl font-bold text-primary-600">{product.price.toLocaleString('sr-RS')}</span>
@@ -532,6 +532,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         {product.priceUnit && <span className="text-lg text-gray-500">/ {product.priceUnit}</span>}
                       </div>
                     </div>
+                  ) : (
+                    <p className="text-xl font-medium text-gray-600">Cena na upit</p>
                   )}
 
                   {/* CTA Buttons */}
@@ -587,15 +589,17 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 <DescriptionSection product={product} />
               );
 
-              tabs.push({
-                id: 'description',
-                label: 'Opis proizvoda',
-                content: (
-                  <div className="text-gray-700">
-                    {descriptionContent}
-                  </div>
-                )
-              });
+              if (product.categoryId !== '5') {
+                tabs.push({
+                  id: 'description',
+                  label: 'Opis proizvoda',
+                  content: (
+                    <div className="text-gray-700">
+                      {descriptionContent}
+                    </div>
+                  )
+                });
+              }
 
               // Tab 2: Specifications
               if (useFilteredSpecs.length > 0) {

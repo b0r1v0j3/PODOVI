@@ -53,8 +53,8 @@ export default function ProductImage({ src, alt, className, sizes, quality = 90,
         src={displayedSrc}
         alt={alt}
         fill
-        className={`${className || ''}`}
-        style={{ objectFit: 'cover', zIndex: 1 }}
+        className={`object-cover ${className || ''}`}
+        style={{ zIndex: 1 }}
         sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
         quality={quality}
         priority={priority}
@@ -68,8 +68,8 @@ export default function ProductImage({ src, alt, className, sizes, quality = 90,
           src={pendingSrc}
           alt={alt}
           fill
-          className={className}
-          style={{ objectFit: 'cover', opacity: 0, zIndex: 2 }}
+          className={`object-cover ${className || ''}`}
+          style={{ opacity: 0, zIndex: 2 }}
           sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
           quality={quality}
           unoptimized={!pendingSrc.startsWith('/')}
