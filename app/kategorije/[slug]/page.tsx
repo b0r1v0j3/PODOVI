@@ -108,8 +108,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // This ensures all thickness options remain visible even when one is selected
   const allProductsForThickness = await productRepository.findByCategory(category.id);
 
-  // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat, Deking – separate collections from colors
-  const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat' || category.slug === 'deking' || category.slug === 'ugradnja' || category.slug === 'lajsne' || category.slug === 'alati';
+  // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat – separate collections from colors
+  const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat' || category.slug === 'ugradnja' || category.slug === 'lajsne' || category.slug === 'alati';
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
@@ -569,26 +569,25 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
-      <section className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b border-gray-800 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTItMnYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTQgMHYyaDJ2LTJoLTJ6bTIgMnYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bS0yIDJ2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTQgMHYyaDJ2LTJoLTJ6bS00IDB2Mmgydi0yaC0yem0tNCAwdjJoMnYtMmgtMnptLTItMnYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
-        {/* Subtle glow effect */}
-        <div className="absolute top-0 left-1/4 w-1/2 h-full bg-primary-500/10 blur-[100px] pointer-events-none"></div>
-
-        <div className="container py-8 md:py-10 relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <div className="mb-3">
-              <Breadcrumbs items={[
-                { label: 'Kategorije', href: '/kategorije' },
-                { label: category.name }
-              ]} variant="dark" />
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
+      <section className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b border-gray-700/50">
+        <div className="container py-5 md:py-6">
+          <div className="mb-2">
+            <Breadcrumbs items={[
+              { label: 'Kategorije', href: '/kategorije' },
+              { label: category.name }
+            ]} variant="dark" />
+          </div>
+          <div className="flex items-baseline gap-4">
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
               {category.name}
             </h1>
-            <p className="text-base md:text-lg text-gray-300 max-w-2xl font-light">
+            <p className="text-sm md:text-base text-gray-400 font-light hidden sm:block">
               {category.description}
             </p>
           </div>
+          <p className="text-sm text-gray-400 font-light mt-1 sm:hidden">
+            {category.description}
+          </p>
         </div>
       </section>
 

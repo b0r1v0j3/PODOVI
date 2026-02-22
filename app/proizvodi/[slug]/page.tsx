@@ -363,7 +363,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     };
 
     // ── Determine if this is a "color selector" category ──
-    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1', '5'].includes(product.categoryId);
+    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1'].includes(product.categoryId);
 
     // ── Helper JSX logic to populate masonry columns neatly ──
     const sharedCertsAndEco = (['6', '7', '4', '2'].includes(product.categoryId)) ? (
@@ -472,7 +472,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                   inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                   productId={product.id}
-                  hideColorSelector={product.categoryId === '5'}
                 />
               </>
             ) : (
