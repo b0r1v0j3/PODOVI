@@ -4,7 +4,6 @@
     "name": "EDGE ravan profil, Dark Teak 4880 x 136 x 24 mm",
     "collection": "EDGE",
     "url": "https://tis.rs/proizvodi/edge-ravan-profil-dark-teak-4880-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/EDGE-DarkTeak-Swatch.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -25,14 +24,21 @@
       "Ton boje": "Braon",
       "Vrsta": "WPC",
       "Vrsta drveta": "Tikovina"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-ravan-profil-dark-teak-4880-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE ravan profil, Dark Teak 4880 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5001",
     "name": "EDGE ravan profil, Maritime Gray 4880 x 136 x 24 mm",
     "collection": "EDGE",
     "url": "https://tis.rs/proizvodi/edge-ravan-profil-maritime-gray-4880-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/maritime-gray.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -53,14 +59,21 @@
       "Ton boje": "Siva",
       "Vrsta": "WPC",
       "Vrsta drveta": "Hrast"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-ravan-profil-maritime-gray-4880-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE ravan profil, Maritime Gray 4880 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5002",
     "name": "EDGE profil sa zarezanim nutom , Dark Teak 3660 x 136 x 24 mm",
     "collection": "EDGE",
     "url": "https://tis.rs/proizvodi/edge-profil-sa-zarezanim-nutom-dark-teak-3660-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/EDGE-DarkTeak-45angle-Scalloped.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -81,14 +94,21 @@
       "Ton boje": "Braon",
       "Vrsta": "WPC",
       "Vrsta drveta": "Tikovina"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-profil-sa-zarezanim-nutom-dark-teak-3660-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE profil sa zarezanim nutom , Dark Teak 3660 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5003",
     "name": "EDGE profil sa zarezanim nutom , Maritime Gray 3660 x 136 x 24 mm",
     "collection": "EDGE",
     "url": "https://tis.rs/proizvodi/edge-profil-sa-zarezanim-nutom-maritime-gray-3660-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/EDGE-MaritimeGray-45angle-Scalloped-8232.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -109,14 +129,21 @@
       "Ton boje": "Siva",
       "Vrsta": "WPC",
       "Vrsta drveta": "Hrast"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-profil-sa-zarezanim-nutom-maritime-gray-3660-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE profil sa zarezanim nutom , Maritime Gray 3660 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5004",
     "name": "Edge Prime + ravan profil Coconut Husk 4880 x 136 x 24mm",
     "collection": "EDGE PRIME+",
     "url": "https://tis.rs/proizvodi/edge-prime-ravan-profil-coconut-husk-4880-x-136-x-24mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/EDGE-Prime-Coconut-Husk-Riser-Board.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -137,14 +164,21 @@
       "Ton boje": "Bordo",
       "Vrsta": "WPC",
       "Vrsta drveta": "Kokos"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-prime-ravan-profil-coconut-husk-4880-x-136-x-24mm-1.jpg",
+        "alt": "Edge Prime + ravan profil Coconut Husk 4880 x 136 x 24mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5005",
     "name": "Edge Prime + ravan profil Dark Cocoa 4880 x 136 x 24 mm",
     "collection": "EDGE PRIME+",
     "url": "https://tis.rs/proizvodi/edge-prime-ravan-profil-dark-cocoa-4880-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/TimberTech-Dark-Cocoa-Prime-Collection-EDGE-Decking-closeup-062.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -165,14 +199,21 @@
       "Ton boje": "Braon",
       "Vrsta": "WPC",
       "Vrsta drveta": "Kokos"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-prime-ravan-profil-dark-cocoa-4880-x-136-x-24-mm-1.jpg",
+        "alt": "Edge Prime + ravan profil Dark Cocoa 4880 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5006",
     "name": "EDGE Prime + ravan profil, Sea Salt Gray 4880 x 136 x 24 mm",
     "collection": "EDGE PRIME+",
     "url": "https://tis.rs/proizvodi/edge-prime-ravan-profil-sea-salt-gray-4880-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/EDGE_SeaSaltGray_45_Angle_RGB-1-1024x683.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -193,14 +234,21 @@
       "Ton boje": "Siva",
       "Vrsta": "WPC",
       "Vrsta drveta": "Hrast"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-prime-ravan-profil-sea-salt-gray-4880-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE Prime + ravan profil, Sea Salt Gray 4880 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5007",
     "name": "EDGE PRIME+ profil sa zarezanim nutom, Coconut Husk 3660 x 136 x 24 mm",
     "collection": "EDGE PRIME+",
     "url": "https://tis.rs/proizvodi/edge-prime-profil-sa-zarezanim-nutom-coconut-husk-3660-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/EDGE_CoconutHusk_45_Angle_RGB.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -221,14 +269,21 @@
       "Ton boje": "Braon",
       "Vrsta": "WPC",
       "Vrsta drveta": "Kokos"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-prime-profil-sa-zarezanim-nutom-coconut-husk-3660-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE PRIME+ profil sa zarezanim nutom, Coconut Husk 3660 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5008",
     "name": "EDGE PRIME+ profil sa zarezanim nutom, Dark Cocoa 3660 x 136 x 24 mm",
     "collection": "EDGE PRIME+",
     "url": "https://tis.rs/proizvodi/edge-prime-profil-sa-zarezanim-nutom-dark-cocoa-3660-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/TimberTech-Dark-Cocoa-Prime-Collection-EDGE-Decking-Product-angled-035.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -249,14 +304,21 @@
       "Ton boje": "Braon",
       "Vrsta": "WPC",
       "Vrsta drveta": "Kokos"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-prime-profil-sa-zarezanim-nutom-dark-cocoa-3660-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE PRIME+ profil sa zarezanim nutom, Dark Cocoa 3660 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5009",
     "name": "EDGE PRIME+ profil sa zarezanim nutom , Sea Salt Gray 3660 x 136 x 24 mm",
     "collection": "EDGE PRIME+",
     "url": "https://tis.rs/proizvodi/edge-prime-profil-sa-zarezanim-nutom-sea-salt-gray-3660-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2022/11/sea-salt-gray-timbertech-composite-decking-boards-esgv5416st-64_1000.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -277,14 +339,21 @@
       "Ton boje": "Braon",
       "Vrsta": "WPC",
       "Vrsta drveta": "Kokos"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-prime-profil-sa-zarezanim-nutom-sea-salt-gray-3660-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE PRIME+ profil sa zarezanim nutom , Sea Salt Gray 3660 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5010",
     "name": "EDGE TERRAIN+ ravan profil Natural White Oak 4880 x 136 x 24 mm",
     "collection": "TimberTech",
     "url": "https://tis.rs/proizvodi/edge-terrain-ravan-profil-natural-white-oak-4880-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2024/09/TimberTech-Composite_Terrain_Natural-White-Oak_Square-Shoulder.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -293,14 +362,21 @@
       "Debljina": "24",
       "Dužina": "4880",
       "Širina": "136"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-terrain-ravan-profil-natural-white-oak-4880-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE TERRAIN+ ravan profil Natural White Oak 4880 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   },
   {
     "id": "5011",
     "name": "EDGE TERRAIN+ profil sa zarezanim nutom, Natural White Oak 3660 x 136 x 24 mm",
     "collection": "TimberTech",
     "url": "https://tis.rs/proizvodi/edge-terrain-profil-sa-zarezanim-nutom-natural-white-oak-3660-x-136-x-24-mm/",
-    "imageUrl": "https://tis.rs/wp-content/uploads/2024/09/Terrain_AngledSilo_NaturalWhiteOak.jpg",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
@@ -309,6 +385,14 @@
       "Debljina": "24",
       "Dužina": "3660",
       "Širina": "136"
-    }
+    },
+    "images": [
+      {
+        "url": "/images/deking/edge-terrain-profil-sa-zarezanim-nutom-natural-white-oak-3660-x-136-x-24-mm-1.jpg",
+        "alt": "EDGE TERRAIN+ profil sa zarezanim nutom, Natural White Oak 3660 x 136 x 24 mm",
+        "isPrimary": true,
+        "order": 1
+      }
+    ]
   }
 ]

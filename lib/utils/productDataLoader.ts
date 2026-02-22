@@ -652,13 +652,7 @@ export function getAllDekingProducts(): Product[] {
             specsArray.push({ key: 'collection', label: 'Kolekcija', value: p.collection || 'TimberTech' });
         }
 
-        const images = p.imageUrl ? [{
-            id: `${slug}-img-1`,
-            url: p.imageUrl,
-            alt: p.name,
-            isPrimary: true,
-            order: 1
-        }] : [];
+        const images = p.images ? p.images : [];
 
         return {
             id: p.id,
