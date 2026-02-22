@@ -97,14 +97,14 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
   return (
     <div className="w-full">
       {title && <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>}
-      <dl className="space-y-4">
+      <dl className="divide-y divide-gray-200">
         {finalSpecs.map((spec, index) => {
           const isWeldingRod = spec.label === 'Elektroda za varenje';
 
           return (
-            <div key={`${spec.label}-${index}`} className="border-b border-gray-200 pb-4 last:border-0">
-              <dt className="text-sm font-medium text-gray-500 mb-1">{spec.label}</dt>
-              <dd className="text-lg font-semibold text-gray-900">
+            <div key={`${spec.label}-${index}`} className="flex items-center justify-between py-3.5">
+              <dt className="text-sm font-medium text-gray-500">{spec.label}</dt>
+              <dd className="text-sm font-semibold text-gray-900 text-right">
                 {isWeldingRod ? (
                   <Link
                     href={`/proizvodi/welding-rod/${spec.value}`}
