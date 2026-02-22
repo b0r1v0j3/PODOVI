@@ -636,6 +636,22 @@ export function getAllDekingProducts(): Product[] {
     const dekingList = (tisDekingProducts as any[]).map(p => {
         const slug = (p.name as string).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
+        // Extract just the color name from the full product name
+        // e.g. "EDGE ravan profil, Dark Teak 4880 x 136 x 24 mm" → "Dark Teak"
+        const fullName = p.name as string;
+        let colorName = fullName;
+        // Remove everything before and including the comma+space
+        const commaIdx = fullName.indexOf(',');
+        if (commaIdx !== -1) {
+            colorName = fullName.substring(commaIdx + 1).trim();
+        } else {
+            // Try after "profil " if no comma (e.g. "Edge Prime + ravan profil Coconut Husk 4880...")
+            const profilMatch = fullName.match(/profil\s+(.+)/i);
+            if (profilMatch) colorName = profilMatch[1].trim();
+        }
+        // Remove trailing dimensions (e.g. "4880 x 136 x 24 mm" or "4880 x 136 x 24mm")
+        colorName = colorName.replace(/\s*\d{3,}\s*x\s*\d+\s*x\s*\d+\s*mm\s*$/i, '').trim();
+
         // Convert specs object back to array
         const specsArray: Array<{ key: string; label: string; value: string }> = [];
         if (p.specs) {
@@ -656,7 +672,7 @@ export function getAllDekingProducts(): Product[] {
 
         return {
             id: p.id,
-            name: p.name,
+            name: colorName,
             slug: slug,
             sku: p.specs['Šifra artikla'] || p.id,
             categoryId: p.categoryId || '5', // 5 is Deking
