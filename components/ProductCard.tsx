@@ -140,8 +140,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             quality={90}
-            className={`transition-transform duration-500 group-hover:scale-[1.03] ${product.categoryId === '5' ? 'object-contain object-left' : 'object-cover'
-              }`}
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             unoptimized={!primaryImage.url.startsWith('/')}
           />
         ) : (
