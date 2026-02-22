@@ -426,9 +426,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
         }} />
 
         <div className="min-h-screen bg-gray-50">
-          {/* Breadcrumbs */}
-          <div className="bg-white border-b">
-            <div className="container py-4">
+          {/* Product Content */}
+          <div className="container py-8 pb-20 md:pb-12">
+            <div className="mb-4">
               <Breadcrumbs
                 items={[
                   { label: 'Kategorije', href: '/kategorije' },
@@ -437,10 +437,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 ]}
               />
             </div>
-          </div>
-
-          {/* Product Content */}
-          <div className="container py-12 pb-20 md:pb-12">
             {isColorSelectorCategory ? (
               <>
                 {/* LVT, Linoleum, Parket, Laminat, Vinil, Tekstilne: layout sa color selectorom */}

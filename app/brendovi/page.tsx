@@ -12,14 +12,10 @@ export default async function BrandsPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Breadcrumbs */}
-      <div className="bg-white border-b">
-        <div className="container py-4">
+      <div className="container pt-6 pb-8">
+        <div className="mb-4">
           <Breadcrumbs items={[{ label: 'Brendovi' }]} />
         </div>
-      </div>
-
-      <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {brands.map((brand) => (
             <BrandCard key={brand.id} brand={brand} />

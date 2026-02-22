@@ -568,18 +568,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Breadcrumbs */}
-      <div className="bg-white border-b">
-        <div className="container py-4">
+      {/* Main Content */}
+      <div className="container py-6">
+        <div className="mb-4">
           <Breadcrumbs items={[
             { label: 'Kategorije', href: '/kategorije' },
             { label: category.name }
           ]} />
         </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="container py-8">
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Filters Sidebar */}
           <aside className="lg:w-60 flex-shrink-0">
