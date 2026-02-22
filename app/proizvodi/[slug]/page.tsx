@@ -433,7 +433,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 items={[
                   { label: 'Kategorije', href: '/kategorije' },
                   ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
-                  { label: product.name }
+                  { label: product.specs?.find(s => s.key === 'collection')?.value || product.name }
                 ]}
               />
             </div>
@@ -616,7 +616,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
               if (sharedCertsAndEco) {
                 tabs.push({
                   id: 'eco',
-                  label: 'Sertifikati i Eko',
+                  label: 'Sertifikati',
                   content: (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {sharedCertsAndEco}
