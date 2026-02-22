@@ -352,16 +352,27 @@
   {
     "id": "5010",
     "name": "EDGE TERRAIN+ ravan profil Natural White Oak 4880 x 136 x 24 mm",
-    "collection": "TimberTech",
+    "collection": "EDGE TERRAIN+",
     "url": "https://tis.rs/proizvodi/edge-terrain-ravan-profil-natural-white-oak-4880-x-136-x-24-mm/",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
     "description": "Inspirisan lepotom prirode, TimberTech kombinuje klasično atraktivan, jedinstveno realističan izgled drveta sa inovativnom tehnologijom koja nastoji da smanji krčenje šuma i sačuva prirodu. Ovaj deking punog profila odlikuje se suptilnom, ravnom zrnastom strukturom i nudi izgled pravog drveta koji upotpunjuje Vaš životni prostor na otvorenom i obezbeđuje lep izgled, kao i kvalitet, decenijama.",
     "specs": {
-      "Debljina": "24",
+      "Brend": "TimberTech",
+      "Status proizvoda": "Novo",
       "Dužina": "4880",
-      "Širina": "136"
+      "Širina": "136",
+      "Debljina": "24",
+      "Garancija": "25god",
+      "Kolekcija": "EDGE TERRAIN+",
+      "Naziv dekora": "Natural White Oak",
+      "Primena": "Uređenje eksterijera",
+      "Profil": "Ravan",
+      "Tekstura": "Tekstura drveta",
+      "Ton boje": "Bela",
+      "Vrsta": "WPC",
+      "Vrsta drveta": "Hrast"
     },
     "images": [
       {
@@ -375,16 +386,27 @@
   {
     "id": "5011",
     "name": "EDGE TERRAIN+ profil sa zarezanim nutom, Natural White Oak 3660 x 136 x 24 mm",
-    "collection": "TimberTech",
+    "collection": "EDGE TERRAIN+",
     "url": "https://tis.rs/proizvodi/edge-terrain-profil-sa-zarezanim-nutom-natural-white-oak-3660-x-136-x-24-mm/",
     "brand": "TimberTech",
     "brandId": "10",
     "categoryId": "5",
     "description": "Inspirisan lepotom prirode, TimberTech kombinuje klasično atraktivan, jedinstveno realističan izgled drveta sa inovativnom tehnologijom koja nastoji da smanji krčenje šuma i sačuva prirodu. Ovaj deking punog profila odlikuje se suptilnom, ravnom zrnastom strukturom i nudi izgled pravog drveta koji upotpunjuje Vaš životni prostor na otvorenom i obezbeđuje lep izgled, kao i kvalitet, decenijama.",
     "specs": {
-      "Debljina": "24",
+      "Brend": "TimberTech",
+      "Status proizvoda": "Novo",
       "Dužina": "3660",
-      "Širina": "136"
+      "Širina": "136",
+      "Debljina": "24",
+      "Garancija": "25god",
+      "Kolekcija": "EDGE TERRAIN+",
+      "Naziv dekora": "Natural White Oak",
+      "Primena": "Uređenje eksterijera",
+      "Profil": "Nut",
+      "Tekstura": "Tekstura drveta",
+      "Ton boje": "Bela",
+      "Vrsta": "WPC",
+      "Vrsta drveta": "Hrast"
     },
     "images": [
       {
