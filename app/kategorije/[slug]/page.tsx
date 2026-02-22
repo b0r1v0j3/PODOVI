@@ -568,28 +568,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Header */}
-      <section className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b border-gray-700/50">
-        <div className="container py-5 md:py-6">
-          <div className="mb-2">
-            <Breadcrumbs items={[
-              { label: 'Kategorije', href: '/kategorije' },
-              { label: category.name }
-            ]} variant="dark" />
-          </div>
-          <div className="flex items-baseline gap-4">
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-              {category.name}
-            </h1>
-            <p className="text-sm md:text-base text-gray-400 font-light hidden sm:block">
-              {category.description}
-            </p>
-          </div>
-          <p className="text-sm text-gray-400 font-light mt-1 sm:hidden">
-            {category.description}
-          </p>
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b">
+        <div className="container py-4">
+          <Breadcrumbs items={[
+            { label: 'Kategorije', href: '/kategorije' },
+            { label: category.name }
+          ]} />
         </div>
-      </section>
+      </div>
 
       {/* Main Content */}
       <div className="container py-8">

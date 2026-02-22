@@ -431,6 +431,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
             <div className="container py-4">
               <Breadcrumbs
                 items={[
+                  { label: 'Kategorije', href: '/kategorije' },
                   ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
                   { label: product.name }
                 ]}
