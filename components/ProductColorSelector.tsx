@@ -43,6 +43,8 @@ interface ProductColorSelectorProps {
   imagePriority?: boolean;
   /** Product ID for Favorite button */
   productId?: string;
+  /** Opcija da se potpuno sakrije prozor za boje (npr. za Deking proizvode) i popuni prostor */
+  hideColorSelector?: boolean;
 }
 
 export default function ProductColorSelector({
@@ -66,6 +68,7 @@ export default function ProductColorSelector({
   inquiryRef,
   imagePriority,
   productId,
+  hideColorSelector,
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -369,7 +372,7 @@ export default function ProductColorSelector({
         {/* Desno: Info + Boje – Boje raste da dno bude u liniji sa dnom slike */}
         <div className="flex flex-col gap-6 h-full min-h-0">
           {/* Product Info + CTA - Na mobilnom ide POSLE boja (order-2), na desktopu normalno */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4 flex-shrink-0 order-2 lg:order-1">
+          <div className={`bg-white rounded-2xl shadow-lg p-6 flex-shrink-0 order-2 lg:order-1 ${hideColorSelector ? 'flex-1 flex flex-col justify-center space-y-8' : 'space-y-4'}`}>
             {/* Brand */}
             {brand && (
               <div className="flex items-center space-x-3">
@@ -493,33 +496,35 @@ export default function ProductColorSelector({
           </div>
 
           {/* Boje – Na mobilnom ide PRVO (order-1), na desktopu DRUGO (order-2) */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0 order-1 lg:order-2">
-            <div className="flex items-start justify-between gap-4 mb-4 flex-shrink-0">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
-                <p className="text-sm text-gray-500">{colorsCountLabel} {colorsCount === 1 ? 'boja' : 'boja'}</p>
+          {!hideColorSelector && (
+            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0 order-1 lg:order-2">
+              <div className="flex items-start justify-between gap-4 mb-4 flex-shrink-0">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
+                  <p className="text-sm text-gray-500">{colorsCountLabel} {colorsCount === 1 ? 'boja' : 'boja'}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsColorsModalOpen(true)}
+                  className="text-primary-600 hover:text-primary-700 text-sm font-semibold whitespace-nowrap"
+                >
+                  Pogledaj sve →
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setIsColorsModalOpen(true)}
-                className="text-primary-600 hover:text-primary-700 text-sm font-semibold whitespace-nowrap"
-              >
-                Pogledaj sve →
-              </button>
+              <div className="flex-1 min-h-0">
+                <ColorGrid
+                  collectionSlug={collectionSlug}
+                  onColorSelect={handleColorSelect}
+                  compact={true}
+                  limit={12}
+                  onColorsLoaded={setColorsCount}
+                  initialColorSlug={initialColorSlug}
+                  selectedColorSlug={selectedColorSlug}
+                  customColors={customColors}
+                />
+              </div>
             </div>
-            <div className="flex-1 min-h-0">
-              <ColorGrid
-                collectionSlug={collectionSlug}
-                onColorSelect={handleColorSelect}
-                compact={true}
-                limit={12}
-                onColorsLoaded={setColorsCount}
-                initialColorSlug={initialColorSlug}
-                selectedColorSlug={selectedColorSlug}
-                customColors={customColors}
-              />
-            </div>
-          </div>
+          )}
         </div>
       </div>
 

@@ -13,8 +13,11 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   const isVinil = category.slug === 'vinil' || category.id === '2';
   const isParket = category.slug === 'parket' || category.id === '3';
   const isLaminat = category.slug === 'laminat' || category.id === '1';
+  const isDeking = category.slug === 'deking' || category.id === '5';
   const saharaNoirImage = '/images/products/lvt/colors/creation-55/1742-sahara-noir/pod/1742-sahara-noir-pod.jpg';
   const parketImage = '/images/products/galloni-oak.jpg';
+  const dekingImage = '/images/deking/edge-ravan-profil-dark-teak-4880-x-136-x-24-mm-1.jpg';
+  const carpetImage = '/images/products/carpet/bloq/assembly/bloq_trinity_assembly_501_a.jpg';
 
   return (
     <Link
@@ -40,8 +43,32 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
-        ) : (isLinoleum || isCarpet || isVinil || isLaminat) && category.image ? (
-          // Show category image for Linoleum, Carpet, Vinil, Laminat
+        ) : isDeking ? (
+          <Image
+            src={dekingImage}
+            alt={category.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
+          />
+        ) : isDeking ? (
+          <Image
+            src={dekingImage}
+            alt={category.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
+          />
+        ) : isCarpet ? (
+          <Image
+            src={carpetImage}
+            alt={category.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
+          />
+        ) : (isLinoleum || isVinil || isLaminat) && category.image ? (
+          // Show category image for Linoleum, Vinil, Laminat
           <Image
             src={category.image}
             alt={category.name}

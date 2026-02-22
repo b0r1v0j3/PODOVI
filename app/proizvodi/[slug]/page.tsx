@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Product } from '@/types';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductColorSelector from '@/components/ProductColorSelector';
@@ -35,6 +35,9 @@ import {
 } from '@/lib/product-page';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 import { splitProductTitle } from '@/lib/utils/name-parser';
+import { getParketCollectionVariantSlugs, getEffectiveParketCollection, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
+import { tarkettProducts } from '@/lib/data/tarkett-products';
+import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
 
 export const dynamic = 'force-dynamic';
 
@@ -198,7 +201,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
       const collectionSlugWithoutPrefix = params.slug.substring('gerflor-'.length);
       const isLinoleumCollection = linoleumColors.some(color => color.collection === collectionSlugWithoutPrefix);
       if (isLinoleumCollection) {
-        const { redirect } = await import('next/navigation');
         const colorParam = typeof searchParams?.color === 'string' && searchParams.color ? `?color=${searchParams.color}` : '';
         redirect(`/proizvodi/${collectionSlugWithoutPrefix}${colorParam}`);
       }
@@ -211,27 +213,31 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // ── Parket: redirect invalid color to first valid ──
     if (product.categoryId === '3' && product.sku?.startsWith('PARKET-') && selectedColorSlug) {
-      const { getParketCollectionVariantSlugs } = await import('@/lib/data/parket-collection-mapping');
       const collectionSpec = product.specs.find(s => s.key === 'collection');
       const collectionName = collectionSpec?.value;
       const validSlugs = collectionName ? getParketCollectionVariantSlugs(collectionName) : [];
       if (validSlugs.length > 0 && !validSlugs.includes(selectedColorSlug)) {
-        const { redirect } = await import('next/navigation');
         redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(validSlugs[0])}`);
       }
     }
 
     // ── Laminat: redirect invalid color to first valid ──
     if (product.categoryId === '1' && product.sku?.startsWith('LAM-') && selectedColorSlug) {
-      const { tarkettProducts } = await import('@/lib/data/tarkett-products');
       const collectionName = product.specs?.find(s => s.key === 'collection')?.value;
       const variants = collectionName
         ? tarkettProducts.filter(p => p.categoryId === '1' && !p.sku?.startsWith('LAM-') && p.specs?.find(s => s.key === 'collection')?.value === collectionName)
         : [];
       const validSlugs = variants.map(p => p.slug);
       if (validSlugs.length > 0 && !validSlugs.includes(selectedColorSlug)) {
-        const { redirect } = await import('next/navigation');
         redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(validSlugs[0])}`);
+      }
+    }
+
+    // ── Deking: redirect collection to first valid color ──
+    if (product.categoryId === '5' && product.sku?.startsWith('DEKING-') && !selectedColorSlug) {
+      const variants = getAllDekingProducts().filter(p => p.categoryId === '5' && !p.sku?.startsWith('DEKING-'));
+      if (variants.length > 0) {
+        redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(variants[0].slug)}`);
       }
     }
 
@@ -247,18 +253,15 @@ export default async function ProductPage({ params, searchParams }: Props) {
       if (product.categoryId === '6' && !collectionSlugFromProduct.startsWith('gerflor-')) {
         normalizedCollectionSlug = `gerflor-${collectionSlugFromProduct}`;
       }
-      const { redirect } = await import('next/navigation');
       redirect(`/proizvodi/${normalizedCollectionSlug}?color=${encodeURIComponent(product.slug)}`);
     }
 
     // ── Parket variant: redirect to collection page with ?color= ──
     if (product.categoryId === '3' && product.sku && !product.sku.startsWith('PARKET-')) {
-      const { getEffectiveParketCollection, getParketCollectionSlug } = await import('@/lib/data/parket-collection-mapping');
       const collectionSpec = product.specs.find(s => s.key === 'collection');
       const collectionName = getEffectiveParketCollection(product.slug, collectionSpec?.value);
       const collectionSlug = collectionName ? getParketCollectionSlug(collectionName) : null;
       if (collectionSlug) {
-        const { redirect } = await import('next/navigation');
         redirect(`/proizvodi/${collectionSlug}?color=${encodeURIComponent(product.slug)}`);
       }
     }
@@ -469,6 +472,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                   inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                   productId={product.id}
+                  hideColorSelector={product.categoryId === '5'}
                 />
               </>
             ) : (
@@ -680,6 +684,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
       </>
     );
   } catch (error) {
+    if (error && typeof error === 'object' && 'digest' in error && typeof error.digest === 'string' && error.digest.startsWith('NEXT_REDIRECT')) {
+      throw error;
+    }
     console.error('Error rendering product page:', error);
     notFound();
   }

@@ -675,8 +675,34 @@ export function getAllDekingProducts(): Product[] {
         } as Product;
     });
 
+    // Create a master collection product for EDGE so it shows up in "Kolekcije" tabs
+    const edgeCollectionMaster: Product = {
+        id: 'deking-collection-edge',
+        name: 'TimberTech EDGE Kolekcija',
+        slug: 'timbertech-edge',
+        sku: 'DEKING-EDGE', // This prefix marks it as a collection
+        categoryId: '5',
+        brandId: '10', // TimberTech
+        shortDescription: 'EDGE i EDGE+ profili ravni i sa nutom',
+        description: 'Vrhunski kompozitni deking vrhunskog dizajna, napredne zaštite od habanja i vlage.',
+        images: [
+            {
+                id: 'edge-master-img',
+                url: '/images/deking/edge-ravan-profil-dark-teak-4880-x-136-x-24-mm-1.jpg',
+                alt: 'TimberTech EDGE Kolekcija',
+                isPrimary: true,
+                order: 1
+            }
+        ],
+        specs: [],
+        inStock: true,
+        featured: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    };
+
+    dekingList.unshift(edgeCollectionMaster);
+
     dekingProductsCache = dekingList;
-    return dekingList;
+    return dekingProductsCache;
 }
-
-

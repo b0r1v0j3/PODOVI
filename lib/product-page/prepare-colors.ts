@@ -14,6 +14,7 @@ import {
     getParketCollectionVariantSlugs,
 } from '@/lib/data/parket-collection-mapping';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
+import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
 
 /**
  * Build the customColors array used by ProductColorSelector for variant switching.
@@ -117,6 +118,29 @@ export async function prepareCustomColors(
         }
     }
 
+    // Deking: customColors from tis_deking_products.json
+    if (product.categoryId === '5' && product.sku?.startsWith('DEKING-')) {
+        const collectionName = product.name.replace(' Kolekcija', ''); // e.g. TimberTech EDGE
+        const variants = getAllDekingProducts().filter(p => !p.sku?.startsWith('DEKING-'));
+        if (variants.length > 0) {
+            return variants.map(v => ({
+                collection: collectionName,
+                collection_name: collectionName,
+                code: v.sku || '',
+                name: v.name,
+                full_name: v.name,
+                slug: v.slug,
+                image_url: v.images?.[0]?.url || '',
+                texture_url: v.images?.[0]?.url || '',
+                image_count: v.images?.length ?? 0,
+                characteristics: (v.specs || []).reduce((acc: Record<string, string>, spec: ProductSpec) => {
+                    acc[spec.label] = spec.value;
+                    return acc;
+                }, {} as Record<string, string>)
+            }));
+        }
+    }
+
     // Tarkett LVT: customColors from tarkett_lvt_products.json
     if (product.categoryId === '6' && product.sku?.startsWith('TARKETT-')) {
         const { getAllTarkettLVTProducts } = await import('@/lib/utils/productDataLoader');
@@ -200,6 +224,21 @@ export async function mergeSelectedColor(
             }
             if (parketVariant.specs && parketVariant.specs.length > 0) {
                 product.specs = mergeSpecs(product.specs, parketVariant.specs);
+            }
+        }
+    }
+
+    // Deking: merge selected variant
+    if (selectedColorSlug && product.categoryId === '5' && product.sku?.startsWith('DEKING-')) {
+        const dekingVariant = getAllDekingProducts().find(p => p.categoryId === '5' && !p.sku?.startsWith('DEKING-') && p.slug === selectedColorSlug);
+        if (dekingVariant) {
+            product.name = dekingVariant.name;
+            product.shortDescription = dekingVariant.shortDescription || product.shortDescription;
+            if (dekingVariant.images && dekingVariant.images.length > 0) {
+                product.images = dekingVariant.images;
+            }
+            if (dekingVariant.specs && dekingVariant.specs.length > 0) {
+                product.specs = mergeSpecs(product.specs, dekingVariant.specs);
             }
         }
     }
