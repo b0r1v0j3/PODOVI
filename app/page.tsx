@@ -115,7 +115,7 @@ export default async function HomePage() {
               </span>
             </h1>
             <p className="text-xl md:text-[22px] mb-12 text-gray-200 leading-relaxed max-w-2xl font-light border-l-4 border-primary-500 pl-6 drop-shadow-md">
-              Širok izbor vrhunskih laminata, vinila, parketa i tekstilnih ploča od vodećih evropskih brendova.
+              Veliki izbor podnih obloga vodećih evropskih proizvođača.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/kategorije" className="btn-primary text-lg px-8 py-4 rounded-xl font-semibold shadow-xl hover:shadow-primary-600/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
@@ -131,12 +131,6 @@ export default async function HomePage() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce bg-white/10 backdrop-blur-sm p-3 rounded-full border border-white/20">
-          <svg className="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
       </section>
 
       {/* Categories Section */}
