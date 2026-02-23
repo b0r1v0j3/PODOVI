@@ -228,14 +228,14 @@
                     "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
                     "collection_slug": "gti-el5-cleantech",
                     "image": "/images/esd/gti-el5-cleantech-0350.jpg",
-                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "description": "Gerflor GTI EL5 Cleantech — ESD ploče za čiste sobe (ISO 4).",
                     "characteristics": {
-                        "Tip": "Interlocking ploča — čista soba",
-                        "Format": "Interlocking ploča",
+                        "Tip": "Ploča — čista soba",
+                        "Format": "Ploča",
                         "Ukupna debljina": "6.0 mm",
                         "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
                         "Cleanroom": "ISO 4",
-                        "Tip instalacije": "Interlocking (bez lepka)"
+                        "Tip instalacije": "Standardna instalacija (lepljenje)"
                     }
                 },
                 {
@@ -245,14 +245,14 @@
                     "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
                     "collection_slug": "gti-el5-cleantech",
                     "image": "/images/esd/gti-el5-cleantech-0351.jpg",
-                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "description": "Gerflor GTI EL5 Cleantech — ESD ploče za čiste sobe (ISO 4).",
                     "characteristics": {
-                        "Tip": "Interlocking ploča — čista soba",
-                        "Format": "Interlocking ploča",
+                        "Tip": "Ploča — čista soba",
+                        "Format": "Ploča",
                         "Ukupna debljina": "6.0 mm",
                         "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
                         "Cleanroom": "ISO 4",
-                        "Tip instalacije": "Interlocking (bez lepka)"
+                        "Tip instalacije": "Standardna instalacija (lepljenje)"
                     }
                 },
                 {
@@ -262,14 +262,14 @@
                     "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
                     "collection_slug": "gti-el5-cleantech",
                     "image": "/images/esd/gti-el5-cleantech-0352.jpg",
-                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "description": "Gerflor GTI EL5 Cleantech — ESD ploče za čiste sobe (ISO 4).",
                     "characteristics": {
-                        "Tip": "Interlocking ploča — čista soba",
-                        "Format": "Interlocking ploča",
+                        "Tip": "Ploča — čista soba",
+                        "Format": "Ploča",
                         "Ukupna debljina": "6.0 mm",
                         "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
                         "Cleanroom": "ISO 4",
-                        "Tip instalacije": "Interlocking (bez lepka)"
+                        "Tip instalacije": "Standardna instalacija (lepljenje)"
                     }
                 },
                 {
@@ -279,14 +279,14 @@
                     "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
                     "collection_slug": "gti-el5-cleantech",
                     "image": "/images/esd/gti-el5-cleantech-0353.jpg",
-                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "description": "Gerflor GTI EL5 Cleantech — ESD ploče za čiste sobe (ISO 4).",
                     "characteristics": {
-                        "Tip": "Interlocking ploča — čista soba",
-                        "Format": "Interlocking ploča",
+                        "Tip": "Ploča — čista soba",
+                        "Format": "Ploča",
                         "Ukupna debljina": "6.0 mm",
                         "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
                         "Cleanroom": "ISO 4",
-                        "Tip instalacije": "Interlocking (bez lepka)"
+                        "Tip instalacije": "Standardna instalacija (lepljenje)"
                     }
                 },
                 {
@@ -296,25 +296,25 @@
                     "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
                     "collection_slug": "gti-el5-cleantech",
                     "image": "/images/esd/gti-el5-cleantech-0354.jpg",
-                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "description": "Gerflor GTI EL5 Cleantech — ESD ploče za čiste sobe (ISO 4).",
                     "characteristics": {
-                        "Tip": "Interlocking ploča — čista soba",
-                        "Format": "Interlocking ploča",
+                        "Tip": "Ploča — čista soba",
+                        "Format": "Ploča",
                         "Ukupna debljina": "6.0 mm",
                         "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
                         "Cleanroom": "ISO 4",
-                        "Tip instalacije": "Interlocking (bez lepka)"
+                        "Tip instalacije": "Standardna instalacija (lepljenje)"
                     }
                 }
             ],
-            "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+            "description": "Gerflor GTI EL5 Cleantech — provodne ESD ploče za čiste sobe (ISO 4).",
             "characteristics": {
-                "Tip": "Interlocking ploča — čista soba",
-                "Format": "Interlocking ploča",
+                "Tip": "Ploča — čista soba",
+                "Format": "Ploča",
                 "Ukupna debljina": "6.0 mm",
                 "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
                 "Cleanroom": "ISO 4",
-                "Tip instalacije": "Interlocking (bez lepka)"
+                "Tip instalacije": "Standardna instalacija (lepljenje)"
             }
         },
         {
