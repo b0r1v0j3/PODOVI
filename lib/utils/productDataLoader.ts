@@ -767,12 +767,12 @@ export function getEsdCollectionProducts(): Product[] {
     const esdData = require('@/public/data/esd_colors.json');
     const collections = esdData?.collections || [];
 
-    // Collection lifestyle images (override color swatch images with room scenes from Gerflor CDN)
+    // Collection lifestyle images (override color swatch images with room scenes from Gerflor CDN/local overriding)
     const collectionImageOverrides: Record<string, string> = {
-        'mipolam-el5': 'https://cdn.gerflor.com/media/1642426083/1/14617.jpg',
-        'gti-el5-connect': 'https://cdn.gerflor.com/media/1642426083/1/38297.jpg',
-        'gti-el5-cleantech': 'https://cdn.gerflor.com/media/1642426083/1/14806.jpg',
-        'mipolam-biocontrol-el5': 'https://cdn.gerflor.com/media/1642426083/1/27867.jpg',
+        'mipolam-el5': '/images/esd/mipolam-el5-lifestyle.jpg', // New cleanroom scene (33627)
+        'gti-el5-connect': '/images/esd/gti-el5-connect-alt.jpg', // New scene (14530)
+        'gti-el5-cleantech': '/images/esd/gti-el5-cleantech-alt.jpg', // New scene (14531)
+        'mipolam-biocontrol-el5': '/images/esd/mipolam-biocontrol-el5-alt.jpg', // New scene (31395)
         'mipolam-technic-el5-eu': 'https://cdn.gerflor.com/media/1642426083/1/14621.jpg',
         'mipolam-robust-el7': 'https://cdn.gerflor.com/media/1642426083/1/14895.jpg',
         'mipolam-el7': 'https://cdn.gerflor.com/media/1642426083/1/34841.jpg',
