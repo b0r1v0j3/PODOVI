@@ -63,7 +63,7 @@ export const categories: Category[] = [
     id: '8',
     name: 'Elektroprovodni',
     slug: 'elektroprovodni',
-    description: 'ESD elektroprovodni podovi za čiste sobe, industriju i elektroniku',
+    description: 'Elektroprovodni podovi za čiste sobe, industriju i elektroniku',
     image: '/images/esd/mipolam-el5-0354.jpg',
     order: 8,
   },
