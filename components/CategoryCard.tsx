@@ -16,7 +16,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   const isDeking = category.slug === 'deking' || category.id === '5';
   const saharaNoirImage = '/images/products/lvt/colors/creation-55/1742-sahara-noir/pod/1742-sahara-noir-pod.jpg';
   const parketImage = '/images/products/galloni-oak.jpg';
-  const dekingImage = '/images/deking/edge-ravan-profil-dark-teak-4880-x-136-x-24-mm-1.jpg';
+  const dekingImage = '/EDGE-DarkTeak-Swatch.jpg';
   const carpetImage = '/images/products/carpet/bloq/assembly/bloq_trinity_assembly_501_a.jpg';
 
   return (
