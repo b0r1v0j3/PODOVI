@@ -117,6 +117,7 @@ export async function prepareCustomColors(
                 texture_url: c.image_url || '',
                 image_count: c.image_url ? 1 : 0,
                 characteristics: c.characteristics || {},
+                backing_variants: c.backing_variants,
             }));
         }
     }

@@ -451,6 +451,25 @@ export default function ProductColorSelector({
               </div>
             )}
 
+            {(() => {
+              const activeCustomColor = customColors?.find((c: any) => c.slug === selectedColorSlug) || customColors?.[0];
+              const backingVariants = activeCustomColor?.backing_variants;
+
+              if (backingVariants && Array.isArray(backingVariants) && backingVariants.length > 0) {
+                return (
+                  <div className="bg-gray-50 border border-gray-100 shadow-inner rounded-xl p-4 mt-2">
+                    <p className="text-sm text-gray-500 font-medium mb-2">Dostupne podloge:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {backingVariants.map((variant: string) => (
+                        <span key={variant} className="px-3 py-1 bg-white border border-gray-200 text-gray-700 text-sm font-medium rounded-full opacity-90">{variant}</span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+              return null;
+            })()}
+
             {/* CTA Button - Pošaljite upit (veći, istaknut) – prefill: proizvod + boja + ref */}
             <div>
               <a

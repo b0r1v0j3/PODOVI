@@ -136,6 +136,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**Finalizacija Podataka: PDF Specifikacije, Trinity Podloge, Supabase čišćenje (23.02.2026)**
+- Dodata skripta `extract-pdf-specs.js` za AI ekstrakciju specifikacija (Debljina, Težina, Akustika) direktno iz PDF fajlova (Node `pdf-parse`) i automatsku JSON dopunu (LVT, Vinil, Linoleum).
+- Trinity kolekcija (BLOQ) je obogaćena novim UI elementom koji vizuelno prikazuje "Dostupne podloge" (npr. RELAX, BITBACK) unutar `ProductColorSelector` komponente.
+- Potvrđeno smanjenje Next.js klijentskog bundle-a (~150kb za stranice detalja) jer su `ColorGrid` i `GlobalSearch` komponente već ranije uspešno prebačene na pozivanje `/api/colors` endpointe.
+- Kreirana i izvršena `clean-supabase.js` skripta koja je selektivno očistila produkcionu bazu uklanjanjem zaostalih mock (EGGER) kategorija, oslanjajući se na UUID tabele.
+
 **Inline PDF Viewer i Univerzalni Playwright Scraper (23.02.2026)**
 - Ažurirana `ProductDocuments.tsx` komponenta za prikazivanje liste dokumenata. Klikom na tehnički list sada se renderuje aktivni `<object>` embed direktno unutar istog prozora umesto `target="_blank"`. Dodati "Nazad" i fallback "Preuzmi direktno" tasteri na viewer-u.
 - Zamijenjeni prastari crawler scrapers novim `tools/download_gerflor_highres_zip.js`. Skripta prima CLI parametre (`--type`, `--collection`), preskače lažne DOM node-ove iz različitih Gerflor UI tema tako što evaluira Vue `window.__NUXT__` payload na samoj stranici i hvata specifičan download CDN link. Omogućeno robusno preuzimanje punih slika bez CDN blokada.
