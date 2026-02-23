@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 20.02.2026 (Standardizacija formata boja)
+> **Poslednje ažuriranje:** 23.02.2026 (Kompletna Gerflor revizija + Creation Evo + PDF dokumenti)
 
 ---
 
@@ -84,12 +84,12 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
 | Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
-| Vinil | 2 | Gerflor (6) | `vinyl_colors_complete.json` |
+| Vinil | 2 | Gerflor (6) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja) |
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | TimberTech (10) | `tis_deking_products.json` |
-| LVT | 6 | Gerflor (6), Tarkett | `lvt_colors_complete.json`, `tarkett_lvt_products.json` |
-| Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` |
+| LVT | 6 | Gerflor (6), Tarkett | `lvt_colors_complete.json` (19 kolekcija, 595 boja), `tarkett_lvt_products.json` |
+| Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` (15 kolekcija, 203 boje) |
 
 ### BLOQ Carpet Tiles (18 kolekcija, 210 boja):
 | Familija | Kolekcije |
@@ -297,6 +297,8 @@ PODOVI/
 10. **`mergeSelectedColor()` menja `product.name` u ime boje.** Nikad ne koristi `productName` kao izvor za ime kolekcije posle merge-a. Uvek sačuvaj originalni naziv PRE poziva `mergeSelectedColor()` i prosledi ga kao `originalProductName`.
 11. **Brend se ne ponavlja u naslovu/podnaslovu.** Brend (Gerflor, Tarkett, BLOQ) je već prikazan iznad kao link. U h1 i subtitle koristi `collectionName` koji stripuje brend prefiks. Logika: `name.startsWith(brand.name + ' ')` → strip.
 12. **Formatiranje naziva boja:** Uvek propusti sirova imena boja iz JSON-a kroz `formatProductName` utility iz `productDataLoader.ts`. Ovo osigurava konzistentan Title Case i uklanja šifre iz naziva.
+13. **Gerflor CDN slike:** Gerflor blokira direktne HTTP zahteve na `gerflor-cee.com` slike (403). Slike se preuzimaju sa `cdn.gerflor.com/media/1642426083/1/{CDN_ID}.jpg` — CDN ID-evi se nalaze na individualnim stranicama boja.
+14. **Novi vinil proizvodi moraju imati merge u repo:** Kad dodaješ novi proizvod u `vinyl_colors_complete.json`, moraš dodati i merging logiku u `SupabaseProductRepository.findAll()` za cat 2, ili ručno dodati u Supabase. Pogledaj `getVinylCollectionProducts()` u `productDataLoader.ts`.
 
 ---
 
@@ -308,12 +310,14 @@ PODOVI/
 - [ ] **Bundle size optimizacija** — ProductDocuments importuje ceo bloq JSON (~700KB) na klijentu
 - [ ] **Čišćenje mrtvih kategorija** — proveriti da li su kategorije 8, 9, 10 (Ugradnja, Lajsne, Alati) obrisane iz Supabase baze. Bile su samo za EGGER — mogu izazvati prazne stranice.
 - [ ] **Dead code čišćenje** — proveriti `mock-data.ts` i ostale fajlove za nekorišćeni kod posle EGGER brisanja
+- [ ] **Nova kategorija: Antistatički / ESD podovi** — Mipolam Robust EL7, EL5, Technic EL5. Korisnik želi zasebnu kategoriju, ne u Vinil.
 
 ### Prioritet: Srednji
 - [ ] **PDF viewer** — pregled PDF dokumenata inline umesto download-a
 - [ ] **Breadcrumbs poboljšanje** — dodati kolekciju u breadcrumbs za BLOQ
 - [ ] **Unified data source** — proizvodi dolaze iz 4 izvora (JSON, TS fajlovi, Supabase, hardcoded). Razmotriti migraciju svega u Supabase za lakše održavanje
 - [ ] **Automatski health check** — skripta koja proverava da svaki proizvod u bazi ima sliku, opis i bar 3 specifikacije
+- [x] **PDF dokumenti za Gerflor** — dodati za svih 62 kolekcija u `documents_index.json`: vinil (25 kol, ~85 PDF-ova), LVT (19), Linoleum (15), Carpet (3). `ProductDocuments.tsx` ažuriran za cat 2.
 
 ### Prioritet: Nizak
 - [ ] **Uporedni prikaz** — dodati BLOQ proizvode u compare funkcionalnost

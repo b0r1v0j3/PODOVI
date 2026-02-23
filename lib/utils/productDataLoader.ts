@@ -625,6 +625,57 @@ export function getAllGerflorProducts(): Product[] {
     return [...getAllLVTProducts(), ...getAllLinoleumProducts(), ...getAllCarpetProducts()];
 }
 
+let vinylCollectionCache: Product[] | null = null;
+
+/**
+ * Generate collection-level Product entries from vinyl_colors_complete.json.
+ * These are used to show vinyl collections in the category listing
+ * when they are NOT already in the Supabase database (e.g., newly added collections).
+ */
+export function getVinylCollectionProducts(): Product[] {
+    if (vinylCollectionCache) return vinylCollectionCache;
+
+    const vinylData = require('@/public/data/vinyl_colors_complete.json');
+    const collections = vinylData?.collections || [];
+
+    const result = collections.map((col: any) => {
+        const firstColor = col.colors?.[0];
+        const slug = `gerflor-${col.slug}`;
+        const characteristics = firstColor?.characteristics || {};
+        const specs: Product['specs'] = Object.entries(characteristics).map(([label, value]) => ({
+            key: label.toLowerCase().replace(/\s+/g, '_'),
+            label,
+            value: value as string,
+        }));
+
+        return {
+            id: `vinyl-coll-${col.slug}`,
+            name: col.name,
+            slug,
+            sku: `VINYL-${col.slug.toUpperCase()}`,
+            categoryId: '2',
+            brandId: '6',
+            shortDescription: `${col.name} — ${col.colorCount} boja`,
+            description: firstColor?.description || '',
+            images: firstColor?.image ? [{
+                id: `vinyl-coll-${col.slug}-img`,
+                url: firstColor.image,
+                alt: col.name,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    vinylCollectionCache = result;
+    return result;
+}
+
 /**
  * Get all TimberTech Deking products from tis_deking_products.json
  */

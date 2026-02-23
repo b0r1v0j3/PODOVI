@@ -30663,6 +30663,667 @@
       "characteristics": {
         "Debljina sloja habanja": "0.70 mm"
       }
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1225",
+      "name": "PODIUM",
+      "full_name": "1225 PODIUM",
+      "slug": "podium-1225",
+      "image_url": "/images/products/lvt/colors/creation-evo/1225-podium.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1225-podium.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1226",
+      "name": "RHAPSODY HONEY",
+      "full_name": "1226 RHAPSODY HONEY",
+      "slug": "rhapsody-honey-1226",
+      "image_url": "/images/products/lvt/colors/creation-evo/1226-rhapsody-honey.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1226-rhapsody-honey.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1228",
+      "name": "ATELIER",
+      "full_name": "1228 ATELIER",
+      "slug": "atelier-1228",
+      "image_url": "/images/products/lvt/colors/creation-evo/1228-atelier.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1228-atelier.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1229",
+      "name": "ROYAL",
+      "full_name": "1229 ROYAL",
+      "slug": "royal-1229",
+      "image_url": "/images/products/lvt/colors/creation-evo/1229-royal.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1229-royal.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1230",
+      "name": "BRIGHT",
+      "full_name": "1230 BRIGHT",
+      "slug": "bright-1230",
+      "image_url": "/images/products/lvt/colors/creation-evo/1230-bright.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1230-bright.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1231",
+      "name": "RHAPSODY",
+      "full_name": "1231 RHAPSODY",
+      "slug": "rhapsody-1231",
+      "image_url": "/images/products/lvt/colors/creation-evo/1231-rhapsody.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1231-rhapsody.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1232",
+      "name": "SKYLINE",
+      "full_name": "1232 SKYLINE",
+      "slug": "skyline-1232",
+      "image_url": "/images/products/lvt/colors/creation-evo/1232-skyline.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1232-skyline.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1233",
+      "name": "RHAPSODY BEIGE",
+      "full_name": "1233 RHAPSODY BEIGE",
+      "slug": "rhapsody-beige-1233",
+      "image_url": "/images/products/lvt/colors/creation-evo/1233-rhapsody-beige.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1233-rhapsody-beige.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1234",
+      "name": "RHAPSODY GREY",
+      "full_name": "1234 RHAPSODY GREY",
+      "slug": "rhapsody-grey-1234",
+      "image_url": "/images/products/lvt/colors/creation-evo/1234-rhapsody-grey.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1234-rhapsody-grey.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "18.4 cm x 121.9 cm",
+      "format": "Daska",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1236",
+      "name": "SHADE LIGHT",
+      "full_name": "1236 SHADE LIGHT",
+      "slug": "shade-light-1236",
+      "image_url": "/images/products/lvt/colors/creation-evo/1236-shade-light.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1236-shade-light.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "45.7 cm x 91.4 cm",
+      "format": "Ploča",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1237",
+      "name": "SHADE MEDIUM",
+      "full_name": "1237 SHADE MEDIUM",
+      "slug": "shade-medium-1237",
+      "image_url": "/images/products/lvt/colors/creation-evo/1237-shade-medium.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1237-shade-medium.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "45.7 cm x 91.4 cm",
+      "format": "Ploča",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
+    },
+    {
+      "collection": "creation-evo",
+      "collection_name": "Creation Evo",
+      "code": "1238",
+      "name": "SHADE DARK",
+      "full_name": "1238 SHADE DARK",
+      "slug": "shade-dark-1238",
+      "image_url": "/images/products/lvt/colors/creation-evo/1238-shade-dark.jpg",
+      "texture_url": "/images/products/lvt/colors/creation-evo/1238-shade-dark.jpg",
+      "image_count": 1,
+      "lifestyle_url": "",
+      "dimension": "45.7 cm x 91.4 cm",
+      "format": "Ploča",
+      "overall_thickness": "2.00 mm",
+      "description": "Proizvod:\nGerflor Creation Evo — LVT alternativa bez PVC-a sa ProtecShield™ površinskom obradom.\nVisokoperformansni pod bez halogena, hlora, rastvarača i ftalata, 100%% reciklabilan.\n\nKarakteristike:\n2.0mm ukupna debljina sa ProtecShield™ zaštitom.\n4D Design — ultra-realistična površina sa autentičnim izgledom.\nOjačanje staklenim velom za dimenzionalnu stabilnost.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nKomercijalni prostori sa visokim ekološkim zahtevima.\nZdravstvene ustanove.\nObrazovne ustanove.\nKancelarije i poslovni prostori.\n\nOdrživost:\nBez PVC-a, bez halogena, bez ftalata.\n100%% reciklabilno po završetku životnog veka.\nDo 25%% recikliranog sadržaja.\nA+ ocena — najviša klasa zdravstvenih standarda.",
+      "specs": {},
+      "collection_specs": [
+        {
+          "key": "thickness",
+          "label": "Ukupna debljina",
+          "value": "2.00 mm"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "value": "Daske i ploče"
+        },
+        {
+          "key": "usage_class",
+          "label": "Klasa upotrebe",
+          "value": "34-43"
+        },
+        {
+          "key": "fire_class",
+          "label": "Protivpožarna klasifikacija",
+          "value": "Bfl-s1"
+        },
+        {
+          "key": "installation",
+          "label": "Tip instalacije",
+          "value": "Lepljenje"
+        },
+        {
+          "key": "surface",
+          "label": "Površinska obrada",
+          "value": "ProtecShield™"
+        },
+        {
+          "key": "material",
+          "label": "Materijal",
+          "value": "Bez PVC-a, 100% reciklabilno"
+        }
+      ],
+      "characteristics": {}
     }
-  ]
+  ],
+  "totalColors": 595
 }

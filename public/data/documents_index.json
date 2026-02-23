@@ -215,6 +215,16 @@
         "title": "Installation",
         "url": "/documents/lvt/creation-30/63716 - [303] GLUE DOWN INSTALLATION CREATION 30-40-55-70 - V8 - GB.pdf"
       }
+    ],
+    "creation-evo": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/67177/creation%20dryback-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://cdn.gerflor.com/media/2/55420/gerflor%20contractual%20waranty%20-%20commercial%20applications.pdf"
+      }
     ]
   },
   "linoleum": {
@@ -450,6 +460,406 @@
       {
         "title": "Installation",
         "url": "https://cdn.gerflor.com/media/2/55104/laying%20direction%20&%20installation%20guidelines%20references.pdf"
+      }
+    ]
+  },
+  "vinil": {
+    "mipolam-accord": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/56118/mipolam%20accord%20-%20technical%20data%20sheet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/55104/laying%20direction%20&%20installation%20guidelines%20references.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/24971/mipolam%20accord%20-%20dop.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://cdn.gerflor.com/media/2/55420/gerflor%20contractual%20waranty%20-%20commercial%20applications.pdf"
+      }
+    ],
+    "mipolam-affinity": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/56484/mipolam-affinity-technical-data-sheet.pdf.pdf"
+      },
+      {
+        "title": "Ekološki list",
+        "url": "https://cdn.gerflor.com/media/2/57729/mipolam%20affinity%20-%20environmental%20datasheet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/28621/homogeneous%20evercare%E2%84%A2%20treated%20%20floors%20-%20maintenance%20instruction.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/60426/mipolam%20affinity%20-%20declaration%20of%20performance.pdf"
+      }
+    ],
+    "mipolam-affinity-608x608": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/56484/mipolam-affinity-technical-data-sheet.pdf.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/28621/homogeneous%20evercare%E2%84%A2%20treated%20%20floors%20-%20maintenance%20instruction.pdf"
+      }
+    ],
+    "mipolam-astro": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/59549/mipolam%20astro%20-%20technical%20datasheet%20-%20july%202025.pdf"
+      },
+      {
+        "title": "Ekološki list",
+        "url": "https://cdn.gerflor.com/media/2/59625/mipolam%20astro%20-%20eds.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/60432/mipolam%20astro%20-%20dop.pdf"
+      },
+      {
+        "title": "Karta uzoraka",
+        "url": "https://cdn.gerflor.com/media/2/68337/mipolam%20astro%20-%20sample%20card.pdf"
+      }
+    ],
+    "mipolam-bioplanet": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/41669/mipolam%20bio%20planet%20-%20technical%20datasheet.pdf"
+      },
+      {
+        "title": "Ekološki list",
+        "url": "https://cdn.gerflor.com/media/2/57734/mipolam%20bioplanet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/42190/mipolam%20bioplanet%20-%20declaration%20of%20performance%20(dop).pdf"
+      }
+    ],
+    "mipolam-classic-1-5mm": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/28621/homogeneous%20evercare%E2%84%A2%20treated%20%20floors%20-%20maintenance%20instruction.pdf"
+      }
+    ],
+    "mipolam-classic-2mm": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/28621/homogeneous%20evercare%E2%84%A2%20treated%20%20floors%20-%20maintenance%20instruction.pdf"
+      }
+    ],
+    "mipolam-elegance": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/42048/mipolam%20elegance%20-%20technical%20data%20sheet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/55104/laying%20direction%20&%20installation%20guidelines%20references.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/24981/mipolam%20elegance%20-%20dop.pdf"
+      }
+    ],
+    "mipolam-planet": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf"
+      },
+      {
+        "title": "Karta uzoraka",
+        "url": "https://cdn.gerflor.com/media/2/53824/mipolam%20planet%20-%20sample%20card.pdf"
+      }
+    ],
+    "mipolam-symbioz": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/56123/mipolam%20symbioz%20-%20technical%20datasheet.pdf"
+      },
+      {
+        "title": "Ekološki list",
+        "url": "https://cdn.gerflor.com/media/2/34114/mipolam%20symbioz%20-%20environmental%20datasheet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/55104/laying%20direction%20&%20installation%20guidelines%20references.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/31889/mipolam%20symbioz%20-%20dop.pdf"
+      },
+      {
+        "title": "Karta uzoraka",
+        "url": "https://cdn.gerflor.com/media/2/53821/mipolam%20symbioz%20-%20card%20.pdf"
+      }
+    ],
+    "mipolam-troplan": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/56112/mipolam%20troplan%20-%20technical%20datasheet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/28621/homogeneous%20evercare%E2%84%A2%20treated%20%20floors%20-%20maintenance%20instruction.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/24964/mipolam%20troplan%20-%20dop.pdf"
+      },
+      {
+        "title": "Karta uzoraka",
+        "url": "https://cdn.gerflor.com/media/2/53882/mipolam%20troplan%20-%20card.pdf"
+      }
+    ],
+    "nerok-55": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/57284/nerok%2055%20-%20technical%20data%20sheet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/35440/nerok%2055%20-%20dop.pdf"
+      },
+      {
+        "title": "Karta uzoraka",
+        "url": "https://cdn.gerflor.com/media/2/67332/nerok%2055-70%20-%20sample%20card.pdf"
+      }
+    ],
+    "nerok-70": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/57284/nerok%2055%20-%20technical%20data%20sheet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      },
+      {
+        "title": "Karta uzoraka",
+        "url": "https://cdn.gerflor.com/media/2/67332/nerok%2055-70%20-%20sample%20card.pdf"
+      }
+    ],
+    "premium-acoustic": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Brošura",
+        "url": "https://cdn.gerflor.com/media/2/57581/premium%20-%20guide.pdf"
+      },
+      {
+        "title": "Karta uzoraka",
+        "url": "https://cdn.gerflor.com/media/2/57582/premium%20-%20card.pdf"
+      }
+    ],
+    "premium-compact": [
+      {
+        "title": "Tehnički list",
+        "url": "https://cdn.gerflor.com/media/2/41731/premium%20compact%20-%20technical%20data%20sheet.pdf"
+      },
+      {
+        "title": "Ekološki list",
+        "url": "https://cdn.gerflor.com/media/2/34428/premium%20compact%20-%20environmental%20datasheet.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://cdn.gerflor.com/media/2/68516/taralay%20premium%20compact%20-%20dop.pdf"
+      },
+      {
+        "title": "Brošura",
+        "url": "https://cdn.gerflor.com/media/2/57581/premium%20-%20guide.pdf"
+      }
+    ],
+    "taralay-impression-acoustic": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://cdn.gerflor.com/media/2/55420/gerflor%20contractual%20waranty%20-%20commercial%20applications.pdf"
+      }
+    ],
+    "taralay-impression-compact": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://cdn.gerflor.com/media/2/55420/gerflor%20contractual%20waranty%20-%20commercial%20applications.pdf"
+      }
+    ],
+    "taralay-impression-hop-acoustic": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      }
+    ],
+    "taralay-impression-hop-compact": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      }
+    ],
+    "taralay-initial-acoustic": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://cdn.gerflor.com/media/2/55420/gerflor%20contractual%20waranty%20-%20commercial%20applications.pdf"
+      }
+    ],
+    "taralay-initial-compact": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://cdn.gerflor.com/media/2/55420/gerflor%20contractual%20waranty%20-%20commercial%20applications.pdf"
+      }
+    ],
+    "taralay-libertex": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/55104/laying%20direction%20&%20installation%20guidelines%20references.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://cdn.gerflor.com/media/2/55420/gerflor%20contractual%20waranty%20-%20commercial%20applications.pdf"
+      }
+    ],
+    "taralay-millenium-acoustic": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      }
+    ],
+    "taralay-millenium-compact": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/27615/homogeneous%20et%20multilayered%20rolls%20-%20installation%20guidelines.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://cdn.gerflor.com/media/2/46973/heterogeneous%20floors%20-%20maintenance%20instructions.pdf"
+      }
+    ],
+    "mipolam-evo": [
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://cdn.gerflor.com/media/2/55104/laying%20direction%20&%20installation%20guidelines%20references.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://cdn.gerflor.com/media/2/55420/gerflor%20contractual%20waranty%20-%20commercial%20applications.pdf"
       }
     ]
   }

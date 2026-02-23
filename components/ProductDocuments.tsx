@@ -51,7 +51,9 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
                                 ? 'carpet'
                                 : categoryId === '7'
                                     ? 'linoleum'
-                                    : '';
+                                    : categoryId === '2'
+                                        ? 'vinil'
+                                        : '';
 
                         const docsFromIndex = categoryKey && index?.[categoryKey]?.[normalizedCollectionSlug]
                             ? index[categoryKey][normalizedCollectionSlug]

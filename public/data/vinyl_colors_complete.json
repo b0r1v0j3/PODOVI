@@ -17703,8 +17703,675 @@
         "Vatrostojnost": "Bfl-s1",
         "Tip instalacije": "Lepljenje"
       }
+    },
+    {
+      "name": "Mipolam Evo",
+      "slug": "mipolam-evo",
+      "url": "https://www.gerflor-cee.com/products/mipolam-evo",
+      "colorCount": 11,
+      "colors": [
+        {
+          "code": "9005",
+          "name": "VISBY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9005-visby",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9005-visby.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9006",
+          "name": "STOCKHOLM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9006-stockholm",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9006-stockholm.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9029",
+          "name": "TROMSO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9029-tromso",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9029-tromso.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9030",
+          "name": "UPPSALA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9030-uppsala",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9030-uppsala.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9031",
+          "name": "KIRUNA",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9031-kiruna",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9031-kiruna.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9032",
+          "name": "COPENHAGEN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9032-copenhagen",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9032-copenhagen.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9044",
+          "name": "BERGEN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9044-bergen",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9044-bergen.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9045",
+          "name": "GELLO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9045-gello",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9045-gello.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9050",
+          "name": "MALMO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9050-malmo",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9050-malmo.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9055",
+          "name": "GOTEBORG",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9055-goteborg",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9055-goteborg.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        },
+        {
+          "code": "9063",
+          "name": "NARVIK",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/mipolam-evo-9063-narvik",
+          "collection_slug": "mipolam-evo",
+          "image": "/images/products/vinyl/mipolam-evo/9063-narvik.jpg",
+          "description": "Proizvod:\nGerflor Mipolam Evo — prvi homogeni pod bez PVC-a sa Evercare™ površinskom obradom.\nKompaktan, jednoslojan dizajn potpuno bez PVC-a i plastifikatora, idealan za okruženja sa visokim ekološkim zahtevima.\n\nKarakteristike:\nBez PVC-a i plastifikatora — potpuno ekološki prihvatljiv materijal.\n2.0mm ukupna debljina sa slojem habanja kroz celu dubinu.\nEvercare™ površinska obrada — doživotno bez voska i poliranja.\nTVOC emisije manje od 10µg/m³ nakon 28 dana.\nKlasa upotrebe 34/43 — pogodan za najzahtevnije komercijalne prostore.\n\nPrimena:\nBolnice i zdravstvene ustanove.\nŠkole i obrazovne ustanove.\nLaboratorije.\nKancelarije sa visokim ekološkim standardima.\n\nOdrživost:\nBez PVC-a.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Homogeni pod (bez PVC-a)",
+            "Format": "Rolna (2m x 20m)",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "Kroz celu debljinu",
+            "Površinska obrada": "Evercare™",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje",
+            "Akustika": "Bez podloge",
+            "Materijal": "Bez PVC-a i plastifikatora"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Taralay Libertex",
+      "slug": "taralay-libertex",
+      "url": "https://www.gerflor-cee.com/products/taralay-libertex",
+      "colorCount": 20,
+      "colors": [
+        {
+          "code": "0179",
+          "name": "VALENCAY PATINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-0179-valencay-patine",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/0179-valencay-patine.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "0368",
+          "name": "VALENCAY BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-0368-valencay-blond",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/0368-valencay-blond.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "0636",
+          "name": "ESTEREL BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-0636-esterel-blond",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/0636-esterel-blond.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "0720",
+          "name": "PURE OAK CLEAR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-0720-pure-oak-clear",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/0720-pure-oak-clear.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "0797",
+          "name": "HABANA IVORY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-0797-habana-ivory",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/0797-habana-ivory.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "0828",
+          "name": "HABANA BEIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-0828-habana-beige",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/0828-habana-beige.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "1442",
+          "name": "VALENCAY PECAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-1442-valencay-pecan",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/1442-valencay-pecan.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "1751",
+          "name": "PURE OAK GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-1751-pure-oak-grey",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/1751-pure-oak-grey.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2218",
+          "name": "ROUGH TAUPE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2218-rough-taupe",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2218-rough-taupe.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2219",
+          "name": "ROUGH CHOCOLATE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2219-rough-chocolate",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2219-rough-chocolate.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2225",
+          "name": "ROUGH LIGHT GREY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2225-rough-light-grey",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2225-rough-light-grey.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2226",
+          "name": "CORDOBA BLACK & WHITE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2226-cordoba-black-white",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2226-cordoba-black-white.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2284",
+          "name": "CHICAGO STORM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2284-chicago-storm",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2284-chicago-storm.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2346",
+          "name": "AZAY CREAM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2346-azay-cream",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2346-azay-cream.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2366",
+          "name": "CHICAGO SAND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2366-chicago-sand",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2366-chicago-sand.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2413",
+          "name": "COTTAGE BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2413-cottage-blond",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2413-cottage-blond.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2415",
+          "name": "COTTAGE CLEAR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2415-cottage-clear",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2415-cottage-clear.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2426",
+          "name": "COTTAGE BROWN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2426-cottage-brown",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2426-cottage-brown.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2459",
+          "name": "CHICAGO HAZE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2459-chicago-haze",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2459-chicago-haze.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        },
+        {
+          "code": "2460",
+          "name": "CHICAGO CREAM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-libertex-2460-chicago-cream",
+          "collection_slug": "taralay-libertex",
+          "image": "/images/products/vinyl/taralay-libertex/2460-chicago-cream.jpg",
+          "description": "Proizvod:\nGerflor Taralay Libertex — heterogeni vinil pod sa tekstilnom podlogom za brzu ugradnju bez lepka.\nIdealan za renovacije jer se polaže direktno preko postojećeg poda bez potrebe za lepkom.\n\nKarakteristike:\n3.65mm ukupna debljina sa 0.70mm habajućim slojem.\nGripman tekstilna podloga omogućava polaganje bez lepka.\nProtecsol® površinska obrada za lako održavanje.\nAkustična izolacija -19 dB za tišinu u prostoru.\nDostupan u širinama od 2m i 4m.\n\nPrimena:\nKomercijalni prostori sa potrebom za brzom renovacijom.\nKancelarije i poslovni prostori.\nHotelski i ugostiteljski objekti.\nStambeni prostori — laka ugradnja i zamena.\nObrazovne ustanove.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno po završetku životnog veka.\nNiske VOC emisije — A+ ocena.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil",
+            "Format": "Rolna (2m i 4m širina)",
+            "Ukupna debljina": "3.65 mm",
+            "Sloj habanja": "0.70 mm",
+            "Površinska obrada": "Protecsol®",
+            "Klasa upotrebe": "Klasa 34/43",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Bez lepka (Gripman podloga)",
+            "Akustika": "-19 dB",
+            "Podloga": "Tekstilna (Gripman)"
+          }
+        }
+      ]
     }
   ],
-  "totalColors": 687,
+  "totalColors": 939,
   "generatedAt": "2026-01-19T12:41:49.987Z"
 }

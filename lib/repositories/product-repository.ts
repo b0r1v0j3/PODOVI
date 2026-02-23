@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -208,7 +208,25 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...lvtCollections, ...lvtJsonProducts];
     }
 
+    // Category 2: Vinil (Merge JSON-only vinyl collections not already in Supabase)
+    if (!filters?.categoryId || legacyCategoryId === '2' || filters.categoryId === '2') {
+      const existingSlugs = new Set(products.map(p => p.slug));
+      let vinylJsonCollections = getVinylCollectionProducts()
+        .filter(vc => !existingSlugs.has(vc.slug)); // Only add collections not already from Supabase
 
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        vinylJsonCollections = vinylJsonCollections.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        vinylJsonCollections = vinylJsonCollections.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      products = [...products, ...vinylJsonCollections];
+    }
 
     // Post-fetch filters that require specs data
     if (filters?.type) {
