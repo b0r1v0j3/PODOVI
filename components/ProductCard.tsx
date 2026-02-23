@@ -170,7 +170,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
             quality={90}
             className={`transition-transform duration-500 group-hover:scale-[1.03] ${product.categoryId === '5'
               ? 'object-cover object-left'
-              : (product.slug === 'gerflor-mipolam-technic-el5-eu' || product.slug === 'gerflor-gti-el5-connect')
+              : product.slug === 'gerflor-mipolam-technic-el5-eu'
                 ? 'object-cover object-bottom'
                 : 'object-cover'
               }`}
