@@ -14,6 +14,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   const isParket = category.slug === 'parket' || category.id === '3';
   const isLaminat = category.slug === 'laminat' || category.id === '1';
   const isDeking = category.slug === 'deking' || category.id === '5';
+  const isESD = category.slug === 'elektroprovodni' || category.id === '8';
   const saharaNoirImage = '/images/products/lvt/colors/creation-55/1742-sahara-noir/pod/1742-sahara-noir-pod.jpg';
   const parketImage = '/images/products/galloni-oak.jpg';
   const dekingImage = '/EDGE-DarkTeak-Swatch.jpg';
@@ -67,8 +68,8 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
-        ) : (isLinoleum || isVinil || isLaminat) && category.image ? (
-          // Show category image for Linoleum, Vinil, Laminat
+        ) : (isLinoleum || isVinil || isLaminat || isESD) && category.image ? (
+          // Show category image for Linoleum, Vinil, Laminat, Elektroprovodni
           <Image
             src={category.image}
             alt={category.name}

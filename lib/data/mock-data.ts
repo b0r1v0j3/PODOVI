@@ -1889,7 +1889,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Provodni homogeni vinil za opštu ESD zaštitu (R < 10⁸ Ω)',
     description: 'Gerflor Mipolam EL7 - provodni homogeni vinil za opštu namenu sa ESD zaštitom.',
-    images: [{ id: 'esd-7-img', url: '/images/esd/mipolam-el7-lifestyle.jpg', alt: 'Mipolam EL7', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-7-img', url: '/images/categories/elektroprovodni.jpg', alt: 'Mipolam EL7', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam EL7' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
