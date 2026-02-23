@@ -308,10 +308,7 @@ export default function ProductColorSelector({
               <div className="flex-1 min-w-0">
                 {selectedColor ? (
                   <div className="flex items-baseline gap-2">
-                    {selectedColor.code && (
-                      <p className="text-lg font-semibold text-gray-900">{selectedColor.code}</p>
-                    )}
-                    <p className="text-base text-gray-700 truncate">
+                    <p className="text-lg font-semibold text-gray-900 truncate">
                       {(() => {
                         let name = selectedColor.name;
                         // Strip code prefix if name starts with code
@@ -324,6 +321,9 @@ export default function ProductColorSelector({
                         return color;
                       })()}
                     </p>
+                    {selectedColor.code && (
+                      <p className="text-sm text-gray-400 font-medium">{selectedColor.code}</p>
+                    )}
                   </div>
                 ) : null}
               </div>

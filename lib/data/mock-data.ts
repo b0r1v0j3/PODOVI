@@ -64,7 +64,7 @@ export const categories: Category[] = [
     name: 'Elektroprovodni',
     slug: 'elektroprovodni',
     description: 'ESD elektroprovodni podovi za čiste sobe, industriju i elektroniku',
-    image: '/images/categories/elektroprovodni.jpg',
+    image: '/images/esd/mipolam-el5-lifestyle.jpg',
     order: 8,
   },
 
@@ -1757,7 +1757,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Elektroprovodni homogeni vinil pod sa ugljenim žilama (R < 10⁶ Ω)',
     description: 'Gerflor Mipolam EL5 - elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima. Otpornost < 10⁶ Ω. Idealan za server sobe, laboratorije i elektronske pogone.',
-    images: [{ id: 'esd-1-img', url: '/images/categories/elektroprovodni.jpg', alt: 'Mipolam EL5', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-1-img', url: '/images/esd/mipolam-el5-lifestyle.jpg', alt: 'Mipolam EL5', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam EL5' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
@@ -1779,7 +1779,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Interlocking ESD ploče za brzu renovaciju industrijskih prostora',
     description: 'Gerflor GTI EL5 Connect - teške interlocking ploče sa ESD zaštitom. Bez lepka, brza ugradnja. Idealne za industrijske hale i ESD-osetljive prostore.',
-    images: [{ id: 'esd-2-img', url: '/images/categories/elektroprovodni.jpg', alt: 'GTI EL5 Connect', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-2-img', url: '/images/esd/gti-el5-connect-lifestyle.jpg', alt: 'GTI EL5 Connect', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'GTI EL5 Connect' },
       { key: 'thickness', label: 'Debljina', value: '6.00 mm' },
@@ -1801,7 +1801,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Interlocking ESD ploče za čiste sobe (ISO 4)',
     description: 'Gerflor GTI EL5 Cleantech - interlocking ploče sertifikovane za čiste sobe (ISO 4) sa ESD zaštitom. Bez lepka, brza ugradnja.',
-    images: [{ id: 'esd-3-img', url: '/images/categories/elektroprovodni.jpg', alt: 'GTI EL5 Cleantech', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-3-img', url: '/images/esd/gti-el5-cleantech-lifestyle.jpg', alt: 'GTI EL5 Cleantech', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'GTI EL5 Cleantech' },
       { key: 'thickness', label: 'Debljina', value: '6.00 mm' },
@@ -1823,7 +1823,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'ESD pod za čiste sobe sa izuzetnom hemijskom otpornošću',
     description: 'Gerflor Mipolam Biocontrol EL5 - visokoperformantni homogeni pod za čiste sobe sa ESD kontrolom i odličnom hemijskom otpornošću.',
-    images: [{ id: 'esd-4-img', url: '/images/categories/elektroprovodni.jpg', alt: 'Mipolam Biocontrol EL5', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-4-img', url: '/images/esd/mipolam-biocontrol-el5-lifestyle.jpg', alt: 'Mipolam Biocontrol EL5', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Biocontrol EL5' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
@@ -1845,7 +1845,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'ESD ploče za elektronsku montažu i ATEX zone',
     description: 'Gerflor Mipolam Technic EL5 EU - projektovan za elektronsku montažu i ATEX prostore. Zadovoljava IEC 61340-5-1 standarde.',
-    images: [{ id: 'esd-5-img', url: '/images/categories/elektroprovodni.jpg', alt: 'Mipolam Technic EL5 EU', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-5-img', url: '/images/esd/mipolam-technic-el5-eu-lifestyle.jpg', alt: 'Mipolam Technic EL5 EU', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Technic EL5 EU' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
@@ -1867,7 +1867,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Provodni homogeni vinil sa nedirekcionalnim dizajnom (R < 10⁸ Ω)',
     description: 'Gerflor Mipolam Robust EL7 - provodni homogeni vinil (R < 10⁸ Ω) sa nedirekcionalnim dizajnom za opštu ESD zaštitu.',
-    images: [{ id: 'esd-6-img', url: '/images/categories/elektroprovodni.jpg', alt: 'Mipolam Robust EL7', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-6-img', url: '/images/esd/mipolam-robust-el7-lifestyle.jpg', alt: 'Mipolam Robust EL7', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Robust EL7' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
@@ -1889,7 +1889,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Provodni homogeni vinil za opštu ESD zaštitu (R < 10⁸ Ω)',
     description: 'Gerflor Mipolam EL7 - provodni homogeni vinil za opštu namenu sa ESD zaštitom.',
-    images: [{ id: 'esd-7-img', url: '/images/categories/elektroprovodni.jpg', alt: 'Mipolam EL7', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-7-img', url: '/images/esd/mipolam-el7-lifestyle.jpg', alt: 'Mipolam EL7', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam EL7' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
