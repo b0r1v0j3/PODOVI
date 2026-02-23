@@ -6,7 +6,9 @@ import {
     buildSpecsFromColor,
     mergeSpecs,
     linoleumColors,
+    vinylCollections,
 } from './color-helpers';
+import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import {
     getEffectiveParketCollection,
     getParketCollectionNameBySlug,
@@ -166,6 +168,47 @@ export async function prepareCustomColors(
                     }, {} as Record<string, string>)
                 }));
             }
+        }
+    }
+
+    // Vinil (cat 2): customColors from vinyl_colors_complete.json
+    if (product.categoryId === '2' && product.slug.startsWith('gerflor-')) {
+        const collectionSlug = product.slug.substring('gerflor-'.length);
+        const vinylCollection = vinylCollections.find((col: any) => col.slug === collectionSlug);
+        if (vinylCollection && vinylCollection.colors && vinylCollection.colors.length > 0) {
+            return vinylCollection.colors.map((c: any) => ({
+                collection: vinylCollection.slug,
+                collection_name: vinylCollection.name,
+                code: c.code || '',
+                name: c.name,
+                full_name: `${c.code || ''} ${c.name}`.trim(),
+                slug: `${vinylCollection.slug}-${c.code}-${c.name.toLowerCase().replace(/\s+/g, '-')}`,
+                image_url: c.image || '',
+                texture_url: c.image || '',
+                image_count: c.image ? 1 : 0,
+                characteristics: c.characteristics || {},
+            }));
+        }
+    }
+
+    // Gerflor LVT (cat 6): customColors from lvt_colors_complete.json
+    if (product.categoryId === '6' && product.slug.startsWith('gerflor-')) {
+        const collectionSlug = product.slug.substring('gerflor-'.length);
+        const lvtColors = (lvtColorsData as any).colors || [];
+        const collectionColors = lvtColors.filter((c: any) => c.collection === collectionSlug);
+        if (collectionColors.length > 0) {
+            return collectionColors.map((c: any) => ({
+                collection: collectionSlug,
+                collection_name: c.collection_name || product.name,
+                code: c.code || '',
+                name: c.name,
+                full_name: c.full_name || c.name,
+                slug: c.slug,
+                image_url: c.image_url || c.texture_url || '',
+                texture_url: c.texture_url || c.image_url || '',
+                image_count: c.image_count || 1,
+                characteristics: c.characteristics || {},
+            }));
         }
     }
 

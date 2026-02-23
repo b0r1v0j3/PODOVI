@@ -263,7 +263,7 @@ export function getTarkettLVTCollections(): Product[] {
  * Get a specific product by slug
  */
 export function getProductBySlug(slug: string): Product | undefined {
-    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts(), ...getTarkettLVTCollections(), ...getAllDekingProducts()];
+    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts(), ...getTarkettLVTCollections(), ...getAllDekingProducts(), ...getVinylCollectionProducts()];
     return allProducts.find(p => p.slug === slug || p.id === slug);
 }
 
