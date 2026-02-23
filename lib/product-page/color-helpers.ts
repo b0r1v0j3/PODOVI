@@ -260,8 +260,9 @@ export function colorToProduct(source: ColorSource, slug: string, collectionSlug
     const { categorySlug, color } = source;
     const isLVT = categorySlug === 'lvt';
     const isVinil = categorySlug === 'vinil';
-    const categoryId = isLVT ? '6' : isVinil ? '2' : '7';
-    const brandId = source.brandId || color.brandId || '6';
+    const isESD = categorySlug === 'elektroprovodni';
+    const categoryId = isLVT ? '6' : isVinil ? '2' : isESD ? '8' : '7';
+    const brandId = source.brandId || color.brandId || (isESD ? '6' : '6'); // Both Gerflor (6), update if others
     const cleanName = cleanColorName(color.name);
     const name = color.code ? `${color.code} ${cleanName}` : cleanName;
     const primaryImageUrl = isLVT
@@ -312,7 +313,8 @@ export function collectionFromColor(source: ColorSource, slug: string): Product 
     const { categorySlug, color } = source;
     const isLVT = categorySlug === 'lvt';
     const isVinil = categorySlug === 'vinil';
-    const categoryId = isLVT ? '6' : isVinil ? '2' : '7';
+    const isESD = categorySlug === 'elektroprovodni';
+    const categoryId = isLVT ? '6' : isVinil ? '2' : isESD ? '8' : '7';
     const brandId = source.brandId || color.brandId || '6';
     const collectionName = (color.collection_name || color.collection || '').toString() || slug;
     const primaryImageUrl = isLVT
