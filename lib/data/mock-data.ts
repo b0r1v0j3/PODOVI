@@ -1757,7 +1757,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Elektroprovodni homogeni vinil pod sa ugljenim žilama (R < 10⁶ Ω)',
     description: 'Gerflor Mipolam EL5 - elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima. Otpornost < 10⁶ Ω. Idealan za server sobe, laboratorije i elektronske pogone.',
-    images: [{ id: 'esd-1-img', url: '/images/esd/mipolam-el5-lifestyle.jpg', alt: 'Mipolam EL5', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-1-img', url: '/images/esd/mipolam-el5-alt.jpg', alt: 'Mipolam EL5', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam EL5' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
@@ -1779,7 +1779,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Interlocking ESD ploče za brzu renovaciju industrijskih prostora',
     description: 'Gerflor GTI EL5 Connect - teške interlocking ploče sa ESD zaštitom. Bez lepka, brza ugradnja. Idealne za industrijske hale i ESD-osetljive prostore.',
-    images: [{ id: 'esd-2-img', url: '/images/esd/gti-el5-connect-lifestyle.jpg', alt: 'GTI EL5 Connect', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-2-img', url: '/images/esd/gti-el5-connect-alt.jpg', alt: 'GTI EL5 Connect', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'GTI EL5 Connect' },
       { key: 'thickness', label: 'Debljina', value: '6.00 mm' },
@@ -1801,7 +1801,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Interlocking ESD ploče za čiste sobe (ISO 4)',
     description: 'Gerflor GTI EL5 Cleantech - interlocking ploče sertifikovane za čiste sobe (ISO 4) sa ESD zaštitom. Bez lepka, brza ugradnja.',
-    images: [{ id: 'esd-3-img', url: '/images/esd/gti-el5-cleantech-lifestyle.jpg', alt: 'GTI EL5 Cleantech', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-3-img', url: '/images/esd/gti-el5-cleantech-alt.jpg', alt: 'GTI EL5 Cleantech', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'GTI EL5 Cleantech' },
       { key: 'thickness', label: 'Debljina', value: '6.00 mm' },
@@ -1823,7 +1823,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'ESD pod za čiste sobe sa izuzetnom hemijskom otpornošću',
     description: 'Gerflor Mipolam Biocontrol EL5 - visokoperformantni homogeni pod za čiste sobe sa ESD kontrolom i odličnom hemijskom otpornošću.',
-    images: [{ id: 'esd-4-img', url: '/images/esd/mipolam-biocontrol-el5-lifestyle.jpg', alt: 'Mipolam Biocontrol EL5', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-4-img', url: '/images/esd/mipolam-biocontrol-el5-alt.jpg', alt: 'Mipolam Biocontrol EL5', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Biocontrol EL5' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },
