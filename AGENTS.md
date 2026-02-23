@@ -136,6 +136,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**Inline PDF Viewer i Univerzalni Playwright Scraper (23.02.2026)**
+- Ažurirana `ProductDocuments.tsx` komponenta za prikazivanje liste dokumenata. Klikom na tehnički list sada se renderuje aktivni `<object>` embed direktno unutar istog prozora umesto `target="_blank"`. Dodati "Nazad" i fallback "Preuzmi direktno" tasteri na viewer-u.
+- Zamijenjeni prastari crawler scrapers novim `tools/download_gerflor_highres_zip.js`. Skripta prima CLI parametre (`--type`, `--collection`), preskače lažne DOM node-ove iz različitih Gerflor UI tema tako što evaluira Vue `window.__NUXT__` payload na samoj stranici i hvata specifičan download CDN link. Omogućeno robusno preuzimanje punih slika bez CDN blokada.
+- Ubačen *graceful fallback* u scraper-u da samo prijavi grešku a ne sruši proces kad kolekcija baca 404 (npr. kod nesinhronizovanih promena APIja - *Taralay Libertex*).
+
 **Fix ESD Product Images i URL Routingovanje (23.02.2026)**
 - Prepravljen Playwright scraper (`tools/download_esd_highres.js`) da prihvata kolačiće, klikće swatch i skida slike direktno iz skinute ZIP arhive umesto starog CDN endpoint-a. Skinute sve 42 high-res ESD slike lokalno.
 - Rešen 404 Not Found issue za ESD boje - Next.js `resolveProductBySlug` nije rešavao `esd_colors.json`. Ažuriran `resolve-product.ts` i `color-helpers.ts` da dinamički mapiraju URL (npr. `mipolam-el5?color=mipolam-el5-0354-blue`) na ispravan `Category 8`.
@@ -298,6 +303,7 @@ PODOVI/
 7. **Mock-data proizvodi MORAJU biti merge-ovani u SupabaseProductRepository**: Sajt koristi Supabase kao primarni izvor podataka. Proizvodi u `mock-data.ts` se NEĆE prikazati na sajtu osim ako nisu EKSPLICITNO merge-ovani u `SupabaseProductRepository.findAll()`. Pogledaj BLOQ (cat 4) blok za primer. Bez ovog koraka proizvodi postoje u kodu ali su nevidljivi na sajtu!
 8. **Kad brišeš brend** — moraš očistiti SVE slojeve: JSON fajlove, slike, resolver grane, prepare-colors grane, product-repository merge blokove, mock-data, kategorije u Supabase, AGENTS.md i workflow dokumentaciju. Napravi checklist pre nego što počneš.
 9. **Async fetch u `useEffect` ne sme da prepisuje stanje koje `handleColorSelect` postavlja.** Ako `ColorGrid.onColorSelect` već daje tačnu sliku, nemoj praviti još jedan fetch koji menja istu state varijablu — to pravi race condition i flicker. Uvek koristi callback podatke kad su dovoljni.
+10. **Nemoj se oslanjati na DOM selektore kod Gerflor Scrapera**. Puno njihovih kolekcija koristi razičite framework verzije i strukturu. Ako trebaš pouzdano naći neku vezu (stranicu/skuplet/fajl), izvuci `window.__NUXT__` sa `page.evaluate` unutar Playwright-a — to je njihov standardni backend payload i daleko je otporniji na pucanje nego `page.click('css-selector')`.
 10. **`mergeSelectedColor()` menja `product.name` u ime boje.** Nikad ne koristi `productName` kao izvor za ime kolekcije posle merge-a. Uvek sačuvaj originalni naziv PRE poziva `mergeSelectedColor()` i prosledi ga kao `originalProductName`.
 11. **Brend se ne ponavlja u naslovu/podnaslovu.** Brend (Gerflor, Tarkett, BLOQ) je već prikazan iznad kao link. U h1 i subtitle koristi `collectionName` koji stripuje brend prefiks. Logika: `name.startsWith(brand.name + ' ')` → strip.
 12. **Formatiranje naziva boja:** Uvek propusti sirova imena boja iz JSON-a kroz `formatProductName` utility iz `productDataLoader.ts`. Ovo osigurava konzistentan Title Case i uklanja šifre iz naziva.
