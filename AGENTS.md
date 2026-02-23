@@ -334,7 +334,7 @@ PODOVI/
 - [x] **PDF viewer** — pregled PDF dokumenata je sada inline pomoću `<object>` embeda.
 - [x] **Breadcrumbs poboljšanje** — dodati međukorak u breadcrumbs: Kategorija > Kolekcija > Proizvod (posebno za BLOQ ploče)
 - [ ] **Unified data source** — proizvodi dolaze iz 4 izvora (JSON, TS fajlovi, Supabase, hardcoded). Razmotriti migraciju svega u Supabase za lakše održavanje
-- [ ] **Automatski health check** — skripta koja proverava da svaki proizvod u bazi ima sliku, opis i bar 3 specifikacije
+- [x] **Automatski health check** — skripta koja proverava da svaki proizvod u bazi ima sliku, opis i bar 3 specifikacije (`npm run check:health`)
 - [x] **PDF dokumenti za Gerflor** — dodati za svih 62 kolekcija u `documents_index.json`: vinil (25 kol, ~85 PDF-ova), LVT (19), Linoleum (15), Carpet (3). `ProductDocuments.tsx` ažuriran za cat 2.
 
 ### Prioritet: Nizak

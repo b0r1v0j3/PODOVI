@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "check:images": "node tools/check-images.js",
+    "check:health": "tsx scripts/product-health-check.ts",
     "validate:images": "node scripts/validate-images.js",
     "normalize:colors": "node tools/normalize-json.js",
     "suggest:unknowns": "node tools/suggest-fixes-unknowns.js"
