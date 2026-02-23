@@ -275,7 +275,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
       return;
     }
 
-    const categoryParam = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : 'lvt';
+    const categoryParam = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : categorySlug === 'elektroprovodni' ? 'elektroprovodni' : 'lvt';
     const jsonPath = `/api/colors?category=${categoryParam}`;
 
     fetch(jsonPath)
@@ -286,7 +286,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
         return res.json();
       })
       .then(data => {
-        if ((categorySlug === 'vinil' || categorySlug === 'linoleum') && data.collections) {
+        if ((categorySlug === 'vinil' || categorySlug === 'linoleum' || categorySlug === 'elektroprovodni') && data.collections) {
           // For Vinil/Linoleum, count colors from all collections
           const total = data.collections.reduce((sum: number, collection: any) =>
             sum + (collection.colors?.length || 0), 0);
@@ -327,7 +327,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
     // This ensures colors are ready when user clicks the "Boje" tab
     if (useJsonColors && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
-      const categoryParam2 = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : 'lvt';
+      const categoryParam2 = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : categorySlug === 'elektroprovodni' ? 'elektroprovodni' : 'lvt';
       const jsonPath = `/api/colors?category=${categoryParam2}`;
 
       console.log(`CategoryTabs: Fetching colors from ${jsonPath}...`);
@@ -344,7 +344,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
 
           // Handle different JSON structures: LVT has data.colors, Linoleum/Vinil have data.collections[].colors
           let colorsArray: any[] = [];
-          if ((categorySlug === 'vinil' || categorySlug === 'linoleum') && data.collections && Array.isArray(data.collections)) {
+          if ((categorySlug === 'vinil' || categorySlug === 'linoleum' || categorySlug === 'elektroprovodni') && data.collections && Array.isArray(data.collections)) {
             // Flatten colors from all collections
             colorsArray = data.collections.flatMap((collection: any) =>
               (collection.colors || []).map((color: any) => ({
@@ -370,7 +370,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
             const brandId = color.brandId || (Object.values(brandsRecord).find(b => b.slug === 'gerflor')?.id || '6');
 
             // Find category ID
-            const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : '6';
+            const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : categorySlug === 'elektroprovodni' ? '8' : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
             // For Linoleum: use image, texture_url, or image_url (gerflor_linoleum uses 'image' field)
@@ -381,8 +381,8 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
                 ? (color.image || color.image_url || '')
                 : (color.image || color.texture_url || color.image_url || '');
 
-            // Generate slug for Vinil colors (format: collection-slug-color-code-color-name)
-            const colorSlug = categorySlug === 'vinil'
+            // Generate slug for Vinil/ESD colors (format: collection-slug-color-code-color-name)
+            const colorSlug = (categorySlug === 'vinil' || categorySlug === 'elektroprovodni')
               ? `${color.collection_slug || color.collection}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`
               : color.slug;
 

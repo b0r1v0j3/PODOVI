@@ -7,6 +7,7 @@ import {
     mergeSpecs,
     linoleumColors,
     vinylCollections,
+    esdCollections,
 } from './color-helpers';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import {
@@ -207,6 +208,26 @@ export async function prepareCustomColors(
                 image_url: c.image_url || c.texture_url || '',
                 texture_url: c.texture_url || c.image_url || '',
                 image_count: c.image_count || 1,
+                characteristics: c.characteristics || {},
+            }));
+        }
+    }
+
+    // ESD (cat 8): customColors from esd_colors.json
+    if (product.categoryId === '8' && product.slug.startsWith('gerflor-')) {
+        const collectionSlug = product.slug.substring('gerflor-'.length);
+        const esdCollection = esdCollections.find((col: any) => col.slug === collectionSlug);
+        if (esdCollection && esdCollection.colors && esdCollection.colors.length > 0) {
+            return esdCollection.colors.map((c: any) => ({
+                collection: esdCollection.slug,
+                collection_name: esdCollection.name,
+                code: c.code || '',
+                name: c.name,
+                full_name: `${c.code || ''} ${c.name}`.trim(),
+                slug: `${esdCollection.slug}-${c.code}-${c.name.toLowerCase().replace(/\s+/g, '-')}`,
+                image_url: c.image || '',
+                texture_url: c.image || '',
+                image_count: c.image ? 1 : 0,
                 characteristics: c.characteristics || {},
             }));
         }

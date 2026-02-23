@@ -32,7 +32,7 @@ export interface ColorFromJSON {
 }
 
 export type ColorSource = {
-    categorySlug: 'lvt' | 'linoleum' | 'vinil';
+    categorySlug: 'lvt' | 'linoleum' | 'vinil' | 'elektroprovodni';
     color: ColorFromJSON;
     brandId?: string;
 };

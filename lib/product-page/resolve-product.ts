@@ -6,6 +6,7 @@ import {
     lvtColors,
     linoleumColors,
     vinylCollections,
+    esdCollections,
     loadColorFromJson,
     colorToProduct,
     collectionFromColor,
@@ -68,6 +69,36 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                     label,
                     value: value as string,
                 }));
+            }
+        }
+        // Enrich ESD product with richer JSON data if available
+        const esdCollectionForEnrich = esdCollections.find((col: any) => col.slug === slugWithoutPrefix || col.slug === slug);
+        if (esdCollectionForEnrich && esdCollectionForEnrich.colors && esdCollectionForEnrich.colors.length > 0) {
+            const firstEsdColor = esdCollectionForEnrich.colors[0];
+            const jsonDesc = firstEsdColor.description || '';
+            const jsonChars = firstEsdColor.characteristics || {};
+
+            // Use JSON description if it's richer than current description
+            if (jsonDesc && jsonDesc.length > (product.description || '').length) {
+                product.description = jsonDesc;
+            }
+            // Add specs from JSON characteristics
+            if ((!product.specs || product.specs.length === 0) && Object.keys(jsonChars).length > 0) {
+                product.specs = Object.entries(jsonChars).map(([label, value]) => ({
+                    key: label.toLowerCase().replace(/\s+/g, '_'),
+                    label,
+                    value: value as string,
+                }));
+            }
+            // Use first color image if product has no image
+            if ((!product.images || product.images.length === 0) && firstEsdColor.image) {
+                product.images = [{
+                    id: `esd-img-${slugWithoutPrefix}`,
+                    url: firstEsdColor.image,
+                    alt: product.name,
+                    isPrimary: true,
+                    order: 0,
+                }];
             }
         }
         return product;

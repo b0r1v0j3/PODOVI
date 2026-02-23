@@ -194,6 +194,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '4': 'tekstilne-ploce',
       '2': 'vinil',
       '5': 'deking',
+      '8': 'elektroprovodni',
     };
 
     // ── Linoleum redirect: /proizvodi/gerflor-xxx → /proizvodi/xxx ──

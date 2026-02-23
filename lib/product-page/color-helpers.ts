@@ -2,10 +2,12 @@ import type { ColorFromJSON, ColorSource, ProductImageType, ProductSpec, Product
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
+import esdColorsData from '@/public/data/esd_colors.json';
 
 export const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
 export const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
 export const vinylCollections = (vinylColorsData as { collections?: any[] }).collections || [];
+export const esdCollections = (esdColorsData as { collections?: any[] }).collections || [];
 
 // Helper: strip collection sub-type prefixes from color names
 // e.g. "LOOSELAY 0374 PARKER STATION" → "PARKER STATION"
@@ -170,6 +172,31 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
                     collection_name: collection.name,
                     collection_slug: collection.slug,
                     full_name: `${vinylColor.code} ${vinylColor.name}`,
+                    slug: slug,
+                } as ColorFromJSON
+            };
+        }
+    }
+
+    // Try to find in ESD collections
+    for (const collection of esdCollections) {
+        const esdColor = collection.colors?.find((color: any) => {
+            const expectedSlug = `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
+            const colorOnlySlug = `${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
+            return expectedSlug === slug ||
+                colorOnlySlug === slug ||
+                slug.endsWith(`-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`) ||
+                color.code === slug.split('-').pop();
+        });
+        if (esdColor) {
+            return {
+                categorySlug: 'elektroprovodni',
+                color: {
+                    ...esdColor,
+                    collection: collection.slug,
+                    collection_name: collection.name,
+                    collection_slug: collection.slug,
+                    full_name: `${esdColor.code} ${esdColor.name}`,
                     slug: slug,
                 } as ColorFromJSON
             };
