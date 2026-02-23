@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase/client';
 
 /**
- * GET /api/colors?category=lvt|linoleum|vinil|tekstilne-ploce
+ * GET /api/colors?category=lvt|linoleum|vinil|tekstilne-ploce|elektroprovodni
  * 
  * Returns colors in the same format as the original JSON files:
  * - For "vinil": returns { collections: [{ slug, name, colors: [...] }] } (nested format)
@@ -10,6 +10,7 @@ import { supabase } from '@/lib/supabase/client';
  */
 // Import Tarkett data directly from JSON file
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
+import esdColorsData from '@/public/data/esd_colors.json';
 
 type TarkettProduct = {
     id: string;
@@ -46,7 +47,50 @@ export async function GET(request: NextRequest) {
 
         // For "vinil" category, return nested collections format
         // This matches the vinyl_colors_complete.json structure
-        if (category === 'vinil') {
+        if (category === 'vinil' || category === 'elektroprovodni') {
+            // For elektroprovodni, load from esd_colors.json (collections format)
+            if (category === 'elektroprovodni') {
+                const esdCollections = (esdColorsData as any)?.collections || [];
+                const collectionsMap = new Map<string, { slug: string; name: string; colorCount: number; colors: any[] }>();
+                const collectionFilter = request.nextUrl.searchParams.get('collection');
+
+                for (const esdColl of esdCollections) {
+                    const collSlug = esdColl.slug || '';
+                    if (collectionFilter && collSlug !== collectionFilter) continue;
+                    if (!collectionsMap.has(collSlug)) {
+                        collectionsMap.set(collSlug, {
+                            slug: collSlug,
+                            name: esdColl.name || collSlug,
+                            colorCount: 0,
+                            colors: [],
+                        });
+                    }
+                    const coll = collectionsMap.get(collSlug)!;
+                    for (const color of (esdColl.colors || [])) {
+                        coll.colors.push({
+                            code: color.code,
+                            name: color.name,
+                            sku: null,
+                            href: color.href || null,
+                            collection_slug: collSlug,
+                            collection_name: esdColl.name,
+                            image: color.image,
+                            image_url: color.image,
+                            description: color.description || '',
+                            characteristics: color.characteristics || {},
+                        });
+                    }
+                    coll.colorCount = coll.colors.length;
+                }
+
+                return NextResponse.json({
+                    collections: Array.from(collectionsMap.values()).filter(c => c.colorCount > 0),
+                    totalColors: Array.from(collectionsMap.values()).reduce((sum, c) => sum + c.colorCount, 0),
+                    generatedAt: new Date().toISOString(),
+                });
+            }
+
+            // vinil category handler
             const collectionsMap = new Map<string, { slug: string; name: string; colorCount: number; colors: any[] }>();
 
             for (const color of colors) {

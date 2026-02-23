@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { supabase } from '@/lib/supabase/client';
@@ -66,7 +66,15 @@ export class SupabaseProductRepository implements IProductRepository {
 
     // Apply filters via SQL
     if (filters?.categoryId) {
-      query = query.eq('category_id', mapCategoryIdToUUID(filters.categoryId));
+      const mappedCategoryId = mapCategoryIdToUUID(filters.categoryId);
+      // Only apply Supabase filter if UUID mapping exists (not mock-only categories)
+      if (mappedCategoryId !== filters.categoryId || mappedCategoryId.includes('-')) {
+        query = query.eq('category_id', mappedCategoryId);
+      } else {
+        // For mock-only categories (no UUID), skip Supabase query entirely
+        // Products will be added via merge blocks below
+        query = query.eq('category_id', '00000000-0000-0000-0000-000000000000');
+      }
     }
 
     if (filters?.brandIds && filters.brandIds.length > 0) {
@@ -259,6 +267,26 @@ export class SupabaseProductRepository implements IProductRepository {
         vinylJsonCollections = vinylJsonCollections.filter(p => filters.brandIds!.includes(p.brandId));
       }
       products = [...products, ...vinylJsonCollections];
+    }
+
+    // Category 8: Elektroprovodni (ESD)
+    if (!filters?.categoryId || legacyCategoryId === '8' || filters.categoryId === '8') {
+      const existingSlugs = new Set(products.map(p => p.slug));
+      let esdProducts = getEsdCollectionProducts()
+        .filter(ep => !existingSlugs.has(ep.slug));
+
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        esdProducts = esdProducts.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        esdProducts = esdProducts.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      products = [...products, ...esdProducts];
     }
 
     // Post-fetch filters that require specs data

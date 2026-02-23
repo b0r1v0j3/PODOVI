@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 23.02.2026 (Kompletna Gerflor revizija + Creation Evo + PDF dokumenti)
+> **Poslednje ažuriranje:** 23.02.2026 (Elektroprovodni/ESD kategorija dodata — 7 kolekcija, 42 boje)
 
 ---
 
@@ -310,7 +310,7 @@ PODOVI/
 - [ ] **Bundle size optimizacija** — ProductDocuments importuje ceo bloq JSON (~700KB) na klijentu
 - [ ] **Čišćenje mrtvih kategorija** — proveriti da li su kategorije 8, 9, 10 (Ugradnja, Lajsne, Alati) obrisane iz Supabase baze. Bile su samo za EGGER — mogu izazvati prazne stranice.
 - [ ] **Dead code čišćenje** — proveriti `mock-data.ts` i ostale fajlove za nekorišćeni kod posle EGGER brisanja
-- [ ] **Nova kategorija: Antistatički / ESD podovi** — Mipolam Robust EL7, EL5, Technic EL5. Korisnik želi zasebnu kategoriju, ne u Vinil.
+- [x] **Nova kategorija: Elektroprovodni / ESD podovi** — 7 Gerflor kolekcija (Mipolam EL5/EL7, GTI EL5 Connect/Cleantech, Biocontrol EL5, Technic EL5 EU, Robust EL7) sa 42 boja. `esd_colors.json`, `getEsdCollectionProducts()`, Category 8 merge blok. (23.02.2026)
 
 ### Prioritet: Srednji
 - [ ] **PDF viewer** — pregled PDF dokumenata inline umesto download-a
@@ -323,3 +323,16 @@ PODOVI/
 - [ ] **Uporedni prikaz** — dodati BLOQ proizvode u compare funkcionalnost
 - [ ] **Welding rod matching** — automatsko povezivanje welding rod-ova sa bojama
 - [ ] **Workflow za brisanje brenda** — napraviti `.agent/workflows/remove-brand.md` sa checklist-om svih mesta za čišćenje
+
+---
+
+## Common Gotchas
+
+1. **Mock-only kategorije** — Kad dodaješ kategoriju samo u `mock-data.ts` (bez Supabase), moraš:
+   - Dodati fallback u `category-repository.ts` (`findBySlug`, `findById`, `findAll`)
+   - Koristiti dummy UUID u `product-repository.ts` za Supabase query (`'00000000-0000-0000-0000-000000000000'`) da izbegneš error
+   - Dodati merge blok u `findAll()` za novu kategoriju
+
+2. **UUID mapping** — `mapCategoryIdToUUID('X')` vraća `'X'` ako nema maping → Supabase error jer column `category_id` je UUID tip. Uvek proveri da li postoji mapping pre query-ja.
+
+3. **Variable shadowing u API route** — `for (const collection of ...)` preklapa `collection` query param. Koristiti drugi naziv za loop varijablu.

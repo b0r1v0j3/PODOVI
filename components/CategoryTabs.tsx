@@ -64,7 +64,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
   const hasLoadedColors = useRef(false);
   const lastCategorySlug = useRef<string>('');
-  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || categorySlug === 'vinil';
+  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || categorySlug === 'vinil' || categorySlug === 'elektroprovodni';
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
   const collectionsToRender = useMemo(() => {
     let filtered = collections;

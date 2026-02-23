@@ -1,0 +1,831 @@
+{
+    "collections": [
+        {
+            "name": "Mipolam EL5",
+            "slug": "mipolam-el5",
+            "url": "https://www.gerflor-cee.com/products/mipolam-el5",
+            "colorCount": 6,
+            "colors": [
+                {
+                    "code": "0350",
+                    "name": "LIGHT GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el5",
+                    "collection_slug": "mipolam-el5",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/0/f/0f81870f659c0208a2b16346184a65b0.jpg.webp?itok=TjD-gcRQ",
+                    "description": "Gerflor Mipolam EL5 — elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima.\nOtpornost < 10⁶ Ω — idealan za server sobe, laboratorije i elektronske pogone.\nUgljene žile u strukturi obezbeđuju trajnu provodnost.\n\nUgradnja:\nLepljenje na pripremljenu podlogu sa provodnim lepkom.\nObavezno varenje spojeva termovarilnom elektrodom.\nBakarno uzemljenje potrebno.\n\nPrimena:\nServer sobe i data centri.\nElektronska industrija.\nLaboratorije i čiste sobe.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — elektroprovodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0351",
+                    "name": "BLACK",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el5",
+                    "collection_slug": "mipolam-el5",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/3/6/3690ab016c9dd8ce714df5f2688a6a23.jpg.webp?itok=82vlbk0_",
+                    "description": "Gerflor Mipolam EL5 — elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima.\nOtpornost < 10⁶ Ω — idealan za server sobe, laboratorije i elektronske pogone.\nUgljene žile u strukturi obezbeđuju trajnu provodnost.\n\nUgradnja:\nLepljenje na pripremljenu podlogu sa provodnim lepkom.\nObavezno varenje spojeva termovarilnom elektrodom.\nBakarno uzemljenje potrebno.\n\nPrimena:\nServer sobe i data centri.\nElektronska industrija.\nLaboratorije i čiste sobe.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — elektroprovodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0352",
+                    "name": "GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el5",
+                    "collection_slug": "mipolam-el5",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/d/b/db4e41809442de89674f45f160665ac4.jpg.webp?itok=t0pbmqmF",
+                    "description": "Gerflor Mipolam EL5 — elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima.\nOtpornost < 10⁶ Ω — idealan za server sobe, laboratorije i elektronske pogone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — elektroprovodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0353",
+                    "name": "BEIGE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el5",
+                    "collection_slug": "mipolam-el5",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/c/7/c72ee188a46e15d9c37d4871e3fa4d91.jpg.webp?itok=iYKf0dIy",
+                    "description": "Gerflor Mipolam EL5 — elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima.\nOtpornost < 10⁶ Ω — idealan za server sobe, laboratorije i elektronske pogone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — elektroprovodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0354",
+                    "name": "BLUE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el5",
+                    "collection_slug": "mipolam-el5",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/3/4/34989921375e9f220a3b32aa65a251aa.jpg.webp?itok=dZ_pQqnD",
+                    "description": "Gerflor Mipolam EL5 — elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima.\nOtpornost < 10⁶ Ω — idealan za server sobe, laboratorije i elektronske pogone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — elektroprovodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0355",
+                    "name": "GREEN",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el5",
+                    "collection_slug": "mipolam-el5",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/b/3/b3e6ce7c3a4ba563820a92549543e216.jpg.webp?itok=MpvfPtBW",
+                    "description": "Gerflor Mipolam EL5 — elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima.\nOtpornost < 10⁶ Ω — idealan za server sobe, laboratorije i elektronske pogone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — elektroprovodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                }
+            ],
+            "description": "Gerflor Mipolam EL5 — elektroprovodni homogeni vinil pod sa trajnim ESD svojstvima.",
+            "characteristics": {
+                "Tip": "Homogeni vinil — elektroprovodni",
+                "Format": "Rolna",
+                "Ukupna debljina": "2.0 mm",
+                "Sloj habanja": "Kroz celu debljinu",
+                "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+            }
+        },
+        {
+            "name": "GTI EL5 Connect",
+            "slug": "gti-el5-connect",
+            "url": "https://www.gerflor-cee.com/products/gti-el5-connect",
+            "colorCount": 5,
+            "colors": [
+                {
+                    "code": "0350",
+                    "name": "LIGHT GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-connect",
+                    "collection_slug": "gti-el5-connect",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/0/f/0f81870f659c0208a2b16346184a65b0.jpg.webp?itok=TjD-gcRQ",
+                    "description": "Gerflor GTI EL5 Connect — interlocking ESD ploče za brzu renovaciju.\nBez lepka, brza ugradnja. Trajni ESD svojstva (< 10⁶ Ω).\n\nUgradnja:\nInterlocking sistem — bez lepka.\nDirektno na postojeći pod.\nIdealano za brze renovacije.\n\nPrimena:\nIndustrijske hale.\nESD-osetljivi prostori.\nServer sobe.",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — elektroprovodni",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                },
+                {
+                    "code": "0351",
+                    "name": "BLACK",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-connect",
+                    "collection_slug": "gti-el5-connect",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/3/6/3690ab016c9dd8ce714df5f2688a6a23.jpg.webp?itok=82vlbk0_",
+                    "description": "Gerflor GTI EL5 Connect — interlocking ESD ploče za brzu renovaciju.",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — elektroprovodni",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                },
+                {
+                    "code": "0352",
+                    "name": "GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-connect",
+                    "collection_slug": "gti-el5-connect",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/d/b/db4e41809442de89674f45f160665ac4.jpg.webp?itok=t0pbmqmF",
+                    "description": "Gerflor GTI EL5 Connect — interlocking ESD ploče za brzu renovaciju.",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — elektroprovodni",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                },
+                {
+                    "code": "0353",
+                    "name": "BEIGE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-connect",
+                    "collection_slug": "gti-el5-connect",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/c/7/c72ee188a46e15d9c37d4871e3fa4d91.jpg.webp?itok=iYKf0dIy",
+                    "description": "Gerflor GTI EL5 Connect — interlocking ESD ploče za brzu renovaciju.",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — elektroprovodni",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                },
+                {
+                    "code": "0354",
+                    "name": "BLUE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-connect",
+                    "collection_slug": "gti-el5-connect",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/3/4/34989921375e9f220a3b32aa65a251aa.jpg.webp?itok=dZ_pQqnD",
+                    "description": "Gerflor GTI EL5 Connect — interlocking ESD ploče za brzu renovaciju.",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — elektroprovodni",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                }
+            ],
+            "description": "Gerflor GTI EL5 Connect — interlocking ESD ploče za brzu renovaciju industrijskih prostora.",
+            "characteristics": {
+                "Tip": "Interlocking ploča — elektroprovodni",
+                "Format": "Interlocking ploča",
+                "Ukupna debljina": "6.0 mm",
+                "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                "Tip instalacije": "Interlocking (bez lepka)"
+            }
+        },
+        {
+            "name": "GTI EL5 Cleantech",
+            "slug": "gti-el5-cleantech",
+            "url": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
+            "colorCount": 5,
+            "colors": [
+                {
+                    "code": "0350",
+                    "name": "LIGHT GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
+                    "collection_slug": "gti-el5-cleantech",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/0/f/0f81870f659c0208a2b16346184a65b0.jpg.webp?itok=TjD-gcRQ",
+                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — čista soba",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Cleanroom": "ISO 4",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                },
+                {
+                    "code": "0351",
+                    "name": "BLACK",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
+                    "collection_slug": "gti-el5-cleantech",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/3/6/3690ab016c9dd8ce714df5f2688a6a23.jpg.webp?itok=82vlbk0_",
+                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — čista soba",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Cleanroom": "ISO 4",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                },
+                {
+                    "code": "0352",
+                    "name": "GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
+                    "collection_slug": "gti-el5-cleantech",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/d/b/db4e41809442de89674f45f160665ac4.jpg.webp?itok=t0pbmqmF",
+                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — čista soba",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Cleanroom": "ISO 4",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                },
+                {
+                    "code": "0353",
+                    "name": "BEIGE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
+                    "collection_slug": "gti-el5-cleantech",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/c/7/c72ee188a46e15d9c37d4871e3fa4d91.jpg.webp?itok=iYKf0dIy",
+                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — čista soba",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Cleanroom": "ISO 4",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                },
+                {
+                    "code": "0354",
+                    "name": "BLUE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/gti-el5-cleantech",
+                    "collection_slug": "gti-el5-cleantech",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/3/4/34989921375e9f220a3b32aa65a251aa.jpg.webp?itok=dZ_pQqnD",
+                    "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+                    "characteristics": {
+                        "Tip": "Interlocking ploča — čista soba",
+                        "Format": "Interlocking ploča",
+                        "Ukupna debljina": "6.0 mm",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Cleanroom": "ISO 4",
+                        "Tip instalacije": "Interlocking (bez lepka)"
+                    }
+                }
+            ],
+            "description": "Gerflor GTI EL5 Cleantech — interlocking ESD ploče za čiste sobe (ISO 4).",
+            "characteristics": {
+                "Tip": "Interlocking ploča — čista soba",
+                "Format": "Interlocking ploča",
+                "Ukupna debljina": "6.0 mm",
+                "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                "Cleanroom": "ISO 4",
+                "Tip instalacije": "Interlocking (bez lepka)"
+            }
+        },
+        {
+            "name": "Mipolam Biocontrol EL5",
+            "slug": "mipolam-biocontrol-el5",
+            "url": "https://www.gerflor-cee.com/products/mipolam-biocontrol-el5",
+            "colorCount": 4,
+            "colors": [
+                {
+                    "code": "2001",
+                    "name": "LIGHT FOG",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-biocontrol-el5",
+                    "collection_slug": "mipolam-biocontrol-el5",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/28631.jpg",
+                    "description": "Gerflor Mipolam Biocontrol EL5 — ESD pod za čiste sobe sa izuzetnom hemijskom otpornošću.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — biocontrol",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "2002",
+                    "name": "VOLCANO",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-biocontrol-el5",
+                    "collection_slug": "mipolam-biocontrol-el5",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/28631.jpg",
+                    "description": "Gerflor Mipolam Biocontrol EL5 — ESD pod za čiste sobe sa izuzetnom hemijskom otpornošću.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — biocontrol",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "2004",
+                    "name": "HORIZON",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-biocontrol-el5",
+                    "collection_slug": "mipolam-biocontrol-el5",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/28631.jpg",
+                    "description": "Gerflor Mipolam Biocontrol EL5 — ESD pod za čiste sobe sa izuzetnom hemijskom otpornošću.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — biocontrol",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "2006",
+                    "name": "MEDIUM FOG",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-biocontrol-el5",
+                    "collection_slug": "mipolam-biocontrol-el5",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/28631.jpg",
+                    "description": "Gerflor Mipolam Biocontrol EL5 — ESD pod za čiste sobe sa izuzetnom hemijskom otpornošću.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — biocontrol",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                }
+            ],
+            "description": "Gerflor Mipolam Biocontrol EL5 — ESD pod za čiste sobe sa izuzetnom hemijskom otpornošću.",
+            "characteristics": {
+                "Tip": "Homogeni vinil — biocontrol",
+                "Format": "Rolna",
+                "Ukupna debljina": "2.0 mm",
+                "Sloj habanja": "Kroz celu debljinu",
+                "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+            }
+        },
+        {
+            "name": "Mipolam Technic EL5 EU",
+            "slug": "mipolam-technic-el5-eu",
+            "url": "https://www.gerflor-cee.com/products/mipolam-technic-el5-eu",
+            "colorCount": 6,
+            "colors": [
+                {
+                    "code": "0635",
+                    "name": "WHITE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-technic-el5-eu",
+                    "collection_slug": "mipolam-technic-el5-eu",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/6/d/6dd2d94d6c41a1686822482139106764.jpg.webp?itok=ymH5qLFt",
+                    "description": "Gerflor Mipolam Technic EL5 EU — ESD ploče za elektronsku montažu i ATEX zone.\nZadovoljava IEC 61340-5-1 standarde.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — ploča",
+                        "Format": "Ploča 608×608 mm",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0636",
+                    "name": "GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-technic-el5-eu",
+                    "collection_slug": "mipolam-technic-el5-eu",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/2/7/27a78713992900c8ffeb45f1a66e1994.jpg.webp?itok=oC4hfOEg",
+                    "description": "Gerflor Mipolam Technic EL5 EU — ESD ploče za elektronsku montažu i ATEX zone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — ploča",
+                        "Format": "Ploča 608×608 mm",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0637",
+                    "name": "LIGHT BLUE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-technic-el5-eu",
+                    "collection_slug": "mipolam-technic-el5-eu",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/8/f/8f88017034ee2f5733901406174726f1.jpg.webp?itok=CTGyXYwg",
+                    "description": "Gerflor Mipolam Technic EL5 EU — ESD ploče za elektronsku montažu i ATEX zone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — ploča",
+                        "Format": "Ploča 608×608 mm",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0638",
+                    "name": "BLUE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-technic-el5-eu",
+                    "collection_slug": "mipolam-technic-el5-eu",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/d/4/d40b9f3b048afeda1b4c7e37ac1e730e.jpg.webp?itok=NKgws1pW",
+                    "description": "Gerflor Mipolam Technic EL5 EU — ESD ploče za elektronsku montažu i ATEX zone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — ploča",
+                        "Format": "Ploča 608×608 mm",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0639",
+                    "name": "GREEN",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-technic-el5-eu",
+                    "collection_slug": "mipolam-technic-el5-eu",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/c/e/ce90c6788a8ee82f38343081b2535fb4.jpg.webp?itok=02LMR-jb",
+                    "description": "Gerflor Mipolam Technic EL5 EU — ESD ploče za elektronsku montažu i ATEX zone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — ploča",
+                        "Format": "Ploča 608×608 mm",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0640",
+                    "name": "BEIGE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-technic-el5-eu",
+                    "collection_slug": "mipolam-technic-el5-eu",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/6/6/66509ff2ed524dd6b9e1bd1c758e6c4b.jpg.webp?itok=RmvR9Ope",
+                    "description": "Gerflor Mipolam Technic EL5 EU — ESD ploče za elektronsku montažu i ATEX zone.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — ploča",
+                        "Format": "Ploča 608×608 mm",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                }
+            ],
+            "description": "Gerflor Mipolam Technic EL5 EU — ESD ploče za elektronsku montažu i ATEX zone.",
+            "characteristics": {
+                "Tip": "Homogeni vinil — ploča",
+                "Format": "Ploča 608×608 mm",
+                "Ukupna debljina": "2.0 mm",
+                "Sloj habanja": "Kroz celu debljinu",
+                "ESD klasa": "Elektroprovodni (< 10⁶ Ω)",
+                "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+            }
+        },
+        {
+            "name": "Mipolam Robust EL7",
+            "slug": "mipolam-robust-el7",
+            "url": "https://www.gerflor-cee.com/products/mipolam-robust-el7",
+            "colorCount": 6,
+            "colors": [
+                {
+                    "code": "0002",
+                    "name": "PLATINUM",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-robust-el7",
+                    "collection_slug": "mipolam-robust-el7",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/3/7/377941ccd0471d9fd7e1ed994e1a365a.jpg.webp?itok=wTYk5bGR",
+                    "description": "Gerflor Mipolam Robust EL7 — provodni homogeni vinil sa nedirekcionalnim dizajnom.\nOtpornost < 10⁸ Ω — opšta ESD zaštita.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0003",
+                    "name": "IVORY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-robust-el7",
+                    "collection_slug": "mipolam-robust-el7",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/d/a/da8a81abdf5d5ee9d444fb8ef670ab3f.jpg.webp?itok=cSZyF0Q2",
+                    "description": "Gerflor Mipolam Robust EL7 — provodni homogeni vinil.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0005",
+                    "name": "STEEL",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-robust-el7",
+                    "collection_slug": "mipolam-robust-el7",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/4/4/449cdbefcc81754eeb07ecbe17122a75.jpg.webp?itok=pEpPaJLJ",
+                    "description": "Gerflor Mipolam Robust EL7 — provodni homogeni vinil.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0013",
+                    "name": "PEWTER",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-robust-el7",
+                    "collection_slug": "mipolam-robust-el7",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/6/4/64293e7202db1b0714f6807365d355fb.jpg.webp?itok=JQmVt_zU",
+                    "description": "Gerflor Mipolam Robust EL7 — provodni homogeni vinil.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0112",
+                    "name": "STORM",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-robust-el7",
+                    "collection_slug": "mipolam-robust-el7",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/f/a/fa13d70ce535f978557ea43ea801e84a.jpg.webp?itok=4VGJkV1B",
+                    "description": "Gerflor Mipolam Robust EL7 — provodni homogeni vinil.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "0306",
+                    "name": "GREEN",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-robust-el7",
+                    "collection_slug": "mipolam-robust-el7",
+                    "image": "https://www.gerflor-cee.com/sites/web_peco/files/styles/product_teaser/public/externals/d/3/d3f122dba3c46e64d3f67091c4d348cb.jpg.webp?itok=scAkp3rt",
+                    "description": "Gerflor Mipolam Robust EL7 — provodni homogeni vinil.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                }
+            ],
+            "description": "Gerflor Mipolam Robust EL7 — provodni homogeni vinil sa nedirekcionalnim dizajnom.",
+            "characteristics": {
+                "Tip": "Homogeni vinil — provodni",
+                "Format": "Rolna",
+                "Ukupna debljina": "2.0 mm",
+                "Sloj habanja": "Kroz celu debljinu",
+                "ESD klasa": "Provodni (< 10⁸ Ω)",
+                "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+            }
+        },
+        {
+            "name": "Mipolam EL7",
+            "slug": "mipolam-el7",
+            "url": "https://www.gerflor-cee.com/products/mipolam-el7",
+            "colorCount": 10,
+            "colors": [
+                {
+                    "code": "4101",
+                    "name": "QUARTZ",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.\nOtpornost < 10⁸ Ω.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4110",
+                    "name": "VIOLET GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4111",
+                    "name": "RAFFIA",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4116",
+                    "name": "SAPPHIRE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4120",
+                    "name": "SILVER GREY",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4124",
+                    "name": "SMOKED OPAL",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4132",
+                    "name": "CITRINE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4144",
+                    "name": "HAVANA BROWN",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4159",
+                    "name": "GREY STORM",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                },
+                {
+                    "code": "4166",
+                    "name": "THISTLE",
+                    "sku": null,
+                    "href": "https://www.gerflor-cee.com/products/mipolam-el7",
+                    "collection_slug": "mipolam-el7",
+                    "image": "https://cdn.gerflor.com/media/1642426083/1/27516.jpg",
+                    "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil — provodni",
+                        "Format": "Rolna",
+                        "Ukupna debljina": "2.0 mm",
+                        "Sloj habanja": "Kroz celu debljinu",
+                        "ESD klasa": "Provodni (< 10⁸ Ω)",
+                        "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+                    }
+                }
+            ],
+            "description": "Gerflor Mipolam EL7 — provodni homogeni vinil za opštu ESD zaštitu.",
+            "characteristics": {
+                "Tip": "Homogeni vinil — provodni",
+                "Format": "Rolna",
+                "Ukupna debljina": "2.0 mm",
+                "Sloj habanja": "Kroz celu debljinu",
+                "ESD klasa": "Provodni (< 10⁸ Ω)",
+                "Tip instalacije": "Lepljenje + bakarno uzemljenje"
+            }
+        }
+    ]
+}

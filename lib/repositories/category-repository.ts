@@ -38,7 +38,11 @@ export class SupabaseCategoryRepository implements ICategoryRepository {
       console.error('SupabaseCategoryRepository.findAll error:', error.message);
       return [];
     }
-    return (data || []).map(toCategory);
+    const supabaseCategories = (data || []).map(toCategory);
+    // Merge mock-only categories (e.g., Elektroprovodni) not present in Supabase
+    const existingSlugs = new Set(supabaseCategories.map(c => c.slug));
+    const mockOnlyCategories = mockCategories.filter(c => !existingSlugs.has(c.slug));
+    return [...supabaseCategories, ...mockOnlyCategories].sort((a, b) => a.order - b.order);
   }
 
   async findBySlug(slug: string): Promise<Category | null> {
@@ -48,7 +52,10 @@ export class SupabaseCategoryRepository implements ICategoryRepository {
       .eq('slug', slug)
       .single();
 
-    if (error || !data) return null;
+    if (error || !data) {
+      // Fallback: check mock-data categories (e.g., Elektroprovodni)
+      return mockCategories.find(c => c.slug === slug) || null;
+    }
     return toCategory(data);
   }
 
@@ -60,7 +67,10 @@ export class SupabaseCategoryRepository implements ICategoryRepository {
       .eq('id', uuid)
       .single();
 
-    if (error || !data) return null;
+    if (error || !data) {
+      // Fallback: check mock-data categories
+      return mockCategories.find(c => c.id === id) || null;
+    }
     return toCategory(data);
   }
 }

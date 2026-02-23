@@ -16,6 +16,7 @@ let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
 let bloqCarpetCache: Product[] | null = null;
 let dekingProductsCache: Product[] | null = null;
+let esdCollectionCache: Product[] | null = null;
 
 // Display names for Tarkett collections
 const TARKETT_COLLECTION_NAMES: Record<string, string> = {
@@ -754,4 +755,54 @@ export function getAllDekingProducts(): Product[] {
 
     dekingProductsCache = dekingList;
     return dekingProductsCache;
+}
+
+/**
+ * Generate collection-level Product entries from esd_colors.json.
+ * These are used to show ESD collections in the Elektroprovodni category listing.
+ */
+export function getEsdCollectionProducts(): Product[] {
+    if (esdCollectionCache) return esdCollectionCache;
+
+    const esdData = require('@/public/data/esd_colors.json');
+    const collections = esdData?.collections || [];
+
+    const result = collections.map((col: any) => {
+        const firstColor = col.colors?.[0];
+        const slug = `gerflor-${col.slug}`;
+        const characteristics = firstColor?.characteristics || {};
+        const specs: Product['specs'] = Object.entries(characteristics).map(([label, value]) => ({
+            key: label.toLowerCase().replace(/\s+/g, '_'),
+            label,
+            value: value as string,
+        }));
+        // Add collection spec
+        specs.unshift({ key: 'collection', label: 'Kolekcija', value: col.name });
+
+        return {
+            id: `esd-coll-${col.slug}`,
+            name: col.name,
+            slug,
+            sku: `ESD-${col.slug.toUpperCase()}`,
+            categoryId: '8',
+            brandId: '6',
+            shortDescription: `${col.name} — ${col.colorCount} boja`,
+            description: firstColor?.description || '',
+            images: firstColor?.image ? [{
+                id: `esd-coll-${col.slug}-img`,
+                url: firstColor.image,
+                alt: col.name,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    esdCollectionCache = result;
+    return result;
 }
