@@ -206,6 +206,39 @@ export class SupabaseProductRepository implements IProductRepository {
         lvtCollections = lvtCollections.filter(p => filters.brandIds!.includes(p.brandId));
       }
       products = [...products, ...lvtCollections, ...lvtJsonProducts];
+
+      // Add Creation Evo collection if not already present from Supabase
+      const existingLvtSlugs = new Set(products.map(p => p.slug));
+      if (!existingLvtSlugs.has('gerflor-creation-evo')) {
+        const lvtData = require('@/public/data/lvt_colors_complete.json');
+        const evoColors = (lvtData.colors || []).filter((c: any) => c.collection === 'creation-evo');
+        if (evoColors.length > 0) {
+          const firstEvo = evoColors[0];
+          const evoProduct = {
+            id: 'lvt-coll-creation-evo',
+            name: 'Creation Evo',
+            slug: 'gerflor-creation-evo',
+            sku: 'GER-CREATION-EVO',
+            categoryId: '6',
+            brandId: '6',
+            shortDescription: `Creation Evo — ${evoColors.length} boja`,
+            description: firstEvo.description || 'PVC-free LVT kolekcija sa ProtecShield™ zaštitom',
+            images: firstEvo.image_url ? [{
+              id: 'lvt-coll-creation-evo-img',
+              url: firstEvo.image_url,
+              alt: 'Creation Evo',
+              isPrimary: true,
+              order: 0,
+            }] : [],
+            specs: [],
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+          } as Product;
+          products.push(evoProduct);
+        }
+      }
     }
 
     // Category 2: Vinil (Merge JSON-only vinyl collections not already in Supabase)

@@ -652,7 +652,7 @@ export function getVinylCollectionProducts(): Product[] {
             id: `vinyl-coll-${col.slug}`,
             name: col.name,
             slug,
-            sku: `VINYL-${col.slug.toUpperCase()}`,
+            sku: `VINIL-${col.slug.toUpperCase()}`,
             categoryId: '2',
             brandId: '6',
             shortDescription: `${col.name} — ${col.colorCount} boja`,
