@@ -135,10 +135,29 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       pageTitle = `${cleanName} | podovi.online`;
     }
 
+    // ── Try to get a clean text description from product.description ──
+    let cleanCollectionDesc = '';
+    if (product.description) {
+      cleanCollectionDesc = product.description.replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim();
+      // Keep first sentence or ~150 chars
+      const firstSentenceMatch = cleanCollectionDesc.match(/^([^.!?]*[.!?])/);
+      if (firstSentenceMatch && firstSentenceMatch[1].length > 20) {
+        cleanCollectionDesc = firstSentenceMatch[1];
+      } else if (cleanCollectionDesc.length > 150) {
+        cleanCollectionDesc = cleanCollectionDesc.substring(0, 147) + '...';
+      }
+    }
+
     // ── Meta description: proper sentence ──
     const shortDesc = product.shortDescription || '';
     let metaDescription: string;
-    if (shortDesc) {
+
+    if (cleanCollectionDesc && cleanCollectionDesc.length > 20 && cleanCollectionDesc !== shortDesc) {
+      // Merge shortDesc and collection desc if they differ
+      metaDescription = `${shortDesc ? shortDesc + '. ' : ''}${cleanCollectionDesc}`;
+      // Append brand
+      if (brandText) metaDescription += ` | ${brandText}`;
+    } else if (shortDesc) {
       metaDescription = `${shortDesc}${brandText ? ` | ${brandText}` : ''}${categoryText ? ` | ${categoryText}` : ''}`;
     } else {
       const parts = [cleanName, collectionName, brandText, categoryText].filter(Boolean);
@@ -434,7 +453,15 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 items={[
                   { label: 'Kategorije', href: '/kategorije' },
                   ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
-                  { label: product.specs?.find(s => s.key === 'collection')?.value || product.name }
+                  ...(selectedColorSlug ? [
+                    {
+                      label: product.specs?.find(s => s.key === 'collection')?.value || (product as any).collectionSlug || params.slug,
+                      href: `/proizvodi/${params.slug}`
+                    },
+                    { label: displayName }
+                  ] : [
+                    { label: product.specs?.find(s => s.key === 'collection')?.value || displayName }
+                  ])
                 ]}
               />
             </div>

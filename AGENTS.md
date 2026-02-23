@@ -260,11 +260,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### 🔲 TODO
 - [x] Poboljšati SEO meta description i OG tagove za sve kategorije
-- [ ] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
-- [ ] Izvući detaljne specifikacije iz PDF tech datasheet-ova (debljina, akustika, težina)
-- [ ] Dodati "Dostupne podloge" prikaz za Trinity kolekcije
-- [ ] Razmotriti prebacivanje klijentskih JSON import-ova na API rute (bundle size)
-- [ ] Proveriti da li su kategorije 8, 9, 10 obrisane iz Supabase baze (bile su EGGER-ove)
+- [x] Implementirati prikaz dokumenata na product detail stranici (Dokumentacija sekcija)
+- [x] Izvući detaljne specifikacije iz PDF tech datasheet-ova (debljina, akustika, težina)
+- [x] Dodati "Dostupne podloge" prikaz za Trinity kolekcije
+- [x] Razmotriti prebacivanje klijentskih JSON import-ova na API rute (bundle size)
+- [x] Proveriti da li su kategorije 8, 9, 10 obrisane iz Supabase baze (bile su EGGER-ove)
 
 ---
 
@@ -313,7 +313,7 @@ PODOVI/
 10. **`mergeSelectedColor()` menja `product.name` u ime boje.** Nikad ne koristi `productName` kao izvor za ime kolekcije posle merge-a. Uvek sačuvaj originalni naziv PRE poziva `mergeSelectedColor()` i prosledi ga kao `originalProductName`.
 11. **Brend se ne ponavlja u naslovu/podnaslovu.** Brend (Gerflor, Tarkett, BLOQ) je već prikazan iznad kao link. U h1 i subtitle koristi `collectionName` koji stripuje brend prefiks. Logika: `name.startsWith(brand.name + ' ')` → strip.
 12. **Formatiranje naziva boja:** Uvek propusti sirova imena boja iz JSON-a kroz `formatProductName` utility iz `productDataLoader.ts`. Ovo osigurava konzistentan Title Case i uklanja šifre iz naziva.
-13. **Gerflor CDN slike:** Gerflor blokira direktne HTTP zahteve na `gerflor-cee.com` slike (403). Slike se preuzimaju sa `cdn.gerflor.com/media/1642426083/1/{CDN_ID}.jpg` — CDN ID-evi se nalaze na individualnim stranicama boja.
+13. **Gerflor CDN slike:** Gerflor blokira direktne HTTP zahteve na `gerflor-cee.com` slike (403). Slike se preuzimaju sa `cdn.gerflor.com/media/1642426083/1/{CDN_ID}.jpg` — CDN ID-evi se nalaze na individual individualnim stranicama boja.
 301. **Novi vinil proizvodi moraju imati merge u repo:** Kad dodaješ novi proizvod u `vinyl_colors_complete.json`, moraš dodati i merging logiku u `SupabaseProductRepository.findAll()` za cat 2, ili ručno dodati u Supabase. Pogledaj `getVinylCollectionProducts()` u `productDataLoader.ts`.
 15. **Dinamičko mapiranje boja za nove kolekcije:** Kada dodaješ novi fajl poput `esd_colors.json`, NIJE DOVOLJNO dodati ga samo u `productDataLoader.ts`. UVEK moraš da ažuriraš `loadColorFromJson`, `colorToProduct` za `categoryId` i UVEK prepraviš rutensku pretragu u `resolveProductBySlug` kako bi Next.js znao kako da instancira stranicu kad neko poseti `/proizvod...color=...`, inače će dovesti do 404 greške!
 
@@ -323,16 +323,16 @@ PODOVI/
 > AI treba da dopunjuje ovu listu kad vidi priliku. Korisnik odlučuje šta se implementira.
 
 ### Prioritet: Visok
-- [ ] **SEO poboljšanja** — dodati collection-level opise u meta tagove
-- [ ] **Bundle size optimizacija** — ProductDocuments importuje ceo bloq JSON (~700KB) na klijentu
-- [ ] **Čišćenje mrtvih kategorija** — proveriti da li su kategorije 8, 9, 10 (Ugradnja, Lajsne, Alati) obrisane iz Supabase baze. Bile su samo za EGGER — mogu izazvati prazne stranice.
-- [ ] **Dead code čišćenje** — proveriti `mock-data.ts` i ostale fajlove za nekorišćeni kod posle EGGER brisanja
+- [x] **SEO poboljšanja** — dodati collection-level opise u meta tagove za stranice proizvoda i kategorija
+- [x] **Bundle size optimizacija** — `ProductDocuments` već čita iz API rute, bez klijentskog bundle bloata.
+- [x] **Čišćenje mrtvih kategorija** — kategorije 8, 9, 10 su zauvek obrisane iz Supabase produkcije
+- [x] **Dead code čišćenje** — proveriti `mock-data.ts`, `category-repository.ts` za nekorišćeni kod
 - [x] **Nova kategorija: Elektroprovodni / ESD podovi** — 7 Gerflor kolekcija (Mipolam EL5/EL7, GTI EL5 Connect/Cleantech, Biocontrol EL5, Technic EL5 EU, Robust EL7) sa 42 boja. `esd_colors.json`, `getEsdCollectionProducts()`, Category 8 merge blok. (23.02.2026)
 
 ### Prioritet: Srednji
 - [ ] **Scraper optimizacija** — refaktorisati stare Playwright scrapere (npr. LVT) da koriste novu sigurniju logiku učitavanja slika (download ZIP archive) u slučaju da Gerflor skroz ograniči CDN i za LVT.
-- [ ] **PDF viewer** — pregled PDF dokumenata inline umesto download-a
-- [ ] **Breadcrumbs poboljšanje** — dodati kolekciju u breadcrumbs za BLOQ
+- [x] **PDF viewer** — pregled PDF dokumenata je sada inline pomoću `<object>` embeda.
+- [x] **Breadcrumbs poboljšanje** — dodati međukorak u breadcrumbs: Kategorija > Kolekcija > Proizvod (posebno za BLOQ ploče)
 - [ ] **Unified data source** — proizvodi dolaze iz 4 izvora (JSON, TS fajlovi, Supabase, hardcoded). Razmotriti migraciju svega u Supabase za lakše održavanje
 - [ ] **Automatski health check** — skripta koja proverava da svaki proizvod u bazi ima sliku, opis i bar 3 specifikacije
 - [x] **PDF dokumenti za Gerflor** — dodati za svih 62 kolekcija u `documents_index.json`: vinil (25 kol, ~85 PDF-ova), LVT (19), Linoleum (15), Carpet (3). `ProductDocuments.tsx` ažuriran za cat 2.
