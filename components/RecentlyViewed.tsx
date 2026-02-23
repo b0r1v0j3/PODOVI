@@ -54,7 +54,7 @@ export default function RecentlyViewed() {
                                         alt={product.name}
                                         fill
                                         sizes="192px"
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                        className={`object-cover group-hover:scale-105 transition-transform duration-300${product.image.includes('/deking/') ? ' object-left' : ''}`}
                                     />
                                 </div>
                                 <h3 className="text-sm font-medium text-gray-900 truncate group-hover:text-primary-600 transition-colors">

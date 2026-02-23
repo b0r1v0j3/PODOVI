@@ -25,20 +25,48 @@ const categoryBadgeConfig: Record<string, { label: string; className: string }> 
 const SPEC_CHIP_KEYS = [
   { key: 'thickness', label: 'Debljina' },
   { key: 'overall_thickness', label: 'Debljina' },
+  { key: 'installation', label: 'Ugradnja' },
   { key: 'wear_layer', label: 'Sloj habanja' },
   { key: 'format', label: 'Format' },
   { key: 'dimension', label: 'Dimenzije' },
   { key: 'klasa_upotrebe', label: 'Klasa' },
 ];
 
-function getSpecChips(specs: Product['specs']): { label: string; value: string }[] {
+/**
+ * Normalize installation system label for LVT products
+ */
+function normalizeInstallation(name: string, slug: string, existingValue?: string): string {
+  if (existingValue) {
+    const lower = existingValue.toLowerCase();
+    if (lower.includes('clic') || lower.includes('click') || lower.includes('connect') || lower.includes('klik')) return 'Klik';
+    if (lower.includes('lepljen') || lower.includes('glue') || lower.includes('looselay') || lower.includes('loose')) return 'Lepljenje';
+  }
+  const lower = (name + ' ' + slug).toLowerCase();
+  if (lower.includes('clic') || lower.includes('click') || lower.includes('megaclic') || lower.includes('connect')) return 'Klik';
+  return 'Lepljenje';
+}
+
+function getSpecChips(specs: Product['specs'], categoryId?: string, productName?: string, productSlug?: string): { label: string; value: string }[] {
   if (!specs || specs.length === 0) return [];
+
+  // For LVT: normalize the installation spec value
+  let augmentedSpecs = [...specs];
+  if (categoryId === '6' && productName && productSlug) {
+    const installSpec = augmentedSpecs.find(s => s.key === 'installation');
+    if (installSpec) {
+      installSpec.value = normalizeInstallation(productName, productSlug, installSpec.value);
+    } else {
+      const installValue = normalizeInstallation(productName, productSlug);
+      augmentedSpecs.push({ key: 'installation', label: 'Ugradnja', value: installValue });
+    }
+  }
+
   const chips: { label: string; value: string }[] = [];
   const seen = new Set<string>();
 
   for (const config of SPEC_CHIP_KEYS) {
     if (chips.length >= 2) break; // Max 2 chips
-    const spec = specs.find(s => s.key === config.key);
+    const spec = augmentedSpecs.find(s => s.key === config.key);
     if (spec && spec.value && spec.value !== 'N/A' && !seen.has(config.label)) {
       seen.add(config.label);
       chips.push({ label: config.label, value: spec.value });
@@ -98,7 +126,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
   const badge = categoryBadgeConfig[product.categoryId];
 
   // Spec chips
-  const specChips = getSpecChips(product.specs);
+  const specChips = getSpecChips(product.specs, product.categoryId, product.name, product.slug);
 
   // Split Name Logic
   const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, rawCollectionName);

@@ -638,6 +638,12 @@ export function getVinylCollectionProducts(): Product[] {
     const vinylData = require('@/public/data/vinyl_colors_complete.json');
     const collections = vinylData?.collections || [];
 
+    // Collection lifestyle images (override color swatch images)
+    const collectionImageOverrides: Record<string, string> = {
+        'mipolam-evo': '/images/products/vinyl/mipolam-evo-collection.jpg',
+        'taralay-libertex': '/images/products/vinyl/taralay-libertex-collection.jpg',
+    };
+
     const result = collections.map((col: any) => {
         const firstColor = col.colors?.[0];
         const slug = `gerflor-${col.slug}`;
@@ -648,6 +654,8 @@ export function getVinylCollectionProducts(): Product[] {
             value: value as string,
         }));
 
+        const imageUrl = collectionImageOverrides[col.slug] || firstColor?.image || '';
+
         return {
             id: `vinyl-coll-${col.slug}`,
             name: col.name,
@@ -657,9 +665,9 @@ export function getVinylCollectionProducts(): Product[] {
             brandId: '6',
             shortDescription: `${col.name} — ${col.colorCount} boja`,
             description: firstColor?.description || '',
-            images: firstColor?.image ? [{
+            images: imageUrl ? [{
                 id: `vinyl-coll-${col.slug}-img`,
-                url: firstColor.image,
+                url: imageUrl,
                 alt: col.name,
                 isPrimary: true,
                 order: 0,

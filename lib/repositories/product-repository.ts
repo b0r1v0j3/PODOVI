@@ -223,13 +223,13 @@ export class SupabaseProductRepository implements IProductRepository {
             brandId: '6',
             shortDescription: `Creation Evo — ${evoColors.length} boja`,
             description: firstEvo.description || 'PVC-free LVT kolekcija sa ProtecShield™ zaštitom',
-            images: firstEvo.image_url ? [{
+            images: [{
               id: 'lvt-coll-creation-evo-img',
-              url: firstEvo.image_url,
+              url: '/images/products/lvt/creation-evo-collection.jpg',
               alt: 'Creation Evo',
               isPrimary: true,
               order: 0,
-            }] : [],
+            }],
             specs: [],
             inStock: true,
             featured: false,
