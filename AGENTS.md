@@ -136,6 +136,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**Fix ESD Product Images i URL Routingovanje (23.02.2026)**
+- Prepravljen Playwright scraper (`tools/download_esd_highres.js`) da prihvata kolačiće, klikće swatch i skida slike direktno iz skinute ZIP arhive umesto starog CDN endpoint-a. Skinute sve 42 high-res ESD slike lokalno.
+- Rešen 404 Not Found issue za ESD boje - Next.js `resolveProductBySlug` nije rešavao `esd_colors.json`. Ažuriran `resolve-product.ts` i `color-helpers.ts` da dinamički mapiraju URL (npr. `mipolam-el5?color=mipolam-el5-0354-blue`) na ispravan `Category 8`.
+
 **Dodavanje Deking (TimberTech) proizvoda sa TIS (22.02.2026)**
 - Scrapovano 12 proizvoda (EDGE i EDGE+ profili) sa deking sekcije `tis.rs` sajta koristeći prilagođeni js scraper.
 - Konvertovano u JSON format u `public/data/tis_deking_products.json`.
@@ -298,7 +302,8 @@ PODOVI/
 11. **Brend se ne ponavlja u naslovu/podnaslovu.** Brend (Gerflor, Tarkett, BLOQ) je već prikazan iznad kao link. U h1 i subtitle koristi `collectionName` koji stripuje brend prefiks. Logika: `name.startsWith(brand.name + ' ')` → strip.
 12. **Formatiranje naziva boja:** Uvek propusti sirova imena boja iz JSON-a kroz `formatProductName` utility iz `productDataLoader.ts`. Ovo osigurava konzistentan Title Case i uklanja šifre iz naziva.
 13. **Gerflor CDN slike:** Gerflor blokira direktne HTTP zahteve na `gerflor-cee.com` slike (403). Slike se preuzimaju sa `cdn.gerflor.com/media/1642426083/1/{CDN_ID}.jpg` — CDN ID-evi se nalaze na individualnim stranicama boja.
-14. **Novi vinil proizvodi moraju imati merge u repo:** Kad dodaješ novi proizvod u `vinyl_colors_complete.json`, moraš dodati i merging logiku u `SupabaseProductRepository.findAll()` za cat 2, ili ručno dodati u Supabase. Pogledaj `getVinylCollectionProducts()` u `productDataLoader.ts`.
+301. **Novi vinil proizvodi moraju imati merge u repo:** Kad dodaješ novi proizvod u `vinyl_colors_complete.json`, moraš dodati i merging logiku u `SupabaseProductRepository.findAll()` za cat 2, ili ručno dodati u Supabase. Pogledaj `getVinylCollectionProducts()` u `productDataLoader.ts`.
+15. **Dinamičko mapiranje boja za nove kolekcije:** Kada dodaješ novi fajl poput `esd_colors.json`, NIJE DOVOLJNO dodati ga samo u `productDataLoader.ts`. UVEK moraš da ažuriraš `loadColorFromJson`, `colorToProduct` za `categoryId` i UVEK prepraviš rutensku pretragu u `resolveProductBySlug` kako bi Next.js znao kako da instancira stranicu kad neko poseti `/proizvod...color=...`, inače će dovesti do 404 greške!
 
 ---
 
@@ -313,6 +318,7 @@ PODOVI/
 - [x] **Nova kategorija: Elektroprovodni / ESD podovi** — 7 Gerflor kolekcija (Mipolam EL5/EL7, GTI EL5 Connect/Cleantech, Biocontrol EL5, Technic EL5 EU, Robust EL7) sa 42 boja. `esd_colors.json`, `getEsdCollectionProducts()`, Category 8 merge blok. (23.02.2026)
 
 ### Prioritet: Srednji
+- [ ] **Scraper optimizacija** — refaktorisati stare Playwright scrapere (npr. LVT) da koriste novu sigurniju logiku učitavanja slika (download ZIP archive) u slučaju da Gerflor skroz ograniči CDN i za LVT.
 - [ ] **PDF viewer** — pregled PDF dokumenata inline umesto download-a
 - [ ] **Breadcrumbs poboljšanje** — dodati kolekciju u breadcrumbs za BLOQ
 - [ ] **Unified data source** — proizvodi dolaze iz 4 izvora (JSON, TS fajlovi, Supabase, hardcoded). Razmotriti migraciju svega u Supabase za lakše održavanje
@@ -336,3 +342,10 @@ PODOVI/
 2. **UUID mapping** — `mapCategoryIdToUUID('X')` vraća `'X'` ako nema maping → Supabase error jer column `category_id` je UUID tip. Uvek proveri da li postoji mapping pre query-ja.
 
 3. **Variable shadowing u API route** — `for (const collection of ...)` preklapa `collection` query param. Koristiti drugi naziv za loop varijablu.
+
+4. **isColorSelectorCategory u page.tsx** — Kad dodaješ novu kategoriju, moraš da dodaš njen ID u SVE liste u `app/proizvodi/[slug]/page.tsx`:
+   - `isColorSelectorCategory` (line ~367) — bez ovoga stranica koristi bare layout
+   - `sharedCertsAndEco` (line ~370) — sertifikati i eko features
+   - `shouldRedirectCollection` (line ~250) — redirect boja na kolekciju
+   - `collectionCategoryLabel` (line ~461) — labela u color selectoru
+   - `categorySlugMap` (line ~190) — mapiranje ID → slug
