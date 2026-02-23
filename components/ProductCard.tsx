@@ -168,11 +168,11 @@ export default async function ProductCard({ product }: ProductCardProps) {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             quality={90}
-            className={`transition-transform duration-500 ${product.categoryId === '5'
-              ? 'object-cover object-left group-hover:scale-[1.03]'
+            className={`transition-transform duration-500 group-hover:scale-[1.03] ${product.categoryId === '5'
+              ? 'object-cover object-left'
               : product.slug === 'gerflor-mipolam-technic-el5-eu'
-                ? 'object-cover object-bottom scale-[1.7] origin-bottom group-hover:scale-[1.75]'
-                : 'object-cover group-hover:scale-[1.03]'
+                ? 'object-cover object-bottom'
+                : 'object-cover'
               }`}
             unoptimized={!primaryImage.url.startsWith('/')}
           />

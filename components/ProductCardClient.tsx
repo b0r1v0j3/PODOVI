@@ -232,7 +232,9 @@ export default function ProductCardClient({ product, brand, compact = false }: P
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             quality={90}
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className={`transition-transform duration-500 group-hover:scale-[1.03] ${product.categoryId === '5' ? 'object-cover object-left' :
+                product.slug === 'gerflor-mipolam-technic-el5-eu' ? 'object-cover object-bottom' : 'object-cover'
+              }`}
             unoptimized={!imageSrc.startsWith('/')}
           />
         ) : (
