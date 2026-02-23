@@ -316,6 +316,7 @@ PODOVI/
 13. **Gerflor CDN slike:** Gerflor blokira direktne HTTP zahteve na `gerflor-cee.com` slike (403). Slike se preuzimaju sa `cdn.gerflor.com/media/1642426083/1/{CDN_ID}.jpg` — CDN ID-evi se nalaze na individual individualnim stranicama boja.
 301. **Novi vinil proizvodi moraju imati merge u repo:** Kad dodaješ novi proizvod u `vinyl_colors_complete.json`, moraš dodati i merging logiku u `SupabaseProductRepository.findAll()` za cat 2, ili ručno dodati u Supabase. Pogledaj `getVinylCollectionProducts()` u `productDataLoader.ts`.
 15. **Dinamičko mapiranje boja za nove kolekcije:** Kada dodaješ novi fajl poput `esd_colors.json`, NIJE DOVOLJNO dodati ga samo u `productDataLoader.ts`. UVEK moraš da ažuriraš `loadColorFromJson`, `colorToProduct` za `categoryId` i UVEK prepraviš rutensku pretragu u `resolveProductBySlug` kako bi Next.js znao kako da instancira stranicu kad neko poseti `/proizvod...color=...`, inače će dovesti do 404 greške!
+16. **ESD slug pattern:** ESD kolekcije (mipolam-el5, gti-el5-connect, itd.) koriste slug BEZ `gerflor-` prefiksa, za razliku od LVT/Vinil/Linoleum kolekcija. SVAKA nova logika u `resolve-product.ts`, `prepare-colors.ts`, `color-helpers.ts` mora da proverava slug i sa i bez prefiksa. Takođe, ESD boje koriste `image` polje umesto `image_url`/`texture_url` — uvek dodaj fallback na `(color as any).image`.
 
 ---
 

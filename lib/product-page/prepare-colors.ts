@@ -215,9 +215,11 @@ export async function prepareCustomColors(
     }
 
     // ESD (cat 8): customColors from esd_colors.json
-    if (product.categoryId === '8' && product.slug.startsWith('gerflor-')) {
-        const collectionSlug = product.slug.substring('gerflor-'.length);
-        const esdCollection = esdCollections.find((col: any) => col.slug === collectionSlug);
+    if (product.categoryId === '8') {
+        // ESD collection slugs do NOT use gerflor- prefix (e.g., mipolam-el5, gti-el5-connect)
+        const rawSlug = product.slug;
+        const strippedSlug = rawSlug.startsWith('gerflor-') ? rawSlug.substring('gerflor-'.length) : rawSlug;
+        const esdCollection = esdCollections.find((col: any) => col.slug === rawSlug || col.slug === strippedSlug);
         if (esdCollection && esdCollection.colors && esdCollection.colors.length > 0) {
             return esdCollection.colors.map((c: any) => ({
                 collection: esdCollection.slug,
@@ -256,7 +258,7 @@ export async function mergeSelectedColor(
             product.name = cleanFullName;
             product.shortDescription = `${colorSource.color.collection_name} - ${cleanedName}`;
 
-            const colorImageUrl = colorSource.color.texture_url || colorSource.color.lifestyle_url || colorSource.color.image_url;
+            const colorImageUrl = colorSource.color.texture_url || colorSource.color.lifestyle_url || colorSource.color.image_url || (colorSource.color as any).image;
             if (colorImageUrl) {
                 product.images = [{
                     id: `color-img-${selectedColorSlug}`,
