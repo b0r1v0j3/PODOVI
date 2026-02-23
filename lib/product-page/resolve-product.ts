@@ -170,24 +170,6 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
             return collectionFromColor(colorSource, slug);
         }
 
-        // Try to find collection in ESD JSON
-        const esdCollection = esdCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
-        if (esdCollection && esdCollection.colors && esdCollection.colors.length > 0) {
-            const firstColor = esdCollection.colors[0];
-            const colorSource: ColorSource = {
-                categorySlug: 'elektroprovodni',
-                color: {
-                    ...firstColor,
-                    collection: esdCollection.slug,
-                    collection_name: esdCollection.name,
-                    collection_slug: esdCollection.slug,
-                    full_name: `${firstColor.code} ${firstColor.name}`,
-                    slug: `${esdCollection.slug}-${firstColor.code}-${firstColor.name.toLowerCase().replace(/\s+/g, '-')}`,
-                } as ColorFromJSON
-            };
-            return collectionFromColor(colorSource, slug);
-        }
-
         // Try to find in Carpet JSON (carpet uses collection_slug with 'gerflor-' prefix)
         const carpetColors = (carpetColorsData as any).colors || [];
         const carpetColor = carpetColors.find((color: any) => color.collection_slug === slug || color.collection === slug);
@@ -223,6 +205,24 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                 collectionSlug: slug,
             };
         }
+    }
+
+    // Try to find collection in ESD JSON (ESD collection slugs do not start with prefix)
+    const esdCollection = esdCollections.find((col: any) => col.slug === slug || col.slug === slug.replace(/^gerflor-/, ''));
+    if (esdCollection && esdCollection.colors && esdCollection.colors.length > 0) {
+        const firstColor = esdCollection.colors[0];
+        const colorSource: ColorSource = {
+            categorySlug: 'elektroprovodni',
+            color: {
+                ...firstColor,
+                collection: esdCollection.slug,
+                collection_name: esdCollection.name,
+                collection_slug: esdCollection.slug,
+                full_name: `${firstColor.code} ${firstColor.name}`,
+                slug: `${esdCollection.slug}-${firstColor.code}-${firstColor.name.toLowerCase().replace(/\s+/g, '-')}`,
+            } as ColorFromJSON
+        };
+        return collectionFromColor(colorSource, slug);
     }
 
     // Check if slug is a BLOQ collection slug (e.g., "bloq-assembly", "bloq-flow")
