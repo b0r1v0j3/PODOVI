@@ -34,15 +34,18 @@ export default function ComparePageClient() {
     compareItems.forEach(product => {
         product.specs?.forEach(spec => {
             if (!allSpecKeys.has(spec.key)) {
-                allSpecKeys.set(spec.key, spec.key);
+                allSpecKeys.set(spec.key, spec.label || spec.key);
             }
         });
     });
 
     const specRows = Array.from(allSpecKeys.keys());
 
-    // Helper to format spec display name
+    // Helper to format spec display name (used as fallback)
     const formatSpecName = (key: string) => {
+        const label = allSpecKeys.get(key);
+        if (label && label !== key) return label;
+
         return key
             .replace(/_/g, ' ')
             .replace(/\b\w/g, l => l.toUpperCase());

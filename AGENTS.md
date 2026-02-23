@@ -330,7 +330,7 @@ PODOVI/
 - [x] **Nova kategorija: Elektroprovodni / ESD podovi** — 7 Gerflor kolekcija (Mipolam EL5/EL7, GTI EL5 Connect/Cleantech, Biocontrol EL5, Technic EL5 EU, Robust EL7) sa 42 boja. `esd_colors.json`, `getEsdCollectionProducts()`, Category 8 merge blok. (23.02.2026)
 
 ### Prioritet: Srednji
-- [ ] **Scraper optimizacija** — refaktorisati stare Playwright scrapere (npr. LVT) da koriste novu sigurniju logiku učitavanja slika (download ZIP archive) u slučaju da Gerflor skroz ograniči CDN i za LVT.
+- [x] **Scraper optimizacija** — refaktorisati stare Playwright scrapere (npr. LVT) da koriste novu sigurniju logiku učitavanja slika (download ZIP archive) u slučaju da Gerflor skroz ograniči CDN i za LVT.
 - [x] **PDF viewer** — pregled PDF dokumenata je sada inline pomoću `<object>` embeda.
 - [x] **Breadcrumbs poboljšanje** — dodati međukorak u breadcrumbs: Kategorija > Kolekcija > Proizvod (posebno za BLOQ ploče)
 - [ ] **Unified data source** — proizvodi dolaze iz 4 izvora (JSON, TS fajlovi, Supabase, hardcoded). Razmotriti migraciju svega u Supabase za lakše održavanje
@@ -338,8 +338,8 @@ PODOVI/
 - [x] **PDF dokumenti za Gerflor** — dodati za svih 62 kolekcija u `documents_index.json`: vinil (25 kol, ~85 PDF-ova), LVT (19), Linoleum (15), Carpet (3). `ProductDocuments.tsx` ažuriran za cat 2.
 
 ### Prioritet: Nizak
-- [ ] **Uporedni prikaz** — dodati BLOQ proizvode u compare funkcionalnost
-- [ ] **Welding rod matching** — automatsko povezivanje welding rod-ova sa bojama
+- [x] **Uporedni prikaz** — dodati BLOQ proizvode u compare funkcionalnost
+- [x] **Welding rod matching** — automatsko povezivanje welding rod-ova sa bojama
 - [ ] **Workflow za brisanje brenda** — napraviti `.agent/workflows/remove-brand.md` sa checklist-om svih mesta za čišćenje
 
 ---

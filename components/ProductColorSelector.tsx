@@ -470,6 +470,37 @@ export default function ProductColorSelector({
               return null;
             })()}
 
+            {/* Accessory Badge: Welding Rod */}
+            {(() => {
+              const weldingRodSpec = specs?.find(s =>
+                s.key.toLowerCase().includes('welding') ||
+                s.key.toLowerCase().includes('varil') ||
+                s.label.toLowerCase().includes('varilačk') ||
+                s.label.toLowerCase().includes('welding')
+              );
+
+              if (weldingRodSpec && weldingRodSpec.value && weldingRodSpec.value.trim() !== '' && weldingRodSpec.value.trim() !== '-') {
+                return (
+                  <div className="bg-[#f8f9fa] border border-[#e9ecef] rounded-xl p-4 mt-2">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center">
+                        <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-0.5">Dodatna oprema</p>
+                        <p className="text-base font-semibold text-gray-900 leading-none">
+                          Varilačka vrpca: <span className="text-primary-600">{weldingRodSpec.value}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              return null;
+            })()}
+
             {/* CTA Button - Pošaljite upit (veći, istaknut) – prefill: proizvod + boja + ref */}
             <div>
               <a
