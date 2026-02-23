@@ -247,7 +247,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
     const isTarkettCollection = product.sku?.startsWith('TARKETT-');
     // For deking (category 5), since we don't have separate collection pages, we should not redirect
-    const shouldRedirectCollection = ['6', '7', '4', '2'].includes(product.categoryId);
+    const shouldRedirectCollection = ['6', '7', '4', '2', '8'].includes(product.categoryId);
 
     if (shouldRedirectCollection && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
       let normalizedCollectionSlug = collectionSlugFromProduct;
@@ -364,10 +364,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
     };
 
     // ── Determine if this is a "color selector" category ──
-    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1'].includes(product.categoryId);
+    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1', '8'].includes(product.categoryId);
 
     // ── Helper JSX logic to populate masonry columns neatly ──
-    const sharedCertsAndEco = (['6', '7', '4', '2'].includes(product.categoryId)) ? (
+    const sharedCertsAndEco = (['6', '7', '4', '2', '8'].includes(product.categoryId)) ? (
       <>
         <div className="w-full">
           <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
@@ -465,7 +465,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                           : product.categoryId === '7' ? 'Linoleum'
                             : product.categoryId === '2' ? 'Vinil'
                               : product.categoryId === '4' ? 'Tekstilne ploče'
-                                : undefined
+                                : product.categoryId === '8' ? 'ESD'
+                                  : undefined
                   }
                   videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                   inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
