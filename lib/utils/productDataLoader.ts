@@ -767,6 +767,17 @@ export function getEsdCollectionProducts(): Product[] {
     const esdData = require('@/public/data/esd_colors.json');
     const collections = esdData?.collections || [];
 
+    // Collection lifestyle images (override color swatch images with room scenes from Gerflor CDN)
+    const collectionImageOverrides: Record<string, string> = {
+        'mipolam-el5': 'https://cdn.gerflor.com/media/1642426083/1/14617.jpg',
+        'gti-el5-connect': 'https://cdn.gerflor.com/media/1642426083/1/38297.jpg',
+        'gti-el5-cleantech': 'https://cdn.gerflor.com/media/1642426083/1/14806.jpg',
+        'mipolam-biocontrol-el5': 'https://cdn.gerflor.com/media/1642426083/1/27867.jpg',
+        'mipolam-technic-el5-eu': 'https://cdn.gerflor.com/media/1642426083/1/14621.jpg',
+        'mipolam-robust-el7': 'https://cdn.gerflor.com/media/1642426083/1/14895.jpg',
+        'mipolam-el7': 'https://cdn.gerflor.com/media/1642426083/1/34841.jpg',
+    };
+
     const result = collections.map((col: any) => {
         const firstColor = col.colors?.[0];
         const slug = `gerflor-${col.slug}`;
@@ -779,6 +790,8 @@ export function getEsdCollectionProducts(): Product[] {
         // Add collection spec
         specs.unshift({ key: 'collection', label: 'Kolekcija', value: col.name });
 
+        const imageUrl = collectionImageOverrides[col.slug] || firstColor?.image || '';
+
         return {
             id: `esd-coll-${col.slug}`,
             name: col.name,
@@ -788,9 +801,9 @@ export function getEsdCollectionProducts(): Product[] {
             brandId: '6',
             shortDescription: `${col.name} — ${col.colorCount} boja`,
             description: firstColor?.description || '',
-            images: firstColor?.image ? [{
+            images: imageUrl ? [{
                 id: `esd-coll-${col.slug}-img`,
-                url: firstColor.image,
+                url: imageUrl,
                 alt: col.name,
                 isPrimary: true,
                 order: 0,
