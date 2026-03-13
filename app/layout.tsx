@@ -9,14 +9,13 @@ import CompareBar from "@/components/CompareBar";
 import { CompareProvider } from "@/lib/context/CompareContext";
 import { FavoritesProvider } from "@/lib/context/FavoritesContext";
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo/structured-data";
+import { SITE_URL } from "@/lib/seo/site-config";
 import BackToTop from "@/components/BackToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
-
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(SITE_URL),
   title: "Podovi - Katalog podnih obloga",
   description: "Pronađite savršen pod za vaš prostor. Širok izbor laminata, vinila, parketa i drugih podnih obloga od vodećih brendova.",
   keywords: "podovi, laminat, vinil, parket, podne obloge, Srbija",
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
     description: "Sve vrste podova, prateći asortiman i alati za podove.",
     type: "website",
     locale: "sr_RS",
-    url: "https://podovi.online",
+    url: SITE_URL,
     siteName: "podovi.online",
     images: [
       {

@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
+import { SITE_NAME, SITE_URL } from './site-config';
 
-const SITE_NAME = 'Podovi.rs';
-const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://podovi.rs';
 const SITE_DESCRIPTION = 'Pronađite savršen pod za vaš prostor. Širok izbor laminata, vinila, parketa i drugih podnih obloga od vodećih brendova.';
 
 export function generateDefaultMetadata(): Metadata {

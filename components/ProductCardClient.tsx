@@ -120,9 +120,10 @@ export default function ProductCardClient({ product, brand, compact = false }: P
     '4': 'tekstilne-ploce',
     '2': 'vinil',
     '3': 'parket',
+    '8': 'elektroprovodni',
   };
 
-  const isColorTileCategory = ['6', '7', '4', '2'].includes(product.categoryId);
+  const isColorTileCategory = ['6', '7', '4', '2', '8'].includes(product.categoryId);
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   const isParket = product.categoryId === '3';
   const isLaminat = product.categoryId === '1';
@@ -130,7 +131,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
   let productHref = `/proizvodi/${product.slug}`;
 
   if (isColorTileCategory && colorCollectionSlug) {
-    const normalizedCollectionSlug = product.categoryId === '6' && !colorCollectionSlug.startsWith('gerflor-')
+    const normalizedCollectionSlug = ['2', '6', '8'].includes(product.categoryId) && !colorCollectionSlug.startsWith('gerflor-')
       ? `gerflor-${colorCollectionSlug}`
       : colorCollectionSlug;
     productHref = `/proizvodi/${normalizedCollectionSlug}?color=${encodeURIComponent(product.slug)}`;

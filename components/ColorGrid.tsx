@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 interface Color {
@@ -160,7 +160,7 @@ export default function ColorGrid({
   };
 
   // Handle color selection
-  const handleColorClick = (color: Color, event?: React.MouseEvent) => {
+  const handleColorClick = useCallback((color: Color, event?: React.MouseEvent) => {
     // Update selected slug
     setCurrentSelectedSlug(color.slug);
 
@@ -198,7 +198,11 @@ export default function ColorGrid({
 
     // If not in compact mode, navigate to individual color page
     // (Link will handle navigation)
-  };
+  }, [compact, onColorSelect, pathname, router, searchParams]);
+
+  useEffect(() => {
+    hasAutoSelected.current = false;
+  }, [collectionSlug, initialColorSlug]);
 
   useEffect(() => {
     // If custom colors provided, use them and skip fetch (dedupe by slug)
@@ -333,7 +337,7 @@ export default function ColorGrid({
         setColors([]);
         setLoading(false);
       });
-  }, [collectionSlug, customColors]);
+  }, [collectionSlug, customColors, onColorsLoaded]);
 
   // Preload all color images for instant switching (avoids white flash on color change)
   // Store URLs in state to render hidden img elements in DOM
@@ -383,7 +387,7 @@ export default function ColorGrid({
         }
       }
     }
-  }, [colors, initialColorSlug, onColorSelect, compact, filteredColors, itemsPerPage]);
+  }, [colors, initialColorSlug, onColorSelect, compact, filteredColors, itemsPerPage, handleColorClick]);
 
   // Reset page when search term changes
   useEffect(() => {

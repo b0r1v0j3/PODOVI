@@ -266,7 +266,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
     }
 
     return filtered;
-  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors, searchParams, collections, legacyColors]); // Added legacyColors dependency
+  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors, searchParams, collections]);
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -286,7 +286,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
         return res.json();
       })
       .then(data => {
-        if ((categorySlug === 'vinil' || categorySlug === 'linoleum' || categorySlug === 'elektroprovodni') && data.collections) {
+        if ((categorySlug === 'vinil' || categorySlug === 'elektroprovodni') && Array.isArray(data.collections)) {
           // For Vinil/Linoleum, count colors from all collections
           const total = data.collections.reduce((sum: number, collection: any) =>
             sum + (collection.colors?.length || 0), 0);
@@ -300,7 +300,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
       .catch(err => {
         console.error('Error loading colors count:', err);
       });
-  }, [categorySlug, useJsonColors, legacyColors]);
+  }, [categorySlug, useJsonColors]);
 
   // Reset loaded state when category changes
   useEffect(() => {
@@ -493,7 +493,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
           hasLoadedColors.current = true; // Mark as loaded even on error to prevent retry loop
         });
     }
-  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors, vinylType, collections]);
+  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors, vinylType, collections, initialColorSlug]);
 
   // Kolekcije: grid kao ostale kategorije (2–3 kolone). Parket isto kao ceo sajt.
   const isCollectionsSingleColumn = false;

@@ -38,59 +38,40 @@ import { splitProductTitle } from '@/lib/utils/name-parser';
 import { getParketCollectionVariantSlugs, getEffectiveParketCollection, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
+import documentsIndexData from '@/public/data/documents_index.json';
+import { SITE_URL } from '@/lib/seo/site-config';
 
 export const dynamic = 'force-dynamic';
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+  const baseUrl = SITE_URL;
 
   try {
-    const selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
+    const requestedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
+    let selectedColorSlug = requestedColorSlug;
     let product: (Product & { collectionSlug?: string }) | null = null;
 
     const { tarkettProducts } = await import('@/lib/data/tarkett-products');
 
-    if (selectedColorSlug) {
-      const colorSource = await loadColorFromJson(selectedColorSlug);
-      if (colorSource) {
-        product = colorToProduct(colorSource, selectedColorSlug, params.slug);
-      } else {
-        const parketColor = tarkettProducts.find(p => p.slug === selectedColorSlug);
-        if (parketColor) {
-          const collectionNameSpec = parketColor.specs.find(s => s.key === 'collection');
-          if (collectionNameSpec) {
-            const collectionHeader = tarkettProducts.find(p =>
-              p.categoryId === '3' &&
-              p.sku.startsWith('PARKET-') &&
-              p.specs.find(s => s.key === 'collection' && s.value === collectionNameSpec.value)
-            );
-            if (collectionHeader) {
-              product = {
-                ...collectionHeader,
-                name: parketColor.name,
-                images: parketColor.images,
-                specs: parketColor.specs,
-                description: parketColor.description || collectionHeader.description,
-                slug: params.slug,
-                collectionSlug: collectionHeader.slug,
-              };
-            }
-          }
-          if (!product) {
-            product = parketColor;
-          }
-        }
-      }
-    }
-
-    if (!product) {
-      product = await resolveProductBySlug(params.slug);
-    }
+    product = await resolveProductBySlug(params.slug);
 
     if (!product) {
       return { metadataBase: new URL(baseUrl), title: 'Proizvod nije pronađen' };
+    }
+
+    if (requestedColorSlug) {
+      const colorSource = await loadColorFromJson(requestedColorSlug);
+      const customColors = colorSource ? undefined : await prepareCustomColors(product, params.slug);
+      const isValidCustomColor = Boolean(customColors?.some((color: { slug?: string }) => color.slug === requestedColorSlug));
+      const isParketVariant = tarkettProducts.some(p => p.slug === requestedColorSlug && p.categoryId === '3');
+
+      if (colorSource || isValidCustomColor || isParketVariant) {
+        await mergeSelectedColor(product, requestedColorSlug);
+      } else {
+        selectedColorSlug = '';
+      }
     }
 
     const category = product.categoryId ? await categoryRepository.findById(product.categoryId) : null;
@@ -170,7 +151,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     const keywords = [cleanName, collectionName, brandText, categoryText, 'podovi', 'podne obloge', 'Srbija'].filter(Boolean).join(', ');
 
     const urlWithColor = selectedColorSlug
-      ? `${baseUrl}/proizvodi/${params.slug}?color=${selectedColorSlug}`
+      ? `${baseUrl}/proizvodi/${params.slug}?color=${encodeURIComponent(selectedColorSlug)}`
       : `${baseUrl}/proizvodi/${params.slug}`;
 
     return {
@@ -344,6 +325,25 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // ── Prepare color variants ──
     const customColors = await prepareCustomColors(product, params.slug);
 
+    // ── Redirect invalid color to first valid variant on the server ──
+    if (selectedColorSlug && customColors && customColors.length > 0) {
+      const validSlugs = customColors
+        .map((color: { slug?: string }) => color.slug)
+        .filter((slug): slug is string => Boolean(slug));
+
+      if (validSlugs.length > 0 && !validSlugs.includes(selectedColorSlug)) {
+        redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(validSlugs[0])}`);
+      }
+    }
+
+    // ── Redirect invalid JSON-backed color params to the collection page ──
+    if (selectedColorSlug && (!customColors || customColors.length === 0) && ['2', '6', '7', '8'].includes(product.categoryId)) {
+      const colorSource = await loadColorFromJson(selectedColorSlug);
+      if (!colorSource) {
+        redirect(`/proizvodi/${params.slug}`);
+      }
+    }
+
     // ── Load compatible accessories ──
     let accessoryProducts: Product[] = [];
     if (product.compatibleAccessories && product.compatibleAccessories.length > 0) {
@@ -362,7 +362,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     }
 
     // ── Schema.org ──
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+    const baseUrl = SITE_URL;
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "Product",
@@ -420,10 +420,28 @@ export default async function ProductPage({ params, searchParams }: Props) {
       </>
     ) : null;
 
-    const sharedDocs = (product.documents && product.documents.length > 0) ? (
+    const documentsIndex = documentsIndexData as Record<string, Record<string, Array<{ title: string; url: string }>>>;
+    const documentsCategoryKey = product.categoryId === '6'
+      ? 'lvt'
+      : product.categoryId === '4'
+        ? 'carpet'
+        : product.categoryId === '7'
+          ? 'linoleum'
+          : product.categoryId === '2'
+            ? 'vinil'
+            : product.categoryId === '8'
+              ? 'elektroprovodni'
+              : '';
+    const normalizedCollectionSlug = product.slug.replace(/^gerflor-/, '');
+    const hasIndexedDocuments = Boolean(
+      documentsCategoryKey &&
+      documentsIndex[documentsCategoryKey]?.[normalizedCollectionSlug]?.length
+    );
+
+    const sharedDocs = ((product.documents && product.documents.length > 0) || hasIndexedDocuments) ? (
       <div className="bg-white rounded-2xl shadow-lg p-6 h-full">
         <ProductDocuments
-          initialDocuments={product.documents}
+          initialDocuments={product.documents || []}
           categoryId={product.categoryId}
           collectionSlug={product.slug}
         />
@@ -679,7 +697,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
             {/* Certifications & Eco Features are now rendered alongside Descriptions in the Flex Masonry layout! */}
 
             {/* Benefits + Accessories + Documents — for products with enriched data */}
-            {(product.benefits || accessoryProducts.length > 0 || (product.documents && product.documents.length > 0 && !['6', '7', '4', '2'].includes(product.categoryId))) && (
+            {(product.benefits || accessoryProducts.length > 0 || (product.documents && product.documents.length > 0 && !['6', '7', '4', '2', '8'].includes(product.categoryId))) && (
               <div className="mt-8 space-y-6">
                 {/* Benefits */}
                 {product.benefits && product.benefits.length > 0 && (

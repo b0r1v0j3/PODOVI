@@ -43,17 +43,20 @@ export async function POST(request: NextRequest) {
     // Save to repository
     const inquiry = await inquiryRepository.create(inquiryData);
 
-    // Send emails
-    await Promise.all([
+    const emailResults = await Promise.allSettled([
       mailer.sendInquiryEmail(inquiry),
       mailer.sendInquiryConfirmation(inquiry),
     ]);
+
+    const emailFailures = emailResults.filter(result => result.status === 'rejected');
 
     return NextResponse.json(
       {
         success: true,
         inquiryId: inquiry.id,
-        message: 'Upit je uspešno poslat'
+        message: emailFailures.length === 0
+          ? 'Upit je uspešno poslat'
+          : 'Upit je uspešno sačuvan. Potvrda mejlom trenutno nije dostupna.'
       },
       { status: 201 }
     );
@@ -67,14 +70,8 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  try {
-    const inquiries = await inquiryRepository.findAll();
-    return NextResponse.json(inquiries);
-  } catch (error) {
-    console.error('Error fetching inquiries:', error);
-    return NextResponse.json(
-      { error: 'Greška pri učitavanju upita' },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json(
+    { error: 'Javno čitanje upita nije podržano.' },
+    { status: 403 }
+  );
 }

@@ -3,6 +3,8 @@ import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
+import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
+import esdColorsData from '@/public/data/esd_colors.json';
 
 /**
  * GET /api/color-data?color={slug}&categoryId={id}
@@ -25,30 +27,59 @@ export async function GET(request: NextRequest) {
 
     const isLinoleum = categoryId === '7';
     const isCarpet = categoryId === '4';
-    const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
-    const colors = (colorsData as { colors?: any[] }).colors || [];
+    const isVinyl = categoryId === '2';
+    const isEsd = categoryId === '8';
 
-    // Try exact match first
-    let color = colors.find((c: any) => c.slug === colorSlug);
+    const findFlatColor = (colors: any[]) => {
+        let match = colors.find((c: any) => c.slug === colorSlug);
+        if (!match) {
+            match = colors.find((c: any) => {
+                const cSlug = c.slug || '';
+                return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
+            });
+        }
+        return match || null;
+    };
 
-    // If not found, try partial match
-    if (!color) {
-        color = colors.find((c: any) => {
-            const cSlug = c.slug || '';
-            return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
-        });
+    const findNestedColor = (collections: any[]) => {
+        for (const collection of collections) {
+            for (const color of collection.colors || []) {
+                const generatedSlug = color.slug || `${collection.slug}-${color.code}-${String(color.name || '').toLowerCase().replace(/\s+/g, '-')}`;
+                const isExactMatch = generatedSlug === colorSlug;
+                const isPartialMatch = generatedSlug.includes(colorSlug) || colorSlug.includes(generatedSlug);
+
+                if (isExactMatch || isPartialMatch) {
+                    return {
+                        ...color,
+                        slug: generatedSlug,
+                        collection: collection.slug,
+                        collection_name: collection.name,
+                        collection_slug: collection.slug,
+                        documents: Array.isArray(color.documents) ? color.documents : (Array.isArray(collection.documents) ? collection.documents : []),
+                    };
+                }
+            }
+        }
+
+        return null;
+    };
+
+    let color = null;
+
+    if (isVinyl) {
+        color = findNestedColor(((vinylColorsData as any)?.collections || []));
+    } else if (isEsd) {
+        color = findNestedColor(((esdColorsData as any)?.collections || []));
+    } else {
+        const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
+        const colors = (colorsData as { colors?: any[] }).colors || [];
+        color = findFlatColor(colors);
     }
 
     // If not found in standard data, try BLOQ data for carpet
     if (!color && isCarpet) {
         const bloqColors = (bloqCarpetData as any).colors || [];
-        color = bloqColors.find((c: any) => c.slug === colorSlug);
-        if (!color) {
-            color = bloqColors.find((c: any) => {
-                const cSlug = c.slug || '';
-                return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
-            });
-        }
+        color = findFlatColor(bloqColors);
     }
 
     if (!color) {

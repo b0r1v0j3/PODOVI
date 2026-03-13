@@ -1,5 +1,5 @@
 import { Inquiry } from '@/types';
-import { supabase } from '@/lib/supabase/client';
+import { getServerSupabase, supabase } from '@/lib/supabase/client';
 
 export interface IInquiryRepository {
   create(inquiry: Omit<Inquiry, 'id' | 'createdAt'>): Promise<Inquiry>;
@@ -32,11 +32,24 @@ function toInquiry(row: any): Inquiry {
   };
 }
 
+function getInquiryClient(preferServiceRole = false) {
+  if (preferServiceRole) {
+    try {
+      return getServerSupabase();
+    } catch {
+      // Fall back to anon client in local/dev setups where service role is not configured.
+    }
+  }
+
+  return supabase;
+}
+
 // =========================================
 // Supabase implementation
 // =========================================
 export class SupabaseInquiryRepository implements IInquiryRepository {
   async create(data: Omit<Inquiry, 'id' | 'createdAt'>): Promise<Inquiry> {
+    const client = getInquiryClient(true);
     const row = {
       product_id: data.productId,
       product_name: data.productName,
@@ -54,7 +67,7 @@ export class SupabaseInquiryRepository implements IInquiryRepository {
       status: data.status || 'new',
     };
 
-    const { data: inserted, error } = await supabase
+    const { data: inserted, error } = await client
       .from('inquiries')
       .insert(row)
       .select()
@@ -70,7 +83,8 @@ export class SupabaseInquiryRepository implements IInquiryRepository {
   }
 
   async findById(id: string): Promise<Inquiry | null> {
-    const { data, error } = await supabase
+    const client = getInquiryClient(true);
+    const { data, error } = await client
       .from('inquiries')
       .select('*')
       .eq('id', id)
@@ -81,7 +95,8 @@ export class SupabaseInquiryRepository implements IInquiryRepository {
   }
 
   async findAll(): Promise<Inquiry[]> {
-    const { data, error } = await supabase
+    const client = getInquiryClient(true);
+    const { data, error } = await client
       .from('inquiries')
       .select('*')
       .order('created_at', { ascending: false });
@@ -94,7 +109,8 @@ export class SupabaseInquiryRepository implements IInquiryRepository {
   }
 
   async updateStatus(id: string, status: Inquiry['status']): Promise<Inquiry> {
-    const { data, error } = await supabase
+    const client = getInquiryClient(true);
+    const { data, error } = await client
       .from('inquiries')
       .update({ status })
       .eq('id', id)

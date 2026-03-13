@@ -3,6 +3,7 @@ import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import esdColorsData from '@/public/data/esd_colors.json';
+import { SITE_URL } from '@/lib/seo/site-config';
 
 export const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
 export const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
@@ -161,7 +162,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
             return expectedSlug === slug ||
                 colorOnlySlug === slug ||
                 slug.endsWith(`-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`) ||
-                color.code === slug.split('-').pop();
+                color.code === slug;
         });
         if (vinylColor) {
             return {
@@ -186,7 +187,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
             return expectedSlug === slug ||
                 colorOnlySlug === slug ||
                 slug.endsWith(`-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`) ||
-                color.code === slug.split('-').pop();
+                color.code === slug;
         });
         if (esdColor) {
             return {
@@ -203,7 +204,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         }
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+    const baseUrl = SITE_URL;
     const candidates: Array<{ categorySlug: 'lvt' | 'linoleum' | 'vinil'; fileName: string }> = [
         { categorySlug: 'lvt', fileName: 'lvt_colors_complete.json' },
         { categorySlug: 'linoleum', fileName: 'linoleum_colors_complete.json' },
@@ -225,7 +226,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
                 for (const collection of data.collections) {
                     const match = collection.colors?.find((color: any) => {
                         const expectedSlug = `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`;
-                        return expectedSlug === slug || color.code === slug.split('-').pop();
+                        return expectedSlug === slug || color.code === slug;
                     });
                     if (match) {
                         return {
@@ -269,7 +270,7 @@ export function colorToProduct(source: ColorSource, slug: string, collectionSlug
         ? (color.texture_url || color.lifestyle_url || color.image_url || '')
         : isVinil
             ? ((color as any).image || color.image_url || '')
-            : (color.texture_url || color.image_url || '');
+            : ((color as any).image || color.texture_url || color.image_url || '');
 
     const images: ProductImageType[] = primaryImageUrl
         ? [{
@@ -321,7 +322,7 @@ export function collectionFromColor(source: ColorSource, slug: string): Product 
         ? (color.texture_url || color.lifestyle_url || color.image_url || '')
         : isVinil
             ? ((color as any).image || color.image_url || '')
-            : (color.texture_url || color.image_url || '');
+            : ((color as any).image || color.texture_url || color.image_url || '');
 
     const images: ProductImageType[] = primaryImageUrl
         ? [{

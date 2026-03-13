@@ -91,7 +91,9 @@ export default function ProductColorSelector({
     const validSlugs = customColors.map((c: { slug?: string }) => c.slug).filter((s): s is string => Boolean(s));
     const firstSlug = validSlugs[0];
     if (firstSlug && !validSlugs.includes(urlColor)) {
-      router.replace(`${pathname}?color=${encodeURIComponent(firstSlug)}`);
+      const params = new URLSearchParams(searchParams);
+      params.set('color', firstSlug);
+      router.replace(`${pathname}?${params.toString()}`);
     }
   }, [customColors, searchParams, pathname, router]);
 

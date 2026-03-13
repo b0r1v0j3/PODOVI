@@ -1,4 +1,5 @@
 import { Product, Brand, Category } from '@/types';
+import { SITE_URL } from './site-config';
 
 export function generateProductSchema(product: Product, brand: Brand | null, category: Category | null) {
   return {
@@ -40,8 +41,8 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     name: 'Podovi DOO',
     description: 'Vodeći uvoznik i distributer kvalitetnih podnih obloga u Srbiji',
-    url: 'https://podovi.online',
-    logo: 'https://podovi.online/logo.png',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
     email: 'prodaja@podovi.online',
     contactPoint: {
       '@type': 'ContactPoint',
@@ -78,10 +79,10 @@ export function generateWebsiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Podovi.online',
-    url: 'https://podovi.online',
+    url: SITE_URL,
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://podovi.online/kategorije?search={search_term_string}',
+      target: `${SITE_URL}/kategorije?search={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   };
@@ -97,7 +98,7 @@ export function generateProductListSchema(products: Product[], category?: Catego
     itemListElement: products.map((product, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      url: `https://podovi.online/proizvodi/${product.slug}`,
+      url: `${SITE_URL}/proizvodi/${product.slug}`,
       name: product.name,
     })),
   };
