@@ -74,7 +74,8 @@ npm start
 - `public/data/esd_colors.json` powers Elektroprovodni / ESD collections
 - `public/data/industrial_colors.json` powers Industrijske ploče collections
 - `public/data/sport_colors.json` powers Sport collections
-- `lib/data/manual-collection-products.ts` defines collection headers that point to local `public/images/.../collection.jpg` roomshots
+- `lib/data/manual-collection-products.ts` defines collection headers and reads remote `collection_image_url` values from the nested JSON sources when they exist
+- `tools/download_gerflor_highres_zip.js --upload-supabase` downloads the `.JPG` assets from Gerflor ZIP downloads and writes public Supabase URLs back into the JSON (`collection_image_url` for hero shots, `image` / `image_url` for colors)
 
 ## Project Structure
 
@@ -270,6 +271,10 @@ NEXT_PUBLIC_BASE_URL=https://www.podovi.online
 NEXT_PUBLIC_GA_MEASUREMENT_ID=  # Google Analytics 4
 NEXT_PUBLIC_SUPABASE_URL=       # Supabase project URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=  # Supabase anonymous key
+SUPABASE_SERVICE_ROLE_KEY=      # Required for storage uploads and admin scripts
+SUPABASE_ACCESS_TOKEN=          # Optional fallback for scripts that discover the project/keys via Supabase Management API
+SUPABASE_PROJECT_REF=           # Optional explicit project ref for upload scripts
+SUPABASE_PROJECT_NAME=podovi    # Optional fallback project name for upload scripts
 ```
 
 ## Database

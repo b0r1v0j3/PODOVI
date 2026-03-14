@@ -14,19 +14,68 @@
                 "Namena": "Sportske sale i gimnazije"
             },
             "colors": [
-                { "code": "1001", "name": "BANANA YELLOW" },
-                { "code": "1004", "name": "BLUEBIRD" },
-                { "code": "1012", "name": "LIGHT BEIGE" },
-                { "code": "1052", "name": "OXID GREY" },
-                { "code": "1059", "name": "STONE GREY" },
-                { "code": "1080", "name": "ELEPHANT GREY" },
-                { "code": "1118", "name": "POWER RED" },
-                { "code": "1123", "name": "POPPY BLUE" },
-                { "code": "1132", "name": "SPICY GREEN" },
-                { "code": "1171", "name": "SUNRISE ORANGE" },
-                { "code": "1559", "name": "VINTAGE GREY" },
-                { "code": "1574", "name": "PURE GREEN" }
-            ]
+                {
+                    "code": "1001",
+                    "name": "BANANA YELLOW",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1001-banana-yellow.jpg"
+                },
+                {
+                    "code": "1004",
+                    "name": "BLUEBIRD",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1004-bluebird.jpg"
+                },
+                {
+                    "code": "1012",
+                    "name": "LIGHT BEIGE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1012-light-beige.jpg"
+                },
+                {
+                    "code": "1052",
+                    "name": "OXID GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1052-oxid-grey.jpg"
+                },
+                {
+                    "code": "1059",
+                    "name": "STONE GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1059-stone-grey.jpg"
+                },
+                {
+                    "code": "1080",
+                    "name": "ELEPHANT GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1080-elephant-grey.jpg"
+                },
+                {
+                    "code": "1118",
+                    "name": "POWER RED",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1118-power-red.jpg"
+                },
+                {
+                    "code": "1123",
+                    "name": "POPPY BLUE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1123-poppy-blue.jpg"
+                },
+                {
+                    "code": "1132",
+                    "name": "SPICY GREEN",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1132-spicy-green.jpg"
+                },
+                {
+                    "code": "1171",
+                    "name": "SUNRISE ORANGE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1171-sunrise-orange.jpg"
+                },
+                {
+                    "code": "1559",
+                    "name": "VINTAGE GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1559-vintage-grey.jpg"
+                },
+                {
+                    "code": "1574",
+                    "name": "PURE GREEN",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1574-pure-green.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/collection.jpg"
         },
         {
             "name": "DLW Marmorette Sport 3.2mm",
@@ -42,14 +91,43 @@
                 "Namena": "Sportske sale i gimnasticki prostori"
             },
             "colors": [
-                { "code": "1026", "name": "SKY BLUE" },
-                { "code": "1048", "name": "CRANBERRY RED" },
-                { "code": "1050", "name": "QUARTZ GREY" },
-                { "code": "1053", "name": "ICE GREY" },
-                { "code": "1070", "name": "ROCKY BROWN" },
-                { "code": "1076", "name": "PALE YELLOW" },
-                { "code": "1132", "name": "LIME GREEN" }
-            ]
+                {
+                    "code": "1026",
+                    "name": "SKY BLUE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1026-sky-blue.jpg"
+                },
+                {
+                    "code": "1048",
+                    "name": "CRANBERRY RED",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1048-cranberry-red.jpg"
+                },
+                {
+                    "code": "1050",
+                    "name": "QUARTZ GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1050-quartz-grey.jpg"
+                },
+                {
+                    "code": "1053",
+                    "name": "ICE GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1053-ice-grey.jpg"
+                },
+                {
+                    "code": "1070",
+                    "name": "ROCKY BROWN",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1070-rocky-brown.jpg"
+                },
+                {
+                    "code": "1076",
+                    "name": "PALE YELLOW",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1076-pale-yellow.jpg"
+                },
+                {
+                    "code": "1132",
+                    "name": "LIME GREEN",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1132-lime-green.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/collection.jpg"
         },
         {
             "name": "DLW Linodur Sport",
@@ -66,21 +144,78 @@
                 "Sastav": "98% prirodnih sastojaka"
             },
             "colors": [
-                { "code": "1011", "name": "AVOCADO GREEN" },
-                { "code": "1013", "name": "LAVA RED" },
-                { "code": "1020", "name": "SPRING BLUE" },
-                { "code": "1024", "name": "SPECKLED BLUE" },
-                { "code": "1026", "name": "LAGOON" },
-                { "code": "1048", "name": "COUNTRY BEIGE" },
-                { "code": "1049", "name": "CLIFF GREY" },
-                { "code": "1056", "name": "MARBLE GREY" },
-                { "code": "1057", "name": "HEAVEN BLUE" },
-                { "code": "1059", "name": "SLATE GREY" },
-                { "code": "1072", "name": "PEACH ORANGE" },
-                { "code": "1073", "name": "GLOWING ROCK" },
-                { "code": "1074", "name": "STRAW YELLOW" },
-                { "code": "1081", "name": "SPORTY BLACK" }
-            ]
+                {
+                    "code": "1011",
+                    "name": "AVOCADO GREEN",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1011-avocado-green.jpg"
+                },
+                {
+                    "code": "1013",
+                    "name": "LAVA RED",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1013-lava-red.jpg"
+                },
+                {
+                    "code": "1020",
+                    "name": "SPRING BLUE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1020-spring-blue.jpg"
+                },
+                {
+                    "code": "1024",
+                    "name": "SPECKLED BLUE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1024-speckled-blue.jpg"
+                },
+                {
+                    "code": "1026",
+                    "name": "LAGOON",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1026-lagoon.jpg"
+                },
+                {
+                    "code": "1048",
+                    "name": "COUNTRY BEIGE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1048-country-beige.jpg"
+                },
+                {
+                    "code": "1049",
+                    "name": "CLIFF GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1049-cliff-grey.jpg"
+                },
+                {
+                    "code": "1056",
+                    "name": "MARBLE GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1056-marble-grey.jpg"
+                },
+                {
+                    "code": "1057",
+                    "name": "HEAVEN BLUE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1057-heaven-blue.jpg"
+                },
+                {
+                    "code": "1059",
+                    "name": "SLATE GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1059-slate-grey.jpg"
+                },
+                {
+                    "code": "1072",
+                    "name": "PEACH ORANGE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1072-peach-orange.jpg"
+                },
+                {
+                    "code": "1073",
+                    "name": "GLOWING ROCK",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1073-glowing-rock.jpg"
+                },
+                {
+                    "code": "1074",
+                    "name": "STRAW YELLOW",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1074-straw-yellow.jpg"
+                },
+                {
+                    "code": "1081",
+                    "name": "SPORTY BLACK",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1081-sporty-black.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/collection.jpg"
         }
     ]
 }

@@ -15,25 +15,98 @@
                 "Namena": "Clean room i tehnicki prostori"
             },
             "colors": [
-                { "code": "0230", "name": "BLUE" },
-                { "code": "0236", "name": "BLACK" },
-                { "code": "0247", "name": "MAGMA" },
-                { "code": "0249", "name": "CARBON" },
-                { "code": "0252", "name": "TITANIUM" },
-                { "code": "0253", "name": "ALUMINIUM" },
-                { "code": "0255", "name": "SAPHIR" },
-                { "code": "0259", "name": "GRECALE" },
-                { "code": "0260", "name": "ORA" },
-                { "code": "0261", "name": "SCIROCCO" },
-                { "code": "0262", "name": "LIBECCIO" },
-                { "code": "0263", "name": "BORA" },
-                { "code": "0264", "name": "PONENTE" },
-                { "code": "0265", "name": "MAESTRALE" },
-                { "code": "0266", "name": "PELER" },
-                { "code": "0267", "name": "LEVANTE" },
-                { "code": "0268", "name": "ERMELLINO" },
-                { "code": "1249", "name": "TRAMONTANA" }
-            ]
+                {
+                    "code": "0230",
+                    "name": "BLUE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0230-blue.jpg"
+                },
+                {
+                    "code": "0236",
+                    "name": "BLACK",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0236-black.jpg"
+                },
+                {
+                    "code": "0247",
+                    "name": "MAGMA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0247-magma.jpg"
+                },
+                {
+                    "code": "0249",
+                    "name": "CARBON",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0249-carbon.jpg"
+                },
+                {
+                    "code": "0252",
+                    "name": "TITANIUM",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0252-titanium.jpg"
+                },
+                {
+                    "code": "0253",
+                    "name": "ALUMINIUM",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0253-aluminium.jpg"
+                },
+                {
+                    "code": "0255",
+                    "name": "SAPHIR",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0255-saphir.jpg"
+                },
+                {
+                    "code": "0259",
+                    "name": "GRECALE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0259-grecale.jpg"
+                },
+                {
+                    "code": "0260",
+                    "name": "ORA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0260-ora.jpg"
+                },
+                {
+                    "code": "0261",
+                    "name": "SCIROCCO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0261-scirocco.jpg"
+                },
+                {
+                    "code": "0262",
+                    "name": "LIBECCIO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0262-libeccio.jpg"
+                },
+                {
+                    "code": "0263",
+                    "name": "BORA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0263-bora.jpg"
+                },
+                {
+                    "code": "0264",
+                    "name": "PONENTE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0264-ponente.jpg"
+                },
+                {
+                    "code": "0265",
+                    "name": "MAESTRALE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0265-maestrale.jpg"
+                },
+                {
+                    "code": "0266",
+                    "name": "PELER",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0266-peler.jpg"
+                },
+                {
+                    "code": "0267",
+                    "name": "LEVANTE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0267-levante.jpg"
+                },
+                {
+                    "code": "0268",
+                    "name": "ERMELLINO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0268-ermellino.jpg"
+                },
+                {
+                    "code": "1249",
+                    "name": "TRAMONTANA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/1249-tramontana.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/collection.jpg"
         },
         {
             "name": "GTI Max Connect",
@@ -50,37 +123,158 @@
                 "Namena": "Industrija i brze renovacije"
             },
             "colors": [
-                { "code": "0230", "name": "BLUE" },
-                { "code": "0231", "name": "YELLOW" },
-                { "code": "0232", "name": "RED" },
-                { "code": "0233", "name": "GREEN" },
-                { "code": "0234", "name": "CLEAR GREY" },
-                { "code": "0235", "name": "DARK GREY" },
-                { "code": "0236", "name": "BLACK" },
-                { "code": "0247", "name": "MAGMA" },
-                { "code": "0249", "name": "CARBON" },
-                { "code": "0252", "name": "TITANIUM" },
-                { "code": "0253", "name": "ALUMINIUM" },
-                { "code": "0255", "name": "SAPHIR" },
-                { "code": "0259", "name": "GRECALE" },
-                { "code": "0260", "name": "ORA" },
-                { "code": "0261", "name": "SCIROCCO" },
-                { "code": "0262", "name": "LIBECCIO" },
-                { "code": "0263", "name": "BORA" },
-                { "code": "0264", "name": "PONENTE" },
-                { "code": "0265", "name": "MAESTRALE" },
-                { "code": "0266", "name": "PELER" },
-                { "code": "0267", "name": "LEVANTE" },
-                { "code": "0268", "name": "ERMELLINO" },
-                { "code": "1249", "name": "TRAMONTANA" },
-                { "code": "2247", "name": "VULCANO" },
-                { "code": "2249", "name": "STROMBOLI" },
-                { "code": "2252", "name": "TEIDE" },
-                { "code": "2264", "name": "PITON" },
-                { "code": "2265", "name": "MERAPI" },
-                { "code": "2266", "name": "VESUVIO" },
-                { "code": "2267", "name": "FUJI" }
-            ]
+                {
+                    "code": "0230",
+                    "name": "BLUE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0230-blue.jpg"
+                },
+                {
+                    "code": "0231",
+                    "name": "YELLOW",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0231-yellow.jpg"
+                },
+                {
+                    "code": "0232",
+                    "name": "RED",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0232-red.jpg"
+                },
+                {
+                    "code": "0233",
+                    "name": "GREEN",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0233-green.jpg"
+                },
+                {
+                    "code": "0234",
+                    "name": "CLEAR GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0234-clear-grey.jpg"
+                },
+                {
+                    "code": "0235",
+                    "name": "DARK GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0235-dark-grey.jpg"
+                },
+                {
+                    "code": "0236",
+                    "name": "BLACK",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0236-black.jpg"
+                },
+                {
+                    "code": "0247",
+                    "name": "MAGMA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0247-magma.jpg"
+                },
+                {
+                    "code": "0249",
+                    "name": "CARBON",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0249-carbon.jpg"
+                },
+                {
+                    "code": "0252",
+                    "name": "TITANIUM",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0252-titanium.jpg"
+                },
+                {
+                    "code": "0253",
+                    "name": "ALUMINIUM",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0253-aluminium.jpg"
+                },
+                {
+                    "code": "0255",
+                    "name": "SAPHIR",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0255-saphir.jpg"
+                },
+                {
+                    "code": "0259",
+                    "name": "GRECALE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0259-grecale.jpg"
+                },
+                {
+                    "code": "0260",
+                    "name": "ORA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0260-ora.jpg"
+                },
+                {
+                    "code": "0261",
+                    "name": "SCIROCCO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0261-scirocco.jpg"
+                },
+                {
+                    "code": "0262",
+                    "name": "LIBECCIO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0262-libeccio.jpg"
+                },
+                {
+                    "code": "0263",
+                    "name": "BORA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0263-bora.jpg"
+                },
+                {
+                    "code": "0264",
+                    "name": "PONENTE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0264-ponente.jpg"
+                },
+                {
+                    "code": "0265",
+                    "name": "MAESTRALE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0265-maestrale.jpg"
+                },
+                {
+                    "code": "0266",
+                    "name": "PELER",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0266-peler.jpg"
+                },
+                {
+                    "code": "0267",
+                    "name": "LEVANTE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0267-levante.jpg"
+                },
+                {
+                    "code": "0268",
+                    "name": "ERMELLINO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0268-ermellino.jpg"
+                },
+                {
+                    "code": "1249",
+                    "name": "TRAMONTANA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/1249-tramontana.jpg"
+                },
+                {
+                    "code": "2247",
+                    "name": "VULCANO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2247-vulcano.jpg"
+                },
+                {
+                    "code": "2249",
+                    "name": "STROMBOLI",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2249-stromboli.jpg"
+                },
+                {
+                    "code": "2252",
+                    "name": "TEIDE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2252-teide.jpg"
+                },
+                {
+                    "code": "2264",
+                    "name": "PITON",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2264-piton.jpg"
+                },
+                {
+                    "code": "2265",
+                    "name": "MERAPI",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2265-merapi.jpg"
+                },
+                {
+                    "code": "2266",
+                    "name": "VESUVIO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2266-vesuvio.jpg"
+                },
+                {
+                    "code": "2267",
+                    "name": "FUJI",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2267-fuji.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/collection.jpg"
         },
         {
             "name": "GTI Pure Connect",
@@ -97,13 +291,38 @@
                 "Namena": "Komercijalni i tehnicki prostori"
             },
             "colors": [
-                { "code": "2740", "name": "HARLEM SOFT" },
-                { "code": "2741", "name": "BROOKLYN" },
-                { "code": "2742", "name": "TIMES SQUARE" },
-                { "code": "2743", "name": "CENTRAL PARK" },
-                { "code": "2744", "name": "QUEENS SOFT" },
-                { "code": "2745", "name": "PLAZA" }
-            ]
+                {
+                    "code": "2740",
+                    "name": "HARLEM SOFT",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2740-harlem-soft.jpg"
+                },
+                {
+                    "code": "2741",
+                    "name": "BROOKLYN",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2741-brooklyn.jpg"
+                },
+                {
+                    "code": "2742",
+                    "name": "TIMES SQUARE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2742-times-square.jpg"
+                },
+                {
+                    "code": "2743",
+                    "name": "CENTRAL PARK",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2743-central-park.jpg"
+                },
+                {
+                    "code": "2744",
+                    "name": "QUEENS SOFT",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2744-queens-soft.jpg"
+                },
+                {
+                    "code": "2745",
+                    "name": "PLAZA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2745-plaza.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/collection.jpg"
         },
         {
             "name": "Attraction Connect",
@@ -120,28 +339,113 @@
                 "Namena": "Dekorativne i tehnicke renovacije"
             },
             "colors": [
-                { "code": "2740", "name": "HARLEM SOFT" },
-                { "code": "2741", "name": "BROOKLYN" },
-                { "code": "2742", "name": "TIMES SQUARE" },
-                { "code": "2743", "name": "CENTRAL PARK" },
-                { "code": "2744", "name": "QUEENS SOFT" },
-                { "code": "2745", "name": "PLAZA" },
-                { "code": "3707", "name": "PARAIBA" },
-                { "code": "3709", "name": "CEARA" },
-                { "code": "4003", "name": "TAO" },
-                { "code": "4004", "name": "PAGO" },
-                { "code": "4146", "name": "MOHELI" },
-                { "code": "4342", "name": "JUARA" },
-                { "code": "4343", "name": "TOKELAU" },
-                { "code": "4351", "name": "GREIGE" },
-                { "code": "4476", "name": "WATTARU" },
-                { "code": "8053", "name": "ANAMBAS" },
-                { "code": "8157", "name": "GOIAS" },
-                { "code": "8386", "name": "BOA VISTA" },
-                { "code": "8577", "name": "AMAZONAS" },
-                { "code": "8736", "name": "RECIFE" },
-                { "code": "8837", "name": "SONGO" }
-            ]
+                {
+                    "code": "2740",
+                    "name": "HARLEM SOFT",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2740-harlem-soft.jpg"
+                },
+                {
+                    "code": "2741",
+                    "name": "BROOKLYN",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2741-brooklyn.jpg"
+                },
+                {
+                    "code": "2742",
+                    "name": "TIMES SQUARE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2742-times-square.jpg"
+                },
+                {
+                    "code": "2743",
+                    "name": "CENTRAL PARK",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2743-central-park.jpg"
+                },
+                {
+                    "code": "2744",
+                    "name": "QUEENS SOFT",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2744-queens-soft.jpg"
+                },
+                {
+                    "code": "2745",
+                    "name": "PLAZA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2745-plaza.jpg"
+                },
+                {
+                    "code": "3707",
+                    "name": "PARAIBA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/3707-paraiba.jpg"
+                },
+                {
+                    "code": "3709",
+                    "name": "CEARA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/3709-ceara.jpg"
+                },
+                {
+                    "code": "4003",
+                    "name": "TAO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4003-tao.jpg"
+                },
+                {
+                    "code": "4004",
+                    "name": "PAGO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4004-pago.jpg"
+                },
+                {
+                    "code": "4146",
+                    "name": "MOHELI",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4146-moheli.jpg"
+                },
+                {
+                    "code": "4342",
+                    "name": "JUARA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4342-juara.jpg"
+                },
+                {
+                    "code": "4343",
+                    "name": "TOKELAU",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4343-tokelau.jpg"
+                },
+                {
+                    "code": "4351",
+                    "name": "GREIGE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4351-greige.jpg"
+                },
+                {
+                    "code": "4476",
+                    "name": "WATTARU",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4476-wattaru.jpg"
+                },
+                {
+                    "code": "8053",
+                    "name": "ANAMBAS",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8053-anambas.jpg"
+                },
+                {
+                    "code": "8157",
+                    "name": "GOIAS",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8157-goias.jpg"
+                },
+                {
+                    "code": "8386",
+                    "name": "BOA VISTA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8386-boa-vista.jpg"
+                },
+                {
+                    "code": "8577",
+                    "name": "AMAZONAS",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8577-amazonas.jpg"
+                },
+                {
+                    "code": "8736",
+                    "name": "RECIFE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8736-recife.jpg"
+                },
+                {
+                    "code": "8837",
+                    "name": "SONGO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8837-songo.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/collection.jpg"
         }
     ]
 }

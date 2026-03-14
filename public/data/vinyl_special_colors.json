@@ -14,25 +14,98 @@
                 "Namena": "Clean room i tehnicki prostori"
             },
             "colors": [
-                { "code": "5404", "name": "VANILLA SKY" },
-                { "code": "5406", "name": "MOQUI" },
-                { "code": "5408", "name": "CHALK DUST" },
-                { "code": "5412", "name": "MOON STONE" },
-                { "code": "5413", "name": "RAIN FALL" },
-                { "code": "5417", "name": "FOGGY HILL" },
-                { "code": "5420", "name": "STONE POWDER" },
-                { "code": "5427", "name": "GREEN ZEST" },
-                { "code": "5430", "name": "SIDERAL GREY" },
-                { "code": "5432", "name": "SUN STONE" },
-                { "code": "5436", "name": "TIGER EYE" },
-                { "code": "5441", "name": "CLAY SOIL" },
-                { "code": "5443", "name": "WOOD PATH" },
-                { "code": "5445", "name": "TREE BARK" },
-                { "code": "5455", "name": "LAVA FLOW" },
-                { "code": "5456", "name": "INTENSE INDIGO" },
-                { "code": "5459", "name": "STORMY CLOUD" },
-                { "code": "5475", "name": "INTENSE RUBY" }
-            ]
+                {
+                    "code": "5404",
+                    "name": "VANILLA SKY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5404-vanilla-sky.jpg"
+                },
+                {
+                    "code": "5406",
+                    "name": "MOQUI",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5406-moqui.jpg"
+                },
+                {
+                    "code": "5408",
+                    "name": "CHALK DUST",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5408-chalk-dust.jpg"
+                },
+                {
+                    "code": "5412",
+                    "name": "MOON STONE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5412-moon-stone.jpg"
+                },
+                {
+                    "code": "5413",
+                    "name": "RAIN FALL",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5413-rain-fall.jpg"
+                },
+                {
+                    "code": "5417",
+                    "name": "FOGGY HILL",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5417-foggy-hill.jpg"
+                },
+                {
+                    "code": "5420",
+                    "name": "STONE POWDER",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5420-stone-powder.jpg"
+                },
+                {
+                    "code": "5427",
+                    "name": "GREEN ZEST",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5427-green-zest.jpg"
+                },
+                {
+                    "code": "5430",
+                    "name": "SIDERAL GREY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5430-sideral-grey.jpg"
+                },
+                {
+                    "code": "5432",
+                    "name": "SUN STONE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5432-sun-stone.jpg"
+                },
+                {
+                    "code": "5436",
+                    "name": "TIGER EYE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5436-tiger-eye.jpg"
+                },
+                {
+                    "code": "5441",
+                    "name": "CLAY SOIL",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5441-clay-soil.jpg"
+                },
+                {
+                    "code": "5443",
+                    "name": "WOOD PATH",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5443-wood-path.jpg"
+                },
+                {
+                    "code": "5445",
+                    "name": "TREE BARK",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5445-tree-bark.jpg"
+                },
+                {
+                    "code": "5455",
+                    "name": "LAVA FLOW",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5455-lava-flow.jpg"
+                },
+                {
+                    "code": "5456",
+                    "name": "INTENSE INDIGO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5456-intense-indigo.jpg"
+                },
+                {
+                    "code": "5459",
+                    "name": "STORMY CLOUD",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5459-stormy-cloud.jpg"
+                },
+                {
+                    "code": "5475",
+                    "name": "INTENSE RUBY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/5475-intense-ruby.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-clean/collection.jpg"
         },
         {
             "name": "Mipolam Biocontrol Performance",
@@ -48,23 +121,88 @@
                 "Namena": "Clean room, nuklearni i tehnicki prostori"
             },
             "colors": [
-                { "code": "6001", "name": "COTTON" },
-                { "code": "6006", "name": "BLUE SKY" },
-                { "code": "6008", "name": "CALICO" },
-                { "code": "6009", "name": "GREY STONE" },
-                { "code": "6025", "name": "TANGELO" },
-                { "code": "6027", "name": "ACACIA" },
-                { "code": "6029", "name": "CLOUD" },
-                { "code": "6031", "name": "BREEZE" },
-                { "code": "6032", "name": "SUNSHINE" },
-                { "code": "6034", "name": "MOLE" },
-                { "code": "6036", "name": "OCEANIA" },
-                { "code": "6039", "name": "PEBBLE" },
-                { "code": "6041", "name": "CLAY" },
-                { "code": "6043", "name": "WOOD" },
-                { "code": "6044", "name": "SEA STORM" },
-                { "code": "6075", "name": "CARDINAL" }
-            ]
+                {
+                    "code": "6001",
+                    "name": "COTTON",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6001-cotton.jpg"
+                },
+                {
+                    "code": "6006",
+                    "name": "BLUE SKY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6006-blue-sky.jpg"
+                },
+                {
+                    "code": "6008",
+                    "name": "CALICO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6008-calico.jpg"
+                },
+                {
+                    "code": "6009",
+                    "name": "GREY STONE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6009-grey-stone.jpg"
+                },
+                {
+                    "code": "6025",
+                    "name": "TANGELO",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6025-tangelo.jpg"
+                },
+                {
+                    "code": "6027",
+                    "name": "ACACIA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6027-acacia.jpg"
+                },
+                {
+                    "code": "6029",
+                    "name": "CLOUD",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6029-cloud.jpg"
+                },
+                {
+                    "code": "6031",
+                    "name": "BREEZE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6031-breeze.jpg"
+                },
+                {
+                    "code": "6032",
+                    "name": "SUNSHINE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6032-sunshine.jpg"
+                },
+                {
+                    "code": "6034",
+                    "name": "MOLE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6034-mole.jpg"
+                },
+                {
+                    "code": "6036",
+                    "name": "OCEANIA",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6036-oceania.jpg"
+                },
+                {
+                    "code": "6039",
+                    "name": "PEBBLE",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6039-pebble.jpg"
+                },
+                {
+                    "code": "6041",
+                    "name": "CLAY",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6041-clay.jpg"
+                },
+                {
+                    "code": "6043",
+                    "name": "WOOD",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6043-wood.jpg"
+                },
+                {
+                    "code": "6044",
+                    "name": "SEA STORM",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6044-sea-storm.jpg"
+                },
+                {
+                    "code": "6075",
+                    "name": "CARDINAL",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/6075-cardinal.jpg"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/mipolam-biocontrol-performance/collection.jpg"
         }
     ]
 }

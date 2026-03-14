@@ -1,6 +1,9 @@
 import { Product, ProductSpec } from '@/types';
 import { existsSync } from 'fs';
 import { join } from 'path';
+import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
+import industrialColorsData from '@/public/data/industrial_colors.json';
+import sportColorsData from '@/public/data/sport_colors.json';
 
 const DEFAULT_DATE = new Date('2024-01-01');
 
@@ -18,10 +21,36 @@ type ManualCollectionConfig = {
   detailsSections?: Product['detailsSections'];
 };
 
+type CollectionImageSource = {
+  slug?: string;
+  collection_image_url?: string;
+};
+
+const manualCollectionImageSources = [
+  ...((((vinylSpecialColorsData as any)?.collections || []) as CollectionImageSource[])),
+  ...((((industrialColorsData as any)?.collections || []) as CollectionImageSource[])),
+  ...((((sportColorsData as any)?.collections || []) as CollectionImageSource[])),
+];
+
+function isRemoteImageUrl(url: string) {
+  return /^https?:\/\//i.test(url);
+}
+
+function resolveCollectionImageUrl(productSlug: string, fallbackUrl?: string) {
+  const collectionSlug = productSlug.replace(/^gerflor-/, '');
+  const imageFromJson = manualCollectionImageSources.find((collection) => collection.slug === collectionSlug)?.collection_image_url;
+  return imageFromJson || fallbackUrl;
+}
+
+function hasUsableImage(url?: string) {
+  if (!url) return false;
+  if (isRemoteImageUrl(url)) return true;
+  return existsSync(join(process.cwd(), 'public', url.replace(/^\//, '')));
+}
+
 function createCollectionProduct(config: ManualCollectionConfig): Product {
-  const hasImage = config.imageUrl
-    ? existsSync(join(process.cwd(), 'public', config.imageUrl.replace(/^\//, '')))
-    : false;
+  const imageUrl = resolveCollectionImageUrl(config.slug, config.imageUrl);
+  const hasImage = hasUsableImage(imageUrl);
 
   return {
     id: config.id,
@@ -32,10 +61,10 @@ function createCollectionProduct(config: ManualCollectionConfig): Product {
     brandId: '6',
     shortDescription: config.shortDescription,
     description: config.description,
-    images: config.imageUrl && hasImage ? [
+    images: imageUrl && hasImage ? [
       {
         id: `${config.id}-img`,
-        url: config.imageUrl,
+        url: imageUrl,
         alt: config.name,
         isPrimary: true,
         order: 0,

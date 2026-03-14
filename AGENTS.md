@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.03.2026 (Nove Gerflor kategorije Sport i Industrijske ploče + specijalni vinil pipeline)
+> **Poslednje ažuriranje:** 14.03.2026 (Gerflor ZIP → Supabase slike za specijalni vinil, Industrijske ploče i Sport)
 
 ---
 
@@ -139,6 +139,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**Gerflor ZIP slike uploadovane na Supabase za specijalni vinil, Industrijske ploče i Sport (14.03.2026)**
+- `tools/download_gerflor_highres_zip.js` je proširen da za tipove `vinyl-special`, `industrial` i `sport` klikće Gerflor download flow (`download` → `.jpg`) i preuzima stvarne ZIP arhive visokog kvaliteta umesto preview slika sa stranice.
+- Skripta sada opciono radi i Supabase upload (`--upload-supabase`), sama pronalazi projekat preko `SUPABASE_ACCESS_TOKEN` kad treba, kreira `product-images` bucket ako ne postoji i upisuje javne URL-ove nazad u JSON.
+- `public/data/vinyl_special_colors.json`, `public/data/industrial_colors.json` i `public/data/sport_colors.json` sada sadrže realne `collection_image_url` hero slike i color `image` URL-ove za svih 9 kolekcija, bez placeholder-a i bez praznih boja.
+- `manual-collection-products.ts` sada cita `collection_image_url` iz JSON-a, tako da collection kartice i hero sekcije koriste iste Supabase-hostovane slike kao ostatak sajta.
+- Verifikovano: sve 3 JSON grupe imaju `hero=true` i `missing=0`, a posle integracije su `npm run lint` i `npm run build` ponovo potvrđeni kao obavezna zavrsna provera.
+
 **Gerflor specijalni vinil + nove kategorije Industrijske ploče i Sport (14.03.2026)**
 - Dodati novi izvori podataka `public/data/vinyl_special_colors.json`, `public/data/industrial_colors.json` i `public/data/sport_colors.json` za 9 novih Gerflor/DLW kolekcija (boje + opisi + karakteristike).
 - Proširen ceo JSON → resolver → API → UI pipeline: `color-helpers.ts`, `prepare-colors.ts`, `resolve-product.ts`, `/api/colors`, `/api/color-data`, `CategoryTabs`, `ColorGrid`, `ProductCard`, `ProductCardClient`, category/product page logika za category ID 9 i 10.
@@ -275,7 +282,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Dodati "Dostupne podloge" prikaz za Trinity kolekcije
 - [x] Razmotriti prebacivanje klijentskih JSON import-ova na API rute (bundle size)
 - [x] Proveriti da li su kategorije 8, 9, 10 obrisane iz Supabase baze (bile su EGGER-ove)
-- [ ] Pokrenuti stvarni Gerflor download za nove `vinyl_special`, `industrial` i `sport` kolekcije čim lokalni DNS pristup ka `gerflor-cee.com` proradi, da se `collection.jpg` i color JPG fajlovi popune realnim roomshot/slikama.
+- [x] Pokrenuti stvarni Gerflor ZIP download za `vinyl_special`, `industrial` i `sport` kolekcije i podici roomshot + color JPG slike na Supabase umesto preview URL-ova sa Gerflor sajta.
 
 ---
 
@@ -324,10 +331,12 @@ PODOVI/
 10. **`mergeSelectedColor()` menja `product.name` u ime boje.** Nikad ne koristi `productName` kao izvor za ime kolekcije posle merge-a. Uvek sačuvaj originalni naziv PRE poziva `mergeSelectedColor()` i prosledi ga kao `originalProductName`.
 11. **Brend se ne ponavlja u naslovu/podnaslovu.** Brend (Gerflor, Tarkett, BLOQ) je već prikazan iznad kao link. U h1 i subtitle koristi `collectionName` koji stripuje brend prefiks. Logika: `name.startsWith(brand.name + ' ')` → strip.
 12. **Formatiranje naziva boja:** Uvek propusti sirova imena boja iz JSON-a kroz `formatProductName` utility iz `productDataLoader.ts`. Ovo osigurava konzistentan Title Case i uklanja šifre iz naziva.
-13. **Gerflor CDN slike:** Gerflor blokira direktne HTTP zahteve na `gerflor-cee.com` slike (403). Slike se preuzimaju sa `cdn.gerflor.com/media/1642426083/1/{CDN_ID}.jpg` — CDN ID-evi se nalaze na individual individualnim stranicama boja.
+13. **Gerflor slike moraju ici preko download ZIP flow-a:** Ne koristi preview slike koje su renderovane na stranici. Za kvalitetne assete klikni download dugme, zatim `.jpg`, preuzmi ZIP i odatle uzmi najveci JPG; posle toga slike hostuj na Supabase i upisi javni URL u JSON.
 301. **Novi vinil proizvodi moraju imati merge u repo:** Kad dodaješ novi proizvod u `vinyl_colors_complete.json`, moraš dodati i merging logiku u `SupabaseProductRepository.findAll()` za cat 2, ili ručno dodati u Supabase. Pogledaj `getVinylCollectionProducts()` u `productDataLoader.ts`.
 15. **Dinamičko mapiranje boja za nove kolekcije:** Kada dodaješ novi fajl poput `esd_colors.json`, NIJE DOVOLJNO dodati ga samo u `productDataLoader.ts`. UVEK moraš da ažuriraš `loadColorFromJson`, `colorToProduct` za `categoryId` i UVEK prepraviš rutensku pretragu u `resolveProductBySlug` kako bi Next.js znao kako da instancira stranicu kad neko poseti `/proizvod...color=...`, inače će dovesti do 404 greške!
 16. **ESD slug pattern:** ESD kolekcije (mipolam-el5, gti-el5-connect, itd.) koriste slug BEZ `gerflor-` prefiksa, za razliku od LVT/Vinil/Linoleum kolekcija. SVAKA nova logika u `resolve-product.ts`, `prepare-colors.ts`, `color-helpers.ts` mora da proverava slug i sa i bez prefiksa. Takođe, ESD boje koriste `image` polje umesto `image_url`/`texture_url` — uvek dodaj fallback na `(color as any).image`.
+17. **Ne pokreci Gerflor downloader paralelno nad istim JSON fajlom.** Skripta drži stanje celog fajla u memoriji i poslednji upis moze da pregazi prethodni uspesan prolaz ako dve instance rade nad istim `vinyl_special_colors.json`, `industrial_colors.json` ili `sport_colors.json`.
+18. **Neki Gerflor product template-i gutaju normalan Playwright klik zbog consent/overlay sloja.** Kad download dugme postoji u DOM-u, ali `page.click()` ne prolazi, koristi DOM `.click()` fallback nad stvarnim download triggerom i `.jpg` opcijom.
 
 ---
 

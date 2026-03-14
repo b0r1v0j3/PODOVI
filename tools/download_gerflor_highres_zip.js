@@ -1,50 +1,68 @@
 const { chromium } = require('playwright');
+const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
 const extract = require('extract-zip');
 
-const typeArg = process.argv.find(arg => arg.startsWith('--type='));
-const collectionArg = process.argv.find(arg => arg.startsWith('--collection='));
+const typeArg = process.argv.find((arg) => arg.startsWith('--type='));
+const collectionArg = process.argv.find((arg) => arg.startsWith('--collection='));
+const projectRefArg = process.argv.find((arg) => arg.startsWith('--project-ref='));
+const projectNameArg = process.argv.find((arg) => arg.startsWith('--project-name='));
+const bucketArg = process.argv.find((arg) => arg.startsWith('--bucket='));
+
+const shouldUploadToSupabase = process.argv.includes('--upload-supabase');
+const forceDownload = process.argv.includes('--force');
 
 if (!typeArg) {
-    console.error('Usage: node tools/download_gerflor_highres_zip.js --type=<esd|vinyl|vinyl-special|lvt|linoleum|industrial|sport> [--collection=<slug>]');
+    console.error('Usage: node tools/download_gerflor_highres_zip.js --type=<esd|vinyl|vinyl-special|lvt|linoleum|industrial|sport> [--collection=<slug>] [--upload-supabase] [--force]');
     process.exit(1);
 }
 
 const type = typeArg.split('=')[1];
 const targetCollectionSlug = collectionArg ? collectionArg.split('=')[1] : null;
+const preferredProjectRef = projectRefArg ? projectRefArg.split('=')[1] : process.env.SUPABASE_PROJECT_REF || null;
+const preferredProjectName = projectNameArg ? projectNameArg.split('=')[1] : process.env.SUPABASE_PROJECT_NAME || 'podovi';
+const storageBucketName = bucketArg ? bucketArg.split('=')[1] : 'product-images';
 
 let dataFileName = '';
-let outDirName = '';
+let localOutDirName = '';
+let storageDirName = '';
 
 switch (type) {
     case 'esd':
         dataFileName = 'esd_colors.json';
-        outDirName = 'esd';
+        localOutDirName = 'esd';
+        storageDirName = 'esd';
         break;
     case 'vinyl':
         dataFileName = 'vinyl_colors_complete.json';
-        outDirName = 'products/vinyl';
+        localOutDirName = 'products/vinyl';
+        storageDirName = 'vinyl';
         break;
     case 'vinyl-special':
         dataFileName = 'vinyl_special_colors.json';
-        outDirName = 'products/vinyl';
+        localOutDirName = 'products/vinyl';
+        storageDirName = 'vinyl';
         break;
     case 'lvt':
         dataFileName = 'lvt_colors_complete.json';
-        outDirName = 'products/lvt';
+        localOutDirName = 'products/lvt';
+        storageDirName = 'lvt';
         break;
     case 'linoleum':
         dataFileName = 'linoleum_colors_complete.json';
-        outDirName = 'products/linoleum';
+        localOutDirName = 'products/linoleum';
+        storageDirName = 'linoleum';
         break;
     case 'industrial':
         dataFileName = 'industrial_colors.json';
-        outDirName = 'products/industrial';
+        localOutDirName = 'products/industrial';
+        storageDirName = 'industrial';
         break;
     case 'sport':
         dataFileName = 'sport_colors.json';
-        outDirName = 'products/sport';
+        localOutDirName = 'products/sport';
+        storageDirName = 'sport';
         break;
     default:
         console.error(`Unknown type: ${type}`);
@@ -55,17 +73,21 @@ const dataPath = path.join(__dirname, '..', 'public', 'data', dataFileName);
 let jsonData;
 try {
     jsonData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-} catch (e) {
+} catch (error) {
     console.error(`Could not read data file ${dataPath}`);
     process.exit(1);
 }
 
-const baseOutDir = path.join(__dirname, '..', 'public', 'images', outDirName);
+const tmpDir = path.join(__dirname, '..', 'tmp_downloads');
+const stagingRootDir = shouldUploadToSupabase
+    ? path.join(tmpDir, 'staging')
+    : path.join(__dirname, '..', 'public', 'images');
+const baseOutDir = path.join(stagingRootDir, localOutDirName);
+
 if (!fs.existsSync(baseOutDir)) {
     fs.mkdirSync(baseOutDir, { recursive: true });
 }
 
-const tmpDir = path.join(__dirname, '..', 'tmp_downloads');
 if (!fs.existsSync(tmpDir)) {
     fs.mkdirSync(tmpDir, { recursive: true });
 }
@@ -75,6 +97,38 @@ function sanitizeName(value) {
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
+}
+
+function isRemoteUrl(value) {
+    return /^https?:\/\//i.test(String(value || ''));
+}
+
+function findLargestJpgFile(dirPath) {
+    const files = [];
+
+    function walk(currentDir) {
+        for (const entry of fs.readdirSync(currentDir, { withFileTypes: true })) {
+            const fullPath = path.join(currentDir, entry.name);
+            if (entry.isDirectory()) {
+                walk(fullPath);
+                continue;
+            }
+
+            if (entry.isFile() && /\.jpe?g$/i.test(entry.name)) {
+                files.push(fullPath);
+            }
+        }
+    }
+
+    walk(dirPath);
+
+    if (files.length === 0) {
+        return null;
+    }
+
+    return files
+        .map((filePath) => ({ filePath, size: fs.statSync(filePath).size }))
+        .sort((left, right) => right.size - left.size)[0].filePath;
 }
 
 async function saveDownloadAsJpg(download, destPath, tmpPrefix) {
@@ -87,30 +141,202 @@ async function saveDownloadAsJpg(download, destPath, tmpPrefix) {
         const extractDir = path.join(tmpDir, `${tmpPrefix}-extracted`);
         await extract(tmpPath, { dir: extractDir });
 
-        const extractedFiles = fs.readdirSync(extractDir);
-        const jpgFile = extractedFiles.find(file => file.toLowerCase().endsWith('.jpg'));
+        const jpgFile = findLargestJpgFile(extractDir);
         if (!jpgFile) {
             fs.rmSync(extractDir, { recursive: true, force: true });
             fs.rmSync(tmpPath, { force: true });
             throw new Error(`ZIP ${suggestedName} does not contain a JPG`);
         }
 
-        fs.copyFileSync(path.join(extractDir, jpgFile), destPath);
+        fs.mkdirSync(path.dirname(destPath), { recursive: true });
+        fs.copyFileSync(jpgFile, destPath);
         fs.rmSync(extractDir, { recursive: true, force: true });
         fs.rmSync(tmpPath, { force: true });
         return;
     }
 
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
     fs.copyFileSync(tmpPath, destPath);
     fs.rmSync(tmpPath, { force: true });
 }
 
-async function downloadCollectionImage(page, collection, collectionDir) {
-    const collectionImagePath = path.join(collectionDir, 'collection.jpg');
-    if (fs.existsSync(collectionImagePath)) {
-        console.log('  Collection image already exists, skipping collection roomshot download.');
+async function resolveSupabaseConfig() {
+    const explicitUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const explicitKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (explicitUrl && explicitKey) {
+        return {
+            url: explicitUrl,
+            key: explicitKey,
+            ref: explicitUrl.replace(/^https?:\/\//i, '').replace(/\.supabase\.co.*$/i, ''),
+        };
+    }
+
+    const accessToken = process.env.SUPABASE_ACCESS_TOKEN;
+    if (!accessToken) {
+        throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL + SUPABASE key, and SUPABASE_ACCESS_TOKEN is not available.');
+    }
+
+    const projectsResponse = await fetch('https://api.supabase.com/v1/projects', {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            Accept: 'application/json',
+        },
+    });
+
+    if (!projectsResponse.ok) {
+        throw new Error(`Could not list Supabase projects (${projectsResponse.status})`);
+    }
+
+    const projects = await projectsResponse.json();
+    const targetProject = projects.find((project) => (
+        (preferredProjectRef && (project.ref === preferredProjectRef || project.id === preferredProjectRef))
+        || (!preferredProjectRef && project.name === preferredProjectName)
+    ));
+
+    if (!targetProject) {
+        throw new Error(`Supabase project not found (${preferredProjectRef || preferredProjectName}).`);
+    }
+
+    const projectRef = targetProject.ref || targetProject.id;
+    const keysResponse = await fetch(`https://api.supabase.com/v1/projects/${projectRef}/api-keys`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            Accept: 'application/json',
+        },
+    });
+
+    if (!keysResponse.ok) {
+        throw new Error(`Could not fetch Supabase API keys (${keysResponse.status})`);
+    }
+
+    const keys = await keysResponse.json();
+    const serviceRoleKey = keys.find((entry) => entry.name === 'service_role' && entry.api_key)?.api_key;
+
+    if (!serviceRoleKey) {
+        throw new Error(`No usable service_role key found for Supabase project ${projectRef}.`);
+    }
+
+    return {
+        url: `https://${projectRef}.supabase.co`,
+        key: serviceRoleKey,
+        ref: projectRef,
+    };
+}
+
+async function ensureBucket(supabase, bucketName) {
+    const { data: buckets, error } = await supabase.storage.listBuckets();
+    if (error) {
+        throw new Error(`Could not list storage buckets: ${error.message}`);
+    }
+
+    if (Array.isArray(buckets) && buckets.some((bucket) => bucket.name === bucketName || bucket.id === bucketName)) {
         return;
     }
+
+    const { error: createError } = await supabase.storage.createBucket(bucketName, {
+        public: true,
+        fileSizeLimit: 25 * 1024 * 1024,
+        allowedMimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    });
+
+    if (createError && !/already exists/i.test(createError.message)) {
+        throw new Error(`Could not create storage bucket ${bucketName}: ${createError.message}`);
+    }
+}
+
+async function uploadJpgToSupabase(supabase, localPath, objectPath) {
+    const fileBuffer = fs.readFileSync(localPath);
+    let lastError = null;
+
+    for (let attempt = 1; attempt <= 4; attempt += 1) {
+        try {
+            const { error: uploadError } = await supabase.storage
+                .from(storageBucketName)
+                .upload(objectPath, fileBuffer, {
+                    contentType: 'image/jpeg',
+                    upsert: true,
+                });
+
+            if (!uploadError) {
+                const { data } = supabase.storage.from(storageBucketName).getPublicUrl(objectPath);
+                return data.publicUrl;
+            }
+
+            lastError = uploadError;
+        } catch (error) {
+            lastError = error;
+        }
+
+        if (attempt < 4) {
+            console.log(`    Retrying Supabase upload (${attempt}/4) for ${objectPath}...`);
+            await new Promise((resolve) => setTimeout(resolve, attempt * 1500));
+        }
+    }
+
+    const errorMessage = lastError?.message || String(lastError || 'Unknown upload error');
+    throw new Error(`Supabase upload failed for ${objectPath}: ${errorMessage}`);
+}
+
+async function finalizeImage(localPath, storageObjectPath, localPublicPath, supabase) {
+    if (shouldUploadToSupabase) {
+        const publicUrl = await uploadJpgToSupabase(supabase, localPath, storageObjectPath);
+        fs.rmSync(localPath, { force: true });
+        return publicUrl;
+    }
+
+    return localPublicPath;
+}
+
+function getCollectionImageValue(collection) {
+    return collection.collection_image_url || collection.image || collection.image_url || '';
+}
+
+function getColorImageValue(color) {
+    return color.image || color.image_url || '';
+}
+
+function shouldSkipExisting(value) {
+    return !forceDownload && Boolean(value);
+}
+
+function setCollectionImageValue(collection, url) {
+    collection.collection_image_url = url;
+}
+
+function setColorImageValue(color, url) {
+    if (type === 'lvt' || type === 'linoleum') {
+        color.image_url = url;
+        return;
+    }
+
+    color.image = url;
+}
+
+function collectionLocalPublicPath(collectionSlug) {
+    return `/images/${localOutDirName}/${collectionSlug}/collection.jpg`;
+}
+
+function colorLocalPublicPath(collectionSlug, fileName) {
+    return `/images/${localOutDirName}/${collectionSlug}/${fileName}`;
+}
+
+function collectionStorageObjectPath(collectionSlug) {
+    return `products/${storageDirName}/${collectionSlug}/collection.jpg`;
+}
+
+function colorStorageObjectPath(collectionSlug, fileName) {
+    return `products/${storageDirName}/${collectionSlug}/${fileName}`;
+}
+
+async function downloadCollectionImage(page, collection, collectionDir, supabase) {
+    const existingCollectionImage = getCollectionImageValue(collection);
+    if (shouldSkipExisting(existingCollectionImage)) {
+        console.log('  Collection image already exists in JSON, skipping.');
+        return false;
+    }
+
+    const collectionImagePath = path.join(collectionDir, 'collection.jpg');
 
     try {
         const directLink = await page.evaluate(() => {
@@ -119,23 +345,16 @@ async function downloadCollectionImage(page, collection, collectionDir) {
             if (!item) return null;
 
             const documentCandidates = [...(item.documents || []), ...(item.medias || [])];
-            const doc = documentCandidates.find(entry => {
+            const doc = documentCandidates.find((entry) => {
                 const fileUrl = entry?.file_url || entry?.url || '';
-                return fileUrl.endsWith('.zip') || fileUrl.endsWith('.jpg') || fileUrl.includes('/images/');
+                return fileUrl.endsWith('.zip') || fileUrl.endsWith('.jpg');
             });
-            if (doc?.file_url || doc?.url) {
-                return doc.file_url || doc.url;
-            }
 
-            if (item.mediaBaseUri && item.images && item.images[0]) {
-                return item.mediaBaseUri + item.images[0].original;
-            }
-
-            return null;
+            return doc?.file_url || doc?.url || null;
         });
 
         if (directLink) {
-            console.log(`  Downloading collection image via payload link: ${directLink}`);
+            console.log('  Downloading collection image from product download asset...');
             const [download] = await Promise.all([
                 page.waitForEvent('download', { timeout: 30000 }),
                 page.evaluate((url) => {
@@ -147,108 +366,174 @@ async function downloadCollectionImage(page, collection, collectionDir) {
                     document.body.removeChild(anchor);
                 }, directLink),
             ]);
+
             await saveDownloadAsJpg(download, collectionImagePath, `${collection.slug}-collection`);
-            console.log('  ✅ Saved collection roomshot as collection.jpg');
-            return;
+        } else {
+            console.log('  Direct collection download link not found, trying UI download...');
+            await openDownloadMenu(page);
+
+            const [download] = await Promise.all([
+                page.waitForEvent('download', { timeout: 30000 }),
+                clickDownloadImagesButton(page),
+            ]);
+
+            await saveDownloadAsJpg(download, collectionImagePath, `${collection.slug}-collection`);
+            await page.mouse.click(0, 0);
+            await page.waitForTimeout(1000);
         }
 
-        console.log('  Payload link for collection roomshot not found, trying UI download...');
-        await page.click('.download-button--trigger', { timeout: 10000 });
-        await page.waitForTimeout(1000);
-
-        const [download] = await Promise.all([
-            page.waitForEvent('download', { timeout: 30000 }),
-            page.click('.download-button--images'),
-        ]);
-
-        await saveDownloadAsJpg(download, collectionImagePath, `${collection.slug}-collection`);
-        await page.mouse.click(0, 0);
-        await page.waitForTimeout(1000);
-        console.log('  ✅ Saved collection roomshot as collection.jpg');
+        const finalUrl = await finalizeImage(
+            collectionImagePath,
+            collectionStorageObjectPath(collection.slug),
+            collectionLocalPublicPath(collection.slug),
+            supabase,
+        );
+        setCollectionImageValue(collection, finalUrl);
+        console.log('  ✅ Saved collection roomshot.');
+        return true;
     } catch (error) {
         console.log(`  ⚠️ Could not download collection roomshot for ${collection.slug}: ${error.message}`);
         try {
             await page.mouse.click(0, 0);
-        } catch (e) { }
+        } catch (clickError) { }
+        return false;
     }
 }
 
-// Map the items to a standard array of collections
-let collectionsToProcess = [];
+async function reloadCollectionPage(page, collectionUrl) {
+    await page.goto(collectionUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(3000);
+}
 
-if (jsonData.collections && Array.isArray(jsonData.collections)) {
-    // Structure: { collections: [ { slug, url, colors: [] } ] } (ESD, Vinyl)
-    collectionsToProcess = jsonData.collections;
-} else if (jsonData.colors && Array.isArray(jsonData.colors)) {
-    // Structure: { colors: [ { collection_slug, url, code, name } ] } (LVT, Linoleum)
-    // We need to group them by collection
-    const collMap = new Map();
-    for (const color of jsonData.colors) {
-        let slug = color.collection_slug || color.collection;
-        if (!slug) continue;
+async function openDownloadMenu(page) {
+    try {
+        await page.click('.download-button--trigger', { timeout: 10000 });
+    } catch (error) {
+        const clicked = await page.evaluate(() => {
+            const trigger = document.querySelector('.download-button--trigger');
+            if (!trigger) return false;
+            trigger.click();
+            return true;
+        });
 
-        // Remove 'gerflor-' prefix if present for uniformity in this script
-        const rawSlug = slug.replace(/^gerflor-/, '');
-
-        if (!collMap.has(rawSlug)) {
-            let collUrl = color.collection_url || color.url || `https://www.gerflor-cee.com/products/${rawSlug}`;
-            // If we only have the precise color url, strip the end to get the collection URL if possible
-            if (collUrl.includes(`-${color.code}-`)) {
-                collUrl = collUrl.substring(0, collUrl.indexOf(`-${color.code}-`));
-            }
-            collMap.set(rawSlug, {
-                slug: rawSlug,
-                url: collUrl,
-                colors: []
-            });
+        if (!clicked) {
+            throw error;
         }
-        collMap.get(rawSlug).colors.push(color);
     }
-    collectionsToProcess = Array.from(collMap.values());
-} else {
+
+    await page.waitForTimeout(1000);
+}
+
+async function clickDownloadImagesButton(page) {
+    try {
+        await page.click('.download-button--images', { timeout: 10000 });
+    } catch (error) {
+        const clicked = await page.evaluate(() => {
+            const button = document.querySelector('.download-button--images');
+            if (!button) return false;
+            button.click();
+            return true;
+        });
+
+        if (!clicked) {
+            throw error;
+        }
+    }
+}
+
+function buildCollectionsToProcess(data) {
+    if (data.collections && Array.isArray(data.collections)) {
+        return data.collections;
+    }
+
+    if (data.colors && Array.isArray(data.colors)) {
+        const collectionMap = new Map();
+        for (const color of data.colors) {
+            const collectionSlug = (color.collection_slug || color.collection || '').replace(/^gerflor-/, '');
+            if (!collectionSlug) continue;
+
+            if (!collectionMap.has(collectionSlug)) {
+                let collectionUrl = color.collection_url || color.url || `https://www.gerflor-cee.com/products/${collectionSlug}`;
+                if (color.code && collectionUrl.includes(`-${color.code}-`)) {
+                    collectionUrl = collectionUrl.substring(0, collectionUrl.indexOf(`-${color.code}-`));
+                }
+
+                collectionMap.set(collectionSlug, {
+                    slug: collectionSlug,
+                    url: collectionUrl,
+                    colors: [],
+                });
+            }
+
+            collectionMap.get(collectionSlug).colors.push(color);
+        }
+
+        return Array.from(collectionMap.values());
+    }
+
     console.error('Unknown JSON structure. Needs either "collections" or "colors" array.');
     process.exit(1);
 }
 
-if (targetCollectionSlug) {
-    collectionsToProcess = collectionsToProcess.filter(c => c.slug === targetCollectionSlug);
-    if (collectionsToProcess.length === 0) {
+(async () => {
+    const collectionsToProcess = buildCollectionsToProcess(jsonData).filter((collection) => (
+        !targetCollectionSlug || collection.slug === targetCollectionSlug
+    ));
+
+    if (targetCollectionSlug && collectionsToProcess.length === 0) {
         console.error(`Collection ${targetCollectionSlug} not found in data.`);
         process.exit(1);
     }
-}
 
-(async () => {
-    // Run headed so we don't look like a bot
+    let supabase = null;
+    if (shouldUploadToSupabase) {
+        const supabaseConfig = await resolveSupabaseConfig();
+        supabase = createClient(supabaseConfig.url, supabaseConfig.key, {
+            auth: { persistSession: false },
+        });
+        await ensureBucket(supabase, storageBucketName);
+        console.log(`Supabase storage ready (${supabaseConfig.ref}/${storageBucketName}).`);
+    }
+
     const browser = await chromium.launch({ headless: false });
     const context = await browser.newContext({
-        acceptDownloads: true
+        acceptDownloads: true,
     });
     const page = await context.newPage();
 
     let totalUpdated = 0;
 
-    // Accept cookies to enable the page features
     console.log('Accepting cookies...');
-    // Use the first collection URL to accept cookies 
     await page.goto(collectionsToProcess[0].url, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await page.waitForTimeout(3000);
     try {
-        const acceptBtn = await page.evaluate(() => {
-            const el = document.querySelector('#uc-center-container');
-            if (el && el.shadowRoot) {
-                const btn = el.shadowRoot.querySelector('button[data-testid="uc-accept-all-button"]');
-                if (btn) { btn.click(); return true; }
+        const acceptedInShadowRoot = await page.evaluate(() => {
+            const element = document.querySelector('#uc-center-container');
+            if (element && element.shadowRoot) {
+                const button = element.shadowRoot.querySelector('button[data-testid="uc-accept-all-button"]');
+                if (button) {
+                    button.click();
+                    return true;
+                }
             }
             return false;
         });
-        if (!acceptBtn) {
-            const btnSelectors = ['button[data-testid="uc-accept-all-button"]', '#uc-btn-accept-banner', '.uc-btn-accept'];
-            for (const sel of btnSelectors) {
-                try { await page.click(sel, { timeout: 2000 }); break; } catch (e) { }
+
+        if (!acceptedInShadowRoot) {
+            const selectors = [
+                'button[data-testid="uc-accept-all-button"]',
+                '#uc-btn-accept-banner',
+                '.uc-btn-accept',
+            ];
+
+            for (const selector of selectors) {
+                try {
+                    await page.click(selector, { timeout: 2000 });
+                    break;
+                } catch (error) { }
             }
         }
-    } catch (e) { }
+    } catch (error) { }
 
     for (const collection of collectionsToProcess) {
         console.log(`\nProcessing collection: ${collection.slug}`);
@@ -258,172 +543,169 @@ if (targetCollectionSlug) {
             fs.mkdirSync(collectionDir, { recursive: true });
         }
 
-        // Go to collection page
         const response = await page.goto(collection.url, { waitUntil: 'domcontentloaded', timeout: 60000 });
         if (response && response.status() === 404) {
             console.log(`  ❌ Collection URL returned 404, skipping: ${collection.url}`);
             continue;
         }
+
         await page.waitForTimeout(4000);
-        await downloadCollectionImage(page, collection, collectionDir);
+
+        if (await downloadCollectionImage(page, collection, collectionDir, supabase)) {
+            totalUpdated += 1;
+        }
 
         for (const color of collection.colors) {
+            const currentImageValue = getColorImageValue(color);
+            if (shouldSkipExisting(currentImageValue)) {
+                console.log(`  Skipping ${color.code} ${color.name} (image already exists in JSON).`);
+                continue;
+            }
+
             console.log(`  Processing ${color.code} ${color.name}`);
 
             try {
-                // Read Nuxt state from page to find specific download link
                 const downloadLink = await page.evaluate((code) => {
                     const NUXT = window.__NUXT__;
-                    if (!NUXT || !NUXT.state || !NUXT.state.collectionProductPage) return null;
-                    const item = NUXT.state.collectionProductPage.item;
+                    const item = NUXT?.state?.collectionProductPage?.item;
                     if (!item || !item.designs) return null;
 
-                    const design = item.designs.find(d =>
-                        d.product_design_key === code ||
-                        d.product_design_key === code.replace(/^0+/, '') ||
-                        String(d.product_design_key).endsWith(code)
-                    );
+                    const design = item.designs.find((entry) => (
+                        entry.product_design_key === code
+                        || entry.product_design_key === code.replace(/^0+/, '')
+                        || String(entry.product_design_key).endsWith(code)
+                    ));
 
-                    if (design && design.documents) {
-                        // Look for full image or zip
-                        const doc = design.documents.find(d =>
-                            d.file_url.includes('images') ||
-                            d.file_url.endsWith('.zip') ||
-                            d.file_url.endsWith('.jpg')
-                        );
-                        if (doc) return doc.file_url;
+                    if (!design || !Array.isArray(design.documents)) {
+                        return null;
                     }
 
-                    // Fallback to mediaBaseUri + image path if direct link not in documents
-                    if (design && design.mediaBaseUri && design.images && design.images[0]) {
-                        return design.mediaBaseUri + design.images[0].original;
-                    }
+                    const doc = design.documents.find((entry) => {
+                        const fileUrl = entry?.file_url || '';
+                        return fileUrl.endsWith('.zip') || fileUrl.endsWith('.jpg');
+                    });
 
-                    return null;
+                    return doc?.file_url || null;
                 }, color.code);
 
-                // If no direct link was found via NUXT, use the fallback ZIP scraping logic
+                const colorFileName = `${color.code}-${sanitizeName(color.name)}.jpg`;
+                const colorImagePath = path.join(collectionDir, colorFileName);
+
                 if (downloadLink) {
-                    console.log(`    Found direct link via NUXT: ${downloadLink}`);
-                    // Trigger download directly by navigating to it
+                    console.log('    Downloading color image from design download asset...');
                     const [download] = await Promise.all([
                         page.waitForEvent('download', { timeout: 30000 }),
-                        page.evaluate(url => {
-                            const a = document.createElement('a');
-                            a.href = url;
-                            a.download = '';
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
-                        }, downloadLink)
+                        page.evaluate((url) => {
+                            const anchor = document.createElement('a');
+                            anchor.href = url;
+                            anchor.download = '';
+                            document.body.appendChild(anchor);
+                            anchor.click();
+                            document.body.removeChild(anchor);
+                        }, downloadLink),
                     ]);
 
-                    const fileNameObj = { name: sanitizeName(color.name) };
-                    const finalJpgName = `${color.code}-${fileNameObj.name}.jpg`;
-                    const destPath = path.join(collectionDir, finalJpgName);
+                    await saveDownloadAsJpg(download, colorImagePath, `${collection.slug}-${color.code}`);
+                } else {
+                    console.log('    Download link not in payload, trying swatch + download UI...');
 
-                    await saveDownloadAsJpg(download, destPath, `${collection.slug}-${color.code}`);
-                    console.log(`    ✅ Saved final image: ${finalJpgName}`);
-
-                    if (type === 'esd') {
-                        color.image = `/images/${outDirName}/${finalJpgName}`;
-                    } else if (type === 'lvt' || type === 'linoleum') {
-                        color.image_url = `/images/${outDirName}/${collection.slug}/${finalJpgName}`;
-                    } else if (type === 'vinyl' || type === 'vinyl-special' || type === 'industrial' || type === 'sport') {
-                        color.image = `/images/${outDirName}/${collection.slug}/${finalJpgName}`;
-                    }
-                    totalUpdated++;
-                    continue; // Done with this color
-                }
-
-                // --- FALLBACK: UI Clicking Logic ---
-                console.log(`    Nuxt link not found, attempting UI click fallback...`);
-                // Click the color swatch
-                const swatchLabel = `View product ${color.code} ${color.name}`;
-                try {
-                    await page.click(`[aria-label="${swatchLabel}"]`, { timeout: 10000 });
-                    await page.waitForTimeout(3000); // Wait for the slider to update
-                } catch (e) {
+                    const swatchLabel = `View product ${color.code} ${color.name}`;
                     try {
-                        const fallbackLabel = `View product ${color.code} ${color.name.toLowerCase()}`;
-                        await page.click(`[aria-label="${fallbackLabel}" i]`, { timeout: 5000 });
+                        await page.click(`[aria-label="${swatchLabel}"]`, { timeout: 10000 });
                         await page.waitForTimeout(3000);
-                    } catch (e2) {
+                    } catch (error) {
                         try {
-                            const anySwatchWithCode = `[aria-label*="${color.code}"]`;
-                            await page.click(anySwatchWithCode, { timeout: 5000 });
+                            const fallbackLabel = `View product ${color.code} ${String(color.name || '').toLowerCase()}`;
+                            await page.click(`[aria-label="${fallbackLabel}" i]`, { timeout: 5000 });
                             await page.waitForTimeout(3000);
-                        } catch (e3) {
-                            console.log(`    Skipping swatch ${color.code}`);
-                            continue;
+                        } catch (innerError) {
+                            try {
+                                await page.click(`[aria-label*="${color.code}"]`, { timeout: 5000 });
+                                await page.waitForTimeout(3000);
+                            } catch (finalError) {
+                                let selectedByText = false;
+
+                                try {
+                                    const clickedByNameOnlyLink = await page.evaluate((name) => {
+                                        const targetLabel = `view product ${String(name || '').trim().toLowerCase()}`;
+                                        const links = Array.from(document.querySelectorAll('a[aria-label]'));
+                                        const link = links.find((entry) => (
+                                            String(entry.getAttribute('aria-label') || '').trim().toLowerCase() === targetLabel
+                                        ));
+
+                                        if (!link) {
+                                            return false;
+                                        }
+
+                                        link.click();
+                                        return true;
+                                    }, color.name);
+
+                                    if (clickedByNameOnlyLink) {
+                                        await page.waitForTimeout(3000);
+                                        selectedByText = true;
+                                    }
+                                } catch (nameLinkError) { }
+
+                                const textCandidates = [
+                                    `${color.code} ${color.name}`,
+                                    color.code,
+                                    color.name,
+                                ].filter(Boolean);
+
+                                for (const candidate of selectedByText ? [] : textCandidates) {
+                                    try {
+                                        await page.getByText(candidate, { exact: false }).first().click({ timeout: 4000 });
+                                        await page.waitForTimeout(3000);
+                                        selectedByText = true;
+                                        break;
+                                    } catch (textError) { }
+                                }
+
+                                if (!selectedByText) {
+                                    console.log(`    Skipping swatch ${color.code}`);
+                                    await reloadCollectionPage(page, collection.url);
+                                    continue;
+                                }
+                            }
                         }
                     }
+
+                    await openDownloadMenu(page);
+
+                    const [download] = await Promise.all([
+                        page.waitForEvent('download', { timeout: 30000 }),
+                        clickDownloadImagesButton(page),
+                    ]);
+
+                    await saveDownloadAsJpg(download, colorImagePath, `${collection.slug}-${color.code}`);
+                    await page.mouse.click(0, 0);
+                    await page.waitForTimeout(1000);
                 }
 
-                // Click download dropdown
-                await page.click('.download-button--trigger', { timeout: 10000 });
-                await page.waitForTimeout(1000);
-
-                // Wait for the download archive
-                const [download] = await Promise.all([
-                    page.waitForEvent('download', { timeout: 30000 }),
-                    page.click('.download-button--images')
-                ]);
-
-                const zipPath = path.join(tmpDir, `${collection.slug}-${color.code}.zip`);
-                await download.saveAs(zipPath);
-
-                console.log(`    Downloaded zip to ${zipPath}`);
-
-                // Extract zip
-                const extractDir = path.join(tmpDir, `${collection.slug}-${color.code}-extracted`);
-                await extract(zipPath, { dir: extractDir });
-
-                // Find the jpg inside the extracted folder
-                const files = fs.readdirSync(extractDir);
-                const jpgFile = files.find(f => f.toLowerCase().endsWith('.jpg'));
-
-                if (jpgFile) {
-                    const srcJpgPath = path.join(extractDir, jpgFile);
-                    // Standardize the filename
-                    const nameLower = sanitizeName(color.name);
-                    const fileName = `${color.code}-${nameLower}.jpg`;
-                    const destPath = path.join(collectionDir, fileName);
-
-                    fs.copyFileSync(srcJpgPath, destPath);
-                    console.log(`    ✅ Saved final image: ${fileName}`);
-
-                    // Update JSON with local path
-                    if (type === 'esd') {
-                        color.image = `/images/${outDirName}/${fileName}`;
-                    } else if (type === 'lvt' || type === 'linoleum') {
-                        color.image_url = `/images/${outDirName}/${collection.slug}/${fileName}`;
-                    } else if (type === 'vinyl' || type === 'vinyl-special' || type === 'industrial' || type === 'sport') {
-                        color.image = `/images/${outDirName}/${collection.slug}/${fileName}`;
-                    }
-                    totalUpdated++;
-                } else {
-                    console.log(`    ❌ Extracted zip did not contain a jpg!`);
-                }
-
-                // Cleanup tmp files
-                fs.rmSync(extractDir, { recursive: true, force: true });
-                fs.rmSync(zipPath, { force: true });
-
-                // Close download menu by clicking anywhere else
-                await page.mouse.click(0, 0);
-                await page.waitForTimeout(1000);
-
-            } catch (err) {
-                console.error(`    ❌ Error processing ${color.code}: ${err.message}`);
-                // Try to click away to close any open dialogs that might block the next click
-                await page.mouse.click(0, 0);
+                const finalUrl = await finalizeImage(
+                    colorImagePath,
+                    colorStorageObjectPath(collection.slug, colorFileName),
+                    colorLocalPublicPath(collection.slug, colorFileName),
+                    supabase,
+                );
+                setColorImageValue(color, finalUrl);
+                console.log(`    ✅ Saved final image: ${colorFileName}`);
+                totalUpdated += 1;
+            } catch (error) {
+                console.error(`    ❌ Error processing ${color.code}: ${error.message}`);
+                try {
+                    await page.mouse.click(0, 0);
+                } catch (clickError) { }
+                try {
+                    await reloadCollectionPage(page, collection.url);
+                } catch (reloadError) { }
             }
         }
     }
 
-    fs.writeFileSync(dataPath, JSON.stringify(jsonData, null, 4));
-    console.log(`\n✅ Done! Saved ${totalUpdated} high-res images and updated ${dataFileName}.`);
+    fs.writeFileSync(dataPath, `${JSON.stringify(jsonData, null, 4)}\n`);
+    console.log(`\n✅ Done! Saved ${totalUpdated} Gerflor download images and updated ${dataFileName}.`);
 
     if (fs.existsSync(tmpDir)) {
         fs.rmSync(tmpDir, { recursive: true, force: true });
