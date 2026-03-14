@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.03.2026 (Shared product mutation fix + Gerflor sport hero tuning)
+> **Poslednje ažuriranje:** 14.03.2026 (GTI Max clean JPG izbor iz ZIP-a + shared product mutation fix)
 
 ---
 
@@ -138,6 +138,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**GTI Max clean JPG izbor iz Gerflor ZIP-a (14.03.2026)**
+- `tools/download_gerflor_highres_zip.js` sada pri raspakivanju ZIP-a ne bira samo najveci JPG, vec prioritetno uzima fajl bez `loupe/zoom/detail` oznaka kada u arhivi postoje i cista boja i preview sa uvecanim detaljem.
+- Time su `GTI Max Cleantech` i `GTI Max Connect` boje na Supabase prepisane cistim JPG fajlovima bez kruzica za uvecanje, dok su URL putanje ostale iste.
+- Dva tvrdoglava tona (`0236 BLACK`, `0253 ALUMINIUM`) za `GTI Max Connect` su dodatno ciljano prepisana direktno na iste Supabase object path-ove da cela GTI Max grupa ostane konzistentna.
 
 **Fix mutiranja shared collection proizvoda + Marmorette Sport hero zamena (14.03.2026)**
 - `getManualCollectionProducts()` sada vraca duboke kopije umesto originalnog singleton niza, tako da collection header proizvodi vise ne mogu da ostanu mutirani iz prethodnog request-a.
@@ -353,6 +358,7 @@ PODOVI/
 18. **Neki Gerflor product template-i gutaju normalan Playwright klik zbog consent/overlay sloja.** Kad download dugme postoji u DOM-u, ali `page.click()` ne prolazi, koristi DOM `.click()` fallback nad stvarnim download triggerom i `.jpg` opcijom.
 19. **Ne koristi `fs` proveru nad `public/` u runtime repository/resolver kodu.** Cak i bez direktnog importa slika, `existsSync(join(process.cwd(), 'public', ...))` moze da natera Vercel trace da uvuce ogromne `public/images/*` foldere u serverless funkcije i probije size limit.
 20. **Ne mutiraj shared `Product` objekte iz loadera/repozitorijuma.** `mergeSelectedColor()` menja ime, sliku i specifikacije proizvoda; zato svaki product koji dolazi iz cache-ovanih JSON/manual izvora mora prvo da se klonira, inace ce collection kartice na kategorijama poceti da prikazuju poslednju izabranu boju.
+21. **Kad Gerflor ZIP sadrzi i clean i loupe JPG, uvek biraj clean.** Posebno kod `GTI Max` kolekcija arhiva cesto ima fajl tipa `LOUPE-...jpg` i zaseban cist `GTI Max - Color.jpg`; za sajt koristi cistu boju, ne preview sa kruzicem.
 
 ---
 

@@ -103,7 +103,7 @@ function isRemoteUrl(value) {
     return /^https?:\/\//i.test(String(value || ''));
 }
 
-function findLargestJpgFile(dirPath) {
+function findPreferredJpgFile(dirPath) {
     const files = [];
 
     function walk(currentDir) {
@@ -127,8 +127,24 @@ function findLargestJpgFile(dirPath) {
     }
 
     return files
-        .map((filePath) => ({ filePath, size: fs.statSync(filePath).size }))
-        .sort((left, right) => right.size - left.size)[0].filePath;
+        .map((filePath) => {
+            const fileName = path.basename(filePath).toLowerCase();
+            const size = fs.statSync(filePath).size;
+            const previewPenalty =
+                (fileName.includes('loupe') ? 100 : 0) +
+                (fileName.includes('zoom') ? 40 : 0) +
+                (fileName.includes('close-up') || fileName.includes('closeup') ? 40 : 0) +
+                (fileName.includes('detail') ? 20 : 0);
+
+            return { filePath, size, previewPenalty };
+        })
+        .sort((left, right) => {
+            if (left.previewPenalty !== right.previewPenalty) {
+                return left.previewPenalty - right.previewPenalty;
+            }
+
+            return right.size - left.size;
+        })[0].filePath;
 }
 
 async function saveDownloadAsJpg(download, destPath, tmpPrefix) {
@@ -141,7 +157,7 @@ async function saveDownloadAsJpg(download, destPath, tmpPrefix) {
         const extractDir = path.join(tmpDir, `${tmpPrefix}-extracted`);
         await extract(tmpPath, { dir: extractDir });
 
-        const jpgFile = findLargestJpgFile(extractDir);
+        const jpgFile = findPreferredJpgFile(extractDir);
         if (!jpgFile) {
             fs.rmSync(extractDir, { recursive: true, force: true });
             fs.rmSync(tmpPath, { force: true });
