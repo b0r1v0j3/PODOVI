@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.03.2026 (Gerflor JPG upload na Supabase + Vercel trace fix za public/images)
+> **Poslednje ažuriranje:** 14.03.2026 (Shared product mutation fix + Gerflor sport hero tuning)
 
 ---
 
@@ -138,6 +138,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Fix mutiranja shared collection proizvoda + Marmorette Sport hero zamena (14.03.2026)**
+- `getManualCollectionProducts()` sada vraca duboke kopije umesto originalnog singleton niza, tako da collection header proizvodi vise ne mogu da ostanu mutirani iz prethodnog request-a.
+- `resolve-product.ts` vise ne obogacuje collection podatke mutiranjem izvornog `Product` objekta, vec radi nad kopijom.
+- `app/proizvodi/[slug]/page.tsx` i metadata grana sada kloniraju resolved product pre `mergeSelectedColor()`, pa izbor boje na product strani vise ne moze da pretvori collection kartice u boje pri povratku na kategoriju.
+- `sport_colors.json` za `DLW Marmorette Sport 3.2mm` sada koristi bolju plavu Supabase sliku (`1026 SKY BLUE`) kao collection hero umesto sivog close-up `collection.jpg`.
+- Verifikovano: `npm run lint`, `npm run build`, plus runtime provera da `getManualCollectionProducts()` vraca nove objekte (`sameObject: false`).
 
 **Vercel trace fix za `public/images/products` (14.03.2026)**
 - Uklonjen runtime `fs.existsSync(join(process.cwd(), 'public', ...))` check iz `lib/data/manual-collection-products.ts`, jer je terao Next/Vercel file tracing da uvuce `public/images/products` u serverless bundle za `/api/products` i `/api/search`.
@@ -345,6 +352,7 @@ PODOVI/
 17. **Ne pokreci Gerflor downloader paralelno nad istim JSON fajlom.** Skripta drži stanje celog fajla u memoriji i poslednji upis moze da pregazi prethodni uspesan prolaz ako dve instance rade nad istim `vinyl_special_colors.json`, `industrial_colors.json` ili `sport_colors.json`.
 18. **Neki Gerflor product template-i gutaju normalan Playwright klik zbog consent/overlay sloja.** Kad download dugme postoji u DOM-u, ali `page.click()` ne prolazi, koristi DOM `.click()` fallback nad stvarnim download triggerom i `.jpg` opcijom.
 19. **Ne koristi `fs` proveru nad `public/` u runtime repository/resolver kodu.** Cak i bez direktnog importa slika, `existsSync(join(process.cwd(), 'public', ...))` moze da natera Vercel trace da uvuce ogromne `public/images/*` foldere u serverless funkcije i probije size limit.
+20. **Ne mutiraj shared `Product` objekte iz loadera/repozitorijuma.** `mergeSelectedColor()` menja ime, sliku i specifikacije proizvoda; zato svaki product koji dolazi iz cache-ovanih JSON/manual izvora mora prvo da se klonira, inace ce collection kartice na kategorijama poceti da prikazuju poslednju izabranu boju.
 
 ---
 

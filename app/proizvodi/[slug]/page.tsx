@@ -43,6 +43,20 @@ import { SITE_URL } from '@/lib/seo/site-config';
 
 export const dynamic = 'force-dynamic';
 
+function cloneProductForPage<T extends Product & { collectionSlug?: string }>(product: T): T {
+  return {
+    ...product,
+    images: (product.images || []).map((image) => ({ ...image })),
+    specs: (product.specs || []).map((spec) => ({ ...spec })),
+    documents: product.documents?.map((document) => ({ ...document })),
+    detailsSections: product.detailsSections?.map((section) => ({
+      ...section,
+      items: [...section.items],
+    })),
+    compatibleAccessories: product.compatibleAccessories ? [...product.compatibleAccessories] : undefined,
+  };
+}
+
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
@@ -60,6 +74,8 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     if (!product) {
       return { metadataBase: new URL(baseUrl), title: 'Proizvod nije pronađen' };
     }
+
+    product = cloneProductForPage(product);
 
     if (requestedColorSlug) {
       const colorSource = await loadColorFromJson(requestedColorSlug);
@@ -211,8 +227,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // ── Resolve product ──
     let selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
-    const product = await resolveProductBySlug(params.slug);
-    if (!product) notFound();
+    const resolvedProduct = await resolveProductBySlug(params.slug);
+    if (!resolvedProduct) notFound();
+    const product = cloneProductForPage(resolvedProduct);
 
     // ── Parket: redirect invalid color to first valid ──
     if (product.categoryId === '3' && product.sku?.startsWith('PARKET-') && selectedColorSlug) {

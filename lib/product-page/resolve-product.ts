@@ -18,18 +18,30 @@ import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 
 function enrichProductFromCollectionData(product: Product, collection: any): Product {
+    const enrichedProduct: Product = {
+        ...product,
+        images: (product.images || []).map((image) => ({ ...image })),
+        specs: (product.specs || []).map((spec) => ({ ...spec })),
+        documents: product.documents?.map((document) => ({ ...document })),
+        detailsSections: product.detailsSections?.map((section) => ({
+            ...section,
+            items: [...section.items],
+        })),
+        compatibleAccessories: product.compatibleAccessories ? [...product.compatibleAccessories] : undefined,
+    };
+
     const collectionCharacteristics =
         collection?.characteristics && typeof collection.characteristics === 'object'
             ? collection.characteristics
             : {};
     const description = typeof collection?.description === 'string' ? collection.description : '';
 
-    if (description && description.length > (product.description || '').length) {
-        product.description = description;
+    if (description && description.length > (enrichedProduct.description || '').length) {
+        enrichedProduct.description = description;
     }
 
     if (Object.keys(collectionCharacteristics).length > 0) {
-        const existingKeys = new Set((product.specs || []).map((spec) => spec.key));
+        const existingKeys = new Set((enrichedProduct.specs || []).map((spec) => spec.key));
         const extraSpecs = Object.entries(collectionCharacteristics)
             .map(([label, value]) => ({
             key: String(label).toLowerCase().replace(/[^a-z0-9]+/g, '_'),
@@ -38,10 +50,10 @@ function enrichProductFromCollectionData(product: Product, collection: any): Pro
             }))
             .filter((spec) => !existingKeys.has(spec.key));
 
-        product.specs = [...(product.specs || []), ...extraSpecs];
+        enrichedProduct.specs = [...(enrichedProduct.specs || []), ...extraSpecs];
     }
 
-    return product;
+    return enrichedProduct;
 }
 
 function findNestedCollection(slug: string) {

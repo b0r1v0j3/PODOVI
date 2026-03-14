@@ -348,6 +348,20 @@ export const manualCollectionProducts: Product[] = [
   }),
 ];
 
+function cloneManualCollectionProduct(product: Product): Product {
+  return {
+    ...product,
+    images: (product.images || []).map((image) => ({ ...image })),
+    specs: (product.specs || []).map((spec) => ({ ...spec })),
+    documents: product.documents?.map((document) => ({ ...document })),
+    detailsSections: product.detailsSections?.map((section) => ({
+      ...section,
+      items: [...section.items],
+    })),
+    compatibleAccessories: product.compatibleAccessories ? [...product.compatibleAccessories] : undefined,
+  };
+}
+
 export function getManualCollectionProducts(): Product[] {
-  return manualCollectionProducts;
+  return manualCollectionProducts.map(cloneManualCollectionProduct);
 }
