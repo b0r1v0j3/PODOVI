@@ -7,7 +7,7 @@ const typeArg = process.argv.find(arg => arg.startsWith('--type='));
 const collectionArg = process.argv.find(arg => arg.startsWith('--collection='));
 
 if (!typeArg) {
-    console.error('Usage: node tools/download_gerflor_highres_zip.js --type=<esd|vinyl|lvt|linoleum> [--collection=<slug>]');
+    console.error('Usage: node tools/download_gerflor_highres_zip.js --type=<esd|vinyl|vinyl-special|lvt|linoleum|industrial|sport> [--collection=<slug>]');
     process.exit(1);
 }
 
@@ -26,6 +26,10 @@ switch (type) {
         dataFileName = 'vinyl_colors_complete.json';
         outDirName = 'products/vinyl';
         break;
+    case 'vinyl-special':
+        dataFileName = 'vinyl_special_colors.json';
+        outDirName = 'products/vinyl';
+        break;
     case 'lvt':
         dataFileName = 'lvt_colors_complete.json';
         outDirName = 'products/lvt';
@@ -33,6 +37,14 @@ switch (type) {
     case 'linoleum':
         dataFileName = 'linoleum_colors_complete.json';
         outDirName = 'products/linoleum';
+        break;
+    case 'industrial':
+        dataFileName = 'industrial_colors.json';
+        outDirName = 'products/industrial';
+        break;
+    case 'sport':
+        dataFileName = 'sport_colors.json';
+        outDirName = 'products/sport';
         break;
     default:
         console.error(`Unknown type: ${type}`);
@@ -56,6 +68,109 @@ if (!fs.existsSync(baseOutDir)) {
 const tmpDir = path.join(__dirname, '..', 'tmp_downloads');
 if (!fs.existsSync(tmpDir)) {
     fs.mkdirSync(tmpDir, { recursive: true });
+}
+
+function sanitizeName(value) {
+    return String(value || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+}
+
+async function saveDownloadAsJpg(download, destPath, tmpPrefix) {
+    const suggestedName = download.suggestedFilename ? download.suggestedFilename() : `${tmpPrefix}.zip`;
+    const tmpPath = path.join(tmpDir, `${tmpPrefix}-${suggestedName}`);
+    await download.saveAs(tmpPath);
+
+    const isZip = tmpPath.toLowerCase().endsWith('.zip');
+    if (isZip) {
+        const extractDir = path.join(tmpDir, `${tmpPrefix}-extracted`);
+        await extract(tmpPath, { dir: extractDir });
+
+        const extractedFiles = fs.readdirSync(extractDir);
+        const jpgFile = extractedFiles.find(file => file.toLowerCase().endsWith('.jpg'));
+        if (!jpgFile) {
+            fs.rmSync(extractDir, { recursive: true, force: true });
+            fs.rmSync(tmpPath, { force: true });
+            throw new Error(`ZIP ${suggestedName} does not contain a JPG`);
+        }
+
+        fs.copyFileSync(path.join(extractDir, jpgFile), destPath);
+        fs.rmSync(extractDir, { recursive: true, force: true });
+        fs.rmSync(tmpPath, { force: true });
+        return;
+    }
+
+    fs.copyFileSync(tmpPath, destPath);
+    fs.rmSync(tmpPath, { force: true });
+}
+
+async function downloadCollectionImage(page, collection, collectionDir) {
+    const collectionImagePath = path.join(collectionDir, 'collection.jpg');
+    if (fs.existsSync(collectionImagePath)) {
+        console.log('  Collection image already exists, skipping collection roomshot download.');
+        return;
+    }
+
+    try {
+        const directLink = await page.evaluate(() => {
+            const NUXT = window.__NUXT__;
+            const item = NUXT?.state?.collectionProductPage?.item;
+            if (!item) return null;
+
+            const documentCandidates = [...(item.documents || []), ...(item.medias || [])];
+            const doc = documentCandidates.find(entry => {
+                const fileUrl = entry?.file_url || entry?.url || '';
+                return fileUrl.endsWith('.zip') || fileUrl.endsWith('.jpg') || fileUrl.includes('/images/');
+            });
+            if (doc?.file_url || doc?.url) {
+                return doc.file_url || doc.url;
+            }
+
+            if (item.mediaBaseUri && item.images && item.images[0]) {
+                return item.mediaBaseUri + item.images[0].original;
+            }
+
+            return null;
+        });
+
+        if (directLink) {
+            console.log(`  Downloading collection image via payload link: ${directLink}`);
+            const [download] = await Promise.all([
+                page.waitForEvent('download', { timeout: 30000 }),
+                page.evaluate((url) => {
+                    const anchor = document.createElement('a');
+                    anchor.href = url;
+                    anchor.download = '';
+                    document.body.appendChild(anchor);
+                    anchor.click();
+                    document.body.removeChild(anchor);
+                }, directLink),
+            ]);
+            await saveDownloadAsJpg(download, collectionImagePath, `${collection.slug}-collection`);
+            console.log('  ✅ Saved collection roomshot as collection.jpg');
+            return;
+        }
+
+        console.log('  Payload link for collection roomshot not found, trying UI download...');
+        await page.click('.download-button--trigger', { timeout: 10000 });
+        await page.waitForTimeout(1000);
+
+        const [download] = await Promise.all([
+            page.waitForEvent('download', { timeout: 30000 }),
+            page.click('.download-button--images'),
+        ]);
+
+        await saveDownloadAsJpg(download, collectionImagePath, `${collection.slug}-collection`);
+        await page.mouse.click(0, 0);
+        await page.waitForTimeout(1000);
+        console.log('  ✅ Saved collection roomshot as collection.jpg');
+    } catch (error) {
+        console.log(`  ⚠️ Could not download collection roomshot for ${collection.slug}: ${error.message}`);
+        try {
+            await page.mouse.click(0, 0);
+        } catch (e) { }
+    }
 }
 
 // Map the items to a standard array of collections
@@ -150,6 +265,7 @@ if (targetCollectionSlug) {
             continue;
         }
         await page.waitForTimeout(4000);
+        await downloadCollectionImage(page, collection, collectionDir);
 
         for (const color of collection.colors) {
             console.log(`  Processing ${color.code} ${color.name}`);
@@ -202,37 +318,18 @@ if (targetCollectionSlug) {
                         }, downloadLink)
                     ]);
 
-                    const fileNameObj = { name: color.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') };
+                    const fileNameObj = { name: sanitizeName(color.name) };
                     const finalJpgName = `${color.code}-${fileNameObj.name}.jpg`;
                     const destPath = path.join(collectionDir, finalJpgName);
 
-                    if (downloadLink.endsWith('.zip')) {
-                        const zipPath = path.join(tmpDir, `${collection.slug}-${color.code}.zip`);
-                        await download.saveAs(zipPath);
-
-                        const extractDir = path.join(tmpDir, `${collection.slug}-${color.code}-extracted`);
-                        await extract(zipPath, { dir: extractDir });
-
-                        const files = fs.readdirSync(extractDir);
-                        const jpgFile = files.find(f => f.toLowerCase().endsWith('.jpg'));
-
-                        if (jpgFile) {
-                            fs.copyFileSync(path.join(extractDir, jpgFile), destPath);
-                            console.log(`    ✅ Saved final image: ${finalJpgName} from ZIP`);
-                        }
-                        fs.rmSync(extractDir, { recursive: true, force: true });
-                        fs.rmSync(zipPath, { force: true });
-                    } else {
-                        // Directly copy downloaded jpg
-                        await download.saveAs(destPath);
-                        console.log(`    ✅ Saved final image: ${finalJpgName} directly`);
-                    }
+                    await saveDownloadAsJpg(download, destPath, `${collection.slug}-${color.code}`);
+                    console.log(`    ✅ Saved final image: ${finalJpgName}`);
 
                     if (type === 'esd') {
                         color.image = `/images/${outDirName}/${finalJpgName}`;
                     } else if (type === 'lvt' || type === 'linoleum') {
                         color.image_url = `/images/${outDirName}/${collection.slug}/${finalJpgName}`;
-                    } else if (type === 'vinyl') {
+                    } else if (type === 'vinyl' || type === 'vinyl-special' || type === 'industrial' || type === 'sport') {
                         color.image = `/images/${outDirName}/${collection.slug}/${finalJpgName}`;
                     }
                     totalUpdated++;
@@ -289,7 +386,7 @@ if (targetCollectionSlug) {
                 if (jpgFile) {
                     const srcJpgPath = path.join(extractDir, jpgFile);
                     // Standardize the filename
-                    const nameLower = color.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    const nameLower = sanitizeName(color.name);
                     const fileName = `${color.code}-${nameLower}.jpg`;
                     const destPath = path.join(collectionDir, fileName);
 
@@ -301,7 +398,7 @@ if (targetCollectionSlug) {
                         color.image = `/images/${outDirName}/${fileName}`;
                     } else if (type === 'lvt' || type === 'linoleum') {
                         color.image_url = `/images/${outDirName}/${collection.slug}/${fileName}`;
-                    } else if (type === 'vinyl') {
+                    } else if (type === 'vinyl' || type === 'vinyl-special' || type === 'industrial' || type === 'sport') {
                         color.image = `/images/${outDirName}/${collection.slug}/${fileName}`;
                     }
                     totalUpdated++;

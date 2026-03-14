@@ -7,6 +7,9 @@ import {
     linoleumColors,
     vinylCollections,
     esdCollections,
+    industrialCollections,
+    sportCollections,
+    buildNestedColorFromCollection,
     loadColorFromJson,
     colorToProduct,
     collectionFromColor,
@@ -14,11 +17,52 @@ import {
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 
+function enrichProductFromCollectionData(product: Product, collection: any): Product {
+    const collectionCharacteristics =
+        collection?.characteristics && typeof collection.characteristics === 'object'
+            ? collection.characteristics
+            : {};
+    const description = typeof collection?.description === 'string' ? collection.description : '';
+
+    if (description && description.length > (product.description || '').length) {
+        product.description = description;
+    }
+
+    if (Object.keys(collectionCharacteristics).length > 0) {
+        const existingKeys = new Set((product.specs || []).map((spec) => spec.key));
+        const extraSpecs = Object.entries(collectionCharacteristics)
+            .map(([label, value]) => ({
+            key: String(label).toLowerCase().replace(/[^a-z0-9]+/g, '_'),
+            label,
+            value: String(value),
+            }))
+            .filter((spec) => !existingKeys.has(spec.key));
+
+        product.specs = [...(product.specs || []), ...extraSpecs];
+    }
+
+    return product;
+}
+
+function findNestedCollection(slug: string) {
+    const slugWithoutPrefix = slug.replace(/^gerflor-/, '');
+    return (
+        vinylCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
+        esdCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
+        industrialCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
+        sportCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
+        null
+    );
+}
+
 export function normalizeCollectionSlug(categoryId: string, collectionSlug: string): string {
     if (!collectionSlug) {
         return collectionSlug;
     }
     if (categoryId === '6') {
+        return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
+    }
+    if (categoryId === '9' || categoryId === '10') {
         return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
     }
     if (categoryId === '7') {
@@ -50,56 +94,9 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
     // First try to find product by slug directly (for collections)
     const product = await productRepository.findBySlug(slug);
     if (product) {
-        // Enrich DB product with richer JSON data if available (e.g., Vinil collections)
-        const slugWithoutPrefix = slug.startsWith('gerflor-') ? slug.substring('gerflor-'.length) : slug;
-        const vinylCollectionForEnrich = vinylCollections.find((col: any) => col.slug === slugWithoutPrefix || col.slug === slug);
-        if (vinylCollectionForEnrich && vinylCollectionForEnrich.colors && vinylCollectionForEnrich.colors.length > 0) {
-            const firstVinylColor = vinylCollectionForEnrich.colors[0];
-            const jsonDesc = firstVinylColor.description || vinylCollectionForEnrich.description || '';
-            const jsonChars = firstVinylColor.characteristics || vinylCollectionForEnrich.characteristics || {};
-
-            // Use JSON description if it's richer than DB description
-            if (jsonDesc && jsonDesc.length > (product.description || '').length) {
-                product.description = jsonDesc;
-            }
-            // Add specs from JSON characteristics if DB has none
-            if ((!product.specs || product.specs.length === 0) && Object.keys(jsonChars).length > 0) {
-                product.specs = Object.entries(jsonChars).map(([label, value]) => ({
-                    key: label.toLowerCase().replace(/\s+/g, '_'),
-                    label,
-                    value: value as string,
-                }));
-            }
-        }
-        // Enrich ESD product with richer JSON data if available
-        const esdCollectionForEnrich = esdCollections.find((col: any) => col.slug === slugWithoutPrefix || col.slug === slug);
-        if (esdCollectionForEnrich && esdCollectionForEnrich.colors && esdCollectionForEnrich.colors.length > 0) {
-            const firstEsdColor = esdCollectionForEnrich.colors[0];
-            const jsonDesc = firstEsdColor.description || '';
-            const jsonChars = firstEsdColor.characteristics || {};
-
-            // Use JSON description if it's richer than current description
-            if (jsonDesc && jsonDesc.length > (product.description || '').length) {
-                product.description = jsonDesc;
-            }
-            // Add specs from JSON characteristics
-            if ((!product.specs || product.specs.length === 0) && Object.keys(jsonChars).length > 0) {
-                product.specs = Object.entries(jsonChars).map(([label, value]) => ({
-                    key: label.toLowerCase().replace(/\s+/g, '_'),
-                    label,
-                    value: value as string,
-                }));
-            }
-            // Use first color image if product has no image
-            if ((!product.images || product.images.length === 0) && firstEsdColor.image) {
-                product.images = [{
-                    id: `esd-img-${slugWithoutPrefix}`,
-                    url: firstEsdColor.image,
-                    alt: product.name,
-                    isPrimary: true,
-                    order: 0,
-                }];
-            }
+        const nestedCollectionForEnrich = findNestedCollection(slug);
+        if (nestedCollectionForEnrich) {
+            enrichProductFromCollectionData(product, nestedCollectionForEnrich);
         }
         return product;
     }
@@ -112,25 +109,9 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         // Try to find collection by slug without prefix (linoleum collections are stored without prefix)
         const collectionProduct = await productRepository.findBySlug(collectionSlugWithoutPrefix);
         if (collectionProduct) {
-            // Check if Vinil JSON has a richer description than what's in the DB
-            const vinylCollectionForDesc = vinylCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
-            if (vinylCollectionForDesc && vinylCollectionForDesc.colors && vinylCollectionForDesc.colors.length > 0) {
-                const firstVinylColor = vinylCollectionForDesc.colors[0];
-                const jsonDesc = firstVinylColor.description || vinylCollectionForDesc.description || '';
-                const jsonChars = firstVinylColor.characteristics || vinylCollectionForDesc.characteristics || {};
-
-                // Use JSON description if it's richer than DB description
-                if (jsonDesc && jsonDesc.length > (collectionProduct.description || '').length) {
-                    collectionProduct.description = jsonDesc;
-                }
-                // Add specs from JSON characteristics if DB has none
-                if ((!collectionProduct.specs || collectionProduct.specs.length === 0) && Object.keys(jsonChars).length > 0) {
-                    collectionProduct.specs = Object.entries(jsonChars).map(([label, value]) => ({
-                        key: label.toLowerCase().replace(/\s+/g, '_'),
-                        label,
-                        value: value as string,
-                    }));
-                }
+            const nestedCollectionForDesc = findNestedCollection(collectionSlugWithoutPrefix);
+            if (nestedCollectionForDesc) {
+                enrichProductFromCollectionData(collectionProduct, nestedCollectionForDesc);
             }
             return {
                 ...collectionProduct,
@@ -155,17 +136,30 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         // Try to find collection in Vinil JSON
         const vinylCollection = vinylCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
         if (vinylCollection && vinylCollection.colors && vinylCollection.colors.length > 0) {
-            const firstColor = vinylCollection.colors[0];
+            const firstColor = buildNestedColorFromCollection(vinylCollection, vinylCollection.colors[0]);
             const colorSource: ColorSource = {
                 categorySlug: 'vinil',
-                color: {
-                    ...firstColor,
-                    collection: vinylCollection.slug,
-                    collection_name: vinylCollection.name,
-                    collection_slug: vinylCollection.slug,
-                    full_name: `${firstColor.code} ${firstColor.name}`,
-                    slug: `${vinylCollection.slug}-${firstColor.code}-${firstColor.name.toLowerCase().replace(/\s+/g, '-')}`,
-                } as ColorFromJSON
+                color: firstColor as ColorFromJSON
+            };
+            return collectionFromColor(colorSource, slug);
+        }
+
+        const industrialCollection = industrialCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
+        if (industrialCollection && industrialCollection.colors && industrialCollection.colors.length > 0) {
+            const firstColor = buildNestedColorFromCollection(industrialCollection, industrialCollection.colors[0]);
+            const colorSource: ColorSource = {
+                categorySlug: 'industrijske-ploce',
+                color: firstColor as ColorFromJSON,
+            };
+            return collectionFromColor(colorSource, slug);
+        }
+
+        const sportCollection = sportCollections.find((col: any) => col.slug === collectionSlugWithoutPrefix || col.slug === slug);
+        if (sportCollection && sportCollection.colors && sportCollection.colors.length > 0) {
+            const firstColor = buildNestedColorFromCollection(sportCollection, sportCollection.colors[0]);
+            const colorSource: ColorSource = {
+                categorySlug: 'sport',
+                color: firstColor as ColorFromJSON,
             };
             return collectionFromColor(colorSource, slug);
         }
@@ -210,17 +204,30 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
     // Try to find collection in ESD JSON (ESD collection slugs do not start with prefix)
     const esdCollection = esdCollections.find((col: any) => col.slug === slug || col.slug === slug.replace(/^gerflor-/, ''));
     if (esdCollection && esdCollection.colors && esdCollection.colors.length > 0) {
-        const firstColor = esdCollection.colors[0];
+        const firstColor = buildNestedColorFromCollection(esdCollection, esdCollection.colors[0]);
         const colorSource: ColorSource = {
             categorySlug: 'elektroprovodni',
-            color: {
-                ...firstColor,
-                collection: esdCollection.slug,
-                collection_name: esdCollection.name,
-                collection_slug: esdCollection.slug,
-                full_name: `${firstColor.code} ${firstColor.name}`,
-                slug: `${esdCollection.slug}-${firstColor.code}-${firstColor.name.toLowerCase().replace(/\s+/g, '-')}`,
-            } as ColorFromJSON
+            color: firstColor as ColorFromJSON
+        };
+        return collectionFromColor(colorSource, slug);
+    }
+
+    const industrialCollection = industrialCollections.find((col: any) => col.slug === slug || col.slug === slug.replace(/^gerflor-/, ''));
+    if (industrialCollection && industrialCollection.colors && industrialCollection.colors.length > 0) {
+        const firstColor = buildNestedColorFromCollection(industrialCollection, industrialCollection.colors[0]);
+        const colorSource: ColorSource = {
+            categorySlug: 'industrijske-ploce',
+            color: firstColor as ColorFromJSON,
+        };
+        return collectionFromColor(colorSource, slug);
+    }
+
+    const sportCollection = sportCollections.find((col: any) => col.slug === slug || col.slug === slug.replace(/^gerflor-/, ''));
+    if (sportCollection && sportCollection.colors && sportCollection.colors.length > 0) {
+        const firstColor = buildNestedColorFromCollection(sportCollection, sportCollection.colors[0]);
+        const colorSource: ColorSource = {
+            categorySlug: 'sport',
+            color: firstColor as ColorFromJSON,
         };
         return collectionFromColor(colorSource, slug);
     }

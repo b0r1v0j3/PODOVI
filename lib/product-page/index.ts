@@ -4,6 +4,8 @@ export type { Props, ColorFromJSON, ColorSource, ProductImageType, ProductSpec, 
 export {
     cleanColorName,
     buildSpecsFromColor,
+    buildNestedColorSlug,
+    buildNestedColorFromCollection,
     mergeSpecs,
     loadColorFromJson,
     colorToProduct,
@@ -11,6 +13,9 @@ export {
     lvtColors,
     linoleumColors,
     vinylCollections,
+    esdCollections,
+    industrialCollections,
+    sportCollections,
 } from './color-helpers';
 
 export {

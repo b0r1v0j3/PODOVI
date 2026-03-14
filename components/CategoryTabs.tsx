@@ -37,6 +37,8 @@ interface CategoryTabsProps {
   };
 }
 
+const NESTED_JSON_CATEGORIES = ['vinil', 'elektroprovodni', 'industrijske-ploce', 'sport'] as const;
+
 export default function CategoryTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType, searchParams: searchParamsProp }: CategoryTabsProps) {
   // Get search params from URL (fallback to prop if provided)
   const urlSearchParams = useSearchParams();
@@ -64,7 +66,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
   const hasLoadedColors = useRef(false);
   const lastCategorySlug = useRef<string>('');
-  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || categorySlug === 'vinil' || categorySlug === 'elektroprovodni';
+  const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]);
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
   const collectionsToRender = useMemo(() => {
     let filtered = collections;
@@ -275,7 +277,17 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
       return;
     }
 
-    const categoryParam = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : categorySlug === 'elektroprovodni' ? 'elektroprovodni' : 'lvt';
+    const categoryParam = categorySlug === 'linoleum'
+      ? 'linoleum'
+      : categorySlug === 'vinil'
+        ? 'vinil'
+        : categorySlug === 'elektroprovodni'
+          ? 'elektroprovodni'
+          : categorySlug === 'industrijske-ploce'
+            ? 'industrijske-ploce'
+            : categorySlug === 'sport'
+              ? 'sport'
+              : 'lvt';
     const jsonPath = `/api/colors?category=${categoryParam}`;
 
     fetch(jsonPath)
@@ -286,8 +298,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
         return res.json();
       })
       .then(data => {
-        if ((categorySlug === 'vinil' || categorySlug === 'elektroprovodni') && Array.isArray(data.collections)) {
-          // For Vinil/Linoleum, count colors from all collections
+        if (NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]) && Array.isArray(data.collections)) {
           const total = data.collections.reduce((sum: number, collection: any) =>
             sum + (collection.colors?.length || 0), 0);
           setTotalColorsCount(total);
@@ -327,7 +338,17 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
     // This ensures colors are ready when user clicks the "Boje" tab
     if (useJsonColors && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
-      const categoryParam2 = categorySlug === 'linoleum' ? 'linoleum' : categorySlug === 'vinil' ? 'vinil' : categorySlug === 'elektroprovodni' ? 'elektroprovodni' : 'lvt';
+      const categoryParam2 = categorySlug === 'linoleum'
+        ? 'linoleum'
+        : categorySlug === 'vinil'
+          ? 'vinil'
+          : categorySlug === 'elektroprovodni'
+            ? 'elektroprovodni'
+            : categorySlug === 'industrijske-ploce'
+              ? 'industrijske-ploce'
+              : categorySlug === 'sport'
+                ? 'sport'
+                : 'lvt';
       const jsonPath = `/api/colors?category=${categoryParam2}`;
 
       console.log(`CategoryTabs: Fetching colors from ${jsonPath}...`);
@@ -344,7 +365,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
 
           // Handle different JSON structures: LVT has data.colors, Linoleum/Vinil have data.collections[].colors
           let colorsArray: any[] = [];
-          if ((categorySlug === 'vinil' || categorySlug === 'linoleum' || categorySlug === 'elektroprovodni') && data.collections && Array.isArray(data.collections)) {
+          if (NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]) && data.collections && Array.isArray(data.collections)) {
             // Flatten colors from all collections
             colorsArray = data.collections.flatMap((collection: any) =>
               (collection.colors || []).map((color: any) => ({
@@ -370,19 +391,29 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
             const brandId = color.brandId || (Object.values(brandsRecord).find(b => b.slug === 'gerflor')?.id || '6');
 
             // Find category ID
-            const categoryId = categorySlug === 'linoleum' ? '7' : categorySlug === 'vinil' ? '2' : categorySlug === 'elektroprovodni' ? '8' : '6';
+            const categoryId = categorySlug === 'linoleum'
+              ? '7'
+              : categorySlug === 'vinil'
+                ? '2'
+                : categorySlug === 'elektroprovodni'
+                  ? '8'
+                  : categorySlug === 'industrijske-ploce'
+                    ? '9'
+                    : categorySlug === 'sport'
+                      ? '10'
+                      : '6';
 
             // For LVT: use texture_url (pod images) first, then lifestyle_url (illustrations) as fallback
             // For Linoleum: use image, texture_url, or image_url (gerflor_linoleum uses 'image' field)
             // For Vinil: use image field (local path) or image_url
             const primaryImageUrl = categorySlug === 'lvt'
               ? (color.texture_url || color.lifestyle_url || color.image_url || '')
-              : categorySlug === 'vinil'
+              : categorySlug === 'vinil' || categorySlug === 'elektroprovodni' || categorySlug === 'industrijske-ploce' || categorySlug === 'sport'
                 ? (color.image || color.image_url || '')
                 : (color.image || color.texture_url || color.image_url || '');
 
-            // Generate slug for Vinil/ESD colors (format: collection-slug-color-code-color-name)
-            const colorSlug = (categorySlug === 'vinil' || categorySlug === 'elektroprovodni')
+            // Generate slug for nested collection categories
+            const colorSlug = NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number])
               ? `${color.collection_slug || color.collection}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`
               : color.slug;
 
@@ -414,6 +445,15 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
             // Add dimension if available
             if (color.dimension && !specs.find(s => s.key === 'dimension')) {
               specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
+            }
+
+            if (color.characteristics && typeof color.characteristics === 'object') {
+              Object.entries(color.characteristics).forEach(([label, value]) => {
+                const key = label.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+                if (typeof value === 'string' && !specs.find(s => s.key === key)) {
+                  specs.push({ key, label, value });
+                }
+              });
             }
 
             // Add vinyl-specific specs
@@ -454,6 +494,10 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
               }
             }
 
+            if (!specs.find(s => s.key === 'collection')) {
+              specs.push({ key: 'collection', label: 'Kolekcija', value: color.collection_name || color.collection });
+            }
+
             return {
               id: `color-${categorySlug}-${colorSlug}`,
               name: color.full_name || `${color.code} ${color.name}`,
@@ -462,7 +506,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
               categoryId: categoryId,
               brandId: brandId,
               shortDescription: `${color.collection_name || color.collection} - ${color.name}`,
-              description: `${color.code} ${color.name} iz kolekcije ${color.collection_name || color.collection}`,
+              description: color.description || `${color.code} ${color.name} iz kolekcije ${color.collection_name || color.collection}`,
               images: primaryImageUrl ? [{
                 id: `color-img-${index}`,
                 url: primaryImageUrl,

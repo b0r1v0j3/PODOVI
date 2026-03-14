@@ -99,11 +99,13 @@ export default async function ProductCard({ product }: ProductCardProps) {
     '4': 'tekstilne-ploce',
     '2': 'vinil',
     '8': 'elektroprovodni',
+    '9': 'industrijske-ploce',
+    '10': 'sport',
   };
 
   // Extract collection slug
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
-  const isColorTileCategory = ['2', '4', '6', '7', '8'].includes(product.categoryId);
+  const isColorTileCategory = ['2', '4', '6', '7', '8', '9', '10'].includes(product.categoryId);
   const isProductColorCategory = ['1', '3'].includes(product.categoryId); // Laminat, Parket
 
   let productHref = `/proizvodi/${product.slug}`;

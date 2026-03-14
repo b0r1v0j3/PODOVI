@@ -1,0 +1,147 @@
+{
+    "collections": [
+        {
+            "name": "GTI Max Cleantech",
+            "slug": "gti-max-cleantech",
+            "url": "https://www.gerflor-cee.com/products/gti-max-cleantech",
+            "colorCount": 18,
+            "description": "Opis:\nGTI Max Cleantech su modularne industrijske ploce za ciste tehnicke prostore i brzu renovaciju bez dugog prekida rada.\n\nUgradnja:\nLoose lay / Connect sistem sa vodonepropusnim resenjem za zahtevne objekte.\n\nPrimena:\nClean room, farmacija, laboratorije, proizvodnja i logistika sa visokim saobracajem.\n\nKljucne prednosti:\nPogodno za clean room.\nVodonepropusan sistem.\nOtpornost na visok saobracaj.",
+            "characteristics": {
+                "Tip": "Industrijske vinil ploce",
+                "Format": "Ploca",
+                "Dimenzije": "60 x 60 cm",
+                "Ukupna debljina": "6.00 mm",
+                "Tip instalacije": "Loose lay / Connect",
+                "Namena": "Clean room i tehnicki prostori"
+            },
+            "colors": [
+                { "code": "0230", "name": "BLUE" },
+                { "code": "0236", "name": "BLACK" },
+                { "code": "0247", "name": "MAGMA" },
+                { "code": "0249", "name": "CARBON" },
+                { "code": "0252", "name": "TITANIUM" },
+                { "code": "0253", "name": "ALUMINIUM" },
+                { "code": "0255", "name": "SAPHIR" },
+                { "code": "0259", "name": "GRECALE" },
+                { "code": "0260", "name": "ORA" },
+                { "code": "0261", "name": "SCIROCCO" },
+                { "code": "0262", "name": "LIBECCIO" },
+                { "code": "0263", "name": "BORA" },
+                { "code": "0264", "name": "PONENTE" },
+                { "code": "0265", "name": "MAESTRALE" },
+                { "code": "0266", "name": "PELER" },
+                { "code": "0267", "name": "LEVANTE" },
+                { "code": "0268", "name": "ERMELLINO" },
+                { "code": "1249", "name": "TRAMONTANA" }
+            ]
+        },
+        {
+            "name": "GTI Max Connect",
+            "slug": "gti-max-connect",
+            "url": "https://www.gerflor-cee.com/products/gti-max-connect",
+            "colorCount": 30,
+            "description": "Opis:\nGTI Max Connect su industrijske ploce za fast-track renovacije, logistiku i zone sa velikim opterecenjem gde je vazno brzo pustanje prostora u rad.\n\nUgradnja:\nLoose lay / Connect sistem bez komplikovane pripreme podloge.\n\nPrimena:\nIndustrija, logistika, radionice, skladista i prostori visokog saobracaja.\n\nKljucne prednosti:\nLoose lay ugradnja.\nVisok saobracaj.\nLaka renovacija.",
+            "characteristics": {
+                "Tip": "Industrijske vinil ploce",
+                "Format": "Ploca",
+                "Dimenzije": "63.5 x 63.5 cm",
+                "Ukupna debljina": "6.00 mm",
+                "Tip instalacije": "Loose lay / Connect",
+                "Namena": "Industrija i brze renovacije"
+            },
+            "colors": [
+                { "code": "0230", "name": "BLUE" },
+                { "code": "0231", "name": "YELLOW" },
+                { "code": "0232", "name": "RED" },
+                { "code": "0233", "name": "GREEN" },
+                { "code": "0234", "name": "CLEAR GREY" },
+                { "code": "0235", "name": "DARK GREY" },
+                { "code": "0236", "name": "BLACK" },
+                { "code": "0247", "name": "MAGMA" },
+                { "code": "0249", "name": "CARBON" },
+                { "code": "0252", "name": "TITANIUM" },
+                { "code": "0253", "name": "ALUMINIUM" },
+                { "code": "0255", "name": "SAPHIR" },
+                { "code": "0259", "name": "GRECALE" },
+                { "code": "0260", "name": "ORA" },
+                { "code": "0261", "name": "SCIROCCO" },
+                { "code": "0262", "name": "LIBECCIO" },
+                { "code": "0263", "name": "BORA" },
+                { "code": "0264", "name": "PONENTE" },
+                { "code": "0265", "name": "MAESTRALE" },
+                { "code": "0266", "name": "PELER" },
+                { "code": "0267", "name": "LEVANTE" },
+                { "code": "0268", "name": "ERMELLINO" },
+                { "code": "1249", "name": "TRAMONTANA" },
+                { "code": "2247", "name": "VULCANO" },
+                { "code": "2249", "name": "STROMBOLI" },
+                { "code": "2252", "name": "TEIDE" },
+                { "code": "2264", "name": "PITON" },
+                { "code": "2265", "name": "MERAPI" },
+                { "code": "2266", "name": "VESUVIO" },
+                { "code": "2267", "name": "FUJI" }
+            ]
+        },
+        {
+            "name": "GTI Pure Connect",
+            "slug": "gti-pure-connect",
+            "url": "https://www.gerflor-cee.com/products/gti-pure-connect",
+            "colorCount": 6,
+            "description": "Opis:\nGTI Pure Connect su modularne ploce za komercijalne i tehnicke prostore gde je vazna brza renovacija, dobar habajuci sloj i cisto, uredno zoniranje.\n\nUgradnja:\nLoose lay / Connect sistem za brzo pustanje prostora u rad.\n\nPrimena:\nKomercijalni i tehnicki prostori, radionice, showroom i zone visokog saobracaja.\n\nKljucne prednosti:\nLoose lay ugradnja.\nVisok saobracaj.\nLaka renovacija.",
+            "characteristics": {
+                "Tip": "Industrijske vinil ploce",
+                "Format": "Ploca",
+                "Dimenzije": "63.5 x 63.5 cm",
+                "Ukupna debljina": "6.00 mm",
+                "Tip instalacije": "Loose lay / Connect",
+                "Namena": "Komercijalni i tehnicki prostori"
+            },
+            "colors": [
+                { "code": "2740", "name": "HARLEM SOFT" },
+                { "code": "2741", "name": "BROOKLYN" },
+                { "code": "2742", "name": "TIMES SQUARE" },
+                { "code": "2743", "name": "CENTRAL PARK" },
+                { "code": "2744", "name": "QUEENS SOFT" },
+                { "code": "2745", "name": "PLAZA" }
+            ]
+        },
+        {
+            "name": "Attraction Connect",
+            "slug": "attraction-connect",
+            "url": "https://www.gerflor-cee.com/products/attraction-connect",
+            "colorCount": 21,
+            "description": "Opis:\nAttraction Connect su dekorativne tehnicke ploce za prostore gde je potrebno brzo obnoviti pod i dobiti jaku vizuelnu signalizaciju kroz boju i dezen.\n\nUgradnja:\nLoose lay / Connect sistem za brzu ugradnju i jednostavnu parcijalnu zamenu ploca.\n\nPrimena:\nKomercijalni i industrijski prostori, fast-track renovacije, zone signalizacije i intenzivnog prolaza.\n\nKljucne prednosti:\nLoose lay ugradnja.\nTrend boje.\nLaka renovacija.",
+            "characteristics": {
+                "Tip": "Industrijske vinil ploce",
+                "Format": "Ploca",
+                "Dimenzije": "63.5 x 63.5 cm",
+                "Ukupna debljina": "5.00 mm",
+                "Tip instalacije": "Loose lay / Connect",
+                "Namena": "Dekorativne i tehnicke renovacije"
+            },
+            "colors": [
+                { "code": "2740", "name": "HARLEM SOFT" },
+                { "code": "2741", "name": "BROOKLYN" },
+                { "code": "2742", "name": "TIMES SQUARE" },
+                { "code": "2743", "name": "CENTRAL PARK" },
+                { "code": "2744", "name": "QUEENS SOFT" },
+                { "code": "2745", "name": "PLAZA" },
+                { "code": "3707", "name": "PARAIBA" },
+                { "code": "3709", "name": "CEARA" },
+                { "code": "4003", "name": "TAO" },
+                { "code": "4004", "name": "PAGO" },
+                { "code": "4146", "name": "MOHELI" },
+                { "code": "4342", "name": "JUARA" },
+                { "code": "4343", "name": "TOKELAU" },
+                { "code": "4351", "name": "GREIGE" },
+                { "code": "4476", "name": "WATTARU" },
+                { "code": "8053", "name": "ANAMBAS" },
+                { "code": "8157", "name": "GOIAS" },
+                { "code": "8386", "name": "BOA VISTA" },
+                { "code": "8577", "name": "AMAZONAS" },
+                { "code": "8736", "name": "RECIFE" },
+                { "code": "8837", "name": "SONGO" }
+            ]
+        }
+    ]
+}

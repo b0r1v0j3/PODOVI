@@ -4,14 +4,16 @@ import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
+import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import esdColorsData from '@/public/data/esd_colors.json';
+import industrialColorsData from '@/public/data/industrial_colors.json';
+import sportColorsData from '@/public/data/sport_colors.json';
 
 /**
  * GET /api/color-data?color={slug}&categoryId={id}
  *
  * Returns documents and characteristics for a specific color slug.
- * This keeps large JSON files on the server instead of bundling them
- * into client-side JavaScript.
+ * Large JSON files stay server-side to avoid client bundle bloat.
  */
 export async function GET(request: NextRequest) {
     const { searchParams } = request.nextUrl;
@@ -29,13 +31,15 @@ export async function GET(request: NextRequest) {
     const isCarpet = categoryId === '4';
     const isVinyl = categoryId === '2';
     const isEsd = categoryId === '8';
+    const isIndustrial = categoryId === '9';
+    const isSport = categoryId === '10';
 
     const findFlatColor = (colors: any[]) => {
-        let match = colors.find((c: any) => c.slug === colorSlug);
+        let match = colors.find((color: any) => color.slug === colorSlug);
         if (!match) {
-            match = colors.find((c: any) => {
-                const cSlug = c.slug || '';
-                return cSlug.includes(colorSlug) || colorSlug.includes(cSlug);
+            match = colors.find((color: any) => {
+                const slugValue = color.slug || '';
+                return slugValue.includes(colorSlug) || colorSlug.includes(slugValue);
             });
         }
         return match || null;
@@ -44,7 +48,11 @@ export async function GET(request: NextRequest) {
     const findNestedColor = (collections: any[]) => {
         for (const collection of collections) {
             for (const color of collection.colors || []) {
-                const generatedSlug = color.slug || `${collection.slug}-${color.code}-${String(color.name || '').toLowerCase().replace(/\s+/g, '-')}`;
+                const generatedSlug = color.slug || `${collection.slug}-${color.code}-${String(color.name || '')
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/(^-|-$)/g, '')}`;
+
                 const isExactMatch = generatedSlug === colorSlug;
                 const isPartialMatch = generatedSlug.includes(colorSlug) || colorSlug.includes(generatedSlug);
 
@@ -55,7 +63,17 @@ export async function GET(request: NextRequest) {
                         collection: collection.slug,
                         collection_name: collection.name,
                         collection_slug: collection.slug,
-                        documents: Array.isArray(color.documents) ? color.documents : (Array.isArray(collection.documents) ? collection.documents : []),
+                        description: color.description || collection.description || '',
+                        characteristics: {
+                            ...(collection.characteristics || {}),
+                            ...(color.characteristics || {}),
+                        },
+                        format: color.format || collection.characteristics?.Format,
+                        dimension: color.dimension || collection.characteristics?.Dimenzije,
+                        overall_thickness: color.overall_thickness || collection.characteristics?.['Ukupna debljina'],
+                        documents: Array.isArray(color.documents)
+                            ? color.documents
+                            : (Array.isArray(collection.documents) ? collection.documents : []),
                     };
                 }
             }
@@ -67,19 +85,24 @@ export async function GET(request: NextRequest) {
     let color = null;
 
     if (isVinyl) {
-        color = findNestedColor(((vinylColorsData as any)?.collections || []));
+        color = findNestedColor([
+            ...(((vinylColorsData as any)?.collections || []) as any[]),
+            ...(((vinylSpecialColorsData as any)?.collections || []) as any[]),
+        ]);
     } else if (isEsd) {
         color = findNestedColor(((esdColorsData as any)?.collections || []));
+    } else if (isIndustrial) {
+        color = findNestedColor(((industrialColorsData as any)?.collections || []));
+    } else if (isSport) {
+        color = findNestedColor(((sportColorsData as any)?.collections || []));
     } else {
         const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
         const colors = (colorsData as { colors?: any[] }).colors || [];
         color = findFlatColor(colors);
     }
 
-    // If not found in standard data, try BLOQ data for carpet
     if (!color && isCarpet) {
-        const bloqColors = (bloqCarpetData as any).colors || [];
-        color = findFlatColor(bloqColors);
+        color = findFlatColor((bloqCarpetData as any).colors || []);
     }
 
     if (!color) {
@@ -89,36 +112,27 @@ export async function GET(request: NextRequest) {
         );
     }
 
-    // Extract documents
-    const documents = (color.documents && Array.isArray(color.documents)) ? color.documents : [];
-
-    // Extract characteristics (same logic as ProductCharacteristics)
+    const documents = Array.isArray(color.documents) ? color.documents : [];
     const characteristics: Record<string, string> = {};
 
-    // Add "Dimenzije" first
-    const dimensionValue = color.dimension || (color.characteristics && color.characteristics['Dimenzije']);
+    const dimensionValue = color.dimension || color.characteristics?.Dimenzije;
     if (dimensionValue) {
         characteristics['Dimenzije'] = dimensionValue;
     }
 
-    // Add "Ukupna debljina" second
-    const thicknessValue = color.overall_thickness || (color.characteristics && color.characteristics['Ukupna debljina']);
+    const thicknessValue = color.overall_thickness || color.characteristics?.['Ukupna debljina'];
     if (thicknessValue) {
         characteristics['Ukupna debljina'] = thicknessValue;
     }
 
-    // Add remaining characteristics
     if (color.characteristics) {
         Object.entries(color.characteristics).forEach(([key, value]) => {
-            if (key !== 'Dimenzije' && key !== 'Ukupna debljina') {
-                if (typeof value === 'string') {
-                    characteristics[key] = value;
-                }
+            if (key !== 'Dimenzije' && key !== 'Ukupna debljina' && typeof value === 'string') {
+                characteristics[key] = value;
             }
         });
     }
 
-    // Legacy fields
     if (color.format && !characteristics['Format']) {
         characteristics['Format'] = color.format;
     }

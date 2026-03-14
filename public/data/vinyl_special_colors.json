@@ -1,0 +1,70 @@
+{
+    "collections": [
+        {
+            "name": "Mipolam Biocontrol Clean",
+            "slug": "mipolam-biocontrol-clean",
+            "url": "https://www.gerflor-cee.com/products/mipolam-biocontrol-clean",
+            "colorCount": 18,
+            "description": "Opis:\nMipolam Biocontrol Clean je homogeni vinil za clean room, laboratorije i farmaceutske prostore gde su higijena, hemijska otpornost i dugorocna dekontaminacija podjednako vazni.\n\nUgradnja:\nLepljenje na pripremljenu podlogu uz zavarivanje spojeva i detalja za visok nivo higijene.\n\nPrimena:\nClean room, farmacija, laboratorije, zdravstveni i tehnicki prostori sa visokim zahtevima za cistocu.\n\nKljucne prednosti:\nOdlicna otpornost na H2O2, mrlje i hemikalije.\nVisoka otpornost na bakterije i viruse.\nPogodno za nuklearnu dekontaminaciju i jak saobracaj.",
+            "characteristics": {
+                "Tip": "Homogeni vinil",
+                "Format": "Rolna",
+                "Ukupna debljina": "2.00 mm",
+                "Tip instalacije": "Lepljenje i varenje spojeva",
+                "Namena": "Clean room i tehnicki prostori"
+            },
+            "colors": [
+                { "code": "5404", "name": "VANILLA SKY" },
+                { "code": "5406", "name": "MOQUI" },
+                { "code": "5408", "name": "CHALK DUST" },
+                { "code": "5412", "name": "MOON STONE" },
+                { "code": "5413", "name": "RAIN FALL" },
+                { "code": "5417", "name": "FOGGY HILL" },
+                { "code": "5420", "name": "STONE POWDER" },
+                { "code": "5427", "name": "GREEN ZEST" },
+                { "code": "5430", "name": "SIDERAL GREY" },
+                { "code": "5432", "name": "SUN STONE" },
+                { "code": "5436", "name": "TIGER EYE" },
+                { "code": "5441", "name": "CLAY SOIL" },
+                { "code": "5443", "name": "WOOD PATH" },
+                { "code": "5445", "name": "TREE BARK" },
+                { "code": "5455", "name": "LAVA FLOW" },
+                { "code": "5456", "name": "INTENSE INDIGO" },
+                { "code": "5459", "name": "STORMY CLOUD" },
+                { "code": "5475", "name": "INTENSE RUBY" }
+            ]
+        },
+        {
+            "name": "Mipolam Biocontrol Performance",
+            "slug": "mipolam-biocontrol-performance",
+            "url": "https://www.gerflor-cee.com/products/mipolam-biocontrol-performance",
+            "colorCount": 16,
+            "description": "Opis:\nMipolam Biocontrol Performance je homogeni vinil za clean room i tehnicke prostore u kojima su potrebni hemijska otpornost, otpornost na procese dekontaminacije i stabilan rad pri velikom opterecenju.\n\nUgradnja:\nLepljenje na pripremljenu podlogu uz zavarivanje spojeva za visoke higijenske standarde.\n\nPrimena:\nClean room, nuklearni i tehnicki prostori, laboratorije i objekti sa intenzivnim saobracajem.\n\nKljucne prednosti:\nOdlicna otpornost na procese dekontaminacije, hemikalije i mikroorganizme.\nPrilagodjen clean room i tehnickim objektima sa visokim opterecenjem.\nBio content 17%.",
+            "characteristics": {
+                "Tip": "Homogeni vinil",
+                "Format": "Rolna",
+                "Ukupna debljina": "2.00 mm",
+                "Tip instalacije": "Lepljenje i varenje spojeva",
+                "Namena": "Clean room, nuklearni i tehnicki prostori"
+            },
+            "colors": [
+                { "code": "6001", "name": "COTTON" },
+                { "code": "6006", "name": "BLUE SKY" },
+                { "code": "6008", "name": "CALICO" },
+                { "code": "6009", "name": "GREY STONE" },
+                { "code": "6025", "name": "TANGELO" },
+                { "code": "6027", "name": "ACACIA" },
+                { "code": "6029", "name": "CLOUD" },
+                { "code": "6031", "name": "BREEZE" },
+                { "code": "6032", "name": "SUNSHINE" },
+                { "code": "6034", "name": "MOLE" },
+                { "code": "6036", "name": "OCEANIA" },
+                { "code": "6039", "name": "PEBBLE" },
+                { "code": "6041", "name": "CLAY" },
+                { "code": "6043", "name": "WOOD" },
+                { "code": "6044", "name": "SEA STORM" },
+                { "code": "6075", "name": "CARDINAL" }
+            ]
+        }
+    ]
+}

@@ -34,7 +34,7 @@ npm start
 ## Key Features
 
 ### Product Catalog
-- Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking)
+- Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport)
 - Browse by **brand** (Tarkett, Gerflor, BLOQ)
 - **Product filters**: search, brand, price range, stock status, color, collection, thickness, wood type
 - **Color variant selector** with instant image switching (no page reload)
@@ -67,6 +67,14 @@ npm start
 - Dynamic meta tags and Open Graph images
 - Sitemap generation (`/sitemap.xml`) & robots.txt (`/robots.txt`)
 - Optimized images with Next.js Image component
+
+## Gerflor Data Sources
+
+- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` power Vinil collections and colors
+- `public/data/esd_colors.json` powers Elektroprovodni / ESD collections
+- `public/data/industrial_colors.json` powers Industrijske ploče collections
+- `public/data/sport_colors.json` powers Sport collections
+- `lib/data/manual-collection-products.ts` defines collection headers that point to local `public/images/.../collection.jpg` roomshots
 
 ## Project Structure
 

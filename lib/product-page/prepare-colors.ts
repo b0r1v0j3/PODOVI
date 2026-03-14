@@ -6,8 +6,11 @@ import {
     buildSpecsFromColor,
     mergeSpecs,
     linoleumColors,
+    buildNestedColorSlug,
     vinylCollections,
     esdCollections,
+    industrialCollections,
+    sportCollections,
 } from './color-helpers';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import {
@@ -18,6 +21,28 @@ import {
 } from '@/lib/data/parket-collection-mapping';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
+
+function mapNestedCollectionColors(collection: any) {
+    return (collection.colors || []).map((color: any) => ({
+        collection: collection.slug,
+        collection_name: collection.name,
+        code: color.code || '',
+        name: color.name,
+        full_name: `${color.code || ''} ${color.name}`.trim(),
+        slug: buildNestedColorSlug(collection, color),
+        image_url: color.image || color.image_url || '',
+        texture_url: color.image || color.image_url || '',
+        image_count: (color.image || color.image_url) ? 1 : 0,
+        characteristics: {
+            ...(collection.characteristics || {}),
+            ...(color.characteristics || {}),
+        },
+        format: color.format || collection.characteristics?.Format,
+        dimension: color.dimension || collection.characteristics?.Dimenzije,
+        overall_thickness: color.overall_thickness || collection.characteristics?.['Ukupna debljina'],
+        description: color.description || collection.description || '',
+    }));
+}
 
 /**
  * Build the customColors array used by ProductColorSelector for variant switching.
@@ -173,23 +198,12 @@ export async function prepareCustomColors(
         }
     }
 
-    // Vinil (cat 2): customColors from vinyl_colors_complete.json
+    // Vinil (cat 2): customColors from vinyl_colors_complete.json + vinyl_special_colors.json
     if (product.categoryId === '2' && product.slug.startsWith('gerflor-')) {
         const collectionSlug = product.slug.substring('gerflor-'.length);
         const vinylCollection = vinylCollections.find((col: any) => col.slug === collectionSlug);
         if (vinylCollection && vinylCollection.colors && vinylCollection.colors.length > 0) {
-            return vinylCollection.colors.map((c: any) => ({
-                collection: vinylCollection.slug,
-                collection_name: vinylCollection.name,
-                code: c.code || '',
-                name: c.name,
-                full_name: `${c.code || ''} ${c.name}`.trim(),
-                slug: `${vinylCollection.slug}-${c.code}-${c.name.toLowerCase().replace(/\s+/g, '-')}`,
-                image_url: c.image || '',
-                texture_url: c.image || '',
-                image_count: c.image ? 1 : 0,
-                characteristics: c.characteristics || {},
-            }));
+            return mapNestedCollectionColors(vinylCollection);
         }
     }
 
@@ -221,18 +235,25 @@ export async function prepareCustomColors(
         const strippedSlug = rawSlug.startsWith('gerflor-') ? rawSlug.substring('gerflor-'.length) : rawSlug;
         const esdCollection = esdCollections.find((col: any) => col.slug === rawSlug || col.slug === strippedSlug);
         if (esdCollection && esdCollection.colors && esdCollection.colors.length > 0) {
-            return esdCollection.colors.map((c: any) => ({
-                collection: esdCollection.slug,
-                collection_name: esdCollection.name,
-                code: c.code || '',
-                name: c.name,
-                full_name: `${c.code || ''} ${c.name}`.trim(),
-                slug: `${esdCollection.slug}-${c.code}-${c.name.toLowerCase().replace(/\s+/g, '-')}`,
-                image_url: c.image || '',
-                texture_url: c.image || '',
-                image_count: c.image ? 1 : 0,
-                characteristics: c.characteristics || {},
-            }));
+            return mapNestedCollectionColors(esdCollection);
+        }
+    }
+
+    // Industrijske ploce (cat 9): customColors from industrial_colors.json
+    if (product.categoryId === '9' && product.slug.startsWith('gerflor-')) {
+        const collectionSlug = product.slug.substring('gerflor-'.length);
+        const industrialCollection = industrialCollections.find((col: any) => col.slug === collectionSlug);
+        if (industrialCollection && industrialCollection.colors && industrialCollection.colors.length > 0) {
+            return mapNestedCollectionColors(industrialCollection);
+        }
+    }
+
+    // Sport (cat 10): customColors from sport_colors.json
+    if (product.categoryId === '10' && product.slug.startsWith('gerflor-')) {
+        const collectionSlug = product.slug.substring('gerflor-'.length);
+        const sportCollection = sportCollections.find((col: any) => col.slug === collectionSlug);
+        if (sportCollection && sportCollection.colors && sportCollection.colors.length > 0) {
+            return mapNestedCollectionColors(sportCollection);
         }
     }
 

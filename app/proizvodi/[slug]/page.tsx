@@ -195,6 +195,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '2': 'vinil',
       '5': 'deking',
       '8': 'elektroprovodni',
+      '9': 'industrijske-ploce',
+      '10': 'sport',
     };
 
     // ── Linoleum redirect: /proizvodi/gerflor-xxx → /proizvodi/xxx ──
@@ -247,11 +249,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
     const isTarkettCollection = product.sku?.startsWith('TARKETT-');
     // For deking (category 5), since we don't have separate collection pages, we should not redirect
-    const shouldRedirectCollection = ['6', '7', '4', '2', '8'].includes(product.categoryId);
+    const shouldRedirectCollection = ['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId);
 
     if (shouldRedirectCollection && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
       let normalizedCollectionSlug = collectionSlugFromProduct;
-      if (product.categoryId === '6' && !collectionSlugFromProduct.startsWith('gerflor-')) {
+      if (['6', '9', '10'].includes(product.categoryId) && !collectionSlugFromProduct.startsWith('gerflor-')) {
         normalizedCollectionSlug = `gerflor-${collectionSlugFromProduct}`;
       }
       redirect(`/proizvodi/${normalizedCollectionSlug}?color=${encodeURIComponent(product.slug)}`);
@@ -337,7 +339,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     }
 
     // ── Redirect invalid JSON-backed color params to the collection page ──
-    if (selectedColorSlug && (!customColors || customColors.length === 0) && ['2', '6', '7', '8'].includes(product.categoryId)) {
+    if (selectedColorSlug && (!customColors || customColors.length === 0) && ['2', '6', '7', '8', '9', '10'].includes(product.categoryId)) {
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (!colorSource) {
         redirect(`/proizvodi/${params.slug}`);
@@ -383,10 +385,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
     };
 
     // ── Determine if this is a "color selector" category ──
-    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1', '8'].includes(product.categoryId);
+    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1', '8', '9', '10'].includes(product.categoryId);
 
     // ── Helper JSX logic to populate masonry columns neatly ──
-    const sharedCertsAndEco = (['6', '7', '4', '2', '8'].includes(product.categoryId)) ? (
+    const sharedCertsAndEco = (['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
       <>
         <div className="bg-gradient-to-b from-[#FFFFFF] to-[#F9F9FB] rounded-[28px] p-8 h-full flex flex-col justify-center border border-[#E5E5EA] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
           <div className="flex items-center gap-3.5 mb-7">
@@ -410,6 +412,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
               ? ["Cradle to Cradle Silver", "ECONYL® reciklirana vlakna", "70% reciklirani materijali u podlozi", "Smanjenje buke"]
               : product.categoryId === '7'
                 ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
+                : product.categoryId === '10'
+                  ? ["98% prirodnih sastojaka", "Niske VOC emisije", "Sportska otpornost", "Lako odrzavanje"]
+                  : product.categoryId === '9'
+                    ? ["Brza renovacija", "Visoka otpornost na saobracaj", "Laka parcijalna zamena", "Nisko odrzavanje"]
                 : product.categoryId === '4'
                   ? ["Bez ftalata", "100% reciklabilno", "Smanjenje buke", "Laka ugradnja"]
                   : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
@@ -427,10 +433,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
         ? 'carpet'
         : product.categoryId === '7'
           ? 'linoleum'
-          : product.categoryId === '2'
-            ? 'vinil'
-            : product.categoryId === '8'
-              ? 'elektroprovodni'
+            : product.categoryId === '2'
+              ? 'vinil'
+              : product.categoryId === '8'
+                ? 'elektroprovodni'
+                : product.categoryId === '9'
+                  ? 'industrijske-ploce'
+                  : product.categoryId === '10'
+                    ? 'sport'
               : '';
     const normalizedCollectionSlug = product.slug.replace(/^gerflor-/, '');
     const hasIndexedDocuments = Boolean(
@@ -511,8 +521,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         : product.categoryId === '6' ? 'LVT'
                           : product.categoryId === '7' ? 'Linoleum'
                             : product.categoryId === '2' ? 'Vinil'
-                              : product.categoryId === '4' ? 'Tekstilne ploče'
+                                : product.categoryId === '4' ? 'Tekstilne ploče'
                                 : product.categoryId === '8' ? 'ESD'
+                                  : product.categoryId === '9' ? 'Industrijske ploče'
+                                    : product.categoryId === '10' ? 'Sport'
                                   : undefined
                     }
                     videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}

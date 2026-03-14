@@ -247,7 +247,12 @@ export default function ColorGrid({
     const collectionName = getCollectionName(collectionSlug);
 
     // Determine which category to load from API
-    const isLinoleum = collectionSlug.startsWith('dlw-');
+    const sportCollectionSlugs = ['dlw-colorette-sport', 'dlw-marmorette-sport-32mm', 'dlw-linodur-sport'];
+    const industrialCollectionSlugs = ['gti-max-cleantech', 'gti-max-connect', 'gti-pure-connect', 'attraction-connect'];
+    const normalizedCollectionSlug = collectionSlug.replace('gerflor-', '');
+    const isSport = sportCollectionSlugs.includes(normalizedCollectionSlug);
+    const isIndustrial = industrialCollectionSlugs.includes(normalizedCollectionSlug);
+    const isLinoleum = !isSport && normalizedCollectionSlug.startsWith('dlw-');
     const isCarpet = collectionSlug.startsWith('armonia-') || collectionSlug.startsWith('gerflor-armonia-');
     // Vinil includes mipolam collections and heterogeneous collections (nerok-55, nerok-70, premium-acoustic, etc.)
     const heterogeneousSlugs = ['nerok-55', 'nerok-70', 'premium-acoustic', 'premium-compact',
@@ -260,7 +265,17 @@ export default function ColorGrid({
       collectionSlug.startsWith('gerflor-mipolam-') ||
       heterogeneousSlugs.includes(collectionNameWithoutPrefix) ||
       heterogeneousSlugs.some(slug => collectionSlug.includes(slug));
-    const categoryParam = isLinoleum ? 'linoleum' : isCarpet ? 'tekstilne-ploce' : isVinil ? 'vinil' : 'lvt';
+    const categoryParam = isSport
+      ? 'sport'
+      : isIndustrial
+        ? 'industrijske-ploce'
+        : isLinoleum
+          ? 'linoleum'
+          : isCarpet
+            ? 'tekstilne-ploce'
+            : isVinil
+              ? 'vinil'
+              : 'lvt';
     const jsonPath = `/api/colors?category=${categoryParam}`;
 
     fetch(jsonPath)
@@ -274,8 +289,8 @@ export default function ColorGrid({
         let filtered: Color[] = [];
 
         // Handle different JSON structures
-        if (isVinil && data.collections && Array.isArray(data.collections)) {
-          // Vinil has collections[].colors structure
+        if ((isVinil || isIndustrial || isSport) && data.collections && Array.isArray(data.collections)) {
+          // Nested categories have collections[].colors structure
           // Normalize collection slug - remove 'order' suffix if present
           const normalizedSlug = collectionSlug.replace('gerflor-', '').replace('-order', '');
           const normalizedCollectionName = collectionName.replace('-order', '');

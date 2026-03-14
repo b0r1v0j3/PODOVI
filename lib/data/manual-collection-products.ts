@@ -55,7 +55,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Homogeni vinil za clean room i visoko kontrolisane prostore.',
     description:
       'Mipolam Biocontrol Clean je homogeni vinil razvijen za farmaceutske pogone, laboratorije i druge clean room prostore gde su higijena, zavarljivost i dugorocna cistoca podloge presudni.',
-    imageUrl: '/images/esd/mipolam-biocontrol-el5-alt.jpg',
+    imageUrl: '/images/products/vinyl/mipolam-biocontrol-clean/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/mipolam-biocontrol-clean',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Biocontrol Clean' },
@@ -85,7 +85,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Specijalni homogeni vinil za zahtevne clean room i tehnicke prostore.',
     description:
       'Mipolam Biocontrol Performance je homogeni vinil za prostore u kojima se traze hemijska otpornost, otpornost na dekontaminaciju i visoka postojanost pri intenzivnom koriscenju.',
-    imageUrl: '/images/esd/mipolam-biocontrol-el5-lifestyle.jpg',
+    imageUrl: '/images/products/vinyl/mipolam-biocontrol-performance/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/mipolam-biocontrol-performance',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam Biocontrol Performance' },
@@ -115,7 +115,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Modularne industrijske ploce za renovacije i ciste tehnicke prostore.',
     description:
       'GTI Max Cleantech su industrijske loose-lay ploce velikog formata za brzu renovaciju, visok saobracaj i tehnicke prostore gde je vazna cistoca, otpornost i minimalan zastoj objekta.',
-    imageUrl: '/images/esd/gti-el5-cleantech-alt.jpg',
+    imageUrl: '/images/products/industrial/gti-max-cleantech/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/gti-max-cleantech',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'GTI Max Cleantech' },
@@ -145,7 +145,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Modularne ploce za industriju, renovacije i zone visokog saobracaja.',
     description:
       'GTI Max Connect je sistem industrijskih ploca za fastrack renovacije, objekte sa velikim opterecenjem i prostore gde je bitno brzo pustanje u rad bez komplikovane pripreme.',
-    imageUrl: '/images/esd/gti-el5-connect-alt.jpg',
+    imageUrl: '/images/products/industrial/gti-max-connect/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/gti-max-connect',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'GTI Max Connect' },
@@ -175,7 +175,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Tehnicke ploce za renovacije, zoniranje i intenzivnu komercijalnu upotrebu.',
     description:
       'GTI Pure Connect je modularni sistem ploca za brze renovacije i zone visokog saobracaja, sa jacim habajucim slojem i formatom pogodnim za tehnicke i komercijalne objekte.',
-    imageUrl: '/images/esd/gti-el5-connect-lifestyle.jpg',
+    imageUrl: '/images/products/industrial/gti-pure-connect/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/gti-pure-connect',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'GTI Pure Connect' },
@@ -205,7 +205,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Dekorativne industrijske ploce za renovacije bez velikog zastoja.',
     description:
       'Attraction Connect je tehnicka ploca za renovacije i brzu ugradnju u objektima gde su vazni estetika, jednostavno odrzavanje i minimalan prekid rada prostora.',
-    imageUrl: '/images/esd/gti-el5-connect-alt.jpg',
+    imageUrl: '/images/products/industrial/attraction-connect/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/attraction-connect',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Attraction Connect' },
@@ -235,7 +235,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Sportski linoleum za sale i fiskulturne prostore sa jacom debljinom.',
     description:
       'DLW Colorette Sport je sportski linoleum za sale, fiskulturne dvorane i vise-namenske sportske prostore, sa prirodnim sastavom, neocare povrsinom i bojama prilagodjenim sportskim enterijerima.',
-    imageUrl: '/images/products/linoleum/dlw-colorette.jpg',
+    imageUrl: '/images/products/sport/dlw-colorette-sport/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/dlw-colorette-sport',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'DLW Colorette Sport' },
@@ -265,7 +265,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Sportski linoleum sa mramornim dekorom za sale i gimnasticke prostore.',
     description:
       'DLW Marmorette Sport 3.2mm je sportski linoleum sa mramornim izgledom, razvijen za sportske sale i objekte gde je potreban prirodan pod sa mogucnoscu iscrtavanja linija posle ugradnje.',
-    imageUrl: '/images/products/linoleum/dlw-marmorette-3.2mm.jpg',
+    imageUrl: '/images/products/sport/dlw-marmorette-sport-32mm/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/dlw-marmorette-sport-32mm',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'DLW Marmorette Sport 3.2mm' },
@@ -295,7 +295,7 @@ export const manualCollectionProducts: Product[] = [
     shortDescription: 'Prirodni sportski linoleum za intenzivnu upotrebu u salama i dvoranama.',
     description:
       'DLW Linodur Sport je sportski linoleum za sale i dvorane koje traze prirodan materijal, dobru mehanicku otpornost i moderniji, suptilno zrnast izgled povrsine.',
-    imageUrl: '/images/products/linoleum/dlw-linodur.jpg',
+    imageUrl: '/images/products/sport/dlw-linodur-sport/collection.jpg',
     externalLink: 'https://www.gerflor-cee.com/products/dlw-linodur-sport',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'DLW Linodur Sport' },

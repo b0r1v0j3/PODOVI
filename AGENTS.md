@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 23.02.2026 (Elektroprovodni/ESD kategorija dodata — 7 kolekcija, 42 boje)
+> **Poslednje ažuriranje:** 14.03.2026 (Nove Gerflor kategorije Sport i Industrijske ploče + specijalni vinil pipeline)
 
 ---
 
@@ -90,6 +90,9 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Deking | 5 | TimberTech (10) | `tis_deking_products.json` |
 | LVT | 6 | Gerflor (6), Tarkett | `lvt_colors_complete.json` (19 kolekcija, 595 boja), `tarkett_lvt_products.json` |
 | Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` (15 kolekcija, 203 boje) |
+| Elektroprovodni | 8 | Gerflor (6) | `esd_colors.json` (7 kolekcija, 42 boje) |
+| Industrijske ploče | 9 | Gerflor (6) | `industrial_colors.json` (4 kolekcije, 75 boja) + `manual-collection-products.ts` |
+| Sport | 10 | Gerflor (6) | `sport_colors.json` (3 kolekcije, 33 boje) + `manual-collection-products.ts` |
 
 ### BLOQ Carpet Tiles (18 kolekcija, 210 boja):
 | Familija | Kolekcije |
@@ -135,6 +138,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Gerflor specijalni vinil + nove kategorije Industrijske ploče i Sport (14.03.2026)**
+- Dodati novi izvori podataka `public/data/vinyl_special_colors.json`, `public/data/industrial_colors.json` i `public/data/sport_colors.json` za 9 novih Gerflor/DLW kolekcija (boje + opisi + karakteristike).
+- Proširen ceo JSON → resolver → API → UI pipeline: `color-helpers.ts`, `prepare-colors.ts`, `resolve-product.ts`, `/api/colors`, `/api/color-data`, `CategoryTabs`, `ColorGrid`, `ProductCard`, `ProductCardClient`, category/product page logika za category ID 9 i 10.
+- `tools/download_gerflor_highres_zip.js` sada razume tipove `vinyl-special`, `industrial`, `sport` i priprema `collection.jpg` roomshot zajedno sa color JPG downloadom u lokalne `public/images/...` putanje.
+- Manual collection header proizvodi prebačeni su na standardizovane lokalne putanje (`/images/products/vinyl/.../collection.jpg`, `/images/products/industrial/.../collection.jpg`, `/images/products/sport/.../collection.jpg`) da downloader kasnije samo prepiše stvarnim slikama.
+- Verifikovano: `npm run lint` i `npm run build` prolaze.
 
 **Finalizacija Podataka: PDF Specifikacije, Trinity Podloge, Supabase čišćenje (23.02.2026)**
 - Dodata skripta `extract-pdf-specs.js` za AI ekstrakciju specifikacija (Debljina, Težina, Akustika) direktno iz PDF fajlova (Node `pdf-parse`) i automatsku JSON dopunu (LVT, Vinil, Linoleum).
@@ -265,6 +275,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Dodati "Dostupne podloge" prikaz za Trinity kolekcije
 - [x] Razmotriti prebacivanje klijentskih JSON import-ova na API rute (bundle size)
 - [x] Proveriti da li su kategorije 8, 9, 10 obrisane iz Supabase baze (bile su EGGER-ove)
+- [ ] Pokrenuti stvarni Gerflor download za nove `vinyl_special`, `industrial` i `sport` kolekcije čim lokalni DNS pristup ka `gerflor-cee.com` proradi, da placeholder `collection.jpg` i color JPG fajlovi budu zamenjeni finalnim roomshot/slikama.
 
 ---
 
@@ -287,10 +298,10 @@ PODOVI/
 │
 ├── lib/
 │   ├── product-page/       # KRITIČNO: resolver, color merge, spec helpers
-│   ├── data/               # Tarkett/Gerflor/Parket statički podaci
+│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi
 │   └── repositories/       # Data access layer (Supabase)
 │
-├── public/data/            # JSON fajlovi sa bojama i specifikacijama
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama (LVT, Vinil, ESD, Industrijske, Sport...)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │

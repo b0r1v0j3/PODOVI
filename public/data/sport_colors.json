@@ -1,0 +1,86 @@
+{
+    "collections": [
+        {
+            "name": "DLW Colorette Sport",
+            "slug": "dlw-colorette-sport",
+            "url": "https://www.gerflor-cee.com/products/dlw-colorette-sport",
+            "colorCount": 12,
+            "description": "Opis:\nDLW Colorette Sport je prirodni sportski linoleum za sale i vise-namenske sportske prostore, sa izrazenijom paletom boja i Neocare povrsinom.\n\nUgradnja:\nLepljenje u sistemu sportskog poda; linije terena mogu se nanositi nakon ugradnje.\n\nPrimena:\nSkolske sale, sportske dvorane, gimnazije i rekreativni objekti.\n\nKljucne prednosti:\nPrirodni sportski pod.\nPremium sportski dizajn.\nNeocare povrsinska obrada.",
+            "characteristics": {
+                "Tip": "Sportski linoleum",
+                "Format": "Rolna",
+                "Ukupna debljina": "4.00 mm",
+                "Tip instalacije": "Lepljenje",
+                "Namena": "Sportske sale i gimnazije"
+            },
+            "colors": [
+                { "code": "1001", "name": "BANANA YELLOW" },
+                { "code": "1004", "name": "BLUEBIRD" },
+                { "code": "1012", "name": "LIGHT BEIGE" },
+                { "code": "1052", "name": "OXID GREY" },
+                { "code": "1059", "name": "STONE GREY" },
+                { "code": "1080", "name": "ELEPHANT GREY" },
+                { "code": "1118", "name": "POWER RED" },
+                { "code": "1123", "name": "POPPY BLUE" },
+                { "code": "1132", "name": "SPICY GREEN" },
+                { "code": "1171", "name": "SUNRISE ORANGE" },
+                { "code": "1559", "name": "VINTAGE GREY" },
+                { "code": "1574", "name": "PURE GREEN" }
+            ]
+        },
+        {
+            "name": "DLW Marmorette Sport 3.2mm",
+            "slug": "dlw-marmorette-sport-32mm",
+            "url": "https://www.gerflor-cee.com/products/dlw-marmorette-sport-32mm",
+            "colorCount": 7,
+            "description": "Opis:\nDLW Marmorette Sport 3.2mm je sportski linoleum sa mramornim izgledom za sale i gimnasticke prostore gde je vazna prirodna osnova i laksi mix boja.\n\nUgradnja:\nLepljenje u sistemu sportskog poda sa mogucnoscu naknadnog obelezavanja linija.\n\nPrimena:\nSportske sale, gimnasticki prostori i vise-namenski objekti.\n\nKljucne prednosti:\n3.2 mm debljina.\n8 boja za mix and match pristup.\nPrirodni sportski linoleum.",
+            "characteristics": {
+                "Tip": "Sportski linoleum",
+                "Format": "Rolna",
+                "Ukupna debljina": "3.20 mm",
+                "Tip instalacije": "Lepljenje",
+                "Namena": "Sportske sale i gimnasticki prostori"
+            },
+            "colors": [
+                { "code": "1026", "name": "SKY BLUE" },
+                { "code": "1048", "name": "CRANBERRY RED" },
+                { "code": "1050", "name": "QUARTZ GREY" },
+                { "code": "1053", "name": "ICE GREY" },
+                { "code": "1070", "name": "ROCKY BROWN" },
+                { "code": "1076", "name": "PALE YELLOW" },
+                { "code": "1132", "name": "LIME GREEN" }
+            ]
+        },
+        {
+            "name": "DLW Linodur Sport",
+            "slug": "dlw-linodur-sport",
+            "url": "https://www.gerflor-cee.com/products/dlw-linodur-sport",
+            "colorCount": 14,
+            "description": "Opis:\nDLW Linodur Sport je prirodni sportski linoleum za unutrasnje vise-namenske sportske sale i gimnazije, sa suptilnim zrnastim dizajnom i Neocare povrsinom.\n\nUgradnja:\nLepljenje; lako se sece i postavlja, bez potrebe za dodatnim premazom odmah nakon ugradnje.\n\nPrimena:\nUnutrasnje sportske sale, gimnazije i vise-namenski sportski prostori.\n\nKljucne prednosti:\n98% prirodnih sastojaka.\nMat efekat i moderan suptilan grain finish.\nLako odrzavanje i dobro klizanje/grip u sportskom okruzenju.",
+            "characteristics": {
+                "Tip": "Sportski linoleum",
+                "Format": "Rolna",
+                "Ukupna debljina": "4.00 mm",
+                "Tip instalacije": "Lepljenje",
+                "Namena": "Unutrasnje sportske sale i gimnazije",
+                "Sastav": "98% prirodnih sastojaka"
+            },
+            "colors": [
+                { "code": "1011", "name": "AVOCADO GREEN" },
+                { "code": "1013", "name": "LAVA RED" },
+                { "code": "1020", "name": "SPRING BLUE" },
+                { "code": "1024", "name": "SPECKLED BLUE" },
+                { "code": "1026", "name": "LAGOON" },
+                { "code": "1048", "name": "COUNTRY BEIGE" },
+                { "code": "1049", "name": "CLIFF GREY" },
+                { "code": "1056", "name": "MARBLE GREY" },
+                { "code": "1057", "name": "HEAVEN BLUE" },
+                { "code": "1059", "name": "SLATE GREY" },
+                { "code": "1072", "name": "PEACH ORANGE" },
+                { "code": "1073", "name": "GLOWING ROCK" },
+                { "code": "1074", "name": "STRAW YELLOW" },
+                { "code": "1081", "name": "SPORTY BLACK" }
+            ]
+        }
+    ]
+}

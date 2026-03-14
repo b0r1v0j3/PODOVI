@@ -25,17 +25,21 @@ JSON data file → resolve-product.ts → Product object → page.tsx → UI com
 | `lvt_colors_complete.json` | LVT (6) | Gerflor (6) | `colors[]` with `collection`, `specs`, `documents` |
 | `linoleum_colors_complete.json` | Linoleum (7) | Gerflor (6) | `colors[]` with `collection`, `specs`, `documents` |
 | `vinyl_colors_complete.json` | Vinil (2) | Gerflor (6) | `collections[]` with `colors[]` inside |
+| `vinyl_special_colors.json` | Vinil (2) | Gerflor (6) | `collections[]` with `colors[]`, collection `description`, `characteristics` |
+| `esd_colors.json` | Elektroprovodni (8) | Gerflor (6) | `collections[]` with `colors[]`, local `image` paths |
+| `industrial_colors.json` | Industrijske ploce (9) | Gerflor (6) | `collections[]` with `colors[]`, collection `description`, `characteristics` |
+| `sport_colors.json` | Sport (10) | Gerflor (6) | `collections[]` with `colors[]`, collection `description`, `characteristics` |
 | `tis_deking_products.json` | Deking (5) | TimberTech (10)| array of products with `categoryId`, `brandId`, `specs`, `images` |
 | `documents_index.json` | All | — | Fallback doc lookup by category + collection |
 | `welding_rods.json` | Accessories | — | Welding rod products |
 
-Other data: `lib/data/tarkett-products.ts` (Parket cat 3, Laminat cat 1), `lib/repositories/product-repository.ts` (DB products), `lib/data/mock-data.ts` (EGGER products: NatureSense+AquaDura laminat cat 1, podloge cat 8, lajsne cat 9).
+Other data: `lib/data/tarkett-products.ts` (Parket cat 3, Laminat cat 1), `lib/repositories/product-repository.ts` (DB + merge sloj), `lib/data/manual-collection-products.ts` (manual collection header proizvodi za Vinil specijalne, Industrijske ploce i Sport), `lib/data/mock-data.ts` (legacy/mock category + brand fallback podaci).
 
 ### Category IDs
-- `1` = Laminat, `2` = Vinil, `3` = Parket, `4` = Tekstilne ploče, `5` = Deking, `6` = LVT, `7` = Linoleum, `8` = Ugradnja, `9` = Lajsne, `10` = Alati
+- `1` = Laminat, `2` = Vinil, `3` = Parket, `4` = Tekstilne ploce, `5` = Deking, `6` = LVT, `7` = Linoleum, `8` = Elektroprovodni, `9` = Industrijske ploce, `10` = Sport
 
 ### Brand IDs
-- `6` = Gerflor, `8` = BLOQ, `9` = EGGER, `10` = TimberTech
+- `3` = Tarkett, `6` = Gerflor, `8` = BLOQ, `10` = TimberTech
 
 ---
 
@@ -46,7 +50,7 @@ Other data: `lib/data/tarkett-products.ts` (Parket cat 3, Laminat cat 1), `lib/r
 `resolveProductBySlug(slug)` tries these in order:
 1. Parket collection check (Tarkett products)
 2. DB product lookup (`productRepository.findBySlug`)
-3. `gerflor-*` slug: tries LVT → Linoleum → Vinil → Carpet JSON
+3. `gerflor-*` slug: tries LVT → Linoleum → Vinil → Industrijske ploce → Sport → Carpet JSON
 4. `bloq-*` slug: finds first matching color in `bloq_carpet_tiles.json`, builds Product
 5. Collection-color format: matches collection then extracts color
 6. Direct color slug lookup
@@ -78,8 +82,8 @@ interface Product {
 | File | Purpose |
 |------|---------|
 | `resolve-product.ts` | Slug → Product object (main resolver) |
-| `prepare-colors.ts` | Builds color swatches for `ProductColorSelector`; handles `mergeSelectedColor` when user picks a color |
-| `color-helpers.ts` | Low-level helpers: `loadColorFromJson`, `colorToProduct`, `collectionFromColor`, `buildSpecsFromColor` |
+| `prepare-colors.ts` | Builds color swatches for `ProductColorSelector`; handles `mergeSelectedColor` when user picks a color across LVT/Vinil/ESD/Industrijske/Sport |
+| `color-helpers.ts` | Low-level helpers: `loadColorFromJson`, `colorToProduct`, `collectionFromColor`, `buildSpecsFromColor`, nested collection merge helpers |
 | `spec-helpers.ts` | `filterSpecsForDisplay()` (hides internal specs), `parseDescriptionToSections()` (splits description into titled sections) |
 | `types.ts` | `ColorFromJSON`, `ColorSource`, `Props` types |
 | `index.ts` | Barrel exports |
@@ -88,13 +92,13 @@ interface Product {
 When a user selects a color (?color=xxx), this function **overwrites** `product.name`, `product.images`, `product.specs`, and `product.description` with the selected color's data. If you add new fields that should update on color change, update this function too.
 
 ### ⚠️ CRITICAL: `prepareCustomColors` in `prepare-colors.ts`
-This builds the color swatch list for `ProductColorSelector`. For BLOQ: reads `bloq_carpet_tiles.json`, maps colors to `{ collection, code, name, slug, image_url, characteristics }`. New fields needed in swatches must be added here.
+This builds the color swatch list for `ProductColorSelector`. For BLOQ it reads `bloq_carpet_tiles.json`; for Vinil/ESD/Industrijske/Sport it reads nested `collections[].colors` JSON sources and normalizes them to `{ collection, code, name, slug, image_url, characteristics }`. New fields needed in swatches must be added here.
 
 ---
 
 ## 4. Product Detail Page (`app/proizvodi/[slug]/page.tsx`)
 
-### Page Structure (for color-selector categories: LVT, Linoleum, Tekstilne, Vinil, Parket, Laminat)
+### Page Structure (for color-selector categories: LVT, Linoleum, Tekstilne, Vinil, Elektroprovodni, Industrijske, Sport, Parket, Laminat)
 
 ```
 ProductColorSelector (hero image + color swatches + CTA)
@@ -105,7 +109,7 @@ Description + Specs grid (for cat 6, 7, 4 — NOT parket/vinil/laminat):
   │     └── parseDescriptionToSections() splits into titled sub-sections
   └── ProductCharacteristics → reads product.specs
 
-Certifications row (for cat 6, 7, 4, 2):
+Certifications row (for cat 6, 7, 4, 2, 8, 9, 10):
   ├── CertificationBadges (hardcoded per category)
   ├── EcoFeatures (hardcoded per category)
   └── ProductDocuments → reads product.documents
@@ -150,9 +154,9 @@ Certifications row (for cat 6, 7, 4, 2):
 - In `app/proizvodi/[slug]/page.tsx`, ensure the component that should display this data receives it as a prop
 - If an existing component handles it (e.g. `ProductDocuments` for docs), make sure that component can find the new data
 
-### Step 6: Update Client Components (if they search JSON directly)
-- Components like `ProductDocuments.tsx` import JSON directly on the client side
-- If data comes from a new JSON source (e.g. `bloq_carpet_tiles.json`), add that import to the component
+### Step 6: Update Client/API Components that read JSON directly
+- Components like `CategoryTabs`, `ColorGrid` and API routes like `/api/colors`, `/api/color-data` normalize JSON differently depending on category
+- If data comes from a new JSON source (e.g. `industrial_colors.json` or `sport_colors.json`), add that import and update nested/flat normalization logic
 
 ### Step 7: Build & Verify
 - Run `npx next build` to check for type errors
@@ -165,10 +169,16 @@ Certifications row (for cat 6, 7, 4, 2):
 
 Category listing pages use `CategoryTabs` component. Product cards come from:
 - DB products via `productRepository`
-- BLOQ products via `getAllBloqCarpetProducts()` in `lib/bloq-carpet-products.ts`
+- BLOQ products via `getAllBloqCarpetProducts()`
 - Tarkett products for Parket/Laminat
+- Manual collection headers for Vinil specijalne kolekcije, Industrijske ploce i Sport via `lib/data/manual-collection-products.ts`
 
 The `ProductCardClient` component renders each card.
+
+`CategoryTabs` / `ColorGrid` expectations:
+- Flat JSON categories: `lvt`, `linoleum`, `tekstilne-ploce`
+- Nested JSON categories: `vinil`, `elektroprovodni`, `industrijske-ploce`, `sport`
+- Nested categories generate color slugs as `{collection-slug}-{code}-{name}`
 
 ---
 
