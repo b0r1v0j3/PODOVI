@@ -75,7 +75,7 @@ npm start
 - `public/data/industrial_colors.json` powers Industrijske ploče collections
 - `public/data/sport_colors.json` powers Sport collections
 - `lib/data/manual-collection-products.ts` defines collection headers and reads remote `collection_image_url` values from the nested JSON sources when they exist
-- `tools/download_gerflor_highres_zip.js --upload-supabase` downloads the `.JPG` assets from Gerflor ZIP downloads and writes public Supabase URLs back into the JSON (`collection_image_url` for hero shots, `image` / `image_url` for colors)
+- `tools/download_gerflor_highres_zip.js --upload-supabase` uses Gerflor ZIP downloads as the source, extracts them locally, selects the best/largest JPG, uploads only that final image to Supabase, and writes the public URL back into JSON (`collection_image_url` for hero shots, `image` / `image_url` for colors)
 
 ## Project Structure
 

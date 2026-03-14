@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.03.2026 (Gerflor ZIP → Supabase slike za specijalni vinil, Industrijske ploče i Sport)
+> **Poslednje ažuriranje:** 14.03.2026 (Gerflor ZIP download izvor + JPG upload na Supabase za specijalni vinil, Industrijske ploče i Sport)
 
 ---
 
@@ -139,8 +139,9 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
-**Gerflor ZIP slike uploadovane na Supabase za specijalni vinil, Industrijske ploče i Sport (14.03.2026)**
+**Gerflor ZIP download izvor + JPG upload na Supabase za specijalni vinil, Industrijske ploče i Sport (14.03.2026)**
 - `tools/download_gerflor_highres_zip.js` je proširen da za tipove `vinyl-special`, `industrial` i `sport` klikće Gerflor download flow (`download` → `.jpg`) i preuzima stvarne ZIP arhive visokog kvaliteta umesto preview slika sa stranice.
+- ZIP se lokalno raspakuje, bira se najbolji/najveći JPG iz arhive, i samo ta finalna slika ide na Supabase; sama ZIP arhiva se ne hostuje niti koristi u renderu sajta.
 - Skripta sada opciono radi i Supabase upload (`--upload-supabase`), sama pronalazi projekat preko `SUPABASE_ACCESS_TOKEN` kad treba, kreira `product-images` bucket ako ne postoji i upisuje javne URL-ove nazad u JSON.
 - `public/data/vinyl_special_colors.json`, `public/data/industrial_colors.json` i `public/data/sport_colors.json` sada sadrže realne `collection_image_url` hero slike i color `image` URL-ove za svih 9 kolekcija, bez placeholder-a i bez praznih boja.
 - `manual-collection-products.ts` sada cita `collection_image_url` iz JSON-a, tako da collection kartice i hero sekcije koriste iste Supabase-hostovane slike kao ostatak sajta.

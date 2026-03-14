@@ -33,7 +33,7 @@ JSON data file → resolve-product.ts → Product object → page.tsx → UI com
 | `documents_index.json` | All | — | Fallback doc lookup by category + collection |
 | `welding_rods.json` | Accessories | — | Welding rod products |
 
-Other data: `lib/data/tarkett-products.ts` (Parket cat 3, Laminat cat 1), `lib/repositories/product-repository.ts` (DB + merge sloj), `lib/data/manual-collection-products.ts` (manual collection header proizvodi za Vinil specijalne, Industrijske ploce i Sport; cita `collection_image_url` iz JSON-a kad postoji), `lib/data/mock-data.ts` (legacy/mock category + brand fallback podaci), `tools/download_gerflor_highres_zip.js` (Gerflor ZIP downloader sa opcionim Supabase uploadom u `product-images` bucket).
+Other data: `lib/data/tarkett-products.ts` (Parket cat 3, Laminat cat 1), `lib/repositories/product-repository.ts` (DB + merge sloj), `lib/data/manual-collection-products.ts` (manual collection header proizvodi za Vinil specijalne, Industrijske ploce i Sport; cita `collection_image_url` iz JSON-a kad postoji), `lib/data/mock-data.ts` (legacy/mock category + brand fallback podaci), `tools/download_gerflor_highres_zip.js` (Gerflor ZIP downloader koji lokalno raspakuje arhivu, bira najbolji JPG i opciono uploaduje samo tu finalnu sliku u `product-images` bucket).
 
 ### Category IDs
 - `1` = Laminat, `2` = Vinil, `3` = Parket, `4` = Tekstilne ploce, `5` = Deking, `6` = LVT, `7` = Linoleum, `8` = Elektroprovodni, `9` = Industrijske ploce, `10` = Sport
