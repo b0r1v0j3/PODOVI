@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.03.2026 (GTI image cache-bust + clean JPG izbor iz ZIP-a)
+> **Poslednje ažuriranje:** 14.03.2026 (Sport/industrial category hero update + GTI cache-bust)
 
 ---
 
@@ -138,6 +138,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Marmorette sport collection kartica vracena na roomshot (14.03.2026)**
+- `sport_colors.json` za `DLW Marmorette Sport 3.2mm` vise ne koristi color JPG kao `collection_image_url`, vec Supabase `collection.jpg` sliku prostora.
+- Time sport kolekcija na `/kategorije/sport` ponovo prikazuje realan prostor za Marmorette, dok pojedinacne boje i dalje ostaju dostupne na product strani i u color tabu.
 
 **GTI image cache-bust posle Supabase overwrite-a (14.03.2026)**
 - `industrial_colors.json` sada za `GTI Max Cleantech`, `GTI Max Connect` i `GTI Pure Connect` koristi verzionisane Supabase image URL-ove (`?v=...`) na color slikama.
