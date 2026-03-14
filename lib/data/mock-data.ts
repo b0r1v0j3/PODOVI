@@ -64,7 +64,7 @@ export const categories: Category[] = [
     name: 'Industrijske ploče',
     slug: 'industrijske-ploce',
     description: 'Modularne industrijske ploče za tehničke prostore, renovacije i jak saobraćaj',
-    image: '/images/esd/gti-el5-connect-alt.jpg',
+    image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8157-goias.jpg',
     order: 7,
   },
   {
