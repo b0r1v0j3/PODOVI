@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.03.2026 (Gerflor ZIP download izvor + JPG upload na Supabase za specijalni vinil, Industrijske ploče i Sport)
+> **Poslednje ažuriranje:** 14.03.2026 (Gerflor JPG upload na Supabase + Vercel trace fix za public/images)
 
 ---
 
@@ -138,6 +138,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Vercel trace fix za `public/images/products` (14.03.2026)**
+- Uklonjen runtime `fs.existsSync(join(process.cwd(), 'public', ...))` check iz `lib/data/manual-collection-products.ts`, jer je terao Next/Vercel file tracing da uvuce `public/images/products` u serverless bundle za `/api/products` i `/api/search`.
+- Manual collection hero slike se sada oslanjaju direktno na `collection_image_url` iz JSON-a (Supabase URL) ili na prosledjeni fallback string, bez server-side proveravanja lokalnog fajl sistema.
+- Lokalno potvrđeno kroz `.next/server/**/*.nft.json` da `api/products` i `api/search` vise ne traguju `public/images/products`, sto uklanja uzrok Vercel greske o prevelikoj funkciji.
+- Verifikovano: `npm run build` prolazi i trace check vraca `hits=0` za `public/images/products`.
 
 **Gerflor ZIP download izvor + JPG upload na Supabase za specijalni vinil, Industrijske ploče i Sport (14.03.2026)**
 - `tools/download_gerflor_highres_zip.js` je proširen da za tipove `vinyl-special`, `industrial` i `sport` klikće Gerflor download flow (`download` → `.jpg`) i preuzima stvarne ZIP arhive visokog kvaliteta umesto preview slika sa stranice.
@@ -338,6 +344,7 @@ PODOVI/
 16. **ESD slug pattern:** ESD kolekcije (mipolam-el5, gti-el5-connect, itd.) koriste slug BEZ `gerflor-` prefiksa, za razliku od LVT/Vinil/Linoleum kolekcija. SVAKA nova logika u `resolve-product.ts`, `prepare-colors.ts`, `color-helpers.ts` mora da proverava slug i sa i bez prefiksa. Takođe, ESD boje koriste `image` polje umesto `image_url`/`texture_url` — uvek dodaj fallback na `(color as any).image`.
 17. **Ne pokreci Gerflor downloader paralelno nad istim JSON fajlom.** Skripta drži stanje celog fajla u memoriji i poslednji upis moze da pregazi prethodni uspesan prolaz ako dve instance rade nad istim `vinyl_special_colors.json`, `industrial_colors.json` ili `sport_colors.json`.
 18. **Neki Gerflor product template-i gutaju normalan Playwright klik zbog consent/overlay sloja.** Kad download dugme postoji u DOM-u, ali `page.click()` ne prolazi, koristi DOM `.click()` fallback nad stvarnim download triggerom i `.jpg` opcijom.
+19. **Ne koristi `fs` proveru nad `public/` u runtime repository/resolver kodu.** Cak i bez direktnog importa slika, `existsSync(join(process.cwd(), 'public', ...))` moze da natera Vercel trace da uvuce ogromne `public/images/*` foldere u serverless funkcije i probije size limit.
 
 ---
 

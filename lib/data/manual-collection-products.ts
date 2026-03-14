@@ -1,6 +1,4 @@
 import { Product, ProductSpec } from '@/types';
-import { existsSync } from 'fs';
-import { join } from 'path';
 import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
@@ -39,18 +37,15 @@ function isRemoteImageUrl(url: string) {
 function resolveCollectionImageUrl(productSlug: string, fallbackUrl?: string) {
   const collectionSlug = productSlug.replace(/^gerflor-/, '');
   const imageFromJson = manualCollectionImageSources.find((collection) => collection.slug === collectionSlug)?.collection_image_url;
-  return imageFromJson || fallbackUrl;
-}
+  if (imageFromJson) {
+    return imageFromJson;
+  }
 
-function hasUsableImage(url?: string) {
-  if (!url) return false;
-  if (isRemoteImageUrl(url)) return true;
-  return existsSync(join(process.cwd(), 'public', url.replace(/^\//, '')));
+  return fallbackUrl;
 }
 
 function createCollectionProduct(config: ManualCollectionConfig): Product {
   const imageUrl = resolveCollectionImageUrl(config.slug, config.imageUrl);
-  const hasImage = hasUsableImage(imageUrl);
 
   return {
     id: config.id,
@@ -61,7 +56,7 @@ function createCollectionProduct(config: ManualCollectionConfig): Product {
     brandId: '6',
     shortDescription: config.shortDescription,
     description: config.description,
-    images: imageUrl && hasImage ? [
+    images: imageUrl ? [
       {
         id: `${config.id}-img`,
         url: imageUrl,
