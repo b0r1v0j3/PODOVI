@@ -3,7 +3,7 @@ import { products as mockProducts } from '@/lib/data/mock-data';
 import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
-import { supabase } from '@/lib/supabase/client';
+import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -105,7 +105,7 @@ export class SupabaseProductRepository implements IProductRepository {
       return [];
     }
 
-    let products = (data || []).map(row =>
+    let products: Product[] = ((data as any[]) || []).map((row: any) =>
       toProduct(row, row.product_images || [], row.product_specs || [])
     );
 
@@ -216,7 +216,7 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...lvtCollections, ...lvtJsonProducts];
 
       // Add Creation Evo collection if not already present from Supabase
-      const existingLvtSlugs = new Set(products.map(p => p.slug));
+      const existingLvtSlugs = new Set(products.map((p: Product) => p.slug));
       if (!existingLvtSlugs.has('gerflor-creation-evo')) {
         const lvtData = require('@/public/data/lvt_colors_complete.json');
         const evoColors = (lvtData.colors || []).filter((c: any) => c.collection === 'creation-evo');
@@ -251,7 +251,7 @@ export class SupabaseProductRepository implements IProductRepository {
 
     // Category 2: Vinil (Merge JSON-only vinyl collections not already in Supabase)
     if (!filters?.categoryId || legacyCategoryId === '2' || filters.categoryId === '2') {
-      const existingSlugs = new Set(products.map(p => p.slug));
+      const existingSlugs = new Set(products.map((p: Product) => p.slug));
       let vinylJsonCollections = getVinylCollectionProducts()
         .filter(vc => !existingSlugs.has(vc.slug)); // Only add collections not already from Supabase
 
@@ -271,7 +271,7 @@ export class SupabaseProductRepository implements IProductRepository {
 
     // Category 8: Elektroprovodni (ESD)
     if (!filters?.categoryId || legacyCategoryId === '8' || filters.categoryId === '8') {
-      const existingSlugs = new Set(products.map(p => p.slug));
+      const existingSlugs = new Set(products.map((p: Product) => p.slug));
       let esdProducts = getEsdCollectionProducts()
         .filter(ep => !existingSlugs.has(ep.slug));
 
@@ -390,7 +390,7 @@ export class SupabaseProductRepository implements IProductRepository {
       console.error('SupabaseProductRepository.findByBrand error:', error.message);
       return [];
     }
-    return (data || []).map(row =>
+    return ((data as any[]) || []).map((row: any) =>
       toProduct(row, row.product_images || [], row.product_specs || [])
     );
   }
@@ -405,7 +405,7 @@ export class SupabaseProductRepository implements IProductRepository {
       console.error('SupabaseProductRepository.findFeatured error:', error.message);
       return [];
     }
-    return (data || []).map(row =>
+    return ((data as any[]) || []).map((row: any) =>
       toProduct(row, row.product_images || [], row.product_specs || [])
     );
   }
@@ -521,7 +521,7 @@ export class MockProductRepository implements IProductRepository {
 }
 
 // Switch: use Supabase by default, set USE_MOCK=true to use mock data
-const USE_MOCK = process.env.USE_MOCK_DATA === 'true';
+const USE_MOCK = process.env.USE_MOCK_DATA === 'true' || !hasSupabaseAnonConfig();
 export const productRepository = USE_MOCK
   ? new MockProductRepository()
   : new SupabaseProductRepository();

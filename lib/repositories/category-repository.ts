@@ -1,6 +1,6 @@
 import { Category } from '@/types';
 import { categories as mockCategories } from '@/lib/data/mock-data';
-import { supabase } from '@/lib/supabase/client';
+import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
 import { mapCategoryIdToUUID } from './id-mapping';
 
 export interface ICategoryRepository {
@@ -38,11 +38,11 @@ export class SupabaseCategoryRepository implements ICategoryRepository {
       console.error('SupabaseCategoryRepository.findAll error:', error.message);
       return [];
     }
-    const supabaseCategories = (data || []).map(toCategory);
+    const supabaseCategories: Category[] = ((data as any[]) || []).map((row: any) => toCategory(row));
     // Merge mock-only categories (e.g., Elektroprovodni) not present in Supabase
-    const existingSlugs = new Set(supabaseCategories.map(c => c.slug));
+    const existingSlugs = new Set(supabaseCategories.map((c: Category) => c.slug));
     const mockOnlyCategories = mockCategories.filter(c => !existingSlugs.has(c.slug));
-    return [...supabaseCategories, ...mockOnlyCategories].sort((a, b) => a.order - b.order);
+    return [...supabaseCategories, ...mockOnlyCategories].sort((a: Category, b: Category) => a.order - b.order);
   }
 
   async findBySlug(slug: string): Promise<Category | null> {
@@ -82,7 +82,7 @@ export class MockCategoryRepository implements ICategoryRepository {
   private categories: Category[] = mockCategories;
 
   async findAll(): Promise<Category[]> {
-    return [...this.categories].sort((a, b) => a.order - b.order);
+    return [...this.categories].sort((a: Category, b: Category) => a.order - b.order);
   }
 
   async findBySlug(slug: string): Promise<Category | null> {
@@ -95,7 +95,7 @@ export class MockCategoryRepository implements ICategoryRepository {
 }
 
 // Switch: use Supabase by default, set USE_MOCK=true to use mock data
-const USE_MOCK = process.env.USE_MOCK_DATA === 'true';
+const USE_MOCK = process.env.USE_MOCK_DATA === 'true' || !hasSupabaseAnonConfig();
 export const categoryRepository = USE_MOCK
   ? new MockCategoryRepository()
   : new SupabaseCategoryRepository();

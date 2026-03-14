@@ -1,5 +1,5 @@
 import { Inquiry } from '@/types';
-import { getServerSupabase, supabase } from '@/lib/supabase/client';
+import { getServerSupabase, hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
 
 export interface IInquiryRepository {
   create(inquiry: Omit<Inquiry, 'id' | 'createdAt'>): Promise<Inquiry>;
@@ -105,7 +105,7 @@ export class SupabaseInquiryRepository implements IInquiryRepository {
       console.error('SupabaseInquiryRepository.findAll error:', error.message);
       return [];
     }
-    return (data || []).map(toInquiry);
+    return ((data as any[]) || []).map((row: any) => toInquiry(row));
   }
 
   async updateStatus(id: string, status: Inquiry['status']): Promise<Inquiry> {
@@ -161,7 +161,7 @@ export class MockInquiryRepository implements IInquiryRepository {
 }
 
 // Switch: use Supabase by default, set USE_MOCK=true to use mock data
-const USE_MOCK = process.env.USE_MOCK_DATA === 'true';
+const USE_MOCK = process.env.USE_MOCK_DATA === 'true' || !hasSupabaseAnonConfig();
 export const inquiryRepository = USE_MOCK
   ? new MockInquiryRepository()
   : new SupabaseInquiryRepository();

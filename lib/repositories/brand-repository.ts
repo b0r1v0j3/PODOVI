@@ -1,6 +1,6 @@
 import { Brand } from '@/types';
 import { brands as mockBrands } from '@/lib/data/mock-data';
-import { supabase } from '@/lib/supabase/client';
+import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
 import { mapBrandIdToUUID, mapBrandId } from './id-mapping';
 
 export interface IBrandRepository {
@@ -39,14 +39,14 @@ export class SupabaseBrandRepository implements IBrandRepository {
       return mockBrands;
     }
 
-    const dbBrands = (data || []).map(toBrand);
+    const dbBrands: Brand[] = ((data as any[]) || []).map((row: any) => toBrand(row));
 
     // Merge with mock brands (BLOQ, etc.) that might not be in DB yet
     // Prefer DB version if duplicate SLUG exists (DB has UUIDs, Mock has legacy IDs)
-    const dbBrandSlugs = new Set(dbBrands.map(b => b.slug));
+    const dbBrandSlugs = new Set(dbBrands.map((b: Brand) => b.slug));
     const uniqueMockBrands = mockBrands.filter(mb => !dbBrandSlugs.has(mb.slug));
 
-    return [...dbBrands, ...uniqueMockBrands].sort((a, b) => a.name.localeCompare(b.name));
+    return [...dbBrands, ...uniqueMockBrands].sort((a: Brand, b: Brand) => a.name.localeCompare(b.name));
   }
 
   async findBySlug(slug: string): Promise<Brand | null> {
@@ -110,7 +110,7 @@ export class MockBrandRepository implements IBrandRepository {
 }
 
 // Switch: use Supabase by default, set USE_MOCK=true to use mock data
-const USE_MOCK = process.env.USE_MOCK_DATA === 'true';
+const USE_MOCK = process.env.USE_MOCK_DATA === 'true' || !hasSupabaseAnonConfig();
 export const brandRepository = USE_MOCK
   ? new MockBrandRepository()
   : new SupabaseBrandRepository();

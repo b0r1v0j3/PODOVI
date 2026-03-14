@@ -1,511 +1,714 @@
 {
   "missingImage": [],
   "missingDescription": [],
-  "lowSpecs": [
+  "lowSpecs": [],
+  "collectionDrivenLowSpecs": [
     {
       "id": "bloq-coll-bloq-assembly",
       "name": "BLOQ Assembly",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-sensity",
       "name": "BLOQ Sensity",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-unity",
       "name": "BLOQ Unity",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-solace",
       "name": "BLOQ Solace",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-small",
       "name": "BLOQ Small",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-medium",
       "name": "BLOQ Medium",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-large",
       "name": "BLOQ Large",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-flow",
       "name": "BLOQ Flow",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-grain",
       "name": "BLOQ Grain",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-renegade",
       "name": "BLOQ Renegade",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-balance",
       "name": "BLOQ Balance",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-sculpture",
       "name": "BLOQ Sculpture",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-rhythm",
       "name": "BLOQ Rhythm",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-connexion",
       "name": "BLOQ Connexion",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-tradition",
       "name": "BLOQ Tradition",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-canvas",
       "name": "BLOQ Canvas",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-positive",
       "name": "BLOQ Positive",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "bloq-coll-bloq-negative",
       "name": "BLOQ Negative",
-      "count": 1
+      "count": 1,
+      "kind": "bloq-collection",
+      "reason": "BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim."
     },
     {
       "id": "parket-step-xl-and-l",
       "name": "Step XL & L",
-      "count": 2
+      "count": 2,
+      "kind": "parket-collection",
+      "reason": "Parket collection header relies on variant-driven specs, so the base collection entry can legitimately stay minimal."
     },
     {
       "id": "hrast-baron-brown-step",
       "name": "Hrast Baron Brown",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-baron-sienna-step",
       "name": "Hrast Baron Sienna",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-royal-antique-white-step",
       "name": "Hrast Royal Antique White",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-royal-grey-step",
       "name": "Hrast Royal Grey",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-copper-1-strip-step",
       "name": "Hrast COPPER 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-premium-1-strip-step",
       "name": "Hrast PREMIUM 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-vivid-step",
       "name": "Hrast Vivid",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-chocolate-3-strip",
       "name": "Hrast CHOCOLATE 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-cocoa-3-strip",
       "name": "Hrast COCOA 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-copper-original-3-strip",
       "name": "Hrast COPPER ORIGINAL 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-cotton-3-strip",
       "name": "Hrast COTTON 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-elegant-high-gloss-3-strip",
       "name": "Hrast ELEGANT HIGH GLOSS  3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-elegant-matt-3-strip",
       "name": "Hrast ELEGANT MATT 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-elegant-shiny-3-strip",
       "name": "Hrast ELEGANT SHINY 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-iceberg-3-strip",
       "name": "Hrast ICEBERG 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-linen-3-strip",
       "name": "Hrast LINEN 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-nordic-elegant-3-strip",
       "name": "Hrast NORDIC ELEGANT 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-original-high-gloss-3-strip",
       "name": "Hrast ORIGINAL HIGH GLOSS 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-original-matt-3-strip",
       "name": "Hrast ORIGINAL MATT 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-original-shiny-3-strip",
       "name": "Hrast ORIGINAL SHINY 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-robust-white-3-strip",
       "name": "Hrast ROBUST WHITE 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-sienna-3-strip",
       "name": "Hrast SIENNA 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-supreme-matt-3-strip",
       "name": "Hrast SUPREME MATT 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-vivid-3-strip",
       "name": "Hrast VIVID 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "ash-silky-white-3-strip",
       "name": "Jasen SILKY WHITE 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-jasper-3-strip",
       "name": "Hrast JASPER 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-moonstone-3-strip",
       "name": "Hrast MOONSTONE 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-white-lightning-3-strip",
       "name": "Hrast WHITE LIGHTNING 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "ash-ivory-dreams-3-strip",
       "name": "Jasen IVORY DREAMS 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "ash-white-canvas-3-strip",
       "name": "Jasen WHITE CANVAS 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-antique-white-1-strip",
       "name": "Hrast ANTIQUE WHITE 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-bourbon-1-strip",
       "name": "Hrast BOURBON 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "tango-hrast-copper-1-strip",
       "name": "Hrast COPPER 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-cumin-1-strip",
       "name": "Hrast CUMIN 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-mocha-1-strip",
       "name": "Hrast MOCHA 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "tango-oak-premium-1-strip",
       "name": "Hrast PREMIUM 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-schwarzwald-1-strip",
       "name": "Hrast SCHWARZWALD 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-almond",
       "name": "Hrast Almond",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-bright",
       "name": "Hrast Bright",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-copper",
       "name": "Hrast Copper",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-cottage",
       "name": "Hrast Cottage",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-sepia",
       "name": "Hrast Sepia",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-sienna",
       "name": "Hrast Sienna",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-baron-brown",
       "name": "Hrast Baron Brown",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-baron-sienna",
       "name": "Hrast Baron Sienna",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-copper-1-strip",
       "name": "Hrast COPPER 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-premium-1-strip",
       "name": "Hrast PREMIUM 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-royal-antique-white",
       "name": "Hrast Royal Antique White",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-royal-grey",
       "name": "Hrast Royal Grey",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-vivid",
       "name": "Hrast Vivid",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-essence",
       "name": "Hrast Essence",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-misty-brown",
       "name": "Hrast Misty Brown",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-misty-grey",
       "name": "Hrast Misty Grey",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-soft-brown-1-strip",
       "name": "Hrast SOFT BROWN 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-soft-beige",
       "name": "Hrast Soft Beige",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-bronze",
       "name": "Hrast Bronze",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-espresso",
       "name": "Hrast Espresso",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-golden",
       "name": "Hrast Golden",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-original",
       "name": "Hrast Original",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-polar",
       "name": "Hrast Polar",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-black-canvas-3-strip",
       "name": "Hrast BLACK CANVAS 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-natural-3-strip",
       "name": "Hrast NATURAL 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-smoke-3-strip",
       "name": "Hrast SMOKE 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-grey-1-strip",
       "name": "Hrast GREY 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-pearl-3-strip",
       "name": "Hrast PEARL 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-rustic-3-strip",
       "name": "Hrast RUSTIC 3 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-natural-1-strip",
       "name": "Hrast NATURAL 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "oak-sand-2-strip",
       "name": "Hrast SAND 2 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-essence-2-strip",
       "name": "Hrast ESSENCE 2 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-sand-ro-2-strip",
       "name": "Hrast SAND RO 2 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-sienna-ro-2-strip",
       "name": "Hrast SIENNA RO 2 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "galloni-oak",
       "name": "GALLONI OAK",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "galloni-oak-brown-grey",
       "name": "GALLONI OAK BROWN GREY",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "galloni-oak-royal-grey",
       "name": "GALLONI OAK ROYAL GREY",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-galloni-oak-white-1-strip",
       "name": "Hrast GALLONI OAK WHITE 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-nobile-oak-select-1-strip",
       "name": "Hrast NOBILE OAK SELECT 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "hrast-nobile-oak-select-white-1-strip",
       "name": "Hrast NOBILE OAK SELECT WHITE 1 Strip",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "prestige-oak-antique",
       "name": "PRESTIGE OAK ANTIQUE",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "prestige-oak-brown-grey",
       "name": "PRESTIGE OAK BROWN GREY",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "prestige-oak-royal-grey",
       "name": "PRESTIGE OAK ROYAL GREY",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "prestige-oak-white",
       "name": "PRESTIGE OAK WHITE",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     },
     {
       "id": "privilege-prestige-oak",
       "name": "PRIVILEGE PRESTIGE OAK",
-      "count": 2
+      "count": 2,
+      "kind": "parket-variant",
+      "reason": "Parket variant redirects to its collection page where visible specs come from collection and selected color context."
     }
   ]
 }

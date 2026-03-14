@@ -4,6 +4,69 @@ import { Product } from '@/types';
 import * as loader from '@/lib/utils/productDataLoader';
 import { products as mockDataProducts } from '@/lib/data/mock-data';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
+import { PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping';
+
+type BasicIssue = {
+    id: string;
+    name: string;
+};
+
+type LowSpecIssue = BasicIssue & {
+    count: number;
+};
+
+type CollectionDrivenLowSpecIssue = LowSpecIssue & {
+    kind: 'bloq-collection' | 'parket-collection' | 'parket-variant';
+    reason: string;
+};
+
+type HealthIssues = {
+    missingImage: BasicIssue[];
+    missingDescription: BasicIssue[];
+    lowSpecs: LowSpecIssue[];
+    collectionDrivenLowSpecs: CollectionDrivenLowSpecIssue[];
+};
+
+function getCollectionDrivenLowSpecInfo(product: Product): CollectionDrivenLowSpecIssue | null {
+    const name = product.name || product.slug;
+    const count = product.specs ? product.specs.length : 0;
+
+    if (product.categoryId === '4' && product.id.startsWith('bloq-coll-')) {
+        return {
+            id: product.id,
+            name,
+            count,
+            kind: 'bloq-collection',
+            reason: 'BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim.',
+        };
+    }
+
+    if (product.categoryId === '3' && product.sku && !product.sku.startsWith('PARKET-')) {
+        return {
+            id: product.id,
+            name,
+            count,
+            kind: 'parket-variant',
+            reason: 'Parket variant redirects to its collection page where visible specs come from collection and selected color context.',
+        };
+    }
+
+    if (
+        product.categoryId === '3' &&
+        product.sku?.startsWith('PARKET-') &&
+        (PARKET_HEADER_COLLECTIONS as readonly string[]).includes(product.name)
+    ) {
+        return {
+            id: product.id,
+            name,
+            count,
+            kind: 'parket-collection',
+            reason: 'Parket collection header relies on variant-driven specs, so the base collection entry can legitimately stay minimal.',
+        };
+    }
+
+    return null;
+}
 
 async function runHealthCheck() {
     console.log('=== PODOVI.ONLINE PRODUCT HEALTH CHECK ===\n');
@@ -33,10 +96,11 @@ async function runHealthCheck() {
 
         console.log(`Total unique products loaded: ${allProducts.length}\n`);
 
-        let issues: { missingImage: any[], missingDescription: any[], lowSpecs: any[] } = {
+        const issues: HealthIssues = {
             missingImage: [],
             missingDescription: [],
             lowSpecs: [],
+            collectionDrivenLowSpecs: [],
         };
 
         allProducts.forEach(product => {
@@ -56,19 +120,25 @@ async function runHealthCheck() {
 
             // Check specs
             if (!product.specs || product.specs.length < 3) {
-                issues.lowSpecs.push({ id: product.id, name, count: product.specs ? product.specs.length : 0 });
+                const collectionDrivenInfo = getCollectionDrivenLowSpecInfo(product);
+                if (collectionDrivenInfo) {
+                    issues.collectionDrivenLowSpecs.push(collectionDrivenInfo);
+                } else {
+                    issues.lowSpecs.push({ id: product.id, name, count: product.specs ? product.specs.length : 0 });
+                }
             }
         });
 
         console.log('--- HEALTH REPORT ---');
-        const problemIds = new Set([
+        const actionableProblemIds = new Set([
             ...issues.missingImage.map(i => i.id),
             ...issues.missingDescription.map(i => i.id),
             ...issues.lowSpecs.map(i => i.id)
         ]);
 
-        console.log(`🟢 Healthy Products: ${allProducts.length - problemIds.size}`);
-        console.log(`🔴 Products with issues: ${problemIds.size}\n`);
+        console.log(`🟢 Healthy Products: ${allProducts.length - actionableProblemIds.size}`);
+        console.log(`🔴 Products with actionable issues: ${actionableProblemIds.size}`);
+        console.log(`ℹ️ Collection-driven products with lean base specs: ${issues.collectionDrivenLowSpecs.length}\n`);
 
         console.log(`⚠️ Missing or Placeholder Images (${issues.missingImage.length}):`);
         if (issues.missingImage.length > 0) {
@@ -94,6 +164,27 @@ async function runHealthCheck() {
             if (issues.lowSpecs.length > 10) console.log(`   ...and ${issues.lowSpecs.length - 10} more.`);
         } else {
             console.log('   Svi proizvodi imaju bar 3 specifikacije. Odlično!');
+        }
+        console.log('');
+
+        console.log(`ℹ️ Collection-driven Low Spec Entries (${issues.collectionDrivenLowSpecs.length}):`);
+        if (issues.collectionDrivenLowSpecs.length > 0) {
+            const grouped = issues.collectionDrivenLowSpecs.reduce<Record<string, number>>((acc, issue) => {
+                acc[issue.kind] = (acc[issue.kind] || 0) + 1;
+                return acc;
+            }, {});
+            const labels: Record<CollectionDrivenLowSpecIssue['kind'], string> = {
+                'bloq-collection': 'BLOQ collection pages',
+                'parket-collection': 'Parket collection headers',
+                'parket-variant': 'Parket variant redirects',
+            };
+
+            (Object.entries(grouped) as Array<[CollectionDrivenLowSpecIssue['kind'], number]>).forEach(([kind, count]) => {
+                console.log(`   - ${labels[kind]}: ${count}`);
+            });
+            console.log('   Visible specs on these pages come from collection/color context, so they are reported separately.');
+        } else {
+            console.log('   Nema collection-driven izuzetaka.');
         }
         console.log('');
 

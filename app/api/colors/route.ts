@@ -22,6 +22,27 @@ type TarkettProduct = {
     collection: string;
 };
 
+type ColorRow = {
+    collection_slug: string | null;
+    collection_name: string | null;
+    code: string | null;
+    name: string | null;
+    full_name?: string | null;
+    slug?: string | null;
+    image_url: string | null;
+    texture_url?: string | null;
+    image_count?: number | null;
+    lifestyle_url?: string | null;
+    welding_rod?: string | null;
+    dimension?: string | null;
+    format?: string | null;
+    overall_thickness?: string | null;
+    description?: string | null;
+    specs?: any;
+    collection_specs?: any;
+    characteristics?: Record<string, string> | null;
+};
+
 export async function GET(request: NextRequest) {
     const category = request.nextUrl.searchParams.get('category') || 'lvt';
     const collection = request.nextUrl.searchParams.get('collection'); // optional filter
@@ -43,7 +64,7 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: error.message }, { status: 500 });
         }
 
-        const colors = data || [];
+        const colors: ColorRow[] = (data || []) as ColorRow[];
 
         // For "vinil" category, return nested collections format
         // This matches the vinyl_colors_complete.json structure
