@@ -1,4 +1,6 @@
 import { Product, ProductSpec } from '@/types';
+import { existsSync } from 'fs';
+import { join } from 'path';
 
 const DEFAULT_DATE = new Date('2024-01-01');
 
@@ -10,13 +12,17 @@ type ManualCollectionConfig = {
   categoryId: string;
   shortDescription: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string;
   externalLink: string;
   specs: ProductSpec[];
   detailsSections?: Product['detailsSections'];
 };
 
 function createCollectionProduct(config: ManualCollectionConfig): Product {
+  const hasImage = config.imageUrl
+    ? existsSync(join(process.cwd(), 'public', config.imageUrl.replace(/^\//, '')))
+    : false;
+
   return {
     id: config.id,
     name: config.name,
@@ -26,7 +32,7 @@ function createCollectionProduct(config: ManualCollectionConfig): Product {
     brandId: '6',
     shortDescription: config.shortDescription,
     description: config.description,
-    images: [
+    images: config.imageUrl && hasImage ? [
       {
         id: `${config.id}-img`,
         url: config.imageUrl,
@@ -34,7 +40,7 @@ function createCollectionProduct(config: ManualCollectionConfig): Product {
         isPrimary: true,
         order: 0,
       },
-    ],
+    ] : [],
     specs: config.specs,
     externalLink: config.externalLink,
     detailsSections: config.detailsSections,

@@ -143,7 +143,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Dodati novi izvori podataka `public/data/vinyl_special_colors.json`, `public/data/industrial_colors.json` i `public/data/sport_colors.json` za 9 novih Gerflor/DLW kolekcija (boje + opisi + karakteristike).
 - Proširen ceo JSON → resolver → API → UI pipeline: `color-helpers.ts`, `prepare-colors.ts`, `resolve-product.ts`, `/api/colors`, `/api/color-data`, `CategoryTabs`, `ColorGrid`, `ProductCard`, `ProductCardClient`, category/product page logika za category ID 9 i 10.
 - `tools/download_gerflor_highres_zip.js` sada razume tipove `vinyl-special`, `industrial`, `sport` i priprema `collection.jpg` roomshot zajedno sa color JPG downloadom u lokalne `public/images/...` putanje.
-- Manual collection header proizvodi prebačeni su na standardizovane lokalne putanje (`/images/products/vinyl/.../collection.jpg`, `/images/products/industrial/.../collection.jpg`, `/images/products/sport/.../collection.jpg`) da downloader kasnije samo prepiše stvarnim slikama.
+- Manual collection header proizvodi sada koriste standardizovane lokalne `collection.jpg` putanje samo ako fajl stvarno postoji; pogresni placeholder roomshot-ovi su uklonjeni da sajt ne prikazuje netacne Gerflor slike.
 - Verifikovano: `npm run lint` i `npm run build` prolaze.
 
 **Finalizacija Podataka: PDF Specifikacije, Trinity Podloge, Supabase čišćenje (23.02.2026)**
@@ -275,7 +275,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Dodati "Dostupne podloge" prikaz za Trinity kolekcije
 - [x] Razmotriti prebacivanje klijentskih JSON import-ova na API rute (bundle size)
 - [x] Proveriti da li su kategorije 8, 9, 10 obrisane iz Supabase baze (bile su EGGER-ove)
-- [ ] Pokrenuti stvarni Gerflor download za nove `vinyl_special`, `industrial` i `sport` kolekcije čim lokalni DNS pristup ka `gerflor-cee.com` proradi, da placeholder `collection.jpg` i color JPG fajlovi budu zamenjeni finalnim roomshot/slikama.
+- [ ] Pokrenuti stvarni Gerflor download za nove `vinyl_special`, `industrial` i `sport` kolekcije čim lokalni DNS pristup ka `gerflor-cee.com` proradi, da se `collection.jpg` i color JPG fajlovi popune realnim roomshot/slikama.
 
 ---
 

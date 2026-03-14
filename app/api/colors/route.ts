@@ -53,8 +53,9 @@ function buildNestedCollectionsResponse(sourceCollections: any[], requestedColle
             name: collection.name,
             description: collection.description || '',
             characteristics: collection.characteristics || {},
-            colorCount: collection.colorCount || (collection.colors || []).length,
-            colors: (collection.colors || []).map((color: any) => ({
+            colors: (collection.colors || [])
+                .filter((color: any) => Boolean(color.image || color.image_url))
+                .map((color: any) => ({
                 ...color,
                 collection_slug: collection.slug,
                 collection_name: collection.name,
@@ -68,8 +69,12 @@ function buildNestedCollectionsResponse(sourceCollections: any[], requestedColle
                 format: color.format || collection.characteristics?.Format,
                 dimension: color.dimension || collection.characteristics?.Dimenzije,
                 overall_thickness: color.overall_thickness || collection.characteristics?.['Ukupna debljina'],
-            })),
-        }));
+                })),
+            colorCount: (collection.colors || [])
+                .filter((color: any) => Boolean(color.image || color.image_url))
+                .length,
+        }))
+        .filter((collection) => collection.colorCount > 0);
 
     return NextResponse.json({
         collections,

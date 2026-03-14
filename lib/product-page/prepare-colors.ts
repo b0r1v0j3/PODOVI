@@ -23,7 +23,9 @@ import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
 
 function mapNestedCollectionColors(collection: any) {
-    return (collection.colors || []).map((color: any) => ({
+    return (collection.colors || [])
+        .filter((color: any) => Boolean(color.image || color.image_url))
+        .map((color: any) => ({
         collection: collection.slug,
         collection_name: collection.name,
         code: color.code || '',
@@ -41,7 +43,7 @@ function mapNestedCollectionColors(collection: any) {
         dimension: color.dimension || collection.characteristics?.Dimenzije,
         overall_thickness: color.overall_thickness || collection.characteristics?.['Ukupna debljina'],
         description: color.description || collection.description || '',
-    }));
+        }));
 }
 
 /**
