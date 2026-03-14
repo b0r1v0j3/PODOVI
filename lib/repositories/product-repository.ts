@@ -4,6 +4,7 @@ import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, 
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
+import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -52,6 +53,18 @@ function toProduct(row: any, images: any[] = [], specs: any[] = []): Product {
     createdAt: new Date(row.created_at),
     updatedAt: new Date(row.updated_at),
   };
+}
+
+function dedupeProductsBySlug(products: Product[]): Product[] {
+  const uniqueProducts = new Map<string, Product>();
+
+  for (const product of products) {
+    if (!uniqueProducts.has(product.slug)) {
+      uniqueProducts.set(product.slug, product);
+    }
+  }
+
+  return Array.from(uniqueProducts.values());
 }
 
 // =========================================
@@ -289,6 +302,28 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...esdProducts];
     }
 
+    let manualCollectionProducts = getManualCollectionProducts();
+
+    if (filters?.categoryId) {
+      manualCollectionProducts = manualCollectionProducts.filter(p => p.categoryId === legacyCategoryId);
+    }
+
+    if (filters?.search) {
+      const searchLower = filters.search.toLowerCase();
+      manualCollectionProducts = manualCollectionProducts.filter(p =>
+        p.name.toLowerCase().includes(searchLower) ||
+        p.description.toLowerCase().includes(searchLower) ||
+        p.sku.toLowerCase().includes(searchLower)
+      );
+    }
+
+    if (filters?.brandIds && filters.brandIds.length > 0) {
+      manualCollectionProducts = manualCollectionProducts.filter(p => filters.brandIds!.includes(p.brandId));
+    }
+
+    const existingSlugs = new Set(products.map((p: Product) => p.slug));
+    products = [...products, ...manualCollectionProducts.filter(p => !existingSlugs.has(p.slug))];
+
     // Post-fetch filters that require specs data
     if (filters?.type) {
       const typeFilter = filters.type.toLowerCase();
@@ -372,13 +407,34 @@ export class SupabaseProductRepository implements IProductRepository {
   }
 
   async findByBrand(brandId: string): Promise<Product[]> {
-    // For BLOQ brand (id 8), return products from JSON
     if (brandId === '8') {
       return getAllBloqCarpetProducts();
     }
-    // For TimberTech brand (id 10), return products from JSON
+
     if (brandId === '10') {
       return getAllDekingProducts();
+    }
+
+    if (brandId === '6') {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*, product_images(*), product_specs(*)')
+        .eq('brand_id', mapBrandIdToUUID(brandId));
+
+      let products = error
+        ? []
+        : ((data as any[]) || []).map((row: any) =>
+          toProduct(row, row.product_images || [], row.product_specs || [])
+        );
+
+      const existingSlugs = new Set(products.map((product: Product) => product.slug));
+      const supplementalCollections = [
+        ...getVinylCollectionProducts(),
+        ...getEsdCollectionProducts(),
+        ...getManualCollectionProducts(),
+      ].filter(product => !existingSlugs.has(product.slug));
+
+      return [...products, ...supplementalCollections];
     }
 
     const { data, error } = await supabase
@@ -415,7 +471,17 @@ export class SupabaseProductRepository implements IProductRepository {
 // Mock implementation (kept as fallback)
 // =========================================
 export class MockProductRepository implements IProductRepository {
-  private products: Product[] = [...mockProducts, ...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...tarkettProducts, ...getAllTarkettLVTProducts(), ...getAllDekingProducts()];
+  private products: Product[] = dedupeProductsBySlug([
+    ...mockProducts,
+    ...getAllGerflorProducts(),
+    ...getAllBloqCarpetProducts(),
+    ...tarkettProducts,
+    ...getAllTarkettLVTProducts(),
+    ...getAllDekingProducts(),
+    ...getVinylCollectionProducts(),
+    ...getEsdCollectionProducts(),
+    ...getManualCollectionProducts(),
+  ]);
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {
     let filtered = [...this.products];

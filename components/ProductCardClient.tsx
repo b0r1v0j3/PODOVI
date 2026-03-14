@@ -23,6 +23,9 @@ const categoryBadgeConfig: Record<string, { label: string; className: string }> 
   '5': { label: 'Deking', className: 'badge-deking' },
   '6': { label: 'LVT', className: 'badge-lvt' },
   '7': { label: 'Linoleum', className: 'badge-linoleum' },
+  '8': { label: 'Elektroprovodni', className: 'badge-elektroprovodni' },
+  '9': { label: 'Industrijske ploče', className: 'badge-industrijske' },
+  '10': { label: 'Sport', className: 'badge-sport' },
 };
 
 // Keys to extract from specs for chip display
@@ -87,7 +90,7 @@ function getSpecChips(specs: Product['specs'], categoryId?: string, productName?
 function cleanShortDescription(shortDesc: string | undefined, productName: string, displayName: string): string | null {
   if (!shortDesc || shortDesc.length <= 5) return null;
 
-  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Podna obloga'];
+  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Podna obloga'];
   let cleaned = shortDesc;
   for (const catName of categoryNames) {
     cleaned = cleaned.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();

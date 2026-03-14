@@ -131,6 +131,18 @@
     @apply bg-purple-50 text-purple-700;
   }
 
+  .badge-elektroprovodni {
+    @apply bg-cyan-50 text-cyan-700;
+  }
+
+  .badge-industrijske {
+    @apply bg-slate-100 text-slate-700;
+  }
+
+  .badge-sport {
+    @apply bg-lime-50 text-lime-700;
+  }
+
   .badge-tekstilne {
     @apply bg-teal-50 text-teal-700;
   }

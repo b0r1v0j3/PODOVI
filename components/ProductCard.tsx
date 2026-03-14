@@ -19,6 +19,9 @@ const categoryBadgeConfig: Record<string, { label: string; className: string }> 
   '5': { label: 'Deking', className: 'badge-deking' },
   '6': { label: 'LVT', className: 'badge-lvt' },
   '7': { label: 'Linoleum', className: 'badge-linoleum' },
+  '8': { label: 'Elektroprovodni', className: 'badge-elektroprovodni' },
+  '9': { label: 'Industrijske ploče', className: 'badge-industrijske' },
+  '10': { label: 'Sport', className: 'badge-sport' },
 };
 
 // Keys to extract from specs for chip display
@@ -142,7 +145,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
 
   // Strip category name and product name from shortDescription to avoid redundancy
   // e.g. "Blues 1033 4V Laminat" on the Laminat page → redundant
-  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Podna obloga'];
+  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Podna obloga'];
   let cleanShortDesc = product.shortDescription || '';
   for (const catName of categoryNames) {
     cleanShortDesc = cleanShortDesc.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();

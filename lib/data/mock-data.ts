@@ -57,7 +57,23 @@ export const categories: Category[] = [
     slug: 'linoleum',
     description: 'Prirodni linoleum podovi - ekološki i izdržljivi',
     image: '/images/products/linoleum/dlw-colorette/0110-cadillac-pink/44901 - 0110 CADILLAC PINK.jpg',
+    order: 8,
+  },
+  {
+    id: '9',
+    name: 'Industrijske ploče',
+    slug: 'industrijske-ploce',
+    description: 'Modularne industrijske ploče za tehničke prostore, renovacije i jak saobraćaj',
+    image: '/images/esd/gti-el5-connect-alt.jpg',
     order: 7,
+  },
+  {
+    id: '10',
+    name: 'Sport',
+    slug: 'sport',
+    description: 'Sportski podovi za sale, dvorane i fiskulturne prostore',
+    image: '/images/products/linoleum/dlw-colorette.jpg',
+    order: 9,
   },
   {
     id: '8',
@@ -65,7 +81,7 @@ export const categories: Category[] = [
     slug: 'elektroprovodni',
     description: 'Elektroprovodni podovi za čiste sobe, industriju i elektroniku',
     image: '/images/esd/mipolam-el5-0354.jpg',
-    order: 8,
+    order: 10,
   },
 
 ];

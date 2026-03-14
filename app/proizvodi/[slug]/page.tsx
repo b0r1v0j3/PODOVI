@@ -514,11 +514,12 @@ export default async function ProductPage({ params, searchParams }: Props) {
                               : product.categoryId === '4' ? 'Tekstilne ploče'
                                 : product.categoryId === '8' ? 'ESD'
                                   : undefined
-                  }
-                  videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
-                  inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
-                  productId={product.id}
-                />
+                    }
+                    videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
+                    inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
+                    productId={product.id}
+                    hideColorSelector={product.categoryId === '5' || (product.categoryId === '2' && (!customColors || customColors.length === 0))}
+                  />
               </>
             ) : (
               /* Non-color-selector categories - standard layout */

@@ -9,6 +9,7 @@ import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
 import tarkettCollectionSpecsData from '@/public/data/tarkett_collection_specs.json';
 import tarkettCollectionDetails from '@/public/data/tarkett_collection_details.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
+import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 
 let tarkettLvtCache: Product[] | null = null;
 let lvtProductsCache: Product[] | null = null;
@@ -264,7 +265,15 @@ export function getTarkettLVTCollections(): Product[] {
  * Get a specific product by slug
  */
 export function getProductBySlug(slug: string): Product | undefined {
-    const allProducts = [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts(), ...getTarkettLVTCollections(), ...getAllDekingProducts(), ...getVinylCollectionProducts()];
+    const allProducts = [
+        ...getAllGerflorProducts(),
+        ...getAllBloqCarpetProducts(),
+        ...getAllTarkettLVTProducts(),
+        ...getTarkettLVTCollections(),
+        ...getAllDekingProducts(),
+        ...getVinylCollectionProducts(),
+        ...getManualCollectionProducts(),
+    ];
     return allProducts.find(p => p.slug === slug || p.id === slug);
 }
 
@@ -293,7 +302,14 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return getAllDekingProducts();
     }
 
-    return [...getAllGerflorProducts(), ...getAllBloqCarpetProducts(), ...getAllTarkettLVTProducts(), ...getAllDekingProducts()].filter(p => p.categoryId === categoryId);
+    return [
+        ...getAllGerflorProducts(),
+        ...getAllBloqCarpetProducts(),
+        ...getAllTarkettLVTProducts(),
+        ...getAllDekingProducts(),
+        ...getVinylCollectionProducts(),
+        ...getManualCollectionProducts(),
+    ].filter(p => p.categoryId === categoryId);
 }
 
 
