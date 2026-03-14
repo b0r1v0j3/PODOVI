@@ -72,7 +72,7 @@ export const categories: Category[] = [
     name: 'Sport',
     slug: 'sport',
     description: 'Sportski podovi za sale, dvorane i fiskulturne prostore',
-    image: '/images/products/linoleum/dlw-colorette.jpg',
+    image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1132-spicy-green.jpg',
     order: 9,
   },
   {
