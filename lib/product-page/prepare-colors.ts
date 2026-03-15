@@ -201,10 +201,16 @@ export async function prepareCustomColors(
         }
     }
 
-    // Vinil (cat 2): customColors from vinyl_colors_complete.json + vinyl_special_colors.json
-    if (product.categoryId === '2' && product.slug.startsWith('gerflor-')) {
-        const collectionSlug = product.slug.substring('gerflor-'.length);
-        const vinylCollection = vinylCollections.find((col: any) => col.slug === collectionSlug);
+    // Vinil (cat 2): customColors from Gerflor + Tarkett nested vinyl JSON sources
+    if (product.categoryId === '2') {
+        const slugCandidates = [
+            product.slug,
+            product.slug.replace(/^gerflor-/, ''),
+            product.slug.replace(/^tarkett-/, ''),
+        ];
+        const vinylCollection = vinylCollections.find((col: any) =>
+            slugCandidates.some((candidate) => candidate === col.slug)
+        );
         if (vinylCollection && vinylCollection.colors && vinylCollection.colors.length > 0) {
             return mapNestedCollectionColors(vinylCollection);
         }

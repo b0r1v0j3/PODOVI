@@ -70,16 +70,18 @@ npm start
 
 ## Catalog Data Sources
 
-- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` power Vinil collections and colors
+- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` + `public/data/tarkett_vinyl_home_colors.json` power Vinil collections and colors
 - `public/data/esd_colors.json` powers Elektroprovodni / ESD collections
 - `public/data/industrial_colors.json` powers Industrijske ploče collections
 - `public/data/sport_colors.json` powers Gerflor / DLW Sport collections
+- `public/data/tarkett_vinyl_home_colors.json` powers Tarkett home vinyl collections (12 collections, 281 colors)
 - `public/data/tarkett_sport_colors.json` powers Tarkett Sport collections (22 collections, 255 colors)
 - `public/data/tarkett_documents_index.json` provides curated Tarkett PDF fallbacks for Laminat and Parket collection pages
 - `lib/data/manual-collection-products.ts` defines collection headers and reads remote `collection_image_url` values from the nested JSON sources when they exist
 - `lib/data/tarkett-laminate-slug-mapping.ts` keeps legacy local Tarkett laminate URLs redirecting to the official Tarkett canonical variant slugs
 - `tools/download_gerflor_highres_zip.js --upload-supabase` uses Gerflor ZIP downloads as the source, extracts them locally, prefers the clean JPG when both a plain image and a `loupe/zoom` preview exist, uploads only that final image to Supabase, and writes the public URL back into JSON (`collection_image_url` for hero shots, `image` / `image_url` for colors)
 - `tools/extract_tarkett_sports.js` scrapes the official Tarkett Serbia sports catalog through `window.__NUXT__` and generates `public/data/tarkett_sport_colors.json`
+- `tools/extract_tarkett_vinyl_home.js` scrapes the official Tarkett Serbia `Vinil za kuću` catalog through `window.__NUXT__` and generates `public/data/tarkett_vinyl_home_colors.json`
 - `scripts/audit-tarkett-sync.ts` compares official Tarkett Parket/Laminat collections against `lib/data/tarkett-products.ts`, `public/data/tarkett_documents_index.json`, and Supabase when env vars are available, including exact design-slug comparison, duplicate detection, and parket alias normalization for collection-specific URL collisions
 - `scripts/sync-tarkett-supabase.ts` creates a timestamped backup in `output/`, performs a dry-run diff, and can apply the canonical Tarkett Parket/Laminat sync into Supabase once `.env.local` contains the pulled Vercel env vars
 
@@ -169,6 +171,7 @@ PODOVI/
 │   ├── data/               # JSON color/variant data files
 │   │   ├── lvt_colors_complete.json
 │   │   ├── vinyl_colors_complete.json
+│   │   ├── tarkett_vinyl_home_colors.json
 │   │   ├── linoleum_colors_complete.json
 │   │   ├── industrial_colors.json
 │   │   ├── sport_colors.json
@@ -200,6 +203,7 @@ PODOVI/
 ├── tools/                  # Dev tools
 │   ├── check-images.js             # Image checker
 │   ├── extract_tarkett_sports.js   # Tarkett sports catalog extractor
+│   ├── extract_tarkett_vinyl_home.js # Tarkett home vinyl catalog extractor
 │   ├── normalize-json.js           # JSON normalizer
 │   └── suggest-fixes-unknowns.js   # Unknown product fix suggestions
 │

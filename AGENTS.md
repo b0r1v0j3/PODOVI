@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 15.03.2026 (Tarkett Supabase sync, sport refresh, canonical slugovi)
+> **Poslednje ažuriranje:** 15.03.2026 (Tarkett Vinil za kuću integracija)
 
 ---
 
@@ -84,7 +84,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
 | Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
-| Vinil | 2 | Gerflor (6) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja) |
+| Vinil | 2 | Gerflor (6), Tarkett (3) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja) |
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | TimberTech (10) | `tis_deking_products.json` |
@@ -138,6 +138,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett Vinil za kuću dodat u kategoriju Vinil kroz ceo pipeline (15.03.2026)**
+- Dodat je novi izvor `public/data/tarkett_vinyl_home_colors.json` sa zvaničnih 12 Tarkett kolekcija i 281 boje iz kategorije `Vinil za kuću`, izvučen kroz novi `tools/extract_tarkett_vinyl_home.js` Playwright + `window.__NUXT__` workflow.
+- Proširen je category 2 pipeline kroz `color-helpers.ts`, `prepare-colors.ts`, `/api/colors`, `/api/color-data`, `productDataLoader.ts` i `product-repository.ts`, tako da `Vinil` sada podržava i Gerflor i Tarkett kolekcije, boje, dokumenta, detaljne karakteristike i kolekcijske hero slike.
+- Uvedeni su Tarkett vinil collection header proizvodi kroz `getTarkettVinylHomeCollections()` sa pravilnim `type`, `thickness`, `format`, `documents`, `detailsSections` i `externalLink` podacima, pa kolekcije rade na kategoriji, brendu i product page ruti bez dodatnog DB unosa.
+- Zvanični engleski opis za `Eruption S` je ručno preveden na srpski u JSON-u da Vinil sekcija ostane jezički konzistentna sa ostatkom sajta.
+- Verifikovano: `node tools/extract_tarkett_vinyl_home.js`, `npm run lint`, `npm run build`.
 
 **Tarkett Supabase sync za parket i laminat (15.03.2026)**
 - Lokalni repo je povezan na `borivojes-projects/podovi` preko Vercel CLI-ja, pa su produkcione env promenljive (`NEXT_PUBLIC_SUPABASE_*`, `SUPABASE_SERVICE_ROLE_KEY`) povučene u `.env.local` umesto ručnog kopiranja ključeva.
@@ -352,6 +359,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Pokrenuti stvarni Gerflor ZIP download za `vinyl_special`, `industrial` i `sport` kolekcije i podici roomshot + color JPG slike na Supabase umesto preview URL-ova sa Gerflor sajta.
 - [x] Dodati Tarkett sport kolekcije u kategoriju `Sport` kroz ceo JSON → resolver → API → UI pipeline, sa dokumentima i key features podacima iz zvaničnog kataloga.
 - [x] Završiti Tarkett Supabase sync kada env pristup bude dostupan, da baza dobije isti parket/laminat kanonski skup proizvoda i iste Tarkett slugove kao statički fallback.
+- [ ] Nastaviti Tarkett proširenje posle `Vinil za kuću` na `Homogeni vinil` i `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
 
 ---
 
@@ -377,7 +385,7 @@ PODOVI/
 │   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi
 │   └── repositories/       # Data access layer (Supabase)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, ESD, Industrijske, Sport, Tarkett sport + PDF indeks...)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, ESD, Industrijske, Sport, Tarkett sport + PDF indeks...)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
@@ -410,6 +418,7 @@ PODOVI/
 20. **Ne mutiraj shared `Product` objekte iz loadera/repozitorijuma.** `mergeSelectedColor()` menja ime, sliku i specifikacije proizvoda; zato svaki product koji dolazi iz cache-ovanih JSON/manual izvora mora prvo da se klonira, inace ce collection kartice na kategorijama poceti da prikazuju poslednju izabranu boju.
 21. **Kad Gerflor ZIP sadrzi i clean i loupe JPG, uvek biraj clean.** Posebno kod `GTI Max` kolekcija arhiva cesto ima fajl tipa `LOUPE-...jpg` i zaseban cist `GTI Max - Color.jpg`; za sajt koristi cistu boju, ne preview sa kruzicem.
 22. **Kad na Supabase prepisujes sliku na istoj putanji, URL u JSON-u mora da dobije novu verziju.** Ako ostane identican URL, browser i CDN mogu satima da serviraju staru GTI/industrijsku preview sliku iako je object vec zamenjen clean JPG-om; dodaj `?v=...` cache-bust na `image` polje kad hoces da promena odmah postane vidljiva.
+23. **Tarkett `Vinil za kuću` extractor ne treba da se oslanja na običan `https.get` HTML fetch za collection page.** Za ove kolekcije sirovi response često nema `window.__NUXT__` payload, dok ga `page.content()` iz Playwright-a uredno vrati posle rendera; zato `tools/extract_tarkett_vinyl_home.js` mora da učitava collection stranice kroz browser, a product JSON može direktno preko `json-collection-product/...` endpointa.
 23. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
 
 ---
