@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 15.03.2026 (Tarkett Vinil za kuću integracija)
+> **Poslednje ažuriranje:** 16.03.2026 (Tarkett opis cleanup za Sport/Vinil)
 
 ---
 
@@ -138,6 +138,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett opis cleanup za Sport i pravilan prikaz opisa na product strani (16.03.2026)**
+- `app/proizvodi/[slug]/page.tsx` više ne gasi plain-text opis čim postoji `detailsSections`: kada opis nije strukturiran u sekcije, sada se prvo renderuje stvarni prose opis proizvoda, pa tek onda `Ključne karakteristike`.
+- `tools/extract_tarkett_sports.js` je dopunjen sanitizacijom zvaničnog Tarkett sport teksta, tako da se pri ekstrakciji automatski popravljaju spojene reči i nestali razmaci (`za plesne`, `povećava performanse`, `tretiran je površinskom`, itd.) umesto da takav sirov tekst završi na sajtu.
+- Iz `public/data/tarkett_sport_colors.json` je uklonjen inventarski šum `Na lageru`, a očišćeni su i problematični opisi za `Dancefloor`, `Table Tennis`, `Droptile Speckle`, `Protectiles+`, `Omnisports Active+` i Lumaflex kolekcije sa zalepljenim rečenicama.
+- Dodatna provera je potvrdila da Tarkett `Vinil za kuću` kolekcije nemaju isti problem sa opisima, dokumentima, karakteristikama ili hero slikama; jedini sport izuzetak koji i dalje nema dokumenta u zvaničnom payload-u je `Protectiles+`.
+- Verifikovano: `node tools/extract_tarkett_sports.js`, audit nad `tarkett_sport_colors.json` i `tarkett_vinyl_home_colors.json`, `npm run lint`, `npm run build`.
 
 **Tarkett Vinil za kuću dodat u kategoriju Vinil kroz ceo pipeline (15.03.2026)**
 - Dodat je novi izvor `public/data/tarkett_vinyl_home_colors.json` sa zvaničnih 12 Tarkett kolekcija i 281 boje iz kategorije `Vinil za kuću`, izvučen kroz novi `tools/extract_tarkett_vinyl_home.js` Playwright + `window.__NUXT__` workflow.

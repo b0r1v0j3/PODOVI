@@ -844,16 +844,15 @@ function DescriptionSection({ product }: { product: Product }) {
   const descriptionSections = product.description
     ? parseDescriptionToSections(product.description)
     : [];
-  const sectionsToDisplay = descriptionSections.length > 0
-    ? descriptionSections
-    : (product.detailsSections || []);
+  const plainDescription = product.description?.trim() || '';
+  const detailSections = product.detailsSections || [];
 
-  if (sectionsToDisplay.length > 0) {
+  if (descriptionSections.length > 0) {
     return (
       <>
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
         <div className="space-y-6">
-          {sectionsToDisplay.map((section, idx) => (
+          {descriptionSections.map((section, idx) => (
             <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
               {section.items && section.items.length > 0 && (
@@ -870,12 +869,29 @@ function DescriptionSection({ product }: { product: Product }) {
     );
   }
 
-  if (product.description) {
+  if (plainDescription || detailSections.length > 0) {
     return (
       <>
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
-        <div className="prose prose-lg max-w-none text-gray-700">
-          <p className="whitespace-pre-line">{product.description}</p>
+        <div className="space-y-6">
+          {plainDescription && (
+            <div className="prose prose-lg max-w-none text-gray-700">
+              <p className="whitespace-pre-line">{plainDescription}</p>
+            </div>
+          )}
+
+          {detailSections.map((section, idx) => (
+            <div key={`${section.title}-${idx}`} className="border-t border-gray-200 pt-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+              {section.items && section.items.length > 0 && (
+                <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                  {section.items.map((item, index) => (
+                    <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
         </div>
       </>
     );

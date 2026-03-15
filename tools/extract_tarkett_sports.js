@@ -89,10 +89,34 @@ function stripHtml(raw) {
     .trim();
 }
 
+function sanitizeTarkettText(raw) {
+  return stripHtml(raw)
+    .replace(/([.!?])(?=[A-ZČĆŽŠĐ])/g, '$1 ')
+    .replace(/\bzaplesne\b/gi, 'za plesne')
+    .replace(/\bpovećavaperformanse\b/gi, 'povećava performanse')
+    .replace(/\bDostupnou\b/gi, 'Dostupno u')
+    .replace(/\bnudiuravnoteženo\b/gi, 'nudi uravnoteženo')
+    .replace(/\btretirapovršinskom\b/gi, 'tretiran je površinskom')
+    .replace(/\bekonomičnoodržavanje\b/gi, 'ekonomično održavanje')
+    .replace(/\bspotske\b/gi, 'sportske')
+    .replace(/\bpristiska\b/gi, 'pritiska')
+    .replace(/\bpostvaljanje\b/gi, 'postavljanje')
+    .replace(/\btretmamn\b/gi, 'tretman')
+    .replace(/\babsorpcij/gi, 'apsorpcij')
+    .replace(/\b550m2\b/gi, '550 m²')
+    .replace(/\s*;\s*/g, ': ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function cleanListItems(html) {
   return Array.from(String(html || '').matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi))
-    .map((match) => stripHtml(match[1]))
+    .map((match) => sanitizeTarkettText(match[1]))
     .filter(Boolean);
+}
+
+function sanitizeKeyFeatureItems(items) {
+  return items.filter((item) => !/^(na lageru|brza isporuka)$/i.test(item));
 }
 
 function toSlugFragment(urlPath) {
@@ -126,7 +150,7 @@ function translateCharacteristics(source, allowedKeys) {
 }
 
 function buildShortDescription(rawDescription, fallbackName) {
-  const cleaned = stripHtml(rawDescription);
+  const cleaned = sanitizeTarkettText(rawDescription);
   if (!cleaned) return fallbackName;
 
   const firstSentence = cleaned.match(/^(.{20,220}?[.!?])(?:\s|$)/);
@@ -243,11 +267,12 @@ async function fetchCollection(link) {
       }))
   );
 
-  const detailsSections = cleanListItems(item.key_features).length > 0
+  const keyFeatures = sanitizeKeyFeatureItems(cleanListItems(item.key_features));
+  const detailsSections = keyFeatures.length > 0
     ? [
         {
           title: 'Ključne karakteristike',
-          items: cleanListItems(item.key_features),
+          items: keyFeatures,
         },
       ]
     : undefined;
@@ -313,7 +338,13 @@ async function fetchCollection(link) {
           defaultSku.sku_thumbnail ||
           design.product_thumbnail
       ),
-      description: stripHtml(colorPayload?.description_stripped || colorPayload?.description || item.description_stripped || item.description || ''),
+      description: sanitizeTarkettText(
+        colorPayload?.description_stripped ||
+        colorPayload?.description ||
+        item.description_stripped ||
+        item.description ||
+        ''
+      ),
       characteristics: Object.keys(colorCharacteristics).length > 0 ? colorCharacteristics : undefined,
       brandId: '3',
     });
@@ -326,7 +357,7 @@ async function fetchCollection(link) {
     url,
     colorCount: colors.length,
     shortDescription: buildShortDescription(item.short_description_stripped || item.short_description || item.description_stripped || item.description, stripHtml(item.collection_name || item.name || '')),
-    description: stripHtml(item.description_stripped || item.description || ''),
+    description: sanitizeTarkettText(item.description_stripped || item.description || ''),
     categoryDescription: CATEGORY_DESCRIPTION,
     characteristics: collectionCharacteristics,
     colors,
