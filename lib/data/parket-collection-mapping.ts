@@ -141,10 +141,20 @@ const PARKET_COLLECTION_NAME_TO_SLUG: Record<string, string> = {
   [COLLECTION_SALSA_ART]: 'salsa-art',
   [COLLECTION_SALSA_PREMIUM]: 'salsa-premium',
   [COLLECTION_SOMMER_EUROPARQUET]: 'sommer-europarquet',
-  [COLLECTION_STEP]: 'step-xl-and-l',
+  [COLLECTION_STEP]: 'step-xl-l',
   [COLLECTION_TANGO]: 'tango',
   [COLLECTION_TANGO_CLASSIC]: 'tango-classic',
 };
+
+const PARKET_COLLECTION_SLUG_ALIASES: Record<string, string> = {
+  'step-xl-and-l': 'step-xl-l',
+};
+
+export function normalizeParketCollectionSlug(collectionSlug: string): string {
+  if (!collectionSlug || typeof collectionSlug !== 'string') return '';
+  const normalized = collectionSlug.toLowerCase();
+  return PARKET_COLLECTION_SLUG_ALIASES[normalized] ?? normalized;
+}
 
 export function getParketCollectionSlug(collectionName: string): string | null {
   if (!collectionName || typeof collectionName !== 'string') return null;
@@ -154,7 +164,7 @@ export function getParketCollectionSlug(collectionName: string): string | null {
 /** Za slug kolekcije (npr. 'rumba') vraća ime kolekcije ('Rumba'). Za prikaz boja na stranici proizvoda. */
 export function getParketCollectionNameBySlug(collectionSlug: string): string | null {
   if (!collectionSlug || typeof collectionSlug !== 'string') return null;
-  const s = collectionSlug.toLowerCase();
+  const s = normalizeParketCollectionSlug(collectionSlug);
   const entry = (Object.entries(PARKET_COLLECTION_NAME_TO_SLUG) as [string, string][]).find(([, slug]) => slug === s);
   return entry ? entry[0] : null;
 }

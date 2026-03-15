@@ -6,6 +6,7 @@ import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
+import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
 
 /**
  * GET /api/colors?category=lvt|linoleum|vinil|tekstilne-ploce|elektroprovodni|industrijske-ploce|sport
@@ -94,7 +95,10 @@ export async function GET(request: NextRequest) {
         ],
         elektroprovodni: ((esdColorsData as any)?.collections || []) as any[],
         'industrijske-ploce': ((industrialColorsData as any)?.collections || []) as any[],
-        sport: ((sportColorsData as any)?.collections || []) as any[],
+        sport: [
+            ...((((sportColorsData as any)?.collections || []) as any[])),
+            ...((((tarkettSportData as any)?.collections || []) as any[])),
+        ],
     };
 
     if (category in nestedCollectionsMap) {

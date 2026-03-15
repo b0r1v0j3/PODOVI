@@ -6,13 +6,20 @@ import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
+import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 import { SITE_URL } from '@/lib/seo/site-config';
 
 type NestedCollection = {
     name: string;
     slug: string;
+    brandId?: string;
     description?: string;
     characteristics?: Record<string, string | undefined>;
+    documents?: Array<Record<string, any>>;
+    detailsSections?: Array<Record<string, any>>;
+    url?: string;
+    shortDescription?: string;
+    collection_image_url?: string;
     colors?: Array<Record<string, any>>;
 };
 
@@ -23,7 +30,9 @@ export const vinylSpecialCollections = (vinylSpecialColorsData as { collections?
 export const vinylCollections = [...baseVinylCollections, ...vinylSpecialCollections];
 export const esdCollections = (esdColorsData as { collections?: NestedCollection[] }).collections || [];
 export const industrialCollections = (industrialColorsData as { collections?: NestedCollection[] }).collections || [];
-export const sportCollections = (sportColorsData as { collections?: NestedCollection[] }).collections || [];
+const gerflorSportCollections = (sportColorsData as { collections?: NestedCollection[] }).collections || [];
+const tarkettSportCollections = (tarkettSportColorsData as { collections?: NestedCollection[] }).collections || [];
+export const sportCollections = [...gerflorSportCollections, ...tarkettSportCollections];
 
 // Helper: strip collection sub-type prefixes from color names
 // e.g. "LOOSELAY 0374 PARKER STATION" -> "PARKER STATION"
@@ -110,6 +119,7 @@ export function buildNestedColorFromCollection(
         format: inferredFormat,
         dimension: inferredDimension,
         image_url: color.image_url || color.image,
+        brandId: color.brandId || (collection as any).brandId,
     } as ColorFromJSON;
 }
 
@@ -120,6 +130,7 @@ function findNestedColorSource(
 ): ColorSource | null {
     for (const collection of collections) {
         for (const color of collection.colors || []) {
+            const explicitSlug = typeof color.slug === 'string' ? color.slug : '';
             const generatedSlug = buildNestedColorSlug(collection, color);
             const colorOnlySlug = `${color.code}-${String(color.name || '')
                 .toLowerCase()
@@ -127,6 +138,7 @@ function findNestedColorSource(
                 .replace(/(^-|-$)/g, '')}`;
 
             if (
+                explicitSlug === slug ||
                 generatedSlug === slug ||
                 colorOnlySlug === slug ||
                 slug.endsWith(`-${colorOnlySlug}`) ||
@@ -294,6 +306,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         { categorySlug: 'elektroprovodni', fileName: 'esd_colors.json', nested: true },
         { categorySlug: 'industrijske-ploce', fileName: 'industrial_colors.json', nested: true },
         { categorySlug: 'sport', fileName: 'sport_colors.json', nested: true },
+        { categorySlug: 'sport', fileName: 'tarkett_sport_colors.json', nested: true },
     ];
 
     for (const candidate of candidates) {

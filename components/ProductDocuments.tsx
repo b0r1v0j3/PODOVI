@@ -14,6 +14,44 @@ interface ProductDocumentsProps {
     collectionSlug?: string;
 }
 
+interface DocumentsSourceConfig {
+    categoryKey: string;
+    dataUrl: string;
+    preferIndex: boolean;
+}
+
+function getDocumentsSourceConfig(categoryId: string): DocumentsSourceConfig | null {
+    if (categoryId === '1') {
+        return { categoryKey: 'laminat', dataUrl: '/data/tarkett_documents_index.json', preferIndex: true };
+    }
+
+    if (categoryId === '3') {
+        return { categoryKey: 'parket', dataUrl: '/data/tarkett_documents_index.json', preferIndex: true };
+    }
+
+    const categoryKey = categoryId === '6'
+        ? 'lvt'
+        : categoryId === '4'
+            ? 'carpet'
+            : categoryId === '7'
+                ? 'linoleum'
+                : categoryId === '2'
+                    ? 'vinil'
+                    : categoryId === '8'
+                        ? 'elektroprovodni'
+                        : categoryId === '9'
+                            ? 'industrijske-ploce'
+                            : categoryId === '10'
+                                ? 'sport'
+                                : '';
+
+    if (!categoryKey) {
+        return null;
+    }
+
+    return { categoryKey, dataUrl: '/data/documents_index.json', preferIndex: false };
+}
+
 export default function ProductDocuments({ initialDocuments = [], categoryId, collectionSlug }: ProductDocumentsProps) {
     const searchParams = useSearchParams();
     const [documents, setDocuments] = useState<Document[]>(initialDocuments);
@@ -40,31 +78,26 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
                 }
             }
 
-            if ((!nextDocuments || nextDocuments.length === 0) && collectionSlug) {
+            const sourceConfig = getDocumentsSourceConfig(categoryId);
+
+            if (collectionSlug && sourceConfig) {
                 try {
-                    const response = await fetch('/data/documents_index.json', { cache: 'no-store' });
+                    const response = await fetch(sourceConfig.dataUrl, { cache: 'no-store' });
                     if (response.ok) {
                         const index = await response.json();
-                        const normalizedCollectionSlug = collectionSlug.replace(/^gerflor-/, '');
-                        const categoryKey = categoryId === '6'
-                            ? 'lvt'
-                            : categoryId === '4'
-                                ? 'carpet'
-                                : categoryId === '7'
-                                    ? 'linoleum'
-                                    : categoryId === '2'
-                                        ? 'vinil'
-                                        : categoryId === '8'
-                                            ? 'elektroprovodni'
-                                        : '';
+                        const normalizedCollectionSlug = collectionSlug
+                            .replace(/^gerflor-/, '')
+                            .replace(/^tarkett-/, '');
 
-                        const docsFromIndex = categoryKey && index?.[categoryKey]?.[normalizedCollectionSlug]
-                            ? index[categoryKey][normalizedCollectionSlug]
+                        const docsFromIndex = index?.[sourceConfig.categoryKey]?.[normalizedCollectionSlug]
+                            ? index[sourceConfig.categoryKey][normalizedCollectionSlug]
                             : [];
 
-                        if (docsFromIndex.length > 0) {
+                        const shouldUseIndex = docsFromIndex.length > 0 && (sourceConfig.preferIndex || !nextDocuments || nextDocuments.length === 0);
+
+                        if (shouldUseIndex) {
                             nextDocuments = docsFromIndex;
-                            if (colorSlug && nextDocuments.length > 3) {
+                            if (!sourceConfig.preferIndex && colorSlug && nextDocuments.length > 3) {
                                 nextDocuments = nextDocuments.slice(0, 3);
                             }
                         }

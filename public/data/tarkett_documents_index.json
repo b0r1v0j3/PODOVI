@@ -1,0 +1,570 @@
+{
+  "parket": {
+    "allegro": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Allegro.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/docs/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/docs/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      }
+    ],
+    "privilege": [
+      {
+        "title": "Brošura",
+        "url": "https://media.tarkett-image.com/docs/BR_SEE_Privilege_brochure_EN.pdf"
+      }
+    ],
+    "privilege-waltz": [
+      {
+        "title": "Brošura",
+        "url": "https://media.tarkett-image.com/docs/BR_SEE_Privilege_Waltz_brochure_SRB.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/large/BR_RS_HD_Sommer_Europarquet.pdf"
+      }
+    ],
+    "rumba": [
+      {
+        "title": "Vodič za garancije",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Vodic_za_garancije.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "EPD",
+        "url": "https://media.tarkett-image.com/docs/EPD_Wood flooring_TARKETT Serbia.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/docs/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "Brošura - Aqua Guard",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_Aqua_Guard.pdf"
+      },
+      {
+        "title": "FSC COC sertifikat",
+        "url": "https://media.tarkett-image.com/docs/CR_RS_Tarkett_AB_FSC_COC.pdf"
+      },
+      {
+        "title": "TEHNIČKI LIST",
+        "url": "https://media.tarkett-image.com/large/BR_RS_HD_Rumba.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+      },
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+      }
+    ],
+    "salsa": [
+      {
+        "title": "Uputstvo za T-Lock ugradnju",
+        "url": "https://media.tarkett-image.com/docs/IG_EN_Tarkett_Wood_T-Lock_Installation_Instructions.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/docs/MI_EN_Tarkett_Wood_Maintenance_Instructions.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/docs/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      },
+      {
+        "title": "Brošura - Vodič za garancije",
+        "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+      },
+      {
+        "title": "Sertifikat - DoP (Deklaracija o performansama)",
+        "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "Brošura - Aqua Guard",
+        "url": "https://media.tarkett-image.com/large/BR_RS_Aqua_Guard.pdf"
+      },
+      {
+        "title": "TEHNIČKI LIST",
+        "url": "https://media.tarkett-image.com/large/BR_RS_HD_Salsa.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+      },
+      {
+        "title": "Sertifikat - COC",
+        "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+      },
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+      },
+      {
+        "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+        "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+      }
+    ],
+    "salsa-art": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Salsa_Art.pdf"
+      },
+      {
+        "title": "Vodič za garancije",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Vodic_za_garancije.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "EPD",
+        "url": "https://media.tarkett-image.com/docs/EPD_Wood flooring_TARKETT Serbia.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/docs/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "Aqua Guard sertifikat",
+        "url": "https://media.tarkett-image.com/docs/CR_RS_AG_inlay_25x17cm_back_ENG_01.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      },
+      {
+        "title": "EKO ZNAK SERTIFIKAT",
+        "url": "https://media.tarkett-image.com/large/CR_RS_Eko_znak_Proteco.pdf"
+      },
+      {
+        "title": "Certificate- Aqua Guard",
+        "url": "https://media.tarkett-image.com/large/CR_RS_AG_inlay_25x17cm_front_ENG_01.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+      },
+      {
+        "title": "Sertifikat - COC",
+        "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+      },
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+      }
+    ],
+    "salsa-premium": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Salsa_Premium.pdf"
+      },
+      {
+        "title": "Vodič za garancije",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Vodic_za_garancije.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "EPD",
+        "url": "https://media.tarkett-image.com/docs/EPD_Wood flooring_TARKETT Serbia.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/docs/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "Brošura - Aqua Guard",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_Aqua_Guard.pdf"
+      },
+      {
+        "title": "Certificate - Aqua Guard",
+        "url": "https://media.tarkett-image.com/large/CR_RS_AG_inlay_25x17cm_back_ENG_01.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      },
+      {
+        "title": "Certificate- Aqua Guard",
+        "url": "https://media.tarkett-image.com/large/CR_RS_AG_inlay_25x17cm_front_ENG_01.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+      },
+      {
+        "title": "Sertifikat - COC",
+        "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+      },
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+      },
+      {
+        "title": "EKO ZNAK SERTIFIKAT",
+        "url": "https://media.tarkett-image.com/large/CR_RS_Eko_znak_Hard_wax.pdf"
+      }
+    ],
+    "sommer-europarquet": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Sommer_Europarquet.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/2702-00021-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "Produkt katalog 2025",
+        "url": "https://media.tarkett-image.com/docs/ProductCatalogue_Europarquet_2025.pdf"
+      },
+      {
+        "title": "EKO sertifikat",
+        "url": "https://media.tarkett-image.com/docs/Sertifikat_EKO.pdf"
+      },
+      {
+        "title": "DOP sertifikat",
+        "url": "https://media.tarkett-image.com/docs/DOP_SommerEuroparqet_RS.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti proizvoda",
+        "url": "https://media.tarkett-image.com/docs/Sertifikat_Europarquet_rs.pdf"
+      }
+    ],
+    "step-xl-and-l": [
+      {
+        "title": "Brošura - Vodič za garancije",
+        "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+      },
+      {
+        "title": "Sertifikat - DoP (Deklaracija o performansama)",
+        "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "Brošura - Aqua Guard",
+        "url": "https://media.tarkett-image.com/large/BR_RS_Aqua_Guard.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+      },
+      {
+        "title": "Sertifikat - COC",
+        "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+      },
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+      },
+      {
+        "title": "DATASHEET",
+        "url": "https://media.tarkett-image.com/large/BR_RS_HD_Step_XLandL.pdf"
+      },
+      {
+        "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+        "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+      }
+    ],
+    "tango": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Tango.pdf"
+      },
+      {
+        "title": "Vodič za garancije",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Vodic_za_garancije.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/docs/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "Brošura - Aqua Guard",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_Aqua_Guard.pdf"
+      },
+      {
+        "title": "FSC COC sertifikat",
+        "url": "https://media.tarkett-image.com/docs/CR_RS_Tarkett_AB_FSC_COC.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+      },
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+      }
+    ],
+    "tango-classic": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Tango_Classic.pdf"
+      },
+      {
+        "title": "Vodič za garancije",
+        "url": "https://media.tarkett-image.com/docs/BR_RS_HD_Vodic_za_garancije.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "EPD",
+        "url": "https://media.tarkett-image.com/docs/EPD_Wood flooring_TARKETT Serbia.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/docs/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "FSC COC sertifikat",
+        "url": "https://media.tarkett-image.com/docs/CR_RS_Tarkett_AB_FSC_COC.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+      },
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+      }
+    ],
+    "step-xl-l": [
+      {
+        "title": "Brošura - Vodič za garancije",
+        "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+      },
+      {
+        "title": "Sertifikat - DoP (Deklaracija o performansama)",
+        "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+      },
+      {
+        "title": "Grading Book",
+        "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+      },
+      {
+        "title": "Brošura - Aqua Guard",
+        "url": "https://media.tarkett-image.com/large/BR_RS_Aqua_Guard.pdf"
+      },
+      {
+        "title": "Sertifikat o stalnosti svojstava",
+        "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+      },
+      {
+        "title": "Uputstvo za održavanje",
+        "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+      },
+      {
+        "title": "Sertifikat - COC",
+        "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+      },
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+      },
+      {
+        "title": "Sertifikat - EKO znak",
+        "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+      },
+      {
+        "title": "DATASHEET",
+        "url": "https://media.tarkett-image.com/large/BR_RS_HD_Step_XLandL.pdf"
+      },
+      {
+        "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+        "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+      }
+    ]
+  },
+  "laminat": {
+    "blues-1033-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/DS_SEE_Blues_1033_4V.pdf"
+      },
+      {
+        "title": "DoP sertifikat",
+        "url": "https://media.tarkett-image.com/docs/CR_DoP_SEE_Blues_and_Soul_ENG.pdf"
+      }
+    ],
+    "easy-line-832-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/DS-Tarkett-easy_line_832-en_INTL.pdf"
+      },
+      {
+        "title": "Brošura",
+        "url": "https://media.tarkett-image.com/docs/Brochure-Laminate-including-Soundlogic-INT.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://media.tarkett-image.com/docs/Guarantee-Inlay-Laminate-INT.pdf"
+      },
+      {
+        "title": "Uputstvo za ugradnju",
+        "url": "https://media.tarkett-image.com/docs/Installation-Guide-Inlay-Laminate-INT.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/Declaration-Performance_0132-0078-DoP-2021-08_Laminate-ranges_INT.pdf"
+      }
+    ],
+    "frontier-1033-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/DS_SEE_FRONTIER_1033_4V_EN.pdf"
+      }
+    ],
+    "giant-1233-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/DS_SEE_Giant_1233_4V.pdf"
+      }
+    ],
+    "journey-731-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/TDS_Journey_731_4V.pdf"
+      }
+    ],
+    "river-1233-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/DS_Tarkett_River_1233_4V_EN.pdf"
+      }
+    ],
+    "roads-833-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/DS_Tarkett_Roads_833_4V_EN.pdf"
+      }
+    ],
+    "timeless-1232-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/DS_SEE_Timeless_1232_4V.pdf"
+      }
+    ],
+    "winter-832": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/TDS_Winter_832.pdf"
+      }
+    ],
+    "woodstock-longboards-1033-4v": [
+      {
+        "title": "Tehnički list",
+        "url": "https://media.tarkett-image.com/docs/DS-Tarkett-woodstock_longboards-en_INTL.pdf"
+      },
+      {
+        "title": "Brošura",
+        "url": "https://media.tarkett-image.com/docs/GB_LD_INT_Laminate_Flooring.pdf"
+      },
+      {
+        "title": "Garancija",
+        "url": "https://media.tarkett-image.com/docs/Guarantee-Tarkett-Laminate-ranges-INT.pdf"
+      },
+      {
+        "title": "Deklaracija o performansama",
+        "url": "https://media.tarkett-image.com/docs/Declaration-Performance-0132_0091_DoP_2023_06-Laminate_range-INT.pdf"
+      },
+      {
+        "title": "EPD",
+        "url": "https://media.tarkett-image.com/docs/EPD_EPLF_Laminate.pdf"
+      }
+    ]
+  }
+}

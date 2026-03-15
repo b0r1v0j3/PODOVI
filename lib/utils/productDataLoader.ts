@@ -8,6 +8,7 @@ import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
 import tarkettCollectionSpecsData from '@/public/data/tarkett_collection_specs.json';
 import tarkettCollectionDetails from '@/public/data/tarkett_collection_details.json';
+import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 
@@ -18,6 +19,7 @@ let carpetProductsCache: Product[] | null = null;
 let bloqCarpetCache: Product[] | null = null;
 let dekingProductsCache: Product[] | null = null;
 let esdCollectionCache: Product[] | null = null;
+let tarkettSportCollectionCache: Product[] | null = null;
 
 // Display names for Tarkett collections
 const TARKETT_COLLECTION_NAMES: Record<string, string> = {
@@ -38,6 +40,44 @@ const TARKETT_COLLECTION_NAMES: Record<string, string> = {
     'id-tilt-hit': 'iD Tilt HIT',
     'progressive-house': 'Progressive House',
 };
+
+function characteristicLabelToKey(label: string): string {
+    return String(label)
+        .toLowerCase()
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '') || 'spec';
+}
+
+function buildSpecsFromCharacteristicRecord(
+    characteristics?: Record<string, string>,
+    collectionName?: string
+): Product['specs'] {
+    const specs: Product['specs'] = [];
+
+    if (collectionName) {
+        specs.push({ key: 'collection', label: 'Kolekcija', value: collectionName });
+    }
+
+    if (!characteristics || typeof characteristics !== 'object') {
+        return specs;
+    }
+
+    for (const [label, value] of Object.entries(characteristics)) {
+        if (!value) continue;
+        const key = characteristicLabelToKey(label);
+        if (!specs.find((spec) => spec.key === key)) {
+            specs.push({
+                key,
+                label,
+                value: String(value).trim(),
+            });
+        }
+    }
+
+    return specs;
+}
 
 /**
  * Utility to standardize and clean up product color names.
@@ -270,6 +310,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getAllBloqCarpetProducts(),
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
+        ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
         ...getVinylCollectionProducts(),
         ...getManualCollectionProducts(),
@@ -294,6 +335,11 @@ export function getProductsByCategory(categoryId: string): Product[] {
     if (categoryId === '6') {
         // Return both Gerflor LVT and Tarkett LVT
         return [...getAllLVTProducts(), ...getAllTarkettLVTProducts()];
+    } else if (categoryId === '10') {
+        return [
+            ...getManualCollectionProducts().filter((product) => product.categoryId === '10'),
+            ...getTarkettSportCollections(),
+        ];
     } else if (categoryId === '7') {
         return getAllLinoleumProducts();
     } else if (categoryId === '4') {
@@ -306,6 +352,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getAllGerflorProducts(),
         ...getAllBloqCarpetProducts(),
         ...getAllTarkettLVTProducts(),
+        ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
         ...getVinylCollectionProducts(),
         ...getManualCollectionProducts(),
@@ -834,4 +881,55 @@ export function getEsdCollectionProducts(): Product[] {
 
     esdCollectionCache = result;
     return result;
+}
+
+/**
+ * Generate collection-level Product entries from tarkett_sport_colors.json.
+ * These are used to show Tarkett sport collections in the Sport category listing.
+ */
+export function getTarkettSportCollections(): Product[] {
+    if (tarkettSportCollectionCache) {
+        return tarkettSportCollectionCache;
+    }
+
+    const collections = (((tarkettSportData as any)?.collections || []) as any[]);
+
+    tarkettSportCollectionCache = collections.map((collection: any) => {
+        const firstColor = collection.colors?.[0];
+        const imageUrl = collection.collection_image_url || firstColor?.image || '';
+        const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
+
+        return {
+            id: `tarkett-sport-${collection.slug}`,
+            name: collection.name,
+            slug: collection.slug,
+            sku: `TARKETT-SPORT-${String(collection.slug).replace(/^tarkett-/, '').toUpperCase()}`,
+            categoryId: '10',
+            brandId: '3',
+            shortDescription:
+                collection.shortDescription ||
+                `${collection.name} — ${collection.colorCount || collection.colors?.length || 0} dezena`,
+            description:
+                collection.description ||
+                collection.shortDescription ||
+                `${collection.name} sportska kolekcija.`,
+            images: imageUrl ? [{
+                id: `tarkett-sport-${collection.slug}-img`,
+                url: imageUrl,
+                alt: collection.name,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            documents: Array.isArray(collection.documents) ? collection.documents : [],
+            detailsSections: Array.isArray(collection.detailsSections) ? collection.detailsSections : undefined,
+            externalLink: collection.url,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    return tarkettSportCollectionCache;
 }

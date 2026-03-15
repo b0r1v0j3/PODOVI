@@ -8,6 +8,7 @@ import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
+import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 
 /**
  * GET /api/color-data?color={slug}&categoryId={id}
@@ -94,7 +95,10 @@ export async function GET(request: NextRequest) {
     } else if (isIndustrial) {
         color = findNestedColor(((industrialColorsData as any)?.collections || []));
     } else if (isSport) {
-        color = findNestedColor(((sportColorsData as any)?.collections || []));
+        color = findNestedColor([
+            ...((((sportColorsData as any)?.collections || []) as any[])),
+            ...((((tarkettSportColorsData as any)?.collections || []) as any[])),
+        ]);
     } else {
         const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
         const colors = (colorsData as { colors?: any[] }).colors || [];

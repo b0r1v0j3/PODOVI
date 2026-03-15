@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.03.2026 (Sport/industrial category hero update + GTI cache-bust)
+> **Poslednje ažuriranje:** 15.03.2026 (Tarkett Supabase sync, sport refresh, canonical slugovi)
 
 ---
 
@@ -92,7 +92,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` (15 kolekcija, 203 boje) |
 | Elektroprovodni | 8 | Gerflor (6) | `esd_colors.json` (7 kolekcija, 42 boje) |
 | Industrijske ploče | 9 | Gerflor (6) | `industrial_colors.json` (4 kolekcije, 75 boja) + `manual-collection-products.ts` |
-| Sport | 10 | Gerflor (6) | `sport_colors.json` (3 kolekcije, 33 boje) + `manual-collection-products.ts` |
+| Sport | 10 | Gerflor (6), Tarkett (3) | `sport_colors.json` (3 kolekcije, 33 boje), `tarkett_sport_colors.json` (22 kolekcije, 255 boja) + `manual-collection-products.ts` |
 
 ### BLOQ Carpet Tiles (18 kolekcija, 210 boja):
 | Familija | Kolekcije |
@@ -138,6 +138,45 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett Supabase sync za parket i laminat (15.03.2026)**
+- Lokalni repo je povezan na `borivojes-projects/podovi` preko Vercel CLI-ja, pa su produkcione env promenljive (`NEXT_PUBLIC_SUPABASE_*`, `SUPABASE_SERVICE_ROLE_KEY`) povučene u `.env.local` umesto ručnog kopiranja ključeva.
+- Dodata je skripta `scripts/sync-tarkett-supabase.ts` koja pravi timestamp backup u `output/`, radi dry-run diff i po `--apply` sinhronizuje produkcioni Supabase sa kanonskim lokalnim `tarkett-products.ts` izvorom za kategorije Laminat/Parket.
+- Produkcioni Tarkett parket je očišćen sa 92 na 84 ukupna reda (11 header proizvoda + 73 varijante): obrisano je 9 zastarelih/legacy zapisa, ubačen je `step-xl-l`, a svi preostali parket proizvodi sada imaju isti kanonski skup kao zvanični Tarkett katalog.
+- Tarkett laminat je u istoj sinhronizaciji dobio kanonske slugove direktno u Supabase-u kroz SKU match, bez gubitka postojećih proizvoda (`easy-line`, `river`, `journey`, `timeless`, `winter`, `woodstock` rename set).
+- Posle sync-a `scripts/audit-tarkett-sync.ts` potvrđuje da i statički fallback i Supabase vraćaju zvaničnih 11/73 za parket i 10/54 za laminat.
+
+**Tarkett laminat canonical slugovi + redirect kompatibilnost (15.03.2026)**
+- Uveden je centralni helper `lib/data/tarkett-laminate-slug-mapping.ts` koji mapira stare lokalne laminat URL slugove na zvanične Tarkett kanonske slugove (`easy-line`, `river`, `journey`, `timeless`, `winter`, `woodstock`).
+- `lib/data/tarkett-products.ts` sada za tih 21 laminat proizvod koristi zvanične Tarkett slugove, a `Journey 731 4V Oak Natural` je usklađen i po imenu sa zvaničnim `Journey 731 4V Panonian Oak`.
+- `app/proizvodi/[slug]/page.tsx` sada normalizuje i parket i Tarkett laminat slugove kroz zajednički `getCanonicalProductRouteSlug()`, pa stari lokalni URL-ovi rade kao server-side redirect na nove kanonske rute, dok metadata i canonical URL takođe koriste novu verziju.
+- Verifikovano kroz `npm run lint`, `npm run build`, `npx tsx scripts/audit-tarkett-sync.ts` i dodatni helper check da stari laminat slugovi mapiraju na zvanične Tarkett vrednosti.
+
+**Tarkett parket cleanup + audit refinement (15.03.2026)**
+- `lib/data/tarkett-products.ts` je očišćen od legacy parket fallback sloja sa generičkim `collection: Parket` zapisima: lokalni parket je spušten sa 116 na zvaničnih 73 varijante, bez duplih dekora i bez zastarelih dodataka.
+- Zadržana su samo 3 nužna legacy URL proizvoda (`hrast-bourbon-1-strip`, `hrast-cumin-1-strip`, `hrast-sepia`) i prebačena u prave kolekcije (`Tango`, `Tango Classic`) da linkovi ostanu stabilni bez zagađenja kataloga.
+- `scripts/audit-tarkett-sync.ts` sada radi dublji pregled: poredi zvanične Tarkett design slugove, normalizuje naše parket alias slugove za kolizije (`rumba-/tango-` copper/premium), prijavljuje duplikate / višak / manjak po kolekciji i ostaje TypeScript-safe za `next build`.
+- `public/data/tarkett_documents_index.json` je dopunjen dodatnim `Privilege Waltz` tehničkim listom koji zvanična Tarkett kolekcijska stranica prikazuje kroz assets payload.
+- Verifikovano: `npm run lint`, `npm run build`, `npx tsx scripts/audit-tarkett-sync.ts`; parket audit sada vraća 11/11 kolekcija i 73/73 varijante bez missing/extra/dead slugova.
+
+**Tarkett sport kategorija + zvanični Step XL & L slug (15.03.2026)**
+- Dodat novi izvor `public/data/tarkett_sport_colors.json` sa 22 Tarkett sportske kolekcije i 255 boja, izvučen direktno sa zvaničnog Tarkett Srbija sport kataloga kroz `tools/extract_tarkett_sports.js` i `window.__NUXT__` payload.
+- Proširen ceo sport pipeline kroz `productDataLoader.ts`, `product-repository.ts`, `resolve-product.ts`, `prepare-colors.ts`, `color-helpers.ts`, `/api/colors`, `/api/color-data`, `CategoryTabs`, `ColorGrid`, `ProductCardClient` i product page tako da kategorija `10` sada podržava i Gerflor/DLW i Tarkett sport kolekcije, boje, dokumenta i karakteristike.
+- `Step XL & L` parket kolekcija je prebačena na zvanični Tarkett slug `step-xl-l` u `tarkett-products.ts` i `parket-collection-mapping.ts`, dok stari lokalni slug `step-xl-and-l` sada ostaje kao kompatibilni alias/redirect radi starih linkova.
+- Verifikovano runtime proverom da `resolveProductBySlug()` i `prepareCustomColors()` uspešno podižu Tarkett sport kolekcije sa dokumentima, sekcijama i bojama.
+
+**Tarkett audit faza 2: duboka provera parketa/laminata i dopuna dokumentacije (15.03.2026)**
+- Dodata skripta `scripts/audit-tarkett-sync.ts` koja upoređuje zvanični Tarkett Srbija Parket/Laminat katalog sa lokalnim `tarkett-products.ts`, `tarkett_documents_index.json` i Supabase bazom kada su env promenljive dostupne.
+- Početni audit je potvrdio da je Laminat statički usklađen 1:1 po broju kolekcija/proizvoda (10 kolekcija / 54 proizvoda), dok je Parket tada još imao višak legacy varijanti i 46 proizvoda sa generičkim `collection: Parket`; taj nalaz je zatim poslužio kao osnova za kasniji cleanup iznad.
+- `public/data/tarkett_documents_index.json` je dopunjen zvaničnim PDF-ovima za Parket kolekcije (`rumba`, `salsa`, `salsa-art`, `salsa-premium`, `tango`, `tango-classic`, `step-xl-l`) i dodat je alias za stari `step-xl-and-l`.
+- Početni bloker pristupa je kasnije rešen Vercel link/pull korakom; produkcioni Supabase sync za parket/laminat je zatim stvarno izvršen kroz `scripts/sync-tarkett-supabase.ts` (vidi noviji entry iznad).
+
+**Tarkett audit faza 1: dokumentacija za laminat/parket + kompletiranje LVT kolekcijskih detalja (15.03.2026)**
+- Dodat novi izvor `public/data/tarkett_documents_index.json` sa kuriranim Tarkett PDF dokumentima za svih 10 laminat i 11 parket kolekcija, na osnovu zvaničnog Tarkett Srbija kataloga i search/documents endpointa.
+- `components/ProductDocuments.tsx` sada ume da čita i `tarkett_documents_index.json`, a za kategorije `1` (Laminat) i `3` (Parket) kolekcijski Tarkett indeks ima prioritet nad praznim ili nepotpunim fallback dokumentima.
+- `app/proizvodi/[slug]/page.tsx` sada prepoznaje Tarkett dokumenta kroz isti documents-tab pipeline kao i Gerflor kolekcije, pa se Dokumentacija sekcija prikazuje i kad PDF-ovi dolaze iz Tarkett JSON indeksa.
+- `public/data/tarkett_collection_details.json` je dopunjen tako da svih 16 Tarkett LVT kolekcija sada imaju `Ključne karakteristike` blok umesto da 8 kolekcija ostaje bez enriched detalja.
+- Duboka provera je potvrdila da Tarkett parket/laminat na live sajtu i dalje zavise prvenstveno od Supabase baze, pa puna sinhronizacija naziva, SKU-ova i asortimana mora da obuhvati DB + `tarkett-products.ts`, ne samo statički fajl.
 
 **Marmorette sport collection kartica vracena na roomshot (14.03.2026)**
 - `sport_colors.json` za `DLW Marmorette Sport 3.2mm` vise ne koristi color JPG kao `collection_image_url`, vec Supabase `collection.jpg` sliku prostora.
@@ -311,6 +350,8 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Razmotriti prebacivanje klijentskih JSON import-ova na API rute (bundle size)
 - [x] Proveriti da li su kategorije 8, 9, 10 obrisane iz Supabase baze (bile su EGGER-ove)
 - [x] Pokrenuti stvarni Gerflor ZIP download za `vinyl_special`, `industrial` i `sport` kolekcije i podici roomshot + color JPG slike na Supabase umesto preview URL-ova sa Gerflor sajta.
+- [x] Dodati Tarkett sport kolekcije u kategoriju `Sport` kroz ceo JSON → resolver → API → UI pipeline, sa dokumentima i key features podacima iz zvaničnog kataloga.
+- [x] Završiti Tarkett Supabase sync kada env pristup bude dostupan, da baza dobije isti parket/laminat kanonski skup proizvoda i iste Tarkett slugove kao statički fallback.
 
 ---
 
@@ -336,11 +377,11 @@ PODOVI/
 │   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi
 │   └── repositories/       # Data access layer (Supabase)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama (LVT, Vinil, ESD, Industrijske, Sport...)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, ESD, Industrijske, Sport, Tarkett sport + PDF indeks...)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
-└── scripts/                # Utility skripte (enrichment, image validation)
+└── scripts/                # Utility skripte (enrichment, image validation, Tarkett audit/sync)
 ```
 
 ## 8. ⚡ COMMON GOTCHAS
@@ -369,6 +410,7 @@ PODOVI/
 20. **Ne mutiraj shared `Product` objekte iz loadera/repozitorijuma.** `mergeSelectedColor()` menja ime, sliku i specifikacije proizvoda; zato svaki product koji dolazi iz cache-ovanih JSON/manual izvora mora prvo da se klonira, inace ce collection kartice na kategorijama poceti da prikazuju poslednju izabranu boju.
 21. **Kad Gerflor ZIP sadrzi i clean i loupe JPG, uvek biraj clean.** Posebno kod `GTI Max` kolekcija arhiva cesto ima fajl tipa `LOUPE-...jpg` i zaseban cist `GTI Max - Color.jpg`; za sajt koristi cistu boju, ne preview sa kruzicem.
 22. **Kad na Supabase prepisujes sliku na istoj putanji, URL u JSON-u mora da dobije novu verziju.** Ako ostane identican URL, browser i CDN mogu satima da serviraju staru GTI/industrijsku preview sliku iako je object vec zamenjen clean JPG-om; dodaj `?v=...` cache-bust na `image` polje kad hoces da promena odmah postane vidljiva.
+23. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
 
 ---
 

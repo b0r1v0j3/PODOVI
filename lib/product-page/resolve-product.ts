@@ -57,7 +57,7 @@ function enrichProductFromCollectionData(product: Product, collection: any): Pro
 }
 
 function findNestedCollection(slug: string) {
-    const slugWithoutPrefix = slug.replace(/^gerflor-/, '');
+    const slugWithoutPrefix = slug.replace(/^gerflor-/, '').replace(/^tarkett-/, '');
     return (
         vinylCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         esdCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
@@ -71,17 +71,27 @@ export function normalizeCollectionSlug(categoryId: string, collectionSlug: stri
     if (!collectionSlug) {
         return collectionSlug;
     }
+    const hasBrandPrefix = collectionSlug.startsWith('gerflor-') || collectionSlug.startsWith('tarkett-');
     if (categoryId === '6') {
-        return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
+        if (hasBrandPrefix) {
+            return collectionSlug;
+        }
+        return `gerflor-${collectionSlug}`;
     }
     if (categoryId === '9' || categoryId === '10') {
-        return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
+        if (hasBrandPrefix) {
+            return collectionSlug;
+        }
+        return `gerflor-${collectionSlug}`;
     }
     if (categoryId === '7') {
         return collectionSlug.replace(/^gerflor-/, '');
     }
     if (categoryId === '4') {
-        return collectionSlug.startsWith('gerflor-') ? collectionSlug : `gerflor-${collectionSlug}`;
+        if (hasBrandPrefix) {
+            return collectionSlug;
+        }
+        return `gerflor-${collectionSlug}`;
     }
     return collectionSlug;
 }
@@ -108,7 +118,7 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
     if (product) {
         const nestedCollectionForEnrich = findNestedCollection(slug);
         if (nestedCollectionForEnrich) {
-            enrichProductFromCollectionData(product, nestedCollectionForEnrich);
+            return enrichProductFromCollectionData(product, nestedCollectionForEnrich);
         }
         return product;
     }

@@ -103,6 +103,22 @@ function cleanShortDescription(shortDesc: string | undefined, productName: strin
   return cleaned;
 }
 
+function normalizeCollectionSlugForColorRoute(categoryId: string, brandId: string | undefined, collectionSlug: string): string {
+  if (!['2', '6', '8', '9', '10'].includes(categoryId)) {
+    return collectionSlug;
+  }
+
+  if (
+    collectionSlug.startsWith('gerflor-') ||
+    collectionSlug.startsWith('tarkett-') ||
+    collectionSlug.startsWith('bloq-')
+  ) {
+    return collectionSlug;
+  }
+
+  return brandId === '3' ? `tarkett-${collectionSlug}` : `gerflor-${collectionSlug}`;
+}
+
 export default function ProductCardClient({ product, brand, compact = false }: ProductCardClientProps) {
   const primaryImage = product.images && product.images.length > 0
     ? (product.images.find(img => img.isPrimary) || product.images[0])
@@ -136,9 +152,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
   let productHref = `/proizvodi/${product.slug}`;
 
   if (isColorTileCategory && colorCollectionSlug) {
-    const normalizedCollectionSlug = ['2', '6', '8', '9', '10'].includes(product.categoryId) && !colorCollectionSlug.startsWith('gerflor-')
-      ? `gerflor-${colorCollectionSlug}`
-      : colorCollectionSlug;
+    const normalizedCollectionSlug = normalizeCollectionSlugForColorRoute(product.categoryId, product.brandId, colorCollectionSlug);
     productHref = `/proizvodi/${normalizedCollectionSlug}?color=${encodeURIComponent(product.slug)}`;
   } else if (isLaminat) {
     const isLaminatCollectionHeader = product.sku?.startsWith('LAM-');

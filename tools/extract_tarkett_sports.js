@@ -1,0 +1,366 @@
+const { chromium } = require('playwright');
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
+const vm = require('vm');
+
+const CATEGORY_URL = 'https://www.tarkett.rs/sr_RS/kategorija-rs_C01015-sportski-podovi';
+const OUTPUT_PATH = path.join(process.cwd(), 'public', 'data', 'tarkett_sport_colors.json');
+const CATEGORY_DESCRIPTION =
+  'Od višenamenskih podova za teretane, preko podnih obloga za takmičarske terene i joga studije - sve sportske površine moraju biti prilagođene specifičnim aktivnostima i očekivanoj težini tereta na dnevnom nivou.';
+
+const SPEC_LABELS = {
+  basis_weight: 'Težina',
+  carbon_impact_DVR: 'Ugljenični otisak (DVR)',
+  ce_marking: 'CE oznaka',
+  colour_fastness_light: 'Postojanost boje na svetlost',
+  dop_certificate: 'DoP sertifikat',
+  drum_sound_class_en_16205: 'Klasa zvuka koraka',
+  embossing_type: 'Reljef',
+  format: 'Format',
+  format_type: 'Tip formata',
+  impact_sound_insulation: 'Zvučna izolacija',
+  installation_method: 'Način ugradnje',
+  laying_direction: 'Pravac polaganja',
+  length: 'Dužina',
+  light_reflectance_value: 'LRV',
+  ncs_color_code: 'NCS oznaka',
+  pattern: 'Dizajn',
+  pattern_type: 'Tip dezena',
+  phtalate_content: 'Sadržaj ftalata',
+  product_material: 'Materijal',
+  product_type: 'Tip proizvoda',
+  product_type_norm_iso: 'Tip proizvoda (ISO)',
+  reaction_to_fire: 'Reakcija na vatru',
+  rolling_load_behaviour: 'Otpornost na kotrljajuće opterećenje',
+  shock_absorption_gost55529: 'Apsorpcija udara',
+  slip_resistance_din_51130: 'Otpornost na klizanje',
+  surface: 'Površina',
+  surface_effect: 'Efekat površine',
+  surface_treatment: 'Površinska obrada',
+  thermal_resistance: 'Toplotni otpor',
+  total_thickness: 'Ukupna debljina',
+  tvoc_emission: 'TVOC emisije',
+  vertical_ball_behaviour: 'Odbijanje lopte',
+  wear_layer_thickness: 'Debljina sloja habanja',
+  width: 'Širina',
+};
+
+function fetchText(url) {
+  return new Promise((resolve, reject) => {
+    const normalizedUrl = url.startsWith('//') ? `https:${url}` : url;
+
+    https
+      .get(normalizedUrl, (res) => {
+        let data = '';
+        res.on('data', (chunk) => {
+          data += chunk;
+        });
+        res.on('end', () => resolve(data));
+      })
+      .on('error', reject);
+  });
+}
+
+function extractNuxtData(html) {
+  const match = html.match(/window\.__NUXT__=\((function[\s\S]*?)\)(?:;|<\/script>)/);
+  if (!match) return null;
+
+  const sandbox = {
+    window: {},
+    document: {},
+    location: { href: '', search: '', hash: '' },
+  };
+
+  vm.createContext(sandbox);
+  vm.runInContext(`window.__NUXT__=(${match[1]});`, sandbox);
+  return sandbox.window.__NUXT__;
+}
+
+function stripHtml(raw) {
+  return String(raw || '')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function cleanListItems(html) {
+  return Array.from(String(html || '').matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi))
+    .map((match) => stripHtml(match[1]))
+    .filter(Boolean);
+}
+
+function toSlugFragment(urlPath) {
+  return String(urlPath)
+    .replace(/^.*\/kolekcija-[^-]+-/, '')
+    .replace(/^\/+/, '')
+    .trim();
+}
+
+function collectionUrlToSlug(urlPath) {
+  return `tarkett-${toSlugFragment(urlPath)}`;
+}
+
+function buildMediaUrl(mediaBaseUri, assetPath) {
+  if (!assetPath) return '';
+  const normalizedBase = (mediaBaseUri || 'https://media.tarkett-image.com').replace(/\/+$/, '');
+  return `${normalizedBase}/large/${assetPath}`;
+}
+
+function translateCharacteristics(source, allowedKeys) {
+  const result = {};
+
+  for (const key of allowedKeys) {
+    const value = source?.[key];
+    if (!value) continue;
+    const label = SPEC_LABELS[key] || key;
+    result[label] = String(value).trim();
+  }
+
+  return result;
+}
+
+function buildShortDescription(rawDescription, fallbackName) {
+  const cleaned = stripHtml(rawDescription);
+  if (!cleaned) return fallbackName;
+
+  const firstSentence = cleaned.match(/^(.{20,220}?[.!?])(?:\s|$)/);
+  if (firstSentence?.[1]) {
+    return firstSentence[1].trim();
+  }
+
+  return cleaned.length > 180 ? `${cleaned.slice(0, 177).trim()}...` : cleaned;
+}
+
+function splitColorName(rawName) {
+  const cleaned = stripHtml(rawName).replace(/\s+/g, ' ').trim();
+  const numericSuffix = cleaned.match(/^(.*?)(?:\s+(\d{3,4}))$/);
+
+  if (numericSuffix?.[1]) {
+    return {
+      code: numericSuffix[2],
+      name: numericSuffix[1].trim(),
+    };
+  }
+
+  return {
+    code: '',
+    name: cleaned,
+  };
+}
+
+function dedupeDocuments(documents) {
+  const seen = new Set();
+
+  return documents.filter((document) => {
+    if (!document.url || seen.has(document.url)) return false;
+    seen.add(document.url);
+    return true;
+  });
+}
+
+async function getCollectionLinks() {
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage();
+
+  try {
+    await page.goto(CATEGORY_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(2500);
+
+    const links = await page
+      .locator('a[href*="/sr_RS/kolekcija-"]')
+      .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).filter(Boolean));
+
+    return [...new Set(links)];
+  } finally {
+    await browser.close();
+  }
+}
+
+async function fetchCollection(link) {
+  const url = `https://www.tarkett.rs${link}`;
+  const html = await fetchText(url);
+  const nuxt = extractNuxtData(html);
+  const mediaBaseUri = nuxt?.state?.mediaBaseUri || 'https://media.tarkett-image.com';
+  const item = nuxt?.state?.collectionProductPage?.item;
+
+  if (!item) {
+    throw new Error(`Collection payload missing for ${url}`);
+  }
+
+  const defaultSku =
+    item.collection_default_sku ||
+    item.product_collection?.collection_default_sku ||
+    {};
+
+  const collectionCharacteristics = translateCharacteristics(defaultSku.sku_technical_caracteristics || {}, [
+    'format',
+    'format_type',
+    'total_thickness',
+    'wear_layer_thickness',
+    'installation_method',
+    'surface_treatment',
+    'basis_weight',
+    'product_type_norm_iso',
+    'product_material',
+    'product_type',
+    'thermal_resistance',
+    'impact_sound_insulation',
+    'tvoc_emission',
+    'ce_marking',
+    'dop_certificate',
+    'shock_absorption_gost55529',
+    'vertical_ball_behaviour',
+    'rolling_load_behaviour',
+    'slip_resistance_din_51130',
+    'reaction_to_fire',
+    'colour_fastness_light',
+    'surface_effect',
+    'embossing_type',
+    'phtalate_content',
+    'surface',
+    'length',
+    'width',
+    'laying_direction',
+  ]);
+
+  const coverAsset =
+    (item.collection_assets || []).find((asset) => asset.document_role === 'COVER') ||
+    (item.collection_assets || []).find((asset) => asset.document_role === 'CONSTRUCTION_IMAGE');
+
+  const documents = dedupeDocuments(
+    (item.collection_assets || [])
+      .filter((asset) => asset.document_mime_type === 'pdf' && asset.document_asset_url)
+      .map((asset) => ({
+        title: stripHtml(asset.document_title || asset.document_label || asset.document_role || 'Dokument'),
+        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url),
+        type: 'pdf',
+      }))
+  );
+
+  const detailsSections = cleanListItems(item.key_features).length > 0
+    ? [
+        {
+          title: 'Ključne karakteristike',
+          items: cleanListItems(item.key_features),
+        },
+      ]
+    : undefined;
+
+  const colors = [];
+
+  for (const design of item.designs || []) {
+    const designJsonUrl = design.productDataUrl?.startsWith('//')
+      ? `https:${design.productDataUrl}`
+      : design.productDataUrl;
+
+    let colorPayload = null;
+    if (designJsonUrl) {
+      try {
+        const body = await fetchText(designJsonUrl);
+        colorPayload = JSON.parse(body)?.item || null;
+      } catch (error) {
+        console.warn(`Skipping color payload for ${design.product_name}:`, error.message);
+      }
+    }
+
+    const rawColor =
+      colorPayload?.product_collection?.collection_default_sku?.sku_raw_technical_characteristics ||
+      {};
+
+    const colorTech =
+      colorPayload?.product_collection?.collection_default_sku?.sku_technical_caracteristics ||
+      {};
+
+    const split = splitColorName(design.product_name || colorPayload?.product_name || '');
+
+    const colorCharacteristics = translateCharacteristics(
+      {
+        ncs_color_code: design.product_ncs_color_code || rawColor.ncs_color_code || colorTech.ncs_color_code,
+        light_reflectance_value:
+          design.product_light_reflectance_value ||
+          rawColor.light_reflectance_value ||
+          colorTech.light_reflectance_value,
+      },
+      ['ncs_color_code', 'light_reflectance_value']
+    );
+
+    if (design.product_hex_color_code || rawColor.hex_color_code) {
+      colorCharacteristics['HEX boja'] = String(design.product_hex_color_code || rawColor.hex_color_code);
+    }
+
+    if (rawColor.color_family) {
+      colorCharacteristics['Porodica boja'] = String(rawColor.color_family);
+    }
+
+    colors.push({
+      code: split.code,
+      name: split.name,
+      slug: `${collectionUrlToSlug(link)}-${split.code || 'color'}-${split.name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '')}`.replace(/-+/g, '-'),
+      image: buildMediaUrl(
+        mediaBaseUri,
+        colorPayload?.product_hero_image ||
+          colorPayload?.product_thumbnail ||
+          defaultSku.sku_hero ||
+          defaultSku.sku_thumbnail ||
+          design.product_thumbnail
+      ),
+      description: stripHtml(colorPayload?.description_stripped || colorPayload?.description || item.description_stripped || item.description || ''),
+      characteristics: Object.keys(colorCharacteristics).length > 0 ? colorCharacteristics : undefined,
+      brandId: '3',
+    });
+  }
+
+  return {
+    name: stripHtml(item.collection_name || item.name || toSlugFragment(link)),
+    slug: collectionUrlToSlug(link),
+    brandId: '3',
+    url,
+    colorCount: colors.length,
+    shortDescription: buildShortDescription(item.short_description_stripped || item.short_description || item.description_stripped || item.description, stripHtml(item.collection_name || item.name || '')),
+    description: stripHtml(item.description_stripped || item.description || ''),
+    categoryDescription: CATEGORY_DESCRIPTION,
+    characteristics: collectionCharacteristics,
+    colors,
+    documents,
+    detailsSections,
+    collection_image_url: buildMediaUrl(
+      mediaBaseUri,
+      coverAsset?.document_asset_url || item.collection_picture || colors[0]?.image
+    ),
+  };
+}
+
+async function main() {
+  const links = await getCollectionLinks();
+  const collections = [];
+
+  for (const link of links) {
+    const collection = await fetchCollection(link);
+    collections.push(collection);
+  }
+
+  const output = {
+    collections,
+    generatedAt: new Date().toISOString(),
+    source: CATEGORY_URL,
+  };
+
+  fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
+  fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
+
+  console.log(`Saved ${collections.length} Tarkett sport collections to ${OUTPUT_PATH}`);
+}
+
+main().catch((error) => {
+  console.error('Failed to extract Tarkett sport data:', error);
+  process.exit(1);
+});

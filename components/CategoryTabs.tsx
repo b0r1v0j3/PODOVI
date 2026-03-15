@@ -413,9 +413,11 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
                 : (color.image || color.texture_url || color.image_url || '');
 
             // Generate slug for nested collection categories
-            const colorSlug = NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number])
-              ? `${color.collection_slug || color.collection}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`
-              : color.slug;
+            const colorSlug = color.slug || (
+              NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number])
+                ? `${color.collection_slug || color.collection}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`
+                : color.slug
+            );
 
             // Determine vinyl type from collection slug
             // Homogeni collections: mipolam-* (Mipolam Accord, Mipolam Affinity, etc.)

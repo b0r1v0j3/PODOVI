@@ -31,10 +31,11 @@ function mapNestedCollectionColors(collection: any) {
         code: color.code || '',
         name: color.name,
         full_name: `${color.code || ''} ${color.name}`.trim(),
-        slug: buildNestedColorSlug(collection, color),
+        slug: color.slug || buildNestedColorSlug(collection, color),
         image_url: color.image || color.image_url || '',
         texture_url: color.image || color.image_url || '',
         image_count: (color.image || color.image_url) ? 1 : 0,
+        brandId: color.brandId || collection.brandId,
         characteristics: {
             ...(collection.characteristics || {}),
             ...(color.characteristics || {}),
@@ -250,10 +251,17 @@ export async function prepareCustomColors(
         }
     }
 
-    // Sport (cat 10): customColors from sport_colors.json
-    if (product.categoryId === '10' && product.slug.startsWith('gerflor-')) {
-        const collectionSlug = product.slug.substring('gerflor-'.length);
-        const sportCollection = sportCollections.find((col: any) => col.slug === collectionSlug);
+    // Sport (cat 10): customColors from sport_colors.json + tarkett_sport_colors.json
+    if (product.categoryId === '10') {
+        const slugCandidates = [
+            product.slug,
+            product.slug.replace(/^gerflor-/, ''),
+            product.slug.replace(/^tarkett-/, ''),
+        ];
+        const sportCollection = sportCollections.find((col: any) =>
+            slugCandidates.includes(col.slug) ||
+            slugCandidates.includes(String(col.slug || '').replace(/^gerflor-/, '').replace(/^tarkett-/, ''))
+        );
         if (sportCollection && sportCollection.colors && sportCollection.colors.length > 0) {
             return mapNestedCollectionColors(sportCollection);
         }

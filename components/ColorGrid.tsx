@@ -311,7 +311,7 @@ export default function ColorGrid({
               collection_name: collection.name,
               collection_slug: collection.slug,
               full_name: `${color.code} ${color.name}`,
-              slug: `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`,
+              slug: color.slug || `${collection.slug}-${color.code}-${color.name.toLowerCase().replace(/\s+/g, '-')}`,
               image_url: color.image || color.image_url,
             })) as Color[];
           }

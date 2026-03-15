@@ -35,13 +35,17 @@ import {
 } from '@/lib/product-page';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 import { splitProductTitle } from '@/lib/utils/name-parser';
-import { getParketCollectionVariantSlugs, getEffectiveParketCollection, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
+import { getParketCollectionVariantSlugs, getEffectiveParketCollection, getParketCollectionSlug, normalizeParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
+import { normalizeTarkettLaminateSlug } from '@/lib/data/tarkett-laminate-slug-mapping';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
 import documentsIndexData from '@/public/data/documents_index.json';
+import tarkettDocumentsIndexData from '@/public/data/tarkett_documents_index.json';
 import { SITE_URL } from '@/lib/seo/site-config';
 
 export const dynamic = 'force-dynamic';
+
+type DocumentsIndex = Record<string, Record<string, Array<{ title: string; url: string }>>>;
 
 function cloneProductForPage<T extends Product & { collectionSlug?: string }>(product: T): T {
   return {
@@ -57,10 +61,49 @@ function cloneProductForPage<T extends Product & { collectionSlug?: string }>(pr
   };
 }
 
+function normalizeCollectionSlugForProductRoute(
+  collectionSlug: string,
+  brandId?: string,
+  categoryId?: string
+): string {
+  if (!collectionSlug || !categoryId) {
+    return collectionSlug;
+  }
+
+  if (!['2', '6', '8', '9', '10'].includes(categoryId)) {
+    return collectionSlug;
+  }
+
+  if (
+    collectionSlug.startsWith('gerflor-') ||
+    collectionSlug.startsWith('tarkett-') ||
+    collectionSlug.startsWith('bloq-')
+  ) {
+    return collectionSlug;
+  }
+
+  return brandId === '3' ? `tarkett-${collectionSlug}` : `gerflor-${collectionSlug}`;
+}
+
+function getCanonicalProductRouteSlug(slug: string): string {
+  const normalizedParketSlug = normalizeParketCollectionSlug(slug);
+  if (normalizedParketSlug && normalizedParketSlug !== slug) {
+    return normalizedParketSlug;
+  }
+
+  const normalizedLaminateSlug = normalizeTarkettLaminateSlug(slug);
+  if (normalizedLaminateSlug && normalizedLaminateSlug !== slug) {
+    return normalizedLaminateSlug;
+  }
+
+  return slug;
+}
+
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const baseUrl = SITE_URL;
+  const routeSlug = getCanonicalProductRouteSlug(params.slug);
 
   try {
     const requestedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
@@ -69,7 +112,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
     const { tarkettProducts } = await import('@/lib/data/tarkett-products');
 
-    product = await resolveProductBySlug(params.slug);
+    product = await resolveProductBySlug(routeSlug);
 
     if (!product) {
       return { metadataBase: new URL(baseUrl), title: 'Proizvod nije pronađen' };
@@ -79,7 +122,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
     if (requestedColorSlug) {
       const colorSource = await loadColorFromJson(requestedColorSlug);
-      const customColors = colorSource ? undefined : await prepareCustomColors(product, params.slug);
+      const customColors = colorSource ? undefined : await prepareCustomColors(product, routeSlug);
       const isValidCustomColor = Boolean(customColors?.some((color: { slug?: string }) => color.slug === requestedColorSlug));
       const isParketVariant = tarkettProducts.some(p => p.slug === requestedColorSlug && p.categoryId === '3');
 
@@ -111,7 +154,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     let collectionName = collectionSpec?.value || '';
     // Fallback: if no collection spec and a color was selected, resolve parent product name
     if (!collectionName && selectedColorSlug) {
-      const parentProduct = await resolveProductBySlug(params.slug);
+      const parentProduct = await resolveProductBySlug(routeSlug);
       if (parentProduct) {
         collectionName = parentProduct.name;
         // Strip brand prefix from parent name too
@@ -167,8 +210,8 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     const keywords = [cleanName, collectionName, brandText, categoryText, 'podovi', 'podne obloge', 'Srbija'].filter(Boolean).join(', ');
 
     const urlWithColor = selectedColorSlug
-      ? `${baseUrl}/proizvodi/${params.slug}?color=${encodeURIComponent(selectedColorSlug)}`
-      : `${baseUrl}/proizvodi/${params.slug}`;
+      ? `${baseUrl}/proizvodi/${routeSlug}?color=${encodeURIComponent(selectedColorSlug)}`
+      : `${baseUrl}/proizvodi/${routeSlug}`;
 
     return {
       metadataBase: new URL(baseUrl),
@@ -203,6 +246,14 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
 export default async function ProductPage({ params, searchParams }: Props) {
   try {
+    const routeSlug = getCanonicalProductRouteSlug(params.slug);
+    if (routeSlug && routeSlug !== params.slug) {
+      const colorParam = typeof searchParams?.color === 'string' && searchParams.color
+        ? `?color=${encodeURIComponent(searchParams.color)}`
+        : '';
+      redirect(`/proizvodi/${routeSlug}${colorParam}`);
+    }
+
     const categorySlugMap: Record<string, string> = {
       '1': 'laminat',
       '6': 'lvt',
@@ -216,8 +267,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
     };
 
     // ── Linoleum redirect: /proizvodi/gerflor-xxx → /proizvodi/xxx ──
-    if (params.slug.startsWith('gerflor-')) {
-      const collectionSlugWithoutPrefix = params.slug.substring('gerflor-'.length);
+    if (routeSlug.startsWith('gerflor-')) {
+      const collectionSlugWithoutPrefix = routeSlug.substring('gerflor-'.length);
       const isLinoleumCollection = linoleumColors.some(color => color.collection === collectionSlugWithoutPrefix);
       if (isLinoleumCollection) {
         const colorParam = typeof searchParams?.color === 'string' && searchParams.color ? `?color=${searchParams.color}` : '';
@@ -227,7 +278,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // ── Resolve product ──
     let selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
-    const resolvedProduct = await resolveProductBySlug(params.slug);
+    const resolvedProduct = await resolveProductBySlug(routeSlug);
     if (!resolvedProduct) notFound();
     const product = cloneProductForPage(resolvedProduct);
 
@@ -237,7 +288,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       const collectionName = collectionSpec?.value;
       const validSlugs = collectionName ? getParketCollectionVariantSlugs(collectionName) : [];
       if (validSlugs.length > 0 && !validSlugs.includes(selectedColorSlug)) {
-        redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(validSlugs[0])}`);
+        redirect(`/proizvodi/${routeSlug}?color=${encodeURIComponent(validSlugs[0])}`);
       }
     }
 
@@ -249,7 +300,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         : [];
       const validSlugs = variants.map(p => p.slug);
       if (validSlugs.length > 0 && !validSlugs.includes(selectedColorSlug)) {
-        redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(validSlugs[0])}`);
+        redirect(`/proizvodi/${routeSlug}?color=${encodeURIComponent(validSlugs[0])}`);
       }
     }
 
@@ -257,7 +308,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (product.categoryId === '5' && product.sku?.startsWith('DEKING-') && !selectedColorSlug) {
       const variants = getAllDekingProducts().filter(p => p.categoryId === '5' && !p.sku?.startsWith('DEKING-'));
       if (variants.length > 0) {
-        redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(variants[0].slug)}`);
+        redirect(`/proizvodi/${routeSlug}?color=${encodeURIComponent(variants[0].slug)}`);
       }
     }
 
@@ -269,10 +320,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const shouldRedirectCollection = ['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId);
 
     if (shouldRedirectCollection && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
-      let normalizedCollectionSlug = collectionSlugFromProduct;
-      if (['6', '9', '10'].includes(product.categoryId) && !collectionSlugFromProduct.startsWith('gerflor-')) {
-        normalizedCollectionSlug = `gerflor-${collectionSlugFromProduct}`;
-      }
+      const normalizedCollectionSlug = normalizeCollectionSlugForProductRoute(
+        collectionSlugFromProduct,
+        product.brandId,
+        product.categoryId
+      );
       redirect(`/proizvodi/${normalizedCollectionSlug}?color=${encodeURIComponent(product.slug)}`);
     }
 
@@ -320,7 +372,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       ? product.name.replace(/^Gerflor\s+/, '')
       : product.name;
 
-    if (!product.slug || typeof product.slug !== 'string') product.slug = params.slug;
+    if (!product.slug || typeof product.slug !== 'string') product.slug = routeSlug;
     if (!product.categoryId || typeof product.categoryId !== 'string') product.categoryId = '6';
     if (!product.brandId || typeof product.brandId !== 'string') product.brandId = '6';
 
@@ -342,7 +394,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       : null;
 
     // ── Prepare color variants ──
-    const customColors = await prepareCustomColors(product, params.slug);
+    const customColors = await prepareCustomColors(product, routeSlug);
 
     // ── Redirect invalid color to first valid variant on the server ──
     if (selectedColorSlug && customColors && customColors.length > 0) {
@@ -351,7 +403,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         .filter((slug): slug is string => Boolean(slug));
 
       if (validSlugs.length > 0 && !validSlugs.includes(selectedColorSlug)) {
-        redirect(`/proizvodi/${params.slug}?color=${encodeURIComponent(validSlugs[0])}`);
+        redirect(`/proizvodi/${routeSlug}?color=${encodeURIComponent(validSlugs[0])}`);
       }
     }
 
@@ -359,7 +411,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (selectedColorSlug && (!customColors || customColors.length === 0) && ['2', '6', '7', '8', '9', '10'].includes(product.categoryId)) {
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (!colorSource) {
-        redirect(`/proizvodi/${params.slug}`);
+        redirect(`/proizvodi/${routeSlug}`);
       }
     }
 
@@ -419,6 +471,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
           <CertificationBadges certifications={
             product.brandId === '8'
               ? ["Cradle to Cradle Silver", "Indoor Air Comfort Gold", "BREEAM A+", "GreenTag Level A", "CE"]
+              : product.categoryId === '10' && product.brandId === '3'
+                ? ["CE", "DoP", "REACH", "Indoor Air Quality", "Niske VOC emisije"]
               : ["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]
           } />
         </div>
@@ -429,6 +483,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
               ? ["Cradle to Cradle Silver", "ECONYL® reciklirana vlakna", "70% reciklirani materijali u podlozi", "Smanjenje buke"]
               : product.categoryId === '7'
                 ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
+                : product.categoryId === '10' && product.brandId === '3'
+                  ? ["Niske VOC emisije", "Sportska otpornost", "Lako odrzavanje", "Dug vek trajanja"]
                 : product.categoryId === '10'
                   ? ["98% prirodnih sastojaka", "Niske VOC emisije", "Sportska otpornost", "Lako odrzavanje"]
                   : product.categoryId === '9'
@@ -443,8 +499,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
       </>
     ) : null;
 
-    const documentsIndex = documentsIndexData as Record<string, Record<string, Array<{ title: string; url: string }>>>;
-    const documentsCategoryKey = product.categoryId === '6'
+    const documentsCategoryKey = product.categoryId === '1'
+      ? 'laminat'
+      : product.categoryId === '3'
+        ? 'parket'
+        : product.categoryId === '6'
       ? 'lvt'
       : product.categoryId === '4'
         ? 'carpet'
@@ -459,7 +518,12 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   : product.categoryId === '10'
                     ? 'sport'
               : '';
-    const normalizedCollectionSlug = product.slug.replace(/^gerflor-/, '');
+    const documentsIndex = (['1', '3'].includes(product.categoryId)
+      ? tarkettDocumentsIndexData
+      : documentsIndexData) as DocumentsIndex;
+    const normalizedCollectionSlug = product.slug
+      .replace(/^gerflor-/, '')
+      .replace(/^tarkett-/, '');
     const hasIndexedDocuments = Boolean(
       documentsCategoryKey &&
       documentsIndex[documentsCategoryKey]?.[normalizedCollectionSlug]?.length
@@ -502,8 +566,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
                   ...(selectedColorSlug ? [
                     {
-                      label: product.specs?.find(s => s.key === 'collection')?.value || (product as any).collectionSlug || params.slug,
-                      href: `/proizvodi/${params.slug}`
+                      label: product.specs?.find(s => s.key === 'collection')?.value || (product as any).collectionSlug || routeSlug,
+                      href: `/proizvodi/${routeSlug}`
                     },
                     { label: displayName }
                   ] : [
@@ -519,7 +583,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   key={`${product.slug}`}
                   initialImage={primaryImage}
                   imagePriority={true}
-                  collectionSlug={(product as { collectionSlug?: string }).collectionSlug || params.slug}
+                  collectionSlug={(product as { collectionSlug?: string }).collectionSlug || routeSlug}
                   productName={displayName}
                   originalProductName={originalProductName}
                   productPrice={product.price && product.price > 0 ? product.price : undefined}
@@ -544,7 +608,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                                     : product.categoryId === '10' ? 'Sport'
                                   : undefined
                     }
-                    videoEmbedUrl={params.slug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
+                    videoEmbedUrl={routeSlug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                     inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                     productId={product.id}
                     hideColorSelector={
@@ -759,7 +823,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
           {/* Sticky CTA na mobilnom */}
           <ProductInquiryStickyCTA
-            productSlug={params.slug}
+            productSlug={routeSlug}
             inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
           />
         </div>
