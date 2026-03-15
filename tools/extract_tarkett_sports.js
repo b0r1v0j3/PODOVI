@@ -132,6 +132,11 @@ function collectionUrlToSlug(urlPath) {
 
 function buildMediaUrl(mediaBaseUri, assetPath) {
   if (!assetPath) return '';
+  if (/^https?:\/\//i.test(String(assetPath))) {
+    return String(assetPath)
+      .replace('/medium/', '/large/')
+      .replace('://media.tarkett-image.com/S/', '://media.tarkett-image.com/large/');
+  }
   const normalizedBase = (mediaBaseUri || 'https://media.tarkett-image.com').replace(/\/+$/, '');
   return `${normalizedBase}/large/${assetPath}`;
 }
@@ -198,15 +203,29 @@ async function getCollectionLinks() {
 
     const links = await page
       .locator('a[href*="/sr_RS/kolekcija-"]')
-      .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).filter(Boolean));
+      .evaluateAll((nodes) => nodes
+        .map((node) => ({
+          href: node.getAttribute('href'),
+          image: node.querySelector('img')?.getAttribute('src') || node.querySelector('img')?.currentSrc || '',
+        }))
+        .filter((node) => node.href));
 
-    return [...new Set(links)];
+    const uniqueLinks = [];
+    const seen = new Set();
+
+    for (const entry of links) {
+      if (seen.has(entry.href)) continue;
+      seen.add(entry.href);
+      uniqueLinks.push(entry);
+    }
+
+    return uniqueLinks;
   } finally {
     await browser.close();
   }
 }
 
-async function fetchCollection(link) {
+async function fetchCollection(link, previewImageUrl = '') {
   const url = `https://www.tarkett.rs${link}`;
   const html = await fetchText(url);
   const nuxt = extractNuxtData(html);
@@ -365,7 +384,7 @@ async function fetchCollection(link) {
     detailsSections,
     collection_image_url: buildMediaUrl(
       mediaBaseUri,
-      coverAsset?.document_asset_url || item.collection_picture || colors[0]?.image
+      previewImageUrl || coverAsset?.document_asset_url || item.collection_picture || colors[0]?.image
     ),
   };
 }
@@ -375,7 +394,7 @@ async function main() {
   const collections = [];
 
   for (const link of links) {
-    const collection = await fetchCollection(link);
+    const collection = await fetchCollection(link.href, link.image);
     collections.push(collection);
   }
 
