@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 16.03.2026 (Duboki katalog audit + Tarkett/Gerflor enrichment)
+> **Poslednje ažuriranje:** 16.03.2026 (Tarkett Homogeni vinil integracija)
 
 ---
 
@@ -84,7 +84,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
 | Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
-| Vinil | 2 | Gerflor (6), Tarkett (3) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja) |
+| Vinil | 2 | Gerflor (6), Tarkett (3) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje) |
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | TimberTech (10) | `tis_deking_products.json` |
@@ -138,6 +138,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett Homogeni vinil dodat u kategoriju Vinil kroz ceo pipeline (16.03.2026)**
+- Dodat je novi zvanični izvor `public/data/tarkett_homogeneous_vinyl_colors.json` sa live Tarkett Srbija kategorije `Homogeni vinil`: 20 kolekcija i 544 dekora, sa kolekcijskim opisima, PDF dokumentima, key features blokovima, hero slikama i color-level tehničkim listovima/tabelama formata.
+- Kreiran je novi extractor `tools/extract_tarkett_homogeneous_vinyl.js` koji koristi Playwright + `json-collection-product` endpoint za svaki dekor, a za polomljene Tarkett kolekcijske stranice (npr. `iQ Granit Acoustic`) ima fallback preko zvaničnog `sitemap_1.xml` i direktnog product JSON URL-a.
+- Proširen je category 2 pipeline kroz `color-helpers.ts`, `productDataLoader.ts`, `product-repository.ts`, `/api/colors`, `/api/color-data` i katalog audit, tako da Tarkett homogeni vinil radi na kategoriji, brand strani, product page ruti i documents/specs toku isto kao Tarkett `Vinil za kuću`.
+- `getTarkettHomogeneousVinylCollections()` uvodi kolekcijske header proizvode sa `type=Homogeni`, dok boje ostaju dostupne kroz nested color selector i server-side `/api/color-data` dokument lookup.
+- Verifikovano: `node tools/extract_tarkett_homogeneous_vinyl.js`, runtime check za `tarkett-eclipse-premium`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run lint`, `npm run build`.
 
 **Duboki katalog audit + zvanični enrichment za opise, dokumenta i specifikacije (16.03.2026)**
 - Dodata je nova skripta `scripts/audit-catalog-quality.ts` koja radi duboki audit kanonskog kataloga preko JSON izvora, ručnih collection header proizvoda, Tarkett/Gerflor/TimberTech/BLOQ loadera i opcionalnog Supabase sloja; rezultat se zapisuje u `output/catalog-quality-audit.json` i razdvaja actionable nalaze od legacy/mock šuma.
@@ -375,7 +382,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Pokrenuti stvarni Gerflor ZIP download za `vinyl_special`, `industrial` i `sport` kolekcije i podici roomshot + color JPG slike na Supabase umesto preview URL-ova sa Gerflor sajta.
 - [x] Dodati Tarkett sport kolekcije u kategoriju `Sport` kroz ceo JSON → resolver → API → UI pipeline, sa dokumentima i key features podacima iz zvaničnog kataloga.
 - [x] Završiti Tarkett Supabase sync kada env pristup bude dostupan, da baza dobije isti parket/laminat kanonski skup proizvoda i iste Tarkett slugove kao statički fallback.
-- [ ] Nastaviti Tarkett proširenje posle `Vinil za kuću` na `Homogeni vinil` i `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
+- [ ] Nastaviti Tarkett proširenje posle `Homogeni vinil` na `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
 
 ---
 
@@ -401,13 +408,13 @@ PODOVI/
 │   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi + Tarkett wood enrichment
 │   └── repositories/       # Data access layer (Supabase)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, ESD, Industrijske, Sport, Tarkett sport, Tarkett wood collection index + PDF indeksi)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett wood collection index + PDF indeksi)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
 ├── scripts/                # Utility skripte (enrichment, image validation, Tarkett audit/sync, catalog quality audit)
 │
-└── tools/                  # Ekstraktori/scraperi za zvanične kataloge (Gerflor, Tarkett...)
+└── tools/                  # Ekstraktori/scraperi za zvanične kataloge (Gerflor, Tarkett, fallback preko sitemap/json endpointa kada treba)
 ```
 
 ## 8. ⚡ COMMON GOTCHAS

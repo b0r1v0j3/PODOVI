@@ -6,6 +6,7 @@ import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.json';
+import tarkettHomogeneousVinylColorsData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
@@ -91,6 +92,7 @@ export async function GET(request: NextRequest) {
             ...(((vinylColorsData as any)?.collections || []) as any[]),
             ...(((vinylSpecialColorsData as any)?.collections || []) as any[]),
             ...(((tarkettVinylHomeColorsData as any)?.collections || []) as any[]),
+            ...(((tarkettHomogeneousVinylColorsData as any)?.collections || []) as any[]),
         ]);
     } else if (isEsd) {
         color = findNestedColor(((esdColorsData as any)?.collections || []));

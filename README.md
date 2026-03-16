@@ -70,11 +70,12 @@ npm start
 
 ## Catalog Data Sources
 
-- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` + `public/data/tarkett_vinyl_home_colors.json` power Vinil collections and colors
+- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` + `public/data/tarkett_vinyl_home_colors.json` + `public/data/tarkett_homogeneous_vinyl_colors.json` power Vinil collections and colors
 - `public/data/esd_colors.json` powers Elektroprovodni / ESD collections
 - `public/data/industrial_colors.json` powers Industrijske ploče collections
 - `public/data/sport_colors.json` powers Gerflor / DLW Sport collections
 - `public/data/tarkett_vinyl_home_colors.json` powers Tarkett home vinyl collections (12 collections, 281 colors)
+- `public/data/tarkett_homogeneous_vinyl_colors.json` powers Tarkett homogeneous vinyl collections (20 collections, 544 colors)
 - `public/data/tarkett_sport_colors.json` powers Tarkett Sport collections (22 collections, 255 colors)
 - `public/data/tarkett_wood_collection_index.json` stores official Tarkett Parket/Laminat collection descriptions, hero images, PDF documents, and collection specs scraped from the live Serbia catalog
 - `public/data/tarkett_documents_index.json` provides curated Tarkett PDF fallbacks for Laminat and Parket collection pages
@@ -84,6 +85,7 @@ npm start
 - `tools/download_gerflor_highres_zip.js --upload-supabase` uses Gerflor ZIP downloads as the source, extracts them locally, prefers the clean JPG when both a plain image and a `loupe/zoom` preview exist, uploads only that final image to Supabase, and writes the public URL back into JSON (`collection_image_url` for hero shots, `image` / `image_url` for colors)
 - `tools/extract_tarkett_sports.js` scrapes the official Tarkett Serbia sports catalog through `window.__NUXT__` and generates `public/data/tarkett_sport_colors.json`
 - `tools/extract_tarkett_vinyl_home.js` scrapes the official Tarkett Serbia `Vinil za kuću` catalog through `window.__NUXT__` and generates `public/data/tarkett_vinyl_home_colors.json`
+- `tools/extract_tarkett_homogeneous_vinyl.js` scrapes the official Tarkett Serbia `Homogeni vinil` catalog through Playwright + `json-collection-product`, with sitemap fallback for broken collection pages, and generates `public/data/tarkett_homogeneous_vinyl_colors.json`
 - `tools/extract_tarkett_wood.js` scrapes the official Tarkett Serbia Parket/Laminat collection pages and generates `public/data/tarkett_wood_collection_index.json`
 - `scripts/audit-tarkett-sync.ts` compares official Tarkett Parket/Laminat collections against `lib/data/tarkett-products.ts`, `public/data/tarkett_documents_index.json`, and Supabase when env vars are available, including exact design-slug comparison, duplicate detection, and parket alias normalization for collection-specific URL collisions
 - `scripts/sync-tarkett-supabase.ts` creates a timestamped backup in `output/`, performs a dry-run diff, and can apply the canonical Tarkett Parket/Laminat sync into Supabase once `.env.local` contains the pulled Vercel env vars
@@ -177,6 +179,7 @@ PODOVI/
 │   │   ├── lvt_colors_complete.json
 │   │   ├── vinyl_colors_complete.json
 │   │   ├── tarkett_vinyl_home_colors.json
+│   │   ├── tarkett_homogeneous_vinyl_colors.json
 │   │   ├── linoleum_colors_complete.json
 │   │   ├── industrial_colors.json
 │   │   ├── sport_colors.json
@@ -211,6 +214,7 @@ PODOVI/
 │   ├── check-images.js             # Image checker
 │   ├── extract_tarkett_sports.js   # Tarkett sports catalog extractor
 │   ├── extract_tarkett_vinyl_home.js # Tarkett home vinyl catalog extractor
+│   ├── extract_tarkett_homogeneous_vinyl.js # Tarkett homogeneous vinyl catalog extractor
 │   ├── extract_tarkett_wood.js     # Tarkett parket/laminat collection extractor
 │   ├── normalize-json.js           # JSON normalizer
 │   └── suggest-fixes-unknowns.js   # Unknown product fix suggestions
