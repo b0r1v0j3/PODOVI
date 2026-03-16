@@ -22,6 +22,8 @@ let dekingProductsCache: Product[] | null = null;
 let esdCollectionCache: Product[] | null = null;
 let tarkettSportCollectionCache: Product[] | null = null;
 let tarkettVinylHomeCollectionCache: Product[] | null = null;
+let gerflorLvtCollectionCache: Product[] | null = null;
+let gerflorLinoleumCollectionCache: Product[] | null = null;
 
 // Display names for Tarkett collections
 const TARKETT_COLLECTION_NAMES: Record<string, string> = {
@@ -52,6 +54,12 @@ function characteristicLabelToKey(label: string): string {
         .replace(/^_+|_+$/g, '') || 'spec';
 }
 
+function normalizeText(value: unknown) {
+    return String(value || '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
 function buildSpecsFromCharacteristicRecord(
     characteristics?: Record<string, string>,
     collectionName?: string
@@ -79,6 +87,85 @@ function buildSpecsFromCharacteristicRecord(
     }
 
     return specs;
+}
+
+function pickRichestText(...values: Array<string | null | undefined>) {
+    return values
+        .map((value) => String(value || '').trim())
+        .filter(Boolean)
+        .sort((left, right) => right.length - left.length)[0] || '';
+}
+
+function humanizeCollectionName(collectionSlug: string) {
+    return String(collectionSlug)
+        .split('-')
+        .filter(Boolean)
+        .map((part) => {
+            if (/^\d+$/.test(part)) {
+                return part;
+            }
+
+            return part.charAt(0).toUpperCase() + part.slice(1);
+        })
+        .join(' ');
+}
+
+function normalizeTarkettCollectionUrl(originalUrl?: string) {
+    const value = String(originalUrl || '').trim();
+    if (!value) return '';
+
+    const absoluteUrl = value.startsWith('//') ? `https:${value}` : value;
+    return absoluteUrl.replace(/\/[^/]+$/, '');
+}
+
+function buildDescriptionFromCharacteristics(
+    baseDescription: string,
+    characteristics?: Record<string, any>,
+    options?: { prefix?: string }
+) {
+    const normalizedBase = String(baseDescription || '').replace(/\s+/g, ' ').trim();
+    const values = characteristics && typeof characteristics === 'object' ? characteristics : {};
+    const detailParts = [
+        values['Tip'] ? `Tip: ${values['Tip']}.` : '',
+        values['Format'] ? `Format: ${values['Format']}.` : '',
+        values['Ukupna debljina'] ? `Ukupna debljina: ${values['Ukupna debljina']}.` : '',
+        values['ESD klasa'] ? `ESD klasa: ${values['ESD klasa']}.` : '',
+        values['Tip instalacije'] ? `Način ugradnje: ${values['Tip instalacije']}.` : '',
+        values['Cleanroom'] ? `Pogodno za cleanroom standard ${values['Cleanroom']}.` : '',
+    ].filter(Boolean);
+
+    const combined = [normalizedBase, options?.prefix || '', ...detailParts]
+        .filter(Boolean)
+        .join(' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    return combined;
+}
+
+function mergeUniqueSpecs(
+    baseSpecs: Product['specs'],
+    extraSpecs: Product['specs']
+): Product['specs'] {
+    const merged: Product['specs'] = [];
+    const seen = new Set<string>();
+
+    for (const spec of [...(baseSpecs || []), ...(extraSpecs || [])]) {
+        const key = normalizeText(spec?.key) || normalizeText(spec?.label);
+        const value = normalizeText(spec?.value);
+        if (!key || !value || seen.has(key)) {
+            continue;
+        }
+
+        seen.add(key);
+        merged.push({
+            key: spec.key,
+            label: spec.label,
+            value: value,
+        });
+    }
+
+    return merged;
 }
 
 /**
@@ -195,6 +282,7 @@ export function getTarkettLVTCollections(): Product[] {
     tarkettCollectionCache = Object.entries(groups).map(([collKey, items]) => {
         const displayName = TARKETT_COLLECTION_NAMES[collKey] || collKey;
         const first = items[0];
+        const externalLink = normalizeTarkettCollectionUrl((first as any)?.meta?.originalUrl);
 
         // Use locally downloaded collection image
         const localImagePath = `/images/tarkett/collections/${collKey}.jpg`;
@@ -288,6 +376,7 @@ export function getTarkettLVTCollections(): Product[] {
             specs: collSpecs,
             documents: documents,
             detailsSections: detailsSections.length > 0 ? detailsSections : undefined,
+            externalLink: externalLink || undefined,
             price: 0,
             priceUnit: 'm²' as const,
             inStock: true,
@@ -309,6 +398,8 @@ export function getTarkettLVTCollections(): Product[] {
 export function getProductBySlug(slug: string): Product | undefined {
     const allProducts = [
         ...getAllGerflorProducts(),
+        ...getGerflorLVTCollections(),
+        ...getGerflorLinoleumCollections(),
         ...getAllBloqCarpetProducts(),
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
@@ -337,7 +428,7 @@ export function getProductsByCollection(collection: string): Product[] {
 export function getProductsByCategory(categoryId: string): Product[] {
     if (categoryId === '6') {
         // Return both Gerflor LVT and Tarkett LVT
-        return [...getAllLVTProducts(), ...getAllTarkettLVTProducts()];
+        return [...getGerflorLVTCollections(), ...getAllLVTProducts(), ...getTarkettLVTCollections(), ...getAllTarkettLVTProducts()];
     } else if (categoryId === '2') {
         return [
             ...getVinylCollectionProducts(),
@@ -350,7 +441,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
             ...getTarkettSportCollections(),
         ];
     } else if (categoryId === '7') {
-        return getAllLinoleumProducts();
+        return [...getGerflorLinoleumCollections(), ...getAllLinoleumProducts()];
     } else if (categoryId === '4') {
         return [...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
     } else if (categoryId === '5') {
@@ -359,8 +450,11 @@ export function getProductsByCategory(categoryId: string): Product[] {
 
     return [
         ...getAllGerflorProducts(),
+        ...getGerflorLVTCollections(),
+        ...getGerflorLinoleumCollections(),
         ...getAllBloqCarpetProducts(),
         ...getAllTarkettLVTProducts(),
+        ...getTarkettLVTCollections(),
         ...getTarkettVinylHomeCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
@@ -485,6 +579,79 @@ export function getAllLVTProducts(): Product[] {
     return products;
 }
 
+export function getGerflorLVTCollections(): Product[] {
+    if (gerflorLvtCollectionCache) {
+        return gerflorLvtCollectionCache;
+    }
+
+    const colors = ((lvtColorsData as any).colors || []) as any[];
+    const grouped = new Map<string, any[]>();
+
+    for (const color of colors) {
+        const collectionSlug = String(color.collection || '').trim();
+        if (!collectionSlug) continue;
+
+        if (!grouped.has(collectionSlug)) {
+            grouped.set(collectionSlug, []);
+        }
+
+        grouped.get(collectionSlug)!.push(color);
+    }
+
+    gerflorLvtCollectionCache = Array.from(grouped.entries()).map(([collectionSlug, collectionColors]) => {
+        const firstColor = collectionColors[0];
+        const displayName = firstColor.collection_name || humanizeCollectionName(collectionSlug);
+        const description = pickRichestText(
+            ...collectionColors.map((color) => color.description),
+            firstColor.description
+        );
+        const imageUrl = pickRichestText(
+            ...collectionColors.map((color) => color.lifestyle_url),
+            ...collectionColors.map((color) => color.image_url)
+        );
+
+        const specs = mergeUniqueSpecs(
+            [
+                ...(Array.isArray(firstColor.collection_specs)
+                    ? firstColor.collection_specs.map((spec: any) => ({
+                        key: spec.key,
+                        label: spec.label,
+                        value: String(spec.value),
+                    }))
+                    : []),
+                { key: 'collection', label: 'Kolekcija', value: displayName },
+            ],
+            buildSpecsFromCharacteristicRecord(firstColor.characteristics)
+        );
+
+        return {
+            id: `gerflor-lvt-${collectionSlug}`,
+            name: displayName,
+            slug: `gerflor-${collectionSlug}`,
+            sku: `LVT-${collectionSlug.toUpperCase()}`,
+            categoryId: '6',
+            brandId: '6',
+            shortDescription: `${displayName} — ${collectionColors.length} boja`,
+            description,
+            images: imageUrl ? [{
+                id: `gerflor-lvt-${collectionSlug}-img`,
+                url: imageUrl,
+                alt: displayName,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            inStock: true,
+            featured: false,
+            externalLink: `https://www.gerflor-cee.com/products/${collectionSlug}`,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    return gerflorLvtCollectionCache;
+}
+
 /**
  * Get all Linoleum products from linoleum_colors_complete.json
  */
@@ -498,6 +665,63 @@ export function getAllLinoleumProducts(): Product[] {
     linoleumProductsCache = [];
 
     return linoleumProductsCache;
+}
+
+export function getGerflorLinoleumCollections(): Product[] {
+    if (gerflorLinoleumCollectionCache) {
+        return gerflorLinoleumCollectionCache;
+    }
+
+    const colors = ((linoleumColorsData as any).colors || []) as any[];
+    const grouped = new Map<string, any[]>();
+
+    for (const color of colors) {
+        const collectionSlug = String(color.collection || '').trim();
+        if (!collectionSlug) continue;
+
+        if (!grouped.has(collectionSlug)) {
+            grouped.set(collectionSlug, []);
+        }
+
+        grouped.get(collectionSlug)!.push(color);
+    }
+
+    gerflorLinoleumCollectionCache = Array.from(grouped.entries()).map(([collectionSlug, collectionColors]) => {
+        const firstColor = collectionColors[0];
+        const displayName = firstColor.collection_name || humanizeCollectionName(collectionSlug);
+        const description = pickRichestText(
+            ...collectionColors.map((color) => color.description),
+            firstColor.description
+        );
+        const imageUrl = pickRichestText(...collectionColors.map((color) => color.image_url));
+        const specs = buildSpecsFromCharacteristicRecord(firstColor.characteristics, displayName);
+
+        return {
+            id: `gerflor-linoleum-${collectionSlug}`,
+            name: displayName,
+            slug: `gerflor-${collectionSlug}`,
+            sku: `LINOLEUM-${collectionSlug.toUpperCase()}`,
+            categoryId: '7',
+            brandId: '6',
+            shortDescription: `${displayName} — ${collectionColors.length} boja`,
+            description,
+            images: imageUrl ? [{
+                id: `gerflor-linoleum-${collectionSlug}-img`,
+                url: imageUrl,
+                alt: displayName,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            inStock: true,
+            featured: false,
+            externalLink: `https://www.gerflor-cee.com/products/${collectionSlug}`,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    return gerflorLinoleumCollectionCache;
 }
 
 /**
@@ -610,10 +834,32 @@ export function getAllBloqCarpetProducts(): Product[] {
     Array.from(collectionMap.entries()).forEach(([collSlug, collColors]) => {
         const first = collColors[0];
         const collName = first.collection_name || collSlug;
-        const description = first.description || '';
+        const description = [
+            normalizeText(first.collection_description_sr),
+            normalizeText(first.collection_description_en),
+            normalizeText(first.description),
+            normalizeText(enrichProductDescription({ name: `BLOQ ${collName}`, categoryId: '4', brandId: '8', specs: [] } as any)),
+        ].find(Boolean) || '';
 
         // Use downloaded roomshot image as collection hero image
         const imageUrl = `/images/products/bloq-roomshots/${collSlug}-roomshot.jpg`;
+        const collectionSpecs = mergeUniqueSpecs(
+            buildSpecsFromCharacteristicRecord(
+                {
+                    Familija: first.parent_collection,
+                    Format: first.format,
+                    Dimenzije: first.dimension,
+                    Podloga: Array.isArray(first.backing_variants) && first.backing_variants.length > 0
+                        ? first.backing_variants.join(' / ')
+                        : first.characteristics?.Podloga || first.specs?.BACKING,
+                    'Klasa upotrebe': first.characteristics?.['Klasa upotrebe'] || first.specs?.CLASSIFICATION,
+                    Vatrostojnost: first.characteristics?.Vatrostojnost || first.specs?.FIRE_RESISTANCE,
+                },
+                `BLOQ ${collName}`
+            ),
+            []
+        );
+        const documents = Array.isArray(first.documents) ? first.documents : [];
 
         collectionProducts.push({
             id: `bloq-coll-${collSlug}`,
@@ -622,8 +868,8 @@ export function getAllBloqCarpetProducts(): Product[] {
             sku: `BLOQ-${collSlug.toUpperCase()}`, // BLOQ- prefix so hasCollectionSku picks it up
             categoryId: '4',
             brandId: '8',
-            shortDescription: `BLOQ ${collName} - ${collColors.length} boja`,
-            description: description || enrichProductDescription({ name: `BLOQ ${collName}`, categoryId: '4', brandId: '8', specs: [] } as any),
+            shortDescription: `BLOQ ${collName} - ${collColors.length} boja u kolekciji ${first.parent_collection || 'BLOQ'}`,
+            description,
             images: imageUrl ? [{
                 id: `bloq-coll-${collSlug}-img`,
                 url: imageUrl,
@@ -631,7 +877,9 @@ export function getAllBloqCarpetProducts(): Product[] {
                 isPrimary: true,
                 order: 1,
             }] : [],
-            specs: first.parent_collection ? [{ key: 'family', label: 'Familija', value: first.parent_collection }] : [],
+            specs: collectionSpecs,
+            documents,
+            externalLink: normalizeText(first.external_url) || 'https://bloq.nl/products',
             inStock: true,
             featured: false,
             createdAt: new Date('2024-01-01'),
@@ -738,7 +986,10 @@ export function getVinylCollectionProducts(): Product[] {
             categoryId: '2',
             brandId: '6',
             shortDescription: `${col.name} — ${col.colorCount} boja`,
-            description: firstColor?.description || '',
+            description: pickRichestText(
+                col.description,
+                ...((col.colors || []).map((color: any) => color.description))
+            ),
             images: imageUrl ? [{
                 id: `vinyl-coll-${col.slug}-img`,
                 url: imageUrl,
@@ -747,6 +998,7 @@ export function getVinylCollectionProducts(): Product[] {
                 order: 0,
             }] : [],
             specs,
+            externalLink: col.url || firstColor?.href,
             inStock: true,
             featured: false,
             createdAt: new Date('2024-01-01'),
@@ -892,6 +1144,7 @@ export function getAllDekingProducts(): Product[] {
             priceUnit: 'm²' as const,
             inStock: true,
             featured: false,
+            externalLink: p.url || undefined,
             createdAt: new Date('2024-01-01'),
             updatedAt: new Date('2024-01-01')
         } as Product;
@@ -946,7 +1199,14 @@ export function getEsdCollectionProducts(): Product[] {
             categoryId: '8',
             brandId: '6',
             shortDescription: `${col.name} — ${col.colorCount} boja`,
-            description: firstColor?.description || '',
+            description: buildDescriptionFromCharacteristics(
+                pickRichestText(
+                    col.description,
+                    ...((col.colors || []).map((color: any) => color.description))
+                ),
+                col.characteristics,
+                { prefix: 'Projektovan za ESD osetljive prostore, laboratorije, server sobe i tehničke zone sa kontrolom statičkog elektriciteta.' }
+            ),
             images: imageUrl ? [{
                 id: `esd-coll-${col.slug}-img`,
                 url: imageUrl,
@@ -955,6 +1215,7 @@ export function getEsdCollectionProducts(): Product[] {
                 order: 0,
             }] : [],
             specs,
+            externalLink: col.url || firstColor?.href,
             inStock: true,
             featured: false,
             createdAt: new Date('2024-01-01'),

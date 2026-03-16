@@ -1,10 +1,11 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
+import { enrichTarkettWoodProduct } from '@/lib/data/tarkett-wood-enrichment';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -67,6 +68,10 @@ function dedupeProductsBySlug(products: Product[]): Product[] {
   return Array.from(uniqueProducts.values());
 }
 
+function enrichCatalogProduct(product: Product): Product {
+  return enrichTarkettWoodProduct(product);
+}
+
 // =========================================
 // Supabase implementation
 // =========================================
@@ -119,7 +124,7 @@ export class SupabaseProductRepository implements IProductRepository {
     }
 
     let products: Product[] = ((data as any[]) || []).map((row: any) =>
-      toProduct(row, row.product_images || [], row.product_specs || [])
+      enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
     );
 
     // Merge BLOQ + Gerflor carpet tile products from JSON for category 4 (Tekstilne ploče)
@@ -166,6 +171,7 @@ export class SupabaseProductRepository implements IProductRepository {
     if (!filters?.categoryId || legacyCategoryId === '6' || filters.categoryId === '6') {
       let lvtJsonProducts = getAllTarkettLVTProducts();
       let lvtCollections = getTarkettLVTCollections();
+      let gerflorLvtCollections = getGerflorLVTCollections();
 
       // Implement Local Collection Images
       const collectionImagesModule = await import('@/public/data/collection_images.json').then(m => m.default || m).catch(() => ({}));
@@ -221,16 +227,23 @@ export class SupabaseProductRepository implements IProductRepository {
           p.name.toLowerCase().includes(searchLower) ||
           p.description.toLowerCase().includes(searchLower)
         );
+        gerflorLvtCollections = gerflorLvtCollections.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower)
+        );
       }
       if (filters?.brandIds && filters.brandIds.length > 0) {
         lvtJsonProducts = lvtJsonProducts.filter(p => filters.brandIds!.includes(p.brandId));
         lvtCollections = lvtCollections.filter(p => filters.brandIds!.includes(p.brandId));
+        gerflorLvtCollections = gerflorLvtCollections.filter(p => filters.brandIds!.includes(p.brandId));
       }
-      products = [...products, ...lvtCollections, ...lvtJsonProducts];
+      const existingLvtSlugs = new Set(products.map((p: Product) => p.slug));
+      gerflorLvtCollections = gerflorLvtCollections.filter((product) => !existingLvtSlugs.has(product.slug));
+      products = [...products, ...gerflorLvtCollections, ...lvtCollections, ...lvtJsonProducts];
 
       // Add Creation Evo collection if not already present from Supabase
-      const existingLvtSlugs = new Set(products.map((p: Product) => p.slug));
-      if (!existingLvtSlugs.has('gerflor-creation-evo')) {
+      const nextExistingLvtSlugs = new Set(products.map((p: Product) => p.slug));
+      if (!nextExistingLvtSlugs.has('gerflor-creation-evo')) {
         const lvtData = require('@/public/data/lvt_colors_complete.json');
         const evoColors = (lvtData.colors || []).filter((c: any) => c.collection === 'creation-evo');
         if (evoColors.length > 0) {
@@ -304,6 +317,26 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...esdProducts];
     }
 
+    if (!filters?.categoryId || legacyCategoryId === '7' || filters.categoryId === '7') {
+      let linoleumCollections = getGerflorLinoleumCollections();
+
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        linoleumCollections = linoleumCollections.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower)
+        );
+      }
+
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        linoleumCollections = linoleumCollections.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+
+      const existingLinoleumSlugs = new Set(products.map((product: Product) => product.slug));
+      linoleumCollections = linoleumCollections.filter((product) => !existingLinoleumSlugs.has(product.slug));
+      products = [...products, ...linoleumCollections];
+    }
+
     // Category 10: Tarkett sport collections from JSON
     if (!filters?.categoryId || legacyCategoryId === '10' || filters.categoryId === '10') {
       const existingSlugs = new Set(products.map((p: Product) => p.slug));
@@ -322,6 +355,34 @@ export class SupabaseProductRepository implements IProductRepository {
         tarkettSportProducts = tarkettSportProducts.filter(p => filters.brandIds!.includes(p.brandId));
       }
       products = [...products, ...tarkettSportProducts];
+    }
+
+    if (!filters?.categoryId || legacyCategoryId === '1' || legacyCategoryId === '3' || filters.categoryId === '1' || filters.categoryId === '3') {
+      const requestedCategoryId = legacyCategoryId === '1' || filters?.categoryId === '1'
+        ? '1'
+        : legacyCategoryId === '3' || filters?.categoryId === '3'
+          ? '3'
+          : null;
+
+      let tarkettWoodProducts = tarkettProducts
+        .map(enrichCatalogProduct)
+        .filter((product) => !requestedCategoryId || product.categoryId === requestedCategoryId);
+
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        tarkettWoodProducts = tarkettWoodProducts.filter((product) =>
+          product.name.toLowerCase().includes(searchLower) ||
+          product.description.toLowerCase().includes(searchLower) ||
+          product.sku.toLowerCase().includes(searchLower)
+        );
+      }
+
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        tarkettWoodProducts = tarkettWoodProducts.filter((product) => filters.brandIds!.includes(product.brandId));
+      }
+
+      const existingWoodSlugs = new Set(products.map((product: Product) => product.slug));
+      products = [...products, ...tarkettWoodProducts.filter((product) => !existingWoodSlugs.has(product.slug))];
     }
 
     let manualCollectionProducts = getManualCollectionProducts();
@@ -408,9 +469,9 @@ export class SupabaseProductRepository implements IProductRepository {
 
       // Fallback: check mock-data and legacy Tarkett products
       const mockProduct = mockProducts.find(p => p.slug === slug) || tarkettProducts.find(p => p.slug === slug);
-      return mockProduct || null;
+      return mockProduct ? enrichCatalogProduct(mockProduct) : null;
     }
-    return toProduct(data, data.product_images || [], data.product_specs || []);
+    return enrichCatalogProduct(toProduct(data, data.product_images || [], data.product_specs || []));
   }
 
   async findById(id: string): Promise<Product | null> {
@@ -421,7 +482,7 @@ export class SupabaseProductRepository implements IProductRepository {
       .single();
 
     if (error || !data) return null;
-    return toProduct(data, data.product_images || [], data.product_specs || []);
+    return enrichCatalogProduct(toProduct(data, data.product_images || [], data.product_specs || []));
   }
 
   async findByCategory(categoryId: string, filters?: ProductFilters): Promise<Product[]> {
@@ -446,13 +507,15 @@ export class SupabaseProductRepository implements IProductRepository {
       let products = error
         ? []
         : ((data as any[]) || []).map((row: any) =>
-          toProduct(row, row.product_images || [], row.product_specs || [])
+          enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
         );
 
       const existingSlugs = new Set(products.map((product: Product) => product.slug));
       const supplementalCollections = [
         ...getVinylCollectionProducts(),
         ...getEsdCollectionProducts(),
+        ...getGerflorLVTCollections(),
+        ...getGerflorLinoleumCollections(),
         ...getManualCollectionProducts(),
       ].filter(product => !existingSlugs.has(product.slug));
 
@@ -468,11 +531,13 @@ export class SupabaseProductRepository implements IProductRepository {
       const products = error
         ? []
         : ((data as any[]) || []).map((row: any) =>
-          toProduct(row, row.product_images || [], row.product_specs || [])
+          enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
         );
 
       const existingSlugs = new Set(products.map((product: Product) => product.slug));
-      const supplementalCollections = getTarkettSportCollections()
+      const supplementalCollections = tarkettProducts
+        .map(enrichCatalogProduct)
+        .concat(getTarkettSportCollections())
         .concat(getTarkettVinylHomeCollections())
         .filter(product => !existingSlugs.has(product.slug));
 
@@ -489,7 +554,7 @@ export class SupabaseProductRepository implements IProductRepository {
       return [];
     }
     return ((data as any[]) || []).map((row: any) =>
-      toProduct(row, row.product_images || [], row.product_specs || [])
+      enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
     );
   }
 
@@ -504,7 +569,7 @@ export class SupabaseProductRepository implements IProductRepository {
       return [];
     }
     return ((data as any[]) || []).map((row: any) =>
-      toProduct(row, row.product_images || [], row.product_specs || [])
+      enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
     );
   }
 }
@@ -514,10 +579,11 @@ export class SupabaseProductRepository implements IProductRepository {
 // =========================================
 export class MockProductRepository implements IProductRepository {
   private products: Product[] = dedupeProductsBySlug([
-    ...mockProducts,
     ...getAllGerflorProducts(),
+    ...getGerflorLVTCollections(),
+    ...getGerflorLinoleumCollections(),
     ...getAllBloqCarpetProducts(),
-    ...tarkettProducts,
+    ...tarkettProducts.map(enrichCatalogProduct),
     ...getAllTarkettLVTProducts(),
     ...getTarkettVinylHomeCollections(),
     ...getTarkettSportCollections(),
@@ -525,6 +591,7 @@ export class MockProductRepository implements IProductRepository {
     ...getVinylCollectionProducts(),
     ...getEsdCollectionProducts(),
     ...getManualCollectionProducts(),
+    ...mockProducts,
   ]);
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {

@@ -1,0 +1,2480 @@
+{
+  "generatedAt": "2026-03-16T00:50:56.183Z",
+  "parket": {
+    "allegro": {
+      "name": "Allegro",
+      "slug": "allegro",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002886-allegro",
+      "shortDescription": "Kolekcija Allegro parketa donosi spoj boja i uzoraka gde je svaka daska savršeno usklađena. Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor.",
+      "description": "Kolekcija Allegro parketa donosi spoj boja i uzoraka gde je svaka daska savršeno usklađena. Jedinstveni godovi i tonovi drveta stvaraju harmonične mozaike koji unose život i dinamiku u prostor. Nijanse parketa se kreću od dubokih tonova siene do suptilnih svetlih nijansi. Raznovrsnost boja i tekstura stvara skladan i ujedinjen estetski doživljaj, pretvarajući prostor u elegantno okruženje. Velike dimenzije dasaka parketa (širina 194 mm, dužina 2283 mm) i T-lock sistem zaključavanja omogućavaju jednostavnu i brzu instalaciju. Površina parketa, brušena i mat lakirana, naglašava prirodni karakter drveta.",
+      "keyFeatures": [
+        "Dezeni parketa čije se nijanse kreću od dubokih tonova siene do suptilnih svetlih nijansi",
+        "Višeslojni parket sa površinskim premazom za unutrašnju upotrebu (EN 13489:2023)",
+        "Drvena podna obloga za unutrašnju upotrebu usklađena sa harmonizovanim standardom EN 14342:2013",
+        "Sistemi ocenjivanja i provere stalnosti svojstava (AVCP): Sistem 4",
+        "Usaglašeni standard: EN 14342:2013"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Natura"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,658 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7,5 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "2283 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "194 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Grading Book",
+          "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+        },
+        {
+          "title": "Sertifikat o stalnosti svojstava",
+          "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Allegro.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "privilege": {
+      "name": "Privilege",
+      "slug": "privilege",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002662-privilege",
+      "shortDescription": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.Ovaj luksuzni parket stvoriće bogatstvo i toplinu kraljevskog poda u vašem domu, udoban za hodanje, izdržljiv i sa dugim vekom trajanja.Smatramo da je najvažnije odabrati vrstu poda čiji izgled najviše odgovara vama i vašem životnom stilu. Parket kolekcija Privilege upravo nudi privilegiju luksuza.",
+      "description": "Ako tražite kvalitetan i luksuzan parket, Privilege je pravi izbor za vas.Ovaj luksuzni parket stvoriće bogatstvo i toplinu kraljevskog poda u vašem domu, udoban za hodanje, izdržljiv i sa dugim vekom trajanja.Smatramo da je najvažnije odabrati vrstu poda čiji izgled najviše odgovara vama i vašem životnom stilu. Parket kolekcija Privilege upravo nudi privilegiju luksuza.",
+      "keyFeatures": [
+        "Različite dimenzije parket dasaka",
+        "Visoka otpornost na habanja i oštećenja",
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Prirodna lepota drveta"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Lak"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,512 m² / 0,564 m² / 0,720 m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "Utor-pero"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "600 mm / 470 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "120 mm"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Cfl-s1"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,16"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Brošura Privilege",
+          "url": "https://media.tarkett-image.com/large/BR_SEE_Privilege_brochure_EN.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "privilege-waltz": {
+      "name": "Privilege Waltz",
+      "slug": "privilege-waltz",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002975-privilege-waltz",
+      "shortDescription": "Privilege Waltz parket predstavlja spoj vrhunskog kvaliteta i estetike. Mirna, besprekorna selekcija drveta u toplim, sofisticiranim, pastelnim tonovima dolazi u impresivnom formatu širokih i dugih dasaka parketa. Svaki element ove parket kolekcije pažljivo je osmišljen za one koji traže besprekornu eleganciju i luksuz u svom prostoru. POGLEDAJTE VIDEO",
+      "description": "Privilege Waltz parket predstavlja spoj vrhunskog kvaliteta i estetike. Mirna, besprekorna selekcija drveta u toplim, sofisticiranim, pastelnim tonovima dolazi u impresivnom formatu širokih i dugih dasaka parketa. Svaki element ove parket kolekcije pažljivo je osmišljen za one koji traže besprekornu eleganciju i luksuz u svom prostoru. POGLEDAJTE VIDEO",
+      "keyFeatures": [
+        "Najfiniji izbor dasaka parketa Premium i Markant klase",
+        "Impresivan format. Široka i duga (1 lamelna) daska parketa sa oborenim ivicama sa sve 4 strane",
+        "Dezen naglašava prirodnu lepotu drveta",
+        "Snažna i postojana završna obrada. Proteco Plus Mat lak za besprekoran izgled površine",
+        "Mogućnost prilagođavanja dezena prema zahtevima projekta ili klijenta"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Natura"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,652 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7,5 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "2280 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "194 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://media.tarkett-image.com/large/BR_SEE_Privilege_Waltz_brochure_SRB.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Sommer_Europarquet.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "rumba": {
+      "name": "Rumba",
+      "slug": "rumba",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C000973-rumba",
+      "shortDescription": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost. Na raspolaganju vam je šest različitih nijansi drveta: od svetlih, bež i pepeljastih nijansi, do tamnijih, bogatih tonova. Parket se postavlja uz jednostavan T-Lock sistem - brzo, bezbedno i lako. Površinska zaštita Proteco Strong obezbeđuje dodatnu otpornost na habanja i ogrebotine, čime direktno štedite novac i vreme potrebno za održavanje parketa. Kao kod svih Tarkett parketa, u pitanju je višeslojni parket napravljen od pažljivo sušenog drveta. Uz garanciju od 30 godina, možete da se opustite i zaboravite na neprijatna iznenađenja poput razdvajanja ili odlepljivanja parketa.",
+      "description": "Ekskluzivna parket kolekcija Rumba inspirisaće vas da zaplešete: uske daske manjih dimenzija daju podu veću dinamičnost, a vašem ambijentu živost i autentičnost. Na raspolaganju vam je šest različitih nijansi drveta: od svetlih, bež i pepeljastih nijansi, do tamnijih, bogatih tonova. Parket se postavlja uz jednostavan T-Lock sistem - brzo, bezbedno i lako. Površinska zaštita Proteco Strong obezbeđuje dodatnu otpornost na habanja i ogrebotine, čime direktno štedite novac i vreme potrebno za održavanje parketa. Kao kod svih Tarkett parketa, u pitanju je višeslojni parket napravljen od pažljivo sušenog drveta. Uz garanciju od 30 godina, možete da se opustite i zaboravite na neprijatna iznenađenja poput razdvajanja ili odlepljivanja parketa.",
+      "keyFeatures": [
+        "Male dimenzije parket dasaka",
+        "Visoka otpornost na habanja i oštećenja",
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Odgovarajući asortiman lajsni parketa",
+        "Garancija 30 godina"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Lak / Proteco Natura"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "0,860 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7,5 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "1200 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "120 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Brošura - Vodič za garancije",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+        },
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Grading Book",
+          "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+        },
+        {
+          "title": "Brošura - Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/BR_RS_Aqua_Guard.pdf"
+        },
+        {
+          "title": "TEHNIČKI LIST",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Rumba.pdf"
+        },
+        {
+          "title": "Sertifikat o stalnosti svojstava",
+          "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+        },
+        {
+          "title": "Sertifikat - COC",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+        },
+        {
+          "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+          "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "salsa": {
+      "name": "SALSA",
+      "slug": "salsa",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C000964-salsa",
+      "shortDescription": "Parket kolekcija Salsa donosi autentičan izraz prirodnih materijala – hrasta i jasena – kroz parket sa lamelama manjih dimenzija. Takva struktura parketa omogućava kreiranje živopisnog poda, u kojem dolaze do izražaja različite nijanse i teksture drveta.Bez obzira da li težite svetlijem, minimalističkom ambijentu ili želite da unesete više topline u prostor, nijanse iz kolekcije Salsa lako se uklapaju u različite enterijere. Površina je zaštićena Proteco Strong lakom koji obezbeđuje izdržljivost i dugotrajan izgled, čak i u dinamičnim prostorima.T-Lock sistem omogućava jednostavno postavljanje parketa, a pod je odmah nakon instalacije spreman za upotrebu.Parket kolekcija salsa spaja lepotu prirode, funkcionalnost i jednostavnost – za svaki dom koji želi više od poda.",
+      "description": "Parket kolekcija Salsa donosi autentičan izraz prirodnih materijala – hrasta i jasena – kroz parket sa lamelama manjih dimenzija. Takva struktura parketa omogućava kreiranje živopisnog poda, u kojem dolaze do izražaja različite nijanse i teksture drveta.Bez obzira da li težite svetlijem, minimalističkom ambijentu ili želite da unesete više topline u prostor, nijanse iz kolekcije Salsa lako se uklapaju u različite enterijere. Površina je zaštićena Proteco Strong lakom koji obezbeđuje izdržljivost i dugotrajan izgled, čak i u dinamičnim prostorima.T-Lock sistem omogućava jednostavno postavljanje parketa, a pod je odmah nakon instalacije spreman za upotrebu.Parket kolekcija salsa spaja lepotu prirode, funkcionalnost i jednostavnost – za svaki dom koji želi više od poda.",
+      "keyFeatures": [
+        "Širok izbor dezena i drvnih vrsta",
+        "Otporan na habanja i oštećenja",
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Odgovarajući asortiman parket lajsni",
+        "Garancija 30 godina"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Natura / Proteco Lak"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,658 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7,5 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast / Jasen"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "2283 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "194 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Brošura - Vodič za garancije",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+        },
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Grading Book",
+          "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+        },
+        {
+          "title": "Brošura - Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/BR_RS_Aqua_Guard.pdf"
+        },
+        {
+          "title": "Sertifikat o stalnosti svojstava",
+          "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+        },
+        {
+          "title": "TEHNIČKI LIST",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Salsa.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+        },
+        {
+          "title": "Sertifikat - COC",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+        },
+        {
+          "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+          "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "salsa-art": {
+      "name": "SALSA ART",
+      "slug": "salsa-art",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C000966-salsa-art",
+      "shortDescription": "Majstorski dizajnirana kolekcija parketa Salsa Art kombinuje prirodno drvo sa posebnim načinima tretiranja površinske strukture - sve radi dobijanja novog, autentičnog izgleda. Parket je dostupan u različitim nijansama - od belih i krem nijansi, do braon i crne, što vam otvara mnogobrojne mogućnosti dizajna. Uz Salsa Art parket, možete da kreirate tačno onakav ambijent kakav ste zamislili - moderan, retro, minimalistički ili rustičan. Zahvaljujući T-Lock sistemu, parket se izuzetno lako i brzo postavlja, a moguća je i instalacija preko podnog grejanja. Površina je fabrički lakirana Proteco Strong lakom, što čini parket otpornim na ogrebotine, habanja i oštećenja, a vama štedi novac i omogućava znatno lakše održavanje. Tarkett se ističe po ekološkom pristupu proizvodnje: Salsa kolekcija parketa podrazumeva višeslojne parkete, gde je potrošnja drveta u procesu proizvodnje znatno smanjena.",
+      "description": "Majstorski dizajnirana kolekcija parketa Salsa Art kombinuje prirodno drvo sa posebnim načinima tretiranja površinske strukture - sve radi dobijanja novog, autentičnog izgleda. Parket je dostupan u različitim nijansama - od belih i krem nijansi, do braon i crne, što vam otvara mnogobrojne mogućnosti dizajna. Uz Salsa Art parket, možete da kreirate tačno onakav ambijent kakav ste zamislili - moderan, retro, minimalistički ili rustičan. Zahvaljujući T-Lock sistemu, parket se izuzetno lako i brzo postavlja, a moguća je i instalacija preko podnog grejanja. Površina je fabrički lakirana Proteco Strong lakom, što čini parket otpornim na ogrebotine, habanja i oštećenja, a vama štedi novac i omogućava znatno lakše održavanje. Tarkett se ističe po ekološkom pristupu proizvodnje: Salsa kolekcija parketa podrazumeva višeslojne parkete, gde je potrošnja drveta u procesu proizvodnje znatno smanjena.",
+      "keyFeatures": [
+        "Mogućnost različitih kombinacija boja i dezena",
+        "Izdržljiv i otporan pod",
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Odgovarajući asortiman paket lajsni",
+        "Garancija 30 godina"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Lak"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,658 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7,5 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Jasen / Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "2283 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "194 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Brošura - Vodič za garancije",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Salsa_Art.pdf"
+        },
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Grading Book",
+          "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+        },
+        {
+          "title": "Certificate - Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/CR_RS_AG_inlay_25x17cm_back_ENG_01.pdf"
+        },
+        {
+          "title": "Sertifikat o stalnosti svojstava",
+          "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+        },
+        {
+          "title": "EKO ZNAK SERTIFIKAT",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Eko_znak_Proteco.pdf"
+        },
+        {
+          "title": "Certificate- Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/CR_RS_AG_inlay_25x17cm_front_ENG_01.pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+        },
+        {
+          "title": "Sertifikat - COC",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+        },
+        {
+          "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+          "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "salsa-premium": {
+      "name": "Salsa Premium",
+      "slug": "salsa-premium",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C000965-salsa-premium",
+      "shortDescription": "Želite parket koji će vašem prostoru pružiti dašak luksuza? Salsa Premium je savršen parket za sve koji traže savršen spoj bogate tradicije, savremenih boja i tekstura. Posebna uljana površinska zaštita (Protecto Hardwax Oil) naglašava prirodnu strukturu drveta, a pritom olakšava održavanje poda, štedeći vam vreme i novac. Kao i svi Tarkett parketi, i Salsa Premium dolazi uz odgovarajući asortiman lajsni, uz 30 godina garancije. Pred vama je bogat izbor parket dizajna - odaberite jedno od osam različitih idejnih rešenja. Uz T-lock sistem uklapanja, instalacija i uklanjanje poda nikada nisu bili jednostavniji. Salsa Premium parket omogućava vam da kreirate tačno onakav ambijent kakav ste zamislili - uz beskompromisnu udobnost, stabilnost i stil. Vodonepropusna površina olakšava čišćenje, a sam parket je ekološki dizajniran i čuva vaše zdravlje.",
+      "description": "Želite parket koji će vašem prostoru pružiti dašak luksuza? Salsa Premium je savršen parket za sve koji traže savršen spoj bogate tradicije, savremenih boja i tekstura. Posebna uljana površinska zaštita (Protecto Hardwax Oil) naglašava prirodnu strukturu drveta, a pritom olakšava održavanje poda, štedeći vam vreme i novac. Kao i svi Tarkett parketi, i Salsa Premium dolazi uz odgovarajući asortiman lajsni, uz 30 godina garancije. Pred vama je bogat izbor parket dizajna - odaberite jedno od osam različitih idejnih rešenja. Uz T-lock sistem uklapanja, instalacija i uklanjanje poda nikada nisu bili jednostavniji. Salsa Premium parket omogućava vam da kreirate tačno onakav ambijent kakav ste zamislili - uz beskompromisnu udobnost, stabilnost i stil. Vodonepropusna površina olakšava čišćenje, a sam parket je ekološki dizajniran i čuva vaše zdravlje.",
+      "keyFeatures": [
+        "Naglašena prirodna struktura drveta",
+        "Visoka otpornost na oštećenja i habanja",
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Odgovarajući asortiman parket lajsni",
+        "Garancija 30 godina"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Hardwax ulje"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,658 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7,5 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "2283 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "194 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Brošura - Vodič za garancije",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+        },
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Grading Book",
+          "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+        },
+        {
+          "title": "Brošura - Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/BR_RS_Aqua_Guard.pdf"
+        },
+        {
+          "title": "Certificate - Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/CR_RS_AG_inlay_25x17cm_back_ENG_01.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Salsa_Premium.pdf"
+        },
+        {
+          "title": "Sertifikat o stalnosti svojstava",
+          "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+        },
+        {
+          "title": "Certificate- Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/CR_RS_AG_inlay_25x17cm_front_ENG_01.pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+        },
+        {
+          "title": "Sertifikat - COC",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+        },
+        {
+          "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+          "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+        },
+        {
+          "title": "EKO ZNAK SERTIFIKAT",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Eko_znak_Hard_wax.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "sommer-europarquet": {
+      "name": "Sommer Europarquet",
+      "slug": "sommer-europarquet",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002946-sommer-europarquet",
+      "shortDescription": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore. Dostupan u više atraktivnih dekora, sa različitim završnim obradama i dimenzijama, Europarquet kombinuje prirodnu lepotu drveta sa dugotrajnošću i jednostavnom ugradnjom. Pouzdan izbor za funkcionalne i estetski usklađene enterijere.",
+      "description": "Parket kolekcija Europarquet nudi klasičan troslojni parket izrađen od 100% prirodnog drveta, idealan za razne stambene i komercijalne prostore. Dostupan u više atraktivnih dekora, sa različitim završnim obradama i dimenzijama, Europarquet kombinuje prirodnu lepotu drveta sa dugotrajnošću i jednostavnom ugradnjom. Pouzdan izbor za funkcionalne i estetski usklađene enterijere.",
+      "keyFeatures": [
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Lakirani sloj sprečava nakupljanje i širenje bakterija",
+        "Ekološka odgovornost u svim procesima (C2C, FSC, ISO 14001)"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Classic Lak"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "13,20 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,658 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "2283 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "194 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Sertifikat o stalnosti proizvoda",
+          "url": "https://media.tarkett-image.com/large/Sertifikat_Europarquet_rs.pdf"
+        },
+        {
+          "title": "Sertifikat DOP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/DOP_SommerEuroparqet_RS.pdf"
+        },
+        {
+          "title": "Produkt katalog 2025",
+          "url": "https://media.tarkett-image.com/large/ProductCatalogue_Europarquet_2025.pdf"
+        },
+        {
+          "title": "DOP",
+          "url": "https://media.tarkett-image.com/large/2702-00021-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Sommer_Europarquet.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO",
+          "url": "https://media.tarkett-image.com/large/Sertifikat_EKO.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "step-xl-l": {
+      "name": "Step XL & L",
+      "slug": "step-xl-l",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C000975-step-xl-l",
+      "shortDescription": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer. Na raspolaganju vam je više različitih nijansi parketa: opredelite se za nezamenjivu lepotu prirodnog drveta, bojeno drvo ili drveni pod čiji je dezen kreiran inovativnom tehnologijom digitalne štampe. U pitanju je 1-lamelni višeslojni parket koji je fabrički tretiran jedinstvenim Proteco lakom, čime se štedi novac i vreme koje ulažete u čišćenje. Jednostavan T-Lock sistem omogućava laku ugradnju parketa i stvara jedinstveno glatku površinu, čime se dodatno olakšava održavanje poda. STEP L & XL parket dolazi sa garancijom od 30 godina i pruža vam stabilnost i bezbedno gazište, tako da ne morate da brinete o neprijatnostima poput pukotina ili razdvajanja parketa.",
+      "description": "Ukoliko tražite prefinjen i elegantan parket, STEP XL & L je pravi izbor za vas! Odaberite savršen dizajn koji će upotpuniti vaš enterijer. Na raspolaganju vam je više različitih nijansi parketa: opredelite se za nezamenjivu lepotu prirodnog drveta, bojeno drvo ili drveni pod čiji je dezen kreiran inovativnom tehnologijom digitalne štampe. U pitanju je 1-lamelni višeslojni parket koji je fabrički tretiran jedinstvenim Proteco lakom, čime se štedi novac i vreme koje ulažete u čišćenje. Jednostavan T-Lock sistem omogućava laku ugradnju parketa i stvara jedinstveno glatku površinu, čime se dodatno olakšava održavanje poda. STEP L & XL parket dolazi sa garancijom od 30 godina i pruža vam stabilnost i bezbedno gazište, tako da ne morate da brinete o neprijatnostima poput pukotina ili razdvajanja parketa.",
+      "keyFeatures": [
+        "Privlačni dezeni parketa",
+        "Izuzetna otpornost na habanje i oštećenja",
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Odgovarajući asortiman parket lajsni",
+        "Garancija 30 godina"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Natura / Proteco Lak"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,182 m² / 1,008 m² / 0,984 m² / 0,840 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7 kg/m² / 7,5 kg/m² / 7,4 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "1200 mm / 1000 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "164 mm / 140 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "brinell_hardness",
+          "label": "Tvrdoća po Brinelu",
+          "value": "3,7"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Brošura - Vodič za garancije",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+        },
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Grading Book",
+          "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+        },
+        {
+          "title": "Brošura - Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/BR_RS_Aqua_Guard.pdf"
+        },
+        {
+          "title": "Sertifikat o stalnosti svojstava",
+          "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+        },
+        {
+          "title": "Sertifikat - COC",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Step_XLandL.pdf"
+        },
+        {
+          "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+          "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "tango": {
+      "name": "Tango",
+      "slug": "tango",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C000969-tango",
+      "shortDescription": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta. Prirodna struktura drveta dodatno se tretira bojom i brušenjem, stvarajući raznovrsne dezene i stilove - od dasaka koje imaju egzotičan šmek, preko tradicionalnih, modernih, retro i rustičnih. U okviru parket Tango kolekcije, na raspolaganju imate preko deset nijansi parketa (uz odgovarajući asortiman lajsni), te najzad možete da kreirate ambijent kakav ste oduvek želeli. U pitanju je Tarkett parket koji je izdržljiv i dugotrajan, a instalacija parketa je brza i jednostavna uz T-Lock sistem, a parket je spreman za upotrebu odmah nakon ugradnje. Zbog površinske zaštite (Proteco Strong lak), čišćenje parketa je lako, a održavanje ekonomično. Udobnost, privlačan dizajn i 30 godina Tarkett garancije čine Tango parkete sjajnim izborom.",
+      "description": "Tražite li parket koji će vašem prostoru dati impresivan izgled, uz dašak luksuza? Parket iz kolekcije Tango napravljen je od najfinijeg, visokokvalitetnog drveta iz Evrope i sveta. Prirodna struktura drveta dodatno se tretira bojom i brušenjem, stvarajući raznovrsne dezene i stilove - od dasaka koje imaju egzotičan šmek, preko tradicionalnih, modernih, retro i rustičnih. U okviru parket Tango kolekcije, na raspolaganju imate preko deset nijansi parketa (uz odgovarajući asortiman lajsni), te najzad možete da kreirate ambijent kakav ste oduvek želeli. U pitanju je Tarkett parket koji je izdržljiv i dugotrajan, a instalacija parketa je brza i jednostavna uz T-Lock sistem, a parket je spreman za upotrebu odmah nakon ugradnje. Zbog površinske zaštite (Proteco Strong lak), čišćenje parketa je lako, a održavanje ekonomično. Udobnost, privlačan dizajn i 30 godina Tarkett garancije čine Tango parkete sjajnim izborom.",
+      "keyFeatures": [
+        "Širok izbor dezena parketa",
+        "Izdržljiv i otporan parket",
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Odgovarajući asortiman parket lajsni",
+        "Garancija 30 godina"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Natura / Proteco Lak"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,180 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7,5 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "2215 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "164 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Brošura - Vodič za garancije",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+        },
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Grading Book",
+          "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+        },
+        {
+          "title": "Brošura - Aqua Guard",
+          "url": "https://media.tarkett-image.com/large/BR_RS_Aqua_Guard.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Tango.pdf"
+        },
+        {
+          "title": "Sertifikat o stalnosti svojstava",
+          "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+        },
+        {
+          "title": "Sertifikat - COC",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "tango-classic": {
+      "name": "Tango Classic",
+      "slug": "tango-classic",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C000972-tango-classic",
+      "shortDescription": "Svi znamo da je pod važan deo enterijera koji može da doprinese stvaranju toplog ambijenta i pretvori jednu kuću u istinski dom. Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket. Izuzetno kvalitetan parket, Tango Classic vam pruža i mogućnost stilizovanja svog ličnog prostora uz izbor od šest različitih nijansi drveta. Svi parketi su tretirani posebnim Osmo Hardwax uljem koje naglašava prirodnu teksturu drveta, a uz Protecto Strong površinski tretman pojačana je otpornost parketa na habanja i oštećenja, čime je olakšano čišćenje poda. Brza ugradnja parketa, lako održavanje, mogućnost ugradnje preko podnog grejanja, udobnost - Tango Classic nudi vam sve za čim ste tragali! Oslonite se na Tarkett: nudimo vam 30 godina garancije, bezbedne i zdrave podove za vas i vašu porodicu.",
+      "description": "Svi znamo da je pod važan deo enterijera koji može da doprinese stvaranju toplog ambijenta i pretvori jednu kuću u istinski dom. Volite klasičan dizajn koji nikada ne izlazi iz mode? Onda će vas definitivno oduševiti naš Tango Classic parket. Izuzetno kvalitetan parket, Tango Classic vam pruža i mogućnost stilizovanja svog ličnog prostora uz izbor od šest različitih nijansi drveta. Svi parketi su tretirani posebnim Osmo Hardwax uljem koje naglašava prirodnu teksturu drveta, a uz Protecto Strong površinski tretman pojačana je otpornost parketa na habanja i oštećenja, čime je olakšano čišćenje poda. Brza ugradnja parketa, lako održavanje, mogućnost ugradnje preko podnog grejanja, udobnost - Tango Classic nudi vam sve za čim ste tragali! Oslonite se na Tarkett: nudimo vam 30 godina garancije, bezbedne i zdrave podove za vas i vašu porodicu.",
+      "keyFeatures": [
+        "Naglašena prirodna struktura drveta",
+        "Visoka otpornost na oštećenja i habanja",
+        "Jednostavna ugradnja parketa i ekonomično održavanje",
+        "Odgovarajući asortiman parket lajsni",
+        "Garancija 30 godina"
+      ],
+      "specs": [
+        {
+          "key": "surface_treatment",
+          "label": "Površinski tretman",
+          "value": "Proteco Hardwax ulje"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "14 mm"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,182 m²"
+        },
+        {
+          "key": "wear_layer_thickness",
+          "label": "Debljina habajućeg sloja",
+          "value": "2,80 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7,5 kg/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "T-Lock"
+        },
+        {
+          "key": "wood_species",
+          "label": "Vrste drveta",
+          "value": "Hrast"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "length",
+          "label": "Dužina",
+          "value": "1200 mm"
+        },
+        {
+          "key": "width",
+          "label": "Širina",
+          "value": "164 mm"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "formaldehyde_emission_en_717",
+          "label": "Emisija formaldehida",
+          "value": "E1"
+        },
+        {
+          "key": "reaction_fire_en_13501",
+          "label": "Reakcija na požar EN 13501",
+          "value": "Dfl-s1"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Nije odeđen učinak"
+        },
+        {
+          "key": "brinell_hardness",
+          "label": "Tvrdoća po Brinelu",
+          "value": "3,7"
+        },
+        {
+          "key": "thermal_conductivity",
+          "label": "Termička provodljivost (u W/m•K)",
+          "value": "0,11"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Tango_Classic.pdf"
+        },
+        {
+          "title": "Brošura - Vodič za garancije",
+          "url": "https://media.tarkett-image.com/large/BR_RS_HD_Vodic_za_garancije.pdf"
+        },
+        {
+          "title": "Sertifikat - DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/2702-00020-DoP-2024-01 SR.pdf"
+        },
+        {
+          "title": "Grading Book",
+          "url": "https://media.tarkett-image.com/large/BR_Grading_Book_wood.pdf"
+        },
+        {
+          "title": "Sertifikat o stalnosti svojstava",
+          "url": "https://media.tarkett-image.com/large/CR_SEE_Tarkett___Certifikat_142_0797_2019.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PN_2023_26.pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://media.tarkett-image.com/large/MD_RS_Wood.pdf"
+        },
+        {
+          "title": "Sertifikat - COC",
+          "url": "https://media.tarkett-image.com/large/CR_RS_Tarkett_AB_FSC_COC.pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://media.tarkett-image.com/large/ID_RS_WE.pdf"
+        },
+        {
+          "title": "Sertifikat - EKO znak",
+          "url": "https://media.tarkett-image.com/large/CR_Rešenje_za_EKO_znak_PL_2023_26.pdf"
+        },
+        {
+          "title": "ENVIRONMENT_PRODUCT_DECLARATION",
+          "url": "https://media.tarkett-image.com/large/EPD_Wood flooring_TARKETT Serbia.pdf"
+        }
+      ],
+      "heroImage": ""
+    }
+  },
+  "laminat": {
+    "blues-1033-4v": {
+      "name": "Blues 1033 4V",
+      "slug": "blues-1033-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002685-blues-1033-4v",
+      "shortDescription": "Kolekcija sa autentičnom snagom drveta. Lepota koja je skrivena u detaljima, a na vama je da odaberete dezen kojim ćete dati vašem prostoru poseban pečat. Laminat iz ove kolekcije odlikuju daske sa oborenim ivicama sa sve 4 strane. Pojačana otpornost na izlivanje tečnosti i vlagu.",
+      "description": "Kolekcija sa autentičnom snagom drveta. Lepota koja je skrivena u detaljima, a na vama je da odaberete dezen kojim ćete dati vašem prostoru poseban pečat. Laminat iz ove kolekcije odlikuju daske sa oborenim ivicama sa sve 4 strane. Pojačana otpornost na izlivanje tečnosti i vlagu.",
+      "keyFeatures": [],
+      "specs": [
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "33 Heavy"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "10 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "8430 g/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "2-lock"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,581 m²"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14041"
+        },
+        {
+          "key": "dop_certificate",
+          "label": "Izjava o performansama proizvoda",
+          "value": "DoP- TSEE – 001 – 2023"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Klasa DS (µ ≥ 0,30)"
+        },
+        {
+          "key": "thermal_resistance",
+          "label": "Termička otpornost",
+          "value": "≤ 0,084 m²•K/W"
+        },
+        {
+          "key": "stain_resistance_1_2_en_438",
+          "label": "Otpornost na mrlje - grupe 1 i 2",
+          "value": "≥ 5"
+        },
+        {
+          "key": "stain_resistance_3_en_438",
+          "label": "Otpornost na mrlje - grupa 3",
+          "value": "≥ 4"
+        },
+        {
+          "key": "colour_fastness_light",
+          "label": "Postojanost boje - svetlost",
+          "value": "≥ 4"
+        },
+        {
+          "key": "furniture_leg_effect",
+          "label": "Otpornost na nogice nameštaja",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "abrasion_resistance_en_13329",
+          "label": "Otpornost na abraziju",
+          "value": "AC5"
+        },
+        {
+          "key": "castor_chair_effect_iso_4918",
+          "label": "Otpornost na točkiće stolica",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://media.tarkett-image.com/large/DS_SEE_Blues_1033_4V.pdf"
+        },
+        {
+          "title": "DoP sertifikat (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/CR_DoP_SEE_Blues_and_Soul_ENG.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "easy-line-832-4v": {
+      "name": "Easy Line 832 4V",
+      "slug": "easy-line-832-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C001869-easy-line-832-4v",
+      "shortDescription": "Kolekcija koja balansira stil i kvalitet. Easy Line 832 ima sve što vam je potrebno za kreiranje lepih enterijera uz minimalne troškove. Proizvedeni u Nemačkoj, naši laminat podovi ispunjavaju najviše standarde sa visokom otpornošću na habanje, ogrebotine i mrlje zahvaljujući svom melaminskom zaštitnom sloju. Naš laminat se može postaviti na 3 različita načina. Dostupan je u bezvremenskom dezenu hrasta, sivih dezena i crveno-braon nijansi.",
+      "description": "Kolekcija koja balansira stil i kvalitet. Easy Line 832 ima sve što vam je potrebno za kreiranje lepih enterijera uz minimalne troškove. Proizvedeni u Nemačkoj, naši laminat podovi ispunjavaju najviše standarde sa visokom otpornošću na habanje, ogrebotine i mrlje zahvaljujući svom melaminskom zaštitnom sloju. Naš laminat se može postaviti na 3 različita načina. Dostupan je u bezvremenskom dezenu hrasta, sivih dezena i crveno-braon nijansi.",
+      "keyFeatures": [
+        "Bezvremenski dezeni",
+        "Široka paleta boja",
+        "Visoka otpornost: pogodno za kuhinju",
+        "Novi sistem zaključavanja",
+        "PEFC, Carb2, M1 i A+ francuski VOC rejting"
+      ],
+      "specs": [
+        {
+          "key": "product_type_norm_iso",
+          "label": "ISO vrsta proizvoda",
+          "value": "Laminirane podne obloge (EN 13329)"
+        },
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "32 General"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "8 mm"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "5G"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "8"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,110 m²"
+        },
+        {
+          "key": "dop_certificate",
+          "label": "Izjava o performansama proizvoda",
+          "value": "0132-0091-DOP-2023-06"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Klasa DS (µ ≥ 0,30)"
+        },
+        {
+          "key": "thermal_resistance",
+          "label": "Termička otpornost",
+          "value": "0,06 m²•K/W"
+        },
+        {
+          "key": "stain_resistance_1_2_en_438",
+          "label": "Otpornost na mrlje - grupe 1 i 2",
+          "value": "≥ 5"
+        },
+        {
+          "key": "stain_resistance_3_en_438",
+          "label": "Otpornost na mrlje - grupa 3",
+          "value": "≥ 4"
+        },
+        {
+          "key": "colour_fastness_light",
+          "label": "Postojanost boje - svetlost",
+          "value": "≥ 4"
+        },
+        {
+          "key": "furniture_leg_effect",
+          "label": "Otpornost na nogice nameštaja",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "abrasion_resistance_en_13329",
+          "label": "Otpornost na abraziju",
+          "value": "AC4"
+        },
+        {
+          "key": "castor_chair_effect_iso_4918",
+          "label": "Otpornost na točkiće stolica",
+          "value": "No damage after 25000 cycles"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "BROCHURE",
+          "url": "https://media.tarkett-image.com/large/Brochure-Laminate-including-Soundlogic-INT.pdf"
+        },
+        {
+          "title": "WARRANTY_GUARANTEE",
+          "url": "https://media.tarkett-image.com/large/Guarantee-Inlay-Laminate-INT.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/DS-Tarkett-easy_line_832-en_INTL.pdf"
+        },
+        {
+          "title": "DOP",
+          "url": "https://media.tarkett-image.com/large/Declaration-Performance_0132-0078-DoP-2021-08_Laminate-ranges_INT.pdf"
+        },
+        {
+          "title": "INSTALLATION",
+          "url": "https://media.tarkett-image.com/large/Installation-Guide-Inlay-Laminate-INT.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "frontier-1033-4v": {
+      "name": "Frontier 1033 4V",
+      "slug": "frontier-1033-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C003147-frontier-1033-4v",
+      "shortDescription": "Za one koji žele da transformišu svoj prostor, kolekcija Frontier 1033 4V predstavlja odličan izbor. Sa svojim elegantnim izgledom unosi toplinu prirodnog drveta i osećaj luksuza u enterijer, a zahvaljujući povećanoj otpornosti na vodu do 24 sata i visokoj otpornosti na habanje, idealna je za prostore koji prate ritam savremenog života.",
+      "description": "Za one koji žele da transformišu svoj prostor, kolekcija Frontier 1033 4V predstavlja odličan izbor. Sa svojim elegantnim izgledom unosi toplinu prirodnog drveta i osećaj luksuza u enterijer, a zahvaljujući povećanoj otpornosti na vodu do 24 sata i visokoj otpornosti na habanje, idealna je za prostore koji prate ritam savremenog života.",
+      "keyFeatures": [
+        "Otpornost na vodu do 24h",
+        "Visoka otpornost na habanje"
+      ],
+      "specs": [
+        {
+          "key": "product_type_norm_iso",
+          "label": "ISO vrsta proizvoda",
+          "value": "Laminirane podne obloge (EN 13329)"
+        },
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "33 Heavy"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "10 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "7810 g/m²"
+        },
+        {
+          "key": "installation_method",
+          "label": "Način ugradnje",
+          "value": "Klik"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "2-lock"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "7"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,282 m²"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14342"
+        },
+        {
+          "key": "dop_certificate",
+          "label": "Izjava o performansama proizvoda",
+          "value": "DoP PER.BEY.06"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Klasa DS (µ ≥ 0,30)"
+        },
+        {
+          "key": "thermal_resistance",
+          "label": "Termička otpornost",
+          "value": "≤ 0,15 m²•K/W"
+        },
+        {
+          "key": "stain_resistance_1_2_en_438",
+          "label": "Otpornost na mrlje - grupe 1 i 2",
+          "value": "≥ 5"
+        },
+        {
+          "key": "stain_resistance_3_en_438",
+          "label": "Otpornost na mrlje - grupa 3",
+          "value": "≥ 4"
+        },
+        {
+          "key": "furniture_leg_effect",
+          "label": "Otpornost na nogice nameštaja",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "abrasion_resistance_en_13329",
+          "label": "Otpornost na abraziju",
+          "value": "AC5"
+        },
+        {
+          "key": "impact_resistance_en_13329",
+          "label": "Otpornost na udar",
+          "value": "IC3"
+        },
+        {
+          "key": "castor_chair_effect_iso_4918",
+          "label": "Otpornost na točkiće stolica",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/DS_SEE_FRONTIER_1033_4V_EN.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "giant-1233-4v": {
+      "name": "Giant 1233 4V",
+      "slug": "giant-1233-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002686-giant-1233-4v",
+      "shortDescription": "Kolekcija čiji je dizajn stvoren da traje, on je večit. Laminat Giant stvara sofisticiran enterijer i daje svojim vlasnicima pravo estetsko uživanje. Kreiran je sa posebnom pažnjom i svaka njegova ploča poseduje jedinstveni pečat prirode.",
+      "description": "Kolekcija čiji je dizajn stvoren da traje, on je večit. Laminat Giant stvara sofisticiran enterijer i daje svojim vlasnicima pravo estetsko uživanje. Kreiran je sa posebnom pažnjom i svaka njegova ploča poseduje jedinstveni pečat prirode.",
+      "keyFeatures": [],
+      "specs": [
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "33 Heavy"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "12 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "10330 g/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "2-lock"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,470 m²"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14041"
+        },
+        {
+          "key": "dop_certificate",
+          "label": "Izjava o performansama proizvoda",
+          "value": "DOP PER.BEY.06"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Klasa DS (µ ≥ 0,30)"
+        },
+        {
+          "key": "thermal_resistance",
+          "label": "Termička otpornost",
+          "value": "≤ 0,12 m²•K/W"
+        },
+        {
+          "key": "stain_resistance_1_2_en_438",
+          "label": "Otpornost na mrlje - grupe 1 i 2",
+          "value": "≥ 5"
+        },
+        {
+          "key": "stain_resistance_3_en_438",
+          "label": "Otpornost na mrlje - grupa 3",
+          "value": "≥ 4"
+        },
+        {
+          "key": "colour_fastness_light",
+          "label": "Postojanost boje - svetlost",
+          "value": "≥ 4"
+        },
+        {
+          "key": "furniture_leg_effect",
+          "label": "Otpornost na nogice nameštaja",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "abrasion_resistance_en_13329",
+          "label": "Otpornost na abraziju",
+          "value": "AC5"
+        },
+        {
+          "key": "impact_resistance_en_13329",
+          "label": "Otpornost na udar",
+          "value": "IC3"
+        },
+        {
+          "key": "castor_chair_effect_iso_4918",
+          "label": "Otpornost na točkiće stolica",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://media.tarkett-image.com/large/DS_SEE_Giant_1233_4V.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "journey-731-4v": {
+      "name": "Journey 731 4V",
+      "slug": "journey-731-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002962-journey-731-4v",
+      "shortDescription": "Otkrijte laminat kolekciju Journey 731 4V, koja Vas vodi kroz vreme i prostor. Sa svojim klasičnim formatom daske od 1292 x 193 mm i autentičnim dezenima koji verno odražavaju lepotu hrasta, kolekcija predstavlja izbor za sve koji traže i kvalitet i pristupačno rešenje u svom prostoru. Mat površina sa umereno rustičnim dizajnom, pružaju toplinu i karakter svakom prostoru. Savršen izbor za one koji žele spoj stila i funkcionalnosti!",
+      "description": "Otkrijte laminat kolekciju Journey 731 4V, koja Vas vodi kroz vreme i prostor. Sa svojim klasičnim formatom daske od 1292 x 193 mm i autentičnim dezenima koji verno odražavaju lepotu hrasta, kolekcija predstavlja izbor za sve koji traže i kvalitet i pristupačno rešenje u svom prostoru. Mat površina sa umereno rustičnim dizajnom, pružaju toplinu i karakter svakom prostoru. Savršen izbor za one koji žele spoj stila i funkcionalnosti!",
+      "keyFeatures": [
+        "Prirodan izgled drveta",
+        "Funkcionalan",
+        "Brza ugradnja",
+        "Jednostavno održavanje",
+        "Ekonomično rešenje"
+      ],
+      "specs": [
+        {
+          "key": "product_type_norm_iso",
+          "label": "ISO vrsta proizvoda",
+          "value": "Laminirane podne obloge (EN 13329)"
+        },
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "31 Moderate"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "7 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "6160 g/m²"
+        },
+        {
+          "key": "installation_method",
+          "label": "Način ugradnje",
+          "value": "Klik"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "2-lock"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "10"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "2,494 m²"
+        },
+        {
+          "key": "stain_resistance_1_2_en_438",
+          "label": "Otpornost na mrlje - grupe 1 i 2",
+          "value": "≥ 5"
+        },
+        {
+          "key": "stain_resistance_3_en_438",
+          "label": "Otpornost na mrlje - grupa 3",
+          "value": "≥ 4"
+        },
+        {
+          "key": "furniture_leg_effect",
+          "label": "Otpornost na nogice nameštaja",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "abrasion_resistance_en_13329",
+          "label": "Otpornost na abraziju",
+          "value": "AC3"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://media.tarkett-image.com/large/TDS_Journey_731_4V.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "river-1233-4v": {
+      "name": "River 1233 4V",
+      "slug": "river-1233-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002838-river-1233-4v",
+      "shortDescription": "Kolekcija laminata River nudi širok spektar mogućnosti visokokvalitetnih laminata za stambene i poslovne prostore. Sa fokusom na izdržljivost, stil i pristupačnost, River laminati su dizajnirani da izdrže svakodnevno habanje, a da i dalje zadrže svoju estetsku privlačnost. Pored svog atraktivnog izgleda, River laminati se lako postavljaju i održavaju, što ih čini praktičnim izborom za domaćinstva i manje i srednje komercijalne prostore. Kolekcija takođe sadrži opcije otporne na vlagu i ogrebotine, pružajući dodatni mir kako vlasnicima kuća tako i vlasnicima preduzeća.",
+      "description": "Kolekcija laminata River nudi širok spektar mogućnosti visokokvalitetnih laminata za stambene i poslovne prostore. Sa fokusom na izdržljivost, stil i pristupačnost, River laminati su dizajnirani da izdrže svakodnevno habanje, a da i dalje zadrže svoju estetsku privlačnost. Pored svog atraktivnog izgleda, River laminati se lako postavljaju i održavaju, što ih čini praktičnim izborom za domaćinstva i manje i srednje komercijalne prostore. Kolekcija takođe sadrži opcije otporne na vlagu i ogrebotine, pružajući dodatni mir kako vlasnicima kuća tako i vlasnicima preduzeća.",
+      "keyFeatures": [],
+      "specs": [
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "33 Heavy"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "12 mm"
+        },
+        {
+          "key": "installation_method",
+          "label": "Način ugradnje",
+          "value": "Klik"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "2-lock"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,215 m²"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14041"
+        },
+        {
+          "key": "dop_certificate",
+          "label": "Izjava o performansama proizvoda",
+          "value": "DOP PER.BEY.06"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Klasa DS (µ ≥ 0,30)"
+        },
+        {
+          "key": "thermal_resistance",
+          "label": "Termička otpornost",
+          "value": "≤ 0,12 m²•K/W"
+        },
+        {
+          "key": "stain_resistance_1_2_en_438",
+          "label": "Otpornost na mrlje - grupe 1 i 2",
+          "value": "≥ 5"
+        },
+        {
+          "key": "stain_resistance_3_en_438",
+          "label": "Otpornost na mrlje - grupa 3",
+          "value": "≥ 4"
+        },
+        {
+          "key": "furniture_leg_effect",
+          "label": "Otpornost na nogice nameštaja",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "abrasion_resistance_en_13329",
+          "label": "Otpornost na abraziju",
+          "value": "AC5"
+        },
+        {
+          "key": "impact_resistance_en_13329",
+          "label": "Otpornost na udar",
+          "value": "IC3"
+        },
+        {
+          "key": "castor_chair_effect_iso_4918",
+          "label": "Otpornost na točkiće stolica",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "DoP sertifikat (Deklaracija o proizvodu)",
+          "url": "https://media.tarkett-image.com/large/DS_Tarkett_River_1233_4V_EN.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "roads-833-4v": {
+      "name": "Roads 833 4V",
+      "slug": "roads-833-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002761-roads-833-4v",
+      "shortDescription": "Kolekcija laminata Roads nudi širok spektar mogućnosti visokokvalitetnih laminata za stambene i poslovne prostore. Sa fokusom na izdržljivost, stil i pristupačnost, Roads laminati su dizajnirani da izdrže svakodnevno habanje, a da i dalje zadrže svoju estetsku privlačnost. Pored svog atraktivnog izgleda, Roads laminati se lako postavljaju i održavaju, što ih čini praktičnim izborom za domaćinstva i manje i srednje komercijalne prostore. Kolekcija takođe sadrži opcije otporne na vlagu i ogrebotine, pružajući dodatni mir kako vlasnicima kuća tako i vlasnicima preduzeća.",
+      "description": "Kolekcija laminata Roads nudi širok spektar mogućnosti visokokvalitetnih laminata za stambene i poslovne prostore. Sa fokusom na izdržljivost, stil i pristupačnost, Roads laminati su dizajnirani da izdrže svakodnevno habanje, a da i dalje zadrže svoju estetsku privlačnost. Pored svog atraktivnog izgleda, Roads laminati se lako postavljaju i održavaju, što ih čini praktičnim izborom za domaćinstva i manje i srednje komercijalne prostore. Kolekcija takođe sadrži opcije otporne na vlagu i ogrebotine, pružajući dodatni mir kako vlasnicima kuća tako i vlasnicima preduzeća.",
+      "keyFeatures": [],
+      "specs": [
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "33 Heavy"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "8 mm"
+        },
+        {
+          "key": "installation_method",
+          "label": "Način ugradnje",
+          "value": "Klik"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "2-lock"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "8"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,960 m²"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14041"
+        },
+        {
+          "key": "dop_certificate",
+          "label": "Izjava o performansama proizvoda",
+          "value": "DOP PER.BEY.06"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Klasa DS (µ ≥ 0,30)"
+        },
+        {
+          "key": "thermal_resistance",
+          "label": "Termička otpornost",
+          "value": "≤ 0,12 m²•K/W"
+        },
+        {
+          "key": "stain_resistance_1_2_en_438",
+          "label": "Otpornost na mrlje - grupe 1 i 2",
+          "value": "≥ 5"
+        },
+        {
+          "key": "stain_resistance_3_en_438",
+          "label": "Otpornost na mrlje - grupa 3",
+          "value": "≥ 4"
+        },
+        {
+          "key": "colour_fastness_light",
+          "label": "Postojanost boje - svetlost",
+          "value": "≥ 4"
+        },
+        {
+          "key": "furniture_leg_effect",
+          "label": "Otpornost na nogice nameštaja",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "abrasion_resistance_en_13329",
+          "label": "Otpornost na abraziju",
+          "value": "AC5"
+        },
+        {
+          "key": "impact_resistance_en_13329",
+          "label": "Otpornost na udar",
+          "value": "IC3"
+        },
+        {
+          "key": "castor_chair_effect_iso_4918",
+          "label": "Otpornost na točkiće stolica",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://media.tarkett-image.com/large/DS_Tarkett_Roads_833_4V_EN.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "timeless-1232-4v": {
+      "name": "Timeless 1232 4V",
+      "slug": "timeless-1232-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002687-timeless-1232-4v",
+      "shortDescription": "Kao što sama reč kaže, Timeless – bezvremenski, nema roka trajanja. Kolekcija odiše neprolaznom lepotom klasičnog. Dizajn je kreiran sa posebnom pažnjom sa čvrstim osloncem na sve trendove. Savršen pod za strastvene ljubitelje prirode i posvećene entuzijaste stila.",
+      "description": "Kao što sama reč kaže, Timeless – bezvremenski, nema roka trajanja. Kolekcija odiše neprolaznom lepotom klasičnog. Dizajn je kreiran sa posebnom pažnjom sa čvrstim osloncem na sve trendove. Savršen pod za strastvene ljubitelje prirode i posvećene entuzijaste stila.",
+      "keyFeatures": [],
+      "specs": [
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "32 General"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "12 mm"
+        },
+        {
+          "key": "basis_weight",
+          "label": "Ukupna masa",
+          "value": "10940 g/m²"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "2-lock"
+        },
+        {
+          "key": "format_type",
+          "label": "Tip formata",
+          "value": "Daska"
+        },
+        {
+          "key": "items_per_box",
+          "label": "Broj artikala po kutiji",
+          "value": "6"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,496 m²"
+        },
+        {
+          "key": "ce_marking",
+          "label": "CE oznaka",
+          "value": "EN 14041"
+        },
+        {
+          "key": "dop_certificate",
+          "label": "Izjava o performansama proizvoda",
+          "value": "DoP- TSEE – 001 – 2022"
+        },
+        {
+          "key": "slip_resistance_en_13893",
+          "label": "Otpornost na klizanje (EN 13893)",
+          "value": "Klasa DS (µ ≥ 0,30)"
+        },
+        {
+          "key": "thermal_resistance",
+          "label": "Termička otpornost",
+          "value": "≤ 0,12 m²•K/W"
+        },
+        {
+          "key": "stain_resistance_1_2_en_438",
+          "label": "Otpornost na mrlje - grupe 1 i 2",
+          "value": "≥ 5"
+        },
+        {
+          "key": "stain_resistance_3_en_438",
+          "label": "Otpornost na mrlje - grupa 3",
+          "value": "≥ 4"
+        },
+        {
+          "key": "colour_fastness_light",
+          "label": "Postojanost boje - svetlost",
+          "value": "≥ 4"
+        },
+        {
+          "key": "furniture_leg_effect",
+          "label": "Otpornost na nogice nameštaja",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "abrasion_resistance_en_13329",
+          "label": "Otpornost na abraziju",
+          "value": "AC4"
+        },
+        {
+          "key": "impact_resistance_en_13329",
+          "label": "Otpornost na udar",
+          "value": "IC2"
+        },
+        {
+          "key": "castor_chair_effect_iso_4918",
+          "label": "Otpornost na točkiće stolica",
+          "value": "Nema oštećenja"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://media.tarkett-image.com/large/DS_SEE_Timeless_1232_4V.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "winter-832": {
+      "name": "Winter 832",
+      "slug": "winter-832",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002974-winter-832",
+      "shortDescription": "Nova kolekcija laminata Winter 832 donosi elegantan spoj prirodne estetike, funkcionalnosti i ekonomičnosti. Namenjena je projektima koji traže dugotrajno i pouzdano rešenje, bez kompromisa kada je reč o izgledu prostora. Sa modernim dezenima inspirisanim teksturama drveta, ova kolekcija donosi toplinu i šarm prirode u svaki dom, ili poslovni prostor.",
+      "description": "Nova kolekcija laminata Winter 832 donosi elegantan spoj prirodne estetike, funkcionalnosti i ekonomičnosti. Namenjena je projektima koji traže dugotrajno i pouzdano rešenje, bez kompromisa kada je reč o izgledu prostora. Sa modernim dezenima inspirisanim teksturama drveta, ova kolekcija donosi toplinu i šarm prirode u svaki dom, ili poslovni prostor.",
+      "keyFeatures": [
+        "Prirodan izgled drveta",
+        "Funkcionalan",
+        "Brza ugradnja",
+        "Jednostavno održavanje",
+        "Ekonomično rešenje"
+      ],
+      "specs": [
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "32 General"
+        },
+        {
+          "key": "surface_per_box",
+          "label": "Površina po kutiji",
+          "value": "1,960 m²"
+        }
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://media.tarkett-image.com/large/TDS_Winter_832.pdf"
+        }
+      ],
+      "heroImage": ""
+    },
+    "woodstock-longboards-1033-4v": {
+      "name": "Woodstock Longboards 1033 4V",
+      "slug": "woodstock-longboards-1033-4v",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002658-woodstock-longboards-1033-4v",
+      "shortDescription": "Značajna debljina proizvoda od 10 mm, obezbeđuje dugotrajnu izdržljivost, ispunjavajući zahteve prometnih komercijalnih prostora. Uključivanje brzog i jednostavnog 5G klik sistema garantuje besprekornu instalaciju, štedeći dragoceno vreme i trud. Woodstock Longboard 1033 4V stvara zadivljujuće enterijere povezane sa pravim parketom od tvrdog drveta. Zahvaljujući izdržljivosti i jednostavnoj instalaciji pomoću 5G klik sistema, ovo je idealan izbor za projekte renoviranja.",
+      "description": "Značajna debljina proizvoda od 10 mm, obezbeđuje dugotrajnu izdržljivost, ispunjavajući zahteve prometnih komercijalnih prostora. Uključivanje brzog i jednostavnog 5G klik sistema garantuje besprekornu instalaciju, štedeći dragoceno vreme i trud. Woodstock Longboard 1033 4V stvara zadivljujuće enterijere povezane sa pravim parketom od tvrdog drveta. Zahvaljujući izdržljivosti i jednostavnoj instalaciji pomoću 5G klik sistema, ovo je idealan izbor za projekte renoviranja.",
+      "keyFeatures": [
+        "Klasa 33 (srednje prometne komercijalne površine)",
+        "5G klik sistem",
+        "Duge i široke daske (1845 mm)",
+        "Ističu prostorne zapremine",
+        "Embossing-In-Register dizajni za autentične teksture",
+        "Proizvedeno u Nemačkoj"
+      ],
+      "specs": [
+        {
+          "key": "classification_domestic_iso_10874",
+          "label": "Rezidencijalna klasifikacija",
+          "value": "23 Teška"
+        },
+        {
+          "key": "classification_commercial_iso_10874",
+          "label": "Komercijalna klasifikacija",
+          "value": "33 Heavy"
+        },
+        {
+          "key": "total_thickness",
+          "label": "Ukupna debljina",
+          "value": "10 mm"
+        },
+        {
+          "key": "bevelled_edges",
+          "label": "Oborene ivice",
+          "value": "4 strane"
+        },
+        {
+          "key": "locking_system",
+          "label": "Sistem zaključavanja",
+          "value": "5G"
+        },
+        {
+          "key": "residual_indentation",
+          "label": "Zaostala ulegnuća",
+          "value": "≤ 0.05 mm"
+        },
+        {
+          "key": "surface_soundness",
+          "label": "Surface Soundness",
+          "value": "≥ 1.25 N/mm²"
+        },
+        {
+          "key": "underfloor_heating",
+          "label": "Podno grejanje",
+          "value": "Da (maksimum 27°C)"
+        },
+        {
+          "key": "thickness_swelling",
+          "label": "Thickness Swelling",
+          "value": "≤ 15 %"
+        },
+        {
+          "key": "blue_angel_certification",
+          "label": "Sertifikat Plavi anđeo",
+          "value": "Da"
+        },
+        {
+          "key": "scs_floorscore_certification",
+          "label": "standard SCS Floorscore",
+          "value": "Da"
+        },
+        {
+          "key": "emissions_label",
+          "label": "Emissions label",
+          "value": "A+"
+        },
+        {
+          "key": "tvoc_emission",
+          "label": "Emisije TVOC nakon 28 dana",
+          "value": "Zlato (≤ 100 µg / m³)"
+        },
+        {
+          "key": "tvoc_emission_rts_class",
+          "label": "RTS klasa emisije",
+          "value": "M1"
+        },
+        {
+          "key": "eplf",
+          "label": "EPLF",
+          "value": "Available"
+        }
+      ],
+      "documents": [
+        {
+          "title": "BROCHURE",
+          "url": "https://media.tarkett-image.com/large/GB_LD_INT_Laminate_Flooring.pdf"
+        },
+        {
+          "title": "Sertifikat EPD",
+          "url": "https://media.tarkett-image.com/large/EPD_EPLF_Laminate.pdf"
+        },
+        {
+          "title": "Sertifikat DoP (Deklaracija o performansama)",
+          "url": "https://media.tarkett-image.com/large/Declaration-Performance-0132_0091_DoP_2023_06-Laminate_range-INT.pdf"
+        },
+        {
+          "title": "DATASHEET",
+          "url": "https://media.tarkett-image.com/large/DS-Tarkett-woodstock_longboards-en_INTL.pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://media.tarkett-image.com/large/Guarantee-Tarkett-Laminate-ranges-INT.pdf"
+        }
+      ],
+      "heroImage": ""
+    }
+  }
+}

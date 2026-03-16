@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 16.03.2026 (Tarkett opis cleanup za Sport/Vinil)
+> **Poslednje ažuriranje:** 16.03.2026 (Duboki katalog audit + Tarkett/Gerflor enrichment)
 
 ---
 
@@ -138,6 +138,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Duboki katalog audit + zvanični enrichment za opise, dokumenta i specifikacije (16.03.2026)**
+- Dodata je nova skripta `scripts/audit-catalog-quality.ts` koja radi duboki audit kanonskog kataloga preko JSON izvora, ručnih collection header proizvoda, Tarkett/Gerflor/TimberTech/BLOQ loadera i opcionalnog Supabase sloja; rezultat se zapisuje u `output/catalog-quality-audit.json` i razdvaja actionable nalaze od legacy/mock šuma.
+- Dodat je `tools/extract_tarkett_wood.js` extractor koji sa zvaničnog Tarkett Srbija sajta puni `public/data/tarkett_wood_collection_index.json` za svih 11 parket i 10 laminat kolekcija, uključujući zvanične opise, ključne karakteristike, hero slike, PDF dokumenta i tehničke specifikacije po kolekciji.
+- Uveden je `lib/data/tarkett-wood-enrichment.ts`, a `product-repository.ts` i `resolve-product.ts` sada kroz taj sloj obogaćuju Tarkett Parket/Laminat proizvode i kada dolaze iz Supabase-a i kada dolaze iz statičkog fallback-a, tako da kolekcijski opisi, dokumentacija, hero slike i specifikacije više ne zavise od slabijeg lokalnog teksta.
+- Ojačan je collection/header pipeline u `lib/utils/productDataLoader.ts`: BLOQ sada koristi kolekcijske opise i dokumenta umesto prvog dekora, Gerflor LVT/Linoleum/Vinil/ESD kolekcije dobijaju bogatije opise, `externalLink` i specs fallback iz zvaničnih karakteristika, a TimberTech deking kolekcije sada nose ispravan `externalLink`.
+- `lib/data/manual-collection-products.ts` sada nosi i zvanične Gerflor PDF dokumente za svih 9 ručno vođenih collection proizvoda u kategorijama Vinil specijal, Industrijske ploče i Sport, sa normalizovanim URL-ovima bez tracking query stringova.
+- Završna verifikacija: `node tools/extract_tarkett_wood.js`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run lint`, `npm run build`; audit trenutno prijavljuje `0` actionable high/medium/low nalaza nad kanonskim katalogom.
 
 **Tarkett opis cleanup za Sport i pravilan prikaz opisa na product strani (16.03.2026)**
 - `app/proizvodi/[slug]/page.tsx` više ne gasi plain-text opis čim postoji `detailsSections`: kada opis nije strukturiran u sekcije, sada se prvo renderuje stvarni prose opis proizvoda, pa tek onda `Ključne karakteristike`.
@@ -390,14 +398,16 @@ PODOVI/
 │
 ├── lib/
 │   ├── product-page/       # KRITIČNO: resolver, color merge, spec helpers
-│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi
+│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi + Tarkett wood enrichment
 │   └── repositories/       # Data access layer (Supabase)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, ESD, Industrijske, Sport, Tarkett sport + PDF indeks...)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, ESD, Industrijske, Sport, Tarkett sport, Tarkett wood collection index + PDF indeksi)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
-└── scripts/                # Utility skripte (enrichment, image validation, Tarkett audit/sync)
+├── scripts/                # Utility skripte (enrichment, image validation, Tarkett audit/sync, catalog quality audit)
+│
+└── tools/                  # Ekstraktori/scraperi za zvanične kataloge (Gerflor, Tarkett...)
 ```
 
 ## 8. ⚡ COMMON GOTCHAS

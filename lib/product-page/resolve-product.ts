@@ -2,6 +2,7 @@ import type { Product } from '@/types';
 import type { ColorFromJSON, ColorSource } from './types';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { getParketCollectionNameBySlug } from '@/lib/data/parket-collection-mapping';
+import { enrichTarkettWoodProduct } from '@/lib/data/tarkett-wood-enrichment';
 import {
     lvtColors,
     linoleumColors,
@@ -109,7 +110,7 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                 p.slug === slug
         );
         if (header) {
-            return { ...header, collectionSlug: undefined };
+            return { ...enrichTarkettWoodProduct(header), collectionSlug: undefined };
         }
     }
 

@@ -16,6 +16,7 @@ type ManualCollectionConfig = {
   imageUrl?: string;
   externalLink: string;
   specs: ProductSpec[];
+  documents?: Product['documents'];
   detailsSections?: Product['detailsSections'];
 };
 
@@ -44,6 +45,10 @@ function resolveCollectionImageUrl(productSlug: string, fallbackUrl?: string) {
   return fallbackUrl;
 }
 
+function normalizeDocumentUrl(url: string) {
+  return String(url || '').split('?')[0];
+}
+
 function createCollectionProduct(config: ManualCollectionConfig): Product {
   const imageUrl = resolveCollectionImageUrl(config.slug, config.imageUrl);
 
@@ -66,6 +71,10 @@ function createCollectionProduct(config: ManualCollectionConfig): Product {
       },
     ] : [],
     specs: config.specs,
+    documents: config.documents?.map((document) => ({
+      ...document,
+      url: normalizeDocumentUrl(document.url),
+    })),
     externalLink: config.externalLink,
     detailsSections: config.detailsSections,
     inStock: true,
@@ -93,6 +102,13 @@ export const manualCollectionProducts: Product[] = [
       { key: 'thickness', label: 'Ukupna debljina', value: '2.00 mm' },
       { key: 'format', label: 'Format', value: 'Rola' },
       { key: 'application', label: 'Namena', value: 'Clean room, laboratorije, farmacija' },
+    ],
+    documents: [
+      { title: 'Technical Data Sheet', url: 'https://cdn.gerflor.com/media/2/40901/mipolam%20biocontrol%20clean%20-%20technical%20data%20sheet.pdf', type: 'tech_datasheet' },
+      { title: 'Life Sciences - Guide', url: 'https://cdn.gerflor.com/media/2/21058/life%20sciences%20-%20gb%20guide.pdf', type: 'guide' },
+      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/42987/tiles%20and%20rolls%20welding%20-%20installation%20guidelines.pdf', type: 'installation' },
+      { title: 'Maintenance Instructions', url: 'https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf', type: 'maintenance' },
+      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/42191/mipolam%20biocontrol%20clean%20-%20dop.pdf', type: 'dop' },
     ],
     detailsSections: [
       {
@@ -124,6 +140,14 @@ export const manualCollectionProducts: Product[] = [
       { key: 'format', label: 'Format', value: 'Rola' },
       { key: 'application', label: 'Namena', value: 'Clean room, nuklearni i tehnicki prostori' },
     ],
+    documents: [
+      { title: 'Technical Data Sheet', url: 'https://cdn.gerflor.com/media/2/40583/mipolam%20biocontrol%20performance%20-%20technical%20data%20sheet.pdf', type: 'tech_datasheet' },
+      { title: 'Life Sciences - Guide', url: 'https://cdn.gerflor.com/media/2/21058/life%20sciences%20-%20gb%20guide.pdf', type: 'guide' },
+      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/42987/tiles%20and%20rolls%20welding%20-%20installation%20guidelines.pdf', type: 'installation' },
+      { title: 'Maintenance Instructions', url: 'https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf', type: 'maintenance' },
+      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/60431/mipolam%20biocontrol%20performance%20-%20declaration%20of%20performance.pdf', type: 'dop' },
+      { title: 'Environmental Product Declaration', url: 'https://cdn.gerflor.com/media/2/47600/epd%20mipolam%20symbioz%20%E2%80%93%20mipolam%20biocontrol%20performance%20for%20europe.pdf', type: 'epd' },
+    ],
     detailsSections: [
       {
         title: 'Ključne karakteristike',
@@ -153,6 +177,13 @@ export const manualCollectionProducts: Product[] = [
       { key: 'thickness', label: 'Ukupna debljina', value: '6.00 mm' },
       { key: 'format', label: 'Format', value: 'Ploce 63.5 x 63.5 cm' },
       { key: 'installation', label: 'Ugradnja', value: 'Loose lay / Connect' },
+    ],
+    documents: [
+      { title: 'Technical Datasheet', url: 'https://cdn.gerflor.com/media/2/43315/gti%20max%20-%20technical%20datasheet.pdf', type: 'tech_datasheet' },
+      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/58195/gti%20max%20cleantech%20-%20product%20description.doc', type: 'product_description' },
+      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/67285/technical%20tiles%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
+      { title: 'Environmental Datasheet', url: 'https://cdn.gerflor.com/media/2/58974/gti%20max%20-%20environmental%20datasheet%20(europe).pdf', type: 'environmental_datasheet' },
+      { title: 'EPD Europe', url: 'https://cdn.gerflor.com/media/2/58559/gti%20tiles%20-%20epd%20europe.pdf', type: 'epd' },
     ],
     detailsSections: [
       {
@@ -184,6 +215,13 @@ export const manualCollectionProducts: Product[] = [
       { key: 'format', label: 'Format', value: 'Ploce 63.5 x 63.5 cm' },
       { key: 'installation', label: 'Ugradnja', value: 'Loose lay / Connect' },
     ],
+    documents: [
+      { title: 'Technical Datasheet', url: 'https://cdn.gerflor.com/media/2/43315/gti%20max%20-%20technical%20datasheet.pdf', type: 'tech_datasheet' },
+      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/39401/gti%20max%20connect%20-%20installation%20guidelines.pdf', type: 'installation' },
+      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/67285/technical%20tiles%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
+      { title: 'Environmental Product Declaration', url: 'https://cdn.gerflor.com/media/2/31664/gti%20max%20connect%20-%20environmental%20product%20declaration.pdf', type: 'epd' },
+      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/58194/gti%20max%20connect%20-%20product%20description.doc', type: 'product_description' },
+    ],
     detailsSections: [
       {
         title: 'Ključne karakteristike',
@@ -213,6 +251,13 @@ export const manualCollectionProducts: Product[] = [
       { key: 'thickness', label: 'Ukupna debljina', value: '6.00 mm' },
       { key: 'format', label: 'Format', value: 'Ploce 63.5 x 63.5 cm' },
       { key: 'installation', label: 'Ugradnja', value: 'Loose lay / Connect' },
+    ],
+    documents: [
+      { title: 'Technical Datasheet', url: 'https://cdn.gerflor.com/media/2/43319/gti%20pure%20connect%20-%20technical%20datasheet.pdf', type: 'tech_datasheet' },
+      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/47534/gti%20pure%20-%20installation%20guidelines.pdf', type: 'installation' },
+      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/67285/technical%20tiles%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
+      { title: 'Environmental Datasheet', url: 'https://cdn.gerflor.com/media/2/58975/gti%20pure%20-%20environmental%20datasheet%20(europe).pdf', type: 'environmental_datasheet' },
+      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/60429/gti%20pure%20-%20dop.pdf', type: 'dop' },
     ],
     detailsSections: [
       {
@@ -244,6 +289,14 @@ export const manualCollectionProducts: Product[] = [
       { key: 'format', label: 'Format', value: 'Ploce 63.5 x 63.5 cm' },
       { key: 'installation', label: 'Ugradnja', value: 'Loose lay / Connect' },
     ],
+    documents: [
+      { title: 'Technical Data Sheet', url: 'https://cdn.gerflor.com/media/2/41727/attraction%C2%AE%20-%20technical%20data%20sheet.pdf', type: 'tech_datasheet' },
+      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/17715/attraction%C2%AE%20-%20installation%20guidelines.pdf', type: 'installation' },
+      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/67285/technical%20tiles%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
+      { title: 'Environmental Datasheet', url: 'https://cdn.gerflor.com/media/2/57316/attraction%20-%20environmental%20datasheet%20(europe).pdf', type: 'environmental_datasheet' },
+      { title: 'Environmental Product Declaration', url: 'https://cdn.gerflor.com/media/2/56910/attraction%20-%20epd.pdf', type: 'epd' },
+      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/28959/attraction%C2%AE%20-%20declaration%20of%20performance%20%20d%C3%A9claration%20de%20performance.pdf', type: 'dop' },
+    ],
     detailsSections: [
       {
         title: 'Ključne karakteristike',
@@ -273,6 +326,13 @@ export const manualCollectionProducts: Product[] = [
       { key: 'thickness', label: 'Ukupna debljina', value: '4.00 mm' },
       { key: 'format', label: 'Format', value: 'Rola' },
       { key: 'application', label: 'Namena', value: 'Sportske sale i gimnazije' },
+    ],
+    documents: [
+      { title: 'Technical Data Sheet', url: 'https://cdn.gerflor.com/media/2/68811/dlw%20colorette%20sport%20-%20technical%20data%20sheet.pdf', type: 'tech_datasheet' },
+      { title: 'Sample Card', url: 'https://cdn.gerflor.com/media/2/45656/dlw%20colorette%20sport%20-%20sample%20card.pdf', type: 'sample_card' },
+      { title: 'Maintenance Instructions', url: 'https://cdn.gerflor.com/media/2/18174/dlw%20linoleum%20floor%20-%20maintenance%20instructions.pdf', type: 'maintenance' },
+      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/34635/dlw%20colorette%20sport%20-%20dop.pdf', type: 'dop' },
+      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/34958/dlw%20colorette%20sport%20-%20product%20description.docx', type: 'product_description' },
     ],
     detailsSections: [
       {
@@ -304,6 +364,13 @@ export const manualCollectionProducts: Product[] = [
       { key: 'format', label: 'Format', value: 'Rola' },
       { key: 'application', label: 'Namena', value: 'Sportske sale i gimnasticki prostori' },
     ],
+    documents: [
+      { title: 'Sample Card', url: 'https://cdn.gerflor.com/media/2/21670/marmorette%20sport%20-%20sample%20card.pdf', type: 'sample_card' },
+      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/22526/dlw%20marmorette%20sport%20-%20product%20description.docx', type: 'product_description' },
+      { title: 'Fire Certificate', url: 'https://cdn.gerflor.com/media/2/24267/dlw%20linoleum%20marmorette%20sport%203,2mm%20-%20fire%20certificate.pdf', type: 'fire_certificate' },
+      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/40414/marmorette%20sport%20-%20declaration%20of%20performance.pdf', type: 'dop' },
+      { title: 'C2C Certificate', url: 'https://cdn.gerflor.com/media/2/68300/dlw%20linoleum%20-%20c2c.pdf', type: 'certificate' },
+    ],
     detailsSections: [
       {
         title: 'Ključne karakteristike',
@@ -333,6 +400,13 @@ export const manualCollectionProducts: Product[] = [
       { key: 'thickness', label: 'Ukupna debljina', value: '4.00 mm' },
       { key: 'format', label: 'Format', value: 'Rola' },
       { key: 'application', label: 'Namena', value: 'Sportske sale i skolske dvorane' },
+    ],
+    documents: [
+      { title: 'Sample Card', url: 'https://cdn.gerflor.com/media/2/43411/linodur%20sport%20-%20sample%20card.pdf', type: 'sample_card' },
+      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/37988/linodur%20sport%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
+      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/60683/[802]%20game%20line%20marking%20guidelines%20-%20installation%20guidelines.pdf', type: 'installation' },
+      { title: 'Fire Certificate', url: 'https://cdn.gerflor.com/media/2/37987/linodur%20sport%20-%20fire%20certificate.pdf', type: 'fire_certificate' },
+      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/38007/linodur%20sport%20-%20product%20description.docx', type: 'product_description' },
     ],
     detailsSections: [
       {
