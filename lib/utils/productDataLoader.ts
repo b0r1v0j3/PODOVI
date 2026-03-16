@@ -11,6 +11,7 @@ import tarkettCollectionDetails from '@/public/data/tarkett_collection_details.j
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
+import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 
@@ -24,6 +25,7 @@ let esdCollectionCache: Product[] | null = null;
 let tarkettSportCollectionCache: Product[] | null = null;
 let tarkettVinylHomeCollectionCache: Product[] | null = null;
 let tarkettHomogeneousVinylCollectionCache: Product[] | null = null;
+let tarkettHeterogeneousVinylCollectionCache: Product[] | null = null;
 let gerflorLvtCollectionCache: Product[] | null = null;
 let gerflorLinoleumCollectionCache: Product[] | null = null;
 
@@ -420,6 +422,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
         ...getTarkettVinylHomeCollections(),
+        ...getTarkettHeterogeneousVinylCollections(),
         ...getTarkettHomogeneousVinylCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
@@ -450,6 +453,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return [
             ...getVinylCollectionProducts(),
             ...getTarkettVinylHomeCollections(),
+            ...getTarkettHeterogeneousVinylCollections(),
             ...getTarkettHomogeneousVinylCollections(),
             ...getManualCollectionProducts().filter((product) => product.categoryId === '2'),
         ];
@@ -474,6 +478,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
         ...getTarkettVinylHomeCollections(),
+        ...getTarkettHeterogeneousVinylCollections(),
         ...getTarkettHomogeneousVinylCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
@@ -1032,12 +1037,13 @@ export function getVinylCollectionProducts(): Product[] {
 function buildTarkettVinylCollectionHeaders(
     collections: any[],
     skuPrefix: string,
-    typeValue: 'Heterogeni' | 'Homogeni'
+    typeValue: 'Heterogeni' | 'Homogeni',
+    fallbackDescriptionText?: string
 ): Product[] {
     return collections.map((collection: any) => {
         const fallbackDescription = typeValue === 'Homogeni'
             ? `${collection.name} Tarkett homogena vinil kolekcija.`
-            : `${collection.name} Tarkett vinil kolekcija za kuću.`;
+            : (fallbackDescriptionText || `${collection.name} Tarkett vinil kolekcija za kuću.`);
         const firstColor = collection.colors?.[0];
         const imageUrl = collection.collection_image_url || firstColor?.image || '';
         const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
@@ -1131,6 +1137,23 @@ export function getTarkettHomogeneousVinylCollections(): Product[] {
     );
 
     return tarkettHomogeneousVinylCollectionCache;
+}
+
+export function getTarkettHeterogeneousVinylCollections(): Product[] {
+    if (tarkettHeterogeneousVinylCollectionCache) {
+        return tarkettHeterogeneousVinylCollectionCache;
+    }
+
+    const collections = (((tarkettHeterogeneousVinylData as any)?.collections || []) as any[]);
+
+    tarkettHeterogeneousVinylCollectionCache = buildTarkettVinylCollectionHeaders(
+        collections,
+        'TARKETT-VINYL-HETEROGENI',
+        'Heterogeni',
+        'Tarkett heterogeni vinil za zahtevne rezidencijalne i komercijalne prostore.'
+    );
+
+    return tarkettHeterogeneousVinylCollectionCache;
 }
 
 /**

@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 16.03.2026 (Tarkett audit hardening i dokument URL fix)
+> **Poslednje ažuriranje:** 16.03.2026 (Tarkett Heterogeni vinil integracija)
 
 ---
 
@@ -84,7 +84,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
 | Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
-| Vinil | 2 | Gerflor (6), Tarkett (3) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje) |
+| Vinil | 2 | Gerflor (6), Tarkett (4) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja) |
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | TimberTech (10) | `tis_deking_products.json` |
@@ -138,6 +138,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett Heterogeni vinil dodat u kategoriju Vinil kroz ceo pipeline (16.03.2026)**
+- Dodat je novi zvanični izvor `public/data/tarkett_heterogeneous_vinyl_colors.json` sa live Tarkett Srbija kategorije `Heterogeni vinil`: 15 kolekcija i 441 dekor, sa kolekcijskim opisima, PDF dokumentima, key features blokovima, hero slikama i color-level tehničkim listovima / tabelama formata.
+- Kreiran je novi extractor `tools/extract_tarkett_heterogeneous_vinyl.js` koji koristi Playwright + `json-collection-product` endpoint za svaki dekor, stored-JSON fallback kad collection payload pukne, i HTML / `page.content()` fallback za collection grid linkove jer Tarkett heterogeni category page u headless shell okruženju može da vrati prazan DOM query iako je sadržaj renderovan u HTML-u.
+- Proširen je category 2 pipeline kroz `color-helpers.ts`, `productDataLoader.ts`, `product-repository.ts`, `/api/colors`, `/api/color-data` i katalog audit, tako da Tarkett heterogeni vinil radi na kategoriji, brand strani, product page ruti i documents/specs toku zajedno sa Tarkett `Vinil za kuću` i `Homogeni vinil`.
+- `getTarkettHeterogeneousVinylCollections()` uvodi kolekcijske header proizvode sa `type=Heterogeni`, dok boje ostaju dostupne kroz nested color selector i server-side `/api/color-data` dokument lookup; završna provera je potvrdila da novi JSON nema prazne kolekcijske slike, prazna dokumenta ni duplicate color slugove.
+- Verifikovano: `node tools/extract_tarkett_heterogeneous_vinyl.js`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
 
 **Duboki audit postojećih Tarkett grupa + stabilizacija PDF i fallback pipeline-a (16.03.2026)**
 - Urađen je duboki audit za već ubačene Tarkett grupe `Sport`, `Vinil za kuću` i `Homogeni vinil`, uz ponovno pokretanje zvaničnih extractora i proveru opisa, hero slika, dokumenata, karakteristika i color-level dokumenata; ciljane grupe sada prolaze bez actionable nalaza.
@@ -390,7 +397,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Pokrenuti stvarni Gerflor ZIP download za `vinyl_special`, `industrial` i `sport` kolekcije i podici roomshot + color JPG slike na Supabase umesto preview URL-ova sa Gerflor sajta.
 - [x] Dodati Tarkett sport kolekcije u kategoriju `Sport` kroz ceo JSON → resolver → API → UI pipeline, sa dokumentima i key features podacima iz zvaničnog kataloga.
 - [x] Završiti Tarkett Supabase sync kada env pristup bude dostupan, da baza dobije isti parket/laminat kanonski skup proizvoda i iste Tarkett slugove kao statički fallback.
-- [ ] Nastaviti Tarkett proširenje posle `Homogeni vinil` na `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
+- [x] Nastaviti Tarkett proširenje posle `Homogeni vinil` na `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
 
 ---
 
@@ -416,7 +423,7 @@ PODOVI/
 │   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi + Tarkett wood enrichment
 │   └── repositories/       # Data access layer (Supabase)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett wood collection index + PDF indeksi)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett wood collection index + PDF indeksi)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
@@ -452,6 +459,7 @@ PODOVI/
 21. **Kad Gerflor ZIP sadrzi i clean i loupe JPG, uvek biraj clean.** Posebno kod `GTI Max` kolekcija arhiva cesto ima fajl tipa `LOUPE-...jpg` i zaseban cist `GTI Max - Color.jpg`; za sajt koristi cistu boju, ne preview sa kruzicem.
 22. **Kad na Supabase prepisujes sliku na istoj putanji, URL u JSON-u mora da dobije novu verziju.** Ako ostane identican URL, browser i CDN mogu satima da serviraju staru GTI/industrijsku preview sliku iako je object vec zamenjen clean JPG-om; dodaj `?v=...` cache-bust na `image` polje kad hoces da promena odmah postane vidljiva.
 23. **Tarkett `Vinil za kuću` extractor ne treba da se oslanja na običan `https.get` HTML fetch za collection page.** Za ove kolekcije sirovi response često nema `window.__NUXT__` payload, dok ga `page.content()` iz Playwright-a uredno vrati posle rendera; zato `tools/extract_tarkett_vinyl_home.js` mora da učitava collection stranice kroz browser, a product JSON može direktno preko `json-collection-product/...` endpointa.
+24. **Tarkett `Heterogeni vinil` category grid ume da vrati prazan DOM query u headless shell-u.** Ako `document.querySelectorAll('a[href*=\"/sr_RS/kolekcija-\"]')` vrati `0`, proveri `page.content()` pre nego što proglasiš stranicu praznom. `tools/extract_tarkett_heterogeneous_vinyl.js` zato mora da ima HTML regex fallback za collection href-ove / slike i ne sme da zavisi samo od live DOM selektorâ.
 23. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
 
 ---

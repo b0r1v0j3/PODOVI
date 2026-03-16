@@ -5,6 +5,7 @@ import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylColorsData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
+import tarkettHeterogeneousVinylColorsData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
@@ -31,7 +32,14 @@ export const baseVinylCollections = (vinylColorsData as { collections?: NestedCo
 export const vinylSpecialCollections = (vinylSpecialColorsData as { collections?: NestedCollection[] }).collections || [];
 export const tarkettVinylHomeCollections = (tarkettVinylHomeColorsData as { collections?: NestedCollection[] }).collections || [];
 export const tarkettHomogeneousVinylCollections = (tarkettHomogeneousVinylColorsData as { collections?: NestedCollection[] }).collections || [];
-export const vinylCollections = [...baseVinylCollections, ...vinylSpecialCollections, ...tarkettVinylHomeCollections, ...tarkettHomogeneousVinylCollections];
+export const tarkettHeterogeneousVinylCollections = (tarkettHeterogeneousVinylColorsData as { collections?: NestedCollection[] }).collections || [];
+export const vinylCollections = [
+    ...baseVinylCollections,
+    ...vinylSpecialCollections,
+    ...tarkettVinylHomeCollections,
+    ...tarkettHomogeneousVinylCollections,
+    ...tarkettHeterogeneousVinylCollections,
+];
 export const esdCollections = (esdColorsData as { collections?: NestedCollection[] }).collections || [];
 export const industrialCollections = (industrialColorsData as { collections?: NestedCollection[] }).collections || [];
 const gerflorSportCollections = (sportColorsData as { collections?: NestedCollection[] }).collections || [];
@@ -308,6 +316,8 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         { categorySlug: 'vinil', fileName: 'vinyl_colors_complete.json', nested: true },
         { categorySlug: 'vinil', fileName: 'vinyl_special_colors.json', nested: true },
         { categorySlug: 'vinil', fileName: 'tarkett_vinyl_home_colors.json', nested: true },
+        { categorySlug: 'vinil', fileName: 'tarkett_heterogeneous_vinyl_colors.json', nested: true },
+        { categorySlug: 'vinil', fileName: 'tarkett_homogeneous_vinyl_colors.json', nested: true },
         { categorySlug: 'elektroprovodni', fileName: 'esd_colors.json', nested: true },
         { categorySlug: 'industrijske-ploce', fileName: 'industrial_colors.json', nested: true },
         { categorySlug: 'sport', fileName: 'sport_colors.json', nested: true },

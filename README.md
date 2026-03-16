@@ -70,12 +70,13 @@ npm start
 
 ## Catalog Data Sources
 
-- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` + `public/data/tarkett_vinyl_home_colors.json` + `public/data/tarkett_homogeneous_vinyl_colors.json` power Vinil collections and colors
+- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` + `public/data/tarkett_vinyl_home_colors.json` + `public/data/tarkett_homogeneous_vinyl_colors.json` + `public/data/tarkett_heterogeneous_vinyl_colors.json` power Vinil collections and colors
 - `public/data/esd_colors.json` powers Elektroprovodni / ESD collections
 - `public/data/industrial_colors.json` powers Industrijske ploče collections
 - `public/data/sport_colors.json` powers Gerflor / DLW Sport collections
 - `public/data/tarkett_vinyl_home_colors.json` powers Tarkett home vinyl collections (12 collections, 281 colors)
 - `public/data/tarkett_homogeneous_vinyl_colors.json` powers Tarkett homogeneous vinyl collections (20 collections, 544 colors)
+- `public/data/tarkett_heterogeneous_vinyl_colors.json` powers Tarkett heterogeneous vinyl collections (15 collections, 441 colors)
 - `public/data/tarkett_sport_colors.json` powers Tarkett Sport collections (22 collections, 255 colors)
 - `public/data/tarkett_wood_collection_index.json` stores official Tarkett Parket/Laminat collection descriptions, hero images, PDF documents, and collection specs scraped from the live Serbia catalog; collection PDFs are normalized to `media.tarkett-image.com/docs/*.pdf`
 - `public/data/tarkett_documents_index.json` provides curated Tarkett PDF fallbacks for Laminat and Parket collection pages
@@ -86,6 +87,7 @@ npm start
 - `tools/extract_tarkett_sports.js` scrapes the official Tarkett Serbia sports catalog through `window.__NUXT__`, keeps stored-JSON fallback when Tarkett payloads break, and generates `public/data/tarkett_sport_colors.json` with collection PDFs normalized to `/docs/`
 - `tools/extract_tarkett_vinyl_home.js` scrapes the official Tarkett Serbia `Vinil za kuću` catalog through `window.__NUXT__`, keeps stored-JSON fallback when Tarkett payloads break, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
 - `tools/extract_tarkett_homogeneous_vinyl.js` scrapes the official Tarkett Serbia `Homogeni vinil` catalog through Playwright + `json-collection-product`, with sitemap + stored-JSON fallback for broken collection pages, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
+- `tools/extract_tarkett_heterogeneous_vinyl.js` scrapes the official Tarkett Serbia `Heterogeni vinil` catalog through Playwright + `json-collection-product`, keeps stored-JSON fallback per collection, falls back to `page.content()` / HTML parsing when the category grid returns an empty DOM query in headless shell mode, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
 - `tools/extract_tarkett_wood.js` scrapes the official Tarkett Serbia Parket/Laminat collection pages and generates `public/data/tarkett_wood_collection_index.json` with normalized `/docs/` collection PDF URLs
 - `tools/scrape_tarkett_deep.js` scrapes Tarkett LVT data and now also normalizes collection PDF URLs to `/docs/`
 - `scripts/audit-tarkett-sync.ts` compares official Tarkett Parket/Laminat collections against `lib/data/tarkett-products.ts`, `public/data/tarkett_documents_index.json`, and Supabase when env vars are available, including exact design-slug comparison, duplicate detection, and parket alias normalization for collection-specific URL collisions
@@ -181,6 +183,7 @@ PODOVI/
 │   │   ├── vinyl_colors_complete.json
 │   │   ├── tarkett_vinyl_home_colors.json
 │   │   ├── tarkett_homogeneous_vinyl_colors.json
+│   │   ├── tarkett_heterogeneous_vinyl_colors.json
 │   │   ├── linoleum_colors_complete.json
 │   │   ├── industrial_colors.json
 │   │   ├── sport_colors.json
@@ -216,6 +219,7 @@ PODOVI/
 │   ├── extract_tarkett_sports.js   # Tarkett sports catalog extractor
 │   ├── extract_tarkett_vinyl_home.js # Tarkett home vinyl catalog extractor
 │   ├── extract_tarkett_homogeneous_vinyl.js # Tarkett homogeneous vinyl catalog extractor
+│   ├── extract_tarkett_heterogeneous_vinyl.js # Tarkett heterogeneous vinyl catalog extractor
 │   ├── extract_tarkett_wood.js     # Tarkett parket/laminat collection extractor
 │   ├── normalize-json.js           # JSON normalizer
 │   └── suggest-fixes-unknowns.js   # Unknown product fix suggestions

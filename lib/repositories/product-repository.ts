@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -281,6 +281,7 @@ export class SupabaseProductRepository implements IProductRepository {
       let vinylJsonCollections = [
         ...getVinylCollectionProducts(),
         ...getTarkettVinylHomeCollections(),
+        ...getTarkettHeterogeneousVinylCollections(),
         ...getTarkettHomogeneousVinylCollections(),
       ].filter(vc => !existingSlugs.has(vc.slug)); // Only add collections not already from Supabase
 
@@ -540,6 +541,7 @@ export class SupabaseProductRepository implements IProductRepository {
         .map(enrichCatalogProduct)
         .concat(getTarkettSportCollections())
         .concat(getTarkettVinylHomeCollections())
+        .concat(getTarkettHeterogeneousVinylCollections())
         .concat(getTarkettHomogeneousVinylCollections())
         .filter(product => !existingSlugs.has(product.slug));
 
@@ -588,6 +590,7 @@ export class MockProductRepository implements IProductRepository {
     ...tarkettProducts.map(enrichCatalogProduct),
     ...getAllTarkettLVTProducts(),
     ...getTarkettVinylHomeCollections(),
+    ...getTarkettHeterogeneousVinylCollections(),
     ...getTarkettHomogeneousVinylCollections(),
     ...getTarkettSportCollections(),
     ...getAllDekingProducts(),

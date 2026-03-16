@@ -15,6 +15,7 @@ import {
   getGerflorLinoleumCollections,
   getGerflorLVTCollections,
   getTarkettLVTCollections,
+  getTarkettHeterogeneousVinylCollections,
   getTarkettHomogeneousVinylCollections,
   getTarkettSportCollections,
   getTarkettVinylHomeCollections,
@@ -27,6 +28,7 @@ import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
+import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
@@ -556,6 +558,7 @@ async function main() {
     { name: 'manual-collections', products: getManualCollectionProducts() },
     { name: 'tarkett-parket-laminat', products: enrichedTarkettWoodProducts },
     { name: 'tarkett-lvt-collections', products: getTarkettLVTCollections() },
+    { name: 'tarkett-vinyl-heterogeneous-collections', products: getTarkettHeterogeneousVinylCollections() },
     { name: 'tarkett-vinyl-homogeneous-collections', products: getTarkettHomogeneousVinylCollections() },
     { name: 'tarkett-vinyl-home-collections', products: getTarkettVinylHomeCollections() },
     { name: 'tarkett-sport-collections', products: getTarkettSportCollections() },
@@ -578,6 +581,7 @@ async function main() {
       ...getGerflorLVTCollections(),
       ...getGerflorLinoleumCollections(),
       ...getTarkettLVTCollections(),
+      ...getTarkettHeterogeneousVinylCollections(),
       ...getTarkettHomogeneousVinylCollections(),
       ...getTarkettSportCollections(),
       ...getTarkettVinylHomeCollections(),
@@ -640,6 +644,7 @@ async function main() {
     summarizeProductArray('manual-collections', getManualCollectionProducts()),
     summarizeProductArray('tarkett-parket-laminat', enrichedTarkettWoodProducts),
     summarizeProductArray('tarkett-lvt-collections', getTarkettLVTCollections()),
+    summarizeProductArray('tarkett-vinyl-heterogeneous-collections', getTarkettHeterogeneousVinylCollections()),
     summarizeProductArray('tarkett-vinyl-homogeneous-collections', getTarkettHomogeneousVinylCollections()),
     summarizeProductArray('tarkett-vinyl-home-collections', getTarkettVinylHomeCollections()),
     summarizeProductArray('tarkett-sport-collections', getTarkettSportCollections()),
@@ -652,6 +657,7 @@ async function main() {
     summarizeNestedDataset('vinyl-special-json', ((vinylSpecialColorsData as any).collections || []) as any[]),
     summarizeNestedDataset('industrial-json', ((industrialColorsData as any).collections || []) as any[]),
     summarizeNestedDataset('sport-json', ((sportColorsData as any).collections || []) as any[]),
+    summarizeNestedDataset('tarkett-vinyl-heterogeneous-json', ((tarkettHeterogeneousVinylData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('tarkett-vinyl-homogeneous-json', ((tarkettHomogeneousVinylData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('tarkett-vinyl-home-json', ((tarkettVinylHomeData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('tarkett-sport-json', ((tarkettSportData as any).collections || []) as any[], { requireDocuments: true }),
