@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 16.03.2026 (Tarkett Homogeni vinil integracija)
+> **Poslednje ažuriranje:** 16.03.2026 (Tarkett audit hardening i dokument URL fix)
 
 ---
 
@@ -138,6 +138,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Duboki audit postojećih Tarkett grupa + stabilizacija PDF i fallback pipeline-a (16.03.2026)**
+- Urađen je duboki audit za već ubačene Tarkett grupe `Sport`, `Vinil za kuću` i `Homogeni vinil`, uz ponovno pokretanje zvaničnih extractora i proveru opisa, hero slika, dokumenata, karakteristika i color-level dokumenata; ciljane grupe sada prolaze bez actionable nalaza.
+- `tools/extract_tarkett_sports.js`, `tools/extract_tarkett_vinyl_home.js` i `tools/extract_tarkett_homogeneous_vinyl.js` sada imaju stored-JSON fallback kada zvanični Tarkett payload vrati prazan rezultat / `Please Contact You Admin`, pa refresh više ne puca zbog nestabilnih live collection stranica.
+- U istom auditu otkriveno je da je deo Tarkett collection PDF-ova koristio pogrešan CDN obrazac `https://media.tarkett-image.com/large/*.pdf`; ispravljeno je pravilo da collection dokumenta moraju da idu na `https://media.tarkett-image.com/docs/*.pdf`, dok color-level specifikacije za Tarkett vinil i dalje ostaju na zvaničnim `tarkett.rs/sr_RS/pdf/...` URL-ovima.
+- `tools/extract_tarkett_wood.js` sada generiše ispravne `/docs/` collection PDF linkove za Parket i Laminat, `lib/data/tarkett-wood-enrichment.ts` normalizuje Tarkett PDF URL-ove pri merge-u, a `components/ProductDocuments.tsx` radi client-side zaštitnu normalizaciju ako neki stari `/large/*.pdf` ipak preživi u izvoru.
+- Isti PDF fix proširen je i na Tarkett LVT: `public/data/tarkett_lvt_products.json` je očišćen od starih `/large/*.pdf` dokumenata, `lib/utils/productDataLoader.ts` normalizuje Tarkett LVT dokumenta pri mapiranju, a `tools/scrape_tarkett_deep.js` ubuduće snima LVT PDF-ove na `/docs/` obrazac.
+- Završna verifikacija: `node tools/extract_tarkett_wood.js`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run lint`, `npm run build`; audit trenutno prijavljuje `0` actionable high/medium/low nalaza nad kanonskim katalogom, dok preostali high nalazi dolaze samo iz legacy `mock-products` šuma koji ne blokira live katalog.
 
 **Tarkett Homogeni vinil dodat u kategoriju Vinil kroz ceo pipeline (16.03.2026)**
 - Dodat je novi zvanični izvor `public/data/tarkett_homogeneous_vinyl_colors.json` sa live Tarkett Srbija kategorije `Homogeni vinil`: 20 kolekcija i 544 dekora, sa kolekcijskim opisima, PDF dokumentima, key features blokovima, hero slikama i color-level tehničkim listovima/tabelama formata.

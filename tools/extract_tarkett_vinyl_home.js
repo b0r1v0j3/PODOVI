@@ -7,6 +7,16 @@ const vm = require('vm');
 const CATEGORY_URL = 'https://www.tarkett.rs/sr_RS/kategorija-rs_C01014-vinil-za-kucu';
 const OUTPUT_PATH = path.join(process.cwd(), 'public', 'data', 'tarkett_vinyl_home_colors.json');
 const SITE_ORIGIN = 'https://www.tarkett.rs';
+const TARKETT_MEDIA_ORIGIN = 'https://media.tarkett-image.com';
+let existingCollectionsCache = null;
+const COLLECTION_TEXT_OVERRIDES = {
+  'tarkett-eruption-s': {
+    shortDescription:
+      'Eruption S je kolekcija savremenih dezena u različitim bojama, uključujući hrast i motive pločica koji donose osvežen izgled enterijera.',
+    description:
+      'Eruption S je kolekcija savremenih dezena u različitim bojama, uključujući hrast i motive pločica koji donose osvežen izgled enterijera. Predstavlja moderno i pristupačno rešenje za dom koje se lako čisti i jednostavno održava.',
+  },
+};
 
 const SPEC_LABELS = {
   basis_weight: 'Težina',
@@ -120,14 +130,30 @@ function normalizeSiteUrl(url) {
   return value;
 }
 
-function buildMediaUrl(mediaBaseUri, assetPath) {
+function buildMediaUrl(mediaBaseUri, assetPath, kind = 'image') {
   if (!assetPath) return '';
-  if (String(assetPath).startsWith('http://') || String(assetPath).startsWith('https://') || String(assetPath).startsWith('//')) {
-    return normalizeSiteUrl(assetPath);
+  const raw = String(assetPath).trim();
+
+  if (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('//')) {
+    const normalized = normalizeSiteUrl(raw);
+
+    if (kind === 'document') {
+      return normalized
+        .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+    }
+
+    return normalized;
   }
 
-  const normalizedBase = (mediaBaseUri || 'https://media.tarkett-image.com').replace(/\/+$/, '');
-  return `${normalizedBase}/large/${String(assetPath).replace(/^\/+/, '')}`;
+  const normalizedPath = raw.replace(/^\/+/, '');
+  if (kind === 'document') {
+    return `${TARKETT_MEDIA_ORIGIN}/docs/${normalizedPath}`;
+  }
+
+  const normalizedBase = (mediaBaseUri || TARKETT_MEDIA_ORIGIN).replace(/\/+$/, '');
+  return `${normalizedBase}/large/${normalizedPath}`;
 }
 
 function dedupeDocuments(documents) {
@@ -209,6 +235,76 @@ function buildColorDocuments(colorPayload) {
   );
 }
 
+function applyCollectionTextOverride(collection) {
+  const override = COLLECTION_TEXT_OVERRIDES[collection.slug];
+  if (!override) {
+    return collection;
+  }
+
+  return {
+    ...collection,
+    ...override,
+    colors: (collection.colors || []).map((color) => ({
+      ...color,
+      description: override.description,
+    })),
+  };
+}
+
+function loadExistingCollections() {
+  if (existingCollectionsCache) {
+    return existingCollectionsCache;
+  }
+
+  try {
+    const payload = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
+    existingCollectionsCache = new Map(
+      (payload.collections || []).map((collection) => [collection.slug, collection])
+    );
+  } catch {
+    existingCollectionsCache = new Map();
+  }
+
+  return existingCollectionsCache;
+}
+
+function cloneCollection(collection) {
+  return JSON.parse(JSON.stringify(collection));
+}
+
+function normalizeStoredDocuments(documents) {
+  return (documents || []).map((document) => ({
+    ...document,
+    url: buildMediaUrl(TARKETT_MEDIA_ORIGIN, document.url, 'document'),
+  }));
+}
+
+function buildStoredCollectionFallback(link, categoryDescription) {
+  const slug = collectionUrlToSlug(link);
+  const existing = loadExistingCollections().get(slug);
+  if (!existing) {
+    return null;
+  }
+
+  const fallback = cloneCollection(existing);
+  fallback.slug = slug;
+  fallback.url = normalizeSiteUrl(link);
+  fallback.categoryDescription = categoryDescription;
+  fallback.documents = normalizeStoredDocuments(fallback.documents);
+  fallback.colors = (fallback.colors || []).map((color) => ({
+    ...color,
+    documents: normalizeStoredDocuments(color.documents),
+  }));
+  return applyCollectionTextOverride(fallback);
+}
+
+function getStoredCollectionLinks() {
+  return Array.from(loadExistingCollections().values())
+    .map((collection) => collection.url)
+    .filter(Boolean)
+    .map((url) => new URL(url).pathname);
+}
+
 async function getCollectionLinks(page) {
   await page.goto(CATEGORY_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(2500);
@@ -221,7 +317,10 @@ async function getCollectionLinks(page) {
     (await page.locator('meta[name="description"]').getAttribute('content').catch(() => null)) || '';
 
   return {
-    links: [...new Set(links)],
+    links: (() => {
+      const uniqueLinks = [...new Set(links)];
+      return uniqueLinks.length > 0 ? uniqueLinks : getStoredCollectionLinks();
+    })(),
     description: stripHtml(description),
   };
 }
@@ -237,6 +336,12 @@ async function fetchCollection(page, link, categoryDescription) {
   const item = nuxt?.state?.collectionProductPage?.item;
 
   if (!item) {
+    const storedFallback = buildStoredCollectionFallback(link, categoryDescription);
+    if (storedFallback) {
+      console.warn(`Using stored vinyl-home fallback for ${url} because official payload is unavailable.`);
+      return storedFallback;
+    }
+
     throw new Error(`Collection payload missing for ${url}`);
   }
 
@@ -260,7 +365,7 @@ async function fetchCollection(page, link, categoryDescription) {
             asset.document_role ||
             'Dokument'
         ),
-        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url),
+        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url, 'document'),
         type: 'pdf',
       }))
   );
@@ -385,7 +490,7 @@ async function fetchCollection(page, link, categoryDescription) {
     });
   }
 
-  return {
+  return applyCollectionTextOverride({
     name: stripHtml(item.collection_name || item.name || toSlugFragment(link)),
     slug: collectionUrlToSlug(link),
     brandId: '3',
@@ -405,7 +510,7 @@ async function fetchCollection(page, link, categoryDescription) {
       mediaBaseUri,
       coverAsset?.document_asset_url || item.collection_picture || colors[0]?.image
     ),
-  };
+  });
 }
 
 async function main() {

@@ -20,6 +20,37 @@ interface DocumentsSourceConfig {
     preferIndex: boolean;
 }
 
+function normalizeDocumentUrl(url: string) {
+    const value = String(url || '').trim();
+    if (!value) return '';
+    if (!/media\.tarkett-image\.com/i.test(value) || !/\.pdf(?:\?|$)/i.test(value)) {
+        return value;
+    }
+
+    return value
+        .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+}
+
+function normalizeDocuments(documents: Document[] = []): Document[] {
+    const seen = new Set<string>();
+
+    return documents.reduce<Document[]>((result, document) => {
+        const url = normalizeDocumentUrl(document?.url || '');
+        if (!url || seen.has(url)) {
+            return result;
+        }
+
+        seen.add(url);
+        result.push({
+            title: String(document?.title || '').trim() || 'Dokument',
+            url,
+        });
+        return result;
+    }, []);
+}
+
 function getDocumentsSourceConfig(categoryId: string): DocumentsSourceConfig | null {
     if (categoryId === '1') {
         return { categoryKey: 'laminat', dataUrl: '/data/tarkett_documents_index.json', preferIndex: true };
@@ -54,7 +85,7 @@ function getDocumentsSourceConfig(categoryId: string): DocumentsSourceConfig | n
 
 export default function ProductDocuments({ initialDocuments = [], categoryId, collectionSlug }: ProductDocumentsProps) {
     const searchParams = useSearchParams();
-    const [documents, setDocuments] = useState<Document[]>(initialDocuments);
+    const [documents, setDocuments] = useState<Document[]>(normalizeDocuments(initialDocuments));
     const [activeDocument, setActiveDocument] = useState<Document | null>(null);
     const colorSlug = searchParams.get('color');
 
@@ -62,7 +93,7 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
         let isActive = true;
 
         const loadDocuments = async () => {
-            let nextDocuments = initialDocuments;
+            let nextDocuments = normalizeDocuments(initialDocuments);
 
             if (colorSlug) {
                 try {
@@ -70,7 +101,7 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
                     if (res.ok) {
                         const data = await res.json();
                         if (data.documents && data.documents.length > 0) {
-                            nextDocuments = data.documents;
+                            nextDocuments = normalizeDocuments(data.documents);
                         }
                     }
                 } catch {
@@ -90,7 +121,7 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
                             .replace(/^tarkett-/, '');
 
                         const docsFromIndex = index?.[sourceConfig.categoryKey]?.[normalizedCollectionSlug]
-                            ? index[sourceConfig.categoryKey][normalizedCollectionSlug]
+                            ? normalizeDocuments(index[sourceConfig.categoryKey][normalizedCollectionSlug])
                             : [];
 
                         const shouldUseIndex = docsFromIndex.length > 0 && (sourceConfig.preferIndex || !nextDocuments || nextDocuments.length === 0);
@@ -108,7 +139,7 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
             }
 
             if (isActive) {
-                setDocuments(nextDocuments);
+                setDocuments(normalizeDocuments(nextDocuments));
             }
         };
 

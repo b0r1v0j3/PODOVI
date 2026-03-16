@@ -8,6 +8,7 @@ const CATEGORY_URL = 'https://www.tarkett.rs/sr_RS/kategorija-rs_C01001-homogeni
 const OUTPUT_PATH = path.join(process.cwd(), 'public', 'data', 'tarkett_homogeneous_vinyl_colors.json');
 const SITE_ORIGIN = 'https://www.tarkett.rs';
 const SITEMAP_URL = 'https://www.tarkett.rs/sr_RS/sitemap_1.xml';
+const TARKETT_MEDIA_ORIGIN = 'https://media.tarkett-image.com';
 const FALLBACK_COLLECTION_PATHS = [
   '/sr_RS/kolekcija-C000043-eclipse-premium',
   '/sr_RS/kolekcija-C000119-iq-eminent',
@@ -32,6 +33,7 @@ const FALLBACK_COLLECTION_PATHS = [
 ];
 
 let sitemapUrlCache = null;
+let existingCollectionsCache = null;
 
 const SPEC_LABELS = {
   basis_weight: 'Ukupna masa',
@@ -156,14 +158,27 @@ function normalizeSiteUrl(url) {
   return value;
 }
 
-function buildMediaUrl(mediaBaseUri, assetPath) {
+function buildMediaUrl(mediaBaseUri, assetPath, kind = 'image') {
   if (!assetPath) return '';
-  if (String(assetPath).startsWith('http://') || String(assetPath).startsWith('https://') || String(assetPath).startsWith('//')) {
-    return normalizeSiteUrl(assetPath);
+  const raw = String(assetPath).trim();
+  if (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('//')) {
+    const normalized = normalizeSiteUrl(raw);
+    if (kind === 'document') {
+      return normalized
+        .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+    }
+    return normalized;
   }
 
-  const normalizedBase = (mediaBaseUri || 'https://media.tarkett-image.com').replace(/\/+$/, '');
-  return `${normalizedBase}/large/${String(assetPath).replace(/^\/+/, '')}`;
+  const normalizedPath = raw.replace(/^\/+/, '');
+  if (kind === 'document') {
+    return `${TARKETT_MEDIA_ORIGIN}/docs/${normalizedPath}`;
+  }
+
+  const normalizedBase = (mediaBaseUri || TARKETT_MEDIA_ORIGIN).replace(/\/+$/, '');
+  return `${normalizedBase}/large/${normalizedPath}`;
 }
 
 function dedupeDocuments(documents) {
@@ -265,6 +280,59 @@ function buildColorDocuments(colorPayload) {
         : null,
     ].filter(Boolean)
   );
+}
+
+function loadExistingCollections() {
+  if (existingCollectionsCache) {
+    return existingCollectionsCache;
+  }
+
+  try {
+    const payload = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
+    existingCollectionsCache = new Map(
+      (payload.collections || []).map((collection) => [collection.slug, collection])
+    );
+  } catch {
+    existingCollectionsCache = new Map();
+  }
+
+  return existingCollectionsCache;
+}
+
+function cloneCollection(collection) {
+  return JSON.parse(JSON.stringify(collection));
+}
+
+function normalizeStoredDocuments(documents) {
+  return (documents || []).map((document) => ({
+    ...document,
+    url: buildMediaUrl(TARKETT_MEDIA_ORIGIN, document.url, 'document'),
+  }));
+}
+
+function buildStoredCollectionFallback(entry, categoryDescription) {
+  const slug = collectionUrlToSlug(entry.href);
+  const existing = loadExistingCollections().get(slug);
+  if (!existing) {
+    return null;
+  }
+
+  const fallback = cloneCollection(existing);
+  fallback.slug = slug;
+  fallback.url = normalizeSiteUrl(entry.href);
+  fallback.categoryDescription = categoryDescription;
+  fallback.documents = normalizeStoredDocuments(fallback.documents);
+  fallback.colors = (fallback.colors || []).map((color) => ({
+    ...color,
+    documents: normalizeStoredDocuments(color.documents),
+  }));
+
+  const nextHero = buildMediaUrl(TARKETT_MEDIA_ORIGIN, entry.image || fallback.collection_image_url);
+  if (nextHero) {
+    fallback.collection_image_url = nextHero;
+  }
+
+  return fallback;
 }
 
 function normalizeWord(word) {
@@ -416,6 +484,12 @@ async function fetchCollection(page, entry, categoryDescription) {
   }
 
   if (!item) {
+    const storedFallback = buildStoredCollectionFallback(entry, categoryDescription);
+    if (storedFallback) {
+      console.warn(`Using stored homogeneous fallback for ${url} because official payload is unavailable.`);
+      return storedFallback;
+    }
+
     throw new Error(`Collection payload missing for ${url}`);
   }
 
@@ -439,7 +513,7 @@ async function fetchCollection(page, entry, categoryDescription) {
             asset.document_role ||
             'Dokument'
         ),
-        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url),
+        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url, 'document'),
         type: 'pdf',
       }))
   );

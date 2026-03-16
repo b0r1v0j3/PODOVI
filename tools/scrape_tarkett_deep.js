@@ -47,6 +47,21 @@ function extractNuxtData(html) {
     }
 }
 
+function buildTarkettDocumentUrl(mediaBaseUri, assetPath) {
+    if (!assetPath) return '';
+    const raw = String(assetPath).trim();
+    if (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('//')) {
+        const normalized = raw.startsWith('//') ? `https:${raw}` : raw;
+        return normalized
+            .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+            .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+            .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+    }
+
+    const normalizedBase = String(mediaBaseUri || 'https://media.tarkett-image.com').replace(/\/+$/, '');
+    return `${normalizedBase}/docs/${raw.replace(/^\/+/, '')}`;
+}
+
 // Configuration
 const OUTPUT_DIR = path.join(__dirname, 'tarkett_data');
 const IMAGES_DIR = path.join(OUTPUT_DIR, 'images');
@@ -282,7 +297,7 @@ async function scrape() {
                                             productData.images.push(imgUrl);
                                         }
                                     } else if (asset.document_mime_type === 'pdf' && asset.document_asset_url) {
-                                        productData.documents.push(`${mediaBaseUri}/large/${asset.document_asset_url}`);
+                                        productData.documents.push(buildTarkettDocumentUrl(mediaBaseUri, asset.document_asset_url));
                                     }
                                 });
                             }

@@ -8,6 +8,8 @@ const CATEGORY_URL = 'https://www.tarkett.rs/sr_RS/kategorija-rs_C01015-sportski
 const OUTPUT_PATH = path.join(process.cwd(), 'public', 'data', 'tarkett_sport_colors.json');
 const CATEGORY_DESCRIPTION =
   'Od višenamenskih podova za teretane, preko podnih obloga za takmičarske terene i joga studije - sve sportske površine moraju biti prilagođene specifičnim aktivnostima i očekivanoj težini tereta na dnevnom nivou.';
+const TARKETT_MEDIA_ORIGIN = 'https://media.tarkett-image.com';
+let existingCollectionsCache = null;
 
 const SPEC_LABELS = {
   basis_weight: 'Težina',
@@ -130,15 +132,82 @@ function collectionUrlToSlug(urlPath) {
   return `tarkett-${toSlugFragment(urlPath)}`;
 }
 
-function buildMediaUrl(mediaBaseUri, assetPath) {
+function loadExistingCollections() {
+  if (existingCollectionsCache) {
+    return existingCollectionsCache;
+  }
+
+  try {
+    const payload = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
+    existingCollectionsCache = new Map(
+      (payload.collections || []).map((collection) => [collection.slug, collection])
+    );
+  } catch {
+    existingCollectionsCache = new Map();
+  }
+
+  return existingCollectionsCache;
+}
+
+function cloneCollection(collection) {
+  return JSON.parse(JSON.stringify(collection));
+}
+
+function normalizeStoredDocuments(documents) {
+  return (documents || []).map((document) => ({
+    ...document,
+    url: buildMediaUrl(TARKETT_MEDIA_ORIGIN, document.url, 'document'),
+  }));
+}
+
+function buildStoredCollectionFallback(link, previewImageUrl = '') {
+  const slug = collectionUrlToSlug(link);
+  const existing = loadExistingCollections().get(slug);
+  if (!existing) {
+    return null;
+  }
+
+  const fallback = cloneCollection(existing);
+  fallback.slug = slug;
+  fallback.url = String(link).startsWith('http') ? String(link) : `https://www.tarkett.rs${link}`;
+  fallback.documents = normalizeStoredDocuments(fallback.documents);
+  fallback.colors = (fallback.colors || []).map((color) => ({
+    ...color,
+    documents: normalizeStoredDocuments(color.documents),
+  }));
+
+  const nextHero = buildMediaUrl(TARKETT_MEDIA_ORIGIN, previewImageUrl || fallback.collection_image_url);
+  if (nextHero) {
+    fallback.collection_image_url = nextHero;
+  }
+
+  return fallback;
+}
+
+function buildMediaUrl(mediaBaseUri, assetPath, kind = 'image') {
   if (!assetPath) return '';
-  if (/^https?:\/\//i.test(String(assetPath))) {
-    return String(assetPath)
+  const raw = String(assetPath).trim();
+
+  if (/^https?:\/\//i.test(raw)) {
+    if (kind === 'document') {
+      return raw
+        .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+    }
+
+    return raw
       .replace('/medium/', '/large/')
       .replace('://media.tarkett-image.com/S/', '://media.tarkett-image.com/large/');
   }
-  const normalizedBase = (mediaBaseUri || 'https://media.tarkett-image.com').replace(/\/+$/, '');
-  return `${normalizedBase}/large/${assetPath}`;
+
+  const normalizedPath = raw.replace(/^\/+/, '');
+  if (kind === 'document') {
+    return `${TARKETT_MEDIA_ORIGIN}/docs/${normalizedPath}`;
+  }
+
+  const normalizedBase = (mediaBaseUri || TARKETT_MEDIA_ORIGIN).replace(/\/+$/, '');
+  return `${normalizedBase}/large/${normalizedPath}`;
 }
 
 function translateCharacteristics(source, allowedKeys) {
@@ -219,7 +288,14 @@ async function getCollectionLinks() {
       uniqueLinks.push(entry);
     }
 
-    return uniqueLinks;
+    if (uniqueLinks.length > 0) {
+      return uniqueLinks;
+    }
+
+    return Array.from(loadExistingCollections().values()).map((collection) => ({
+      href: new URL(collection.url).pathname,
+      image: collection.collection_image_url || '',
+    }));
   } finally {
     await browser.close();
   }
@@ -233,6 +309,12 @@ async function fetchCollection(link, previewImageUrl = '') {
   const item = nuxt?.state?.collectionProductPage?.item;
 
   if (!item) {
+    const storedFallback = buildStoredCollectionFallback(link, previewImageUrl);
+    if (storedFallback) {
+      console.warn(`Using stored sports fallback for ${url} because official payload is unavailable.`);
+      return storedFallback;
+    }
+
     throw new Error(`Collection payload missing for ${url}`);
   }
 
@@ -281,7 +363,7 @@ async function fetchCollection(link, previewImageUrl = '') {
       .filter((asset) => asset.document_mime_type === 'pdf' && asset.document_asset_url)
       .map((asset) => ({
         title: stripHtml(asset.document_title || asset.document_label || asset.document_role || 'Dokument'),
-        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url),
+        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url, 'document'),
         type: 'pdf',
       }))
   );

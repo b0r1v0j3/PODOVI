@@ -3,6 +3,7 @@ const path = require('node:path');
 const { chromium } = require('playwright');
 
 const OUTPUT_PATH = path.join(process.cwd(), 'public', 'data', 'tarkett_wood_collection_index.json');
+const TARKETT_MEDIA_ORIGIN = 'https://media.tarkett-image.com';
 
 const CATEGORY_CONFIGS = [
   {
@@ -40,10 +41,29 @@ function collectionUrlToSlug(urlPath) {
     .trim();
 }
 
-function buildMediaUrl(mediaBaseUri, assetPath) {
+function buildMediaUrl(mediaBaseUri, assetPath, kind = 'image') {
   if (!assetPath) return '';
-  const normalizedBase = String(mediaBaseUri || 'https://media.tarkett-image.com').replace(/\/+$/, '');
-  return `${normalizedBase}/large/${assetPath}`;
+  const raw = String(assetPath).trim();
+
+  if (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('//')) {
+    const normalized = raw.startsWith('//') ? `https:${raw}` : raw;
+    if (kind === 'document') {
+      return normalized
+        .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+    }
+
+    return normalized;
+  }
+
+  const normalizedPath = raw.replace(/^\/+/, '');
+  if (kind === 'document') {
+    return `${TARKETT_MEDIA_ORIGIN}/docs/${normalizedPath}`;
+  }
+
+  const normalizedBase = String(mediaBaseUri || TARKETT_MEDIA_ORIGIN).replace(/\/+$/, '');
+  return `${normalizedBase}/large/${normalizedPath}`;
 }
 
 function dedupeDocuments(documents) {
@@ -134,7 +154,7 @@ async function fetchOfficialCollection(page, link) {
       .filter((asset) => asset.document_mime_type === 'pdf' && asset.document_asset_url)
       .map((asset) => ({
         title: stripHtml(asset.document_title || asset.document_label || asset.document_role || 'Dokument'),
-        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url),
+        url: buildMediaUrl(mediaBaseUri, asset.document_asset_url, 'document'),
       }))
   );
 

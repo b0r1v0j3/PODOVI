@@ -168,6 +168,13 @@ function countMeaningfulDocuments(product: Product) {
   return (product.documents || []).filter((document) => normalizeText(document.url)).length;
 }
 
+function hasBrokenTarkettDocumentUrl(url: string) {
+  const value = normalizeText(url);
+  if (!value) return false;
+
+  return /media\.tarkett-image\.com\/(large|large-high|medium)\/.+\.pdf(?:\?|$)/i.test(value);
+}
+
 function primaryImageUrl(product: Product) {
   const primary = (product.images || []).find((image) => image.isPrimary) || product.images?.[0];
   return normalizeText(primary?.url);
@@ -284,6 +291,23 @@ function auditCollectionProduct(source: string, product: Product): ProductAuditF
       brandId: product.brandId,
       issue: 'missing_documents',
       detail: 'Kolekcijski proizvod nema dokumenta.',
+    });
+  }
+
+  const brokenTarkettDocs = (product.documents || [])
+    .map((document) => normalizeText(document.url))
+    .filter(hasBrokenTarkettDocumentUrl);
+
+  if (brokenTarkettDocs.length > 0) {
+    findings.push({
+      severity: 'high',
+      source,
+      slug: product.slug,
+      name: product.name,
+      categoryId: product.categoryId,
+      brandId: product.brandId,
+      issue: 'broken_tarkett_document_urls',
+      detail: brokenTarkettDocs[0],
     });
   }
 

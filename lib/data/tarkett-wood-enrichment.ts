@@ -59,6 +59,19 @@ function normalizeDescriptionText(value: unknown) {
     .trim();
 }
 
+function normalizeTarkettDocumentUrl(value: unknown) {
+  const normalized = normalizeText(value);
+  if (!normalized) return '';
+  if (!/media\.tarkett-image\.com/i.test(normalized) || !/\.pdf(?:\?|$)/i.test(normalized)) {
+    return normalized;
+  }
+
+  return normalized
+    .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+    .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+    .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+}
+
 function slugify(value: unknown) {
   return normalizeText(value)
     .toLowerCase()
@@ -161,12 +174,19 @@ function getCollectionMeta(product: Product, categoryKey: CategoryKey) {
 
 function dedupeDocuments(documents: DocumentLink[]) {
   const seen = new Set<string>();
-  return documents.filter((document) => {
-    const url = normalizeText(document?.url);
-    if (!url || seen.has(url)) return false;
+  return documents.reduce<DocumentLink[]>((result, document) => {
+    const url = normalizeTarkettDocumentUrl(document?.url);
+    if (!url || seen.has(url)) {
+      return result;
+    }
+
     seen.add(url);
-    return true;
-  });
+    result.push({
+      title: normalizeText(document?.title) || 'Dokument',
+      url,
+    });
+    return result;
+  }, []);
 }
 
 function buildVariantDescription(product: Product, categoryKey: CategoryKey, collectionName: string, collectionDescription: string) {

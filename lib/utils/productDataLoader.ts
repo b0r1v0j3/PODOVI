@@ -120,6 +120,19 @@ function normalizeTarkettCollectionUrl(originalUrl?: string) {
     return absoluteUrl.replace(/\/[^/]+$/, '');
 }
 
+function normalizeTarkettDocumentUrl(originalUrl?: string) {
+    const value = String(originalUrl || '').trim();
+    if (!value) return '';
+    if (!/media\.tarkett-image\.com/i.test(value) || !/\.pdf(?:\?|$)/i.test(value)) {
+        return value;
+    }
+
+    return value
+        .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+        .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+}
+
 function buildDescriptionFromCharacteristics(
     baseDescription: string,
     characteristics?: Record<string, any>,
@@ -224,7 +237,8 @@ export function getAllTarkettLVTProducts(): Product[] {
 
         // Map documents from meta
         const documents = (p.meta?.documents || []).map((docUrl: string) => {
-            const fileName = docUrl.split('/').pop() || 'Dokument';
+            const normalizedDocUrl = normalizeTarkettDocumentUrl(docUrl);
+            const fileName = normalizedDocUrl.split('/').pop() || 'Dokument';
             // Create a readable title from filename
             let title = fileName.replace(/_/g, ' ').replace(/-/g, ' ').replace('.pdf', '');
             // Generic titles based on keywords
@@ -236,7 +250,7 @@ export function getAllTarkettLVTProducts(): Product[] {
 
             return {
                 title: title,
-                url: docUrl,
+                url: normalizedDocUrl,
                 type: 'pdf'
             };
         });

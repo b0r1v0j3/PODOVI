@@ -1821,62 +1821,62 @@
       "documents": [
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_EN_Recommend_HO_point_and_dynamic_load.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_EN_Recommend_HO_point_and_dynamic_load.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-eclipse_premium-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-eclipse_premium-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_Homogeneous_Mid_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_Homogeneous_Mid_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_EN_Warranty.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_EN_Warranty.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_EN_Chemical_resistance_ISO_26987_test_report___Premium_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_EN_Chemical_resistance_ISO_26987_test_report___Premium_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_EN_Reaction_to_fire_EN_13501_1_Eclipse_Premium.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_EN_Reaction_to_fire_EN_13501_1_Eclipse_Premium.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_Premium_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_Premium_Plus.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_EN_DoP_Eclipse_Premium.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_EN_DoP_Eclipse_Premium.pdf",
           "type": "pdf"
         },
         {
           "title": "Tenderski list",
-          "url": "https://media.tarkett-image.com/large/SD_INT_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/SD_INT_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_Premium_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_Premium_range.pdf",
           "type": "pdf"
         }
       ],
@@ -1891,7 +1891,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_Eclipse_Premium_21020968_21020967_001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_Eclipse_Premium_21020968_21020967_001.jpg"
     },
     {
       "name": "iQ EMINENT",
@@ -1944,12 +1944,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-black-0130/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-black-0130/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-black-0130/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-black-0130/format-table",
               "type": "pdf"
             }
           ],
@@ -1971,12 +1971,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-blue-0889/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-blue-0889/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-blue-0889/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-blue-0889/format-table",
               "type": "pdf"
             }
           ],
@@ -1998,12 +1998,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-brick-0905/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-brick-0905/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-brick-0905/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-brick-0905/format-table",
               "type": "pdf"
             }
           ],
@@ -2025,12 +2025,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-clay-0887/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-clay-0887/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-clay-0887/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-clay-0887/format-table",
               "type": "pdf"
             }
           ],
@@ -2052,12 +2052,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dark-grey-0819/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dark-grey-0819/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dark-grey-0819/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dark-grey-0819/format-table",
               "type": "pdf"
             }
           ],
@@ -2079,12 +2079,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dark-warm-grey-0870/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dark-warm-grey-0870/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dark-warm-grey-0870/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dark-warm-grey-0870/format-table",
               "type": "pdf"
             }
           ],
@@ -2106,12 +2106,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-beige-0998/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-beige-0998/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-beige-0998/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-beige-0998/format-table",
               "type": "pdf"
             }
           ],
@@ -2133,12 +2133,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-blue-0907/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-blue-0907/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-blue-0907/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-blue-0907/format-table",
               "type": "pdf"
             }
           ],
@@ -2160,12 +2160,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-brick-0999/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-brick-0999/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-brick-0999/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-brick-0999/format-table",
               "type": "pdf"
             }
           ],
@@ -2187,12 +2187,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-green-0925/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-green-0925/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-green-0925/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-green-0925/format-table",
               "type": "pdf"
             }
           ],
@@ -2214,12 +2214,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-grey-0908/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-grey-0908/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-grey-0908/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-grey-0908/format-table",
               "type": "pdf"
             }
           ],
@@ -2241,12 +2241,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-sand-0928/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-sand-0928/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-sand-0928/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-sand-0928/format-table",
               "type": "pdf"
             }
           ],
@@ -2268,12 +2268,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-white-0906/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-white-0906/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-white-0906/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-white-0906/format-table",
               "type": "pdf"
             }
           ],
@@ -2295,12 +2295,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-yellow-0939/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-yellow-0939/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-yellow-0939/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-dusty-yellow-0939/format-table",
               "type": "pdf"
             }
           ],
@@ -2322,12 +2322,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-grey-0816/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-grey-0816/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-grey-0816/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-grey-0816/format-table",
               "type": "pdf"
             }
           ],
@@ -2349,12 +2349,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-beige-0885/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-beige-0885/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-beige-0885/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-beige-0885/format-table",
               "type": "pdf"
             }
           ],
@@ -2376,12 +2376,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-grey-0811/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-grey-0811/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-grey-0811/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-grey-0811/format-table",
               "type": "pdf"
             }
           ],
@@ -2403,12 +2403,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-warm-grey-0879/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-warm-grey-0879/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-warm-grey-0879/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-light-warm-grey-0879/format-table",
               "type": "pdf"
             }
           ],
@@ -2430,12 +2430,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-blue-0888/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-blue-0888/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-blue-0888/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-blue-0888/format-table",
               "type": "pdf"
             }
           ],
@@ -2457,12 +2457,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-brick-0895/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-brick-0895/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-brick-0895/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-brick-0895/format-table",
               "type": "pdf"
             }
           ],
@@ -2484,12 +2484,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-green-0892/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-green-0892/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-green-0892/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-green-0892/format-table",
               "type": "pdf"
             }
           ],
@@ -2511,12 +2511,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-yellow-0894/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-yellow-0894/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-yellow-0894/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-pale-yellow-0894/format-table",
               "type": "pdf"
             }
           ],
@@ -2538,12 +2538,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-sand-0883/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-sand-0883/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-sand-0883/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-sand-0883/format-table",
               "type": "pdf"
             }
           ],
@@ -2565,12 +2565,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-warm-grey-0878/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-warm-grey-0878/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-warm-grey-0878/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-warm-grey-0878/format-table",
               "type": "pdf"
             }
           ],
@@ -2592,12 +2592,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-white-0904/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-white-0904/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-white-0904/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-white-0904/format-table",
               "type": "pdf"
             }
           ],
@@ -2619,12 +2619,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-white-grey-0126/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-white-grey-0126/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-white-grey-0126/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-white-grey-0126/format-table",
               "type": "pdf"
             }
           ],
@@ -2634,57 +2634,57 @@
       "documents": [
         {
           "title": "Sertifikat o reakciji na vatru",
-          "url": "https://media.tarkett-image.com/large/Fire_Certificate_EN_iQ Eminent.pdf",
+          "url": "https://media.tarkett-image.com/docs/Fire_Certificate_EN_iQ Eminent.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_CIRCULAR_SELECTION.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_CIRCULAR_SELECTION.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "Tenderski list",
-          "url": "https://media.tarkett-image.com/large/Tenderdatasheet-iQGranit-iQEminent-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Tenderdatasheet-iQGranit-iQEminent-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR-INTL_DOP_0019-0008-DoP-2013-07.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR-INTL_DOP_0019-0008-DoP-2013-07.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/Brochure-iQGranit-iQEminent-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Brochure-iQGranit-iQEminent-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_eminent-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_eminent-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -2748,12 +2748,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-black-0130/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-black-0130/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-black-0130/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-black-0130/format-table",
               "type": "pdf"
             }
           ],
@@ -2775,12 +2775,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-blue-0889/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-blue-0889/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-blue-0889/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-blue-0889/format-table",
               "type": "pdf"
             }
           ],
@@ -2802,12 +2802,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-brick-0905/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-brick-0905/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-brick-0905/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-brick-0905/format-table",
               "type": "pdf"
             }
           ],
@@ -2829,12 +2829,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-clay-0887/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-clay-0887/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-clay-0887/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-clay-0887/format-table",
               "type": "pdf"
             }
           ],
@@ -2856,12 +2856,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dark-grey-0819/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dark-grey-0819/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dark-grey-0819/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dark-grey-0819/format-table",
               "type": "pdf"
             }
           ],
@@ -2883,12 +2883,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dark-warm-grey-0870/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dark-warm-grey-0870/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dark-warm-grey-0870/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dark-warm-grey-0870/format-table",
               "type": "pdf"
             }
           ],
@@ -2910,12 +2910,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-beige-0998/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-beige-0998/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-beige-0998/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-beige-0998/format-table",
               "type": "pdf"
             }
           ],
@@ -2937,12 +2937,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-blue-0907/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-blue-0907/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-blue-0907/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-blue-0907/format-table",
               "type": "pdf"
             }
           ],
@@ -2964,12 +2964,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-brick-0999/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-brick-0999/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-brick-0999/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-brick-0999/format-table",
               "type": "pdf"
             }
           ],
@@ -2991,12 +2991,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-green-0925/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-green-0925/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-green-0925/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-green-0925/format-table",
               "type": "pdf"
             }
           ],
@@ -3018,12 +3018,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-grey-0908/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-grey-0908/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-grey-0908/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-grey-0908/format-table",
               "type": "pdf"
             }
           ],
@@ -3045,12 +3045,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-sand-0928/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-sand-0928/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-sand-0928/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-sand-0928/format-table",
               "type": "pdf"
             }
           ],
@@ -3072,12 +3072,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-white-0906/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-white-0906/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-white-0906/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-white-0906/format-table",
               "type": "pdf"
             }
           ],
@@ -3099,12 +3099,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-yellow-0939/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-yellow-0939/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-yellow-0939/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-dusty-yellow-0939/format-table",
               "type": "pdf"
             }
           ],
@@ -3126,12 +3126,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-grey-0816/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-grey-0816/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-grey-0816/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-grey-0816/format-table",
               "type": "pdf"
             }
           ],
@@ -3153,12 +3153,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-beige-0885/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-beige-0885/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-beige-0885/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-beige-0885/format-table",
               "type": "pdf"
             }
           ],
@@ -3180,12 +3180,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-grey-0811/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-grey-0811/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-grey-0811/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-grey-0811/format-table",
               "type": "pdf"
             }
           ],
@@ -3207,12 +3207,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-warm-grey-0879/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-warm-grey-0879/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-warm-grey-0879/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-light-warm-grey-0879/format-table",
               "type": "pdf"
             }
           ],
@@ -3234,12 +3234,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-blue-0888/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-blue-0888/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-blue-0888/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-blue-0888/format-table",
               "type": "pdf"
             }
           ],
@@ -3261,12 +3261,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-brick-0895/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-brick-0895/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-brick-0895/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-brick-0895/format-table",
               "type": "pdf"
             }
           ],
@@ -3288,12 +3288,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-green-0892/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-green-0892/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-green-0892/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-green-0892/format-table",
               "type": "pdf"
             }
           ],
@@ -3315,12 +3315,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-yellow-0894/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-yellow-0894/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-yellow-0894/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-pale-yellow-0894/format-table",
               "type": "pdf"
             }
           ],
@@ -3342,12 +3342,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-sand-0883/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-sand-0883/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-sand-0883/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-sand-0883/format-table",
               "type": "pdf"
             }
           ],
@@ -3369,12 +3369,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-warm-grey-0878/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-warm-grey-0878/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-warm-grey-0878/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-warm-grey-0878/format-table",
               "type": "pdf"
             }
           ],
@@ -3396,12 +3396,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-white-0904/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-white-0904/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-white-0904/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-white-0904/format-table",
               "type": "pdf"
             }
           ],
@@ -3423,12 +3423,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-white-grey-0126/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-white-grey-0126/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-white-grey-0126/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C002595-iq-eminent-acoustic/eminent-white-grey-0126/format-table",
               "type": "pdf"
             }
           ],
@@ -3438,27 +3438,27 @@
       "documents": [
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/Declaration-Performance-0019-0083-DoP-2023-05-iQ-Eminent-Acoustic-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Declaration-Performance-0019-0083-DoP-2023-05-iQ-Eminent-Acoustic-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -3530,12 +3530,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-aqua-0370/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-aqua-0370/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-aqua-0370/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-aqua-0370/format-table",
               "type": "pdf"
             }
           ],
@@ -3557,12 +3557,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-black-0211/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-black-0211/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-black-0211/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-black-0211/format-table",
               "type": "pdf"
             }
           ],
@@ -3584,12 +3584,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-black-grey-0194/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-black-grey-0194/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-black-grey-0194/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-black-grey-0194/format-table",
               "type": "pdf"
             }
           ],
@@ -3611,12 +3611,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-blue-0340/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-blue-0340/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-blue-0340/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-blue-0340/format-table",
               "type": "pdf"
             }
           ],
@@ -3638,12 +3638,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-brown-0337/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-brown-0337/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-brown-0337/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-brown-0337/format-table",
               "type": "pdf"
             }
           ],
@@ -3665,12 +3665,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-clay-0329/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-clay-0329/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-clay-0329/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-clay-0329/format-table",
               "type": "pdf"
             }
           ],
@@ -3692,12 +3692,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-concrete-0233/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-concrete-0233/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-concrete-0233/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-concrete-0233/format-table",
               "type": "pdf"
             }
           ],
@@ -3719,12 +3719,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-blue-0339/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-blue-0339/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-blue-0339/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-blue-0339/format-table",
               "type": "pdf"
             }
           ],
@@ -3746,12 +3746,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-clay-0330/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-clay-0330/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-clay-0330/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-clay-0330/format-table",
               "type": "pdf"
             }
           ],
@@ -3773,12 +3773,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-concrete-0215/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-concrete-0215/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-concrete-0215/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-concrete-0215/format-table",
               "type": "pdf"
             }
           ],
@@ -3800,12 +3800,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-grey-0188/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-grey-0188/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-grey-0188/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-grey-0188/format-table",
               "type": "pdf"
             }
           ],
@@ -3827,12 +3827,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-sand-0321/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-sand-0321/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-sand-0321/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-dark-sand-0321/format-table",
               "type": "pdf"
             }
           ],
@@ -3854,12 +3854,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-green-0391/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-green-0391/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-green-0391/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-green-0391/format-table",
               "type": "pdf"
             }
           ],
@@ -3881,12 +3881,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-grey-0161/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-grey-0161/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-grey-0161/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-grey-0161/format-table",
               "type": "pdf"
             }
           ],
@@ -3908,12 +3908,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-aqua-0369/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-aqua-0369/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-aqua-0369/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-aqua-0369/format-table",
               "type": "pdf"
             }
           ],
@@ -3935,12 +3935,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-blue-0341/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-blue-0341/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-blue-0341/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-blue-0341/format-table",
               "type": "pdf"
             }
           ],
@@ -3962,12 +3962,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-clay-0328/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-clay-0328/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-clay-0328/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-clay-0328/format-table",
               "type": "pdf"
             }
           ],
@@ -3989,12 +3989,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-green-0390/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-green-0390/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-green-0390/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-green-0390/format-table",
               "type": "pdf"
             }
           ],
@@ -4016,12 +4016,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-grey-0160/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-grey-0160/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-grey-0160/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-grey-0160/format-table",
               "type": "pdf"
             }
           ],
@@ -4043,12 +4043,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-olive-0438/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-olive-0438/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-olive-0438/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-olive-0438/format-table",
               "type": "pdf"
             }
           ],
@@ -4070,12 +4070,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-sand-0323/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-sand-0323/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-sand-0323/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-light-sand-0323/format-table",
               "type": "pdf"
             }
           ],
@@ -4097,12 +4097,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-olive-0412/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-olive-0412/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-olive-0412/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-olive-0412/format-table",
               "type": "pdf"
             }
           ],
@@ -4124,12 +4124,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-orange-0456/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-orange-0456/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-orange-0456/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-orange-0456/format-table",
               "type": "pdf"
             }
           ],
@@ -4151,12 +4151,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-blue-0342/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-blue-0342/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-blue-0342/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-blue-0342/format-table",
               "type": "pdf"
             }
           ],
@@ -4178,12 +4178,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-green-0392/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-green-0392/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-green-0392/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-green-0392/format-table",
               "type": "pdf"
             }
           ],
@@ -4205,12 +4205,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-orange-0457/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-orange-0457/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-orange-0457/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-orange-0457/format-table",
               "type": "pdf"
             }
           ],
@@ -4232,12 +4232,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-purple-0526/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-purple-0526/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-purple-0526/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-purple-0526/format-table",
               "type": "pdf"
             }
           ],
@@ -4259,12 +4259,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-yellow-0439/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-yellow-0439/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-yellow-0439/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastel-yellow-0439/format-table",
               "type": "pdf"
             }
           ],
@@ -4286,12 +4286,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastell-green-0392/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastell-green-0392/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastell-green-0392/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-pastell-green-0392/format-table",
               "type": "pdf"
             }
           ],
@@ -4313,12 +4313,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-red-0525/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-red-0525/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-red-0525/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-red-0525/format-table",
               "type": "pdf"
             }
           ],
@@ -4340,12 +4340,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-red-brick-0458/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-red-brick-0458/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-red-brick-0458/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-red-brick-0458/format-table",
               "type": "pdf"
             }
           ],
@@ -4367,12 +4367,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-sand-0298/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-sand-0298/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-sand-0298/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-sand-0298/format-table",
               "type": "pdf"
             }
           ],
@@ -4394,12 +4394,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-black-0636/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-black-0636/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-black-0636/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-black-0636/format-table",
               "type": "pdf"
             }
           ],
@@ -4421,12 +4421,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-black-grey-0627/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-black-grey-0627/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-black-grey-0627/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-black-grey-0627/format-table",
               "type": "pdf"
             }
           ],
@@ -4448,12 +4448,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-brown-0755/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-brown-0755/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-brown-0755/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-brown-0755/format-table",
               "type": "pdf"
             }
           ],
@@ -4475,12 +4475,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-grey-0579/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-grey-0579/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-grey-0579/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-grey-0579/format-table",
               "type": "pdf"
             }
           ],
@@ -4502,12 +4502,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-light-grey-0554/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-light-grey-0554/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-light-grey-0554/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-light-grey-0554/format-table",
               "type": "pdf"
             }
           ],
@@ -4529,12 +4529,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-sand-brown-0752/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-sand-brown-0752/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-sand-brown-0752/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-sand-brown-0752/format-table",
               "type": "pdf"
             }
           ],
@@ -4556,12 +4556,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-white-grey-0528/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-white-grey-0528/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-white-grey-0528/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-white-grey-0528/format-table",
               "type": "pdf"
             }
           ],
@@ -4583,12 +4583,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-white-sand-0527/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-white-sand-0527/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-white-sand-0527/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-soft-white-sand-0527/format-table",
               "type": "pdf"
             }
           ],
@@ -4610,12 +4610,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-clay-0324/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-clay-0324/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-clay-0324/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-clay-0324/format-table",
               "type": "pdf"
             }
           ],
@@ -4637,12 +4637,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-concrete-0297/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-concrete-0297/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-concrete-0297/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-concrete-0297/format-table",
               "type": "pdf"
             }
           ],
@@ -4664,12 +4664,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-grey-0296/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-grey-0296/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-grey-0296/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-grey-0296/format-table",
               "type": "pdf"
             }
           ],
@@ -4691,12 +4691,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-light-grey-0234/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-light-grey-0234/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-light-grey-0234/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-light-grey-0234/format-table",
               "type": "pdf"
             }
           ],
@@ -4718,12 +4718,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-sand-0322/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-sand-0322/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-sand-0322/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-warm-sand-0322/format-table",
               "type": "pdf"
             }
           ],
@@ -4745,12 +4745,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-beige-0325/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-beige-0325/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-beige-0325/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-beige-0325/format-table",
               "type": "pdf"
             }
           ],
@@ -4772,12 +4772,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-green-0338/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-green-0338/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-green-0338/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-green-0338/format-table",
               "type": "pdf"
             }
           ],
@@ -4799,12 +4799,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-grey-0124/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-grey-0124/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-grey-0124/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-grey-0124/format-table",
               "type": "pdf"
             }
           ],
@@ -4826,12 +4826,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-sand-0320/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-sand-0320/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-sand-0320/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-white-sand-0320/format-table",
               "type": "pdf"
             }
           ],
@@ -4853,12 +4853,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-yellow-0440/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-yellow-0440/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-yellow-0440/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-yellow-0440/format-table",
               "type": "pdf"
             }
           ],
@@ -4880,12 +4880,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-yellow-brick-0444/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-yellow-brick-0444/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000120-iq-granit/granit-yellow-brick-0444/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000120-iq-granit/granit-yellow-brick-0444/format-table",
               "type": "pdf"
             }
           ],
@@ -4895,52 +4895,52 @@
       "documents": [
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_CIRCULAR_SELECTION.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_CIRCULAR_SELECTION.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_UK_0019_0009_DoP_2013_07_iQ_Granit.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_UK_0019_0009_DoP_2013_07_iQ_Granit.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "Tenderski list",
-          "url": "https://media.tarkett-image.com/large/Tenderdatasheet-iQGranit-iQEminent-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Tenderdatasheet-iQGranit-iQEminent-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/Brochure-iQGranit-iQEminent-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Brochure-iQGranit-iQEminent-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_granit-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_granit-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -5012,12 +5012,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-black-0211/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-black-0211/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-black-0211/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-black-0211/format-table",
               "type": "pdf"
             }
           ],
@@ -5039,12 +5039,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-black-grey-0194/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-black-grey-0194/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-black-grey-0194/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-black-grey-0194/format-table",
               "type": "pdf"
             }
           ],
@@ -5066,12 +5066,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-clay-0329/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-clay-0329/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-clay-0329/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-clay-0329/format-table",
               "type": "pdf"
             }
           ],
@@ -5093,12 +5093,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-concrete-0233/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-concrete-0233/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-concrete-0233/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-concrete-0233/format-table",
               "type": "pdf"
             }
           ],
@@ -5120,12 +5120,12 @@
           "documents": [
             {
               "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-dark-concrete-0215/specifications",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-dark-concrete-0215/specifications",
               "type": "pdf"
             },
             {
               "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-dark-concrete-0215/format-table",
+              "url": "https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-dark-concrete-0215/format-table",
               "type": "pdf"
             }
           ],
@@ -5144,18 +5144,7 @@
             "Porodica boja": "GY",
             "Šifra dekora": "0188"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-dark-grey-0188/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-dark-grey-0188/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5171,18 +5160,7 @@
             "Porodica boja": "BG",
             "Šifra dekora": "0321"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-dark-sand-0321/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-dark-sand-0321/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5198,18 +5176,7 @@
             "Porodica boja": "GY",
             "Šifra dekora": "0161"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-grey-0161/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-grey-0161/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5225,18 +5192,7 @@
             "Porodica boja": "U",
             "Šifra dekora": "0369"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-aqua-0369/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-aqua-0369/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5252,18 +5208,7 @@
             "Porodica boja": "U",
             "Šifra dekora": "0341"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-blue-0341/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-blue-0341/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5279,18 +5224,7 @@
             "Porodica boja": "BG",
             "Šifra dekora": "0328"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-clay-0328/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-clay-0328/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5306,18 +5240,7 @@
             "Porodica boja": "G",
             "Šifra dekora": "0390"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-green-0390/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-green-0390/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5333,18 +5256,7 @@
             "Porodica boja": "GY",
             "Šifra dekora": "0160"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-grey-0160/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-grey-0160/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5360,18 +5272,7 @@
             "Porodica boja": "BG",
             "Šifra dekora": "0323"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-sand-0323/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-light-sand-0323/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5387,18 +5288,7 @@
             "Porodica boja": "G",
             "Šifra dekora": "0412"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-olive-0412/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-olive-0412/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5414,18 +5304,7 @@
             "Porodica boja": "R",
             "Šifra dekora": "0458"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-red-brick-0458/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-red-brick-0458/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5441,18 +5320,7 @@
             "Porodica boja": "BG",
             "Šifra dekora": "0298"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-sand-0298/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-sand-0298/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5468,18 +5336,7 @@
             "Porodica boja": "BG",
             "Šifra dekora": "0324"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-warm-clay-0324/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-warm-clay-0324/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5495,18 +5352,7 @@
             "Porodica boja": "GY",
             "Šifra dekora": "0297"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-warm-concrete-0297/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-warm-concrete-0297/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5522,18 +5368,7 @@
             "Porodica boja": "GY",
             "Šifra dekora": "0296"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-warm-grey-0296/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-warm-grey-0296/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5549,18 +5384,7 @@
             "Porodica boja": "BG",
             "Šifra dekora": "0322"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-warm-sand-0322/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-warm-sand-0322/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5576,18 +5400,7 @@
             "Porodica boja": "BG",
             "Šifra dekora": "0325"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-white-beige-0325/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-white-beige-0325/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5603,18 +5416,7 @@
             "Porodica boja": "G",
             "Šifra dekora": "0338"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-white-green-0338/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-white-green-0338/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         },
         {
@@ -5630,60 +5432,49 @@
             "Porodica boja": "Y",
             "Šifra dekora": "0444"
           },
-          "documents": [
-            {
-              "title": "Tehnički list",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-yellow-brick-0444/specifications",
-              "type": "pdf"
-            },
-            {
-              "title": "Tabela formata",
-              "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000121-iq-granit-acoustic/granit-yellow-brick-0444/format-table",
-              "type": "pdf"
-            }
-          ],
+          "documents": [],
           "brandId": "3"
         }
       ],
       "documents": [
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Tenderski list",
-          "url": "https://media.tarkett-image.com/large/Tenderdatasheet-iQGranit-iQEminent-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Tenderdatasheet-iQGranit-iQEminent-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/Brochure-iQGranit-iQEminent-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Brochure-iQGranit-iQEminent-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_granit_acoustic-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_granit_acoustic-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_UK_0019_0040_DoP_2013_07_iQ_Granit_Acoustic.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_UK_0019_0040_DoP_2013_07_iQ_Granit_Acoustic.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -6224,47 +6015,47 @@
       "documents": [
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_EN_13501_1_iQ_Megalit.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_EN_13501_1_iQ_Megalit.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_EN_RS_iQ_Megalit.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_EN_RS_iQ_Megalit.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_megalit-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_megalit-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/Declaration-performance-0019-0001-DoP-2013-07-iQ_Megalit-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Declaration-performance-0019-0001-DoP-2013-07-iQ_Megalit-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -6778,27 +6569,27 @@
       "documents": [
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/Declaration-Performance-0019-0084-DoP-2023-05-iQ-Megalit-Acoustic-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Declaration-Performance-0019-0084-DoP-2023-05-iQ-Megalit-Acoustic-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_megalit_acoustic-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_megalit_acoustic-en_INTL.pdf",
           "type": "pdf"
         }
       ],
@@ -7800,47 +7591,47 @@
       "documents": [
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/Datasheet-iQ Natural-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Datasheet-iQ Natural-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Tenderski list",
-          "url": "https://media.tarkett-image.com/large/Tenderdatasheet-iQNatural-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Tenderdatasheet-iQNatural-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/Brochure_iQ_Natural_INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Brochure_iQ_Natural_INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_Natural.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_Natural.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_iQ_Natural.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_iQ_Natural.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/Declaration-performance-0019-0007-DoP-2013-07-iQNatural-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Declaration-performance-0019-0007-DoP-2013-07-iQNatural-INT.pdf",
           "type": "pdf"
         }
       ],
@@ -8132,32 +7923,32 @@
       "documents": [
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Tenderski list",
-          "url": "https://media.tarkett-image.com/large/Tenderdatasheet-iQNatural-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Tenderdatasheet-iQNatural-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/Brochure_iQ_Natural_INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Brochure_iQ_Natural_INT.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/Declaration-perfomance-0019-0071-DoP-2020-02-iQ_Natural-Acoustic-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Declaration-perfomance-0019-0071-DoP-2020-02-iQ_Natural-Acoustic-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_natural_acoustic-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_natural_acoustic-en_INTL.pdf",
           "type": "pdf"
         }
       ],
@@ -9647,67 +9438,67 @@
       "documents": [
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_AgBB_iQ_Optima.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_AgBB_iQ_Optima.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_CIRCULAR_SELECTION.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_CIRCULAR_SELECTION.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_13501_1_iQ_Optima.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_13501_1_iQ_Optima.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/Brochure-iQ-Optima-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Brochure-iQ-Optima-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_RS_new_DoP_iQ_Optima.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_new_DoP_iQ_Optima.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_iQ_Optima.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_iQ_Optima.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_optima-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_optima-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_EN_RS_iQ_Optima.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_EN_RS_iQ_Optima.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -11140,42 +10931,42 @@
       "documents": [
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_optima_acoustic-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_optima_acoustic-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/Brochure-iQ-Optima-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Brochure-iQ-Optima-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/Declaration-Performance-0019-0082-DoP-2023-05-iQ-Optima-Acoustic-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Declaration-Performance-0019-0082-DoP-2023-05-iQ-Optima-Acoustic-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/Guarantee-Tarkett-Professional-Sales-Warranty-EN.pdf",
+          "url": "https://media.tarkett-image.com/docs/Guarantee-Tarkett-Professional-Sales-Warranty-EN.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -11768,32 +11559,32 @@
       "documents": [
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/Installation-Guide-iQ_Acoustic_ranges-Premium_Acoustic_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/Declaration-Performance-0019-0085-DoP-2023-05-iQ-Surface-Acoustic-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Declaration-Performance-0019-0085-DoP-2023-05-iQ-Surface-Acoustic-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_surface_acoustic-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_surface_acoustic-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -11812,7 +11603,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_Homogeneous-floors-walls-iQSurface-21089084-001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_Homogeneous-floors-walls-iQSurface-21089084-001.jpg"
     },
     {
       "name": "iQ Surface",
@@ -12371,57 +12162,57 @@
       "documents": [
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_INT_0019_0009_DoP_2013_07_iQ_Surface.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_INT_0019_0009_DoP_2013_07_iQ_Surface.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_IQ_001.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_IQ_001.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_iQ_Surface.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_iQ_Surface.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_Surface_Objects.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_Surface_Objects.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_Surface_Wall.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_Surface_Wall.pdf",
           "type": "pdf"
         },
         {
           "title": "Tenderski list",
-          "url": "https://media.tarkett-image.com/large/TS_INT_iQ_Surface.pdf",
+          "url": "https://media.tarkett-image.com/docs/TS_INT_iQ_Surface.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_Surface.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_Surface.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_iQ_range.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-iq_surface-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-iq_surface-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_iQ_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_iQ_range.pdf",
           "type": "pdf"
         }
       ],
@@ -12436,7 +12227,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_iQ_Surface_21089163_21089080_21020973_001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_iQ_Surface_21089163_21089080_21020973_001.jpg"
     },
     {
       "name": "NORMA",
@@ -12855,27 +12646,27 @@
       "documents": [
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_Homogeneous_Mid_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_Homogeneous_Mid_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_EN_NORMA.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_EN_NORMA.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-norma-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-norma-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_EE_0019_0059_DoP_2018_07_Norma.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_EE_0019_0059_DoP_2018_07_Norma.pdf",
           "type": "pdf"
         }
       ],
@@ -12891,7 +12682,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_NORMA_21080060_001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_NORMA_21080060_001.jpg"
     },
     {
       "name": "PRIMO PLUS SEE",
@@ -13317,27 +13108,27 @@
       "documents": [
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_Reaction_to_fire_certificate_Primo_Plus_SEE_K47-2020_ENG.PDF",
+          "url": "https://media.tarkett-image.com/docs/CR_Reaction_to_fire_certificate_Primo_Plus_SEE_K47-2020_ENG.PDF",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/DOP_SEE_PRIMO PLUS SEE_en.pdf",
+          "url": "https://media.tarkett-image.com/docs/DOP_SEE_PRIMO PLUS SEE_en.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/IN_Installation_maintenance instructions_Primo Plus_SEE_Zenith SEE.pdf",
+          "url": "https://media.tarkett-image.com/docs/IN_Installation_maintenance instructions_Primo Plus_SEE_Zenith SEE.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/TDS_PrimoPlus_SEE.pdf",
+          "url": "https://media.tarkett-image.com/docs/TDS_PrimoPlus_SEE.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_SEE_Warranty_letter_Primo_Plus_SEE.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_SEE_Warranty_letter_Primo_Plus_SEE.pdf",
           "type": "pdf"
         }
       ],
@@ -13351,7 +13142,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_TEE_PRIMO_PLUS.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_TEE_PRIMO_PLUS.jpg"
     },
     {
       "name": "PRIMO PREMIUM",
@@ -14013,57 +13804,57 @@
       "documents": [
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_EN_Recommend_HO_point_and_dynamic_load.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_EN_Recommend_HO_point_and_dynamic_load.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_INT_iQ_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_INT_iQ_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_Homogeneous_Mid_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_Homogeneous_Mid_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_AgBB_Primo_Premium.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_AgBB_Primo_Premium.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_EN_RS_Primo_Premium.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_EN_RS_Primo_Premium.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_Premium_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_Premium_Plus.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-primo_premium-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-primo_premium-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_INT_LD_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_INT_LD_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "Tenderski list",
-          "url": "https://media.tarkett-image.com/large/SD_INT_PREMIUM.pdf",
+          "url": "https://media.tarkett-image.com/docs/SD_INT_PREMIUM.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_RS_DoP_2013_07_Primo_Premium.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_DoP_2013_07_Primo_Premium.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/MD_INT_Premium_range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MD_INT_Premium_range.pdf",
           "type": "pdf"
         }
       ],
@@ -14078,7 +13869,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_Primo_Premium_21010643_21010644_21010642_001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_Primo_Premium_21010643_21010644_21010642_001.jpg"
     },
     {
       "name": "STANDARD PLUS (1.5 mm)",
@@ -14306,37 +14097,37 @@
       "documents": [
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_EN_13501_1_Standard_Plus_1_5mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_EN_13501_1_Standard_Plus_1_5mm.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-standard_plus_1_5_mm-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-standard_plus_1_5_mm-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_RS_DoP_Standard_Plus_1_5mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_DoP_Standard_Plus_1_5mm.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_AgBB_Standard_Plus_1_5mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_AgBB_Standard_Plus_1_5mm.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_Premium_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_Premium_Plus.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_EN_RS_Standard_Plus_1_5mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_EN_RS_Standard_Plus_1_5mm.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_Primo_Plus_Range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_Primo_Plus_Range.pdf",
           "type": "pdf"
         }
       ],
@@ -14350,7 +14141,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_Standard_Plus_21003479_001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_Standard_Plus_21003479_001.jpg"
     },
     {
       "name": "STANDARD PLUS (2.0 mm)",
@@ -15200,52 +14991,52 @@
       "documents": [
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/Maintenance-Guide-Plus-Ranges-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Maintenance-Guide-Plus-Ranges-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_AgBB_Standard_Plus_2mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_AgBB_Standard_Plus_2mm.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_EN_13501_1_Standard_Plus_2mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_EN_13501_1_Standard_Plus_2mm.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/CR_RS_DoP_Standard_Plus_2mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_DoP_Standard_Plus_2mm.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-standard_plus_2_0_mm-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-standard_plus_2_0_mm-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_Premium_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_Premium_Plus.pdf",
           "type": "pdf"
         },
         {
           "title": "Brošura",
-          "url": "https://media.tarkett-image.com/large/BR_EN_Brochure_Standard_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/BR_EN_Brochure_Standard_Plus.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/ID_RS_Standard_Plus_2mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/ID_RS_Standard_Plus_2mm.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/Installation-Guide-Plus_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/Installation-Guide-Plus_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_EN_RS_Standard_Plus_2mm.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_EN_RS_Standard_Plus_2mm.pdf",
           "type": "pdf"
         }
       ],
@@ -15259,7 +15050,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_Standard_Plus_21003479_001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_Standard_Plus_21003479_001.jpg"
     },
     {
       "name": "VYLON PLUS",
@@ -15787,47 +15578,47 @@
       "documents": [
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_AgBB_Vylon_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_AgBB_Vylon_Plus.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/DS-Tarkett-vylon_plus-en_INTL.pdf",
+          "url": "https://media.tarkett-image.com/docs/DS-Tarkett-vylon_plus-en_INTL.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_EN_RS_Vylon_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_EN_RS_Vylon_Plus.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
-          "url": "https://media.tarkett-image.com/large/EPD_Premium_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/EPD_Premium_Plus.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/Installation-Guide-Plus_ranges.pdf",
+          "url": "https://media.tarkett-image.com/docs/Installation-Guide-Plus_ranges.pdf",
           "type": "pdf"
         },
         {
           "title": "Izjava o uticaju na zdravlje (MHS)",
-          "url": "https://media.tarkett-image.com/large/MHS_Primo_Plus_Range.pdf",
+          "url": "https://media.tarkett-image.com/docs/MHS_Primo_Plus_Range.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za održavanje",
-          "url": "https://media.tarkett-image.com/large/Maintenance-Guide-Vylon-Plus-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Maintenance-Guide-Vylon-Plus-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/Declaration-performance-0019-0031-DoP-2013-07-Vylon_Plus-INT.pdf",
+          "url": "https://media.tarkett-image.com/docs/Declaration-performance-0019-0031-DoP-2013-07-Vylon_Plus-INT.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_RS_EN_13501_1_Vylon_Plus.pdf",
+          "url": "https://media.tarkett-image.com/docs/CR_RS_EN_13501_1_Vylon_Plus.pdf",
           "type": "pdf"
         }
       ],
@@ -15841,7 +15632,7 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_Vylon_plus_21000589_21000581_001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_Vylon_plus_21000589_21000581_001.jpg"
     },
     {
       "name": "ZENITH SEE",
@@ -16127,27 +15918,27 @@
       "documents": [
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
-          "url": "https://media.tarkett-image.com/large/DOP_SEE_Zenith_SEE_en.pdf",
+          "url": "https://media.tarkett-image.com/docs/DOP_SEE_Zenith_SEE_en.pdf",
           "type": "pdf"
         },
         {
           "title": "Garancija",
-          "url": "https://media.tarkett-image.com/large/GR_SEE_Warranty_letter_Zenith_SEE.pdf",
+          "url": "https://media.tarkett-image.com/docs/GR_SEE_Warranty_letter_Zenith_SEE.pdf",
           "type": "pdf"
         },
         {
           "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/large/TDS_SEE_Zenith_SEE.pdf",
+          "url": "https://media.tarkett-image.com/docs/TDS_SEE_Zenith_SEE.pdf",
           "type": "pdf"
         },
         {
           "title": "Uputstvo za instalaciju",
-          "url": "https://media.tarkett-image.com/large/IN_Installation_maintenance instructions_Primo Plus_SEE_Zenith SEE.pdf",
+          "url": "https://media.tarkett-image.com/docs/IN_Installation_maintenance instructions_Primo Plus_SEE_Zenith SEE.pdf",
           "type": "pdf"
         },
         {
           "title": "Sertifikat",
-          "url": "https://media.tarkett-image.com/large/CR_SEE_Reaction_to_fire_certificate_Zenith_SEE_K46-2020_ENG.PDF",
+          "url": "https://media.tarkett-image.com/docs/CR_SEE_Reaction_to_fire_certificate_Zenith_SEE_K46-2020_ENG.PDF",
           "type": "pdf"
         }
       ],
@@ -16161,9 +15952,9 @@
           ]
         }
       ],
-      "collection_image_url": "https://media.tarkett-image.com/medium/IN_HP_iQ_Optima_3242860_001.jpg"
+      "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_iQ_Optima_3242860_001.jpg"
     }
   ],
-  "generatedAt": "2026-03-16T01:55:08.330Z",
+  "generatedAt": "2026-03-16T11:11:50.291Z",
   "source": "https://www.tarkett.rs/sr_RS/kategorija-rs_C01001-homogeni-vinil"
 }

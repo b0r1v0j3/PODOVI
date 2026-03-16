@@ -77,19 +77,20 @@ npm start
 - `public/data/tarkett_vinyl_home_colors.json` powers Tarkett home vinyl collections (12 collections, 281 colors)
 - `public/data/tarkett_homogeneous_vinyl_colors.json` powers Tarkett homogeneous vinyl collections (20 collections, 544 colors)
 - `public/data/tarkett_sport_colors.json` powers Tarkett Sport collections (22 collections, 255 colors)
-- `public/data/tarkett_wood_collection_index.json` stores official Tarkett Parket/Laminat collection descriptions, hero images, PDF documents, and collection specs scraped from the live Serbia catalog
+- `public/data/tarkett_wood_collection_index.json` stores official Tarkett Parket/Laminat collection descriptions, hero images, PDF documents, and collection specs scraped from the live Serbia catalog; collection PDFs are normalized to `media.tarkett-image.com/docs/*.pdf`
 - `public/data/tarkett_documents_index.json` provides curated Tarkett PDF fallbacks for Laminat and Parket collection pages
 - `lib/data/manual-collection-products.ts` defines collection headers and reads remote `collection_image_url` values from the nested JSON sources when they exist
-- `lib/data/tarkett-wood-enrichment.ts` enriches Tarkett Parket/Laminat products from the official wood collection index regardless of whether the product came from Supabase or the static fallback
+- `lib/data/tarkett-wood-enrichment.ts` enriches Tarkett Parket/Laminat products from the official wood collection index regardless of whether the product came from Supabase or the static fallback, and normalizes stale Tarkett collection PDF URLs to the `/docs/` CDN path
 - `lib/data/tarkett-laminate-slug-mapping.ts` keeps legacy local Tarkett laminate URLs redirecting to the official Tarkett canonical variant slugs
 - `tools/download_gerflor_highres_zip.js --upload-supabase` uses Gerflor ZIP downloads as the source, extracts them locally, prefers the clean JPG when both a plain image and a `loupe/zoom` preview exist, uploads only that final image to Supabase, and writes the public URL back into JSON (`collection_image_url` for hero shots, `image` / `image_url` for colors)
-- `tools/extract_tarkett_sports.js` scrapes the official Tarkett Serbia sports catalog through `window.__NUXT__` and generates `public/data/tarkett_sport_colors.json`
-- `tools/extract_tarkett_vinyl_home.js` scrapes the official Tarkett Serbia `Vinil za kuću` catalog through `window.__NUXT__` and generates `public/data/tarkett_vinyl_home_colors.json`
-- `tools/extract_tarkett_homogeneous_vinyl.js` scrapes the official Tarkett Serbia `Homogeni vinil` catalog through Playwright + `json-collection-product`, with sitemap fallback for broken collection pages, and generates `public/data/tarkett_homogeneous_vinyl_colors.json`
-- `tools/extract_tarkett_wood.js` scrapes the official Tarkett Serbia Parket/Laminat collection pages and generates `public/data/tarkett_wood_collection_index.json`
+- `tools/extract_tarkett_sports.js` scrapes the official Tarkett Serbia sports catalog through `window.__NUXT__`, keeps stored-JSON fallback when Tarkett payloads break, and generates `public/data/tarkett_sport_colors.json` with collection PDFs normalized to `/docs/`
+- `tools/extract_tarkett_vinyl_home.js` scrapes the official Tarkett Serbia `Vinil za kuću` catalog through `window.__NUXT__`, keeps stored-JSON fallback when Tarkett payloads break, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
+- `tools/extract_tarkett_homogeneous_vinyl.js` scrapes the official Tarkett Serbia `Homogeni vinil` catalog through Playwright + `json-collection-product`, with sitemap + stored-JSON fallback for broken collection pages, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
+- `tools/extract_tarkett_wood.js` scrapes the official Tarkett Serbia Parket/Laminat collection pages and generates `public/data/tarkett_wood_collection_index.json` with normalized `/docs/` collection PDF URLs
+- `tools/scrape_tarkett_deep.js` scrapes Tarkett LVT data and now also normalizes collection PDF URLs to `/docs/`
 - `scripts/audit-tarkett-sync.ts` compares official Tarkett Parket/Laminat collections against `lib/data/tarkett-products.ts`, `public/data/tarkett_documents_index.json`, and Supabase when env vars are available, including exact design-slug comparison, duplicate detection, and parket alias normalization for collection-specific URL collisions
 - `scripts/sync-tarkett-supabase.ts` creates a timestamped backup in `output/`, performs a dry-run diff, and can apply the canonical Tarkett Parket/Laminat sync into Supabase once `.env.local` contains the pulled Vercel env vars
-- `scripts/audit-catalog-quality.ts` runs a broader product-quality audit over the canonical catalog sources, collection headers, documents, hero images, descriptions, and specs, then writes `output/catalog-quality-audit.json`
+- `scripts/audit-catalog-quality.ts` runs a broader product-quality audit over the canonical catalog sources, collection headers, documents, hero images, descriptions, and specs, explicitly flags stale Tarkett `/large/*.pdf` document URLs, and writes `output/catalog-quality-audit.json`
 
 ## Project Structure
 
