@@ -235,6 +235,33 @@ function buildShortDescription(rawDescription, fallbackName) {
   return cleaned.length > 180 ? `${cleaned.slice(0, 177).trim()}...` : cleaned;
 }
 
+function getSerbianColorWord(count) {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+
+  if (mod10 === 1 && mod100 !== 11) {
+    return 'boji';
+  }
+
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) {
+    return 'boje';
+  }
+
+  return 'boja';
+}
+
+function reconcileDeclaredColorCount(rawDescription, actualCount) {
+  const cleaned = sanitizeTarkettText(rawDescription);
+  if (!cleaned || !Number.isFinite(actualCount) || actualCount < 1) {
+    return cleaned;
+  }
+
+  return cleaned
+    .replace(/dostupna je u\s+\d+\s+boj(?:a|e|i)/i, `dostupna je u ${actualCount} ${getSerbianColorWord(actualCount)}`)
+    .replace(/dostupan je u\s+\d+\s+boj(?:a|e|i)/i, `dostupan je u ${actualCount} ${getSerbianColorWord(actualCount)}`)
+    .replace(/dostupno je u\s+\d+\s+boj(?:a|e|i)/i, `dostupno je u ${actualCount} ${getSerbianColorWord(actualCount)}`);
+}
+
 function splitColorName(rawName) {
   const cleaned = stripHtml(rawName).replace(/\s+/g, ' ').trim();
   const numericSuffix = cleaned.match(/^(.*?)(?:\s+(\d{3,4}))$/);
@@ -379,6 +406,7 @@ async function fetchCollection(link, previewImageUrl = '') {
     : undefined;
 
   const colors = [];
+  const declaredColorCount = (item.designs || []).length;
 
   for (const design of item.designs || []) {
     const designJsonUrl = design.productDataUrl?.startsWith('//')
@@ -439,26 +467,40 @@ async function fetchCollection(link, previewImageUrl = '') {
           defaultSku.sku_thumbnail ||
           design.product_thumbnail
       ),
-      description: sanitizeTarkettText(
+      description: reconcileDeclaredColorCount(
         colorPayload?.description_stripped ||
         colorPayload?.description ||
         item.description_stripped ||
         item.description ||
-        ''
+        '',
+        declaredColorCount
       ),
       characteristics: Object.keys(colorCharacteristics).length > 0 ? colorCharacteristics : undefined,
       brandId: '3',
     });
   }
 
+  const actualColorCount = colors.length;
+  const collectionDescription = reconcileDeclaredColorCount(
+    item.description_stripped || item.description || '',
+    actualColorCount
+  );
+  const collectionShortDescriptionSource = reconcileDeclaredColorCount(
+    item.short_description_stripped || item.short_description || '',
+    actualColorCount
+  );
+
   return {
     name: stripHtml(item.collection_name || item.name || toSlugFragment(link)),
     slug: collectionUrlToSlug(link),
     brandId: '3',
     url,
-    colorCount: colors.length,
-    shortDescription: buildShortDescription(item.short_description_stripped || item.short_description || item.description_stripped || item.description, stripHtml(item.collection_name || item.name || '')),
-    description: sanitizeTarkettText(item.description_stripped || item.description || ''),
+    colorCount: actualColorCount,
+    shortDescription: buildShortDescription(
+      collectionShortDescriptionSource || collectionDescription,
+      stripHtml(item.collection_name || item.name || '')
+    ),
+    description: collectionDescription,
     categoryDescription: CATEGORY_DESCRIPTION,
     characteristics: collectionCharacteristics,
     colors,

@@ -100,6 +100,12 @@ function stripHtml(value: unknown) {
   return normalizeText(String(value || '').replace(/<[^>]+>/g, ' '));
 }
 
+function extractDeclaredColorCount(value: unknown) {
+  const text = stripHtml(value);
+  const match = text.match(/dostupn(?:a|o|i)?\s+je\s+u\s+(\d+)\s+boj(?:a|e|i)/i);
+  return match ? Number(match[1]) : null;
+}
+
 function parseEnvLine(line: string) {
   const separatorIndex = line.indexOf('=');
   if (separatorIndex === -1) return null;
@@ -472,6 +478,39 @@ function summarizeProductArray(name: string, products: Product[]): DatasetSummar
   };
 }
 
+function auditNestedDatasetDeclaredColorCounts(
+  source: string,
+  categoryId: string,
+  brandId: string,
+  collections: any[]
+): ProductAuditFinding[] {
+  return collections.flatMap((collection) => {
+    const statedCount = extractDeclaredColorCount(
+      `${collection.shortDescription || ''} ${collection.description || ''}`
+    );
+    const actualCount = Array.isArray(collection.colors)
+      ? collection.colors.length
+      : Number(collection.colorCount || 0);
+
+    if (!statedCount || !actualCount || statedCount === actualCount) {
+      return [];
+    }
+
+    return [
+      {
+        severity: 'high' as Severity,
+        source,
+        slug: normalizeText(collection.slug),
+        name: normalizeText(collection.name) || normalizeText(collection.slug),
+        categoryId,
+        brandId,
+        issue: 'declared_color_count_mismatch',
+        detail: `Opis tvrdi ${statedCount} boja, a kolekcija stvarno ima ${actualCount} dekora/boja.`,
+      },
+    ];
+  });
+}
+
 async function getSupabaseSummary() {
   await loadLocalEnvFile();
 
@@ -601,10 +640,47 @@ async function main() {
     })),
   };
 
-  const productFindings = collectionSources
+  const nestedDatasetFindings = [
+    ...auditNestedDatasetDeclaredColorCounts(
+      'sport-json',
+      '10',
+      '6',
+      ((sportColorsData as any).collections || []) as any[]
+    ),
+    ...auditNestedDatasetDeclaredColorCounts(
+      'tarkett-sport-json',
+      '10',
+      '3',
+      ((tarkettSportData as any).collections || []) as any[]
+    ),
+    ...auditNestedDatasetDeclaredColorCounts(
+      'tarkett-vinyl-home-json',
+      '2',
+      '3',
+      ((tarkettVinylHomeData as any).collections || []) as any[]
+    ),
+    ...auditNestedDatasetDeclaredColorCounts(
+      'tarkett-vinyl-homogeneous-json',
+      '2',
+      '3',
+      ((tarkettHomogeneousVinylData as any).collections || []) as any[]
+    ),
+    ...auditNestedDatasetDeclaredColorCounts(
+      'tarkett-vinyl-heterogeneous-json',
+      '2',
+      '3',
+      ((tarkettHeterogeneousVinylData as any).collections || []) as any[]
+    ),
+  ];
+
+  const productFindings = [
+    ...collectionSources
     .flatMap(({ name, products }) => products.map((product) => ({ source: name, product })))
     .filter(({ source, product }) => source !== 'mock-products' || !canonicalFallbackSlugs.has(product.slug))
     .flatMap(({ source, product }) => auditCollectionProduct(source, product))
+    ,
+    ...nestedDatasetFindings,
+  ]
     .sort((left, right) => {
       const severityOrder: Record<Severity, number> = { high: 0, medium: 1, low: 2 };
       const severityDiff = severityOrder[left.severity] - severityOrder[right.severity];

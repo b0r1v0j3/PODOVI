@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 16.03.2026 (Tarkett Heterogeni vinil integracija)
+> **Poslednje ažuriranje:** 18.03.2026 (Tarkett sport count mismatch fix)
 
 ---
 
@@ -138,6 +138,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett sport count mismatch fix za stale opise (18.03.2026)**
+- Proveren je zvanični Tarkett URL za `OMNISPORTS PUREPLAY (9.4 mm)` i utvrđeno je da njihova ista collection stranica i payload kontradiktorno tvrde `dostupna je u 33 boje`, dok na istoj stranici `Pogledaj sve dezene` i `item.designs.length` vraćaju samo 6 dekora; to znači da broj 33 nije nastao kod nas, već dolazi iz zvaničnog Tarkett opisa.
+- `tools/extract_tarkett_sports.js` sada ne prepisuje slepo takve stale numeric tvrdnje, već usklađuje formulacije tipa `dostupna je u X boje/boja` sa stvarnim brojem dekora iz kolekcije pre nego što opis i shortDescription uđu u `tarkett_sport_colors.json`.
+- `scripts/audit-catalog-quality.ts` je dopunjen novim actionable nalazom `declared_color_count_mismatch` nad nested JSON izvorima, tako da budući mismatch između opisa i realnog broja boja/dekora više ne može tiho da prođe audit.
+- Verifikovano: direktan fetch zvaničnog Tarkett `__NUXT__` payload-a za `OMNISPORTS PUREPLAY (9.4 mm)`, `node tools/extract_tarkett_sports.js`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
 
 **Tarkett Heterogeni vinil dodat u kategoriju Vinil kroz ceo pipeline (16.03.2026)**
 - Dodat je novi zvanični izvor `public/data/tarkett_heterogeneous_vinyl_colors.json` sa live Tarkett Srbija kategorije `Heterogeni vinil`: 15 kolekcija i 441 dekor, sa kolekcijskim opisima, PDF dokumentima, key features blokovima, hero slikama i color-level tehničkim listovima / tabelama formata.
