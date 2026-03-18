@@ -141,8 +141,8 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 **Tarkett sport count mismatch fix za stale opise (18.03.2026)**
 - Proveren je zvanični Tarkett URL za `OMNISPORTS PUREPLAY (9.4 mm)` i utvrđeno je da njihova ista collection stranica i payload kontradiktorno tvrde `dostupna je u 33 boje`, dok na istoj stranici `Pogledaj sve dezene` i `item.designs.length` vraćaju samo 6 dekora; to znači da broj 33 nije nastao kod nas, već dolazi iz zvaničnog Tarkett opisa.
-- `tools/extract_tarkett_sports.js` sada ne prepisuje slepo takve stale numeric tvrdnje, već usklađuje formulacije tipa `dostupna je u X boje/boja` sa stvarnim brojem dekora iz kolekcije pre nego što opis i shortDescription uđu u `tarkett_sport_colors.json`.
-- `scripts/audit-catalog-quality.ts` je dopunjen novim actionable nalazom `declared_color_count_mismatch` nad nested JSON izvorima, tako da budući mismatch između opisa i realnog broja boja/dekora više ne može tiho da prođe audit.
+- `tools/extract_tarkett_sports.js` sada potpuno uklanja početnu marketing rečenicu tipa `Ova sportska vinil podna obloga dostupna je u X boja/boje/boji.` iz Tarkett sport `description` i `shortDescription`, jer UI već jasno prikazuje stvarni broj boja/dekora iznad opisa.
+- `scripts/audit-catalog-quality.ts` je dopunjen novim actionable nalazom `declared_color_count_mismatch` nad nested JSON izvorima, tako da budući mismatch između zvaničnog opisa i realnog broja boja/dekora više ne može tiho da prođe audit.
 - Verifikovano: direktan fetch zvaničnog Tarkett `__NUXT__` payload-a za `OMNISPORTS PUREPLAY (9.4 mm)`, `node tools/extract_tarkett_sports.js`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
 
 **Tarkett Heterogeni vinil dodat u kategoriju Vinil kroz ceo pipeline (16.03.2026)**
