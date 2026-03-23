@@ -1170,7 +1170,7 @@ export function getWolflorVinylCollections(): Product[] {
 
     wolflorVinylCollectionCache = collections.map((collection: any) => {
         const firstColor = collection.colors?.[0];
-        const imageUrl = collection.collection_image_url || firstColor?.image || '';
+        const imageUrl = firstColor?.image || collection.collection_image_url || '';
         const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
         const typeValue = normalizeText(collection.characteristics?.Tip) || 'Heterogeni';
         const thicknessValue = collection.characteristics?.['Ukupna debljina'];

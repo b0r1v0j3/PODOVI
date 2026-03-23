@@ -341,6 +341,30 @@ def build_color_description(collection_name: str, code: str) -> str:
     return f'Dekor {code} iz kolekcije {collection_name}.'
 
 
+def get_first_color_image(colors: list[dict[str, Any]]) -> str:
+    for color in colors:
+        image = String(color.get('image'))
+        if image:
+            return image
+    return ''
+
+
+def normalize_collection_image_to_color(
+    collection: dict[str, Any],
+    fallback_image: str | None = None,
+) -> None:
+    first_color_image = get_first_color_image(collection.get('colors', []))
+    if first_color_image:
+        collection['collection_image_url'] = first_color_image
+    elif fallback_image:
+        collection['collection_image_url'] = fallback_image
+
+
+def normalize_collection_images_to_colors(collections: list[dict[str, Any]]) -> None:
+    for collection in collections:
+        normalize_collection_image_to_color(collection, String(collection.get('collection_image_url')))
+
+
 def extract_product_code(product: dict[str, Any]) -> str:
     name = strip_html(product.get('name'))
     match = re.search(r'([A-Z]{1,4}\d{4,})\s*$', name.upper())
@@ -396,7 +420,7 @@ def build_live_collection(category: dict[str, Any]) -> dict[str, Any] | None:
     documents = extract_pdf_links(product_page_html)
     collection_name = strip_html(category['name'])
     collection_slug = f"wolflor-{slugify(collection_name)}"
-    collection_image_url = (
+    fallback_collection_image_url = (
         category.get('image', {}).get('src')
         or (first_product.get('images') or [{}])[0].get('src')
         or ''
@@ -418,6 +442,8 @@ def build_live_collection(category: dict[str, Any]) -> dict[str, Any] | None:
         })
 
     colors.sort(key=lambda item: item['code'])
+
+    collection_image_url = get_first_color_image(colors) or fallback_collection_image_url
 
     return {
         'name': collection_name,
@@ -629,6 +655,8 @@ def build_pdf_collection(pdf_path: Path, ocr: RapidOCR) -> dict[str, Any]:
         color['description'] = build_color_description(collection_name, color['code'])
         color['documents'] = [{'title': f'{collection_name} katalog', 'url': document_url}]
 
+    collection_image_url = get_first_color_image(colors) or hero_url
+
     return {
         'name': collection_name,
         'slug': collection_slug,
@@ -771,18 +799,10 @@ def upload_wolflor_images_to_supabase(collections: list[dict[str, Any]]) -> None
     supabase_config = resolve_supabase_config()
     print(f"Uploading Wolflor images to Supabase ({supabase_config['ref']}/{SUPABASE_BUCKET_NAME})...")
 
+    normalize_collection_images_to_colors(collections)
+
     jobs: list[tuple[str, dict[str, Any], dict[str, Any] | None, str, str]] = []
     for collection in collections:
-        collection_image = String(collection.get('collection_image_url'))
-        if collection_image and not is_supabase_public_url(collection_image, supabase_config['url']):
-            jobs.append((
-                'collection',
-                collection,
-                None,
-                collection_image,
-                f"products/vinyl/{collection['slug']}/collection.jpg",
-            ))
-
         for color in collection.get('colors', []):
             color_image = String(color.get('image'))
             if not color_image or is_supabase_public_url(color_image, supabase_config['url']):
@@ -819,9 +839,7 @@ def upload_wolflor_images_to_supabase(collections: list[dict[str, Any]]) -> None
             completed += 1
             try:
                 uploaded_url = future.result()
-                if target_type == 'collection':
-                    collection['collection_image_url'] = uploaded_url
-                elif color is not None:
+                if color is not None:
                     color['image'] = uploaded_url
             except Exception as error:  # noqa: BLE001
                 target_label = collection['slug'] if target_type == 'collection' else color.get('slug', collection['slug'])
@@ -833,6 +851,8 @@ def upload_wolflor_images_to_supabase(collections: list[dict[str, Any]]) -> None
     if failures:
         preview = '\n'.join(failures[:10])
         raise RuntimeError(f'Wolflor Supabase upload failed for {len(failures)} image(s):\n{preview}')
+
+    normalize_collection_images_to_colors(collections)
 
 
 def cleanup_local_wolflor_images() -> None:
@@ -929,10 +949,6 @@ def reuse_existing_supabase_urls(
         if not previous_collection:
             continue
 
-        previous_collection_image = String(previous_collection.get('collection_image_url'))
-        if previous_collection_image and 'supabase.co/storage/v1/object/public/product-images/' in previous_collection_image:
-            collection['collection_image_url'] = previous_collection_image
-
         previous_colors_by_code = {
             String(color.get('code')): color
             for color in previous_collection.get('colors', [])
@@ -947,6 +963,8 @@ def reuse_existing_supabase_urls(
             previous_color_image = String(previous_color.get('image'))
             if previous_color_image and 'supabase.co/storage/v1/object/public/product-images/' in previous_color_image:
                 color['image'] = previous_color_image
+
+    normalize_collection_images_to_colors(collections)
 
 
 def main() -> None:
@@ -977,6 +995,8 @@ def main() -> None:
         collections = merge_pdf_supplement(collections, pdf_files, ocr)
     else:
         print('No PDF supplement files found. Continuing with live catalog only.')
+
+    normalize_collection_images_to_colors(collections)
 
     if args.upload_supabase:
         if not args.force_upload:

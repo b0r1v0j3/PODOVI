@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 23.03.2026 (Wolflor vinil category collection visibility fix)
+> **Poslednje ažuriranje:** 23.03.2026 (Wolflor collection image color-shot normalization)
 
 ---
 
@@ -139,6 +139,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**Wolflor kolekcije prebačene na color-shot hero slike umesto roomshot-a (23.03.2026)**
+- Wolflor kolekcijske kartice i collection hero prikaz više ne koriste `collection.jpg` / ambijentalne roomshot slike čak ni kada postoje; za Wolflor je standardizovano da se kao `collection_image_url` koristi prva dostupna slika dekora/boje iz same kolekcije.
+- `tools/extract_wolflor_vinyl.py` sada normalizuje Wolflor `collection_image_url` na prvi color image pri live ekstrakciji, PDF suplement merge-u, reuse Supabase URL-ova i posle eventualnog `--upload-supabase` prolaza, tako da budući refresh više ne može da vrati roomshot hero samo za neke Wolflor kolekcije.
+- `lib/utils/productDataLoader.ts` dodatno za Wolflor collection header proizvode daje prioritet `firstColor.image` nad `collection.collection_image_url`, pa UI i pri starijem JSON stanju i dalje ostaje na color-shot prikazu samo za Wolflor.
+
 **Wolflor collection kartice vraćene u Vinil kategoriju i brand filter tok (23.03.2026)**
 - Ispravljen je server-side collection/header detection na `app/kategorije/[slug]/page.tsx`: Wolflor vinil kolekcije koriste SKU prefiks `WOLFLOR-VINYL-`, a prethodna logika je kao collection prepoznavala samo prefikse tipa `GER-`, `TARKETT-`, `VINIL-` i slično, pa su Wolflor header proizvodi nestajali iz `Kolekcije` taba na `/kategorije/vinil`.
 - Ispravljen je i `SupabaseProductRepository.findAll()` za mock-only brand filtere: kada korisnik traži `brands=11` (Wolflor) ili drugi brend koji nema `products.brand_id` UUID redove u Supabase-u, repo više ne šalje sirovi legacy ID (`11`) u UUID kolonu i više ne prekida pre JSON/manual merge sloja.
@@ -151,10 +156,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Pravilo za ovaj repo ostaje: za produkciju koristi se `git push` + Vercel auto-deploy sa `main`; lokalni `vercel deploy` treba koristiti samo ako postoji jasan razlog i uz `.vercelignore` zaštitu.
 
 **Wolflor slike prebačene na Supabase iz extract pipeline-a (23.03.2026)**
-- `tools/extract_wolflor_vinyl.py` sada podržava `--upload-supabase`: posle live + PDF ekstrakcije uploaduje svih 835 Wolflor JPG asseta (64 collection hero slike + 771 color slika) u `product-images` bucket i automatski čisti lokalni staging folder `public/images/wolflor/`.
+- `tools/extract_wolflor_vinyl.py` sada podržava `--upload-supabase`: posle live + PDF ekstrakcije uploaduje Wolflor color JPG assete u `product-images` bucket, automatski čisti lokalni staging folder `public/images/wolflor/`, a `collection_image_url` za svih 64 kolekcija vezuje na prvu dostupnu color/dekor sliku umesto na poseban roomshot hero asset.
 - Isti extractor sada pri sledećim refresh prolazima automatski reusuje već postojeće Supabase URL-ove iz prethodnog `wolflor_vinyl_colors.json`, pa redovan refresh više ne radi nepotreban mass re-upload; za ručni full refresh postoji `--force-upload`.
 - `public/data/wolflor_vinyl_colors.json` je osvežen tako da više nema lokalne `public/images` putanje niti direktne `wolflor.cn` image URL-ove; svih 64 kolekcija i 771 dekora sada koriste Supabase public URL-ove, dok PDF dokumenta ostaju lokalno u `public/documents/wolflor/`.
-- Verifikovano: `python tools/extract_wolflor_vinyl.py --upload-supabase`, provera da `supabase=835 / local=0 / wolflor.cn=0` u finalnom JSON-u, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
+- Verifikovano: `python tools/extract_wolflor_vinyl.py --upload-supabase`, provera da `mismatches=0 / local=0 / wolflor.cn=0` u finalnom JSON-u, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
 
 **Wolflor vinil dodat iz live sajta + PDF suplementa kroz ceo pipeline (23.03.2026)**
 - Dodat je novi izvor `public/data/wolflor_vinyl_colors.json`, generisan kroz `tools/extract_wolflor_vinyl.py`, koji kombinuje 57 live Wolflor kolekcija sa WooCommerce Store API-ja i 7 novijih PDF kolekcija (`Andes`, `Atlas`, `Aurora`, `Baikal`, `Bermuda`, `Everest`, `Rockies`).
@@ -496,6 +501,7 @@ PODOVI/
 27. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
 28. **Wolflor Vinil kolekcije koriste SKU prefiks `WOLFLOR-VINYL-` i moraju da budu tretirane kao collection header proizvodi.** Ako collection/header detekcija u kategorijskim stranicama ili tabovima proverava samo prefikse poput `GER-`, `TARKETT-` ili `VINIL-`, Wolflor će završiti u pogrešnom toku i nestaće iz `Kolekcije` taba i `brands=11` filter rendera na `/kategorije/vinil`.
 29. **Mock-only brand filteri ne smeju sirovo u Supabase UUID `brand_id` query.** Brendovi poput `BLOQ`, `TimberTech` i `Wolflor` žive kroz mock/JSON/manual sloj; ako `product-repository.ts` pošalje legacy ID tipa `8`, `10` ili `11` direktno u `.in('brand_id', ...)` nad UUID kolonom, Supabase grana pukne i merge blokovi ispod se nikad ne izvrše.
+30. **Za Wolflor kolekcije nemoj koristiti roomshot/ambijentalni hero kao kanonski collection image.** Čak i kada vendor ima `collection.jpg` ili category hero u prostoru, Wolflor kolekcijski prikaz kod nas treba da koristi prvu dostupnu sliku dekora/boje; to važi samo za Wolflor i ne treba prelivati na ostale brendove.
 
 ---
 
