@@ -35,7 +35,7 @@ npm start
 
 ### Product Catalog
 - Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport)
-- Browse by **brand** (Tarkett, Gerflor, BLOQ)
+- Browse by **brand** (Tarkett, Gerflor, BLOQ, Wolflor)
 - **Product filters**: search, brand, price range, stock status, color, collection, thickness, wood type
 - **Color variant selector** with instant image switching (no page reload)
 - **Product detail pages** with image galleries, specs, and inquiry CTA
@@ -70,7 +70,7 @@ npm start
 
 ## Catalog Data Sources
 
-- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` + `public/data/tarkett_vinyl_home_colors.json` + `public/data/tarkett_homogeneous_vinyl_colors.json` + `public/data/tarkett_heterogeneous_vinyl_colors.json` power Vinil collections and colors
+- `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` + `public/data/tarkett_vinyl_home_colors.json` + `public/data/tarkett_homogeneous_vinyl_colors.json` + `public/data/tarkett_heterogeneous_vinyl_colors.json` + `public/data/wolflor_vinyl_colors.json` power Vinil collections and colors, with Wolflor image assets served from Supabase storage
 - `public/data/esd_colors.json` powers Elektroprovodni / ESD collections
 - `public/data/industrial_colors.json` powers Industrijske ploče collections
 - `public/data/sport_colors.json` powers Gerflor / DLW Sport collections
@@ -88,6 +88,7 @@ npm start
 - `tools/extract_tarkett_vinyl_home.js` scrapes the official Tarkett Serbia `Vinil za kuću` catalog through `window.__NUXT__`, keeps stored-JSON fallback when Tarkett payloads break, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
 - `tools/extract_tarkett_homogeneous_vinyl.js` scrapes the official Tarkett Serbia `Homogeni vinil` catalog through Playwright + `json-collection-product`, with sitemap + stored-JSON fallback for broken collection pages, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
 - `tools/extract_tarkett_heterogeneous_vinyl.js` scrapes the official Tarkett Serbia `Heterogeni vinil` catalog through Playwright + `json-collection-product`, keeps stored-JSON fallback per collection, falls back to `page.content()` / HTML parsing when the category grid returns an empty DOM query in headless shell mode, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
+- `tools/extract_wolflor_vinyl.py` combines the live Wolflor WooCommerce Store API with 7 local Wolflor PDF supplements, generates `public/data/wolflor_vinyl_colors.json`, and with `--upload-supabase` pushes all Wolflor hero/color JPG assets to the `product-images` bucket while copying source PDFs into `public/documents/wolflor/`; subsequent refreshes reuse the already-uploaded Supabase URLs unless `--force-upload` is explicitly passed
 - `tools/extract_tarkett_wood.js` scrapes the official Tarkett Serbia Parket/Laminat collection pages and generates `public/data/tarkett_wood_collection_index.json` with normalized `/docs/` collection PDF URLs
 - `tools/scrape_tarkett_deep.js` scrapes Tarkett LVT data and now also normalizes collection PDF URLs to `/docs/`
 - `scripts/audit-tarkett-sync.ts` compares official Tarkett Parket/Laminat collections against `lib/data/tarkett-products.ts`, `public/data/tarkett_documents_index.json`, and Supabase when env vars are available, including exact design-slug comparison, duplicate detection, and parket alias normalization for collection-specific URL collisions
@@ -103,7 +104,7 @@ PODOVI/
 │   ├── layout.tsx          # Root layout (providers, analytics, header/footer)
 │   ├── kategorije/         # Categories (Laminat, Vinil, Parket, etc.)
 │   ├── proizvodi/          # Individual product pages
-│   ├── brendovi/           # Brand pages (Tarkett, Gerflor)
+│   ├── brendovi/           # Brand pages (Tarkett, Gerflor, BLOQ, Wolflor)
 │   ├── kontakt/            # Contact page with form
 │   ├── omiljeni/           # Favorites page
 │   ├── uporedi/            # Product comparison page
@@ -184,6 +185,7 @@ PODOVI/
 │   │   ├── tarkett_vinyl_home_colors.json
 │   │   ├── tarkett_homogeneous_vinyl_colors.json
 │   │   ├── tarkett_heterogeneous_vinyl_colors.json
+│   │   ├── wolflor_vinyl_colors.json
 │   │   ├── linoleum_colors_complete.json
 │   │   ├── industrial_colors.json
 │   │   ├── sport_colors.json
@@ -193,7 +195,7 @@ PODOVI/
 │   │   ├── tarkett_documents_index.json
 │   │   ├── carpet_tiles_complete.json  # Gerflor carpet tiles (26 colors)
 │   │   └── bloq_carpet_tiles.json      # BLOQ carpet tiles (18 collections, 210 colors)
-│   ├── documents/          # Product PDF documents (231 files)
+│   ├── documents/          # Product PDF documents + Wolflor PDF supplements
 │   └── images/             # Product images
 │       └── products/bloq-roomshots/  # BLOQ collection hero images (18 roomshots)
 │
@@ -218,6 +220,7 @@ PODOVI/
 │   ├── check-images.js             # Image checker
 │   ├── extract_tarkett_sports.js   # Tarkett sports catalog extractor
 │   ├── extract_tarkett_vinyl_home.js # Tarkett home vinyl catalog extractor
+│   ├── extract_wolflor_vinyl.py    # Wolflor live + PDF vinyl extractor
 │   ├── extract_tarkett_homogeneous_vinyl.js # Tarkett homogeneous vinyl catalog extractor
 │   ├── extract_tarkett_heterogeneous_vinyl.js # Tarkett heterogeneous vinyl catalog extractor
 │   ├── extract_tarkett_wood.js     # Tarkett parket/laminat collection extractor

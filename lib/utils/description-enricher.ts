@@ -13,7 +13,8 @@ export function enrichProductDescription(product: Product): string {
     // Extract key data
     const brand = product.brandId === '3' ? 'Tarkett' :
         product.brandId === '6' ? 'Gerflor' :
-            product.brandId === '8' ? 'BLOQ' : '';
+            product.brandId === '8' ? 'BLOQ' :
+                product.brandId === '11' ? 'Wolflor' : '';
 
     const categoryMap: Record<string, string> = {
         '1': 'laminat',
@@ -22,6 +23,9 @@ export function enrichProductDescription(product: Product): string {
         '4': 'tekstilne ploče',
         '6': 'LVT',
         '7': 'linoleum',
+        '8': 'elektroprovodni pod',
+        '9': 'industrijske ploče',
+        '10': 'sportski pod',
     };
     const categoryName = categoryMap[product.categoryId] || 'podna obloga';
 
@@ -81,6 +85,9 @@ export function enrichShortDescription(product: Product): string {
         '4': 'Tekstilne ploče',
         '6': 'LVT podna obloga',
         '7': 'Prirodni linoleum',
+        '8': 'Elektroprovodni pod',
+        '9': 'Industrijske ploče',
+        '10': 'Sportski pod',
     };
 
     const base = categoryMap[product.categoryId] || 'Podna obloga';

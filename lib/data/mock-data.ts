@@ -114,6 +114,15 @@ export const brands: Brand[] = [
     website: 'https://bloq.nl',
     countryOfOrigin: 'Holandija',
   },
+  {
+    id: '11',
+    name: 'Wolflor',
+    slug: 'wolflor',
+    logo: '/images/placeholder.svg',
+    description: 'Proizvođač komercijalnih vinil podova sa homogenim, heterogenim i wood-look kolekcijama',
+    website: 'https://wolflor.cn/',
+    countryOfOrigin: 'Kina',
+  },
 ];
 
 export const products: Product[] = [

@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 18.03.2026 (Tarkett sport count mismatch fix)
+> **Poslednje ažuriranje:** 23.03.2026 (Wolflor Supabase image pipeline)
 
 ---
 
@@ -37,7 +37,7 @@ Podovi.online je **katalog podnih obloga** za tržište Srbije. Sajt služi kao 
 ### Ključni principi:
 - **Nije e-commerce** — nema korpu ni checkout. Korisnici šalju upite za proizvode
 - **Sajt je na srpskom jeziku** — sav sadržaj, nazivi, specifikacije su na srpskom
-- **Multi-brand** — Tarkett, Gerflor, BLOQ — svaki brend ima drugačiju strukturu podataka
+- **Multi-brand** — Tarkett, Gerflor, BLOQ, Wolflor — svaki brend ima drugačiju strukturu podataka
 - **Data-driven** — proizvodi dolaze iz kombinacije JSON fajlova, TypeScript data fajlova i Supabase baze
 - **SEO optimizovan** — structured data, sitemap, meta tagovi za svaku stranicu
 
@@ -84,7 +84,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
 | Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
-| Vinil | 2 | Gerflor (6), Tarkett (4) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja) |
+| Vinil | 2 | Gerflor (6), Tarkett (3), Wolflor (11) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja), `wolflor_vinyl_colors.json` (64 kolekcije, 771 dekora; 57 live + 7 PDF suplement, slike na Supabase) |
 | Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | TimberTech (10) | `tis_deking_products.json` |
@@ -138,6 +138,19 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Wolflor slike prebačene na Supabase iz extract pipeline-a (23.03.2026)**
+- `tools/extract_wolflor_vinyl.py` sada podržava `--upload-supabase`: posle live + PDF ekstrakcije uploaduje svih 835 Wolflor JPG asseta (64 collection hero slike + 771 color slika) u `product-images` bucket i automatski čisti lokalni staging folder `public/images/wolflor/`.
+- Isti extractor sada pri sledećim refresh prolazima automatski reusuje već postojeće Supabase URL-ove iz prethodnog `wolflor_vinyl_colors.json`, pa redovan refresh više ne radi nepotreban mass re-upload; za ručni full refresh postoji `--force-upload`.
+- `public/data/wolflor_vinyl_colors.json` je osvežen tako da više nema lokalne `public/images` putanje niti direktne `wolflor.cn` image URL-ove; svih 64 kolekcija i 771 dekora sada koriste Supabase public URL-ove, dok PDF dokumenta ostaju lokalno u `public/documents/wolflor/`.
+- Verifikovano: `python tools/extract_wolflor_vinyl.py --upload-supabase`, provera da `supabase=835 / local=0 / wolflor.cn=0` u finalnom JSON-u, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
+
+**Wolflor vinil dodat iz live sajta + PDF suplementa kroz ceo pipeline (23.03.2026)**
+- Dodat je novi izvor `public/data/wolflor_vinyl_colors.json`, generisan kroz `tools/extract_wolflor_vinyl.py`, koji kombinuje 57 live Wolflor kolekcija sa WooCommerce Store API-ja i 7 novijih PDF kolekcija (`Andes`, `Atlas`, `Aurora`, `Baikal`, `Bermuda`, `Everest`, `Rockies`).
+- Ukupno je ubačeno 64 Wolflor kolekcije i 771 dekora; PDF kolekcije generišu hero slike i swatch cropove koji sada produkciono završavaju na Supabase-u preko `--upload-supabase`, dok se originalni PDF-ovi kopiraju u `public/documents/wolflor/`.
+- Proširen je ceo Vinil pipeline kroz `productDataLoader.ts`, `product-repository.ts`, `resolve-product.ts`, `prepare-colors.ts`, `color-helpers.ts`, `/api/colors`, `/api/color-data`, `CategoryTabs`, `ColorGrid`, `ProductCardClient` i `app/proizvodi/[slug]/page.tsx`, tako da Wolflor radi na kategoriji, brend strani, product ruti, color selectoru i dokument tab-u zajedno sa Gerflor/Tarkett izvorima.
+- `scripts/audit-catalog-quality.ts` sada pokriva i Wolflor dataset, uz eksplicitni izuzetak za PDF-only kolekcije koje nemaju canonical live URL, pa kanonski katalog i dalje ostaje na `0` actionable nalaza.
+- Verifikovano: `python tools/extract_wolflor_vinyl.py`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
 
 **Tarkett sport count mismatch fix za stale opise (18.03.2026)**
 - Proveren je zvanični Tarkett URL za `OMNISPORTS PUREPLAY (9.4 mm)` i utvrđeno je da njihova ista collection stranica i payload kontradiktorno tvrde `dostupna je u 33 boje`, dok na istoj stranici `Pogledaj sve dezene` i `item.designs.length` vraćaju samo 6 dekora; to znači da broj 33 nije nastao kod nas, već dolazi iz zvaničnog Tarkett opisa.
@@ -404,6 +417,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Dodati Tarkett sport kolekcije u kategoriju `Sport` kroz ceo JSON → resolver → API → UI pipeline, sa dokumentima i key features podacima iz zvaničnog kataloga.
 - [x] Završiti Tarkett Supabase sync kada env pristup bude dostupan, da baza dobije isti parket/laminat kanonski skup proizvoda i iste Tarkett slugove kao statički fallback.
 - [x] Nastaviti Tarkett proširenje posle `Homogeni vinil` na `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
+- [x] Dodati Wolflor vinil iz kombinacije live sajta i lokalnih PDF suplement kolekcija kroz kompletan JSON → resolver → API → UI pipeline.
 
 ---
 
@@ -429,13 +443,13 @@ PODOVI/
 │   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi + Tarkett wood enrichment
 │   └── repositories/       # Data access layer (Supabase)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett wood collection index + PDF indeksi)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, Wolflor vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett wood collection index + PDF indeksi)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
 ├── scripts/                # Utility skripte (enrichment, image validation, Tarkett audit/sync, catalog quality audit)
 │
-└── tools/                  # Ekstraktori/scraperi za zvanične kataloge (Gerflor, Tarkett, fallback preko sitemap/json endpointa kada treba)
+└── tools/                  # Ekstraktori/scraperi za zvanične kataloge (Gerflor, Tarkett, Wolflor, fallback preko sitemap/json endpointa kada treba)
 ```
 
 ## 8. ⚡ COMMON GOTCHAS
@@ -466,6 +480,7 @@ PODOVI/
 22. **Kad na Supabase prepisujes sliku na istoj putanji, URL u JSON-u mora da dobije novu verziju.** Ako ostane identican URL, browser i CDN mogu satima da serviraju staru GTI/industrijsku preview sliku iako je object vec zamenjen clean JPG-om; dodaj `?v=...` cache-bust na `image` polje kad hoces da promena odmah postane vidljiva.
 23. **Tarkett `Vinil za kuću` extractor ne treba da se oslanja na običan `https.get` HTML fetch za collection page.** Za ove kolekcije sirovi response često nema `window.__NUXT__` payload, dok ga `page.content()` iz Playwright-a uredno vrati posle rendera; zato `tools/extract_tarkett_vinyl_home.js` mora da učitava collection stranice kroz browser, a product JSON može direktno preko `json-collection-product/...` endpointa.
 24. **Tarkett `Heterogeni vinil` category grid ume da vrati prazan DOM query u headless shell-u.** Ako `document.querySelectorAll('a[href*=\"/sr_RS/kolekcija-\"]')` vrati `0`, proveri `page.content()` pre nego što proglasiš stranicu praznom. `tools/extract_tarkett_heterogeneous_vinyl.js` zato mora da ima HTML regex fallback za collection href-ove / slike i ne sme da zavisi samo od live DOM selektorâ.
+25. **Wolflor slike za produkciju idu na Supabase, ne na `public/images` i ne ostaju na `wolflor.cn`.** Kad osvežavaš `public/data/wolflor_vinyl_colors.json`, pokreni `python tools/extract_wolflor_vinyl.py --upload-supabase`; bez tog flag-a ostaće lokalni staging JPG-ovi ili direktni vendor URL-ovi, što nije kanonski storage obrazac projekta. Ako baš želiš da pregaziš postojeće Supabase assete novim uploadom, koristi `--force-upload`.
 23. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
 
 ---

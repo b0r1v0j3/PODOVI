@@ -19,6 +19,7 @@ import {
   getTarkettHomogeneousVinylCollections,
   getTarkettSportCollections,
   getTarkettVinylHomeCollections,
+  getWolflorVinylCollections,
   getVinylCollectionProducts,
 } from '@/lib/utils/productDataLoader';
 import { mapCategoryIdToUUID } from '@/lib/repositories/id-mapping';
@@ -32,6 +33,7 @@ import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_v
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
+import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
@@ -74,6 +76,7 @@ const BRAND_NAMES: Record<string, string> = {
   '6': 'Gerflor',
   '8': 'BLOQ',
   '10': 'TimberTech',
+  '11': 'Wolflor',
 };
 
 const CATEGORY_NAMES: Record<string, string> = {
@@ -201,6 +204,12 @@ function isKnownMissingDocumentsCase(product: Product, source: string) {
   return source === 'tarkett-sport-collections' && product.slug === 'tarkett-protectiles-plus';
 }
 
+function hasWolflorPdfFallback(product: Product) {
+  return product.brandId === '11' && (product.documents || []).some((document) =>
+    normalizeText(document.url).startsWith('/documents/wolflor/')
+  );
+}
+
 function auditCollectionProduct(source: string, product: Product): ProductAuditFinding[] {
   const findings: ProductAuditFinding[] = [];
   const description = normalizeText(product.description);
@@ -272,7 +281,7 @@ function auditCollectionProduct(source: string, product: Product): ProductAuditF
     });
   }
 
-  if (!normalizeText(product.externalLink)) {
+  if (!normalizeText(product.externalLink) && !hasWolflorPdfFallback(product)) {
     findings.push({
       severity: 'medium',
       source,
@@ -600,6 +609,7 @@ async function main() {
     { name: 'tarkett-vinyl-heterogeneous-collections', products: getTarkettHeterogeneousVinylCollections() },
     { name: 'tarkett-vinyl-homogeneous-collections', products: getTarkettHomogeneousVinylCollections() },
     { name: 'tarkett-vinyl-home-collections', products: getTarkettVinylHomeCollections() },
+    { name: 'wolflor-vinyl-collections', products: getWolflorVinylCollections() },
     { name: 'tarkett-sport-collections', products: getTarkettSportCollections() },
     { name: 'gerflor-vinyl-collections', products: getVinylCollectionProducts() },
     { name: 'gerflor-esd-collections', products: getEsdCollectionProducts() },
@@ -622,6 +632,7 @@ async function main() {
       ...getTarkettLVTCollections(),
       ...getTarkettHeterogeneousVinylCollections(),
       ...getTarkettHomogeneousVinylCollections(),
+      ...getWolflorVinylCollections(),
       ...getTarkettSportCollections(),
       ...getTarkettVinylHomeCollections(),
       ...getVinylCollectionProducts(),
@@ -723,6 +734,7 @@ async function main() {
     summarizeProductArray('tarkett-vinyl-heterogeneous-collections', getTarkettHeterogeneousVinylCollections()),
     summarizeProductArray('tarkett-vinyl-homogeneous-collections', getTarkettHomogeneousVinylCollections()),
     summarizeProductArray('tarkett-vinyl-home-collections', getTarkettVinylHomeCollections()),
+    summarizeProductArray('wolflor-vinyl-collections', getWolflorVinylCollections()),
     summarizeProductArray('tarkett-sport-collections', getTarkettSportCollections()),
     summarizeProductArray('gerflor-vinyl-collections', getVinylCollectionProducts()),
     summarizeProductArray('gerflor-esd-collections', getEsdCollectionProducts()),
@@ -736,6 +748,7 @@ async function main() {
     summarizeNestedDataset('tarkett-vinyl-heterogeneous-json', ((tarkettHeterogeneousVinylData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('tarkett-vinyl-homogeneous-json', ((tarkettHomogeneousVinylData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('tarkett-vinyl-home-json', ((tarkettVinylHomeData as any).collections || []) as any[], { requireDocuments: true }),
+    summarizeNestedDataset('wolflor-vinyl-json', ((wolflorVinylData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('tarkett-sport-json', ((tarkettSportData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('vinyl-json', ((vinylColorsData as any).collections || []) as any[]),
     summarizeNestedDataset('esd-json', ((esdColorsData as any).collections || []) as any[]),

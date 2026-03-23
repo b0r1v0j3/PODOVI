@@ -118,7 +118,8 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
                         const index = await response.json();
                         const normalizedCollectionSlug = collectionSlug
                             .replace(/^gerflor-/, '')
-                            .replace(/^tarkett-/, '');
+                            .replace(/^tarkett-/, '')
+                            .replace(/^wolflor-/, '');
 
                         const docsFromIndex = index?.[sourceConfig.categoryKey]?.[normalizedCollectionSlug]
                             ? normalizeDocuments(index[sourceConfig.categoryKey][normalizedCollectionSlug])

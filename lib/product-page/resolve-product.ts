@@ -58,7 +58,7 @@ function enrichProductFromCollectionData(product: Product, collection: any): Pro
 }
 
 function findNestedCollection(slug: string) {
-    const slugWithoutPrefix = slug.replace(/^gerflor-/, '').replace(/^tarkett-/, '');
+    const slugWithoutPrefix = slug.replace(/^gerflor-/, '').replace(/^tarkett-/, '').replace(/^wolflor-/, '');
     return (
         vinylCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         esdCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
@@ -68,11 +68,14 @@ function findNestedCollection(slug: string) {
     );
 }
 
-export function normalizeCollectionSlug(categoryId: string, collectionSlug: string): string {
+export function normalizeCollectionSlug(categoryId: string, collectionSlug: string, brandId?: string): string {
     if (!collectionSlug) {
         return collectionSlug;
     }
-    const hasBrandPrefix = collectionSlug.startsWith('gerflor-') || collectionSlug.startsWith('tarkett-');
+    const hasBrandPrefix =
+        collectionSlug.startsWith('gerflor-') ||
+        collectionSlug.startsWith('tarkett-') ||
+        collectionSlug.startsWith('wolflor-');
     if (categoryId === '6') {
         if (hasBrandPrefix) {
             return collectionSlug;
@@ -93,6 +96,9 @@ export function normalizeCollectionSlug(categoryId: string, collectionSlug: stri
             return collectionSlug;
         }
         return `gerflor-${collectionSlug}`;
+    }
+    if (categoryId === '2' && brandId === '11') {
+        return hasBrandPrefix ? collectionSlug : `wolflor-${collectionSlug}`;
     }
     return collectionSlug;
 }

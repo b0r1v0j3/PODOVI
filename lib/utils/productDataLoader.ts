@@ -12,6 +12,7 @@ import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
+import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 
@@ -26,6 +27,7 @@ let tarkettSportCollectionCache: Product[] | null = null;
 let tarkettVinylHomeCollectionCache: Product[] | null = null;
 let tarkettHomogeneousVinylCollectionCache: Product[] | null = null;
 let tarkettHeterogeneousVinylCollectionCache: Product[] | null = null;
+let wolflorVinylCollectionCache: Product[] | null = null;
 let gerflorLvtCollectionCache: Product[] | null = null;
 let gerflorLinoleumCollectionCache: Product[] | null = null;
 
@@ -424,6 +426,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getTarkettVinylHomeCollections(),
         ...getTarkettHeterogeneousVinylCollections(),
         ...getTarkettHomogeneousVinylCollections(),
+        ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
         ...getVinylCollectionProducts(),
@@ -455,6 +458,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
             ...getTarkettVinylHomeCollections(),
             ...getTarkettHeterogeneousVinylCollections(),
             ...getTarkettHomogeneousVinylCollections(),
+            ...getWolflorVinylCollections(),
             ...getManualCollectionProducts().filter((product) => product.categoryId === '2'),
         ];
     } else if (categoryId === '10') {
@@ -480,6 +484,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getTarkettVinylHomeCollections(),
         ...getTarkettHeterogeneousVinylCollections(),
         ...getTarkettHomogeneousVinylCollections(),
+        ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
         ...getVinylCollectionProducts(),
@@ -1154,6 +1159,79 @@ export function getTarkettHeterogeneousVinylCollections(): Product[] {
     );
 
     return tarkettHeterogeneousVinylCollectionCache;
+}
+
+export function getWolflorVinylCollections(): Product[] {
+    if (wolflorVinylCollectionCache) {
+        return wolflorVinylCollectionCache;
+    }
+
+    const collections = (((wolflorVinylData as any)?.collections || []) as any[]);
+
+    wolflorVinylCollectionCache = collections.map((collection: any) => {
+        const firstColor = collection.colors?.[0];
+        const imageUrl = collection.collection_image_url || firstColor?.image || '';
+        const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
+        const typeValue = normalizeText(collection.characteristics?.Tip) || 'Heterogeni';
+        const thicknessValue = collection.characteristics?.['Ukupna debljina'];
+        const formatValue = collection.characteristics?.Format;
+
+        if (!specs.find((spec) => spec.key === 'type')) {
+            specs.push({
+                key: 'type',
+                label: 'Tip',
+                value: typeValue,
+            });
+        }
+
+        if (thicknessValue && !specs.find((spec) => spec.key === 'thickness')) {
+            specs.push({
+                key: 'thickness',
+                label: 'Ukupna debljina',
+                value: String(thicknessValue),
+            });
+        }
+
+        if (formatValue && !specs.find((spec) => spec.key === 'format')) {
+            specs.push({
+                key: 'format',
+                label: 'Format',
+                value: String(formatValue),
+            });
+        }
+
+        return {
+            id: `wolflor-vinyl-${collection.slug}`,
+            name: collection.name,
+            slug: collection.slug,
+            sku: `WOLFLOR-VINYL-${String(collection.slug).replace(/^wolflor-/, '').toUpperCase()}`,
+            categoryId: '2',
+            brandId: '11',
+            shortDescription:
+                collection.shortDescription ||
+                `${collection.name} — ${collection.colorCount || collection.colors?.length || 0} dekora`,
+            description:
+                collection.description ||
+                collection.shortDescription ||
+                `${collection.name} Wolflor vinil kolekcija.`,
+            images: imageUrl ? [{
+                id: `wolflor-vinyl-${collection.slug}-img`,
+                url: imageUrl,
+                alt: collection.name,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            documents: Array.isArray(collection.documents) ? collection.documents : [],
+            externalLink: collection.url || firstColor?.url,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    return wolflorVinylCollectionCache;
 }
 
 /**

@@ -77,12 +77,21 @@ function normalizeCollectionSlugForProductRoute(
   if (
     collectionSlug.startsWith('gerflor-') ||
     collectionSlug.startsWith('tarkett-') ||
+    collectionSlug.startsWith('wolflor-') ||
     collectionSlug.startsWith('bloq-')
   ) {
     return collectionSlug;
   }
 
-  return brandId === '3' ? `tarkett-${collectionSlug}` : `gerflor-${collectionSlug}`;
+  if (brandId === '3') {
+    return `tarkett-${collectionSlug}`;
+  }
+
+  if (brandId === '11') {
+    return `wolflor-${collectionSlug}`;
+  }
+
+  return `gerflor-${collectionSlug}`;
 }
 
 function getCanonicalProductRouteSlug(slug: string): string {
@@ -386,6 +395,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         '3': { id: '3', name: 'Tarkett', slug: 'tarkett', logo: '/images/brands/tarkett-logo.png', description: 'Tarkett' },
         '8': { id: '8', name: 'BLOQ', slug: 'bloq', logo: '/images/brands/bloq-logo.png', description: 'BLOQ' },
         '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/brands/timbertech-logo.png', description: 'TimberTech' },
+        '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/placeholder.svg', description: 'Wolflor' },
       };
       brand = FALLBACK_BRANDS[product.brandId] || null;
     }
@@ -523,7 +533,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
       : documentsIndexData) as DocumentsIndex;
     const normalizedCollectionSlug = product.slug
       .replace(/^gerflor-/, '')
-      .replace(/^tarkett-/, '');
+      .replace(/^tarkett-/, '')
+      .replace(/^wolflor-/, '');
     const hasIndexedDocuments = Boolean(
       documentsCategoryKey &&
       documentsIndex[documentsCategoryKey]?.[normalizedCollectionSlug]?.length

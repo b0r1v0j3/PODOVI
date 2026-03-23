@@ -137,7 +137,7 @@ export default function ColorGrid({
 
   // Extract collection name for URL construction
   const getCollectionName = (slug: string): string => {
-    let collectionName = slug.replace('gerflor-', '');
+    let collectionName = slug.replace(/^(gerflor|tarkett|wolflor)-/, '');
     if (collectionName.startsWith('creation-')) {
       const parts = collectionName.split('-');
       if (parts.length >= 2) {
@@ -249,7 +249,7 @@ export default function ColorGrid({
     // Determine which category to load from API
     const sportCollectionSlugs = ['dlw-colorette-sport', 'dlw-marmorette-sport-32mm', 'dlw-linodur-sport'];
     const industrialCollectionSlugs = ['gti-max-cleantech', 'gti-max-connect', 'gti-pure-connect', 'attraction-connect'];
-    const normalizedCollectionSlug = collectionSlug.replace('gerflor-', '');
+    const normalizedCollectionSlug = collectionSlug.replace(/^(gerflor|tarkett|wolflor)-/, '');
     const isSport = sportCollectionSlugs.includes(normalizedCollectionSlug);
     const isIndustrial = industrialCollectionSlugs.includes(normalizedCollectionSlug);
     const isLinoleum = !isSport && normalizedCollectionSlug.startsWith('dlw-');
@@ -260,9 +260,10 @@ export default function ColorGrid({
       'taralay-impression-hop-acoustic', 'taralay-impression-hop-compact',
       'taralay-initial-acoustic', 'taralay-initial-compact',
       'taralay-millenium-acoustic', 'taralay-millenium-compact'];
-    const collectionNameWithoutPrefix = collectionSlug.replace('gerflor-', '');
+    const collectionNameWithoutPrefix = collectionSlug.replace(/^(gerflor|tarkett|wolflor)-/, '');
     const isVinil = collectionSlug.startsWith('mipolam-') ||
       collectionSlug.startsWith('gerflor-mipolam-') ||
+      collectionSlug.startsWith('wolflor-') ||
       heterogeneousSlugs.includes(collectionNameWithoutPrefix) ||
       heterogeneousSlugs.some(slug => collectionSlug.includes(slug));
     const categoryParam = isSport
@@ -292,13 +293,13 @@ export default function ColorGrid({
         if ((isVinil || isIndustrial || isSport) && data.collections && Array.isArray(data.collections)) {
           // Nested categories have collections[].colors structure
           // Normalize collection slug - remove 'order' suffix if present
-          const normalizedSlug = collectionSlug.replace('gerflor-', '').replace('-order', '');
+          const normalizedSlug = collectionSlug.replace(/^(gerflor|tarkett|wolflor)-/, '').replace('-order', '');
           const normalizedCollectionName = collectionName.replace('-order', '');
 
           const collection = data.collections.find((col: any) =>
             col.slug === collectionName ||
             col.slug === collectionSlug ||
-            col.slug === collectionSlug.replace('gerflor-', '') ||
+            col.slug === collectionSlug.replace(/^(gerflor|tarkett|wolflor)-/, '') ||
             col.slug === normalizedSlug ||
             col.slug === normalizedCollectionName ||
             (col.slug && col.slug.replace('-order', '') === normalizedSlug)
@@ -324,7 +325,7 @@ export default function ColorGrid({
             c.collection === collectionName ||
             c.collection === collectionSlug ||
             c.collection === `gerflor-${collectionName}` ||
-            c.collection.replace('gerflor-', '') === collectionName ||
+            c.collection.replace(/^(gerflor|tarkett|wolflor)-/, '') === collectionName ||
             (sagaMatch !== null && c.collection === sagaMatch)
           );
         } else {

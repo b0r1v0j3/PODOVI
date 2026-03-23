@@ -207,6 +207,7 @@ export async function prepareCustomColors(
             product.slug,
             product.slug.replace(/^gerflor-/, ''),
             product.slug.replace(/^tarkett-/, ''),
+            product.slug.replace(/^wolflor-/, ''),
         ];
         const vinylCollection = vinylCollections.find((col: any) =>
             slugCandidates.some((candidate) => candidate === col.slug)

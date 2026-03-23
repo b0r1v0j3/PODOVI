@@ -111,12 +111,21 @@ function normalizeCollectionSlugForColorRoute(categoryId: string, brandId: strin
   if (
     collectionSlug.startsWith('gerflor-') ||
     collectionSlug.startsWith('tarkett-') ||
+    collectionSlug.startsWith('wolflor-') ||
     collectionSlug.startsWith('bloq-')
   ) {
     return collectionSlug;
   }
 
-  return brandId === '3' ? `tarkett-${collectionSlug}` : `gerflor-${collectionSlug}`;
+  if (brandId === '3') {
+    return `tarkett-${collectionSlug}`;
+  }
+
+  if (brandId === '11') {
+    return `wolflor-${collectionSlug}`;
+  }
+
+  return `gerflor-${collectionSlug}`;
 }
 
 export default function ProductCardClient({ product, brand, compact = false }: ProductCardClientProps) {

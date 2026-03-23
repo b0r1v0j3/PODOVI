@@ -145,7 +145,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
         // Try to find matching collection and add thickness
         const collectionSlug = ((color as any).collectionSlug || '').toLowerCase();
         const matchingCollection = collections.find(c => {
-          const collectionSlugFromProduct = c.slug.toLowerCase().replace('gerflor-', '');
+          const collectionSlugFromProduct = c.slug.toLowerCase().replace(/^(gerflor|tarkett|wolflor)-/, '');
           const collectionNameFromProduct = c.name.toLowerCase();
           const colorCollectionName = ((color as any).collection_name || (color as any).collection || '').toLowerCase();
 
@@ -209,7 +209,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
         // LVT Logic using collectionSlug prop
         if (categorySlug === 'lvt') {
           const collectionName = (color as any).collectionSlug || '';
-          const collectionNameWithoutPrefix = collectionName.replace('gerflor-', '');
+          const collectionNameWithoutPrefix = collectionName.replace(/^(gerflor|tarkett|wolflor)-/, '');
 
           return selectedCollections.some(collection => {
             if (collection === 'Creation 30') {
@@ -420,11 +420,10 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
             );
 
             // Determine vinyl type from collection slug
-            // Homogeni collections: mipolam-* (Mipolam Accord, Mipolam Affinity, etc.)
-            // Heterogeni collections: nerok-*, premium-*, taralay-* (Nerok, Premium, Taralay)
             const collectionSlug = (color.collection_slug || color.collection || '').toLowerCase();
+            const characteristicType = typeof color.characteristics?.Tip === 'string' ? color.characteristics.Tip.trim() : '';
             const isHomogeniCollection = collectionSlug.startsWith('mipolam-');
-            const productVinylType = isHomogeniCollection ? 'Homogeni' : 'Heterogeni';
+            const productVinylType = characteristicType || (isHomogeniCollection ? 'Homogeni' : 'Heterogeni');
 
             // Build specs from color data
             const specs: any[] = [];
@@ -478,7 +477,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
                 // 1. Direct match after removing 'gerflor-' prefix
                 // 2. Match by collection name
                 const matchingCollection = collections.find(c => {
-                  const collectionSlugFromProduct = c.slug.toLowerCase().replace('gerflor-', '');
+                  const collectionSlugFromProduct = c.slug.toLowerCase().replace(/^(gerflor|tarkett|wolflor)-/, '');
                   const collectionNameFromProduct = c.name.toLowerCase();
                   const colorCollectionName = (color.collection_name || color.collection || '').toLowerCase();
 
