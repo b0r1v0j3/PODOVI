@@ -72,6 +72,10 @@ function enrichCatalogProduct(product: Product): Product {
   return enrichTarkettWoodProduct(product);
 }
 
+function isUuidLikeId(id: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+}
+
 // =========================================
 // Supabase implementation
 // =========================================
@@ -96,7 +100,16 @@ export class SupabaseProductRepository implements IProductRepository {
     }
 
     if (filters?.brandIds && filters.brandIds.length > 0) {
-      query = query.in('brand_id', filters.brandIds.map(mapBrandIdToUUID));
+      const mappedBrandIds = filters.brandIds.map(mapBrandIdToUUID);
+      const uuidBrandIds = mappedBrandIds.filter(isUuidLikeId);
+
+      if (uuidBrandIds.length > 0) {
+        query = query.in('brand_id', uuidBrandIds);
+      } else {
+        // Mock-only brands (e.g. BLOQ, TimberTech, Wolflor) do not exist in Supabase products.
+        // Force an empty DB branch and let the JSON/manual merge layers below supply the real catalog.
+        query = query.eq('brand_id', '00000000-0000-0000-0000-000000000000');
+      }
     }
 
     if (filters?.priceMin !== undefined) {

@@ -124,10 +124,23 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (hasCollectionTabs) {
-    // Collections: GER- (LVT/Vinil), LINOLEUM-, VINIL-, PARKET-, LAM- (Laminat), DEKING-
+    // Collections: GER-, TARKETT-, WOLFLOR-VINYL-, LINOLEUM-, VINIL-, PARKET-, LAM-, BLOQ-, DEKING-, ESD-, IND-, SPORT-
     // Colors: products without those SKU prefixes
     const hasCollectionSku = (p: { sku?: string | null }) =>
-      (p.sku?.startsWith('GER-') || p.sku?.startsWith('TARKETT-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-') || p.sku?.startsWith('PARKET-') || p.sku?.startsWith('LAM-') || p.sku?.startsWith('BLOQ-') || p.sku?.startsWith('DEKING-') || p.sku?.startsWith('ESD-') || p.sku?.startsWith('IND-') || p.sku?.startsWith('SPORT-')) ?? false;
+      (
+        p.sku?.startsWith('GER-') ||
+        p.sku?.startsWith('TARKETT-') ||
+        p.sku?.startsWith('WOLFLOR-VINYL-') ||
+        p.sku?.startsWith('LINOLEUM-') ||
+        p.sku?.startsWith('VINIL-') ||
+        p.sku?.startsWith('PARKET-') ||
+        p.sku?.startsWith('LAM-') ||
+        p.sku?.startsWith('BLOQ-') ||
+        p.sku?.startsWith('DEKING-') ||
+        p.sku?.startsWith('ESD-') ||
+        p.sku?.startsWith('IND-') ||
+        p.sku?.startsWith('SPORT-')
+      ) ?? false;
     const allCollections = allProducts.filter(p => hasCollectionSku(p));
     if (category.slug === 'parket') {
       // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
@@ -278,7 +291,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const thicknessSetHeterogeni = new Set<string>();
 
       // Get all collections from unfiltered products to calculate available thickness
-      const allCollectionsForThickness = allProductsForThickness.filter(p => (p.sku?.startsWith('GER-') || p.sku?.startsWith('LINOLEUM-') || p.sku?.startsWith('VINIL-')) ?? false);
+      const allCollectionsForThickness = allProductsForThickness.filter(p =>
+        (
+          p.sku?.startsWith('GER-') ||
+          p.sku?.startsWith('TARKETT-') ||
+          p.sku?.startsWith('WOLFLOR-VINYL-') ||
+          p.sku?.startsWith('LINOLEUM-') ||
+          p.sku?.startsWith('VINIL-')
+        ) ?? false
+      );
 
       // Get thicknesses from collections (using unfiltered products)
       allCollectionsForThickness.forEach(p => {

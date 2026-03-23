@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 23.03.2026 (Vercel local deploy safeguard)
+> **Poslednje ažuriranje:** 23.03.2026 (Wolflor vinil category collection visibility fix)
 
 ---
 
@@ -138,6 +138,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Wolflor collection kartice vraćene u Vinil kategoriju i brand filter tok (23.03.2026)**
+- Ispravljen je server-side collection/header detection na `app/kategorije/[slug]/page.tsx`: Wolflor vinil kolekcije koriste SKU prefiks `WOLFLOR-VINYL-`, a prethodna logika je kao collection prepoznavala samo prefikse tipa `GER-`, `TARKETT-`, `VINIL-` i slično, pa su Wolflor header proizvodi nestajali iz `Kolekcije` taba na `/kategorije/vinil`.
+- Ispravljen je i `SupabaseProductRepository.findAll()` za mock-only brand filtere: kada korisnik traži `brands=11` (Wolflor) ili drugi brend koji nema `products.brand_id` UUID redove u Supabase-u, repo više ne šalje sirovi legacy ID (`11`) u UUID kolonu i više ne prekida pre JSON/manual merge sloja.
+- Posledica tog buga je bila da live `/kategorije/vinil` prikazuje samo 74 collection kartice (Gerflor + Tarkett), dok Wolflor ostaje dostupan na `/brendovi/wolflor` ali ne i kroz kategorijski listing i `brands=11` filter scenario.
+- Isti fix je proširen i na izračun dostupnih debljina u Vinilu, tako da `WOLFLOR-VINYL-` kolekcije ulaze u isti collection-spec thickness skup zajedno sa `TARKETT-`, `GER-` i `VINIL-` header proizvodima.
 
 **`.vercelignore` zaštita za lokalni deploy šum (23.03.2026)**
 - Dodat je root `.vercelignore` koji iz lokalnog `vercel deploy` pakovanja izbacuje teške i nerelevantne foldere (`.next`, `node_modules`, `tmp`, `output`, `archive*`, editor/agent metadata i lokalne env fajlove), kako CLI ne bi pokušao da uploaduje više gigabajta lokalnog workspace šuma.
@@ -488,6 +494,8 @@ PODOVI/
 25. **Wolflor slike za produkciju idu na Supabase, ne na `public/images` i ne ostaju na `wolflor.cn`.** Kad osvežavaš `public/data/wolflor_vinyl_colors.json`, pokreni `python tools/extract_wolflor_vinyl.py --upload-supabase`; bez tog flag-a ostaće lokalni staging JPG-ovi ili direktni vendor URL-ovi, što nije kanonski storage obrazac projekta. Ako baš želiš da pregaziš postojeće Supabase assete novim uploadom, koristi `--force-upload`.
 26. **Za ovaj repo ne radi lokalni `vercel deploy` bez zaštite.** Workspace ima ogromne lokalne foldere (`.next`, `tmp`, `output`, `archive*`, `node_modules`), pa CLI bez `.vercelignore` može pokušati da uploaduje više gigabajta šuma. Standardni put je `git push` i Vercel auto-deploy sa `main`.
 27. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
+28. **Wolflor Vinil kolekcije koriste SKU prefiks `WOLFLOR-VINYL-` i moraju da budu tretirane kao collection header proizvodi.** Ako collection/header detekcija u kategorijskim stranicama ili tabovima proverava samo prefikse poput `GER-`, `TARKETT-` ili `VINIL-`, Wolflor će završiti u pogrešnom toku i nestaće iz `Kolekcije` taba i `brands=11` filter rendera na `/kategorije/vinil`.
+29. **Mock-only brand filteri ne smeju sirovo u Supabase UUID `brand_id` query.** Brendovi poput `BLOQ`, `TimberTech` i `Wolflor` žive kroz mock/JSON/manual sloj; ako `product-repository.ts` pošalje legacy ID tipa `8`, `10` ili `11` direktno u `.in('brand_id', ...)` nad UUID kolonom, Supabase grana pukne i merge blokovi ispod se nikad ne izvrše.
 
 ---
 
