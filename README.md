@@ -31,6 +31,11 @@ npm run build
 npm start
 ```
 
+## Deployment Notes
+
+- Production deploy for this repo should go through `git push` and Vercel auto-deploy from `main`.
+- Root `.vercelignore` excludes local heavyweight artifacts such as `.next`, `node_modules`, `tmp`, `output`, and archive folders so an accidental local `vercel deploy` cannot package gigabytes of workspace noise.
+
 ## Key Features
 
 ### Product Catalog

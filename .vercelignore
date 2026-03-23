@@ -1,0 +1,26 @@
+# Prevent accidental local Vercel uploads of heavy workspace artifacts.
+# Keep canonical source files, public catalog data, and product documents included.
+
+.git
+.vercel
+.next
+node_modules
+coverage
+tmp
+output
+archive
+archive-zips
+archive-old-zips
+.cursor
+.vscode
+.agent
+*.log
+*.tsbuildinfo
+.env
+.env.local
+.env*.local
+page_*.html
+debug_*.js
+deking_debug.json
+test.png
+test.webp

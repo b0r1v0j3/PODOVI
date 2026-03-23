@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 23.03.2026 (Wolflor Supabase image pipeline)
+> **Poslednje ažuriranje:** 23.03.2026 (Vercel local deploy safeguard)
 
 ---
 
@@ -138,6 +138,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**`.vercelignore` zaštita za lokalni deploy šum (23.03.2026)**
+- Dodat je root `.vercelignore` koji iz lokalnog `vercel deploy` pakovanja izbacuje teške i nerelevantne foldere (`.next`, `node_modules`, `tmp`, `output`, `archive*`, editor/agent metadata i lokalne env fajlove), kako CLI ne bi pokušao da uploaduje više gigabajta lokalnog workspace šuma.
+- Kanonski sajt sadržaj ostaje uključen: `app/`, `components/`, `lib/`, `public/data/` i `public/documents/` nisu ignorisani, pa Git/Vercel repo deploy i dalje nosi stvarne proizvode, Wolflor katalog i PDF dokumenta.
+- Pravilo za ovaj repo ostaje: za produkciju koristi se `git push` + Vercel auto-deploy sa `main`; lokalni `vercel deploy` treba koristiti samo ako postoji jasan razlog i uz `.vercelignore` zaštitu.
 
 **Wolflor slike prebačene na Supabase iz extract pipeline-a (23.03.2026)**
 - `tools/extract_wolflor_vinyl.py` sada podržava `--upload-supabase`: posle live + PDF ekstrakcije uploaduje svih 835 Wolflor JPG asseta (64 collection hero slike + 771 color slika) u `product-images` bucket i automatski čisti lokalni staging folder `public/images/wolflor/`.
@@ -481,7 +486,8 @@ PODOVI/
 23. **Tarkett `Vinil za kuću` extractor ne treba da se oslanja na običan `https.get` HTML fetch za collection page.** Za ove kolekcije sirovi response često nema `window.__NUXT__` payload, dok ga `page.content()` iz Playwright-a uredno vrati posle rendera; zato `tools/extract_tarkett_vinyl_home.js` mora da učitava collection stranice kroz browser, a product JSON može direktno preko `json-collection-product/...` endpointa.
 24. **Tarkett `Heterogeni vinil` category grid ume da vrati prazan DOM query u headless shell-u.** Ako `document.querySelectorAll('a[href*=\"/sr_RS/kolekcija-\"]')` vrati `0`, proveri `page.content()` pre nego što proglasiš stranicu praznom. `tools/extract_tarkett_heterogeneous_vinyl.js` zato mora da ima HTML regex fallback za collection href-ove / slike i ne sme da zavisi samo od live DOM selektorâ.
 25. **Wolflor slike za produkciju idu na Supabase, ne na `public/images` i ne ostaju na `wolflor.cn`.** Kad osvežavaš `public/data/wolflor_vinyl_colors.json`, pokreni `python tools/extract_wolflor_vinyl.py --upload-supabase`; bez tog flag-a ostaće lokalni staging JPG-ovi ili direktni vendor URL-ovi, što nije kanonski storage obrazac projekta. Ako baš želiš da pregaziš postojeće Supabase assete novim uploadom, koristi `--force-upload`.
-23. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
+26. **Za ovaj repo ne radi lokalni `vercel deploy` bez zaštite.** Workspace ima ogromne lokalne foldere (`.next`, `tmp`, `output`, `archive*`, `node_modules`), pa CLI bez `.vercelignore` može pokušati da uploaduje više gigabajta šuma. Standardni put je `git push` i Vercel auto-deploy sa `main`.
+27. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
 
 ---
 
