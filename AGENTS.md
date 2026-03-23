@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 23.03.2026 (Wolflor collection image color-shot normalization)
+> **Poslednje ažuriranje:** 23.03.2026 (Wolflor PDF swatch quality upgrade)
 
 ---
 
@@ -138,6 +138,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Wolflor PDF kolekcije dobile kvalitetnije dekor slike i cache-bust refresh (23.03.2026)**
+- Problem na PDF-only Wolflor kolekcijama nije bio samo u maloj rezoluciji PDF izvora, već i u tome što je stari crop bio centriran po OCR tekstu šifre, pa je hvatao deo belog gutter-a i samo deo realnog swatch-a; konkretno `Andes WL91600` je ranije završavao kao mutan `300x227` JPG.
+- `tools/extract_wolflor_vinyl.py` sada za PDF kolekcije radi OCR nad lakšim renderom strane, a finalni swatch crop vadi iz većeg rendera preko pametnijeg component-based izračuna granica samog uzorka; time isti `Andes WL91600` sada izlazi kao znatno puniji `686x510` JPG bez fake roomshot fallback-a.
+- Isti extractor sada pri `--upload-supabase` upsert-u dodaje novi `?v=` cache-bust query na Wolflor image URL-ove, tako da overwrite postojećeg Supabase object path-a odmah probije browser/CDN keš i live sajt odmah povuče noviji kvalitet.
+- Verifikovano: targetirani `build_pdf_collection()` test za `ANDES-Wolflor.pdf`, `python tools/extract_wolflor_vinyl.py --upload-supabase --force-upload`, provera da `wl91600.jpg?v=...` na Supabase vraća `686x510`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
 
 **Wolflor kolekcije prebačene na color-shot hero slike umesto roomshot-a (23.03.2026)**
 - Wolflor kolekcijske kartice i collection hero prikaz više ne koriste `collection.jpg` / ambijentalne roomshot slike čak ni kada postoje; za Wolflor je standardizovano da se kao `collection_image_url` koristi prva dostupna slika dekora/boje iz same kolekcije.
@@ -502,6 +508,7 @@ PODOVI/
 28. **Wolflor Vinil kolekcije koriste SKU prefiks `WOLFLOR-VINYL-` i moraju da budu tretirane kao collection header proizvodi.** Ako collection/header detekcija u kategorijskim stranicama ili tabovima proverava samo prefikse poput `GER-`, `TARKETT-` ili `VINIL-`, Wolflor će završiti u pogrešnom toku i nestaće iz `Kolekcije` taba i `brands=11` filter rendera na `/kategorije/vinil`.
 29. **Mock-only brand filteri ne smeju sirovo u Supabase UUID `brand_id` query.** Brendovi poput `BLOQ`, `TimberTech` i `Wolflor` žive kroz mock/JSON/manual sloj; ako `product-repository.ts` pošalje legacy ID tipa `8`, `10` ili `11` direktno u `.in('brand_id', ...)` nad UUID kolonom, Supabase grana pukne i merge blokovi ispod se nikad ne izvrše.
 30. **Za Wolflor kolekcije nemoj koristiti roomshot/ambijentalni hero kao kanonski collection image.** Čak i kada vendor ima `collection.jpg` ili category hero u prostoru, Wolflor kolekcijski prikaz kod nas treba da koristi prvu dostupnu sliku dekora/boje; to važi samo za Wolflor i ne treba prelivati na ostale brendove.
+31. **Kad pregaziš Wolflor JPG na istoj Supabase putanji, promeni i URL query verziju.** PDF kolekcije poput `Andes`/`Atlas` sada često dobijaju kvalitetniji crop na istom object path-u (`products/vinyl/.../wl91600.jpg`), pa bez novog `?v=` cache-bust query-ja browser i CDN mogu da nastave da serviraju stari mutni JPG iako je object već zamenjen boljom verzijom.
 
 ---
 

@@ -16,7 +16,7 @@ from typing import Any
 
 import fitz
 import numpy as np
-from PIL import Image, ImageChops
+from PIL import Image, ImageChops, ImageFilter
 from rapidocr_onnxruntime import RapidOCR
 
 
@@ -29,6 +29,10 @@ WC_CATEGORIES_URL = 'https://wolflor.cn/wp-json/wc/store/v1/products/categories?
 WC_PRODUCTS_URL = 'https://wolflor.cn/wp-json/wc/store/v1/products'
 SUPABASE_BUCKET_NAME = 'product-images'
 DEFAULT_SUPABASE_PROJECT_NAME = 'podovi'
+PDF_OCR_RENDER_SCALE = 1.9
+PDF_CROP_RENDER_SCALE = 2.5
+PDF_WHITE_THRESHOLD = 248
+UPLOAD_CACHE_BUST_VERSION = datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')
 
 MAIN_CATEGORY_CONFIG = {
     23: {
@@ -349,6 +353,17 @@ def get_first_color_image(colors: list[dict[str, Any]]) -> str:
     return ''
 
 
+def append_cache_bust(url: str) -> str:
+    value = String(url)
+    if not value:
+        return value
+
+    parsed = urllib.parse.urlsplit(value)
+    query_items = [(key, current) for key, current in urllib.parse.parse_qsl(parsed.query, keep_blank_values=True) if key != 'v']
+    query_items.append(('v', UPLOAD_CACHE_BUST_VERSION))
+    return urllib.parse.urlunsplit(parsed._replace(query=urllib.parse.urlencode(query_items)))
+
+
 def normalize_collection_image_to_color(
     collection: dict[str, Any],
     fallback_image: str | None = None,
@@ -460,7 +475,7 @@ def build_live_collection(category: dict[str, Any]) -> dict[str, Any] | None:
     }
 
 
-def render_pdf_page(document: fitz.Document, page_index: int, scale: float = 1.9) -> Image.Image:
+def render_pdf_page(document: fitz.Document, page_index: int, scale: float = PDF_OCR_RENDER_SCALE) -> Image.Image:
     page = document.load_page(page_index)
     pixmap = page.get_pixmap(matrix=fitz.Matrix(scale, scale), alpha=False)
     return Image.frombytes('RGB', [pixmap.width, pixmap.height], pixmap.samples)
@@ -575,14 +590,102 @@ def extract_pdf_characteristics(page2_image: Image.Image, page3_image: Image.Ima
     return characteristics
 
 
-def extract_pdf_colors(collection_slug: str, page_images: list[Image.Image], ocr: RapidOCR) -> list[dict[str, Any]]:
+def extract_pdf_swatch_crop(page_image: Image.Image, label_bounds: tuple[int, int, int, int]) -> Image.Image:
+    label_left, label_top, label_right, _label_bottom = label_bounds
+    search_left = max(0, label_left - 220)
+    search_top = max(0, label_top - 520)
+    search_right = min(page_image.width, label_right + 420)
+    search_bottom = max(1, label_top - 10)
+    region = page_image.crop((search_left, search_top, search_right, search_bottom))
+
+    region_array = np.array(region)
+    non_white_mask = ((region_array < PDF_WHITE_THRESHOLD).any(axis=2)).astype('uint8') * 255
+    mask_image = Image.fromarray(non_white_mask, mode='L')
+    mask_image = mask_image.filter(ImageFilter.MaxFilter(17)).filter(ImageFilter.MaxFilter(17))
+    mask = np.array(mask_image) > 0
+
+    seed_x = min(mask.shape[1] - 1, max(0, (label_right - search_left) - 10))
+    seed_y = min(mask.shape[0] - 1, max(0, (label_top - search_top) - 120))
+
+    if not mask[seed_y, seed_x]:
+        found_seed: tuple[int, int] | None = None
+        max_radius = min(max(mask.shape[0], mask.shape[1]), 260)
+        for radius in range(1, max_radius + 1):
+            for dy in range(-radius, radius + 1):
+                for dx in range(-radius, radius + 1):
+                    candidate_y = seed_y + dy
+                    candidate_x = seed_x + dx
+                    if (
+                        0 <= candidate_x < mask.shape[1]
+                        and 0 <= candidate_y < mask.shape[0]
+                        and mask[candidate_y, candidate_x]
+                    ):
+                        found_seed = (candidate_x, candidate_y)
+                        break
+                if found_seed:
+                    break
+            if found_seed:
+                seed_x, seed_y = found_seed
+                break
+
+    if not mask[seed_y, seed_x]:
+        fallback_crop = trim_white(region)
+        return fallback_crop
+
+    queue = [(seed_x, seed_y)]
+    seen = {(seed_x, seed_y)}
+    component_xs: list[int] = []
+    component_ys: list[int] = []
+
+    while queue:
+        current_x, current_y = queue.pop()
+        component_xs.append(current_x)
+        component_ys.append(current_y)
+
+        for next_x, next_y in (
+            (current_x + 1, current_y),
+            (current_x - 1, current_y),
+            (current_x, current_y + 1),
+            (current_x, current_y - 1),
+        ):
+            if (
+                0 <= next_x < mask.shape[1]
+                and 0 <= next_y < mask.shape[0]
+                and mask[next_y, next_x]
+                and (next_x, next_y) not in seen
+            ):
+                seen.add((next_x, next_y))
+                queue.append((next_x, next_y))
+
+    component_left = max(0, min(component_xs) - 8)
+    component_top = max(0, min(component_ys) - 8)
+    component_right = min(region.width, max(component_xs) + 9)
+    component_bottom = min(region.height, max(component_ys) + 9)
+    smart_crop = region.crop((component_left, component_top, component_right, component_bottom))
+    smart_crop = trim_white(smart_crop)
+
+    if smart_crop.width < 160 or smart_crop.height < 160:
+        fallback_crop = trim_white(region)
+        return fallback_crop
+
+    return smart_crop
+
+
+def extract_pdf_colors(
+    collection_slug: str,
+    ocr_page_images: list[Image.Image],
+    crop_page_images: list[Image.Image],
+    ocr: RapidOCR,
+) -> list[dict[str, Any]]:
     colors: list[dict[str, Any]] = []
     seen_codes: set[str] = set()
     color_output_dir = OUTPUT_IMAGE_DIR / 'colors' / collection_slug
     ensure_dir(color_output_dir)
 
-    for page_image in page_images:
-        page_results, _ = run_ocr(ocr, page_image)
+    for ocr_page_image, crop_page_image in zip(ocr_page_images, crop_page_images):
+        page_results, _ = run_ocr(ocr, ocr_page_image)
+        scale_x = crop_page_image.width / max(1, ocr_page_image.width)
+        scale_y = crop_page_image.height / max(1, ocr_page_image.height)
         for box, text, _score in page_results or []:
             code = normalize_code(text)
             if not code or code in seen_codes:
@@ -590,16 +693,13 @@ def extract_pdf_colors(collection_slug: str, page_images: list[Image.Image], ocr
 
             xs = [point[0] for point in box]
             ys = [point[1] for point in box]
-            center_x = (min(xs) + max(xs)) / 2
-            label_top = min(ys)
-
-            crop = page_image.crop((
-                max(0, int(center_x - 150)),
-                max(0, int(label_top - 245)),
-                min(page_image.width, int(center_x + 150)),
-                max(1, int(label_top - 18)),
-            ))
-            crop = trim_white(crop)
+            scaled_bounds = (
+                int(round(min(xs) * scale_x)),
+                int(round(min(ys) * scale_y)),
+                int(round(max(xs) * scale_x)),
+                int(round(max(ys) * scale_y)),
+            )
+            crop = extract_pdf_swatch_crop(crop_page_image, scaled_bounds)
             if crop.width < 40 or crop.height < 40:
                 continue
 
@@ -628,9 +728,11 @@ def build_pdf_collection(pdf_path: Path, ocr: RapidOCR) -> dict[str, Any]:
         if document.page_count < 3:
             raise RuntimeError(f'PDF {pdf_path.name} nema očekivane 3 strane.')
 
-        page1 = render_pdf_page(document, 0)
-        page2 = render_pdf_page(document, 1)
-        page3 = render_pdf_page(document, 2)
+        page1 = render_pdf_page(document, 0, scale=PDF_OCR_RENDER_SCALE)
+        page2_ocr = render_pdf_page(document, 1, scale=PDF_OCR_RENDER_SCALE)
+        page3_ocr = render_pdf_page(document, 2, scale=PDF_OCR_RENDER_SCALE)
+        page2_crop = render_pdf_page(document, 1, scale=PDF_CROP_RENDER_SCALE)
+        page3_crop = render_pdf_page(document, 2, scale=PDF_CROP_RENDER_SCALE)
     finally:
         document.close()
 
@@ -642,8 +744,8 @@ def build_pdf_collection(pdf_path: Path, ocr: RapidOCR) -> dict[str, Any]:
     shutil.copy2(pdf_path, copied_pdf_path)
     document_url = '/' + copied_pdf_path.relative_to(REPO_ROOT / 'public').as_posix()
 
-    characteristics = extract_pdf_characteristics(page2, page3, ocr)
-    colors = extract_pdf_colors(collection_slug, [page2, page3], ocr)
+    characteristics = extract_pdf_characteristics(page2_ocr, page3_ocr, ocr)
+    colors = extract_pdf_colors(collection_slug, [page2_ocr, page3_ocr], [page2_crop, page3_crop], ocr)
 
     short_description = f'{collection_name} je Wolflor homogena vinil kolekcija sa {len(colors)} dekora.'
     description = (
@@ -664,7 +766,7 @@ def build_pdf_collection(pdf_path: Path, ocr: RapidOCR) -> dict[str, Any]:
         'shortDescription': short_description,
         'description': description,
         'characteristics': characteristics,
-        'collection_image_url': hero_url,
+        'collection_image_url': collection_image_url,
         'documents': [{'title': f'{collection_name} katalog', 'url': document_url}],
         'url': None,
         'colorCount': len(colors),
@@ -840,7 +942,7 @@ def upload_wolflor_images_to_supabase(collections: list[dict[str, Any]]) -> None
             try:
                 uploaded_url = future.result()
                 if color is not None:
-                    color['image'] = uploaded_url
+                    color['image'] = append_cache_bust(uploaded_url)
             except Exception as error:  # noqa: BLE001
                 target_label = collection['slug'] if target_type == 'collection' else color.get('slug', collection['slug'])
                 failures.append(f'{target_type}:{target_label}: {error}')
