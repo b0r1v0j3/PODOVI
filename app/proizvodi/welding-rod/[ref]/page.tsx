@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const description = getWeldingAccessoryDescription(params.ref) || source?.sourceNoteSr || '';
     return {
       title: `${source?.displayName || accessory.displayName} | podovi.online`,
-      description: description || `Detalji o sistemu varenja ${source?.displayName || accessory.displayName}.`,
+      description: description || `Detalji o elektrodi za varenje ${source?.displayName || accessory.displayName}.`,
     };
   }
 
@@ -64,14 +64,14 @@ export default async function WeldingRodPage({ params }: Props) {
             <nav className="text-sm text-gray-600 mb-4">
               <Link href="/" className="hover:text-primary-600">Početna</Link>
               <span className="mx-2">/</span>
-              <span className="text-gray-900">Sistem varenja</span>
+              <span className="text-gray-900">Elektroda za varenje</span>
             </nav>
 
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               {source?.displayName || accessory.displayName}
             </h1>
             <p className="text-lg text-gray-600">
-              {description || source?.sourceNoteSr || 'Zvanično zabeležen sistem varenja za odgovarajuće podne obloge.'}
+              {description || source?.sourceNoteSr || 'Zvanicno preporucena elektroda za varenje za odgovarajuce podne obloge.'}
             </p>
           </div>
 

@@ -275,7 +275,7 @@ export function getDerivedWeldingSpecs(context: WeldingContext): ProductSpec[] {
   if (selection.primary) {
     specs.push({
       key: 'compatible_welding_accessory',
-      label: 'Kompatibilna varilačka vrpca',
+      label: 'Kompatibilna elektroda za varenje',
       value: selection.primary,
     });
   }
@@ -283,7 +283,7 @@ export function getDerivedWeldingSpecs(context: WeldingContext): ProductSpec[] {
   if (selection.secondary) {
     specs.push({
       key: 'alternative_welding_accessory',
-      label: 'Alternativna varilačka vrpca',
+      label: 'Alternativna elektroda za varenje',
       value: selection.secondary,
     });
   }
@@ -291,7 +291,7 @@ export function getDerivedWeldingSpecs(context: WeldingContext): ProductSpec[] {
   if (selection.note) {
     specs.push({
       key: 'welding_system_note',
-      label: 'Sistem varenja',
+      label: 'Napomena za varenje',
       value: selection.note,
     });
   }

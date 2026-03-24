@@ -484,7 +484,7 @@ export default function ProductColorSelector({
                 /(welding|varil|vrpca|elektrod)/i.test(s.key) ||
                 /(varilačk|welding|elektrod|vrpca)/i.test(s.label)
               );
-              const weldingLabel = selectedWeldingCharacteristic?.[0] || weldingRodSpec?.label || 'Varilačka vrpca';
+              const weldingLabel = selectedWeldingCharacteristic?.[0] || weldingRodSpec?.label || 'Elektroda za varenje';
               const weldingValue = selectedWeldingCharacteristic?.[1] || weldingRodSpec?.value || '';
 
               if (weldingValue && weldingValue.trim() !== '' && weldingValue.trim() !== '-') {

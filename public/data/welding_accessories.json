@@ -8,13 +8,13 @@
         "CR40"
       ],
       "brand": "Gerflor",
-      "type": "PVC varilacka vrpca",
+      "type": "PVC elektroda za varenje",
       "referenceCode": "0585",
       "diameter": "4 mm",
       "packaging": "100 lm kotur",
-      "descriptionSr": "Univerzalna Gerflor varilacka vrpca za pod/pod varenje PVC podnih obloga.",
+      "descriptionSr": "Univerzalna Gerflor elektroda za varenje PVC podnih obloga.",
       "officialUrl": "https://cdn.gerflor.com/media/2/59240/gerflor%20-%20cat%C3%A1logo%20general%202025.pdf",
-      "sourceNoteSr": "Zvanični Gerflor katalog 2025 navodi CR40 kao floor/floor weld rešenje za PVC podove."
+      "sourceNoteSr": "Zvanicni Gerflor katalog 2025 navodi CR40 kao univerzalnu elektrodu za varenje PVC podova."
     },
     {
       "slug": "gerflor-mcr40",
@@ -24,13 +24,13 @@
         "MCR40"
       ],
       "brand": "Gerflor",
-      "type": "Visebojna PVC varilacka vrpca",
+      "type": "Visebojna PVC elektroda za varenje",
       "referenceCode": "H058",
       "diameter": "4 mm",
       "packaging": "50 lm kotur",
-      "descriptionSr": "Specijalna visebojna Gerflor vrpca za Mipolam Accord i Mipolam Affinity kolekcije.",
+      "descriptionSr": "Specijalna visebojna Gerflor elektroda za Mipolam Accord i Mipolam Affinity kolekcije.",
       "officialUrl": "https://cdn.gerflor.com/media/2/59240/gerflor%20-%20cat%C3%A1logo%20general%202025.pdf",
-      "sourceNoteSr": "Zvanični Gerflor katalog 2025 za Mipolam Accord i Affinity navodi MCR40 kao specific multicolour welding rod."
+      "sourceNoteSr": "Zvanicni Gerflor katalog 2025 za Mipolam Accord i Affinity navodi MCR40 kao specificnu visebojnu elektrodu."
     },
     {
       "slug": "gerflor-bbr40",
@@ -40,13 +40,13 @@
         "BBR40"
       ],
       "brand": "Gerflor",
-      "type": "Bio-based PVC varilacka vrpca",
+      "type": "Bio-based PVC elektroda za varenje",
       "referenceCode": "BBR40",
       "diameter": "4 mm",
       "packaging": "100 lm kotur",
-      "descriptionSr": "Gerflor bio-based varilacka vrpca preporucena za Mipolam Symbioz kolekciju.",
+      "descriptionSr": "Gerflor bio-based elektroda preporucena za Mipolam Symbioz kolekciju.",
       "officialUrl": "https://cdn.gerflor.com/media/2/59240/gerflor%20-%20cat%C3%A1logo%20general%202025.pdf",
-      "sourceNoteSr": "Zvanični Gerflor katalog 2025 navodi BBR40 kao 100% bio-based plasticizer rod za Mipolam Symbioz."
+      "sourceNoteSr": "Zvanicni Gerflor katalog 2025 navodi BBR40 kao bio-based elektrodu za Mipolam Symbioz."
     },
     {
       "slug": "gerflor-cr50",
@@ -56,13 +56,13 @@
         "CR50"
       ],
       "brand": "Gerflor",
-      "type": "Sportska PVC varilacka vrpca",
+      "type": "Sportska PVC elektroda za varenje",
       "referenceCode": "H209",
       "diameter": "5 mm",
       "packaging": "100 lm kotur",
-      "descriptionSr": "Gerflor sportska varilacka vrpca za varenje PVC sportskih podova i odabranih tehnickih sistema.",
+      "descriptionSr": "Gerflor sportska elektroda za varenje PVC sportskih podova i odabranih tehnickih sistema.",
       "officialUrl": "https://cdn.gerflor.com/media/2/59240/gerflor%20-%20cat%C3%A1logo%20general%202025.pdf",
-      "sourceNoteSr": "Zvanični Gerflor katalog 2025 navodi CR50 za sportske podove."
+      "sourceNoteSr": "Zvanicni Gerflor katalog 2025 navodi CR50 za sportske PVC podove."
     },
     {
       "slug": "gerflor-linoleum-4mm",
@@ -72,11 +72,11 @@
         "Gerflor linoleum 4 mm"
       ],
       "brand": "Gerflor",
-      "type": "Linoleum varilacka vrpca",
+      "type": "Linoleum elektroda za varenje",
       "referenceCode": "4 mm",
       "diameter": "4 mm",
       "packaging": "Prema referenci",
-      "descriptionSr": "Za Gerflor/DLW linoleum koristi se odgovarajuca 4 mm varilacka vrpca prema dekoru ili projektu.",
+      "descriptionSr": "Za Gerflor/DLW linoleum koristi se odgovarajuca 4 mm elektroda prema dekoru ili projektu.",
       "officialUrl": "https://cdn.gerflor.com/media/2/59240/gerflor%20-%20cat%C3%A1logo%20general%202025.pdf",
       "sourceNoteSr": "Na sajtu vec postoje tacne DLW linoleum reference po dekoru; za sportski linoleum prikazujemo isti materijalni sistem bez nepouzdanog matchovanja boja."
     },
@@ -87,7 +87,7 @@
         "Tarkett elektrode za varenje - vinil podovi"
       ],
       "brand": "Tarkett",
-      "type": "Vinil varilacka vrpca",
+      "type": "Vinil elektroda za varenje",
       "referenceCode": "C001400",
       "diameter": "4 mm",
       "packaging": "50 m",
@@ -102,11 +102,11 @@
         "Tarkett elektrode za varenje - linoleum"
       ],
       "brand": "Tarkett",
-      "type": "Linoleum varilacka vrpca",
+      "type": "Linoleum elektroda za varenje",
       "referenceCode": "C001402",
       "diameter": "4 mm / 4,4 mm",
       "packaging": "40 m",
-      "descriptionSr": "Tarkett kolekcija elektroda za varenje za linoleum, sa jednobojnim i visebojnim varijantama za spojeve rolni i detalje zida/poda.",
+      "descriptionSr": "Tarkett kolekcija elektroda za varenje za linoleum, sa jednobojnim i visebojnim varijantama za spojeve rolni i detalje zida i poda.",
       "officialUrl": "https://www.tarkett.rs/sr_RS/kolekcija-C001402-elektrode-za-varenje-linoleum",
       "sourceNoteSr": "Zvanična Tarkett accessory kolekcija C001402."
     }
