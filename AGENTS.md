@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 23.03.2026 (Wolflor PDF swatch quality upgrade)
+> **Poslednje ažuriranje:** 24.03.2026 (Welding systems added for weldable vinyl/linoleum lines)
 
 ---
 
@@ -138,6 +138,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Dodati sistemi varenja i elektrode za varive vinil / linoleum kolekcije (24.03.2026)**
+- Uveden je novi kanonski izvor `public/data/welding_accessories.json` sa kuriranim Gerflor i Tarkett sistemima varenja koji trenutno koristimo na sajtu: `Gerflor CR40`, `MCR40`, `BBR40`, `CR50`, generički `Gerflor linoleum 4 mm (prema dekoru)`, kao i zvanične Tarkett accessory kolekcije `Elektrode za varenje - vinil podovi` i `Elektrode za varenje - linoleum`.
+- Dodat je centralni helper `lib/product-page/welding-helpers.ts` koji iz novih podataka i postojećih collection karakteristika izvodi koje varilačke vrpce treba prikazati po kolekciji, bez nepouzdanog matchovanja Tarkett dekora samo po šifri; linoleum ostaje na postojećim tačnim `welding_rod` referencama po boji.
+- Ceo pipeline je povezan kroz `color-helpers.ts`, `prepare-colors.ts`, `resolve-product.ts`, `/api/colors`, `/api/color-data`, `ProductCharacteristics` i `ProductColorSelector`, tako da se kompatibilna varilačka vrpca sada vidi i na collection SSR renderu i pri promeni boje / fetch toku za potvrđene Gerflor i Tarkett varive kolekcije.
+- Ruta `app/proizvodi/welding-rod/[ref]/page.tsx` više nije samo linoleum-exact stranica: i dalje podržava tačne DLW/linoleum reference po boji, ali sada ume da renderuje i generičke system/family stranice za `Gerflor CR40`, `MCR40`, `BBR40`, `CR50` i zvanične Tarkett vinyl/linoleum welding accessory kolekcije.
+- Verifikovano: targetirani `npx tsx` sanity-check nad mapiranjem kolekcija, `npm run build`.
 
 **Wolflor PDF kolekcije dobile kvalitetnije dekor slike i cache-bust refresh (23.03.2026)**
 - Problem na PDF-only Wolflor kolekcijama nije bio samo u maloj rezoluciji PDF izvora, već i u tome što je stari crop bio centriran po OCR tekstu šifre, pa je hvatao deo belog gutter-a i samo deo realnog swatch-a; konkretno `Andes WL91600` je ranije završavao kao mutan `300x227` JPG.

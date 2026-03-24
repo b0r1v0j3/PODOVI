@@ -3,6 +3,13 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import ProductImage from '@/components/ProductImage';
+import {
+  getWeldingAccessoryByRef,
+  getWeldingAccessoryDescription,
+  getWeldingAccessorySource,
+  getWeldingAccessorySpecs,
+} from '@/lib/product-page/welding-helpers';
+import type { ProductSpec } from '@/types';
 
 interface Props {
   params: { ref: string };
@@ -17,6 +24,16 @@ function getColorsByWeldingRod(weldingRodRef: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const accessory = getWeldingAccessoryByRef(params.ref);
+  if (accessory) {
+    const source = getWeldingAccessorySource(params.ref);
+    const description = getWeldingAccessoryDescription(params.ref) || source?.sourceNoteSr || '';
+    return {
+      title: `${source?.displayName || accessory.displayName} | podovi.online`,
+      description: description || `Detalji o sistemu varenja ${source?.displayName || accessory.displayName}.`,
+    };
+  }
+
   const colors = getColorsByWeldingRod(params.ref);
 
   if (colors.length === 0) {
@@ -34,6 +51,73 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function WeldingRodPage({ params }: Props) {
+  const accessory = getWeldingAccessoryByRef(params.ref);
+  if (accessory) {
+    const specs = getWeldingAccessorySpecs(params.ref);
+    const description = getWeldingAccessoryDescription(params.ref);
+    const source = getWeldingAccessorySource(params.ref);
+
+    return (
+      <div className="min-h-screen bg-gray-50 py-12">
+        <div className="container max-w-5xl">
+          <div className="mb-8">
+            <nav className="text-sm text-gray-600 mb-4">
+              <Link href="/" className="hover:text-primary-600">Početna</Link>
+              <span className="mx-2">/</span>
+              <span className="text-gray-900">Sistem varenja</span>
+            </nav>
+
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              {source?.displayName || accessory.displayName}
+            </h1>
+            <p className="text-lg text-gray-600">
+              {description || source?.sourceNoteSr || 'Zvanično zabeležen sistem varenja za odgovarajuće podne obloge.'}
+            </p>
+          </div>
+
+          {specs.length > 0 && (
+            <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Tehnički podaci
+              </h2>
+              <dl className="divide-y divide-gray-200">
+                {specs.map((spec: ProductSpec) => (
+                  <div key={spec.key} className="flex items-center justify-between py-3.5">
+                    <dt className="text-sm font-medium text-gray-500">{spec.label}</dt>
+                    <dd className="text-sm font-semibold text-gray-900 text-right">{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Izvor i primena
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-700">
+              {source?.sourceNoteSr && <p>{source.sourceNoteSr}</p>}
+              {source?.officialUrl && (
+                <p>
+                  Zvanični izvor:
+                  {' '}
+                  <a
+                    href={source.officialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 underline underline-offset-4"
+                  >
+                    {source.officialUrl}
+                  </a>
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const colors = getColorsByWeldingRod(params.ref);
 
   if (colors.length === 0) {

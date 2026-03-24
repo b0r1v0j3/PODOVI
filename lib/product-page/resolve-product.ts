@@ -17,6 +17,7 @@ import {
 } from './color-helpers';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
+import { getDerivedWeldingSpecs } from './welding-helpers';
 
 function enrichProductFromCollectionData(product: Product, collection: any): Product {
     const enrichedProduct: Product = {
@@ -52,6 +53,21 @@ function enrichProductFromCollectionData(product: Product, collection: any): Pro
             .filter((spec) => !existingKeys.has(spec.key));
 
         enrichedProduct.specs = [...(enrichedProduct.specs || []), ...extraSpecs];
+    }
+
+    const weldingSpecs = getDerivedWeldingSpecs({
+        categoryId: enrichedProduct.categoryId,
+        brandId: enrichedProduct.brandId,
+        collectionSlug: collection?.slug || enrichedProduct.slug,
+        collectionName: collection?.name || enrichedProduct.name,
+        characteristics: collectionCharacteristics,
+    });
+    if (weldingSpecs.length > 0) {
+        const existingKeys = new Set((enrichedProduct.specs || []).map((spec) => spec.key));
+        enrichedProduct.specs = [
+            ...(enrichedProduct.specs || []),
+            ...weldingSpecs.filter((spec) => !existingKeys.has(spec.key)),
+        ];
     }
 
     return enrichedProduct;

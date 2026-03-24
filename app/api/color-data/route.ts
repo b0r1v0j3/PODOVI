@@ -13,6 +13,7 @@ import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
+import { getDerivedWeldingCharacteristics } from '@/lib/product-page/welding-helpers';
 
 /**
  * GET /api/color-data?color={slug}&categoryId={id}
@@ -148,9 +149,19 @@ export async function GET(request: NextRequest) {
     if (color.format && !characteristics['Format']) {
         characteristics['Format'] = color.format;
     }
-    if (color.welding_rod && !characteristics['Elektroda za varenje']) {
-        characteristics['Elektroda za varenje'] = color.welding_rod;
-    }
+    const weldingCharacteristics = getDerivedWeldingCharacteristics({
+        categoryId,
+        brandId: color.brandId || '6',
+        collectionSlug: color.collection_slug || color.collection,
+        collectionName: color.collection_name,
+        characteristics: color.characteristics,
+        exactWeldingRod: color.welding_rod,
+    });
+    Object.entries(weldingCharacteristics).forEach(([label, value]) => {
+        if (!characteristics[label]) {
+            characteristics[label] = value;
+        }
+    });
 
     return NextResponse.json({ documents, characteristics });
 }

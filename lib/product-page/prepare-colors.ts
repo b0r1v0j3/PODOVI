@@ -12,6 +12,7 @@ import {
     industrialCollections,
     sportCollections,
 } from './color-helpers';
+import { getDerivedWeldingCharacteristics } from './welding-helpers';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import {
     getEffectiveParketCollection,
@@ -22,7 +23,7 @@ import {
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
 
-function mapNestedCollectionColors(collection: any) {
+function mapNestedCollectionColors(collection: any, context: { categoryId: string }) {
     return (collection.colors || [])
         .filter((color: any) => Boolean(color.image || color.image_url))
         .map((color: any) => ({
@@ -39,6 +40,17 @@ function mapNestedCollectionColors(collection: any) {
         characteristics: {
             ...(collection.characteristics || {}),
             ...(color.characteristics || {}),
+            ...getDerivedWeldingCharacteristics({
+                categoryId: context.categoryId,
+                brandId: color.brandId || collection.brandId,
+                collectionSlug: collection.slug,
+                collectionName: collection.name,
+                characteristics: {
+                    ...(collection.characteristics || {}),
+                    ...(color.characteristics || {}),
+                },
+                exactWeldingRod: color.welding_rod,
+            }),
         },
         format: color.format || collection.characteristics?.Format,
         dimension: color.dimension || collection.characteristics?.Dimenzije,
@@ -213,7 +225,7 @@ export async function prepareCustomColors(
             slugCandidates.some((candidate) => candidate === col.slug)
         );
         if (vinylCollection && vinylCollection.colors && vinylCollection.colors.length > 0) {
-            return mapNestedCollectionColors(vinylCollection);
+            return mapNestedCollectionColors(vinylCollection, { categoryId: '2' });
         }
     }
 
@@ -245,7 +257,7 @@ export async function prepareCustomColors(
         const strippedSlug = rawSlug.startsWith('gerflor-') ? rawSlug.substring('gerflor-'.length) : rawSlug;
         const esdCollection = esdCollections.find((col: any) => col.slug === rawSlug || col.slug === strippedSlug);
         if (esdCollection && esdCollection.colors && esdCollection.colors.length > 0) {
-            return mapNestedCollectionColors(esdCollection);
+            return mapNestedCollectionColors(esdCollection, { categoryId: '8' });
         }
     }
 
@@ -254,7 +266,7 @@ export async function prepareCustomColors(
         const collectionSlug = product.slug.substring('gerflor-'.length);
         const industrialCollection = industrialCollections.find((col: any) => col.slug === collectionSlug);
         if (industrialCollection && industrialCollection.colors && industrialCollection.colors.length > 0) {
-            return mapNestedCollectionColors(industrialCollection);
+            return mapNestedCollectionColors(industrialCollection, { categoryId: '9' });
         }
     }
 
@@ -270,7 +282,7 @@ export async function prepareCustomColors(
             slugCandidates.includes(String(col.slug || '').replace(/^gerflor-/, '').replace(/^tarkett-/, ''))
         );
         if (sportCollection && sportCollection.colors && sportCollection.colors.length > 0) {
-            return mapNestedCollectionColors(sportCollection);
+            return mapNestedCollectionColors(sportCollection, { categoryId: '10' });
         }
     }
 
@@ -307,7 +319,10 @@ export async function mergeSelectedColor(
                 }];
             }
 
-            const colorSpecs = buildSpecsFromColor(colorSource.color);
+            const colorSpecs = buildSpecsFromColor(colorSource.color, {
+                categoryId: product.categoryId,
+                brandId: product.brandId,
+            });
             if (colorSpecs.length > 0) {
                 product.specs = mergeSpecs(product.specs, colorSpecs);
             }

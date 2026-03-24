@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import type { ProductSpec } from '@/types';
+import { getWeldingAccessoryHref } from '@/lib/product-page/welding-helpers';
 
 interface ProductCharacteristicsProps {
   specs?: ProductSpec[];
@@ -99,15 +100,16 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
       {title && <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>}
       <dl className="divide-y divide-gray-200">
         {finalSpecs.map((spec, index) => {
-          const isWeldingRod = spec.label === 'Elektroda za varenje';
+          const isWeldingSpec = /(elektrod|varila|welding|vrpca)/i.test(spec.label);
+          const weldingHref = isWeldingSpec ? getWeldingAccessoryHref(spec.value) : null;
 
           return (
             <div key={`${spec.label}-${index}`} className="flex items-center justify-between py-3.5">
               <dt className="text-sm font-medium text-gray-500">{spec.label}</dt>
               <dd className="text-sm font-semibold text-gray-900 text-right">
-                {isWeldingRod ? (
+                {weldingHref ? (
                   <Link
-                    href={`/proizvodi/welding-rod/${spec.value}`}
+                    href={weldingHref}
                     className="text-primary-600 hover:text-primary-700 underline underline-offset-4"
                   >
                     {spec.value}

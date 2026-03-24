@@ -11,6 +11,7 @@ import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
+import { getDerivedWeldingCharacteristics } from '@/lib/product-page/welding-helpers';
 
 /**
  * GET /api/colors?category=lvt|linoleum|vinil|tekstilne-ploce|elektroprovodni|industrijske-ploce|sport
@@ -50,44 +51,6 @@ type ColorRow = {
     characteristics?: Record<string, string> | null;
 };
 
-function buildNestedCollectionsResponse(sourceCollections: any[], requestedCollection?: string | null) {
-    const collections = sourceCollections
-        .filter((collection) => !requestedCollection || collection.slug === requestedCollection)
-        .map((collection) => ({
-            slug: collection.slug,
-            name: collection.name,
-            description: collection.description || '',
-            characteristics: collection.characteristics || {},
-            colors: (collection.colors || [])
-                .filter((color: any) => Boolean(color.image || color.image_url))
-                .map((color: any) => ({
-                ...color,
-                collection_slug: collection.slug,
-                collection_name: collection.name,
-                image: color.image || color.image_url || '',
-                image_url: color.image || color.image_url || '',
-                description: color.description || collection.description || '',
-                characteristics: {
-                    ...(collection.characteristics || {}),
-                    ...(color.characteristics || {}),
-                },
-                format: color.format || collection.characteristics?.Format,
-                dimension: color.dimension || collection.characteristics?.Dimenzije,
-                overall_thickness: color.overall_thickness || collection.characteristics?.['Ukupna debljina'],
-                })),
-            colorCount: (collection.colors || [])
-                .filter((color: any) => Boolean(color.image || color.image_url))
-                .length,
-        }))
-        .filter((collection) => collection.colorCount > 0);
-
-    return NextResponse.json({
-        collections,
-        totalColors: collections.reduce((sum, collection) => sum + collection.colors.length, 0),
-        generatedAt: new Date().toISOString(),
-    });
-}
-
 export async function GET(request: NextRequest) {
     const category = request.nextUrl.searchParams.get('category') || 'lvt';
     const requestedCollection = request.nextUrl.searchParams.get('collection');
@@ -110,7 +73,59 @@ export async function GET(request: NextRequest) {
     };
 
     if (category in nestedCollectionsMap) {
-        return buildNestedCollectionsResponse(nestedCollectionsMap[category], requestedCollection);
+        const categoryIdBySlug: Record<string, string> = {
+            vinil: '2',
+            elektroprovodni: '8',
+            'industrijske-ploce': '9',
+            sport: '10',
+        };
+
+        const collections = nestedCollectionsMap[category]
+            .filter((collection) => !requestedCollection || collection.slug === requestedCollection)
+            .map((collection) => ({
+                slug: collection.slug,
+                name: collection.name,
+                description: collection.description || '',
+                characteristics: collection.characteristics || {},
+                colors: (collection.colors || [])
+                    .filter((color: any) => Boolean(color.image || color.image_url))
+                    .map((color: any) => ({
+                        ...color,
+                        collection_slug: collection.slug,
+                        collection_name: collection.name,
+                        image: color.image || color.image_url || '',
+                        image_url: color.image || color.image_url || '',
+                        description: color.description || collection.description || '',
+                        characteristics: {
+                            ...(collection.characteristics || {}),
+                            ...(color.characteristics || {}),
+                            ...getDerivedWeldingCharacteristics({
+                                categoryId: categoryIdBySlug[category],
+                                brandId: color.brandId || collection.brandId || '6',
+                                collectionSlug: collection.slug,
+                                collectionName: collection.name,
+                                characteristics: {
+                                    ...(collection.characteristics || {}),
+                                    ...(color.characteristics || {}),
+                                },
+                                exactWeldingRod: color.welding_rod,
+                            }),
+                        },
+                        format: color.format || collection.characteristics?.Format,
+                        dimension: color.dimension || collection.characteristics?.Dimenzije,
+                        overall_thickness: color.overall_thickness || collection.characteristics?.['Ukupna debljina'],
+                    })),
+                colorCount: (collection.colors || [])
+                    .filter((color: any) => Boolean(color.image || color.image_url))
+                    .length,
+            }))
+            .filter((collection) => collection.colorCount > 0);
+
+        return NextResponse.json({
+            collections,
+            totalColors: collections.reduce((sum, collection) => sum + collection.colors.length, 0),
+            generatedAt: new Date().toISOString(),
+        });
     }
 
     try {

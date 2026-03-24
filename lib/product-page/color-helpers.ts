@@ -12,6 +12,7 @@ import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 import { SITE_URL } from '@/lib/seo/site-config';
+import { getDerivedWeldingSpecs } from './welding-helpers';
 
 type NestedCollection = {
     name: string;
@@ -197,7 +198,10 @@ function getPrimaryImageUrl(source: ColorSource): string {
     return ((source.color as any).image || source.color.texture_url || source.color.image_url || source.color.lifestyle_url || '');
 }
 
-export function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
+export function buildSpecsFromColor(
+    color: ColorFromJSON,
+    context?: { categoryId?: string; brandId?: string }
+): ProductSpec[] {
     const specs: ProductSpec[] = [];
 
     if ('collection_specs' in color && Array.isArray((color as any).collection_specs)) {
@@ -258,14 +262,30 @@ export function buildSpecsFromColor(color: ColorFromJSON): ProductSpec[] {
     if (color.dimension && !specs.find((spec) => spec.key === 'dimension')) {
         specs.push({ key: 'dimension', label: 'Dimenzije', value: color.dimension });
     }
-    if (color.welding_rod) {
-        specs.push({ key: 'welding_rod', label: 'Elektroda za varenje', value: color.welding_rod });
+    const weldingSpecs = getDerivedWeldingSpecs({
+        categoryId: context?.categoryId,
+        brandId: context?.brandId || color.brandId,
+        collectionSlug: color.collection_slug || color.collection,
+        collectionName: color.collection_name,
+        characteristics: color.characteristics,
+        exactWeldingRod: color.welding_rod,
+    });
+    for (const weldingSpec of weldingSpecs) {
+        if (!specs.find((spec) => spec.key === weldingSpec.key)) {
+            specs.push(weldingSpec);
+        }
     }
 
     if (color.characteristics) {
         const entries = Object.entries(color.characteristics);
         entries.forEach(([label, value], index) => {
             if (!value) return;
+            if (
+                /(elektrod|varila|welding|vrpca)/i.test(label) &&
+                specs.some((spec) => /(elektrod|varila|welding|vrpca)/i.test(spec.label) && spec.value === value)
+            ) {
+                return;
+            }
             const key = toSpecKey(label, index);
             if (!specs.find((spec) => spec.key === key)) {
                 specs.push({ key, label, value });
@@ -375,7 +395,10 @@ export function colorToProduct(source: ColorSource, slug: string, collectionSlug
         }]
         : [];
 
-    const specs = buildSpecsFromColor(color);
+    const specs = buildSpecsFromColor(color, {
+        categoryId,
+        brandId,
+    });
     const description = (color.description && typeof color.description === 'string' && color.description.trim())
         ? color.description.trim()
         : `${name} iz kolekcije ${color.collection_name}`;
@@ -418,7 +441,10 @@ export function collectionFromColor(source: ColorSource, slug: string): Product 
         }]
         : [];
 
-    const specs = buildSpecsFromColor(color);
+    const specs = buildSpecsFromColor(color, {
+        categoryId,
+        brandId,
+    });
 
     return {
         id: `collection-${source.categorySlug}-${slug}`,

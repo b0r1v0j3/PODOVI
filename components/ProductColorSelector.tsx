@@ -474,14 +474,20 @@ export default function ProductColorSelector({
 
             {/* Accessory Badge: Welding Rod */}
             {(() => {
-              const weldingRodSpec = specs?.find(s =>
-                s.key.toLowerCase().includes('welding') ||
-                s.key.toLowerCase().includes('varil') ||
-                s.label.toLowerCase().includes('varilačk') ||
-                s.label.toLowerCase().includes('welding')
-              );
+              const selectedWeldingCharacteristic = selectedCharacteristics
+                ? Object.entries(selectedCharacteristics).find(([label]) =>
+                  /(elektrod|varila|welding|vrpca)/i.test(label)
+                )
+                : null;
 
-              if (weldingRodSpec && weldingRodSpec.value && weldingRodSpec.value.trim() !== '' && weldingRodSpec.value.trim() !== '-') {
+              const weldingRodSpec = specs?.find(s =>
+                /(welding|varil|vrpca|elektrod)/i.test(s.key) ||
+                /(varilačk|welding|elektrod|vrpca)/i.test(s.label)
+              );
+              const weldingLabel = selectedWeldingCharacteristic?.[0] || weldingRodSpec?.label || 'Varilačka vrpca';
+              const weldingValue = selectedWeldingCharacteristic?.[1] || weldingRodSpec?.value || '';
+
+              if (weldingValue && weldingValue.trim() !== '' && weldingValue.trim() !== '-') {
                 return (
                   <div className="bg-[#f8f9fa] border border-[#e9ecef] rounded-xl p-4 mt-2">
                     <div className="flex items-center gap-3">
@@ -493,7 +499,7 @@ export default function ProductColorSelector({
                       <div>
                         <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-0.5">Dodatna oprema</p>
                         <p className="text-base font-semibold text-gray-900 leading-none">
-                          Varilačka vrpca: <span className="text-primary-600">{weldingRodSpec.value}</span>
+                          {weldingLabel}: <span className="text-primary-600">{weldingValue}</span>
                         </p>
                       </div>
                     </div>
