@@ -5,6 +5,7 @@ import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import { getEffectiveParketCollection, getAllParketVariantSlugs, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
+import { filterCategoryListingCollections } from '@/lib/catalog/listing-curation';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import CategoryTabs from '@/components/CategoryTabs';
@@ -142,7 +143,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         p.sku?.startsWith('SPORT-') ||
         p.sku?.startsWith('TARKETT-LAJSNE-')
       ) ?? false;
-    const allCollections = allProducts.filter(p => hasCollectionSku(p));
+    const allCollections = filterCategoryListingCollections(
+      category.slug,
+      allProducts.filter(p => hasCollectionSku(p))
+    );
     if (category.slug === 'parket') {
       // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
       const validSlugs = new Set(getAllParketVariantSlugs());

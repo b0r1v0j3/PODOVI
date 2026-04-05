@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 31.03.2026 (Tarkett lajsne audit + PDF coverage)
+> **Poslednje ažuriranje:** 05.04.2026 (Lajsne listing curation)
 
 ---
 
@@ -139,6 +139,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Prateći Tarkett asortiman privremeno sakriven iz `Lajsne` kategorijskog listinga (05.04.2026)**
+- `TARKETT GENIUS Traka` i `Tarkodry podloga za podove i zidove` nisu obrisani iz kanonskog `tarkett_lajsne_variants.json` izvora niti iz product ruta, ali su privremeno isključeni iz server-side `Kolekcije` taba na `/kategorije/lajsne` jer su user-facing prateći asortiman, a ne same lajsne.
+- Dodata je shared curation logika u `lib/catalog/listing-curation.ts`, pa isto pravilo važi i za client-side `Varijante` tab u `CategoryTabs`: count i grid više ne uvlače varijante iz ta dva accessory sluga samo na kategorijskoj stranici.
+- Time kanonski data source i direktni URL-ovi ostaju netaknuti, ali live `Lajsne` kategorija ostaje vizuelno čista i fokusirana na stvarne lajsne dok ne uvedemo posebnu taksonomiju za prateći asortiman.
+- Verifikovano: `npm run build`.
 
 **Tarkett lajsne uključene u canonical catalog audit + dopunjeni collection PDF-ovi (31.03.2026)**
 - `scripts/audit-catalog-quality.ts` sada pokriva i Tarkett lajsne kao pun kanonski izvor: collection header proizvode iz `getTarkettLajsneCollections()`, nested JSON dataset `tarkett_lajsne_variants.json` i `missing_documents` proveru za `TARKETT-LAJSNE-*` SKU obrasce.

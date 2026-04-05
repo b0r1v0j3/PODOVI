@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Product, Brand } from '@/types';
+import { filterCategoryListingCollections } from '@/lib/catalog/listing-curation';
 import ProductCardClient from '@/components/ProductCardClient';
 
 interface ColorFromJSON {
@@ -312,7 +313,8 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
       })
       .then(data => {
         if (NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]) && Array.isArray(data.collections)) {
-          const total = data.collections.reduce((sum: number, collection: any) =>
+          const visibleCollections = filterCategoryListingCollections(categorySlug, data.collections);
+          const total = visibleCollections.reduce((sum: number, collection: any) =>
             sum + (collection.colors?.length || 0), 0);
           setTotalColorsCount(total);
         } else if (data && typeof data.totalColors === 'number') {
@@ -369,8 +371,9 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
           // Handle different JSON structures: LVT has data.colors, Linoleum/Vinil have data.collections[].colors
           let colorsArray: any[] = [];
           if (NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]) && data.collections && Array.isArray(data.collections)) {
+            const visibleCollections = filterCategoryListingCollections(categorySlug, data.collections);
             // Flatten colors from all collections
-            colorsArray = data.collections.flatMap((collection: any) =>
+            colorsArray = visibleCollections.flatMap((collection: any) =>
               (collection.colors || []).map((color: any) => ({
                 ...color,
                 collection_name: collection.name,
@@ -378,7 +381,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
                 collection: collection.slug
               }))
             );
-            console.log(`CategoryTabs: Loaded ${colorsArray.length} colors from ${data.collections.length} collections for ${categorySlug}`);
+            console.log(`CategoryTabs: Loaded ${colorsArray.length} colors from ${visibleCollections.length} collections for ${categorySlug}`);
           } else if (data.colors && Array.isArray(data.colors)) {
             colorsArray = data.colors;
             console.log(`CategoryTabs: Loaded ${colorsArray.length} colors from JSON for category ${categorySlug}`);
