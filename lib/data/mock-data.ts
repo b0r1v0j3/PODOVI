@@ -88,7 +88,7 @@ export const categories: Category[] = [
     name: 'Lajsne',
     slug: 'lajsne',
     description: 'Tarkett lajsne i prateći pribor za završnu obradu podova i zidova',
-    image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/collection.jpg?v=20260331152443',
+    image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/tarkett-dekorativne-zidne-lajsne-za-lvt-marquina-grande-black.jpg?v=20260331152443',
     order: 11,
   },
 
