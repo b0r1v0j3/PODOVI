@@ -30,12 +30,19 @@ export async function GET(request: NextRequest) {
 
         let url = `/proizvodi/${p.slug}`;
         if (rawCollection) {
-            const isColorTile = ['2', '4', '6', '7', '8'].includes(p.categoryId);
+            const isColorTile = ['2', '4', '6', '7', '8', '9', '10', '11'].includes(p.categoryId);
             const isProductColor = ['1', '3'].includes(p.categoryId);
 
             if (isColorTile) {
                 const categorySlugMap: Record<string, string> = {
-                    '6': 'lvt', '7': 'linoleum', '4': 'tekstilne-ploce', '2': 'vinil', '8': 'elektroprovodni'
+                    '6': 'lvt',
+                    '7': 'linoleum',
+                    '4': 'tekstilne-ploce',
+                    '2': 'vinil',
+                    '8': 'elektroprovodni',
+                    '9': 'industrijske-ploce',
+                    '10': 'sport',
+                    '11': 'lajsne',
                 };
                 url = `/kategorije/${categorySlugMap[p.categoryId] || 'lvt'}?color=${p.slug}`;
             } else if (isProductColor) {

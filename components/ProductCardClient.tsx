@@ -26,6 +26,7 @@ const categoryBadgeConfig: Record<string, { label: string; className: string }> 
   '8': { label: 'Elektroprovodni', className: 'badge-elektroprovodni' },
   '9': { label: 'Industrijske ploče', className: 'badge-industrijske' },
   '10': { label: 'Sport', className: 'badge-sport' },
+  '11': { label: 'Lajsne', className: 'badge-lajsne' },
 };
 
 // Keys to extract from specs for chip display
@@ -90,7 +91,7 @@ function getSpecChips(specs: Product['specs'], categoryId?: string, productName?
 function cleanShortDescription(shortDesc: string | undefined, productName: string, displayName: string): string | null {
   if (!shortDesc || shortDesc.length <= 5) return null;
 
-  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Podna obloga'];
+  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Lajsne', 'Podna obloga'];
   let cleaned = shortDesc;
   for (const catName of categoryNames) {
     cleaned = cleaned.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();
@@ -104,7 +105,7 @@ function cleanShortDescription(shortDesc: string | undefined, productName: strin
 }
 
 function normalizeCollectionSlugForColorRoute(categoryId: string, brandId: string | undefined, collectionSlug: string): string {
-  if (!['2', '6', '8', '9', '10'].includes(categoryId)) {
+  if (!['2', '6', '8', '9', '10', '11'].includes(categoryId)) {
     return collectionSlug;
   }
 
@@ -151,9 +152,10 @@ export default function ProductCardClient({ product, brand, compact = false }: P
     '8': 'elektroprovodni',
     '9': 'industrijske-ploce',
     '10': 'sport',
+    '11': 'lajsne',
   };
 
-  const isColorTileCategory = ['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId);
+  const isColorTileCategory = ['6', '7', '4', '2', '8', '9', '10', '11'].includes(product.categoryId);
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
   const isParket = product.categoryId === '3';
   const isLaminat = product.categoryId === '1';

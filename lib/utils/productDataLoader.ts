@@ -9,6 +9,7 @@ import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
 import tarkettCollectionSpecsData from '@/public/data/tarkett_collection_specs.json';
 import tarkettCollectionDetails from '@/public/data/tarkett_collection_details.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
+import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
@@ -24,6 +25,7 @@ let bloqCarpetCache: Product[] | null = null;
 let dekingProductsCache: Product[] | null = null;
 let esdCollectionCache: Product[] | null = null;
 let tarkettSportCollectionCache: Product[] | null = null;
+let tarkettLajsneCollectionCache: Product[] | null = null;
 let tarkettVinylHomeCollectionCache: Product[] | null = null;
 let tarkettHomogeneousVinylCollectionCache: Product[] | null = null;
 let tarkettHeterogeneousVinylCollectionCache: Product[] | null = null;
@@ -428,6 +430,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getTarkettHomogeneousVinylCollections(),
         ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
+        ...getTarkettLajsneCollections(),
         ...getAllDekingProducts(),
         ...getVinylCollectionProducts(),
         ...getManualCollectionProducts(),
@@ -466,6 +469,8 @@ export function getProductsByCategory(categoryId: string): Product[] {
             ...getManualCollectionProducts().filter((product) => product.categoryId === '10'),
             ...getTarkettSportCollections(),
         ];
+    } else if (categoryId === '11') {
+        return [...getTarkettLajsneCollections()];
     } else if (categoryId === '7') {
         return [...getGerflorLinoleumCollections(), ...getAllLinoleumProducts()];
     } else if (categoryId === '4') {
@@ -1427,4 +1432,60 @@ export function getTarkettSportCollections(): Product[] {
     });
 
     return tarkettSportCollectionCache;
+}
+
+export function getTarkettLajsneCollections(): Product[] {
+    if (tarkettLajsneCollectionCache) {
+        return tarkettLajsneCollectionCache;
+    }
+
+    const collections = (((tarkettLajsneData as any)?.collections || []) as any[]);
+
+    tarkettLajsneCollectionCache = collections.map((collection: any) => {
+        const firstVariant = collection.colors?.[0];
+        const imageUrl = collection.collection_image_url || firstVariant?.image || '';
+        const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
+        const productType = normalizeText(collection.characteristics?.['Tip proizvoda']);
+
+        if (productType && !specs.find((spec) => spec.key === 'type')) {
+            specs.push({
+                key: 'type',
+                label: 'Tip proizvoda',
+                value: productType,
+            });
+        }
+
+        return {
+            id: `tarkett-lajsne-${collection.slug}`,
+            name: collection.name,
+            slug: collection.slug,
+            sku: `TARKETT-LAJSNE-${String(collection.slug).replace(/^tarkett-/, '').toUpperCase()}`,
+            categoryId: '11',
+            brandId: '3',
+            shortDescription:
+                collection.shortDescription ||
+                `${collection.name} — ${collection.colorCount || collection.colors?.length || 0} varijanti`,
+            description:
+                collection.description ||
+                collection.shortDescription ||
+                `${collection.name} Tarkett kolekcija lajsni i pribora.`,
+            images: imageUrl ? [{
+                id: `tarkett-lajsne-${collection.slug}-img`,
+                url: imageUrl,
+                alt: collection.name,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            documents: Array.isArray(collection.documents) ? collection.documents : [],
+            detailsSections: Array.isArray(collection.detailsSections) ? collection.detailsSections : undefined,
+            externalLink: collection.url,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    return tarkettLajsneCollectionCache;
 }

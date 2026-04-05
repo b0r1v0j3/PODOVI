@@ -14,6 +14,7 @@ import {
   getEsdCollectionProducts,
   getGerflorLinoleumCollections,
   getGerflorLVTCollections,
+  getTarkettLajsneCollections,
   getTarkettLVTCollections,
   getTarkettHeterogeneousVinylCollections,
   getTarkettHomogeneousVinylCollections,
@@ -33,6 +34,7 @@ import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_v
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
+import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
@@ -90,6 +92,7 @@ const CATEGORY_NAMES: Record<string, string> = {
   '8': 'Elektroprovodni',
   '9': 'Industrijske ploče',
   '10': 'Sport',
+  '11': 'Lajsne',
 };
 
 function normalizeText(value: unknown) {
@@ -193,6 +196,7 @@ function primaryImageUrl(product: Product) {
 
 function collectionProductsNeedingDocs(product: Product, source: string) {
   if (product.sku.startsWith('TARKETT-SPORT-')) return true;
+  if (product.sku.startsWith('TARKETT-LAJSNE-')) return true;
   if (product.sku.startsWith('TARKETT-VINYL-')) return true;
   if (product.sku.startsWith('TARKETT-LVT-')) return true;
   if (product.categoryId === '1' || product.categoryId === '3') return true;
@@ -611,6 +615,7 @@ async function main() {
     { name: 'tarkett-vinyl-home-collections', products: getTarkettVinylHomeCollections() },
     { name: 'wolflor-vinyl-collections', products: getWolflorVinylCollections() },
     { name: 'tarkett-sport-collections', products: getTarkettSportCollections() },
+    { name: 'tarkett-lajsne-collections', products: getTarkettLajsneCollections() },
     { name: 'gerflor-vinyl-collections', products: getVinylCollectionProducts() },
     { name: 'gerflor-esd-collections', products: getEsdCollectionProducts() },
     { name: 'gerflor-lvt-collections', products: getGerflorLVTCollections() },
@@ -634,6 +639,7 @@ async function main() {
       ...getTarkettHomogeneousVinylCollections(),
       ...getWolflorVinylCollections(),
       ...getTarkettSportCollections(),
+      ...getTarkettLajsneCollections(),
       ...getTarkettVinylHomeCollections(),
       ...getVinylCollectionProducts(),
       ...getManualCollectionProducts(),
@@ -681,6 +687,12 @@ async function main() {
       '2',
       '3',
       ((tarkettHeterogeneousVinylData as any).collections || []) as any[]
+    ),
+    ...auditNestedDatasetDeclaredColorCounts(
+      'tarkett-lajsne-json',
+      '11',
+      '3',
+      ((tarkettLajsneData as any).collections || []) as any[]
     ),
   ];
 
@@ -736,6 +748,7 @@ async function main() {
     summarizeProductArray('tarkett-vinyl-home-collections', getTarkettVinylHomeCollections()),
     summarizeProductArray('wolflor-vinyl-collections', getWolflorVinylCollections()),
     summarizeProductArray('tarkett-sport-collections', getTarkettSportCollections()),
+    summarizeProductArray('tarkett-lajsne-collections', getTarkettLajsneCollections()),
     summarizeProductArray('gerflor-vinyl-collections', getVinylCollectionProducts()),
     summarizeProductArray('gerflor-esd-collections', getEsdCollectionProducts()),
     summarizeProductArray('gerflor-lvt-collections', getGerflorLVTCollections()),
@@ -750,6 +763,7 @@ async function main() {
     summarizeNestedDataset('tarkett-vinyl-home-json', ((tarkettVinylHomeData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('wolflor-vinyl-json', ((wolflorVinylData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('tarkett-sport-json', ((tarkettSportData as any).collections || []) as any[], { requireDocuments: true }),
+    summarizeNestedDataset('tarkett-lajsne-json', ((tarkettLajsneData as any).collections || []) as any[], { requireDocuments: true }),
     summarizeNestedDataset('vinyl-json', ((vinylColorsData as any).collections || []) as any[]),
     summarizeNestedDataset('esd-json', ((esdColorsData as any).collections || []) as any[]),
     summarizeFlatColorDataset('lvt-colors-json', ((lvtColorsData as any).colors || []) as any[]),

@@ -11,6 +11,7 @@ import {
     esdCollections,
     industrialCollections,
     sportCollections,
+    lajsneCollections,
 } from './color-helpers';
 import { getDerivedWeldingCharacteristics } from './welding-helpers';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
@@ -283,6 +284,21 @@ export async function prepareCustomColors(
         );
         if (sportCollection && sportCollection.colors && sportCollection.colors.length > 0) {
             return mapNestedCollectionColors(sportCollection, { categoryId: '10' });
+        }
+    }
+
+    // Lajsne (cat 11): customColors from tarkett_lajsne_variants.json
+    if (product.categoryId === '11') {
+        const slugCandidates = [
+            product.slug,
+            product.slug.replace(/^tarkett-/, ''),
+        ];
+        const lajsneCollection = lajsneCollections.find((col: any) =>
+            slugCandidates.includes(col.slug) ||
+            slugCandidates.includes(String(col.slug || '').replace(/^tarkett-/, ''))
+        );
+        if (lajsneCollection && lajsneCollection.colors && lajsneCollection.colors.length > 0) {
+            return mapNestedCollectionColors(lajsneCollection, { categoryId: '11' });
         }
     }
 

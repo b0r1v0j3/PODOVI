@@ -109,7 +109,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const allProductsForThickness = await productRepository.findByCategory(category.id);
 
   // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat – separate collections from colors
-  const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat' || category.slug === 'elektroprovodni' || category.slug === 'industrijske-ploce' || category.slug === 'sport';
+  const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat' || category.slug === 'elektroprovodni' || category.slug === 'industrijske-ploce' || category.slug === 'sport' || category.slug === 'lajsne';
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
@@ -139,7 +139,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         p.sku?.startsWith('DEKING-') ||
         p.sku?.startsWith('ESD-') ||
         p.sku?.startsWith('IND-') ||
-        p.sku?.startsWith('SPORT-')
+        p.sku?.startsWith('SPORT-') ||
+        p.sku?.startsWith('TARKETT-LAJSNE-')
       ) ?? false;
     const allCollections = allProducts.filter(p => hasCollectionSku(p));
     if (category.slug === 'parket') {

@@ -70,7 +70,7 @@ function normalizeCollectionSlugForProductRoute(
     return collectionSlug;
   }
 
-  if (!['2', '6', '8', '9', '10'].includes(categoryId)) {
+  if (!['2', '6', '8', '9', '10', '11'].includes(categoryId)) {
     return collectionSlug;
   }
 
@@ -273,6 +273,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '8': 'elektroprovodni',
       '9': 'industrijske-ploce',
       '10': 'sport',
+      '11': 'lajsne',
     };
 
     // ── Linoleum redirect: /proizvodi/gerflor-xxx → /proizvodi/xxx ──
@@ -326,7 +327,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
     const isTarkettCollection = product.sku?.startsWith('TARKETT-');
     // For deking (category 5), since we don't have separate collection pages, we should not redirect
-    const shouldRedirectCollection = ['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId);
+    const shouldRedirectCollection = ['6', '7', '4', '2', '8', '9', '10', '11'].includes(product.categoryId);
 
     if (shouldRedirectCollection && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
       const normalizedCollectionSlug = normalizeCollectionSlugForProductRoute(
@@ -418,7 +419,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     }
 
     // ── Redirect invalid JSON-backed color params to the collection page ──
-    if (selectedColorSlug && (!customColors || customColors.length === 0) && ['2', '6', '7', '8', '9', '10'].includes(product.categoryId)) {
+    if (selectedColorSlug && (!customColors || customColors.length === 0) && ['2', '6', '7', '8', '9', '10', '11'].includes(product.categoryId)) {
       const colorSource = await loadColorFromJson(selectedColorSlug);
       if (!colorSource) {
         redirect(`/proizvodi/${routeSlug}`);
@@ -464,7 +465,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     };
 
     // ── Determine if this is a "color selector" category ──
-    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1', '8', '9', '10'].includes(product.categoryId);
+    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1', '8', '9', '10', '11'].includes(product.categoryId);
 
     // ── Helper JSX logic to populate masonry columns neatly ──
     const sharedCertsAndEco = (['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
@@ -617,8 +618,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
                                 : product.categoryId === '8' ? 'ESD'
                                   : product.categoryId === '9' ? 'Industrijske ploče'
                                     : product.categoryId === '10' ? 'Sport'
+                                      : product.categoryId === '11' ? 'Lajsne'
                                   : undefined
                     }
+                    apiCategory={product.categoryId === '11' ? 'lajsne' : undefined}
+                    uiMode={product.categoryId === '11' ? 'variants' : 'colors'}
                     videoEmbedUrl={routeSlug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                     inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                     productId={product.id}

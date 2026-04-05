@@ -10,6 +10,7 @@ import {
     esdCollections,
     industrialCollections,
     sportCollections,
+    lajsneCollections,
     buildNestedColorFromCollection,
     loadColorFromJson,
     colorToProduct,
@@ -80,6 +81,7 @@ function findNestedCollection(slug: string) {
         esdCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         industrialCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         sportCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
+        lajsneCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         null
     );
 }
@@ -98,11 +100,11 @@ export function normalizeCollectionSlug(categoryId: string, collectionSlug: stri
         }
         return `gerflor-${collectionSlug}`;
     }
-    if (categoryId === '9' || categoryId === '10') {
+    if (categoryId === '9' || categoryId === '10' || categoryId === '11') {
         if (hasBrandPrefix) {
             return collectionSlug;
         }
-        return `gerflor-${collectionSlug}`;
+        return brandId === '3' ? `tarkett-${collectionSlug}` : `gerflor-${collectionSlug}`;
     }
     if (categoryId === '7') {
         return collectionSlug.replace(/^gerflor-/, '');
@@ -272,6 +274,19 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         const firstColor = buildNestedColorFromCollection(sportCollection, sportCollection.colors[0]);
         const colorSource: ColorSource = {
             categorySlug: 'sport',
+            color: firstColor as ColorFromJSON,
+        };
+        return collectionFromColor(colorSource, slug);
+    }
+
+    const lajsneCollection = lajsneCollections.find((col: any) =>
+        col.slug === slug ||
+        col.slug === slug.replace(/^tarkett-/, '')
+    );
+    if (lajsneCollection && lajsneCollection.colors && lajsneCollection.colors.length > 0) {
+        const firstColor = buildNestedColorFromCollection(lajsneCollection, lajsneCollection.colors[0]);
+        const colorSource: ColorSource = {
+            categorySlug: 'lajsne',
             color: firstColor as ColorFromJSON,
         };
         return collectionFromColor(colorSource, slug);

@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 24.03.2026 (Welding electrode terminology cleanup)
+> **Poslednje ažuriranje:** 31.03.2026 (Tarkett lajsne audit + PDF coverage)
 
 ---
 
@@ -93,6 +93,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=
 | Elektroprovodni | 8 | Gerflor (6) | `esd_colors.json` (7 kolekcija, 42 boje) |
 | Industrijske ploče | 9 | Gerflor (6) | `industrial_colors.json` (4 kolekcije, 75 boja) + `manual-collection-products.ts` |
 | Sport | 10 | Gerflor (6), Tarkett (3) | `sport_colors.json` (3 kolekcije, 33 boje), `tarkett_sport_colors.json` (22 kolekcije, 255 boja) + `manual-collection-products.ts` |
+| Lajsne | 11 | Tarkett (3) | `tarkett_lajsne_variants.json` (12 kolekcija, 326 varijanti) |
 
 ### BLOQ Carpet Tiles (18 kolekcija, 210 boja):
 | Familija | Kolekcije |
@@ -138,6 +139,34 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett lajsne uključene u canonical catalog audit + dopunjeni collection PDF-ovi (31.03.2026)**
+- `scripts/audit-catalog-quality.ts` sada pokriva i Tarkett lajsne kao pun kanonski izvor: collection header proizvode iz `getTarkettLajsneCollections()`, nested JSON dataset `tarkett_lajsne_variants.json` i `missing_documents` proveru za `TARKETT-LAJSNE-*` SKU obrasce.
+- U istom prolazu je otkriveno da deo Tarkett lajsni ne drži dokumenta u `collection_assets`, već u zasebnim poljima `specifications_pdf_url` i `format_table_pdf_url`; `tools/extract_tarkett_lajsne.js` sada spaja i te direktne collection PDF URL-ove, uključujući `//www.tarkett.rs/sr_RS/pdf/...` oblike.
+- Time lajsne više ne ostaju van standardnog repo quality gate-a za opise, hero slike, dokumenta i eventualni declared-count mismatch, a refresh extractora više ne gubi tehnički list / tabelu formata samo zato što Tarkett payload koristi drugi obrazac za dokumenta.
+- U istom prolazu dokumentacija je poravnata na trenutni kanonski count od 12 kolekcija i 326 varijanti, bez starog 327 mismatch-a.
+- Verifikovano: `node tools/extract_tarkett_lajsne.js --upload-supabase`, `npx tsx scripts/audit-catalog-quality.ts` (`Actionable: high=0, medium=0, low=0`), `npm run build`.
+
+**Tarkett lajsne asset pipeline prebačen na Supabase + hi-res cleanup (31.03.2026)**
+- `tools/extract_tarkett_lajsne.js` sada više ne ostavlja lajsne na vendor hotlinkovima: podržava `--upload-supabase`, automatski diže collection i variant JPG assete u `product-images` bucket pod `products/lajsne/...` i upisuje verzionisane Supabase public URL-ove nazad u `public/data/tarkett_lajsne_variants.json`.
+- Za Tarkett slike je uveden kvalitetniji source izbor: downloader prioritetno pokušava `large-high` (`1920x1920` / `3000x1688`) i pada nazad na `large` / `medium` samo kad konkretan asset ne postoji u jačem formatu, umesto da sajt ostane na slabijim `large` URL-ovima po default-u.
+- Uveden je fallback za Tarkett placeholder / alias edge-case-ove kod lajsni: extractor sada ignoriše `NOT SPECIFIED` assete, preferira stabilniji design thumbnail ispred polomljenog hero URL-a, a prazne slike popunjava iz sibling varijante sa istim SKU-om samo kad je konkretna varijanta ostala bez asseta.
+- Katalog je očišćen od jednog duplog vendor alias zapisa, pa lajsne sada završavaju kao 12 kolekcija i 326 varijanti sa `0` preostalih vendor image URL-ova u JSON-u; i `mock-data.ts` kategorijska slika za `lajsne` sada pokazuje naš Supabase-hostovan hero umesto Tarkett CDN linka.
+- Verifikovano: `node tools/extract_tarkett_lajsne.js --upload-supabase --force-upload`, sanity-check da `badCount=0 / vendorImages=0` u finalnom JSON-u, `npm run build`.
+
+**Tarkett lajsne dodat kao nova kategorija kroz ceo katalog pipeline (31.03.2026)**
+- Dodat je novi zvanični izvor `public/data/tarkett_lajsne_variants.json` sa Tarkett Srbija stranice `Lajsne`: 12 kolekcija i 326 varijanti, uključujući dekorativne zidne lajsne, furnir/MDF kolekcije, sportske lajsne i prateći pribor koji zvanični Tarkett katalog grupiše na toj category strani.
+- Kreiran je novi extractor `tools/extract_tarkett_lajsne.js` koji preko Playwright-a uzima collection linkove sa category grida, koristi `window.__NUXT__` payload po collection stranici i sanitizuje očigledne Tarkett typo/spojene reči pre snimanja JSON-a.
+- Proširen je ceo category `11` pipeline kroz `mock-data.ts`, `productDataLoader.ts`, `product-repository.ts`, `resolve-product.ts`, `prepare-colors.ts`, `color-helpers.ts`, `/api/colors`, `/api/color-data`, `CategoryTabs`, `ColorGrid`, `ProductColorSelector`, `ProductCard*` i product/category rute, tako da `/kategorije/lajsne` i `/proizvodi/tarkett-...` rade isto kao ostale nested kolekcije.
+- UI za novu kategoriju više ne koristi generički termin `Boje`, već user-facing `Varijante`, uključujući tab label, compact selector, modal i grid headinge na product strani.
+- Verifikovano: `node tools/extract_tarkett_lajsne.js`, `npx tsx` sanity-check za `findByCategory('11')` + `resolveProductBySlug(...)`, `npm run build`.
+
+**Minimalni CRM skeleton dodat preko postojećih inquiry leadova (29.03.2026)**
+- Dodata je interna ruta `app/crm/page.tsx` koja čita postojeće product inquiry leadove iz Supabase-a i grupiše ih po osnovnom sales flow-u (`new`, `contacted`, `qualified`, `offer_sent`, `negotiation`, `won`, `lost`, `closed`), uz pregled follow-up obaveza za danas i kašnjenja.
+- Svaki lead sada ima radni CRM edit blok sa `status`, `sledeći kontakt` i `beleške`, a izmene se čuvaju kroz server action `app/crm/actions.ts` direktno u postojećoj `inquiries` tabeli bez paralelnog CRM sistema.
+- `middleware.ts` sada opcionalno štiti `/crm` preko HTTP Basic Auth-a kada su postavljeni `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD`, tako da interni ekran ne mora da ostane javno dostupan dok ne uvedemo pun auth sloj.
+- `types/index.ts`, `lib/repositories/inquiry-repository.ts`, `lib/crm/inquiry-status.ts` i `supabase/migration.sql` su prošireni tako da inquiry sloj sada podržava bogatiji status pipeline, `next_contact_date` i interne beleške.
+- Verifikovano: `npm run build`.
 
 **Terminologija za elektrode usklađena na user-facing welding stranicama (24.03.2026)**
 - U `public/data/welding_accessories.json` svi Gerflor/Tarkett accessory opisi i tipovi više ne koriste termin `varilacka vrpca`, već dosledno `elektroda za varenje`, uz uklanjanje neispravne formulacije `pod/pod`.
@@ -452,6 +481,8 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Završiti Tarkett Supabase sync kada env pristup bude dostupan, da baza dobije isti parket/laminat kanonski skup proizvoda i iste Tarkett slugove kao statički fallback.
 - [x] Nastaviti Tarkett proširenje posle `Homogeni vinil` na `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
 - [x] Dodati Wolflor vinil iz kombinacije live sajta i lokalnih PDF suplement kolekcija kroz kompletan JSON → resolver → API → UI pipeline.
+- [x] Dodati Tarkett `Lajsne` kao novu nested kategoriju (`11`) sa collection + variant tokovima i zvaničnim JSON extractorom.
+- [ ] Zameniti privremeni `/crm` Basic Auth punim auth slojem i dodati istoriju pojedinačnih aktivnosti po leadu.
 
 ---
 
@@ -466,24 +497,26 @@ PODOVI/
 │   ├── proizvodi/[slug]/   # Stranice proizvoda (GLAVNI)
 │   ├── brendovi/           # Stranice brendova
 │   ├── kontakt/            # Kontakt forma
+│   ├── crm/                # Interni CRM skeleton za leadove i follow-up
 │   ├── omiljeni/           # Omiljeni proizvodi
 │   ├── uporedi/            # Poređenje proizvoda
 │   └── api/                # API rute (search, contact, inquiries)
 │
-├── components/             # React komponente (30+)
+├── components/             # React komponente (30+), uključujući `components/crm/` helpere za CRM form flow
 │
 ├── lib/
-│   ├── product-page/       # KRITIČNO: resolver, color merge, spec helpers
-│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + manual collection header proizvodi + Tarkett wood enrichment
-│   └── repositories/       # Data access layer (Supabase)
+│   ├── product-page/       # KRITIČNO: resolver, color merge, spec helpers (uključujući nested category 11 / lajsne)
+│   ├── crm/                # CRM status meta + follow-up helperi za inquiry leadove
+│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + mock category fallback (`lajsne`) + manual collection header proizvodi + Tarkett wood enrichment
+│   └── repositories/       # Data access layer (Supabase, uključujući inquiries + CRM update sloj)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, Wolflor vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett wood collection index + PDF indeksi)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, Wolflor vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett lajsne, Tarkett wood collection index + PDF indeksi)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
 ├── scripts/                # Utility skripte (enrichment, image validation, Tarkett audit/sync, catalog quality audit)
 │
-└── tools/                  # Ekstraktori/scraperi za zvanične kataloge (Gerflor, Tarkett, Wolflor, fallback preko sitemap/json endpointa kada treba)
+└── tools/                  # Ekstraktori/scraperi za zvanične kataloge (Gerflor, Tarkett, Wolflor, uključujući `extract_tarkett_lajsne.js`, fallback preko sitemap/json endpointa kada treba)
 ```
 
 ## 8. ⚡ COMMON GOTCHAS
@@ -521,6 +554,8 @@ PODOVI/
 29. **Mock-only brand filteri ne smeju sirovo u Supabase UUID `brand_id` query.** Brendovi poput `BLOQ`, `TimberTech` i `Wolflor` žive kroz mock/JSON/manual sloj; ako `product-repository.ts` pošalje legacy ID tipa `8`, `10` ili `11` direktno u `.in('brand_id', ...)` nad UUID kolonom, Supabase grana pukne i merge blokovi ispod se nikad ne izvrše.
 30. **Za Wolflor kolekcije nemoj koristiti roomshot/ambijentalni hero kao kanonski collection image.** Čak i kada vendor ima `collection.jpg` ili category hero u prostoru, Wolflor kolekcijski prikaz kod nas treba da koristi prvu dostupnu sliku dekora/boje; to važi samo za Wolflor i ne treba prelivati na ostale brendove.
 31. **Kad pregaziš Wolflor JPG na istoj Supabase putanji, promeni i URL query verziju.** PDF kolekcije poput `Andes`/`Atlas` sada često dobijaju kvalitetniji crop na istom object path-u (`products/vinyl/.../wl91600.jpg`), pa bez novog `?v=` cache-bust query-ja browser i CDN mogu da nastave da serviraju stari mutni JPG iako je object već zamenjen boljom verzijom.
+32. **`/crm` traži `SUPABASE_SERVICE_ROLE_KEY` za čitanje leadova.** `inquiries` tabela je pod RLS pravilom da javnost može samo `INSERT`; ako service-role env nije dostupan, CRM može da se renderuje ali neće moći da povuče leadove iz baze.
+33. **`/crm` zaštita trenutno je env-based Basic Auth u `middleware.ts`.** Ako postaviš `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD`, ruta traži HTTP Basic Auth; ako ih ne postaviš, `/crm` ostaje bez te zaštite i ne treba ga tretirati kao produkciono bezbedan admin panel.
 
 ---
 

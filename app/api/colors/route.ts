@@ -11,12 +11,13 @@ import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
+import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import { getDerivedWeldingCharacteristics } from '@/lib/product-page/welding-helpers';
 
 /**
- * GET /api/colors?category=lvt|linoleum|vinil|tekstilne-ploce|elektroprovodni|industrijske-ploce|sport
+ * GET /api/colors?category=lvt|linoleum|vinil|tekstilne-ploce|elektroprovodni|industrijske-ploce|sport|lajsne
  *
- * - Nested format: vinil, elektroprovodni, industrijske-ploce, sport
+ * - Nested format: vinil, elektroprovodni, industrijske-ploce, sport, lajsne
  * - Flat format: lvt, linoleum, tekstilne-ploce
  */
 
@@ -70,6 +71,7 @@ export async function GET(request: NextRequest) {
             ...((((sportColorsData as any)?.collections || []) as any[])),
             ...((((tarkettSportData as any)?.collections || []) as any[])),
         ],
+        lajsne: ((tarkettLajsneData as any)?.collections || []) as any[],
     };
 
     if (category in nestedCollectionsMap) {
@@ -78,6 +80,7 @@ export async function GET(request: NextRequest) {
             elektroprovodni: '8',
             'industrijske-ploce': '9',
             sport: '10',
+            lajsne: '11',
         };
 
         const collections = nestedCollectionsMap[category]

@@ -38,6 +38,8 @@ interface ColorGridProps {
   selectedColorSlug?: string; // Slug of currently selected color for highlighting
 
   customColors?: Color[]; // Optional custom colors to use instead of fetching
+  apiCategory?: string;
+  uiMode?: 'colors' | 'variants';
 }
 
 function normalizeSrc(raw?: string | null) {
@@ -111,6 +113,8 @@ export default function ColorGrid({
   onColorsLoaded,
   selectedColorSlug,
   customColors,
+  apiCategory,
+  uiMode = 'colors',
 }: ColorGridProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -120,6 +124,21 @@ export default function ColorGrid({
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
   const hasAutoSelected = useRef(false);
+  const uiText = useMemo(() => (
+    uiMode === 'variants'
+      ? {
+        loading: 'Učitavam varijante...',
+        available: 'Dostupne varijante',
+        count: (count: number) => count === 1 ? 'varijanta' : 'varijanti',
+        empty: 'nijedna varijanta',
+      }
+      : {
+        loading: 'Učitavam boje...',
+        available: 'Dostupne boje',
+        count: (_count: number) => 'boja',
+        empty: 'nijedna boja',
+      }
+  ), [uiMode]);
 
   // Pagination settings for compact mode
   // In compact mode, show 12 colors per page (2 rows x 6 columns)
@@ -266,17 +285,19 @@ export default function ColorGrid({
       collectionSlug.startsWith('wolflor-') ||
       heterogeneousSlugs.includes(collectionNameWithoutPrefix) ||
       heterogeneousSlugs.some(slug => collectionSlug.includes(slug));
-    const categoryParam = isSport
-      ? 'sport'
-      : isIndustrial
-        ? 'industrijske-ploce'
-        : isLinoleum
-          ? 'linoleum'
-          : isCarpet
-            ? 'tekstilne-ploce'
-            : isVinil
-              ? 'vinil'
-              : 'lvt';
+    const categoryParam = apiCategory || (
+      isSport
+        ? 'sport'
+        : isIndustrial
+          ? 'industrijske-ploce'
+          : isLinoleum
+            ? 'linoleum'
+            : isCarpet
+              ? 'tekstilne-ploce'
+              : isVinil
+                ? 'vinil'
+                : 'lvt'
+    );
     const jsonPath = `/api/colors?category=${categoryParam}`;
 
     fetch(jsonPath)
@@ -353,7 +374,7 @@ export default function ColorGrid({
         setColors([]);
         setLoading(false);
       });
-  }, [collectionSlug, customColors, onColorsLoaded]);
+  }, [apiCategory, collectionSlug, customColors, onColorsLoaded]);
 
   // Preload all color images for instant switching (avoids white flash on color change)
   // Store URLs in state to render hidden img elements in DOM
@@ -446,9 +467,9 @@ export default function ColorGrid({
 
   if (loading) {
     return (
-      <div className="text-center py-12">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-        <p className="mt-4 text-gray-600">Učitavam boje...</p>
+        <div className="text-center py-12">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+        <p className="mt-4 text-gray-600">{uiText.loading}</p>
       </div>
     );
   }
@@ -469,8 +490,8 @@ export default function ColorGrid({
       {!compact && (
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Dostupne boje</h2>
-            <p className="text-gray-600 mt-1">{colors.length} {colors.length === 1 ? 'boja' : colors.length < 5 ? 'boje' : 'boja'}</p>
+            <h2 className="text-2xl font-bold text-gray-900">{uiText.available}</h2>
+            <p className="text-gray-600 mt-1">{colors.length} {uiText.count(colors.length)}</p>
           </div>
 
           {/* Search */}
@@ -579,7 +600,7 @@ export default function ColorGrid({
 
       {filteredColors.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-600">Nije pronađena nijedna boja sa &quot;{searchTerm}&quot;</p>
+          <p className="text-gray-600">Nije pronađena {uiText.empty} sa &quot;{searchTerm}&quot;</p>
           <button onClick={() => setSearchTerm('')} className="mt-4 text-primary-600 hover:text-primary-700 font-medium">Očisti pretragu</button>
         </div>
       )}

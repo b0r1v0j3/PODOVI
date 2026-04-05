@@ -11,6 +11,7 @@ import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
+import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import { SITE_URL } from '@/lib/seo/site-config';
 import { getDerivedWeldingSpecs } from './welding-helpers';
 
@@ -49,6 +50,7 @@ export const industrialCollections = (industrialColorsData as { collections?: Ne
 const gerflorSportCollections = (sportColorsData as { collections?: NestedCollection[] }).collections || [];
 const tarkettSportCollections = (tarkettSportColorsData as { collections?: NestedCollection[] }).collections || [];
 export const sportCollections = [...gerflorSportCollections, ...tarkettSportCollections];
+export const lajsneCollections = (tarkettLajsneData as { collections?: NestedCollection[] }).collections || [];
 
 // Helper: strip collection sub-type prefixes from color names
 // e.g. "LOOSELAY 0374 PARKER STATION" -> "PARKER STATION"
@@ -185,6 +187,8 @@ function getCategoryId(categorySlug: ColorSource['categorySlug']): string {
             return '9';
         case 'sport':
             return '10';
+        case 'lajsne':
+            return '11';
         default:
             return '6';
     }
@@ -323,6 +327,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         { categorySlug: 'elektroprovodni', collections: esdCollections },
         { categorySlug: 'industrijske-ploce', collections: industrialCollections },
         { categorySlug: 'sport', collections: sportCollections },
+        { categorySlug: 'lajsne', collections: lajsneCollections },
     ];
 
     for (const source of nestedSources) {
@@ -346,6 +351,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         { categorySlug: 'industrijske-ploce', fileName: 'industrial_colors.json', nested: true },
         { categorySlug: 'sport', fileName: 'sport_colors.json', nested: true },
         { categorySlug: 'sport', fileName: 'tarkett_sport_colors.json', nested: true },
+        { categorySlug: 'lajsne', fileName: 'tarkett_lajsne_variants.json', nested: true },
     ];
 
     for (const candidate of candidates) {

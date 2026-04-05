@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -373,6 +373,26 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...tarkettSportProducts];
     }
 
+    // Category 11: Tarkett lajsne collections from JSON
+    if (!filters?.categoryId || legacyCategoryId === '11' || filters.categoryId === '11') {
+      const existingSlugs = new Set(products.map((p: Product) => p.slug));
+      let tarkettLajsneProducts = getTarkettLajsneCollections()
+        .filter(lp => !existingSlugs.has(lp.slug));
+
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        tarkettLajsneProducts = tarkettLajsneProducts.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        tarkettLajsneProducts = tarkettLajsneProducts.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      products = [...products, ...tarkettLajsneProducts];
+    }
+
     if (!filters?.categoryId || legacyCategoryId === '1' || legacyCategoryId === '3' || filters.categoryId === '1' || filters.categoryId === '3') {
       const requestedCategoryId = legacyCategoryId === '1' || filters?.categoryId === '1'
         ? '1'
@@ -554,6 +574,7 @@ export class SupabaseProductRepository implements IProductRepository {
       const supplementalCollections = tarkettProducts
         .map(enrichCatalogProduct)
         .concat(getTarkettSportCollections())
+        .concat(getTarkettLajsneCollections())
         .concat(getTarkettVinylHomeCollections())
         .concat(getTarkettHeterogeneousVinylCollections())
         .concat(getTarkettHomogeneousVinylCollections())
@@ -612,6 +633,7 @@ export class MockProductRepository implements IProductRepository {
     ...getTarkettHomogeneousVinylCollections(),
     ...getWolflorVinylCollections(),
     ...getTarkettSportCollections(),
+    ...getTarkettLajsneCollections(),
     ...getAllDekingProducts(),
     ...getVinylCollectionProducts(),
     ...getEsdCollectionProducts(),

@@ -83,6 +83,14 @@ export const categories: Category[] = [
     image: '/images/esd/mipolam-el5-0354.jpg',
     order: 10,
   },
+  {
+    id: '11',
+    name: 'Lajsne',
+    slug: 'lajsne',
+    description: 'Tarkett lajsne i prateći pribor za završnu obradu podova i zidova',
+    image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/collection.jpg?v=20260331152443',
+    order: 11,
+  },
 
 ];
 

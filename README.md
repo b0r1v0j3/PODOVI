@@ -39,7 +39,7 @@ npm start
 ## Key Features
 
 ### Product Catalog
-- Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport)
+- Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport, Lajsne)
 - Browse by **brand** (Tarkett, Gerflor, BLOQ, Wolflor)
 - **Product filters**: search, brand, price range, stock status, color, collection, thickness, wood type
 - **Color variant selector** with instant image switching (no page reload)
@@ -64,6 +64,7 @@ npm start
 ### Contact & Inquiries
 - Contact form with product pre-fill from product pages
 - **Inquiry modal** accessible from product pages
+- **Internal `/crm` lead board** over existing inquiries with status, next-contact date, and notes, with optional env-based HTTP Basic Auth guard
 - Email notifications via Gmail SMTP (Nodemailer)
 - **WhatsApp button** for quick customer communication
 
@@ -83,6 +84,7 @@ npm start
 - `public/data/tarkett_homogeneous_vinyl_colors.json` powers Tarkett homogeneous vinyl collections (20 collections, 544 colors)
 - `public/data/tarkett_heterogeneous_vinyl_colors.json` powers Tarkett heterogeneous vinyl collections (15 collections, 441 colors)
 - `public/data/tarkett_sport_colors.json` powers Tarkett Sport collections (22 collections, 255 colors)
+- `public/data/tarkett_lajsne_variants.json` powers Tarkett Lajsne collections (12 collections, 326 variants), with UI copy intentionally using `Varijante` instead of generic `Boje`; collection and variant JPG assets are mirrored to Supabase `product-images` under `products/lajsne/...`
 - `public/data/tarkett_wood_collection_index.json` stores official Tarkett Parket/Laminat collection descriptions, hero images, PDF documents, and collection specs scraped from the live Serbia catalog; collection PDFs are normalized to `media.tarkett-image.com/docs/*.pdf`
 - `public/data/tarkett_documents_index.json` provides curated Tarkett PDF fallbacks for Laminat and Parket collection pages
 - `public/data/welding_rods.json` stores exact DLW / Gerflor linoleum welding rod references grouped by rod ref, while `public/data/welding_accessories.json` stores curated Gerflor/Tarkett generic welding systems (`CR40`, `MCR40`, `BBR40`, `CR50`, Tarkett vinyl/linoleum rod collections)
@@ -95,12 +97,13 @@ npm start
 - `tools/extract_tarkett_vinyl_home.js` scrapes the official Tarkett Serbia `Vinil za kuću` catalog through `window.__NUXT__`, keeps stored-JSON fallback when Tarkett payloads break, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
 - `tools/extract_tarkett_homogeneous_vinyl.js` scrapes the official Tarkett Serbia `Homogeni vinil` catalog through Playwright + `json-collection-product`, with sitemap + stored-JSON fallback for broken collection pages, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
 - `tools/extract_tarkett_heterogeneous_vinyl.js` scrapes the official Tarkett Serbia `Heterogeni vinil` catalog through Playwright + `json-collection-product`, keeps stored-JSON fallback per collection, falls back to `page.content()` / HTML parsing when the category grid returns an empty DOM query in headless shell mode, writes collection PDFs to `/docs/`, and keeps color-level spec sheets on `tarkett.rs/sr_RS/pdf/...`
+- `tools/extract_tarkett_lajsne.js` scrapes the official Tarkett Serbia `Lajsne` category through Playwright + `window.__NUXT__`, writes `public/data/tarkett_lajsne_variants.json`, supports `--upload-supabase`, prioritizes `large-high` Tarkett images with fallback to `large` / `medium`, ignores `NOT SPECIFIED` placeholder assets, sanitizes obvious Tarkett typo/spojene reči, and now merges collection PDFs both from `collection_assets` and direct fields such as `specifications_pdf_url` / `format_table_pdf_url`
 - `tools/extract_wolflor_vinyl.py` combines the live Wolflor WooCommerce Store API with 7 local Wolflor PDF supplements, generates `public/data/wolflor_vinyl_colors.json`, and with `--upload-supabase` pushes Wolflor decor/color JPG assets to the `product-images` bucket while normalizing each Wolflor `collection_image_url` to the first available decor image; PDF collections use a smarter higher-resolution swatch crop than the OCR pass, and overwrite runs add a fresh `?v=` cache-bust query so production immediately serves the improved image after a refresh
 - `tools/extract_tarkett_wood.js` scrapes the official Tarkett Serbia Parket/Laminat collection pages and generates `public/data/tarkett_wood_collection_index.json` with normalized `/docs/` collection PDF URLs
 - `tools/scrape_tarkett_deep.js` scrapes Tarkett LVT data and now also normalizes collection PDF URLs to `/docs/`
 - `scripts/audit-tarkett-sync.ts` compares official Tarkett Parket/Laminat collections against `lib/data/tarkett-products.ts`, `public/data/tarkett_documents_index.json`, and Supabase when env vars are available, including exact design-slug comparison, duplicate detection, and parket alias normalization for collection-specific URL collisions
 - `scripts/sync-tarkett-supabase.ts` creates a timestamped backup in `output/`, performs a dry-run diff, and can apply the canonical Tarkett Parket/Laminat sync into Supabase once `.env.local` contains the pulled Vercel env vars
-- `scripts/audit-catalog-quality.ts` runs a broader product-quality audit over the canonical catalog sources, collection headers, documents, hero images, descriptions, and specs, explicitly flags stale Tarkett `/large/*.pdf` document URLs, and writes `output/catalog-quality-audit.json`
+- `scripts/audit-catalog-quality.ts` runs a broader product-quality audit over the canonical catalog sources, collection headers, documents, hero images, descriptions, and specs, explicitly flags stale Tarkett `/large/*.pdf` document URLs, now includes Tarkett Lajsne collection + nested JSON coverage with `missing_documents` checks, and writes `output/catalog-quality-audit.json`
 
 ## Project Structure
 
@@ -113,6 +116,7 @@ PODOVI/
 │   ├── proizvodi/          # Individual product pages
 │   ├── brendovi/           # Brand pages (Tarkett, Gerflor, BLOQ, Wolflor)
 │   ├── kontakt/            # Contact page with form
+│   ├── crm/                # Internal lead CRM page
 │   ├── omiljeni/           # Favorites page
 │   ├── uporedi/            # Product comparison page
 │   ├── upiti/              # Inquiry page
@@ -156,6 +160,7 @@ PODOVI/
 │   ├── Breadcrumbs.tsx     # Breadcrumb navigation
 │   ├── CertificationBadges.tsx  # Product certification badges
 │   ├── EcoFeatures.tsx     # Eco-friendly features display
+│   ├── crm/                # Small CRM form helpers
 │   ├── LVTTabs.tsx         # LVT category tabbed layout
 │   ├── ScrollReveal.tsx    # Scroll-based animation wrapper
 │   └── GoogleAnalytics.tsx # GA4 script injection
@@ -197,6 +202,7 @@ PODOVI/
 │   │   ├── industrial_colors.json
 │   │   ├── sport_colors.json
 │   │   ├── tarkett_sport_colors.json
+│   │   ├── tarkett_lajsne_variants.json
 │   │   ├── tarkett_wood_collection_index.json
 │   │   ├── documents_index.json
 │   │   ├── tarkett_documents_index.json
@@ -227,6 +233,7 @@ PODOVI/
 │   ├── check-images.js             # Image checker
 │   ├── extract_tarkett_sports.js   # Tarkett sports catalog extractor
 │   ├── extract_tarkett_vinyl_home.js # Tarkett home vinyl catalog extractor
+│   ├── extract_tarkett_lajsne.js   # Tarkett lajsne catalog extractor
 │   ├── extract_wolflor_vinyl.py    # Wolflor live + PDF vinyl extractor
 │   ├── extract_tarkett_homogeneous_vinyl.js # Tarkett homogeneous vinyl catalog extractor
 │   ├── extract_tarkett_heterogeneous_vinyl.js # Tarkett heterogeneous vinyl catalog extractor
@@ -313,6 +320,10 @@ GMAIL_APP_PASSWORD=your-16-character-app-password
 
 # Optional: Override admin email if different from GMAIL_USER
 # ADMIN_EMAIL=prodaja@podovi.online
+
+# Optional: Protect /crm with HTTP Basic Auth
+# CRM_BASIC_AUTH_USERNAME=crm
+# CRM_BASIC_AUTH_PASSWORD=change-me
 ```
 
 Additional variables used in `.env.local`:
@@ -326,11 +337,13 @@ SUPABASE_SERVICE_ROLE_KEY=      # Required for storage uploads and admin scripts
 SUPABASE_ACCESS_TOKEN=          # Optional fallback for scripts that discover the project/keys via Supabase Management API
 SUPABASE_PROJECT_REF=           # Optional explicit project ref for upload scripts
 SUPABASE_PROJECT_NAME=podovi    # Optional fallback project name for upload scripts
+CRM_BASIC_AUTH_USERNAME=        # Optional: if set together with password, /crm requires HTTP Basic Auth
+CRM_BASIC_AUTH_PASSWORD=        # Optional: password for /crm Basic Auth
 ```
 
 ## Database
 
-The project uses **Supabase** (PostgreSQL) for storing product inquiries. The schema migration is in `supabase/migration.sql`.
+The project uses **Supabase** (PostgreSQL) for storing product inquiries. The same `inquiries` table now also powers the internal CRM skeleton through `status`, `next_contact_date`, and `notes`. The schema migration is in `supabase/migration.sql`.
 
 ```bash
 # Run migration

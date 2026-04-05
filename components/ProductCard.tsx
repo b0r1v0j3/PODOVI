@@ -22,6 +22,7 @@ const categoryBadgeConfig: Record<string, { label: string; className: string }> 
   '8': { label: 'Elektroprovodni', className: 'badge-elektroprovodni' },
   '9': { label: 'Industrijske ploče', className: 'badge-industrijske' },
   '10': { label: 'Sport', className: 'badge-sport' },
+  '11': { label: 'Lajsne', className: 'badge-lajsne' },
 };
 
 // Keys to extract from specs for chip display
@@ -101,11 +102,12 @@ export default async function ProductCard({ product }: ProductCardProps) {
     '8': 'elektroprovodni',
     '9': 'industrijske-ploce',
     '10': 'sport',
+    '11': 'lajsne',
   };
 
   // Extract collection slug
   const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
-  const isColorTileCategory = ['2', '4', '6', '7', '8', '9', '10'].includes(product.categoryId);
+  const isColorTileCategory = ['2', '4', '6', '7', '8', '9', '10', '11'].includes(product.categoryId);
   const isProductColorCategory = ['1', '3'].includes(product.categoryId); // Laminat, Parket
 
   let productHref = `/proizvodi/${product.slug}`;
@@ -147,7 +149,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
 
   // Strip category name and product name from shortDescription to avoid redundancy
   // e.g. "Blues 1033 4V Laminat" on the Laminat page → redundant
-  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Podna obloga'];
+  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Lajsne', 'Podna obloga'];
   let cleanShortDesc = product.shortDescription || '';
   for (const catName of categoryNames) {
     cleanShortDesc = cleanShortDesc.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();

@@ -13,6 +13,7 @@ import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
+import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import { getDerivedWeldingCharacteristics } from '@/lib/product-page/welding-helpers';
 
 /**
@@ -39,6 +40,7 @@ export async function GET(request: NextRequest) {
     const isEsd = categoryId === '8';
     const isIndustrial = categoryId === '9';
     const isSport = categoryId === '10';
+    const isLajsne = categoryId === '11';
 
     const findFlatColor = (colors: any[]) => {
         let match = colors.find((color: any) => color.slug === colorSlug);
@@ -108,6 +110,8 @@ export async function GET(request: NextRequest) {
             ...((((sportColorsData as any)?.collections || []) as any[])),
             ...((((tarkettSportColorsData as any)?.collections || []) as any[])),
         ]);
+    } else if (isLajsne) {
+        color = findNestedColor((((tarkettLajsneData as any)?.collections || []) as any[]));
     } else {
         const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
         const colors = (colorsData as { colors?: any[] }).colors || [];

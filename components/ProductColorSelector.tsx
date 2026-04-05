@@ -45,6 +45,8 @@ interface ProductColorSelectorProps {
   productId?: string;
   /** Opcija da se potpuno sakrije prozor za boje (npr. za Deking proizvode) i popuni prostor */
   hideColorSelector?: boolean;
+  apiCategory?: string;
+  uiMode?: 'colors' | 'variants';
 }
 
 export default function ProductColorSelector({
@@ -69,6 +71,8 @@ export default function ProductColorSelector({
   imagePriority,
   productId,
   hideColorSelector,
+  apiCategory,
+  uiMode = 'colors',
 }: ProductColorSelectorProps) {
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const [selectedImages, setSelectedImages] = useState<Array<{ url: string; alt: string }>>([]);
@@ -82,6 +86,11 @@ export default function ProductColorSelector({
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
+  const selectorTitle = uiMode === 'variants' ? 'Varijante' : 'Boje';
+  const selectorCountLabel = uiMode === 'variants'
+    ? (colorsCount === 1 ? 'varijanta' : 'varijanti')
+    : 'boja';
+  const selectorAllTitle = uiMode === 'variants' ? 'Sve varijante' : 'Sve boje';
 
   // Parket: ako je u URL-u ?color= koji nije u customColors (npr. winter-832), redirect na prvu validnu boju
   useEffect(() => {
@@ -553,13 +562,13 @@ export default function ProductColorSelector({
             </div>
           </div>
 
-          {/* Boje – Na mobilnom ide PRVO (order-1), na desktopu DRUGO (order-2) */}
+          {/* Varijante/boje – Na mobilnom ide PRVO (order-1), na desktopu DRUGO (order-2) */}
           {!hideColorSelector && (
             <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0 order-1 lg:order-2">
               <div className="flex items-start justify-between gap-4 mb-4 flex-shrink-0">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">Boje</h3>
-                  <p className="text-sm text-gray-500">{colorsCountLabel} {colorsCount === 1 ? 'boja' : 'boja'}</p>
+                  <h3 className="text-lg font-semibold text-gray-900">{selectorTitle}</h3>
+                  <p className="text-sm text-gray-500">{colorsCountLabel} {selectorCountLabel}</p>
                 </div>
                 <button
                   type="button"
@@ -579,6 +588,8 @@ export default function ProductColorSelector({
                   initialColorSlug={initialColorSlug}
                   selectedColorSlug={selectedColorSlug}
                   customColors={customColors}
+                  apiCategory={apiCategory}
+                  uiMode={uiMode}
                 />
               </div>
             </div>
@@ -613,7 +624,7 @@ export default function ProductColorSelector({
           <div className="relative mx-auto mt-8 w-[92%] max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 border-b">
               <h3 className="text-xl font-semibold text-gray-900">
-                Sve boje ({colorsCountLabel})
+                {selectorAllTitle} ({colorsCountLabel})
               </h3>
               <button
                 type="button"
@@ -632,6 +643,8 @@ export default function ProductColorSelector({
                 initialColorSlug={initialColorSlug}
                 selectedColorSlug={selectedColorSlug}
                 customColors={customColors}
+                apiCategory={apiCategory}
+                uiMode={uiMode}
               />
             </div>
           </div>
