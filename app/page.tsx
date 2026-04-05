@@ -63,6 +63,7 @@ function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: strin
 
 export default async function HomePage() {
   const categories = await categoryRepository.findAll();
+  const homepageCategories = categories.filter((category) => category.slug !== 'lajsne');
 
   // Load colors from JSON files
   const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
@@ -146,7 +147,7 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-            {categories.map((category, index) => (
+            {homepageCategories.map((category, index) => (
               <ScrollReveal key={category.id} delay={index * 100}>
                 <CategoryCard category={category} />
               </ScrollReveal>
