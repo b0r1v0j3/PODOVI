@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 05.04.2026 (Lajsne listing curation)
+> **Poslednje ažuriranje:** 07.04.2026 (Extractor refresh + rollback runbook)
 
 ---
 
@@ -139,6 +139,39 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Extractor refresh + rollback runbook uveden za kanonske supplier izvore (07.04.2026)**
+- Dodat je novi operativni runbook `.agent/workflows/extractor-refresh-rollback-runbook.md` sa punim refresh redosledom za sve kanonske extractore (`extract_tarkett_wood`, `extract_tarkett_vinyl_home`, `extract_tarkett_homogeneous_vinyl`, `extract_tarkett_heterogeneous_vinyl`, `extract_tarkett_sports`, `extract_tarkett_lajsne`, `extract_wolflor_vinyl`), obaveznim pre-flight/post-flight checkovima i incident rollback matricom.
+- `.agent/workflows/podovi-architecture.md` je proširen linkom ka runbook-u i pravilom da svaka promena extractor contract-a mora u istom commit-u da ažurira i taj runbook.
+- Runbook eksplicitno definiše ownership handoff za budućeg Data Automation Engineera (cadence, artefakti, rollback disciplina), tako da lane više nema implicitno usmeno znanje.
+
+**Accessory taxonomy listing contract + filter mode uvedeni kroz ceo category pipeline (07.04.2026)**
+- Uveden je kanonski taxonomy izvor `public/data/catalog_listing_taxonomy.json` (`defaultModeByCategory` + `categories[].accessoryCollectionSlugs`) koji sada predstavlja jedini source-of-truth za `core`/`accessory` razdvajanje na category listingu.
+- `lib/catalog/listing-curation.ts` je proširen iz hardcode lajsne hide liste u shared taxonomy sloj sa eksplicitnim API-jem: `resolveCategoryListingMode`, `getCategoryCollectionSegment`, `filterCategoryListingCollections`, segment count helper i backward-compatible `isCollectionHiddenFromCategoryListing`.
+- Category SSR i client listing flow su poravnati na isti contract: `app/kategorije/[slug]/page.tsx` sada čita `listing` query (`core`/`accessory`/`all`) i prosleđuje mode u `CategoryTabs`, dok `CategoryTabs` i `/api/colors` koriste isti listing mode za nested collection/count normalization (bez tihog drifta između taba i API odgovora).
+- `components/ProductFilters.tsx` dobio je user-facing segment filter `Prikaz asortimana` (`Kolekcije`, `Prateći asortiman`, `Sve stavke`) sa URL sinhronizacijom preko `listing` query parametra, uključujući reset i deep-link ponašanje.
+- `types/index.ts` (`ProductFilters`) i `.agent/workflows/podovi-architecture.md` su ažurirani sa novim listing taxonomy contract-om i migration pravilom: svaki novi accessory collection slug mora da se registruje u `catalog_listing_taxonomy.json`.
+
+**Ops-console Phase 1 lifecycle, publish i rollback contract kompletiran (07.04.2026)**
+- Ops domen je proširen sa punim schema slojem u `supabase/migration.sql`: dodate su tabele `ops_collections`, `ops_variants`, `ops_documents`, `ops_releases`, `ops_release_change_sets`, `ops_snapshots`, `ops_audit_events`, `ops_role_bindings`, plus proširen `ops_change_items` check constraint za `variant_metadata`/`curation_rule`.
+- Uveden je append-only audit guard (`prevent_ops_audit_events_mutation`) i service-role RLS politike za sve nove ops tabele, tako da release/snapshot/audit lane radi kao interni, server-side tok.
+- `lib/ops/service-contract.ts` i `lib/ops/repository.ts` sada pokrivaju ceo lifecycle: draft (`collection_metadata`, `variant_metadata`, `document`) → submit → review (`approve/reject`, no self-approve za high/critical) → publish release + snapshot + audit → rollback release preko snapshot-a sa kompenzacionim release zapisom.
+- Minimalni interni API contract iz spec-a je kompletiran kroz nove rute: `POST /api/ops/change-sets/[id]/submit`, `POST /api/ops/change-sets/[id]/approve`, `POST /api/ops/releases/publish`, `POST /api/ops/releases/[id]/rollback`, `GET /api/ops/audit-events`, plus pomoćni `POST /api/ops/change-sets/[id]/variants` za variant draft upis.
+- Verifikovano: `npm run build`, `npm run test:contract`.
+
+**Ops-console metadata/docs service contract slice uveden (07.04.2026)**
+- Uveden je novi server-side ops sloj (`lib/ops/*`) sa tipovima, Supabase repo adapterom i servisnim contract metodama za metadata draft (`createMetadataDraft`) i document draft (`upsertDocumentDraft`) nad kolekcijama.
+- Dodate su minimalne interne API rute `POST /api/ops/change-sets`, `GET /api/ops/change-sets/[id]` i `POST /api/ops/change-sets/[id]/documents` kao Phase 1 handoff površina za budući admin UI.
+- Ugrađena je invariant validacija protiv postojećeg product pipeline-a: collection slug mora da prođe kroz `resolveProductBySlug`, metadata patch ima allowlist pravila, a document URL-ovi moraju da budu PDF i pod uslovima (`/documents/...` ili apsolutni `http/https`), uz Tarkett `/docs/` normalizaciju.
+- `supabase/migration.sql` je proširen ops schema draft-om za `ops_change_sets`, `ops_change_items`, `ops_review_decisions`, `ops_publish_audit_events` + indeksi i service-role RLS politike, tako da su change-set, review decision i publish audit event tokovi spremni za implementaciju inženjera.
+- Verifikovano: `npm run build`.
+
+**Resolver + color API contract regression test gate uveden (07.04.2026)**
+- Uveden je Vitest contract harness (`vitest.contract.config.ts`) sa setup slojem za `USE_MOCK_DATA`, tako da `resolve-product.ts` i `prepare-colors.ts` imaju stabilne regression testove bez zavisnosti od live Supabase query-ja.
+- Dodati su snapshot/contract testovi u `tests/contracts/resolver-contract.test.ts` i `tests/contracts/color-api-contract.test.ts` koji pokrivaju `resolveProductBySlug`, `mergeSelectedColor`, `/api/colors` i `/api/color-data` payload oblike.
+- `package.json` sada ima `test:contract` i `test:contract:update` skripte za redovan drift check i namerno re-baseline-ovanje snapshota.
+- Dodat GitHub Actions workflow `.github/workflows/contract-tests.yml` koji pokreće contract suite na svakom PR-u i push-u ka `main`, kao merge gate protiv tihog schema/API drifta.
+- Verifikovano: `npm run test:contract:update`, `npm run test:contract`, `npm run build`.
 
 **Prateći Tarkett asortiman privremeno sakriven iz `Lajsne` kategorijskog listinga (05.04.2026)**
 - `TARKETT GENIUS Traka` i `Tarkodry podloga za podove i zidove` nisu obrisani iz kanonskog `tarkett_lajsne_variants.json` izvora niti iz product ruta, ali su privremeno isključeni iz server-side `Kolekcije` taba na `/kategorije/lajsne` jer su user-facing prateći asortiman, a ne same lajsne.
@@ -488,6 +521,8 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Nastaviti Tarkett proširenje posle `Homogeni vinil` na `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
 - [x] Dodati Wolflor vinil iz kombinacije live sajta i lokalnih PDF suplement kolekcija kroz kompletan JSON → resolver → API → UI pipeline.
 - [x] Dodati Tarkett `Lajsne` kao novu nested kategoriju (`11`) sa collection + variant tokovima i zvaničnim JSON extractorom.
+- [x] Uvesti snapshot contract testove za `resolve-product` i `/api/colors` + `/api/color-data` sa CI merge gate-om.
+- [x] Dokumentovati kanonski supplier extractor refresh + rollback runbook i povezati ga iz workflow arhitekture.
 - [ ] Zameniti privremeni `/crm` Basic Auth punim auth slojem i dodati istoriju pojedinačnih aktivnosti po leadu.
 
 ---

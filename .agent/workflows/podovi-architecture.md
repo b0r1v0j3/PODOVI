@@ -14,6 +14,63 @@ Data flows through a strict 4-step pipeline. **Missing ANY step = data won't dis
 JSON data file → resolve-product.ts → Product object → page.tsx → UI components
 ```
 
+## Contract Regression Harness
+
+Contract drift for the resolver and color APIs is covered by snapshot-based Vitest tests:
+
+- Config: `vitest.contract.config.ts`
+- Tests: `tests/contracts/resolver-contract.test.ts`, `tests/contracts/color-api-contract.test.ts`
+- Commands: `npm run test:contract`, `npm run test:contract:update`
+- CI gate: `.github/workflows/contract-tests.yml` (runs on PR + push to `main`)
+
+---
+
+## Extractor Operations Runbook
+
+Canonical supplier refresh + rollback procedure is documented in:
+
+- `.agent/workflows/extractor-refresh-rollback-runbook.md`
+
+Use that runbook whenever you touch extractor outputs under `public/data/*` (or related supplier docs/images), and keep it updated in the same commit when extractor contracts or validation gates change.
+
+---
+
+## Ops Console Service Contract (Phase 1 Lifecycle)
+
+Internal ops-console flow now runs full lifecycle server-side:
+
+```
+collection slug → draft items (metadata/variant/document) → submit → review → publish release + snapshot → rollback release → audit trail query
+```
+
+Implemented files:
+- `lib/ops/types.ts` (change-set/release/snapshot/audit/role contract types)
+- `lib/ops/invariants.ts` (metadata + variant + document validation guards)
+- `lib/ops/repository.ts` (Supabase service-role adapter for full `ops_*` tables, release/snapshot/audit CRUD, role resolution)
+- `lib/ops/service-contract.ts` (`createMetadataDraft`, `upsertVariantDraft`, `upsertDocumentDraft`, `submitChangeSet`, `reviewChangeSet`, `publishRelease`, `rollbackRelease`, `getAuditEvents`)
+- `app/api/ops/change-sets/route.ts` (`POST` metadata draft)
+- `app/api/ops/change-sets/[id]/route.ts` (`GET` change-set details)
+- `app/api/ops/change-sets/[id]/documents/route.ts` (`POST` document draft)
+- `app/api/ops/change-sets/[id]/variants/route.ts` (`POST` variant draft)
+- `app/api/ops/change-sets/[id]/submit/route.ts` (`POST` submit)
+- `app/api/ops/change-sets/[id]/approve/route.ts` (`POST` approve/reject)
+- `app/api/ops/releases/publish/route.ts` (`POST` publish release)
+- `app/api/ops/releases/[id]/rollback/route.ts` (`POST` rollback release)
+- `app/api/ops/audit-events/route.ts` (`GET` audit events)
+
+DB migration coverage:
+- `supabase/migration.sql` now covers full Phase 1 model: `ops_collections`, `ops_variants`, `ops_documents`, `ops_change_sets`, `ops_change_items`, `ops_releases`, `ops_release_change_sets`, `ops_snapshots`, `ops_audit_events`, `ops_role_bindings`.
+- `ops_audit_events` is append-only (trigger guard blocks update/delete).
+- service-role RLS policies exist for all ops tables.
+
+Invariant coupling with existing product pipeline:
+- collection must resolve through `resolveProductBySlug` before any draft creation
+- metadata patch allowlist: `name`, `shortDescription`, `description`, `externalLink`, `detailsSections`
+- variant draft must map to existing collection color/decor slug/code
+- document drafts must be PDF URLs and obey local/absolute URL policy (`/documents/...` or `http/https`)
+- publish blocks on validation errors + requires review approval for non-low risk change-sets
+- high/critical change-sets enforce no self-approve policy
+
 ---
 
 ## 1. Data Sources (JSON files in `/public/data/`)
@@ -35,6 +92,7 @@ JSON data file → resolve-product.ts → Product object → page.tsx → UI com
 | `sport_colors.json` | Sport (10) | Gerflor (6) | `collections[]` with `colors[]`, collection `description`, `characteristics`, optional `collection_image_url`, color `image` |
 | `tarkett_sport_colors.json` | Sport (10) | Tarkett (3) | `collections[]` with `colors[]`, `documents`, `detailsSections`, `collection_image_url`, `url`, `characteristics` scraped from the official Tarkett sports catalog; collection-level PDFs must resolve to `media.tarkett-image.com/docs/*.pdf` |
 | `tarkett_lajsne_variants.json` | Lajsne (11) | Tarkett (3) | `collections[]` with `colors[]`, `documents`, `detailsSections`, `collection_image_url`, `url`, `characteristics` scraped from the official Tarkett `Lajsne` category page; final JSON currently holds 12 collections / 326 variants, collection+variant JPG asseti su prebačeni na Supabase `product-images` pod `products/lajsne/...`, extractor prioritizuje `large-high` i pada nazad na slabiji format samo kad jači ne postoji, a UI treba da koristi user-facing label `Varijante` umesto generičkog `Boje` |
+| `catalog_listing_taxonomy.json` | Listing taxonomy | — | Kanonski category listing contract za `core` vs `accessory` segmentaciju po kategoriji (`defaultModeByCategory` + `categories[].accessoryCollectionSlugs`); koristi ga `lib/catalog/listing-curation.ts` i on je jedini izvor istine za category curation filter mode (`core`/`accessory`/`all`) |
 | `tarkett_wood_collection_index.json` | Laminat (1), Parket (3) | Tarkett (3) | `parket[]` + `laminat[]` with official collection `description`, `shortDescription`, `keyFeatures`, `documents`, `heroImage`, `specs`, `url` scraped from the official Tarkett wood catalog; collection-level PDFs must resolve to `media.tarkett-image.com/docs/*.pdf` |
 | `tis_deking_products.json` | Deking (5) | TimberTech (10)| array of products with `categoryId`, `brandId`, `specs`, `images` |
 | `documents_index.json` | All | — | Fallback doc lookup by category + collection |
@@ -196,6 +254,12 @@ Category listing pages use `CategoryTabs` component. Product cards come from:
 
 The `ProductCardClient` component renders each card.
 
+`lib/catalog/listing-curation.ts` je category listing taxonomy sloj:
+- čita `public/data/catalog_listing_taxonomy.json`
+- validira i normalizuje `listing` query mode (`core`, `accessory`, `all`) po kategoriji
+- klasifikuje collection slug u segment i filteruje listing set
+- isti helper mora da se koristi i u SSR category flow-u (`app/kategorije/[slug]/page.tsx`) i u nested API/client flow-u (`/api/colors`, `CategoryTabs`) da count/grid/URL ostanu usklađeni
+
 `CategoryTabs` / `ColorGrid` expectations:
 - Flat JSON categories: `lvt`, `linoleum`, `tekstilne-ploce`
 - Nested JSON categories: `vinil`, `elektroprovodni`, `industrijske-ploce`, `sport`, `lajsne`
@@ -203,6 +267,7 @@ The `ProductCardClient` component renders each card.
 - Vinil is now also a mixed-brand nested category, so collection slugs like `tarkett-bold`, `tarkett-eclipse-premium` and `wolflor-andes` must stay intact through category/product routes and should not be auto-prefixed with `gerflor-`
 - Sport is a mixed-brand nested category, so route normalization must preserve `tarkett-` collection prefixes and only add `gerflor-` for Gerflor sport collections
 - Lajsne are modeled as a nested Tarkett-only category with category ID `11`; cards/routes should preserve the existing `tarkett-` collection prefixes, and user-facing tabs/selectors should say `Varijante` instead of `Boje`
+- Kada se uvodi novi accessory SKU u nested JSON kolekcije, obavezno dodaj collection slug u `catalog_listing_taxonomy.json` (`categories.<slug>.accessoryCollectionSlugs`) ili category filter `Prateći asortiman` neće imati kompletan set
 
 ### Lead CRM (`app/crm/page.tsx`)
 
@@ -243,5 +308,6 @@ The `ProductCardClient` component renders each card.
 > After every significant architecture change (new data source, new component, new category, new resolver path, changed data flow), you MUST:
 > 1. Update THIS workflow file (`.agent/workflows/podovi-architecture.md`) to reflect the new state
 > 2. Update `README.md` if project structure, scripts, or setup changed
-> 3. Do this as part of the same commit — not as a separate task
+> 3. If extractor workflow/rollback behavior changed, update `.agent/workflows/extractor-refresh-rollback-runbook.md`
+> 4. Do this as part of the same commit — not as a separate task
 
