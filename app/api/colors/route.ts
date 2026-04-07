@@ -13,6 +13,7 @@ import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import { getDerivedWeldingCharacteristics } from '@/lib/product-page/welding-helpers';
+import { filterCategoryListingCollections, resolveCategoryListingMode } from '@/lib/catalog/listing-curation';
 
 /**
  * GET /api/colors?category=lvt|linoleum|vinil|tekstilne-ploce|elektroprovodni|industrijske-ploce|sport|lajsne
@@ -55,6 +56,7 @@ type ColorRow = {
 export async function GET(request: NextRequest) {
     const category = request.nextUrl.searchParams.get('category') || 'lvt';
     const requestedCollection = request.nextUrl.searchParams.get('collection');
+    const requestedListingMode = request.nextUrl.searchParams.get('listing');
 
     const nestedCollectionsMap: Record<string, any[]> = {
         vinil: [
@@ -83,8 +85,16 @@ export async function GET(request: NextRequest) {
             lajsne: '11',
         };
 
-        const collections = nestedCollectionsMap[category]
-            .filter((collection) => !requestedCollection || collection.slug === requestedCollection)
+        const listingMode = requestedListingMode
+            ? resolveCategoryListingMode(requestedListingMode, category)
+            : 'all';
+
+        const sourceCollections = filterCategoryListingCollections(
+            category,
+            nestedCollectionsMap[category]
+                .filter((collection) => !requestedCollection || collection.slug === requestedCollection),
+            listingMode
+        )
             .map((collection) => ({
                 slug: collection.slug,
                 name: collection.name,
@@ -125,8 +135,8 @@ export async function GET(request: NextRequest) {
             .filter((collection) => collection.colorCount > 0);
 
         return NextResponse.json({
-            collections,
-            totalColors: collections.reduce((sum, collection) => sum + collection.colors.length, 0),
+            collections: sourceCollections,
+            totalColors: sourceCollections.reduce((sum, collection) => sum + collection.colors.length, 0),
             generatedAt: new Date().toISOString(),
         });
     }

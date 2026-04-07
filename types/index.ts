@@ -65,6 +65,15 @@ export interface Product {
 }
 
 export type PreferredContact = 'call' | 'email' | 'viber' | 'whatsapp';
+export type InquiryStatus =
+  | 'new'
+  | 'contacted'
+  | 'qualified'
+  | 'offer_sent'
+  | 'negotiation'
+  | 'won'
+  | 'lost'
+  | 'closed';
 
 export interface Inquiry {
   id: string;
@@ -81,7 +90,9 @@ export interface Inquiry {
   quantityM2?: number;
   message: string;
   preferredContact: PreferredContact[];
-  status: 'new' | 'contacted' | 'closed';
+  status: InquiryStatus;
+  nextContactDate?: string;
+  notes?: string;
   createdAt: Date;
 }
 
@@ -124,6 +135,7 @@ export interface ProductFilters {
   search?: string;
   type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
   collections?: string[]; // For LVT collection filter
+  listing?: 'core' | 'accessory' | 'all'; // Listing segment filter for categories with accessory taxonomy
   thickness?: string[]; // For overall thickness filter (for LVT) - array of thickness values like "2.00", "2.50", etc.
   woodType?: string; // For Parket: 'Hrast' | 'Jasen'
 }

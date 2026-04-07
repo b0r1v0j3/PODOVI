@@ -1,0 +1,100 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`color API contracts > returns stable documents + characteristics shape for /api/color-data 1`] = `
+{
+  "characteristicKeys": [
+    "Dizajn",
+    "Dužina",
+    "Dužina po pakovanju",
+    "Format",
+    "Komada u pakovanju",
+    "Kutija na paleti",
+    "Može da se seče",
+    "Porodica boje",
+    "Profil",
+    "Tip dezena",
+    "Tip proizvoda",
+    "Ukupna debljina",
+    "Visina",
+  ],
+  "characteristics": {
+    "Dizajn": "Patina Ash",
+    "Dužina": "195 cm",
+    "Dužina po pakovanju": "9,75 m",
+    "Format": "Skirting 1,95m",
+    "Komada u pakovanju": "5",
+    "Kutija na paleti": "132",
+    "Može da se seče": "Ne",
+    "Porodica boje": "Siva",
+    "Profil": "Lajsne LVT 60x10",
+    "Tip dezena": "Drvo",
+    "Tip proizvoda": "Wall base",
+    "Ukupna debljina": "10 mm",
+  },
+  "colorSlug": "tarkett-dekorativne-zidne-lajsne-za-lvt-aluminium",
+  "documentCount": 0,
+  "documents": [],
+}
+`;
+
+exports[`color API contracts > returns stable nested color payload shape for /api/colors 1`] = `
+{
+  "collectionCount": 1,
+  "firstCollection": {
+    "colorCount": 175,
+    "name": "Dekorativne zidne lajsne za LVT",
+    "sampleColors": [
+      {
+        "characteristicKeys": [
+          "Dizajn",
+          "Dužina",
+          "Dužina po pakovanju",
+          "Format",
+          "Komada u pakovanju",
+          "Kutija na paleti",
+          "Može da se seče",
+          "Porodica boje",
+        ],
+        "code": "26646018",
+        "imageUrl": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/tarkett-dekorativne-zidne-lajsne-za-lvt-aluminium.jpg?v=20260331152443",
+        "name": "Patina Ash GREY",
+        "slug": "tarkett-dekorativne-zidne-lajsne-za-lvt-aluminium",
+      },
+      {
+        "characteristicKeys": [
+          "Dizajn",
+          "Dužina",
+          "Dužina po pakovanju",
+          "Format",
+          "Komada u pakovanju",
+          "Kutija na paleti",
+          "Može da se seče",
+          "Porodica boje",
+        ],
+        "code": "26646018",
+        "imageUrl": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/tarkett-dekorativne-zidne-lajsne-za-lvt-alpine-oak-warm-natural.jpg?v=20260331152443",
+        "name": "Alpine Oak WARM NATURAL",
+        "slug": "tarkett-dekorativne-zidne-lajsne-za-lvt-alpine-oak-warm-natural",
+      },
+      {
+        "characteristicKeys": [
+          "Dizajn",
+          "Dužina",
+          "Dužina po pakovanju",
+          "Format",
+          "Komada u pakovanju",
+          "Kutija na paleti",
+          "Može da se seče",
+          "Porodica boje",
+        ],
+        "code": "26646018",
+        "imageUrl": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/tarkett-dekorativne-zidne-lajsne-za-lvt-american-walnut-cinnamon.jpg?v=20260331152443",
+        "name": "American Walnut CINNAMON",
+        "slug": "tarkett-dekorativne-zidne-lajsne-za-lvt-american-walnut-cinnamon",
+      },
+    ],
+    "slug": "tarkett-dekorativne-zidne-lajsne-za-lvt",
+  },
+  "totalColors": 175,
+}
+`;

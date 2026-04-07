@@ -5,7 +5,7 @@ import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import { getEffectiveParketCollection, getAllParketVariantSlugs, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
-import { filterCategoryListingCollections } from '@/lib/catalog/listing-curation';
+import { filterCategoryListingCollections, resolveCategoryListingMode } from '@/lib/catalog/listing-curation';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import CategoryTabs from '@/components/CategoryTabs';
@@ -23,6 +23,7 @@ interface CategoryPageProps {
     type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
     collections?: string; // For LVT collection filter (comma-separated)
     family?: string; // For BLOQ family filter (comma-separated)
+    listing?: string; // For core/accessory listing segmentation
     thickness?: string; // For overall thickness filter (comma-separated values)
     woodType?: string; // For Parket: Hrast | Jasen
   };
@@ -111,6 +112,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat – separate collections from colors
   const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat' || category.slug === 'elektroprovodni' || category.slug === 'industrijske-ploce' || category.slug === 'sport' || category.slug === 'lajsne';
+  const listingMode = resolveCategoryListingMode(searchParams.listing, category.slug);
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
   let availableCollections: string[] = [];
@@ -145,7 +147,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       ) ?? false;
     const allCollections = filterCategoryListingCollections(
       category.slug,
-      allProducts.filter(p => hasCollectionSku(p))
+      allProducts.filter(p => hasCollectionSku(p)),
+      listingMode
     );
     if (category.slug === 'parket') {
       // Parket: tab Boje prikazuje samo 73 varijante iz kolekcija (jedan proizvod po slug-u), ne sve proizvode
@@ -607,7 +610,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           <aside className="lg:w-60 flex-shrink-0">
             <ProductFilters
               availableBrands={availableBrands}
-              currentFilters={filtersWithoutCollections}
+              currentFilters={{ ...filtersWithoutCollections, listing: listingMode }}
               availableCollections={availableCollections}
               availableFamilies={category.slug === 'tekstilne-ploce' ? availableFamilies : undefined}
               availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
@@ -626,11 +629,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 categorySlug={category.slug}
                 initialColorSlug={searchParams.color}
                 vinylType={searchParams.type}
+                listingMode={listingMode}
                 searchParams={{
                   search: searchParams.search,
                   brands: searchParams.brands,
                   collections: searchParams.collections,
                   family: searchParams.family,
+                  listing: searchParams.listing,
                   thickness: searchParams.thickness,
                   woodType: searchParams.woodType,
                 }}

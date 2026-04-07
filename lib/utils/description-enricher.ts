@@ -26,6 +26,7 @@ export function enrichProductDescription(product: Product): string {
         '8': 'elektroprovodni pod',
         '9': 'industrijske ploče',
         '10': 'sportski pod',
+        '11': 'lajsna',
     };
     const categoryName = categoryMap[product.categoryId] || 'podna obloga';
 
@@ -88,6 +89,7 @@ export function enrichShortDescription(product: Product): string {
         '8': 'Elektroprovodni pod',
         '9': 'Industrijske ploče',
         '10': 'Sportski pod',
+        '11': 'Lajsne i prateći pribor',
     };
 
     const base = categoryMap[product.categoryId] || 'Podna obloga';

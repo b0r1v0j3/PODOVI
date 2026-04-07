@@ -157,11 +157,17 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         const collectionProduct = await productRepository.findBySlug(collectionSlugWithoutPrefix);
         if (collectionProduct) {
             const nestedCollectionForDesc = findNestedCollection(collectionSlugWithoutPrefix);
+            const enrichedCollectionProduct = nestedCollectionForDesc
+                ? enrichProductFromCollectionData(collectionProduct, nestedCollectionForDesc)
+                : collectionProduct;
             if (nestedCollectionForDesc) {
-                enrichProductFromCollectionData(collectionProduct, nestedCollectionForDesc);
+                return {
+                    ...enrichedCollectionProduct,
+                    slug,
+                };
             }
             return {
-                ...collectionProduct,
+                ...enrichedCollectionProduct,
                 slug,
             };
         }

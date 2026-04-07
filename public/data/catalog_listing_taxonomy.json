@@ -1,0 +1,26 @@
+{
+  "version": "2026-04-07",
+  "defaultModeByCategory": {
+    "vinil": "core",
+    "industrijske-ploce": "core",
+    "sport": "core",
+    "lajsne": "core"
+  },
+  "categories": {
+    "vinil": {
+      "accessoryCollectionSlugs": []
+    },
+    "industrijske-ploce": {
+      "accessoryCollectionSlugs": []
+    },
+    "sport": {
+      "accessoryCollectionSlugs": []
+    },
+    "lajsne": {
+      "accessoryCollectionSlugs": [
+        "tarkett-tarkett-genius-traka",
+        "tarkett-tarkodry-podloga-za-podove-i-zidove"
+      ]
+    }
+  }
+}

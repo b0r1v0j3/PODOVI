@@ -1,0 +1,174 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`resolve-product contract > merges selected color data into collection product without breaking base contract fields 1`] = `
+{
+  "afterName": "0303 MANITOBA",
+  "afterShortDescription": "Mipolam Accord - MANITOBA",
+  "beforeName": "Mipolam Accord",
+  "hasFormatSpec": true,
+  "hasThicknessSpec": true,
+  "imageUrl": "/images/products/vinyl/mipolam-accord/0303-manitoba.jpg",
+  "selectedColorSlug": "mipolam-accord-0303-manitoba",
+  "specCount": 12,
+  "specSample": [
+    {
+      "key": "format",
+      "label": "Format",
+      "value": "Rolna",
+    },
+    {
+      "key": "thickness",
+      "label": "Ukupna debljina",
+      "value": "2.0 mm",
+    },
+    {
+      "key": "compatible_welding_accessory",
+      "label": "Kompatibilna elektroda za varenje",
+      "value": "Gerflor CR40",
+    },
+    {
+      "key": "alternative_welding_accessory",
+      "label": "Alternativna elektroda za varenje",
+      "value": "Gerflor MCR40",
+    },
+    {
+      "key": "tip",
+      "label": "Tip",
+      "value": "Homogeni vinil",
+    },
+    {
+      "key": "ukupna-debljina",
+      "label": "Ukupna debljina",
+      "value": "2.0 mm",
+    },
+    {
+      "key": "sloj-habanja",
+      "label": "Sloj habanja",
+      "value": "Kroz celu debljinu",
+    },
+    {
+      "key": "povr-inska-obrada",
+      "label": "Površinska obrada",
+      "value": "Evercare™",
+    },
+  ],
+}
+`;
+
+exports[`resolve-product contract > resolves a lajsne collection slug into stable product contract 1`] = `
+{
+  "brandId": "3",
+  "categoryId": "11",
+  "collectionSlug": null,
+  "detailsSectionCount": 0,
+  "documentCount": 0,
+  "hasPrimaryImage": true,
+  "id": "collection-lajsne-tarkett-dekorativne-zidne-lajsne-za-lvt",
+  "name": "Dekorativne zidne lajsne za LVT",
+  "primaryImageUrl": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/tarkett-dekorativne-zidne-lajsne-za-lvt-aluminium.jpg?v=20260331152443",
+  "shortDescription": "Dekorativne zidne lajsne za LVT",
+  "slug": "tarkett-dekorativne-zidne-lajsne-za-lvt",
+  "specCount": 14,
+  "specSample": [
+    {
+      "key": "format",
+      "label": "Format",
+      "value": "Skirting 1,95m",
+    },
+    {
+      "key": "thickness",
+      "label": "Ukupna debljina",
+      "value": "10 mm",
+    },
+    {
+      "key": "tip-proizvoda",
+      "label": "Tip proizvoda",
+      "value": "Wall base",
+    },
+    {
+      "key": "profil",
+      "label": "Profil",
+      "value": "Lajsne LVT 60x10",
+    },
+    {
+      "key": "ukupna-debljina",
+      "label": "Ukupna debljina",
+      "value": "10 mm",
+    },
+    {
+      "key": "visina",
+      "label": "Visina",
+      "value": "60 mm",
+    },
+    {
+      "key": "du-ina",
+      "label": "Dužina",
+      "value": "195 cm",
+    },
+    {
+      "key": "komada-u-pakovanju",
+      "label": "Komada u pakovanju",
+      "value": "5",
+    },
+  ],
+}
+`;
+
+exports[`resolve-product contract > resolves a vinyl collection slug into stable product contract 1`] = `
+{
+  "brandId": "6",
+  "categoryId": "2",
+  "collectionSlug": null,
+  "detailsSectionCount": 0,
+  "documentCount": 0,
+  "hasPrimaryImage": true,
+  "id": "collection-vinil-gerflor-mipolam-accord",
+  "name": "Mipolam Accord",
+  "primaryImageUrl": "/images/products/vinyl/mipolam-accord/0301-louise.jpg",
+  "shortDescription": "Mipolam Accord",
+  "slug": "gerflor-mipolam-accord",
+  "specCount": 12,
+  "specSample": [
+    {
+      "key": "format",
+      "label": "Format",
+      "value": "Rolna",
+    },
+    {
+      "key": "thickness",
+      "label": "Ukupna debljina",
+      "value": "2.0 mm",
+    },
+    {
+      "key": "compatible_welding_accessory",
+      "label": "Kompatibilna elektroda za varenje",
+      "value": "Gerflor CR40",
+    },
+    {
+      "key": "alternative_welding_accessory",
+      "label": "Alternativna elektroda za varenje",
+      "value": "Gerflor MCR40",
+    },
+    {
+      "key": "tip",
+      "label": "Tip",
+      "value": "Homogeni vinil",
+    },
+    {
+      "key": "ukupna-debljina",
+      "label": "Ukupna debljina",
+      "value": "2.0 mm",
+    },
+    {
+      "key": "sloj-habanja",
+      "label": "Sloj habanja",
+      "value": "Kroz celu debljinu",
+    },
+    {
+      "key": "povr-inska-obrada",
+      "label": "Površinska obrada",
+      "value": "Evercare™",
+    },
+  ],
+}
+`;

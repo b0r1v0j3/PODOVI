@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 07.04.2026 (Extractor refresh + rollback runbook)
+> **Poslednje ažuriranje:** 07.04.2026 (Ops auth hardening + rollback snapshot fix)
 
 ---
 
@@ -74,6 +74,13 @@ GMAIL_APP_PASSWORD=
 # App
 NEXT_PUBLIC_BASE_URL=https://www.podovi.online
 NEXT_PUBLIC_GA_MEASUREMENT_ID=
+
+# Internal auth
+CRM_BASIC_AUTH_USERNAME=
+CRM_BASIC_AUTH_PASSWORD=
+OPS_BASIC_AUTH_USERNAME=
+OPS_BASIC_AUTH_PASSWORD=
+OPS_BASIC_AUTH_ACTOR_ID=
 ```
 
 ---
@@ -139,6 +146,15 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Ops auth hardening + rollback snapshot fix + listing cache invalidation (07.04.2026)**
+- Uveden je shared internal Basic Auth helper `lib/auth/internal-basic-auth.ts`, a `middleware.ts` i svi `app/api/ops/*` handleri sada zahtevaju autentifikovan interni identitet pre bilo kakvog draft/review/publish/rollback/audit poziva.
+- `/api/ops` više ne veruje `actorId` vrednosti iz request body-ja: route sloj vezuje poziv za autentifikovani Basic Auth identitet (`OPS_BASIC_AUTH_*`, uz fallback na `CRM_BASIC_AUTH_*` ako se namerno deli isti interni nalog), a kada auth nije konfigurisan ops rute ostaju eksplicitno disabled umesto javno otvorene površine.
+- `lib/ops/repository.ts` više nema bootstrap fallback koji je svakom actoru davao `publisher` rolu kada je `ops_role_bindings` tabela prazna; sada je role binding obavezan bez implicitnih privilegija.
+- `lib/ops/service-contract.ts` rollback više ne reaplikuje snapshot target release-a, već vraća poslednje prethodno stabilno stanje (ili za undo rollback-a snapshot release-a koji je rollback poništio), tako da rollback zaista vraća katalog na raniji state.
+- `components/CategoryTabs.tsx` sada invalidira client color cache kada se promeni `listing` mode, pa `core/accessory/all` filter više ne može da ostavi stale boje/varijante iz prethodnog segmenta.
+- `lib/product-page/resolve-product.ts` je popravljen da Gerflor collection fallback zaista vrati enriched collection podatke umesto da enrichment pozove i odbaci rezultat.
+- Verifikovano: `npm run test:contract`, `npm run lint`, `npm run check:health`, `npm run build`.
 
 **Extractor refresh + rollback runbook uveden za kanonske supplier izvore (07.04.2026)**
 - Dodat je novi operativni runbook `.agent/workflows/extractor-refresh-rollback-runbook.md` sa punim refresh redosledom za sve kanonske extractore (`extract_tarkett_wood`, `extract_tarkett_vinyl_home`, `extract_tarkett_homogeneous_vinyl`, `extract_tarkett_heterogeneous_vinyl`, `extract_tarkett_sports`, `extract_tarkett_lajsne`, `extract_wolflor_vinyl`), obaveznim pre-flight/post-flight checkovima i incident rollback matricom.
@@ -597,6 +613,8 @@ PODOVI/
 31. **Kad pregaziš Wolflor JPG na istoj Supabase putanji, promeni i URL query verziju.** PDF kolekcije poput `Andes`/`Atlas` sada često dobijaju kvalitetniji crop na istom object path-u (`products/vinyl/.../wl91600.jpg`), pa bez novog `?v=` cache-bust query-ja browser i CDN mogu da nastave da serviraju stari mutni JPG iako je object već zamenjen boljom verzijom.
 32. **`/crm` traži `SUPABASE_SERVICE_ROLE_KEY` za čitanje leadova.** `inquiries` tabela je pod RLS pravilom da javnost može samo `INSERT`; ako service-role env nije dostupan, CRM može da se renderuje ali neće moći da povuče leadove iz baze.
 33. **`/crm` zaštita trenutno je env-based Basic Auth u `middleware.ts`.** Ako postaviš `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD`, ruta traži HTTP Basic Auth; ako ih ne postaviš, `/crm` ostaje bez te zaštite i ne treba ga tretirati kao produkciono bezbedan admin panel.
+34. **`/api/ops` ne sme više da bude “otvoren dok ne stigne pravi auth”.** Sada moraš imati `OPS_BASIC_AUTH_USERNAME` + `OPS_BASIC_AUTH_PASSWORD` (ili namerno deliti CRM Basic Auth kredencijale), a `actorId` više ne dolazi proizvoljno iz request body-ja nego iz autentifikovanog internog identiteta / `OPS_BASIC_AUTH_ACTOR_ID`.
+35. **Ops rollback mora da vraća prethodni stabilni snapshot, ne snapshot samog target release-a.** Publish snapshot predstavlja stanje POSLE publish-a; ako ga rollback reaplikuješ, ništa nisi vratio unazad. Za normalan rollback uzima se prethodni stabilni release snapshot, a za undo rollback-a snapshot release-a koji je rollback poništio.
 
 ---
 

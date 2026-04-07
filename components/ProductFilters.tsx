@@ -3,6 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { Brand, ProductFilters as IProductFilters } from '@/types';
+import {
+  getCategoryDefaultListingMode,
+  hasCategoryAccessoryListingMode,
+  resolveCategoryListingMode,
+  type CategoryListingMode,
+} from '@/lib/catalog/listing-curation';
 
 interface ProductFiltersProps {
   availableBrands: Brand[];
@@ -18,6 +24,9 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const categorySlug = pathname?.split('/').filter(Boolean).pop() || '';
+  const supportsListingMode = hasCategoryAccessoryListingMode(categorySlug);
+  const defaultListingMode = getCategoryDefaultListingMode(categorySlug);
 
   const isVinilCategory = pathname?.includes('/kategorije/vinil');
   const isLVTCategory = pathname?.includes('/kategorije/lvt') || pathname?.includes('/kategorije/parket');
@@ -27,6 +36,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const currentType = searchParams.get('type');
   const currentCollections = searchParams.get('collections');
   const currentFamily = searchParams.get('family');
+  const currentListing = searchParams.get('listing');
   const currentThickness = searchParams.get('thickness');
   const currentWoodTypes = searchParams.get('woodType')?.split(',').filter(Boolean) || [];
 
@@ -42,6 +52,9 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   );
   const [selectedFamilies, setSelectedFamilies] = useState<string[]>(
     currentFamily ? currentFamily.split(',') : []
+  );
+  const [selectedListingMode, setSelectedListingMode] = useState<CategoryListingMode>(
+    resolveCategoryListingMode(currentListing || currentFilters.listing, categorySlug)
   );
   const [selectedThickness, setSelectedThickness] = useState<string[]>(
     currentThickness ? currentThickness.split(',') : []
@@ -63,6 +76,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     const urlType = searchParams.get('type');
     const urlCollections = searchParams.get('collections')?.split(',').filter(Boolean) || [];
     const urlFamily = searchParams.get('family')?.split(',').filter(Boolean) || [];
+    const urlListingMode = resolveCategoryListingMode(searchParams.get('listing'), categorySlug);
     const urlThickness = searchParams.get('thickness')?.split(',').filter(Boolean) || [];
     const urlWoodType = searchParams.get('woodType');
 
@@ -81,11 +95,14 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (pathname?.includes('/kategorije/tekstilne-ploce') && JSON.stringify([...urlFamily].sort()) !== JSON.stringify([...selectedFamilies].sort())) {
       setSelectedFamilies(urlFamily);
     }
+    if (supportsListingMode && urlListingMode !== selectedListingMode) {
+      setSelectedListingMode(urlListingMode);
+    }
     if ((isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && JSON.stringify([...urlThickness].sort()) !== JSON.stringify([...selectedThickness].sort())) {
       setSelectedThickness(urlThickness);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  }, [searchParams, categorySlug, selectedListingMode, supportsListingMode, isVinilCategory, search, selectedBrands, priceMin, priceMax, vinylType, isLVTCategory, selectedCollections, pathname, selectedFamilies, isLinoleumCategory, isLaminatCategory, selectedThickness]);
 
   // Auto-remove incompatible thicknesses when vinyl type changes
   useEffect(() => {
@@ -126,6 +143,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     params.delete('type');
     params.delete('collections');
     params.delete('family');
+    params.delete('listing');
     params.delete('thickness');
     params.delete('woodType');
 
@@ -137,6 +155,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
     if (pathname?.includes('/kategorije/tekstilne-ploce') && selectedFamilies.length > 0) params.set('family', selectedFamilies.join(','));
+    if (supportsListingMode && selectedListingMode !== defaultListingMode) params.set('listing', selectedListingMode);
     if ((isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && selectedThickness.length > 0) params.set('thickness', selectedThickness.join(','));
     if (isParketCategory && selectedWoodTypes.length > 0) params.set('woodType', selectedWoodTypes.join(','));
 
@@ -154,7 +173,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedFamilies, selectedThickness, selectedWoodTypes, pathname, router, searchParams, isVinilCategory, isLVTCategory, isLinoleumCategory, isLaminatCategory, isParketCategory]);
+  }, [search, selectedBrands, priceMin, priceMax, vinylType, selectedCollections, selectedFamilies, selectedListingMode, selectedThickness, selectedWoodTypes, pathname, router, searchParams, supportsListingMode, defaultListingMode, isVinilCategory, isLVTCategory, isLinoleumCategory, isLaminatCategory, isParketCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -164,7 +183,9 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     setVinylType(null);
     setSelectedCollections([]);
     setSelectedFamilies([]);
+    setSelectedListingMode(defaultListingMode);
     setSelectedThickness([]);
+    setSelectedWoodTypes([]);
     router.push(pathname);
   };
 
@@ -206,7 +227,14 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
-  const hasActiveFilters = search || selectedBrands.length > 0 || priceMin || priceMax || (isVinilCategory && vinylType) || (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) || (pathname?.includes('/kategorije/tekstilne-ploce') && selectedFamilies.length > 0) || (isParketCategory && selectedWoodTypes.length > 0) || ((isLVTCategory || isVinilCategory || isLaminatCategory) && selectedThickness.length > 0);
+  const hasActiveFilters =
+    Boolean(search || selectedBrands.length > 0 || priceMin || priceMax) ||
+    Boolean(isVinilCategory && vinylType) ||
+    Boolean(pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) ||
+    Boolean(pathname?.includes('/kategorije/tekstilne-ploce') && selectedFamilies.length > 0) ||
+    Boolean(supportsListingMode && selectedListingMode !== defaultListingMode) ||
+    Boolean(isParketCategory && selectedWoodTypes.length > 0) ||
+    Boolean((isLVTCategory || isVinilCategory || isLaminatCategory) && selectedThickness.length > 0);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
@@ -301,6 +329,45 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
                 <span className="ml-2 text-sm text-gray-700">{family}</span>
               </label>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Listing Segment Filter (core / prateći asortiman) */}
+      {supportsListingMode && (
+        <div className="mb-6">
+          <label className="label text-xs uppercase tracking-wide text-gray-500">Prikaz asortimana</label>
+          <div className="space-y-2">
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="radio"
+                name="listingMode"
+                checked={selectedListingMode === 'core'}
+                onChange={() => setSelectedListingMode('core')}
+                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Kolekcije</span>
+            </label>
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="radio"
+                name="listingMode"
+                checked={selectedListingMode === 'accessory'}
+                onChange={() => setSelectedListingMode('accessory')}
+                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Prateći asortiman</span>
+            </label>
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="radio"
+                name="listingMode"
+                checked={selectedListingMode === 'all'}
+                onChange={() => setSelectedListingMode('all')}
+                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Sve stavke</span>
+            </label>
           </div>
         </div>
       )}

@@ -1,11 +1,19 @@
 import { Inquiry } from '@/types';
+import { normalizeInquiryStatus } from '@/lib/crm/inquiry-status';
 import { getServerSupabase, hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
+
+export interface UpdateInquiryLeadData {
+  status?: Inquiry['status'];
+  nextContactDate?: string | null;
+  notes?: string;
+}
 
 export interface IInquiryRepository {
   create(inquiry: Omit<Inquiry, 'id' | 'createdAt'>): Promise<Inquiry>;
   findById(id: string): Promise<Inquiry | null>;
   findAll(): Promise<Inquiry[]>;
   updateStatus(id: string, status: Inquiry['status']): Promise<Inquiry>;
+  updateLead(id: string, data: UpdateInquiryLeadData): Promise<Inquiry>;
 }
 
 // =========================================
@@ -27,7 +35,9 @@ function toInquiry(row: any): Inquiry {
     quantityM2: row.quantity_m2 ? parseFloat(row.quantity_m2) : undefined,
     message: row.message,
     preferredContact: row.preferred_contact || [],
-    status: row.status || 'new',
+    status: normalizeInquiryStatus(row.status),
+    nextContactDate: row.next_contact_date || undefined,
+    notes: row.notes || undefined,
     createdAt: new Date(row.created_at),
   };
 }
@@ -65,6 +75,8 @@ export class SupabaseInquiryRepository implements IInquiryRepository {
       message: data.message,
       preferred_contact: data.preferredContact,
       status: data.status || 'new',
+      next_contact_date: data.nextContactDate || null,
+      notes: data.notes || '',
     };
 
     const { data: inserted, error } = await client
@@ -109,18 +121,36 @@ export class SupabaseInquiryRepository implements IInquiryRepository {
   }
 
   async updateStatus(id: string, status: Inquiry['status']): Promise<Inquiry> {
+    return this.updateLead(id, { status });
+  }
+
+  async updateLead(id: string, updates: UpdateInquiryLeadData): Promise<Inquiry> {
     const client = getInquiryClient(true);
-    const { data, error } = await client
+    const row: Record<string, any> = {};
+
+    if (updates.status !== undefined) {
+      row.status = updates.status;
+    }
+
+    if (updates.nextContactDate !== undefined) {
+      row.next_contact_date = updates.nextContactDate || null;
+    }
+
+    if (updates.notes !== undefined) {
+      row.notes = updates.notes;
+    }
+
+    const { data: updatedInquiry, error } = await client
       .from('inquiries')
-      .update({ status })
+      .update(row)
       .eq('id', id)
       .select()
       .single();
 
-    if (error || !data) {
+    if (error || !updatedInquiry) {
       throw new Error(`Upit sa ID ${id} nije pronađen ili ažuriranje nije uspelo`);
     }
-    return toInquiry(data);
+    return toInquiry(updatedInquiry);
   }
 }
 
@@ -151,11 +181,27 @@ export class MockInquiryRepository implements IInquiryRepository {
   }
 
   async updateStatus(id: string, status: Inquiry['status']): Promise<Inquiry> {
+    return this.updateLead(id, { status });
+  }
+
+  async updateLead(id: string, updates: UpdateInquiryLeadData): Promise<Inquiry> {
     const inquiry = await this.findById(id);
     if (!inquiry) {
       throw new Error(`Upit sa ID ${id} nije pronađen`);
     }
-    inquiry.status = status;
+
+    if (updates.status !== undefined) {
+      inquiry.status = updates.status;
+    }
+
+    if (updates.nextContactDate !== undefined) {
+      inquiry.nextContactDate = updates.nextContactDate || undefined;
+    }
+
+    if (updates.notes !== undefined) {
+      inquiry.notes = updates.notes || undefined;
+    }
+
     return inquiry;
   }
 }

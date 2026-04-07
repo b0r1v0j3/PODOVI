@@ -44,6 +44,7 @@ collection slug → draft items (metadata/variant/document) → submit → revie
 ```
 
 Implemented files:
+- `lib/auth/internal-basic-auth.ts` (shared internal Basic Auth guard for CRM/ops surfaces)
 - `lib/ops/types.ts` (change-set/release/snapshot/audit/role contract types)
 - `lib/ops/invariants.ts` (metadata + variant + document validation guards)
 - `lib/ops/repository.ts` (Supabase service-role adapter for full `ops_*` tables, release/snapshot/audit CRUD, role resolution)
@@ -70,6 +71,10 @@ Invariant coupling with existing product pipeline:
 - document drafts must be PDF URLs and obey local/absolute URL policy (`/documents/...` or `http/https`)
 - publish blocks on validation errors + requires review approval for non-low risk change-sets
 - high/critical change-sets enforce no self-approve policy
+- `/api/ops/*` routes now require internal Basic Auth before any handler logic; when `OPS_BASIC_AUTH_USERNAME` / `OPS_BASIC_AUTH_PASSWORD` are missing, the ops routes stay disabled instead of falling back to a public surface
+- `actorId` used by the ops service contract is bound to the authenticated Basic Auth identity (`OPS_BASIC_AUTH_ACTOR_ID` or username), so callers can no longer spoof arbitrary actor IDs in request bodies
+- empty `ops_role_bindings` no longer auto-promotes the caller to `publisher`; explicit role bindings are now required
+- rollback restores the previous stable snapshot (or, when undoing a rollback release, the snapshot of the release that rollback had reverted), not the snapshot of the target release itself
 
 ---
 
@@ -268,6 +273,7 @@ The `ProductCardClient` component renders each card.
 - Sport is a mixed-brand nested category, so route normalization must preserve `tarkett-` collection prefixes and only add `gerflor-` for Gerflor sport collections
 - Lajsne are modeled as a nested Tarkett-only category with category ID `11`; cards/routes should preserve the existing `tarkett-` collection prefixes, and user-facing tabs/selectors should say `Varijante` instead of `Boje`
 - Kada se uvodi novi accessory SKU u nested JSON kolekcije, obavezno dodaj collection slug u `catalog_listing_taxonomy.json` (`categories.<slug>.accessoryCollectionSlugs`) ili category filter `Prateći asortiman` neće imati kompletan set
+- `CategoryTabs` mora da invalidira client-side JSON cache kada se promeni `listing` mode (`core` / `accessory` / `all`); u suprotnom SSR kolekcije i client boje/varijante mogu da odu u tihi drift
 
 ### Lead CRM (`app/crm/page.tsx`)
 

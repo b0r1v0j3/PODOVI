@@ -3,7 +3,11 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Product, Brand } from '@/types';
-import { filterCategoryListingCollections } from '@/lib/catalog/listing-curation';
+import {
+  type CategoryListingMode,
+  filterCategoryListingCollections,
+  resolveCategoryListingMode,
+} from '@/lib/catalog/listing-curation';
 import ProductCardClient from '@/components/ProductCardClient';
 
 interface ColorFromJSON {
@@ -28,6 +32,7 @@ interface CategoryTabsProps {
   categorySlug: string; // 'lvt' | 'linoleum' | 'vinil' | 'tekstilne-ploce' | 'parket' | 'lajsne'
   initialColorSlug?: string; // Optional color slug to automatically open and highlight
   vinylType?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
+  listingMode?: CategoryListingMode;
   searchParams?: {
     search?: string;
     brands?: string;
@@ -35,6 +40,7 @@ interface CategoryTabsProps {
     family?: string;
     thickness?: string;
     woodType?: string;
+    listing?: string;
   };
 }
 
@@ -60,7 +66,16 @@ const CATEGORY_API_BY_SLUG: Record<string, string> = {
   lajsne: 'lajsne',
 };
 
-export default function CategoryTabs({ collections, colors: legacyColors, brandsRecord, categorySlug, initialColorSlug, vinylType, searchParams: searchParamsProp }: CategoryTabsProps) {
+export default function CategoryTabs({
+  collections,
+  colors: legacyColors,
+  brandsRecord,
+  categorySlug,
+  initialColorSlug,
+  vinylType,
+  listingMode,
+  searchParams: searchParamsProp
+}: CategoryTabsProps) {
   // Get search params from URL (fallback to prop if provided)
   const urlSearchParams = useSearchParams();
   const searchParams = useMemo(() => searchParamsProp || {
@@ -69,7 +84,13 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
     collections: urlSearchParams.get('collections') || undefined,
     family: urlSearchParams.get('family') || undefined,
     thickness: urlSearchParams.get('thickness') || undefined,
-  }, [searchParamsProp, urlSearchParams]);
+    listing: urlSearchParams.get('listing') || undefined,
+    }, [searchParamsProp, urlSearchParams]);
+
+  const resolvedListingMode = useMemo(
+    () => resolveCategoryListingMode(listingMode || searchParams.listing, categorySlug),
+    [listingMode, searchParams.listing, categorySlug]
+  );
 
   // If initialColorSlug is provided, start with 'colors' tab active
   const [activeTab, setActiveTab] = useState<'collections' | 'colors'>(
@@ -86,7 +107,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
   const [loadingColors, setLoadingColors] = useState(false);
   const [totalColorsCount, setTotalColorsCount] = useState<number | null>(null);
   const hasLoadedColors = useRef(false);
-  const lastCategorySlug = useRef<string>('');
+  const lastDatasetKey = useRef<string>('');
   const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]);
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
   const colorsTabLabel = categorySlug === 'lajsne' ? 'Varijante' : 'Boje';
@@ -146,8 +167,8 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
       });
     }
 
-    return filtered;
-  }, [collections, useJsonColors, categorySlug, vinylType, searchParams]);
+    return filterCategoryListingCollections(categorySlug, filtered, resolvedListingMode);
+  }, [collections, useJsonColors, categorySlug, vinylType, searchParams, resolvedListingMode]);
 
   // Filter colors by all active filters
   const colorsToRender = useMemo(() => {
@@ -302,7 +323,8 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
     }
 
     const categoryParam = CATEGORY_API_BY_SLUG[categorySlug] || 'lvt';
-    const jsonPath = `/api/colors?category=${categoryParam}`;
+    const listingParam = resolvedListingMode === 'all' ? '' : `&listing=${resolvedListingMode}`;
+    const jsonPath = `/api/colors?category=${categoryParam}${listingParam}`;
 
     fetch(jsonPath)
       .then(res => {
@@ -313,7 +335,11 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
       })
       .then(data => {
         if (NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]) && Array.isArray(data.collections)) {
-          const visibleCollections = filterCategoryListingCollections(categorySlug, data.collections);
+          const visibleCollections = filterCategoryListingCollections(
+            categorySlug,
+            data.collections,
+            resolvedListingMode
+          );
           const total = visibleCollections.reduce((sum: number, collection: any) =>
             sum + (collection.colors?.length || 0), 0);
           setTotalColorsCount(total);
@@ -326,17 +352,20 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
       .catch(err => {
         console.error('Error loading colors count:', err);
       });
-  }, [categorySlug, useJsonColors]);
+  }, [categorySlug, useJsonColors, resolvedListingMode]);
 
-  // Reset loaded state when category changes
+  // Reset loaded state when the API dataset changes.
+  // `listing` mode changes the server payload for nested categories, so we must invalidate the cached client copy too.
   useEffect(() => {
-    if (lastCategorySlug.current !== categorySlug) {
+    const datasetKey = `${categorySlug}:${resolvedListingMode}`;
+    if (lastDatasetKey.current !== datasetKey) {
       hasLoadedColors.current = false;
       setColorsFromJSON([]);
+      setLoadingColors(false);
       setTotalColorsCount(null);
-      lastCategorySlug.current = categorySlug;
+      lastDatasetKey.current = datasetKey;
     }
-  }, [categorySlug]);
+  }, [categorySlug, resolvedListingMode]);
 
   // Load colors from JSON when colors tab is active or when initialColorSlug is provided
   useEffect(() => {
@@ -354,7 +383,8 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
     if (useJsonColors && !hasLoadedColors.current && !loadingColors) {
       setLoadingColors(true);
       const categoryParam2 = CATEGORY_API_BY_SLUG[categorySlug] || 'lvt';
-      const jsonPath = `/api/colors?category=${categoryParam2}`;
+      const listingParam = resolvedListingMode === 'all' ? '' : `&listing=${resolvedListingMode}`;
+      const jsonPath = `/api/colors?category=${categoryParam2}${listingParam}`;
 
       console.log(`CategoryTabs: Fetching colors from ${jsonPath}...`);
       fetch(jsonPath)
@@ -371,7 +401,11 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
           // Handle different JSON structures: LVT has data.colors, Linoleum/Vinil have data.collections[].colors
           let colorsArray: any[] = [];
           if (NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]) && data.collections && Array.isArray(data.collections)) {
-            const visibleCollections = filterCategoryListingCollections(categorySlug, data.collections);
+            const visibleCollections = filterCategoryListingCollections(
+              categorySlug,
+              data.collections,
+              resolvedListingMode
+            );
             // Flatten colors from all collections
             colorsArray = visibleCollections.flatMap((collection: any) =>
               (collection.colors || []).map((color: any) => ({
@@ -537,7 +571,7 @@ export default function CategoryTabs({ collections, colors: legacyColors, brands
           hasLoadedColors.current = true; // Mark as loaded even on error to prevent retry loop
         });
     }
-  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors, vinylType, collections, initialColorSlug]);
+  }, [activeTab, categorySlug, loadingColors, brandsRecord, useJsonColors, vinylType, collections, initialColorSlug, resolvedListingMode]);
 
   // Kolekcije: grid kao ostale kategorije (2–3 kolone). Parket isto kao ceo sajt.
   const isCollectionsSingleColumn = false;

@@ -143,6 +143,10 @@
     @apply bg-lime-50 text-lime-700;
   }
 
+  .badge-lajsne {
+    @apply bg-rose-50 text-rose-700;
+  }
+
   .badge-tekstilne {
     @apply bg-teal-50 text-teal-700;
   }

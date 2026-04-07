@@ -35,6 +35,7 @@ npm start
 
 - Production deploy for this repo should go through `git push` and Vercel auto-deploy from `main`.
 - Root `.vercelignore` excludes local heavyweight artifacts such as `.next`, `node_modules`, `tmp`, `output`, and archive folders so an accidental local `vercel deploy` cannot package gigabytes of workspace noise.
+- Contract drift gate now runs in `.github/workflows/contract-tests.yml` for every PR and every push to `main`.
 
 ## Key Features
 
@@ -124,6 +125,7 @@ PODOVI/
 │   │   ├── colors/         #   Color/variant data endpoint
 │   │   ├── contact/        #   Contact form submission
 │   │   ├── inquiries/      #   Product inquiry submission
+│   │   ├── ops/            #   Internal ops-console draft contract endpoints
 │   │   ├── products/       #   Product data endpoint
 │   │   └── search/         #   Global product search
 │   ├── sitemap.ts          # Dynamic sitemap generation
@@ -188,6 +190,7 @@ PODOVI/
 │   ├── mailer/             # Email sending utilities
 │   ├── seo/                # SEO utilities & structured data
 │   ├── supabase/           # Supabase client configuration
+│   ├── ops/                # Ops-console metadata/docs service contract + invariants
 │   └── utils/              # General utility functions
 │
 ├── public/
@@ -301,6 +304,8 @@ PODOVI/
 | `npm run build` | Validate images + build production |
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint |
+| `npm run test:contract` | Run resolver + color API contract regression tests (Vitest snapshots) |
+| `npm run test:contract:update` | Re-record contract snapshots after intentional contract changes |
 | `npm run check:images` | Check product image paths |
 | `npm run validate:images` | Validate all image paths exist (runs before build) |
 | `npm run normalize:colors` | Normalize JSON color data |
@@ -324,6 +329,13 @@ GMAIL_APP_PASSWORD=your-16-character-app-password
 # Optional: Protect /crm with HTTP Basic Auth
 # CRM_BASIC_AUTH_USERNAME=crm
 # CRM_BASIC_AUTH_PASSWORD=change-me
+
+# Required for internal /api/ops routes.
+# If OPS_BASIC_AUTH_USERNAME / OPS_BASIC_AUTH_PASSWORD are not set,
+# the ops endpoints stay disabled.
+# OPS_BASIC_AUTH_USERNAME=ops
+# OPS_BASIC_AUTH_PASSWORD=change-me
+# OPS_BASIC_AUTH_ACTOR_ID=ops-admin
 ```
 
 Additional variables used in `.env.local`:
@@ -339,6 +351,9 @@ SUPABASE_PROJECT_REF=           # Optional explicit project ref for upload scrip
 SUPABASE_PROJECT_NAME=podovi    # Optional fallback project name for upload scripts
 CRM_BASIC_AUTH_USERNAME=        # Optional: if set together with password, /crm requires HTTP Basic Auth
 CRM_BASIC_AUTH_PASSWORD=        # Optional: password for /crm Basic Auth
+OPS_BASIC_AUTH_USERNAME=        # Enables /api/ops; if omitted, ops can reuse CRM Basic Auth creds when those are configured
+OPS_BASIC_AUTH_PASSWORD=        # Password for /api/ops Basic Auth
+OPS_BASIC_AUTH_ACTOR_ID=        # Optional stable actorId used for ops role binding lookup
 ```
 
 ## Database
