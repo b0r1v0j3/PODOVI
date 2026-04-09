@@ -12,7 +12,7 @@ const __dirname = dirname(__filename);
 // Load environment variables from .env.local
 dotenv.config({ path: join(__dirname, '..', '.env.local') });
 
-const GMAIL_USER = process.env.GMAIL_USER || 'prodaja@podovi.online';
+const GMAIL_USER = process.env.GMAIL_USER || 'podovidoo@gmail.com';
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
 
 if (!GMAIL_APP_PASSWORD) {

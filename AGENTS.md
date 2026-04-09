@@ -68,7 +68,7 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 # Gmail SMTP
-GMAIL_USER=prodaja@podovi.online
+GMAIL_USER=podovidoo@gmail.com
 GMAIL_APP_PASSWORD=
 
 # App

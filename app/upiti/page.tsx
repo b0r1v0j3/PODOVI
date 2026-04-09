@@ -53,8 +53,8 @@ export default function InquiryPage() {
                   </div>
                   <div>
                     <span className="block text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Email</span>
-                    <a href="mailto:prodaja@podovi.online" className="text-lg font-medium text-gray-900 hover:text-primary-600 transition-colors break-all">
-                      prodaja@podovi.online
+                    <a href="mailto:podovidoo@gmail.com" className="text-lg font-medium text-gray-900 hover:text-primary-600 transition-colors break-all">
+                      podovidoo@gmail.com
                     </a>
                   </div>
                 </li>

@@ -163,7 +163,7 @@ export default function Footer() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <a href="mailto:prodaja@podovi.online" className="hover:text-white transition-colors duration-200 pt-1">prodaja@podovi.online</a>
+                  <a href="mailto:podovidoo@gmail.com" className="hover:text-white transition-colors duration-200 pt-1">podovidoo@gmail.com</a>
                 </li>
                 <li className="flex items-start group">
                   <div className="w-8 h-8 rounded-lg bg-gray-800 group-hover:bg-primary-600/20 flex items-center justify-center flex-shrink-0 mr-3 transition-colors duration-200">

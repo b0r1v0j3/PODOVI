@@ -13,12 +13,12 @@ export class EmailMailer implements IMailer {
   private adminEmail: string;
 
   constructor() {
-    this.adminEmail = process.env.ADMIN_EMAIL || 'prodaja@podovi.online';
+    this.adminEmail = process.env.ADMIN_EMAIL || 'podovidoo@gmail.com';
 
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.GMAIL_USER || 'prodaja@podovi.online',
+        user: process.env.GMAIL_USER || 'podovidoo@gmail.com',
         pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password (not regular password)
       },
     });
@@ -133,7 +133,7 @@ export class EmailMailer implements IMailer {
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
             <p style="margin: 0;"><strong>Kontakt prodaje:</strong></p>
             <ul style="list-style: none; padding: 0; margin-top: 10px;">
-              <li style="margin-bottom: 8px;">📧 <a href="mailto:prodaja@podovi.online" style="color: #2563eb; text-decoration: none;">prodaja@podovi.online</a></li>
+              <li style="margin-bottom: 8px;">📧 <a href="mailto:podovidoo@gmail.com" style="color: #2563eb; text-decoration: none;">podovidoo@gmail.com</a></li>
               <li>📞 <a href="tel:+381641234567" style="color: #2563eb; text-decoration: none;">064 123 4567</a></li>
             </ul>
           </div>

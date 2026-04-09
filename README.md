@@ -320,11 +320,11 @@ Copy `.env.example` to `.env.local`:
 # Gmail SMTP Configuration for inquiry emails
 # Create an App Password at: https://myaccount.google.com/apppasswords
 # (Requires 2-Factor Authentication to be enabled on the Gmail account)
-GMAIL_USER=prodaja@podovi.online
+GMAIL_USER=podovidoo@gmail.com
 GMAIL_APP_PASSWORD=your-16-character-app-password
 
 # Optional: Override admin email if different from GMAIL_USER
-# ADMIN_EMAIL=prodaja@podovi.online
+# ADMIN_EMAIL=podovidoo@gmail.com
 
 # Optional: Protect /crm with HTTP Basic Auth
 # CRM_BASIC_AUTH_USERNAME=crm

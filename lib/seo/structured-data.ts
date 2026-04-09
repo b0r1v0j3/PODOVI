@@ -43,7 +43,7 @@ export function generateOrganizationSchema() {
     description: 'Vodeći uvoznik i distributer kvalitetnih podnih obloga u Srbiji',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    email: 'prodaja@podovi.online',
+    email: 'podovidoo@gmail.com',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+381-21-2982-444',

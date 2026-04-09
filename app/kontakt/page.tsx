@@ -152,8 +152,8 @@ function ContactPageContent() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Email</h3>
-                  <a href="mailto:prodaja@podovi.online" className="text-gray-600 hover:text-primary-600 transition">
-                    prodaja@podovi.online
+                  <a href="mailto:podovidoo@gmail.com" className="text-gray-600 hover:text-primary-600 transition">
+                    podovidoo@gmail.com
                   </a>
                 </div>
               </div>
