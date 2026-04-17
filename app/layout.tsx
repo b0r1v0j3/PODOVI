@@ -16,13 +16,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Podovi - Katalog podnih obloga",
-  description: "Pronađite savršen pod za vaš prostor. Širok izbor laminata, vinila, parketa i drugih podnih obloga od vodećih brendova.",
-  keywords: "podovi, laminat, vinil, parket, podne obloge, Srbija",
+  title: "Podovi.online - Katalog podnih obloga i pratećeg asortimana",
+  description: "Katalog podnih obloga, lajsni, otirača i specijalnih sistema za stambene, poslovne i tehničke prostore.",
+  keywords: "podovi, laminat, vinil, parket, lajsne, otirači, ulazni sistemi, podne obloge, Srbija",
   authors: [{ name: "Podovi" }],
   openGraph: {
     title: "Vaš Pod. Vaš Stil. Vaša Priča.",
-    description: "Sve vrste podova, prateći asortiman i alati za podove.",
+    description: "Podne obloge, lajsne, otirači i prateći sistemi na jednom mestu.",
     type: "website",
     locale: "sr_RS",
     url: SITE_URL,
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Podovi - Katalog podnih obloga",
+        alt: "Podovi.online katalog asortimana",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Vaš Pod. Vaš Stil. Vaša Priča.",
-    description: "Sve vrste podova, prateći asortiman i alati za podove.",
+    description: "Podne obloge, lajsne, otirači i prateći sistemi na jednom mestu.",
     images: ["/og-image.jpg"],
   },
 };

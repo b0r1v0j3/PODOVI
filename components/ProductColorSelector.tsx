@@ -6,6 +6,7 @@ import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
 import FavoriteButton from './FavoriteButton';
 import { splitProductTitle } from '@/lib/utils/name-parser';
+import { getCustomColorHeroImageState, getPrimaryColorImage } from '@/lib/utils/product-images';
 
 import { ProductSpec } from '@/types';
 
@@ -115,11 +116,55 @@ export default function ProductColorSelector({
     }
     return name;
   }, [originalProductName, productName, brand]);
+  const customColorHeroState = useMemo(
+    () => getCustomColorHeroImageState(customColors, selectedColorSlug, initialImage),
+    [customColors, selectedColorSlug, initialImage]
+  );
+  const activeCustomColor = useMemo(
+    () => (
+      customColorHeroState.activeColorSlug
+        ? customColors?.find((color: any) => color.slug === customColorHeroState.activeColorSlug) || null
+        : null
+    ),
+    [customColors, customColorHeroState.activeColorSlug]
+  );
+  const activeColorContext = useMemo(() => {
+    if (selectedColor) {
+      return selectedColor;
+    }
+
+    if (!activeCustomColor) {
+      return null;
+    }
+
+    return {
+      code: String(activeCustomColor.code || '').trim(),
+      name: String(activeCustomColor.name || activeCustomColor.full_name || '').trim(),
+    };
+  }, [selectedColor, activeCustomColor]);
+  const displayProductTitle = useMemo(() => {
+    const rawName = activeColorContext?.name
+      ? (
+        activeColorContext.code && activeColorContext.name.startsWith(activeColorContext.code)
+          ? activeColorContext.name.substring(activeColorContext.code.length).trim()
+          : activeColorContext.name
+      )
+      : productName;
+
+    return splitProductTitle(rawName, collectionDisplayName || collectionName);
+  }, [activeColorContext, productName, collectionDisplayName, collectionName]);
+  const shareTitle = useMemo(() => {
+    if (displayProductTitle.collection && displayProductTitle.collection !== displayProductTitle.color) {
+      return `${displayProductTitle.color} - ${displayProductTitle.collection}`;
+    }
+
+    return displayProductTitle.color || productName;
+  }, [displayProductTitle, productName]);
 
   // Update selectedColorSlug when URL changes
   useEffect(() => {
     const urlColorSlug = searchParams.get('color') || undefined;
-    if (urlColorSlug && urlColorSlug !== selectedColorSlug) {
+    if (urlColorSlug !== selectedColorSlug) {
       setSelectedColorSlug(urlColorSlug);
     }
   }, [searchParams, selectedColorSlug]);
@@ -170,16 +215,36 @@ export default function ProductColorSelector({
     }
   }, [selectedImage, onCharacteristicsChange]);
 
-  // Kad imamo customColors (parket) i ?color= u URL-u, odmah postavi sliku na tu boju
+  // Za customColors kolekcije: bez ?color ostaje collection cover, sa ?color aktivna je izabrana boja.
   useEffect(() => {
-    if (!customColors?.length || !initialColorSlug) return;
-    const color = customColors.find((c: any) => c.slug === initialColorSlug);
-    if (color?.image_url) {
-      setSelectedImage({ url: color.image_url, alt: color.name || color.full_name || '' });
-      setSelectedImages([{ url: color.image_url, alt: color.name || color.full_name || '' }]);
-      if (color.code && color.name) setSelectedColor({ code: color.code, name: color.name });
+    if (!customColors?.length) {
+      return;
     }
-  }, [customColors, initialColorSlug]);
+
+    if (!selectedColorSlug) {
+      setSelectedColor(null);
+      setSelectedCharacteristics(null);
+      setSelectedImages([]);
+      setCurrentImageIndex(0);
+      setSelectedImage(initialImage);
+      if (onCharacteristicsChange) {
+        onCharacteristicsChange(null);
+      }
+      return;
+    }
+
+    const color = customColors.find((c: any) => c.slug === selectedColorSlug);
+    const colorImage = getPrimaryColorImage(color);
+    if (!color || !colorImage?.url) {
+      return;
+    }
+
+    setSelectedImage({ url: colorImage.url, alt: colorImage.alt });
+    setSelectedImages([{ url: colorImage.url, alt: colorImage.alt }]);
+    if (color.code && color.name) {
+      setSelectedColor({ code: color.code, name: color.name });
+    }
+  }, [customColors, selectedColorSlug, initialImage, onCharacteristicsChange]);
 
   // Update selected image when currentImageIndex changes
   useEffect(() => {
@@ -219,16 +284,31 @@ export default function ProductColorSelector({
               {/* Pre-render ALL color images - instant switching via CSS display */}
               {customColors && customColors.length > 0 ? (
                 <>
-                  {customColors.map((color: { slug?: string; image_url?: string; texture_url?: string; name?: string; full_name?: string }) => {
-                    const imgUrl = color.image_url || color.texture_url;
-                    const isActive = color.slug === selectedColorSlug ||
-                      (color.slug === customColors[0]?.slug && !selectedColorSlug);
+                  {customColorHeroState.image && !customColorHeroState.activeColorSlug && (
+                    <img
+                      key={`collection-cover-${customColorHeroState.image.url}`}
+                      src={customColorHeroState.image.url}
+                      alt={customColorHeroState.image.alt}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{
+                        opacity: 1,
+                        zIndex: 10,
+                        transition: 'opacity 200ms ease-in-out',
+                      }}
+                      loading="eager"
+                      decoding="async"
+                    />
+                  )}
+                  {customColors.map((color: { slug?: string; image_url?: string; texture_url?: string; lifestyle_url?: string; image?: string; name?: string; full_name?: string }) => {
+                    const primaryColorImage = getPrimaryColorImage(color);
+                    const imgUrl = primaryColorImage?.url;
+                    const isActive = color.slug === customColorHeroState.activeColorSlug;
                     if (!imgUrl) return null;
                     return (
                       <img
                         key={color.slug}
                         src={imgUrl}
-                        alt={color.name || color.full_name || ''}
+                        alt={primaryColorImage?.alt || color.name || color.full_name || ''}
                         className="absolute inset-0 w-full h-full object-cover"
                         style={{
                           opacity: isActive ? 1 : 0,
@@ -317,14 +397,14 @@ export default function ProductColorSelector({
             <div className="flex items-center justify-between mt-4">
               {/* Levo: ime boje */}
               <div className="flex-1 min-w-0">
-                {selectedColor ? (
+                {activeColorContext ? (
                   <div className="flex items-baseline gap-2">
                     <p className="text-lg font-semibold text-gray-900 truncate">
                       {(() => {
-                        let name = selectedColor.name;
+                        let name = activeColorContext.name;
                         // Strip code prefix if name starts with code
-                        if (selectedColor.code && name.startsWith(selectedColor.code)) {
-                          name = name.substring(selectedColor.code.length).trim();
+                        if (activeColorContext.code && name.startsWith(activeColorContext.code)) {
+                          name = name.substring(activeColorContext.code.length).trim();
                         }
 
                         const collName = collectionDisplayName || collectionName;
@@ -332,8 +412,8 @@ export default function ProductColorSelector({
                         return color;
                       })()}
                     </p>
-                    {selectedColor.code && (
-                      <p className="text-sm text-gray-400 font-medium">{selectedColor.code}</p>
+                    {activeColorContext.code && (
+                      <p className="text-sm text-gray-400 font-medium">{activeColorContext.code}</p>
                     )}
                   </div>
                 ) : null}
@@ -345,7 +425,7 @@ export default function ProductColorSelector({
                 <button
                   onClick={() => {
                     if (navigator.share) {
-                      navigator.share({ title: productName, url: window.location.href }).catch(() => { });
+                      navigator.share({ title: shareTitle, url: window.location.href }).catch(() => { });
                     } else {
                       navigator.clipboard.writeText(window.location.href).then(() => {
                         alert('Link kopiran!');
@@ -400,37 +480,18 @@ export default function ProductColorSelector({
             {/* Title: color name in h1 when selected, otherwise split color name; subtitle = collection name */}
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-1 tracking-tight">
-                {(() => {
-                  let rawName = selectedColor
-                    ? (selectedColor.name.startsWith(selectedColor.code) ? selectedColor.name.substring(selectedColor.code.length).trim() : selectedColor.name)
-                    : productName;
-
-                  const { color } = splitProductTitle(rawName, collectionDisplayName || collectionName);
-                  return color;
-                })()}
+                {displayProductTitle.color}
               </h1>
 
-              {(() => {
-                let rawName = selectedColor
-                  ? (selectedColor.name.startsWith(selectedColor.code) ? selectedColor.name.substring(selectedColor.code.length).trim() : selectedColor.name)
-                  : productName;
-                const { collection } = splitProductTitle(rawName, collectionDisplayName || collectionName);
-
-                if (collection) {
-                  return (
-                    <p className="text-lg text-gray-500 font-medium mb-3">
-                      {collection}
-                    </p>
-                  );
-                } else if (shortDescription) {
-                  return (
-                    <p className="text-lg text-gray-600 mb-3">
-                      {shortDescription}
-                    </p>
-                  );
-                }
-                return null;
-              })()}
+              {displayProductTitle.collection ? (
+                <p className="text-lg text-gray-500 font-medium mb-3">
+                  {displayProductTitle.collection}
+                </p>
+              ) : shortDescription ? (
+                <p className="text-lg text-gray-600 mb-3">
+                  {shortDescription}
+                </p>
+              ) : null}
             </div>
 
             {/* Price or "Cena na upit" */}
@@ -463,7 +524,6 @@ export default function ProductColorSelector({
             )}
 
             {(() => {
-              const activeCustomColor = customColors?.find((c: any) => c.slug === selectedColorSlug) || customColors?.[0];
               const backingVariants = activeCustomColor?.backing_variants;
 
               if (backingVariants && Array.isArray(backingVariants) && backingVariants.length > 0) {
@@ -534,8 +594,8 @@ export default function ProductColorSelector({
                   // Construct nice name: deduplicate collection name if present in color name
                   let niceName = collectionDisplayName || productName;
 
-                  if (selectedColor?.name) {
-                    let variantName = selectedColor.name;
+                  if (activeColorContext?.name) {
+                    let variantName = activeColorContext.name;
                     // Check if variant name starts with the collection/product name (case insensitive)
                     if (niceName && variantName.toLowerCase().startsWith(niceName.toLowerCase())) {
                       // Remove the repeated prefix

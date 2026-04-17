@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Category } from '@/types';
+import { shouldBypassNextImageOptimization } from '@/lib/utils/image-runtime';
 
 interface CategoryCardProps {
   category: Category;
+  productCount?: number;
 }
 
-export default function CategoryCard({ category }: CategoryCardProps) {
+export default function CategoryCard({ category, productCount }: CategoryCardProps) {
   const isLVT = category.slug === 'lvt' || category.id === '6';
   const isLinoleum = category.slug === 'linoleum' || category.id === '7';
   const isCarpet = category.slug === 'tekstilne-ploce' || category.id === '4';
@@ -18,6 +20,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   const isIndustrial = category.slug === 'industrijske-ploce' || category.id === '9';
   const isSport = category.slug === 'sport' || category.id === '10';
   const isLajsne = category.slug === 'lajsne' || category.id === '11';
+  const isOtiraci = category.slug === 'otiraci' || category.id === '12';
   const saharaNoirImage = '/images/products/lvt/colors/creation-55/1742-sahara-noir/pod/1742-sahara-noir-pod.jpg';
   const parketImage = '/images/products/galloni-oak.jpg';
   const dekingImage = '/EDGE-DarkTeak-Swatch.jpg';
@@ -55,14 +58,6 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
-        ) : isDeking ? (
-          <Image
-            src={dekingImage}
-            alt={category.name}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
-          />
         ) : isCarpet ? (
           <Image
             src={carpetImage}
@@ -71,7 +66,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
           />
-        ) : (isLinoleum || isVinil || isLaminat || isESD || isIndustrial || isSport || isLajsne) && category.image ? (
+        ) : (isLinoleum || isVinil || isLaminat || isESD || isIndustrial || isSport || isLajsne || isOtiraci) && category.image ? (
           // Show category image for categories that already have representative visuals
           <Image
             src={category.image}
@@ -79,6 +74,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 200px"
+            unoptimized={shouldBypassNextImageOptimization(category.image)}
           />
         ) : (
           // Show generic icon for other categories
@@ -102,6 +98,11 @@ export default function CategoryCard({ category }: CategoryCardProps) {
         <p className="text-[15px] text-gray-500 line-clamp-2 leading-relaxed font-light">
           {category.description}
         </p>
+        {productCount !== undefined ? (
+          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
+            {productCount} proizvoda
+          </p>
+        ) : null}
       </div>
     </Link>
   );

@@ -40,8 +40,8 @@ npm start
 ## Key Features
 
 ### Product Catalog
-- Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport, Lajsne)
-- Browse by **brand** (Tarkett, Gerflor, BLOQ, Wolflor)
+- Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport, Lajsne, Otirači)
+- Browse by **brand** (Tarkett, Gerflor, BLOQ, Wolflor, Techem)
 - **Product filters**: search, brand, price range, stock status, color, collection, thickness, wood type
 - **Color variant selector** with instant image switching (no page reload)
 - **Product detail pages** with image galleries, specs, and inquiry CTA
@@ -70,7 +70,7 @@ npm start
 - **WhatsApp button** for quick customer communication
 
 ### SEO & Performance
-- Structured data (Organization, Website, Product schemas)
+- Structured data (Organization, Website, Product, Breadcrumb, ItemList / CollectionPage schemas)
 - Dynamic meta tags and Open Graph images
 - Sitemap generation (`/sitemap.xml`) & robots.txt (`/robots.txt`)
 - Optimized images with Next.js Image component
@@ -86,6 +86,7 @@ npm start
 - `public/data/tarkett_heterogeneous_vinyl_colors.json` powers Tarkett heterogeneous vinyl collections (15 collections, 441 colors)
 - `public/data/tarkett_sport_colors.json` powers Tarkett Sport collections (22 collections, 255 colors)
 - `public/data/tarkett_lajsne_variants.json` powers Tarkett Lajsne collections (12 collections, 326 variants), with UI copy intentionally using `Varijante` instead of generic `Boje`; collection and variant JPG assets are mirrored to Supabase `product-images` under `products/lajsne/...`
+- `public/data/techem_mats.json` powers Techem `Otirači` as a flat catalog branch (46 canonical products) with localized Serbian user-facing copy, while canonical URLs/slugs still come from the upstream English Techem tree
 - `public/data/tarkett_wood_collection_index.json` stores official Tarkett Parket/Laminat collection descriptions, hero images, PDF documents, and collection specs scraped from the live Serbia catalog; collection PDFs are normalized to `media.tarkett-image.com/docs/*.pdf`
 - `public/data/tarkett_documents_index.json` provides curated Tarkett PDF fallbacks for Laminat and Parket collection pages
 - `public/data/welding_rods.json` stores exact DLW / Gerflor linoleum welding rod references grouped by rod ref, while `public/data/welding_accessories.json` stores curated Gerflor/Tarkett generic welding systems (`CR40`, `MCR40`, `BBR40`, `CR50`, Tarkett vinyl/linoleum rod collections)
@@ -105,6 +106,7 @@ npm start
 - `scripts/audit-tarkett-sync.ts` compares official Tarkett Parket/Laminat collections against `lib/data/tarkett-products.ts`, `public/data/tarkett_documents_index.json`, and Supabase when env vars are available, including exact design-slug comparison, duplicate detection, and parket alias normalization for collection-specific URL collisions
 - `scripts/sync-tarkett-supabase.ts` creates a timestamped backup in `output/`, performs a dry-run diff, and can apply the canonical Tarkett Parket/Laminat sync into Supabase once `.env.local` contains the pulled Vercel env vars
 - `scripts/audit-catalog-quality.ts` runs a broader product-quality audit over the canonical catalog sources, collection headers, documents, hero images, descriptions, and specs, explicitly flags stale Tarkett `/large/*.pdf` document URLs, now includes Tarkett Lajsne collection + nested JSON coverage with `missing_documents` checks, and writes `output/catalog-quality-audit.json`
+- `lib/seo/listing-page-copy.ts` centralizes richer category/brand metadata and intro copy for listing surfaces such as `Otirači` and `Techem`, and `/api/search` now matches category/brand helper copy in addition to names/slugs
 
 ## Project Structure
 
@@ -115,7 +117,7 @@ PODOVI/
 │   ├── layout.tsx          # Root layout (providers, analytics, header/footer)
 │   ├── kategorije/         # Categories (Laminat, Vinil, Parket, etc.)
 │   ├── proizvodi/          # Individual product pages
-│   ├── brendovi/           # Brand pages (Tarkett, Gerflor, BLOQ, Wolflor)
+│   ├── brendovi/           # Brand pages (Tarkett, Gerflor, BLOQ, Wolflor, Techem)
 │   ├── kontakt/            # Contact page with form
 │   ├── crm/                # Internal lead CRM page
 │   ├── omiljeni/           # Favorites page
@@ -158,7 +160,7 @@ PODOVI/
 │   ├── ShareButtons.tsx    # Share via Web Share API / clipboard
 │   ├── WhatsAppButton.tsx  # Direct WhatsApp link button
 │   ├── CategoryCard.tsx    # Category card on homepage
-│   ├── BrandCard.tsx       # Brand card on homepage
+│   ├── BrandCard.tsx       # Brand card on /brendovi listing
 │   ├── Breadcrumbs.tsx     # Breadcrumb navigation
 │   ├── CertificationBadges.tsx  # Product certification badges
 │   ├── EcoFeatures.tsx     # Eco-friendly features display

@@ -5,53 +5,72 @@ exports[`resolve-product contract > merges selected color data into collection p
   "afterName": "0303 MANITOBA",
   "afterShortDescription": "Mipolam Accord - MANITOBA",
   "beforeName": "Mipolam Accord",
+  "documentCount": 0,
   "hasFormatSpec": true,
   "hasThicknessSpec": true,
   "imageUrl": "/images/products/vinyl/mipolam-accord/0303-manitoba.jpg",
   "selectedColorSlug": "mipolam-accord-0303-manitoba",
-  "specCount": 12,
+  "specCount": 17,
   "specSample": [
-    {
-      "key": "format",
-      "label": "Format",
-      "value": "Rolna",
-    },
-    {
-      "key": "thickness",
-      "label": "Ukupna debljina",
-      "value": "2.0 mm",
-    },
-    {
-      "key": "compatible_welding_accessory",
-      "label": "Kompatibilna elektroda za varenje",
-      "value": "Gerflor CR40",
-    },
-    {
-      "key": "alternative_welding_accessory",
-      "label": "Alternativna elektroda za varenje",
-      "value": "Gerflor MCR40",
-    },
     {
       "key": "tip",
       "label": "Tip",
       "value": "Homogeni vinil",
     },
     {
-      "key": "ukupna-debljina",
+      "key": "format",
+      "label": "Format",
+      "value": "Rolna",
+    },
+    {
+      "key": "ukupna_debljina",
       "label": "Ukupna debljina",
       "value": "2.0 mm",
     },
     {
-      "key": "sloj-habanja",
+      "key": "sloj_habanja",
       "label": "Sloj habanja",
       "value": "Kroz celu debljinu",
     },
     {
-      "key": "povr-inska-obrada",
+      "key": "površinska_obrada",
       "label": "Površinska obrada",
       "value": "Evercare™",
     },
+    {
+      "key": "klasa_upotrebe",
+      "label": "Klasa upotrebe",
+      "value": "Klasa 34/43",
+    },
+    {
+      "key": "vatrostojnost",
+      "label": "Vatrostojnost",
+      "value": "Bfl-s1",
+    },
+    {
+      "key": "tip_instalacije",
+      "label": "Tip instalacije",
+      "value": "Lepljenje",
+    },
   ],
+}
+`;
+
+exports[`resolve-product contract > merges selected-color documents into the server product contract when the color has richer docs than the collection 1`] = `
+{
+  "collectionSlug": "tarkett-bold",
+  "documentCount": 2,
+  "documents": [
+    {
+      "title": "Tehnički list",
+      "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002929-bold/mist-1/specifications",
+    },
+    {
+      "title": "Tabela formata",
+      "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002929-bold/mist-1/format-table",
+    },
+  ],
+  "selectedColorSlug": "tarkett-bold-color-mist-1",
 }
 `;
 
@@ -60,28 +79,23 @@ exports[`resolve-product contract > resolves a lajsne collection slug into stabl
   "brandId": "3",
   "categoryId": "11",
   "collectionSlug": null,
-  "detailsSectionCount": 0,
-  "documentCount": 0,
+  "detailsSectionCount": 1,
+  "documentCount": 4,
   "hasPrimaryImage": true,
-  "id": "collection-lajsne-tarkett-dekorativne-zidne-lajsne-za-lvt",
+  "id": "tarkett-lajsne-tarkett-dekorativne-zidne-lajsne-za-lvt",
   "name": "Dekorativne zidne lajsne za LVT",
-  "primaryImageUrl": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/tarkett-dekorativne-zidne-lajsne-za-lvt-aluminium.jpg?v=20260331152443",
-  "shortDescription": "Dekorativne zidne lajsne za LVT",
+  "primaryImageUrl": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/collection.jpg?v=20260331152443",
+  "shortDescription": "Dekorativne lajsne za LVT su kompaktne PVC zidne lajsne sa dekorativnim slojem i PUR tretmanom čime se postiže visoka otpornost na abraziju.",
   "slug": "tarkett-dekorativne-zidne-lajsne-za-lvt",
   "specCount": 14,
   "specSample": [
     {
-      "key": "format",
-      "label": "Format",
-      "value": "Skirting 1,95m",
+      "key": "collection",
+      "label": "Kolekcija",
+      "value": "Dekorativne zidne lajsne za LVT",
     },
     {
-      "key": "thickness",
-      "label": "Ukupna debljina",
-      "value": "10 mm",
-    },
-    {
-      "key": "tip-proizvoda",
+      "key": "tip_proizvoda",
       "label": "Tip proizvoda",
       "value": "Wall base",
     },
@@ -91,7 +105,12 @@ exports[`resolve-product contract > resolves a lajsne collection slug into stabl
       "value": "Lajsne LVT 60x10",
     },
     {
-      "key": "ukupna-debljina",
+      "key": "format",
+      "label": "Format",
+      "value": "Skirting 1,95m",
+    },
+    {
+      "key": "ukupna_debljina",
       "label": "Ukupna debljina",
       "value": "10 mm",
     },
@@ -101,12 +120,12 @@ exports[`resolve-product contract > resolves a lajsne collection slug into stabl
       "value": "60 mm",
     },
     {
-      "key": "du-ina",
+      "key": "duzina",
       "label": "Dužina",
       "value": "195 cm",
     },
     {
-      "key": "komada-u-pakovanju",
+      "key": "komada_u_pakovanju",
       "label": "Komada u pakovanju",
       "value": "5",
     },
@@ -122,52 +141,52 @@ exports[`resolve-product contract > resolves a vinyl collection slug into stable
   "detailsSectionCount": 0,
   "documentCount": 0,
   "hasPrimaryImage": true,
-  "id": "collection-vinil-gerflor-mipolam-accord",
+  "id": "vinyl-coll-mipolam-accord",
   "name": "Mipolam Accord",
   "primaryImageUrl": "/images/products/vinyl/mipolam-accord/0301-louise.jpg",
-  "shortDescription": "Mipolam Accord",
+  "shortDescription": "Mipolam Accord — 22 boja",
   "slug": "gerflor-mipolam-accord",
-  "specCount": 12,
+  "specCount": 8,
   "specSample": [
-    {
-      "key": "format",
-      "label": "Format",
-      "value": "Rolna",
-    },
-    {
-      "key": "thickness",
-      "label": "Ukupna debljina",
-      "value": "2.0 mm",
-    },
-    {
-      "key": "compatible_welding_accessory",
-      "label": "Kompatibilna elektroda za varenje",
-      "value": "Gerflor CR40",
-    },
-    {
-      "key": "alternative_welding_accessory",
-      "label": "Alternativna elektroda za varenje",
-      "value": "Gerflor MCR40",
-    },
     {
       "key": "tip",
       "label": "Tip",
       "value": "Homogeni vinil",
     },
     {
-      "key": "ukupna-debljina",
+      "key": "format",
+      "label": "Format",
+      "value": "Rolna",
+    },
+    {
+      "key": "ukupna_debljina",
       "label": "Ukupna debljina",
       "value": "2.0 mm",
     },
     {
-      "key": "sloj-habanja",
+      "key": "sloj_habanja",
       "label": "Sloj habanja",
       "value": "Kroz celu debljinu",
     },
     {
-      "key": "povr-inska-obrada",
+      "key": "površinska_obrada",
       "label": "Površinska obrada",
       "value": "Evercare™",
+    },
+    {
+      "key": "klasa_upotrebe",
+      "label": "Klasa upotrebe",
+      "value": "Klasa 34/43",
+    },
+    {
+      "key": "vatrostojnost",
+      "label": "Vatrostojnost",
+      "value": "Bfl-s1",
+    },
+    {
+      "key": "tip_instalacije",
+      "label": "Tip instalacije",
+      "value": "Lepljenje",
     },
   ],
 }

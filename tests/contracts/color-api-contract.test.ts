@@ -1,6 +1,7 @@
 import { GET as colorDataRouteGet } from '@/app/api/color-data/route';
 import { GET as colorsRouteGet } from '@/app/api/colors/route';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
+import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.json';
 import { NextRequest } from 'next/server';
 import { describe, expect, it } from 'vitest';
 
@@ -27,6 +28,16 @@ if (!fixtureCollection) {
 const fixtureColor = (fixtureCollection.colors || []).find((color) => Boolean(color.image || color.image_url));
 if (!fixtureColor) {
   throw new Error('Contract test fixture missing: no image-backed lajsne color variant.');
+}
+
+const vinylFixtureCollection = ((((tarkettVinylHomeColorsData as any).collections || []) as NestedCollection[])).find(
+  (collection) => collection.slug === 'tarkett-bold'
+);
+
+const vinylFixtureColor = (vinylFixtureCollection?.colors || []).find((color: any) => color.slug === 'tarkett-bold-color-mist-1');
+
+if (!vinylFixtureCollection || !vinylFixtureColor) {
+  throw new Error('Contract test fixture missing: no Tarkett Bold selected-color docs/specs fixture.');
 }
 
 function buildNestedColorSlug(collectionSlug: string, color: { code?: string; name?: string; slug?: string }) {
@@ -102,5 +113,36 @@ describe('color API contracts', () => {
 
     expect(compactContract).toMatchSnapshot();
   });
-});
 
+  it('returns selected-color docs + spec payload for a nested vinyl color with color-level documents', async () => {
+    const request = new NextRequest(
+      `http://localhost/api/color-data?categoryId=2&color=${encodeURIComponent(vinylFixtureColor.slug!)}`
+    );
+    const response = await colorDataRouteGet(request);
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(Array.isArray(body.documents)).toBe(true);
+    expect(Array.isArray(body.specs)).toBe(true);
+    expect(body.documents.length).toBeGreaterThan(0);
+    expect(body.specs.length).toBeGreaterThan(0);
+
+    const compactContract = {
+      colorSlug: vinylFixtureColor.slug,
+      documentCount: body.documents.length,
+      documents: body.documents.slice(0, 4).map((document: any) => ({
+        title: document.title,
+        url: document.url,
+      })),
+      specCount: body.specs.length,
+      specSample: body.specs.slice(0, 12).map((spec: any) => ({
+        key: spec.key,
+        label: spec.label,
+        value: spec.value,
+      })),
+      characteristicKeys: Object.keys(body.characteristics || {}).sort().slice(0, 12),
+    };
+
+    expect(compactContract).toMatchSnapshot();
+  });
+});

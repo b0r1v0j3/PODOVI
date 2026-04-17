@@ -44,7 +44,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <Link
               href="/"
               className={navLinkClass('/')}
@@ -65,6 +65,13 @@ export default function Header() {
               aria-current={isActive('/brendovi') ? 'page' : undefined}
             >
               Brendovi
+            </Link>
+            <Link
+              href="/kategorije/otiraci"
+              className={navLinkClass('/kategorije/otiraci')}
+              aria-current={isActive('/kategorije/otiraci') ? 'page' : undefined}
+            >
+              Otirači
             </Link>
             <Link
               href="/kontakt"
@@ -157,6 +164,14 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Brendovi
+            </Link>
+            <Link
+              href="/kategorije/otiraci"
+              className={mobileNavLinkClass('/kategorije/otiraci')}
+              aria-current={isActive('/kategorije/otiraci') ? 'page' : undefined}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Otirači
             </Link>
             <Link
               href="/kontakt"

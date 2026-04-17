@@ -1,5 +1,99 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`color API contracts > returns selected-color docs + spec payload for a nested vinyl color with color-level documents 1`] = `
+{
+  "characteristicKeys": [
+    "Debljina habajućeg sloja",
+    "Dizajn",
+    "Dužina",
+    "Efekat površine",
+    "Format",
+    "Komercijalna klasifikacija",
+    "Kompatibilna elektroda za varenje",
+    "Način ugradnje",
+    "Porodica boja",
+    "Površina",
+    "Površinski tretman",
+    "Pravac polaganja",
+  ],
+  "colorSlug": "tarkett-bold-color-mist-1",
+  "documentCount": 2,
+  "documents": [
+    {
+      "title": "Tehnički list",
+      "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002929-bold/mist-1/specifications",
+    },
+    {
+      "title": "Tabela formata",
+      "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002929-bold/mist-1/format-table",
+    },
+  ],
+  "specCount": 23,
+  "specSample": [
+    {
+      "key": "format",
+      "label": "Format",
+      "value": "Rolna 2,5 x 30 m",
+    },
+    {
+      "key": "thickness",
+      "label": "Ukupna debljina",
+      "value": "2 mm",
+    },
+    {
+      "key": "compatible_welding_accessory",
+      "label": "Kompatibilna elektroda za varenje",
+      "value": "Tarkett elektrode za varenje - vinil podovi",
+    },
+    {
+      "key": "tip",
+      "label": "Tip",
+      "value": "Heterogeni",
+    },
+    {
+      "key": "rezidencijalna-klasifikacija",
+      "label": "Rezidencijalna klasifikacija",
+      "value": "23 Teška",
+    },
+    {
+      "key": "komercijalna-klasifikacija",
+      "label": "Komercijalna klasifikacija",
+      "value": "32 General",
+    },
+    {
+      "key": "ukupna-debljina",
+      "label": "Ukupna debljina",
+      "value": "2 mm",
+    },
+    {
+      "key": "debljina-habaju-eg-sloja",
+      "label": "Debljina habajućeg sloja",
+      "value": "0,40 mm",
+    },
+    {
+      "key": "povr-inski-tretman",
+      "label": "Površinski tretman",
+      "value": "Pur Titan",
+    },
+    {
+      "key": "zaostala-ulegnu-a",
+      "label": "Zaostala ulegnuća",
+      "value": "≤ 0.20 mm",
+    },
+    {
+      "key": "zemlja-porekla",
+      "label": "Zemlja porekla",
+      "value": "Serbia",
+    },
+    {
+      "key": "tip-formata",
+      "label": "Tip formata",
+      "value": "Rolna",
+    },
+  ],
+}
+`;
+
 exports[`color API contracts > returns stable documents + characteristics shape for /api/color-data 1`] = `
 {
   "characteristicKeys": [

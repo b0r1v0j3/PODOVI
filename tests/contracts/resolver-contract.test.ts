@@ -1,9 +1,15 @@
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
+import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import type { Product } from '@/types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mergeSelectedColor, prepareCustomColors } from '@/lib/product-page/prepare-colors';
 import { normalizeCollectionSlug, resolveProductBySlug } from '@/lib/product-page/resolve-product';
+import { getGerflorLinoleumCollections } from '@/lib/utils/productDataLoader';
+import { getPrimaryColorImage } from '@/lib/utils/product-images';
+import { getCanonicalCollectionAliasHref } from '@/lib/utils/product-routes';
+import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.json';
+import { buildSpecsFromColor } from '@/lib/product-page/color-helpers';
 
 type NestedCollection = {
   slug: string;
@@ -24,6 +30,19 @@ const vinylFixtureCollection = (((vinylColorsData as any).collections || []) as 
 const lajsneFixtureCollection = (((tarkettLajsneData as any).collections || []) as NestedCollection[]).find(
   (collection) => collection.slug && (collection.colors || []).some((color) => Boolean(color.image || color.image_url))
 );
+const linoleumFixtureCollection = Array.from(
+  ((((linoleumColorsData as any).colors || []) as Array<{ collection?: string; image_url?: string }>))
+    .reduce<Map<string, number>>((counts, color) => {
+      const collectionSlug = String(color.collection || '').trim();
+      if (!collectionSlug || !color.image_url) {
+        return counts;
+      }
+
+      counts.set(collectionSlug, (counts.get(collectionSlug) || 0) + 1);
+      return counts;
+    }, new Map())
+    .entries()
+).find(([, count]) => count > 1);
 
 if (!vinylFixtureCollection) {
   throw new Error('Contract test fixture missing: no vinyl collection with at least two image-backed colors.');
@@ -33,6 +52,19 @@ if (!lajsneFixtureCollection) {
   throw new Error('Contract test fixture missing: no lajsne collection with image-backed variants.');
 }
 
+if (!linoleumFixtureCollection?.[0]) {
+  throw new Error('Contract test fixture missing: no linoleum collection with image-backed colors.');
+}
+
+const boldFixtureCollection = ((((tarkettVinylHomeColorsData as any).collections || []) as NestedCollection[])).find(
+  (collection) => collection.slug === 'tarkett-bold'
+);
+const boldFixtureColor = (boldFixtureCollection?.colors || []).find((color: any) => color.slug === 'tarkett-bold-color-mist-1');
+
+if (!boldFixtureCollection || !boldFixtureColor) {
+  throw new Error('Contract test fixture missing: no Tarkett Bold selected-color docs fixture.');
+}
+
 const vinylRouteSlug = vinylFixtureCollection.slug.startsWith('gerflor-')
   ? vinylFixtureCollection.slug
   : `gerflor-${vinylFixtureCollection.slug}`;
@@ -40,6 +72,8 @@ const vinylRouteSlug = vinylFixtureCollection.slug.startsWith('gerflor-')
 const lajsneRouteSlug = lajsneFixtureCollection.slug.startsWith('tarkett-')
   ? lajsneFixtureCollection.slug
   : `tarkett-${lajsneFixtureCollection.slug}`;
+
+const linoleumRouteSlug = linoleumFixtureCollection[0];
 
 const repositoryMocks = vi.hoisted(() => ({
   findBySlug: vi.fn(),
@@ -110,6 +144,28 @@ describe('resolve-product contract', () => {
     expect(summarizeProductContract(resolved as Product & { collectionSlug?: string })).toMatchSnapshot();
   });
 
+  it('resolves a linoleum collection slug to the same collection-cover contract as the loader fallback', async () => {
+    const resolved = await resolveProductBySlug(linoleumRouteSlug);
+    const loaderProduct = getGerflorLinoleumCollections().find((product) => product.slug === `gerflor-${linoleumRouteSlug}`);
+
+    expect(resolved).not.toBeNull();
+    expect(resolved?.categoryId).toBe('7');
+    expect(loaderProduct?.images?.[0]?.url).toBeTruthy();
+    expect(resolved?.images?.[0]?.url).toBe(loaderProduct?.images?.[0]?.url);
+  });
+
+  it('prepares linoleum custom colors on the collection route instead of falling back to global JSON lookups', async () => {
+    const resolved = await resolveProductBySlug(linoleumRouteSlug);
+
+    expect(resolved).not.toBeNull();
+
+    const customColors = await prepareCustomColors(resolved as Product, linoleumRouteSlug);
+
+    expect(customColors).toBeDefined();
+    expect(customColors!.length).toBeGreaterThan(1);
+    expect(customColors!.every((color) => color.collection === linoleumRouteSlug)).toBe(true);
+  });
+
   it('merges selected color data into collection product without breaking base contract fields', async () => {
     const resolved = await resolveProductBySlug(vinylRouteSlug);
     expect(resolved).not.toBeNull();
@@ -118,20 +174,30 @@ describe('resolve-product contract', () => {
     expect(customColors).toBeDefined();
     expect(customColors!.length).toBeGreaterThan(1);
 
-    const selectedColor = customColors![1];
     const before = resolved as Product;
+    const selectedColor = customColors!.find((color) => {
+      const candidateImage = color.image_url || color.texture_url;
+      return Boolean(color.slug && candidateImage && candidateImage !== before.images?.[0]?.url);
+    }) || customColors![1];
+    const expectedHeroImage = getPrimaryColorImage(selectedColor)?.url;
     const mutated = structuredClone(before) as Product;
+
+    expect(selectedColor.slug).toBeTruthy();
+    expect(expectedHeroImage).toBeTruthy();
 
     await mergeSelectedColor(mutated, selectedColor.slug);
 
     expect(mutated.name).not.toBe(before.name);
     expect(mutated.images?.length).toBeGreaterThan(0);
+    expect(mutated.images?.[0]?.url).toBe(expectedHeroImage);
+    expect(mutated.images?.[0]?.url).not.toBe(before.images?.[0]?.url);
 
     expect({
       selectedColorSlug: selectedColor.slug,
       beforeName: before.name,
       afterName: mutated.name,
       afterShortDescription: mutated.shortDescription,
+      documentCount: mutated.documents?.length || 0,
       imageUrl: mutated.images?.[0]?.url || null,
       specCount: mutated.specs?.length || 0,
       hasThicknessSpec: (mutated.specs || []).some((spec) => spec.key === 'thickness' || spec.key === 'overall_thickness'),
@@ -142,5 +208,96 @@ describe('resolve-product contract', () => {
         value: spec.value,
       })),
     }).toMatchSnapshot();
+  });
+
+  it('merges selected-color documents into the server product contract when the color has richer docs than the collection', async () => {
+    const resolved = await resolveProductBySlug('tarkett-bold');
+    expect(resolved).not.toBeNull();
+
+    const mutated = structuredClone(resolved as Product) as Product;
+    await mergeSelectedColor(mutated, boldFixtureColor.slug);
+
+    expect(mutated.documents?.length).toBeGreaterThan(1);
+    expect({
+      collectionSlug: 'tarkett-bold',
+      selectedColorSlug: boldFixtureColor.slug,
+      documentCount: mutated.documents?.length || 0,
+      documents: (mutated.documents || []).map((document) => ({
+        title: document.title,
+        url: document.url,
+      })),
+    }).toMatchSnapshot();
+  });
+
+  it('keeps key selected-color specs aligned with the canonical color helper output', async () => {
+    const resolved = await resolveProductBySlug(vinylRouteSlug);
+    expect(resolved).not.toBeNull();
+
+    const customColors = await prepareCustomColors(resolved as Product, vinylRouteSlug);
+    expect(customColors).toBeDefined();
+    expect(customColors!.length).toBeGreaterThan(1);
+
+    const selectedColor = customColors!.find((color) => color.slug === 'mipolam-accord-0303-manitoba') || customColors![0];
+    const expectedSpecs = buildSpecsFromColor(selectedColor, {
+      categoryId: (resolved as Product).categoryId,
+      brandId: (resolved as Product).brandId,
+    });
+
+    const mutated = structuredClone(resolved as Product) as Product;
+    await mergeSelectedColor(mutated, selectedColor.slug);
+
+    const expectedSubset = ['format', 'thickness', 'dimension'];
+    for (const key of expectedSubset) {
+      const expectedSpec = expectedSpecs.find((spec) => spec.key === key);
+      if (!expectedSpec) {
+        continue;
+      }
+
+      expect(mutated.specs).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            key: expectedSpec.key,
+            value: expectedSpec.value,
+          }),
+        ])
+      );
+    }
+
+    const expectedWeldingSpec = expectedSpecs.find((spec) => /(elektrod|varila|welding|vrpca)/i.test(spec.label));
+    if (expectedWeldingSpec) {
+      expect(mutated.specs).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            key: expectedWeldingSpec.key,
+            value: expectedWeldingSpec.value,
+          }),
+        ])
+      );
+    }
+  });
+
+  it.each([
+    {
+      routeSlug: 'creation-30',
+      expectedHref: '/proizvodi/gerflor-creation-30?color=ballerina-41870347',
+      colorSlug: 'ballerina-41870347',
+    },
+    {
+      routeSlug: 'bold',
+      expectedHref: '/proizvodi/tarkett-bold?color=tarkett-bold-color-mist-1',
+      colorSlug: 'tarkett-bold-color-mist-1',
+    },
+    {
+      routeSlug: 'gerflor-dlw-uni-walton',
+      expectedHref: '/proizvodi/dlw-uni-walton?color=dolphin-184',
+      colorSlug: 'dolphin-184',
+    },
+  ])('computes canonical collection alias redirect for $routeSlug', async ({ routeSlug, expectedHref, colorSlug }) => {
+    const resolved = await resolveProductBySlug(routeSlug);
+    expect(resolved).not.toBeNull();
+
+    expect(
+      getCanonicalCollectionAliasHref(routeSlug, resolved as Product & { collectionSlug?: string }, colorSlug)
+    ).toBe(expectedHref);
   });
 });

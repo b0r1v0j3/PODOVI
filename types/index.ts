@@ -26,6 +26,12 @@ export interface ProductImage {
   alt: string;
   isPrimary: boolean;
   order: number;
+  variants?: {
+    thumb?: string;
+    card?: string;
+    hero?: string;
+    og?: string;
+  };
 }
 
 export interface ProductSpec {

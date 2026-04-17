@@ -1,9 +1,7 @@
 import type { Product, ProductSpec } from '@/types';
 import type { ColorFromJSON } from './types';
 import {
-    loadColorFromJson,
     cleanColorName,
-    buildSpecsFromColor,
     mergeSpecs,
     linoleumColors,
     buildNestedColorSlug,
@@ -12,6 +10,7 @@ import {
     industrialCollections,
     sportCollections,
     lajsneCollections,
+    resolveSelectedColorServerData,
 } from './color-helpers';
 import { getDerivedWeldingCharacteristics } from './welding-helpers';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
@@ -23,6 +22,7 @@ import {
 } from '@/lib/data/parket-collection-mapping';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
+import { getPrimaryColorImage } from '@/lib/utils/product-images';
 
 function mapNestedCollectionColors(collection: any, context: { categoryId: string }) {
     return (collection.colors || [])
@@ -251,6 +251,35 @@ export async function prepareCustomColors(
         }
     }
 
+    // Gerflor Linoleum (cat 7): customColors from linoleum_colors_complete.json
+    if (product.categoryId === '7') {
+        const slugCandidates = Array.from(
+            new Set(
+                [
+                    pageSlug,
+                    product.slug,
+                    pageSlug.replace(/^gerflor-/, ''),
+                    product.slug.replace(/^gerflor-/, ''),
+                ].filter(Boolean)
+            )
+        );
+        const collectionColors = linoleumColors.filter((c: any) => slugCandidates.includes(c.collection));
+        if (collectionColors.length > 0) {
+            return collectionColors.map((c: any) => ({
+                collection: c.collection,
+                collection_name: c.collection_name || product.name,
+                code: c.code || '',
+                name: cleanColorName(c.name || ''),
+                full_name: c.full_name || c.name,
+                slug: c.slug,
+                image_url: c.image_url || c.texture_url || '',
+                texture_url: c.texture_url || c.image_url || '',
+                image_count: c.image_count || 1,
+                characteristics: c.characteristics || {},
+            }));
+        }
+    }
+
     // ESD (cat 8): customColors from esd_colors.json
     if (product.categoryId === '8') {
         // ESD collection slugs do NOT use gerflor- prefix (e.g., mipolam-el5, gti-el5-connect)
@@ -315,16 +344,20 @@ export async function mergeSelectedColor(
 ): Promise<void> {
     // LVT/Linoleum/Vinil/Tekstilne: merge color from JSON
     if (selectedColorSlug && !product.slug.includes(selectedColorSlug) && product.categoryId !== '3' && product.categoryId !== '1') {
-        const colorSource = await loadColorFromJson(selectedColorSlug);
-        if (colorSource?.color) {
-            const cleanedName = cleanColorName(colorSource.color.name);
-            const colorCode = colorSource.color.code || '';
+        const selectedColorData = await resolveSelectedColorServerData(selectedColorSlug, {
+            categoryId: product.categoryId,
+            brandId: product.brandId,
+        });
+        if (selectedColorData?.source.color) {
+            const { source, documents, specs } = selectedColorData;
+            const cleanedName = cleanColorName(source.color.name);
+            const colorCode = source.color.code || '';
             const cleanFullName = colorCode ? `${colorCode} ${cleanedName}` : cleanedName;
 
             product.name = cleanFullName;
-            product.shortDescription = `${colorSource.color.collection_name} - ${cleanedName}`;
+            product.shortDescription = `${source.color.collection_name} - ${cleanedName}`;
 
-            const colorImageUrl = colorSource.color.texture_url || colorSource.color.lifestyle_url || colorSource.color.image_url || (colorSource.color as any).image;
+            const colorImageUrl = getPrimaryColorImage(source.color)?.url;
             if (colorImageUrl) {
                 product.images = [{
                     id: `color-img-${selectedColorSlug}`,
@@ -335,15 +368,14 @@ export async function mergeSelectedColor(
                 }];
             }
 
-            const colorSpecs = buildSpecsFromColor(colorSource.color, {
-                categoryId: product.categoryId,
-                brandId: product.brandId,
-            });
-            if (colorSpecs.length > 0) {
-                product.specs = mergeSpecs(product.specs, colorSpecs);
+            if (specs.length > 0) {
+                product.specs = mergeSpecs(product.specs, specs);
             }
-            if (colorSource.color.description && typeof colorSource.color.description === 'string' && colorSource.color.description.trim()) {
-                product.description = colorSource.color.description.trim();
+            if (documents.length > 0) {
+                product.documents = documents;
+            }
+            if (source.color.description && typeof source.color.description === 'string' && source.color.description.trim()) {
+                product.description = source.color.description.trim();
             }
         }
     }
@@ -361,6 +393,9 @@ export async function mergeSelectedColor(
             if (parketVariant.specs && parketVariant.specs.length > 0) {
                 product.specs = mergeSpecs(product.specs, parketVariant.specs);
             }
+            if (parketVariant.documents && parketVariant.documents.length > 0) {
+                product.documents = parketVariant.documents;
+            }
         }
     }
 
@@ -375,6 +410,9 @@ export async function mergeSelectedColor(
             }
             if (dekingVariant.specs && dekingVariant.specs.length > 0) {
                 product.specs = mergeSpecs(product.specs, dekingVariant.specs);
+            }
+            if (dekingVariant.documents && dekingVariant.documents.length > 0) {
+                product.documents = dekingVariant.documents;
             }
         }
     }
@@ -391,6 +429,9 @@ export async function mergeSelectedColor(
             }
             if (laminatVariant.specs && laminatVariant.specs.length > 0) {
                 product.specs = mergeSpecs(product.specs, laminatVariant.specs);
+            }
+            if (laminatVariant.documents && laminatVariant.documents.length > 0) {
+                product.documents = laminatVariant.documents;
             }
         }
     }

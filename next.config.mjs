@@ -4,13 +4,33 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'nnjmrfwepylrheykalik.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/product-images/**',
       },
       {
         protocol: 'https',
         hostname: 'media.tarkett-image.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.gerflor.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.podovi.online',
+        port: '',
+        pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'podovi.online',
+        port: '',
+        pathname: '/images/**',
       },
     ],
     formats: ['image/avif', 'image/webp'],

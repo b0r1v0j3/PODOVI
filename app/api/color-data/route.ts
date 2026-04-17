@@ -14,12 +14,12 @@ import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
-import { getDerivedWeldingCharacteristics } from '@/lib/product-page/welding-helpers';
+import { resolveSelectedColorServerData } from '@/lib/product-page/color-helpers';
 
 /**
  * GET /api/color-data?color={slug}&categoryId={id}
  *
- * Returns documents and characteristics for a specific color slug.
+ * Returns documents, characteristics, and specs for a specific color slug.
  * Large JSON files stay server-side to avoid client bundle bloat.
  */
 export async function GET(request: NextRequest) {
@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
 
     if (!colorSlug || !categoryId) {
         return NextResponse.json(
-            { documents: [], characteristics: {} },
+            { documents: [], characteristics: {}, specs: [] },
             { status: 200 }
         );
     }
@@ -124,48 +124,26 @@ export async function GET(request: NextRequest) {
 
     if (!color) {
         return NextResponse.json(
-            { documents: [], characteristics: {} },
+            { documents: [], characteristics: {}, specs: [] },
             { status: 200 }
         );
     }
 
-    const documents = Array.isArray(color.documents) ? color.documents : [];
-    const characteristics: Record<string, string> = {};
-
-    const dimensionValue = color.dimension || color.characteristics?.Dimenzije;
-    if (dimensionValue) {
-        characteristics['Dimenzije'] = dimensionValue;
-    }
-
-    const thicknessValue = color.overall_thickness || color.characteristics?.['Ukupna debljina'];
-    if (thicknessValue) {
-        characteristics['Ukupna debljina'] = thicknessValue;
-    }
-
-    if (color.characteristics) {
-        Object.entries(color.characteristics).forEach(([key, value]) => {
-            if (key !== 'Dimenzije' && key !== 'Ukupna debljina' && typeof value === 'string') {
-                characteristics[key] = value;
-            }
-        });
-    }
-
-    if (color.format && !characteristics['Format']) {
-        characteristics['Format'] = color.format;
-    }
-    const weldingCharacteristics = getDerivedWeldingCharacteristics({
+    const selectedColorData = await resolveSelectedColorServerData(colorSlug, {
         categoryId,
         brandId: color.brandId || '6',
-        collectionSlug: color.collection_slug || color.collection,
-        collectionName: color.collection_name,
-        characteristics: color.characteristics,
-        exactWeldingRod: color.welding_rod,
-    });
-    Object.entries(weldingCharacteristics).forEach(([label, value]) => {
-        if (!characteristics[label]) {
-            characteristics[label] = value;
-        }
     });
 
-    return NextResponse.json({ documents, characteristics });
+    if (!selectedColorData) {
+        return NextResponse.json(
+            { documents: [], characteristics: {}, specs: [] },
+            { status: 200 }
+        );
+    }
+
+    return NextResponse.json({
+        documents: selectedColorData.documents,
+        characteristics: selectedColorData.characteristics,
+        specs: selectedColorData.specs,
+    });
 }

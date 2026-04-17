@@ -1,10 +1,15 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { Product } from '@/types';
 import { formatLvtSpecs } from '@/lib/product-page/spec-helpers';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
+import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
+import collectionImagesData from '@/public/data/collection_images.json';
+import esdColorsData from '@/public/data/esd_colors.json';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
 import tarkettCollectionSpecsData from '@/public/data/tarkett_collection_specs.json';
 import tarkettCollectionDetails from '@/public/data/tarkett_collection_details.json';
@@ -16,6 +21,7 @@ import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_v
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
+import { selectPreferredCollectionHeroAsset } from '@/lib/utils/catalog-assets';
 
 let tarkettLvtCache: Product[] | null = null;
 let lvtProductsCache: Product[] | null = null;
@@ -32,6 +38,34 @@ let tarkettHeterogeneousVinylCollectionCache: Product[] | null = null;
 let wolflorVinylCollectionCache: Product[] | null = null;
 let gerflorLvtCollectionCache: Product[] | null = null;
 let gerflorLinoleumCollectionCache: Product[] | null = null;
+let techemDataPathCache: string | null | undefined = undefined;
+let techemDatasetCache:
+    | {
+        entries: Record<string, any>[];
+        generatedAt: Date | null;
+        filePath: string;
+        mtimeMs: number;
+    }
+    | undefined = undefined;
+let techemProductsCache:
+    | {
+        products: Product[];
+        filePath: string;
+        mtimeMs: number;
+    }
+    | undefined = undefined;
+const localPublicAssetExistenceCache = new Map<string, boolean>();
+
+const DEFAULT_CATALOG_DATE = '2024-01-01';
+const DEFAULT_TECHEM_CATEGORY_ID = '12';
+const DEFAULT_TECHEM_BRAND_ID = '12';
+const PUBLIC_DIR = path.join(process.cwd(), 'public');
+const TECHEM_DATA_FILE_CANDIDATES = [
+    'techem_mats.json',
+    'techem_products.json',
+    'techem_catalog.json',
+    'techem_catalog_complete.json',
+];
 
 // Display names for Tarkett collections
 const TARKETT_COLLECTION_NAMES: Record<string, string> = {
@@ -68,6 +102,513 @@ function normalizeText(value: unknown) {
         .trim();
 }
 
+function slugifyValue(value: string) {
+    return normalizeText(value)
+        .toLowerCase()
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+function parseOptionalNumber(value: unknown): number | undefined {
+    if (typeof value === 'number' && Number.isFinite(value)) {
+        return value;
+    }
+
+    const normalizedValue = String(value || '')
+        .replace(',', '.')
+        .replace(/[^0-9.-]+/g, '')
+        .trim();
+
+    if (!normalizedValue) {
+        return undefined;
+    }
+
+    const parsedValue = Number.parseFloat(normalizedValue);
+    return Number.isFinite(parsedValue) ? parsedValue : undefined;
+}
+
+function parseOptionalBoolean(value: unknown, fallback: boolean) {
+    if (typeof value === 'boolean') {
+        return value;
+    }
+
+    const normalizedValue = String(value || '').trim().toLowerCase();
+    if (!normalizedValue) {
+        return fallback;
+    }
+
+    if (['true', '1', 'yes', 'da'].includes(normalizedValue)) {
+        return true;
+    }
+
+    if (['false', '0', 'no', 'ne'].includes(normalizedValue)) {
+        return false;
+    }
+
+    return fallback;
+}
+
+function parseOptionalDate(value: unknown) {
+    const normalizedValue = String(value || '').trim();
+    const parsedValue = normalizedValue ? new Date(normalizedValue) : new Date(DEFAULT_CATALOG_DATE);
+    return Number.isNaN(parsedValue.getTime()) ? new Date(DEFAULT_CATALOG_DATE) : parsedValue;
+}
+
+function parseValidDate(value: unknown) {
+    const normalizedValue = String(value || '').trim();
+    if (!normalizedValue) {
+        return undefined;
+    }
+
+    const parsedValue = new Date(normalizedValue);
+    return Number.isNaN(parsedValue.getTime()) ? undefined : parsedValue;
+}
+
+function normalizeProductImage(
+    rawImage: unknown,
+    fallbackId: string,
+    fallbackAlt: string,
+    order: number
+): Product['images'][number] | null {
+    if (!rawImage) {
+        return null;
+    }
+
+    if (typeof rawImage === 'string') {
+        return {
+            id: `${fallbackId}-img-${order}`,
+            url: rawImage,
+            alt: fallbackAlt,
+            isPrimary: order === 0,
+            order,
+        };
+    }
+
+    if (typeof rawImage !== 'object') {
+        return null;
+    }
+
+    const imageRecord = rawImage as Record<string, unknown>;
+    const url = normalizeText(imageRecord.url || imageRecord.src || imageRecord.image || imageRecord.image_url);
+    if (!url) {
+        return null;
+    }
+
+    const rawOrder = parseOptionalNumber(imageRecord.order ?? imageRecord.order_num);
+    const normalizedOrder = rawOrder !== undefined ? rawOrder : order;
+    const variantRecord =
+        typeof imageRecord.variants === 'object' && imageRecord.variants
+            ? imageRecord.variants as Record<string, unknown>
+            : {};
+    const variants = {
+        thumb: normalizeText(imageRecord.thumb ?? variantRecord.thumb),
+        card: normalizeText(imageRecord.card ?? variantRecord.card),
+        hero: normalizeText(imageRecord.hero ?? variantRecord.hero),
+        og: normalizeText(imageRecord.og ?? variantRecord.og),
+    };
+    const hasVariants = Object.values(variants).some(Boolean);
+
+    return {
+        id: normalizeText(imageRecord.id) || `${fallbackId}-img-${normalizedOrder}`,
+        url,
+        alt: normalizeText(imageRecord.alt || imageRecord.title) || fallbackAlt,
+        isPrimary: imageRecord.isPrimary === true || imageRecord.is_primary === true || normalizedOrder === 0,
+        order: normalizedOrder,
+        variants: hasVariants ? variants : undefined,
+    };
+}
+
+function normalizeDocumentList(rawProduct: Record<string, any>) {
+    const explicitDocuments = Array.isArray(rawProduct.documents)
+        ? rawProduct.documents
+        : [];
+    const derivedDocuments = [
+        rawProduct.pdf_url,
+        rawProduct.catalog_pdf_url,
+        rawProduct.technical_pdf_url,
+        rawProduct.installation_pdf_url,
+    ].filter(Boolean);
+
+    const documents = [...explicitDocuments, ...derivedDocuments].reduce<Array<{ title: string; url: string; type?: string }>>((acc, document, index) => {
+        if (!document) {
+            return acc;
+        }
+
+        if (typeof document === 'string') {
+            acc.push({
+                title: rawProduct.name ? `${rawProduct.name} PDF ${index + 1}` : `PDF ${index + 1}`,
+                url: document,
+                type: 'pdf',
+            });
+            return acc;
+        }
+
+        if (typeof document !== 'object') {
+            return acc;
+        }
+
+        const documentRecord = document as Record<string, unknown>;
+        const url = normalizeText(documentRecord.url || documentRecord.href);
+        if (!url) {
+            return acc;
+        }
+
+        acc.push({
+            title:
+                normalizeText(documentRecord.title || documentRecord.name || documentRecord.label) ||
+                (rawProduct.name ? `${rawProduct.name} dokument` : 'Dokument'),
+            url,
+            type: normalizeText(documentRecord.type) || (url.toLowerCase().includes('.pdf') ? 'pdf' : undefined),
+        });
+
+        return acc;
+    }, []);
+
+    return documents.length > 0 ? documents : undefined;
+}
+
+function normalizeSpecSource(rawSource: unknown, fallbackLabel?: string): Product['specs'] {
+    if (!rawSource) {
+        return [];
+    }
+
+    if (Array.isArray(rawSource)) {
+        return rawSource
+            .map((rawSpec, index) => {
+                if (!rawSpec) {
+                    return null;
+                }
+
+                if (typeof rawSpec === 'string') {
+                    const value = normalizeText(rawSpec);
+                    if (!value) {
+                        return null;
+                    }
+
+                    const label = fallbackLabel || `Specifikacija ${index + 1}`;
+                    return {
+                        key: characteristicLabelToKey(label),
+                        label,
+                        value,
+                    };
+                }
+
+                if (typeof rawSpec !== 'object') {
+                    return null;
+                }
+
+                const specRecord = rawSpec as Record<string, unknown>;
+                const label = normalizeText(specRecord.label || specRecord.name || specRecord.title || specRecord.key || fallbackLabel);
+                const value = normalizeText(specRecord.value || specRecord.content || specRecord.text);
+
+                if (!label || !value) {
+                    return null;
+                }
+
+                return {
+                    key: normalizeText(specRecord.key) || characteristicLabelToKey(label),
+                    label,
+                    value,
+                };
+            })
+            .filter((spec): spec is Product['specs'][number] => Boolean(spec));
+    }
+
+    if (typeof rawSource !== 'object') {
+        return [];
+    }
+
+    return Object.entries(rawSource as Record<string, unknown>)
+        .map(([label, value]) => {
+            if (value && typeof value === 'object') {
+                return null;
+            }
+
+            const normalizedValue = normalizeText(value);
+            if (!normalizedValue) {
+                return null;
+            }
+
+            return {
+                key: characteristicLabelToKey(label),
+                label,
+                value: normalizedValue,
+            };
+        })
+        .filter((spec): spec is Product['specs'][number] => Boolean(spec));
+}
+
+function normalizeTechemSpecs(rawProduct: Record<string, any>) {
+    let specs: Product['specs'] = [];
+
+    for (const source of [
+        rawProduct.specs,
+        rawProduct.specifications,
+        rawProduct.characteristics,
+        rawProduct.attributes,
+    ]) {
+        specs = mergeUniqueSpecs(specs, normalizeSpecSource(source));
+    }
+
+    const collectionName = normalizeText(rawProduct.family || rawProduct.collection);
+    const directSpecs: Product['specs'] = [
+        collectionName
+            ? { key: 'collection', label: 'Kolekcija', value: collectionName }
+            : null,
+        rawProduct.type
+            ? { key: 'type', label: 'Tip', value: normalizeText(rawProduct.type) }
+            : null,
+        rawProduct.material
+            ? { key: 'material', label: 'Materijal', value: normalizeText(rawProduct.material) }
+            : null,
+        rawProduct.sourceSlug
+            ? { key: '__techem_source_slug', label: '__Techem Source Slug', value: normalizeText(rawProduct.sourceSlug) }
+            : null,
+        rawProduct.topCategory
+            ? { key: '__techem_top_category', label: '__Techem Top Category', value: normalizeText(rawProduct.topCategory) }
+            : null,
+        rawProduct.family
+            ? { key: '__techem_family', label: '__Techem Family', value: normalizeText(rawProduct.family) }
+            : null,
+        (rawProduct.canonicalUrl || rawProduct.url)
+            ? {
+                key: '__techem_canonical_url',
+                label: '__Techem Canonical Url',
+                value: normalizeText(rawProduct.canonicalUrl || rawProduct.url),
+            }
+            : null,
+    ].filter((spec): spec is Product['specs'][number] => Boolean(spec));
+
+    return mergeUniqueSpecs(specs, directSpecs);
+}
+
+function resolveTechemDataPath() {
+    if (techemDataPathCache && fs.existsSync(techemDataPathCache)) {
+        return techemDataPathCache;
+    }
+
+    techemDataPathCache = undefined;
+
+    const publicDataDirectory = path.join(process.cwd(), 'public', 'data');
+    const candidateFileNames = new Set(TECHEM_DATA_FILE_CANDIDATES);
+
+    try {
+        for (const fileName of fs.readdirSync(publicDataDirectory)) {
+            if (/^techem.*\.json$/i.test(fileName)) {
+                candidateFileNames.add(fileName);
+            }
+        }
+    } catch {
+        techemDataPathCache = null;
+        return techemDataPathCache;
+    }
+
+    for (const fileName of Array.from(candidateFileNames)) {
+        const filePath = path.join(publicDataDirectory, fileName);
+        if (fs.existsSync(filePath)) {
+            techemDataPathCache = filePath;
+            return techemDataPathCache;
+        }
+    }
+
+    techemDataPathCache = null;
+    return techemDataPathCache;
+}
+
+function loadTechemDataset() {
+    const filePath = resolveTechemDataPath();
+    if (!filePath) {
+        return {
+            entries: [],
+            generatedAt: null,
+            filePath: '',
+            mtimeMs: 0,
+        };
+    }
+
+    let fileStats: fs.Stats;
+    try {
+        fileStats = fs.statSync(filePath);
+    } catch {
+        techemDataPathCache = undefined;
+        return {
+            entries: [],
+            generatedAt: null,
+            filePath: '',
+            mtimeMs: 0,
+        };
+    }
+
+    if (
+        techemDatasetCache &&
+        techemDatasetCache.filePath === filePath &&
+        techemDatasetCache.mtimeMs === fileStats.mtimeMs
+    ) {
+        return techemDatasetCache;
+    }
+
+    try {
+        const rawData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        const generatedAtValue =
+            rawData && typeof rawData === 'object'
+                ? normalizeText((rawData as Record<string, unknown>).generatedAt)
+                : '';
+        const parsedGeneratedAt = generatedAtValue ? new Date(generatedAtValue) : null;
+        const generatedAt =
+            parsedGeneratedAt && !Number.isNaN(parsedGeneratedAt.getTime())
+                ? parsedGeneratedAt
+                : null;
+
+        if (Array.isArray(rawData)) {
+            techemDatasetCache = {
+                entries: rawData,
+                generatedAt,
+                filePath,
+                mtimeMs: fileStats.mtimeMs,
+            };
+            return techemDatasetCache;
+        }
+
+        for (const key of ['products', 'items', 'catalog']) {
+            if (Array.isArray((rawData as Record<string, unknown>)[key])) {
+                techemDatasetCache = {
+                    entries: (rawData as Record<string, any>)[key],
+                    generatedAt,
+                    filePath,
+                    mtimeMs: fileStats.mtimeMs,
+                };
+                return techemDatasetCache;
+            }
+        }
+    } catch (error) {
+        console.error('Failed to load Techem catalog dataset:', error);
+        techemDatasetCache = undefined;
+        return {
+            entries: [],
+            generatedAt: null,
+            filePath: '',
+            mtimeMs: 0,
+        };
+    }
+
+    techemDatasetCache = {
+        entries: [],
+        generatedAt: null,
+        filePath,
+        mtimeMs: fileStats.mtimeMs,
+    };
+    return techemDatasetCache;
+}
+
+function loadTechemDatasetEntries(): Record<string, any>[] {
+    return loadTechemDataset().entries;
+}
+
+function transformTechemProduct(
+    rawProduct: Record<string, any>,
+    index: number,
+    datasetGeneratedAt?: Date | null
+): Product | null {
+    const name = normalizeText(
+        rawProduct.name ||
+        rawProduct.title ||
+        rawProduct.product_name ||
+        rawProduct.label
+    );
+    const sku = normalizeText(rawProduct.sku || rawProduct.code || rawProduct.reference || rawProduct.id);
+
+    if (!name && !sku) {
+        return null;
+    }
+
+    const categoryId = normalizeText(rawProduct.categoryId || rawProduct.category_id) || DEFAULT_TECHEM_CATEGORY_ID;
+    const brandId = normalizeText(rawProduct.brandId || rawProduct.brand_id) || DEFAULT_TECHEM_BRAND_ID;
+    const sourceSlug = normalizeText(rawProduct.sourceSlug || rawProduct.source_slug);
+    const slug = normalizeText(rawProduct.slug || rawProduct.handle || (sourceSlug ? `techem-${sourceSlug}` : '')) || slugifyValue(name || sku || `techem-${index + 1}`);
+    const id = normalizeText(rawProduct.id) || `techem-${sourceSlug || slug || index + 1}`;
+    const specs = normalizeTechemSpecs(rawProduct);
+    const description =
+        normalizeText(
+            rawProduct.description ||
+            rawProduct.longDescription ||
+            rawProduct.long_description ||
+            rawProduct.body
+        ) ||
+        enrichProductDescription({ name: name || sku, categoryId, brandId, specs } as any);
+    const shortDescription =
+        normalizeText(
+            rawProduct.shortDescription ||
+            rawProduct.short_description ||
+            rawProduct.subtitle ||
+            rawProduct.summary
+        ) ||
+        enrichShortDescription({ name: name || sku, categoryId, brandId, specs } as any);
+    const rawImages = [
+        rawProduct.heroImage,
+        ...(Array.isArray(rawProduct.galleryImages) ? rawProduct.galleryImages : []),
+        ...(Array.isArray(rawProduct.images) ? rawProduct.images : []),
+        rawProduct.image,
+        rawProduct.image_url,
+        rawProduct.thumbnail,
+        rawProduct.thumbnail_url,
+    ].filter(Boolean);
+    const images = rawImages
+        .map((image, imageIndex) => normalizeProductImage(image, id, name || sku || 'Techem', imageIndex))
+        .filter((image): image is Product['images'][number] => Boolean(image))
+        .reduce<Product['images']>((acc, image, imageIndex) => {
+            if (acc.some((existingImage) => existingImage.url === image.url)) {
+                return acc;
+            }
+
+            acc.push({
+                ...image,
+                order: imageIndex,
+                isPrimary: imageIndex === 0 ? true : image.isPrimary,
+            });
+            return acc;
+        }, []);
+    const detailsSections = Array.isArray(rawProduct.detailsSections || rawProduct.details_sections)
+        ? (rawProduct.detailsSections || rawProduct.details_sections)
+        : undefined;
+    const benefits = [
+        ...(Array.isArray(rawProduct.benefits) ? rawProduct.benefits : []),
+        ...(Array.isArray(rawProduct.featureBullets) ? rawProduct.featureBullets : []),
+    ]
+        .map((benefit) => normalizeText(benefit))
+        .filter(Boolean);
+    const createdAt = parseValidDate(rawProduct.createdAt || rawProduct.created_at);
+    const updatedAt = parseValidDate(rawProduct.updatedAt || rawProduct.updated_at);
+
+    return {
+        id,
+        name: name || sku || `Techem proizvod ${index + 1}`,
+        slug,
+        sku: sku || `TECHEM-${slug.toUpperCase()}`,
+        categoryId,
+        brandId,
+        shortDescription,
+        description,
+        images,
+        specs,
+        price: parseOptionalNumber(rawProduct.price),
+        priceUnit: normalizeText(rawProduct.priceUnit || rawProduct.price_unit) || undefined,
+        inStock: parseOptionalBoolean(rawProduct.inStock ?? rawProduct.in_stock, true),
+        featured: parseOptionalBoolean(rawProduct.featured, false),
+        coveragePerPackage: parseOptionalNumber(rawProduct.coveragePerPackage ?? rawProduct.coverage_per_package),
+        externalLink: normalizeText(rawProduct.canonicalUrl || rawProduct.externalLink || rawProduct.external_link || rawProduct.url || rawProduct.href) || undefined,
+        detailsSections,
+        documents: normalizeDocumentList(rawProduct),
+        benefits: benefits.length > 0 ? benefits : undefined,
+        compatibleAccessories: Array.isArray(rawProduct.compatibleAccessories)
+            ? rawProduct.compatibleAccessories.map((accessory) => normalizeText(accessory)).filter(Boolean)
+            : undefined,
+        createdAt: createdAt || datasetGeneratedAt || new Date(DEFAULT_CATALOG_DATE),
+        updatedAt: updatedAt || datasetGeneratedAt || new Date(DEFAULT_CATALOG_DATE),
+    };
+}
+
 function buildSpecsFromCharacteristicRecord(
     characteristics?: Record<string, string>,
     collectionName?: string
@@ -102,6 +643,84 @@ function pickRichestText(...values: Array<string | null | undefined>) {
         .map((value) => String(value || '').trim())
         .filter(Boolean)
         .sort((left, right) => right.length - left.length)[0] || '';
+}
+
+function localPublicAssetExists(assetPath?: string | null) {
+    const normalizedPath = String(assetPath || '').trim();
+    if (!normalizedPath.startsWith('/')) {
+        return false;
+    }
+
+    const cached = localPublicAssetExistenceCache.get(normalizedPath);
+    if (typeof cached === 'boolean') {
+        return cached;
+    }
+
+    const pathWithoutSearch = normalizedPath.split(/[?#]/, 1)[0];
+    const candidatePaths = new Set([pathWithoutSearch]);
+
+    try {
+        candidatePaths.add(decodeURIComponent(pathWithoutSearch));
+    } catch {
+        candidatePaths.add(pathWithoutSearch);
+    }
+
+    const exists = Array.from(candidatePaths).some((candidatePath) =>
+        fs.existsSync(path.join(PUBLIC_DIR, candidatePath.replace(/^\//, '')))
+    );
+
+    localPublicAssetExistenceCache.set(normalizedPath, exists);
+    return exists;
+}
+
+function pickFirstExistingLocalPublicAsset(...candidates: Array<string | null | undefined>) {
+    return candidates
+        .map((candidate) => String(candidate || '').trim())
+        .find((candidate) => candidate && localPublicAssetExists(candidate)) || '';
+}
+
+function resolveTarkettCollectionImageOverride(
+    collectionName: string,
+    collectionSlug: string
+) {
+    const collectionImages = (collectionImagesData as Record<string, string>) || {};
+    const normalizedName = String(collectionName || '').trim();
+    const normalizedSlug = String(collectionSlug || '').trim();
+    const slugPart = normalizedSlug.replace(/^tarkett-/i, '');
+    const nameWithoutPrefix = normalizedName.replace(/^Tarkett\s+/i, '').trim();
+
+    const exactKeys = [
+        normalizedName,
+        nameWithoutPrefix,
+        normalizedSlug,
+        slugPart,
+    ].filter(Boolean);
+
+    for (const key of exactKeys) {
+        const image = String(collectionImages[key] || '').trim();
+        if (image) {
+            return image;
+        }
+    }
+
+    const lowerCaseKeys = exactKeys.map((key) => key.toLowerCase());
+    const caseInsensitiveMatch = Object.entries(collectionImages).find(([key]) =>
+        lowerCaseKeys.includes(key.toLowerCase())
+    );
+    if (caseInsensitiveMatch?.[1]) {
+        return String(caseInsensitiveMatch[1]).trim();
+    }
+
+    if (slugPart) {
+        const slugMatch = Object.entries(collectionImages).find(([key]) =>
+            key.toLowerCase().includes(slugPart.toLowerCase())
+        );
+        if (slugMatch?.[1]) {
+            return String(slugMatch[1]).trim();
+        }
+    }
+
+    return '';
 }
 
 function humanizeCollectionName(collectionSlug: string) {
@@ -305,12 +924,15 @@ export function getTarkettLVTCollections(): Product[] {
         const displayName = TARKETT_COLLECTION_NAMES[collKey] || collKey;
         const first = items[0];
         const externalLink = normalizeTarkettCollectionUrl((first as any)?.meta?.originalUrl);
-
-        // Use locally downloaded collection image
-        const localImagePath = `/images/tarkett/collections/${collKey}.jpg`;
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            resolveTarkettCollectionImageOverride(displayName, collKey),
+            pickFirstExistingLocalPublicAsset(`/images/tarkett/collections/${collKey}.jpg`),
+            first.images?.find((image) => image.isPrimary)?.url,
+            first.images?.[0]?.url
+        );
         const collectionImage = {
             id: `tarkett-${collKey}-cover`,
-            url: localImagePath,
+            url: imageUrl,
             alt: `Tarkett ${displayName}`,
             isPrimary: true,
             order: 0,
@@ -432,6 +1054,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getTarkettSportCollections(),
         ...getTarkettLajsneCollections(),
         ...getAllDekingProducts(),
+        ...getAllTechemProducts(),
         ...getVinylCollectionProducts(),
         ...getManualCollectionProducts(),
     ];
@@ -452,6 +1075,8 @@ export function getProductsByCollection(collection: string): Product[] {
  * Get products by category
  */
 export function getProductsByCategory(categoryId: string): Product[] {
+    const techemProducts = getAllTechemProducts();
+
     if (categoryId === '6') {
         // Return both Gerflor LVT and Tarkett LVT
         return [...getGerflorLVTCollections(), ...getAllLVTProducts(), ...getTarkettLVTCollections(), ...getAllTarkettLVTProducts()];
@@ -477,6 +1102,8 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return [...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
     } else if (categoryId === '5') {
         return getAllDekingProducts();
+    } else if (techemProducts.some((product) => product.categoryId === categoryId)) {
+        return techemProducts.filter((product) => product.categoryId === categoryId);
     }
 
     return [
@@ -492,6 +1119,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
+        ...getAllTechemProducts(),
         ...getVinylCollectionProducts(),
         ...getManualCollectionProducts(),
     ].filter(p => p.categoryId === categoryId);
@@ -639,7 +1267,7 @@ export function getGerflorLVTCollections(): Product[] {
             ...collectionColors.map((color) => color.description),
             firstColor.description
         );
-        const imageUrl = pickRichestText(
+        const imageUrl = selectPreferredCollectionHeroAsset(
             ...collectionColors.map((color) => color.lifestyle_url),
             ...collectionColors.map((color) => color.image_url)
         );
@@ -727,7 +1355,9 @@ export function getGerflorLinoleumCollections(): Product[] {
             ...collectionColors.map((color) => color.description),
             firstColor.description
         );
-        const imageUrl = pickRichestText(...collectionColors.map((color) => color.image_url));
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            ...collectionColors.map((color) => color.image_url)
+        );
         const specs = buildSpecsFromCharacteristicRecord(firstColor.characteristics, displayName);
 
         return {
@@ -875,8 +1505,13 @@ export function getAllBloqCarpetProducts(): Product[] {
             normalizeText(enrichProductDescription({ name: `BLOQ ${collName}`, categoryId: '4', brandId: '8', specs: [] } as any)),
         ].find(Boolean) || '';
 
-        // Use downloaded roomshot image as collection hero image
-        const imageUrl = `/images/products/bloq-roomshots/${collSlug}-roomshot.jpg`;
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            pickFirstExistingLocalPublicAsset(
+                `/images/products/bloq-roomshots/bloq-${collSlug}-roomshot.jpg`,
+                `/images/products/bloq-roomshots/${collSlug}-roomshot.jpg`
+            ),
+            ...collColors.map((color) => color.image_url)
+        );
         const collectionSpecs = mergeUniqueSpecs(
             buildSpecsFromCharacteristicRecord(
                 {
@@ -991,8 +1626,7 @@ let vinylCollectionCache: Product[] | null = null;
 export function getVinylCollectionProducts(): Product[] {
     if (vinylCollectionCache) return vinylCollectionCache;
 
-    const vinylData = require('@/public/data/vinyl_colors_complete.json');
-    const collections = vinylData?.collections || [];
+    const collections = ((vinylColorsData as any)?.collections || []) as any[];
 
     // Collection lifestyle images (override color swatch images)
     const collectionImageOverrides: Record<string, string> = {
@@ -1010,7 +1644,10 @@ export function getVinylCollectionProducts(): Product[] {
             value: value as string,
         }));
 
-        const imageUrl = collectionImageOverrides[col.slug] || firstColor?.image || '';
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            collectionImageOverrides[col.slug],
+            firstColor?.image
+        );
 
         return {
             id: `vinyl-coll-${col.slug}`,
@@ -1055,7 +1692,10 @@ function buildTarkettVinylCollectionHeaders(
             ? `${collection.name} Tarkett homogena vinil kolekcija.`
             : (fallbackDescriptionText || `${collection.name} Tarkett vinil kolekcija za kuću.`);
         const firstColor = collection.colors?.[0];
-        const imageUrl = collection.collection_image_url || firstColor?.image || '';
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            collection.collection_image_url,
+            firstColor?.image
+        );
         const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
 
         if (!specs.find((spec) => spec.key === 'type')) {
@@ -1175,7 +1815,10 @@ export function getWolflorVinylCollections(): Product[] {
 
     wolflorVinylCollectionCache = collections.map((collection: any) => {
         const firstColor = collection.colors?.[0];
-        const imageUrl = firstColor?.image || collection.collection_image_url || '';
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            firstColor?.image,
+            collection.collection_image_url
+        );
         const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
         const typeValue = normalizeText(collection.characteristics?.Tip) || 'Heterogeni';
         const thicknessValue = collection.characteristics?.['Ukupna debljina'];
@@ -1312,6 +1955,49 @@ export function getAllDekingProducts(): Product[] {
     return dekingProductsCache;
 }
 
+export function getAllTechemProducts(): Product[] {
+    const techemDataset = loadTechemDataset();
+    if (!techemDataset.filePath) {
+        return [];
+    }
+
+    if (
+        techemProductsCache &&
+        techemProductsCache.filePath === techemDataset.filePath &&
+        techemProductsCache.mtimeMs === techemDataset.mtimeMs
+    ) {
+        return techemProductsCache.products;
+    }
+
+    const products = techemDataset.entries
+        .map((product: Record<string, any>, index: number) =>
+            transformTechemProduct(product, index, techemDataset.generatedAt)
+        )
+        .filter((product): product is Product => Boolean(product));
+
+    const seenSlugs = new Set<string>();
+    const uniqueProducts = products.filter((product: Product) => {
+        if (!product.slug || seenSlugs.has(product.slug)) {
+            return false;
+        }
+
+        seenSlugs.add(product.slug);
+        return true;
+    });
+
+    techemProductsCache = {
+        products: uniqueProducts,
+        filePath: techemDataset.filePath,
+        mtimeMs: techemDataset.mtimeMs,
+    };
+
+    return techemProductsCache.products;
+}
+
+export function getTechemDatasetGeneratedAt(): Date | null {
+    return loadTechemDataset().generatedAt;
+}
+
 /**
  * Generate collection-level Product entries from esd_colors.json.
  * These are used to show ESD collections in the Elektroprovodni category listing.
@@ -1319,8 +2005,7 @@ export function getAllDekingProducts(): Product[] {
 export function getEsdCollectionProducts(): Product[] {
     if (esdCollectionCache) return esdCollectionCache;
 
-    const esdData = require('@/public/data/esd_colors.json');
-    const collections = esdData?.collections || [];
+    const collections = ((esdColorsData as any)?.collections || []) as any[];
 
     // Collection lifestyle images (override color swatch images with room scenes from Gerflor CDN/local overriding)
     const collectionImageOverrides: Record<string, string> = {
@@ -1345,7 +2030,10 @@ export function getEsdCollectionProducts(): Product[] {
         // Add collection spec
         specs.unshift({ key: 'collection', label: 'Kolekcija', value: col.name });
 
-        const imageUrl = collectionImageOverrides[col.slug] || firstColor?.image || '';
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            collectionImageOverrides[col.slug],
+            firstColor?.image
+        );
 
         return {
             id: `esd-coll-${col.slug}`,
@@ -1396,7 +2084,10 @@ export function getTarkettSportCollections(): Product[] {
 
     tarkettSportCollectionCache = collections.map((collection: any) => {
         const firstColor = collection.colors?.[0];
-        const imageUrl = collection.collection_image_url || firstColor?.image || '';
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            collection.collection_image_url,
+            firstColor?.image
+        );
         const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
 
         return {
@@ -1443,7 +2134,10 @@ export function getTarkettLajsneCollections(): Product[] {
 
     tarkettLajsneCollectionCache = collections.map((collection: any) => {
         const firstVariant = collection.colors?.[0];
-        const imageUrl = collection.collection_image_url || firstVariant?.image || '';
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            collection.collection_image_url,
+            firstVariant?.image
+        );
         const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
         const productType = normalizeText(collection.characteristics?.['Tip proizvoda']);
 

@@ -2,6 +2,7 @@ import { Product, ProductSpec } from '@/types';
 import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
+import { selectPreferredCollectionHeroAsset } from '@/lib/utils/catalog-assets';
 
 const DEFAULT_DATE = new Date('2024-01-01');
 
@@ -38,11 +39,7 @@ function isRemoteImageUrl(url: string) {
 function resolveCollectionImageUrl(productSlug: string, fallbackUrl?: string) {
   const collectionSlug = productSlug.replace(/^gerflor-/, '');
   const imageFromJson = manualCollectionImageSources.find((collection) => collection.slug === collectionSlug)?.collection_image_url;
-  if (imageFromJson) {
-    return imageFromJson;
-  }
-
-  return fallbackUrl;
+  return selectPreferredCollectionHeroAsset(imageFromJson, fallbackUrl);
 }
 
 function normalizeDocumentUrl(url: string) {

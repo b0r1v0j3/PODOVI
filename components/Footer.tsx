@@ -21,8 +21,8 @@ export default function Footer() {
                 </span>
               </div>
               <p className="text-sm leading-relaxed">
-                Vodeći uvoznik i distributer kvalitetnih podnih obloga u Srbiji.
-                Nudimo širok asortiman proizvoda od renomiranih evropskih brendova.
+                Partner za podne obloge, lajsne, otirače i prateće sisteme u Srbiji.
+                Nudimo širok asortiman proizvoda renomiranih evropskih brendova za stambene, poslovne i tehničke prostore.
               </p>
               {/* Social Links */}
               <div className="flex items-center gap-3 mt-5">
@@ -140,6 +140,14 @@ export default function Footer() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                     Lajsne
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/kategorije/otiraci" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
+                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                    Otirači
                   </Link>
                 </li>
               </ul>

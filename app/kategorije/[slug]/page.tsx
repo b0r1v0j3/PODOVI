@@ -6,6 +6,9 @@ import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import { getEffectiveParketCollection, getAllParketVariantSlugs, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
 import { filterCategoryListingCollections, resolveCategoryListingMode } from '@/lib/catalog/listing-curation';
+import { generateBreadcrumbSchema, generateCollectionPageSchema, generateProductListSchema } from '@/lib/seo/structured-data';
+import { getCategoryPageCopy } from '@/lib/seo/listing-page-copy';
+import { createMetadataImage, getMetadataImageUrls } from '@/lib/utils/product-images';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import CategoryTabs from '@/components/CategoryTabs';
@@ -40,32 +43,35 @@ export async function generateMetadata({ params }: CategoryPageProps) {
     };
   }
 
+  const categoryCopy = getCategoryPageCopy(category);
+  const metadataImages = [
+    createMetadataImage(category.image, baseUrl, {
+      width: 1200,
+      height: 630,
+      alt: category.name,
+    }),
+  ].filter((image): image is NonNullable<ReturnType<typeof createMetadataImage>> => Boolean(image));
+  const twitterImages = getMetadataImageUrls(metadataImages);
+
   return {
     metadataBase: new URL(baseUrl),
-    title: `${category.name} Podovi | podovi.online`,
-    description: `${category.description}`,
-    keywords: `${category.name}, podovi, podne obloge, laminat, vinil, parket, Srbija`,
+    title: categoryCopy.metaTitle,
+    description: categoryCopy.metaDescription,
+    keywords: categoryCopy.keywords,
     openGraph: {
-      title: `${category.name} - podovi.online`,
-      description: category.description,
+      title: categoryCopy.metaTitle,
+      description: categoryCopy.metaDescription,
       type: 'website',
       locale: 'sr_RS',
       url: `${baseUrl}/kategorije/${params.slug}`,
       siteName: 'podovi.online',
-      images: category.image ? [
-        {
-          url: category.image,
-          width: 1200,
-          height: 630,
-          alt: category.name,
-        }
-      ] : [],
+      images: metadataImages.length > 0 ? metadataImages : undefined,
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${category.name} - podovi.online`,
-      description: category.description,
-      images: category.image ? [category.image] : [],
+      title: categoryCopy.metaTitle,
+      description: categoryCopy.metaDescription,
+      images: twitterImages,
     },
     alternates: {
       canonical: `${baseUrl}/kategorije/${params.slug}`,
@@ -79,6 +85,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (!category) {
     notFound();
   }
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.podovi.online';
+  const categoryCopy = getCategoryPageCopy(category);
 
   // Parse filters from search params (but exclude collections filter for now)
   // For laminat: don't apply thickness filter here - we handle it manually since laminat uses 'overall_thickness' spec
@@ -111,7 +120,21 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const allProductsForThickness = await productRepository.findByCategory(category.id);
 
   // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat – separate collections from colors
-  const hasCollectionTabs = category.slug === 'lvt' || category.slug === 'linoleum' || category.slug === 'tekstilne-ploce' || category.slug === 'vinil' || category.slug === 'parket' || category.slug === 'laminat' || category.slug === 'elektroprovodni' || category.slug === 'industrijske-ploce' || category.slug === 'sport' || category.slug === 'lajsne';
+  const isTechemMatCategory = category.slug === 'otiraci';
+  // Techem enters the catalog as a flat branch until the supplier data model proves real
+  // color/variant selectors that should split listing into collection tabs.
+  const hasCollectionTabs = !isTechemMatCategory && (
+    category.slug === 'lvt' ||
+    category.slug === 'linoleum' ||
+    category.slug === 'tekstilne-ploce' ||
+    category.slug === 'vinil' ||
+    category.slug === 'parket' ||
+    category.slug === 'laminat' ||
+    category.slug === 'elektroprovodni' ||
+    category.slug === 'industrijske-ploce' ||
+    category.slug === 'sport' ||
+    category.slug === 'lajsne'
+  );
   const listingMode = resolveCategoryListingMode(searchParams.listing, category.slug);
   let collections: typeof allProducts = [];
   let colors: typeof allProducts = [];
@@ -595,8 +618,38 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     }
   }
 
+  const breadcrumbItems = [
+    { name: 'Kategorije', url: `${baseUrl}/kategorije` },
+    { name: category.name, url: `${baseUrl}/kategorije/${params.slug}` },
+  ];
+  const schemaProducts = (hasCollectionTabs ? collections : allProducts).slice(0, 100);
+  const categoryPageSchema = generateCollectionPageSchema({
+    name: categoryCopy.heading,
+    description: categoryCopy.metaDescription,
+    url: `${baseUrl}/kategorije/${params.slug}`,
+    image: category.image,
+    baseUrl,
+    about: {
+      '@type': 'Thing',
+      name: category.name,
+    },
+  });
+
   return (
     <div className="bg-gray-50 min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            generateBreadcrumbSchema(breadcrumbItems),
+            categoryPageSchema,
+            generateProductListSchema(schemaProducts, {
+              ...category,
+              description: categoryCopy.metaDescription,
+            }),
+          ]),
+        }}
+      />
       {/* Main Content */}
       <div className="container py-6">
         <div className="mb-4">
@@ -605,6 +658,41 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             { label: category.name }
           ]} />
         </div>
+        <section className="mb-6 rounded-[1.75rem] border border-stone-200 bg-white px-6 py-8 shadow-sm">
+          <div className="max-w-4xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-stone-500">
+              Kategorija
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <h1 className="text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
+                {categoryCopy.heading}
+              </h1>
+              <span className="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-sm font-medium text-stone-600">
+                {allProducts.length} proizvoda
+              </span>
+            </div>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-stone-700 sm:text-lg">
+              {categoryCopy.lead}
+            </p>
+            {categoryCopy.body ? (
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-stone-600 sm:text-base">
+                {categoryCopy.body}
+              </p>
+            ) : null}
+            {categoryCopy.bullets.length > 0 ? (
+              <div className="mt-5 flex flex-wrap gap-2">
+                {categoryCopy.bullets.map((bullet) => (
+                  <span
+                    key={bullet}
+                    className="inline-flex items-center rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm text-stone-700"
+                  >
+                    {bullet}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Filters Sidebar */}
           <aside className="lg:w-60 flex-shrink-0">

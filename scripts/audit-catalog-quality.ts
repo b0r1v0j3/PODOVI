@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -10,6 +11,7 @@ import {
   getAllCarpetProducts,
   getAllDekingProducts,
   getAllLVTProducts,
+  getAllTechemProducts,
   getAllTarkettLVTProducts,
   getEsdCollectionProducts,
   getGerflorLinoleumCollections,
@@ -23,6 +25,7 @@ import {
   getWolflorVinylCollections,
   getVinylCollectionProducts,
 } from '@/lib/utils/productDataLoader';
+import { getPrimaryProductImage } from '@/lib/utils/product-images';
 import { mapCategoryIdToUUID } from '@/lib/repositories/id-mapping';
 import { enrichTarkettWoodProduct } from '@/lib/data/tarkett-wood-enrichment';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
@@ -72,6 +75,7 @@ type DatasetSummary = {
 
 const OUTPUT_DIR = path.join(process.cwd(), 'output');
 const OUTPUT_PATH = path.join(OUTPUT_DIR, 'catalog-quality-audit.json');
+const PUBLIC_DIR = path.join(process.cwd(), 'public');
 
 const BRAND_NAMES: Record<string, string> = {
   '3': 'Tarkett',
@@ -79,6 +83,7 @@ const BRAND_NAMES: Record<string, string> = {
   '8': 'BLOQ',
   '10': 'TimberTech',
   '11': 'Wolflor',
+  '12': 'Techem',
 };
 
 const CATEGORY_NAMES: Record<string, string> = {
@@ -93,6 +98,7 @@ const CATEGORY_NAMES: Record<string, string> = {
   '9': 'Industrijske ploče',
   '10': 'Sport',
   '11': 'Lajsne',
+  '12': 'Otirači',
 };
 
 function normalizeText(value: unknown) {
@@ -175,7 +181,11 @@ function isWeakShortDescription(shortDescription: string) {
 }
 
 function countMeaningfulSpecs(product: Product) {
-  return (product.specs || []).filter((spec) => normalizeText(spec.value) && spec.key !== 'collection').length;
+  return (product.specs || []).filter((spec) =>
+    normalizeText(spec.value) &&
+    spec.key !== 'collection' &&
+    !String(spec.key || '').startsWith('__')
+  ).length;
 }
 
 function countMeaningfulDocuments(product: Product) {
@@ -190,8 +200,109 @@ function hasBrokenTarkettDocumentUrl(url: string) {
 }
 
 function primaryImageUrl(product: Product) {
-  const primary = (product.images || []).find((image) => image.isPrimary) || product.images?.[0];
+  const primary = getPrimaryProductImage(product);
   return normalizeText(primary?.url);
+}
+
+const localAssetExistenceCache = new Map<string, boolean>();
+
+function localPublicAssetExists(assetPath: string) {
+  const normalizedPath = normalizeText(assetPath);
+  if (!normalizedPath.startsWith('/')) {
+    return true;
+  }
+
+  const cached = localAssetExistenceCache.get(normalizedPath);
+  if (typeof cached === 'boolean') {
+    return cached;
+  }
+
+  const pathWithoutSearch = normalizedPath.split(/[?#]/, 1)[0];
+  const candidatePaths = new Set([pathWithoutSearch]);
+
+  try {
+    candidatePaths.add(decodeURIComponent(pathWithoutSearch));
+  } catch {
+    candidatePaths.add(pathWithoutSearch);
+  }
+
+  const exists = Array.from(candidatePaths).some((candidatePath) =>
+    existsSync(path.join(PUBLIC_DIR, candidatePath.replace(/^\//, '')))
+  );
+  localAssetExistenceCache.set(normalizedPath, exists);
+  return exists;
+}
+
+function collectProductImageUrls(product: Product) {
+  const urls: string[] = [];
+
+  for (const image of product.images || []) {
+    const candidates = [
+      image.url,
+      image.variants?.thumb,
+      image.variants?.card,
+      image.variants?.hero,
+      image.variants?.og,
+    ]
+      .map(normalizeText)
+      .filter(Boolean);
+
+    for (const candidate of candidates) {
+      if (!urls.includes(candidate)) {
+        urls.push(candidate);
+      }
+    }
+  }
+
+  return urls;
+}
+
+function findTechemUnlocalizedCopy(product: Product) {
+  const sources = [
+    product.name,
+    product.shortDescription,
+    product.description,
+    ...(product.benefits || []),
+    ...((product.detailsSections || []).flatMap((section) => [section.title, ...section.items])),
+    ...((product.specs || []).flatMap((spec) => [spec.label, spec.value])),
+    ...((product.documents || []).map((document) => document.title)),
+  ]
+    .map(normalizeText)
+    .filter(Boolean);
+
+  const patterns = [
+    /\bAluminum doormats\b/i,
+    /\bA mat with\b/i,
+    /\bMats made of aluminium profiles\b/i,
+    /\bAnti-fatigue mats?\b/i,
+    /\bIndoor mats\b/i,
+    /\bOutdoor advertising doormats\b/i,
+    /\bHot-dip galvanized steel grids\b/i,
+    /\bDisinfectant mats are\b/i,
+    /\bThe openwork mat\b/i,
+    /\bSuitable for indoor and outdoor\b/i,
+    /\bSwimming pools\b/i,
+    /\bChanging rooms\b/i,
+    /\(textile insert(?: for outdoors)?\)/i,
+    /\(rubber insert\)/i,
+    /\(bristle insert\)/i,
+    /\bApplication\b/i,
+    /\bInstallation method\b/i,
+    /\bOperation temperature\b/i,
+    /\bSuggested type of graphics?\b/i,
+    /\bCertificates and approvals\b/i,
+    /\bApprovals and certification\b/i,
+    /\bAtesty i aprobaty\b/i,
+    /\bWycieraczka\b/i,
+  ];
+
+  for (const value of sources) {
+    if (patterns.some((pattern) => pattern.test(value))) {
+      return value;
+    }
+  }
+
+  return null;
 }
 
 function collectionProductsNeedingDocs(product: Product, source: string) {
@@ -270,6 +381,21 @@ function auditCollectionProduct(source: string, product: Product): ProductAuditF
       issue: 'missing_primary_image',
       detail: 'Kolekcija nema primarnu sliku.',
     });
+  } else if (
+    source !== 'mock-products' &&
+    imageUrl.startsWith('/') &&
+    !localPublicAssetExists(imageUrl)
+  ) {
+    findings.push({
+      severity: 'high',
+      source,
+      slug: product.slug,
+      name: product.name,
+      categoryId: product.categoryId,
+      brandId: product.brandId,
+      issue: 'missing_local_primary_image_asset',
+      detail: imageUrl,
+    });
   }
 
   if (countMeaningfulSpecs(product) < 2) {
@@ -296,6 +422,58 @@ function auditCollectionProduct(source: string, product: Product): ProductAuditF
       issue: 'missing_external_link',
       detail: 'Kolekcija nema link ka zvaničnoj strani proizvođača.',
     });
+  }
+
+  if (source === 'techem-otiraci') {
+    const techemImageUrls = collectProductImageUrls(product);
+    const supplierHostedTechemImage = techemImageUrls.find((imageUrl) =>
+      /(?:^|\/\/)(?:www\.)?techem-wycieraczki\.com\.pl\//i.test(imageUrl)
+    );
+    if (supplierHostedTechemImage) {
+      findings.push({
+        severity: 'high',
+        source,
+        slug: product.slug,
+        name: product.name,
+        categoryId: product.categoryId,
+        brandId: product.brandId,
+        issue: 'techem_supplier_image_hotlink',
+        detail: supplierHostedTechemImage,
+      });
+    }
+
+    const invalidTechemUrl = [
+      normalizeText(product.externalLink),
+      ...techemImageUrls,
+      ...(product.documents || []).map((document) => normalizeText(document.url)),
+    ].find((value) => value.includes('www.www.techem-wycieraczki.com.pl'));
+
+    if (invalidTechemUrl) {
+      findings.push({
+        severity: 'high',
+        source,
+        slug: product.slug,
+        name: product.name,
+        categoryId: product.categoryId,
+        brandId: product.brandId,
+        issue: 'invalid_techem_url',
+        detail: invalidTechemUrl,
+      });
+    }
+
+    const unlocalizedTechemCopy = findTechemUnlocalizedCopy(product);
+    if (unlocalizedTechemCopy) {
+      findings.push({
+        severity: 'medium',
+        source,
+        slug: product.slug,
+        name: product.name,
+        categoryId: product.categoryId,
+        brandId: product.brandId,
+        issue: 'unlocalized_techem_copy',
+        detail: unlocalizedTechemCopy,
+      });
+    }
   }
 
   if (
@@ -622,6 +800,7 @@ async function main() {
     { name: 'gerflor-linoleum-collections', products: getGerflorLinoleumCollections() },
     { name: 'bloq-collections', products: getAllBloqCarpetProducts() },
     { name: 'timbertech-deking', products: getAllDekingProducts() },
+    { name: 'techem-otiraci', products: getAllTechemProducts() },
   ];
 
   const canonicalFallbackSlugs = new Set(
@@ -643,6 +822,7 @@ async function main() {
       ...getTarkettVinylHomeCollections(),
       ...getVinylCollectionProducts(),
       ...getManualCollectionProducts(),
+      ...getAllTechemProducts(),
     ].map((product) => product.slug)
   );
 
@@ -755,6 +935,7 @@ async function main() {
     summarizeProductArray('gerflor-linoleum-collections', getGerflorLinoleumCollections()),
     summarizeProductArray('bloq-collections', getAllBloqCarpetProducts()),
     summarizeProductArray('timbertech-deking', getAllDekingProducts()),
+    summarizeProductArray('techem-otiraci', getAllTechemProducts()),
     summarizeNestedDataset('vinyl-special-json', ((vinylSpecialColorsData as any).collections || []) as any[]),
     summarizeNestedDataset('industrial-json', ((industrialColorsData as any).collections || []) as any[]),
     summarizeNestedDataset('sport-json', ((sportColorsData as any).collections || []) as any[]),

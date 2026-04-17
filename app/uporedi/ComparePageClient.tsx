@@ -1,8 +1,9 @@
 'use client';
 
 import { useCompare } from '@/lib/context/CompareContext';
-import Image from 'next/image';
 import Link from 'next/link';
+import ProductImage from '@/components/ProductImage';
+import { getProductImageCandidates } from '@/lib/utils/product-images';
 
 export default function ComparePageClient() {
     const { compareItems, removeFromCompare, clearAll } = useCompare();
@@ -77,7 +78,8 @@ export default function ComparePageClient() {
                                 Proizvod
                             </th>
                             {compareItems.map(product => {
-                                const img = product.images?.find(i => i.isPrimary) || product.images?.[0];
+                                const imageCandidates = getProductImageCandidates(product, 'thumb').slice(0, 4);
+                                const img = imageCandidates[0];
                                 return (
                                     <th key={product.id} className="p-4 border border-gray-200 bg-white text-center align-top min-w-[200px]">
                                         <div className="space-y-3">
@@ -88,9 +90,14 @@ export default function ComparePageClient() {
                                             >
                                                 ✕
                                             </button>
-                                            {img && img.url.startsWith('/') && (
+                                            {img?.url && (
                                                 <div className="relative w-32 h-32 mx-auto rounded-lg overflow-hidden bg-gray-50">
-                                                    <Image src={img.url} alt={product.name} fill className="object-cover" sizes="128px" />
+                                                    <ProductImage
+                                                        sources={imageCandidates}
+                                                        alt={product.name}
+                                                        className="object-cover"
+                                                        sizes="128px"
+                                                    />
                                                 </div>
                                             )}
                                             <Link href={`/proizvodi/${product.slug}`} className="text-sm font-bold text-gray-900 hover:text-primary-600 transition-colors block">

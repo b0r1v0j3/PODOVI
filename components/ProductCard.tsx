@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Product } from '@/types';
 import { brandRepository } from '@/lib/repositories/brand-repository';
-import { categoryRepository } from '@/lib/repositories/category-repository';
 import ProductCardOverlay from './ProductCardOverlay';
+import ProductImage from './ProductImage';
 import { splitProductTitle } from '@/lib/utils/name-parser';
+import { getCanonicalProductHref } from '@/lib/utils/product-routes';
+import { getProductImageCandidates } from '@/lib/utils/product-images';
 
 interface ProductCardProps {
   product: Product;
@@ -23,6 +24,7 @@ const categoryBadgeConfig: Record<string, { label: string; className: string }> 
   '9': { label: 'Industrijske ploče', className: 'badge-industrijske' },
   '10': { label: 'Sport', className: 'badge-sport' },
   '11': { label: 'Lajsne', className: 'badge-lajsne' },
+  '12': { label: 'Otirači', className: 'badge-otiraci' },
 };
 
 // Keys to extract from specs for chip display
@@ -81,54 +83,14 @@ function getSpecChips(specs: Product['specs'], categoryId?: string, productName?
 
 export default async function ProductCard({ product }: ProductCardProps) {
   const brand = await brandRepository.findById(product.brandId);
-  const primaryImage = product.images && product.images.length > 0
-    ? (product.images.find(img => img.isPrimary) || product.images[0])
-    : null;
-
-
-
-
+  const imageCandidates = getProductImageCandidates(product, 'card').slice(0, 4);
+  const primaryImage = imageCandidates[0];
   // Remove "Gerflor" prefix from product name for LVT collections
   const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
     ? product.name.replace(/^Gerflor\s+/, '')
     : product.name;
-
-  // Map category IDs to category slugs
-  const categorySlugMap: Record<string, string> = {
-    '6': 'lvt',
-    '7': 'linoleum',
-    '4': 'tekstilne-ploce',
-    '2': 'vinil',
-    '8': 'elektroprovodni',
-    '9': 'industrijske-ploce',
-    '10': 'sport',
-    '11': 'lajsne',
-  };
-
-  // Extract collection slug
-  const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
-  const isColorTileCategory = ['2', '4', '6', '7', '8', '9', '10', '11'].includes(product.categoryId);
-  const isProductColorCategory = ['1', '3'].includes(product.categoryId); // Laminat, Parket
-
-  let productHref = `/proizvodi/${product.slug}`;
+  const productHref = getCanonicalProductHref(product as Product & { collectionSlug?: string });
   let rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
-
-  if (colorCollectionSlug) {
-    if (isColorTileCategory) {
-      // LVT, Linoleum, Carpet, Vinil link directly to the collection color selector logic inside category pages
-      const categorySlug = categorySlugMap[product.categoryId] || 'lvt';
-      productHref = `/kategorije/${categorySlug}?color=${product.slug}`;
-    } else if (isProductColorCategory) {
-      // Laminat and Parket link to the master collection product page with a color query
-      productHref = `/proizvodi/${colorCollectionSlug}?color=${product.slug}`;
-    }
-  } else if (isProductColorCategory) {
-    // If collectionSlug is missing (e.g. Supabase), we compute it from the name
-    const dSlug = rawCollectionName ? rawCollectionName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') : null;
-    if (dSlug && product.slug !== dSlug) {
-      productHref = `/proizvodi/${dSlug}?color=${product.slug}`;
-    }
-  }
 
   // Badge config
   const badge = categoryBadgeConfig[product.categoryId];
@@ -149,7 +111,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
 
   // Strip category name and product name from shortDescription to avoid redundancy
   // e.g. "Blues 1033 4V Laminat" on the Laminat page → redundant
-  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Lajsne', 'Podna obloga'];
+  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Lajsne', 'Otirači', 'Podna obloga'];
   let cleanShortDesc = product.shortDescription || '';
   for (const catName of categoryNames) {
     cleanShortDesc = cleanShortDesc.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();
@@ -170,19 +132,17 @@ export default async function ProductCard({ product }: ProductCardProps) {
     >
       <div className="relative aspect-[4/3] bg-[#F5F5F7] overflow-hidden">
         {primaryImage ? (
-          <Image
-            src={primaryImage.url}
+          <ProductImage
+            sources={imageCandidates}
             alt={primaryImage.alt}
-            fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             quality={90}
             className={`transition-transform duration-500 group-hover:scale-[1.03] ${product.categoryId === '5'
-              ? 'object-cover object-left'
+              ? 'object-left'
               : product.slug === 'gerflor-mipolam-technic-el5-eu'
-                ? 'object-cover object-bottom'
-                : 'object-cover'
+                ? 'object-bottom'
+                : ''
               }`}
-            unoptimized={!primaryImage.url.startsWith('/')}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gray-50 group-hover:bg-gray-100 transition-colors duration-300">

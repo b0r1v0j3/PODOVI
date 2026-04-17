@@ -2,6 +2,7 @@ import { Brand } from '@/types';
 import { brands as mockBrands } from '@/lib/data/mock-data';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
 import { mapBrandIdToUUID, mapBrandId } from './id-mapping';
+import { selectPreferredCatalogAsset } from '@/lib/utils/catalog-assets';
 
 export interface IBrandRepository {
   findAll(): Promise<Brand[]>;
@@ -13,14 +14,16 @@ export interface IBrandRepository {
 // Transform DB row → Brand interface
 // =========================================
 function toBrand(row: any): Brand {
+  const fallbackBrand = mockBrands.find((brand) => brand.slug === row.slug);
+
   return {
-    id: mapBrandId(row.id),
-    name: row.name,
+    id: fallbackBrand?.id || mapBrandId(row.id),
+    name: row.name || fallbackBrand?.name || '',
     slug: row.slug,
-    logo: row.logo || '',
-    description: row.description || '',
-    website: row.website || undefined,
-    countryOfOrigin: row.country_of_origin || undefined,
+    logo: selectPreferredCatalogAsset(fallbackBrand?.logo, row.logo),
+    description: row.description || fallbackBrand?.description || '',
+    website: row.website || fallbackBrand?.website || undefined,
+    countryOfOrigin: row.country_of_origin || fallbackBrand?.countryOfOrigin || undefined,
   };
 }
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { getPrimaryColorImage } from '@/lib/utils/product-images';
 
 interface Color {
   collection: string;
@@ -149,10 +150,8 @@ export default function ColorGrid({
 
   // Update selected slug when prop changes
   useEffect(() => {
-    if (selectedColorSlug) {
-      setCurrentSelectedSlug(selectedColorSlug);
-    }
-  }, [selectedColorSlug]);
+    setCurrentSelectedSlug(selectedColorSlug || initialColorSlug);
+  }, [selectedColorSlug, initialColorSlug]);
 
   // Extract collection name for URL construction
   const getCollectionName = (slug: string): string => {
@@ -194,11 +193,9 @@ export default function ColorGrid({
 
       // Also call onColorSelect if provided
       if (onColorSelect) {
-        // Use texture_url (pod images) first, then image_url, lifestyle_url as last resort
-        // For Vinil, use image field first
-        // URLs are already normalized in the useEffect
-        const imageUrl = color.texture_url || color.image_url || (color as any).image || color.lifestyle_url || '';
-        const imageAlt = color.full_name || color.name || '';
+        const primaryColorImage = getPrimaryColorImage(color);
+        const imageUrl = primaryColorImage?.url || '';
+        const imageAlt = primaryColorImage?.alt || color.full_name || color.name || '';
         const colorCode = color.code || '';
         const colorName = color.name || '';
         const characteristics = buildCharacteristics(color);
@@ -385,7 +382,7 @@ export default function ColorGrid({
 
     const urls: string[] = [];
     colors.forEach((color: Color) => {
-      const imageUrl = color.texture_url || color.image_url || (color as any).image;
+      const imageUrl = getPrimaryColorImage(color)?.url;
       if (imageUrl) {
         urls.push(imageUrl);
       }
@@ -406,10 +403,11 @@ export default function ColorGrid({
       return;
     }
 
-    // If there's an initialColorSlug, use it; otherwise select first color
-    const colorToSelect = initialColorSlug
-      ? filteredColors.find(color => color.slug === initialColorSlug)
-      : filteredColors[0];
+    if (!initialColorSlug) {
+      return;
+    }
+
+    const colorToSelect = filteredColors.find(color => color.slug === initialColorSlug);
 
     if (colorToSelect) {
       hasAutoSelected.current = true;
@@ -514,6 +512,7 @@ export default function ColorGrid({
       <div className={`grid gap-3 ${compact ? 'grid-cols-6 mb-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
         {paginatedColors.map((color) => {
           const isSelected = currentSelectedSlug === color.slug;
+          const primaryColorImage = getPrimaryColorImage(color);
           return (
             <button
               key={color.slug}
@@ -525,10 +524,10 @@ export default function ColorGrid({
             >
               {/* Image */}
               <div className="aspect-square relative overflow-hidden bg-gray-100">
-                {(color.texture_url || color.image_url || (color as any).image) ? (
+                {primaryColorImage?.url ? (
                   <ImageWithFallback
-                    src={color.texture_url || color.image_url || (color as any).image || ''}
-                    alt={color.full_name}
+                    src={primaryColorImage.url}
+                    alt={primaryColorImage.alt || color.full_name}
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                     sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
                     quality={100}

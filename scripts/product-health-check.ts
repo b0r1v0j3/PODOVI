@@ -27,9 +27,18 @@ type HealthIssues = {
     collectionDrivenLowSpecs: CollectionDrivenLowSpecIssue[];
 };
 
+function countMeaningfulSpecs(product: Product) {
+    return (product.specs || []).filter((spec) =>
+        spec &&
+        String(spec.value || '').trim().length > 0 &&
+        spec.key !== 'collection' &&
+        !String(spec.key || '').startsWith('__')
+    ).length;
+}
+
 function getCollectionDrivenLowSpecInfo(product: Product): CollectionDrivenLowSpecIssue | null {
     const name = product.name || product.slug;
-    const count = product.specs ? product.specs.length : 0;
+    const count = countMeaningfulSpecs(product);
 
     if (product.categoryId === '4' && product.id.startsWith('bloq-coll-')) {
         return {
@@ -79,6 +88,7 @@ async function runHealthCheck() {
         allProducts.push(...loader.getAllTarkettLVTProducts());
         allProducts.push(...loader.getTarkettLVTCollections());
         allProducts.push(...loader.getAllDekingProducts());
+        allProducts.push(...loader.getAllTechemProducts());
         allProducts.push(...loader.getVinylCollectionProducts());
         allProducts.push(...loader.getEsdCollectionProducts());
 
@@ -119,12 +129,13 @@ async function runHealthCheck() {
             }
 
             // Check specs
-            if (!product.specs || product.specs.length < 3) {
+            const specsCount = countMeaningfulSpecs(product);
+            if (specsCount < 3) {
                 const collectionDrivenInfo = getCollectionDrivenLowSpecInfo(product);
                 if (collectionDrivenInfo) {
                     issues.collectionDrivenLowSpecs.push(collectionDrivenInfo);
                 } else {
-                    issues.lowSpecs.push({ id: product.id, name, count: product.specs ? product.specs.length : 0 });
+                    issues.lowSpecs.push({ id: product.id, name, count: specsCount });
                 }
             }
         });

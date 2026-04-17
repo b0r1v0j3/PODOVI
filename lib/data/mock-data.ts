@@ -24,7 +24,7 @@ export const categories: Category[] = [
     name: 'LVT',
     slug: 'lvt',
     description: 'Luxury Vinyl Tile - Premium vinil podovi sa autentičnim dizajnom',
-    image: '/images/categories/lvt.jpg',
+    image: '/images/collections/kolekcija-c000770-id-inspiration-55.jpg',
     order: 3,
   },
   {
@@ -91,6 +91,14 @@ export const categories: Category[] = [
     image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/tarkett-dekorativne-zidne-lajsne-za-lvt/tarkett-dekorativne-zidne-lajsne-za-lvt-marquina-grande-black.jpg?v=20260331152443',
     order: 11,
   },
+  {
+    id: '12',
+    name: 'Otirači',
+    slug: 'otiraci',
+    description: 'Otirači i ulazni sistemi za objekte: aluminijumski, unutrašnji, spoljašnji i specijalni modeli za ulazne zone',
+    image: '/images/categories/otiraci.jpg',
+    order: 12,
+  },
 
 ];
 
@@ -99,7 +107,7 @@ export const brands: Brand[] = [
     id: '3',
     name: 'Tarkett',
     slug: 'tarkett',
-    logo: '/images/brands/tarkett.png',
+    logo: '/images/brands/tarkett.svg',
     description: 'Globalni lider u proizvodnji inovativnih podnih rešenja',
     website: 'https://www.tarkett.com',
     countryOfOrigin: 'Francuska',
@@ -108,7 +116,7 @@ export const brands: Brand[] = [
     id: '6',
     name: 'Gerflor',
     slug: 'gerflor',
-    logo: '/images/brands/gerflor.png',
+    logo: '/images/brands/gerflor.svg',
     description: 'Francuski lider u proizvodnji vinilnih i komercijalnih podova sa preko 80 godina iskustva',
     website: 'https://www.gerflor-cee.com/',
     countryOfOrigin: 'Francuska',
@@ -117,10 +125,19 @@ export const brands: Brand[] = [
     id: '8',
     name: 'BLOQ',
     slug: 'bloq',
-    logo: '/images/brands/bloq.png',
+    logo: '/images/brands/bloq.svg',
     description: 'Holandski proizvođač premium tekstilnih ploča za komercijalne i poslovne prostore',
     website: 'https://bloq.nl',
     countryOfOrigin: 'Holandija',
+  },
+  {
+    id: '10',
+    name: 'TimberTech',
+    slug: 'timbertech',
+    logo: '/images/placeholder.svg',
+    description: 'Brend kompozitnog dekinga i spoljašnjih podnih sistema za terase, dvorišta i komercijalne eksterijere',
+    website: 'https://www.timbertech.com/',
+    countryOfOrigin: 'SAD',
   },
   {
     id: '11',
@@ -130,6 +147,15 @@ export const brands: Brand[] = [
     description: 'Proizvođač komercijalnih vinil podova sa homogenim, heterogenim i wood-look kolekcijama',
     website: 'https://wolflor.cn/',
     countryOfOrigin: 'Kina',
+  },
+  {
+    id: '12',
+    name: 'Techem',
+    slug: 'techem',
+    logo: '/images/brands/techem-logo-en.png',
+    description: 'Poljski proizvođač sistemskih otirača, aluminijumskih ulaznih zona, reklamnih, unutrašnjih, spoljašnjih i antifatig podloga',
+    website: 'https://www.techem-wycieraczki.com.pl/en/products/',
+    countryOfOrigin: 'Poljska',
   },
 ];
 
@@ -1922,7 +1948,7 @@ Održivost:
     brandId: '6',
     shortDescription: 'Provodni homogeni vinil za opštu ESD zaštitu (R < 10⁸ Ω)',
     description: 'Gerflor Mipolam EL7 - provodni homogeni vinil za opštu namenu sa ESD zaštitom.',
-    images: [{ id: 'esd-7-img', url: '/images/categories/elektroprovodni.jpg', alt: 'Mipolam EL7', isPrimary: true, order: 1 }],
+    images: [{ id: 'esd-7-img', url: '/images/esd/mipolam-el7-4101.jpg', alt: 'Mipolam EL7', isPrimary: true, order: 1 }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Mipolam EL7' },
       { key: 'thickness', label: 'Debljina', value: '2.00 mm' },

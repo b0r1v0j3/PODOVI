@@ -1,0 +1,6 @@
+<svg width="320" height="140" viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="140" rx="24" fill="#0B2C5F"/>
+  <circle cx="72" cy="70" r="28" fill="#FFFFFF"/>
+  <path d="M72 46C85.2548 46 96 56.7452 96 70C96 83.2548 85.2548 94 72 94V46Z" fill="#0B2C5F"/>
+  <text x="118" y="81" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" letter-spacing="1.2">Tarkett</text>
+</svg>

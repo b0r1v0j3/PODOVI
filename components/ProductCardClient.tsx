@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Product, Brand } from '@/types';
-import { getEffectiveParketCollection, getParketCollectionSlug, PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping';
 import ProductCardOverlay from './ProductCardOverlay';
+import ProductImage from './ProductImage';
 import { splitProductTitle } from '@/lib/utils/name-parser';
+import { getCanonicalProductHref } from '@/lib/utils/product-routes';
+import { getProductImageCandidates } from '@/lib/utils/product-images';
 
 interface ProductCardClientProps {
   product: Product;
@@ -27,6 +28,7 @@ const categoryBadgeConfig: Record<string, { label: string; className: string }> 
   '9': { label: 'Industrijske ploče', className: 'badge-industrijske' },
   '10': { label: 'Sport', className: 'badge-sport' },
   '11': { label: 'Lajsne', className: 'badge-lajsne' },
+  '12': { label: 'Otirači', className: 'badge-otiraci' },
 };
 
 // Keys to extract from specs for chip display
@@ -91,7 +93,7 @@ function getSpecChips(specs: Product['specs'], categoryId?: string, productName?
 function cleanShortDescription(shortDesc: string | undefined, productName: string, displayName: string): string | null {
   if (!shortDesc || shortDesc.length <= 5) return null;
 
-  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Lajsne', 'Podna obloga'];
+  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Lajsne', 'Otirači', 'Podna obloga'];
   let cleaned = shortDesc;
   for (const catName of categoryNames) {
     cleaned = cleaned.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();
@@ -104,94 +106,16 @@ function cleanShortDescription(shortDesc: string | undefined, productName: strin
   return cleaned;
 }
 
-function normalizeCollectionSlugForColorRoute(categoryId: string, brandId: string | undefined, collectionSlug: string): string {
-  if (!['2', '6', '8', '9', '10', '11'].includes(categoryId)) {
-    return collectionSlug;
-  }
-
-  if (
-    collectionSlug.startsWith('gerflor-') ||
-    collectionSlug.startsWith('tarkett-') ||
-    collectionSlug.startsWith('wolflor-') ||
-    collectionSlug.startsWith('bloq-')
-  ) {
-    return collectionSlug;
-  }
-
-  if (brandId === '3') {
-    return `tarkett-${collectionSlug}`;
-  }
-
-  if (brandId === '11') {
-    return `wolflor-${collectionSlug}`;
-  }
-
-  return `gerflor-${collectionSlug}`;
-}
-
 export default function ProductCardClient({ product, brand, compact = false }: ProductCardClientProps) {
-  const primaryImage = product.images && product.images.length > 0
-    ? (product.images.find(img => img.isPrimary) || product.images[0])
-    : null;
-
-  const imageSrc = primaryImage?.url || '';
+  const imageCandidates = getProductImageCandidates(product, compact ? 'thumb' : 'card').slice(0, 4);
+  const primaryImage = imageCandidates[0];
 
   // Remove "Gerflor" prefix from product name for LVT collections
   const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
     ? product.name.replace(/^Gerflor\s+/, '')
     : product.name;
 
-  // Map category IDs to category slugs
-  const categorySlugMap: Record<string, string> = {
-    '1': 'laminat',
-    '6': 'lvt',
-    '7': 'linoleum',
-    '4': 'tekstilne-ploce',
-    '2': 'vinil',
-    '3': 'parket',
-    '8': 'elektroprovodni',
-    '9': 'industrijske-ploce',
-    '10': 'sport',
-    '11': 'lajsne',
-  };
-
-  const isColorTileCategory = ['6', '7', '4', '2', '8', '9', '10', '11'].includes(product.categoryId);
-  const colorCollectionSlug = (product as { collectionSlug?: string }).collectionSlug;
-  const isParket = product.categoryId === '3';
-  const isLaminat = product.categoryId === '1';
-
-  let productHref = `/proizvodi/${product.slug}`;
-
-  if (isColorTileCategory && colorCollectionSlug) {
-    const normalizedCollectionSlug = normalizeCollectionSlugForColorRoute(product.categoryId, product.brandId, colorCollectionSlug);
-    productHref = `/proizvodi/${normalizedCollectionSlug}?color=${encodeURIComponent(product.slug)}`;
-  } else if (isLaminat) {
-    const isLaminatCollectionHeader = product.sku?.startsWith('LAM-');
-    if (isLaminatCollectionHeader) {
-      productHref = `/proizvodi/${product.slug}`;
-    } else {
-      const collectionName = product.specs?.find(s => s.key === 'collection')?.value;
-      const collectionSlug = collectionName ? collectionName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') : product.slug;
-      productHref = `/proizvodi/${collectionSlug}?color=${encodeURIComponent(product.slug)}`;
-    }
-  } else if (isParket) {
-    const isParketCollectionHeader =
-      (product.sku && product.sku.startsWith('PARKET-') && !product.sku.includes('OAK') && !product.sku.includes('ASH')) ||
-      (PARKET_HEADER_COLLECTIONS as readonly string[]).includes(product.name);
-    if (isParketCollectionHeader) {
-      productHref = `/proizvodi/${product.slug}`;
-    } else {
-      const collectionSpec = product.specs?.find(s => s.key === 'collection');
-      const collectionName = getEffectiveParketCollection(product.slug, collectionSpec?.value);
-      const collectionSlug = collectionName ? getParketCollectionSlug(collectionName) : null;
-
-      if (collectionSlug) {
-        productHref = `/proizvodi/${collectionSlug}?color=${encodeURIComponent(product.slug)}`;
-      } else {
-        productHref = `/proizvodi/${product.slug}`;
-      }
-    }
-  }
+  const productHref = getCanonicalProductHref(product as Product & { collectionSlug?: string });
 
   // Badge, chips, cleaned description
   const badge = categoryBadgeConfig[product.categoryId];
@@ -208,15 +132,12 @@ export default function ProductCardClient({ product, brand, compact = false }: P
       <Link href={productHref} className="group block rounded-lg border border-gray-200 bg-white overflow-hidden card-hover transition-all duration-300">
         <div className="relative aspect-square bg-gray-100 overflow-hidden">
           {primaryImage ? (
-            <Image
-              key={imageSrc}
-              src={imageSrc || '/images/placeholder.svg'}
+            <ProductImage
+              sources={imageCandidates}
               alt={primaryImage.alt}
-              fill
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
               quality={90}
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              unoptimized={!imageSrc.startsWith('/')}
+              className="transition-transform duration-300 group-hover:scale-105"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">Bez slike</div>
@@ -256,17 +177,14 @@ export default function ProductCardClient({ product, brand, compact = false }: P
     >
       <div className="relative aspect-[4/3] bg-[#F5F5F7] overflow-hidden">
         {primaryImage ? (
-          <Image
-            key={imageSrc}
-            src={imageSrc || '/images/placeholder.svg'}
+          <ProductImage
+            sources={imageCandidates}
             alt={primaryImage.alt}
-            fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             quality={90}
-            className={`transition-transform duration-500 group-hover:scale-[1.03] ${product.categoryId === '5' ? 'object-cover object-left' :
-              product.slug === 'gerflor-mipolam-technic-el5-eu' ? 'object-cover object-bottom' : 'object-cover'
+            className={`transition-transform duration-500 group-hover:scale-[1.03] ${product.categoryId === '5' ? 'object-left' :
+              product.slug === 'gerflor-mipolam-technic-el5-eu' ? 'object-bottom' : ''
               }`}
-            unoptimized={!imageSrc.startsWith('/')}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">

@@ -7,6 +7,7 @@ import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.
 import tarkettHomogeneousVinylColorsData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylColorsData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
 import wolflorVinylColorsData from '@/public/data/wolflor_vinyl_colors.json';
+import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
@@ -14,6 +15,7 @@ import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import { SITE_URL } from '@/lib/seo/site-config';
 import { getDerivedWeldingSpecs } from './welding-helpers';
+import { getPrimaryColorImage } from '@/lib/utils/product-images';
 
 type NestedCollection = {
     name: string;
@@ -136,6 +138,9 @@ export function buildNestedColorFromCollection(
         overall_thickness: inferredThickness,
         format: inferredFormat,
         dimension: inferredDimension,
+        documents: Array.isArray(color.documents)
+            ? color.documents
+            : (Array.isArray(collection.documents) ? collection.documents : undefined),
         image_url: color.image_url || color.image,
         brandId: color.brandId || (collection as any).brandId,
     } as ColorFromJSON;
@@ -177,6 +182,8 @@ function getCategoryId(categorySlug: ColorSource['categorySlug']): string {
     switch (categorySlug) {
         case 'vinil':
             return '2';
+        case 'tekstilne-ploce':
+            return '4';
         case 'lvt':
             return '6';
         case 'linoleum':
@@ -194,12 +201,45 @@ function getCategoryId(categorySlug: ColorSource['categorySlug']): string {
     }
 }
 
-function getPrimaryImageUrl(source: ColorSource): string {
-    if (source.categorySlug === 'lvt') {
-        return source.color.texture_url || source.color.lifestyle_url || source.color.image_url || '';
-    }
+function buildBloqColorSource(rawColor: Record<string, any>): ColorSource {
+    const code = String(rawColor.code || '').trim();
+    const rawName = String(rawColor.name || rawColor.full_name || '').trim();
+    const normalizedName = code && rawName.startsWith(`${code} `)
+        ? rawName.substring(code.length).trim()
+        : rawName;
 
-    return ((source.color as any).image || source.color.texture_url || source.color.image_url || source.color.lifestyle_url || '');
+    return {
+        categorySlug: 'tekstilne-ploce',
+        brandId: '8',
+        color: {
+            collection: String(rawColor.collection_slug || rawColor.collection || '').trim(),
+            collection_slug: String(rawColor.collection_slug || rawColor.collection || '').trim(),
+            collection_name: String(rawColor.collection_name || rawColor.collection || '').trim(),
+            code,
+            name: normalizedName,
+            full_name: String(rawColor.full_name || rawName || normalizedName).trim(),
+            slug: String(rawColor.slug || '').trim(),
+            image: String(rawColor.image_url || '').trim(),
+            image_url: String(rawColor.image_url || '').trim(),
+            texture_url: String(rawColor.texture_url || rawColor.image_url || '').trim(),
+            image_count: Number(rawColor.image_count || (rawColor.image_url ? 1 : 0) || 0),
+            dimension: String(rawColor.dimension || '').trim() || undefined,
+            format: String(rawColor.format || '').trim() || undefined,
+            overall_thickness: String(rawColor.overall_thickness || '').trim() || undefined,
+            description: String(rawColor.description || '').trim() || undefined,
+            characteristics: rawColor.characteristics && typeof rawColor.characteristics === 'object'
+                ? rawColor.characteristics
+                : undefined,
+            specs: rawColor.specs && typeof rawColor.specs === 'object'
+                ? rawColor.specs
+                : undefined,
+            brandId: '8',
+        },
+    };
+}
+
+function getPrimaryImageUrl(source: ColorSource): string {
+    return getPrimaryColorImage(source.color)?.url || '';
 }
 
 export function buildSpecsFromColor(
@@ -300,6 +340,45 @@ export function buildSpecsFromColor(
     return specs;
 }
 
+function normalizeColorDocuments(
+    documents?: Array<{ title?: string; url?: string; type?: string }>
+): NonNullable<Product['documents']> {
+    if (!Array.isArray(documents)) {
+        return [];
+    }
+
+    const seen = new Set<string>();
+    const normalizedDocuments: NonNullable<Product['documents']> = [];
+
+    for (const document of documents) {
+        const url = String(document?.url || '').trim();
+        if (!url || seen.has(url)) {
+            continue;
+        }
+
+        seen.add(url);
+        normalizedDocuments.push({
+            title: String(document?.title || '').trim() || 'Dokument',
+            url,
+            type: document?.type ? String(document.type).trim() : undefined,
+        });
+    }
+
+    return normalizedDocuments;
+}
+
+export function buildCharacteristicsFromColor(
+    color: ColorFromJSON,
+    context?: { categoryId?: string; brandId?: string }
+): Record<string, string> {
+    return buildSpecsFromColor(color, context).reduce<Record<string, string>>((result, spec) => {
+        if (spec.label && spec.value) {
+            result[spec.label] = spec.value;
+        }
+        return result;
+    }, {});
+}
+
 export function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSpec[] {
     const merged = new Map<string, ProductSpec>();
     for (const spec of base) {
@@ -320,6 +399,12 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
     const linoleumMatch = linoleumColors.find((color) => color.slug === slug);
     if (linoleumMatch) {
         return { categorySlug: 'linoleum', color: linoleumMatch };
+    }
+
+    const bloqMatch = (((bloqCarpetData as any).colors || []) as Array<Record<string, any>>)
+        .find((color) => String(color.slug || '').trim() === slug);
+    if (bloqMatch) {
+        return buildBloqColorSource(bloqMatch);
     }
 
     const nestedSources: Array<{ categorySlug: ColorSource['categorySlug']; collections: NestedCollection[] }> = [
@@ -383,6 +468,44 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
     return null;
 }
 
+export type SelectedColorServerData = {
+    source: ColorSource;
+    specs: ProductSpec[];
+    characteristics: Record<string, string>;
+    documents: NonNullable<Product['documents']>;
+};
+
+export async function resolveSelectedColorServerData(
+    slug: string,
+    context?: { categoryId?: string; brandId?: string }
+): Promise<SelectedColorServerData | null> {
+    const source = await loadColorFromJson(slug);
+    if (!source) {
+        return null;
+    }
+
+    const categoryId = getCategoryId(source.categorySlug);
+    if (context?.categoryId && categoryId !== context.categoryId) {
+        return null;
+    }
+
+    const brandId = context?.brandId || source.brandId || source.color.brandId;
+    const specs = buildSpecsFromColor(source.color, {
+        categoryId,
+        brandId,
+    });
+
+    return {
+        source,
+        specs,
+        characteristics: buildCharacteristicsFromColor(source.color, {
+            categoryId,
+            brandId,
+        }),
+        documents: normalizeColorDocuments(source.color.documents),
+    };
+}
+
 export function colorToProduct(source: ColorSource, slug: string, collectionSlugOverride?: string): Product & { collectionSlug: string } {
     const { color } = source;
     const categoryId = getCategoryId(source.categorySlug);
@@ -420,6 +543,7 @@ export function colorToProduct(source: ColorSource, slug: string, collectionSlug
         description,
         images,
         specs,
+        documents: normalizeColorDocuments(color.documents),
         price: undefined,
         priceUnit: undefined,
         inStock: true,

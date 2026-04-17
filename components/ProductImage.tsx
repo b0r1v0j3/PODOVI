@@ -1,11 +1,14 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
+import { shouldBypassNextImageOptimization } from '@/lib/utils/image-runtime';
+import { normalizeProductImageCandidates } from '@/lib/utils/product-images';
 
 interface ProductImageProps {
-  src: string;
-  alt: string;
+  src?: string;
+  alt?: string;
+  sources?: Array<{ url: string; alt?: string }>;
   className?: string;
   sizes?: string;
   quality?: number;
@@ -13,30 +16,45 @@ interface ProductImageProps {
   priority?: boolean;
 }
 
-export default function ProductImage({ src, alt, className, sizes, quality = 90, priority = false }: ProductImageProps) {
-  const [hasError, setHasError] = useState(false);
-  // displayedSrc = the image currently visible to the user
-  const [displayedSrc, setDisplayedSrc] = useState(src);
-  // pendingSrc = a new image loading in the background (null if nothing is loading)
-  const [pendingSrc, setPendingSrc] = useState<string | null>(null);
+export default function ProductImage({
+  src,
+  alt,
+  sources,
+  className,
+  sizes,
+  quality = 90,
+  priority = false,
+}: ProductImageProps) {
+  const sourceCandidates = useMemo(
+    () => normalizeProductImageCandidates(src ? { url: src, alt } : null, sources),
+    [src, alt, sources]
+  );
+  const candidateSignature = useMemo(
+    () => sourceCandidates.map((candidate) => `${candidate.url}::${candidate.alt}`).join('|'),
+    [sourceCandidates]
+  );
+  const [sourceIndex, setSourceIndex] = useState(0);
+  const [isExhausted, setIsExhausted] = useState(false);
 
-  // When src prop changes, start loading the new image in the background
   useEffect(() => {
-    if (src !== displayedSrc && src !== pendingSrc) {
-      setPendingSrc(src);
-      setHasError(false);
+    setSourceIndex(0);
+    setIsExhausted(false);
+  }, [candidateSignature]);
+
+  const activeSource = !isExhausted ? sourceCandidates[sourceIndex] : null;
+
+  const handleError = () => {
+    const nextSourceIndex = sourceIndex + 1;
+
+    if (nextSourceIndex < sourceCandidates.length) {
+      setSourceIndex(nextSourceIndex);
+      return;
     }
-  }, [src, displayedSrc, pendingSrc]);
 
-  // Called when the hidden (pending) image finishes loading
-  const handlePendingLoad = useCallback(() => {
-    // Swap: the pending image becomes the displayed image
-    setDisplayedSrc(pendingSrc!);
-    setPendingSrc(null);
-  }, [pendingSrc]);
+    setIsExhausted(true);
+  };
 
-  // Za placeholder ili nakon greške koristimo običan img da ne zahtevamo Next/Image optimizaciju
-  if (hasError || !src) {
+  if (!activeSource) {
     return (
       <div className="flex items-center justify-center bg-gray-50 h-full w-full absolute inset-0">
         <svg className="w-16 h-16 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,36 +65,17 @@ export default function ProductImage({ src, alt, className, sizes, quality = 90,
   }
 
   return (
-    <>
-      {/* Currently displayed image - always visible, stable */}
-      <Image
-        src={displayedSrc}
-        alt={alt}
-        fill
-        className={`object-cover ${className || ''}`}
-        style={{ zIndex: 1 }}
-        sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
-        quality={quality}
-        priority={priority}
-        unoptimized={!displayedSrc.startsWith('/')}
-        onError={() => setHasError(true)}
-      />
-      {/* New image loading invisibly in background - swaps in once loaded */}
-      {pendingSrc && (
-        <Image
-          key={pendingSrc}
-          src={pendingSrc}
-          alt={alt}
-          fill
-          className={`object-cover ${className || ''}`}
-          style={{ opacity: 0, zIndex: 2 }}
-          sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
-          quality={quality}
-          unoptimized={!pendingSrc.startsWith('/')}
-          onLoad={handlePendingLoad}
-          onError={() => setHasError(true)}
-        />
-      )}
-    </>
+    <Image
+      key={activeSource.url}
+      src={activeSource.url}
+      alt={activeSource.alt || alt || ''}
+      fill
+      className={`object-cover ${className || ''}`}
+      sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
+      quality={quality}
+      priority={priority}
+      unoptimized={shouldBypassNextImageOptimization(activeSource.url)}
+      onError={handleError}
+    />
   );
 }

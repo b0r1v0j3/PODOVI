@@ -147,6 +147,10 @@
     @apply bg-rose-50 text-rose-700;
   }
 
+  .badge-otiraci {
+    @apply bg-stone-100 text-stone-700;
+  }
+
   .badge-tekstilne {
     @apply bg-teal-50 text-teal-700;
   }

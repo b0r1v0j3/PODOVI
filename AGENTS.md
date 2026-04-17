@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 07.04.2026 (Ops auth hardening + rollback snapshot fix)
+> **Poslednje ažuriranje:** 17.04.2026 (legacy code-only direct-color canonical slug poravnat)
 
 ---
 
@@ -32,12 +32,12 @@ Ovaj fajl je **jedini izvor istine** za ceo projekat. Svaki novi chat MORA da pr
 
 ## 1. 📌 ŠTA JE PODOVI.ONLINE
 
-Podovi.online je **katalog podnih obloga** za tržište Srbije. Sajt služi kao online katalog firme Podovi DOO (Novi Sad) — kupci pregledaju proizvode, šalju upite, a prodaja se vrši offline.
+Podovi.online je **katalog podnih obloga, otirača i pratećeg asortimana** za tržište Srbije. Sajt služi kao online katalog firme Podovi DOO (Novi Sad) — kupci pregledaju proizvode, šalju upite, a prodaja se vrši offline.
 
 ### Ključni principi:
 - **Nije e-commerce** — nema korpu ni checkout. Korisnici šalju upite za proizvode
 - **Sajt je na srpskom jeziku** — sav sadržaj, nazivi, specifikacije su na srpskom
-- **Multi-brand** — Tarkett, Gerflor, BLOQ, Wolflor — svaki brend ima drugačiju strukturu podataka
+- **Multi-brand** — Tarkett, Gerflor, BLOQ, TimberTech, Wolflor, Techem — svaki brend ima drugačiju strukturu podataka
 - **Data-driven** — proizvodi dolaze iz kombinacije JSON fajlova, TypeScript data fajlova i Supabase baze
 - **SEO optimizovan** — structured data, sitemap, meta tagovi za svaku stranicu
 
@@ -57,7 +57,7 @@ Podovi.online je **katalog podnih obloga** za tržište Srbije. Sajt služi kao 
 ```bash
 npm install
 npm run dev        # Development (localhost:3000)
-npm run build      # Production build (+ image validation)
+npm run build      # Production build (+ local/category/brand metadata asset validation + Techem first-party image contract)
 npm start          # Production server
 ```
 
@@ -101,6 +101,7 @@ OPS_BASIC_AUTH_ACTOR_ID=
 | Industrijske ploče | 9 | Gerflor (6) | `industrial_colors.json` (4 kolekcije, 75 boja) + `manual-collection-products.ts` |
 | Sport | 10 | Gerflor (6), Tarkett (3) | `sport_colors.json` (3 kolekcije, 33 boje), `tarkett_sport_colors.json` (22 kolekcije, 255 boja) + `manual-collection-products.ts` |
 | Lajsne | 11 | Tarkett (3) | `tarkett_lajsne_variants.json` (12 kolekcija, 326 varijanti) |
+| Otirači | 12 | Techem (12) | `techem_mats.json` (46 kanonskih proizvoda; flat product dataset sa top-level `generatedAt`, mirrored product slikama na Supabase `product-images`, per-image `variants` mapom za `thumb/card/hero/og`, plus `characteristics`, `detailsSections`, `featureBullets`, `documents`, `alternateUrls`, `canonicalUrl`) |
 
 ### BLOQ Carpet Tiles (18 kolekcija, 210 boja):
 | Familija | Kolekcije |
@@ -146,6 +147,168 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Legacy code-only direct-color canonical slug poravnat za Gerflor vinil/sport route alias-e (17.04.2026)**
+- `lib/utils/product-routes.ts` sada za Gerflor direct-color rute u kategorijama `Vinil` i `Sport` ne zadržava sirovi code-only slug u canonical query parametru kada route već ide na parent collection PDP. Route oblici tipa `/proizvodi/0319` i `/proizvodi/1123` sada canonicalizuju na `/proizvodi/gerflor-...?...color=<generated-color-slug>` umesto na skraćeni `?color=0319/1123`.
+- Time su metadata i runtime redirect ponovo poravnati i za starije code-only alias ulaze, ne samo za full direct-color slugove sa foreign same-category `?color=`. Ovo posebno zatvara drift gde je parent PDP bio ispravan, ali je query param ostajao nekononski i gubio puni nested slug oblik.
+- `tests/contracts/seo-contract.test.ts` je proširen novim metadata + runtime regression gate-ovima za `/proizvodi/0319` i `/proizvodi/1123`, a postojeći direct-color vinyl/sport canaryji su ojačani da koriste non-first route boju i generated Gerflor sport foreign slug (`dlw-colorette-sport-1001-banana-yellow`) umesto praznog `color.slug` fixture lookup-a.
+- Verifikovano: `npx vitest run --config vitest.contract.config.ts tests/contracts/seo-contract.test.ts`.
+
+**Direct-color vinil canonical short-circuit poravnat za stray `?color=` query na metadata + runtime sloju (17.04.2026)**
+- `app/proizvodi/[slug]/page.tsx` sada pre selected-color normalizacije prepoznaje direct-color PDP hit za mixed-brand kategorije `Vinil` i `Sport` i odmah ga kanonizuje na parent collection PDP (`/proizvodi/<collection>?color=<route-color>`), umesto da dodatni query param uopšte uđe u širi selected-color fallback lane.
+- Time route oblici tipa `/proizvodi/tarkett-bold-color-mist-1?color=wolflor-andes-wl91600` više ne mogu da emituju pogrešan canonical/OG URL niti da prođu kroz runtime sa foreign same-category dekorom; metadata i redirect sada odmah gađaju isti finalni collection URL za sam route color.
+- `tests/contracts/seo-contract.test.ts` je proširen direct-color canary proverama za mixed-brand vinil: jedan metadata test i jedan runtime redirect test sada eksplicitno zaključavaju da foreign same-category `?color=` na direct-color ruti završava na parent collection PDP-u bez helper drifta.
+- Verifikovano: `npx vitest run --config vitest.contract.config.ts tests/contracts/seo-contract.test.ts`, `npm run test:contract`, `npm run lint`, `npm run build`.
+
+**Alias collection invalid-color canonical redirect poravnat single-hop kroz metadata + runtime lane (17.04.2026)**
+- `app/proizvodi/[slug]/page.tsx` sada u `resolveCanonicalSelectedColorSlug()` validira `?color=` prvo preko collection-scoped `prepareCustomColors()` za kanonsku collection rutu, pa tek onda pada nazad na shared server selected-color helper; time alias hit više ne može da prihvati “tuđu” ali stvarnu boju iz druge kolekcije samo zato što globalni JSON lookup zna taj slug.
+- U istom prolazu je uklonjen poseban rani linoleum redirect `/proizvodi/gerflor-xxx -> /proizvodi/xxx` sa sirovim query stringom; prefixed linoleum aliasi sada prolaze kroz isti kasniji canonical redirect lane kao ostale collection alias rute, pa `/proizvodi/gerflor-dlw-uni-walton?color=...` više ne ide kroz međukorak sa zadržanim nevažećim `?color=`.
+- `tests/contracts/seo-contract.test.ts` je proširen sa dva nova regression gate-a: alias metadata mora da canonicalizuje i foreign same-catalog color slug na prvi validan dekor ciljne kolekcije, a runtime `ProductPage` mora da uradi tačno jedan redirect za linoleum alias + invalid color direktno na finalni kanonski URL.
+- Verifikovano: `npx vitest run --config vitest.contract.config.ts tests/contracts/seo-contract.test.ts`, `npm run test:contract`, `npm run lint`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`, `npm run build`.
+
+**Selected-color docs/specs SSR i canonical alias metadata poravnati kroz shared server helper (17.04.2026)**
+- `lib/product-page/color-helpers.ts` sada nosi shared `resolveSelectedColorServerData()` koji preko kanonskog `loadColorFromJson()` sklapa isti selected-color payload za server i client lane: `specs` iz `buildSpecsFromColor()`, `characteristics` projektovane iz tih istih specova i normalizovana `documents` lista. `ColorFromJSON` i nested collection merge sada čuvaju i `documents`, pa direct color resolution (`colorToProduct()`) više ne gubi color-level PDF-ove.
+- `lib/product-page/prepare-colors.ts` je prevezan na isti helper, pa `mergeSelectedColor()` više ne ažurira samo hero/specs/opis nego i `product.documents`; time `app/proizvodi/[slug]/page.tsx` sada dobija tačan `sharedDocs` gate već na SSR-u, umesto da `ProductDocuments` tek posle mount-a ispravlja stale collection dokumenta za validan `?color=`.
+- `/api/color-data` više ne održava poseban slabiji slug matcher i ručno sklapan `characteristics` map; ruta sada koristi isti shared helper i vraća `documents`, `characteristics` i `specs`, dok `components/ProductCharacteristics.tsx` preferira kanonski `specs` payload i resetuje transient state pri promeni `?color=` kako specs ne bi kratko ostajale na prethodnoj boji.
+- `lib/utils/product-routes.ts` je dobio `getCanonicalCollectionAliasHref()`, a `app/proizvodi/[slug]/page.tsx` ga sada koristi i u runtime redirect lane-u i u `generateMetadata()`. Time alias hitovi tipa `/proizvodi/creation-30?color=ballerina-41870347` više ne emituju alias canonical / OG URL, već kanonski prefixed PDP href.
+- Regression gate je proširen kroz `tests/contracts/color-api-contract.test.ts`, `tests/contracts/resolver-contract.test.ts` i `tests/contracts/seo-contract.test.ts`: selected-color API sada mora da vrati doc-backed nested vinyl payload, server merge mora da uveze color-level dokumente i ključne specove, a metadata mora da canonicalizuje alias collection URL i kada je validan `?color=` već prisutan.
+- Verifikovano: `npm run test:contract`, `npm run lint`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`, `npm run build`.
+
+**Selected-color image precedence poravnata kroz client, resolver i SEO (17.04.2026)**
+- `lib/utils/product-images.ts` sada nosi shared helper `getColorImageCandidates()` / `getPrimaryColorImage()`, pa eksplicitni `?color=` više nema tri različita image redosleda zavisno od toga da li ga bira `ColorGrid`, server `mergeSelectedColor()` ili SEO metadata lane.
+- `components/ColorGrid.tsx`, `components/ProductColorSelector.tsx`, `lib/product-page/prepare-colors.ts` i `lib/product-page/color-helpers.ts` su prevezani na isti helper: klik na dekor, client hero render, resolver fallback (`colorToProduct` / `collectionFromColor`) i server merge sada biraju isti primary color asset (`texture` → `lifestyle` → `image_url` → legacy `image`), umesto ranijeg drifta između `image_url`-first i `texture`-first grana.
+- U istom prolazu je zatvoren i konkretan BLOQ correctness bug: `loadColorFromJson()` sada ume da vrati BLOQ tile slug iz `bloq_carpet_tiles.json`, pa `mergeSelectedColor()` konačno ažurira `product.images` i za BLOQ collection PDP; time OG/Twitter/Product JSON-LD više ne ostaju na collection cover-u kada je izabrana konkretna BLOQ ploča.
+- `components/ProductColorSelector.tsx` sada ima i derived active-color context, pa `share` naslov i `kontakt?name=` više ne ostaju collection-only na prvom renderu kada je `?color=` već eksplicitan i validan.
+- Regression gate je proširen u `tests/contracts/product-image-variants-contract.test.ts`, `tests/contracts/resolver-contract.test.ts` i `tests/contracts/seo-contract.test.ts`: helper contract proverava ordered candidate lane, resolver merge očekuje shared hero izbor, a colored PDP metadata sada mora da deli isti primary image kao selected-color helper.
+- Verifikovano: `npx vitest run --config vitest.contract.config.ts tests/contracts/product-image-variants-contract.test.ts`, `npx vitest run --config vitest.contract.config.ts tests/contracts/resolver-contract.test.ts`, `npx vitest run --config vitest.contract.config.ts tests/contracts/seo-contract.test.ts`, `npm run test:contract`, `npm run lint`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`, `npm run build`.
+
+**Collection-first PDP hero i linoleum customColors fallback poravnati kroz resolver + selector pipeline (17.04.2026)**
+- `components/ProductColorSelector.tsx` i `components/ColorGrid.tsx` sada čuvaju collection cover kao vidljivi PDP hero dok ne postoji eksplicitni `?color=` izbor; više nema tihog auto-pomeranja na prvu varijantu pri mount-u, niti info blok prikazuje `backing_variants` prve boje kada korisnik još nije izabrao dekor.
+- `lib/utils/product-images.ts` dobio je shared helper `getCustomColorHeroImageState()`, pa selector render, aktivna varijanta i contract testovi dele isti source-of-truth za pravilo: bez `?color=` ostaje `initialImage`, sa validnim `?color=` prelazi se na odgovarajući variant image.
+- `lib/product-page/prepare-colors.ts` sada uključuje i category `7` (`linoleum`) u `prepareCustomColors()`, koristeći route/product slug kandidata umesto globalnog fallback-a; time server-side validacija `?color=` više nije globalna po celom JSON-u nego collection-scoped i za linoleum lane.
+- `lib/product-page/resolve-product.ts` više ne pada odmah na `collectionFromColor()` kada repo promaši collection/product slug, već pre toga koristi loader-grade `getProductBySlug()` fallback sa slug-candidate normalizacijom (`gerflor-/tarkett-/wolflor-/bloq-/techem-`). Time collection PDP fallback zadržava isti hero/spec/docs contract kao listing lane, umesto da se vrati na “prvu boju” proizvod.
+- Regression gate je proširen kroz `tests/contracts/product-image-variants-contract.test.ts` i `tests/contracts/resolver-contract.test.ts`: collection cover mora da ostane vidljiv bez eksplicitne boje, linoleum mora da vrati `customColors`, a resolver snapshot baseline je osvežen na bogatiji loader contract.
+- Verifikovano: `npx vitest run --config vitest.contract.config.ts tests/contracts/product-image-variants-contract.test.ts`, `npx vitest run --config vitest.contract.config.ts tests/contracts/resolver-contract.test.ts -u`, `npm run test:contract`, `npm run lint`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`, `npm run build`.
+
+**BLOQ roomshot i Tarkett LVT collection hero source-of-truth poravnati kroz loader contract (17.04.2026)**
+- `lib/utils/productDataLoader.ts` sada i za preostala dva lane-a koristi shared collection hero izbor: BLOQ collection headeri biraju stvarni lokalni roomshot asset (`/images/products/bloq-roomshots/bloq-<slug>-roomshot.jpg`) kada postoji, uz fallback na prvi tile/swatch image, dok Tarkett LVT collection headeri prvo koriste kurirani override iz `public/data/collection_images.json`, pa tek zatim lokalni `/images/tarkett/collections/<slug>.jpg` i prvi design image.
+- Time je uklonjen stari split source-of-truth za Tarkett LVT: `lib/repositories/product-repository.ts` više ne radi poseban post-merge remap collection hero slike samo za listing/search lane, pa isti `tarkett-*` collection slug više ne može da dobije jedan hero na listingu, a drugi na PDP fallback-u.
+- U istom prolazu je zatvoren i konkretan BLOQ naming bug: loader je ranije sastavljao roomshot putanje kao `${slug}-roomshot.jpg`, dok su realni fajlovi u `public/images/products/bloq-roomshots/` imenovani kao `bloq-<slug>-roomshot.jpg`.
+- Regression gate `tests/contracts/product-image-variants-contract.test.ts` sada eksplicitno zakucava oba lane-a: BLOQ collection roomshot ostaje ispred prvog swatch-a, a Tarkett LVT collection header ostaje na kuriranom `collection_images.json` cover assetu ispred prvog design image URL-a.
+- Verifikovano: `npm run test:contract`, `npm run lint`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`, `npm run build`.
+
+**Shared collection hero asset contract uveden kroz loader i manual collection lane (17.04.2026)**
+- `lib/utils/catalog-assets.ts` je proširen novim shared helperom `selectPreferredCollectionHeroAsset()`, pa ordered izbor kolekcijske hero slike više nije rasut kroz sirove `a || b || ''` grane ili implicitni fallback po dužini stringa.
+- `lib/utils/productDataLoader.ts` i `lib/data/manual-collection-products.ts` sada dele isti contract za collection/header hero lane: Gerflor vinyl/ESD override slike, Tarkett `collection_image_url`, BLOQ roomshot, Tarkett LVT curated/local cover fallback, manual collection JSON hero i Wolflor first-color precedence svi prolaze kroz isti helper, uz eksplicitno zadržan Wolflor izuzetak (`firstColor` pre `collection_image_url`).
+- Gerflor LVT i Linoleum collection headeri više ne biraju hero preko `pickRichestText()` i dužine URL-a; sada koriste ordered candidate lane (`lifestyle_url` pa `image_url` za LVT, odnosno prvi validni `image_url` za linoleum), što zatvara latentni drift kada više dekora u istoj kolekciji ima različito dugačke putanje.
+- U istom prolazu `productDataLoader.ts` je očišćen od function-local `require('@/public/data/...')` za `vinyl_colors_complete.json` i `esd_colors.json`, pa su i ti lane-ovi konačno stabilni u Vitest contract harness-u umesto da budu zavisni od runtime alias rezolucije.
+- Regression gate je proširen u `tests/contracts/catalog-asset-selection-contract.test.ts` i `tests/contracts/product-image-variants-contract.test.ts`: helper sada ima direktan ordered/placeholder test, a loader suite eksplicitno proverava Gerflor vinyl override, Tarkett lajsne `collection_image_url` i ordered Gerflor LVT/Linoleum collection hero izbor.
+- `scripts/audit-catalog-quality.ts` local asset proveru sada radi nad oba file-system kandidata (`raw %20` path i `decodeURIComponent` path), pa URL-encoded lokalni BLOQ asseti više ne dižu lažne `missing_local_primary_image_asset` nalaze.
+- Verifikovano: `npm run test:contract`, `npm run lint`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`, `npm run build`.
+
+**Repo-level metadata asset selection poravnat za kategorije i brendove + build guard proširen (17.04.2026)**
+- Uveden je shared helper `lib/utils/catalog-assets.ts` sa `selectPreferredCatalogAsset()` / `isPlaceholderCatalogAsset()`, a `brandRepository` i `categoryRepository` su sada owner repo-level metadata asset izbora: page/SEO sloj više ne sme da zavisi od sirovog Supabase `row.logo` / `row.image` prioriteta kada postoji bolji kurirani fallback u `mock-data.ts`.
+- Pravilo je sada eksplicitno: kurirani fallback iz `mock-data.ts` ima prednost nad DB override-om kada nije placeholder; DB asset sme da pobedi samo ako je fallback placeholder ili prazan, pa stale DB hero/logo više ne može tiho da pregazi kanonski category/brand metadata asset.
+- Dodat je regression gate `tests/contracts/catalog-asset-selection-contract.test.ts` koji proverava helper contract i repo ponašanje za oba smera prioriteta (`curated > weak DB`, `real DB > placeholder fallback`), dok je `tests/contracts/seo-contract.test.ts` proširen page-level proverama da category metadata i `CollectionPage.image` ostanu poravnati, a brand metadata/schema izostave placeholder logo assete.
+- `scripts/validate-images.js` sada pored lokalnih asset putanja i Techem remote contract-a proverava i category/brand metadata assete iz `mock-data.ts` (`categories[].image`, `brands[].logo` bez placeholdera): lokalni fajl mora da postoji, remote asset mora da bude `https`, na allowlist hostu i bez supplier hostova.
+- Verifikovano: `npm run test:contract`, `npm run lint`, `npm run build`.
+
+**SEO image/schema parity centralizovan kroz shared helper za PDP, kategorije i brendove (17.04.2026)**
+- `lib/utils/product-images.ts` i `lib/seo/structured-data.ts` sada zajedno čine kanonski SEO image contract: `resolveMetadataImageUrl()` propušta samo validne `https` URL-ove, `getMetadataImageSet()` više ne tvrdi `1200x630` kada realno padne na non-OG fallback, a `generateProductSchema()` / `generateCollectionPageSchema()` više ne održavaju paralelne page-local image heuristike.
+- `app/proizvodi/[slug]/page.tsx` više ne sklapa Product JSON-LD ručno iz `hero` lane-a, već koristi `generateProductSchema()` sa istim shared metadata image izborom koji već hrane OG/Twitter tagovi; time `Product.image`, `openGraph.images[0]` i `twitter.images[0]` više ne mogu da driftuju.
+- `app/kategorije/[slug]/page.tsx` i `app/brendovi/[slug]/page.tsx` sada koriste isti `createMetadataImage()` / `getMetadataImageUrls()` contract za OG/Twitter i isti `generateCollectionPageSchema()` helper za `CollectionPage` JSON-LD; category/brand schema sada dobija `image` samo kroz shared normalizator, bez ručnog sastavljanja URL-a.
+- Brand metadata/schema više ne emituju placeholder logo asset kao social/schema sliku: kada brend nema stvarni logo, metadata i JSON-LD sada radije izostavljaju `image/logo` nego da guraju `/images/placeholder.svg`.
+- `tests/contracts/seo-contract.test.ts` je proširen regression gate-om koji renderuje PDP JSON-LD script i proverava parity sa OG/Twitter slikom, plus helper testom da `generateProductSchema()` odbacuje non-`https` image candidate; verifikovano: `npm run test:contract`, `npm run lint`, `npm run build`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`.
+
+**Shared runtime image fallback uveden kroz PDP, kartice, search i saved-item surface-e (17.04.2026)**
+- `components/ProductImage.tsx` više ne pada direktno na placeholder čim prvi URL pukne, već pokušava sledeći ordered kandidat i tek kada nijedan ne prođe prikazuje fallback stanje; isti runtime lane sada koriste PDP hero, product kartice, favorites, compare, search rezultati, recommended accessories i recently-viewed površine.
+- `lib/utils/product-images.ts` je proširen u pravi source-of-truth i za fallback redosled: pored surface izbora (`thumb/card/hero/og`) sada daje i deduplikovane ordered candidate nizove, pa surface-i više ne smeju lokalno da čitaju `images[0]` ili da održavaju svoje paralelne image heuristike.
+- `components/ProductViewTracker.tsx`, `components/RecentlyViewed.tsx` i `/api/search` više ne čuvaju samo jedan spljošteni image URL kada imaju bolji source, već prenose i kratki ordered candidate lane (`imageCandidates`) tako da recently-viewed/search UI može da preživi prvi broken thumb bez novog otvaranja proizvoda.
+- U istom prolazu je zatvoren correctness bug u `lib/utils/productDataLoader.ts`: Techem raw image `variants` iz `techem_mats.json` više se ne gube pri normalizaciji, pa runtime surface/fallback helper zaista dobija `thumb/card/hero/og` lane umesto da tiho pada nazad na originalni `url`.
+- Regression gate `tests/contracts/product-image-variants-contract.test.ts` sada pored surface izbora proverava i loader-preserved Techem variants + candidate normalizaciju, a verifikovano je: `npm run test:contract`, `npm run lint`, `npm run build`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`.
+
+**Techem image variants uvedene kroz extractor, shared helper i flat UI surface-e (17.04.2026)**
+- `tools/extract_techem_mats.py` sada pri `--upload-supabase` ne mirroruje samo originalne Techem slike, već za svaki asset generiše i uploaduje `thumb`, `card`, `hero` i `og` varijante u isti `product-images` bucket; regenerisani `public/data/techem_mats.json` sada čuva `heroImage`, `galleryImages` i `images` kao object lane sa `url` + `variants`, umesto čistih string URL-ova.
+- `types/index.ts`, `lib/utils/productDataLoader.ts` i `lib/utils/product-images.ts` su prošireni tako da `ProductImage` sada opciono nosi `variants`, a shared helper bira odgovarajući URL po surface-u: `thumb` za search/compare/recently-viewed, `card` za listing/favorites, `hero` za PDP i `og` za metadata.
+- `app/api/search/route.ts`, `components/ProductCard.tsx`, `components/ProductCardClient.tsx`, `components/ProductViewTracker.tsx`, `components/CompareBar.tsx`, `app/omiljeni/FavoritesPageClient.tsx` i `app/uporedi/ComparePageClient.tsx` više ne čitaju Techem slike kroz sirovi `images[0]` lane, već kroz shared surface-aware helper.
+- Dodat je novi regression gate `tests/contracts/product-image-variants-contract.test.ts`, dok su `tests/contracts/seo-contract.test.ts`, `scripts/validate-images.js` i `scripts/audit-catalog-quality.ts` prošireni da proveravaju i variant URL-ove, ne samo prve 3 legacy image reference.
+- Verifikovano: `python -m py_compile tools/extract_techem_mats.py`, `python tools/extract_techem_mats.py --upload-supabase`, `npm run test:contract`, `npm run lint`, `npm run build`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`.
+
+**Next/Image runtime contract zategnut na eksplicitan host allowlist + flat client surface-i više ne gube remote slike (17.04.2026)**
+- Uveden je novi shared helper `lib/utils/image-runtime.ts` koji predstavlja runtime contract za `next/image`: `isOptimizableImageSrc()` i `shouldBypassNextImageOptimization()` sada centralno odlučuju da li je slika optimizabilna, umesto starog blanket obrasca `unoptimized={!src.startsWith('/')}` razasutog po karticama i pretragama.
+- `next.config.mjs` više ne koristi wildcard `hostname: '**'`; `remotePatterns` su svedeni na eksplicitne katalog hostove koje realno puštamo kroz `next/image` (`Supabase product-images`, `media.tarkett-image.com`, `cdn.gerflor.com`, plus first-party `podovi.online` / `www.podovi.online` za apsolutne lokalne asset URL-ove kada se pojave kroz DB/fallback sloj).
+- `components/ProductImage.tsx`, `components/ProductCard.tsx`, `components/ProductCardClient.tsx`, `components/BrandCard.tsx`, `components/CategoryCard.tsx`, `components/GlobalSearch.tsx`, `components/RecentlyViewed.tsx`, `components/CompareBar.tsx`, `app/omiljeni/FavoritesPageClient.tsx` i `app/uporedi/ComparePageClient.tsx` sada dele isti helper, pa favorites/compare/recently-viewed/search više ne odbacuju remote first-party katalog slike samo zato što URL nije lokalni `/...` path.
+- `lib/seo/metadata.ts` sada za OG/Twitter image set koristi isti metadata URL normalizator kao category/brand/PDP surface-i, pa više ne postoji latentni bypass gde raw image URL može da preskoči first-party/allowlist contract samo kroz generic metadata helper.
+- Dodat je novi regression gate `tests/contracts/image-runtime-contract.test.ts` koji proverava da su samo lokalni + allowlist hostovi optimizabilni i da `next.config.mjs` više nikada ne vrati wildcard remote host obrazac.
+- Verifikovano: `npm run test:contract`, `npm run lint`, `npm run build`.
+
+**Techem product slike prebačene na first-party hosting + metadata asset lane zatvoren (17.04.2026)**
+- `tools/extract_techem_mats.py` sada podržava `--upload-supabase`: nakon kanonizacije, deduplikacije i srpske lokalizacije diže svih 196 Techem hero/gallery asseta u Supabase `product-images` bucket pod `products/otiraci/...`, upisuje verzionisane public URL-ove nazad u `public/data/techem_mats.json` i time uklanja supplier hotlink zavisnost sa PDP-a, kartica, JSON-LD i social metadata sloja.
+- `lib/data/mock-data.ts` više ne koristi supplier thumbnail/logo za Techem category/brand hub surface-e: `/kategorije/otiraci` sada ide preko lokalnog `public/images/categories/otiraci.jpg`, a `/brendovi/techem` preko lokalnog `public/images/brands/techem-logo-en.png`, pa category/brand metadata više nisu vezani za Techem WordPress asset host.
+- `lib/utils/product-images.ts` je proširen shared `resolveMetadataImageUrl()` helperom, pa `app/kategorije/[slug]/page.tsx`, `app/brendovi/[slug]/page.tsx`, `app/proizvodi/[slug]/page.tsx`, `components/ProductCard.tsx`, `components/ProductCardClient.tsx` i `scripts/audit-catalog-quality.ts` sada dele isti contract za primary image / metadata image URL normalizaciju umesto paralelnih lokalnih heuristika.
+- `scripts/validate-images.js` sada proverava lokalne `url`/`image`/`logo` asset reference iz `mock-data.ts` i enforce-uje da Techem metadata image candidates više ne smeju da ostanu na supplier hostu, već moraju da budu na first-party kontrolisanom hostu (`Supabase` ili `podovi.online`); od image-variant prolaza proverava i sve Techem variant URL-ove, ne samo legacy hero/gallery reference.
+- `tests/contracts/seo-contract.test.ts` sada pored PDP metadata proverava i da `/kategorije/otiraci` i `/brendovi/techem` emituju first-party metadata slike, dok `scripts/audit-catalog-quality.ts` prijavljuje `techem_supplier_image_hotlink` ako supplier hero ikad ponovo uđe u Techem dataset.
+
+**Techem sitemap freshness + PDP metadata polish poravnati na kanonski dataset (17.04.2026)**
+- `lib/utils/productDataLoader.ts` sada kešira ceo Techem dataset payload i izlaže `getTechemDatasetGeneratedAt()`, dok `getAllTechemProducts()` koristi top-level `generatedAt` iz `public/data/techem_mats.json` kao fallback `createdAt` / `updatedAt` za flat Techem proizvode kada supplier zapis nema sopstveni timestamp.
+- `app/sitemap.ts` više ne emituje redirecting PDP slugove, već koristi shared canonical product href contract iz `lib/utils/product-routes.ts`; shared hub stranice (`/`, `/kategorije`, `/brendovi`, `/kontakt`, `/upiti`) sada nose freshest poznati katalog datum, dok category/brand detail i Techem PDP-ovi dobijaju `lastModified` iz realnog product skupa, a `/kategorije/otiraci` i `/brendovi/techem` dodatno mešaju i Techem dataset `generatedAt` kako copy-only SEO izmene ne bi ostale nevidljive sitemap-u.
+- `app/proizvodi/[slug]/page.tsx` metadata grana sada za Techem koristi prirodniji srpski meta description bez flooring/color fallback fraza tipa `dostupne boje`, uz keyword enrichment iz hidden `__techem_family` / `__techem_top_category` signala, capped social description i sigurniji OG/Twitter image set iz prve stvarne galerije/hero slike; wording za `dokumentacija` se prikazuje samo kada PDP zaista ima dokumente.
+- Uveden je novi shared helper `lib/utils/product-images.ts`, pa PDP metadata, vidljivi hero i catalog audit više ne biraju primary/ordered sliku kroz odvojene lokalne heuristike; `app/proizvodi/[slug]/page.tsx` i `scripts/audit-catalog-quality.ts` sada dele isti product-image selection contract.
+- `scripts/validate-images.js` više ne proverava samo lokalne `/images` assete iz statičkih data fajlova, već i Techem metadata image contract offline-safe: regex sada zaista hvata i `mock-data.ts` `url/image/logo` putanje, odsutan `public/data/techem_mats.json` ruši build umesto tihog prolaza, a svaka Techem stavka mora da ima bar jedan metadata image candidate sa validnim `https` URL-om, na first-party kontrolisanom hostu i sa image-like putanjom, bez live HTTP zavisnosti u build-u.
+- Dodat je novi regression gate u `tests/contracts/seo-contract.test.ts` koji sada pokriva kanonske sitemap PDP href-ove, Techem freshness za sitemap surface-e, Techem flat-product metadata copy i dataset-wide first-party metadata image host/protocol contract.
+- U istom prolazu je poravnat i page-local fallback brand map za TimberTech sa aktuelnim mock fallback contract-om kako PDP ne bi držao zastareli logo path mimo `mock-data.ts`.
+- Verifikovano: `npm run lint`, `npm run test:contract`, `npm run build`.
+
+**Brand source completeness + repo count simetrija poravnati za TimberTech i hub metrike (17.04.2026)**
+- `lib/data/mock-data.ts` sada konačno uključuje i kanonski brend `TimberTech` (`id: 10`), pa `/brendovi`, `/brendovi/timbertech` i summary metrike više ne zavise od toga da li je taj brend ručno dodat u Supabase ili ostane orphan samo kroz deking proizvode.
+- `lib/repositories/product-repository.ts` više nema poseban divergentan `findByBrand()` merge lane; Supabase implementacija sada delegira na `findAll({ brandIds: [brandId] })`, tako da brand detail i brand hub koriste isti DB + JSON/manual merge contract za Gerflor, Tarkett, BLOQ, TimberTech, Wolflor i Techem.
+- `app/kategorije/page.tsx` više ne računa `Aktivni brendovi` iz sirovih product foreign key vrednosti, već iz preseka proizvoda i `brandRepository.findAll()` skupa; time `/kategorije` summary ostaje poravnat sa `/brendovi` čak i kada se pojavi parcijalni ili fallback-only brand lane.
+- `app/brendovi/page.tsx` metadata i intro copy su poravnati sa aktuelnim brend scope-om i sada eksplicitno priznaju TimberTech uz Techem/Tarkett/Gerflor/BLOQ/Wolflor lane.
+- Verifikovano: repo sanity-check (`brandCount=6`, aktivni brand IDs `3,6,8,10,11,12`), `npm run lint`, `npm run test:contract`, `npm run build`.
+
+**Brand detail curation + canonical product href helper poravnati kroz listing/search/PDP sloj (17.04.2026)**
+- Uveden je novi shared util `lib/utils/product-routes.ts` koji sada predstavlja source-of-truth za kanonski public product href: `ProductCard`, `ProductCardClient`, `/api/search`, `generateProductListSchema()` i `app/proizvodi/[slug]/page.tsx` više ne drže divergentne ručne grane za `/kategorije/...` naspram `/proizvodi/...`, već svi gađaju isti PDP canonical contract sa `?color=` tamo gde zaista postoji collection-grade route.
+- `lib/product-page/resolve-product.ts` više ne održava zasebnu copy-paste collection normalizaciju, već koristi isti route normalization sloj, pa prefix pravila za `gerflor-`, `tarkett-`, `wolflor-`, `bloq-` i `techem-` više nisu razasuta po resolver/page/card/search kodu.
+- `app/brendovi/[slug]/page.tsx` sada radi collection-first curation preko `lib/catalog/brand-curation.ts`: Gerflor, Tarkett, BLOQ i Wolflor brand stranice više ne izlistavaju mešavinu kolekcija i pojedinačnih varijanti pod jednim gridom, već prikazuju kurirani collection view, dok Techem i TimberTech ostaju flat `products/asortiman` lane.
+- Brand detail copy i schema su poravnati sa novim režimom: count kartica, grid heading, `CollectionPage` name i Gerflor info blok sada koriste `kolekcije` / `asortiman` semantiku umesto da sve nazivaju `proizvodi`; fallback brand SEO copy u `lib/seo/listing-page-copy.ts` je prebačen sa `Proizvodi` na širi `Katalog`.
+- Verifikovano: `npm run lint`, `npm run test:contract`, `npm run build`.
+
+**Category/home discoverability sloj + repo fallback hardening poravnati posle Techem launch-a (17.04.2026)**
+- `app/kategorije/page.tsx` više nije samo breadcrumb + grid, već category hub sa pravim `h1` uvodom, summary count blokovima, `BreadcrumbList` + `CollectionPage` JSON-LD i server-side brojem proizvoda po kategoriji; `components/CategoryCard.tsx` sada opcionalno prikazuje category count i u istom prolazu je očišćen dupli `isDeking` branch.
+- `app/page.tsx`, `app/layout.tsx`, `lib/seo/structured-data.ts`, `components/Footer.tsx` i `components/WhatsAppButton.tsx` su poravnati na aktuelni katalog scope: sajt više nije copy/SEO-wise predstavljen kao flooring-only, već kao katalog podnih obloga, lajsni, otirača i pratećih sistema.
+- Header i global search dobili su jači discoverability signal za novi lane: `components/Header.tsx` sada ima direktan quick-link ka `/kategorije/otiraci`, a `components/GlobalSearch.tsx` + `app/api/search/route.ts` više ne glume product-only search, već koriste category slike i brand logo signal za dropdown rezultate.
+- Homepage sada daje eksplicitniji entry za `Otirače`: hero ima direktan CTA ka `/kategorije/otiraci`, a `Izdvojeni proizvodi` više nisu ograničeni samo na stari LVT/Linoleum/Tekstilne set, već rezervišu i Techem slot kroz `getAllTechemProducts()`.
+- Ispravljen je i repo correctness sloj koji je počeo da utiče na live hub count-ove: `category-repository.ts` sada mapira DB kategorije nazad na legacy/mock identitet po slug-u (umesto sirovih UUID-jeva), `brand-repository.ts` radi field-level backfill iz mock fallback-a za logo/description/website/country kada DB red postoji ali je tanak, a `product-repository.ts` više ne prekida ceo merge lane na `findAll()` DB grešci pre nego što JSON/manual izvori stignu do surface-a.
+- Verifikovano: `npm run lint`, `npm run test:contract`, `npm run build`.
+
+**Brand hub semantika + kartice poravnate sa novim listing SEO slojem (17.04.2026)**
+- `components/BrandCard.tsx` više nema neispravan nested link obrazac (`/brendovi/[slug]` link oko internog sadržaja + zaseban spoljašnji `website` CTA); kartice sada drže odvojene interakcije za interni katalog i supplier sajt, uz prikaz stvarnog `brand.logo` gde postoji i fallback inicijala samo za placeholder/no-logo scenarije.
+- `app/brendovi/page.tsx` je pojačan iz prostog grida u pravi brand hub: uvodni `h1` blok, summary count kartice (`brendovi`, `proizvodi`, `pokrivene kategorije`), category chips i `BreadcrumbList` + `CollectionPage` JSON-LD za `/brendovi`.
+- Brand kartice sada dobijaju `productCount` iz server-side agregacije (`brandRepository` + `productRepository` + `categoryRepository`), pa listing odmah pokazuje dubinu kataloga po brendu umesto čistog statičkog opisa.
+- `README.md` je dodatno poravnat da `BrandCard.tsx` više ne stoji kao homepage komponenta, već kao kartica za `/brendovi` listing.
+- Verifikovano: `npm run lint`, `npm run build`.
+
+**Techem SEO/content landing sloj + search discoverability poravnati (17.04.2026)**
+- Dodat je novi helper `lib/seo/listing-page-copy.ts` koji centralizuje metadata i user-facing intro copy za category/brand listing stranice, sa specijalizovanim srpskim SEO copy-jem za `Otirači` i `Techem`, uz bezbedan fallback za ostale kategorije i brendove.
+- `app/kategorije/[slug]/page.tsx` i `app/brendovi/[slug]/page.tsx` sada renderuju stvarni `h1` + uvodni sadržaj iznad grida, koriste bogatiji metadata sloj (`title`, `description`, `keywords`, `canonical`, `OG`, `Twitter`) i emituju `BreadcrumbList` + `CollectionPage` / `ItemList` JSON-LD za listing površine.
+- `app/proizvodi/[slug]/page.tsx` je očvrsnut za flat Techem katalog: product JSON-LD sada normalizuje apsolutne Techem image URL-ove, upisuje `url` i više ne emituje prazan `Offer` kada cena ne postoji.
+- `/api/search` sada za category/brand rezultate match-uje i SEO/helper copy, dok Techem product search u `product-repository.ts` pretražuje i `shortDescription` + hidden `__techem_family` / `__techem_top_category` signal; `components/GlobalSearch.tsx` više ne menja Techem remote slike placeholder-om i prikazuje koristan subtitle kada cena ne postoji.
+- `lib/data/mock-data.ts`, `app/brendovi/page.tsx` i `README.md` su poravnati na aktuelni `Otirači` / `Techem` scope, uključujući Techem website kao product-catalog entry point umesto generičkog English home-a.
+- Verifikovano: `npm run lint`, `npm run test:contract`, `npm run build`.
+
+**Techem supplier copy lokalizovan na srpski bez menjanja kanonskog URL/slug contract-a (17.04.2026)**
+- `tools/extract_techem_mats.py` sada radi user-facing lokalizaciju tek posle Techem kanonizacije, deduplikacije i `technical data sheet` attach koraka, tako da English `/en/products/` tree ostaje jedini source-of-truth za discovery, `slug`, `sourceSlug`, `canonicalUrl`, `alternateUrls` i `lineages`, dok sajt dobija srpske nazive, opise, sekcije, dokument naslove i spec label-e.
+- Uveden je lokalizacioni sloj za `topCategory`, `family`, `name`, `shortDescription`, `description`, `characteristics`, `detailsSections`, `featureBullets` i `documents`, uz kurirane override-e za branded/family proizvode i ručne fallback specifikacije za Techem stavke koje supplier payload ostavlja previše tanke (`Trend Mats`, `Steel Gratings`, anti-fatigue podloge).
+- `scripts/audit-catalog-quality.ts` i `scripts/product-health-check.ts` sada za Techem računaju samo user-facing/specs koji nisu hidden `__techem_*`, a audit dodatno prijavljuje `unlocalized_techem_copy` ako se English supplier copy vrati u budućem refresh-u.
+- Verifikovano: `python tools/extract_techem_mats.py`, `python -m py_compile tools/extract_techem_mats.py`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run test:contract`, `npm run check:health`, `npm run lint`, `npm run build`.
+
+**Techem otirači uvedeni kao nova flat kategorija kroz ceo katalog pipeline (16.04.2026)**
+- Dodat je novi kanonski izvor `public/data/techem_mats.json`, generisan kroz `tools/extract_techem_mats.py`, koji sa javnog Techem English sitemap/product stabla uvodi 46 kanonskih proizvoda za novu kategoriju `Otirači` i brend `Techem`.
+- Extractor sada radi family-first kanonizaciju: izbacuje `Visit our e-shop`, spaja 2 exact duplicate grupe, ručno collapse-uje 6 secondary-navigation alias URL-ova iz `external-wipers` na kanonske family/product rute i čuva `alternateUrls`, `lineages`, `canonicalUrl`, tehničke PDF-ove i scrape pravila u samom datasetu.
+- Proširen je flat category `12` pipeline kroz `mock-data.ts`, `productDataLoader.ts`, `product-repository.ts`, `resolve-product.ts`, `ProductCard*`, `CategoryCard`, footer, search i product/category rute, tako da `/kategorije/otiraci`, `/brendovi/techem` i `/proizvodi/techem-...` rade bez color-selector toka i bez naslanjanja na `/api/colors`.
+- `productDataLoader.ts` sada za Techem mapira `characteristics` u `specs`, `featureBullets` u `benefits`, `heroImage + galleryImages` u product gallery, `detailsSections` i `documents` u postojeći `Product` contract, dok se supplier linking metadata čuva kao hidden spec (`__techem_*`) i filtrira iz user-facing prikaza preko `filterSpecsForDisplay()`.
+- Quality gate je proširen i na Techem: `scripts/audit-catalog-quality.ts` i `scripts/product-health-check.ts` sada uključuju `getAllTechemProducts()`, a audit dodatno hvata polomljen `www.www.techem...` URL obrazac ako se vrati u budućem refresh-u.
+- Verifikovano: `python tools/extract_techem_mats.py`, `npm run lint`, `npm run test:contract`, `npm run check:health`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run build`.
 
 **Ops auth hardening + rollback snapshot fix + listing cache invalidation (07.04.2026)**
 - Uveden je shared internal Basic Auth helper `lib/auth/internal-basic-auth.ts`, a `middleware.ts` i svi `app/api/ops/*` handleri sada zahtevaju autentifikovan interni identitet pre bilo kakvog draft/review/publish/rollback/audit poziva.
@@ -537,8 +700,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Nastaviti Tarkett proširenje posle `Homogeni vinil` na `Heterogeni vinil`, uz poseban fallback za kolekcije koje na live sajtu ne vraćaju standardni `__NUXT__` payload.
 - [x] Dodati Wolflor vinil iz kombinacije live sajta i lokalnih PDF suplement kolekcija kroz kompletan JSON → resolver → API → UI pipeline.
 - [x] Dodati Tarkett `Lajsne` kao novu nested kategoriju (`11`) sa collection + variant tokovima i zvaničnim JSON extractorom.
+- [x] Dodati Techem `Otirači` kao novu flat kategoriju (`12`) sa kanonskim extractorom, repo merge slojem i audit coverage-om.
 - [x] Uvesti snapshot contract testove za `resolve-product` i `/api/colors` + `/api/color-data` sa CI merge gate-om.
 - [x] Dokumentovati kanonski supplier extractor refresh + rollback runbook i povezati ga iz workflow arhitekture.
+- [x] Lokalizovati Techem supplier copy (opise + ključne spec label-e) na srpski pre nego što krenemo sa većim SEO/content prolazom nad kategorijom `Otirači`.
+- [x] Poravnati canonical brand source sa category hub summary count-ovima tako da TimberTech (`brandId=10`) više ne ostane orphan u `/kategorije` metrikama kad `/brendovi` nema isti entitet iz brand repo sloja.
+- [x] Poravnati Techem `generatedAt` freshness signal sa sitemap-om i PDP metadata slojem tako da `Otirači` ne ostanu na generičkom request-time datumu i fallback copy-ju za boje.
 - [ ] Zameniti privremeni `/crm` Basic Auth punim auth slojem i dodati istoriju pojedinačnih aktivnosti po leadu.
 
 ---
@@ -562,12 +729,14 @@ PODOVI/
 ├── components/             # React komponente (30+), uključujući `components/crm/` helpere za CRM form flow
 │
 ├── lib/
+│   ├── catalog/            # Listing/brand curation helperi (`listing-curation`, `brand-curation`)
 │   ├── product-page/       # KRITIČNO: resolver, color merge, spec helpers (uključujući nested category 11 / lajsne)
 │   ├── crm/                # CRM status meta + follow-up helperi za inquiry leadove
 │   ├── data/               # Tarkett/Gerflor/Parket statički podaci + mock category fallback (`lajsne`) + manual collection header proizvodi + Tarkett wood enrichment
+│   ├── utils/              # Shared pure helperi poput `product-routes.ts` i `product-images.ts` za canonical href/slug/image-selection contract
 │   └── repositories/       # Data access layer (Supabase, uključujući inquiries + CRM update sloj)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, Wolflor vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett lajsne, Tarkett wood collection index + PDF indeksi)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, Wolflor vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett lajsne, Techem otirači sa `generatedAt`, Tarkett wood collection index + PDF indeksi)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
@@ -615,6 +784,12 @@ PODOVI/
 33. **`/crm` zaštita trenutno je env-based Basic Auth u `middleware.ts`.** Ako postaviš `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD`, ruta traži HTTP Basic Auth; ako ih ne postaviš, `/crm` ostaje bez te zaštite i ne treba ga tretirati kao produkciono bezbedan admin panel.
 34. **`/api/ops` ne sme više da bude “otvoren dok ne stigne pravi auth”.** Sada moraš imati `OPS_BASIC_AUTH_USERNAME` + `OPS_BASIC_AUTH_PASSWORD` (ili namerno deliti CRM Basic Auth kredencijale), a `actorId` više ne dolazi proizvoljno iz request body-ja nego iz autentifikovanog internog identiteta / `OPS_BASIC_AUTH_ACTOR_ID`.
 35. **Ops rollback mora da vraća prethodni stabilni snapshot, ne snapshot samog target release-a.** Publish snapshot predstavlja stanje POSLE publish-a; ako ga rollback reaplikuješ, ništa nisi vratio unazad. Za normalan rollback uzima se prethodni stabilni release snapshot, a za undo rollback-a snapshot release-a koji je rollback poništio.
+36. **Kanonski product klik više ne sme da živi u kartici/search copy-paste granama.** `components/ProductCard.tsx`, `components/ProductCardClient.tsx`, `/api/search`, `generateProductListSchema()` i `app/proizvodi/[slug]/page.tsx` sada dele `lib/utils/product-routes.ts`; ako menjaš canonical product URL obrazac, ažuriraj shared helper umesto da vraćaš lokalne `categorySlugMap` / ručne `/kategorije?...color=` grane.
+37. **Brand detail stranice imaju collection-first lane za mešovite brendove.** `app/brendovi/[slug]/page.tsx` preko `lib/catalog/brand-curation.ts` mora da zadrži collection-only prikaz za Gerflor/Tarkett/BLOQ/Wolflor, dok flat katalozi poput Techem i TimberTech ostaju `asortiman/products` view; nemoj vraćati repo-global filter niti `spec.collection` heuristiku koja bi sasekla flat lane.
+38. **`findByBrand()` i brand hub metrike moraju ostati simetrični sa `findAll()`.** Ako uvodiš novi mock-backed ili parcijalno-DB brend, nemoj praviti poseban brand-detail merge lane koji zaobilazi `findAll({ brandIds })`; u suprotnom `/brendovi`, `/brendovi/[slug]` i `/kategorije` summary count-ovi ponovo odlaze u drift.
+39. **`lib/utils/product-images.ts` je owner i za surface izbor i za fallback redosled.** Komponente i API surface-i ne smeju ručno da čitaju `images[0]`, da spljoštavaju prvi URL bez candidate niza ili da održavaju lokalni “probaj sledeću sliku” lane mimo shared helpera.
+40. **`lib/utils/image-runtime.ts` ne odlučuje fallback redosled.** “Validna slika” za shared fallback znači da posle surface rezolucije postoji neprazan lokalni path ili parsabilan `https` URL; runtime helper odlučuje samo optimizaciju/bypass, ne to koji kandidat ide prvi.
+41. **Kad menjaš image host/variant/fallback contract, moraš zatvoriti ceo lane u istom prolazu.** Minimum: `lib/utils/product-images.ts`, `lib/utils/image-runtime.ts`, `next.config.mjs`, `lib/utils/productDataLoader.ts`, `scripts/validate-images.js`, `scripts/audit-catalog-quality.ts` i contract testovi moraju ostati poravnati, inače build/runtime/SEO vrlo lako odu u drift.
 
 ---
 

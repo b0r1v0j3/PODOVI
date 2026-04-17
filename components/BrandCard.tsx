@@ -1,73 +1,117 @@
-'use client';
-
+import Image from 'next/image';
 import Link from 'next/link';
 import { Brand } from '@/types';
+import { shouldBypassNextImageOptimization } from '@/lib/utils/image-runtime';
 
 interface BrandCardProps {
   brand: Brand;
+  productCount?: number;
 }
 
-export default function BrandCard({ brand }: BrandCardProps) {
+function getWebsiteLabel(url?: string): string | null {
+  if (!url) return null;
+
+  try {
+    return new URL(url).hostname.replace(/^www\./i, '');
+  } catch {
+    return null;
+  }
+}
+
+export default function BrandCard({ brand, productCount }: BrandCardProps) {
+  const brandHref = `/brendovi/${brand.slug}`;
+  const hasBrandLogo = Boolean(brand.logo && brand.logo !== '/images/placeholder.svg');
+  const websiteLabel = getWebsiteLabel(brand.website);
+
   return (
-    <Link href={`/brendovi/${brand.slug}`}>
-      <div className="card card-hover cursor-pointer h-full group">
-        {/* Accent bar */}
-        <div className="h-1 bg-gradient-to-r from-primary-500 to-primary-700"></div>
+    <article className="group card card-hover h-full rounded-[1.25rem] overflow-hidden border border-gray-100 bg-white">
+      <div className="h-1 bg-gradient-to-r from-primary-500 to-primary-700"></div>
 
-        <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-8 relative overflow-hidden">
-          {/* Subtle background pattern */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/g%3E%3C/svg%3E")`
-          }}></div>
+      <Link
+        href={brandHref}
+        className="block focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-100"
+      >
+        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          ></div>
 
-          <div className="text-center relative z-10">
-            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-105 group-hover:rotate-3 transition-all duration-300">
-              <span className="text-2xl font-bold text-white">
-                {brand.name.charAt(0)}
-              </span>
-            </div>
-            <h2 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+          {brand.countryOfOrigin ? (
+            <span className="absolute right-4 top-4 z-10 inline-flex items-center rounded-full border border-white/70 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500 shadow-sm">
+              {brand.countryOfOrigin}
+            </span>
+          ) : null}
+
+          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center">
+            {hasBrandLogo ? (
+              <div className="relative mb-4 flex h-24 w-40 items-center justify-center rounded-2xl bg-white/90 p-4 shadow-lg transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-xl">
+                <Image
+                  src={brand.logo}
+                  alt={`${brand.name} logo`}
+                  fill
+                  className="object-contain p-4"
+                  sizes="160px"
+                  unoptimized={shouldBypassNextImageOptimization(brand.logo)}
+                />
+              </div>
+            ) : (
+              <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:rotate-3 group-hover:shadow-xl">
+                <span className="text-2xl font-bold text-white">
+                  {brand.name.charAt(0)}
+                </span>
+              </div>
+            )}
+
+            <h2 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-primary-600">
               {brand.name}
             </h2>
+            {productCount !== undefined ? (
+              <p className="mt-2 text-sm font-medium text-gray-500">
+                {productCount} proizvoda u katalogu
+              </p>
+            ) : null}
           </div>
         </div>
 
         <div className="p-6">
-          <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed text-gray-600">
             {brand.description}
           </p>
-          {brand.countryOfOrigin && (
-            <p className="text-xs text-gray-500 mb-4 flex items-center">
-              <svg className="w-3.5 h-3.5 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="font-medium">{brand.countryOfOrigin}</span>
+          {websiteLabel ? (
+            <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-gray-400">
+              {websiteLabel}
             </p>
-          )}
-          <div className="flex gap-3 items-center pt-2 border-t border-gray-100">
-            <span className="text-sm text-primary-600 font-semibold flex items-center group-hover:text-primary-700 transition-colors">
-              Pogledaj proizvode
-              <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-            {brand.website && (
-              <a
-                href={brand.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-gray-400 hover:text-gray-600 font-medium ml-auto flex items-center transition-colors"
-                onClick={(e) => e.stopPropagation()}
-              >
-                Sajt
-                <svg className="w-3 h-3 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-            )}
-          </div>
+          ) : null}
         </div>
+      </Link>
+
+      <div className="flex items-center gap-3 border-t border-gray-100 px-6 pb-6 pt-4">
+        <Link
+          href={brandHref}
+          className="inline-flex items-center text-sm font-semibold text-primary-600 transition-colors hover:text-primary-700"
+        >
+          Pogledaj proizvode
+          <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+        {brand.website ? (
+          <a
+            href={brand.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto inline-flex items-center text-xs font-medium text-gray-400 transition-colors hover:text-gray-600"
+          >
+            Zvanični sajt
+            <svg className="ml-1 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        ) : null}
       </div>
-    </Link>
+    </article>
   );
 }

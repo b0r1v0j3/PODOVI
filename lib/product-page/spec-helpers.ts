@@ -15,7 +15,8 @@ export function filterSpecsForDisplay(
             }
             return s;
         })
-        .filter((s) => !(s.key === 'collection' && s.value === 'Parket'));
+        .filter((s) => !(s.key === 'collection' && s.value === 'Parket'))
+        .filter((s) => !String(s.key || '').startsWith('__'));
 }
 
 export function formatLvtSpecs(specs: Record<string, string>): ProductSpec[] {

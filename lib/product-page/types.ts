@@ -16,6 +16,7 @@ export interface ColorFromJSON {
     name: string;
     full_name: string;
     slug: string;
+    image?: string;
     image_url?: string;
     texture_url?: string;
     lifestyle_url?: string;
@@ -26,13 +27,14 @@ export interface ColorFromJSON {
     overall_thickness?: string;
     characteristics?: Record<string, string>;
     description?: string;
+    documents?: Array<{ title?: string; url?: string; type?: string }>;
     collection_specs?: ProductSpec[];
     specs?: Record<string, string>;
     brandId?: string;
 }
 
 export type ColorSource = {
-    categorySlug: 'lvt' | 'linoleum' | 'vinil' | 'elektroprovodni' | 'industrijske-ploce' | 'sport' | 'lajsne';
+    categorySlug: 'lvt' | 'linoleum' | 'vinil' | 'tekstilne-ploce' | 'elektroprovodni' | 'industrijske-ploce' | 'sport' | 'lajsne';
     color: ColorFromJSON;
     brandId?: string;
 };

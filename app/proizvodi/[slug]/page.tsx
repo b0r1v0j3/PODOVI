@@ -27,21 +27,23 @@ import {
   resolveProductBySlug,
   loadColorFromJson,
   colorToProduct,
-  linoleumColors,
   filterSpecsForDisplay,
   parseDescriptionToSections,
   prepareCustomColors,
   mergeSelectedColor,
 } from '@/lib/product-page';
+import { resolveSelectedColorServerData } from '@/lib/product-page/color-helpers';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 import { splitProductTitle } from '@/lib/utils/name-parser';
-import { getParketCollectionVariantSlugs, getEffectiveParketCollection, getParketCollectionSlug, normalizeParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
-import { normalizeTarkettLaminateSlug } from '@/lib/data/tarkett-laminate-slug-mapping';
+import { getParketCollectionVariantSlugs, getEffectiveParketCollection, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
 import documentsIndexData from '@/public/data/documents_index.json';
 import tarkettDocumentsIndexData from '@/public/data/tarkett_documents_index.json';
 import { SITE_URL } from '@/lib/seo/site-config';
+import { generateBreadcrumbSchema, generateProductSchema } from '@/lib/seo/structured-data';
+import { getCanonicalCollectionAliasHref, getCanonicalProductHref, getCanonicalProductRouteSlug, normalizeCollectionSlugForProductRoute } from '@/lib/utils/product-routes';
+import { getMetadataImageSet, getMetadataImageUrls, getOrderedProductImages } from '@/lib/utils/product-images';
 
 export const dynamic = 'force-dynamic';
 
@@ -61,51 +63,112 @@ function cloneProductForPage<T extends Product & { collectionSlug?: string }>(pr
   };
 }
 
-function normalizeCollectionSlugForProductRoute(
-  collectionSlug: string,
-  brandId?: string,
-  categoryId?: string
-): string {
-  if (!collectionSlug || !categoryId) {
-    return collectionSlug;
-  }
-
-  if (!['2', '6', '8', '9', '10', '11'].includes(categoryId)) {
-    return collectionSlug;
-  }
-
-  if (
-    collectionSlug.startsWith('gerflor-') ||
-    collectionSlug.startsWith('tarkett-') ||
-    collectionSlug.startsWith('wolflor-') ||
-    collectionSlug.startsWith('bloq-')
-  ) {
-    return collectionSlug;
-  }
-
-  if (brandId === '3') {
-    return `tarkett-${collectionSlug}`;
-  }
-
-  if (brandId === '11') {
-    return `wolflor-${collectionSlug}`;
-  }
-
-  return `gerflor-${collectionSlug}`;
+function extractRouteSlugFromProductHref(href: string) {
+  return href.replace(/^\/proizvodi\//, '').split('?')[0] || href;
 }
 
-function getCanonicalProductRouteSlug(slug: string): string {
-  const normalizedParketSlug = normalizeParketCollectionSlug(slug);
-  if (normalizedParketSlug && normalizedParketSlug !== slug) {
-    return normalizedParketSlug;
+function getDirectColorCanonicalHref(
+  product: Product & { collectionSlug?: string },
+  routeSlug: string
+): string | null {
+  if (!['2', '10'].includes(product.categoryId)) {
+    return null;
   }
 
-  const normalizedLaminateSlug = normalizeTarkettLaminateSlug(slug);
-  if (normalizedLaminateSlug && normalizedLaminateSlug !== slug) {
-    return normalizedLaminateSlug;
+  if (!product.collectionSlug || product.slug !== routeSlug) {
+    return null;
   }
 
-  return slug;
+  const canonicalHref = getCanonicalProductHref(product);
+  return canonicalHref.startsWith('/proizvodi/') ? canonicalHref : null;
+}
+
+async function resolveCanonicalSelectedColorSlug(
+  product: Product & { collectionSlug?: string },
+  routeSlug: string,
+  requestedColorSlug: string
+): Promise<string> {
+  if (!requestedColorSlug) {
+    return '';
+  }
+
+  if (product.categoryId === '12') {
+    return '';
+  }
+
+  if (product.categoryId === '3' && product.sku?.startsWith('PARKET-')) {
+    const collectionName = product.specs.find((spec) => spec.key === 'collection')?.value;
+    const validSlugs = collectionName ? getParketCollectionVariantSlugs(collectionName) : [];
+    if (validSlugs.length === 0) {
+      return '';
+    }
+    return validSlugs.includes(requestedColorSlug) ? requestedColorSlug : validSlugs[0];
+  }
+
+  if (product.categoryId === '1' && product.sku?.startsWith('LAM-')) {
+    const collectionName = product.specs?.find((spec) => spec.key === 'collection')?.value;
+    const variants = collectionName
+      ? tarkettProducts.filter((item) =>
+        item.categoryId === '1' &&
+        !item.sku?.startsWith('LAM-') &&
+        item.specs?.find((spec) => spec.key === 'collection')?.value === collectionName
+      )
+      : [];
+    const validSlugs = variants.map((item) => item.slug);
+    if (validSlugs.length === 0) {
+      return '';
+    }
+    return validSlugs.includes(requestedColorSlug) ? requestedColorSlug : validSlugs[0];
+  }
+
+  const canonicalAliasHref = getCanonicalCollectionAliasHref(routeSlug, product, requestedColorSlug);
+  const validationRouteSlug = canonicalAliasHref
+    ? extractRouteSlugFromProductHref(canonicalAliasHref)
+    : routeSlug;
+  const validationProduct = validationRouteSlug === product.slug
+    ? product
+    : {
+      ...product,
+      slug: validationRouteSlug,
+    };
+
+  const customColors = await prepareCustomColors(validationProduct, validationRouteSlug);
+  const validSlugs = (customColors || [])
+    .map((color: { slug?: string }) => color.slug)
+    .filter((slug): slug is string => Boolean(slug));
+
+  if (validSlugs.length > 0) {
+    return validSlugs.includes(requestedColorSlug) ? requestedColorSlug : validSlugs[0];
+  }
+
+  const selectedColorData = await resolveSelectedColorServerData(requestedColorSlug, {
+    categoryId: product.categoryId,
+    brandId: product.brandId,
+  });
+
+  return selectedColorData ? requestedColorSlug : '';
+}
+
+function normalizeMetadataText(value: string) {
+  return value.replace(/\s+/g, ' ').trim();
+}
+
+function stripTrailingPunctuation(value: string) {
+  return normalizeMetadataText(value).replace(/[.!?]+$/g, '').trim();
+}
+
+function dedupeMetadataValues(values: string[]) {
+  const seenValues = new Set<string>();
+
+  return values.filter((value) => {
+    const normalizedValue = normalizeMetadataText(value).toLowerCase();
+    if (!normalizedValue || seenValues.has(normalizedValue)) {
+      return false;
+    }
+
+    seenValues.add(normalizedValue);
+    return true;
+  });
 }
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
@@ -128,23 +191,20 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     }
 
     product = cloneProductForPage(product);
+    const directColorCanonicalHref = getDirectColorCanonicalHref(product, routeSlug);
 
-    if (requestedColorSlug) {
-      const colorSource = await loadColorFromJson(requestedColorSlug);
-      const customColors = colorSource ? undefined : await prepareCustomColors(product, routeSlug);
-      const isValidCustomColor = Boolean(customColors?.some((color: { slug?: string }) => color.slug === requestedColorSlug));
-      const isParketVariant = tarkettProducts.some(p => p.slug === requestedColorSlug && p.categoryId === '3');
-
-      if (colorSource || isValidCustomColor || isParketVariant) {
-        await mergeSelectedColor(product, requestedColorSlug);
-      } else {
-        selectedColorSlug = '';
+    if (requestedColorSlug && !directColorCanonicalHref) {
+      selectedColorSlug = await resolveCanonicalSelectedColorSlug(product, routeSlug, requestedColorSlug);
+      if (selectedColorSlug) {
+        await mergeSelectedColor(product, selectedColorSlug);
       }
     }
 
     const category = product.categoryId ? await categoryRepository.findById(product.categoryId) : null;
     const brand = product.brandId ? await brandRepository.findById(product.brandId) : null;
-    const primaryImage = product.images?.[0];
+    const metadataImages = getMetadataImageSet(product, baseUrl);
+    const twitterImages = getMetadataImageUrls(metadataImages);
+    const isTechemCatalogCategory = product.categoryId === '12';
 
     // ── Clean product name: strip color code prefix and brand prefix ──
     let cleanName = product.name;
@@ -176,6 +236,9 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     // ── Build title: "ColorName - CollectionName | podovi.online" ──
     const brandText = brand ? brand.name : '';
     const categoryText = category ? category.name : '';
+    const techemFamily = product.specs?.find((spec: { key: string }) => spec.key === '__techem_family')?.value || '';
+    const techemTopCategory = product.specs?.find((spec: { key: string }) => spec.key === '__techem_top_category')?.value || '';
+    const hasProductDocuments = Boolean(product.documents?.length);
     let pageTitle: string;
     if (collectionName && collectionName !== cleanName) {
       // "BALLERINA - Creation 40 Clic | podovi.online"
@@ -201,7 +264,34 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     const shortDesc = product.shortDescription || '';
     let metaDescription: string;
 
-    if (cleanCollectionDesc && cleanCollectionDesc.length > 20 && cleanCollectionDesc !== shortDesc) {
+    if (isTechemCatalogCategory) {
+      const techemDescriptionParts = [
+        stripTrailingPunctuation(shortDesc),
+        cleanCollectionDesc && normalizeMetadataText(cleanCollectionDesc) !== normalizeMetadataText(shortDesc)
+          ? stripTrailingPunctuation(cleanCollectionDesc)
+          : '',
+      ].filter(Boolean);
+
+      if (techemDescriptionParts.length === 0) {
+        const fallbackScope = [
+          cleanName,
+          collectionName && collectionName.toLowerCase() !== cleanName.toLowerCase() ? `iz sistema ${collectionName}` : '',
+          brandText ? `brenda ${brandText}` : '',
+        ].filter(Boolean).join(' ');
+
+        metaDescription = hasProductDocuments
+          ? `${fallbackScope}. Tehničke specifikacije, dokumentacija i detalji na podovi.online.`
+          : `${fallbackScope}. Tehničke specifikacije i detalji na podovi.online.`;
+      } else {
+        metaDescription = `${techemDescriptionParts.join('. ')}.`;
+
+        if (!/tehni|dokument/i.test(metaDescription)) {
+          metaDescription += hasProductDocuments
+            ? ' Tehničke specifikacije i dokumentacija na podovi.online.'
+            : ' Tehničke specifikacije i detalji na podovi.online.';
+        }
+      }
+    } else if (cleanCollectionDesc && cleanCollectionDesc.length > 20 && cleanCollectionDesc !== shortDesc) {
       // Merge shortDesc and collection desc if they differ
       metaDescription = `${shortDesc ? shortDesc + '. ' : ''}${cleanCollectionDesc}`;
       // Append brand
@@ -214,18 +304,35 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     }
 
     // ── OG tags ──
-    const ogTitle = [cleanName, collectionName, brandText].filter(Boolean).join(' - ');
-    const ogDescription = shortDesc || metaDescription;
-    const keywords = [cleanName, collectionName, brandText, categoryText, 'podovi', 'podne obloge', 'Srbija'].filter(Boolean).join(', ');
+    const finalDescription = metaDescription.substring(0, 160);
+    const ogTitle = dedupeMetadataValues([cleanName, collectionName, brandText].filter(Boolean)).join(' - ');
+    const ogDescription = isTechemCatalogCategory ? finalDescription : shortDesc || finalDescription;
+    const keywords = dedupeMetadataValues([
+      cleanName,
+      collectionName,
+      brandText,
+      categoryText,
+      techemFamily,
+      techemTopCategory,
+      'podovi',
+      'podne obloge',
+      'Srbija',
+    ].filter(Boolean)).join(', ');
 
     const urlWithColor = selectedColorSlug
       ? `${baseUrl}/proizvodi/${routeSlug}?color=${encodeURIComponent(selectedColorSlug)}`
       : `${baseUrl}/proizvodi/${routeSlug}`;
+    const canonicalCollectionAliasHref = getCanonicalCollectionAliasHref(routeSlug, product, selectedColorSlug);
+    const canonicalUrl = directColorCanonicalHref
+      ? `${baseUrl}${directColorCanonicalHref}`
+      : canonicalCollectionAliasHref
+      ? `${baseUrl}${canonicalCollectionAliasHref}`
+      : urlWithColor;
 
     return {
       metadataBase: new URL(baseUrl),
       title: pageTitle,
-      description: metaDescription.substring(0, 160),
+      description: finalDescription,
       keywords,
       authors: [{ name: 'podovi.online' }],
       openGraph: {
@@ -233,17 +340,17 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
         description: ogDescription,
         type: 'website',
         locale: 'sr_RS',
-        url: urlWithColor,
+        url: canonicalUrl,
         siteName: 'podovi.online',
-        images: primaryImage ? [{ url: primaryImage.url, width: 1200, height: 630, alt: primaryImage.alt || product.name }] : [],
+        images: metadataImages,
       },
       twitter: {
         card: 'summary_large_image',
         title: ogTitle,
         description: ogDescription,
-        images: primaryImage ? [primaryImage.url] : [],
+        images: twitterImages,
       },
-      alternates: { canonical: urlWithColor },
+      alternates: { canonical: canonicalUrl },
     };
   } catch (error) {
     console.error('Error generating metadata:', error);
@@ -274,23 +381,34 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '9': 'industrijske-ploce',
       '10': 'sport',
       '11': 'lajsne',
+      '12': 'otiraci',
     };
 
-    // ── Linoleum redirect: /proizvodi/gerflor-xxx → /proizvodi/xxx ──
-    if (routeSlug.startsWith('gerflor-')) {
-      const collectionSlugWithoutPrefix = routeSlug.substring('gerflor-'.length);
-      const isLinoleumCollection = linoleumColors.some(color => color.collection === collectionSlugWithoutPrefix);
-      if (isLinoleumCollection) {
-        const colorParam = typeof searchParams?.color === 'string' && searchParams.color ? `?color=${searchParams.color}` : '';
-        redirect(`/proizvodi/${collectionSlugWithoutPrefix}${colorParam}`);
-      }
-    }
-
     // ── Resolve product ──
-    let selectedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
+    const requestedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
+    let selectedColorSlug = requestedColorSlug;
     const resolvedProduct = await resolveProductBySlug(routeSlug);
     if (!resolvedProduct) notFound();
     const product = cloneProductForPage(resolvedProduct);
+    const directColorCanonicalHref = getDirectColorCanonicalHref(product, routeSlug);
+
+    if (directColorCanonicalHref) {
+      redirect(directColorCanonicalHref);
+    }
+
+    selectedColorSlug = await resolveCanonicalSelectedColorSlug(product, routeSlug, requestedColorSlug);
+
+    const canonicalCollectionAliasHref = getCanonicalCollectionAliasHref(routeSlug, product, selectedColorSlug);
+    const canonicalRouteSlug = canonicalCollectionAliasHref
+      ? extractRouteSlugFromProductHref(canonicalCollectionAliasHref)
+      : routeSlug;
+
+    if (canonicalRouteSlug !== routeSlug || requestedColorSlug !== selectedColorSlug) {
+      const colorParam = selectedColorSlug
+        ? `?color=${encodeURIComponent(selectedColorSlug)}`
+        : '';
+      redirect(`/proizvodi/${canonicalRouteSlug}${colorParam}`);
+    }
 
     // ── Parket: redirect invalid color to first valid ──
     if (product.categoryId === '3' && product.sku?.startsWith('PARKET-') && selectedColorSlug) {
@@ -393,19 +511,23 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // Fallback brand map for brands not yet in Supabase
     if (!brand && product.brandId) {
       const FALLBACK_BRANDS: Record<string, { id: string; name: string; slug: string; logo: string; description: string }> = {
-        '3': { id: '3', name: 'Tarkett', slug: 'tarkett', logo: '/images/brands/tarkett-logo.png', description: 'Tarkett' },
-        '8': { id: '8', name: 'BLOQ', slug: 'bloq', logo: '/images/brands/bloq-logo.png', description: 'BLOQ' },
-        '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/brands/timbertech-logo.png', description: 'TimberTech' },
+        '3': { id: '3', name: 'Tarkett', slug: 'tarkett', logo: '/images/brands/tarkett.svg', description: 'Tarkett' },
+        '8': { id: '8', name: 'BLOQ', slug: 'bloq', logo: '/images/brands/bloq.svg', description: 'BLOQ' },
+        '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/placeholder.svg', description: 'TimberTech' },
         '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/placeholder.svg', description: 'Wolflor' },
+        '12': { id: '12', name: 'Techem', slug: 'techem', logo: '/images/brands/techem-logo-en.png', description: 'Techem' },
       };
       brand = FALLBACK_BRANDS[product.brandId] || null;
     }
-    let primaryImage: { url: string; alt: string } | null = product.images && product.images.length > 0
-      ? (product.images.find(img => img.isPrimary) || product.images[0])
-      : null;
+    const orderedHeroImages = getOrderedProductImages(product, 'hero');
+    let primaryImage = orderedHeroImages[0] || null;
 
     // ── Prepare color variants ──
     const customColors = await prepareCustomColors(product, routeSlug);
+
+    if (product.categoryId === '12' && selectedColorSlug) {
+      redirect(`/proizvodi/${routeSlug}`);
+    }
 
     // ── Redirect invalid color to first valid variant on the server ──
     if (selectedColorSlug && customColors && customColors.length > 0) {
@@ -439,33 +561,40 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (product.categoryId === '1' && !primaryImage && customColors && customColors.length > 0) {
       const firstImg = (customColors[0] as { image_url?: string; texture_url?: string }).image_url || (customColors[0] as { texture_url?: string }).texture_url;
       if (firstImg) {
-        primaryImage = { url: firstImg, alt: product.name };
+        primaryImage = {
+          id: `${product.id}-laminat-fallback`,
+          url: firstImg,
+          alt: product.name,
+          isPrimary: true,
+          order: 0,
+        };
       }
     }
 
     // ── Schema.org ──
     const baseUrl = SITE_URL;
+    const currentProductUrl = `${baseUrl}/proizvodi/${routeSlug}${selectedColorSlug ? `?color=${encodeURIComponent(selectedColorSlug)}` : ''}`;
+    const metadataImages = getMetadataImageSet(product, baseUrl);
+    const primaryMetadataImage = metadataImages[0];
     const schemaData = {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": product.name,
-      "description": product.description || product.shortDescription || '',
-      "image": primaryImage ? `${baseUrl}${primaryImage.url}` : undefined,
-      "brand": brand ? { "@type": "Brand", "name": brand.name } : undefined,
-      "category": category?.name,
-      "offers": {
-        "@type": "Offer",
-        "price": product.price && product.price > 0 ? product.price : undefined,
-        "priceCurrency": "RSD",
-        "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-        "url": `${baseUrl}/proizvodi/${product.slug}`,
-        "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
-      },
-      "sku": product.sku,
+      ...generateProductSchema(product, brand, category, {
+        image: primaryMetadataImage?.url,
+        url: currentProductUrl,
+        baseUrl,
+      }),
+      offers: product.price && product.price > 0 ? {
+        '@type': 'Offer',
+        price: product.price,
+        priceCurrency: 'RSD',
+        availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        url: currentProductUrl,
+        priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+      } : undefined,
     };
 
     // ── Determine if this is a "color selector" category ──
-    const isColorSelectorCategory = ['6', '7', '4', '2', '3', '1', '8', '9', '10', '11'].includes(product.categoryId);
+    const isTechemCatalogCategory = product.categoryId === '12';
+    const isColorSelectorCategory = !isTechemCatalogCategory && ['6', '7', '4', '2', '3', '1', '8', '9', '10', '11'].includes(product.categoryId);
 
     // ── Helper JSX logic to populate masonry columns neatly ──
     const sharedCertsAndEco = (['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
@@ -551,10 +680,39 @@ export default async function ProductPage({ params, searchParams }: Props) {
       </div>
     ) : null;
 
+    const collectionLabel = product.specs?.find((spec) => spec.key === 'collection')?.value || (product as { collectionSlug?: string }).collectionSlug || '';
+    const collectionHref = (product as { collectionSlug?: string }).collectionSlug && (product as { collectionSlug?: string }).collectionSlug !== routeSlug
+      ? `/proizvodi/${(product as { collectionSlug?: string }).collectionSlug}`
+      : undefined;
+    const showSeparateCollectionBreadcrumb =
+      !selectedColorSlug &&
+      Boolean(collectionLabel) &&
+      collectionLabel.toLowerCase() !== displayName.toLowerCase();
+    const breadcrumbSchemaItems = [
+      { name: 'Kategorije', url: `${baseUrl}/kategorije` },
+      ...(category ? [{ name: category.name, url: `${baseUrl}/kategorije/${category.slug}` }] : []),
+      ...(selectedColorSlug
+        ? (collectionLabel
+          ? [{ name: collectionLabel, url: `${baseUrl}/proizvodi/${routeSlug}` }]
+          : [])
+        : (showSeparateCollectionBreadcrumb && collectionHref
+          ? [{ name: collectionLabel, url: new URL(collectionHref, baseUrl).toString() }]
+          : [])),
+      { name: displayName, url: currentProductUrl },
+    ];
+
     return (
       <>
         {/* Schema.org JSON-LD */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              schemaData,
+              generateBreadcrumbSchema(breadcrumbSchemaItems),
+            ]),
+          }}
+        />
 
         <ProductViewTracker product={{
           id: product.id,
@@ -578,12 +736,18 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
                   ...(selectedColorSlug ? [
                     {
-                      label: product.specs?.find(s => s.key === 'collection')?.value || (product as any).collectionSlug || routeSlug,
+                      label: collectionLabel || routeSlug,
                       href: `/proizvodi/${routeSlug}`
                     },
                     { label: displayName }
+                  ] : showSeparateCollectionBreadcrumb ? [
+                    {
+                      label: collectionLabel,
+                      href: collectionHref,
+                    },
+                    { label: displayName },
                   ] : [
-                    { label: product.specs?.find(s => s.key === 'collection')?.value || displayName }
+                    { label: displayName }
                   ])
                 ]}
               />
@@ -640,7 +804,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
                     {primaryImage ? (
                       <ProductImage
-                        src={primaryImage.url}
+                        sources={orderedHeroImages}
                         alt={primaryImage.alt}
                         className={product.categoryId === '5' ? 'object-cover object-left' : 'object-cover'}
                         sizes="(max-width: 768px) 100vw, 50vw"

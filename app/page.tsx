@@ -7,10 +7,11 @@ import { Product } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
+import { getAllTechemProducts } from '@/lib/utils/productDataLoader';
 
 export const metadata = {
-  title: 'Podovi - Katalog podnih obloga | Početna',
-  description: 'Pronađite savršen pod za vaš prostor. Laminat, vinil, parket - najkvalitetnije podne obloge od vodećih svetskih brendova.',
+  title: 'Podovi.online - Katalog podnih obloga i pratećeg asortimana',
+  description: 'Pronađite pravo rešenje za vaš prostor: laminat, vinil, parket, lajsne, otirači i drugi sistemi vodećih evropskih brendova.',
 };
 
 interface ColorFromJSON {
@@ -91,6 +92,11 @@ export default async function HomePage() {
     featuredProducts.push(colorToProduct(carpetColor, '4', '6')); // Gerflor brand ID is '6'
   }
 
+  const techemProducts = getAllTechemProducts();
+  if (techemProducts.length > 0) {
+    featuredProducts.push(techemProducts[0]);
+  }
+
   return (
     <div>
       {/* Hero Section */}
@@ -116,14 +122,17 @@ export default async function HomePage() {
               </span>
             </h1>
             <p className="text-xl md:text-[22px] mb-12 text-gray-200 leading-relaxed max-w-2xl font-light border-l-4 border-primary-500 pl-6 drop-shadow-md">
-              Veliki izbor podnih obloga vodećih evropskih proizvođača.
+              Veliki izbor podnih obloga, lajsni i ulaznih sistema vodećih evropskih proizvođača.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/kategorije" className="btn-primary text-lg px-8 py-4 rounded-xl font-semibold shadow-xl hover:shadow-primary-600/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
-                Pregledaj proizvode
+                Pregledaj asortiman
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
+              </Link>
+              <Link href="/kategorije/otiraci" className="px-8 py-4 rounded-xl font-medium text-lg text-white border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 hover:border-white/50 transition-all duration-300 flex items-center justify-center">
+                Otirači i ulazne zone
               </Link>
               <Link href="/kontakt" className="px-8 py-4 rounded-xl font-medium text-lg text-white border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 hover:border-white/50 transition-all duration-300 flex items-center justify-center">
                 Kontaktirajte nas
@@ -139,11 +148,11 @@ export default async function HomePage() {
         <div className="container">
           <div className="text-center mb-20">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Vrste podova
+              Kategorije asortimana
             </h2>
             <div className="w-24 h-1 bg-primary-600 mx-auto rounded-full mb-6"></div>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Izaberite pod koji najbolje odgovara vašim potrebama iz naše bogate ponude
+              Podne obloge, lajsne, otirači i specijalni sistemi organizovani tako da brzo pronađete pravo rešenje za svoj prostor
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -166,7 +175,7 @@ export default async function HomePage() {
                 Izdvojeni proizvodi
               </h2>
               <p className="text-xl text-gray-500 font-light">
-                Najpopularniji izbor naših kupaca
+                Izdvojeni primeri iz ključnih kategorija kataloga
               </p>
             </div>
             <Link href="/kategorije" className="text-primary-600 font-medium hover:text-primary-700 flex items-center gap-2 group mb-2 px-4 py-2 rounded-full hover:bg-primary-50 transition-colors">

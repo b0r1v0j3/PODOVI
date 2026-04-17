@@ -1,7 +1,8 @@
 import { Category } from '@/types';
 import { categories as mockCategories } from '@/lib/data/mock-data';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
-import { mapCategoryIdToUUID } from './id-mapping';
+import { mapCategoryId, mapCategoryIdToUUID } from './id-mapping';
+import { selectPreferredCatalogAsset } from '@/lib/utils/catalog-assets';
 
 export interface ICategoryRepository {
   findAll(): Promise<Category[]>;
@@ -13,14 +14,16 @@ export interface ICategoryRepository {
 // Transform DB row → Category interface
 // =========================================
 function toCategory(row: any): Category {
+  const fallbackCategory = mockCategories.find((category) => category.slug === row.slug);
+
   return {
-    id: row.id,
-    name: row.name,
+    id: fallbackCategory?.id || mapCategoryId(row.id),
+    name: row.name || fallbackCategory?.name || '',
     slug: row.slug,
-    description: row.description || '',
-    image: row.image || '',
-    parentId: row.parent_id || undefined,
-    order: row.order_num ?? 0,
+    description: row.description || fallbackCategory?.description || '',
+    image: selectPreferredCatalogAsset(fallbackCategory?.image, row.image),
+    parentId: row.parent_id || fallbackCategory?.parentId || undefined,
+    order: row.order_num ?? fallbackCategory?.order ?? 0,
   };
 }
 
@@ -36,7 +39,7 @@ export class SupabaseCategoryRepository implements ICategoryRepository {
 
     if (error) {
       console.error('SupabaseCategoryRepository.findAll error:', error.message);
-      return [];
+      return [...mockCategories].sort((a: Category, b: Category) => a.order - b.order);
     }
     const supabaseCategories: Category[] = ((data as any[]) || []).map((row: any) => toCategory(row));
     // Merge mock-only categories (e.g., Elektroprovodni) not present in Supabase

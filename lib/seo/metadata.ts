@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { SITE_NAME, SITE_URL } from './site-config';
+import { createMetadataImage, getMetadataImageUrls } from '@/lib/utils/product-images';
 
 const SITE_DESCRIPTION = 'Pronađite savršen pod za vaš prostor. Širok izbor laminata, vinila, parketa i drugih podnih obloga od vodećih brendova.';
 
@@ -50,6 +51,14 @@ export function generateProductMetadata(params: {
   price?: number;
   currency?: string;
 }): Metadata {
+  const metadataImages = [
+    createMetadataImage(params.image, SITE_URL, {
+      width: 1200,
+      height: 630,
+      alt: params.title,
+    }),
+  ].filter((image): image is NonNullable<ReturnType<typeof createMetadataImage>> => Boolean(image));
+
   return {
     metadataBase: new URL(SITE_URL),
     title: params.title,
@@ -59,13 +68,13 @@ export function generateProductMetadata(params: {
       title: params.title,
       description: params.description,
       url: params.url,
-      images: params.image ? [{ url: params.image }] : undefined,
+      images: metadataImages.length > 0 ? metadataImages : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title: params.title,
       description: params.description,
-      images: params.image ? [params.image] : undefined,
+      images: metadataImages.length > 0 ? getMetadataImageUrls(metadataImages) : undefined,
     },
   };
 }

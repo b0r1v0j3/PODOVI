@@ -19,6 +19,8 @@ import {
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import { getDerivedWeldingSpecs } from './welding-helpers';
+import { normalizeCollectionSlugForProductRoute } from '@/lib/utils/product-routes';
+import { getProductBySlug as getCatalogProductBySlug } from '@/lib/utils/productDataLoader';
 
 function enrichProductFromCollectionData(product: Product, collection: any): Product {
     const enrichedProduct: Product = {
@@ -75,7 +77,11 @@ function enrichProductFromCollectionData(product: Product, collection: any): Pro
 }
 
 function findNestedCollection(slug: string) {
-    const slugWithoutPrefix = slug.replace(/^gerflor-/, '').replace(/^tarkett-/, '').replace(/^wolflor-/, '');
+    const slugWithoutPrefix = slug
+        .replace(/^gerflor-/, '')
+        .replace(/^tarkett-/, '')
+        .replace(/^wolflor-/, '')
+        .replace(/^techem-/, '');
     return (
         vinylCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         esdCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
@@ -87,38 +93,91 @@ function findNestedCollection(slug: string) {
 }
 
 export function normalizeCollectionSlug(categoryId: string, collectionSlug: string, brandId?: string): string {
-    if (!collectionSlug) {
-        return collectionSlug;
-    }
-    const hasBrandPrefix =
-        collectionSlug.startsWith('gerflor-') ||
-        collectionSlug.startsWith('tarkett-') ||
-        collectionSlug.startsWith('wolflor-');
-    if (categoryId === '6') {
-        if (hasBrandPrefix) {
-            return collectionSlug;
+    return normalizeCollectionSlugForProductRoute(collectionSlug, brandId, categoryId);
+}
+
+function getProductSpecValue(product: Product, keys: string[]): string | undefined {
+    for (const key of keys) {
+        const match = product.specs?.find((spec) => spec.key === key);
+        if (match?.value && typeof match.value === 'string') {
+            const trimmed = match.value.trim();
+            if (trimmed) {
+                return trimmed;
+            }
         }
-        return `gerflor-${collectionSlug}`;
     }
-    if (categoryId === '9' || categoryId === '10' || categoryId === '11') {
-        if (hasBrandPrefix) {
-            return collectionSlug;
+    return undefined;
+}
+
+function attachTechemCollectionSlug<T extends Product>(product: T): T & { collectionSlug?: string } {
+    if (product.categoryId !== '12' && product.brandId !== '12') {
+        return product;
+    }
+
+    const rawCollectionSlug = getProductSpecValue(product, [
+        'collection_slug',
+        'parent_collection_slug',
+        'series_slug',
+        'parent_slug',
+        'group_slug',
+    ]);
+
+    if (!rawCollectionSlug) {
+        return product;
+    }
+
+    const normalizedCollectionSlug = normalizeCollectionSlug(product.categoryId, rawCollectionSlug, product.brandId);
+    if (!normalizedCollectionSlug || normalizedCollectionSlug === product.slug) {
+        return product;
+    }
+
+    return {
+        ...product,
+        collectionSlug: normalizedCollectionSlug,
+    };
+}
+
+function findLoaderProductBySlug(slug: string): Product | null {
+    const normalizedSlug = String(slug || '').trim();
+    if (!normalizedSlug) {
+        return null;
+    }
+
+    const candidateSlugs = Array.from(
+        new Set(
+            [
+                normalizedSlug,
+                normalizedSlug.replace(/^gerflor-/, ''),
+                normalizedSlug.replace(/^tarkett-/, ''),
+                normalizedSlug.replace(/^wolflor-/, ''),
+                normalizedSlug.replace(/^techem-/, ''),
+                normalizedSlug.replace(/^bloq-/, ''),
+                normalizedSlug.startsWith('gerflor-') ? '' : `gerflor-${normalizedSlug}`,
+                normalizedSlug.startsWith('tarkett-') ? '' : `tarkett-${normalizedSlug}`,
+                normalizedSlug.startsWith('wolflor-') ? '' : `wolflor-${normalizedSlug}`,
+                normalizedSlug.startsWith('techem-') ? '' : `techem-${normalizedSlug}`,
+                normalizedSlug.startsWith('bloq-') ? '' : `bloq-${normalizedSlug}`,
+            ].filter(Boolean)
+        )
+    );
+
+    for (const candidateSlug of candidateSlugs) {
+        const candidateProduct = getCatalogProductBySlug(candidateSlug);
+        if (!candidateProduct) {
+            continue;
         }
-        return brandId === '3' ? `tarkett-${collectionSlug}` : `gerflor-${collectionSlug}`;
-    }
-    if (categoryId === '7') {
-        return collectionSlug.replace(/^gerflor-/, '');
-    }
-    if (categoryId === '4') {
-        if (hasBrandPrefix) {
-            return collectionSlug;
+
+        if (candidateSlug === normalizedSlug) {
+            return candidateProduct;
         }
-        return `gerflor-${collectionSlug}`;
+
+        return {
+            ...candidateProduct,
+            slug: normalizedSlug,
+        };
     }
-    if (categoryId === '2' && brandId === '11') {
-        return hasBrandPrefix ? collectionSlug : `wolflor-${collectionSlug}`;
-    }
-    return collectionSlug;
+
+    return null;
 }
 
 export async function resolveProductBySlug(slug: string): Promise<(Product & { collectionSlug?: string }) | null> {
@@ -143,9 +202,25 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
     if (product) {
         const nestedCollectionForEnrich = findNestedCollection(slug);
         if (nestedCollectionForEnrich) {
-            return enrichProductFromCollectionData(product, nestedCollectionForEnrich);
+            return attachTechemCollectionSlug(enrichProductFromCollectionData(product, nestedCollectionForEnrich));
         }
-        return product;
+        return attachTechemCollectionSlug(product);
+    }
+
+    const loaderProduct = findLoaderProductBySlug(slug);
+    if (loaderProduct) {
+        return attachTechemCollectionSlug(loaderProduct);
+    }
+
+    if (slug.startsWith('techem-')) {
+        const unprefixedTechemSlug = slug.substring('techem-'.length);
+        const techemProduct = await productRepository.findBySlug(unprefixedTechemSlug);
+        if (techemProduct) {
+            return attachTechemCollectionSlug({
+                ...techemProduct,
+                slug,
+            });
+        }
     }
 
     // Check if slug is a collection slug (starts with 'gerflor-')
@@ -161,15 +236,15 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
                 ? enrichProductFromCollectionData(collectionProduct, nestedCollectionForDesc)
                 : collectionProduct;
             if (nestedCollectionForDesc) {
-                return {
+                return attachTechemCollectionSlug({
                     ...enrichedCollectionProduct,
                     slug,
-                };
+                });
             }
-            return {
+            return attachTechemCollectionSlug({
                 ...enrichedCollectionProduct,
                 slug,
-            };
+            });
         }
 
         // Try to find first color from this collection in LVT JSON
@@ -370,16 +445,16 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         // Try to find in repository by slug without prefix
         const tarkettProduct = await productRepository.findBySlug(tarkettSlugWithoutPrefix);
         if (tarkettProduct) {
-            return {
+            return attachTechemCollectionSlug({
                 ...tarkettProduct,
                 slug, // Keep the original slug with prefix for URL consistency
-            };
+            });
         }
 
         // Also try the full slug (some Tarkett products may be stored with prefix)
         const tarkettProductFull = await productRepository.findBySlug(slug);
         if (tarkettProductFull) {
-            return tarkettProductFull;
+            return attachTechemCollectionSlug(tarkettProductFull);
         }
     }
 

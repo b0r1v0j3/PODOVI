@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import ProductImage from './ProductImage';
 
 interface ViewedProduct {
     id: string;
     name: string;
     slug: string;
     image: string;
+    imageCandidates?: Array<{ url: string; alt?: string }>;
     price?: number;
     url?: string;
     timestamp: number;
@@ -49,12 +50,12 @@ export default function RecentlyViewed() {
                                 className="flex-shrink-0 w-48 snap-start group"
                             >
                                 <div className="aspect-square relative rounded-lg overflow-hidden bg-gray-100 mb-2 border border-gray-200">
-                                    <Image
+                                    <ProductImage
                                         src={product.image}
                                         alt={product.name}
-                                        fill
+                                        sources={product.imageCandidates}
                                         sizes="192px"
-                                        className={`object-cover group-hover:scale-105 transition-transform duration-300${product.image.includes('/deking/') ? ' object-left' : ''}`}
+                                        className={`group-hover:scale-105 transition-transform duration-300${product.image.includes('/deking/') ? ' object-left' : ''}`}
                                     />
                                 </div>
                                 <h3 className="text-sm font-medium text-gray-900 truncate group-hover:text-primary-600 transition-colors">
@@ -75,7 +76,15 @@ export default function RecentlyViewed() {
 }
 
 // Helper to add product to history
-export function addToRecentlyViewed(product: { id: string; name: string; slug: string; image: string; price?: number; url?: string }) {
+export function addToRecentlyViewed(product: {
+    id: string;
+    name: string;
+    slug: string;
+    image: string;
+    imageCandidates?: Array<{ url: string; alt?: string }>;
+    price?: number;
+    url?: string;
+}) {
     if (typeof window === 'undefined') return;
     try {
         const stored = localStorage.getItem('recentlyViewed');

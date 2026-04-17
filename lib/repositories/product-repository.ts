@@ -1,11 +1,12 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllTechemProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 import { enrichTarkettWoodProduct } from '@/lib/data/tarkett-wood-enrichment';
+import { normalizeSearchText } from '@/lib/utils/search-normalization';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -133,10 +134,11 @@ export class SupabaseProductRepository implements IProductRepository {
 
     if (error) {
       console.error('SupabaseProductRepository.findAll error:', error.message);
-      return [];
     }
 
-    let products: Product[] = ((data as any[]) || []).map((row: any) =>
+    const dbRows = error ? [] : ((data as any[]) || []);
+
+    let products: Product[] = dbRows.map((row: any) =>
       enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
     );
 
@@ -180,54 +182,46 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...dekingProducts];
     }
 
+    const techemProducts = getAllTechemProducts();
+    const techemCategoryIds = new Set(techemProducts.map((product) => product.categoryId).filter(Boolean));
+
+    if (
+      techemProducts.length > 0 &&
+      (
+        !filters?.categoryId ||
+        (legacyCategoryId ? techemCategoryIds.has(legacyCategoryId) : false) ||
+        (filters.categoryId ? techemCategoryIds.has(filters.categoryId) : false)
+      )
+    ) {
+      const existingSlugs = new Set(products.map((product: Product) => product.slug));
+      let techemCatalogProducts = techemProducts.filter((product) => !existingSlugs.has(product.slug));
+
+      if (filters?.search) {
+        const searchLower = normalizeSearchText(filters.search);
+        techemCatalogProducts = techemCatalogProducts.filter((product) =>
+          normalizeSearchText(product.name).includes(searchLower) ||
+          normalizeSearchText(product.shortDescription).includes(searchLower) ||
+          normalizeSearchText(product.description).includes(searchLower) ||
+          normalizeSearchText(product.sku).includes(searchLower) ||
+          (product.specs || []).some((spec) =>
+            spec.key.startsWith('__techem_') &&
+            normalizeSearchText(`${spec.label} ${spec.value}`).includes(searchLower)
+          )
+        );
+      }
+
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        techemCatalogProducts = techemCatalogProducts.filter((product) => filters.brandIds!.includes(product.brandId));
+      }
+
+      products = [...products, ...techemCatalogProducts];
+    }
+
     // Category 6: LVT (Add Tarkett LVT products + collection headers)
     if (!filters?.categoryId || legacyCategoryId === '6' || filters.categoryId === '6') {
       let lvtJsonProducts = getAllTarkettLVTProducts();
       let lvtCollections = getTarkettLVTCollections();
       let gerflorLvtCollections = getGerflorLVTCollections();
-
-      // Implement Local Collection Images
-      const collectionImagesModule = await import('@/public/data/collection_images.json').then(m => m.default || m).catch(() => ({}));
-      const collectionImages = collectionImagesModule as Record<string, string>;
-
-      lvtCollections = lvtCollections.map(c => {
-        let localImg: string | undefined;
-
-        // 1. Try exact name match or name without "Tarkett " prefix
-        const nameWithoutPrefix = c.name.replace(/^Tarkett\s+/i, '');
-        localImg = collectionImages[c.name] || collectionImages[nameWithoutPrefix];
-
-        // 2. Try case-insensitive matching for name
-        if (!localImg) {
-          const lowerName = nameWithoutPrefix.toLowerCase();
-          const matchingKey = Object.keys(collectionImages).find(k => k.toLowerCase() === lowerName);
-          if (matchingKey) localImg = collectionImages[matchingKey];
-        }
-
-        // 3. Try matching by slug part
-        // c.slug is like "tarkett-id-inspiration-55"
-        // collectionImages key is like "kolekcija-c000770-id-inspiration-55"
-        if (!localImg && c.slug) {
-          const slugPart = c.slug.replace(/^tarkett-/i, '');
-          // Look for a key that contains this slug part
-          const matchingKey = Object.keys(collectionImages).find(k => k.includes(slugPart));
-          if (matchingKey) localImg = collectionImages[matchingKey];
-        }
-
-        if (localImg) {
-          return {
-            ...c,
-            images: [{
-              id: 'local-' + c.id,
-              url: localImg,
-              alt: c.name,
-              isPrimary: true,
-              order: 0
-            }, ...c.images.slice(1)]
-          };
-        }
-        return c;
-      });
 
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
@@ -526,79 +520,7 @@ export class SupabaseProductRepository implements IProductRepository {
   }
 
   async findByBrand(brandId: string): Promise<Product[]> {
-    if (brandId === '8') {
-      return getAllBloqCarpetProducts();
-    }
-
-    if (brandId === '10') {
-      return getAllDekingProducts();
-    }
-
-    if (brandId === '6') {
-      const { data, error } = await supabase
-        .from('products')
-        .select('*, product_images(*), product_specs(*)')
-        .eq('brand_id', mapBrandIdToUUID(brandId));
-
-      let products = error
-        ? []
-        : ((data as any[]) || []).map((row: any) =>
-          enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
-        );
-
-      const existingSlugs = new Set(products.map((product: Product) => product.slug));
-      const supplementalCollections = [
-        ...getVinylCollectionProducts(),
-        ...getEsdCollectionProducts(),
-        ...getGerflorLVTCollections(),
-        ...getGerflorLinoleumCollections(),
-        ...getManualCollectionProducts(),
-      ].filter(product => !existingSlugs.has(product.slug));
-
-      return [...products, ...supplementalCollections];
-    }
-
-    if (brandId === '3') {
-      const { data, error } = await supabase
-        .from('products')
-        .select('*, product_images(*), product_specs(*)')
-        .eq('brand_id', mapBrandIdToUUID(brandId));
-
-      const products = error
-        ? []
-        : ((data as any[]) || []).map((row: any) =>
-          enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
-        );
-
-      const existingSlugs = new Set(products.map((product: Product) => product.slug));
-      const supplementalCollections = tarkettProducts
-        .map(enrichCatalogProduct)
-        .concat(getTarkettSportCollections())
-        .concat(getTarkettLajsneCollections())
-        .concat(getTarkettVinylHomeCollections())
-        .concat(getTarkettHeterogeneousVinylCollections())
-        .concat(getTarkettHomogeneousVinylCollections())
-        .filter(product => !existingSlugs.has(product.slug));
-
-      return [...products, ...supplementalCollections];
-    }
-
-    if (brandId === '11') {
-      return getWolflorVinylCollections();
-    }
-
-    const { data, error } = await supabase
-      .from('products')
-      .select('*, product_images(*), product_specs(*)')
-      .eq('brand_id', mapBrandIdToUUID(brandId));
-
-    if (error) {
-      console.error('SupabaseProductRepository.findByBrand error:', error.message);
-      return [];
-    }
-    return ((data as any[]) || []).map((row: any) =>
-      enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
-    );
+    return this.findAll({ brandIds: [brandId] });
   }
 
   async findFeatured(): Promise<Product[]> {
@@ -635,6 +557,7 @@ export class MockProductRepository implements IProductRepository {
     ...getTarkettSportCollections(),
     ...getTarkettLajsneCollections(),
     ...getAllDekingProducts(),
+    ...getAllTechemProducts(),
     ...getVinylCollectionProducts(),
     ...getEsdCollectionProducts(),
     ...getManualCollectionProducts(),

@@ -1,9 +1,10 @@
 'use client';
 
 import { useCompare } from '@/lib/context/CompareContext';
-import Image from 'next/image';
 import Link from 'next/link';
+import ProductImage from './ProductImage';
 import { splitProductTitle } from '@/lib/utils/name-parser';
+import { getProductImageCandidates } from '@/lib/utils/product-images';
 
 export default function CompareBar() {
     const { compareItems, removeFromCompare, clearAll } = useCompare();
@@ -21,7 +22,8 @@ export default function CompareBar() {
                         </span>
                         <div className="flex items-center gap-2 overflow-x-auto">
                             {compareItems.map((product: any) => {
-                                const img = product.images?.[0]?.url;
+                                const imageCandidates = getProductImageCandidates(product, 'thumb').slice(0, 4);
+                                const img = imageCandidates[0]?.url;
 
                                 let displayName = product.name;
                                 if (product.categoryId === '6' && product.name.startsWith('Gerflor ')) {
@@ -36,9 +38,14 @@ export default function CompareBar() {
 
                                 return (
                                     <div key={product.id} className="relative flex items-center gap-2 bg-gray-50 rounded-lg px-2 py-1.5 min-w-0 flex-shrink-0">
-                                        {img && img.startsWith('/') && (
+                                        {img && (
                                             <div className="relative w-8 h-8 rounded overflow-hidden flex-shrink-0">
-                                                <Image src={img} alt={product.name} fill className="object-cover" sizes="32px" />
+                                                <ProductImage
+                                                    sources={imageCandidates}
+                                                    alt={product.name}
+                                                    className="object-cover"
+                                                    sizes="32px"
+                                                />
                                             </div>
                                         )}
                                         <span className="text-xs font-medium text-gray-700 truncate max-w-[100px]" title={formattedName}>

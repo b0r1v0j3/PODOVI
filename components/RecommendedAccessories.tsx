@@ -39,7 +39,7 @@ export default function RecommendedAccessories({ accessories }: RecommendedAcces
                             <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
                                 {primaryImage ? (
                                     <ProductImage
-                                        src={primaryImage.url}
+                                        sources={acc.images}
                                         alt={primaryImage.alt || acc.name}
                                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

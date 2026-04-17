@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 
 export default function WhatsAppButton() {
   const phoneNumber = '38163299444'; // Format without + for WhatsApp URL
-  const message = encodeURIComponent('Pozdrav! Zanima me vaša ponuda podova.');
+  const message = encodeURIComponent('Pozdrav! Zanima me vaš katalog podnih obloga, lajsni i otirača.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (

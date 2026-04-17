@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import type { ProductSpec } from '@/types';
+import { mergeSpecs } from '@/lib/product-page/color-helpers';
 import { getWeldingAccessoryHref } from '@/lib/product-page/welding-helpers';
 
 interface ProductCharacteristicsProps {
@@ -16,21 +17,28 @@ interface ProductCharacteristicsProps {
 export default function ProductCharacteristics({ specs, categoryId, title }: ProductCharacteristicsProps) {
   const searchParams = useSearchParams();
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
+  const [selectedSpecs, setSelectedSpecs] = useState<ProductSpec[] | null>(null);
   const colorSlug = searchParams.get('color');
 
   useEffect(() => {
     if (!colorSlug) {
       setSelectedCharacteristics(null);
+      setSelectedSpecs(null);
       return;
     }
 
     let isActive = true;
+    setSelectedCharacteristics(null);
+    setSelectedSpecs(null);
 
     const loadCharacteristics = async () => {
       try {
         const res = await fetch(`/api/color-data?color=${encodeURIComponent(colorSlug)}&categoryId=${encodeURIComponent(categoryId)}`);
         if (res.ok) {
           const data = await res.json();
+          if (Array.isArray(data.specs) && data.specs.length > 0 && isActive) {
+            setSelectedSpecs(data.specs);
+          }
           if (data.characteristics && Object.keys(data.characteristics).length > 0) {
             if (isActive) setSelectedCharacteristics(data.characteristics);
             return;
@@ -39,15 +47,56 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
       } catch {
         // Ignore fetch errors
       }
-      if (isActive) setSelectedCharacteristics(null);
+      if (isActive) {
+        setSelectedCharacteristics(null);
+        setSelectedSpecs(null);
+      }
     };
 
     loadCharacteristics();
     return () => { isActive = false; };
   }, [colorSlug, categoryId]);
 
-  if ((!specs || specs.length === 0) && !selectedCharacteristics) {
+  if ((!specs || specs.length === 0) && !selectedCharacteristics && !selectedSpecs) {
     return null;
+  }
+
+  if (selectedSpecs && selectedSpecs.length > 0) {
+    const finalSpecs = mergeSpecs(specs || [], selectedSpecs);
+
+    if (finalSpecs.length === 0) {
+      return null;
+    }
+
+    return (
+      <div className="w-full">
+        {title && <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>}
+        <dl className="divide-y divide-gray-200">
+          {finalSpecs.map((spec, index) => {
+            const isWeldingSpec = /(elektrod|varila|welding|vrpca)/i.test(spec.label);
+            const weldingHref = isWeldingSpec ? getWeldingAccessoryHref(spec.value) : null;
+
+            return (
+              <div key={`${spec.label}-${index}`} className="flex items-center justify-between py-3.5">
+                <dt className="text-sm font-medium text-gray-500">{spec.label}</dt>
+                <dd className="text-sm font-semibold text-gray-900 text-right">
+                  {weldingHref ? (
+                    <Link
+                      href={weldingHref}
+                      className="text-primary-600 hover:text-primary-700 underline underline-offset-4"
+                    >
+                      {spec.value}
+                    </Link>
+                  ) : (
+                    spec.value
+                  )}
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      </div>
+    );
   }
 
   // Merge specs and selectedCharacteristics, prioritizing selectedCharacteristics
