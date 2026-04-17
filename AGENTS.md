@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 17.04.2026 (legacy code-only direct-color canonical slug poravnat)
+> **Poslednje ažuriranje:** 17.04.2026 (Vercel trace hotfix za Techem/Otirači release)
 
 ---
 
@@ -147,6 +147,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Vercel deploy trace hotfix za Techem/Otirači release slice (17.04.2026)**
+- Produkcioni deploy za commit `feat: ship Techem catalog and discovery updates` nije padao na compile/test/build fazi, već na Vercel trace/packaging sloju: serverless NFT za `api/ops/*` i `api/search` je zbog runtime `fs` proverâ u `lib/utils/productDataLoader.ts` uvlačio ogromne foldere iz `public/`, uključujući `public/images/products` i teške lokalne PDF dokumente.
+- `productDataLoader.ts` više ne koristi runtime `fs.existsSync` / `path.join(process.cwd(), 'public', ...)` za izbor lokalnih collection hero asseta, niti dinamički čita Techem JSON sa diska. Techem sada ide preko direktnog `techem_mats.json` importa, a izbor lokalnih Tarkett/BLOQ collection asseta koristi statičke manifeste iz novog `lib/data/local-asset-manifests.ts`.
+- Time su `getTarkettLVTCollections()`, `getAllBloqCarpetProducts()`, `getAllTechemProducts()` i ops/search import lane zadržali isti user-facing contract, ali bez Vercel trace eksplozije nad celim `public/` stablom.
+- Verifikovano: `npm run test:contract`, `npm run lint`, `npx tsx scripts/audit-catalog-quality.ts`, `npm run check:health`, `npm run build`, plus lokalna provera da `.next/server/app/api/*/*.nft.json` više ne sadrži `public/images/products`, `public/documents/lvt` ni `public/documents/wolflor`.
 
 **Legacy code-only direct-color canonical slug poravnat za Gerflor vinil/sport route alias-e (17.04.2026)**
 - `lib/utils/product-routes.ts` sada za Gerflor direct-color rute u kategorijama `Vinil` i `Sport` ne zadržava sirovi code-only slug u canonical query parametru kada route već ide na parent collection PDP. Route oblici tipa `/proizvodi/0319` i `/proizvodi/1123` sada canonicalizuju na `/proizvodi/gerflor-...?...color=<generated-color-slug>` umesto na skraćeni `?color=0319/1123`.
@@ -732,7 +738,7 @@ PODOVI/
 │   ├── catalog/            # Listing/brand curation helperi (`listing-curation`, `brand-curation`)
 │   ├── product-page/       # KRITIČNO: resolver, color merge, spec helpers (uključujući nested category 11 / lajsne)
 │   ├── crm/                # CRM status meta + follow-up helperi za inquiry leadove
-│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + mock category fallback (`lajsne`) + manual collection header proizvodi + Tarkett wood enrichment
+│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + mock category fallback (`lajsne`) + manual collection header proizvodi + Tarkett wood enrichment + statički manifesti lokalnih collection asseta
 │   ├── utils/              # Shared pure helperi poput `product-routes.ts` i `product-images.ts` za canonical href/slug/image-selection contract
 │   └── repositories/       # Data access layer (Supabase, uključujući inquiries + CRM update sloj)
 │
@@ -767,7 +773,7 @@ PODOVI/
 16. **ESD slug pattern:** ESD kolekcije (mipolam-el5, gti-el5-connect, itd.) koriste slug BEZ `gerflor-` prefiksa, za razliku od LVT/Vinil/Linoleum kolekcija. SVAKA nova logika u `resolve-product.ts`, `prepare-colors.ts`, `color-helpers.ts` mora da proverava slug i sa i bez prefiksa. Takođe, ESD boje koriste `image` polje umesto `image_url`/`texture_url` — uvek dodaj fallback na `(color as any).image`.
 17. **Ne pokreci Gerflor downloader paralelno nad istim JSON fajlom.** Skripta drži stanje celog fajla u memoriji i poslednji upis moze da pregazi prethodni uspesan prolaz ako dve instance rade nad istim `vinyl_special_colors.json`, `industrial_colors.json` ili `sport_colors.json`.
 18. **Neki Gerflor product template-i gutaju normalan Playwright klik zbog consent/overlay sloja.** Kad download dugme postoji u DOM-u, ali `page.click()` ne prolazi, koristi DOM `.click()` fallback nad stvarnim download triggerom i `.jpg` opcijom.
-19. **Ne koristi `fs` proveru nad `public/` u runtime repository/resolver kodu.** Cak i bez direktnog importa slika, `existsSync(join(process.cwd(), 'public', ...))` moze da natera Vercel trace da uvuce ogromne `public/images/*` foldere u serverless funkcije i probije size limit.
+19. **Ne koristi `fs` proveru nad `public/` u runtime repository/resolver kodu.** Cak i bez direktnog importa slika, `existsSync(join(process.cwd(), 'public', ...))` moze da natera Vercel trace da uvuce ogromne `public/images/*` foldere u serverless funkcije i probije size limit. Ako ti treba uslovni lokalni asset fallback, koristi staticki manifest (`lib/data/local-asset-manifests.ts`) ili JSON mapu, ne runtime filesystem lookup.
 20. **Ne mutiraj shared `Product` objekte iz loadera/repozitorijuma.** `mergeSelectedColor()` menja ime, sliku i specifikacije proizvoda; zato svaki product koji dolazi iz cache-ovanih JSON/manual izvora mora prvo da se klonira, inace ce collection kartice na kategorijama poceti da prikazuju poslednju izabranu boju.
 21. **Kad Gerflor ZIP sadrzi i clean i loupe JPG, uvek biraj clean.** Posebno kod `GTI Max` kolekcija arhiva cesto ima fajl tipa `LOUPE-...jpg` i zaseban cist `GTI Max - Color.jpg`; za sajt koristi cistu boju, ne preview sa kruzicem.
 22. **Kad na Supabase prepisujes sliku na istoj putanji, URL u JSON-u mora da dobije novu verziju.** Ako ostane identican URL, browser i CDN mogu satima da serviraju staru GTI/industrijsku preview sliku iako je object vec zamenjen clean JPG-om; dodaj `?v=...` cache-bust na `image` polje kad hoces da promena odmah postane vidljiva.

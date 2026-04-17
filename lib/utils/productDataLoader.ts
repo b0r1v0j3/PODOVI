@@ -1,5 +1,3 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { Product } from '@/types';
 import { formatLvtSpecs } from '@/lib/product-page/spec-helpers';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
@@ -18,8 +16,10 @@ import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
+import techemMatsData from '@/public/data/techem_mats.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
+import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 import { selectPreferredCollectionHeroAsset } from '@/lib/utils/catalog-assets';
 
@@ -38,34 +38,19 @@ let tarkettHeterogeneousVinylCollectionCache: Product[] | null = null;
 let wolflorVinylCollectionCache: Product[] | null = null;
 let gerflorLvtCollectionCache: Product[] | null = null;
 let gerflorLinoleumCollectionCache: Product[] | null = null;
-let techemDataPathCache: string | null | undefined = undefined;
 let techemDatasetCache:
     | {
         entries: Record<string, any>[];
         generatedAt: Date | null;
-        filePath: string;
-        mtimeMs: number;
     }
     | undefined = undefined;
-let techemProductsCache:
-    | {
-        products: Product[];
-        filePath: string;
-        mtimeMs: number;
-    }
-    | undefined = undefined;
-const localPublicAssetExistenceCache = new Map<string, boolean>();
+let techemProductsCache: Product[] | null = null;
 
 const DEFAULT_CATALOG_DATE = '2024-01-01';
 const DEFAULT_TECHEM_CATEGORY_ID = '12';
 const DEFAULT_TECHEM_BRAND_ID = '12';
-const PUBLIC_DIR = path.join(process.cwd(), 'public');
-const TECHEM_DATA_FILE_CANDIDATES = [
-    'techem_mats.json',
-    'techem_products.json',
-    'techem_catalog.json',
-    'techem_catalog_complete.json',
-];
+const TARKETT_COLLECTION_LOCAL_ASSET_SET = new Set(tarkettCollectionCoverAssetPaths);
+const BLOQ_ROOMSHOT_LOCAL_ASSET_SET = new Set(bloqRoomshotAssetPaths);
 
 // Display names for Tarkett collections
 const TARKETT_COLLECTION_NAMES: Record<string, string> = {
@@ -384,73 +369,13 @@ function normalizeTechemSpecs(rawProduct: Record<string, any>) {
     return mergeUniqueSpecs(specs, directSpecs);
 }
 
-function resolveTechemDataPath() {
-    if (techemDataPathCache && fs.existsSync(techemDataPathCache)) {
-        return techemDataPathCache;
-    }
-
-    techemDataPathCache = undefined;
-
-    const publicDataDirectory = path.join(process.cwd(), 'public', 'data');
-    const candidateFileNames = new Set(TECHEM_DATA_FILE_CANDIDATES);
-
-    try {
-        for (const fileName of fs.readdirSync(publicDataDirectory)) {
-            if (/^techem.*\.json$/i.test(fileName)) {
-                candidateFileNames.add(fileName);
-            }
-        }
-    } catch {
-        techemDataPathCache = null;
-        return techemDataPathCache;
-    }
-
-    for (const fileName of Array.from(candidateFileNames)) {
-        const filePath = path.join(publicDataDirectory, fileName);
-        if (fs.existsSync(filePath)) {
-            techemDataPathCache = filePath;
-            return techemDataPathCache;
-        }
-    }
-
-    techemDataPathCache = null;
-    return techemDataPathCache;
-}
-
 function loadTechemDataset() {
-    const filePath = resolveTechemDataPath();
-    if (!filePath) {
-        return {
-            entries: [],
-            generatedAt: null,
-            filePath: '',
-            mtimeMs: 0,
-        };
-    }
-
-    let fileStats: fs.Stats;
-    try {
-        fileStats = fs.statSync(filePath);
-    } catch {
-        techemDataPathCache = undefined;
-        return {
-            entries: [],
-            generatedAt: null,
-            filePath: '',
-            mtimeMs: 0,
-        };
-    }
-
-    if (
-        techemDatasetCache &&
-        techemDatasetCache.filePath === filePath &&
-        techemDatasetCache.mtimeMs === fileStats.mtimeMs
-    ) {
+    if (techemDatasetCache) {
         return techemDatasetCache;
     }
 
     try {
-        const rawData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        const rawData = techemMatsData as Record<string, unknown> | Array<Record<string, unknown>>;
         const generatedAtValue =
             rawData && typeof rawData === 'object'
                 ? normalizeText((rawData as Record<string, unknown>).generatedAt)
@@ -465,8 +390,6 @@ function loadTechemDataset() {
             techemDatasetCache = {
                 entries: rawData,
                 generatedAt,
-                filePath,
-                mtimeMs: fileStats.mtimeMs,
             };
             return techemDatasetCache;
         }
@@ -476,8 +399,6 @@ function loadTechemDataset() {
                 techemDatasetCache = {
                     entries: (rawData as Record<string, any>)[key],
                     generatedAt,
-                    filePath,
-                    mtimeMs: fileStats.mtimeMs,
                 };
                 return techemDatasetCache;
             }
@@ -488,16 +409,12 @@ function loadTechemDataset() {
         return {
             entries: [],
             generatedAt: null,
-            filePath: '',
-            mtimeMs: 0,
         };
     }
 
     techemDatasetCache = {
         entries: [],
         generatedAt: null,
-        filePath,
-        mtimeMs: fileStats.mtimeMs,
     };
     return techemDatasetCache;
 }
@@ -645,38 +562,13 @@ function pickRichestText(...values: Array<string | null | undefined>) {
         .sort((left, right) => right.length - left.length)[0] || '';
 }
 
-function localPublicAssetExists(assetPath?: string | null) {
-    const normalizedPath = String(assetPath || '').trim();
-    if (!normalizedPath.startsWith('/')) {
-        return false;
-    }
-
-    const cached = localPublicAssetExistenceCache.get(normalizedPath);
-    if (typeof cached === 'boolean') {
-        return cached;
-    }
-
-    const pathWithoutSearch = normalizedPath.split(/[?#]/, 1)[0];
-    const candidatePaths = new Set([pathWithoutSearch]);
-
-    try {
-        candidatePaths.add(decodeURIComponent(pathWithoutSearch));
-    } catch {
-        candidatePaths.add(pathWithoutSearch);
-    }
-
-    const exists = Array.from(candidatePaths).some((candidatePath) =>
-        fs.existsSync(path.join(PUBLIC_DIR, candidatePath.replace(/^\//, '')))
-    );
-
-    localPublicAssetExistenceCache.set(normalizedPath, exists);
-    return exists;
-}
-
-function pickFirstExistingLocalPublicAsset(...candidates: Array<string | null | undefined>) {
+function pickFirstKnownLocalPublicAsset(
+    knownAssetPaths: ReadonlySet<string>,
+    ...candidates: Array<string | null | undefined>
+) {
     return candidates
         .map((candidate) => String(candidate || '').trim())
-        .find((candidate) => candidate && localPublicAssetExists(candidate)) || '';
+        .find((candidate) => candidate && knownAssetPaths.has(candidate.split(/[?#]/, 1)[0])) || '';
 }
 
 function resolveTarkettCollectionImageOverride(
@@ -926,7 +818,10 @@ export function getTarkettLVTCollections(): Product[] {
         const externalLink = normalizeTarkettCollectionUrl((first as any)?.meta?.originalUrl);
         const imageUrl = selectPreferredCollectionHeroAsset(
             resolveTarkettCollectionImageOverride(displayName, collKey),
-            pickFirstExistingLocalPublicAsset(`/images/tarkett/collections/${collKey}.jpg`),
+            pickFirstKnownLocalPublicAsset(
+                TARKETT_COLLECTION_LOCAL_ASSET_SET,
+                `/images/tarkett/collections/${collKey}.jpg`
+            ),
             first.images?.find((image) => image.isPrimary)?.url,
             first.images?.[0]?.url
         );
@@ -1506,7 +1401,8 @@ export function getAllBloqCarpetProducts(): Product[] {
         ].find(Boolean) || '';
 
         const imageUrl = selectPreferredCollectionHeroAsset(
-            pickFirstExistingLocalPublicAsset(
+            pickFirstKnownLocalPublicAsset(
+                BLOQ_ROOMSHOT_LOCAL_ASSET_SET,
                 `/images/products/bloq-roomshots/bloq-${collSlug}-roomshot.jpg`,
                 `/images/products/bloq-roomshots/${collSlug}-roomshot.jpg`
             ),
@@ -1957,16 +1853,12 @@ export function getAllDekingProducts(): Product[] {
 
 export function getAllTechemProducts(): Product[] {
     const techemDataset = loadTechemDataset();
-    if (!techemDataset.filePath) {
+    if (techemDataset.entries.length === 0) {
         return [];
     }
 
-    if (
-        techemProductsCache &&
-        techemProductsCache.filePath === techemDataset.filePath &&
-        techemProductsCache.mtimeMs === techemDataset.mtimeMs
-    ) {
-        return techemProductsCache.products;
+    if (techemProductsCache) {
+        return techemProductsCache;
     }
 
     const products = techemDataset.entries
@@ -1985,13 +1877,9 @@ export function getAllTechemProducts(): Product[] {
         return true;
     });
 
-    techemProductsCache = {
-        products: uniqueProducts,
-        filePath: techemDataset.filePath,
-        mtimeMs: techemDataset.mtimeMs,
-    };
+    techemProductsCache = uniqueProducts;
 
-    return techemProductsCache.products;
+    return techemProductsCache;
 }
 
 export function getTechemDatasetGeneratedAt(): Date | null {
