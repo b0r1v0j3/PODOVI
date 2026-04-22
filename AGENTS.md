@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 17.04.2026 (Vercel trace hotfix za Techem/Otirači release)
+> **Poslednje ažuriranje:** 22.04.2026 (Početna strana otvara direktno kategorije)
 
 ---
 
@@ -147,6 +147,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Početna strana otvara direktno kategorije (22.04.2026)**
+- Uklonjen početni hero/banner sa velikom podnom slikom i CTA dugmadima iz `app/page.tsx`.
+- Uklonjen uvodni naslov, divider i opis iznad mreže kategorija, tako da klikabilne kategorije počinju odmah ispod glavne navigacije.
 
 **Vercel deploy trace hotfix za Techem/Otirači release slice (17.04.2026)**
 - Produkcioni deploy za commit `feat: ship Techem catalog and discovery updates` nije padao na compile/test/build fazi, već na Vercel trace/packaging sloju: serverless NFT za `api/ops/*` i `api/search` je zbog runtime `fs` proverâ u `lib/utils/productDataLoader.ts` uvlačio ogromne foldere iz `public/`, uključujući `public/images/products` i teške lokalne PDF dokumente.

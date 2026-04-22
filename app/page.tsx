@@ -99,62 +99,9 @@ export default async function HomePage() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative bg-black text-white overflow-hidden h-[85vh] flex items-center">
-        {/* Background Image with Slow Zoom & Parallax */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-linear transform scale-100 hover:scale-105 animate-subtle-zoom opacity-80"
-            style={{ backgroundImage: "url('/images/products/blues-1033-4v-white-room.jpg')" }}
-          ></div>
-          {/* Subtle Gradient Overlay - cleaner transition than before */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        </div>
-
-        <div className="container relative z-10">
-          <div className="max-w-4xl animate-fadeInUp mt-10">
-
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg tracking-tight">
-              Pronađite savršen pod <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-200">
-                za vaš prostor
-              </span>
-            </h1>
-            <p className="text-xl md:text-[22px] mb-12 text-gray-200 leading-relaxed max-w-2xl font-light border-l-4 border-primary-500 pl-6 drop-shadow-md">
-              Veliki izbor podnih obloga, lajsni i ulaznih sistema vodećih evropskih proizvođača.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/kategorije" className="btn-primary text-lg px-8 py-4 rounded-xl font-semibold shadow-xl hover:shadow-primary-600/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
-                Pregledaj asortiman
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-              <Link href="/kategorije/otiraci" className="px-8 py-4 rounded-xl font-medium text-lg text-white border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 hover:border-white/50 transition-all duration-300 flex items-center justify-center">
-                Otirači i ulazne zone
-              </Link>
-              <Link href="/kontakt" className="px-8 py-4 rounded-xl font-medium text-lg text-white border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 hover:border-white/50 transition-all duration-300 flex items-center justify-center">
-                Kontaktirajte nas
-              </Link>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
       {/* Categories Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="pt-0 pb-24 bg-gray-50">
         <div className="container">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Kategorije asortimana
-            </h2>
-            <div className="w-24 h-1 bg-primary-600 mx-auto rounded-full mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Podne obloge, lajsne, otirači i specijalni sistemi organizovani tako da brzo pronađete pravo rešenje za svoj prostor
-            </p>
-          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
             {homepageCategories.map((category, index) => (
               <ScrollReveal key={category.id} delay={index * 100}>
