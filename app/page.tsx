@@ -100,7 +100,7 @@ export default async function HomePage() {
   return (
     <div>
       {/* Categories Section */}
-      <section className="pt-0 pb-24 bg-gray-50">
+      <section className="pt-4 md:pt-5 pb-24 bg-gray-50">
         <div className="container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
             {homepageCategories.map((category, index) => (
