@@ -97,10 +97,10 @@ export default async function HomePage() {
       {/* Categories Section */}
       <section className="pt-4 md:pt-5 pb-24 bg-gray-50">
         <div className="container">
-          <div className="relative mb-8 aspect-[2560/628] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+          <div className="relative mb-8 aspect-[2560/486] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
             <Image
-              src="/images/homepage/alpod-winflex-stone-banner.png"
-              alt="Winflex Stone kolekcija vinil podova"
+              src="/images/homepage/alpod-parketi-banner.webp"
+              alt="Parket u riblja kost slogu"
               fill
               priority
               className="object-cover"
