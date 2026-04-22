@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import ProductCard from '@/components/ProductCard';
 import CategoryCard from '@/components/CategoryCard';
@@ -96,6 +97,16 @@ export default async function HomePage() {
       {/* Categories Section */}
       <section className="pt-4 md:pt-5 pb-24 bg-gray-50">
         <div className="container">
+          <div className="relative mb-8 aspect-[2560/628] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+            <Image
+              src="/images/homepage/alpod-winflex-stone-banner.png"
+              alt="Winflex Stone kolekcija vinil podova"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) calc(100vw - 3rem), 1200px"
+            />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
             {homepageCategories.map((category, index) => (
               <ScrollReveal key={category.id} delay={index * 100}>

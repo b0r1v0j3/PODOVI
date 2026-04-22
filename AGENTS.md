@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 22.04.2026 (Otirači uklonjeni sa početne)
+> **Poslednje ažuriranje:** 22.04.2026 (Alpod banner dodat iznad kategorija)
 
 ---
 
@@ -147,6 +147,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Alpod banner dodat iznad kategorija (22.04.2026)**
+- `app/page.tsx` sada prikazuje uzak kvalitetan image banner iznad početne mreže kategorija, bez vraćanja starog hero teksta i CTA dugmadi.
+- Banner asset je dodat lokalno kao `public/images/homepage/alpod-winflex-stone-banner.png` u proporciji 2560x628.
 
 **Otirači uklonjeni sa početne strane (22.04.2026)**
 - `app/page.tsx` više ne prikazuje kategoriju `otiraci` u početnoj mreži kategorija.
