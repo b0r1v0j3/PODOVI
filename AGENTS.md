@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 22.04.2026 (Početna strana otvara direktno kategorije)
+> **Poslednje ažuriranje:** 22.04.2026 (Otirači uklonjeni sa početne)
 
 ---
 
@@ -147,6 +147,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Otirači uklonjeni sa početne strane (22.04.2026)**
+- `app/page.tsx` više ne prikazuje kategoriju `otiraci` u početnoj mreži kategorija.
+- Uklonjen Techem/otirač primer iz početne sekcije "Izdvojeni proizvodi".
 
 **Početna strana otvara direktno kategorije (22.04.2026)**
 - Uklonjen početni hero/banner sa velikom podnom slikom i CTA dugmadima iz `app/page.tsx`.

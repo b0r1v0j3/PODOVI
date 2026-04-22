@@ -7,7 +7,6 @@ import { Product } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
-import { getAllTechemProducts } from '@/lib/utils/productDataLoader';
 
 export const metadata = {
   title: 'Podovi.online - Katalog podnih obloga i pratećeg asortimana',
@@ -64,7 +63,7 @@ function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: strin
 
 export default async function HomePage() {
   const categories = await categoryRepository.findAll();
-  const homepageCategories = categories.filter((category) => category.slug !== 'lajsne');
+  const homepageCategories = categories.filter((category) => !['lajsne', 'otiraci'].includes(category.slug));
 
   // Load colors from JSON files
   const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
@@ -90,11 +89,6 @@ export default async function HomePage() {
   if (carpetColors.length > 0) {
     const carpetColor = carpetColors[0]; // First Carpet color
     featuredProducts.push(colorToProduct(carpetColor, '4', '6')); // Gerflor brand ID is '6'
-  }
-
-  const techemProducts = getAllTechemProducts();
-  if (techemProducts.length > 0) {
-    featuredProducts.push(techemProducts[0]);
   }
 
   return (
