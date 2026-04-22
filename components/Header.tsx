@@ -67,13 +67,6 @@ export default function Header() {
               Brendovi
             </Link>
             <Link
-              href="/kategorije/otiraci"
-              className={navLinkClass('/kategorije/otiraci')}
-              aria-current={isActive('/kategorije/otiraci') ? 'page' : undefined}
-            >
-              Otirači
-            </Link>
-            <Link
               href="/kontakt"
               className={navLinkClass('/kontakt')}
               aria-current={isActive('/kontakt') ? 'page' : undefined}
@@ -164,14 +157,6 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Brendovi
-            </Link>
-            <Link
-              href="/kategorije/otiraci"
-              className={mobileNavLinkClass('/kategorije/otiraci')}
-              aria-current={isActive('/kategorije/otiraci') ? 'page' : undefined}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Otirači
             </Link>
             <Link
               href="/kontakt"

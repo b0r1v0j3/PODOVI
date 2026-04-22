@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 22.04.2026 (Alpod parket banner dodat iznad kategorija)
+> **Poslednje ažuriranje:** 22.04.2026 (Otirači uklonjeni iz headera)
 
 ---
 
@@ -147,6 +147,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Otirači uklonjeni iz glavne navigacije (22.04.2026)**
+- `components/Header.tsx` više ne prikazuje link `Otirači` u desktop navigaciji.
+- Isti link je uklonjen i iz mobilnog menija, dok sama kategorija/stranica ostaje dostupna direktnim URL-om.
 
 **Alpod parket banner dodat iznad kategorija (22.04.2026)**
 - `app/page.tsx` sada prikazuje uzak kvalitetan image banner iznad početne mreže kategorija, bez vraćanja starog hero teksta i CTA dugmadi.
