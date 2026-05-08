@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { Brand, Category, Product } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
@@ -52,35 +53,19 @@ function buildAllProducts(groups: HomeProductGroup[], limit = 12): Product[] {
 
 export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTabsProps) {
   const [activeSlug, setActiveSlug] = useState('sve');
-  const [expandedSlugs, setExpandedSlugs] = useState<Set<string>>(() => new Set());
 
   const initialAllProducts = useMemo(() => buildAllProducts(groups, INITIAL_PRODUCT_LIMIT), [groups]);
   const expandedAllProducts = useMemo(() => buildAllProducts(groups, Number.POSITIVE_INFINITY), [groups]);
   const activeGroup = groups.find((group) => group.category.slug === activeSlug);
-  const isExpanded = expandedSlugs.has(activeSlug);
   const activeProducts = activeSlug === 'sve'
-    ? (isExpanded ? expandedAllProducts : initialAllProducts)
-    : (activeGroup?.products || []).slice(0, isExpanded ? undefined : INITIAL_PRODUCT_LIMIT);
+    ? initialAllProducts
+    : (activeGroup?.products || []).slice(0, INITIAL_PRODUCT_LIMIT);
   const activeName = activeSlug === 'sve' ? 'Sve' : activeGroup?.category.name || 'Sve';
   const activeTotal = activeSlug === 'sve'
     ? expandedAllProducts.length
     : activeGroup?.totalCount || activeProducts.length;
-  const canToggleProductLimit = activeTotal > INITIAL_PRODUCT_LIMIT;
+  const canOpenCategoryPage = Boolean(activeGroup && activeTotal > INITIAL_PRODUCT_LIMIT);
   const categoryButtonClass = 'shrink-0 text-[1.65rem] font-semibold leading-none tracking-normal transition-colors sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]';
-
-  const toggleExpanded = () => {
-    setExpandedSlugs((current) => {
-      const next = new Set(current);
-
-      if (next.has(activeSlug)) {
-        next.delete(activeSlug);
-      } else {
-        next.add(activeSlug);
-      }
-
-      return next;
-    });
-  };
 
   return (
     <section className="bg-white">
@@ -127,21 +112,16 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
               {activeProducts.length} prikazano{activeTotal > activeProducts.length ? ` od ${activeTotal}` : ''}
             </span>
           </div>
-          {canToggleProductLimit ? (
-            <button
-              type="button"
-              onClick={toggleExpanded}
+          {canOpenCategoryPage && activeGroup ? (
+            <Link
+              href={`/kategorije/${activeGroup.category.slug}`}
               className="inline-flex w-fit items-center text-[#1D1D1F] transition-colors hover:text-primary-600"
             >
-              {isExpanded ? 'Prikaži manje' : 'Pogledaj sve'}
+              Pogledaj sve
               <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                {isExpanded ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                )}
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
+            </Link>
           ) : null}
         </div>
 

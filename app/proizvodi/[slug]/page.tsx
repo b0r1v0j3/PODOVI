@@ -688,7 +688,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
       !selectedColorSlug &&
       Boolean(collectionLabel) &&
       collectionLabel.toLowerCase() !== displayName.toLowerCase();
+    const categoryBreadcrumbSchemaItems = category
+      ? [{ name: category.name, url: `${baseUrl}/kategorije/${category.slug}` }]
+      : [];
+    const categoryBreadcrumbItems = category
+      ? [{ label: category.name, href: `/kategorije/${category.slug}` }]
+      : [];
     const breadcrumbSchemaItems = [
+      ...categoryBreadcrumbSchemaItems,
       ...(selectedColorSlug
         ? (collectionLabel
           ? [{ name: collectionLabel, url: `${baseUrl}/proizvodi/${routeSlug}` }]
@@ -730,6 +737,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
             <div className="mb-4">
               <Breadcrumbs
                 items={[
+                  ...categoryBreadcrumbItems,
                   ...(selectedColorSlug ? [
                     {
                       label: collectionLabel || routeSlug,

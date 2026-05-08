@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { productRepository } from '@/lib/repositories/product-repository';
+import { categoryRepository } from '@/lib/repositories/category-repository';
 import { SITE_URL } from '@/lib/seo/site-config';
 import { getTechemDatasetGeneratedAt } from '@/lib/utils/productDataLoader';
 import { getCanonicalProductHref, ProductWithCollectionSlug } from '@/lib/utils/product-routes';
@@ -18,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const techemLastModified = getTechemDatasetGeneratedAt();
   const products = await productRepository.findAll();
 
+  const categoryLastModifiedMap = new Map<string, Date>();
   const seenProductUrls = new Set<string>();
 
   const productPages: MetadataRoute.Sitemap = products.reduce<MetadataRoute.Sitemap>((pages, product) => {
@@ -33,6 +35,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       product.categoryId === '12' && techemLastModified
         ? techemLastModified
         : product.updatedAt;
+
+    const nextCategoryLastModified = getNewestDate(
+      categoryLastModifiedMap.get(product.categoryId),
+      lastModified
+    );
+    if (nextCategoryLastModified) {
+      categoryLastModifiedMap.set(product.categoryId, nextCategoryLastModified);
+    }
 
     pages.push({
       url: canonicalUrl,
@@ -65,5 +75,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  return [...staticPages, ...productPages];
+  const categories = await categoryRepository.findAll();
+  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
+    url: `${baseUrl}/kategorije/${category.slug}`,
+    lastModified:
+      getNewestDate(
+        categoryLastModifiedMap.get(category.id),
+        category.id === '12' ? techemLastModified : null
+      ) || sharedCatalogLastModified,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...categoryPages, ...productPages];
 }

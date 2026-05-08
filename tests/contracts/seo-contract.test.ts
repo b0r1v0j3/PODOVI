@@ -431,12 +431,11 @@ describe('SEO contracts', () => {
     expect(sitemapEntries.find((entry) => entry.url === techemProductUrl)?.lastModified?.toISOString()).toBe(techemGeneratedAt.toISOString());
   });
 
-  it('omits removed category brand and contact surfaces from the sitemap', async () => {
+  it('keeps category detail pages but omits removed hub brand and contact surfaces from the sitemap', async () => {
     const { default: sitemap } = await import('@/app/sitemap');
     const sitemapEntries = await sitemap();
     const removedUrls = [
       'https://www.podovi.online/kategorije',
-      'https://www.podovi.online/kategorije/otiraci',
       'https://www.podovi.online/brendovi',
       'https://www.podovi.online/brendovi/techem',
       'https://www.podovi.online/kontakt',
@@ -445,6 +444,8 @@ describe('SEO contracts', () => {
     for (const removedUrl of removedUrls) {
       expect(sitemapEntries.some((entry) => entry.url === removedUrl)).toBe(false);
     }
+
+    expect(sitemapEntries.some((entry) => entry.url === 'https://www.podovi.online/kategorije/otiraci')).toBe(true);
   });
 
   it('keeps Techem product metadata aligned with flat-product SEO copy rules', async () => {
