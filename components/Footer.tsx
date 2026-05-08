@@ -4,23 +4,22 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto bg-[#F5F5F7]">
-      {/* Minimalist separator line instead of gradient */}
-      <div className="h-px bg-[#D2D2D7]"></div>
+    <footer className="mt-auto bg-[#111111] text-[#C7C7C7]">
+      <div className="h-px bg-white/10" />
 
-      <div className="bg-gray-900 text-gray-300">
-        <div className="container py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div className="container py-12 md:py-14">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
             {/* About + Branding */}
             <div>
               {/* Logo matching header style */}
               <div className="mb-4">
-                <span className="text-2xl font-bold text-white lowercase tracking-tight relative inline-block pb-2">
+                <span className="relative inline-block pb-2 text-2xl font-semibold lowercase tracking-tight text-white">
                   podovi
-                  <div className="absolute -bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 rounded-full"></div>
+                  <span className="absolute bottom-0 left-0 h-px w-full bg-white/35" />
                 </span>
               </div>
-              <p className="text-sm leading-relaxed">
+              <p className="text-sm leading-7 text-white/55">
                 Partner za podne obloge, lajsne, otirače i prateće sisteme u Srbiji.
                 Nudimo širok asortiman proizvoda renomiranih evropskih brendova za stambene, poslovne i tehničke prostore.
               </p>
@@ -30,7 +29,7 @@ export default function Footer() {
                   href="https://www.instagram.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-300 hover:bg-white hover:text-[#111111]"
                   aria-label="Instagram"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -41,7 +40,7 @@ export default function Footer() {
                   href="https://www.facebook.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-300 hover:bg-white hover:text-[#111111]"
                   aria-label="Facebook"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -53,11 +52,11 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-white text-lg font-semibold mb-4">Brzi linkovi</h3>
-              <ul className="space-y-2.5 text-sm">
+              <h3 className="mb-4 text-lg font-semibold text-white">Brzi linkovi</h3>
+              <ul className="space-y-2.5 text-sm text-white/55">
                 <li>
                   <Link href="/upiti" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="mr-2 h-3 w-3 text-white/45 opacity-0 transition-opacity group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                     Pošalji upit
@@ -65,7 +64,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="/omiljeni" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="mr-2 h-3 w-3 text-white/45 opacity-0 transition-opacity group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                     Omiljeni
@@ -76,27 +75,27 @@ export default function Footer() {
 
             {/* Contact */}
             <div>
-              <h3 className="text-white text-lg font-semibold mb-4">Kontakt</h3>
-              <ul className="space-y-3 text-sm">
+              <h3 className="mb-4 text-lg font-semibold text-white">Kontakt</h3>
+              <ul className="space-y-3 text-sm text-white/55">
                 <li className="flex items-start group">
-                  <div className="w-8 h-8 rounded-lg bg-gray-800 group-hover:bg-primary-600/20 flex items-center justify-center flex-shrink-0 mr-3 transition-colors duration-200">
-                    <svg className="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-white/10 transition-colors duration-200 group-hover:bg-white/15">
+                    <svg className="h-4 w-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
                   <a href="tel:+381212982444" className="hover:text-white transition-colors duration-200 pt-1">+381 21 2982 444</a>
                 </li>
                 <li className="flex items-start group">
-                  <div className="w-8 h-8 rounded-lg bg-gray-800 group-hover:bg-primary-600/20 flex items-center justify-center flex-shrink-0 mr-3 transition-colors duration-200">
-                    <svg className="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-white/10 transition-colors duration-200 group-hover:bg-white/15">
+                    <svg className="h-4 w-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <a href="mailto:podovidoo@gmail.com" className="hover:text-white transition-colors duration-200 pt-1">podovidoo@gmail.com</a>
                 </li>
                 <li className="flex items-start group">
-                  <div className="w-8 h-8 rounded-lg bg-gray-800 group-hover:bg-primary-600/20 flex items-center justify-center flex-shrink-0 mr-3 transition-colors duration-200">
-                    <svg className="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-white/10 transition-colors duration-200 group-hover:bg-white/15">
+                    <svg className="h-4 w-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
@@ -114,7 +113,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-10 pt-8 text-sm text-center text-gray-500">
+          <div className="mt-10 border-t border-white/10 pb-24 pt-8 text-center text-sm leading-6 text-white/35 md:pb-0">
             <p>&copy; {currentYear} Podovi DOO. Sva prava zadržana.</p>
           </div>
         </div>
