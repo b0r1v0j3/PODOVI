@@ -423,16 +423,28 @@ describe('SEO contracts', () => {
     expect(sitemapEntries.some((entry) => entry.url === rawUrl)).toBe(false);
   });
 
-  it('uses Techem dataset freshness for Techem sitemap surfaces', async () => {
+  it('uses Techem dataset freshness for Techem product sitemap surface', async () => {
     const { default: sitemap } = await import('@/app/sitemap');
     const sitemapEntries = await sitemap();
     const techemProductUrl = `https://www.podovi.online${getCanonicalProductHref(techemFixture)}`;
-    const techemCategoryUrl = 'https://www.podovi.online/kategorije/otiraci';
-    const techemBrandUrl = 'https://www.podovi.online/brendovi/techem';
 
     expect(sitemapEntries.find((entry) => entry.url === techemProductUrl)?.lastModified?.toISOString()).toBe(techemGeneratedAt.toISOString());
-    expect(sitemapEntries.find((entry) => entry.url === techemCategoryUrl)?.lastModified?.toISOString()).toBe(techemGeneratedAt.toISOString());
-    expect(sitemapEntries.find((entry) => entry.url === techemBrandUrl)?.lastModified?.toISOString()).toBe(techemGeneratedAt.toISOString());
+  });
+
+  it('omits removed category brand and contact surfaces from the sitemap', async () => {
+    const { default: sitemap } = await import('@/app/sitemap');
+    const sitemapEntries = await sitemap();
+    const removedUrls = [
+      'https://www.podovi.online/kategorije',
+      'https://www.podovi.online/kategorije/otiraci',
+      'https://www.podovi.online/brendovi',
+      'https://www.podovi.online/brendovi/techem',
+      'https://www.podovi.online/kontakt',
+    ];
+
+    for (const removedUrl of removedUrls) {
+      expect(sitemapEntries.some((entry) => entry.url === removedUrl)).toBe(false);
+    }
   });
 
   it('keeps Techem product metadata aligned with flat-product SEO copy rules', async () => {
@@ -732,99 +744,6 @@ describe('SEO contracts', () => {
         expect(parsedUrl.pathname).toMatch(/\.(avif|gif|jpe?g|png|svg|webp)$/i);
       }
     }
-  });
-
-  it('keeps Techem category metadata on a first-party category asset', async () => {
-    const { generateMetadata } = await import('@/app/kategorije/[slug]/page');
-    const metadata = await generateMetadata({
-      params: { slug: 'otiraci' },
-      searchParams: {},
-    } as any);
-
-    const ogImages = (((metadata.openGraph as any)?.images) || []) as Array<any>;
-    const twitterImages = (((metadata.twitter as any)?.images) || []) as Array<any>;
-
-    expect(ogImages[0]).toMatchObject({
-      url: 'https://www.podovi.online/images/categories/otiraci.jpg',
-      alt: 'Otirači',
-    });
-    expect(twitterImages).toEqual(['https://www.podovi.online/images/categories/otiraci.jpg']);
-  });
-
-  it('keeps category metadata and CollectionPage schema aligned on curated assets', async () => {
-    (globalThis as any).React = await import('react');
-    const { default: CategoryPage, generateMetadata } = await import('@/app/kategorije/[slug]/page');
-    const metadata = await generateMetadata({
-      params: { slug: 'lvt' },
-      searchParams: {},
-    } as any);
-    const page = await CategoryPage({
-      params: { slug: 'lvt' },
-      searchParams: {},
-    } as any);
-
-    const ogImages = (((metadata.openGraph as any)?.images) || []) as Array<any>;
-    const twitterImages = (((metadata.twitter as any)?.images) || []) as Array<any>;
-    const jsonLdScripts = extractJsonLdScripts(page);
-    const jsonLdNodes = jsonLdScripts.flatMap((rawScript) => {
-      const parsed = JSON.parse(rawScript);
-      return Array.isArray(parsed) ? parsed : [parsed];
-    });
-    const collectionPageSchema = jsonLdNodes.find((node) => node?.['@type'] === 'CollectionPage');
-
-    expect(ogImages[0]).toMatchObject({
-      url: 'https://www.podovi.online/images/collections/kolekcija-c000770-id-inspiration-55.jpg',
-      alt: 'LVT',
-    });
-    expect(twitterImages).toEqual(['https://www.podovi.online/images/collections/kolekcija-c000770-id-inspiration-55.jpg']);
-    expect(collectionPageSchema?.image).toBe('https://www.podovi.online/images/collections/kolekcija-c000770-id-inspiration-55.jpg');
-  });
-
-  it('keeps Techem brand metadata on a first-party logo asset', async () => {
-    const { generateMetadata } = await import('@/app/brendovi/[slug]/page');
-    const metadata = await generateMetadata({
-      params: { slug: 'techem' },
-    } as any);
-
-    const ogImages = (((metadata.openGraph as any)?.images) || []) as Array<any>;
-    const twitterImages = (((metadata.twitter as any)?.images) || []) as Array<any>;
-
-    expect(ogImages[0]).toMatchObject({
-      url: 'https://www.podovi.online/images/brands/techem-logo-en.png',
-      alt: 'Techem',
-      width: 1200,
-      height: 630,
-    });
-    expect(twitterImages).toEqual(['https://www.podovi.online/images/brands/techem-logo-en.png']);
-  });
-
-  it('omits placeholder brand logos from metadata and schema surfaces', async () => {
-    (globalThis as any).React = await import('react');
-    repositoryMocks.brandFindBySlug.mockResolvedValueOnce(timbertechPlaceholderBrand);
-    const { default: BrandPage, generateMetadata } = await import('@/app/brendovi/[slug]/page');
-    const metadata = await generateMetadata({
-      params: { slug: 'timbertech' },
-    } as any);
-    repositoryMocks.brandFindBySlug.mockResolvedValueOnce(timbertechPlaceholderBrand);
-    repositoryMocks.productFindAll.mockResolvedValueOnce([]);
-    const page = await BrandPage({
-      params: { slug: 'timbertech' },
-    } as any);
-
-    const ogImages = (((metadata.openGraph as any)?.images) || []) as Array<any>;
-    const twitterImages = (((metadata.twitter as any)?.images) || []) as Array<any>;
-    const jsonLdScripts = extractJsonLdScripts(page);
-    const jsonLdNodes = jsonLdScripts.flatMap((rawScript) => {
-      const parsed = JSON.parse(rawScript);
-      return Array.isArray(parsed) ? parsed : [parsed];
-    });
-    const brandSchema = jsonLdNodes.find((node) => node?.['@type'] === 'Brand');
-    const collectionPageSchema = jsonLdNodes.find((node) => node?.['@type'] === 'CollectionPage');
-
-    expect(ogImages).toEqual([]);
-    expect(twitterImages).toEqual([]);
-    expect(brandSchema?.logo).toBeUndefined();
-    expect(collectionPageSchema?.image).toBeUndefined();
   });
 
   it('omits non-https product schema images through the shared metadata normalizer', async () => {
