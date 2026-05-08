@@ -64,7 +64,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const activeTotal = activeSlug === 'sve'
     ? expandedAllProducts.length
     : activeGroup?.totalCount || activeProducts.length;
-  const canOpenCategoryPage = Boolean(activeGroup && activeTotal > INITIAL_PRODUCT_LIMIT);
+  const canOpenCategoryPage = Boolean(activeGroup);
   const categoryButtonClass = 'shrink-0 text-[1.65rem] font-semibold leading-none tracking-normal transition-colors sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]';
 
   return (
