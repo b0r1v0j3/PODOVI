@@ -27,6 +27,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 isolate bg-white transition-colors duration-200">
+      <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] bg-white" />
       <nav className="container min-h-[44px] md:h-[48px] flex flex-wrap md:flex-nowrap items-center justify-between">
         <div className="flex items-center justify-between w-full h-[44px] md:h-full">
           {/* Logo */}
