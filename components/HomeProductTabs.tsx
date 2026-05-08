@@ -73,7 +73,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
         <h1 className="sr-only">Podovi.online katalog proizvoda</h1>
 
         <div className="overflow-hidden border-b border-[#1D1D1F]">
-          <div className="-mx-6 flex gap-3 overflow-x-auto px-6 pb-4 pt-6 sm:gap-4 md:pt-8 lg:gap-5">
+          <div className="no-scrollbar -mx-6 flex gap-3 overflow-x-auto px-6 pb-4 pt-6 sm:gap-4 md:pt-8 lg:gap-5">
             <button
               type="button"
               onClick={() => setActiveSlug('sve')}

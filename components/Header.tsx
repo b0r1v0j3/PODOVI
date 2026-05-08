@@ -60,7 +60,7 @@ export default function Header() {
 
             <Link
               href="/upiti"
-              className={`btn-primary px-4 py-1.5 text-xs rounded-full ${isActive('/upiti') ? '' : ''}`}
+              className={`btn-primary px-4 py-1.5 text-xs rounded-full shadow-none hover:shadow-none ${isActive('/upiti') ? '' : ''}`}
               aria-current={isActive('/upiti') ? 'page' : undefined}
             >
               Pošalji upit
