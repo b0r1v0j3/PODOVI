@@ -240,7 +240,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     Boolean((isLVTCategory || isVinilCategory || isLaminatCategory) && selectedThickness.length > 0);
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200/70 p-5 sticky top-24">
+    <div className="sticky top-24 max-h-[calc(100vh-7.5rem)] overflow-y-auto overscroll-contain rounded-xl border border-gray-200/70 bg-white p-5 shadow-sm [scrollbar-gutter:stable]">
       <h2 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">Filteri</h2>
 
       {/* Search */}
@@ -259,7 +259,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       {availableBrands.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Brendovi</label>
-          <div className="space-y-2 max-h-48 overflow-y-auto">
+          <div className="space-y-2">
             {availableBrands.map((brand) => (
               <label key={brand.id} className="flex items-center cursor-pointer">
                 <input
@@ -300,7 +300,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       {pathname?.includes('/kategorije/lvt') && availableCollections && availableCollections.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Kolekcije</label>
-          <div className="space-y-2 max-h-64 overflow-y-auto">
+          <div className="space-y-2">
             {availableCollections.map((collection) => (
               <label key={collection} className="flex items-center cursor-pointer">
                 <input
@@ -320,7 +320,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       {pathname?.includes('/kategorije/tekstilne-ploce') && availableFamilies && availableFamilies.length > 0 && (
         <div className="mb-6">
           <label className="label text-xs uppercase tracking-wide text-gray-500">Familija</label>
-          <div className="space-y-2 max-h-64 overflow-y-auto">
+          <div className="space-y-2">
             {availableFamilies.map((family) => (
               <label key={family} className="flex items-center cursor-pointer">
                 <input
