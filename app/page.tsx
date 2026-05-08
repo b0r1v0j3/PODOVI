@@ -1,152 +1,126 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { categoryRepository } from '@/lib/repositories/category-repository';
-import ProductCard from '@/components/ProductCard';
-import CategoryCard from '@/components/CategoryCard';
+import { productRepository } from '@/lib/repositories/product-repository';
+import { brandRepository } from '@/lib/repositories/brand-repository';
+import HomeProductTabs, { HomeProductGroup } from '@/components/HomeProductTabs';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Product } from '@/types';
-import lvtColorsData from '@/public/data/lvt_colors_complete.json';
-import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
-import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 
 export const metadata = {
   title: 'Podovi.online - Katalog podnih obloga i pratećeg asortimana',
   description: 'Pronađite pravo rešenje za vaš prostor: laminat, vinil, parket, lajsne, otirači i drugi sistemi vodećih evropskih brendova.',
 };
 
-interface ColorFromJSON {
-  collection: string;
-  collection_name: string;
-  code: string;
-  name: string;
-  full_name: string;
-  slug: string;
-  image_url?: string;
-  texture_url?: string;
-  lifestyle_url?: string;
-  description?: string;
+const HOMEPAGE_CATEGORY_SLUGS = [
+  'parket',
+  'laminat',
+  'lvt',
+  'tekstilne-ploce',
+  'deking',
+  'vinil',
+  'linoleum',
+  'industrijske-ploce',
+  'sport',
+  'elektroprovodni',
+];
+
+const COLLECTION_SKU_PREFIXES = [
+  'GER-',
+  'TARKETT-',
+  'WOLFLOR-VINYL-',
+  'LINOLEUM-',
+  'VINIL-',
+  'PARKET-',
+  'LAM-',
+  'BLOQ-',
+  'DEKING-',
+  'ESD-',
+  'IND-',
+  'SPORT-',
+];
+
+function hasCollectionSku(product: Product): boolean {
+  return COLLECTION_SKU_PREFIXES.some((prefix) => product.sku?.startsWith(prefix));
 }
 
-// Convert color from JSON to Product format
-function colorToProduct(color: ColorFromJSON, categoryId: string, brandId: string): Product {
-  const imageUrl = color.image_url || color.texture_url || color.lifestyle_url || '';
+function dedupeBySlug(products: Product[]): Product[] {
+  const seen = new Set<string>();
 
-  // Get collection slug from color (for LVT/Linoleum use 'collection', for Carpet use 'collection_slug')
-  const collectionSlug = (color as any).collection_slug || color.collection || '';
+  return products.filter((product) => {
+    if (!product.slug || seen.has(product.slug)) {
+      return false;
+    }
 
-  const product: Product & { collectionSlug?: string } = {
-    id: `color-${color.slug}`,
-    name: color.full_name || `${color.code} ${color.name}`,
-    slug: color.slug,
-    sku: color.code || '',
-    categoryId,
-    brandId,
-    shortDescription: `${color.collection_name} - ${color.name}`,
-    description: color.description || '',
-    images: imageUrl ? [{
-      id: `img-${color.slug}`,
-      url: imageUrl,
-      alt: color.full_name || color.name,
-      isPrimary: true,
-      order: 1,
-    }] : [],
-    specs: [],
-    inStock: true,
-    featured: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    // Store collection slug for routing (will be used in ProductCard to link to collection)
-    collectionSlug: collectionSlug || undefined,
-  };
+    seen.add(product.slug);
+    return true;
+  });
+}
 
-  return product;
+function getCollectionName(product: Product): string {
+  return product.specs?.find((spec) => spec.key === 'collection')?.value ||
+    product.specs?.find((spec) => spec.key === 'brand_line')?.value ||
+    product.name;
+}
+
+function backfillCollectionImages(product: Product, allProducts: Product[]): Product {
+  if (product.images?.length > 0) {
+    return product;
+  }
+
+  const collectionName = getCollectionName(product);
+  const variantWithImage = allProducts.find((candidate) => {
+    if (candidate.id === product.id || hasCollectionSku(candidate) || !candidate.images?.length) {
+      return false;
+    }
+
+    return getCollectionName(candidate) === collectionName;
+  });
+
+  return variantWithImage ? { ...product, images: variantWithImage.images } : product;
+}
+
+function selectHomepageProducts(products: Product[], limit = 12): Product[] {
+  const collectionProducts = products.filter(hasCollectionSku);
+  const source = collectionProducts.length > 0 ? collectionProducts : products;
+
+  return dedupeBySlug(source)
+    .map((product) => backfillCollectionImages(product, products))
+    .sort((a, b) => Number((b.images?.length || 0) > 0) - Number((a.images?.length || 0) > 0))
+    .slice(0, limit);
 }
 
 export default async function HomePage() {
   const categories = await categoryRepository.findAll();
-  const homepageCategories = categories.filter((category) => !['lajsne', 'otiraci'].includes(category.slug));
+  const categoriesBySlug = new Map(categories.map((category) => [category.slug, category]));
+  const homepageCategories = HOMEPAGE_CATEGORY_SLUGS
+    .map((slug) => categoriesBySlug.get(slug))
+    .filter((category): category is NonNullable<typeof category> => Boolean(category));
+  const [brands, productBuckets] = await Promise.all([
+    brandRepository.findAll(),
+    Promise.all(homepageCategories.map((category) => productRepository.findByCategory(category.id))),
+  ]);
+  const brandsRecord = Object.fromEntries(brands.map((brand) => [brand.id, brand]));
+  const productGroups: HomeProductGroup[] = homepageCategories
+    .map((category, index) => {
+      const products = productBuckets[index] || [];
+      const selectedProducts = selectHomepageProducts(products);
+      const totalCount = (products.filter(hasCollectionSku).length || products.length);
 
-  // Load colors from JSON files
-  const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
-  const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
-  const carpetColors = (carpetColorsData as { colors?: ColorFromJSON[] }).colors || [];
-
-  // Select one color per category for featured products
-  const featuredProducts: Product[] = [];
-
-  // LVT - categoryId '6'
-  if (lvtColors.length > 0) {
-    const lvtColor = lvtColors[0]; // First LVT color
-    featuredProducts.push(colorToProduct(lvtColor, '6', '6')); // Gerflor brand ID is '6'
-  }
-
-  // Linoleum - categoryId '7'
-  if (linoleumColors.length > 0) {
-    const linoleumColor = linoleumColors[0]; // First Linoleum color
-    featuredProducts.push(colorToProduct(linoleumColor, '7', '6')); // Assuming Gerflor or DLW
-  }
-
-  // Carpet/Tekstilne ploče - categoryId '4'
-  if (carpetColors.length > 0) {
-    const carpetColor = carpetColors[0]; // First Carpet color
-    featuredProducts.push(colorToProduct(carpetColor, '4', '6')); // Gerflor brand ID is '6'
-  }
+      return {
+        category: {
+          id: category.id,
+          name: category.name,
+          slug: category.slug,
+        },
+        products: selectedProducts,
+        totalCount,
+      };
+    })
+    .filter((group) => group.products.length > 0);
 
   return (
     <div>
-      {/* Categories Section */}
-      <section className="pt-4 md:pt-5 pb-24 bg-gray-50">
-        <div className="container">
-          <div className="relative mb-8 aspect-[2560/486] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
-            <Image
-              src="/images/homepage/alpod-parketi-banner.webp"
-              alt="Parket u riblja kost slogu"
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 768px) calc(100vw - 3rem), 1200px"
-            />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-            {homepageCategories.map((category, index) => (
-              <ScrollReveal key={category.id} delay={index * 100}>
-                <CategoryCard category={category} />
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Products */}
-      <section className="py-24 bg-white relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
-        <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-                Izdvojeni proizvodi
-              </h2>
-              <p className="text-xl text-gray-500 font-light">
-                Izdvojeni primeri iz ključnih kategorija kataloga
-              </p>
-            </div>
-            <Link href="/kategorije" className="text-primary-600 font-medium hover:text-primary-700 flex items-center gap-2 group mb-2 px-4 py-2 rounded-full hover:bg-primary-50 transition-colors">
-              Pogledaj sve
-              <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.map((product, index) => (
-              <ScrollReveal key={product.id} delay={index * 100}>
-                <ProductCard product={product} />
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HomeProductTabs groups={productGroups} brandsRecord={brandsRecord} />
 
       {/* Why Choose Us */}
       <section className="py-24 bg-gray-50 relative overflow-hidden border-y border-gray-100/50">
