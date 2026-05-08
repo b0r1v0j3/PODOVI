@@ -60,6 +60,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     ? groups.reduce((sum, group) => sum + group.totalCount, 0)
     : activeGroup?.totalCount || activeProducts.length;
   const activeHref = activeGroup ? `/kategorije/${activeGroup.category.slug}` : '/kategorije';
+  const categoryButtonClass = 'shrink-0 text-[1.65rem] font-semibold leading-none tracking-normal transition-colors sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]';
 
   return (
     <section className="bg-white">
@@ -67,12 +68,12 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
         <h1 className="sr-only">Podovi.online katalog proizvoda</h1>
 
         <div className="overflow-hidden border-b border-[#1D1D1F]">
-          <div className="-mx-6 flex gap-4 overflow-x-auto px-6 pb-5 pt-7 sm:gap-6 md:pt-10 lg:gap-8">
+          <div className="-mx-6 flex gap-3 overflow-x-auto px-6 pb-4 pt-6 sm:gap-4 md:pt-8 lg:gap-5">
             <button
               type="button"
               onClick={() => setActiveSlug('sve')}
               aria-pressed={activeSlug === 'sve'}
-              className={`shrink-0 text-[2.15rem] font-semibold leading-none tracking-normal transition-colors sm:text-[3.1rem] md:text-[4.4rem] lg:text-[5.4rem] ${
+              className={`${categoryButtonClass} ${
                 activeSlug === 'sve' ? 'text-[#050505]' : 'text-[#A8A8A8] hover:text-[#555555]'
               }`}
             >
@@ -88,7 +89,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                   type="button"
                   onClick={() => setActiveSlug(group.category.slug)}
                   aria-pressed={active}
-                  className={`shrink-0 text-[2.15rem] font-semibold leading-none tracking-normal transition-colors sm:text-[3.1rem] md:text-[4.4rem] lg:text-[5.4rem] ${
+                  className={`${categoryButtonClass} ${
                     active ? 'text-[#050505]' : 'text-[#A8A8A8] hover:text-[#555555]'
                   }`}
                 >
