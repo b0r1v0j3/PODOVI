@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -9,7 +7,7 @@ export default function Footer() {
 
       <div>
         <div className="container py-12 md:py-14">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,560px)_minmax(280px,360px)] md:justify-between md:gap-14">
             {/* About + Branding */}
             <div>
               {/* Logo matching header style */}
@@ -20,8 +18,9 @@ export default function Footer() {
                 </span>
               </div>
               <p className="text-sm leading-7 text-white/55">
-                Partner za podne obloge, lajsne, otirače i prateće sisteme u Srbiji.
-                Nudimo širok asortiman proizvoda renomiranih evropskih brendova za stambene, poslovne i tehničke prostore.
+                Pažljivo biramo podne obloge i prateći asortiman za domove, lokale i projekte.
+                Pomažemo vam da uporedite materijale, nijanse i tehnička rešenja, kako bi izbor poda bio jednostavan,
+                siguran i usklađen sa prostorom.
               </p>
               {/* Social Links */}
               <div className="flex items-center gap-3 mt-5">
@@ -48,29 +47,6 @@ export default function Footer() {
                   </svg>
                 </a>
               </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="mb-4 text-lg font-semibold text-white">Brzi linkovi</h3>
-              <ul className="space-y-2.5 text-sm text-white/55">
-                <li>
-                  <Link href="/upiti" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="mr-2 h-3 w-3 text-white/45 opacity-0 transition-opacity group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Pošalji upit
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/omiljeni" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="mr-2 h-3 w-3 text-white/45 opacity-0 transition-opacity group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Omiljeni
-                  </Link>
-                </li>
-              </ul>
             </div>
 
             {/* Contact */}
