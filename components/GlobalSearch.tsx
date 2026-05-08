@@ -2,9 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import ProductImage from './ProductImage';
-import { shouldBypassNextImageOptimization } from '@/lib/utils/image-runtime';
 
 interface SearchProduct {
     id: string;
@@ -51,7 +49,7 @@ export default function GlobalSearch() {
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
     const totalResults = results
-        ? results.products.length + results.categories.length + results.brands.length
+        ? results.products.length
         : 0;
 
     // Fetch search results
@@ -113,8 +111,6 @@ export default function GlobalSearch() {
         if (!results) return [];
         const items: { type: string; href: string }[] = [];
         results.products.forEach(p => items.push({ type: 'product', href: p.url || `/proizvodi/${p.slug}` }));
-        results.categories.forEach(c => items.push({ type: 'category', href: `/kategorije/${c.slug}` }));
-        results.brands.forEach(b => items.push({ type: 'brand', href: `/brendovi/${b.slug}` }));
         return items;
     };
 
@@ -183,11 +179,11 @@ export default function GlobalSearch() {
                         onChange={(e) => setQuery(e.target.value)}
                         onKeyDown={handleKeyDown}
                         onFocus={() => { if (results && totalResults > 0) setIsOpen(true); }}
-                        placeholder="Pretraži proizvode, kategorije i brendove..."
+                        placeholder="Pretraži proizvode..."
                         className="w-56 lg:w-64 pl-9 pr-3 py-2 text-sm bg-gray-100/80 border border-gray-200 rounded-lg
                        focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:bg-white
                        transition-all duration-200 placeholder:text-gray-400"
-                        aria-label="Pretraži proizvode, kategorije i brendove"
+                        aria-label="Pretraži proizvode"
                         aria-expanded={isOpen}
                         role="combobox"
                         aria-autocomplete="list"
@@ -232,11 +228,11 @@ export default function GlobalSearch() {
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 onKeyDown={handleKeyDown}
-                                placeholder="Pretraži proizvode, kategorije i brendove..."
+                                placeholder="Pretraži proizvode..."
                                 className="w-full pl-9 pr-3 py-3 text-base bg-gray-50 border border-gray-200 rounded-lg
                            focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400
                            transition-all duration-200"
-                                aria-label="Pretraži proizvode, kategorije i brendove"
+                                aria-label="Pretraži proizvode"
                             />
                             {isLoading && (
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -353,97 +349,6 @@ export default function GlobalSearch() {
                     </div>
                 )}
 
-                {/* Categories */}
-                {results.categories.length > 0 && (
-                    <div>
-                        <div className="px-4 py-2 bg-gray-50 border-b border-t">
-                            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                                Kategorije ({results.categories.length})
-                            </span>
-                        </div>
-                        {results.categories.map((cat) => {
-                            const idx = flatIndex++;
-                            return (
-                                <Link
-                                    key={cat.id}
-                                    href={`/kategorije/${cat.slug}`}
-                                    onClick={handleResultClick}
-                                    className={`flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors ${idx === activeIndex ? 'bg-primary-50' : ''
-                                        }`}
-                                >
-                                    <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0 overflow-hidden relative">
-                                        {cat.image ? (
-                                            <Image
-                                                src={cat.image}
-                                                alt={cat.name}
-                                                fill
-                                                sizes="40px"
-                                                className="object-cover"
-                                                unoptimized={shouldBypassNextImageOptimization(cat.image)}
-                                            />
-                                        ) : (
-                                            <svg className="w-5 h-5 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                            </svg>
-                                        )}
-                                    </div>
-                                    <div className="min-w-0 flex-1">
-                                        <p className="text-sm font-medium text-gray-900">{cat.name}</p>
-                                        <p className="text-xs text-gray-400">Kategorija</p>
-                                    </div>
-                                    <svg className="w-4 h-4 text-gray-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </Link>
-                            );
-                        })}
-                    </div>
-                )}
-
-                {/* Brands */}
-                {results.brands.length > 0 && (
-                    <div>
-                        <div className="px-4 py-2 bg-gray-50 border-b border-t">
-                            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                                Brendovi ({results.brands.length})
-                            </span>
-                        </div>
-                        {results.brands.map((brand) => {
-                            const idx = flatIndex++;
-                            return (
-                                <Link
-                                    key={brand.id}
-                                    href={`/brendovi/${brand.slug}`}
-                                    onClick={handleResultClick}
-                                    className={`flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors ${idx === activeIndex ? 'bg-primary-50' : ''
-                                        }`}
-                                >
-                                    <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0 overflow-hidden relative">
-                                        {brand.logo ? (
-                                            <Image
-                                                src={brand.logo}
-                                                alt={`${brand.name} logo`}
-                                                fill
-                                                sizes="40px"
-                                                className="object-contain p-1.5"
-                                                unoptimized={shouldBypassNextImageOptimization(brand.logo)}
-                                            />
-                                        ) : (
-                                            <span className="text-sm font-bold text-gray-500">{brand.name.charAt(0)}</span>
-                                        )}
-                                    </div>
-                                    <div className="min-w-0 flex-1">
-                                        <p className="text-sm font-medium text-gray-900">{brand.name}</p>
-                                        <p className="text-xs text-gray-400">Brend</p>
-                                    </div>
-                                    <svg className="w-4 h-4 text-gray-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </Link>
-                            );
-                        })}
-                    </div>
-                )}
             </>
         );
     }

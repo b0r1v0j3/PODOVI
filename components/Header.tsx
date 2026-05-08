@@ -18,13 +18,6 @@ export default function Header() {
     return pathname.startsWith(href);
   };
 
-  const navLinkClass = (href: string) => {
-    const active = isActive(href);
-    return `text-[13px] font-medium tracking-wide transition-colors duration-200 
-            focus:outline-none rounded-md px-3 py-2 ${active ? 'text-[#1d1d1f]' : 'text-[#424245] hover:text-[#1d1d1f]'
-      }`;
-  };
-
   const mobileNavLinkClass = (href: string) => {
     const active = isActive(href);
     return `block text-[17px] font-medium text-[#1d1d1f] hover:text-[#0066CC] transition-colors duration-200 py-3 border-b border-gray-100 last:border-0
@@ -34,8 +27,8 @@ export default function Header() {
 
   return (
     <header className="bg-white/70 backdrop-blur-md backdrop-saturate-150 border-b border-black/5 sticky top-0 z-50 transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
-      <nav className="container h-[44px] md:h-[48px] flex flex-wrap md:flex-nowrap items-center justify-between">
-        <div className="flex items-center justify-between w-full h-full">
+      <nav className="container min-h-[44px] md:h-[48px] flex flex-wrap md:flex-nowrap items-center justify-between">
+        <div className="flex items-center justify-between w-full h-[44px] md:h-full">
           {/* Logo */}
           <Link href="/" className="flex items-center group mr-8">
             <span className="text-xl md:text-2xl font-semibold tracking-tighter text-[#1D1D1F]">
@@ -45,35 +38,6 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <Link
-              href="/"
-              className={navLinkClass('/')}
-              aria-current={isActive('/') ? 'page' : undefined}
-            >
-              Početna
-            </Link>
-            <Link
-              href="/kategorije"
-              className={navLinkClass('/kategorije')}
-              aria-current={isActive('/kategorije') ? 'page' : undefined}
-            >
-              Kategorije
-            </Link>
-            <Link
-              href="/brendovi"
-              className={navLinkClass('/brendovi')}
-              aria-current={isActive('/brendovi') ? 'page' : undefined}
-            >
-              Brendovi
-            </Link>
-            <Link
-              href="/kontakt"
-              className={navLinkClass('/kontakt')}
-              aria-current={isActive('/kontakt') ? 'page' : undefined}
-            >
-              Kontakt
-            </Link>
-
             {/* Global Search */}
             <GlobalSearch />
 
@@ -128,44 +92,12 @@ export default function Header() {
         {/* Mobile Navigation */}
         <div
           id="mobile-menu"
-          className={`w-full md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen
-            ? 'max-h-[400px] opacity-100 mt-4 pb-4 border-t border-gray-100'
+          className={`w-full md:hidden overflow-hidden bg-white/95 backdrop-blur-md transition-all duration-300 ease-in-out ${mobileMenuOpen
+            ? 'max-h-[220px] opacity-100 pb-4 border-t border-gray-100'
             : 'max-h-0 opacity-0'
             }`}
         >
           <div className="space-y-3">
-            <Link
-              href="/"
-              className={mobileNavLinkClass('/')}
-              aria-current={isActive('/') ? 'page' : undefined}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Početna
-            </Link>
-            <Link
-              href="/kategorije"
-              className={mobileNavLinkClass('/kategorije')}
-              aria-current={isActive('/kategorije') ? 'page' : undefined}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Kategorije
-            </Link>
-            <Link
-              href="/brendovi"
-              className={mobileNavLinkClass('/brendovi')}
-              aria-current={isActive('/brendovi') ? 'page' : undefined}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Brendovi
-            </Link>
-            <Link
-              href="/kontakt"
-              className={mobileNavLinkClass('/kontakt')}
-              aria-current={isActive('/kontakt') ? 'page' : undefined}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Kontakt
-            </Link>
             <Link
               href="/omiljeni"
               className={mobileNavLinkClass('/omiljeni')}
