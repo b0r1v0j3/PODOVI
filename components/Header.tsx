@@ -30,18 +30,19 @@ export default function Header() {
       <nav className="container min-h-[44px] md:h-[48px] flex flex-wrap md:flex-nowrap items-center justify-between">
         <div className="flex items-center justify-between w-full h-[44px] md:h-full">
           {/* Logo */}
-          <Link href="/" className="flex items-center group mr-8">
+          <Link href="/" className="flex items-center group md:w-[190px] lg:w-[220px] md:flex-shrink-0">
             <span className="text-xl md:text-2xl font-semibold tracking-tighter text-[#1D1D1F]">
               podovi
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            {/* Global Search */}
+          {/* Desktop Search */}
+          <div className="hidden md:flex flex-1 justify-center px-4 lg:px-8">
             <GlobalSearch />
+          </div>
 
-            {/* Favorites icon */}
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center justify-end gap-4 lg:gap-5 md:w-[190px] lg:w-[220px] md:flex-shrink-0">
             <Link
               href="/omiljeni"
               className={`relative p-2 rounded-md transition-colors duration-200 hover:text-red-500 ${isActive('/omiljeni') ? 'text-red-500' : 'text-gray-600'}`}

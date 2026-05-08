@@ -180,7 +180,7 @@ export default function GlobalSearch() {
                         onKeyDown={handleKeyDown}
                         onFocus={() => { if (results && totalResults > 0) setIsOpen(true); }}
                         placeholder="Pretraži proizvode..."
-                        className="w-56 lg:w-64 pl-9 pr-3 py-2 text-sm bg-gray-100/80 border border-gray-200 rounded-lg
+                        className="w-72 lg:w-80 xl:w-96 pl-9 pr-3 py-2 text-sm bg-gray-100/80 border border-gray-200 rounded-lg
                        focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:bg-white
                        transition-all duration-200 placeholder:text-gray-400"
                         aria-label="Pretraži proizvode"
@@ -276,7 +276,7 @@ export default function GlobalSearch() {
 
             {/* Desktop dropdown */}
             {isOpen && results && !mobileExpanded && (
-                <div className="hidden md:block absolute top-full mt-2 right-0 w-96 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50">
+                <div className="hidden md:block absolute top-full left-1/2 mt-2 w-[28rem] -translate-x-1/2 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 lg:w-[32rem]">
                     <div className="max-h-[70vh] overflow-y-auto">
                         {renderResults()}
                     </div>
