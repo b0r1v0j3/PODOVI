@@ -1,8 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" fill="none"/>
-  <g fill="none" stroke="#050505" stroke-linecap="round" stroke-linejoin="round" stroke-width="7.5">
-    <path d="M18 25v28"/>
-    <path d="M46 11v28"/>
-    <path d="M18 32c0-8.4 6.2-14.5 14-14.5S46 23.6 46 32 39.8 46.5 32 46.5 18 40.4 18 32Z"/>
-  </g>
+  <text
+    x="0"
+    y="49"
+    fill="#050505"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="46"
+    font-weight="900"
+    letter-spacing="-20"
+  >pd</text>
 </svg>
