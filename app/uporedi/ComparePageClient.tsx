@@ -20,8 +20,8 @@ export default function ComparePageClient() {
                 <p className="text-gray-600 mb-6">
                     Izaberite do 3 proizvoda za poređenje klikom na ikonu za poređenje na karticama proizvoda.
                 </p>
-                <Link href="/kategorije" className="btn-primary inline-flex items-center gap-2">
-                    <span>Pregledaj kategorije</span>
+                <Link href="/" className="btn-primary inline-flex items-center gap-2">
+                    <span>Pogledaj proizvode</span>
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>

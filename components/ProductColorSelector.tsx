@@ -38,7 +38,7 @@ interface ProductColorSelectorProps {
   collectionCategoryLabel?: string;
   /** YouTube embed URL (npr. za kolekciju) – prikazuje se ispod slike, u širini slike, play na sajtu. */
   videoEmbedUrl?: string;
-  /** Ref proizvoda za link upita (kontakt?product=&color=&ref=). */
+  /** Ref proizvoda za link upita (upiti?product=&color=&ref=). */
   inquiryRef?: string;
   /** Da li je glavna slika hero/LCP – samo jedna po stranici ima priority. */
   imagePriority?: boolean;
@@ -468,12 +468,9 @@ export default function ProductColorSelector({
             {brand && (
               <div className="flex items-center space-x-3">
                 <span className="text-sm text-gray-500">Brend:</span>
-                <a
-                  href={`/brendovi/${brand.slug}`}
-                  className="text-primary-600 hover:text-primary-700 font-semibold"
-                >
+                <span className="text-gray-900 font-semibold">
                   {brand.name}
-                </a>
+                </span>
               </div>
             )}
 
@@ -611,7 +608,7 @@ export default function ProductColorSelector({
 
                   params.set('name', niceName);
 
-                  return `/kontakt?${params.toString()}`;
+                  return `/upiti?${params.toString()}`;
                 })()}
                 className="btn-primary text-center text-[17px] font-semibold px-8 py-4 w-full rounded-full shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all"
               >

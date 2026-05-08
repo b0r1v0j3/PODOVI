@@ -135,7 +135,7 @@ export default async function WeldingRodPage({ params }: Props) {
           <nav className="text-sm text-gray-600 mb-4">
             <Link href="/" className="hover:text-primary-600">Početna</Link>
             <span className="mx-2">/</span>
-            <Link href="/kategorije/linoleum" className="hover:text-primary-600">Linoleum</Link>
+            <span>Linoleum</span>
             <span className="mx-2">/</span>
             <span className="text-gray-900">Elektroda za varenje {weldingRodRef}</span>
           </nav>

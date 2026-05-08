@@ -18,7 +18,7 @@ export default function NotFound() {
           <Link href="/" className="px-8 py-3 rounded-xl font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all">
             Nazad na početnu
           </Link>
-          <Link href="/kategorije" className="px-8 py-3 rounded-xl font-semibold bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-primary-600/30 transition-all">
+          <Link href="/" className="px-8 py-3 rounded-xl font-semibold bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-primary-600/30 transition-all">
             Pregledaj katalog
           </Link>
         </div>

@@ -269,7 +269,7 @@ export function getParketCollectionVariantSlugs(collectionName: string): string[
   return PARKET_COLLECTION_VARIANT_SLUGS[collectionName] ?? [];
 }
 
-/** Svi slugovi varijanti (boja) koji pripadaju nekoj parket kolekciji. Za filtriranje taba Boje na /kategorije/parket. */
+/** Svi slugovi varijanti (boja) koji pripadaju nekoj parket kolekciji. */
 export function getAllParketVariantSlugs(): string[] {
   const set = new Set<string>();
   for (const slugs of Object.values(PARKET_COLLECTION_VARIANT_SLUGS)) {

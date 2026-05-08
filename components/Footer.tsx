@@ -10,7 +10,7 @@ export default function Footer() {
 
       <div className="bg-gray-900 text-gray-300">
         <div className="container py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* About + Branding */}
             <div>
               {/* Logo matching header style */}
@@ -56,98 +56,19 @@ export default function Footer() {
               <h3 className="text-white text-lg font-semibold mb-4">Brzi linkovi</h3>
               <ul className="space-y-2.5 text-sm">
                 <li>
-                  <Link href="/" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
+                  <Link href="/upiti" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
                     <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                    Početna
+                    Pošalji upit
                   </Link>
                 </li>
                 <li>
-                  <Link href="/kategorije" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
+                  <Link href="/omiljeni" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
                     <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                    Kategorije
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/brendovi" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Brendovi
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/kontakt" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Kontakt
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Categories */}
-            <div>
-              <h3 className="text-white text-lg font-semibold mb-4">Kategorije</h3>
-              <ul className="space-y-2.5 text-sm">
-                <li>
-                  <Link href="/kategorije/laminat" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Laminat
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/kategorije/vinil" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Vinil
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/kategorije/parket" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Parket
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/kategorije/tekstilne-ploce" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Tekstilne ploče
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/kategorije/deking" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Deking
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/kategorije/lajsne" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Lajsne
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/kategorije/otiraci" className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center group">
-                    <svg className="w-3 h-3 mr-2 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    Otirači
+                    Omiljeni
                   </Link>
                 </li>
               </ul>

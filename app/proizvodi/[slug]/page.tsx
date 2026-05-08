@@ -689,8 +689,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
       Boolean(collectionLabel) &&
       collectionLabel.toLowerCase() !== displayName.toLowerCase();
     const breadcrumbSchemaItems = [
-      { name: 'Kategorije', url: `${baseUrl}/kategorije` },
-      ...(category ? [{ name: category.name, url: `${baseUrl}/kategorije/${category.slug}` }] : []),
       ...(selectedColorSlug
         ? (collectionLabel
           ? [{ name: collectionLabel, url: `${baseUrl}/proizvodi/${routeSlug}` }]
@@ -732,8 +730,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
             <div className="mb-4">
               <Breadcrumbs
                 items={[
-                  { label: 'Kategorije', href: '/kategorije' },
-                  ...(category ? [{ label: category.name, href: `/kategorije/${category.slug}` }] : []),
                   ...(selectedColorSlug ? [
                     {
                       label: collectionLabel || routeSlug,
@@ -824,9 +820,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   {brand && (
                     <div className="flex items-center space-x-3">
                       <span className="text-sm text-gray-500">Brend:</span>
-                      <Link href={`/brendovi/${brand.slug}`} className="text-primary-600 hover:text-primary-700 font-semibold">
+                      <span className="text-gray-900 font-semibold">
                         {brand.name}
-                      </Link>
+                      </span>
                     </div>
                   )}
 
@@ -870,7 +866,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         if (searchParams?.color) p.set('color', searchParams.color);
                         const refSpec = product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.');
                         if (refSpec?.value) p.set('ref', refSpec.value);
-                        return `/kontakt?${p.toString()}`;
+                        return `/upiti?${p.toString()}`;
                       })()}
                       className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg px-8 py-4 flex-1"
                     >

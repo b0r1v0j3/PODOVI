@@ -79,14 +79,13 @@ function backfillCollectionImages(product: Product, allProducts: Product[]): Pro
   return variantWithImage ? { ...product, images: variantWithImage.images } : product;
 }
 
-function selectHomepageProducts(products: Product[], limit = 12): Product[] {
+function selectHomepageProducts(products: Product[]): Product[] {
   const collectionProducts = products.filter(hasCollectionSku);
   const source = collectionProducts.length > 0 ? collectionProducts : products;
 
   return dedupeBySlug(source)
     .map((product) => backfillCollectionImages(product, products))
-    .sort((a, b) => Number((b.images?.length || 0) > 0) - Number((a.images?.length || 0) > 0))
-    .slice(0, limit);
+    .sort((a, b) => Number((b.images?.length || 0) > 0) - Number((a.images?.length || 0) > 0));
 }
 
 export default async function HomePage() {
@@ -104,7 +103,6 @@ export default async function HomePage() {
     .map((category, index) => {
       const products = productBuckets[index] || [];
       const selectedProducts = selectHomepageProducts(products);
-      const totalCount = (products.filter(hasCollectionSku).length || products.length);
 
       return {
         category: {
@@ -113,7 +111,7 @@ export default async function HomePage() {
           slug: category.slug,
         },
         products: selectedProducts,
-        totalCount,
+        totalCount: selectedProducts.length,
       };
     })
     .filter((group) => group.products.length > 0);

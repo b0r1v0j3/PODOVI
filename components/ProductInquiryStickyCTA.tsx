@@ -8,7 +8,7 @@ interface ProductInquiryStickyCTAProps {
   inquiryRef?: string;
 }
 
-/** Sticky CTA na mobilnom: "Pošalji upit" donji bar – vodi na kontakt sa prefill (product, color, ref). */
+/** Sticky CTA na mobilnom: "Pošalji upit" donji bar – vodi na upit sa prefill (product, color, ref). */
 export default function ProductInquiryStickyCTA({ productSlug, inquiryRef }: ProductInquiryStickyCTAProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -18,7 +18,7 @@ export default function ProductInquiryStickyCTA({ productSlug, inquiryRef }: Pro
   params.set('product', productSlug);
   if (color) params.set('color', color);
   if (inquiryRef) params.set('ref', inquiryRef);
-  const href = `/kontakt?${params.toString()}`;
+  const href = `/upiti?${params.toString()}`;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/90 backdrop-blur-md border-t border-gray-100 shadow-[0_-8px_16px_rgba(0,0,0,0.08)] safe-area-pb">

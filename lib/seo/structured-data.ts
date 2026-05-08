@@ -122,11 +122,6 @@ export function generateWebsiteSchema() {
     name: 'Podovi.online',
     description: 'Katalog podnih obloga, lajsni, otirača i pratećih sistema',
     url: SITE_URL,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/kategorije?search={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
 
