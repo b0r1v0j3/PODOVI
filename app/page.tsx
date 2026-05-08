@@ -124,7 +124,7 @@ export default async function HomePage() {
       <section className="border-y border-[#1D1D1F]/10 bg-white py-20 md:py-24">
         <div className="container">
           <div className="mb-12 md:mb-16">
-            <h2 className="text-4xl font-semibold tracking-tight text-[#111111] md:text-6xl">
+            <h2 className="text-center text-4xl font-semibold tracking-tight text-[#111111] md:text-6xl">
               Zašto izabrati nas?
             </h2>
           </div>
