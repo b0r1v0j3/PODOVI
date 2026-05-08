@@ -16,10 +16,14 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Podovi.online - Katalog podnih obloga i pratećeg asortimana",
+  title: "podovi",
   description: "Katalog podnih obloga, lajsni, otirača i specijalnih sistema za stambene, poslovne i tehničke prostore.",
   keywords: "podovi, laminat, vinil, parket, lajsne, otirači, ulazni sistemi, podne obloge, Srbija",
   authors: [{ name: "Podovi" }],
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+  },
   openGraph: {
     title: "Vaš Pod. Vaš Stil. Vaša Priča.",
     description: "Podne obloge, lajsne, otirači i prateći sistemi na jednom mestu.",

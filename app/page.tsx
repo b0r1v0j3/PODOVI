@@ -7,7 +7,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import { Product } from '@/types';
 
 export const metadata = {
-  title: 'Podovi.online - Katalog podnih obloga i pratećeg asortimana',
+  title: 'podovi',
   description: 'Pronađite pravo rešenje za vaš prostor: laminat, vinil, parket, lajsne, otirači i drugi sistemi vodećih evropskih brendova.',
 };
 
