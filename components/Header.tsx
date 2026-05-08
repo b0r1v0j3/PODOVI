@@ -26,7 +26,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white/70 backdrop-blur-md backdrop-saturate-150 border-b border-black/5 sticky top-0 z-50 transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 isolate bg-white transition-colors duration-200">
       <nav className="container min-h-[44px] md:h-[48px] flex flex-wrap md:flex-nowrap items-center justify-between">
         <div className="flex items-center justify-between w-full h-[44px] md:h-full">
           {/* Logo */}
@@ -93,7 +93,7 @@ export default function Header() {
         {/* Mobile Navigation */}
         <div
           id="mobile-menu"
-          className={`w-full md:hidden overflow-hidden bg-white/95 backdrop-blur-md transition-all duration-300 ease-in-out ${mobileMenuOpen
+          className={`w-full md:hidden overflow-hidden bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen
             ? 'max-h-[220px] opacity-100 pb-4 border-t border-gray-100'
             : 'max-h-0 opacity-0'
             }`}
