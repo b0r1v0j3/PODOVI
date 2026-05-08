@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   keywords: "podovi, laminat, vinil, parket, lajsne, otirači, ulazni sistemi, podne obloge, Srbija",
   authors: [{ name: "Podovi" }],
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    shortcut: "/favicon.svg",
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
+    shortcut: "/favicon.png",
   },
   openGraph: {
     title: "Vaš Pod. Vaš Stil. Vaša Priča.",
