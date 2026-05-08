@@ -123,13 +123,10 @@ export default async function HomePage() {
       {/* Why Choose Us */}
       <section className="border-y border-[#1D1D1F]/10 bg-white py-20 md:py-24">
         <div className="container">
-          <div className="mb-12 grid gap-6 md:mb-16 md:grid-cols-[0.9fr_1.1fr] md:items-end">
-            <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-[#111111] md:text-6xl">
+          <div className="mb-12 md:mb-16">
+            <h2 className="text-4xl font-semibold tracking-tight text-[#111111] md:text-6xl">
               Zašto izabrati nas?
             </h2>
-            <p className="max-w-2xl text-base leading-7 text-[#6E6E73] md:text-lg">
-              Biramo podove koji izgledaju mirno, traju dugo i lako se uklapaju u stvaran prostor, uz jasnu podršku od prvog pitanja do finalnog izbora.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 gap-px overflow-hidden border-y border-[#1D1D1F]/10 bg-[#1D1D1F]/10 md:grid-cols-3">
