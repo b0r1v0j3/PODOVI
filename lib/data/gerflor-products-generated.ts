@@ -2981,23 +2981,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-acoustic-greige-61301708',
-    name: '1708 SAVAGE OAK GREIGE 2',
+    name: '1708 SAVAGE OAK GREIGE',
     slug: 'creation-40-clic-acoustic-greige-61301708', sku: '1708',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
-    shortDescription: 'Gerflor Creation 40 Clic Acoustic - SAVAGE OAK GREIGE 2',
-    description: 'Gerflor Creation 40 Clic Acoustic - SAVAGE OAK GREIGE 2 (Šifra: 1708)',
+    shortDescription: 'Gerflor Creation 40 Clic Acoustic - SAVAGE OAK GREIGE',
+    description: 'Gerflor Creation 40 Clic Acoustic - SAVAGE OAK GREIGE (Šifra: 1708)',
     images: [{
       id: 'creation-40-clic-acoustic-greige-61301708-img-1',
       url: '/images/products/lvt/colors/creation-40-clic-acoustic/1708-savage-oak-greige-2/pod/1708-savage-oak-greige-2-pod.jpg?v=9',
-      alt: 'SAVAGE OAK GREIGE 2',
+      alt: 'SAVAGE OAK GREIGE',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic Acoustic' },
       { key: 'code', label: 'Šifra', value: '1708' },
-      { key: 'color', label: 'Boja', value: 'SAVAGE OAK GREIGE 2' },
+      { key: 'color', label: 'Boja', value: 'SAVAGE OAK GREIGE' },
     ],
     inStock: true,
     featured: false,
@@ -3059,23 +3059,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-40-clic-acoustic-honey-61301706',
-    name: '1706 AQUINOHA HONEY2',
+    name: '1706 AQUINOHA HONEY',
     slug: 'creation-40-clic-acoustic-honey-61301706', sku: '1706',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
-    shortDescription: 'Gerflor Creation 40 Clic Acoustic - AQUINOHA HONEY2',
-    description: 'Gerflor Creation 40 Clic Acoustic - AQUINOHA HONEY2 (Šifra: 1706)',
+    shortDescription: 'Gerflor Creation 40 Clic Acoustic - AQUINOHA HONEY',
+    description: 'Gerflor Creation 40 Clic Acoustic - AQUINOHA HONEY (Šifra: 1706)',
     images: [{
       id: 'creation-40-clic-acoustic-honey-61301706-img-1',
       url: '/images/products/lvt/colors/creation-40-clic-acoustic/1706-aquinoha-honey2/pod/1706-aquinoha-honey2-pod.jpg?v=9',
-      alt: 'AQUINOHA HONEY2',
+      alt: 'AQUINOHA HONEY',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 40 Clic Acoustic' },
       { key: 'code', label: 'Šifra', value: '1706' },
-      { key: 'color', label: 'Boja', value: 'AQUINOHA HONEY2' },
+      { key: 'color', label: 'Boja', value: 'AQUINOHA HONEY' },
     ],
     inStock: true,
     featured: false,
@@ -5035,23 +5035,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-greige-41821708',
-    name: '1708 SAVAGE OAK GREIGE 2',
+    name: '1708 SAVAGE OAK GREIGE',
     slug: 'creation-55-greige-41821708', sku: '1708',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
-    shortDescription: 'Gerflor Creation 55 - SAVAGE OAK GREIGE 2',
-    description: 'Gerflor Creation 55 - SAVAGE OAK GREIGE 2 (Šifra: 1708)',
+    shortDescription: 'Gerflor Creation 55 - SAVAGE OAK GREIGE',
+    description: 'Gerflor Creation 55 - SAVAGE OAK GREIGE (Šifra: 1708)',
     images: [{
       id: 'creation-55-greige-41821708-img-1',
       url: '/images/products/lvt/colors/creation-55/1708-savage-oak-greige-2/pod/1708-savage-oak-greige-2-pod.jpg?v=9',
-      alt: 'SAVAGE OAK GREIGE 2',
+      alt: 'SAVAGE OAK GREIGE',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55' },
       { key: 'code', label: 'Šifra', value: '1708' },
-      { key: 'color', label: 'Boja', value: 'SAVAGE OAK GREIGE 2' },
+      { key: 'color', label: 'Boja', value: 'SAVAGE OAK GREIGE' },
     ],
     inStock: true,
     featured: false,
@@ -7390,23 +7390,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-55-clic-acoustic-greige-61241708',
-    name: '1708 SAVAGE OAK GREIGE 2',
+    name: '1708 SAVAGE OAK GREIGE',
     slug: 'creation-55-clic-acoustic-greige-61241708', sku: '1708',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
-    shortDescription: 'Gerflor Creation 55 Clic Acoustic - SAVAGE OAK GREIGE 2',
-    description: 'Gerflor Creation 55 Clic Acoustic - SAVAGE OAK GREIGE 2 (Šifra: 1708)',
+    shortDescription: 'Gerflor Creation 55 Clic Acoustic - SAVAGE OAK GREIGE',
+    description: 'Gerflor Creation 55 Clic Acoustic - SAVAGE OAK GREIGE (Šifra: 1708)',
     images: [{
       id: 'creation-55-clic-acoustic-greige-61241708-img-1',
       url: '/images/products/lvt/colors/creation-55-clic-acoustic/1708-savage-oak-greige-2/pod/62961 - JPG 72 dpi-Savage-Oak-Greige sky view-pod.jpg?v=9',
-      alt: 'SAVAGE OAK GREIGE 2',
+      alt: 'SAVAGE OAK GREIGE',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 55 Clic Acoustic' },
       { key: 'code', label: 'Šifra', value: '1708' },
-      { key: 'color', label: 'Boja', value: 'SAVAGE OAK GREIGE 2' },
+      { key: 'color', label: 'Boja', value: 'SAVAGE OAK GREIGE' },
     ],
     inStock: true,
     featured: false,
@@ -10042,23 +10042,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-70-black-41991722',
-    name: '1722 MARBLE BLACK MARBLE LIGHT GREY',
+    name: '1722 MARBLE BLACK / MARBLE LIGHT GREY',
     slug: 'creation-70-black-41991722', sku: '1722',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
-    shortDescription: 'Gerflor Creation 70 - MARBLE BLACK MARBLE LIGHT GREY',
-    description: 'Gerflor Creation 70 - MARBLE BLACK MARBLE LIGHT GREY (Šifra: 1722)',
+    shortDescription: 'Gerflor Creation 70 - MARBLE BLACK / MARBLE LIGHT GREY',
+    description: 'Gerflor Creation 70 - MARBLE BLACK / MARBLE LIGHT GREY (Šifra: 1722)',
     images: [{
       id: 'creation-70-black-41991722-img-1',
       url: '/images/products/lvt/colors/creation-70/1722-marble-black-marble-light-grey/pod/61966 - JPG 72 dpi-Marble black - 914x914 -CR70 VDC-pod.jpg?v=9',
-      alt: 'MARBLE BLACK MARBLE LIGHT GREY',
+      alt: 'MARBLE BLACK / MARBLE LIGHT GREY',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 70' },
       { key: 'code', label: 'Šifra', value: '1722' },
-      { key: 'color', label: 'Boja', value: 'MARBLE BLACK MARBLE LIGHT GREY' },
+      { key: 'color', label: 'Boja', value: 'MARBLE BLACK / MARBLE LIGHT GREY' },
     ],
     inStock: true,
     featured: false,
@@ -10276,23 +10276,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-70-clear-41991755',
-    name: '1755 MARBLE BLACK MARBLE LIGHT GREY',
+    name: '1755 MARBLE BLACK / MARBLE LIGHT GREY',
     slug: 'creation-70-clear-41991755', sku: '1755',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
-    shortDescription: 'Gerflor Creation 70 - MARBLE BLACK MARBLE LIGHT GREY',
-    description: 'Gerflor Creation 70 - MARBLE BLACK MARBLE LIGHT GREY (Šifra: 1755)',
+    shortDescription: 'Gerflor Creation 70 - MARBLE BLACK / MARBLE LIGHT GREY',
+    description: 'Gerflor Creation 70 - MARBLE BLACK / MARBLE LIGHT GREY (Šifra: 1755)',
     images: [{
       id: 'creation-70-clear-41991755-img-1',
       url: '/images/products/lvt/colors/creation-70/1755-marble-black-marble-light-grey/pod/62036 - JPG 72 dpi-Marble light grey - 914x914 - VDC-pod.jpg?v=9',
-      alt: 'MARBLE BLACK MARBLE LIGHT GREY',
+      alt: 'MARBLE BLACK / MARBLE LIGHT GREY',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 70' },
       { key: 'code', label: 'Šifra', value: '1755' },
-      { key: 'color', label: 'Boja', value: 'MARBLE BLACK MARBLE LIGHT GREY' },
+      { key: 'color', label: 'Boja', value: 'MARBLE BLACK / MARBLE LIGHT GREY' },
     ],
     inStock: true,
     featured: false,
@@ -11316,23 +11316,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-70-clic-black-61291722',
-    name: '1722 MARBLE BLACK MARBLE LIGHT GREY',
+    name: '1722 MARBLE BLACK / MARBLE LIGHT GREY',
     slug: 'creation-70-clic-black-61291722', sku: '1722',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
-    shortDescription: 'Gerflor Creation 70 Clic - MARBLE BLACK MARBLE LIGHT GREY',
-    description: 'Gerflor Creation 70 Clic - MARBLE BLACK MARBLE LIGHT GREY (Šifra: 1722)',
+    shortDescription: 'Gerflor Creation 70 Clic - MARBLE BLACK / MARBLE LIGHT GREY',
+    description: 'Gerflor Creation 70 Clic - MARBLE BLACK / MARBLE LIGHT GREY (Šifra: 1722)',
     images: [{
       id: 'creation-70-clic-black-61291722-img-1',
       url: '/images/products/lvt/colors/creation-70-clic/1722-marble-black-marble-light-grey/pod/62826 - JPG 72 dpi-Marble black - 389x729 - CR70 VDC-pod.jpg?v=9',
-      alt: 'MARBLE BLACK MARBLE LIGHT GREY',
+      alt: 'MARBLE BLACK / MARBLE LIGHT GREY',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 70 Clic' },
       { key: 'code', label: 'Šifra', value: '1722' },
-      { key: 'color', label: 'Boja', value: 'MARBLE BLACK MARBLE LIGHT GREY' },
+      { key: 'color', label: 'Boja', value: 'MARBLE BLACK / MARBLE LIGHT GREY' },
     ],
     inStock: true,
     featured: false,
@@ -14437,23 +14437,23 @@ export const gerflor_products: Product[] = [
   },
   {
     id: 'creation-70-zen-ranch-39220773',
-    name: '0773 RANCH (',
+    name: '0773 RANCH',
     slug: 'creation-70-zen-ranch-39220773', sku: '0773',
     categoryId: '6',  // LVT category
     brandId: '6',  // Gerflor brand
-    shortDescription: 'Gerflor Creation 70 Zen - RANCH (',
-    description: 'Gerflor Creation 70 Zen - RANCH ( (Šifra: 0773)',
+    shortDescription: 'Gerflor Creation 70 Zen - RANCH',
+    description: 'Gerflor Creation 70 Zen - RANCH (Šifra: 0773)',
     images: [{
       id: 'creation-70-zen-ranch-39220773-img-1',
       url: '/images/products/lvt/colors/creation-70-zen/0773-ranch/pod/51386 - 0773 Ranch (Creation Zen) - Color scan-pod.jpg?v=9',
-      alt: 'RANCH (',
+      alt: 'RANCH',
       isPrimary: true,
       order: 1,
     }],
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'Creation 70 Zen' },
       { key: 'code', label: 'Šifra', value: '0773' },
-      { key: 'color', label: 'Boja', value: 'RANCH (' },
+      { key: 'color', label: 'Boja', value: 'RANCH' },
     ],
     inStock: true,
     featured: false,

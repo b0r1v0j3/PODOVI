@@ -5,6 +5,11 @@ import { Product, Brand } from '@/types';
 import ProductCardOverlay from './ProductCardOverlay';
 import ProductImage from './ProductImage';
 import { splitProductTitle } from '@/lib/utils/name-parser';
+import {
+  areProductCardTextsEqual,
+  cleanProductCardShortDescription,
+  getProductCardDisplayName,
+} from '@/lib/utils/product-card-text';
 import { getCanonicalProductHref } from '@/lib/utils/product-routes';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
 
@@ -89,31 +94,11 @@ function getSpecChips(specs: Product['specs'], categoryId?: string, productName?
   return chips;
 }
 
-// Strip redundant category-name suffix / product-name repetition from shortDescription
-function cleanShortDescription(shortDesc: string | undefined, productName: string, displayName: string): string | null {
-  if (!shortDesc || shortDesc.length <= 5) return null;
-
-  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Lajsne', 'Otirači', 'Podna obloga'];
-  let cleaned = shortDesc;
-  for (const catName of categoryNames) {
-    cleaned = cleaned.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();
-    cleaned = cleaned.replace(new RegExp(`^${catName}\\s*[-–]\\s*`, 'i'), '').trim();
-  }
-
-  if (!cleaned || cleaned === productName || cleaned === displayName || cleaned.length <= 5) {
-    return null;
-  }
-  return cleaned;
-}
-
 export default function ProductCardClient({ product, brand, compact = false }: ProductCardClientProps) {
   const imageCandidates = getProductImageCandidates(product, compact ? 'thumb' : 'card').slice(0, 4);
   const primaryImage = imageCandidates[0];
 
-  // Remove "Gerflor" prefix from product name for LVT collections
-  const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
-    ? product.name.replace(/^Gerflor\s+/, '')
-    : product.name;
+  const displayName = getProductCardDisplayName(product.name, brand?.name);
 
   const productHref = getCanonicalProductHref(product as Product & { collectionSlug?: string });
 
@@ -123,9 +108,18 @@ export default function ProductCardClient({ product, brand, compact = false }: P
 
   // Split the Product Title
   const rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
-  const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, rawCollectionName);
+  const displayCollectionName = rawCollectionName
+    ? getProductCardDisplayName(rawCollectionName, brand?.name)
+    : rawCollectionName;
+  const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, displayCollectionName);
 
-  const cleanedDesc = cleanShortDescription(product.shortDescription, splitColor, displayName);
+  const cleanedDesc = cleanProductCardShortDescription(product.shortDescription, {
+    productName: product.name,
+    displayName,
+    splitColor,
+    splitCollection,
+    brandName: brand?.name,
+  });
 
   if (compact) {
     return (
@@ -151,7 +145,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
           {brand && (
             <p className="text-[10px] text-primary-600 uppercase tracking-wider font-semibold mb-0.5">{brand.name}</p>
           )}
-          {splitCollection && splitCollection.toLowerCase() !== splitColor.toLowerCase() && (
+          {splitCollection && !areProductCardTextsEqual(splitCollection, splitColor) && (
             <p className="text-[11px] font-medium text-gray-500 mb-0.5 leading-tight truncate">
               {splitCollection}
             </p>
@@ -213,7 +207,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
           )}
         </div>
 
-        {splitCollection && splitCollection.toLowerCase() !== splitColor.toLowerCase() && (
+        {splitCollection && !areProductCardTextsEqual(splitCollection, splitColor) && (
           <p className="text-[13px] font-medium text-gray-500 mb-0.5 leading-tight truncate">
             {splitCollection}
           </p>

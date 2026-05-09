@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllTechemProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllTechemProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -148,7 +148,12 @@ export class SupabaseProductRepository implements IProductRepository {
 
     // Category 4: Carpet Tiles
     if (!filters?.categoryId || legacyCategoryId === '4' || filters.categoryId === '4') {
-      let jsonProducts = [...getAllBloqCarpetProducts(), ...getAllCarpetProducts()];
+      const existingCarpetSlugs = new Set(products.map((product: Product) => product.slug));
+      let jsonProducts = [
+        ...getGerflorCarpetCollections(),
+        ...getAllBloqCarpetProducts(),
+        ...getAllCarpetProducts(),
+      ].filter((product) => !existingCarpetSlugs.has(product.slug));
       // Apply same filters to JSON products
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
@@ -547,6 +552,8 @@ export class MockProductRepository implements IProductRepository {
     ...getAllGerflorProducts(),
     ...getGerflorLVTCollections(),
     ...getGerflorLinoleumCollections(),
+    ...getGerflorCarpetCollections(),
+    ...getAllCarpetProducts(),
     ...getAllBloqCarpetProducts(),
     ...tarkettProducts.map(enrichCatalogProduct),
     ...getAllTarkettLVTProducts(),

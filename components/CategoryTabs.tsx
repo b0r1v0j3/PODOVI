@@ -386,18 +386,14 @@ export default function CategoryTabs({
       const listingParam = resolvedListingMode === 'all' ? '' : `&listing=${resolvedListingMode}`;
       const jsonPath = `/api/colors?category=${categoryParam2}${listingParam}`;
 
-      console.log(`CategoryTabs: Fetching colors from ${jsonPath}...`);
       fetch(jsonPath)
         .then(res => {
-          console.log(`CategoryTabs: Fetch response status:`, res.status, res.statusText);
           if (!res.ok) {
             throw new Error(`Failed to fetch colors: ${res.status}`);
           }
           return res.json();
         })
         .then(data => {
-          console.log(`CategoryTabs: JSON parsed successfully, data:`, data ? `total=${data.total}, colors=${data.colors?.length}` : 'null');
-
           // Handle different JSON structures: LVT has data.colors, Linoleum/Vinil have data.collections[].colors
           let colorsArray: any[] = [];
           if (NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]) && data.collections && Array.isArray(data.collections)) {
@@ -415,10 +411,8 @@ export default function CategoryTabs({
                 collection: collection.slug
               }))
             );
-            console.log(`CategoryTabs: Loaded ${colorsArray.length} colors from ${visibleCollections.length} collections for ${categorySlug}`);
           } else if (data.colors && Array.isArray(data.colors)) {
             colorsArray = data.colors;
-            console.log(`CategoryTabs: Loaded ${colorsArray.length} colors from JSON for category ${categorySlug}`);
           } else {
             console.error('CategoryTabs: Invalid data structure', data);
             setLoadingColors(false);
@@ -559,7 +553,6 @@ export default function CategoryTabs({
             } as Product & { collectionSlug: string };
           });
 
-          console.log(`CategoryTabs: Converted ${colorsAsProducts.length} colors to Product objects`);
           setColorsFromJSON(colorsAsProducts);
           setLoadingColors(false);
           hasLoadedColors.current = true;

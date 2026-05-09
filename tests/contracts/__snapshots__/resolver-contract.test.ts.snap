@@ -2,14 +2,14 @@
 
 exports[`resolve-product contract > merges selected color data into collection product without breaking base contract fields 1`] = `
 {
-  "afterName": "0303 MANITOBA",
-  "afterShortDescription": "Mipolam Accord - MANITOBA",
+  "afterName": "0301 LOUISE",
+  "afterShortDescription": "Mipolam Accord - LOUISE",
   "beforeName": "Mipolam Accord",
   "documentCount": 0,
   "hasFormatSpec": true,
   "hasThicknessSpec": true,
-  "imageUrl": "/images/products/vinyl/mipolam-accord/0303-manitoba.jpg",
-  "selectedColorSlug": "mipolam-accord-0303-manitoba",
+  "imageUrl": "/images/products/vinyl/mipolam-accord/0301-louise.jpg",
+  "selectedColorSlug": "mipolam-accord-0301-louise",
   "specCount": 17,
   "specSample": [
     {
@@ -143,7 +143,7 @@ exports[`resolve-product contract > resolves a vinyl collection slug into stable
   "hasPrimaryImage": true,
   "id": "vinyl-coll-mipolam-accord",
   "name": "Mipolam Accord",
-  "primaryImageUrl": "/images/products/vinyl/mipolam-accord/0301-louise.jpg",
+  "primaryImageUrl": "/images/products/vinyl/mipolam-accord/collection.jpg",
   "shortDescription": "Mipolam Accord — 22 boja",
   "slug": "gerflor-mipolam-accord",
   "specCount": 8,

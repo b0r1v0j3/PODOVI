@@ -7526,6 +7526,26 @@ export const tarkettProducts: Product[] = [
         "value": "505814005"
       },
       {
+        "key": "type",
+        "label": "Tip",
+        "value": "Laminat"
+      },
+      {
+        "key": "thickness",
+        "label": "Ukupna debljina",
+        "value": "8 mm"
+      },
+      {
+        "key": "dimensions",
+        "label": "Dimenzije",
+        "value": "1290 x 190 mm"
+      },
+      {
+        "key": "commercial_class",
+        "label": "Komercijalna klasifikacija",
+        "value": "32 General"
+      },
+      {
         "key": "surface_per_box",
         "label": "Površina po kutiji",
         "value": "1,960 m²"
@@ -7568,6 +7588,26 @@ export const tarkettProducts: Product[] = [
         "value": "505814002"
       },
       {
+        "key": "type",
+        "label": "Tip",
+        "value": "Laminat"
+      },
+      {
+        "key": "thickness",
+        "label": "Ukupna debljina",
+        "value": "8 mm"
+      },
+      {
+        "key": "dimensions",
+        "label": "Dimenzije",
+        "value": "1290 x 190 mm"
+      },
+      {
+        "key": "commercial_class",
+        "label": "Komercijalna klasifikacija",
+        "value": "32 General"
+      },
+      {
         "key": "surface_per_box",
         "label": "Površina po kutiji",
         "value": "1,960 m²"
@@ -7608,6 +7648,26 @@ export const tarkettProducts: Product[] = [
         "key": "ref",
         "label": "Ref.",
         "value": "505814003"
+      },
+      {
+        "key": "type",
+        "label": "Tip",
+        "value": "Laminat"
+      },
+      {
+        "key": "thickness",
+        "label": "Ukupna debljina",
+        "value": "8 mm"
+      },
+      {
+        "key": "dimensions",
+        "label": "Dimenzije",
+        "value": "1290 x 190 mm"
+      },
+      {
+        "key": "commercial_class",
+        "label": "Komercijalna klasifikacija",
+        "value": "32 General"
       },
       {
         "key": "surface_per_box",

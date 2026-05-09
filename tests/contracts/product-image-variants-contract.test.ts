@@ -381,10 +381,17 @@ describe('Product image variant contracts', () => {
     ).toBe('https://cdn.example.com/variant-a-texture.jpg');
   });
 
-  it('keeps Gerflor vinyl collection overrides ahead of the first color image', () => {
-    const product = getVinylCollectionProducts().find((item) => item.slug === 'gerflor-mipolam-evo');
+  it.each([
+    ['gerflor-mipolam-evo', '/images/products/vinyl/mipolam-evo-collection.jpg'],
+    ['gerflor-taralay-impression-acoustic', '/images/products/vinyl/taralay-impression-acoustic/collection.jpg'],
+    ['gerflor-taralay-impression-compact', '/images/products/vinyl/taralay-impression-compact/collection.jpg'],
+    ['gerflor-taralay-impression-hop-acoustic', '/images/products/vinyl/taralay-impression-hop-acoustic/collection.jpg'],
+    ['gerflor-taralay-impression-hop-compact', '/images/products/vinyl/taralay-impression-hop-compact/collection.jpg'],
+    ['gerflor-taralay-millenium-acoustic', '/images/products/vinyl/taralay-millenium-acoustic-order/collection.jpg'],
+  ])('keeps Gerflor vinyl collection %s on the collection cover before color images', (slug, expectedUrl) => {
+    const product = getVinylCollectionProducts().find((item) => item.slug === slug);
 
-    expect(product?.images?.[0]?.url).toBe('/images/products/vinyl/mipolam-evo-collection.jpg');
+    expect(product?.images?.[0]?.url).toBe(expectedUrl);
   });
 
   it('keeps Tarkett lajsne collection headers on collection_image_url before variant images', () => {

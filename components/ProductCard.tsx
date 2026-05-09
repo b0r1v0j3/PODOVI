@@ -4,6 +4,11 @@ import { brandRepository } from '@/lib/repositories/brand-repository';
 import ProductCardOverlay from './ProductCardOverlay';
 import ProductImage from './ProductImage';
 import { splitProductTitle } from '@/lib/utils/name-parser';
+import {
+  areProductCardTextsEqual,
+  cleanProductCardShortDescription,
+  getProductCardDisplayName,
+} from '@/lib/utils/product-card-text';
 import { getCanonicalProductHref } from '@/lib/utils/product-routes';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
 
@@ -85,12 +90,12 @@ export default async function ProductCard({ product }: ProductCardProps) {
   const brand = await brandRepository.findById(product.brandId);
   const imageCandidates = getProductImageCandidates(product, 'card').slice(0, 4);
   const primaryImage = imageCandidates[0];
-  // Remove "Gerflor" prefix from product name for LVT collections
-  const displayName = product.categoryId === '6' && product.name.startsWith('Gerflor ')
-    ? product.name.replace(/^Gerflor\s+/, '')
-    : product.name;
+  const displayName = getProductCardDisplayName(product.name, brand?.name);
   const productHref = getCanonicalProductHref(product as Product & { collectionSlug?: string });
-  let rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
+  const rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
+  const displayCollectionName = rawCollectionName
+    ? getProductCardDisplayName(rawCollectionName, brand?.name)
+    : rawCollectionName;
 
   // Badge config
   const badge = categoryBadgeConfig[product.categoryId];
@@ -99,31 +104,14 @@ export default async function ProductCard({ product }: ProductCardProps) {
   const specChips = getSpecChips(product.specs, product.categoryId, product.name, product.slug);
 
   // Split Name Logic
-  const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, rawCollectionName);
-
-
-  // Determine if shortDescription is just the product/collection name (not useful)
-  const isShortDescUseful = product.shortDescription
-    && product.shortDescription !== product.name
-    && product.shortDescription !== displayName
-    && product.shortDescription !== splitColor
-    && product.shortDescription.length > 5;
-
-  // Strip category name and product name from shortDescription to avoid redundancy
-  // e.g. "Blues 1033 4V Laminat" on the Laminat page → redundant
-  const categoryNames = ['Laminat', 'LVT', 'Parket', 'Linoleum', 'Vinil', 'Tekstilne ploče', 'Deking', 'Elektroprovodni', 'Industrijske ploče', 'Sport', 'Lajsne', 'Otirači', 'Podna obloga'];
-  let cleanShortDesc = product.shortDescription || '';
-  for (const catName of categoryNames) {
-    cleanShortDesc = cleanShortDesc.replace(new RegExp(`\\s*${catName}\\s*$`, 'i'), '').trim();
-    cleanShortDesc = cleanShortDesc.replace(new RegExp(`^${catName}\\s*[-–]\\s*`, 'i'), '').trim();
-  }
-  // If after stripping, it's the same as the name, it's not useful
-  const isCleanDescUseful = cleanShortDesc
-    && cleanShortDesc !== product.name
-    && cleanShortDesc !== displayName
-    && cleanShortDesc !== splitColor
-    && cleanShortDesc.length > 5
-    && isShortDescUseful;
+  const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, displayCollectionName);
+  const cleanedShortDescription = cleanProductCardShortDescription(product.shortDescription, {
+    productName: product.name,
+    displayName,
+    splitColor,
+    splitCollection,
+    brandName: brand?.name,
+  });
 
   return (
     <Link
@@ -173,7 +161,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
 
-        {splitCollection && splitCollection.toLowerCase() !== splitColor.toLowerCase() && (
+        {splitCollection && !areProductCardTextsEqual(splitCollection, splitColor) && (
           <p className="text-[13px] font-medium text-gray-500 mb-0.5 leading-tight truncate">
             {splitCollection}
           </p>
@@ -194,9 +182,9 @@ export default async function ProductCard({ product }: ProductCardProps) {
         )}
 
         {/* Short description — only if it adds info beyond the name */}
-        {isCleanDescUseful && specChips.length === 0 && (
+        {cleanedShortDescription && specChips.length === 0 && (
           <p className="text-[13px] text-[#86868B] mb-4 line-clamp-2 leading-relaxed">
-            {cleanShortDesc}
+            {cleanedShortDescription}
           </p>
         )}
 

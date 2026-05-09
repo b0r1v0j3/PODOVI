@@ -38,6 +38,31 @@ let tarkettHeterogeneousVinylCollectionCache: Product[] | null = null;
 let wolflorVinylCollectionCache: Product[] | null = null;
 let gerflorLvtCollectionCache: Product[] | null = null;
 let gerflorLinoleumCollectionCache: Product[] | null = null;
+let gerflorCarpetCollectionCache: Product[] | null = null;
+const GERFLOR_VINYL_COLLECTION_COVER_SLUGS = new Set([
+    'mipolam-accord',
+    'mipolam-affinity',
+    'mipolam-affinity-608x608',
+    'mipolam-astro',
+    'mipolam-bioplanet',
+    'mipolam-classic-1-5mm',
+    'mipolam-classic-2mm',
+    'mipolam-elegance',
+    'mipolam-planet',
+    'mipolam-symbioz',
+    'mipolam-troplan',
+    'nerok-55',
+    'nerok-70',
+    'premium-acoustic',
+    'premium-compact',
+    'taralay-impression-acoustic',
+    'taralay-impression-compact',
+    'taralay-impression-hop-acoustic',
+    'taralay-impression-hop-compact',
+    'taralay-initial-acoustic',
+    'taralay-initial-compact',
+    'taralay-millenium-compact',
+]);
 let techemDatasetCache:
     | {
         entries: Record<string, any>[];
@@ -939,6 +964,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getAllGerflorProducts(),
         ...getGerflorLVTCollections(),
         ...getGerflorLinoleumCollections(),
+        ...getGerflorCarpetCollections(),
         ...getAllBloqCarpetProducts(),
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
@@ -994,7 +1020,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
     } else if (categoryId === '7') {
         return [...getGerflorLinoleumCollections(), ...getAllLinoleumProducts()];
     } else if (categoryId === '4') {
-        return [...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
+        return [...getGerflorCarpetCollections(), ...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
     } else if (categoryId === '5') {
         return getAllDekingProducts();
     } else if (techemProducts.some((product) => product.categoryId === categoryId)) {
@@ -1283,6 +1309,92 @@ export function getGerflorLinoleumCollections(): Product[] {
     return gerflorLinoleumCollectionCache;
 }
 
+export function getGerflorCarpetCollections(): Product[] {
+    if (gerflorCarpetCollectionCache) {
+        return gerflorCarpetCollectionCache;
+    }
+
+    const colors = ((carpetColorsData as any).colors || []) as any[];
+    const grouped = new Map<string, any[]>();
+
+    for (const color of colors) {
+        const collectionSlug = String(color.collection_slug || color.collection || '').trim();
+        if (!collectionSlug) continue;
+
+        if (!grouped.has(collectionSlug)) {
+            grouped.set(collectionSlug, []);
+        }
+
+        grouped.get(collectionSlug)!.push(color);
+    }
+
+    gerflorCarpetCollectionCache = Array.from(grouped.entries()).map(([collectionSlug, collectionColors]) => {
+        const firstColor = collectionColors[0];
+        const displayName = firstColor.collection_name || humanizeCollectionName(collectionSlug.replace(/^gerflor-/, ''));
+        const description = pickRichestText(
+            ...collectionColors.map((color) => color.description),
+            firstColor.description
+        );
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            ...collectionColors.map((color) => color.texture_url),
+            ...collectionColors.map((color) => color.image_url)
+        );
+        const characteristicSpecs = buildSpecsFromCharacteristicRecord(firstColor.characteristics)
+            .filter((spec) => !['ncs', 'lrv'].includes(spec.key));
+        const specs = mergeUniqueSpecs(
+            [
+                { key: 'collection', label: 'Kolekcija', value: displayName },
+                { key: 'type', label: 'Tip', value: 'Tekstilne ploče' },
+                firstColor.overall_thickness
+                    ? { key: 'thickness', label: 'Ukupna debljina', value: String(firstColor.overall_thickness) }
+                    : null,
+                firstColor.dimension
+                    ? { key: 'dimension', label: 'Dimenzije', value: String(firstColor.dimension) }
+                    : null,
+                firstColor.format
+                    ? { key: 'format', label: 'Format', value: String(firstColor.format) }
+                    : null,
+                firstColor.specs?.PILE_WEIGHT
+                    ? { key: 'pile_weight', label: 'Težina vlakna', value: String(firstColor.specs.PILE_WEIGHT) }
+                    : null,
+                firstColor.specs?.SURFACE_YARN
+                    ? { key: 'surface_yarn', label: 'Sastav', value: String(firstColor.specs.SURFACE_YARN) }
+                    : null,
+                firstColor.specs?.INSTALLATION
+                    ? { key: 'installation', label: 'Ugradnja', value: String(firstColor.specs.INSTALLATION) }
+                    : null,
+            ].filter((spec): spec is Product['specs'][number] => Boolean(spec)),
+            characteristicSpecs
+        );
+
+        return {
+            id: `gerflor-carpet-${collectionSlug}`,
+            name: displayName,
+            slug: collectionSlug,
+            sku: `GER-${collectionSlug.replace(/^gerflor-/, '').toUpperCase()}`,
+            categoryId: '4',
+            brandId: '6',
+            shortDescription: `${displayName} — ${collectionColors.length} boja`,
+            description,
+            images: imageUrl ? [{
+                id: `gerflor-carpet-${collectionSlug}-img`,
+                url: imageUrl,
+                alt: displayName,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            inStock: true,
+            featured: false,
+            externalLink: `https://www.gerflor-cee.com/products/${collectionSlug.replace(/^gerflor-/, '')}`,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    return gerflorCarpetCollectionCache;
+}
+
 /**
  * Get all Carpet products from carpet_tiles_complete.json
  * NOTE: These are returned for display in category grid only!
@@ -1528,6 +1640,7 @@ export function getVinylCollectionProducts(): Product[] {
     const collectionImageOverrides: Record<string, string> = {
         'mipolam-evo': '/images/products/vinyl/mipolam-evo-collection.jpg',
         'taralay-libertex': '/images/products/vinyl/taralay-libertex-collection.jpg',
+        'taralay-millenium-acoustic': '/images/products/vinyl/taralay-millenium-acoustic-order/collection.jpg',
     };
 
     const result = collections.map((col: any) => {
@@ -1539,9 +1652,13 @@ export function getVinylCollectionProducts(): Product[] {
             label,
             value: value as string,
         }));
+        const localCollectionCover = GERFLOR_VINYL_COLLECTION_COVER_SLUGS.has(col.slug)
+            ? `/images/products/vinyl/${col.slug}/collection.jpg`
+            : undefined;
 
         const imageUrl = selectPreferredCollectionHeroAsset(
             collectionImageOverrides[col.slug],
+            localCollectionCover,
             firstColor?.image
         );
 

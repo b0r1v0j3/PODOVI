@@ -16,7 +16,7 @@ type LowSpecIssue = BasicIssue & {
 };
 
 type CollectionDrivenLowSpecIssue = LowSpecIssue & {
-    kind: 'bloq-collection' | 'parket-collection' | 'parket-variant';
+    kind: 'bloq-collection' | 'parket-collection' | 'parket-variant' | 'lvt-variant';
     reason: string;
 };
 
@@ -36,6 +36,28 @@ function countMeaningfulSpecs(product: Product) {
     ).length;
 }
 
+function productHealthScore(product: Product) {
+    const hasImage = product.images?.some((image) => image.url && image.url !== '/images/placeholder.svg') ? 1 : 0;
+    const hasDescription = product.description?.trim().length >= 20 || product.shortDescription?.trim().length >= 20 ? 1 : 0;
+
+    return countMeaningfulSpecs(product) * 10 + hasImage * 5 + hasDescription * 3;
+}
+
+function dedupeProductsForHealth(products: Product[]) {
+    const byCatalogKey = new Map<string, Product>();
+
+    for (const product of products) {
+        const key = product.slug || product.id;
+        const existing = byCatalogKey.get(key);
+
+        if (!existing || productHealthScore(product) > productHealthScore(existing)) {
+            byCatalogKey.set(key, product);
+        }
+    }
+
+    return Array.from(byCatalogKey.values());
+}
+
 function getCollectionDrivenLowSpecInfo(product: Product): CollectionDrivenLowSpecIssue | null {
     const name = product.name || product.slug;
     const count = countMeaningfulSpecs(product);
@@ -47,6 +69,16 @@ function getCollectionDrivenLowSpecInfo(product: Product): CollectionDrivenLowSp
             count,
             kind: 'bloq-collection',
             reason: 'BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim.',
+        };
+    }
+
+    if (product.categoryId === '6' && !product.id.startsWith('lvt-coll-') && !product.sku?.startsWith('LVT-COLL')) {
+        return {
+            id: product.id,
+            name,
+            count,
+            kind: 'lvt-variant',
+            reason: 'LVT variant routes use collection and selected-color context for visible specs, so the base variant entry can stay slim.',
         };
     }
 
@@ -103,6 +135,8 @@ async function runHealthCheck() {
             const newTarkettProducts = tarkettProducts.filter((p: any) => !existingIds.has(p.id));
             allProducts.push(...newTarkettProducts);
         }
+
+        allProducts = dedupeProductsForHealth(allProducts);
 
         console.log(`Total unique products loaded: ${allProducts.length}\n`);
 
@@ -186,6 +220,7 @@ async function runHealthCheck() {
             }, {});
             const labels: Record<CollectionDrivenLowSpecIssue['kind'], string> = {
                 'bloq-collection': 'BLOQ collection pages',
+                'lvt-variant': 'LVT variant redirects',
                 'parket-collection': 'Parket collection headers',
                 'parket-variant': 'Parket variant redirects',
             };
