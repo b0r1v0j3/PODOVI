@@ -13,6 +13,7 @@ import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import CategoryTabs from '@/components/CategoryTabs';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import type { Product } from '@/types';
 
 interface CategoryPageProps {
   params: { slug: string };
@@ -29,7 +30,125 @@ interface CategoryPageProps {
     listing?: string; // For core/accessory listing segmentation
     thickness?: string; // For overall thickness filter (comma-separated values)
     woodType?: string; // For Parket: Hrast | Jasen
+    toolGroup?: string; // For Alat: Romus top-level tool group slugs
+    toolSubcategory?: string; // For Alat: Romus tool subcategory slugs
   };
+}
+
+type ToolFilterOption = {
+  value: string;
+  slug: string;
+  count: number;
+};
+
+type ToolSubcategoryFilterOption = ToolFilterOption & {
+  group: string;
+  groupSlug: string;
+};
+
+function slugifyFilterValue(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'd')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function parseFilterSlugList(value?: string): string[] {
+  return value?.split(',').map((item) => item.trim()).filter(Boolean) || [];
+}
+
+function getProductSpecValue(product: Product, key: string): string {
+  return product.specs?.find((spec) => spec.key === key)?.value?.trim() || '';
+}
+
+function getRomusToolGroup(product: Product): string {
+  return getProductSpecValue(product, 'tool_group') || getProductSpecValue(product, 'collection');
+}
+
+function getRomusToolSubcategory(product: Product): string {
+  return getProductSpecValue(product, 'tool_subcategory');
+}
+
+function buildToolGroupOptions(products: Product[]): ToolFilterOption[] {
+  const options = new Map<string, ToolFilterOption>();
+
+  for (const product of products) {
+    const value = getRomusToolGroup(product);
+    if (!value) continue;
+
+    const slug = slugifyFilterValue(value);
+    const existing = options.get(slug);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      options.set(slug, { value, slug, count: 1 });
+    }
+  }
+
+  return Array.from(options.values()).sort((a, b) => b.count - a.count || a.value.localeCompare(b.value, 'sr'));
+}
+
+function buildToolSubcategoryOptions(products: Product[], selectedGroupSlugs: string[]): ToolSubcategoryFilterOption[] {
+  const selectedGroups = new Set(selectedGroupSlugs);
+  const options = new Map<string, ToolSubcategoryFilterOption>();
+
+  for (const product of products) {
+    const group = getRomusToolGroup(product);
+    const value = getRomusToolSubcategory(product);
+    if (!group || !value) continue;
+
+    const groupSlug = slugifyFilterValue(group);
+    if (selectedGroups.size > 0 && !selectedGroups.has(groupSlug)) {
+      continue;
+    }
+
+    const slug = slugifyFilterValue(value);
+    const key = `${groupSlug}:${slug}`;
+    const existing = options.get(key);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      options.set(key, { value, slug, group, groupSlug, count: 1 });
+    }
+  }
+
+  return Array.from(options.values()).sort((a, b) =>
+    a.group.localeCompare(b.group, 'sr') ||
+    a.value.localeCompare(b.value, 'sr')
+  );
+}
+
+function filterRomusToolProducts(
+  products: Product[],
+  selectedGroupSlugs: string[],
+  selectedSubcategorySlugs: string[]
+): Product[] {
+  if (selectedGroupSlugs.length === 0 && selectedSubcategorySlugs.length === 0) {
+    return products;
+  }
+
+  const selectedGroups = new Set(selectedGroupSlugs);
+  const selectedSubcategories = new Set(selectedSubcategorySlugs);
+
+  return products.filter((product) => {
+    const groupSlug = slugifyFilterValue(getRomusToolGroup(product));
+    const subcategorySlug = slugifyFilterValue(getRomusToolSubcategory(product));
+
+    if (selectedGroups.size > 0 && !selectedGroups.has(groupSlug)) {
+      return false;
+    }
+
+    if (selectedSubcategories.size > 0 && !selectedSubcategories.has(subcategorySlug)) {
+      return false;
+    }
+
+    return true;
+  });
 }
 
 export async function generateMetadata({ params }: CategoryPageProps) {
@@ -105,15 +224,25 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     woodType: searchParams.woodType, // For Parket: Hrast | Jasen
     // collections and family filter will be applied separately after separating collections from colors
   };
+  const selectedToolGroupSlugs = parseFilterSlugList(searchParams.toolGroup);
+  const selectedToolSubcategorySlugs = parseFilterSlugList(searchParams.toolSubcategory);
 
   // Get all products first (without collection filter) to properly separate collections from colors
-  const allProducts = await productRepository.findByCategory(category.id, filtersWithoutCollections);
+  let allProducts = await productRepository.findByCategory(category.id, filtersWithoutCollections);
   const allBrands = await brandRepository.findAll();
 
   // Get unique brands used in this category
   const categoryProducts = await productRepository.findByCategory(category.id);
   const categoryBrandIds = new Set(categoryProducts.map(p => p.brandId));
   const availableBrands = allBrands.filter(b => categoryBrandIds.has(b.id));
+  const availableToolGroups = category.slug === 'alat' ? buildToolGroupOptions(categoryProducts) : [];
+  const availableToolSubcategories = category.slug === 'alat'
+    ? buildToolSubcategoryOptions(categoryProducts, selectedToolGroupSlugs)
+    : [];
+
+  if (category.slug === 'alat') {
+    allProducts = filterRomusToolProducts(allProducts, selectedToolGroupSlugs, selectedToolSubcategorySlugs);
+  }
 
   // Get ALL products without any filters to calculate available thickness options
   // This ensures all thickness options remain visible even when one is selected
@@ -697,12 +826,19 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           <aside className="lg:w-60 flex-shrink-0">
             <ProductFilters
               availableBrands={availableBrands}
-              currentFilters={{ ...filtersWithoutCollections, listing: listingMode }}
+              currentFilters={{
+                ...filtersWithoutCollections,
+                listing: listingMode,
+                toolGroup: selectedToolGroupSlugs,
+                toolSubcategory: selectedToolSubcategorySlugs,
+              }}
               availableCollections={availableCollections}
               availableFamilies={category.slug === 'tekstilne-ploce' ? availableFamilies : undefined}
               availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
               availableThickness={availableThickness}
               availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
+              availableToolGroups={category.slug === 'alat' ? availableToolGroups : undefined}
+              availableToolSubcategories={category.slug === 'alat' ? availableToolSubcategories : undefined}
             />
           </aside>
 

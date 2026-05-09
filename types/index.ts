@@ -144,4 +144,6 @@ export interface ProductFilters {
   listing?: 'core' | 'accessory' | 'all'; // Listing segment filter for categories with accessory taxonomy
   thickness?: string[]; // For overall thickness filter (for LVT) - array of thickness values like "2.00", "2.50", etc.
   woodType?: string; // For Parket: 'Hrast' | 'Jasen'
+  toolGroup?: string[]; // For Alat: Romus top-level tool groups, represented as URL-safe slugs
+  toolSubcategory?: string[]; // For Alat: Romus tool subcategories, represented as URL-safe slugs
 }

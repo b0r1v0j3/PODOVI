@@ -252,6 +252,16 @@ export class SupabaseProductRepository implements IProductRepository {
       if (filters?.brandIds && filters.brandIds.length > 0) {
         romusCatalogProducts = romusCatalogProducts.filter((product) => filters.brandIds!.includes(product.brandId));
       }
+      if (filters?.priceMin !== undefined) {
+        romusCatalogProducts = romusCatalogProducts.filter((product) =>
+          typeof product.price === 'number' && product.price >= filters.priceMin!
+        );
+      }
+      if (filters?.priceMax !== undefined) {
+        romusCatalogProducts = romusCatalogProducts.filter((product) =>
+          typeof product.price === 'number' && product.price <= filters.priceMax!
+        );
+      }
 
       products = [...products, ...romusCatalogProducts];
     }
