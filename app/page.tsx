@@ -11,20 +11,6 @@ export const metadata = {
   description: 'Pronađite pravo rešenje za vaš prostor: laminat, vinil, parket, alati, lajsne, otirači i drugi sistemi vodećih evropskih brendova.',
 };
 
-const HOMEPAGE_CATEGORY_SLUGS = [
-  'parket',
-  'laminat',
-  'lvt',
-  'tekstilne-ploce',
-  'deking',
-  'vinil',
-  'linoleum',
-  'industrijske-ploce',
-  'sport',
-  'elektroprovodni',
-  'alat',
-];
-
 const COLLECTION_SKU_PREFIXES = [
   'GER-',
   'TARKETT-',
@@ -38,6 +24,7 @@ const COLLECTION_SKU_PREFIXES = [
   'ESD-',
   'IND-',
   'SPORT-',
+  'TARKETT-LAJSNE-',
 ];
 
 function hasCollectionSku(product: Product): boolean {
@@ -91,10 +78,7 @@ function selectHomepageProducts(products: Product[]): Product[] {
 
 export default async function HomePage() {
   const categories = await categoryRepository.findAll();
-  const categoriesBySlug = new Map(categories.map((category) => [category.slug, category]));
-  const homepageCategories = HOMEPAGE_CATEGORY_SLUGS
-    .map((slug) => categoriesBySlug.get(slug))
-    .filter((category): category is NonNullable<typeof category> => Boolean(category));
+  const homepageCategories = categories;
   const [brands, productBuckets] = await Promise.all([
     brandRepository.findAll(),
     Promise.all(homepageCategories.map((category) => productRepository.findByCategory(category.id))),
