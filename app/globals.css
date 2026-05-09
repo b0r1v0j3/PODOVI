@@ -156,6 +156,10 @@
     @apply bg-stone-100 text-stone-700;
   }
 
+  .badge-alat {
+    @apply bg-sky-50 text-sky-700;
+  }
+
   .badge-tekstilne {
     @apply bg-teal-50 text-teal-700;
   }

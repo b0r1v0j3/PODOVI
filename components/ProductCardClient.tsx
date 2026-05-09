@@ -34,6 +34,7 @@ const categoryBadgeConfig: Record<string, { label: string; className: string }> 
   '10': { label: 'Sport', className: 'badge-sport' },
   '11': { label: 'Lajsne', className: 'badge-lajsne' },
   '12': { label: 'Otirači', className: 'badge-otiraci' },
+  '13': { label: 'Alat', className: 'badge-alat' },
 };
 
 // Keys to extract from specs for chip display
@@ -42,6 +43,8 @@ const SPEC_CHIP_KEYS = [
   { key: 'overall_thickness', label: 'Debljina' },
   { key: 'installation', label: 'Ugradnja' },
   { key: 'wear_layer', label: 'Sloj habanja' },
+  { key: 'tool_subcategory', label: 'Podgrupa' },
+  { key: 'romus_ref', label: 'Romus ref.' },
   { key: 'format', label: 'Format' },
   { key: 'dimension', label: 'Dimenzije' },
   { key: 'klasa_upotrebe', label: 'Klasa' },

@@ -99,6 +99,14 @@ export const categories: Category[] = [
     image: '/images/categories/otiraci.jpg',
     order: 12,
   },
+  {
+    id: '13',
+    name: 'Alat',
+    slug: 'alat',
+    description: 'Romus alati za postavljanje, pripremu i završnu obradu podova, sa cenama za rasprodaju lagera',
+    image: '/images/categories/alat.png',
+    order: 13,
+  },
 
 ];
 
@@ -156,6 +164,15 @@ export const brands: Brand[] = [
     description: 'Poljski proizvođač sistemskih otirača, aluminijumskih ulaznih zona, reklamnih, unutrašnjih, spoljašnjih i antifatig podloga',
     website: 'https://www.techem-wycieraczki.com.pl/en/products/',
     countryOfOrigin: 'Poljska',
+  },
+  {
+    id: '13',
+    name: 'Romus',
+    slug: 'romus',
+    logo: '/images/placeholder.svg',
+    description: 'Francuski proizvođač profesionalnih alata, pribora i opreme za podopolagače',
+    website: 'https://www.romusworld.com/',
+    countryOfOrigin: 'Francuska',
   },
 ];
 

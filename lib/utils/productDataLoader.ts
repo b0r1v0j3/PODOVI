@@ -17,6 +17,7 @@ import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
 import techemMatsData from '@/public/data/techem_mats.json';
+import romusToolsData from '@/public/data/romus_tools.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
 import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
@@ -70,10 +71,19 @@ let techemDatasetCache:
     }
     | undefined = undefined;
 let techemProductsCache: Product[] | null = null;
+let romusToolsDatasetCache:
+    | {
+        entries: Record<string, any>[];
+        generatedAt: Date | null;
+    }
+    | undefined = undefined;
+let romusToolProductsCache: Product[] | null = null;
 
 const DEFAULT_CATALOG_DATE = '2024-01-01';
 const DEFAULT_TECHEM_CATEGORY_ID = '12';
 const DEFAULT_TECHEM_BRAND_ID = '12';
+const DEFAULT_ROMUS_TOOL_CATEGORY_ID = '13';
+const DEFAULT_ROMUS_BRAND_ID = '13';
 const TARKETT_COLLECTION_LOCAL_ASSET_SET = new Set(tarkettCollectionCoverAssetPaths);
 const BLOQ_ROOMSHOT_LOCAL_ASSET_SET = new Set(bloqRoomshotAssetPaths);
 
@@ -446,6 +456,167 @@ function loadTechemDataset() {
 
 function loadTechemDatasetEntries(): Record<string, any>[] {
     return loadTechemDataset().entries;
+}
+
+function normalizeRomusToolSpecs(rawProduct: Record<string, any>) {
+    let specs: Product['specs'] = [];
+
+    for (const source of [
+        rawProduct.specs,
+        rawProduct.specifications,
+        rawProduct.characteristics,
+        rawProduct.attributes,
+    ]) {
+        specs = mergeUniqueSpecs(specs, normalizeSpecSource(source));
+    }
+
+    const directSpecs: Product['specs'] = [
+        rawProduct.toolGroup
+            ? { key: 'collection', label: 'Grupa', value: normalizeText(rawProduct.toolGroup) }
+            : null,
+        rawProduct.toolSubcategory
+            ? { key: 'tool_subcategory', label: 'Podgrupa', value: normalizeText(rawProduct.toolSubcategory) }
+            : null,
+        rawProduct.variantName
+            ? { key: 'variant', label: 'Varijanta', value: normalizeText(rawProduct.variantName) }
+            : null,
+        rawProduct.sku
+            ? { key: 'romus_ref', label: 'Romus ref.', value: normalizeText(rawProduct.sku) }
+            : null,
+        rawProduct.sourceProductId
+            ? { key: '__romus_source_product_id', label: '__Romus Source Product ID', value: normalizeText(rawProduct.sourceProductId) }
+            : null,
+        rawProduct.sourceVariationId
+            ? { key: '__romus_source_variation_id', label: '__Romus Source Variation ID', value: normalizeText(rawProduct.sourceVariationId) }
+            : null,
+        rawProduct.sourceSlug
+            ? { key: '__romus_source_slug', label: '__Romus Source Slug', value: normalizeText(rawProduct.sourceSlug) }
+            : null,
+    ].filter((spec): spec is Product['specs'][number] => Boolean(spec));
+
+    return mergeUniqueSpecs(specs, directSpecs);
+}
+
+function loadRomusToolsDataset() {
+    if (romusToolsDatasetCache) {
+        return romusToolsDatasetCache;
+    }
+
+    try {
+        const rawData = romusToolsData as Record<string, unknown> | Array<Record<string, unknown>>;
+        const generatedAtValue =
+            rawData && typeof rawData === 'object'
+                ? normalizeText((rawData as Record<string, unknown>).generatedAt)
+                : '';
+        const parsedGeneratedAt = generatedAtValue ? new Date(generatedAtValue) : null;
+        const generatedAt =
+            parsedGeneratedAt && !Number.isNaN(parsedGeneratedAt.getTime())
+                ? parsedGeneratedAt
+                : null;
+
+        if (Array.isArray(rawData)) {
+            romusToolsDatasetCache = {
+                entries: rawData,
+                generatedAt,
+            };
+            return romusToolsDatasetCache;
+        }
+
+        for (const key of ['products', 'items', 'catalog']) {
+            if (Array.isArray((rawData as Record<string, unknown>)[key])) {
+                romusToolsDatasetCache = {
+                    entries: (rawData as Record<string, any>)[key],
+                    generatedAt,
+                };
+                return romusToolsDatasetCache;
+            }
+        }
+    } catch (error) {
+        console.error('Failed to load Romus tools dataset:', error);
+        romusToolsDatasetCache = undefined;
+        return {
+            entries: [],
+            generatedAt: null,
+        };
+    }
+
+    romusToolsDatasetCache = {
+        entries: [],
+        generatedAt: null,
+    };
+    return romusToolsDatasetCache;
+}
+
+function transformRomusToolProduct(
+    rawProduct: Record<string, any>,
+    index: number,
+    datasetGeneratedAt?: Date | null
+): Product | null {
+    const name = normalizeText(rawProduct.name || rawProduct.title || rawProduct.product_name);
+    const sku = normalizeText(rawProduct.sku || rawProduct.reference || rawProduct.ref || rawProduct.id);
+
+    if (!name && !sku) {
+        return null;
+    }
+
+    const categoryId = normalizeText(rawProduct.categoryId || rawProduct.category_id) || DEFAULT_ROMUS_TOOL_CATEGORY_ID;
+    const brandId = normalizeText(rawProduct.brandId || rawProduct.brand_id) || DEFAULT_ROMUS_BRAND_ID;
+    const slug = normalizeText(rawProduct.slug || rawProduct.handle) || `romus-${slugifyValue(name || sku || `alat-${index + 1}`)}-${sku || index + 1}`;
+    const id = normalizeText(rawProduct.id) || `romus-${sku || slug || index + 1}`;
+    const specs = normalizeRomusToolSpecs(rawProduct);
+    const description =
+        normalizeText(rawProduct.description || rawProduct.longDescription || rawProduct.long_description || rawProduct.body) ||
+        enrichProductDescription({ name: name || sku, categoryId, brandId, specs } as any);
+    const shortDescription =
+        normalizeText(rawProduct.shortDescription || rawProduct.short_description || rawProduct.summary || rawProduct.subtitle) ||
+        enrichShortDescription({ name: name || sku, categoryId, brandId, specs } as any);
+    const rawImages = [
+        rawProduct.heroImage,
+        ...(Array.isArray(rawProduct.galleryImages) ? rawProduct.galleryImages : []),
+        ...(Array.isArray(rawProduct.images) ? rawProduct.images : []),
+        rawProduct.image,
+        rawProduct.image_url,
+        rawProduct.thumbnail,
+        rawProduct.thumbnail_url,
+    ].filter(Boolean);
+    const images = rawImages
+        .map((image, imageIndex) => normalizeProductImage(image, id, name || sku || 'Romus alat', imageIndex))
+        .filter((image): image is Product['images'][number] => Boolean(image))
+        .reduce<Product['images']>((acc, image, imageIndex) => {
+            if (acc.some((existingImage) => existingImage.url === image.url)) {
+                return acc;
+            }
+
+            acc.push({
+                ...image,
+                order: imageIndex,
+                isPrimary: imageIndex === 0 ? true : image.isPrimary,
+            });
+            return acc;
+        }, []);
+    const createdAt = parseValidDate(rawProduct.createdAt || rawProduct.created_at);
+    const updatedAt = parseValidDate(rawProduct.updatedAt || rawProduct.updated_at);
+
+    return {
+        id,
+        name: name || sku || `Romus alat ${index + 1}`,
+        slug,
+        sku: sku || `ROMUS-${slug.toUpperCase()}`,
+        categoryId,
+        brandId,
+        shortDescription,
+        description,
+        images,
+        specs,
+        price: parseOptionalNumber(rawProduct.price),
+        priceUnit: normalizeText(rawProduct.priceUnit || rawProduct.price_unit) || 'kom',
+        inStock: parseOptionalBoolean(rawProduct.inStock ?? rawProduct.in_stock, true),
+        featured: parseOptionalBoolean(rawProduct.featured, false),
+        externalLink: normalizeText(rawProduct.externalLink || rawProduct.external_link || rawProduct.url || rawProduct.href) || undefined,
+        documents: normalizeDocumentList(rawProduct),
+        createdAt: createdAt || datasetGeneratedAt || new Date(DEFAULT_CATALOG_DATE),
+        updatedAt: updatedAt || datasetGeneratedAt || new Date(DEFAULT_CATALOG_DATE),
+    };
 }
 
 function transformTechemProduct(
@@ -976,6 +1147,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getTarkettLajsneCollections(),
         ...getAllDekingProducts(),
         ...getAllTechemProducts(),
+        ...getAllRomusToolProducts(),
         ...getVinylCollectionProducts(),
         ...getManualCollectionProducts(),
     ];
@@ -997,6 +1169,7 @@ export function getProductsByCollection(collection: string): Product[] {
  */
 export function getProductsByCategory(categoryId: string): Product[] {
     const techemProducts = getAllTechemProducts();
+    const romusToolProducts = getAllRomusToolProducts();
 
     if (categoryId === '6') {
         // Return both Gerflor LVT and Tarkett LVT
@@ -1025,6 +1198,8 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return getAllDekingProducts();
     } else if (techemProducts.some((product) => product.categoryId === categoryId)) {
         return techemProducts.filter((product) => product.categoryId === categoryId);
+    } else if (romusToolProducts.some((product) => product.categoryId === categoryId)) {
+        return romusToolProducts.filter((product) => product.categoryId === categoryId);
     }
 
     return [
@@ -1041,6 +1216,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
         ...getAllTechemProducts(),
+        ...getAllRomusToolProducts(),
         ...getVinylCollectionProducts(),
         ...getManualCollectionProducts(),
     ].filter(p => p.categoryId === categoryId);
@@ -1997,6 +2173,46 @@ export function getAllTechemProducts(): Product[] {
     techemProductsCache = uniqueProducts;
 
     return techemProductsCache;
+}
+
+export function getAllRomusToolProducts(): Product[] {
+    const romusDataset = loadRomusToolsDataset();
+    if (romusDataset.entries.length === 0) {
+        return [];
+    }
+
+    if (romusToolProductsCache) {
+        return romusToolProductsCache;
+    }
+
+    const products = romusDataset.entries
+        .map((product: Record<string, any>, index: number) =>
+            transformRomusToolProduct(product, index, romusDataset.generatedAt)
+        )
+        .filter((product): product is Product => Boolean(product));
+
+    const seenSlugs = new Set<string>();
+    const uniqueProducts = products.filter((product: Product) => {
+        if (!product.slug || seenSlugs.has(product.slug)) {
+            return false;
+        }
+
+        seenSlugs.add(product.slug);
+        return true;
+    });
+
+    romusToolProductsCache = uniqueProducts.sort((a, b) => {
+        const aHasPrice = (a.price || 0) > 0;
+        const bHasPrice = (b.price || 0) > 0;
+
+        if (aHasPrice !== bHasPrice) {
+            return aHasPrice ? -1 : 1;
+        }
+
+        return 0;
+    });
+
+    return romusToolProductsCache;
 }
 
 export function getTechemDatasetGeneratedAt(): Date | null {

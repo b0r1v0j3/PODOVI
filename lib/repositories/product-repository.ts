@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllTechemProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -220,6 +220,40 @@ export class SupabaseProductRepository implements IProductRepository {
       }
 
       products = [...products, ...techemCatalogProducts];
+    }
+
+    const romusToolProducts = getAllRomusToolProducts();
+    const romusToolCategoryIds = new Set(romusToolProducts.map((product) => product.categoryId).filter(Boolean));
+
+    if (
+      romusToolProducts.length > 0 &&
+      (
+        !filters?.categoryId ||
+        (legacyCategoryId ? romusToolCategoryIds.has(legacyCategoryId) : false) ||
+        (filters.categoryId ? romusToolCategoryIds.has(filters.categoryId) : false)
+      )
+    ) {
+      const existingSlugs = new Set(products.map((product: Product) => product.slug));
+      let romusCatalogProducts = romusToolProducts.filter((product) => !existingSlugs.has(product.slug));
+
+      if (filters?.search) {
+        const searchLower = normalizeSearchText(filters.search);
+        romusCatalogProducts = romusCatalogProducts.filter((product) =>
+          normalizeSearchText(product.name).includes(searchLower) ||
+          normalizeSearchText(product.shortDescription).includes(searchLower) ||
+          normalizeSearchText(product.description).includes(searchLower) ||
+          normalizeSearchText(product.sku).includes(searchLower) ||
+          (product.specs || []).some((spec) =>
+            normalizeSearchText(`${spec.label} ${spec.value}`).includes(searchLower)
+          )
+        );
+      }
+
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        romusCatalogProducts = romusCatalogProducts.filter((product) => filters.brandIds!.includes(product.brandId));
+      }
+
+      products = [...products, ...romusCatalogProducts];
     }
 
     // Category 6: LVT (Add Tarkett LVT products + collection headers)
@@ -565,6 +599,7 @@ export class MockProductRepository implements IProductRepository {
     ...getTarkettLajsneCollections(),
     ...getAllDekingProducts(),
     ...getAllTechemProducts(),
+    ...getAllRomusToolProducts(),
     ...getVinylCollectionProducts(),
     ...getEsdCollectionProducts(),
     ...getManualCollectionProducts(),

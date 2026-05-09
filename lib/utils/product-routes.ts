@@ -22,6 +22,7 @@ const CATEGORY_ROUTE_SLUG_MAP: Record<string, string> = {
   '10': 'sport',
   '11': 'lajsne',
   '12': 'otiraci',
+  '13': 'alat',
 };
 
 function slugifyCollectionName(value: string): string {

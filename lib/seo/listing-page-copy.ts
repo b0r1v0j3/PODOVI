@@ -41,6 +41,31 @@ export function getCategoryPageCopy(category: Category): ListingPageCopy {
     };
   }
 
+  if (category.slug === 'alat') {
+    return {
+      heading: 'Alat',
+      lead: 'Romus profesionalni alati za pripremu podloge, sečenje, zavarivanje, ugradnju i završnu obradu podova.',
+      body: 'U kategoriji Alat nalaze se proizvodi iz odabranog Romus asortimana sa javnim cenama: ručni alati, mašine, pribor, potrošni delovi i oprema za podopolagače. Fokus je na rasprodaji dostupnog lagera, bez proširivanja na taktilne površine, lajsne, otirače i ostali Romus program.',
+      bullets: [
+        'Alati za pripremu podloge, skidanje obloga, brušenje i mešanje',
+        'Noževi, sečiva, alati za merenje, sečenje i zavarivanje podova',
+        'Mašine, rasveta, transportna oprema i potrošni delovi sa prikazanim cenama',
+      ],
+      metaTitle: 'Romus Alat za Podove | Cene i Rasprodaja Lagera | podovi.online',
+      metaDescription: 'Romus alat za podopolagače sa cenama: priprema podloge, sečenje, zavarivanje, mašine, pribor i potrošni delovi za rasprodaju lagera.',
+      keywords: dedupeKeywords([
+        'Romus alat',
+        'alat za podove',
+        'podopolagacki alat',
+        'alat za zavarivanje podova',
+        'alat za pripremu podloge',
+        'sečiva za podove',
+        'rasprodaja alata',
+        'Srbija',
+      ]),
+    };
+  }
+
   return {
     heading: category.name,
     lead: category.description,
@@ -77,6 +102,29 @@ export function getBrandPageCopy(brand: Brand): ListingPageCopy {
         'reklamni otirači',
         'industrijske podloge',
         'otirači za objekte',
+        'Srbija',
+      ]),
+    };
+  }
+
+  if (brand.slug === 'romus') {
+    return {
+      heading: 'Romus',
+      lead: 'Romus profesionalni alati, pribor i oprema za podopolagače, organizovani kao izdvojena ponuda za rasprodaju lagera.',
+      body: 'Romus katalog na podovi.online obuhvata samo alat iz odabranog asortimana: pripremu podloge, ručne alate, specijalne alate, mašine i opremu za rad. Ostali Romus programi nisu deo ove ponude.',
+      bullets: [
+        'Profesionalni alati za ugradnju i obradu podova',
+        'Pribor, sečiva, mašine i potrošni delovi sa prikazanim cenama',
+        'Izdvojena ponuda za rasprodaju postojećeg lagera',
+      ],
+      metaTitle: 'Romus Alat | podovi.online',
+      metaDescription: 'Romus alat i oprema za podopolagače na podovi.online: priprema podloge, sečenje, zavarivanje, mašine i potrošni delovi sa cenama.',
+      keywords: dedupeKeywords([
+        'Romus',
+        'Romus alat',
+        'alat za podove',
+        'podopolagački alat',
+        'rasprodaja alata',
         'Srbija',
       ]),
     };

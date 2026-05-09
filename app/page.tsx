@@ -8,7 +8,7 @@ import { Product } from '@/types';
 
 export const metadata = {
   title: 'podovi',
-  description: 'Pronađite pravo rešenje za vaš prostor: laminat, vinil, parket, lajsne, otirači i drugi sistemi vodećih evropskih brendova.',
+  description: 'Pronađite pravo rešenje za vaš prostor: laminat, vinil, parket, alati, lajsne, otirači i drugi sistemi vodećih evropskih brendova.',
 };
 
 const HOMEPAGE_CATEGORY_SLUGS = [
@@ -22,6 +22,7 @@ const HOMEPAGE_CATEGORY_SLUGS = [
   'industrijske-ploce',
   'sport',
   'elektroprovodni',
+  'alat',
 ];
 
 const COLLECTION_SKU_PREFIXES = [
