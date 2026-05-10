@@ -83,6 +83,24 @@ describe('Catalog asset selection contract', () => {
   }, 15000);
 
   it('uses real database logos when curated fallback is only a placeholder', async () => {
+    vi.doMock('@/lib/data/mock-data', async (importOriginal) => {
+      const actual = await importOriginal<typeof import('@/lib/data/mock-data')>();
+
+      return {
+        ...actual,
+        brands: [
+          ...actual.brands,
+          {
+            id: 'placeholder-brand',
+            name: 'Placeholder Brand',
+            slug: 'placeholder-brand',
+            logo: '/images/placeholder.svg',
+            description: 'Test-only brand with placeholder fallback logo',
+          },
+        ],
+      };
+    });
+
     vi.doMock('@/lib/supabase/client', () => ({
       hasSupabaseAnonConfig: () => true,
       supabase: {
@@ -91,10 +109,10 @@ describe('Catalog asset selection contract', () => {
             eq: () => ({
               single: async () => ({
                 data: {
-                  id: 'timbertech-db-id',
-                  slug: 'timbertech',
-                  name: 'TimberTech',
-                  logo: 'https://cdn.example.com/timbertech-logo.png',
+                  id: 'placeholder-brand-db-id',
+                  slug: 'placeholder-brand',
+                  name: 'Placeholder Brand',
+                  logo: 'https://cdn.example.com/placeholder-brand-logo.png',
                 },
                 error: null,
               }),
@@ -106,9 +124,9 @@ describe('Catalog asset selection contract', () => {
 
     const { SupabaseBrandRepository } = await import('@/lib/repositories/brand-repository');
     const repository = new SupabaseBrandRepository();
-    const brand = await repository.findBySlug('timbertech');
+    const brand = await repository.findBySlug('placeholder-brand');
 
-    expect(brand?.logo).toBe('https://cdn.example.com/timbertech-logo.png');
+    expect(brand?.logo).toBe('https://cdn.example.com/placeholder-brand-logo.png');
   }, 15000);
 
   it('keeps category repository images aligned with curated fallback heroes', async () => {
