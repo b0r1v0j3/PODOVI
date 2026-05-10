@@ -15,21 +15,16 @@ export default function BrandLogoMark({ brand }: BrandLogoMarkProps) {
   }
 
   return (
-    <div className="flex items-center gap-3">
-      <span className="text-sm text-gray-500">Brend:</span>
+    <div className="flex items-center">
       {hasUsableBrandLogo(brand.logo) ? (
-        <span
-          className="inline-flex h-12 max-w-[190px] items-center rounded-xl border border-gray-200 bg-white px-4 py-2 shadow-sm"
+        <img
+          src={brand.logo}
+          alt={`${brand.name} logo`}
+          className="h-10 w-auto max-w-[180px] object-contain"
           title={brand.name}
-        >
-          <img
-            src={brand.logo}
-            alt={`${brand.name} logo`}
-            className="h-9 w-auto max-w-[160px] object-contain"
-            loading="eager"
-            decoding="async"
-          />
-        </span>
+          loading="eager"
+          decoding="async"
+        />
       ) : (
         <span className="text-gray-900 font-semibold">{brand.name}</span>
       )}
