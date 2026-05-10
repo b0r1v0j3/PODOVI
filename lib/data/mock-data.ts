@@ -151,7 +151,7 @@ export const brands: Brand[] = [
     id: '11',
     name: 'Wolflor',
     slug: 'wolflor',
-    logo: '/images/brands/wolflor.svg',
+    logo: '/images/brands/wolflor-logo.png',
     description: 'Proizvođač komercijalnih vinil podova sa homogenim, heterogenim i wood-look kolekcijama',
     website: 'https://wolflor.cn/',
     countryOfOrigin: 'Kina',

@@ -25,7 +25,7 @@ export default function BrandLogoMark({ brand }: BrandLogoMarkProps) {
           <img
             src={brand.logo}
             alt={`${brand.name} logo`}
-            className="max-h-9 w-auto max-w-[160px] object-contain"
+            className="h-9 w-auto max-w-[160px] object-contain"
             loading="eager"
             decoding="async"
           />

@@ -515,7 +515,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         '3': { id: '3', name: 'Tarkett', slug: 'tarkett', logo: '/images/brands/tarkett.svg', description: 'Tarkett' },
         '8': { id: '8', name: 'BLOQ', slug: 'bloq', logo: '/images/brands/bloq.svg', description: 'BLOQ' },
         '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/brands/timbertech.svg', description: 'TimberTech' },
-        '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/brands/wolflor.svg', description: 'Wolflor' },
+        '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/brands/wolflor-logo.png', description: 'Wolflor' },
         '12': { id: '12', name: 'Techem', slug: 'techem', logo: '/images/brands/techem-logo-en.png', description: 'Techem' },
         '13': { id: '13', name: 'Romus', slug: 'romus', logo: '/images/brands/romus-logo.png', description: 'Romus' },
       };
