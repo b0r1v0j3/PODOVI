@@ -5,6 +5,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
 import FavoriteButton from './FavoriteButton';
+import BrandLogoMark from './BrandLogoMark';
 import { splitProductTitle } from '@/lib/utils/name-parser';
 import { getCustomColorHeroImageState, getPrimaryColorImage } from '@/lib/utils/product-images';
 
@@ -24,6 +25,7 @@ interface ProductColorSelectorProps {
   brand?: {
     name: string;
     slug: string;
+    logo?: string | null;
   } | null;
   shortDescription?: string;
   specs?: ProductSpec[];
@@ -465,14 +467,7 @@ export default function ProductColorSelector({
           {/* Product Info + CTA - Na mobilnom ide POSLE boja (order-2), na desktopu normalno */}
           <div className={`bg-white rounded-2xl shadow-lg p-6 flex-shrink-0 order-2 lg:order-1 ${hideColorSelector ? 'flex-1 flex flex-col justify-center space-y-8' : 'space-y-4'}`}>
             {/* Brand */}
-            {brand && (
-              <div className="flex items-center space-x-3">
-                <span className="text-sm text-gray-500">Brend:</span>
-                <span className="text-gray-900 font-semibold">
-                  {brand.name}
-                </span>
-              </div>
-            )}
+            <BrandLogoMark brand={brand || null} />
 
             {/* Title: color name in h1 when selected, otherwise split color name; subtitle = collection name */}
             <div>

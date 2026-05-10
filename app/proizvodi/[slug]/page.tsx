@@ -20,6 +20,7 @@ import ProductImage from '@/components/ProductImage';
 import ProductCharacteristics from '@/components/ProductCharacteristics';
 import ProductDescriptionWithCharacteristics from '@/components/ProductDescriptionWithCharacteristics';
 import ProductBenefits from '@/components/ProductBenefits';
+import BrandLogoMark from '@/components/BrandLogoMark';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import {
@@ -513,9 +514,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
       const FALLBACK_BRANDS: Record<string, { id: string; name: string; slug: string; logo: string; description: string }> = {
         '3': { id: '3', name: 'Tarkett', slug: 'tarkett', logo: '/images/brands/tarkett.svg', description: 'Tarkett' },
         '8': { id: '8', name: 'BLOQ', slug: 'bloq', logo: '/images/brands/bloq.svg', description: 'BLOQ' },
-        '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/placeholder.svg', description: 'TimberTech' },
-        '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/placeholder.svg', description: 'Wolflor' },
+        '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/brands/timbertech.svg', description: 'TimberTech' },
+        '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/brands/wolflor.svg', description: 'Wolflor' },
         '12': { id: '12', name: 'Techem', slug: 'techem', logo: '/images/brands/techem-logo-en.png', description: 'Techem' },
+        '13': { id: '13', name: 'Romus', slug: 'romus', logo: '/images/brands/romus.svg', description: 'Romus' },
       };
       brand = FALLBACK_BRANDS[product.brandId] || null;
     }
@@ -768,7 +770,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   originalProductName={originalProductName}
                   productPrice={product.price && product.price > 0 ? product.price : undefined}
                   priceUnit={product.priceUnit}
-                  brand={brand ? { name: brand.name, slug: brand.slug } : null}
+                  brand={brand ? { name: brand.name, slug: brand.slug, logo: brand.logo } : null}
                   shortDescription={product.shortDescription}
                   specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug })}
                   inStock={product.inStock}
@@ -825,14 +827,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
                 {/* Info Section */}
                 <div className="space-y-8">
-                  {brand && (
-                    <div className="flex items-center space-x-3">
-                      <span className="text-sm text-gray-500">Brend:</span>
-                      <span className="text-gray-900 font-semibold">
-                        {brand.name}
-                      </span>
-                    </div>
-                  )}
+                  <BrandLogoMark brand={brand} />
 
                   <div>
                     {(() => {
