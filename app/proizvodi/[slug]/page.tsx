@@ -517,7 +517,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/brands/timbertech.svg', description: 'TimberTech' },
         '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/brands/wolflor.svg', description: 'Wolflor' },
         '12': { id: '12', name: 'Techem', slug: 'techem', logo: '/images/brands/techem-logo-en.png', description: 'Techem' },
-        '13': { id: '13', name: 'Romus', slug: 'romus', logo: '/images/brands/romus.svg', description: 'Romus' },
+        '13': { id: '13', name: 'Romus', slug: 'romus', logo: '/images/brands/romus-logo.png', description: 'Romus' },
       };
       brand = FALLBACK_BRANDS[product.brandId] || null;
     }

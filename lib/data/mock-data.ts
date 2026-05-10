@@ -169,7 +169,7 @@ export const brands: Brand[] = [
     id: '13',
     name: 'Romus',
     slug: 'romus',
-    logo: '/images/brands/romus.svg',
+    logo: '/images/brands/romus-logo.png',
     description: 'Francuski proizvođač profesionalnih alata, pribora i opreme za podopolagače',
     website: 'https://www.romusworld.com/',
     countryOfOrigin: 'Francuska',
