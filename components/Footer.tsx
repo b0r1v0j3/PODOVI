@@ -1,3 +1,5 @@
+import PodoviWordmark from './PodoviWordmark';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -12,10 +14,7 @@ export default function Footer() {
             <div>
               {/* Logo matching header style */}
               <div className="mb-4">
-                <span className="relative inline-block pb-2 text-2xl font-semibold lowercase tracking-tight text-white">
-                  podovi
-                  <span className="absolute bottom-0 left-0 h-px w-full bg-white/35" />
-                </span>
+                <PodoviWordmark textClassName="text-2xl text-white" lineClassName="h-[2px]" />
               </div>
               <p className="text-sm leading-7 text-white/55">
                 Pažljivo biramo podne obloge i prateći asortiman za domove, lokale i projekte.

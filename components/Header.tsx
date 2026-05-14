@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import GlobalSearch from './GlobalSearch';
+import PodoviWordmark from './PodoviWordmark';
 import { useFavorites } from '@/lib/context/FavoritesContext';
 
 export default function Header() {
@@ -32,9 +33,7 @@ export default function Header() {
         <div className="flex items-center justify-between w-full h-[44px] md:h-full">
           {/* Logo */}
           <Link href="/" className="flex items-center group md:w-[190px] lg:w-[220px] md:flex-shrink-0">
-            <span className="text-xl md:text-2xl font-semibold tracking-tighter text-[#1D1D1F]">
-              podovi
-            </span>
+            <PodoviWordmark textClassName="text-xl md:text-2xl text-[#1D1D1F]" lineClassName="h-[2px]" />
           </Link>
 
           {/* Desktop Search */}

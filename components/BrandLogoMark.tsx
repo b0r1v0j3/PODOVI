@@ -1,3 +1,5 @@
+import PodoviWordmark from './PodoviWordmark';
+
 type BrandLogoMarkProps = {
   brand: {
     name: string;
@@ -21,9 +23,7 @@ export default function BrandLogoMark({ brand }: BrandLogoMarkProps) {
   if (brand.name.toLowerCase() === 'podovi' && (!hasUsableBrandLogo(brand.logo) || isRetiredPodoviPlaceholder(brand.logo))) {
     return (
       <div className="flex items-center">
-        <span className="text-3xl font-semibold lowercase tracking-tighter text-[#1D1D1F]">
-          podovi
-        </span>
+        <PodoviWordmark textClassName="text-3xl text-[#1D1D1F]" />
       </div>
     );
   }

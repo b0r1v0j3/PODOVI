@@ -88,6 +88,7 @@ export default function ProductColorSelector({
   const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(initialColorSlug);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
+  const externalLinkLabel = brand?.slug === 'podovi' ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača';
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
   const selectorTitle = uiMode === 'variants' ? 'Varijante' : 'Boje';
   const selectorCountLabel = uiMode === 'variants'
@@ -454,7 +455,7 @@ export default function ProductColorSelector({
                   rel="noopener noreferrer"
                   className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-base px-6 py-3 w-full"
                 >
-                  Pogledaj na sajtu proizvođača
+                  {externalLinkLabel}
                 </a>
               </div>
             )}

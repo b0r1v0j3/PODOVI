@@ -890,7 +890,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         rel="noopener noreferrer"
                         className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-lg px-8 py-4 flex-1"
                       >
-                        Pogledaj na sajtu proizvođača
+                        {product.brandId === '14' ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača'}
                       </a>
                     )}
                   </div>
