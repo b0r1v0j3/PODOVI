@@ -523,7 +523,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/brands/wolflor-logo.png', description: 'Wolflor' },
         '12': { id: '12', name: 'Techem', slug: 'techem', logo: '/images/brands/techem-logo-en.png', description: 'Techem' },
         '13': { id: '13', name: 'Romus', slug: 'romus', logo: '/images/brands/romus-logo.png', description: 'Romus' },
-        '14': { id: '14', name: 'Podovi', slug: 'podovi', logo: '/images/brands/podovi.svg', description: 'Podovi' },
+        '14': { id: '14', name: 'Podovi', slug: 'podovi', logo: '', description: 'Podovi' },
       };
       brand = FALLBACK_BRANDS[product.brandId] || null;
     }

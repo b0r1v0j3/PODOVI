@@ -9,9 +9,23 @@ function hasUsableBrandLogo(logo?: string | null): logo is string {
   return Boolean(logo && !logo.includes('/images/placeholder'));
 }
 
+function isRetiredPodoviPlaceholder(logo?: string | null) {
+  return Boolean(logo && logo.includes('/images/brands/podovi.svg'));
+}
+
 export default function BrandLogoMark({ brand }: BrandLogoMarkProps) {
   if (!brand) {
     return null;
+  }
+
+  if (brand.name.toLowerCase() === 'podovi' && (!hasUsableBrandLogo(brand.logo) || isRetiredPodoviPlaceholder(brand.logo))) {
+    return (
+      <div className="flex items-center">
+        <span className="text-3xl font-semibold lowercase tracking-tighter text-[#1D1D1F]">
+          podovi
+        </span>
+      </div>
+    );
   }
 
   return (
