@@ -152,11 +152,13 @@ function findLoaderProductBySlug(slug: string): Product | null {
                 normalizedSlug.replace(/^wolflor-/, ''),
                 normalizedSlug.replace(/^techem-/, ''),
                 normalizedSlug.replace(/^bloq-/, ''),
+                normalizedSlug.replace(/^podovi-/, ''),
                 normalizedSlug.startsWith('gerflor-') ? '' : `gerflor-${normalizedSlug}`,
                 normalizedSlug.startsWith('tarkett-') ? '' : `tarkett-${normalizedSlug}`,
                 normalizedSlug.startsWith('wolflor-') ? '' : `wolflor-${normalizedSlug}`,
                 normalizedSlug.startsWith('techem-') ? '' : `techem-${normalizedSlug}`,
                 normalizedSlug.startsWith('bloq-') ? '' : `bloq-${normalizedSlug}`,
+                normalizedSlug.startsWith('podovi-') ? '' : `podovi-${normalizedSlug}`,
             ].filter(Boolean)
         )
     );

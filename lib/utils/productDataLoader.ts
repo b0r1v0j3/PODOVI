@@ -20,6 +20,7 @@ import techemMatsData from '@/public/data/techem_mats.json';
 import romusToolsData from '@/public/data/romus_tools.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
+import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 import { selectPreferredCollectionHeroAsset } from '@/lib/utils/catalog-assets';
@@ -78,12 +79,16 @@ let romusToolsDatasetCache:
     }
     | undefined = undefined;
 let romusToolProductsCache: Product[] | null = null;
+let alpodCollectionProductsCache: Product[] | null = null;
+let alpodVariantProductsCache: Product[] | null = null;
+let alpodProductsCache: Product[] | null = null;
 
 const DEFAULT_CATALOG_DATE = '2024-01-01';
 const DEFAULT_TECHEM_CATEGORY_ID = '12';
 const DEFAULT_TECHEM_BRAND_ID = '12';
 const DEFAULT_ROMUS_TOOL_CATEGORY_ID = '13';
 const DEFAULT_ROMUS_BRAND_ID = '13';
+const DEFAULT_PODOVI_BRAND_ID = '14';
 const TARKETT_COLLECTION_LOCAL_ASSET_SET = new Set(tarkettCollectionCoverAssetPaths);
 const BLOQ_ROOMSHOT_LOCAL_ASSET_SET = new Set(bloqRoomshotAssetPaths);
 
@@ -402,6 +407,203 @@ function normalizeTechemSpecs(rawProduct: Record<string, any>) {
     ].filter((spec): spec is Product['specs'][number] => Boolean(spec));
 
     return mergeUniqueSpecs(specs, directSpecs);
+}
+
+function getAlpodRawCollections(categoryId?: string): Record<string, any>[] {
+    const collections = (((alpodFloorCollectionsData as any)?.collections || []) as Record<string, any>[]);
+    return categoryId ? collections.filter((collection) => normalizeText(collection.categoryId) === categoryId) : collections;
+}
+
+function normalizeAlpodSpecs(
+    rawCharacteristics: Record<string, any> | undefined,
+    collectionName: string,
+    options?: {
+        colorCount?: number;
+        sourceUrl?: string;
+        categoryId?: string;
+    }
+): Product['specs'] {
+    let specs = normalizeSpecSource(rawCharacteristics || {});
+
+    const extraSpecs: Product['specs'] = [
+        collectionName
+            ? { key: 'collection', label: 'Kolekcija', value: collectionName }
+            : null,
+        options?.colorCount
+            ? { key: 'color_count', label: 'Broj dekora', value: String(options.colorCount) }
+            : null,
+        options?.sourceUrl
+            ? { key: '__alpod_source_url', label: '__Alpod Source URL', value: normalizeText(options.sourceUrl) }
+            : null,
+    ].filter((spec): spec is Product['specs'][number] => Boolean(spec));
+
+    specs = mergeUniqueSpecs(specs, extraSpecs);
+
+    const thicknessValue =
+        specs.find((spec) => spec.key === 'debljina')?.value ||
+        specs.find((spec) => spec.label.toLowerCase() === 'debljina')?.value;
+    if (thicknessValue && !specs.find((spec) => spec.key === 'thickness')) {
+        specs.push({ key: 'thickness', label: 'Debljina', value: thicknessValue });
+    }
+
+    const wearLayerValue =
+        specs.find((spec) => spec.key === 'habajuci_sloj')?.value ||
+        specs.find((spec) => spec.label.toLowerCase() === 'habajući sloj')?.value;
+    if (wearLayerValue && !specs.find((spec) => spec.key === 'wear_layer')) {
+        specs.push({ key: 'wear_layer', label: 'Habajući sloj', value: wearLayerValue });
+    }
+
+    const woodTypeValue =
+        specs.find((spec) => spec.key === 'dekor_vrsta_drveta')?.value ||
+        specs.find((spec) => spec.label.toLowerCase() === 'dekor / vrsta drveta')?.value;
+    if (woodTypeValue && !specs.find((spec) => spec.key === 'wood_type')) {
+        specs.push({ key: 'wood_type', label: 'Vrsta drveta / dekor', value: woodTypeValue });
+    }
+
+    if (options?.categoryId === '2' && !specs.find((spec) => spec.key === 'type')) {
+        specs.push({ key: 'type', label: 'Tip', value: 'Heterogeni' });
+    }
+
+    return specs;
+}
+
+function normalizeAlpodImages(rawImages: unknown[], fallbackId: string, fallbackAlt: string): Product['images'] {
+    const seenUrls = new Set<string>();
+    return rawImages
+        .map((rawImage, index) => normalizeProductImage(rawImage, fallbackId, fallbackAlt, index))
+        .filter((image): image is Product['images'][number] => {
+            if (!image || seenUrls.has(image.url)) {
+                return false;
+            }
+            seenUrls.add(image.url);
+            return true;
+        });
+}
+
+function transformAlpodCollectionProduct(rawCollection: Record<string, any>, index: number): Product {
+    const name = normalizeText(rawCollection.name) || 'Podovi kolekcija';
+    const slug = normalizeText(rawCollection.slug) || `podovi-kolekcija-${index + 1}`;
+    const categoryId = normalizeText(rawCollection.categoryId) || '2';
+    const colorCount = Number(rawCollection.colorCount || rawCollection.colors?.length || 0);
+    const images = normalizeAlpodImages(
+        [
+            rawCollection.collection_image_url,
+            rawCollection.image,
+            rawCollection.image_url,
+            ...(((rawCollection.colors || []) as Record<string, any>[])
+                .flatMap((color) => Array.isArray(color.images) ? color.images : [color.image || color.image_url])
+                .filter(Boolean)),
+        ],
+        `alpod-collection-${slug}`,
+        name
+    );
+    const specs = normalizeAlpodSpecs(rawCollection.characteristics, name, {
+        colorCount,
+        sourceUrl: rawCollection.url,
+        categoryId,
+    });
+    const description =
+        normalizeText(rawCollection.description) ||
+        `${name} kolekcija u Podovi katalogu. Cena i dostupnost se proveravaju slanjem upita.`;
+
+    return {
+        id: normalizeText(rawCollection.id) || `alpod-collection-${slug}`,
+        name,
+        slug,
+        sku: normalizeText(rawCollection.sku) || `PODOVI-COLLECTION-${slug.toUpperCase()}`,
+        categoryId,
+        brandId: DEFAULT_PODOVI_BRAND_ID,
+        shortDescription:
+            normalizeText(rawCollection.shortDescription) ||
+            `${name} - ${colorCount} ${categoryId === '5' ? 'artikala' : 'dekora'} bez javno istaknute cene`,
+        description,
+        images,
+        specs,
+        detailsSections: [
+            {
+                title: 'Kolekcija',
+                items: [
+                    `${colorCount} ${categoryId === '5' ? 'artikala' : 'dekora'} u kolekciji`,
+                    'Cena na upit',
+                ],
+            },
+        ],
+        externalLink: normalizeText(rawCollection.url) || undefined,
+        price: undefined,
+        priceUnit: undefined,
+        inStock: true,
+        featured: false,
+        createdAt: parseOptionalDate((alpodFloorCollectionsData as any)?.generatedAt),
+        updatedAt: parseOptionalDate((alpodFloorCollectionsData as any)?.generatedAt),
+    };
+}
+
+function transformAlpodVariantProduct(
+    rawColor: Record<string, any>,
+    rawCollection: Record<string, any>,
+    index: number
+): Product & { collectionSlug?: string } {
+    const collectionName = normalizeText(rawCollection.name) || 'Podovi kolekcija';
+    const name = normalizeText(rawColor.name || rawColor.full_name) || collectionName;
+    const fullName = normalizeText(rawColor.full_name) || name;
+    const slug = normalizeText(rawColor.slug) || `podovi-${slugifyValue(`${collectionName}-${name}`)}`;
+    const categoryId = normalizeText(rawCollection.categoryId) || '2';
+    const collectionSlug = normalizeText(rawCollection.slug);
+    const images = normalizeAlpodImages(
+        [
+            ...(Array.isArray(rawColor.images) ? rawColor.images : []),
+            rawColor.image,
+            rawColor.image_url,
+            rawColor.texture_url,
+        ].filter(Boolean),
+        `alpod-variant-${slug}`,
+        fullName
+    );
+    const specs = normalizeAlpodSpecs(
+        {
+            ...(rawCollection.characteristics || {}),
+            ...(rawColor.characteristics || {}),
+        },
+        collectionName,
+        {
+            sourceUrl: rawColor.url || rawCollection.url,
+            categoryId,
+        }
+    );
+    const description =
+        normalizeText(rawColor.description) ||
+        normalizeText(rawCollection.description) ||
+        `${fullName} iz kolekcije ${collectionName}. Cena i dostupnost se proveravaju slanjem upita.`;
+
+    return {
+        id: `alpod-variant-${rawColor.sourceId || slug || index}`,
+        name,
+        slug,
+        sku: normalizeText(rawColor.code || rawColor.sourceSku) || `PODOVI-ITEM-${index + 1}`,
+        categoryId,
+        brandId: DEFAULT_PODOVI_BRAND_ID,
+        shortDescription: `${collectionName} - ${name}`,
+        description,
+        images,
+        specs,
+        detailsSections: [
+            {
+                title: 'Artikal',
+                items: [
+                    `Kolekcija: ${collectionName}`,
+                    'Cena na upit',
+                ],
+            },
+        ],
+        externalLink: normalizeText(rawColor.url || rawCollection.url) || undefined,
+        price: undefined,
+        priceUnit: undefined,
+        inStock: true,
+        featured: false,
+        createdAt: parseOptionalDate((alpodFloorCollectionsData as any)?.generatedAt),
+        updatedAt: parseOptionalDate((alpodFloorCollectionsData as any)?.generatedAt),
+        collectionSlug: collectionSlug || undefined,
+    };
 }
 
 function loadTechemDataset() {
@@ -1146,6 +1348,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getTarkettSportCollections(),
         ...getTarkettLajsneCollections(),
         ...getAllDekingProducts(),
+        ...getAllAlpodProducts(),
         ...getAllTechemProducts(),
         ...getAllRomusToolProducts(),
         ...getVinylCollectionProducts(),
@@ -1181,6 +1384,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
             ...getTarkettHeterogeneousVinylCollections(),
             ...getTarkettHomogeneousVinylCollections(),
             ...getWolflorVinylCollections(),
+            ...getAlpodCollectionProducts('2'),
             ...getManualCollectionProducts().filter((product) => product.categoryId === '2'),
         ];
     } else if (categoryId === '10') {
@@ -1195,7 +1399,11 @@ export function getProductsByCategory(categoryId: string): Product[] {
     } else if (categoryId === '4') {
         return [...getGerflorCarpetCollections(), ...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
     } else if (categoryId === '5') {
-        return getAllDekingProducts();
+        return [...getAllDekingProducts(), ...getAlpodCollectionProducts('5')];
+    } else if (categoryId === '3') {
+        return [
+            ...getAlpodCollectionProducts('3'),
+        ];
     } else if (techemProducts.some((product) => product.categoryId === categoryId)) {
         return techemProducts.filter((product) => product.categoryId === categoryId);
     } else if (romusToolProducts.some((product) => product.categoryId === categoryId)) {
@@ -1215,6 +1423,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
+        ...getAlpodCollectionProducts(),
         ...getAllTechemProducts(),
         ...getAllRomusToolProducts(),
         ...getVinylCollectionProducts(),
@@ -2142,6 +2351,43 @@ export function getAllDekingProducts(): Product[] {
 
     dekingProductsCache = dekingList;
     return dekingProductsCache;
+}
+
+export function getAlpodCollectionProducts(categoryId?: string): Product[] {
+    if (!alpodCollectionProductsCache) {
+        alpodCollectionProductsCache = getAlpodRawCollections()
+            .map((collection, index) => transformAlpodCollectionProduct(collection, index));
+    }
+
+    return categoryId
+        ? alpodCollectionProductsCache.filter((product) => product.categoryId === categoryId)
+        : alpodCollectionProductsCache;
+}
+
+export function getAlpodVariantProducts(categoryId?: string): Array<Product & { collectionSlug?: string }> {
+    if (!alpodVariantProductsCache) {
+        alpodVariantProductsCache = getAlpodRawCollections()
+            .flatMap((collection) =>
+                (((collection.colors || []) as Record<string, any>[]).map((color, index) =>
+                    transformAlpodVariantProduct(color, collection, index)
+                ))
+            );
+    }
+
+    return categoryId
+        ? alpodVariantProductsCache.filter((product) => product.categoryId === categoryId)
+        : alpodVariantProductsCache;
+}
+
+export function getAllAlpodProducts(): Array<Product & { collectionSlug?: string }> {
+    if (!alpodProductsCache) {
+        alpodProductsCache = [
+            ...getAlpodCollectionProducts(),
+            ...getAlpodVariantProducts(),
+        ];
+    }
+
+    return alpodProductsCache;
 }
 
 export function getAllTechemProducts(): Product[] {

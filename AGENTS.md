@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 22.04.2026 (Otirači uklonjeni iz headera)
+> **Poslednje ažuriranje:** 14.05.2026 (Podovi Alpod-source kolekcije deploy + category/PDP selector fix)
 
 ---
 
@@ -37,7 +37,7 @@ Podovi.online je **katalog podnih obloga, otirača i pratećeg asortimana** za t
 ### Ključni principi:
 - **Nije e-commerce** — nema korpu ni checkout. Korisnici šalju upite za proizvode
 - **Sajt je na srpskom jeziku** — sav sadržaj, nazivi, specifikacije su na srpskom
-- **Multi-brand** — Tarkett, Gerflor, BLOQ, TimberTech, Wolflor, Techem — svaki brend ima drugačiju strukturu podataka
+- **Multi-brand** — Tarkett, Gerflor, BLOQ, TimberTech, Wolflor, Techem, Romus, Podovi — svaki brend ima drugačiju strukturu podataka
 - **Data-driven** — proizvodi dolaze iz kombinacije JSON fajlova, TypeScript data fajlova i Supabase baze
 - **SEO optimizovan** — structured data, sitemap, meta tagovi za svaku stranicu
 
@@ -91,10 +91,10 @@ OPS_BASIC_AUTH_ACTOR_ID=
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
 | Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
-| Vinil | 2 | Gerflor (6), Tarkett (3), Wolflor (11) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja), `wolflor_vinyl_colors.json` (64 kolekcije, 771 dekora; 57 live + 7 PDF suplement, slike na Supabase) |
-| Parket | 3 | Tarkett (3) | `lib/data/tarkett-products.ts` |
+| Vinil | 2 | Gerflor (6), Tarkett (3), Wolflor (11), Podovi (14) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja), `wolflor_vinyl_colors.json` (64 kolekcije, 771 dekora; 57 live + 7 PDF suplement, slike na Supabase), `alpod_floor_collections.json` (4 Podovi kolekcije / 372 dekora bez cene, izvor Alpod Store API) |
+| Parket | 3 | Tarkett (3), Podovi (14) | `lib/data/tarkett-products.ts`, `alpod_floor_collections.json` (5 Podovi kolekcija / 320 artikala bez cene, izvor Alpod Store API) |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
-| Deking | 5 | TimberTech (10) | `tis_deking_products.json` |
+| Deking | 5 | TimberTech (10), Podovi (14) | `tis_deking_products.json`, `alpod_floor_collections.json` (2 Podovi kolekcije / 120 artikala bez cene, izvor Alpod Store API) |
 | LVT | 6 | Gerflor (6), Tarkett | `lvt_colors_complete.json` (19 kolekcija, 595 boja), `tarkett_lvt_products.json` |
 | Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` (15 kolekcija, 203 boje) |
 | Elektroprovodni | 8 | Gerflor (6) | `esd_colors.json` (7 kolekcija, 42 boje) |
@@ -147,6 +147,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Alpod-source kolekcije bez cena ubačene kao Podovi katalog (14.05.2026)**
+- Dodat je `public/data/alpod_floor_collections.json`, generisan kroz `tools/extract_alpod_floor_collections.js`, sa 812 artikala bez javno istaknute cene grupisanih u 11 kolekcija: Parket 5/320, Vinil 4/372, Deking 2/120.
+- Alpod se čuva kao upstream izvor/eksterni URL, ali nije vidljivi brend. Za prikaz brenda/logoa koristi se novi interni fallback brend `Podovi` (ID `14`) i `public/images/brands/podovi.svg`, jer proizvođački logoi nisu dostupni.
+- Proširen je ceo collection-aware tok: `productDataLoader.ts`, `product-repository.ts`, `color-helpers.ts`, `prepare-colors.ts`, `/api/colors`, `/api/color-data`, kategorijski tabovi, canonical rute i PDP selector za Podovi imported Vinil/Parket/Deking kolekcije.
+- Ispravljeno posle produkcijske provere: `product-repository.ts` sada za category flow vraća i Podovi varijante (ne samo header kolekcije), `app/kategorije/[slug]/page.tsx` uvodi Deking u `CategoryTabs` i dopušta Podovi parket varijante u tabu Boje, a `app/proizvodi/[slug]/page.tsx` više ne skriva selector za Podovi Deking kolekcije.
+- Regression gate `tests/contracts/podovi-import-contract.test.ts` zaključava 4/372 Vinil, 5/320 Parket i 2/120 Deking Podovi import, PDP selector boje/varijante i `/api/colors` nested payload za Podovi Parket/Deking. Verifikovano: `npm run lint`, `npm run validate:images`, `npm run test:contract`, `npm run build`, produkcijski Vercel deploy.
+- `www.alpod.rs` je dodat u image allowlist contract (`next.config.mjs`, `image-runtime.ts`, `image-runtime-contract.test.ts`, `validate-images.js`) da uvezene slike mogu da rade kroz isti Next image pipeline.
 
 **Otirači uklonjeni iz glavne navigacije (22.04.2026)**
 - `components/Header.tsx` više ne prikazuje link `Otirači` u desktop navigaciji.
@@ -754,11 +762,11 @@ PODOVI/
 │   ├── catalog/            # Listing/brand curation helperi (`listing-curation`, `brand-curation`)
 │   ├── product-page/       # KRITIČNO: resolver, color merge, spec helpers (uključujući nested category 11 / lajsne)
 │   ├── crm/                # CRM status meta + follow-up helperi za inquiry leadove
-│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + mock category fallback (`lajsne`) + manual collection header proizvodi + Tarkett wood enrichment + statički manifesti lokalnih collection asseta
+│   ├── data/               # Tarkett/Gerflor/Parket statički podaci + mock category fallback (`lajsne`) + Podovi display brand fallback + manual collection header proizvodi + Tarkett wood enrichment + statički manifesti lokalnih collection asseta
 │   ├── utils/              # Shared pure helperi poput `product-routes.ts` i `product-images.ts` za canonical href/slug/image-selection contract
 │   └── repositories/       # Data access layer (Supabase, uključujući inquiries + CRM update sloj)
 │
-├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, Wolflor vinil, ESD, Industrijske, Sport, Tarkett sport, Tarkett lajsne, Techem otirači sa `generatedAt`, Tarkett wood collection index + PDF indeksi)
+├── public/data/            # JSON fajlovi sa bojama/specifikacijama i dokument indeksima (LVT, Vinil, Tarkett vinil za kuću, Tarkett homogeni vinil, Tarkett heterogeni vinil, Wolflor vinil, Alpod-source Podovi kolekcije, ESD, Industrijske, Sport, Tarkett sport, Tarkett lajsne, Techem otirači sa `generatedAt`, Tarkett wood collection index + PDF indeksi)
 │
 ├── types/                  # TypeScript tipovi (Product, Category, Brand)
 │
@@ -799,7 +807,7 @@ PODOVI/
 26. **Za ovaj repo ne radi lokalni `vercel deploy` bez zaštite.** Workspace ima ogromne lokalne foldere (`.next`, `tmp`, `output`, `archive*`, `node_modules`), pa CLI bez `.vercelignore` može pokušati da uploaduje više gigabajta šuma. Standardni put je `git push` i Vercel auto-deploy sa `main`.
 27. **Vercel `env pull` upisuje navodnike u `.env.local`.** Ako neka skripta ručno parsira `.env.local` i setuje `process.env`, mora da skine spoljne `"` navodnike; u suprotnom `NEXT_PUBLIC_SUPABASE_URL` postane `"https://..."` i `createClient()` pada sa `Invalid supabaseUrl`.
 28. **Wolflor Vinil kolekcije koriste SKU prefiks `WOLFLOR-VINYL-` i moraju da budu tretirane kao collection header proizvodi.** Ako collection/header detekcija u kategorijskim stranicama ili tabovima proverava samo prefikse poput `GER-`, `TARKETT-` ili `VINIL-`, Wolflor će završiti u pogrešnom toku i nestaće iz `Kolekcije` taba i `brands=11` filter rendera na `/kategorije/vinil`.
-29. **Mock-only brand filteri ne smeju sirovo u Supabase UUID `brand_id` query.** Brendovi poput `BLOQ`, `TimberTech` i `Wolflor` žive kroz mock/JSON/manual sloj; ako `product-repository.ts` pošalje legacy ID tipa `8`, `10` ili `11` direktno u `.in('brand_id', ...)` nad UUID kolonom, Supabase grana pukne i merge blokovi ispod se nikad ne izvrše.
+29. **Mock-only brand filteri ne smeju sirovo u Supabase UUID `brand_id` query.** Brendovi poput `BLOQ`, `TimberTech`, `Wolflor`, `Romus` i internog `Podovi` brenda (`14`) žive kroz mock/JSON/manual sloj; ako `product-repository.ts` pošalje legacy ID tipa `8`, `10`, `11`, `13` ili `14` direktno u `.in('brand_id', ...)` nad UUID kolonom, Supabase grana pukne i merge blokovi ispod se nikad ne izvrše.
 30. **Za Wolflor kolekcije nemoj koristiti roomshot/ambijentalni hero kao kanonski collection image.** Čak i kada vendor ima `collection.jpg` ili category hero u prostoru, Wolflor kolekcijski prikaz kod nas treba da koristi prvu dostupnu sliku dekora/boje; to važi samo za Wolflor i ne treba prelivati na ostale brendove.
 31. **Kad pregaziš Wolflor JPG na istoj Supabase putanji, promeni i URL query verziju.** PDF kolekcije poput `Andes`/`Atlas` sada često dobijaju kvalitetniji crop na istom object path-u (`products/vinyl/.../wl91600.jpg`), pa bez novog `?v=` cache-bust query-ja browser i CDN mogu da nastave da serviraju stari mutni JPG iako je object već zamenjen boljom verzijom.
 32. **`/crm` traži `SUPABASE_SERVICE_ROLE_KEY` za čitanje leadova.** `inquiries` tabela je pod RLS pravilom da javnost može samo `INSERT`; ako service-role env nije dostupan, CRM može da se renderuje ali neće moći da povuče leadove iz baze.

@@ -9,6 +9,7 @@ describe('Image runtime contracts', () => {
     expect(isOptimizableImageSrc('https://media.tarkett-image.com/medium/example.jpg')).toBe(true);
     expect(isOptimizableImageSrc('https://cdn.gerflor.com/product/stc/fra/catalogue-assets/mipolam-technic-el5-eu.jpg')).toBe(true);
     expect(isOptimizableImageSrc('https://www.podovi.online/images/brands/techem-logo-en.png')).toBe(true);
+    expect(isOptimizableImageSrc('https://www.alpod.rs/wp-content/uploads/2026/01/example.jpg')).toBe(true);
 
     expect(isOptimizableImageSrc('https://www.techem-wycieraczki.com.pl/wp-content/uploads/example.jpg')).toBe(false);
     expect(isOptimizableImageSrc('http://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/otiraci/test.jpg')).toBe(false);
@@ -22,6 +23,7 @@ describe('Image runtime contracts', () => {
     expect(hostnames).toContain('nnjmrfwepylrheykalik.supabase.co');
     expect(hostnames).toContain('media.tarkett-image.com');
     expect(hostnames).toContain('cdn.gerflor.com');
+    expect(hostnames).toContain('www.alpod.rs');
     expect(hostnames).toContain('www.podovi.online');
     expect(hostnames).toContain('podovi.online');
     expect(hostnames).not.toContain('**');

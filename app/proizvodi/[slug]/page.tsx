@@ -445,8 +445,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
     const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
     const isTarkettCollection = product.sku?.startsWith('TARKETT-');
+    const isPodoviImportedProduct = product.brandId === '14';
     // For deking (category 5), since we don't have separate collection pages, we should not redirect
-    const shouldRedirectCollection = ['6', '7', '4', '2', '8', '9', '10', '11'].includes(product.categoryId);
+    const shouldRedirectCollection = ['6', '7', '4', '2', '8', '9', '10', '11'].includes(product.categoryId) || (isPodoviImportedProduct && product.categoryId === '5');
 
     if (shouldRedirectCollection && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
       const normalizedCollectionSlug = normalizeCollectionSlugForProductRoute(
@@ -458,6 +459,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
     }
 
     // ── Parket variant: redirect to collection page with ?color= ──
+    if (product.categoryId === '3' && isPodoviImportedProduct && collectionSlugFromProduct) {
+      redirect(`/proizvodi/${collectionSlugFromProduct}?color=${encodeURIComponent(product.slug)}`);
+    }
+
     if (product.categoryId === '3' && product.sku && !product.sku.startsWith('PARKET-')) {
       const collectionSpec = product.specs.find(s => s.key === 'collection');
       const collectionName = getEffectiveParketCollection(product.slug, collectionSpec?.value);
@@ -518,6 +523,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/brands/wolflor-logo.png', description: 'Wolflor' },
         '12': { id: '12', name: 'Techem', slug: 'techem', logo: '/images/brands/techem-logo-en.png', description: 'Techem' },
         '13': { id: '13', name: 'Romus', slug: 'romus', logo: '/images/brands/romus-logo.png', description: 'Romus' },
+        '14': { id: '14', name: 'Podovi', slug: 'podovi', logo: '/images/brands/podovi.svg', description: 'Podovi' },
       };
       brand = FALLBACK_BRANDS[product.brandId] || null;
     }
@@ -596,7 +602,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // ── Determine if this is a "color selector" category ──
     const isTechemCatalogCategory = product.categoryId === '12';
-    const isColorSelectorCategory = !isTechemCatalogCategory && ['6', '7', '4', '2', '3', '1', '8', '9', '10', '11'].includes(product.categoryId);
+    const isPodoviDekingCollection = product.brandId === '14' && product.categoryId === '5';
+    const isColorSelectorCategory = !isTechemCatalogCategory && (['6', '7', '4', '2', '3', '1', '8', '9', '10', '11'].includes(product.categoryId) || isPodoviDekingCollection);
 
     // ── Helper JSX logic to populate masonry columns neatly ──
     const sharedCertsAndEco = (['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
@@ -784,6 +791,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         : product.categoryId === '6' ? 'LVT'
                           : product.categoryId === '7' ? 'Linoleum'
                             : product.categoryId === '2' ? 'Vinil'
+                              : product.categoryId === '5' ? 'Deking'
                                 : product.categoryId === '4' ? 'Tekstilne ploče'
                                 : product.categoryId === '8' ? 'ESD'
                                   : product.categoryId === '9' ? 'Industrijske ploče'
@@ -791,13 +799,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
                                       : product.categoryId === '11' ? 'Lajsne'
                                   : undefined
                     }
-                    apiCategory={product.categoryId === '11' ? 'lajsne' : undefined}
-                    uiMode={product.categoryId === '11' ? 'variants' : 'colors'}
+                    apiCategory={product.categoryId === '11' ? 'lajsne' : product.categoryId === '5' && product.brandId === '14' ? 'deking' : undefined}
+                    uiMode={product.categoryId === '11' || (product.categoryId === '5' && product.brandId === '14') ? 'variants' : 'colors'}
                     videoEmbedUrl={routeSlug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                     inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                     productId={product.id}
                     hideColorSelector={
-                      product.categoryId === '5' ||
+                      (product.categoryId === '5' && !(product.brandId === '14' && customColors && customColors.length > 0)) ||
                       (['2', '9', '10'].includes(product.categoryId) && (!customColors || customColors.length === 0))
                     }
                   />

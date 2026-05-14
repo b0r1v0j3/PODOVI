@@ -13,6 +13,7 @@ import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
+import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import { SITE_URL } from '@/lib/seo/site-config';
 import { getDerivedWeldingSpecs } from './welding-helpers';
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
@@ -39,6 +40,10 @@ export const tarkettVinylHomeCollections = (tarkettVinylHomeColorsData as { coll
 export const tarkettHomogeneousVinylCollections = (tarkettHomogeneousVinylColorsData as { collections?: NestedCollection[] }).collections || [];
 export const tarkettHeterogeneousVinylCollections = (tarkettHeterogeneousVinylColorsData as { collections?: NestedCollection[] }).collections || [];
 export const wolflorVinylCollections = (wolflorVinylColorsData as { collections?: NestedCollection[] }).collections || [];
+export const alpodFloorCollections = (((alpodFloorCollectionsData as any)?.collections || []) as NestedCollection[]);
+export const alpodVinylCollections = alpodFloorCollections.filter((collection: any) => collection.categoryId === '2');
+export const alpodParketCollections = alpodFloorCollections.filter((collection: any) => collection.categoryId === '3');
+export const alpodDekingCollections = alpodFloorCollections.filter((collection: any) => collection.categoryId === '5');
 export const vinylCollections = [
     ...baseVinylCollections,
     ...vinylSpecialCollections,
@@ -46,6 +51,7 @@ export const vinylCollections = [
     ...tarkettHomogeneousVinylCollections,
     ...tarkettHeterogeneousVinylCollections,
     ...wolflorVinylCollections,
+    ...alpodVinylCollections,
 ];
 export const esdCollections = (esdColorsData as { collections?: NestedCollection[] }).collections || [];
 export const industrialCollections = (industrialColorsData as { collections?: NestedCollection[] }).collections || [];
@@ -182,8 +188,12 @@ function getCategoryId(categorySlug: ColorSource['categorySlug']): string {
     switch (categorySlug) {
         case 'vinil':
             return '2';
+        case 'parket':
+            return '3';
         case 'tekstilne-ploce':
             return '4';
+        case 'deking':
+            return '5';
         case 'lvt':
             return '6';
         case 'linoleum':
@@ -409,6 +419,8 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
 
     const nestedSources: Array<{ categorySlug: ColorSource['categorySlug']; collections: NestedCollection[] }> = [
         { categorySlug: 'vinil', collections: vinylCollections },
+        { categorySlug: 'parket', collections: alpodParketCollections },
+        { categorySlug: 'deking', collections: alpodDekingCollections },
         { categorySlug: 'elektroprovodni', collections: esdCollections },
         { categorySlug: 'industrijske-ploce', collections: industrialCollections },
         { categorySlug: 'sport', collections: sportCollections },

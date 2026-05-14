@@ -28,6 +28,12 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'www.alpod.rs',
+        port: '',
+        pathname: '/wp-content/uploads/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'www.podovi.online',
         port: '',
         pathname: '/images/**',

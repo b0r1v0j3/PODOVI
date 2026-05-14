@@ -76,7 +76,7 @@ function getCanonicalDirectColorQuerySlug(
 
 function isRouteGradeCollectionSlug(value: string): boolean {
   return (
-    /^(gerflor|tarkett|wolflor|techem|bloq)-/.test(value) ||
+    /^(gerflor|tarkett|wolflor|techem|bloq|podovi)-/.test(value) ||
     /^[a-z0-9-]+$/.test(value)
   );
 }
@@ -134,13 +134,14 @@ export function normalizeCollectionSlugForProductRoute(
     collectionSlug.startsWith('tarkett-') ||
     collectionSlug.startsWith('wolflor-') ||
     collectionSlug.startsWith('techem-') ||
-    collectionSlug.startsWith('bloq-');
+    collectionSlug.startsWith('bloq-') ||
+    collectionSlug.startsWith('podovi-');
 
   if (categoryId === '7') {
     return collectionSlug.replace(/^gerflor-/, '');
   }
 
-  if (!['2', '4', '6', '8', '9', '10', '11', '12'].includes(categoryId)) {
+  if (!['2', '4', '5', '6', '8', '9', '10', '11', '12'].includes(categoryId)) {
     return collectionSlug;
   }
 
@@ -164,12 +165,20 @@ export function normalizeCollectionSlugForProductRoute(
     return `techem-${collectionSlug}`;
   }
 
+  if (brandId === '14') {
+    return `podovi-${collectionSlug}`;
+  }
+
   return `gerflor-${collectionSlug}`;
 }
 
 export function getProductCollectionRouteSlug(product: ProductWithCollectionSlug): string | null {
   if (!product.slug || hasInlineQuerySlug(product.slug)) {
     return null;
+  }
+
+  if (product.brandId === '14' && product.collectionSlug) {
+    return normalizeCollectionSlugForProductRoute(product.collectionSlug, product.brandId, product.categoryId);
   }
 
   if (product.categoryId === '1') {
@@ -191,7 +200,7 @@ export function getProductCollectionRouteSlug(product: ProductWithCollectionSlug
     return collectionName ? getParketCollectionSlug(collectionName) : null;
   }
 
-  if (!['2', '4', '6', '7', '8', '9', '10', '11'].includes(product.categoryId)) {
+  if (!['2', '4', '5', '6', '7', '8', '9', '10', '11'].includes(product.categoryId)) {
     return null;
   }
 
@@ -242,7 +251,7 @@ export function getCanonicalCollectionAliasHref(
     return null;
   }
 
-  if (!['2', '4', '6', '7', '8', '9', '10', '11'].includes(product.categoryId)) {
+  if (!['2', '4', '5', '6', '7', '8', '9', '10', '11'].includes(product.categoryId)) {
     return null;
   }
 

@@ -3,6 +3,7 @@ const OPTIMIZABLE_REMOTE_IMAGE_HOSTS = new Set([
   'media.tarkett-image.com',
   'nnjmrfwepylrheykalik.supabase.co',
   'podovi.online',
+  'www.alpod.rs',
   'www.podovi.online',
 ]);
 

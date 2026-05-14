@@ -50,6 +50,7 @@ const CATEGORY_ID_BY_SLUG: Record<string, string> = {
   lvt: '6',
   linoleum: '7',
   vinil: '2',
+  deking: '5',
   elektroprovodni: '8',
   'industrijske-ploce': '9',
   sport: '10',
@@ -110,9 +111,10 @@ export default function CategoryTabs({
   const lastDatasetKey = useRef<string>('');
   const useJsonColors = categorySlug === 'linoleum' || categorySlug === 'lvt' || NESTED_JSON_CATEGORIES.includes(categorySlug as (typeof NESTED_JSON_CATEGORIES)[number]);
   const isColorsLoading = useJsonColors && activeTab === 'colors' && (!hasLoadedColors.current || loadingColors);
-  const colorsTabLabel = categorySlug === 'lajsne' ? 'Varijante' : 'Boje';
-  const colorsCountLabel = categorySlug === 'lajsne' ? 'varijanti' : 'boja';
-  const colorsLoadingLabel = categorySlug === 'lajsne' ? 'Učitavam varijante...' : 'Učitavam boje...';
+  const isVariantLabelCategory = categorySlug === 'lajsne' || categorySlug === 'deking';
+  const colorsTabLabel = isVariantLabelCategory ? 'Varijante' : 'Boje';
+  const colorsCountLabel = isVariantLabelCategory ? 'varijanti' : 'boja';
+  const colorsLoadingLabel = isVariantLabelCategory ? 'Učitavam varijante...' : 'Učitavam boje...';
   const collectionsToRender = useMemo(() => {
     let filtered = collections;
 

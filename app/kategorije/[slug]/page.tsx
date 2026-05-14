@@ -258,6 +258,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     category.slug === 'tekstilne-ploce' ||
     category.slug === 'vinil' ||
     category.slug === 'parket' ||
+    category.slug === 'deking' ||
     category.slug === 'laminat' ||
     category.slug === 'elektroprovodni' ||
     category.slug === 'industrijske-ploce' ||
@@ -279,12 +280,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (hasCollectionTabs) {
-    // Collections: GER-, TARKETT-, WOLFLOR-VINYL-, LINOLEUM-, VINIL-, PARKET-, LAM-, BLOQ-, DEKING-, ESD-, IND-, SPORT-
+    // Collections: GER-, TARKETT-, WOLFLOR-VINYL-, LINOLEUM-, VINIL-, PARKET-, LAM-, BLOQ-, DEKING-, ESD-, IND-, SPORT-, PODOVI-COLLECTION-
     // Colors: products without those SKU prefixes
     const hasCollectionSku = (p: { sku?: string | null }) =>
       (
         p.sku?.startsWith('GER-') ||
         p.sku?.startsWith('TARKETT-') ||
+        p.sku?.startsWith('PODOVI-COLLECTION-') ||
         p.sku?.startsWith('WOLFLOR-VINYL-') ||
         p.sku?.startsWith('LINOLEUM-') ||
         p.sku?.startsWith('VINIL-') ||
@@ -309,7 +311,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       colors = allProducts
         .filter(p => !hasCollectionSku(p))
         .filter(p => {
-          if (!validSlugs.has(p.slug)) return false;
+          if (p.brandId !== '14' && !validSlugs.has(p.slug)) return false;
           if (seen.has(p.slug)) return false;
           seen.add(p.slug);
           return true;
@@ -455,6 +457,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         (
           p.sku?.startsWith('GER-') ||
           p.sku?.startsWith('TARKETT-') ||
+          p.sku?.startsWith('PODOVI-COLLECTION-') ||
           p.sku?.startsWith('WOLFLOR-VINYL-') ||
           p.sku?.startsWith('LINOLEUM-') ||
           p.sku?.startsWith('VINIL-')
@@ -682,7 +685,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         // Za Parket, filtriraj i "boje" (varijante) po efektivnoj kolekciji da CategoryTabs prikaže ispravne varijante
         colors = colors.filter(p => {
           const specVal = p.specs?.find(s => s.key === 'collection')?.value;
-          const effective = getEffectiveParketCollection(p.slug, specVal);
+          const effective = getEffectiveParketCollection(p.slug, specVal) || specVal || (p as Product & { collectionSlug?: string }).collectionSlug;
           return effective && selectedCollections.includes(effective);
         });
       } else {
@@ -703,7 +706,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         colors = colors.filter(p => selectedWoodTypes.some(wt => matchWood(p, wt)));
         // Prikaži samo kolekcije koje imaju bar jednu varijantu izabrane vrste drveta
         const collectionNamesWithSelectedWood = new Set(
-          colors.map(p => getEffectiveParketCollection(p.slug, p.specs?.find(s => s.key === 'collection')?.value)).filter(Boolean)
+          colors
+            .map(p => {
+              const specVal = p.specs?.find(s => s.key === 'collection')?.value;
+              return getEffectiveParketCollection(p.slug, specVal) || specVal || (p as Product & { collectionSlug?: string }).collectionSlug;
+            })
+            .filter(Boolean)
         );
         collections = collections.filter(p => {
           const specVal = p.specs?.find(s => s.key === 'collection')?.value;

@@ -12,6 +12,7 @@ import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
+import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import { getDerivedWeldingCharacteristics } from '@/lib/product-page/welding-helpers';
 import { filterCategoryListingCollections, resolveCategoryListingMode } from '@/lib/catalog/listing-curation';
 
@@ -58,6 +59,7 @@ export async function GET(request: NextRequest) {
     const requestedCollection = request.nextUrl.searchParams.get('collection');
     const requestedListingMode = request.nextUrl.searchParams.get('listing');
 
+    const alpodCollections = (((alpodFloorCollectionsData as any)?.collections || []) as any[]);
     const nestedCollectionsMap: Record<string, any[]> = {
         vinil: [
             ...(((vinylColorsData as any)?.collections || []) as any[]),
@@ -66,7 +68,10 @@ export async function GET(request: NextRequest) {
             ...(((tarkettHeterogeneousVinylData as any)?.collections || []) as any[]),
             ...(((tarkettHomogeneousVinylData as any)?.collections || []) as any[]),
             ...(((wolflorVinylData as any)?.collections || []) as any[]),
+            ...alpodCollections.filter((collection) => collection.categoryId === '2'),
         ],
+        parket: alpodCollections.filter((collection) => collection.categoryId === '3'),
+        deking: alpodCollections.filter((collection) => collection.categoryId === '5'),
         elektroprovodni: ((esdColorsData as any)?.collections || []) as any[],
         'industrijske-ploce': ((industrialColorsData as any)?.collections || []) as any[],
         sport: [
@@ -79,6 +84,8 @@ export async function GET(request: NextRequest) {
     if (category in nestedCollectionsMap) {
         const categoryIdBySlug: Record<string, string> = {
             vinil: '2',
+            parket: '3',
+            deking: '5',
             elektroprovodni: '8',
             'industrijske-ploce': '9',
             sport: '10',

@@ -10,6 +10,8 @@ import {
     industrialCollections,
     sportCollections,
     lajsneCollections,
+    alpodParketCollections,
+    alpodDekingCollections,
     resolveSelectedColorServerData,
 } from './color-helpers';
 import { getDerivedWeldingCharacteristics } from './welding-helpers';
@@ -68,6 +70,18 @@ export async function prepareCustomColors(
     product: Product,
     pageSlug: string
 ): Promise<any[] | undefined> {
+    if (product.brandId === '14' && (product.categoryId === '3' || product.categoryId === '5')) {
+        const sourceCollections = product.categoryId === '3' ? alpodParketCollections : alpodDekingCollections;
+        const collection = sourceCollections.find((col: any) =>
+            col.slug === pageSlug ||
+            col.slug === product.slug ||
+            col.slug === (product as { collectionSlug?: string }).collectionSlug
+        );
+        if (collection && collection.colors && collection.colors.length > 0) {
+            return mapNestedCollectionColors(collection, { categoryId: product.categoryId });
+        }
+    }
+
     // Parket: customColors iz varijanti iste kolekcije
     if (product.categoryId === '3') {
         const { tarkettProducts } = await import('@/lib/data/tarkett-products');
@@ -356,6 +370,39 @@ export async function mergeSelectedColor(
 
             product.name = cleanFullName;
             product.shortDescription = `${source.color.collection_name} - ${cleanedName}`;
+
+            const colorImageUrl = getPrimaryColorImage(source.color)?.url;
+            if (colorImageUrl) {
+                product.images = [{
+                    id: `color-img-${selectedColorSlug}`,
+                    url: colorImageUrl,
+                    alt: product.name,
+                    isPrimary: true,
+                    order: 1,
+                }];
+            }
+
+            if (specs.length > 0) {
+                product.specs = mergeSpecs(product.specs, specs);
+            }
+            if (documents.length > 0) {
+                product.documents = documents;
+            }
+            if (source.color.description && typeof source.color.description === 'string' && source.color.description.trim()) {
+                product.description = source.color.description.trim();
+            }
+        }
+    }
+
+    if (selectedColorSlug && product.categoryId === '3' && product.brandId === '14') {
+        const selectedColorData = await resolveSelectedColorServerData(selectedColorSlug, {
+            categoryId: product.categoryId,
+            brandId: product.brandId,
+        });
+        if (selectedColorData?.source.color) {
+            const { source, documents, specs } = selectedColorData;
+            product.name = source.color.full_name || source.color.name;
+            product.shortDescription = `${source.color.collection_name} - ${source.color.name}`;
 
             const colorImageUrl = getPrimaryColorImage(source.color)?.url;
             if (colorImageUrl) {

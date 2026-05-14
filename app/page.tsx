@@ -14,6 +14,7 @@ export const metadata = {
 const COLLECTION_SKU_PREFIXES = [
   'GER-',
   'TARKETT-',
+  'PODOVI-COLLECTION-',
   'WOLFLOR-VINYL-',
   'LINOLEUM-',
   'VINIL-',

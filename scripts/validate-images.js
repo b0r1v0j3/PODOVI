@@ -20,6 +20,7 @@ const allowedCatalogMetadataHosts = new Set([
   'podovi.online',
   'media.tarkett-image.com',
   'cdn.gerflor.com',
+  'www.alpod.rs',
 ]);
 const disallowedCatalogMetadataHosts = new Set([
   'www.techem-wycieraczki.com.pl',

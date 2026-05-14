@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -75,6 +75,23 @@ function enrichCatalogProduct(product: Product): Product {
 
 function isUuidLikeId(id: string): boolean {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+}
+
+function matchesCatalogSearch(product: Product, search: string): boolean {
+  const searchLower = normalizeSearchText(search);
+  return (
+    normalizeSearchText(product.name).includes(searchLower) ||
+    normalizeSearchText(product.shortDescription).includes(searchLower) ||
+    normalizeSearchText(product.description).includes(searchLower) ||
+    normalizeSearchText(product.sku).includes(searchLower) ||
+    (product.specs || []).some((spec) =>
+      normalizeSearchText(`${spec.label} ${spec.value}`).includes(searchLower)
+    )
+  );
+}
+
+function isAlpodVariantProduct(product: Product): boolean {
+  return product.brandId === '14' && !String(product.sku || '').startsWith('PODOVI-COLLECTION-');
 }
 
 // =========================================
@@ -356,6 +373,43 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...vinylJsonCollections];
     }
 
+    const alpodCategoryProducts = getAlpodCollectionProducts();
+    const alpodVariantProducts = getAlpodVariantProducts();
+    const alpodCatalogProducts = filters?.categoryId
+      ? [...alpodCategoryProducts, ...alpodVariantProducts]
+      : alpodCategoryProducts;
+    const alpodCategoryIds = new Set(alpodCatalogProducts.map((product) => product.categoryId).filter(Boolean));
+
+    if (
+      alpodCatalogProducts.length > 0 &&
+      (
+        !filters?.categoryId ||
+        (legacyCategoryId ? alpodCategoryIds.has(legacyCategoryId) : false) ||
+        (filters.categoryId ? alpodCategoryIds.has(filters.categoryId) : false)
+      )
+    ) {
+      const existingSlugs = new Set(products.map((product: Product) => product.slug));
+      let podoviImportedProducts = alpodCatalogProducts
+        .filter((product) => !filters?.categoryId || product.categoryId === legacyCategoryId || product.categoryId === filters.categoryId)
+        .filter((product) => !existingSlugs.has(product.slug));
+
+      if (filters?.search) {
+        podoviImportedProducts = podoviImportedProducts.filter((product) =>
+          matchesCatalogSearch(product, filters.search!)
+        );
+      }
+
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        podoviImportedProducts = podoviImportedProducts.filter((product) => filters.brandIds!.includes(product.brandId));
+      }
+
+      if (filters?.priceMin !== undefined || filters?.priceMax !== undefined) {
+        podoviImportedProducts = [];
+      }
+
+      products = [...products, ...podoviImportedProducts];
+    }
+
     // Category 8: Elektroprovodni (ESD)
     if (!filters?.categoryId || legacyCategoryId === '8' || filters.categoryId === '8') {
       const existingSlugs = new Set(products.map((p: Product) => p.slug));
@@ -608,6 +662,7 @@ export class MockProductRepository implements IProductRepository {
     ...getTarkettSportCollections(),
     ...getTarkettLajsneCollections(),
     ...getAllDekingProducts(),
+    ...getAllAlpodProducts(),
     ...getAllTechemProducts(),
     ...getAllRomusToolProducts(),
     ...getVinylCollectionProducts(),
@@ -695,7 +750,9 @@ export class MockProductRepository implements IProductRepository {
       });
     }
 
-    return filtered;
+    return filters?.categoryId
+      ? filtered
+      : filtered.filter((product) => !isAlpodVariantProduct(product));
   }
 
   async findBySlug(slug: string): Promise<Product | null> {
@@ -711,7 +768,7 @@ export class MockProductRepository implements IProductRepository {
   }
 
   async findByBrand(brandId: string): Promise<Product[]> {
-    return this.products.filter(p => p.brandId === brandId);
+    return this.products.filter(p => p.brandId === brandId && !isAlpodVariantProduct(p));
   }
 
   async findFeatured(): Promise<Product[]> {

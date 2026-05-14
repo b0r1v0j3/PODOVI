@@ -14,6 +14,7 @@ import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
+import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import { resolveSelectedColorServerData } from '@/lib/product-page/color-helpers';
 
 /**
@@ -37,6 +38,8 @@ export async function GET(request: NextRequest) {
     const isLinoleum = categoryId === '7';
     const isCarpet = categoryId === '4';
     const isVinyl = categoryId === '2';
+    const isParket = categoryId === '3';
+    const isDeking = categoryId === '5';
     const isEsd = categoryId === '8';
     const isIndustrial = categoryId === '9';
     const isSport = categoryId === '10';
@@ -91,6 +94,7 @@ export async function GET(request: NextRequest) {
     };
 
     let color = null;
+    const alpodCollections = (((alpodFloorCollectionsData as any)?.collections || []) as any[]);
 
     if (isVinyl) {
         color = findNestedColor([
@@ -100,7 +104,12 @@ export async function GET(request: NextRequest) {
             ...(((tarkettHeterogeneousVinylColorsData as any)?.collections || []) as any[]),
             ...(((tarkettHomogeneousVinylColorsData as any)?.collections || []) as any[]),
             ...(((wolflorVinylColorsData as any)?.collections || []) as any[]),
+            ...alpodCollections.filter((collection) => collection.categoryId === '2'),
         ]);
+    } else if (isParket) {
+        color = findNestedColor(alpodCollections.filter((collection) => collection.categoryId === '3'));
+    } else if (isDeking) {
+        color = findNestedColor(alpodCollections.filter((collection) => collection.categoryId === '5'));
     } else if (isEsd) {
         color = findNestedColor(((esdColorsData as any)?.collections || []));
     } else if (isIndustrial) {

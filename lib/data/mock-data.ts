@@ -174,6 +174,15 @@ export const brands: Brand[] = [
     website: 'https://www.romusworld.com/',
     countryOfOrigin: 'Francuska',
   },
+  {
+    id: '14',
+    name: 'Podovi',
+    slug: 'podovi',
+    logo: '/images/brands/podovi.svg',
+    description: 'Interni Podovi katalog za artikle kod kojih proizvođački logo nije dostupan',
+    website: 'https://www.podovi.online',
+    countryOfOrigin: 'Srbija',
+  },
 ];
 
 export const products: Product[] = [

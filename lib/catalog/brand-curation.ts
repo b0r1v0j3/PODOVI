@@ -3,7 +3,7 @@ import { PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping'
 
 type BrandListingMode = 'collections' | 'products';
 
-const COLLECTION_FIRST_BRAND_IDS = new Set(['3', '6', '8', '11']);
+const COLLECTION_FIRST_BRAND_IDS = new Set(['3', '6', '8', '11', '14']);
 
 function isParketCollectionHeader(product: Product): boolean {
   return (
@@ -27,10 +27,16 @@ function isCollectionRepresentative(product: Product): boolean {
   }
 
   if (product.categoryId === '3') {
-    return isParketCollectionHeader(product);
+    return product.brandId === '14' && sku.startsWith('PODOVI-COLLECTION-')
+      ? true
+      : isParketCollectionHeader(product);
   }
 
-  if (!['2', '4', '6', '7', '8', '9', '10', '11'].includes(product.categoryId)) {
+  if (product.brandId === '14' && sku.startsWith('PODOVI-COLLECTION-')) {
+    return true;
+  }
+
+  if (!['2', '4', '5', '6', '7', '8', '9', '10', '11'].includes(product.categoryId)) {
     return false;
   }
 
@@ -39,6 +45,7 @@ function isCollectionRepresentative(product: Product): boolean {
     slug.startsWith('tarkett-') ||
     slug.startsWith('wolflor-') ||
     slug.startsWith('bloq-') ||
+    slug.startsWith('podovi-') ||
     sku.startsWith('VINIL-') ||
     sku.startsWith('LVT-') ||
     sku.startsWith('LINOLEUM-') ||

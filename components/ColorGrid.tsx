@@ -155,7 +155,7 @@ export default function ColorGrid({
 
   // Extract collection name for URL construction
   const getCollectionName = (slug: string): string => {
-    let collectionName = slug.replace(/^(gerflor|tarkett|wolflor)-/, '');
+    let collectionName = slug.replace(/^(gerflor|tarkett|wolflor|podovi)-/, '');
     if (collectionName.startsWith('creation-')) {
       const parts = collectionName.split('-');
       if (parts.length >= 2) {
@@ -265,7 +265,7 @@ export default function ColorGrid({
     // Determine which category to load from API
     const sportCollectionSlugs = ['dlw-colorette-sport', 'dlw-marmorette-sport-32mm', 'dlw-linodur-sport'];
     const industrialCollectionSlugs = ['gti-max-cleantech', 'gti-max-connect', 'gti-pure-connect', 'attraction-connect'];
-    const normalizedCollectionSlug = collectionSlug.replace(/^(gerflor|tarkett|wolflor)-/, '');
+    const normalizedCollectionSlug = collectionSlug.replace(/^(gerflor|tarkett|wolflor|podovi)-/, '');
     const isSport = sportCollectionSlugs.includes(normalizedCollectionSlug);
     const isIndustrial = industrialCollectionSlugs.includes(normalizedCollectionSlug);
     const isLinoleum = !isSport && normalizedCollectionSlug.startsWith('dlw-');
@@ -276,7 +276,7 @@ export default function ColorGrid({
       'taralay-impression-hop-acoustic', 'taralay-impression-hop-compact',
       'taralay-initial-acoustic', 'taralay-initial-compact',
       'taralay-millenium-acoustic', 'taralay-millenium-compact'];
-    const collectionNameWithoutPrefix = collectionSlug.replace(/^(gerflor|tarkett|wolflor)-/, '');
+    const collectionNameWithoutPrefix = collectionSlug.replace(/^(gerflor|tarkett|wolflor|podovi)-/, '');
     const isVinil = collectionSlug.startsWith('mipolam-') ||
       collectionSlug.startsWith('gerflor-mipolam-') ||
       collectionSlug.startsWith('wolflor-') ||
@@ -308,16 +308,16 @@ export default function ColorGrid({
         let filtered: Color[] = [];
 
         // Handle different JSON structures
-        if ((isVinil || isIndustrial || isSport) && data.collections && Array.isArray(data.collections)) {
+        if (data.collections && Array.isArray(data.collections)) {
           // Nested categories have collections[].colors structure
           // Normalize collection slug - remove 'order' suffix if present
-          const normalizedSlug = collectionSlug.replace(/^(gerflor|tarkett|wolflor)-/, '').replace('-order', '');
+          const normalizedSlug = collectionSlug.replace(/^(gerflor|tarkett|wolflor|podovi)-/, '').replace('-order', '');
           const normalizedCollectionName = collectionName.replace('-order', '');
 
           const collection = data.collections.find((col: any) =>
             col.slug === collectionName ||
             col.slug === collectionSlug ||
-            col.slug === collectionSlug.replace(/^(gerflor|tarkett|wolflor)-/, '') ||
+            col.slug === collectionSlug.replace(/^(gerflor|tarkett|wolflor|podovi)-/, '') ||
             col.slug === normalizedSlug ||
             col.slug === normalizedCollectionName ||
             (col.slug && col.slug.replace('-order', '') === normalizedSlug)
