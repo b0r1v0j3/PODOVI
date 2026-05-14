@@ -16,7 +16,7 @@ function isPodoviVariant(product: { brandId?: string; sku?: string | null }) {
 describe('Podovi imported Alpod-source catalog contracts', () => {
   it.each([
     { categoryId: '2', expectedCollections: 4, minimumVariants: 300 },
-    { categoryId: '3', expectedCollections: 5, minimumVariants: 300 },
+    { categoryId: '3', expectedCollections: 7, minimumVariants: 350 },
     { categoryId: '5', expectedCollections: 2, minimumVariants: 100 },
   ])('keeps Podovi collections and variants available for category $categoryId', async ({ categoryId, expectedCollections, minimumVariants }) => {
     const products = await productRepository.findByCategory(categoryId, { brandIds: ['14'] });
@@ -26,6 +26,8 @@ describe('Podovi imported Alpod-source catalog contracts', () => {
   });
 
   it.each([
+    { slug: 'podovi-parket-essence-premium', minimumColors: 19 },
+    { slug: 'podovi-parket-four-seasons', minimumColors: 20 },
     { slug: 'podovi-parket-heritage', minimumColors: 100 },
     { slug: 'podovi-deking-exterra-timber', minimumColors: 90 },
   ])('prepares PDP selector colors for $slug', async ({ slug, minimumColors }) => {
@@ -41,6 +43,8 @@ describe('Podovi imported Alpod-source catalog contracts', () => {
   });
 
   it.each([
+    { category: 'parket', collection: 'podovi-parket-essence-premium', minimumColors: 19 },
+    { category: 'parket', collection: 'podovi-parket-four-seasons', minimumColors: 20 },
     { category: 'parket', collection: 'podovi-parket-heritage', minimumColors: 100 },
     { category: 'deking', collection: 'podovi-deking-exterra-timber', minimumColors: 90 },
   ])('serves nested API colors for $category Podovi collections', async ({ category, collection, minimumColors }) => {

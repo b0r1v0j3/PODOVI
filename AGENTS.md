@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.05.2026 (Podovi Alpod-source kolekcije deploy + category/PDP selector fix)
+> **Poslednje ažuriranje:** 14.05.2026 (Podovi Alpod-source kompletan Parket/Vinil/Deking import)
 
 ---
 
@@ -91,10 +91,10 @@ OPS_BASIC_AUTH_ACTOR_ID=
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
 | Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
-| Vinil | 2 | Gerflor (6), Tarkett (3), Wolflor (11), Podovi (14) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja), `wolflor_vinyl_colors.json` (64 kolekcije, 771 dekora; 57 live + 7 PDF suplement, slike na Supabase), `alpod_floor_collections.json` (4 Podovi kolekcije / 372 dekora bez cene, izvor Alpod Store API) |
-| Parket | 3 | Tarkett (3), Podovi (14) | `lib/data/tarkett-products.ts`, `alpod_floor_collections.json` (5 Podovi kolekcija / 320 artikala bez cene, izvor Alpod Store API) |
+| Vinil | 2 | Gerflor (6), Tarkett (3), Wolflor (11), Podovi (14) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja), `wolflor_vinyl_colors.json` (64 kolekcije, 771 dekora; 57 live + 7 PDF suplement, slike na Supabase), `alpod_floor_collections.json` (4 Podovi kolekcije / 372 dekora, izvor Alpod Store API) |
+| Parket | 3 | Tarkett (3), Podovi (14) | `lib/data/tarkett-products.ts`, `alpod_floor_collections.json` (7 Podovi kolekcija / 359 opcija: 5 Store API kolekcija + Essence Premium + Four Seasons) |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
-| Deking | 5 | TimberTech (10), Podovi (14) | `tis_deking_products.json`, `alpod_floor_collections.json` (2 Podovi kolekcije / 120 artikala bez cene, izvor Alpod Store API) |
+| Deking | 5 | TimberTech (10), Podovi (14) | `tis_deking_products.json`, `alpod_floor_collections.json` (2 Podovi kolekcije / 120 artikala iz Alpod Store API; završne lajsne i WPC prateći artikli ostaju u Deking kategoriji, ne u našem `Lajsne` lane-u) |
 | LVT | 6 | Gerflor (6), Tarkett | `lvt_colors_complete.json` (19 kolekcija, 595 boja), `tarkett_lvt_products.json` |
 | Linoleum | 7 | Gerflor (6) | `linoleum_colors_complete.json` (15 kolekcija, 203 boje) |
 | Elektroprovodni | 8 | Gerflor (6) | `esd_colors.json` (7 kolekcija, 42 boje) |
@@ -148,12 +148,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
-**Alpod-source kolekcije bez cena ubačene kao Podovi katalog (14.05.2026)**
-- Dodat je `public/data/alpod_floor_collections.json`, generisan kroz `tools/extract_alpod_floor_collections.js`, sa 812 artikala bez javno istaknute cene grupisanih u 11 kolekcija: Parket 5/320, Vinil 4/372, Deking 2/120.
+**Alpod-source Parket/Vinil/Deking kompletiran kao Podovi katalog (14.05.2026)**
+- `public/data/alpod_floor_collections.json`, generisan kroz `tools/extract_alpod_floor_collections.js`, sada uvozi sve što javni Alpod Store API vraća pod Parket, Vinil i Spoljašnje podne obloge, plus Parket menijske stranice `Essence Premium` i `Four Seasons`: ukupno 851 stavka u 13 kolekcija (Parket 7/359, Vinil 4/372, Deking 2/120).
+- Deking prateći artikli iz Alpod stabla (`Podkonstrukcija`, `Pričvršćivači`, `Šrafovi`, `Završne lajsne`, `Poklopci za daske`, `Premazi...`) ostaju mapirani u našu Deking kategoriju (`5`), a ne u našu kategoriju `Lajsne` (`11`).
 - Alpod se čuva kao upstream izvor/eksterni URL, ali nije vidljivi brend. Za prikaz brenda/logoa koristi se novi interni fallback brend `Podovi` (ID `14`) i `public/images/brands/podovi.svg`, jer proizvođački logoi nisu dostupni.
 - Proširen je ceo collection-aware tok: `productDataLoader.ts`, `product-repository.ts`, `color-helpers.ts`, `prepare-colors.ts`, `/api/colors`, `/api/color-data`, kategorijski tabovi, canonical rute i PDP selector za Podovi imported Vinil/Parket/Deking kolekcije.
 - Ispravljeno posle produkcijske provere: `product-repository.ts` sada za category flow vraća i Podovi varijante (ne samo header kolekcije), `app/kategorije/[slug]/page.tsx` uvodi Deking u `CategoryTabs` i dopušta Podovi parket varijante u tabu Boje, a `app/proizvodi/[slug]/page.tsx` više ne skriva selector za Podovi Deking kolekcije.
-- Regression gate `tests/contracts/podovi-import-contract.test.ts` zaključava 4/372 Vinil, 5/320 Parket i 2/120 Deking Podovi import, PDP selector boje/varijante i `/api/colors` nested payload za Podovi Parket/Deking. Verifikovano: `npm run lint`, `npm run validate:images`, `npm run test:contract`, `npm run build`, produkcijski Vercel deploy.
+- Regression gate `tests/contracts/podovi-import-contract.test.ts` zaključava 4/372 Vinil, 7/359 Parket i 2/120 Deking Podovi import, PDP selector boje/varijante i `/api/colors` nested payload za Podovi Parket/Deking. Verifikovano: `npm run lint`, `npm run validate:images`, `npm run test:contract`, `npm run build`, produkcijski Vercel deploy.
 - `www.alpod.rs` je dodat u image allowlist contract (`next.config.mjs`, `image-runtime.ts`, `image-runtime-contract.test.ts`, `validate-images.js`) da uvezene slike mogu da rade kroz isti Next image pipeline.
 
 **Otirači uklonjeni iz glavne navigacije (22.04.2026)**

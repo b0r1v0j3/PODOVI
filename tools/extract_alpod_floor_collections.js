@@ -43,6 +43,134 @@ const NAMED_ENTITIES = {
   times: 'x',
 };
 
+const ESSENCE_PATTERN_IMAGES = {
+  geometry: 'https://www.alpod.rs/wp-content/uploads/2025/03/essence_rhombus_web.jpg',
+  waves: 'https://www.alpod.rs/wp-content/uploads/2025/03/essence_waves_web.jpg',
+  forest: 'https://www.alpod.rs/wp-content/uploads/2025/03/essence_forest_web_02.jpg',
+};
+
+const ESSENCE_PATTERNS = [
+  ['Rhombus Diamond Regular', 'geometry'],
+  ['Rhombus Diamond Irregular', 'geometry'],
+  ['Rhombus Chevron Regular', 'geometry'],
+  ['Rhombus Chevron Irregular', 'geometry'],
+  ['Rhombus Cliff Regular', 'geometry'],
+  ['Rhombus Cliff Irregular', 'geometry'],
+  ['Trapezium Hive Regular', 'geometry'],
+  ['Trapezium Hive Irregular', 'geometry'],
+  ['Trapezium Aloe', 'geometry'],
+  ['Mosaic Stellar', 'geometry'],
+  ['Mosaic Threads', 'geometry'],
+  ['Waves Ocean', 'waves'],
+  ['Waves Sea', 'waves'],
+  ['Waves Herringbone', 'waves'],
+  ['Waves Fish Scale', 'waves'],
+  ['Forest Trees', 'forest'],
+  ['Forest Flowers', 'forest'],
+  ['Forest Leaves', 'forest'],
+  ['Forest Branches', 'forest'],
+];
+
+const FOUR_SEASONS_COLORS = [
+  ['140', 'Cappuccino-B'],
+  ['171', 'Slim Coconut-B'],
+  ['229', 'Dark Oak-B'],
+  ['276', 'Vanilla-B'],
+  ['503', 'Castle Brown-B'],
+  ['532', 'Pure-B'],
+  ['548', 'Tobacco-B'],
+  ['551', 'White 5'],
+  ['604', 'Caramel-B'],
+  ['609', 'Foggy-B'],
+  ['612', 'Invisible'],
+  ['646', 'Light Mist-B'],
+  ['700', 'Dark Fumed-B'],
+  ['701', 'Fumed Grey-DB'],
+  ['702', 'Smoke Brown-B'],
+  ['705', 'Dark Walnut-B'],
+  ['706', 'Beige-B'],
+  ['711', 'White New-B'],
+  ['715', 'Nordic White-B'],
+  ['730', 'Dark Brown-B'],
+];
+
+const MANUAL_PAGE_COLLECTIONS = [
+  {
+    id: 'alpod-parket-essence-premium',
+    sourceCategoryId: 'page-essence-premium',
+    sourceSlug: 'kolekcija-parketa-essence',
+    categoryKey: 'parket',
+    categoryId: '3',
+    name: 'Essence Premium',
+    slug: 'podovi-parket-essence-premium',
+    sku: 'PODOVI-COLLECTION-PARKET-ESSENCE-PREMIUM',
+    url: `${SITE_URL}/kolekcija-parketa-essence/`,
+    description: 'Essence Premium je Alpod premium kolekcija parketa po meri sa geometrijskim, talasastim i forest uzorcima.',
+    collection_image_url: 'https://www.alpod.rs/wp-content/uploads/2024/04/essence_banner.webp',
+    characteristics: {
+      'Vrsta proizvoda': 'Parket po meri',
+      'Kolekcije uzoraka': 'Geometry, Waves, Forest',
+      'Vrste drveta': 'Evropski hrast, Američki orah',
+      'Gradacija': 'Elegant, Natural, Standard',
+      'Površina': 'Brušeno, Četkano, Hoblano, Piljeno',
+      'Završna obrada': 'Uljeno',
+      'Način prodaje': 'Na upit',
+    },
+    colors: ESSENCE_PATTERNS.map(([name, imageKey], index) => ({
+      code: `ESS-${String(index + 1).padStart(2, '0')}`,
+      name,
+      full_name: `Essence Premium ${name}`,
+      slug: `podovi-parket-essence-premium-${slugify(name)}`,
+      image: ESSENCE_PATTERN_IMAGES[imageKey],
+      image_url: ESSENCE_PATTERN_IMAGES[imageKey],
+      texture_url: ESSENCE_PATTERN_IMAGES[imageKey],
+      description: `${name} uzorak iz Essence Premium kolekcije parketa po meri.`,
+      characteristics: {
+        'Uzorak': name,
+        'Podkolekcija': name.split(' ')[0],
+        'Vrsta proizvoda': 'Parket po meri',
+        'Način prodaje': 'Na upit',
+      },
+    })),
+  },
+  {
+    id: 'alpod-parket-four-seasons',
+    sourceCategoryId: 'page-four-seasons',
+    sourceSlug: 'parketi-po-meri',
+    categoryKey: 'parket',
+    categoryId: '3',
+    name: 'Four Seasons',
+    slug: 'podovi-parket-four-seasons',
+    sku: 'PODOVI-COLLECTION-PARKET-FOUR-SEASONS',
+    url: `${SITE_URL}/parketi-po-meri/`,
+    description: 'Four Seasons je Alpod kolekcija parketa po meri sa izborom dimenzije, gradacije, površine i boje.',
+    collection_image_url: 'https://www.alpod.rs/wp-content/uploads/2024/03/parket-po-meri.webp',
+    characteristics: {
+      'Vrsta proizvoda': 'Parket po meri',
+      'Dimenzije': 'Wood strip, Herringbone, Chevron, Massive Herringbone, Massive Chevron',
+      'Gradacija': 'Elegant, Natural, Standard',
+      'Površina': 'Brušeno, Četkano, Hoblano, Piljeno',
+      'Način prodaje': 'Na upit',
+    },
+    colors: FOUR_SEASONS_COLORS.map(([code, name]) => ({
+      code: `FS-${code}`,
+      name,
+      full_name: `Four Seasons ${name} ${code}`,
+      slug: `podovi-parket-four-seasons-${slugify(`${name}-${code}`)}`,
+      image: 'https://www.alpod.rs/wp-content/uploads/2024/03/parket-po-meri.webp',
+      image_url: 'https://www.alpod.rs/wp-content/uploads/2024/03/parket-po-meri.webp',
+      texture_url: 'https://www.alpod.rs/wp-content/uploads/2024/03/parket-po-meri.webp',
+      description: `${name} ${code} boja iz Four Seasons kolekcije parketa po meri.`,
+      characteristics: {
+        'Boja': name,
+        'Šifra boje': code,
+        'Vrsta proizvoda': 'Parket po meri',
+        'Način prodaje': 'Na upit',
+      },
+    })),
+  },
+];
+
 function decodeHtml(value = '') {
   return String(value)
     .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
@@ -72,10 +200,14 @@ function specKey(label, fallback = 'spec') {
   return slugify(label).replace(/-/g, '_') || fallback;
 }
 
-function isPriceAbsent(product) {
+function getPriceState(product) {
   const priceHtml = stripHtml(product.price_html || '');
   const priceValue = Number(product.prices?.price || 0);
-  return !priceHtml && priceValue === 0;
+  return {
+    priceHtml,
+    priceValue,
+    priceAbsent: !priceHtml && priceValue === 0,
+  };
 }
 
 function getTerms(attribute) {
@@ -227,6 +359,7 @@ function colorFromProduct(product, categoryConfig, collectionCategory, categoryM
   const lineageCategories = getLineageCategories(product, collectionCategory, categoryConfig, categoryMap);
   const subcollection = lineageCategories.map((category) => normalizeWhitespace(decodeHtml(category.name))).filter(Boolean).join(' / ');
   const description = stripHtml(product.description || product.short_description || '');
+  const priceState = getPriceState(product);
 
   if (subcollection) {
     characteristics['Podkolekcija'] = subcollection;
@@ -252,7 +385,9 @@ function colorFromProduct(product, categoryConfig, collectionCategory, categoryM
     description,
     characteristics,
     brandId: '14',
-    priceAbsent: true,
+    priceAbsent: priceState.priceAbsent,
+    priceHtml: priceState.priceHtml,
+    priceValue: priceState.priceValue,
     prices: product.prices || null,
   };
 }
@@ -291,7 +426,7 @@ function buildCollection(collectionCategory, categoryConfig, products, categoryM
     .sort((a, b) => a.name.localeCompare(b.name, 'sr'));
   const collectionImages = colors.flatMap((color) => color.images || []);
   const description = stripHtml(collectionCategory?.description || '');
-  const fallbackDescription = `${rawName} kolekcija u kategoriji ${categoryConfig.label.toLowerCase()}. Proizvodi su bez javno istaknute cene, pa se cena i dostupnost proveravaju preko upita.`;
+  const fallbackDescription = `${rawName} kolekcija u kategoriji ${categoryConfig.label.toLowerCase()}. Cena i dostupnost se proveravaju preko upita.`;
   const characteristics = summarizeCollectionCharacteristics(colors);
 
   return {
@@ -307,7 +442,7 @@ function buildCollection(collectionCategory, categoryConfig, products, categoryM
     sku: `PODOVI-COLLECTION-${categoryConfig.key.toUpperCase()}-${slugify(rawName).toUpperCase()}`,
     url: collectionCategory?.permalink || categoryConfig.sourceUrl,
     description: description || fallbackDescription,
-    shortDescription: `${rawName} - ${colors.length} ${categoryConfig.key === 'deking' ? 'artikala' : 'dekora'} bez javno istaknute cene`,
+    shortDescription: `${rawName} - ${colors.length} ${categoryConfig.key === 'deking' ? 'artikala' : 'dekora'} u Alpod katalogu`,
     collection_image_url: collectionImages[0]?.url || '',
     image: collectionImages[0]?.url || '',
     image_url: collectionImages[0]?.url || '',
@@ -320,6 +455,82 @@ function buildCollection(collectionCategory, categoryConfig, products, categoryM
       collection_name: rawName,
       collection_url: collectionCategory?.permalink || categoryConfig.sourceUrl,
     })),
+  };
+}
+
+function manualImage(imageUrl, fallbackId, alt, order = 0) {
+  return {
+    id: `${fallbackId}-img-${order + 1}`,
+    url: imageUrl,
+    alt,
+    isPrimary: order === 0,
+    order,
+    variants: {
+      thumb: imageUrl,
+      card: imageUrl,
+      hero: imageUrl,
+      og: imageUrl,
+    },
+  };
+}
+
+function buildManualCollection(rawCollection) {
+  const collectionImageUrl = rawCollection.collection_image_url || rawCollection.image || '';
+  const colors = (rawCollection.colors || []).map((color, index) => {
+    const imageUrl = color.image || color.image_url || collectionImageUrl;
+    const images = imageUrl ? [manualImage(imageUrl, `${rawCollection.id}-color-${index + 1}`, color.full_name || color.name, 0)] : [];
+    return {
+      sourceId: `${rawCollection.id}-color-${index + 1}`,
+      sourceSku: color.code,
+      code: color.code,
+      name: color.name,
+      full_name: color.full_name || `${rawCollection.name} ${color.name}`,
+      slug: color.slug,
+      sourceSlug: color.slug,
+      collection: rawCollection.slug,
+      collection_slug: rawCollection.slug,
+      collection_name: rawCollection.name,
+      collection_url: rawCollection.url,
+      url: rawCollection.url,
+      image: imageUrl,
+      image_url: imageUrl,
+      texture_url: imageUrl,
+      image_count: images.length,
+      images,
+      description: color.description || rawCollection.description,
+      characteristics: {
+        ...(rawCollection.characteristics || {}),
+        ...(color.characteristics || {}),
+      },
+      brandId: '14',
+      priceAbsent: true,
+      priceHtml: '',
+      priceValue: 0,
+      prices: null,
+    };
+  });
+
+  return {
+    id: rawCollection.id,
+    sourceCategoryId: rawCollection.sourceCategoryId,
+    sourceCategoryParentId: 11259,
+    sourceSlug: rawCollection.sourceSlug,
+    categoryKey: rawCollection.categoryKey,
+    categoryId: rawCollection.categoryId,
+    brandId: '14',
+    name: rawCollection.name,
+    slug: rawCollection.slug,
+    sku: rawCollection.sku,
+    url: rawCollection.url,
+    description: rawCollection.description,
+    shortDescription: `${rawCollection.name} - ${colors.length} opcija u Alpod katalogu`,
+    collection_image_url: collectionImageUrl,
+    image: collectionImageUrl,
+    image_url: collectionImageUrl,
+    colorCount: colors.length,
+    characteristics: rawCollection.characteristics || {},
+    colors,
+    sourceType: 'page',
   };
 }
 
@@ -361,7 +572,7 @@ async function fetchProductsForCategory(categoryConfig) {
   for (let page = 1; ; page += 1) {
     const url = `${SITE_URL}/wp-json/wc/store/v1/products?category=${categoryConfig.sourceCategoryId}&per_page=100&page=${page}`;
     const { data, response } = await fetchJson(url);
-    products.push(...data.filter(isPriceAbsent));
+    products.push(...data);
 
     const totalPages = Number(response.headers.get('x-wp-totalpages') || 1);
     if (page >= totalPages) {
@@ -403,12 +614,24 @@ async function main() {
     collections.push(...categoryCollections);
   }
 
+  const manualCollections = MANUAL_PAGE_COLLECTIONS.map(buildManualCollection);
+  for (const manualCollection of manualCollections) {
+    countsByCategory[manualCollection.categoryKey] = countsByCategory[manualCollection.categoryKey] || { products: 0, collections: 0 };
+    countsByCategory[manualCollection.categoryKey].products += manualCollection.colors.length;
+    countsByCategory[manualCollection.categoryKey].collections += 1;
+  }
+  collections.push(...manualCollections);
+
   const output = {
     generatedAt: new Date().toISOString(),
     source: {
       site: SITE_URL,
       api: `${SITE_URL}/wp-json/wc/store/v1/products`,
-      rule: 'Imported only products whose Store API price_html is empty and prices.price is 0.',
+      rule: 'Imported all products currently returned by the public Store API under Parket, Vinil and Spoljašnje podne obloge, plus the Parket menu pages Essence Premium and Four Seasons. No other categories are imported.',
+      pages: [
+        `${SITE_URL}/kolekcija-parketa-essence/`,
+        `${SITE_URL}/parketi-po-meri/`,
+      ],
     },
     displayBrand: {
       id: '14',

@@ -78,7 +78,7 @@ npm start
 ## Catalog Data Sources
 
 - `public/data/vinyl_colors_complete.json` + `public/data/vinyl_special_colors.json` + `public/data/tarkett_vinyl_home_colors.json` + `public/data/tarkett_homogeneous_vinyl_colors.json` + `public/data/tarkett_heterogeneous_vinyl_colors.json` + `public/data/wolflor_vinyl_colors.json` power Vinil collections and colors, with Wolflor image assets served from Supabase storage
-- `public/data/alpod_floor_collections.json` powers imported no-price Parket, Vinil and Deking collections from `www.alpod.rs` (812 products grouped into 11 collections); the source site is stored as upstream metadata/external links, while the visible catalog brand is the internal `Podovi` brand/logo because the manufacturer logos are not available
+- `public/data/alpod_floor_collections.json` powers imported Parket, Vinil and Deking collections from `www.alpod.rs` (851 items grouped into 13 collections: 7 Parket, 4 Vinil, 2 Deking); the source site is stored as upstream metadata/external links, while the visible catalog brand is the internal `Podovi` brand/logo because the manufacturer logos are not available
 - `public/data/esd_colors.json` powers Elektroprovodni / ESD collections
 - `public/data/industrial_colors.json` powers Industrijske ploče collections
 - `public/data/sport_colors.json` powers Gerflor / DLW Sport collections
@@ -241,7 +241,7 @@ PODOVI/
 │   ├── extract_tarkett_sports.js   # Tarkett sports catalog extractor
 │   ├── extract_tarkett_vinyl_home.js # Tarkett home vinyl catalog extractor
 │   ├── extract_tarkett_lajsne.js   # Tarkett lajsne catalog extractor
-│   ├── extract_alpod_floor_collections.js # Alpod no-price Parket/Vinil/Deking collection extractor
+│   ├── extract_alpod_floor_collections.js # Alpod Parket/Vinil/Deking collection extractor
 │   ├── extract_wolflor_vinyl.py    # Wolflor live + PDF vinyl extractor
 │   ├── extract_tarkett_homogeneous_vinyl.js # Tarkett homogeneous vinyl catalog extractor
 │   ├── extract_tarkett_heterogeneous_vinyl.js # Tarkett heterogeneous vinyl catalog extractor
