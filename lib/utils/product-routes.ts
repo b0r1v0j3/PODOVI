@@ -135,7 +135,9 @@ export function normalizeCollectionSlugForProductRoute(
     collectionSlug.startsWith('wolflor-') ||
     collectionSlug.startsWith('techem-') ||
     collectionSlug.startsWith('bloq-') ||
-    collectionSlug.startsWith('podovi-');
+    collectionSlug.startsWith('podovi-') ||
+    collectionSlug.startsWith('timbertech-') ||
+    collectionSlug.startsWith('romus-');
 
   if (categoryId === '7') {
     return collectionSlug.replace(/^gerflor-/, '');
@@ -157,6 +159,10 @@ export function normalizeCollectionSlugForProductRoute(
     return `bloq-${collectionSlug}`;
   }
 
+  if (brandId === '10') {
+    return `timbertech-${collectionSlug}`;
+  }
+
   if (brandId === '11') {
     return `wolflor-${collectionSlug}`;
   }
@@ -165,11 +171,20 @@ export function normalizeCollectionSlugForProductRoute(
     return `techem-${collectionSlug}`;
   }
 
+  if (brandId === '13') {
+    return `romus-${collectionSlug}`;
+  }
+
   if (brandId === '14') {
     return `podovi-${collectionSlug}`;
   }
 
-  return `gerflor-${collectionSlug}`;
+  if (brandId === '6') {
+    return `gerflor-${collectionSlug}`;
+  }
+
+  // Unknown brand — keep slug as-is rather than prefixing with gerflor-.
+  return collectionSlug;
 }
 
 export function getProductCollectionRouteSlug(product: ProductWithCollectionSlug): string | null {
