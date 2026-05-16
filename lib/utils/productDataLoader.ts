@@ -2329,7 +2329,7 @@ export function getAllDekingProducts(): Product[] {
             id: p.id,
             name: colorName,
             slug: slug,
-            sku: p.specs['Šifra artikla'] || p.id,
+            sku: p.specs['Šifra artikla'] || `TIMBERTECH-${p.id}`,
             categoryId: p.categoryId || '5', // 5 is Deking
             brandId: p.brandId || '10',
             shortDescription: p.description || p.name,

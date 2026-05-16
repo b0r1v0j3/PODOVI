@@ -22,6 +22,7 @@ const COLLECTION_SKU_PREFIXES = [
   'LAM-',
   'BLOQ-',
   'DEKING-',
+  'TIMBERTECH-',
   'ESD-',
   'IND-',
   'SPORT-',
