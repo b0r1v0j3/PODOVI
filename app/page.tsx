@@ -5,33 +5,12 @@ import { brandRepository } from '@/lib/repositories/brand-repository';
 import HomeProductTabs, { HomeProductGroup } from '@/components/HomeProductTabs';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Product } from '@/types';
+import { hasCollectionSku } from '@/lib/utils/homepage-collection-filter';
 
 export const metadata = {
   title: 'podovi',
   description: 'Pronađite pravo rešenje za vaš prostor: laminat, vinil, parket, alati, lajsne, otirači i drugi sistemi vodećih evropskih brendova.',
 };
-
-const COLLECTION_SKU_PREFIXES = [
-  'GER-',
-  'TARKETT-',
-  'PODOVI-COLLECTION-',
-  'WOLFLOR-VINYL-',
-  'LINOLEUM-',
-  'VINIL-',
-  'PARKET-',
-  'LAM-',
-  'BLOQ-',
-  'DEKING-',
-  'TIMBERTECH-',
-  'ESD-',
-  'IND-',
-  'SPORT-',
-  'TARKETT-LAJSNE-',
-];
-
-function hasCollectionSku(product: Product): boolean {
-  return COLLECTION_SKU_PREFIXES.some((prefix) => product.sku?.startsWith(prefix));
-}
 
 function dedupeBySlug(products: Product[]): Product[] {
   const seen = new Set<string>();
