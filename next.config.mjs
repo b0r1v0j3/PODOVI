@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Privremeni oglas za prodaju automobila — dostupno na /b-max.
+  // Kad se auto proda: obriši folder public/b-max/ i ovaj rewrites() blok.
+  async rewrites() {
+    return [
+      { source: '/b-max', destination: '/b-max/index.html' },
+    ];
+  },
   images: {
     remotePatterns: [
       {
