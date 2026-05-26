@@ -52,8 +52,9 @@
 
   /* Top bar */
   .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 30px; border-bottom:2px solid var(--ink)}
-  .logo{font-weight:900; font-size:18px; letter-spacing:2px}
+  .logo{font-weight:900; font-size:18px; letter-spacing:2px; line-height:1.08}
   .logo .dot{color:var(--accent)}
+  .logo .sq{display:inline-block; width:8px; height:8px; background:var(--accent); vertical-align:middle; margin:0 2px 3px}
   .meta{font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted)}
 
   /* HERO COVER — magazine style */
@@ -175,8 +176,8 @@
 
   <!-- TOP BAR -->
   <div class="topbar">
-    <div class="logo">FORD <span class="dot">·</span> B-MAX</div>
-    <div class="meta">CRNA · 180.000 KM · DIZEL · MANUELNI</div>
+    <div class="logo">FORD<br>B<span class="sq"></span>MAX</div>
+    <div class="meta">180.000 KM · DIZEL · 2014.</div>
   </div>
 
   <!-- COVER -->
@@ -369,10 +370,10 @@
     if (musicOn) stopMusic(); else startMusic();
   });
 
-  // Auto-attempt music + video play on load
+  // Autoplay the muted video on load. Music does NOT start here: iOS/Safari block
+  // audio autoplay, so we wait for the first real user gesture (below) instead.
   window.addEventListener('load', () => {
     video.play().catch(()=>{});
-    startMusic();
   });
 
   // If browser blocked autoplay of music, first user gesture will start it
@@ -380,11 +381,13 @@
     if (!musicOn) startMusic();
     video.play().catch(()=>{});
     document.removeEventListener('click', firstGestureStart);
+    document.removeEventListener('touchend', firstGestureStart);
     document.removeEventListener('scroll', firstGestureStart);
     document.removeEventListener('touchstart', firstGestureStart);
     document.removeEventListener('keydown', firstGestureStart);
   }
   document.addEventListener('click', firstGestureStart);
+  document.addEventListener('touchend', firstGestureStart, {passive:true});
   document.addEventListener('scroll', firstGestureStart, {passive:true});
   document.addEventListener('touchstart', firstGestureStart, {passive:true});
   document.addEventListener('keydown', firstGestureStart);
