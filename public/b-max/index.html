@@ -135,7 +135,7 @@
   .contact{padding:60px 0; text-align:center}
   .contact .pre{font-size:12px; letter-spacing:6px; color:var(--muted); text-transform:uppercase; margin-bottom:14px}
   .contact .massive{font-size:clamp(40px, 8vw, 100px); font-weight:900; letter-spacing:-2px; line-height:.9; margin-bottom:14px}
-  .contact .phone-massive{display:inline-block; padding:24px 50px; background:var(--accent); color:#fff; font-size:clamp(38px, 7vw, 84px); font-weight:900; letter-spacing:1px; border-radius:8px; margin:20px 0; transform:rotate(-1deg); box-shadow:0 16px 40px rgba(255,59,0,.4)}
+  .contact .phone-massive{display:inline-block; white-space:nowrap; max-width:94vw; padding:clamp(16px,2.4vw,24px) clamp(18px,5vw,50px); background:var(--accent); color:#fff; font-size:clamp(28px, 9vw, 84px); font-weight:900; letter-spacing:1px; border-radius:8px; margin:20px 0; transform:rotate(-1deg); box-shadow:0 16px 40px rgba(255,59,0,.4)}
   .contact .phone-massive:hover{transform:rotate(0deg) scale(1.02)}
   .contact .where{font-size:14px; color:var(--muted); letter-spacing:3px; text-transform:uppercase; margin-top:10px}
   .buttons{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:18px}
@@ -159,12 +159,11 @@
 </head>
 <body>
 
-<!-- HIDDEN YOUTUBE AUDIO -->
-<div style="position:fixed; bottom:-200px; right:-200px; width:1px; height:1px; overflow:hidden">
-  <iframe id="ytPlayer" width="200" height="100"
-    src="" frameborder="0"
-    allow="autoplay"></iframe>
-</div>
+<!-- BACKGROUND MUSIC — hosted audio file. Starts on the first tap/scroll (and via
+     the MUZIKA button). Works on iOS/Android, unlike YouTube-iframe autoplay. -->
+<audio id="bgm" loop preload="auto">
+  <source src="/b-max/music.mp3" type="audio/mpeg">
+</audio>
 
 <!-- MUSIC TOGGLE -->
 <div class="music off" id="musicToggle">
@@ -344,25 +343,29 @@
 
 <script>
   const video = document.getElementById('mainVideo');
-  const yt = document.getElementById('ytPlayer');
+  const bgm = document.getElementById('bgm');
   const musicToggle = document.getElementById('musicToggle');
   const musicLabel = document.getElementById('musicLabel');
 
-  const YT_URL = 'https://www.youtube.com/embed/LO2RPDZkY88?autoplay=1&loop=1&playlist=LO2RPDZkY88&controls=0';
   let musicOn = false;
 
+  function setMusicUI(on){
+    musicOn = on;
+    musicToggle.classList.toggle('off', !on);
+    musicLabel.textContent = on ? 'MUZIKA ON' : 'MUZIKA OFF';
+  }
   function startMusic(){
-    if (musicOn) return;
-    yt.src = YT_URL;
-    musicOn = true;
-    musicToggle.classList.remove('off');
-    musicLabel.textContent = 'MUZIKA ON';
+    bgm.volume = 0.55;
+    const p = bgm.play();
+    if (p && p.then) {
+      p.then(() => setMusicUI(true)).catch(() => setMusicUI(false));
+    } else {
+      setMusicUI(true);
+    }
   }
   function stopMusic(){
-    yt.src = '';
-    musicOn = false;
-    musicToggle.classList.add('off');
-    musicLabel.textContent = 'MUZIKA OFF';
+    bgm.pause();
+    setMusicUI(false);
   }
 
   musicToggle.addEventListener('click', (e) => {
