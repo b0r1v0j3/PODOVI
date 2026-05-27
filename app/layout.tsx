@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import Script from "next/script";
 import CompareBar from "@/components/CompareBar";
 import { CompareProvider } from "@/lib/context/CompareContext";
 import { FavoritesProvider } from "@/lib/context/FavoritesContext";
@@ -56,7 +56,8 @@ export default function RootLayout({
   return (
     <html lang="sr">
       <body className={inter.className}>
-        <GoogleAnalytics />
+        {/* Vercel Web Analytics — broji posete (zamena za Google Analytics) */}
+        <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
         {/* Organization + WebSite structured data (site-wide) */}
         <script
           type="application/ld+json"
