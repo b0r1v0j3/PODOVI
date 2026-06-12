@@ -21,15 +21,13 @@ export default function ProductInquiryStickyCTA({ productSlug, inquiryRef }: Pro
   const href = `/upiti?${params.toString()}`;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/90 backdrop-blur-md border-t border-gray-100 shadow-[0_-8px_16px_rgba(0,0,0,0.08)] safe-area-pb">
-      <div className="container py-3 px-4">
-        <Link
-          href={href}
-          className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-base font-semibold w-full py-3 rounded-xl block"
-        >
-          Pošalji upit
-        </Link>
-      </div>
+    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-ink-900 safe-area-pb">
+      <Link
+        href={href}
+        className="flex min-h-[52px] w-full items-center justify-center text-white text-[13px] font-medium hover:bg-ink-700 transition-colors"
+      >
+        Pošalji upit
+      </Link>
     </div>
   );
 }

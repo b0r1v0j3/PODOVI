@@ -465,9 +465,13 @@ export default function ColorGrid({
 
   if (loading) {
     return (
-        <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-        <p className="mt-4 text-gray-600">{uiText.loading}</p>
+      <div
+        className={`grid gap-3 ${compact ? 'grid-cols-6' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}
+        aria-label={uiText.loading}
+      >
+        {Array.from({ length: compact ? 12 : 10 }).map((_, idx) => (
+          <div key={idx} className="aspect-square bg-paper animate-pulse" />
+        ))}
       </div>
     );
   }
@@ -488,8 +492,8 @@ export default function ColorGrid({
       {!compact && (
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">{uiText.available}</h2>
-            <p className="text-gray-600 mt-1">{colors.length} {uiText.count(colors.length)}</p>
+            <h2 className="eyebrow">{uiText.available}</h2>
+            <p className="text-[13px] text-ink-500 mt-1">{colors.length} {uiText.count(colors.length)}</p>
           </div>
 
           {/* Search */}
@@ -502,7 +506,7 @@ export default function ColorGrid({
               className="input text-sm py-2 sm:w-64"
             />
             {searchTerm && (
-              <button onClick={() => setSearchTerm('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">✕</button>
+              <button onClick={() => setSearchTerm('')} className="absolute right-0 top-1/2 -translate-y-1/2 text-ink-500 hover:text-ink-600">✕</button>
             )}
           </div>
         </div>
@@ -517,34 +521,34 @@ export default function ColorGrid({
             <button
               key={color.slug}
               onClick={() => handleColorClick(color)}
-              className={`group bg-white rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden border text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 w-full ${isSelected
-                ? 'border-primary-600 ring-2 ring-primary-200'
-                : 'border-gray-200 hover:border-primary-400'
-                } hover:shadow-lg hover:scale-105 duration-200`}
+              className={`group overflow-hidden border-2 text-left cursor-pointer w-full transition-colors ${isSelected
+                ? 'border-ink-900'
+                : 'border-transparent hover:border-ink-200'
+                }`}
             >
               {/* Image */}
-              <div className="aspect-square relative overflow-hidden bg-gray-100">
+              <div className="aspect-square relative overflow-hidden bg-paper">
                 {primaryColorImage?.url ? (
                   <ImageWithFallback
                     src={primaryColorImage.url}
                     alt={primaryColorImage.alt || color.full_name}
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                     sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
                     quality={100}
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">Bez slike</div>
+                  <div className="w-full h-full flex items-center justify-center text-ink-500 text-xs">Bez slike</div>
                 )}
               </div>
 
               {/* Info - only show if not compact */}
               {!compact && (
-                <div className="p-3">
-                  <p className="font-semibold text-gray-900 text-sm truncate">{color.code}</p>
+                <div className="px-1 pt-2 pb-3">
+                  <p className="text-[13px] text-ink-900 truncate">{color.code}</p>
                   {color.collection_name && (
-                    <p className="text-[11px] text-gray-500 truncate mt-0.5">{color.collection_name}</p>
+                    <p className="eyebrow truncate mt-0.5">{color.collection_name}</p>
                   )}
-                  <p className="text-xs text-gray-600 truncate mt-1">{color.name}</p>
+                  <p className="text-[13px] text-ink-600 truncate mt-1">{color.name}</p>
                 </div>
               )}
             </button>
@@ -560,10 +564,10 @@ export default function ColorGrid({
             <button
               onClick={goToPrevious}
               disabled={currentPage === 0}
-              className="p-2 rounded-full bg-white border-2 border-gray-300 hover:border-primary-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center bg-white border border-ink-200 hover:border-ink-900 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               aria-label="Prethodna strana"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 text-ink-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -574,22 +578,26 @@ export default function ColorGrid({
                 <button
                   key={index}
                   onClick={() => goToPage(index)}
-                  className={`h-1.5 rounded-full transition-all ${index === currentPage
-                    ? 'w-6 bg-primary-600'
-                    : 'w-1.5 bg-gray-300 hover:bg-gray-400'
-                    }`}
+                  className="py-3 px-0.5"
                   aria-label={`Strana ${index + 1}`}
-                />
+                >
+                  <span
+                    className={`block h-[3px] transition-all ${index === currentPage
+                      ? 'w-6 bg-ink-900'
+                      : 'w-2 bg-ink-200 hover:bg-ink-400'
+                      }`}
+                  />
+                </button>
               ))}
             </div>
 
             <button
               onClick={goToNext}
               disabled={currentPage === totalPages - 1}
-              className="p-2 rounded-full bg-white border-2 border-gray-300 hover:border-primary-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center bg-white border border-ink-200 hover:border-ink-900 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               aria-label="Sledeća strana"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 text-ink-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -599,8 +607,8 @@ export default function ColorGrid({
 
       {filteredColors.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-600">Nije pronađena {uiText.empty} sa &quot;{searchTerm}&quot;</p>
-          <button onClick={() => setSearchTerm('')} className="mt-4 text-primary-600 hover:text-primary-700 font-medium">Očisti pretragu</button>
+          <p className="text-ink-600">Nije pronađena {uiText.empty} sa &quot;{searchTerm}&quot;</p>
+          <button onClick={() => setSearchTerm('')} className="btn-link mt-4">Očisti pretragu</button>
         </div>
       )}
     </div>

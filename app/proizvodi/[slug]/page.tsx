@@ -20,7 +20,6 @@ import ProductImage from '@/components/ProductImage';
 import ProductCharacteristics from '@/components/ProductCharacteristics';
 import ProductDescriptionWithCharacteristics from '@/components/ProductDescriptionWithCharacteristics';
 import ProductBenefits from '@/components/ProductBenefits';
-import BrandLogoMark from '@/components/BrandLogoMark';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import {
@@ -608,15 +607,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // ── Helper JSX logic to populate masonry columns neatly ──
     const sharedCertsAndEco = (['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
       <>
-        <div className="bg-gradient-to-b from-[#FFFFFF] to-[#F9F9FB] rounded-[28px] p-8 h-full flex flex-col justify-center border border-[#E5E5EA] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
-          <div className="flex items-center gap-3.5 mb-7">
-            <div className="w-11 h-11 rounded-2xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-              <svg className="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
-            </div>
-            <h3 className="text-[21px] font-semibold tracking-[-0.01em] text-[#1D1D1F]">Sertifikati kvaliteta</h3>
-          </div>
+        <div className="h-full">
+          <h3 className="eyebrow mb-6">Sertifikati kvaliteta</h3>
           <CertificationBadges certifications={
             product.brandId === '8'
               ? ["Cradle to Cradle Silver", "Indoor Air Comfort Gold", "BREEAM A+", "GreenTag Level A", "CE"]
@@ -680,7 +672,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     );
 
     const sharedDocs = ((product.documents && product.documents.length > 0) || hasIndexedDocuments) ? (
-      <div className="bg-white rounded-2xl shadow-lg p-6 h-full">
+      <div className="h-full">
         <ProductDocuments
           initialDocuments={product.documents || []}
           categoryId={product.categoryId}
@@ -740,7 +732,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
           price: product.price
         }} />
 
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-white">
           {/* Product Content */}
           <div className="container py-8 pb-20 md:pb-12">
             <div className="mb-4">
@@ -812,10 +804,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
               </>
             ) : (
               /* Non-color-selector categories - standard layout */
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
                 {/* Image Section */}
-                <div className="bg-white rounded-2xl shadow-lg p-8">
-                  <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100">
+                <div>
+                  <div className="aspect-square relative overflow-hidden bg-paper">
                     {primaryImage ? (
                       <ProductImage
                         sources={orderedHeroImages}
@@ -826,7 +818,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         priority={true}
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
+                      <div className="w-full h-full flex items-center justify-center text-ink-500">
                         <span>Bez slike</span>
                       </div>
                     )}
@@ -834,8 +826,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 </div>
 
                 {/* Info Section */}
-                <div className="space-y-8">
-                  <BrandLogoMark brand={brand} />
+                <div className="space-y-8 lg:sticky lg:top-24 lg:self-start">
+                  {brand?.name && <p className="eyebrow">{brand.name}</p>}
 
                   <div>
                     {(() => {
@@ -844,32 +836,28 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       const { collection, color } = splitProductTitle(displayName, collectionName || fallbackCollection);
                       return (
                         <>
-                          <h1 className="text-4xl font-bold text-gray-900 mb-2">{color}</h1>
+                          <h1 className="text-3xl md:text-4xl font-normal tracking-tight text-ink-900 mb-2">{color}</h1>
                           {collection && (
-                            <p className="text-xl text-gray-500 font-medium mb-4">{collection}</p>
+                            <p className="text-base text-ink-600 mb-4">{collection}</p>
                           )}
                         </>
                       );
                     })()}
                     {product.shortDescription && (
-                      <p className="text-xl text-gray-600">{product.shortDescription}</p>
+                      <p className="text-base text-ink-600">{product.shortDescription}</p>
                     )}
                   </div>
 
                   {(product.price !== undefined && product.price > 0) ? (
-                    <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
-                      <div className="flex items-baseline space-x-2">
-                        <span className="text-4xl font-bold text-primary-600">{product.price.toLocaleString('sr-RS')}</span>
-                        <span className="text-lg text-gray-600">RSD</span>
-                        {product.priceUnit && <span className="text-lg text-gray-500">/ {product.priceUnit}</span>}
-                      </div>
-                    </div>
+                    <p className="text-[13px] text-ink-500">
+                      {product.price.toLocaleString('sr-RS')} RSD{product.priceUnit ? ` / ${product.priceUnit}` : ''}
+                    </p>
                   ) : (
-                    <p className="text-xl font-medium text-gray-600">Cena na upit</p>
+                    <p className="text-[13px] text-ink-500">Cena na upit</p>
                   )}
 
                   {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col gap-5">
                     <Link
                       href={(() => {
                         const p = new URLSearchParams();
@@ -879,7 +867,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         if (refSpec?.value) p.set('ref', refSpec.value);
                         return `/upiti?${p.toString()}`;
                       })()}
-                      className="btn bg-primary-600 text-white hover:bg-primary-700 text-center text-lg px-8 py-4 flex-1"
+                      className="btn-primary block w-full text-center min-h-[44px]"
                     >
                       Pošaljite upit
                     </Link>
@@ -888,9 +876,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         href={product.externalLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-lg px-8 py-4 flex-1"
+                        className="btn-link self-start"
                       >
-                        {product.brandId === '14' ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača'}
+                        {product.brandId === '14' ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača'} →
                       </a>
                     )}
                   </div>
@@ -926,7 +914,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   id: 'description',
                   label: 'Opis proizvoda',
                   content: (
-                    <div className="text-gray-700">
+                    <div className="text-ink-600">
                       {descriptionContent}
                     </div>
                   )
@@ -1036,13 +1024,12 @@ function DescriptionSection({ product }: { product: Product }) {
   if (descriptionSections.length > 0) {
     return (
       <>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
         <div className="space-y-6">
           {descriptionSections.map((section, idx) => (
-            <div key={`${section.title}-${idx}`} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+            <div key={`${section.title}-${idx}`} className="border-b border-ink-200 pb-4 last:border-0 last:pb-0">
+              <h3 className="text-base font-medium text-ink-900 mb-3">{section.title}</h3>
               {section.items && section.items.length > 0 && (
-                <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                <ul className="list-disc pl-5 text-ink-600 space-y-2">
                   {section.items.map((item, index) => (
                     <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
                   ))}
@@ -1058,19 +1045,18 @@ function DescriptionSection({ product }: { product: Product }) {
   if (plainDescription || detailSections.length > 0) {
     return (
       <>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
         <div className="space-y-6">
           {plainDescription && (
-            <div className="prose prose-lg max-w-none text-gray-700">
+            <div className="prose max-w-none text-ink-600">
               <p className="whitespace-pre-line">{plainDescription}</p>
             </div>
           )}
 
           {detailSections.map((section, idx) => (
-            <div key={`${section.title}-${idx}`} className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h3>
+            <div key={`${section.title}-${idx}`} className="border-t border-ink-200 pt-6">
+              <h3 className="text-base font-medium text-ink-900 mb-3">{section.title}</h3>
               {section.items && section.items.length > 0 && (
-                <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                <ul className="list-disc pl-5 text-ink-600 space-y-2">
                   {section.items.map((item, index) => (
                     <li key={`${section.title}-${index}`} className="text-base leading-relaxed">{item}</li>
                   ))}
