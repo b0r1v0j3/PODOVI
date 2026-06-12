@@ -1,5 +1,3 @@
-'use client';
-
 interface ProductBenefitsProps {
     benefits: string[];
 }

@@ -113,7 +113,7 @@ export default function ProductDocuments({ initialDocuments = [], categoryId, co
 
             if (collectionSlug && sourceConfig) {
                 try {
-                    const response = await fetch(sourceConfig.dataUrl, { cache: 'no-store' });
+                    const response = await fetch(sourceConfig.dataUrl);
                     if (response.ok) {
                         const index = await response.json();
                         const normalizedCollectionSlug = collectionSlug

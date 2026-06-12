@@ -14,10 +14,11 @@ export default function ProductDetailsTabs({ tabs }: TabListProps) {
             {tabs.map((tab) => (
                 <section
                     key={tab.id}
-                    aria-label={tab.label}
+                    id={tab.id}
+                    aria-labelledby={`section-h-${tab.id}`}
                     className="border-t border-ink-200 py-10 md:py-12"
                 >
-                    <h2 className="eyebrow mb-6">{tab.label}</h2>
+                    <h2 id={`section-h-${tab.id}`} className="eyebrow mb-6">{tab.label}</h2>
                     {tab.content}
                 </section>
             ))}
