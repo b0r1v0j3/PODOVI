@@ -87,53 +87,38 @@ export default async function HomePage() {
       <HomeProductTabs groups={productGroups} brandsRecord={brandsRecord} />
 
       {/* Why Choose Us */}
-      <section className="border-y border-[#1D1D1F]/10 bg-white py-20 md:py-24">
+      <section className="border-y border-ink-200 bg-white py-20 md:py-24">
         <div className="container">
           <div className="mb-12 md:mb-16">
-            <h2 className="text-center text-4xl font-semibold tracking-tight text-[#111111] md:text-6xl">
+            <h2 className="text-center text-3xl font-normal tracking-tight text-ink-900 md:text-5xl">
               Zašto izabrati nas?
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-px overflow-hidden border-y border-[#1D1D1F]/10 bg-[#1D1D1F]/10 md:grid-cols-3">
-            <ScrollReveal>
-              <div className="group bg-white p-8 transition-colors duration-300 hover:bg-[#F5F5F7] md:min-h-[280px]">
-                <div className="mb-10 flex items-center justify-between">
-                  <span className="text-sm font-medium text-[#A1A1A6]">01</span>
-                  <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="mb-4 text-2xl font-semibold tracking-tight text-[#111111]">Proveren kvalitet</h3>
-                <p className="leading-7 text-[#6E6E73]">
+          <div className="grid grid-cols-1 divide-y divide-ink-200 md:grid-cols-3 md:divide-x md:divide-y-0">
+            <ScrollReveal className="py-10 md:py-2 md:pr-10">
+              <div className="md:min-h-[240px]">
+                <span className="block text-[34px] font-normal leading-none text-ink-200">01</span>
+                <h3 className="mb-3 mt-8 text-xl font-medium tracking-tight text-ink-900">Proveren kvalitet</h3>
+                <p className="text-[15px] leading-7 text-ink-600">
                   Radimo samo sa renomiranim evropskim proizvođačima sa dugogodišnjom tradicijom.
                 </p>
               </div>
             </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <div className="group bg-white p-8 transition-colors duration-300 hover:bg-[#F5F5F7] md:min-h-[280px]">
-                <div className="mb-10 flex items-center justify-between">
-                  <span className="text-sm font-medium text-[#A1A1A6]">02</span>
-                  <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="mb-4 text-2xl font-semibold tracking-tight text-[#111111]">Konkurentne cene</h3>
-                <p className="leading-7 text-[#6E6E73]">
+            <ScrollReveal delay={100} className="py-10 md:px-10 md:py-2">
+              <div className="md:min-h-[240px]">
+                <span className="block text-[34px] font-normal leading-none text-ink-200">02</span>
+                <h3 className="mb-3 mt-8 text-xl font-medium tracking-tight text-ink-900">Konkurentne cene</h3>
+                <p className="text-[15px] leading-7 text-ink-600">
                   Najbolji odnos cene i kvaliteta zahvaljujući direktnoj saradnji sa proizvođačima.
                 </p>
               </div>
             </ScrollReveal>
-            <ScrollReveal delay={200}>
-              <div className="group bg-white p-8 transition-colors duration-300 hover:bg-[#F5F5F7] md:min-h-[280px]">
-                <div className="mb-10 flex items-center justify-between">
-                  <span className="text-sm font-medium text-[#A1A1A6]">03</span>
-                  <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                </div>
-                <h3 className="mb-4 text-2xl font-semibold tracking-tight text-[#111111]">Stručna podrška</h3>
-                <p className="leading-7 text-[#6E6E73]">
+            <ScrollReveal delay={200} className="py-10 md:py-2 md:pl-10">
+              <div className="md:min-h-[240px]">
+                <span className="block text-[34px] font-normal leading-none text-ink-200">03</span>
+                <h3 className="mb-3 mt-8 text-xl font-medium tracking-tight text-ink-900">Stručna podrška</h3>
+                <p className="text-[15px] leading-7 text-ink-600">
                   Naš tim stručnjaka će vam pomoći da izaberete idealno rešenje za vaš prostor.
                 </p>
               </div>
@@ -143,22 +128,19 @@ export default async function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#111111] py-20 text-white md:py-24">
+      <section className="bg-ink-900 py-20 text-white md:py-24">
         <ScrollReveal>
           <div className="container">
             <div className="mx-auto max-w-5xl text-center">
-              <p className="mb-5 text-sm font-medium uppercase tracking-[0.22em] text-white/45">Upit za ponudu</p>
-              <h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+              <p className="mb-5 text-[11px] uppercase tracking-label text-white/60">Upit za ponudu</p>
+              <h2 className="text-3xl font-normal tracking-tight text-white md:text-5xl">
                 Spremni da transformišete vaš prostor?
               </h2>
-              <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-white/65 md:text-xl">
+              <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-white/65">
               Pošaljite nam upit i naš stručni tim će vam se javiti u najkraćem roku sa personalizovanom ponudom.
               </p>
-              <Link href="/upiti" className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-base font-semibold text-[#111111] transition-all duration-300 hover:bg-[#E8E8ED] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#111111]">
+              <Link href="/upiti" className="btn-inverse mt-10 inline-flex items-center justify-center">
                 Pošalji upit
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
               </Link>
             </div>
           </div>

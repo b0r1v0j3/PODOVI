@@ -13,18 +13,17 @@ interface BreadcrumbsProps {
 export default function Breadcrumbs({ items, variant = 'light' }: BreadcrumbsProps) {
   const isDark = variant === 'dark';
 
+  const linkClass = isDark
+    ? 'text-white/60 transition-colors hover:text-white'
+    : 'text-ink-500 transition-colors hover:text-ink-900';
+  const currentClass = isDark ? 'text-white' : 'text-ink-900';
+  const separatorClass = isDark ? 'text-white/40' : 'text-ink-400';
+
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
-      <ol className="flex flex-wrap items-center space-x-2 text-sm">
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px]">
         <li>
-          <Link
-            href="/"
-            className={`transition-colors
-                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm ${isDark
-                ? 'text-gray-300 hover:text-white'
-                : 'text-gray-600 hover:text-primary-700'
-              }`}
-          >
+          <Link href="/" className={linkClass}>
             Početna
           </Link>
         </li>
@@ -33,33 +32,15 @@ export default function Breadcrumbs({ items, variant = 'light' }: BreadcrumbsPro
           const isLast = index === items.length - 1;
 
           return (
-            <li key={index} className="flex items-center space-x-2">
-              <svg
-                className={`h-4 w-4 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+            <li key={index} className="flex items-center gap-x-2">
+              <span className={separatorClass} aria-hidden="true">/</span>
 
               {isLast || !item.href ? (
-                <span
-                  className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}
-                  aria-current={isLast ? 'page' : undefined}
-                >
+                <span className={currentClass} aria-current={isLast ? 'page' : undefined}>
                   {item.label}
                 </span>
               ) : (
-                <Link
-                  href={item.href}
-                  className={`transition-colors
-                             focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-sm ${isDark
-                      ? 'text-gray-300 hover:text-white'
-                      : 'text-gray-600 hover:text-primary-700'
-                    }`}
-                >
+                <Link href={item.href} className={linkClass}>
                   {item.label}
                 </Link>
               )}
@@ -70,4 +51,3 @@ export default function Breadcrumbs({ items, variant = 'light' }: BreadcrumbsPro
     </nav>
   );
 }
-
