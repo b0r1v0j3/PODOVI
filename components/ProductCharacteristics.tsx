@@ -70,20 +70,20 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
 
     return (
       <div className="w-full">
-        {title && <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>}
-        <dl className="divide-y divide-gray-200">
+        {title && <h2 className="eyebrow mb-6">{title}</h2>}
+        <dl>
           {finalSpecs.map((spec, index) => {
             const isWeldingSpec = /(elektrod|varila|welding|vrpca)/i.test(spec.label);
             const weldingHref = isWeldingSpec ? getWeldingAccessoryHref(spec.value) : null;
 
             return (
-              <div key={`${spec.label}-${index}`} className="flex items-center justify-between py-3.5">
-                <dt className="text-sm font-medium text-gray-500">{spec.label}</dt>
-                <dd className="text-sm font-semibold text-gray-900 text-right">
+              <div key={`${spec.label}-${index}`} className="flex items-center justify-between gap-4 border-b border-ink-200 py-[9px] text-[13px]">
+                <dt className="text-ink-500">{spec.label}</dt>
+                <dd className="text-ink-900 text-right">
                   {weldingHref ? (
                     <Link
                       href={weldingHref}
-                      className="text-primary-600 hover:text-primary-700 underline underline-offset-4"
+                      className="text-ink-900 underline underline-offset-4 hover:opacity-60"
                     >
                       {spec.value}
                     </Link>
@@ -146,20 +146,20 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
 
   return (
     <div className="w-full">
-      {title && <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>}
-      <dl className="divide-y divide-gray-200">
+      {title && <h2 className="eyebrow mb-6">{title}</h2>}
+      <dl>
         {finalSpecs.map((spec, index) => {
           const isWeldingSpec = /(elektrod|varila|welding|vrpca)/i.test(spec.label);
           const weldingHref = isWeldingSpec ? getWeldingAccessoryHref(spec.value) : null;
 
           return (
-            <div key={`${spec.label}-${index}`} className="flex items-center justify-between py-3.5">
-              <dt className="text-sm font-medium text-gray-500">{spec.label}</dt>
-              <dd className="text-sm font-semibold text-gray-900 text-right">
+            <div key={`${spec.label}-${index}`} className="flex items-center justify-between gap-4 border-b border-ink-200 py-[9px] text-[13px]">
+              <dt className="text-ink-500">{spec.label}</dt>
+              <dd className="text-ink-900 text-right">
                 {weldingHref ? (
                   <Link
                     href={weldingHref}
-                    className="text-primary-600 hover:text-primary-700 underline underline-offset-4"
+                    className="text-ink-900 underline underline-offset-4 hover:opacity-60"
                   >
                     {spec.value}
                   </Link>

@@ -31,12 +31,13 @@ export default async function RelatedProducts({ currentProductId, categoryId, cu
     }
 
     return (
-        <section className="py-12 bg-gray-50 border-t border-gray-100">
+        <section className="py-16 md:py-20 bg-white border-t border-ink-200">
             <div className="container">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                <p className="eyebrow mb-3">Iz iste kategorije</p>
+                <h2 className="text-xl md:text-2xl font-normal text-ink-900 mb-10">
                     Slični proizvodi
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
                     {relatedProducts.map((product) => (
                         <ProductCard
                             key={product.id}

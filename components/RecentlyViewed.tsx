@@ -36,9 +36,10 @@ export default function RecentlyViewed() {
     }
 
     return (
-        <section className="py-12 bg-white border-t border-gray-100">
+        <section className="py-16 bg-white border-t border-ink-200">
             <div className="container">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                <p className="eyebrow mb-3">Istorija pregleda</p>
+                <h2 className="text-xl md:text-2xl font-normal text-ink-900 mb-8">
                     Nedavno pregledano
                 </h2>
                 <div className="relative">
@@ -49,20 +50,20 @@ export default function RecentlyViewed() {
                                 href={product.url || `/proizvodi/${product.slug}`}
                                 className="flex-shrink-0 w-48 snap-start group"
                             >
-                                <div className="aspect-square relative rounded-lg overflow-hidden bg-gray-100 mb-2 border border-gray-200">
+                                <div className="aspect-square relative overflow-hidden bg-paper mb-3">
                                     <ProductImage
                                         src={product.image}
                                         alt={product.name}
                                         sources={product.imageCandidates}
                                         sizes="192px"
-                                        className={`group-hover:scale-105 transition-transform duration-300${product.image.includes('/deking/') ? ' object-left' : ''}`}
+                                        className={`group-hover:scale-[1.03] transition-transform duration-700${product.image.includes('/deking/') ? ' object-left' : ''}`}
                                     />
                                 </div>
-                                <h3 className="text-sm font-medium text-gray-900 truncate group-hover:text-primary-600 transition-colors">
+                                <h3 className="text-sm font-normal text-ink-900 truncate">
                                     {product.name}
                                 </h3>
                                 {product.price && (
-                                    <p className="text-xs text-gray-500 font-semibold mt-1">
+                                    <p className="text-[13px] text-ink-500 mt-1">
                                         {product.price.toLocaleString('sr-RS')} RSD
                                     </p>
                                 )}
