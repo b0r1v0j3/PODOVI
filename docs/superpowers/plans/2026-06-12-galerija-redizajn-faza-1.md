@@ -6576,6 +6576,8 @@ Expected: svih šest komandi vraća prazan izlaz (rg exit kod 1). Jedini dozvolj
 
 Posle Taska 6 nijedan izvorni fajl ne koristi framer-motion (provereno grep-om). Run: `npm uninstall framer-motion`, zatim build u Step 2 potvrđuje da ništa nije puklo. Napomene za sweep: `components/useScrollLock.ts` je novi legitiman fajl; `app/proizvodi/[slug]/page.tsx` sadrži namerno preslikane normalizer helpere iz `ProductDocuments` (server/client granica) — kandidat za kasniju konsolidaciju, NE dirati sada.
 
+Nalaz za izveštaj (NE dirati u ovom tasku): `InquiryModal`, `InquiryButton` i `FlooringCalculator` su mrtav kod — nula upotreba i na originalnom `f218f4bd`, dakle bili su nepovezani i PRE redizajna (README ih i dalje reklamira kao funkcije). Restilizovani su radi konzistentnosti; odluka povezati-ili-obrisati pripada vlasniku (Faza 2 kandidat).
+
 - [ ] **Step 2: Build i contract testovi**
 
 Run: `npm run build` — Expected: uspešan build (uključuje validate:images).
