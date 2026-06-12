@@ -49,6 +49,43 @@ export const dynamic = 'force-dynamic';
 
 type DocumentsIndex = Record<string, Record<string, Array<{ title: string; url: string }>>>;
 
+type ProductDocumentItem = { title: string; url: string; type?: string };
+
+// Mirrors normalizeDocumentUrl in components/ProductDocuments.tsx so the SSR-hydrated
+// initial list matches what the client effect derives for the no-?color= case.
+function normalizeProductDocumentUrl(url: string): string {
+  const value = String(url || '').trim();
+  if (!value) return '';
+  if (!/media\.tarkett-image\.com/i.test(value) || !/\.pdf(?:\?|$)/i.test(value)) {
+    return value;
+  }
+
+  return value
+    .replace('://media.tarkett-image.com/large-high/', '://media.tarkett-image.com/docs/')
+    .replace('://media.tarkett-image.com/large/', '://media.tarkett-image.com/docs/')
+    .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
+}
+
+// Mirrors normalizeDocuments in components/ProductDocuments.tsx (trim/default titles,
+// normalize urls, drop empties and duplicates).
+function normalizeProductDocuments(documents: ProductDocumentItem[]): { title: string; url: string }[] {
+  const seen = new Set<string>();
+
+  return documents.reduce<{ title: string; url: string }[]>((result, document) => {
+    const url = normalizeProductDocumentUrl(document?.url || '');
+    if (!url || seen.has(url)) {
+      return result;
+    }
+
+    seen.add(url);
+    result.push({
+      title: String(document?.title || '').trim() || 'Dokument',
+      url,
+    });
+    return result;
+  }, []);
+}
+
 function cloneProductForPage<T extends Product & { collectionSlug?: string }>(product: T): T {
   return {
     ...product,
@@ -671,10 +708,23 @@ export default async function ProductPage({ params, searchParams }: Props) {
       documentsIndex[documentsCategoryKey]?.[normalizedCollectionSlug]?.length
     );
 
+    // Server-side replica of the list the ProductDocuments effect derives when no ?color=
+    // is present: normalized index docs win when the category prefers the index ('1'/'3')
+    // or when the product has no documents of its own; otherwise the product's docs win.
+    const indexedCollectionDocuments = documentsCategoryKey
+      ? normalizeProductDocuments(documentsIndex[documentsCategoryKey]?.[normalizedCollectionSlug] ?? [])
+      : [];
+    const normalizedProductDocuments = normalizeProductDocuments(product.documents || []);
+    const preferIndexedDocuments = ['1', '3'].includes(product.categoryId);
+    const initialProductDocuments =
+      indexedCollectionDocuments.length > 0 && (preferIndexedDocuments || normalizedProductDocuments.length === 0)
+        ? indexedCollectionDocuments
+        : normalizedProductDocuments;
+
     const sharedDocs = ((product.documents && product.documents.length > 0) || hasIndexedDocuments) ? (
       <div className="h-full">
         <ProductDocuments
-          initialDocuments={product.documents || []}
+          initialDocuments={selectedColorSlug ? (product.documents || []) : initialProductDocuments}
           categoryId={product.categoryId}
           collectionSlug={product.slug}
         />
