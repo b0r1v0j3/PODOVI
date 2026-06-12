@@ -23,7 +23,7 @@ export default function BrandLogoMark({ brand }: BrandLogoMarkProps) {
   if (brand.name.toLowerCase() === 'podovi' && (!hasUsableBrandLogo(brand.logo) || isRetiredPodoviPlaceholder(brand.logo))) {
     return (
       <div className="flex items-center">
-        <PodoviWordmark textClassName="text-3xl text-[#1D1D1F]" />
+        <PodoviWordmark textClassName="text-3xl text-ink-900" />
       </div>
     );
   }
@@ -40,7 +40,7 @@ export default function BrandLogoMark({ brand }: BrandLogoMarkProps) {
           decoding="async"
         />
       ) : (
-        <span className="text-gray-900 font-semibold">{brand.name}</span>
+        <span className="text-ink-900 font-medium">{brand.name}</span>
       )}
     </div>
   );
