@@ -13,9 +13,10 @@ import { getProductImageCandidates } from '@/lib/utils/product-images';
 
 interface ProductCardProps {
   product: Product;
+  sizes?: string;
 }
 
-export default async function ProductCard({ product }: ProductCardProps) {
+export default async function ProductCard({ product, sizes = "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw" }: ProductCardProps) {
   const brand = await brandRepository.findById(product.brandId);
   const imageCandidates = getProductImageCandidates(product, 'card').slice(0, 4);
   const primaryImage = imageCandidates[0];
@@ -36,7 +37,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
           <ProductImage
             sources={imageCandidates}
             alt={primaryImage.alt}
-            sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            sizes={sizes}
             quality={90}
             className={`transition-transform duration-700 group-hover:scale-[1.03] ${product.categoryId === '5'
               ? 'object-left'

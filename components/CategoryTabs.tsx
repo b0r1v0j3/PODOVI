@@ -605,19 +605,21 @@ export default function CategoryTabs({
       <div className="mb-6 border-b border-ink-200">
         <div className="flex gap-8">
           <button
+            type="button"
             onClick={() => setActiveTab('collections')}
             className={`min-h-[44px] px-1 pb-3 text-base font-normal transition-colors duration-200 ${activeTab === 'collections'
               ? 'text-ink-900 border-b-2 border-ink-900'
-              : 'text-ink-400 hover:text-ink-600 border-b-2 border-transparent'
+              : 'text-ink-500 hover:text-ink-600 border-b-2 border-transparent'
               }`}
           >
             Kolekcije ({collectionsToRender.length})
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('colors')}
             className={`min-h-[44px] px-1 pb-3 text-base font-normal transition-colors duration-200 ${activeTab === 'colors'
               ? 'text-ink-900 border-b-2 border-ink-900'
-              : 'text-ink-400 hover:text-ink-600 border-b-2 border-transparent'
+              : 'text-ink-500 hover:text-ink-600 border-b-2 border-transparent'
               }`}
           >
             {colorsTabLabel} ({useJsonColors
@@ -643,7 +645,7 @@ export default function CategoryTabs({
           <div>
             {useJsonColors ? (
               isColorsLoading ? (
-                <div aria-busy="true" aria-label={colorsLoadingLabel}>
+                <div role="status" aria-busy="true" aria-label={colorsLoadingLabel}>
                   <div className="mb-6 h-4 w-32 animate-pulse bg-paper" />
                   <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 xl:grid-cols-4">
                     {Array.from({ length: 8 }).map((_, index) => (
