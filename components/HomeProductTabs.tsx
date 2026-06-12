@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Brand, Category, Product } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 
@@ -65,21 +65,40 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     ? expandedAllProducts.length
     : activeGroup?.totalCount || activeProducts.length;
   const canOpenCategoryPage = Boolean(activeGroup);
-  const categoryButtonClass = 'shrink-0 border-b-2 pb-2 text-[1.65rem] font-normal leading-none tracking-normal transition-colors sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]';
+  const categoryButtonClass = 'shrink-0 text-[1.65rem] font-semibold leading-none tracking-normal transition-colors sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]';
+  const tabsScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = tabsScrollRef.current;
+    if (!el) return;
+
+    const onWheel = (event: WheelEvent) => {
+      if (el.scrollWidth <= el.clientWidth) return;
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      const atStart = el.scrollLeft <= 0;
+      const atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - 1;
+      if ((event.deltaY < 0 && atStart) || (event.deltaY > 0 && atEnd)) return;
+      event.preventDefault();
+      el.scrollLeft += event.deltaY;
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, []);
 
   return (
     <section className="bg-white">
       <div className="container">
         <h1 className="sr-only">Podovi.online katalog proizvoda</h1>
 
-        <div className="overflow-hidden border-b border-ink-200">
-          <div className="no-scrollbar -mx-6 flex gap-4 overflow-x-auto px-6 pb-4 pt-6 sm:gap-5 md:pt-8 lg:gap-6">
+        <div className="overflow-hidden border-b border-[#1D1D1F]">
+          <div ref={tabsScrollRef} className="no-scrollbar -mx-6 flex gap-3 overflow-x-auto px-6 pb-4 pt-6 sm:gap-4 md:pt-8 lg:gap-5">
             <button
               type="button"
               onClick={() => setActiveSlug('sve')}
               aria-pressed={activeSlug === 'sve'}
               className={`${categoryButtonClass} ${
-                activeSlug === 'sve' ? 'border-ink-900 text-ink-900' : 'border-transparent text-ink-400 hover:text-ink-600'
+                activeSlug === 'sve' ? 'text-[#050505]' : 'text-[#A8A8A8] hover:text-[#555555]'
               }`}
             >
               Sve
@@ -95,7 +114,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                   onClick={() => setActiveSlug(group.category.slug)}
                   aria-pressed={active}
                   className={`${categoryButtonClass} ${
-                    active ? 'border-ink-900 text-ink-900' : 'border-transparent text-ink-400 hover:text-ink-600'
+                    active ? 'text-[#050505]' : 'text-[#A8A8A8] hover:text-[#555555]'
                   }`}
                 >
                   {group.category.name}
@@ -105,19 +124,22 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-b border-ink-200 py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-b border-[#1D1D1F] py-5 text-[13px] font-semibold uppercase tracking-normal text-[#1D1D1F] sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span className="eyebrow">{activeName}</span>
-            <span className="eyebrow">
+            <span>{activeName}</span>
+            <span className="text-[#8A8A8A]">
               {activeProducts.length} prikazano{activeTotal > activeProducts.length ? ` od ${activeTotal}` : ''}
             </span>
           </div>
           {canOpenCategoryPage && activeGroup ? (
             <Link
               href={`/kategorije/${activeGroup.category.slug}`}
-              className="btn-link inline-flex w-fit items-center"
+              className="inline-flex w-fit items-center text-[#1D1D1F] transition-colors hover:text-[#555555]"
             >
-              Pogledaj sve →
+              Pogledaj sve
+              <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           ) : null}
         </div>
