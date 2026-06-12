@@ -43,27 +43,59 @@ function parseSitemapLocs(xml) {
   return locs;
 }
 
+// Kolekcioni CEE slug -> prefiks koji varijacioni URL-ovi stvarno koriste
+// (npr. kolekcija je `taralay-initial-acoustic-0`, ali boje su `/products/taralay-initial-acoustic-...`).
+const VARIATION_PREFIX_ALIASES = {
+  'taralay-initial-acoustic-0': 'taralay-initial-acoustic',
+};
+
+// Kolekcije čije varijacije nemaju {code}-{sku} u URL-u — jedini dozvoljeni code-less izuzeci.
+const CODELESS_VARIATION_CEE_SLUGS = new Set([
+  'taralay-initial-acoustic-0',
+  'taralay-initial-compact-new',
+  'taralay-impression-hop-acoustic',
+]);
+
 // path = slug deo URL-a posle /products/
 function classifyProductPath(pathSlug, ceeSlugs) {
-  const sorted = [...ceeSlugs].sort((a, b) => b.length - a.length);
-  for (const ceeSlug of sorted) {
+  // 1) Tačno poklapanje = kolekciona stranica (pre varijacionog matchinga,
+  // da npr. `taralay-initial-acoustic-0` ne upadne kao varijacija alias prefiksa).
+  for (const ceeSlug of ceeSlugs) {
     if (pathSlug === ceeSlug) return { type: 'collection', ceeSlug };
-    if (!pathSlug.startsWith(ceeSlug + '-')) continue;
-    const rest = pathSlug.slice(ceeSlug.length + 1);
+  }
+  // 2) Kandidati za prefiks: sopstveni slug + eventualni alias; najduži prefiks prvi.
+  const candidates = [];
+  for (const ceeSlug of ceeSlugs) {
+    candidates.push({ prefix: ceeSlug, ceeSlug });
+    const alias = VARIATION_PREFIX_ALIASES[ceeSlug];
+    if (alias) candidates.push({ prefix: alias, ceeSlug });
+  }
+  candidates.sort((a, b) => b.prefix.length - a.prefix.length);
+  for (const { prefix, ceeSlug } of candidates) {
+    if (!pathSlug.startsWith(prefix + '-')) continue;
+    const rest = pathSlug.slice(prefix.length + 1);
     const standard = rest.match(/^(\d{4})-([a-z0-9-]+)-([a-z]{0,2}\d{6,8})$/);
     if (standard) {
       return { type: 'variation', ceeSlug, code: standard[1], nameSlug: standard[2], sku: standard[3] };
     }
-    // Izuzeci bez šifre/SKU (taralay-initial-*, pojedinačne hop varijacije)
-    return { type: 'variation', ceeSlug, code: null, nameSlug: rest, sku: null };
+    // Izuzeci bez šifre/SKU — samo za poznate kolekcije; sve ostalo su nepoznate pod-stranice.
+    if (CODELESS_VARIATION_CEE_SLUGS.has(ceeSlug)) {
+      return { type: 'variation', ceeSlug, code: null, nameSlug: rest, sku: null };
+    }
+    return null;
   }
   return null;
 }
 
 function decodeEntities(s) {
+  // &amp; se dekodira POSLEDNJI (da &amp;quot; ne postane " duplim dekodiranjem);
+  // &nbsp; -> običan razmak pre sažimanja whitespace-a.
   return String(s || '')
-    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/\s+/g, ' ').trim();
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#0?39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ').trim();
 }
 
 function parseSpecTables(html) {
@@ -84,7 +116,7 @@ function parseDocumentLinks(html) {
   // 1) sticky lista: <ul class="product-documents-list"> ... <a href="..pdf" download>NAME</a>
   const stickyBlock = html.match(/<ul class="product-documents-list">([\s\S]*?)<\/ul>/);
   if (stickyBlock) {
-    const linkRe = /<a href="(https:\/\/cdn\.gerflor\.com\/[^"]+\.pdf)"[^>]*>([\s\S]*?)<\/a>/g;
+    const linkRe = /<a [^>]*?href="(https:\/\/cdn\.gerflor\.com\/[^"]+?\.pdf(?:\?[^"]*)?)"[^>]*>([\s\S]*?)<\/a>/gi;
     let m;
     while ((m = linkRe.exec(stickyBlock[1]))) {
       const url = m[1];
@@ -99,7 +131,7 @@ function parseDocumentLinks(html) {
   while ((acc = accRe.exec(html))) {
     const category = decodeEntities(acc[1]);
     const body = acc[2];
-    const resRe = /class="res-link js-file-download"\s+href="(https:\/\/cdn\.gerflor\.com\/[^"]+\.pdf)"[\s\S]*?<span class="res-info">([\s\S]*?)<\/span>/g;
+    const resRe = /class="res-link js-file-download"[^>]*?href="(https:\/\/cdn\.gerflor\.com\/[^"]+?\.pdf(?:\?[^"]*)?)"[\s\S]*?<span class="res-info">([\s\S]*?)<\/span>/gi;
     let r;
     while ((r = resRe.exec(body))) {
       const url = r[1];
@@ -164,6 +196,8 @@ function encodeAssetUrl(url) {
 module.exports = {
   PUBLIC_HOST,
   CEE_SLUG_BY_OUR_SLUG,
+  VARIATION_PREFIX_ALIASES,
+  CODELESS_VARIATION_CEE_SLUGS,
   rewriteSitemapHost,
   parseSitemapLocs,
   classifyProductPath,

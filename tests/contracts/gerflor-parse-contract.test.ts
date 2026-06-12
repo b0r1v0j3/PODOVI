@@ -8,6 +8,7 @@ const {
   parseColorCount,
   mapDocumentTitle,
   encodeAssetUrl,
+  decodeEntities,
   CEE_SLUG_BY_OUR_SLUG,
 } = require('../../tools/lib/gerflor-parse.js');
 
@@ -44,6 +45,35 @@ describe('Gerflor CEE parse contracts', () => {
   it('longest CEE slug wins (hop-acoustic vs impression-acoustic prefix overlap)', () => {
     expect(classifyProductPath('taralay-impression-hop-acoustic-finesse-nature', CEE_SLUGS))
       .toMatchObject({ type: 'variation', ceeSlug: 'taralay-impression-hop-acoustic', nameSlug: 'finesse-nature' });
+  });
+
+  it('classifies taralay-initial-acoustic variations via alias prefix (collection slug has -0 suffix)', () => {
+    expect(classifyProductPath('taralay-initial-acoustic-azay-cream', CEE_SLUGS))
+      .toEqual({ type: 'variation', ceeSlug: 'taralay-initial-acoustic-0', code: null, nameSlug: 'azay-cream', sku: null });
+    expect(classifyProductPath('taralay-initial-acoustic-0', CEE_SLUGS))
+      .toEqual({ type: 'collection', ceeSlug: 'taralay-initial-acoustic-0' });
+  });
+
+  it('rejects code-less variations for collections outside the exception set', () => {
+    expect(classifyProductPath('premium-compact-accessories', CEE_SLUGS)).toBeNull();
+    expect(classifyProductPath('mipolam-accord-something-random', CEE_SLUGS)).toBeNull();
+  });
+
+  it('classifies 608x608 collection and variation despite prefix overlap with mipolam-affinity', () => {
+    expect(classifyProductPath('mipolam-affinity-608x608', CEE_SLUGS))
+      .toEqual({ type: 'collection', ceeSlug: 'mipolam-affinity-608x608' });
+    expect(classifyProductPath('mipolam-affinity-608x608-0001-foo-12345678', CEE_SLUGS))
+      .toMatchObject({ type: 'variation', ceeSlug: 'mipolam-affinity-608x608', code: '0001' });
+  });
+
+  it('decodeEntities: nbsp and amp-last', () => {
+    expect(decodeEntities('technical&nbsp;data sheet')).toBe('technical data sheet');
+    expect(decodeEntities('&amp;quot;')).toBe('&quot;');
+  });
+
+  it('parseDocumentLinks tolerates attribute order and .PDF case', () => {
+    const html = '<ul class="product-documents-list"><li><a download class="js-file-download" href="https://cdn.gerflor.com/media/2/1/x.PDF">X</a></li></ul>';
+    expect(parseDocumentLinks(html)).toHaveLength(1);
   });
 
   it('parses spec table rows', () => {
