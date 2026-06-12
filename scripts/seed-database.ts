@@ -24,11 +24,43 @@ import { linoleumProducts } from '../lib/data/linoleum-products';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataDir = join(__dirname, '..', 'public', 'data');
 
-// Supabase client
-const supabase = createClient(
-    'https://nnjmrfwepylrheykalik.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5uam1yZndlcHlscmhleWthbGlrIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MDY2MzcxMCwiZXhwIjoyMDg2MjM5NzEwfQ.iYC0x-4ycIqH8ICJVtey887otVctwOmTCStJOQTA1xk'
-);
+// Učitaj .env.local (tsx ga ne učitava sam); parser skida navodnike — isti obrazac
+// kao scripts/sync-tarkett-supabase.ts (AGENTS pravilo 27: vercel env pull upisuje navodnike).
+function loadLocalEnvFile() {
+    const envPath = join(__dirname, '..', '.env.local');
+    let raw: string;
+    try {
+        raw = readFileSync(envPath, 'utf8');
+    } catch {
+        return; // bez .env.local — env varijable moraju doći spolja
+    }
+    for (const line of raw.split(/\r?\n/)) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith('#')) continue;
+        const separatorIndex = trimmed.indexOf('=');
+        if (separatorIndex === -1) continue;
+        const key = trimmed.slice(0, separatorIndex).trim();
+        if (!key || process.env[key]) continue;
+        let value = trimmed.slice(separatorIndex + 1).trim();
+        if (value.startsWith('"') && value.endsWith('"')) {
+            value = value.slice(1, -1);
+        }
+        process.env[key] = value;
+    }
+}
+
+loadLocalEnvFile();
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!supabaseUrl || !supabaseServiceRoleKey) {
+    console.error('❌ Nedostaju NEXT_PUBLIC_SUPABASE_URL i/ili SUPABASE_SERVICE_ROLE_KEY (postavi ih u .env.local).');
+    process.exit(1);
+}
+
+// Supabase client (service_role — zaobilazi RLS; ključ NIKAD ne hardkodovati)
+const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
 // =========================================
 // ID Mapping: old string IDs → new UUIDs
