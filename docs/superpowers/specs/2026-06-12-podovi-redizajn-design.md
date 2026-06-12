@@ -60,7 +60,7 @@ Inter ostaje. Težine: 400 (podrazumevano), 500 (naglasak), 700 samo logotip. Hi
 - Border-radius: 0 svuda (dugmad, kartice, inputi, modali, fioke).
 - Senke: nijedna. Razdvajanje hairline linijama (1px `#E5E5E5`) i belinom.
 - Kontejner: `max-w-[1440px]`, padding 24px mobilni / 40px desktop (sa 1200px).
-- Inputi: bez okvira — samo donja linija (1px ink-900 u fokusu, hairline inače), etiketa iznad u stilu „etiketa".
+- Inputi: bez okvira — samo donja linija (1px ink-900 u fokusu, hairline inače), etiketa iznad u stilu „etiketa". Tastaturni fokus (`focus-visible`) dodatno dobija standardni 2px outline iz §7; fokus mišem samo donju liniju.
 - Fokus za tastaturu: 2px outline ink-900 sa offsetom 2px (zamenjuje plave/roze ringove).
 
 ### 3.4 Dugmad
