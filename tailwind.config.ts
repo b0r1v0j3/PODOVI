@@ -9,6 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        ink: {
+          900: '#111111',
+          700: '#333333',
+          600: '#555555',
+          500: '#767676',
+          400: '#8A8A8A',
+          200: '#E5E5E5',
+        },
+        paper: '#F7F5F2',
+        // Roza paleta ostaje ISKLJUČIVO zbog /crm i LeadSaveButton (van obima redizajna).
         primary: {
           50: '#fff1f2',
           100: '#ffe4e6',
@@ -20,8 +30,10 @@ const config: Config = {
           700: '#be123c',
           800: '#9f1239',
           900: '#881337',
-          // Apple-style neutral grays included by default in Tailwind (gray/zinc/neutral/slate)
         },
+      },
+      letterSpacing: {
+        label: '0.14em',
       },
     },
   },
