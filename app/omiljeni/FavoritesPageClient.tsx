@@ -91,7 +91,7 @@ export default function FavoritesPageClient() {
                                                 sources={imageCandidates}
                                                 alt={product.name}
                                                 className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                                                sizes="(max-width: 768px) 100vw, 25vw"
+                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                                             />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center">

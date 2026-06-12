@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useCompare } from '@/lib/context/CompareContext';
 
 interface ProductInquiryStickyCTAProps {
   productSlug: string;
@@ -12,7 +13,12 @@ interface ProductInquiryStickyCTAProps {
 export default function ProductInquiryStickyCTA({ productSlug, inquiryRef }: ProductInquiryStickyCTAProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { compareItems } = useCompare();
   const color = searchParams.get('color') || '';
+
+  // CompareBar ima prednost na dnu ekrana (oba su bottom-0 z-40) — dok postoje
+  // proizvodi za poređenje, sticky CTA se ne prikazuje.
+  if (compareItems.length > 0) return null;
 
   const params = new URLSearchParams();
   params.set('product', productSlug);
