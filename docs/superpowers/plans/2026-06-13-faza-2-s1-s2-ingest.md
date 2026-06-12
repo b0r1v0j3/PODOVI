@@ -16,6 +16,8 @@
 - `public/images/products/vinyl/` se NE menja i NE briše (ostaje fallback); novi asseti idu isključivo u Supabase.
 - Posle SVAKOG taska koji menja kod: `npm run test:contract` zeleno.
 
+**Amandman posle review-a Taska 1 (modul `gerflor-parse.js` je dopunjen mimo originalnog koda u planu):** (1) `classifyProductPath` prvo proverava TAČAN match protiv svih kolekcijskih slugova, a varijacije matchuje i preko `VARIATION_PREFIX_ALIASES` (CEE kolekcija `taralay-initial-acoustic-0` ima varijacije sa prefiksom `taralay-initial-acoustic` BEZ `-0`); (2) varijacije bez šifre/SKU dozvoljene su SAMO za kolekcije u `CODELESS_VARIATION_CEE_SLUGS` (`taralay-initial-acoustic-0`, `taralay-initial-compact-new`, `taralay-impression-hop-acoustic`) — sve ostalo vraća `null` da nepoznate stranice ne postanu proizvodi; (3) decodeEntities: `&amp;` se dekodira poslednji + dodat `&nbsp;`; PDF regex je case-insensitive i toleriše atribute pre `href`. ODLUKA (descope): „prednost EN verziji" dedupe se NE implementira — CEE je engleski sajt, duplikati po jeziku se ne javljaju; dedupe ostaje po URL-u.
+
 ---
 
 ### Task 1: Čiste parse funkcije + contract testovi (TDD)
