@@ -17,25 +17,27 @@ export default function FavoriteButton({ productId, size = 'sm' }: FavoriteButto
         toggleFavorite(productId);
     };
 
-    const sizeClasses = size === 'sm' ? 'w-8 h-8' : 'w-10 h-10';
+    const sizeClasses = size === 'sm' ? 'w-11 h-11 md:w-9 md:h-9' : 'w-11 h-11';
     const iconSize = size === 'sm' ? 'w-4 h-4' : 'w-5 h-5';
 
     return (
         <button
             onClick={handleClick}
             title={active ? 'Ukloni iz omiljenih' : 'Dodaj u omiljene'}
+            aria-label={active ? 'Ukloni iz omiljenih' : 'Dodaj u omiljene'}
+            aria-pressed={active}
             className={`
-        inline-flex items-center justify-center rounded-full
-        transition-all duration-200 
+        inline-flex items-center justify-center bg-white border
+        transition-colors duration-200
         ${sizeClasses}
         ${active
-                    ? 'bg-red-50 text-red-500 hover:bg-red-100'
-                    : 'bg-white/90 text-gray-400 hover:text-red-500 hover:bg-red-50 backdrop-blur-sm'
+                    ? 'border-ink-900 text-ink-900'
+                    : 'border-ink-200 text-ink-500 hover:border-ink-900 hover:text-ink-900'
                 }
       `}
         >
             <svg
-                className={`${iconSize} transition-transform duration-200 ${active ? 'scale-110' : 'hover:scale-110'}`}
+                className={iconSize}
                 fill={active ? 'currentColor' : 'none'}
                 viewBox="0 0 24 24"
                 stroke="currentColor"
