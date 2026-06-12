@@ -14,6 +14,8 @@
 - Posle Taska 1 a pre Taska 3/7, klase `badge-*`/`card-hover`/`spec-chip` privremeno postoje u JSX-u ali bez CSS definicija — to je očekivano prelazno stanje (build prolazi, vizuelno se sređuje u tim taskovima).
 - Commit posle svakog taska; BEZ push-a (Vercel auto-deploy sa main).
 
+**Amandman posle quality review-a Taska 2 (važi za taskove 4, 5 i 7):** pravila slojeva i overlay ponašanja — fiksni plutajući elementi (WhatsAppButton, BackToTop, CompareBar, ProductInquiryStickyCTA) koriste `z-40`; full-screen/slide-over overlayi (mobilni meni, pretraga, fioka filtera, InquiryModal) ostaju iznad njih, zaključavaju body scroll dok su otvoreni (`document.body.style.overflow = 'hidden'` u efektu sa cleanup-om), zatvaraju se na Escape preko document-level listenera, i vraćaju fokus na element koji ih je otvorio. Ako NEW snippet u tasku navodi drugačiji z-index za plutajući element, koristiti `z-40`.
+
 ---
 
 ### Task 1: Temelj — dizajn tokeni i globalni helperi
