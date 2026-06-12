@@ -14,6 +14,8 @@
 - Posle Taska 1 a pre Taska 3/7, klase `badge-*`/`card-hover`/`spec-chip` privremeno postoje u JSX-u ali bez CSS definicija — to je očekivano prelazno stanje (build prolazi, vizuelno se sređuje u tim taskovima).
 - Commit posle svakog taska; BEZ push-a (Vercel auto-deploy sa main).
 
+**Amandman posle quality review-a Taska 4 (važi za taskove 5 i 7):** postoji zajednički hook `components/useScrollLock.ts` (brojač + zaključavanje `documentElement` I `body` overflow-a) — SVAKI novi overlay (InquiryModal u Tasku 7) koristi `useScrollLock(open)` umesto ručnog `document.body.style.overflow`. Overlay šablon: jedan `<div className="fixed inset-0 z-[60]">` omotač sa `absolute inset-0 bg-black/20` backdrop-om unutra (iznad sticky headera z-50 i plutajućih z-40). Neaktivni tabovi/tekst manji od 18px koriste `text-ink-500` (ne ink-400 — pada AA kontrast). `ProductCard` sada ima opcioni `sizes` prop — mreže koje nisu 2/3/4 prosleđuju svoj `sizes` string (CompareBar/omiljeni u Tasku 7 proveriti isto).
+
 **Amandman posle quality review-a Taska 3 (važi za Task 4):** kada mreže pređu na `grid-cols-2 md:grid-cols-3 xl:grid-cols-4`, u `components/ProductCard.tsx` i `components/ProductCardClient.tsx` (normal rezim) ažurirati `sizes` atribut slike sa `"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"` na `"(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"` — inače mobilni preuzima 4× veće slike nego što treba. Opciono u istim fajlovima: dodati `group-focus-visible:underline` uz `group-hover:underline` na nazivu.
 
 **Amandman posle quality review-a Taska 2 (važi za taskove 4, 5 i 7):** pravila slojeva i overlay ponašanja — fiksni plutajući elementi (WhatsAppButton, BackToTop, CompareBar, ProductInquiryStickyCTA) koriste `z-40`; full-screen/slide-over overlayi (mobilni meni, pretraga, fioka filtera, InquiryModal) ostaju iznad njih, zaključavaju body scroll dok su otvoreni (`document.body.style.overflow = 'hidden'` u efektu sa cleanup-om), zatvaraju se na Escape preko document-level listenera, i vraćaju fokus na element koji ih je otvorio. Ako NEW snippet u tasku navodi drugačiji z-index za plutajući element, koristiti `z-40`.
@@ -5212,7 +5214,7 @@ export default function RecommendedAccessories({ accessories }: RecommendedAcces
 
 - [ ] **Step 9: RelatedProducts.tsx — eyebrow + naslov sekcije, bela pozadina**
 
-Logika fetch-ovanja/filtriranja i `ProductCard` pozivi se NE diraju — samo wrapper.
+Logika fetch-ovanja/filtriranja se NE dira — samo wrapper. Napomena (posle fix-a Taska 4): `ProductCard` poziv u ovom fajlu sada prosleđuje `sizes` prop kroz više linija — to NE dirati, OLD snippet wrappera i dalje važi.
 
 OLD:
 ```tsx
