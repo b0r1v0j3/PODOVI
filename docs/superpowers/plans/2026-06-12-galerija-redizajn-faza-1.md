@@ -6572,6 +6572,10 @@ rg -n "card-hover|font-semibold|font-bold|\bitalic\b" app components -g "!app/cr
 
 Expected: svih šest komandi vraća prazan izlaz (rg exit kod 1). Jedini dozvoljeni `font-bold` je u `components/PodoviWordmark.tsx` (logotip) — ako se pojavi, to NIJE zaostatak. Svaki drugi pogodak ispraviti po rečniku: `primary-600` → `ink-900`, `#86868B` → `text-ink-500`, `rounded-*` → ukloniti, `shadow-*` → ukloniti, `font-semibold` → `font-normal` ili `font-medium`, `italic` → ukloniti.
 
+- [ ] **Step 1b: Ukloniti framer-motion zavisnost**
+
+Posle Taska 6 nijedan izvorni fajl ne koristi framer-motion (provereno grep-om). Run: `npm uninstall framer-motion`, zatim build u Step 2 potvrđuje da ništa nije puklo. Napomene za sweep: `components/useScrollLock.ts` je novi legitiman fajl; `app/proizvodi/[slug]/page.tsx` sadrži namerno preslikane normalizer helpere iz `ProductDocuments` (server/client granica) — kandidat za kasniju konsolidaciju, NE dirati sada.
+
 - [ ] **Step 2: Build i contract testovi**
 
 Run: `npm run build` — Expected: uspešan build (uključuje validate:images).
