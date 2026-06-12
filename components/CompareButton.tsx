@@ -23,23 +23,25 @@ export default function CompareButton({ product, size = 'sm' }: CompareButtonPro
     };
 
     const sizeClasses = size === 'sm'
-        ? 'w-8 h-8 text-xs'
-        : 'px-3 py-1.5 text-sm';
+        ? 'w-11 h-11 md:w-9 md:h-9 text-xs'
+        : 'px-4 py-2.5 min-h-[44px] text-[13px]';
 
     return (
         <button
             onClick={handleClick}
             disabled={!active && isFull}
             title={active ? 'Ukloni iz poređenja' : isFull ? 'Maksimalno 3 proizvoda' : 'Uporedi'}
+            aria-label={active ? 'Ukloni iz poređenja' : isFull ? 'Maksimalno 3 proizvoda' : 'Uporedi'}
+            aria-pressed={active}
             className={`
-        inline-flex items-center justify-center gap-1 rounded-full font-medium
-        transition-all duration-200 border
+        inline-flex items-center justify-center gap-1 font-medium
+        transition-colors duration-200 border
         ${sizeClasses}
         ${active
-                    ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
+                    ? 'bg-ink-900 text-white border-ink-900'
                     : isFull
-                        ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-                        : 'bg-white/90 text-gray-700 border-gray-300 hover:bg-primary-50 hover:border-primary-400 hover:text-primary-700 backdrop-blur-sm'
+                        ? 'bg-white text-ink-400 border-ink-200 cursor-not-allowed'
+                        : 'bg-white text-ink-500 border-ink-200 hover:border-ink-900 hover:text-ink-900'
                 }
       `}
         >
