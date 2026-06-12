@@ -773,7 +773,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   });
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-white min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -794,33 +794,33 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             { label: category.name }
           ]} />
         </div>
-        <section className="mb-6 rounded-[1.75rem] border border-stone-200 bg-white px-6 py-8 shadow-sm">
+        <section className="mb-6 pb-10 pt-2">
           <div className="max-w-4xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-stone-500">
+            <p className="eyebrow">
               Kategorija
             </p>
-            <div className="mt-3 flex flex-wrap items-center gap-3">
-              <h1 className="text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
+            <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+              <h1 className="text-3xl font-normal tracking-tight text-ink-900 sm:text-5xl">
                 {categoryCopy.heading}
               </h1>
-              <span className="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-sm font-medium text-stone-600">
+              <span className="text-[13px] text-ink-500">
                 {allProducts.length} proizvoda
               </span>
             </div>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-stone-700 sm:text-lg">
+            <p className="mt-4 max-w-3xl text-base leading-7 text-ink-600 sm:text-lg">
               {categoryCopy.lead}
             </p>
             {categoryCopy.body ? (
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-stone-600 sm:text-base">
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-ink-500 sm:text-base">
                 {categoryCopy.body}
               </p>
             ) : null}
             {categoryCopy.bullets.length > 0 ? (
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
                 {categoryCopy.bullets.map((bullet) => (
                   <span
                     key={bullet}
-                    className="inline-flex items-center rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm text-stone-700"
+                    className="text-[13px] text-ink-700"
                   >
                     {bullet}
                   </span>
@@ -829,78 +829,69 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             ) : null}
           </div>
         </section>
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* Filters Sidebar */}
-          <aside className="lg:w-60 flex-shrink-0">
-            <ProductFilters
-              availableBrands={availableBrands}
-              currentFilters={{
-                ...filtersWithoutCollections,
-                listing: listingMode,
-                toolGroup: selectedToolGroupSlugs,
-                toolSubcategory: selectedToolSubcategorySlugs,
-              }}
-              availableCollections={availableCollections}
-              availableFamilies={category.slug === 'tekstilne-ploce' ? availableFamilies : undefined}
-              availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
-              availableThickness={availableThickness}
-              availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
-              availableToolGroups={category.slug === 'alat' ? availableToolGroups : undefined}
-              availableToolSubcategories={category.slug === 'alat' ? availableToolSubcategories : undefined}
-            />
-          </aside>
+        {/* Traka filtera: brend cipovi + dugme Filteri (fioka) */}
+        <ProductFilters
+          availableBrands={availableBrands}
+          currentFilters={{
+            ...filtersWithoutCollections,
+            listing: listingMode,
+            toolGroup: selectedToolGroupSlugs,
+            toolSubcategory: selectedToolSubcategorySlugs,
+          }}
+          availableCollections={availableCollections}
+          availableFamilies={category.slug === 'tekstilne-ploce' ? availableFamilies : undefined}
+          availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
+          availableThickness={availableThickness}
+          availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
+          availableToolGroups={category.slug === 'alat' ? availableToolGroups : undefined}
+          availableToolSubcategories={category.slug === 'alat' ? availableToolSubcategories : undefined}
+        />
 
-          {/* Products Grid */}
-          <div className="flex-1">
-            {hasCollectionTabs ? (
-              <CategoryTabs
-                collections={collections}
-                colors={colors}
-                brandsRecord={brandsRecord}
-                categorySlug={category.slug}
-                initialColorSlug={searchParams.color}
-                vinylType={searchParams.type}
-                listingMode={listingMode}
-                searchParams={{
-                  search: searchParams.search,
-                  brands: searchParams.brands,
-                  collections: searchParams.collections,
-                  family: searchParams.family,
-                  listing: searchParams.listing,
-                  thickness: searchParams.thickness,
-                  woodType: searchParams.woodType,
-                }}
-              />
-            ) : (
-              <>
-                <div className="mb-6 flex items-center justify-between">
-                  <p className="text-gray-600">
-                    {filteredProducts.length === 0 ? 'Nema' : filteredProducts.length} {filteredProducts.length === 1 ? 'proizvod' : 'proizvoda'}
+        {/* Products Grid */}
+        <div className="mt-8">
+          {hasCollectionTabs ? (
+            <CategoryTabs
+              collections={collections}
+              colors={colors}
+              brandsRecord={brandsRecord}
+              categorySlug={category.slug}
+              initialColorSlug={searchParams.color}
+              vinylType={searchParams.type}
+              listingMode={listingMode}
+              searchParams={{
+                search: searchParams.search,
+                brands: searchParams.brands,
+                collections: searchParams.collections,
+                family: searchParams.family,
+                listing: searchParams.listing,
+                thickness: searchParams.thickness,
+                woodType: searchParams.woodType,
+              }}
+            />
+          ) : (
+            <>
+              <p className="mb-6 text-[13px] text-ink-500">
+                {filteredProducts.length === 0 ? 'Nema' : filteredProducts.length} {filteredProducts.length === 1 ? 'proizvod' : 'proizvoda'}
+              </p>
+
+              {filteredProducts.length === 0 ? (
+                <div className="border border-ink-200 bg-white p-12 text-center">
+                  <h3 className="text-lg font-medium text-ink-900 mb-2">
+                    Nema proizvoda
+                  </h3>
+                  <p className="text-[13px] text-ink-500">
+                    Trenutno nema proizvoda koji odgovaraju izabranim filterima.
                   </p>
                 </div>
-
-                {filteredProducts.length === 0 ? (
-                  <div className="bg-white rounded-lg shadow-sm p-12 text-center">
-                    <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                    </svg>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      Nema proizvoda
-                    </h3>
-                    <p className="text-gray-600">
-                      Trenutno nema proizvoda koji odgovaraju izabranim filterima.
-                    </p>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {filteredProducts.map((product) => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 xl:grid-cols-4">
+                  {filteredProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

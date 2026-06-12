@@ -36,7 +36,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
           <ProductImage
             sources={imageCandidates}
             alt={primaryImage.alt}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
             quality={90}
             className={`transition-transform duration-700 group-hover:scale-[1.03] ${product.categoryId === '5'
               ? 'object-left'
@@ -69,7 +69,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
             {splitCollection}
           </p>
         )}
-        <h3 className="text-[15px] md:text-base font-normal text-ink-900 leading-snug underline-offset-4 group-hover:underline">
+        <h3 className="text-[15px] md:text-base font-normal text-ink-900 leading-snug underline-offset-4 group-hover:underline group-focus-visible:underline">
           {splitColor}
         </h3>
 

@@ -574,14 +574,11 @@ export default function CategoryTabs({
   const renderProducts = (products: Product[], gridKey: string, singleColumn = false) => {
     if (products.length === 0) {
       return (
-        <div className="bg-white rounded-lg shadow-sm p-12 text-center">
-          <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-          </svg>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        <div className="border border-ink-200 bg-white p-12 text-center">
+          <h3 className="text-lg font-medium text-ink-900 mb-2">
             Nema proizvoda
           </h3>
-          <p className="text-gray-600">
+          <p className="text-[13px] text-ink-500">
             Trenutno nema proizvoda koji odgovaraju izabranim filterima.
           </p>
         </div>
@@ -589,7 +586,7 @@ export default function CategoryTabs({
     }
     const gridClass = singleColumn
       ? 'grid grid-cols-1 gap-6 max-w-2xl'
-      : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6';
+      : 'grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 xl:grid-cols-4';
     return (
       <div key={gridKey} className={gridClass}>
         {products.map((product) => {
@@ -605,22 +602,22 @@ export default function CategoryTabs({
   return (
     <div>
       {/* Tabs */}
-      <div className="mb-6 border-b border-gray-200">
-        <div className="flex space-x-8">
+      <div className="mb-6 border-b border-ink-200">
+        <div className="flex gap-8">
           <button
             onClick={() => setActiveTab('collections')}
-            className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${activeTab === 'collections'
-              ? 'text-primary-600 border-b-2 border-primary-600'
-              : 'text-gray-500 hover:text-gray-900'
+            className={`min-h-[44px] px-1 pb-3 text-base font-normal transition-colors duration-200 ${activeTab === 'collections'
+              ? 'text-ink-900 border-b-2 border-ink-900'
+              : 'text-ink-400 hover:text-ink-600 border-b-2 border-transparent'
               }`}
           >
             Kolekcije ({collectionsToRender.length})
           </button>
           <button
             onClick={() => setActiveTab('colors')}
-            className={`pb-3 px-1 font-semibold text-base transition-colors duration-200 ${activeTab === 'colors'
-              ? 'text-primary-600 border-b-2 border-primary-600'
-              : 'text-gray-500 hover:text-gray-900'
+            className={`min-h-[44px] px-1 pb-3 text-base font-normal transition-colors duration-200 ${activeTab === 'colors'
+              ? 'text-ink-900 border-b-2 border-ink-900'
+              : 'text-ink-400 hover:text-ink-600 border-b-2 border-transparent'
               }`}
           >
             {colorsTabLabel} ({useJsonColors
@@ -637,7 +634,7 @@ export default function CategoryTabs({
       <div>
         {activeTab === 'collections' ? (
           <div>
-            <p className="text-gray-600 mb-6">
+            <p className="text-[13px] text-ink-500 mb-6">
               {collectionsToRender.length === 0 ? 'Nema' : collectionsToRender.length} {collectionsToRender.length === 1 ? 'kolekcija' : 'kolekcija'}
             </p>
             {renderProducts(collectionsToRender, 'collections', isCollectionsSingleColumn)}
@@ -646,13 +643,21 @@ export default function CategoryTabs({
           <div>
             {useJsonColors ? (
               isColorsLoading ? (
-                <div className="text-center py-12">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-                  <p className="mt-4 text-gray-600">{colorsLoadingLabel}</p>
+                <div aria-busy="true" aria-label={colorsLoadingLabel}>
+                  <div className="mb-6 h-4 w-32 animate-pulse bg-paper" />
+                  <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 xl:grid-cols-4">
+                    {Array.from({ length: 8 }).map((_, index) => (
+                      <div key={index}>
+                        <div className="aspect-[4/5] animate-pulse bg-paper" />
+                        <div className="mt-3 h-3 w-1/3 animate-pulse bg-paper" />
+                        <div className="mt-2 h-4 w-2/3 animate-pulse bg-paper" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-[13px] text-ink-500 mb-6">
                     {colorsToRender.length === 0 ? 'Nema' : colorsToRender.length} {colorsCountLabel}
                   </p>
                   {renderProducts(colorsToRender, 'colors')}
@@ -660,7 +665,7 @@ export default function CategoryTabs({
               )
             ) : (
               <>
-                <p className="text-gray-600 mb-6">
+                <p className="text-[13px] text-ink-500 mb-6">
                   {legacyColors.length === 0 ? 'Nema' : legacyColors.length} {colorsCountLabel}
                 </p>
 

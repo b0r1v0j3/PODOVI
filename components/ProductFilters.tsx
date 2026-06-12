@@ -68,6 +68,8 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const [selectedWoodTypes, setSelectedWoodTypes] = useState<string[]>(currentWoodTypes);
   const [selectedToolGroups, setSelectedToolGroups] = useState<string[]>(currentToolGroups);
   const [selectedToolSubcategories, setSelectedToolSubcategories] = useState<string[]>(currentToolSubcategories);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const filtersTriggerRef = useRef<HTMLButtonElement>(null);
 
   // Sync state with URL params when they change externally (e.g., browser back/forward)
   // This ensures state stays in sync with URL, but we skip updates that would cause loops
@@ -147,6 +149,27 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       setSelectedToolSubcategories(validSubcategories);
     }
   }, [isToolCategory, availableToolSubcategories, selectedToolSubcategories]);
+
+  // Zakljucaj scroll pozadine i zatvori fioku na Escape dok je otvorena
+  useEffect(() => {
+    if (!isDrawerOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = '';
+      // Vrati fokus na dugme "Filteri" koje je otvorilo fioku
+      filtersTriggerRef.current?.focus();
+    };
+  }, [isDrawerOpen]);
 
   // Auto-apply filters when values change (with debounce for search)
   const isInitialMount = useRef(true);
@@ -284,294 +307,383 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     Boolean(isToolCategory && (selectedToolGroups.length > 0 || selectedToolSubcategories.length > 0));
   const priceUnitLabel = isToolCategory ? 'Cena (RSD/kom)' : 'Cena (RSD/m²)';
 
+  const activeFilterCount =
+    (search ? 1 : 0) +
+    selectedBrands.length +
+    (priceMin || priceMax ? 1 : 0) +
+    (isVinilCategory && vinylType ? 1 : 0) +
+    (pathname?.includes('/kategorije/lvt') ? selectedCollections.length : 0) +
+    (pathname?.includes('/kategorije/tekstilne-ploce') ? selectedFamilies.length : 0) +
+    (supportsListingMode && selectedListingMode !== defaultListingMode ? 1 : 0) +
+    ((isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) ? selectedThickness.length : 0) +
+    (isParketCategory ? selectedWoodTypes.length : 0) +
+    (isToolCategory ? selectedToolGroups.length + selectedToolSubcategories.length : 0);
+
   return (
-    <div className="sticky top-24 max-h-[calc(100vh-7.5rem)] overflow-y-auto overscroll-contain rounded-xl border border-gray-200/70 bg-white p-5 shadow-sm [scrollbar-gutter:stable]">
-      <h2 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">Filteri</h2>
+    <>
+      {/* Hairline traka: levo brend cipovi, desno dugme Filteri */}
+      <div className="flex items-center justify-between gap-4 border-b border-ink-200">
+        <div className="no-scrollbar -mx-1 flex flex-1 items-center gap-5 overflow-x-auto px-1">
+          {availableBrands.map((brand) => {
+            const active = selectedBrands.includes(brand.id);
+            return (
+              <button
+                key={brand.id}
+                type="button"
+                onClick={() => toggleBrand(brand.id)}
+                aria-pressed={active}
+                className={`min-h-[44px] shrink-0 border-b-2 text-[13px] transition-colors ${
+                  active
+                    ? 'border-ink-900 text-ink-900'
+                    : 'border-transparent text-ink-500 hover:text-ink-900'
+                }`}
+              >
+                {brand.name}
+              </button>
+            );
+          })}
+        </div>
+        <button
+          type="button"
+          ref={filtersTriggerRef}
+          onClick={() => setIsDrawerOpen(true)}
+          aria-haspopup="dialog"
+          aria-expanded={isDrawerOpen}
+          className="inline-flex min-h-[44px] shrink-0 items-center gap-2 text-[13px] text-ink-900 transition-opacity hover:opacity-60"
+        >
+          Filteri{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+          </svg>
+        </button>
+      </div>
 
-      {/* Search */}
-      <div className="mb-6">
-        <label className="label text-xs uppercase tracking-wide text-gray-500">Pretraga</label>
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Pretraži proizvode..."
-          className="input text-sm"
+      {/* Overlay */}
+      {isDrawerOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/20"
+          aria-hidden="true"
+          onClick={() => setIsDrawerOpen(false)}
         />
-      </div>
-
-      {/* Brands */}
-      {availableBrands.length > 0 && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Brendovi</label>
-          <div className="space-y-2">
-            {availableBrands.map((brand) => (
-              <label key={brand.id} className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedBrands.includes(brand.id)}
-                  onChange={() => toggleBrand(brand.id)}
-                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-                />
-                <span className="ml-2 text-sm text-gray-700">{brand.name}</span>
-              </label>
-            ))}
-          </div>
-        </div>
       )}
 
-      {/* Price Range */}
-      <div className="mb-6">
-        <label className="label text-xs uppercase tracking-wide text-gray-500">{priceUnitLabel}</label>
-        <div className="flex gap-2">
-          <input
-            type="number"
-            value={priceMin}
-            onChange={(e) => setPriceMin(e.target.value)}
-            placeholder="Od"
-            className="input text-sm"
-          />
-          <input
-            type="number"
-            value={priceMax}
-            onChange={(e) => setPriceMax(e.target.value)}
-            placeholder="Do"
-            className="input text-sm"
-          />
-        </div>
-      </div>
-
-      {/* Romus Tool Group Filter (samo Alat) */}
-      {isToolCategory && availableToolGroups && availableToolGroups.length > 0 && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Grupa alata</label>
-          <div className="space-y-2">
-            {availableToolGroups.map((option) => (
-              <label key={option.slug} className="flex items-start cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedToolGroups.includes(option.slug)}
-                  onChange={() => toggleToolGroup(option.slug)}
-                  className="mt-0.5 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-                />
-                <span className="ml-2 text-sm leading-5 text-gray-700">
-                  {option.value} <span className="text-gray-400">({option.count})</span>
-                </span>
-              </label>
-            ))}
+      {/* Fioka filtera zdesna */}
+      {isDrawerOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Filteri"
+          className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col border-l border-ink-200 bg-white"
+        >
+          <div className="flex items-center justify-between border-b border-ink-200 px-6 py-4">
+            <h2 className="eyebrow">Filteri</h2>
+            <button
+              type="button"
+              onClick={() => setIsDrawerOpen(false)}
+              aria-label="Zatvori filtere"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-900 transition-opacity hover:opacity-60"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-        </div>
-      )}
 
-      {/* Romus Tool Subcategory Filter (samo Alat) */}
-      {isToolCategory && availableToolSubcategories && availableToolSubcategories.length > 0 && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Podgrupa</label>
-          <div className="space-y-2">
-            {availableToolSubcategories.map((option) => (
-              <label key={`${option.groupSlug}-${option.slug}`} className="flex items-start cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedToolSubcategories.includes(option.slug)}
-                  onChange={() => toggleToolSubcategory(option.slug)}
-                  className="mt-0.5 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-                />
-                <span className="ml-2 text-sm leading-5 text-gray-700">
-                  {option.value} <span className="text-gray-400">({option.count})</span>
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Collections Filter (samo LVT – ne Parket) */}
-      {pathname?.includes('/kategorije/lvt') && availableCollections && availableCollections.length > 0 && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Kolekcije</label>
-          <div className="space-y-2">
-            {availableCollections.map((collection) => (
-              <label key={collection} className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedCollections.includes(collection)}
-                  onChange={() => toggleCollection(collection)}
-                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-                />
-                <span className="ml-2 text-sm text-gray-700">{collection}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* BLOQ Family Filter (samo Tekstilne ploče) */}
-      {pathname?.includes('/kategorije/tekstilne-ploce') && availableFamilies && availableFamilies.length > 0 && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Familija</label>
-          <div className="space-y-2">
-            {availableFamilies.map((family) => (
-              <label key={family} className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedFamilies.includes(family)}
-                  onChange={() => toggleFamily(family)}
-                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-                />
-                <span className="ml-2 text-sm text-gray-700">{family}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Listing Segment Filter (core / prateći asortiman) */}
-      {supportsListingMode && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Prikaz asortimana</label>
-          <div className="space-y-2">
-            <label className="flex items-center cursor-pointer">
+          <div className="flex-1 overflow-y-auto px-6 py-6">
+            {/* Search */}
+            <div className="mb-8">
+              <p className="label mb-3">Pretraga</p>
               <input
-                type="radio"
-                name="listingMode"
-                checked={selectedListingMode === 'core'}
-                onChange={() => setSelectedListingMode('core')}
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Pretraži proizvode..."
+                className="input text-sm"
               />
-              <span className="ml-2 text-sm text-gray-700">Kolekcije</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="radio"
-                name="listingMode"
-                checked={selectedListingMode === 'accessory'}
-                onChange={() => setSelectedListingMode('accessory')}
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-              />
-              <span className="ml-2 text-sm text-gray-700">Prateći asortiman</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="radio"
-                name="listingMode"
-                checked={selectedListingMode === 'all'}
-                onChange={() => setSelectedListingMode('all')}
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-              />
-              <span className="ml-2 text-sm text-gray-700">Sve stavke</span>
-            </label>
-          </div>
-        </div>
-      )}
+            </div>
 
-      {/* Vrsta drveta (samo Parket) – više izbora kao brendovi */}
-      {isParketCategory && availableWoodTypes && availableWoodTypes.length > 0 && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Vrsta drveta</label>
-          <div className="space-y-2">
-            {availableWoodTypes.map((w) => (
-              <label key={w.value} className="flex items-center cursor-pointer">
+            {/* Brands */}
+            {availableBrands.length > 0 && (
+              <div className="mb-8">
+                <p className="label mb-3">Brendovi</p>
+                <div className="space-y-2">
+                  {availableBrands.map((brand) => (
+                    <label key={brand.id} className="flex cursor-pointer items-center">
+                      <input
+                        type="checkbox"
+                        checked={selectedBrands.includes(brand.id)}
+                        onChange={() => toggleBrand(brand.id)}
+                        className="h-4 w-4 border-ink-400 text-ink-900"
+                      />
+                      <span className="ml-2.5 text-sm text-ink-700">{brand.name}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Price Range */}
+            <div className="mb-8">
+              <p className="label mb-3">{priceUnitLabel}</p>
+              <div className="flex gap-4">
                 <input
-                  type="checkbox"
-                  checked={selectedWoodTypes.includes(w.value)}
-                  onChange={() => toggleWoodType(w.value)}
-                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                  type="number"
+                  value={priceMin}
+                  onChange={(e) => setPriceMin(e.target.value)}
+                  placeholder="Od"
+                  className="input text-sm"
                 />
-                <span className="ml-2 text-sm text-gray-700">{w.value} ({w.count})</span>
-              </label>
-            ))}
+                <input
+                  type="number"
+                  value={priceMax}
+                  onChange={(e) => setPriceMax(e.target.value)}
+                  placeholder="Do"
+                  className="input text-sm"
+                />
+              </div>
+            </div>
+
+            {/* Romus Tool Group Filter (samo Alat) */}
+            {isToolCategory && availableToolGroups && availableToolGroups.length > 0 && (
+              <div className="mb-8">
+                <p className="label mb-3">Grupa alata</p>
+                <div className="space-y-2">
+                  {availableToolGroups.map((option) => (
+                    <label key={option.slug} className="flex cursor-pointer items-start">
+                      <input
+                        type="checkbox"
+                        checked={selectedToolGroups.includes(option.slug)}
+                        onChange={() => toggleToolGroup(option.slug)}
+                        className="mt-0.5 h-4 w-4 border-ink-400 text-ink-900"
+                      />
+                      <span className="ml-2.5 text-sm leading-5 text-ink-700">
+                        {option.value} <span className="text-ink-500">({option.count})</span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Romus Tool Subcategory Filter (samo Alat) */}
+            {isToolCategory && availableToolSubcategories && availableToolSubcategories.length > 0 && (
+              <div className="mb-8">
+                <p className="label mb-3">Podgrupa</p>
+                <div className="space-y-2">
+                  {availableToolSubcategories.map((option) => (
+                    <label key={`${option.groupSlug}-${option.slug}`} className="flex cursor-pointer items-start">
+                      <input
+                        type="checkbox"
+                        checked={selectedToolSubcategories.includes(option.slug)}
+                        onChange={() => toggleToolSubcategory(option.slug)}
+                        className="mt-0.5 h-4 w-4 border-ink-400 text-ink-900"
+                      />
+                      <span className="ml-2.5 text-sm leading-5 text-ink-700">
+                        {option.value} <span className="text-ink-500">({option.count})</span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Collections Filter (samo LVT – ne Parket) */}
+            {pathname?.includes('/kategorije/lvt') && availableCollections && availableCollections.length > 0 && (
+              <div className="mb-8">
+                <p className="label mb-3">Kolekcije</p>
+                <div className="space-y-2">
+                  {availableCollections.map((collection) => (
+                    <label key={collection} className="flex cursor-pointer items-center">
+                      <input
+                        type="checkbox"
+                        checked={selectedCollections.includes(collection)}
+                        onChange={() => toggleCollection(collection)}
+                        className="h-4 w-4 border-ink-400 text-ink-900"
+                      />
+                      <span className="ml-2.5 text-sm text-ink-700">{collection}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* BLOQ Family Filter (samo Tekstilne ploče) */}
+            {pathname?.includes('/kategorije/tekstilne-ploce') && availableFamilies && availableFamilies.length > 0 && (
+              <div className="mb-8">
+                <p className="label mb-3">Familija</p>
+                <div className="space-y-2">
+                  {availableFamilies.map((family) => (
+                    <label key={family} className="flex cursor-pointer items-center">
+                      <input
+                        type="checkbox"
+                        checked={selectedFamilies.includes(family)}
+                        onChange={() => toggleFamily(family)}
+                        className="h-4 w-4 border-ink-400 text-ink-900"
+                      />
+                      <span className="ml-2.5 text-sm text-ink-700">{family}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Listing Segment Filter (core / prateći asortiman) */}
+            {supportsListingMode && (
+              <div className="mb-8">
+                <p className="label mb-3">Prikaz asortimana</p>
+                <div className="space-y-2">
+                  <label className="flex cursor-pointer items-center">
+                    <input
+                      type="radio"
+                      name="listingMode"
+                      checked={selectedListingMode === 'core'}
+                      onChange={() => setSelectedListingMode('core')}
+                      className="h-4 w-4 border-ink-400 text-ink-900"
+                    />
+                    <span className="ml-2.5 text-sm text-ink-700">Kolekcije</span>
+                  </label>
+                  <label className="flex cursor-pointer items-center">
+                    <input
+                      type="radio"
+                      name="listingMode"
+                      checked={selectedListingMode === 'accessory'}
+                      onChange={() => setSelectedListingMode('accessory')}
+                      className="h-4 w-4 border-ink-400 text-ink-900"
+                    />
+                    <span className="ml-2.5 text-sm text-ink-700">Prateći asortiman</span>
+                  </label>
+                  <label className="flex cursor-pointer items-center">
+                    <input
+                      type="radio"
+                      name="listingMode"
+                      checked={selectedListingMode === 'all'}
+                      onChange={() => setSelectedListingMode('all')}
+                      className="h-4 w-4 border-ink-400 text-ink-900"
+                    />
+                    <span className="ml-2.5 text-sm text-ink-700">Sve stavke</span>
+                  </label>
+                </div>
+              </div>
+            )}
+
+            {/* Vrsta drveta (samo Parket) – više izbora kao brendovi */}
+            {isParketCategory && availableWoodTypes && availableWoodTypes.length > 0 && (
+              <div className="mb-8">
+                <p className="label mb-3">Vrsta drveta</p>
+                <div className="space-y-2">
+                  {availableWoodTypes.map((w) => (
+                    <label key={w.value} className="flex cursor-pointer items-center">
+                      <input
+                        type="checkbox"
+                        checked={selectedWoodTypes.includes(w.value)}
+                        onChange={() => toggleWoodType(w.value)}
+                        className="h-4 w-4 border-ink-400 text-ink-900"
+                      />
+                      <span className="ml-2.5 text-sm text-ink-700">{w.value} ({w.count})</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Vinyl Type Filter */}
+            {isVinilCategory && (
+              <div className="mb-8">
+                <p className="label mb-3">Tip Vinila</p>
+                <div className="space-y-2">
+                  <label className="flex cursor-pointer items-center">
+                    <input
+                      type="radio"
+                      name="vinylType"
+                      checked={vinylType === 'homogeni'}
+                      onChange={() => setVinylType('homogeni')}
+                      className="h-4 w-4 border-ink-400 text-ink-900"
+                    />
+                    <span className="ml-2.5 text-sm text-ink-700">Homogeni</span>
+                  </label>
+                  <label className="flex cursor-pointer items-center">
+                    <input
+                      type="radio"
+                      name="vinylType"
+                      checked={vinylType === 'heterogeni'}
+                      onChange={() => setVinylType('heterogeni')}
+                      className="h-4 w-4 border-ink-400 text-ink-900"
+                    />
+                    <span className="ml-2.5 text-sm text-ink-700">Heterogeni</span>
+                  </label>
+                  <label className="flex cursor-pointer items-center">
+                    <input
+                      type="radio"
+                      name="vinylType"
+                      checked={vinylType === null}
+                      onChange={() => setVinylType(null)}
+                      className="h-4 w-4 border-ink-400 text-ink-900"
+                    />
+                    <span className="ml-2.5 text-sm text-ink-700">Svi</span>
+                  </label>
+                </div>
+              </div>
+            )}
+
+            {/* Overall Thickness Filter (for LVT, Vinil, Linoleum, and Laminat) */}
+            {(isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && availableThickness && availableThickness.length > 0 && (
+              <div className="mb-8">
+                <p className="label mb-3">Debljina</p>
+                <div className="space-y-2">
+                  {availableThickness.map((thickness) => {
+                    // For Vinil: check if thickness is available for selected type
+                    let isDisabled = false;
+                    if (isVinilCategory && availableThicknessByType && vinylType) {
+                      if (vinylType === 'homogeni') {
+                        isDisabled = !availableThicknessByType.homogeni.includes(thickness);
+                      } else if (vinylType === 'heterogeni') {
+                        isDisabled = !availableThicknessByType.heterogeni.includes(thickness);
+                      }
+                    }
+
+                    return (
+                      <label
+                        key={thickness}
+                        className={`flex items-center ${isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedThickness.includes(thickness)}
+                          onChange={() => !isDisabled && toggleThickness(thickness)}
+                          disabled={isDisabled}
+                          className="h-4 w-4 border-ink-400 text-ink-900 disabled:cursor-not-allowed disabled:opacity-50"
+                        />
+                        <span className={`ml-2.5 text-sm ${isDisabled ? 'text-ink-500' : 'text-ink-700'}`}>
+                          {thickness} mm
+                        </span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex gap-3 border-t border-ink-200 px-6 py-4">
+            {hasActiveFilters && (
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="btn-secondary flex-1"
+              >
+                Obriši filtere
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => setIsDrawerOpen(false)}
+              className="btn-primary flex-1"
+            >
+              Prikaži rezultate
+            </button>
           </div>
         </div>
       )}
-
-      {/* Vinyl Type Filter */}
-      {isVinilCategory && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Tip Vinila</label>
-          <div className="space-y-2">
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="radio"
-                name="vinylType"
-                checked={vinylType === 'homogeni'}
-                onChange={() => setVinylType('homogeni')}
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-              />
-              <span className="ml-2 text-sm text-gray-700">Homogeni</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="radio"
-                name="vinylType"
-                checked={vinylType === 'heterogeni'}
-                onChange={() => setVinylType('heterogeni')}
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-              />
-              <span className="ml-2 text-sm text-gray-700">Heterogeni</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="radio"
-                name="vinylType"
-                checked={vinylType === null}
-                onChange={() => setVinylType(null)}
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-              />
-              <span className="ml-2 text-sm text-gray-700">Svi</span>
-            </label>
-          </div>
-        </div>
-      )}
-
-      {/* Overall Thickness Filter (for LVT, Vinil, Linoleum, and Laminat) */}
-      {(isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && availableThickness && availableThickness.length > 0 && (
-        <div className="mb-6">
-          <label className="label text-xs uppercase tracking-wide text-gray-500">Debljina</label>
-          <div className="space-y-2">
-            {availableThickness.map((thickness) => {
-              // For Vinil: check if thickness is available for selected type
-              let isDisabled = false;
-              if (isVinilCategory && availableThicknessByType && vinylType) {
-                if (vinylType === 'homogeni') {
-                  isDisabled = !availableThicknessByType.homogeni.includes(thickness);
-                } else if (vinylType === 'heterogeni') {
-                  isDisabled = !availableThicknessByType.heterogeni.includes(thickness);
-                }
-              }
-
-              return (
-                <label
-                  key={thickness}
-                  className={`flex items-center ${isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedThickness.includes(thickness)}
-                    onChange={() => !isDisabled && toggleThickness(thickness)}
-                    disabled={isDisabled}
-                    className="rounded border-gray-300 text-primary-600 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                  />
-                  <span className={`ml-2 text-sm ${isDisabled ? 'text-gray-400' : 'text-gray-700'}`}>
-                    {thickness} mm
-                  </span>
-                </label>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Clear Filters Button */}
-      {hasActiveFilters && (
-        <div className="mt-6">
-          <button
-            onClick={clearFilters}
-            className="btn-outline w-full"
-          >
-            Obriši filtere
-          </button>
-        </div>
-      )}
-    </div>
+    </>
   );
 }

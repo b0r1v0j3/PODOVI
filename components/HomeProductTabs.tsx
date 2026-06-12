@@ -65,21 +65,21 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     ? expandedAllProducts.length
     : activeGroup?.totalCount || activeProducts.length;
   const canOpenCategoryPage = Boolean(activeGroup);
-  const categoryButtonClass = 'shrink-0 text-[1.65rem] font-semibold leading-none tracking-normal transition-colors sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]';
+  const categoryButtonClass = 'shrink-0 border-b-2 pb-2 text-[1.65rem] font-normal leading-none tracking-normal transition-colors sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]';
 
   return (
     <section className="bg-white">
       <div className="container">
         <h1 className="sr-only">Podovi.online katalog proizvoda</h1>
 
-        <div className="overflow-hidden border-b border-[#1D1D1F]">
-          <div className="no-scrollbar -mx-6 flex gap-3 overflow-x-auto px-6 pb-4 pt-6 sm:gap-4 md:pt-8 lg:gap-5">
+        <div className="overflow-hidden border-b border-ink-200">
+          <div className="no-scrollbar -mx-6 flex gap-4 overflow-x-auto px-6 pb-4 pt-6 sm:gap-5 md:pt-8 lg:gap-6">
             <button
               type="button"
               onClick={() => setActiveSlug('sve')}
               aria-pressed={activeSlug === 'sve'}
               className={`${categoryButtonClass} ${
-                activeSlug === 'sve' ? 'text-[#050505]' : 'text-[#A8A8A8] hover:text-[#555555]'
+                activeSlug === 'sve' ? 'border-ink-900 text-ink-900' : 'border-transparent text-ink-400 hover:text-ink-600'
               }`}
             >
               Sve
@@ -95,7 +95,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                   onClick={() => setActiveSlug(group.category.slug)}
                   aria-pressed={active}
                   className={`${categoryButtonClass} ${
-                    active ? 'text-[#050505]' : 'text-[#A8A8A8] hover:text-[#555555]'
+                    active ? 'border-ink-900 text-ink-900' : 'border-transparent text-ink-400 hover:text-ink-600'
                   }`}
                 >
                   {group.category.name}
@@ -105,28 +105,25 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-b border-[#1D1D1F] py-5 text-[13px] font-semibold uppercase tracking-normal text-[#1D1D1F] sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-b border-ink-200 py-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span>{activeName}</span>
-            <span className="text-[#8A8A8A]">
+            <span className="eyebrow">{activeName}</span>
+            <span className="eyebrow">
               {activeProducts.length} prikazano{activeTotal > activeProducts.length ? ` od ${activeTotal}` : ''}
             </span>
           </div>
           {canOpenCategoryPage && activeGroup ? (
             <Link
               href={`/kategorije/${activeGroup.category.slug}`}
-              className="inline-flex w-fit items-center text-[#1D1D1F] transition-colors hover:text-primary-600"
+              className="btn-link inline-flex w-fit items-center"
             >
-              Pogledaj sve
-              <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              Pogledaj sve →
             </Link>
           ) : null}
         </div>
 
         {activeProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 py-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-10 py-8 md:grid-cols-3 xl:grid-cols-4">
             {activeProducts.map((product) => (
               <ProductCardClient
                 key={`${activeSlug}-${product.id}`}
@@ -137,7 +134,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
           </div>
         ) : (
           <div className="py-16 text-center">
-            <p className="text-base font-medium text-[#1D1D1F]">Trenutno nema proizvoda za ovu kategoriju.</p>
+            <p className="text-base font-normal text-ink-600">Trenutno nema proizvoda za ovu kategoriju.</p>
           </div>
         )}
       </div>
