@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import GlobalSearch from './GlobalSearch';
 import PodoviWordmark from './PodoviWordmark';
 import { useFavorites } from '@/lib/context/FavoritesContext';
+import { useScrollLock } from './useScrollLock';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,13 +24,14 @@ export default function Header() {
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
-  // Scroll lock + Escape + fokus dok je mobilni meni otvoren
+  // Scroll lock dok je mobilni meni otvoren
+  useScrollLock(mobileMenuOpen);
+
+  // Escape + fokus dok je mobilni meni otvoren
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
     const menuButton = menuButtonRef.current;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -42,7 +44,6 @@ export default function Header() {
     closeButtonRef.current?.focus();
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', handleKeyDown);
       // Pri zatvaranju (Escape, link, dugme) fokus se vraća na trigger
       menuButton?.focus();

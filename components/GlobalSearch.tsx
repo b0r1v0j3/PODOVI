@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import ProductImage from './ProductImage';
+import { useScrollLock } from './useScrollLock';
 
 interface SearchProduct {
     id: string;
@@ -125,12 +126,12 @@ export default function GlobalSearch() {
         triggerRef.current?.focus();
     }, []);
 
-    // Escape na nivou dokumenta + scroll lock dok je pretraga otvorena
+    // Scroll lock dok je pretraga otvorena
+    useScrollLock(expanded);
+
+    // Escape na nivou dokumenta dok je pretraga otvorena
     useEffect(() => {
         if (!expanded) return;
-
-        const previousOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
 
         const handleDocumentKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
@@ -140,7 +141,6 @@ export default function GlobalSearch() {
         document.addEventListener('keydown', handleDocumentKeyDown);
 
         return () => {
-            document.body.style.overflow = previousOverflow;
             document.removeEventListener('keydown', handleDocumentKeyDown);
         };
     }, [expanded, closeAndReset]);
