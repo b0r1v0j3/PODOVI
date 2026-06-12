@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import GlobalSearch from './GlobalSearch';
 import PodoviWordmark from './PodoviWordmark';
 import { useFavorites } from '@/lib/context/FavoritesContext';
@@ -11,6 +11,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { count: favCount } = useFavorites();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const isActive = (href: string) => {
     if (href === '/') {
@@ -20,6 +22,32 @@ export default function Header() {
   };
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  // Scroll lock + Escape + fokus dok je mobilni meni otvoren
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const menuButton = menuButtonRef.current;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Pri otvaranju fokus ide na prvi fokusabilni element u overlay-u
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+      // Pri zatvaranju (Escape, link, dugme) fokus se vraća na trigger
+      menuButton?.focus();
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <header className="sticky top-0 z-50 isolate border-b border-ink-200 bg-white">
@@ -61,6 +89,7 @@ export default function Header() {
         <div className="flex items-center gap-1 md:hidden">
           <GlobalSearch />
           <button
+            ref={menuButtonRef}
             type="button"
             className="flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-900 transition-colors duration-200 hover:text-ink-600"
             onClick={() => setMobileMenuOpen(true)}
@@ -77,13 +106,20 @@ export default function Header() {
 
       {/* Mobile full-screen menu */}
       {mobileMenuOpen && (
-        <div id="mobile-menu" className="fixed inset-0 z-[60] flex flex-col bg-white md:hidden">
+        <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobilni meni"
+          className="fixed inset-0 z-[60] flex flex-col bg-white md:hidden"
+        >
           <div className="border-b border-ink-200">
             <div className="container flex h-14 items-center justify-between">
               <Link href="/" onClick={closeMobileMenu} className="flex min-h-[44px] items-center">
                 <PodoviWordmark textClassName="text-xl text-ink-900" />
               </Link>
               <button
+                ref={closeButtonRef}
                 type="button"
                 className="flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-900 transition-colors duration-200 hover:text-ink-600"
                 onClick={closeMobileMenu}

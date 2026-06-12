@@ -45,6 +45,7 @@ export default function GlobalSearch() {
     const [expanded, setExpanded] = useState(false);
 
     const inputRef = useRef<HTMLInputElement>(null);
+    const triggerRef = useRef<HTMLButtonElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -114,16 +115,39 @@ export default function GlobalSearch() {
         return items;
     };
 
+    const closeAndReset = useCallback(() => {
+        setIsOpen(false);
+        setExpanded(false);
+        setQuery('');
+        setResults(null);
+        setActiveIndex(-1);
+        // Fokus se vraća na trigger dugme ove instance
+        triggerRef.current?.focus();
+    }, []);
+
+    // Escape na nivou dokumenta + scroll lock dok je pretraga otvorena
+    useEffect(() => {
+        if (!expanded) return;
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        const handleDocumentKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                closeAndReset();
+            }
+        };
+        document.addEventListener('keydown', handleDocumentKeyDown);
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+            document.removeEventListener('keydown', handleDocumentKeyDown);
+        };
+    }, [expanded, closeAndReset]);
+
     // Keyboard navigation
     const handleKeyDown = (e: React.KeyboardEvent) => {
         const items = getAllItems();
-
-        if (e.key === 'Escape') {
-            setIsOpen(false);
-            setExpanded(false);
-            inputRef.current?.blur();
-            return;
-        }
 
         if (e.key === 'ArrowDown') {
             e.preventDefault();
@@ -136,14 +160,6 @@ export default function GlobalSearch() {
             window.location.href = items[activeIndex].href;
             closeAndReset();
         }
-    };
-
-    const closeAndReset = () => {
-        setIsOpen(false);
-        setExpanded(false);
-        setQuery('');
-        setResults(null);
-        setActiveIndex(-1);
     };
 
     const openSearch = () => {
@@ -170,6 +186,7 @@ export default function GlobalSearch() {
         <div ref={containerRef}>
             {/* Trigger */}
             <button
+                ref={triggerRef}
                 type="button"
                 className="flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-600 transition-colors duration-200 hover:text-ink-900"
                 onClick={openSearch}
@@ -219,7 +236,7 @@ export default function GlobalSearch() {
                     </div>
 
                     {/* Rezultati */}
-                    <div className="flex-1 overflow-y-auto md:max-h-[60vh] md:flex-none">
+                    <div className="flex-1 overflow-y-auto overscroll-contain md:max-h-[60vh] md:flex-none">
                         <div className="container py-4">
                             {isLoading && !results ? (
                                 <div className="space-y-2" aria-hidden="true">
@@ -298,10 +315,10 @@ export default function GlobalSearch() {
                                     <div className="min-w-0 flex-1">
                                         <p className="truncate text-sm text-ink-900">{product.name}</p>
                                         {product.price && (
-                                            <p className="text-[13px] text-ink-500">{formatPrice(product.price)}</p>
+                                            <p className="text-[13px] text-ink-600">{formatPrice(product.price)}</p>
                                         )}
                                         {!product.price && product.subtitle && (
-                                            <p className="truncate text-[13px] text-ink-500">{product.subtitle}</p>
+                                            <p className="truncate text-[13px] text-ink-600">{product.subtitle}</p>
                                         )}
                                     </div>
                                     <svg className="h-4 w-4 flex-shrink-0 text-ink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
