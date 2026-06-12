@@ -55,11 +55,11 @@ export default function ProductActions({ product }: ProductActionsProps) {
                 onClick={handleShare}
                 title={copied ? 'Link kopiran!' : 'Podeli'}
                 className={`
-          inline-flex items-center justify-center gap-1.5 rounded-lg font-medium
-          transition-all duration-200 border px-3 py-1.5 text-sm
+          inline-flex items-center justify-center gap-1.5 font-medium
+          transition-colors duration-200 border px-3 min-h-[44px] text-[13px]
           ${copied
-                        ? 'bg-green-50 text-green-600 border-green-300'
-                        : 'bg-white text-gray-700 border-gray-300 hover:bg-primary-50 hover:border-primary-400 hover:text-primary-700'
+                        ? 'bg-ink-900 text-white border-ink-900'
+                        : 'bg-white text-ink-900 border-ink-200 hover:border-ink-900'
                     }
         `}
             >

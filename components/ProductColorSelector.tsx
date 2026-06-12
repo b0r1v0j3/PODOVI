@@ -5,7 +5,6 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductImage from './ProductImage';
 import ColorGrid from './ColorGrid';
 import FavoriteButton from './FavoriteButton';
-import BrandLogoMark from './BrandLogoMark';
 import { splitProductTitle } from '@/lib/utils/name-parser';
 import { getCustomColorHeroImageState, getPrimaryColorImage } from '@/lib/utils/product-images';
 
@@ -278,373 +277,336 @@ export default function ProductColorSelector({
 
   return (
     <>
-      {/* Prvi red: SAMO slika (levo) i Info + Boje (desno) – ista visina, dno u istoj liniji */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mb-6">
-        {/* Levo: samo kvadrat sa slikom */}
-        <div className="flex flex-col min-h-0">
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col h-full">
-            <div className="aspect-square relative overflow-hidden rounded-xl bg-gray-100 flex-shrink-0">
-              {/* Pre-render ALL color images - instant switching via CSS display */}
-              {customColors && customColors.length > 0 ? (
-                <>
-                  {customColorHeroState.image && !customColorHeroState.activeColorSlug && (
-                    <img
-                      key={`collection-cover-${customColorHeroState.image.url}`}
-                      src={customColorHeroState.image.url}
-                      alt={customColorHeroState.image.alt}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      style={{
-                        opacity: 1,
-                        zIndex: 10,
-                        transition: 'opacity 200ms ease-in-out',
-                      }}
-                      loading="eager"
-                      decoding="async"
-                    />
-                  )}
-                  {customColors.map((color: { slug?: string; image_url?: string; texture_url?: string; lifestyle_url?: string; image?: string; name?: string; full_name?: string }) => {
-                    const primaryColorImage = getPrimaryColorImage(color);
-                    const imgUrl = primaryColorImage?.url;
-                    const isActive = color.slug === customColorHeroState.activeColorSlug;
-                    if (!imgUrl) return null;
-                    return (
-                      <img
-                        key={color.slug}
-                        src={imgUrl}
-                        alt={primaryColorImage?.alt || color.name || color.full_name || ''}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        style={{
-                          opacity: isActive ? 1 : 0,
-                          zIndex: isActive ? 10 : 1,
-                          transition: 'opacity 200ms ease-in-out',
-                        }}
-                        loading="eager"
-                        decoding="async"
-                      />
-                    );
-                  })}
-                </>
-              ) : selectedImage ? (
-                <>
-                  {/* Previous image fading out for smooth cross-fade */}
-                  {prevImage && isTransitioning && (
-                    <img
-                      src={prevImage.url}
-                      alt={prevImage.alt}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      style={{
-                        zIndex: 5,
-                        opacity: 0,
-                        transition: 'opacity 250ms ease-in-out',
-                      }}
-                    />
-                  )}
-                  {/* Current image */}
+      {/* Split raspored: levo galerija, desno sticky info kolona */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
+        {/* Levo: galerija */}
+        <div>
+          <div className="aspect-square relative overflow-hidden bg-paper">
+            {/* Pre-render ALL color images - instant switching via CSS display */}
+            {customColors && customColors.length > 0 ? (
+              <>
+                {customColorHeroState.image && !customColorHeroState.activeColorSlug && (
                   <img
-                    key={selectedImage.url}
-                    src={selectedImage.url}
-                    alt={selectedImage.alt}
+                    key={`collection-cover-${customColorHeroState.image.url}`}
+                    src={customColorHeroState.image.url}
+                    alt={customColorHeroState.image.alt}
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{
-                      zIndex: 10,
                       opacity: 1,
+                      zIndex: 10,
                       transition: 'opacity 200ms ease-in-out',
                     }}
                     loading="eager"
                     decoding="async"
                   />
-                </>
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  <span>Bez slike</span>
-                </div>
-              )}
-
-              {/* Image switcher arrows - show only if multiple images */}
-              {selectedImages.length > 1 && (
-                <>
-                  <button
-                    onClick={() => setCurrentImageIndex((currentImageIndex - 1 + selectedImages.length) % selectedImages.length)}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all z-20"
-                    aria-label="Prethodna slika"
-                  >
-                    <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() => setCurrentImageIndex((currentImageIndex + 1) % selectedImages.length)}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all z-20"
-                    aria-label="Sledeća slika"
-                  >
-                    <svg className="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                  {/* Image indicator dots */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                    {selectedImages.map((_: { url: string; alt: string }, idx: number) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/50'}`}
-                        aria-label={`Slika ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Ispod slike: ime boje (levo) + Favorite & Share (desno) – sve u jednoj liniji */}
-            <div className="flex items-center justify-between mt-4">
-              {/* Levo: ime boje */}
-              <div className="flex-1 min-w-0">
-                {activeColorContext ? (
-                  <div className="flex items-baseline gap-2">
-                    <p className="text-lg font-semibold text-gray-900 truncate">
-                      {(() => {
-                        let name = activeColorContext.name;
-                        // Strip code prefix if name starts with code
-                        if (activeColorContext.code && name.startsWith(activeColorContext.code)) {
-                          name = name.substring(activeColorContext.code.length).trim();
-                        }
-
-                        const collName = collectionDisplayName || collectionName;
-                        const { color } = splitProductTitle(name, collName);
-                        return color;
-                      })()}
-                    </p>
-                    {activeColorContext.code && (
-                      <p className="text-sm text-gray-400 font-medium">{activeColorContext.code}</p>
-                    )}
-                  </div>
-                ) : null}
-              </div>
-
-              {/* Desno: Favorite & Share */}
-              <div className="flex items-center gap-3 flex-shrink-0 ml-3">
-                {productId && <FavoriteButton productId={productId} size="md" />}
-                <button
-                  onClick={() => {
-                    if (navigator.share) {
-                      navigator.share({ title: shareTitle, url: window.location.href }).catch(() => { });
-                    } else {
-                      navigator.clipboard.writeText(window.location.href).then(() => {
-                        alert('Link kopiran!');
-                      });
-                    }
+                )}
+                {customColors.map((color: { slug?: string; image_url?: string; texture_url?: string; lifestyle_url?: string; image?: string; name?: string; full_name?: string }) => {
+                  const primaryColorImage = getPrimaryColorImage(color);
+                  const imgUrl = primaryColorImage?.url;
+                  const isActive = color.slug === customColorHeroState.activeColorSlug;
+                  if (!imgUrl) return null;
+                  return (
+                    <img
+                      key={color.slug}
+                      src={imgUrl}
+                      alt={primaryColorImage?.alt || color.name || color.full_name || ''}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{
+                        opacity: isActive ? 1 : 0,
+                        zIndex: isActive ? 10 : 1,
+                        transition: 'opacity 200ms ease-in-out',
+                      }}
+                      loading="eager"
+                      decoding="async"
+                    />
+                  );
+                })}
+              </>
+            ) : selectedImage ? (
+              <>
+                {/* Previous image fading out for smooth cross-fade */}
+                {prevImage && isTransitioning && (
+                  <img
+                    src={prevImage.url}
+                    alt={prevImage.alt}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{
+                      zIndex: 5,
+                      opacity: 0,
+                      transition: 'opacity 250ms ease-in-out',
+                    }}
+                  />
+                )}
+                {/* Current image */}
+                <img
+                  key={selectedImage.url}
+                  src={selectedImage.url}
+                  alt={selectedImage.alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{
+                    zIndex: 10,
+                    opacity: 1,
+                    transition: 'opacity 200ms ease-in-out',
                   }}
-                  className="btn bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E8E8ED] border-0 gap-1.5 px-3 py-1.5 text-[13px] font-medium rounded-full transition-all"
-                  title="Podeli"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                  </svg>
-                  Podeli
-                </button>
-              </div>
-            </div>
-
-            {/* External Link Button - Below Image */}
-            {externalLink && (
-              <div className="mt-4">
-                <a
-                  href={externalLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn border-2 border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 text-center text-base px-6 py-3 w-full"
-                >
-                  {externalLinkLabel}
-                </a>
+                  loading="eager"
+                  decoding="async"
+                />
+              </>
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-ink-500">
+                <span>Bez slike</span>
               </div>
             )}
 
+            {/* Image switcher arrows - show only if multiple images */}
+            {selectedImages.length > 1 && (
+              <>
+                <button
+                  onClick={() => setCurrentImageIndex((currentImageIndex - 1 + selectedImages.length) % selectedImages.length)}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 flex min-h-[44px] min-w-[44px] items-center justify-center bg-white border border-ink-200 hover:border-ink-900 transition-colors z-20"
+                  aria-label="Prethodna slika"
+                >
+                  <svg className="w-5 h-5 text-ink-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => setCurrentImageIndex((currentImageIndex + 1) % selectedImages.length)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 flex min-h-[44px] min-w-[44px] items-center justify-center bg-white border border-ink-200 hover:border-ink-900 transition-colors z-20"
+                  aria-label="Sledeća slika"
+                >
+                  <svg className="w-5 h-5 text-ink-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                {/* Image indicator dots */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex z-20">
+                  {selectedImages.map((_: { url: string; alt: string }, idx: number) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentImageIndex(idx)}
+                      className="p-2"
+                      aria-label={`Slika ${idx + 1}`}
+                    >
+                      <span className={`block h-[3px] transition-all ${idx === currentImageIndex ? 'w-5 bg-white' : 'w-2 bg-white/60'}`} />
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
-        </div>
 
-        {/* Desno: Info + Boje – Boje raste da dno bude u liniji sa dnom slike */}
-        <div className="flex flex-col gap-6 h-full min-h-0">
-          {/* Product Info + CTA - Na mobilnom ide POSLE boja (order-2), na desktopu normalno */}
-          <div className={`bg-white rounded-2xl shadow-lg p-6 flex-shrink-0 order-2 lg:order-1 ${hideColorSelector ? 'flex-1 flex flex-col justify-center space-y-8' : 'space-y-4'}`}>
-            {/* Brand */}
-            <BrandLogoMark brand={brand || null} />
+          {/* Ispod slike: ime boje (levo) + Favorite & Share (desno) – sve u jednoj liniji */}
+          <div className="flex items-center justify-between mt-4">
+            {/* Levo: ime boje */}
+            <div className="flex-1 min-w-0">
+              {activeColorContext ? (
+                <div className="flex items-baseline gap-2">
+                  <p className="text-[15px] text-ink-900 truncate">
+                    {(() => {
+                      let name = activeColorContext.name;
+                      // Strip code prefix if name starts with code
+                      if (activeColorContext.code && name.startsWith(activeColorContext.code)) {
+                        name = name.substring(activeColorContext.code.length).trim();
+                      }
 
-            {/* Title: color name in h1 when selected, otherwise split color name; subtitle = collection name */}
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-1 tracking-tight">
-                {displayProductTitle.color}
-              </h1>
-
-              {displayProductTitle.collection ? (
-                <p className="text-lg text-gray-500 font-medium mb-3">
-                  {displayProductTitle.collection}
-                </p>
-              ) : shortDescription ? (
-                <p className="text-lg text-gray-600 mb-3">
-                  {shortDescription}
-                </p>
+                      const collName = collectionDisplayName || collectionName;
+                      const { color } = splitProductTitle(name, collName);
+                      return color;
+                    })()}
+                  </p>
+                  {activeColorContext.code && (
+                    <p className="text-[13px] text-ink-500">{activeColorContext.code}</p>
+                  )}
+                </div>
               ) : null}
             </div>
 
-            {/* Price or "Cena na upit" */}
-            {productPrice && productPrice > 0 ? (
-              <div className="bg-primary-50 border border-primary-200 rounded-xl p-4">
-                <div className="flex items-baseline space-x-2">
-                  <span className="text-3xl font-bold text-primary-600">
-                    {productPrice.toLocaleString('sr-RS')}
-                  </span>
-                  <span className="text-base text-gray-600">RSD</span>
-                  {priceUnit && (
-                    <span className="text-base text-gray-500">/ {priceUnit}</span>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-                    <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-lg font-bold text-amber-800">Cena na upit</p>
-                    <p className="text-sm text-amber-600">Pošaljite upit za najbolju ponudu</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {(() => {
-              const backingVariants = activeCustomColor?.backing_variants;
-
-              if (backingVariants && Array.isArray(backingVariants) && backingVariants.length > 0) {
-                return (
-                  <div className="bg-gray-50 border border-gray-100 shadow-inner rounded-xl p-4 mt-2">
-                    <p className="text-sm text-gray-500 font-medium mb-2">Dostupne podloge:</p>
-                    <div className="flex flex-wrap gap-2">
-                      {backingVariants.map((variant: string) => (
-                        <span key={variant} className="px-3 py-1 bg-white border border-gray-200 text-gray-700 text-sm font-medium rounded-full opacity-90">{variant}</span>
-                      ))}
-                    </div>
-                  </div>
-                );
-              }
-              return null;
-            })()}
-
-            {/* Accessory Badge: Welding Rod */}
-            {(() => {
-              const selectedWeldingCharacteristic = selectedCharacteristics
-                ? Object.entries(selectedCharacteristics).find(([label]) =>
-                  /(elektrod|varila|welding|vrpca)/i.test(label)
-                )
-                : null;
-
-              const weldingRodSpec = specs?.find(s =>
-                /(welding|varil|vrpca|elektrod)/i.test(s.key) ||
-                /(varilačk|welding|elektrod|vrpca)/i.test(s.label)
-              );
-              const weldingLabel = selectedWeldingCharacteristic?.[0] || weldingRodSpec?.label || 'Elektroda za varenje';
-              const weldingValue = selectedWeldingCharacteristic?.[1] || weldingRodSpec?.value || '';
-
-              if (weldingValue && weldingValue.trim() !== '' && weldingValue.trim() !== '-') {
-                return (
-                  <div className="bg-[#f8f9fa] border border-[#e9ecef] rounded-xl p-4 mt-2">
-                    <div className="flex items-center gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center">
-                        <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-0.5">Dodatna oprema</p>
-                        <p className="text-base font-semibold text-gray-900 leading-none">
-                          {weldingLabel}: <span className="text-primary-600">{weldingValue}</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-              return null;
-            })()}
-
-            {/* CTA Button - Pošaljite upit (veći, istaknut) – prefill: proizvod + boja + ref */}
-            <div>
-              <a
-                href={(() => {
-                  const params = new URLSearchParams();
-                  params.set('product', productSlug);
-                  if (selectedColorSlug) params.set('color', selectedColorSlug);
-                  if (inquiryRef) params.set('ref', inquiryRef);
-                  if (selectedImage?.url) params.set('img', selectedImage.url);
-
-                  const category = collectionCategoryLabel || (collectionSlug.includes('lvt') ? 'LVT' : collectionSlug.includes('linoleum') ? 'Linoleum' : 'Podna obloga');
-                  params.set('category', category);
-
-                  // Construct nice name: deduplicate collection name if present in color name
-                  let niceName = collectionDisplayName || productName;
-
-                  if (activeColorContext?.name) {
-                    let variantName = activeColorContext.name;
-                    // Check if variant name starts with the collection/product name (case insensitive)
-                    if (niceName && variantName.toLowerCase().startsWith(niceName.toLowerCase())) {
-                      // Remove the repeated prefix
-                      variantName = variantName.substring(niceName.length).trim();
-                      // Remove any leading separators like "- " or space
-                      variantName = variantName.replace(/^[-–—\s]+/, '');
-                    }
-
-                    if (variantName) {
-                      niceName = `${niceName} - ${variantName}`;
-                    }
+            {/* Desno: Favorite & Share */}
+            <div className="flex items-center gap-3 flex-shrink-0 ml-3">
+              {productId && <FavoriteButton productId={productId} size="md" />}
+              <button
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({ title: shareTitle, url: window.location.href }).catch(() => { });
+                  } else {
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                      alert('Link kopiran!');
+                    });
                   }
-
-                  params.set('name', niceName);
-
-                  return `/upiti?${params.toString()}`;
-                })()}
-                className="btn-primary text-center text-[17px] font-semibold px-8 py-4 w-full rounded-full shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all"
+                }}
+                className="inline-flex items-center gap-1.5 bg-white border border-ink-200 px-3 min-h-[44px] text-[13px] font-medium text-ink-900 hover:border-ink-900 transition-colors"
+                title="Podeli"
               >
-                Pošaljite upit
-              </a>
-
-
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                Podeli
+              </button>
             </div>
           </div>
+        </div>
 
-          {/* Varijante/boje – Na mobilnom ide PRVO (order-1), na desktopu DRUGO (order-2) */}
+        {/* Desno: sticky info kolona */}
+        <div className="lg:sticky lg:top-24 lg:self-start">
+          {/* Brend etiketa */}
+          {brand?.name && (
+            <p className="eyebrow mb-3">{brand.name}</p>
+          )}
+
+          {/* Naziv (boja) + kolekcija */}
+          <h1 className="text-3xl md:text-4xl font-normal tracking-tight text-ink-900 mb-2">
+            {displayProductTitle.color}
+          </h1>
+
+          {displayProductTitle.collection ? (
+            <p className="text-base text-ink-600 mb-4">
+              {displayProductTitle.collection}
+            </p>
+          ) : shortDescription ? (
+            <p className="text-base text-ink-600 mb-4">
+              {shortDescription}
+            </p>
+          ) : null}
+
+          {/* Cena — čist tekst, bez kutija */}
+          {productPrice && productPrice > 0 ? (
+            <p className="text-[13px] text-ink-500 mb-8">
+              {productPrice.toLocaleString('sr-RS')} RSD{priceUnit ? ` / ${priceUnit}` : ''}
+            </p>
+          ) : (
+            <p className="text-[13px] text-ink-500 mb-8">Cena na upit</p>
+          )}
+
+          {/* Varijante/boje – mreža kvadratnih swatcheva */}
           {!hideColorSelector && (
-            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col flex-1 min-h-0 order-1 lg:order-2">
-              <div className="flex items-start justify-between gap-4 mb-4 flex-shrink-0">
+            <div className="mb-10">
+              <div className="flex items-baseline justify-between gap-4 mb-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">{selectorTitle}</h3>
-                  <p className="text-sm text-gray-500">{colorsCountLabel} {selectorCountLabel}</p>
+                  <h3 className="eyebrow">{selectorTitle}</h3>
+                  <p className="text-[13px] text-ink-500 mt-1">{colorsCountLabel} {selectorCountLabel}</p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsColorsModalOpen(true)}
-                  className="text-primary-600 hover:text-primary-700 text-sm font-semibold whitespace-nowrap"
+                  className="btn-link whitespace-nowrap"
                 >
                   Pogledaj sve →
                 </button>
               </div>
-              <div className="flex-1 min-h-0">
-                <ColorGrid
-                  collectionSlug={collectionSlug}
-                  onColorSelect={handleColorSelect}
-                  compact={true}
-                  limit={12}
-                  onColorsLoaded={setColorsCount}
-                  initialColorSlug={initialColorSlug}
-                  selectedColorSlug={selectedColorSlug}
-                  customColors={customColors}
-                  apiCategory={apiCategory}
-                  uiMode={uiMode}
-                />
-              </div>
+              <ColorGrid
+                collectionSlug={collectionSlug}
+                onColorSelect={handleColorSelect}
+                compact={true}
+                limit={12}
+                onColorsLoaded={setColorsCount}
+                initialColorSlug={initialColorSlug}
+                selectedColorSlug={selectedColorSlug}
+                customColors={customColors}
+                apiCategory={apiCategory}
+                uiMode={uiMode}
+              />
+            </div>
+          )}
+
+          {/* Dostupne podloge */}
+          {(() => {
+            const backingVariants = activeCustomColor?.backing_variants;
+
+            if (backingVariants && Array.isArray(backingVariants) && backingVariants.length > 0) {
+              return (
+                <div className="mb-8">
+                  <p className="eyebrow mb-3">Dostupne podloge</p>
+                  <div className="flex flex-wrap gap-2">
+                    {backingVariants.map((variant: string) => (
+                      <span key={variant} className="px-3 py-1 border border-ink-200 text-ink-900 text-[13px]">{variant}</span>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })()}
+
+          {/* Accessory: Welding Rod */}
+          {(() => {
+            const selectedWeldingCharacteristic = selectedCharacteristics
+              ? Object.entries(selectedCharacteristics).find(([label]) =>
+                /(elektrod|varila|welding|vrpca)/i.test(label)
+              )
+              : null;
+
+            const weldingRodSpec = specs?.find(s =>
+              /(welding|varil|vrpca|elektrod)/i.test(s.key) ||
+              /(varilačk|welding|elektrod|vrpca)/i.test(s.label)
+            );
+            const weldingLabel = selectedWeldingCharacteristic?.[0] || weldingRodSpec?.label || 'Elektroda za varenje';
+            const weldingValue = selectedWeldingCharacteristic?.[1] || weldingRodSpec?.value || '';
+
+            if (weldingValue && weldingValue.trim() !== '' && weldingValue.trim() !== '-') {
+              return (
+                <div className="mb-8">
+                  <p className="eyebrow mb-2">Dodatna oprema</p>
+                  <div className="flex justify-between border-b border-ink-200 py-[9px] text-[13px]">
+                    <span className="text-ink-500">{weldingLabel}</span>
+                    <span className="text-ink-900 text-right">{weldingValue}</span>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })()}
+
+          {/* CTA - Pošaljite upit – prefill: proizvod + boja + ref */}
+          <a
+            href={(() => {
+              const params = new URLSearchParams();
+              params.set('product', productSlug);
+              if (selectedColorSlug) params.set('color', selectedColorSlug);
+              if (inquiryRef) params.set('ref', inquiryRef);
+              if (selectedImage?.url) params.set('img', selectedImage.url);
+
+              const category = collectionCategoryLabel || (collectionSlug.includes('lvt') ? 'LVT' : collectionSlug.includes('linoleum') ? 'Linoleum' : 'Podna obloga');
+              params.set('category', category);
+
+              // Construct nice name: deduplicate collection name if present in color name
+              let niceName = collectionDisplayName || productName;
+
+              if (activeColorContext?.name) {
+                let variantName = activeColorContext.name;
+                // Check if variant name starts with the collection/product name (case insensitive)
+                if (niceName && variantName.toLowerCase().startsWith(niceName.toLowerCase())) {
+                  // Remove the repeated prefix
+                  variantName = variantName.substring(niceName.length).trim();
+                  // Remove any leading separators like "- " or space
+                  variantName = variantName.replace(/^[-–—\s]+/, '');
+                }
+
+                if (variantName) {
+                  niceName = `${niceName} - ${variantName}`;
+                }
+              }
+
+              params.set('name', niceName);
+
+              return `/upiti?${params.toString()}`;
+            })()}
+            className="btn-primary block w-full text-center min-h-[44px]"
+          >
+            Pošaljite upit
+          </a>
+
+          {/* Link na sajt proizvođača / izvorni katalog */}
+          {externalLink && (
+            <div className="mt-6">
+              <a
+                href={externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-link"
+              >
+                {externalLinkLabel} →
+              </a>
             </div>
           )}
         </div>
@@ -652,18 +614,16 @@ export default function ProductColorSelector({
 
       {/* Ispod prvog reda: Video Embed (if available) */}
       {videoEmbedUrl && (
-        <div className="w-full mb-8">
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <div className="w-full max-w-4xl mx-auto aspect-video rounded-xl overflow-hidden bg-gray-100">
-              <iframe
-                src={videoEmbedUrl}
-                title="Video kolekcije"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                className="w-full h-full"
-              />
-            </div>
+        <div className="w-full mb-12">
+          <div className="w-full max-w-4xl mx-auto aspect-video overflow-hidden bg-paper">
+            <iframe
+              src={videoEmbedUrl}
+              title="Video kolekcije"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              className="w-full h-full"
+            />
           </div>
         </div>
       )}
@@ -671,18 +631,18 @@ export default function ProductColorSelector({
       {isColorsModalOpen && (
         <div className="fixed inset-0 z-[60]">
           <div
-            className="absolute inset-0 bg-black/60"
+            className="absolute inset-0 bg-ink-900/60"
             onClick={() => setIsColorsModalOpen(false)}
           ></div>
-          <div className="relative mx-auto mt-8 w-[92%] max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
-            <div className="flex items-center justify-between px-6 py-4 border-b">
-              <h3 className="text-xl font-semibold text-gray-900">
+          <div className="relative mx-auto mt-8 w-[92%] max-w-5xl bg-white overflow-hidden max-h-[90vh] flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-ink-200">
+              <h3 className="text-[15px] font-medium text-ink-900">
                 {selectorAllTitle} ({colorsCountLabel})
               </h3>
               <button
                 type="button"
                 onClick={() => setIsColorsModalOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-500 hover:text-ink-900"
                 aria-label="Zatvori"
               >
                 ✕
