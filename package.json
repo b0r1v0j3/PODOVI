@@ -21,7 +21,6 @@
     "@types/nodemailer": "^7.0.9",
     "csv-parse": "^6.1.0",
     "dotenv": "^17.2.4",
-    "framer-motion": "^12.34.3",
     "next": "14.2.5",
     "nodemailer": "^8.0.0",
     "pdf-parse": "^1.1.1",
