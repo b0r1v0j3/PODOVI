@@ -21,7 +21,7 @@ export default function ProductInquiryStickyCTA({ productSlug, inquiryRef }: Pro
   const href = `/upiti?${params.toString()}`;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-ink-900 safe-area-pb">
+    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-ink-900 pb-[env(safe-area-inset-bottom)]">
       <Link
         href={href}
         className="flex min-h-[52px] w-full items-center justify-center text-white text-[13px] font-medium hover:bg-ink-700 transition-colors"
