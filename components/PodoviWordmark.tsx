@@ -1,3 +1,11 @@
+import { DM_Sans } from 'next/font/google';
+
+const wordmarkFont = DM_Sans({
+  subsets: ['latin'],
+  weight: '700',
+  display: 'swap',
+});
+
 type PodoviWordmarkProps = {
   className?: string;
   textClassName?: string;
@@ -9,7 +17,7 @@ export default function PodoviWordmark({
 }: PodoviWordmarkProps) {
   return (
     <span className={`inline-block ${className}`.trim()}>
-      <span className={`font-bold lowercase tracking-[-0.02em] ${textClassName}`.trim()}>
+      <span className={`${wordmarkFont.className} font-bold lowercase tracking-[-0.02em] ${textClassName}`.trim()}>
         podovi
       </span>
     </span>
