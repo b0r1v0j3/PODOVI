@@ -14,31 +14,26 @@ export default function ProductDescriptionWithCharacteristics({
   characteristicsSection,
 }: ProductDescriptionWithCharacteristicsProps) {
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Opis proizvoda</h2>
-        <div className="text-gray-700 leading-relaxed whitespace-pre-line text-lg">
-          {description}
-        </div>
+    <div className="space-y-10">
+      <div className="max-w-3xl text-[15px] md:text-base text-ink-600 leading-relaxed whitespace-pre-line">
+        {description}
       </div>
 
       {characteristicsSection && characteristicsSection.items.length > 0 && (
-        <div className="border-t border-gray-100 pt-8">
-          <h3 className="text-xl font-bold text-gray-900 mb-6">
+        <div>
+          <h3 className="eyebrow mb-4">
             {characteristicsSection.title}
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
             {characteristicsSection.items.map((item, index) => {
               const Icon = getIconForCharacteristic(item);
               return (
                 <div
                   key={index}
-                  className="flex items-start p-4 rounded-xl bg-gray-50 border border-gray-100 transition-all duration-300 hover:shadow-md hover:border-primary-100 group"
+                  className="flex items-start gap-3 border-b border-ink-200 py-[9px]"
                 >
-                  <div className="flex-shrink-0 mt-1 mr-4 text-primary-600 bg-white p-2 rounded-full shadow-sm group-hover:scale-110 transition-transform">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span className="text-gray-700 font-medium leading-relaxed self-center">
+                  <Icon className="w-4 h-4 mt-0.5 text-ink-500 flex-shrink-0" />
+                  <span className="text-[13px] text-ink-900 leading-relaxed">
                     {item}
                   </span>
                 </div>
