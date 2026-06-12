@@ -9,7 +9,7 @@
 - **Styling**: [TailwindCSS 3](https://tailwindcss.com/)
 - **Database**: [Supabase](https://supabase.com/) (PostgreSQL)
 - **Email**: Nodemailer (Gmail SMTP)
-- **Analytics**: Google Analytics 4
+- **Analytics**: Vercel Web Analytics (script in `app/layout.tsx`; replaced Google Analytics)
 - **Deployment**: Vercel
 
 ## Getting Started
@@ -39,12 +39,21 @@ npm start
 
 ## Key Features
 
+### "Galerija" Design Language (redesign 2026-06-12)
+- All public pages use a **monochrome gallery design language** (Prostoria-inspired): `ink` gray-scale + warm `paper` image-background tokens defined in `tailwind.config.ts`, white site background
+- **No border radius and no shadows** — separation comes from 1px hairlines and whitespace; the old pink `primary` palette and colored category badges are removed (exceptions: official WhatsApp green, system red for form/error states)
+- **Lowercase bold "podovi" wordmark** (`PodoviWordmark`) in the header and footer
+- **Light footer**: white background, hairline top border, monochrome social icons; the black homepage CTA block is the only dark section on the site
+- Sticky white header with hairline bottom border; mobile menu is a full-screen white overlay with large links
+- Spec: `docs/superpowers/specs/2026-06-12-podovi-redizajn-design.md`
+
 ### Product Catalog
+- Homepage **Prostoria-style product browser** (`HomeProductTabs`): category tab strip with underline indicator (wheel-scrollable) + product grid + "Pogledaj sve" link
 - Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport, Lajsne, Otirači)
-- Browse by **brand** (Tarkett, Gerflor, BLOQ, TimberTech, Wolflor, Techem, Romus, Podovi)
-- **Product filters**: search, brand, price range, stock status, color, collection, thickness, wood type
+- Filter by **brand** (Tarkett, Gerflor, BLOQ, TimberTech, Wolflor, Techem, Romus, Podovi) via text **brand chips** (active = underlined) on category pages
+- **Product filters**: hairline bar with brand chips + "Filteri" button opening a **slide-over drawer** with search, price range, collection, thickness, vinyl type, wood type and other category-specific filters (URL-synced, auto-apply)
 - **Color variant selector** with instant image switching (no page reload)
-- **Product detail pages** with image galleries, specs, and inquiry CTA
+- **Product detail pages** in a **split layout** — image gallery left, **sticky info column** right (brand label, name, collection, price, color swatches, black "Pošalji upit" CTA) — with Opis / Specifikacije / Eko / Dokumenti rendered as stacked **vertical sections** instead of tabs
 
 ### Product Interactions
 - **❤️ Favorites**: Save products to a favorites list (persisted in localStorage)
@@ -53,21 +62,22 @@ npm start
   - Favorite button on product cards and detail pages
 - **📊 Compare**: Side-by-side product comparison (up to 3 products)
   - Compare button on product cards (overlay on hover)
-  - Sticky `CompareBar` at bottom when products are selected
-  - Dedicated `/uporedi` page with full comparison table
-- **🔗 Share**: Share product pages via native Web Share API (mobile) or clipboard copy (desktop)
-- Product card overlay with Favorite/Compare buttons (always visible on mobile, hover on desktop)
+  - Sticky `CompareBar` at bottom when products are selected (white, hairline top border)
+  - Dedicated `/uporedi` page with full comparison table (hairline rows)
+- **🔗 Share**: "Podeli" button on product detail pages (`ProductActions`) — native Web Share API with clipboard-copy fallback
+- Product card overlay with monochrome Favorite/Compare icons (always visible on mobile, hover/focus-visible on desktop)
 
 ### Search & Discovery
-- **🔍 Global Search**: Full-text search across all products with instant results
-- **🧮 Flooring Calculator**: Calculate how much material is needed based on room dimensions
+- **🔍 Global Search**: Full-text search across all products with instant results, opening as a full-width overlay over the header
 
 ### Contact & Inquiries
-- Contact form with product pre-fill from product pages
-- **Inquiry modal** accessible from product pages
+- Inquiry form on `/upiti` (`ContactForm`) with bottom-line inputs and product/color/ref pre-fill via URL parameters
+- Product detail pages link to `/upiti` through a full-width black "Pošalji upit" CTA in the sticky info column, plus a sticky bottom CTA on mobile (`ProductInquiryStickyCTA`)
 - **Internal `/crm` lead board** over existing inquiries with status, next-contact date, and notes, with optional env-based HTTP Basic Auth guard
 - Email notifications via Gmail SMTP (Nodemailer)
-- **WhatsApp button** for quick customer communication
+- **WhatsApp button** for quick customer communication (keeps the official WhatsApp green)
+
+> Note: the `InquiryModal`, `InquiryButton`, `FlooringCalculator` and `ShareButtons` components still exist in `components/` but are currently **not wired in** (not imported by any page) — sharing is handled by `ProductActions` and inquiries go through the `/upiti` form.
 
 ### SEO & Performance
 - Structured data (Organization, Website, Product, Breadcrumb, ItemList / CollectionPage schemas)
@@ -118,12 +128,10 @@ PODOVI/
 │   ├── layout.tsx          # Root layout (providers, analytics, header/footer)
 │   ├── kategorije/         # Categories (Laminat, Vinil, Parket, etc.)
 │   ├── proizvodi/          # Individual product pages
-│   ├── brendovi/           # Brand pages (Tarkett, Gerflor, BLOQ, Wolflor, Techem)
-│   ├── kontakt/            # Contact page with form
 │   ├── crm/                # Internal lead CRM page
 │   ├── omiljeni/           # Favorites page
 │   ├── uporedi/            # Product comparison page
-│   ├── upiti/              # Inquiry page
+│   ├── upiti/              # Inquiry page (ContactForm with URL-param prefill)
 │   ├── api/                # API routes
 │   │   ├── colors/         #   Color/variant data endpoint
 │   │   ├── contact/        #   Contact form submission
@@ -138,37 +146,47 @@ PODOVI/
 │   └── not-found.tsx       # 404 page
 │
 ├── components/             # React components
-│   ├── Header.tsx          # Site navigation with favorites badge
-│   ├── Footer.tsx          # Site footer
-│   ├── GlobalSearch.tsx    # Full-text product search
+│   ├── Header.tsx          # Sticky white header: wordmark, search, favorites badge, inquiry CTA, full-screen mobile menu
+│   ├── PodoviWordmark.tsx  # Lowercase bold "podovi" wordmark
+│   ├── Footer.tsx          # Light site footer (white, hairline top border)
+│   ├── GlobalSearch.tsx    # Full-text product search (full-width overlay over the header)
+│   ├── HomeProductTabs.tsx # Homepage Prostoria-style category tab strip + product grid
+│   ├── CategoryTabs.tsx    # Category page Kolekcije/Boje underline tabs
 │   ├── ProductCard.tsx     # Product card (server component)
 │   ├── ProductCardClient.tsx   # Product card (client component)
 │   ├── ProductCardOverlay.tsx  # Favorite + Compare buttons overlay
-│   ├── ProductActions.tsx  # Favorite + Compare + Share for detail pages
+│   ├── ProductActions.tsx  # Favorite + Compare + Share ("Podeli") for detail pages
 │   ├── ProductColorSelector.tsx # Color selector with image switching
-│   ├── ProductFilters.tsx  # Category page filters (search, brand, price, etc.)
+│   ├── ProductFilters.tsx  # Brand chip bar + "Filteri" slide-over drawer on category pages
 │   ├── ProductImage.tsx    # Optimized product image component
 │   ├── ProductCharacteristics.tsx # Product specs table
+│   ├── ProductDescriptionWithCharacteristics.tsx # Description + key characteristics block
+│   ├── ProductDetailsTabs.tsx   # Stacked vertical product sections (Opis/Specifikacije/Eko/Dokumenti; legacy "tabs" name)
 │   ├── ProductDocuments.tsx     # Downloadable PDF documents section
-│   ├── ProductInquiryStickyCTA.tsx # Sticky inquiry CTA on product detail
+│   ├── ProductInquiryStickyCTA.tsx # Sticky mobile "Pošalji upit" CTA → /upiti with prefill
+│   ├── ProductBenefits.tsx # Product benefits block
+│   ├── ProductViewTracker.tsx # Records product visits for RecentlyViewed
+│   ├── RelatedProducts.tsx # Related products grid
+│   ├── RecommendedAccessories.tsx # Recommended accessories grid
+│   ├── RecentlyViewed.tsx  # Recently viewed products (localStorage)
 │   ├── ColorGrid.tsx       # Color variant grid for collections
 │   ├── FavoriteButton.tsx  # Heart toggle button
 │   ├── CompareButton.tsx   # Compare toggle button
-│   ├── CompareBar.tsx      # Sticky bottom comparison bar
-│   ├── InquiryButton.tsx   # Inquiry trigger button
-│   ├── InquiryModal.tsx    # Inquiry form modal
-│   ├── FlooringCalculator.tsx  # Material quantity calculator
-│   ├── ShareButtons.tsx    # Share via Web Share API / clipboard
-│   ├── WhatsAppButton.tsx  # Direct WhatsApp link button
-│   ├── CategoryCard.tsx    # Category card on homepage
-│   ├── BrandCard.tsx       # Brand card on /brendovi listing
+│   ├── CompareBar.tsx      # Sticky bottom comparison bar (white, hairline top)
+│   ├── ContactForm.tsx     # Inquiry form on /upiti (URL-param prefill)
+│   ├── InquiryButton.tsx   # (unwired) Inquiry trigger button — not imported anywhere
+│   ├── InquiryModal.tsx    # (unwired) Inquiry form modal — not imported anywhere
+│   ├── FlooringCalculator.tsx  # (unwired) Material quantity calculator — not imported anywhere
+│   ├── ShareButtons.tsx    # (unwired) Share buttons — sharing is handled by ProductActions
+│   ├── WhatsAppButton.tsx  # Direct WhatsApp link button (official green kept)
+│   ├── BackToTop.tsx       # Back-to-top button
 │   ├── Breadcrumbs.tsx     # Breadcrumb navigation
 │   ├── CertificationBadges.tsx  # Product certification badges
 │   ├── EcoFeatures.tsx     # Eco-friendly features display
-│   ├── crm/                # Small CRM form helpers
-│   ├── LVTTabs.tsx         # LVT category tabbed layout
+│   ├── BrandLogoMark.tsx   # Brand logo/mark rendering
 │   ├── ScrollReveal.tsx    # Scroll-based animation wrapper
-│   └── GoogleAnalytics.tsx # GA4 script injection
+│   ├── useScrollLock.ts    # Shared scroll-lock hook for overlays/drawers
+│   └── crm/                # Small CRM form helpers
 │
 ├── lib/
 │   ├── context/            # React Context providers
@@ -261,10 +279,10 @@ PODOVI/
 │  │   Pages   │  │   API     │  │   Components    │  │
 │  │ /kategorije│  │ /api/     │  │ ProductCard     │  │
 │  │ /proizvodi │  │  search   │  │ ProductFilters  │  │
-│  │ /brendovi  │  │  contact  │  │ GlobalSearch    │  │
-│  │ /omiljeni  │  │  products │  │ InquiryModal    │  │
-│  │ /uporedi   │  │  colors   │  │ CompareBar      │  │
-│  │ /kontakt   │  │  inquiries│  │ ...             │  │
+│  │ /omiljeni  │  │  contact  │  │ GlobalSearch    │  │
+│  │ /uporedi   │  │  products │  │ ContactForm     │  │
+│  │ /upiti     │  │  colors   │  │ CompareBar      │  │
+│  │ /crm       │  │  inquiries│  │ ...             │  │
 │  └─────┬─────┘  └─────┬─────┘  └────────┬────────┘  │
 │        │              │                  │           │
 │  ┌─────▼──────────────▼──────────────────▼────────┐  │
@@ -351,7 +369,7 @@ Additional variables used in `.env.local`:
 
 ```env
 NEXT_PUBLIC_BASE_URL=https://www.podovi.online
-NEXT_PUBLIC_GA_MEASUREMENT_ID=  # Google Analytics 4
+NEXT_PUBLIC_GA_MEASUREMENT_ID=  # Legacy GA4 ID (script no longer injected; analytics via Vercel Web Analytics)
 NEXT_PUBLIC_SUPABASE_URL=       # Supabase project URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=  # Supabase anonymous key
 SUPABASE_SERVICE_ROLE_KEY=      # Required for storage uploads and admin scripts

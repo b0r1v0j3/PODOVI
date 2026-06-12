@@ -25,6 +25,14 @@
 - Vercel deploy sa `main`
 - Vitest contract tests
 
+## Dizajn sistem „Galerija" (redizajn 2026-06-12)
+
+- 2026-06-12 sve javne stranice su redizajnirane u monohromni galerijski jezik (Prostoria referenca): početna sa listačem (`HomeProductTabs`), kategorije sa brend čipovima + fiokom filtera, proizvod u split rasporedu sa sticky info kolonom i vertikalnim sekcijama umesto tabova, svetli footer, logotip malim slovima.
+- Spec: `docs/superpowers/specs/2026-06-12-podovi-redizajn-design.md`
+- Plan: `docs/superpowers/plans/2026-06-12-galerija-redizajn-faza-1.md`
+- Dizajn tokeni u `tailwind.config.ts`: `ink` skala sivih (tekst, linije, CTA) + `paper` `#F7F5F2` (podloga slika); razdvajanje hairline linijama od 1px.
+- Pravila: bez `rounded-*`, bez `shadow-*` i bez stare `primary` palete na javnim stranicama (izuzeci: zvanična WhatsApp zelena i sistemska crvena za greške u formama). `/crm` se ne dira.
+
 ## Source of truth
 
 Pre rada pročitati ovim redom:
@@ -88,3 +96,5 @@ Posebno proveriti:
 2. Napraviti “product data health dashboard” za missing images/specs/docs.
 3. Pojačati SEO za kategorije/brendove sa najviše komercijalne vrednosti.
 4. Standardizovati data import procedure za nove brendove.
+5. Faza 2 redizajna (§10 speca): obogaćivanje podataka brend po brend — Gerflor vinil slike → high-res slike svuda → Alpod PDF dokumenti → TimberTech deking → Tarkett room-scene fotografije → Techem/Romus dokumentacija; tek tada full-bleed hero i editorijal galerije.
+6. Odlučiti sudbinu nepovezanih komponenti (`InquiryModal`, `InquiryButton`, `FlooringCalculator`, `ShareButtons`): ponovo ih uvezati ili obrisati.
