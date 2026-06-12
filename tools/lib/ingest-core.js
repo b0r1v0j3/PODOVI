@@ -46,27 +46,36 @@ function getSupabase() {
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 let lastPageFetchAt = 0;
+// Sekvencijalni pozivaoci only — nije pravi rate limiter za konkurentne pozive.
 async function politePageDelay(minIntervalMs = 1100) {
   const wait = lastPageFetchAt + minIntervalMs - Date.now();
   if (wait > 0) await sleep(wait);
   lastPageFetchAt = Date.now();
 }
 
-async function fetchWithRetry(url, { headers = BROWSER_HEADERS, attempts = 3, asBuffer = false } = {}) {
+async function fetchWithRetry(url, { headers = BROWSER_HEADERS, attempts = 3, asBuffer = false, timeoutMs = 30000 } = {}) {
   let lastError;
   for (let i = 0; i < attempts; i++) {
     try {
-      const res = await fetch(url, { headers, redirect: 'follow' });
+      const res = await fetch(url, { headers, redirect: 'follow', signal: AbortSignal.timeout(timeoutMs) });
       if (res.status === 403 || res.status === 429) {
+        await res.body?.cancel().catch(() => {});
         lastError = new Error(`HTTP ${res.status} za ${url}`);
-        await sleep(5000 * (i + 1));
+        if (i < attempts - 1) await sleep(5000 * (i + 1));
         continue;
       }
-      if (!res.ok) throw new Error(`HTTP ${res.status} za ${url}`);
+      if (!res.ok) {
+        await res.body?.cancel().catch(() => {});
+        const err = new Error(`HTTP ${res.status} za ${url}`);
+        // Deterministički klijentski errori (4xx osim 403/429) — retry nema smisla.
+        if (res.status >= 400 && res.status < 500) err.permanent = true;
+        throw err;
+      }
       return asBuffer ? Buffer.from(await res.arrayBuffer()) : await res.text();
     } catch (err) {
+      if (err.permanent) throw err;
       lastError = err;
-      await sleep(2000 * (i + 1));
+      if (i < attempts - 1) await sleep(2000 * (i + 1));
     }
   }
   throw lastError;
@@ -121,7 +130,14 @@ function loadManifest(name) {
   const manifestPath = path.join(process.cwd(), 'output', `${name}-manifest.json`);
   let entries = {};
   if (fs.existsSync(manifestPath)) {
-    entries = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    try {
+      entries = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    } catch {
+      const corruptPath = `${manifestPath}.corrupt-${cacheBustStamp()}`;
+      fs.renameSync(manifestPath, corruptPath);
+      console.warn(`⚠️ Manifest oštećen, počinjem ispočetka: ${corruptPath}`);
+      entries = {};
+    }
   }
   return {
     has: (key) => Boolean(entries[key]),
@@ -131,14 +147,17 @@ function loadManifest(name) {
     },
     save() {
       fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
-      fs.writeFileSync(manifestPath, JSON.stringify(entries, null, 2), 'utf8');
+      const tmpPath = `${manifestPath}.tmp`;
+      fs.writeFileSync(tmpPath, JSON.stringify(entries, null, 2), 'utf8');
+      fs.renameSync(tmpPath, manifestPath); // renameSync prepisuje postojeći fajl i na Windows-u
     },
     size: () => Object.keys(entries).length,
   };
 }
 
 function slugify(s) {
-  return String(s || '').toLowerCase().normalize('NFKD').replace(/[^\w\s-]/g, '').trim().replace(/[\s_]+/g, '-').replace(/-+/g, '-');
+  const out = String(s || '').toLowerCase().replace(/đ/g, 'dj').normalize('NFKD').replace(/[^\w\s-]/g, '').trim().replace(/[\s_]+/g, '-').replace(/-+/g, '-');
+  return out || 'stavka';
 }
 
 module.exports = {
