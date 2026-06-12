@@ -12,13 +12,13 @@ export default function CompareBar() {
     if (compareItems.length === 0) return null;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t-2 border-primary-500 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] animate-slideUp">
-            <div className="max-w-7xl mx-auto px-4 py-3">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-ink-200">
+            <div className="container py-3">
                 <div className="flex items-center justify-between gap-4">
                     {/* Product thumbnails */}
                     <div className="flex items-center gap-3 flex-1 min-w-0">
-                        <span className="text-sm font-semibold text-gray-700 whitespace-nowrap hidden sm:block">
-                            Poređenje ({compareItems.length}/3):
+                        <span className="eyebrow whitespace-nowrap hidden sm:block">
+                            Poređenje ({compareItems.length}/3)
                         </span>
                         <div className="flex items-center gap-2 overflow-x-auto">
                             {compareItems.map((product: any) => {
@@ -37,9 +37,9 @@ export default function CompareBar() {
                                     : color;
 
                                 return (
-                                    <div key={product.id} className="relative flex items-center gap-2 bg-gray-50 rounded-lg px-2 py-1.5 min-w-0 flex-shrink-0">
+                                    <div key={product.id} className="relative flex items-center gap-2 border border-ink-200 bg-white px-2 py-1.5 min-w-0 flex-shrink-0">
                                         {img && (
-                                            <div className="relative w-8 h-8 rounded overflow-hidden flex-shrink-0">
+                                            <div className="relative w-8 h-8 overflow-hidden flex-shrink-0 bg-paper">
                                                 <ProductImage
                                                     sources={imageCandidates}
                                                     alt={product.name}
@@ -48,12 +48,12 @@ export default function CompareBar() {
                                                 />
                                             </div>
                                         )}
-                                        <span className="text-xs font-medium text-gray-700 truncate max-w-[100px]" title={formattedName}>
+                                        <span className="text-xs text-ink-900 truncate max-w-[100px]" title={formattedName}>
                                             {formattedName}
                                         </span>
                                         <button
                                             onClick={() => removeFromCompare(product.id)}
-                                            className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-200 hover:bg-red-100 text-gray-500 hover:text-red-600 flex items-center justify-center transition-colors"
+                                            className="flex-shrink-0 p-2 -m-1 text-ink-500 hover:text-ink-900 flex items-center justify-center transition-colors"
                                             title="Ukloni"
                                         >
                                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -70,13 +70,13 @@ export default function CompareBar() {
                     <div className="flex items-center gap-2 flex-shrink-0">
                         <button
                             onClick={clearAll}
-                            className="text-xs text-gray-500 hover:text-red-600 transition-colors px-2 py-1"
+                            className="text-[13px] text-ink-500 hover:text-ink-900 transition-colors px-2 py-1 min-h-[44px]"
                         >
                             Obriši sve
                         </button>
                         <Link
                             href="/uporedi"
-                            className="btn-primary text-sm px-4 py-2 whitespace-nowrap"
+                            className="btn-primary inline-flex items-center whitespace-nowrap min-h-[44px]"
                         >
                             Uporedi ({compareItems.length})
                         </Link>

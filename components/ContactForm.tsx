@@ -83,19 +83,19 @@ export default function ContactForm() {
 
     if (status === 'success') {
         return (
-            <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center animate-fadeIn">
-                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="border border-ink-200 p-8 text-center">
+                <div className="inline-flex w-16 h-16 items-center justify-center border border-ink-200 text-ink-900 mx-auto mb-4">
                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
                     </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-green-800 mb-2">Hvala na upitu!</h3>
-                <p className="text-green-700 mb-6">
+                <h3 className="text-2xl font-normal text-ink-900 mb-2">Hvala na upitu!</h3>
+                <p className="text-ink-600 mb-8">
                     Vaša poruka je uspešno poslata. Naš tim će vas kontaktirati u najkraćem mogućem roku.
                 </p>
                 <button
                     onClick={() => setStatus('idle')}
-                    className="text-green-600 font-semibold hover:text-green-800 underline"
+                    className="btn-link"
                 >
                     Pošalji novi upit
                 </button>
@@ -104,31 +104,31 @@ export default function ContactForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                    <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="fullName" className="label">
                         Ime i prezime <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="text"
                         id="fullName"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                        className="input w-full"
                         placeholder="Vaše ime"
                         value={formData.fullName}
                         onChange={e => setFormData({ ...formData, fullName: e.target.value })}
                     />
                 </div>
                 <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="email" className="label">
                         Email adresa <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="email"
                         id="email"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                        className="input w-full"
                         placeholder="vase.ime@email.com"
                         value={formData.email}
                         onChange={e => setFormData({ ...formData, email: e.target.value })}
@@ -136,30 +136,30 @@ export default function ContactForm() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="phone" className="label">
                         Telefon <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="tel"
                         id="phone"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                        className="input w-full"
                         placeholder="+381 6..."
                         value={formData.phone}
                         onChange={e => setFormData({ ...formData, phone: e.target.value })}
                     />
                 </div>
                 <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="subject" className="label">
                         Naslov <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="text"
                         id="subject"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                        className="input w-full"
                         placeholder="Naslov poruke"
                         value={formData.subject}
                         onChange={e => setFormData({ ...formData, subject: e.target.value })}
@@ -168,14 +168,14 @@ export default function ContactForm() {
             </div>
 
             <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="message" className="label">
                     Poruka <span className="text-red-500">*</span>
                 </label>
                 <textarea
                     id="message"
                     required
                     rows={6}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-y"
+                    className="input w-full resize-y"
                     placeholder="Napišite vašu poruku ovde..."
                     value={formData.message}
                     onChange={e => setFormData({ ...formData, message: e.target.value })}
@@ -183,7 +183,7 @@ export default function ContactForm() {
             </div>
 
             {status === 'error' && (
-                <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm border border-red-200">
+                <div className="border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
                     {errorMessage}
                 </div>
             )}
@@ -191,19 +191,9 @@ export default function ContactForm() {
             <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="w-full md:w-auto px-8 py-4 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center"
+                className="btn-primary w-full md:w-auto min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                {status === 'submitting' ? (
-                    <>
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        Slanje...
-                    </>
-                ) : (
-                    'Pošalji Poruku'
-                )}
+                {status === 'submitting' ? 'Slanje...' : 'Pošalji Poruku'}
             </button>
         </form>
     );

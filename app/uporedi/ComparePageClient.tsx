@@ -10,21 +10,14 @@ export default function ComparePageClient() {
 
     if (compareItems.length === 0) {
         return (
-            <div className="max-w-4xl mx-auto px-4 py-16 text-center">
-                <div className="w-20 h-20 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                    <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                </div>
-                <h1 className="text-2xl font-bold text-gray-900 mb-3">Nema proizvoda za poređenje</h1>
-                <p className="text-gray-600 mb-6">
+            <div className="container py-24 text-center">
+                <p className="eyebrow mb-4">Poređenje</p>
+                <h1 className="text-3xl md:text-4xl font-normal text-ink-900 mb-4">Nema proizvoda za poređenje</h1>
+                <p className="text-ink-600 mb-10 max-w-md mx-auto">
                     Izaberite do 3 proizvoda za poređenje klikom na ikonu za poređenje na karticama proizvoda.
                 </p>
-                <Link href="/" className="btn-primary inline-flex items-center gap-2">
-                    <span>Pogledaj proizvode</span>
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
+                <Link href="/" className="btn-primary inline-flex items-center min-h-[44px]">
+                    Pogledaj proizvode
                 </Link>
             </div>
         );
@@ -53,45 +46,46 @@ export default function ComparePageClient() {
     };
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="container py-12 md:py-16">
             {/* Header */}
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-end justify-between gap-4 mb-10">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900">Uporedi proizvode</h1>
-                    <p className="text-gray-600 mt-1">{compareItems.length} proizvoda izabrano</p>
+                    <p className="eyebrow mb-3">Poređenje</p>
+                    <h1 className="text-3xl md:text-4xl font-normal text-ink-900">Uporedi proizvode</h1>
+                    <p className="text-[13px] text-ink-500 mt-2">{compareItems.length} proizvoda izabrano</p>
                 </div>
                 <button
                     onClick={clearAll}
-                    className="text-sm text-gray-500 hover:text-red-600 transition-colors border border-gray-300 hover:border-red-300 px-3 py-1.5 rounded-lg"
+                    className="btn-link min-h-[44px]"
                 >
                     Obriši sve
                 </button>
             </div>
 
             {/* Comparison table */}
-            <div className="overflow-x-auto -mx-4 px-4">
+            <div className="overflow-x-auto -mx-6 px-6 md:-mx-10 md:px-10">
                 <table className="w-full border-collapse min-w-[600px]">
                     {/* Product header row */}
                     <thead>
                         <tr>
-                            <th className="w-40 p-3 bg-gray-50 border border-gray-200 text-left text-sm font-semibold text-gray-700 sticky left-0 z-10">
-                                Proizvod
+                            <th className="w-40 py-4 pr-4 border-b border-ink-200 bg-white text-left align-bottom sticky left-0 z-10">
+                                <span className="eyebrow">Proizvod</span>
                             </th>
                             {compareItems.map(product => {
                                 const imageCandidates = getProductImageCandidates(product, 'thumb').slice(0, 4);
                                 const img = imageCandidates[0];
                                 return (
-                                    <th key={product.id} className="p-4 border border-gray-200 bg-white text-center align-top min-w-[200px]">
+                                    <th key={product.id} className="p-4 border-b border-ink-200 bg-white text-center align-top min-w-[200px]">
                                         <div className="space-y-3">
                                             <button
                                                 onClick={() => removeFromCompare(product.id)}
-                                                className="ml-auto block w-6 h-6 rounded-full bg-gray-100 hover:bg-red-100 text-gray-400 hover:text-red-600 transition-colors text-xs"
+                                                className="ml-auto flex items-center justify-center w-11 h-11 md:w-9 md:h-9 border border-ink-200 bg-white text-ink-500 hover:border-ink-900 hover:text-ink-900 transition-colors text-xs"
                                                 title="Ukloni"
                                             >
                                                 ✕
                                             </button>
                                             {img?.url && (
-                                                <div className="relative w-32 h-32 mx-auto rounded-lg overflow-hidden bg-gray-50">
+                                                <div className="relative w-32 aspect-[4/5] mx-auto overflow-hidden bg-paper">
                                                     <ProductImage
                                                         sources={imageCandidates}
                                                         alt={product.name}
@@ -100,7 +94,7 @@ export default function ComparePageClient() {
                                                     />
                                                 </div>
                                             )}
-                                            <Link href={`/proizvodi/${product.slug}`} className="text-sm font-bold text-gray-900 hover:text-primary-600 transition-colors block">
+                                            <Link href={`/proizvodi/${product.slug}`} className="text-[15px] font-normal text-ink-900 hover:opacity-60 transition-opacity block">
                                                 {product.name}
                                             </Link>
                                         </div>
@@ -113,31 +107,26 @@ export default function ComparePageClient() {
                     <tbody>
                         {/* Price row */}
                         <tr>
-                            <td className="p-3 bg-gray-50 border border-gray-200 text-sm font-semibold text-gray-700 sticky left-0 z-10">
+                            <td className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] text-ink-500 sticky left-0 z-10">
                                 Cena
                             </td>
                             {compareItems.map(product => (
-                                <td key={product.id} className="p-3 border border-gray-200 text-center">
-                                    {product.price && product.price > 0 ? (
-                                        <span className="text-lg font-bold text-primary-600">
-                                            {product.price.toLocaleString('sr-RS')} <span className="text-sm text-gray-500 font-normal">RSD/{product.priceUnit}</span>
-                                        </span>
-                                    ) : (
-                                        <span className="text-sm text-gray-400">Na upit</span>
-                                    )}
+                                <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-center text-[13px] text-ink-500">
+                                    {product.price && product.price > 0
+                                        ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit}`
+                                        : 'Cena na upit'}
                                 </td>
                             ))}
                         </tr>
 
                         {/* Stock row */}
-                        <tr className="bg-gray-50/50">
-                            <td className="p-3 bg-gray-50 border border-gray-200 text-sm font-semibold text-gray-700 sticky left-0 z-10">
+                        <tr>
+                            <td className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] text-ink-500 sticky left-0 z-10">
                                 Dostupnost
                             </td>
                             {compareItems.map(product => (
-                                <td key={product.id} className="p-3 border border-gray-200 text-center">
-                                    <span className={`inline-flex items-center gap-1 text-sm font-medium ${product.inStock ? 'text-green-600' : 'text-red-500'}`}>
-                                        <span className={`w-2 h-2 rounded-full ${product.inStock ? 'bg-green-500' : 'bg-red-400'}`}></span>
+                                <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-center text-[13px]">
+                                    <span className={product.inStock ? 'text-ink-900' : 'text-ink-500'}>
                                         {product.inStock ? 'Na stanju' : 'Nije na stanju'}
                                     </span>
                                 </td>
@@ -146,26 +135,26 @@ export default function ComparePageClient() {
 
                         {/* Description row */}
                         <tr>
-                            <td className="p-3 bg-gray-50 border border-gray-200 text-sm font-semibold text-gray-700 sticky left-0 z-10">
+                            <td className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] text-ink-500 align-top sticky left-0 z-10">
                                 Opis
                             </td>
                             {compareItems.map(product => (
-                                <td key={product.id} className="p-3 border border-gray-200 text-sm text-gray-600">
+                                <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-[13px] text-ink-900">
                                     {product.shortDescription || '—'}
                                 </td>
                             ))}
                         </tr>
 
                         {/* Spec rows */}
-                        {specRows.map((specKey, idx) => (
-                            <tr key={specKey} className={idx % 2 === 0 ? 'bg-gray-50/50' : ''}>
-                                <td className="p-3 bg-gray-50 border border-gray-200 text-sm font-semibold text-gray-700 sticky left-0 z-10">
+                        {specRows.map(specKey => (
+                            <tr key={specKey}>
+                                <td className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] text-ink-500 sticky left-0 z-10">
                                     {formatSpecName(specKey)}
                                 </td>
                                 {compareItems.map(product => {
                                     const spec = product.specs?.find(s => s.key === specKey);
                                     return (
-                                        <td key={product.id} className="p-3 border border-gray-200 text-sm text-gray-700 text-center">
+                                        <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-[13px] text-ink-900 text-center">
                                             {spec?.value || '—'}
                                         </td>
                                     );
@@ -175,12 +164,12 @@ export default function ComparePageClient() {
 
                         {/* CTA row */}
                         <tr>
-                            <td className="p-3 bg-gray-50 border border-gray-200 sticky left-0 z-10"></td>
+                            <td className="py-4 pr-4 bg-white sticky left-0 z-10"></td>
                             {compareItems.map(product => (
-                                <td key={product.id} className="p-4 border border-gray-200 text-center">
+                                <td key={product.id} className="px-4 py-6 text-center">
                                     <Link
                                         href={`/proizvodi/${product.slug}`}
-                                        className="btn-primary inline-block text-sm px-4 py-2"
+                                        className="btn-secondary inline-flex items-center justify-center min-h-[44px]"
                                     >
                                         Pogledaj detalje
                                     </Link>

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, useRef, FormEvent } from 'react';
 import { InquiryFormData, PreferredContact } from '@/types';
+import { useScrollLock } from './useScrollLock';
 
 interface InquiryModalProps {
   isOpen: boolean;
@@ -24,6 +25,33 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+
+  // Zakljucaj scroll pozadine dok je modal otvoren
+  useScrollLock(isOpen);
+
+  // Zatvori modal na Escape i upravljaj fokusom dok je otvoren
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    // Pri otvaranju fokus ulazi u dijalog — na dugme za zatvaranje
+    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      // Vrati fokus na element koji je otvorio modal
+      previouslyFocusedRef.current?.focus();
+    };
+  }, [isOpen, onClose]);
 
   const [formData, setFormData] = useState<InquiryFormData>({
     productId: product.id,
@@ -97,27 +125,33 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
+    <div className="fixed inset-0 z-[60] overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         {/* Overlay */}
         <div
-          className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"
+          className="fixed inset-0 transition-opacity bg-black/20"
+          aria-hidden="true"
           onClick={onClose}
         />
 
         {/* Modal */}
-        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Pošalji upit"
+          className="inline-block align-bottom bg-white border border-ink-200 text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
+        >
           {isSuccess ? (
             <div className="p-8 text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 border border-ink-200 text-ink-900 mb-4">
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              <h3 className="text-2xl font-normal text-ink-900 mb-2">
                 Upit uspešno poslat!
               </h3>
-              <p className="text-gray-600">
+              <p className="text-ink-600">
                 Kontaktiraćemo vas u najkraćem mogućem roku.
               </p>
             </div>
@@ -127,7 +161,7 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex gap-4">
                     {product.image && (
-                      <div className="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                      <div className="w-20 h-20 flex-shrink-0 bg-paper overflow-hidden border border-ink-200">
                         <img
                           src={product.image}
                           alt={product.name}
@@ -136,17 +170,17 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
                       </div>
                     )}
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 leading-tight">
+                      <h3 className="text-xl font-medium text-ink-900 leading-tight">
                         Pošalji upit
                       </h3>
-                      <p className="font-medium text-primary-600 mt-1">
+                      <p className="font-normal text-ink-600 mt-1">
                         {product.name}
                       </p>
-                      <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
+                      <div className="flex items-center gap-2 text-[13px] text-ink-500 mt-1">
                         <span>SKU: {product.sku}</span>
                         {product.category && (
                           <>
-                            <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+                            <span aria-hidden="true">·</span>
                             <span>{product.category}</span>
                           </>
                         )}
@@ -154,8 +188,10 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
                     </div>
                   </div>
                   <button
+                    ref={closeButtonRef}
                     onClick={onClose}
-                    className="text-gray-400 hover:text-gray-500 p-1"
+                    aria-label="Zatvori"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-500 hover:text-ink-900 transition-colors"
                   >
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -272,25 +308,24 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
                           key={method.value}
                           type="button"
                           onClick={() => togglePreferredContact(method.value)}
-                          className={`p-3 rounded-lg border-2 text-sm font-medium transition-colors ${formData.preferredContact.includes(method.value)
-                              ? 'border-primary-600 bg-primary-50 text-primary-700'
-                              : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
+                          className={`p-3 min-h-[44px] border text-sm font-medium transition-colors ${formData.preferredContact.includes(method.value)
+                              ? 'border-ink-900 bg-ink-900 text-white'
+                              : 'border-ink-200 bg-white text-ink-600 hover:border-ink-900 hover:text-ink-900'
                             }`}
                         >
-                          <span className="block mb-1">{method.icon}</span>
                           {method.label}
                         </button>
                       ))}
                     </div>
                     {formData.preferredContact.length === 0 && (
-                      <p className="text-xs text-red-500 mt-1">
+                      <p className="text-xs text-red-600 mt-1">
                         Izaberite najmanje jedan način kontakta
                       </p>
                     )}
                   </div>
 
                   {error && (
-                    <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+                    <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 text-sm">
                       {error}
                     </div>
                   )}
@@ -300,14 +335,14 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
                     <button
                       type="button"
                       onClick={onClose}
-                      className="btn-outline flex-1"
+                      className="btn-secondary flex-1 min-h-[44px] disabled:opacity-50"
                       disabled={isSubmitting}
                     >
                       Otkaži
                     </button>
                     <button
                       type="submit"
-                      className="btn-primary flex-1"
+                      className="btn-primary flex-1 min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
                       disabled={isSubmitting || formData.preferredContact.length === 0}
                     >
                       {isSubmitting ? 'Slanje...' : 'Pošalji upit'}
