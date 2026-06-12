@@ -27,6 +27,14 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
   const [error, setError] = useState<string | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+
+  // Premesti fokus na naslov potvrde kada je upit uspešno poslat
+  useEffect(() => {
+    if (isSuccess) {
+      successHeadingRef.current?.focus();
+    }
+  }, [isSuccess]);
 
   // Zakljucaj scroll pozadine dok je modal otvoren
   useScrollLock(isOpen);
@@ -142,13 +150,13 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
           className="inline-block align-bottom bg-white border border-ink-200 text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
         >
           {isSuccess ? (
-            <div className="p-8 text-center">
+            <div role="status" className="p-8 text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 border border-ink-200 text-ink-900 mb-4">
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-normal text-ink-900 mb-2">
+              <h3 ref={successHeadingRef} tabIndex={-1} className="text-2xl font-normal text-ink-900 mb-2">
                 Upit uspešno poslat!
               </h3>
               <p className="text-ink-600">
@@ -325,7 +333,7 @@ export default function InquiryModal({ isOpen, onClose, product, calculatedData 
                   </div>
 
                   {error && (
-                    <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 text-sm">
+                    <div role="alert" className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 text-sm">
                       {error}
                     </div>
                   )}

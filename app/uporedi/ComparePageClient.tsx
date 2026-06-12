@@ -64,18 +64,18 @@ export default function ComparePageClient() {
 
             {/* Comparison table */}
             <div className="overflow-x-auto -mx-6 px-6 md:-mx-10 md:px-10">
-                <table className="w-full border-collapse min-w-[600px]">
+                <table className="w-full border-separate border-spacing-0 min-w-[600px]" aria-label="Uporedna tabela proizvoda">
                     {/* Product header row */}
                     <thead>
                         <tr>
-                            <th className="w-40 py-4 pr-4 border-b border-ink-200 bg-white text-left align-bottom sticky left-0 z-10">
+                            <th scope="col" className="w-40 py-4 pr-4 border-b border-ink-200 bg-white text-left align-bottom sticky left-0 z-10 after:absolute after:inset-y-0 after:right-0 after:w-px after:bg-ink-200">
                                 <span className="eyebrow">Proizvod</span>
                             </th>
                             {compareItems.map(product => {
                                 const imageCandidates = getProductImageCandidates(product, 'thumb').slice(0, 4);
                                 const img = imageCandidates[0];
                                 return (
-                                    <th key={product.id} className="p-4 border-b border-ink-200 bg-white text-center align-top min-w-[200px]">
+                                    <th key={product.id} scope="col" className="p-4 border-b border-ink-200 bg-white text-center align-top min-w-[200px]">
                                         <div className="space-y-3">
                                             <button
                                                 onClick={() => removeFromCompare(product.id)}
@@ -107,9 +107,9 @@ export default function ComparePageClient() {
                     <tbody>
                         {/* Price row */}
                         <tr>
-                            <td className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] text-ink-500 sticky left-0 z-10">
+                            <th scope="row" className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] font-normal text-left text-ink-500 sticky left-0 z-10 after:absolute after:inset-y-0 after:right-0 after:w-px after:bg-ink-200">
                                 Cena
-                            </td>
+                            </th>
                             {compareItems.map(product => (
                                 <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-center text-[13px] text-ink-500">
                                     {product.price && product.price > 0
@@ -121,9 +121,9 @@ export default function ComparePageClient() {
 
                         {/* Stock row */}
                         <tr>
-                            <td className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] text-ink-500 sticky left-0 z-10">
+                            <th scope="row" className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] font-normal text-left text-ink-500 sticky left-0 z-10 after:absolute after:inset-y-0 after:right-0 after:w-px after:bg-ink-200">
                                 Dostupnost
-                            </td>
+                            </th>
                             {compareItems.map(product => (
                                 <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-center text-[13px]">
                                     <span className={product.inStock ? 'text-ink-900' : 'text-ink-500'}>
@@ -135,9 +135,9 @@ export default function ComparePageClient() {
 
                         {/* Description row */}
                         <tr>
-                            <td className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] text-ink-500 align-top sticky left-0 z-10">
+                            <th scope="row" className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] font-normal text-left text-ink-500 align-top sticky left-0 z-10 after:absolute after:inset-y-0 after:right-0 after:w-px after:bg-ink-200">
                                 Opis
-                            </td>
+                            </th>
                             {compareItems.map(product => (
                                 <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-[13px] text-ink-900">
                                     {product.shortDescription || '—'}
@@ -148,9 +148,9 @@ export default function ComparePageClient() {
                         {/* Spec rows */}
                         {specRows.map(specKey => (
                             <tr key={specKey}>
-                                <td className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] text-ink-500 sticky left-0 z-10">
+                                <th scope="row" className="py-[9px] pr-4 border-b border-ink-200 bg-white text-[13px] font-normal text-left text-ink-500 sticky left-0 z-10 after:absolute after:inset-y-0 after:right-0 after:w-px after:bg-ink-200">
                                     {formatSpecName(specKey)}
-                                </td>
+                                </th>
                                 {compareItems.map(product => {
                                     const spec = product.specs?.find(s => s.key === specKey);
                                     return (
@@ -164,7 +164,7 @@ export default function ComparePageClient() {
 
                         {/* CTA row */}
                         <tr>
-                            <td className="py-4 pr-4 bg-white sticky left-0 z-10"></td>
+                            <td className="py-4 pr-4 bg-white sticky left-0 z-10 after:absolute after:inset-y-0 after:right-0 after:w-px after:bg-ink-200"></td>
                             {compareItems.map(product => (
                                 <td key={product.id} className="px-4 py-6 text-center">
                                     <Link

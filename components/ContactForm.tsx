@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, FormEvent, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 export default function ContactForm() {
@@ -23,6 +23,14 @@ export default function ContactForm() {
 
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
+    const successHeadingRef = useRef<HTMLHeadingElement>(null);
+
+    // Premesti fokus na naslov potvrde kada se forma uspešno pošalje
+    useEffect(() => {
+        if (status === 'success') {
+            successHeadingRef.current?.focus();
+        }
+    }, [status]);
 
     useEffect(() => {
         if (initialName) {
@@ -83,13 +91,13 @@ export default function ContactForm() {
 
     if (status === 'success') {
         return (
-            <div className="border border-ink-200 p-8 text-center">
+            <div role="status" className="border border-ink-200 p-8 text-center">
                 <div className="inline-flex w-16 h-16 items-center justify-center border border-ink-200 text-ink-900 mx-auto mb-4">
                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
                     </svg>
                 </div>
-                <h3 className="text-2xl font-normal text-ink-900 mb-2">Hvala na upitu!</h3>
+                <h3 ref={successHeadingRef} tabIndex={-1} className="text-2xl font-normal text-ink-900 mb-2">Hvala na upitu!</h3>
                 <p className="text-ink-600 mb-8">
                     Vaša poruka je uspešno poslata. Naš tim će vas kontaktirati u najkraćem mogućem roku.
                 </p>
@@ -183,7 +191,7 @@ export default function ContactForm() {
             </div>
 
             {status === 'error' && (
-                <div className="border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                <div role="alert" className="border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
                     {errorMessage}
                 </div>
             )}

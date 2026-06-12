@@ -18,7 +18,7 @@ export default function InquiryPage() {
           {/* Form Column */}
           <div className="lg:col-span-2">
             <h2 className="eyebrow mb-8">Kontakt Forma</h2>
-            <Suspense fallback={<div className="h-64 bg-paper animate-pulse" aria-label="Učitavanje forme" />}>
+            <Suspense fallback={<div role="status" className="h-64 bg-paper animate-pulse" aria-label="Učitavanje forme" />}>
               <ContactForm />
             </Suspense>
           </div>

@@ -53,7 +53,7 @@ export default function CompareBar() {
                                         </span>
                                         <button
                                             onClick={() => removeFromCompare(product.id)}
-                                            className="flex-shrink-0 p-2 -m-1 text-ink-500 hover:text-ink-900 flex items-center justify-center transition-colors"
+                                            className="flex-shrink-0 p-3.5 -m-2.5 text-ink-500 hover:text-ink-900 flex items-center justify-center transition-colors"
                                             title="Ukloni"
                                         >
                                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
