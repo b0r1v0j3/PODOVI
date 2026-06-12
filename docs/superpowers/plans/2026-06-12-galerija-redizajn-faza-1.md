@@ -73,7 +73,9 @@ export default config;
 
 - [ ] **Step 2: Zameni ceo sadržaj `app/globals.css`**
 
-Briše se: `.card`/`.card-hover`, svih 15 `.badge-*` klasa, `.spec-chip`, `.glass`/`.glass-dark`, `.text-apple-*`, `fadeScale`/`.animate-fadeScale`, `.btn-outline`, stari fokus ringovi i hardkodovane hex boje. Potrošači su isključivo u fajlovima koje taskovi 3 i 7 potpuno prepravljaju (provereno grep-om). `.no-scrollbar` OSTAJE (koristi ga `HomeProductTabs`).
+Briše se: `.card`/`.card-hover`, svih 15 `.badge-*` klasa, `.spec-chip`, `.glass`/`.glass-dark`, `.text-apple-*`, `fadeScale`/`.animate-fadeScale`, `.btn-outline`, stari fokus ringovi i hardkodovane hex boje. Potrošači su isključivo u fajlovima koje taskovi 3, 4 i 7 potpuno prepravljaju (provereno grep-om; `.btn-outline` koristi `ProductFilters` koji se prepravlja u Tasku 4). `.no-scrollbar` OSTAJE (koristi ga `HomeProductTabs`).
+
+Odluka o fokusu inputa (za izvođača Taska 7 — NE „popravljati" drugačije): fokus mišem pokazuje samo donju liniju (1px → ink-900), a tastaturni fokus dodatno dobija standardni 2px outline kroz `.input:focus-visible` pravilo ispod.
 
 NOVA VERZIJA FAJLA:
 
@@ -92,6 +94,7 @@ NOVA VERZIJA FAJLA:
     @apply bg-white text-ink-900 antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 16px;
+    line-height: 1.6;
     letter-spacing: -0.01em;
     overflow-x: hidden;
   }
@@ -119,7 +122,7 @@ NOVA VERZIJA FAJLA:
   }
 
   :focus-visible {
-    outline: 2px solid #111111;
+    outline: 2px solid theme(colors.ink.900);
     outline-offset: 2px;
   }
 }
@@ -150,7 +153,12 @@ NOVA VERZIJA FAJLA:
   }
 
   .input {
-    @apply block w-full border-0 border-b border-ink-200 bg-transparent px-0 py-2 text-[15px] text-ink-900 placeholder-ink-400 transition-colors focus:border-ink-900 focus:outline-none;
+    @apply block w-full border-0 border-b border-ink-200 bg-transparent px-0 py-2 text-[15px] text-ink-900 placeholder-ink-500 transition-colors focus:border-ink-900 focus:outline-none;
+  }
+
+  .input:focus-visible {
+    outline: 2px solid theme(colors.ink.900);
+    outline-offset: 2px;
   }
 
   .label {
