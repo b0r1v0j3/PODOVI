@@ -466,6 +466,8 @@ export default function ColorGrid({
   if (loading) {
     return (
       <div
+        role="status"
+        aria-busy="true"
         className={`grid gap-3 ${compact ? 'grid-cols-6' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}
         aria-label={uiText.loading}
       >

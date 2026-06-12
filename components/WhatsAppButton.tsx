@@ -12,7 +12,7 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-4 md:right-8 z-40 flex h-12 w-12 items-center justify-center bg-[#25D366] text-white transition-colors duration-200 hover:bg-[#20BA5A] group"
+      className="fixed bottom-20 md:bottom-6 right-4 md:right-8 z-40 flex h-12 w-12 items-center justify-center bg-[#25D366] text-white transition-colors duration-200 hover:bg-[#20BA5A] group"
       aria-label="Kontaktirajte nas na WhatsApp"
     >
       <FaWhatsapp className="text-2xl" />

@@ -33,7 +33,7 @@ export default function BackToTop() {
     return (
         <button
             onClick={scrollToTop}
-            className="fixed bottom-24 right-4 md:right-8 z-40 flex h-11 w-11 items-center justify-center border border-ink-200 bg-white text-ink-900 transition-colors duration-200 hover:border-ink-900"
+            className="fixed bottom-36 md:bottom-24 right-4 md:right-8 z-40 flex h-11 w-11 items-center justify-center border border-ink-200 bg-white text-ink-900 transition-colors duration-200 hover:border-ink-900"
             aria-label="Nazad na vrh"
         >
             <svg

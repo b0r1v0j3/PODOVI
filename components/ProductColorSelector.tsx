@@ -7,6 +7,7 @@ import ColorGrid from './ColorGrid';
 import FavoriteButton from './FavoriteButton';
 import { splitProductTitle } from '@/lib/utils/name-parser';
 import { getCustomColorHeroImageState, getPrimaryColorImage } from '@/lib/utils/product-images';
+import { useScrollLock } from './useScrollLock';
 
 import { ProductSpec } from '@/types';
 
@@ -89,11 +90,37 @@ export default function ProductColorSelector({
   const [colorsCount, setColorsCount] = useState<number | null>(null);
   const externalLinkLabel = brand?.slug === 'podovi' ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača';
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
+  const colorsModalTriggerRef = useRef<HTMLButtonElement>(null);
+  const colorsModalCloseButtonRef = useRef<HTMLButtonElement>(null);
   const selectorTitle = uiMode === 'variants' ? 'Varijante' : 'Boje';
   const selectorCountLabel = uiMode === 'variants'
     ? (colorsCount === 1 ? 'varijanta' : 'varijanti')
     : 'boja';
   const selectorAllTitle = uiMode === 'variants' ? 'Sve varijante' : 'Sve boje';
+
+  // Zakljucaj scroll pozadine dok je modal boja otvoren
+  useScrollLock(isColorsModalOpen);
+
+  // Zatvori modal na Escape i upravljaj fokusom dok je otvoren
+  useEffect(() => {
+    if (!isColorsModalOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsColorsModalOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    // Pri otvaranju fokus ulazi u dijalog — na dugme za zatvaranje
+    colorsModalCloseButtonRef.current?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      // Vrati fokus na dugme "Pogledaj sve" koje je otvorilo modal
+      colorsModalTriggerRef.current?.focus();
+    };
+  }, [isColorsModalOpen]);
 
   // Parket: ako je u URL-u ?color= koji nije u customColors (npr. winter-832), redirect na prvu validnu boju
   useEffect(() => {
@@ -488,6 +515,7 @@ export default function ProductColorSelector({
                 </div>
                 <button
                   type="button"
+                  ref={colorsModalTriggerRef}
                   onClick={() => setIsColorsModalOpen(true)}
                   className="btn-link whitespace-nowrap"
                 >
@@ -632,15 +660,22 @@ export default function ProductColorSelector({
         <div className="fixed inset-0 z-[60]">
           <div
             className="absolute inset-0 bg-ink-900/60"
+            aria-hidden="true"
             onClick={() => setIsColorsModalOpen(false)}
           ></div>
-          <div className="relative mx-auto mt-8 w-[92%] max-w-5xl bg-white overflow-hidden max-h-[90vh] flex flex-col">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectorAllTitle} kolekcije`}
+            className="relative mx-auto mt-8 w-[92%] max-w-5xl bg-white overflow-hidden max-h-[90vh] flex flex-col"
+          >
             <div className="flex items-center justify-between px-6 py-4 border-b border-ink-200">
               <h3 className="text-[15px] font-medium text-ink-900">
                 {selectorAllTitle} ({colorsCountLabel})
               </h3>
               <button
                 type="button"
+                ref={colorsModalCloseButtonRef}
                 onClick={() => setIsColorsModalOpen(false)}
                 className="flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-500 hover:text-ink-900"
                 aria-label="Zatvori"
