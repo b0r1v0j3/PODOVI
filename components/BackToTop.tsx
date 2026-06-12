@@ -33,13 +33,11 @@ export default function BackToTop() {
     return (
         <button
             onClick={scrollToTop}
-            className={`fixed bottom-24 right-4 md:right-8 z-40 p-3 rounded-full bg-primary-600 text-white shadow-lg 
-        hover:bg-primary-700 hover:scale-110 active:scale-95 transition-all duration-300 group
-        ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+            className="fixed bottom-24 right-4 md:right-8 z-40 flex h-11 w-11 items-center justify-center border border-ink-200 bg-white text-ink-900 transition-colors duration-200 hover:border-ink-900"
             aria-label="Nazad na vrh"
         >
             <svg
-                className="w-6 h-6 transform group-hover:-translate-y-1 transition-transform"
+                className="h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

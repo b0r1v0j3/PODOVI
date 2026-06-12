@@ -45,7 +45,7 @@ export default function ScrollReveal({ children, delay = 0, className = '' }: Sc
   return (
     <div
       ref={ref}
-      className={`scroll-reveal ${isRevealed ? 'revealed' : ''} ${className}`}
+      className={`transition-[opacity,transform] duration-[400ms] ease-out motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'} ${className}`}
     >
       {children}
     </div>

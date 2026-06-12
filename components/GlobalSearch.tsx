@@ -42,7 +42,7 @@ export default function GlobalSearch() {
     const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [activeIndex, setActiveIndex] = useState(-1);
-    const [mobileExpanded, setMobileExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     const inputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -98,7 +98,7 @@ export default function GlobalSearch() {
         const handleClickOutside = (e: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
                 setIsOpen(false);
-                setMobileExpanded(false);
+                setExpanded(false);
             }
         };
 
@@ -120,7 +120,7 @@ export default function GlobalSearch() {
 
         if (e.key === 'Escape') {
             setIsOpen(false);
-            setMobileExpanded(false);
+            setExpanded(false);
             inputRef.current?.blur();
             return;
         }
@@ -140,10 +140,15 @@ export default function GlobalSearch() {
 
     const closeAndReset = () => {
         setIsOpen(false);
-        setMobileExpanded(false);
+        setExpanded(false);
         setQuery('');
         setResults(null);
         setActiveIndex(-1);
+    };
+
+    const openSearch = () => {
+        setExpanded(true);
+        setTimeout(() => inputRef.current?.focus(), 100);
     };
 
     const handleResultClick = () => {
@@ -162,65 +167,31 @@ export default function GlobalSearch() {
     };
 
     return (
-        <div ref={containerRef} className="relative">
-            {/* Desktop search bar */}
-            <div className="hidden md:flex items-center relative">
-                <div className="relative">
-                    <svg
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    <input
-                        ref={inputRef}
-                        type="text"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                        onFocus={() => { if (results && totalResults > 0) setIsOpen(true); }}
-                        placeholder="Pretraži proizvode..."
-                        className="w-72 lg:w-80 xl:w-96 pl-9 pr-3 py-2 text-sm bg-gray-100/80 border border-gray-200 rounded-lg
-                       focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:bg-white
-                       transition-all duration-200 placeholder:text-gray-400"
-                        aria-label="Pretraži proizvode"
-                        aria-expanded={isOpen}
-                        role="combobox"
-                        aria-autocomplete="list"
-                        aria-controls="search-results-list"
-                    />
-                    {isLoading && (
-                        <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                            <div className="w-4 h-4 border-2 border-gray-300 border-t-primary-500 rounded-full animate-spin" />
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            {/* Mobile search toggle */}
+        <div ref={containerRef}>
+            {/* Trigger */}
             <button
-                className="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors"
-                onClick={() => {
-                    setMobileExpanded(!mobileExpanded);
-                    setTimeout(() => inputRef.current?.focus(), 100);
-                }}
+                type="button"
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-600 transition-colors duration-200 hover:text-ink-900"
+                onClick={openSearch}
                 aria-label="Otvori pretragu"
+                aria-expanded={expanded}
             >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
             </button>
 
-            {/* Mobile expanded search */}
-            {mobileExpanded && (
-                <div className="md:hidden fixed inset-0 z-[60] bg-white flex flex-col">
-                    <div className="flex items-center gap-3 p-4 border-b">
-                        <div className="relative flex-1">
+            {/* Full-width search overlay preko headera */}
+            {expanded && (
+                <div className="fixed inset-0 z-[70] flex flex-col bg-white md:bottom-auto md:max-h-[85vh] md:border-b md:border-ink-200">
+                    {/* Input red — puna širina */}
+                    <div className="border-b border-ink-200">
+                        <div className="container flex h-14 items-center gap-4 md:h-16">
                             <svg
-                                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+                                className="h-5 w-5 flex-shrink-0 text-ink-500"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
                             >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                             <input
                                 ref={inputRef}
@@ -228,57 +199,53 @@ export default function GlobalSearch() {
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 onKeyDown={handleKeyDown}
+                                onFocus={() => { if (results && totalResults > 0) setIsOpen(true); }}
                                 placeholder="Pretraži proizvode..."
-                                className="w-full pl-9 pr-3 py-3 text-base bg-gray-50 border border-gray-200 rounded-lg
-                           focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400
-                           transition-all duration-200"
+                                className="h-full flex-1 border-0 bg-transparent p-0 text-base text-ink-900 placeholder:text-ink-500 focus:outline-none md:text-lg"
                                 aria-label="Pretraži proizvode"
+                                aria-expanded={isOpen}
+                                role="combobox"
+                                aria-autocomplete="list"
+                                aria-controls="search-results-list"
                             />
-                            {isLoading && (
-                                <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                                    <div className="w-4 h-4 border-2 border-gray-300 border-t-primary-500 rounded-full animate-spin" />
-                                </div>
-                            )}
+                            <button
+                                type="button"
+                                onClick={closeAndReset}
+                                className="flex min-h-[44px] items-center text-[13px] text-ink-600 transition-colors duration-200 hover:text-ink-900"
+                            >
+                                Zatvori
+                            </button>
                         </div>
-                        <button
-                            onClick={() => { closeAndReset(); }}
-                            className="text-base text-gray-500 hover:text-gray-700 font-medium px-2"
-                        >
-                            Otkaži
-                        </button>
                     </div>
 
-                    {/* Mobile results area */}
-                    <div className="flex-1 overflow-y-auto p-4">
-                        {query.length < 2 && !results ? (
-                            <div className="space-y-6">
+                    {/* Rezultati */}
+                    <div className="flex-1 overflow-y-auto md:max-h-[60vh] md:flex-none">
+                        <div className="container py-4">
+                            {isLoading && !results ? (
+                                <div className="space-y-2" aria-hidden="true">
+                                    <div className="h-14 animate-pulse bg-paper" />
+                                    <div className="h-14 animate-pulse bg-paper" />
+                                    <div className="h-14 animate-pulse bg-paper" />
+                                </div>
+                            ) : query.length < 2 && !results ? (
                                 <div>
-                                    <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Popularno</h3>
+                                    <h3 className="eyebrow mb-3">Popularno</h3>
                                     <div className="flex flex-wrap gap-2">
                                         {['LVT', 'Laminat', 'Parket', 'Vodootporno', 'Hrast', 'Tamno sivo', 'Belo'].map(term => (
                                             <button
                                                 key={term}
                                                 onClick={() => { setQuery(term); fetchResults(term); }}
-                                                className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary-50 hover:text-primary-600 transition-colors"
+                                                className="min-h-[44px] border border-ink-200 px-4 text-[13px] text-ink-600 transition-colors duration-200 hover:border-ink-900 hover:text-ink-900"
                                             >
                                                 {term}
                                             </button>
                                         ))}
                                     </div>
                                 </div>
-                            </div>
-                        ) : (
-                            renderResults()
-                        )}
-                    </div>
-                </div>
-            )}
-
-            {/* Desktop dropdown */}
-            {isOpen && results && !mobileExpanded && (
-                <div className="hidden md:block absolute top-full left-1/2 mt-2 w-[28rem] -translate-x-1/2 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 lg:w-[32rem]">
-                    <div className="max-h-[70vh] overflow-y-auto">
-                        {renderResults()}
+                            ) : (
+                                renderResults()
+                            )}
+                        </div>
                     </div>
                 </div>
             )}
@@ -290,12 +257,9 @@ export default function GlobalSearch() {
 
         if (totalResults === 0) {
             return (
-                <div className="p-6 text-center">
-                    <svg className="w-10 h-10 text-gray-300 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    <p className="text-sm text-gray-500">Nema rezultata za &ldquo;{query}&rdquo;</p>
-                    <p className="text-xs text-gray-400 mt-1">Pokušajte sa drugim pojmom</p>
+                <div className="py-10 text-center">
+                    <p className="text-sm text-ink-600">Nema rezultata za &ldquo;{query}&rdquo;</p>
+                    <p className="mt-1 text-[13px] text-ink-500">Pokušajte sa drugim pojmom</p>
                 </div>
             );
         }
@@ -306,9 +270,9 @@ export default function GlobalSearch() {
             <>
                 {/* Products */}
                 {results.products.length > 0 && (
-                    <div>
-                        <div className="px-4 py-2 bg-gray-50 border-b">
-                            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                    <div id="search-results-list">
+                        <div className="border-b border-ink-200 pb-2">
+                            <span className="eyebrow">
                                 Proizvodi ({results.products.length})
                             </span>
                         </div>
@@ -319,10 +283,10 @@ export default function GlobalSearch() {
                                     key={product.id}
                                     href={product.url || `/proizvodi/${product.slug}`}
                                     onClick={handleResultClick}
-                                    className={`flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors ${idx === activeIndex ? 'bg-primary-50' : ''
+                                    className={`flex items-center gap-4 border-b border-ink-200 px-1 py-3 transition-colors duration-200 hover:bg-paper ${idx === activeIndex ? 'bg-paper' : ''
                                         }`}
                                 >
-                                    <div className="w-12 h-12 rounded-lg bg-gray-100 overflow-hidden flex-shrink-0 relative">
+                                    <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden bg-paper">
                                         <ProductImage
                                             src={product.image}
                                             alt={product.name}
@@ -332,16 +296,16 @@ export default function GlobalSearch() {
                                         />
                                     </div>
                                     <div className="min-w-0 flex-1">
-                                        <p className="text-sm font-medium text-gray-900 truncate">{product.name}</p>
+                                        <p className="truncate text-sm text-ink-900">{product.name}</p>
                                         {product.price && (
-                                            <p className="text-xs text-primary-600 font-medium">{formatPrice(product.price)}</p>
+                                            <p className="text-[13px] text-ink-500">{formatPrice(product.price)}</p>
                                         )}
                                         {!product.price && product.subtitle && (
-                                            <p className="text-xs text-gray-500 truncate">{product.subtitle}</p>
+                                            <p className="truncate text-[13px] text-ink-500">{product.subtitle}</p>
                                         )}
                                     </div>
-                                    <svg className="w-4 h-4 text-gray-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    <svg className="h-4 w-4 flex-shrink-0 text-ink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
                                     </svg>
                                 </Link>
                             );
