@@ -131,6 +131,48 @@ export interface ContactFormData {
   productCategory?: string;
 }
 
+// =========================================
+// Cenovnik — unos cena (dobavljač) za pregled/odobravanje
+// =========================================
+export type PriceSubmissionStatus = 'new' | 'reviewed' | 'approved' | 'rejected' | 'archived';
+
+export interface PriceSubmissionColorOverride {
+  colorSlug: string;
+  colorCode?: string;
+  colorName?: string;
+  base?: number | null; // cena bez PDV-a
+  withVat?: number | null; // cena sa PDV-om
+}
+
+export interface PriceSubmissionCollectionEntry {
+  collectionSlug: string;
+  collectionName: string;
+  categorySlug: string;
+  categoryName?: string;
+  brandId: string;
+  brandName?: string;
+  base?: number | null; // cena kolekcije bez PDV-a
+  withVat?: number | null; // cena kolekcije sa PDV-om
+  colorOverrides: PriceSubmissionColorOverride[]; // samo boje sa posebnom cenom
+}
+
+export interface PriceSubmissionPayload {
+  vatRate: number;
+  collections: PriceSubmissionCollectionEntry[];
+}
+
+export interface PriceSubmission {
+  id: string;
+  status: PriceSubmissionStatus;
+  payload: PriceSubmissionPayload;
+  note?: string;
+  tags: string[];
+  fileName?: string;
+  fileMime?: string;
+  submittedBy: string;
+  createdAt: Date;
+}
+
 // Filter types for category listing
 export interface ProductFilters {
   categoryId?: string;
