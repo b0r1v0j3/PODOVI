@@ -73,6 +73,59 @@ function enrichProductFromCollectionData(product: Product, collection: any): Pro
         ];
     }
 
+    // S2 ingest writes documents/collection_image_url/room_scene_images into vinil JSON kolekcije.
+    // DB proizvod (seed iz mock-data) ih nema, pa ih ovde prenosimo na PDP — uz čuvanje (guard) da
+    // kolekcije bez ovih polja (npr. ne-vinil) ostanu netaknute.
+
+    // 1) documents: prenesi iz kolekcije samo ako proizvod trenutno nema dokumente
+    if (
+        Array.isArray(collection?.documents) &&
+        collection.documents.length > 0 &&
+        (!enrichedProduct.documents || enrichedProduct.documents.length === 0)
+    ) {
+        enrichedProduct.documents = collection.documents.map((document: any) => ({ ...document }));
+    }
+
+    // 2) collection_image_url + room_scene_images -> images
+    const collectionHeroUrl =
+        typeof collection?.collection_image_url === 'string' ? collection.collection_image_url : '';
+    const roomSceneUrls: string[] = Array.isArray(collection?.room_scene_images)
+        ? collection.room_scene_images.filter((url: string) => typeof url === 'string' && url)
+        : [];
+    if (collectionHeroUrl || roomSceneUrls.length > 0) {
+        const existingImages = enrichedProduct.images || [];
+        const existingUrls = new Set(existingImages.map((image) => image.url));
+        const heroImages = [];
+        if (collectionHeroUrl && !existingUrls.has(collectionHeroUrl)) {
+            existingUrls.add(collectionHeroUrl);
+            heroImages.push({
+                id: `${enrichedProduct.id}-collection-hero`,
+                url: collectionHeroUrl,
+                alt: collection?.name || enrichedProduct.name,
+                isPrimary: true,
+                order: 0,
+            });
+        }
+        const sceneImages = roomSceneUrls
+            .filter((url) => !existingUrls.has(url))
+            .map((url, index) => {
+                existingUrls.add(url);
+                return {
+                    id: `${enrichedProduct.id}-collection-room-${index + 1}`,
+                    url,
+                    alt: `${collection?.name || enrichedProduct.name} — ambijent ${index + 1}`,
+                    isPrimary: false,
+                    order: 100 + index,
+                };
+            });
+        // Hero (ako je dodat) postaje primarni; degradiraj prethodno-primarnu postojeću sliku.
+        const demotedExisting =
+            heroImages.length > 0
+                ? existingImages.map((image) => ({ ...image, isPrimary: false }))
+                : existingImages.map((image) => ({ ...image }));
+        enrichedProduct.images = [...heroImages, ...demotedExisting, ...sceneImages];
+    }
+
     return enrichedProduct;
 }
 
