@@ -593,7 +593,11 @@ async function ingestDocuments(supabase, manifest, col, docs) {
     try {
       const buffer = await core.downloadAsset(doc.sourceUrl);
       if (!buffer.slice(0, 5).toString().startsWith('%PDF')) throw new Error('nije PDF');
-      const fileName = `${core.slugify(doc.title)}.pdf`;
+      // Ime fajla iz izvornog basename-a (jedinstveno). Dva dokumenta sa istim srpskim
+      // naslovom (npr. dva "Uputstvo za instalaciju": standard + riblja kost kod Real SPC 50)
+      // NE smeju u istu putanju — inače se drugi prepisuje i parser dedupe-po-URL-u je uzaludan.
+      const srcBase = (doc.sourceUrl.split('/').pop() || 'dokument').replace(/\.pdf$/i, '');
+      const fileName = `${core.slugify(srcBase)}.pdf`;
       const publicUrl = await core.uploadToBucket(supabase, DOCS_BUCKET, `products/${col.categorySlug}/${col.slug}/${fileName}`, buffer);
       out.push({ title: doc.title, url: publicUrl, type: 'pdf' });
       manifest.record(mKey, { publicUrl, collection: col.slug });
@@ -969,11 +973,15 @@ describe('S3: nove homogeni-vinil kolekcije self-hostovane', () => {
     }
   });
 
-  it('dokumenti homogene kolekcije imaju jedinstvene naslove', () => {
+  it('dokumenti homogene kolekcije: jedinstveni izvorni URL-ovi, naslovi popunjeni', () => {
+    // NB: naslovi NE moraju biti jedinstveni — utvrđeni format (npr. STANDARD PLUS) ima
+    // dva dokumenta „Sertifikat"; dedupe je po izvoru (URL), ne po naslovu. Proveravamo
+    // da nema dupliranih izvornih dokumenata i da svaki ima neprazan naslov.
     for (const slug of NEW_HOMO) {
       const col = homoCollections.find((c) => c.slug === slug);
-      const titles = (col.documents || []).map((d: any) => d.title);
-      expect(new Set(titles).size).toBe(titles.length);
+      const urls = (col.documents || []).map((d: any) => d.url);
+      expect(new Set(urls).size).toBe(urls.length);
+      for (const d of col.documents || []) expect(String(d.title).trim().length).toBeGreaterThan(0);
     }
   });
 });
