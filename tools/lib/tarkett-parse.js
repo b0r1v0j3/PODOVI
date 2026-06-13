@@ -69,11 +69,12 @@ function colorCode(design) {
 // su slova još velika — posle .toLowerCase() bi ih bilo nemoguće razlikovati od reči.
 function cleanColorName(productName, collectionName) {
   let n = String(productName || '').trim();
-  // ModularT brand/product prefiks ("Modu70 ", "ModularT 70 ") koji collectionName ("ModularT 70")
-  // ne ufata jer payload koristi skraćeni "Modu70".
-  n = n.replace(/^modu(?:lar)?t?\s*\d*\s*/i, '');
-  // Format/dimenzije token ("20X120", "20 x 120") — nije deo imena boje.
-  n = n.replace(/\b\d+\s*[xX]\s*\d+\b/g, ' ');
+  // ModularT brand/product prefiks — payload koristi sve varijante: "Modu70", "Modul 70",
+  // "Modul70", "ModularT 70" (collectionName "ModularT 70" ne ufata skraćene oblike).
+  n = n.replace(/^modul?(?:ar)?t?\s*\d*\s*/i, '');
+  // Format/dimenzije token ("20X120", "50X100", "66,5X66,5", "20 x 120") — nije deo imena boje.
+  // Decimalni zarez/tačka mora biti pokriven (inače "66,5X66,5" → garbled "66, ,5").
+  n = n.replace(/\b\d+(?:[.,]\d+)?\s*[xX]\s*\d+(?:[.,]\d+)?\b/g, ' ');
   // Trailing finish kod ("1I") ili numerički kod ("0409", "278817001").
   n = n.replace(/\s+\d+[A-Za-z]$/, '').replace(/\s*\d{3,4}\s*$/, '').trim();
   const coll = String(collectionName || '').trim();
