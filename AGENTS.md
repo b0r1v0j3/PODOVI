@@ -142,6 +142,9 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 | `components/ProductColorSelector.tsx` | Color selector sa instant image switching |
 | `types/index.ts` | Product, Category, Brand tipovi |
 
+### Ingest izvori (obogaćivanje kataloga):
+- `tools/ingest_gerflor_cee.js` obogaćuje Gerflor vinil kolekcije u `vinyl_colors_complete.json` assetima u NAŠEM Supabase storage-u (bucket `product-images` za slike, `product-documents` za PDF; direktiva: nijedan asset se ne hotlinkuje sa sajtova proizvođača). Polja po kolekciji: `collection_image_url`, `documents[]` (čisti srpski naslovi, dedupe po naslovu), `room_scene_images[]`; `colors[].image` → Supabase 1500px. DB-resolvovani proizvodi dobijaju ova polja kroz `enrichProductFromCollectionData` (`lib/product-page/resolve-product.ts`). Manifest/backup u `output/`. Tvrdi timeout backstop (fetch/telo 35s, sharp 20s, upload 60s) u `tools/lib/ingest-core.js` sprečava višeminutna visenja.
+
 ---
 
 ## 5. 📋 STANJE PROJEKTA

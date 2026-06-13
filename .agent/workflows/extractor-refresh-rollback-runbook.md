@@ -10,8 +10,12 @@ description: Operational runbook for canonical supplier extractor refreshes, val
 
 Ovaj runbook pokriva sve kanonske extractore koji pune `public/data/*` katalog izvore:
 
+> **NAPOMENA (2026-06-13):** originalnih 7 `extract_tarkett_*` / `wolflor` skripti je obrisano iz repoa; obnova ide kroz Fazu 2 (spec `docs/superpowers/specs/2026-06-13-faza-2-podaci-master-s1-s2-design.md`). Stare komande u sekciji 3 su istorijske dok se alati ne obnove.
+
 | Skripta | Kanonski izlaz | Napomena |
 |---|---|---|
+| `tools/ingest_gerflor_cee.js` | `public/data/vinyl_colors_complete.json` + Supabase `product-images`/`product-documents` | Gerflor CEE vinil — dokumenti (čisti srpski nazivi, dedupe), room-scene, 1500px dekor; flagovi `--dry-run`, `--collection=`, `--skip-existing`; manifest `output/ingest-gerflor-cee-manifest.json`; sve self-hostovano (bez hotlinkova) |
+| `tools/extract_tarkett_core.js` | `output/tarkett-core-*.json` | Obnovljena osnova za čitanje tarkett.rs kolekcija (S1); puni refresh alati se obnavljaju po segmentima Faze 2 |
 | `tools/extract_tarkett_wood.js` | `public/data/tarkett_wood_collection_index.json` | Parket + Laminat collection enrichment |
 | `tools/extract_tarkett_vinyl_home.js` | `public/data/tarkett_vinyl_home_colors.json` | Tarkett Vinil za kuću |
 | `tools/extract_tarkett_homogeneous_vinyl.js` | `public/data/tarkett_homogeneous_vinyl_colors.json` | Tarkett Homogeni vinil |
