@@ -63,6 +63,7 @@ const GERFLOR_VINYL_COLLECTION_COVER_SLUGS = new Set([
     'taralay-impression-hop-compact',
     'taralay-initial-acoustic',
     'taralay-initial-compact',
+    'taralay-millenium-acoustic',
     'taralay-millenium-compact',
 ]);
 let techemDatasetCache:
@@ -2042,6 +2043,7 @@ export function getVinylCollectionProducts(): Product[] {
             : undefined;
 
         const imageUrl = selectPreferredCollectionHeroAsset(
+            col.collection_image_url,
             collectionImageOverrides[col.slug],
             localCollectionCover,
             firstColor?.image
@@ -2059,14 +2061,26 @@ export function getVinylCollectionProducts(): Product[] {
                 col.description,
                 ...((col.colors || []).map((color: any) => color.description))
             ),
-            images: imageUrl ? [{
-                id: `vinyl-coll-${col.slug}-img`,
-                url: imageUrl,
-                alt: col.name,
-                isPrimary: true,
-                order: 0,
-            }] : [],
+            images: [
+                ...(imageUrl ? [{
+                    id: `vinyl-coll-${col.slug}-img`,
+                    url: imageUrl,
+                    alt: col.name,
+                    isPrimary: true,
+                    order: 0,
+                }] : []),
+                ...(Array.isArray(col.room_scene_images) ? col.room_scene_images : [])
+                    .filter((sceneUrl: string) => sceneUrl && sceneUrl !== imageUrl)
+                    .map((sceneUrl: string, sceneIndex: number) => ({
+                        id: `vinyl-coll-${col.slug}-room-${sceneIndex + 1}`,
+                        url: sceneUrl,
+                        alt: `${col.name} — ambijent ${sceneIndex + 1}`,
+                        isPrimary: false,
+                        order: sceneIndex + 1,
+                    })),
+            ],
             specs,
+            documents: Array.isArray(col.documents) && col.documents.length > 0 ? col.documents : undefined,
             externalLink: col.url || firstColor?.href,
             inStock: true,
             featured: false,
