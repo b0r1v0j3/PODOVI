@@ -97,8 +97,10 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
     const seenTitles = new Set();
     for (const doc of rawDocs) {
       const title = parse.mapDocumentTitle(doc.name, doc.category);
-      if (seenTitles.has(title + doc.url)) continue;
-      seenTitles.add(title + doc.url);
+      // Dedupe po FINALNOM srpskom naslovu (čuvamo prvu pojavu): višejezične/regionalne
+      // kopije istog dokumenta (npr. 6× "Uputstvo za ugradnju") svode se na jedan red.
+      if (seenTitles.has(title)) continue;
+      seenTitles.add(title);
       documents.push({ title, sourceUrl: parse.encodeAssetUrl(doc.url) });
     }
 

@@ -129,15 +129,24 @@ describe('Gerflor CEE parse contracts', () => {
     expect(parseColorCount('<h2 tabindex="0">95 colors</h2>')).toBe(95);
   });
 
-  it('maps document names to Serbian titles', () => {
+  it('maps document names to clean Serbian titles', () => {
     expect(mapDocumentTitle('Taralay Impression Compact - Technical Data Sheet', '')).toBe('Tehnički list');
     expect(mapDocumentTitle('Nerok 55 - DOP', '')).toBe('Izjava o svojstvima (DoP)');
+    expect(mapDocumentTitle('Taralay Impression Compact Acoustic - Déclaration de performance', '')).toBe('Izjava o svojstvima (DoP)');
     expect(mapDocumentTitle('Taralay Impression/Initial Compact - EPD', '')).toBe('EPD');
     expect(mapDocumentTitle('TARALAY IMPRESSION COMPACT - EDS', '')).toBe('Ekološki list (EDS)');
     expect(mapDocumentTitle('Installation instructions', 'Installation & maintenance')).toBe('Uputstvo za ugradnju');
     expect(mapDocumentTitle('Maintenance guide', 'Installation & maintenance')).toBe('Uputstvo za održavanje');
-    expect(mapDocumentTitle('My Taralay Impression - Guide', 'Commercial documents')).toBe('Brošura — My Taralay Impression - Guide');
-    expect(mapDocumentTitle('FloorScore Certificate', '')).toBe('Sertifikat — FloorScore Certificate');
+    expect(mapDocumentTitle('Gerflor Contractual waranty - Commercial applications', '')).toBe('Garancija');
+    expect(mapDocumentTitle('Taralay Impression Compact - Fire Certificate Bfls1', '')).toBe('Sertifikat — vatrootpornost');
+    expect(mapDocumentTitle('Gerflor-slip resistance-TARALAY IMPRESSION COMPACT-EN 16165 ann B-en- R10', '')).toBe('Sertifikat — otpornost na klizanje');
+    expect(mapDocumentTitle('GERFLOR-FLOORSCORE', '')).toBe('Sertifikat — FloorScore');
+    expect(mapDocumentTitle('Taralay Impression Compact - Product description', '')).toBe('Opis proizvoda');
+    // brošure/vodiči/binderi → jedan čist naslov (bez sirovog imena fajla, .pdf strip)
+    expect(mapDocumentTitle('BROCHURE-TARALAY IMPRESSION-A4-TAP-GB-07-2023-BV.pdf', '')).toBe('Brošura');
+    expect(mapDocumentTitle('My Taralay Impression - Guide', 'Commercial documents')).toBe('Brošura');
+    expect(mapDocumentTitle('Taralay Impression Binder GB', '')).toBe('Brošura');
+    expect(mapDocumentTitle('Mipolam Classic - Card', '')).toBe('Brošura');
     expect(mapDocumentTitle('Nešto neprepoznato', '')).toBe('Nešto neprepoznato');
   });
 
