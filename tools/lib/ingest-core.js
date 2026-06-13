@@ -57,25 +57,31 @@ async function fetchWithRetry(url, { headers = BROWSER_HEADERS, attempts = 3, as
   let lastError;
   for (let i = 0; i < attempts; i++) {
     try {
-      const res = await fetch(url, { headers, redirect: 'follow', signal: AbortSignal.timeout(timeoutMs) });
-      if (res.status === 403 || res.status === 429) {
-        await res.body?.cancel().catch(() => {});
-        lastError = new Error(`HTTP ${res.status} za ${url}`);
-        if (i < attempts - 1) await sleep(5000 * (i + 1));
-        continue;
-      }
-      if (!res.ok) {
-        await res.body?.cancel().catch(() => {});
-        const err = new Error(`HTTP ${res.status} za ${url}`);
-        // Deterministički klijentski errori (4xx osim 403/429) — retry nema smisla.
-        if (res.status >= 400 && res.status < 500) err.permanent = true;
-        throw err;
-      }
-      return asBuffer ? Buffer.from(await res.arrayBuffer()) : await res.text();
+      // Tvrdi backstop: Promise.race tajmer fire-uje i kad AbortSignal ne prekine
+      // zastali socket (uzrok višeminutnih visenja na čitanju tela). Pokriva fetch
+      // I čitanje tela; ceiling = timeoutMs + 5s margine.
+      return await withTimeout((async () => {
+        const res = await fetch(url, { headers, redirect: 'follow', signal: AbortSignal.timeout(timeoutMs) });
+        if (res.status === 403 || res.status === 429) {
+          await res.body?.cancel().catch(() => {});
+          const e = new Error(`HTTP ${res.status} za ${url}`);
+          e.retryable = true;
+          throw e;
+        }
+        if (!res.ok) {
+          await res.body?.cancel().catch(() => {});
+          const err = new Error(`HTTP ${res.status} za ${url}`);
+          // Deterministički klijentski errori (4xx osim 403/429) — retry nema smisla.
+          if (res.status >= 400 && res.status < 500) err.permanent = true;
+          throw err;
+        }
+        return asBuffer ? Buffer.from(await res.arrayBuffer()) : await res.text();
+      })(), timeoutMs + 5000, `fetch ${url}`);
     } catch (err) {
       if (err.permanent) throw err;
       lastError = err;
-      if (i < attempts - 1) await sleep(2000 * (i + 1));
+      // 403/429 dobijaju duži backoff (Akamai); ostalo kraći.
+      if (i < attempts - 1) await sleep((err.retryable ? 5000 : 2000) * (i + 1));
     }
   }
   throw lastError;
@@ -103,11 +109,26 @@ function cacheBustStamp() {
   return new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14);
 }
 
-async function uploadToBucket(supabase, bucket, storagePath, buffer, { cacheBust = true } = {}) {
-  const { error } = await supabase.storage.from(bucket).upload(storagePath, buffer, {
-    contentType: contentTypeFor(storagePath),
-    upsert: true,
+function withTimeout(promise, ms, label) {
+  let timer;
+  const timeout = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`Timeout (${ms}ms): ${label}`)), ms);
   });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+}
+
+async function uploadToBucket(supabase, bucket, storagePath, buffer, { cacheBust = true, timeoutMs = 60000 } = {}) {
+  // Supabase storage upload nema sopstveni timeout — bez ovoga jedan zaglavljen
+  // upload visi unedogled (uzrok 6h zaglavljivanja). Race protiv tajmera; greška
+  // pada u per-collection try/catch i kolekcija se preskače.
+  const { error } = await withTimeout(
+    supabase.storage.from(bucket).upload(storagePath, buffer, {
+      contentType: contentTypeFor(storagePath),
+      upsert: true,
+    }),
+    timeoutMs,
+    `upload ${bucket}/${storagePath}`,
+  );
   if (error) throw new Error(`Upload ${bucket}/${storagePath}: ${error.message}`);
   const { data } = supabase.storage.from(bucket).getPublicUrl(storagePath);
   if (!data?.publicUrl) throw new Error(`getPublicUrl prazan za ${bucket}/${storagePath}`);
