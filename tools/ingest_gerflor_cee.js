@@ -9,6 +9,13 @@ const IMAGES_BUCKET = 'product-images';
 const DOCS_BUCKET = 'product-documents';
 const MIN_DECOR_WIDTH = 800;
 
+// Kolekcije gde se CEE color opseg ne poklapa sa našim (codeless nov vs code-keyed star):
+// radi se samo obogaćivanje na nivou kolekcije, postojeće boje ostaju netaknute.
+const SKIP_COLOR_INGEST_CEE_SLUGS = new Set([
+  'taralay-initial-acoustic-0',
+  'taralay-initial-compact-new',
+]);
+
 function parseArgs() {
   const args = { dryRun: false, collections: [], skipExisting: false };
   for (const a of process.argv.slice(2)) {
@@ -78,6 +85,8 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
       continue;
     }
 
+    const skipColorIngest = SKIP_COLOR_INGEST_CEE_SLUGS.has(ceeSlug);
+
     console.log(`\n📂 ${col.name} (${col.slug} → ${ceeSlug})`);
     const pageHtml = await core.fetchPage(`${parse.PUBLIC_HOST}/products/${ceeSlug}`);
 
@@ -100,7 +109,15 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
     const colorCount = parse.parseColorCount(pageHtml);
 
     // 3) Varijacije → mapiranje na naše boje
-    const variations = variationsByCee.get(ceeSlug) || [];
+    // Dedupe po istom ključu kao colorKeyFromVariation (npr. libertex ima 3 URL-a po boji) — čuvamo prvu pojavu
+    const rawVariations = variationsByCee.get(ceeSlug) || [];
+    const seenVariationKeys = new Set();
+    const variations = rawVariations.filter((v) => {
+      const key = colorKeyFromVariation(v);
+      if (seenVariationKeys.has(key)) return false;
+      seenVariationKeys.add(key);
+      return true;
+    });
     const ourColorByKey = new Map(col.colors.map((c) => [colorKeyFromOurColor(c), c]));
     let matched = 0;
     const unmatchedUpstream = [];
@@ -111,7 +128,7 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
     console.log(`   📄 dokumenta: ${documents.length} | 🖼️ ambijent: ${slides.length} | 🎨 CEE varijacija: ${variations.length} (header kaže ${colorCount ?? '?'}) vs naših boja: ${col.colors.length} | novih upstream: ${unmatchedUpstream.length} | spec polja: ${Object.keys(specs).length}`);
 
     if (args.dryRun) {
-      summary.push({ slug: col.slug, documents: documents.length, scenes: slides.length, variations: variations.length, ours: col.colors.length, newUpstream: unmatchedUpstream.length });
+      summary.push({ slug: col.slug, documents: documents.length, scenes: slides.length, variations: variations.length, ours: col.colors.length, newUpstream: unmatchedUpstream.length, skipColorIngest });
       continue;
     }
 
@@ -150,6 +167,9 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
       }
     }
 
+    if (skipColorIngest) {
+      console.log(`   ⏭️  ${col.slug}: preskačem color-level ingest (CEE opseg se ne poklapa) — samo dokumenti + ambijent`);
+    } else {
     // 6) Dekor slike po boji (stranica varijacije → hero 1500px)
     for (const variation of variations) {
       const ourColor = ourColorByKey.get(colorKeyFromVariation(variation));
@@ -208,6 +228,7 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
       }
     }
     col.colorCount = col.colors.length;
+    }
 
     // 8) Upis polja kolekcije
     if (uploadedDocs.length > 0) col.documents = uploadedDocs;
@@ -219,6 +240,7 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
     manifest.record(`collection:${col.slug}`, {
       status: 'ok', documents: uploadedDocs.length, scenes: sceneUrls.length,
       decorMatched: matched, decorTotalOurs: col.colors.length, specFields: Object.keys(specs).length,
+      colorIngestSkipped: skipColorIngest,
     });
     manifest.save();
     summary.push({ slug: col.slug, documents: uploadedDocs.length, scenes: sceneUrls.length, matched, ours: col.colors.length });
