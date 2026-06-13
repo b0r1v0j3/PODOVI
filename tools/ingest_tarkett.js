@@ -239,6 +239,14 @@ async function ingestLvt(supabase, manifest, args, col, item) {
   try {
     for (const col of targets) {
       try {
+        // --skip-existing: preskoči kolekciju koja je već uspešno ingestovana (manifest ok).
+        // Asset-level resume (doc:/scene:/swatch:) ionako preskače uploadovano; ovo dodatno
+        // preskače i mrežni re-fetch __NUXT__/per-dizajn JSON-a za gotove kolekcije.
+        if (args.skipExisting && !args.dryRun && manifest.get(`collection:${col.key}`)?.status === 'ok') {
+          console.log(`\n⏭️  ${col.key}: već ingestovano (manifest ok) — preskačem (--skip-existing)`);
+          summary.push({ key: col.key, kind: col.kind, skipped: true });
+          continue;
+        }
         console.log(`\n📂 ${col.key} (${col.kind})`);
         const nuxt = await fetchNuxt(browser, col.url);
         const item = parse.extractCollectionItem(nuxt);
