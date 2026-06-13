@@ -85,6 +85,7 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
       continue;
     }
 
+    try {
     const skipColorIngest = SKIP_COLOR_INGEST_CEE_SLUGS.has(ceeSlug);
 
     console.log(`\n📂 ${col.name} (${col.slug} → ${ceeSlug})`);
@@ -244,6 +245,12 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
     });
     manifest.save();
     summary.push({ slug: col.slug, documents: uploadedDocs.length, scenes: sceneUrls.length, matched, ours: col.colors.length });
+    } catch (err) {
+      console.log(`⚠️ ${col.slug}: ${err.message} — preskačem kolekciju`);
+      manifest.record(`collection:${col.slug}`, { status: 'error', error: err.message });
+      if (!args.dryRun) manifest.save();
+      continue;
+    }
   }
 
   if (!args.dryRun) {
