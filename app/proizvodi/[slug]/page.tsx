@@ -731,7 +731,19 @@ export default async function ProductPage({ params, searchParams }: Props) {
       </div>
     ) : null;
 
-    const collectionLabel = product.specs?.find((spec) => spec.key === 'collection')?.value || (product as { collectionSlug?: string }).collectionSlug || '';
+    // Lep naziv kolekcije za breadcrumb: prvo iz `collection` spec-a; ako ga nema,
+    // umesto sirovog sluga (npr. "gerflor-creation-55-clic") prikaži uredan naziv
+    // ("Creation 55 Clic") — skini brend prefiks, zameni crtice, Title Case.
+    const prettifyCollectionSlug = (value: string) =>
+      value
+        .replace(/^(gerflor|tarkett|wolflor|techem|romus|bloq|timbertech|podovi)-/i, '')
+        .replace(/-/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/\b\w/g, (ch) => ch.toUpperCase());
+    const rawCollectionSlug = (product as { collectionSlug?: string }).collectionSlug || routeSlug;
+    const collectionLabel = product.specs?.find((spec) => spec.key === 'collection')?.value
+      || (rawCollectionSlug ? prettifyCollectionSlug(rawCollectionSlug) : '');
     const collectionHref = (product as { collectionSlug?: string }).collectionSlug && (product as { collectionSlug?: string }).collectionSlug !== routeSlug
       ? `/proizvodi/${(product as { collectionSlug?: string }).collectionSlug}`
       : undefined;
@@ -791,7 +803,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   ...categoryBreadcrumbItems,
                   ...(selectedColorSlug ? [
                     {
-                      label: collectionLabel || routeSlug,
+                      label: collectionLabel,
                       href: `/proizvodi/${routeSlug}`
                     },
                     { label: displayName }
