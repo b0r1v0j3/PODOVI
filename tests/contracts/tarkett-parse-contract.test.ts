@@ -94,10 +94,22 @@ describe('tarkett-parse: colorCode / cleanColorName', () => {
   it('skida ponovljeni prefiks naziva kolekcije', () => {
     expect(cleanColorName('Deal SPC 30 Natural Wood', 'Deal SPC 30')).toBe('Natural Wood');
   });
-  it('ModularT: skida brand prefiks (Modu70), format token (20X120) i finish kod (1I)', () => {
-    // Realni ModularT 70 design[0] (upstream-pack.md §2): collection_name je "ModularT 70",
-    // ali product_name nosi skraćeni "Modu70" prefiks koji se ne poklapa sa collection_name.
-    expect(cleanColorName('Modu70 20X120 Elegant Oak LIGHT BEIGE 1I', 'ModularT 70')).toBe('Elegant Oak Light Beige');
+  it('ModularT: čisti SVE realne varijante prefiksa/dimenzija (Modu70/Modul 70/Modul70/ModularT 70, 66,5X66,5)', () => {
+    // Sva 16 sirovih imena iz output dump-a (C003148). Prefiks varira, dimenzije imaju
+    // decimalni zarez (66,5X66,5) — sve mora ispasti, ostaje samo ime dezena/boje.
+    const cases: Array<[string, string]> = [
+      ['Modu70 20X120 Elegant Oak LIGHT BEIGE 1I', 'Elegant Oak Light Beige'],
+      ['Modul 70 20X120 Serene Oak CLASSICAL 1I', 'Serene Oak Classical'],
+      ['Modul 70 66,5X66,5 Stone LIGHT BEIGE 1I', 'Stone Light Beige'],
+      ['Modul70 20X120 Nordic Oak LIGHT BROWN 1I', 'Nordic Oak Light Brown'],
+      ['ModularT 70 50X100 Stucco GREY 1I', 'Stucco Grey'],
+      ['ModularT 70 66,5X66,5 Beton GREY 1I', 'Beton Grey'],
+      ['ModularT 70 66,5X66,5 Beton DARK GREY 1I', 'Beton Dark Grey'],
+    ];
+    for (const [raw, expected] of cases) {
+      expect(cleanColorName(raw, 'ModularT 70'), raw).toBe(expected);
+      expect(cleanColorName(raw, 'ModularT 70'), `${raw}: bez ostataka brenda/dimenzija`).not.toMatch(/modul|\d+\s*[xX]\s*\d|,\s*,|\b\d+[A-Za-z]\b/i);
+    }
   });
 });
 
