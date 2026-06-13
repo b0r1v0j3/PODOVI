@@ -111,6 +111,9 @@ const TARKETT_COLLECTION_NAMES: Record<string, string> = {
     'ideal-spc-50': 'iDeal SPC 50',
     'id-tilt-hit': 'iD Tilt HIT',
     'progressive-house': 'Progressive House',
+    'deal-spc-30': 'Deal SPC 30',
+    'real-spc-50': 'Real SPC 50',
+    'modulart-70': 'ModularT 70',
 };
 
 function characteristicLabelToKey(label: string): string {
@@ -1049,6 +1052,29 @@ function normalizeTarkettDocumentUrl(originalUrl?: string) {
         .replace('://media.tarkett-image.com/medium/', '://media.tarkett-image.com/docs/');
 }
 
+// Srpski naslov LVT dokumenta iz imena fajla. Skida ?v=… (cache-bust) i .pdf, pa mapira
+// Tarkett prefikse (DS/SD/DOP/BR/MD/IG/ID/CR/GBC/EPD/MHS/GR…) na čiste srpske naslove.
+// Nepoznato → Title-case očišćenog imena (bez ?v=). Koristi se i za nove i za postojeće LVT.
+function tarkettLvtDocTitle(rawFileName: string): string {
+    const base = String(rawFileName || '').split('?')[0].replace(/\.pdf$/i, '');
+    const norm = base.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+    const low = ` ${norm.toLowerCase()} `;
+    const has = (re: RegExp) => re.test(low);
+    if (has(/\bdop\b|declaration of performance|izjava o svojstvima/)) return 'Izjava o svojstvima (DoP)';
+    if (has(/\bepd\b/)) return 'Izjava o uticaju na životnu sredinu (EPD)';
+    if (has(/\bmhs\b|material health/)) return 'Izjava o uticaju na zdravlje (MHS)';
+    if (has(/\bgbc\b|green building/)) return 'Sertifikat zelene gradnje (GBC)';
+    if (has(/reakcija na vatru|reaction.*fire|\bfire\b|\bbfl\b|13501/)) return 'Sertifikat — reakcija na vatru';
+    if (has(/\bgr\b|guarantee|warranty|garancij/)) return 'Garancija';
+    if (has(/mai?ntenance|odrzav|održav/)) return 'Uputstvo za održavanje';
+    if (has(/\bmd\b/)) return 'Uputstvo za održavanje';
+    if (has(/install|ugradnj|\big\b|\bid see\b|\bid int\b/)) return 'Uputstvo za ugradnju';
+    if (has(/gradingbook|knjiga uzoraka/)) return 'Knjiga uzoraka';
+    if (has(/\bbr\b|brochure|brošur|brosur/)) return 'Brošura';
+    if (has(/datash?eet|\bds\b|\bsd\b|\btds\b|tehni/)) return 'Tehnički list';
+    return norm.replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 function buildDescriptionFromCharacteristics(
     baseDescription: string,
     characteristics?: Record<string, any>,
@@ -1155,14 +1181,7 @@ export function getAllTarkettLVTProducts(): Product[] {
         const documents = (p.meta?.documents || []).map((docUrl: string) => {
             const normalizedDocUrl = normalizeTarkettDocumentUrl(docUrl);
             const fileName = normalizedDocUrl.split('/').pop() || 'Dokument';
-            // Create a readable title from filename
-            let title = fileName.replace(/_/g, ' ').replace(/-/g, ' ').replace('.pdf', '');
-            // Generic titles based on keywords
-            if (title.toLowerCase().includes('dop')) title = 'Izjava o svojstvima (DoP)';
-            else if (title.toLowerCase().includes('dataseet') || title.toLowerCase().includes('ds')) title = 'Tehnički list';
-            else if (title.toLowerCase().includes('brochure')) title = 'Brošura';
-            else if (title.toLowerCase().includes('maintenance')) title = 'Uputstvo za održavanje';
-            else if (title.toLowerCase().includes('installation')) title = 'Uputstvo za ugradnju';
+            const title = tarkettLvtDocTitle(fileName);
 
             return {
                 title: title,
