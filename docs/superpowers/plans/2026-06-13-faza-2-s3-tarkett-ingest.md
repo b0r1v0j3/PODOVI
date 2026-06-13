@@ -839,7 +839,9 @@ git commit -m "feat(s3): tarkett ingest orkestracija + dry-run"
 
 - [ ] **Step 1: Proveri da `.env.local` ima Supabase ključeve**
 
-Run: `node -e "const c=require('./tools/lib/ingest-core.js'); const e=c.loadLocalEnvFile(); console.log('URL', !!e.NEXT_PUBLIC_SUPABASE_URL, 'KEY', !!e.SUPABASE_SERVICE_ROLE_KEY)"`
+> `loadLocalEnvFile()` puni `process.env` (ne vraća objekat) — proveri preko `process.env`.
+
+Run: `node -e "const c=require('./tools/lib/ingest-core.js'); c.loadLocalEnvFile(); console.log('URL', !!process.env.NEXT_PUBLIC_SUPABASE_URL, 'KEY', !!process.env.SUPABASE_SERVICE_ROLE_KEY)"`
 Expected: `URL true KEY true`. Ako false → STOP, ključevi nedostaju (vidi runbook).
 
 - [ ] **Step 2: Pokreni pilot ingest (samo iQ Motion)**
