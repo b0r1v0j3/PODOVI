@@ -131,6 +131,27 @@ describe('tarkett-parse: toSerbianCharacteristics', () => {
     expect(out['Ukupna debljina']).toBeUndefined();
     expect(out['Format']).toBe('Rolna');
   });
+  it('prevodi i EPD/karbon/dimenzione ključeve (ne curi engleski na srpskom sajtu)', () => {
+    const out = toSerbianCharacteristics({
+      dimensional_stability: 'AMV_LE040R',
+      epd_A1_A3: '3,48 kg CO₂e /m²',
+      fdes_A1_A3: '3 kg CO₂e /m²',
+      epd_number: 'EPD-EIS-01346',
+      epd_carbon_recycling: '1,81 kg CO₂e /m²',
+      carbon_impact_DVR: '7,4 kg CO₂e /m²',
+      seam_strength_average_value: '>= 400 N/50mm',
+      reaction_fire_en_92391: '≥ 8 kW/m²',
+      surface_restoration: '1',
+      restart_ready: 'Da',
+    });
+    expect(out['Dimenzionalna stabilnost']).toBe('AMV_LE040R');
+    expect(out['EPD (A1–A3)']).toBe('3,48 kg CO₂e /m²');
+    expect(out['EPD broj']).toBe('EPD-EIS-01346');
+    expect(out['Ugljenični otisak (DVR)']).toBe('7,4 kg CO₂e /m²');
+    expect(out['ReStart spreman']).toBe('Da');
+    // nijedan label ne sme ostati golo-engleski humanizovan
+    for (const label of Object.keys(out)) expect(label).not.toMatch(/^(Epd|Fdes|Dimensional|Surface Restoration|Seam|Carbon|Reaction Fire|Restart Ready)\b/);
+  });
 });
 
 describe('tarkett-parse: collectionDocsFromAssets', () => {
@@ -171,6 +192,20 @@ describe('tarkett-parse: collectionDocsFromAssets', () => {
     ]);
     expect(docs[0].title).toBe('Uputstvo za instalaciju');
     expect(docs[1].title).toBe('Uputstvo za instalaciju');
+  });
+
+  it('kad document_role_translated fali, koristi srpski naziv po document_role (ne sirov fajl)', () => {
+    // iQ Motion (output dump): GREEN_BUILDING_CARD nema prevod -> ranije je davalo
+    // "GBC-Tarkett-iq_motion-en_INTL". Sada: čist srpski naslov po roli.
+    const item = {
+      collection_assets: [
+        { document_role: 'GREEN_BUILDING_CARD', document_role_translated: '', document_asset_url: 'GBC-Tarkett-iq_motion-en_INTL.pdf', document_mime_type: 'application/pdf' },
+      ],
+    };
+    const docs = collectionDocsFromAssets(item);
+    expect(docs).toHaveLength(1);
+    expect(docs[0].title).toBe('Sertifikat zelene gradnje (GBC)');
+    expect(docs[0].title).not.toMatch(/GBC-Tarkett|\.pdf|_/);
   });
 });
 

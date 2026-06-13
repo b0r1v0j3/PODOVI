@@ -134,6 +134,31 @@ const SPEC_LABEL_SR = {
   formaldehyde_emission_en_717: 'Emisija formaldehida',
   ease_of_decontamination: 'Lakoća dekontaminacije',
   green_building_certification: 'Sertifikat zelene gradnje',
+  dimensional_stability: 'Dimenzionalna stabilnost',
+  surface_restoration: 'Obnova površine',
+  seam_strength_average_value: 'Čvrstoća šava',
+  reaction_fire_en_92391: 'Reakcija na vatru (EN 9239-1)',
+  restart_ready: 'ReStart spreman',
+  epd_A1_A3: 'EPD (A1–A3)',
+  fdes_A1_A3: 'FDES (A1–A3)',
+  epd_number: 'EPD broj',
+  epd_carbon_recycling: 'EPD — recikliranje ugljenika',
+  carbon_impact_DVR: 'Ugljenični otisak (DVR)',
+};
+
+// Fallback srpski naslov dokumenta po document_role (kad document_role_translated fali,
+// npr. GREEN_BUILDING_CARD na iQ Motion). Tek ako rola nije poznata → mapDocumentTitle(ime fajla).
+const DOCUMENT_ROLE_SR = {
+  DATASHEET: 'Tehnički list',
+  TENDERDATASHEET: 'Tenderski list',
+  DOP: 'Izjava o svojstvima (DoP)',
+  INSTALLATION: 'Uputstvo za ugradnju',
+  MAINTENANCE: 'Uputstvo za održavanje',
+  BROCHURE: 'Brošura',
+  WARRANTY_GUARANTEE: 'Garancija',
+  ENVIRONMENT_PRODUCT_DECLARATION: 'Izjava o uticaju proizvoda na životnu sredinu (EPD)',
+  MATERIAL_HEALTH_STATEMENT: 'Izjava o uticaju na zdravlje (MHS)',
+  GREEN_BUILDING_CARD: 'Sertifikat zelene gradnje (GBC)',
 };
 
 function humanizeKey(key) {
@@ -166,7 +191,9 @@ function collectionDocsFromAssets(item) {
     const assetUrl = String(a.document_asset_url || '').trim();
     if (!assetUrl || seen.has(assetUrl)) continue;
     seen.add(assetUrl);
+    const role = String(a.document_role || '').toUpperCase();
     const title = (a.document_role_translated && String(a.document_role_translated).trim())
+      || DOCUMENT_ROLE_SR[role]
       || gerflor.mapDocumentTitle(a.document_name || a.document_asset_url || '', a.document_role || '');
     docs.push({ title, sourceUrl: mediaDocUrl(assetUrl) });
   }
