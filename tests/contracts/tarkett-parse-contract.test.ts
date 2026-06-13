@@ -94,6 +94,11 @@ describe('tarkett-parse: colorCode / cleanColorName', () => {
   it('skida ponovljeni prefiks naziva kolekcije', () => {
     expect(cleanColorName('Deal SPC 30 Natural Wood', 'Deal SPC 30')).toBe('Natural Wood');
   });
+  it('ModularT: skida brand prefiks (Modu70), format token (20X120) i finish kod (1I)', () => {
+    // Realni ModularT 70 design[0] (upstream-pack.md §2): collection_name je "ModularT 70",
+    // ali product_name nosi skraćeni "Modu70" prefiks koji se ne poklapa sa collection_name.
+    expect(cleanColorName('Modu70 20X120 Elegant Oak LIGHT BEIGE 1I', 'ModularT 70')).toBe('Elegant Oak Light Beige');
+  });
 });
 
 describe('tarkett-parse: homogeneousColorCharacteristics', () => {
@@ -129,18 +134,42 @@ describe('tarkett-parse: toSerbianCharacteristics', () => {
 });
 
 describe('tarkett-parse: collectionDocsFromAssets', () => {
-  it('gradi /docs/ URL-ove iz collection_assets, koristi srpski document_role_translated, dedupe po naslovu', () => {
+  it('gradi /docs/ URL-ove iz collection_assets, koristi srpski document_role_translated, dedupe po URL-u', () => {
     const item = {
       collection_assets: [
         { document_role: 'DATASHEET', document_role_translated: 'Tehnički list', document_asset_url: 'DS_SEE_Deal_SPC_30_SRB.pdf', document_mime_type: 'application/pdf' },
         { document_role: 'INSTALLATION', document_role_translated: 'Uputstvo za instalaciju', document_asset_url: 'IG_Installation_Guide_Deal_SPC_30_ENG.pdf', document_mime_type: 'application/pdf' },
-        { document_role: 'DATASHEET', document_role_translated: 'Tehnički list', document_asset_url: 'DS_dup.pdf', document_mime_type: 'application/pdf' },
+        // Pravi duplikat = isti document_asset_url -> uklanja se.
+        { document_role: 'DATASHEET', document_role_translated: 'Tehnički list', document_asset_url: 'DS_SEE_Deal_SPC_30_SRB.pdf', document_mime_type: 'application/pdf' },
         { document_role: 'COVER', document_role_translated: 'Naslovna slika kolekcije', document_asset_url: 'IN_cover.jpg', document_mime_type: 'image/jpeg' },
       ],
     };
     const docs = collectionDocsFromAssets(item);
-    expect(docs).toHaveLength(2); // dedupe Tehnički list, izbaci sliku (image/*)
+    expect(docs).toHaveLength(2); // dedupe isti URL (Tehnički list), izbaci sliku (image/*)
     expect(docs[0]).toEqual({ title: 'Tehnički list', sourceUrl: 'https://media.tarkett-image.com/docs/DS_SEE_Deal_SPC_30_SRB.pdf' });
+    expect(docs[1].title).toBe('Uputstvo za instalaciju');
+  });
+
+  it('NE odbacuje dva različita PDF-a koja dele srpsku rolu (dedupe po URL-u, ne po naslovu)', () => {
+    // Real SPC 50 (upstream-pack.md §5): dva odvojena INSTALLATION guide-a -> isti "Uputstvo za instalaciju".
+    // Oba moraju preživeti (kao STANDARD PLUS koji u repou drži dva dokumenta "Sertifikat").
+    const item = {
+      collection_assets: [
+        { document_role: 'INSTALLATION', document_role_translated: 'Uputstvo za instalaciju', document_asset_url: 'IG_Installation_Guide_Real_SPC_50_ENG.pdf', document_mime_type: 'application/pdf' },
+        { document_role: 'INSTALLATION', document_role_translated: 'Uputstvo za instalaciju', document_asset_url: 'IG_Installation_Guide_Herringbone_Real_SPC_50.pdf', document_mime_type: 'application/pdf' },
+        { document_role: 'DATASHEET', document_role_translated: 'Tehnički list', document_asset_url: 'DS_SEE_Real_SPC_50_SRB.pdf', document_mime_type: 'application/pdf' },
+        // Pravi duplikat (isti asset URL) se i dalje uklanja.
+        { document_role: 'DATASHEET', document_role_translated: 'Tehnički list', document_asset_url: 'DS_SEE_Real_SPC_50_SRB.pdf', document_mime_type: 'application/pdf' },
+      ],
+    };
+    const docs = collectionDocsFromAssets(item);
+    expect(docs).toHaveLength(3);
+    expect(docs.map((d) => d.sourceUrl)).toEqual([
+      'https://media.tarkett-image.com/docs/IG_Installation_Guide_Real_SPC_50_ENG.pdf',
+      'https://media.tarkett-image.com/docs/IG_Installation_Guide_Herringbone_Real_SPC_50.pdf',
+      'https://media.tarkett-image.com/docs/DS_SEE_Real_SPC_50_SRB.pdf',
+    ]);
+    expect(docs[0].title).toBe('Uputstvo za instalaciju');
     expect(docs[1].title).toBe('Uputstvo za instalaciju');
   });
 });

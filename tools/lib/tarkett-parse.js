@@ -63,9 +63,19 @@ function colorCode(design) {
   return String(design.product_design_key || '').trim();
 }
 
-// Očisti ime boje: skini trailing kod, skini ponovljeni prefiks naziva kolekcije, Title Case.
+// Očisti ime boje: skini trailing kod/finish, brand prefiks (Modu70…), format token (20X120),
+// ponovljeni prefiks naziva kolekcije, pa Title Case.
+// Bitan redosled: trailing finish kod (npr. "1I") i format token (npr. "20X120") se skidaju DOK
+// su slova još velika — posle .toLowerCase() bi ih bilo nemoguće razlikovati od reči.
 function cleanColorName(productName, collectionName) {
-  let n = String(productName || '').replace(/\s*\d{3,4}\s*$/, '').trim();
+  let n = String(productName || '').trim();
+  // ModularT brand/product prefiks ("Modu70 ", "ModularT 70 ") koji collectionName ("ModularT 70")
+  // ne ufata jer payload koristi skraćeni "Modu70".
+  n = n.replace(/^modu(?:lar)?t?\s*\d*\s*/i, '');
+  // Format/dimenzije token ("20X120", "20 x 120") — nije deo imena boje.
+  n = n.replace(/\b\d+\s*[xX]\s*\d+\b/g, ' ');
+  // Trailing finish kod ("1I") ili numerički kod ("0409", "278817001").
+  n = n.replace(/\s+\d+[A-Za-z]$/, '').replace(/\s*\d{3,4}\s*$/, '').trim();
   const coll = String(collectionName || '').trim();
   if (coll && n.toLowerCase().startsWith(coll.toLowerCase() + ' ')) {
     n = n.slice(coll.length).trim();
@@ -145,17 +155,20 @@ function toSerbianCharacteristics(rawSpecs) {
 }
 
 // Dokumenti iz collection_assets: samo PDF; srpski naslov iz document_role_translated
-// (fallback na mapDocumentTitle); dedupe po finalnom naslovu (čuva prvu pojavu).
+// (fallback na mapDocumentTitle); dedupe po IZVORNOM URL-u (document_asset_url), NE po naslovu.
+// Dva različita PDF-a koja dele srpsku rolu (npr. Real SPC 50 ima dva „Uputstvo za instalaciju" —
+// standardni i herringbone; STANDARD PLUS ima dva „Sertifikat") moraju oba preživeti.
 function collectionDocsFromAssets(item) {
   const docs = [];
   const seen = new Set();
   for (const a of item?.collection_assets || []) {
     if (!/pdf/i.test(a.document_mime_type || '') && !/\.pdf$/i.test(a.document_asset_url || '')) continue;
+    const assetUrl = String(a.document_asset_url || '').trim();
+    if (!assetUrl || seen.has(assetUrl)) continue;
+    seen.add(assetUrl);
     const title = (a.document_role_translated && String(a.document_role_translated).trim())
       || gerflor.mapDocumentTitle(a.document_name || a.document_asset_url || '', a.document_role || '');
-    if (seen.has(title)) continue;
-    seen.add(title);
-    docs.push({ title, sourceUrl: mediaDocUrl(a.document_asset_url) });
+    docs.push({ title, sourceUrl: mediaDocUrl(assetUrl) });
   }
   return docs;
 }
