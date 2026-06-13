@@ -84,7 +84,14 @@ export default function ProductColorSelector({
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const initialColorSlug = searchParams.get('color') || undefined;
+  // Bez ?color= u URL-u, podrazumevano se bira PRVA boja (ne collection cover / room-scene),
+  // da se na otvaranju kolekcije odmah vidi stvarni dekor. Radi i na SSR-u (useState init),
+  // pa nema treperenja; URL ostaje čist (kanonika nepromenjena).
+  const firstCustomColorSlug = useMemo(
+    () => customColors?.find((c: any) => c?.slug)?.slug || undefined,
+    [customColors]
+  );
+  const initialColorSlug = searchParams.get('color') || firstCustomColorSlug;
   const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(initialColorSlug);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
@@ -190,13 +197,13 @@ export default function ProductColorSelector({
     return displayProductTitle.color || productName;
   }, [displayProductTitle, productName]);
 
-  // Update selectedColorSlug when URL changes
+  // Update selectedColorSlug when URL changes (bez ?color= → prva boja, ne reset na cover)
   useEffect(() => {
-    const urlColorSlug = searchParams.get('color') || undefined;
+    const urlColorSlug = searchParams.get('color') || firstCustomColorSlug;
     if (urlColorSlug !== selectedColorSlug) {
       setSelectedColorSlug(urlColorSlug);
     }
-  }, [searchParams, selectedColorSlug]);
+  }, [searchParams, selectedColorSlug, firstCustomColorSlug]);
 
   // Track the previous image for cross-fade
   const [prevImage, setPrevImage] = useState<{ url: string; alt: string } | null>(null);
