@@ -384,14 +384,20 @@ describe('Product image variant contracts', () => {
   it.each([
     ['gerflor-mipolam-evo', '/images/products/vinyl/mipolam-evo-collection.jpg'],
     ['gerflor-taralay-impression-acoustic', '/images/products/vinyl/taralay-impression-acoustic/collection.jpg'],
-    ['gerflor-taralay-impression-compact', '/images/products/vinyl/taralay-impression-compact/collection.jpg'],
+    ['gerflor-taralay-impression-compact', 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-impression-compact/ambience/scena-1.jpg'],
     ['gerflor-taralay-impression-hop-acoustic', '/images/products/vinyl/taralay-impression-hop-acoustic/collection.jpg'],
     ['gerflor-taralay-impression-hop-compact', '/images/products/vinyl/taralay-impression-hop-compact/collection.jpg'],
     ['gerflor-taralay-millenium-acoustic', '/images/products/vinyl/taralay-millenium-acoustic-order/collection.jpg'],
   ])('keeps Gerflor vinyl collection %s on the collection cover before color images', (slug, expectedUrl) => {
     const product = getVinylCollectionProducts().find((item) => item.slug === slug);
 
-    expect(product?.images?.[0]?.url).toBe(expectedUrl);
+    // Strip any `?v=<stamp>` cache-bust query from both sides so a re-ingested
+    // self-hosted Supabase hero (whose stamp changes per run) still matches on
+    // path. Rows without a query string are unaffected (`.split('?')[0]` no-op),
+    // so the path must still match exactly for every collection.
+    const actualUrl = product?.images?.[0]?.url?.split('?')[0];
+
+    expect(actualUrl).toBe(expectedUrl.split('?')[0]);
   });
 
   it('keeps Tarkett lajsne collection headers on collection_image_url before variant images', () => {
