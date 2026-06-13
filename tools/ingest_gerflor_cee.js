@@ -36,7 +36,9 @@ function colorKeyFromVariation(variation) {
 }
 
 async function uploadImageChecked(supabase, storagePath, buffer, label) {
-  const meta = await sharp(buffer).metadata();
+  // sharp.metadata() je jedini await bez sopstvenog timeout-a (libvips može da zaglavi
+  // worker thread na neispravnoj slici) — tvrdi backstop da ne visi ceo run.
+  const meta = await core.withTimeout(sharp(buffer).metadata(), 20000, `sharp ${label}`);
   if (!meta.width || meta.width < MIN_DECOR_WIDTH) {
     throw new Error(`${label}: slika ${meta.width || '?'}px < ${MIN_DECOR_WIDTH}px`);
   }
