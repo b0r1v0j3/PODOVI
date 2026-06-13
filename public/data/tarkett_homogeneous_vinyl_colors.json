@@ -15953,8 +15953,399 @@
         }
       ],
       "collection_image_url": "https://media.tarkett-image.com/large/IN_HP_iQ_Optima_3242860_001.jpg"
+    },
+    {
+      "name": "iQ Motion",
+      "slug": "tarkett-iq-motion",
+      "brandId": "3",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C003138-iq-motion",
+      "colorCount": 16,
+      "shortDescription": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+      "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+      "categoryDescription": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+      "characteristics": {
+        "EPD (A1–A3)": "3,48 kg CO₂e /m²",
+        "Dimenzionalna stabilnost": "AMV_LE040R",
+        "Sertifikat zelene gradnje": "Yes",
+        "Reakcija na vatru (EN 11925-2)": "1",
+        "EPD broj": "EPD-EIS-01346",
+        "FDES (A1–A3)": "3 kg CO₂e /m²",
+        "Dezen": "MOTION",
+        "Ukupna debljina": "2 mm",
+        "Obnova površine": "1",
+        "EPD — recikliranje ugljenika": "1,81 kg CO₂e /m²",
+        "Ugljenični otisak (DVR)": "7,4 kg CO₂e /m²",
+        "Čvrstoća šava": ">= 400 N/50mm",
+        "Reakcija na vatru (EN 9239-1)": "≥ 8 kW/m²",
+        "Komercijalna klasifikacija": "34 Very Heavy",
+        "Otpornost na klizanje": "LROS",
+        "Rezidualni utisak": "≤ 0.02 mm",
+        "Refleksija svetlosti": "15",
+        "Otpornost na bakterije": "DNPG",
+        "Emisija formaldehida": "E1",
+        "Tip dezena": "Sveobuhvatni",
+        "Površina": "46 m²",
+        "Zemlja porekla": "Sweden",
+        "Dužina": "23 m",
+        "Format": "Rolna 2x23m",
+        "Zaštitni sloj": "2 mm",
+        "Lakoća dekontaminacije": "excellent",
+        "Tip formata": "Rolna",
+        "Proizvedeno u": "Europe",
+        "Tip proizvoda": "Resilient Flooring",
+        "ReStart spreman": "Da",
+        "Širina": "2 m",
+        "Industrijska klasifikacija": "43 Teška",
+        "Površinska obrada": "iQ PUR"
+      },
+      "detailsSections": [
+        {
+          "title": "Ključne karakteristike",
+          "items": [
+            "Proizvedeno u Švedskoj",
+            "100% reciklabilno nakon upotrebe",
+            "Emisija ugljen-dioksida: 1,81 kg CO 2 ekv/m 2",
+            "Emisija ugljen-dioksida od početka proizvodnje do finalnog proizvoda: 3,48 kg CO 2 ekv/m 2",
+            "Sadrži u proseku 25,5% recikliranog sadržaja",
+            "Jedinstvena iQ restauracija površina™",
+            "Najbolje performanse u otpornosti na mrlje kada su u pitanju zdravstveni objekti i visoka otpornosti na grebanje"
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "title": "DOP sertifikat ( Deklaracija o performansama)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/declaration-performance-0019-0087-dop-2025-09-iq-motion-int.pdf?v=20260613182238",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/id-int-iq-premium.pdf?v=20260613182239",
+          "type": "pdf"
+        },
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/ds-tarkett-iq-motion-en-intl.pdf?v=20260613182240",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/md-int-iq-range.pdf?v=20260613182240",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/installation-guide-iq-premium-plus-tiles-ranges-int.pdf?v=20260613182241",
+          "type": "pdf"
+        },
+        {
+          "title": "Tenderski list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/tenderdatasheet-iq-motion-int.pdf?v=20260613182241",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/brochure-tarkett-ho-iq-range-iq-motion-int.pdf?v=20260613182243",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/epd-iq-range.pdf?v=20260613182244",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/guarantee-tarkett-professional-iq-range-20-years-limited-warranty-int.pdf?v=20260613182244",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat zelene gradnje (GBC)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/gbc-tarkett-iq-motion-en-intl.pdf?v=20260613182245",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o uticaju na zdravlje (MHS)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-iq-motion/mhs-iq-range.pdf?v=20260613182246",
+          "type": "pdf"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-1.jpg?v=20260613182247",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-2.jpg?v=20260613182248",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-3.jpg?v=20260613182248",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-4.jpg?v=20260613182250",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-5.jpg?v=20260613182250",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-6.jpg?v=20260613182251",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-7.jpg?v=20260613182252",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-8.jpg?v=20260613182252",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-9.jpg?v=20260613182253",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-10.jpg?v=20260613182254",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-11.jpg?v=20260613182255",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-12.jpg?v=20260613182256",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-13.jpg?v=20260613182256",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-14.jpg?v=20260613182257",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-15.jpg?v=20260613182257",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-16.jpg?v=20260613182258",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-17.jpg?v=20260613182259",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-18.jpg?v=20260613182300",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-19.jpg?v=20260613182300",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-20.jpg?v=20260613182301",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-21.jpg?v=20260613182302",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-22.jpg?v=20260613182303",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-23.jpg?v=20260613182304",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-24.jpg?v=20260613182305",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-25.jpg?v=20260613182305",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-26.jpg?v=20260613182306",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-27.jpg?v=20260613182307",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-28.jpg?v=20260613182308",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-29.jpg?v=20260613182308",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-30.jpg?v=20260613182309",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/ambience/scena-31.jpg?v=20260613182309"
+      ],
+      "colors": [
+        {
+          "code": "0409",
+          "name": "Motion Blue",
+          "slug": "tarkett-iq-motion-color-0409-motion-blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0409-motion-blue.jpg?v=20260613182310",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "BFB5AD",
+            "NCS oznaka": "",
+            "LRV": "50",
+            "Porodica boja": "U",
+            "Šifra dekora": "0409"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0419",
+          "name": "Motion Brick",
+          "slug": "tarkett-iq-motion-color-0419-motion-brick",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0419-motion-brick.jpg?v=20260613182310",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "BFB5AD",
+            "NCS oznaka": "",
+            "LRV": "50",
+            "Porodica boja": "BG",
+            "Šifra dekora": "0419"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0421",
+          "name": "Motion Clay",
+          "slug": "tarkett-iq-motion-color-0421-motion-clay",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0421-motion-clay.jpg?v=20260613182311",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "B49A87",
+            "NCS oznaka": "",
+            "LRV": "40",
+            "Porodica boja": "BG",
+            "Šifra dekora": "0421"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0408",
+          "name": "Motion Dark Blue",
+          "slug": "tarkett-iq-motion-color-0408-motion-dark-blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0408-motion-dark-blue.jpg?v=20260613182311",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "636F8A",
+            "NCS oznaka": "",
+            "LRV": "24",
+            "Porodica boja": "U",
+            "Šifra dekora": "0408"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0418",
+          "name": "Motion Dark Brick",
+          "slug": "tarkett-iq-motion-color-0418-motion-dark-brick",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0418-motion-dark-brick.jpg?v=20260613182311",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "C97151",
+            "NCS oznaka": "",
+            "LRV": "30",
+            "Porodica boja": "O",
+            "Šifra dekora": "0418"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0404",
+          "name": "Motion Dark Grey",
+          "slug": "tarkett-iq-motion-color-0404-motion-dark-grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0404-motion-dark-grey.jpg?v=20260613182312",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "525252",
+            "NCS oznaka": "",
+            "LRV": "15",
+            "Porodica boja": "GY",
+            "Šifra dekora": "0404"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0411",
+          "name": "Motion Dark Sand",
+          "slug": "tarkett-iq-motion-color-0411-motion-dark-sand",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0411-motion-dark-sand.jpg?v=20260613182312",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "C19B78",
+            "NCS oznaka": "",
+            "LRV": "41",
+            "Porodica boja": "BG",
+            "Šifra dekora": "0411"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0415",
+          "name": "Motion Green",
+          "slug": "tarkett-iq-motion-color-0415-motion-green",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0415-motion-green.jpg?v=20260613182313",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "BFB5AD",
+            "NCS oznaka": "",
+            "LRV": "50",
+            "Porodica boja": "G",
+            "Šifra dekora": "0415"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0407",
+          "name": "Motion Grey",
+          "slug": "tarkett-iq-motion-color-0407-motion-grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0407-motion-grey.jpg?v=20260613182313",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "867F7B",
+            "NCS oznaka": "",
+            "LRV": "30",
+            "Porodica boja": "GY",
+            "Šifra dekora": "0407"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0405",
+          "name": "Motion Light Grey",
+          "slug": "tarkett-iq-motion-color-0405-motion-light-grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0405-motion-light-grey.jpg?v=20260613182314",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "BFB5AD",
+            "NCS oznaka": "",
+            "LRV": "50",
+            "Porodica boja": "GY",
+            "Šifra dekora": "0405"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0414",
+          "name": "Motion Petrol",
+          "slug": "tarkett-iq-motion-color-0414-motion-petrol",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0414-motion-petrol.jpg?v=20260613182314",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "5C6D6D",
+            "NCS oznaka": "",
+            "LRV": "22",
+            "Porodica boja": "G",
+            "Šifra dekora": "0414"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0417",
+          "name": "Motion Sand",
+          "slug": "tarkett-iq-motion-color-0417-motion-sand",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0417-motion-sand.jpg?v=20260613182315",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "D9C0A5",
+            "NCS oznaka": "",
+            "LRV": "56",
+            "Porodica boja": "BG",
+            "Šifra dekora": "0417"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0410",
+          "name": "Motion Soft Blue",
+          "slug": "tarkett-iq-motion-color-0410-motion-soft-blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0410-motion-soft-blue.jpg?v=20260613182315",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "D1DDE7",
+            "NCS oznaka": "",
+            "LRV": "65",
+            "Porodica boja": "U",
+            "Šifra dekora": "0410"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0420",
+          "name": "Motion Soft Brick",
+          "slug": "tarkett-iq-motion-color-0420-motion-soft-brick",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0420-motion-soft-brick.jpg?v=20260613182316",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "F1BFA8",
+            "NCS oznaka": "",
+            "LRV": "58",
+            "Porodica boja": "R",
+            "Šifra dekora": "0420"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0416",
+          "name": "Motion Soft Sand",
+          "slug": "tarkett-iq-motion-color-0416-motion-soft-sand",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0416-motion-soft-sand.jpg?v=20260613182317",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "F4CA9D",
+            "NCS oznaka": "",
+            "LRV": "61",
+            "Porodica boja": "BG",
+            "Šifra dekora": "0416"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "0406",
+          "name": "Motion White",
+          "slug": "tarkett-iq-motion-color-0406-motion-white",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-iq-motion/decor/0406-motion-white.jpg?v=20260613182318",
+          "description": "iQ Motion je najnovija kolekcija iQ homogenih vinil podnih obloga. Paleta sačinjena od 16 prirodnih tonova, inspiraciju crpi iz bezvremenskog teraco dezena. Dizajn iQ Motion kolekcije kombinuje neutralnu pozadinu sa modernim prozirnim i neprozirnim akcentima različitih dimenzija, koji zajedno obezbeđuju jedinstven izgled vinil podne obloge. Ovakav smeo i složen dizajn instaliran u prostor, ostavlja utisak dinamičnog okruženja što doprinosi osećaju stalnog kretanja i vitalnosti. Istovremeno, zadovoljava sve zahteve prostora sa visokim intenzitetima upotrebe.",
+          "characteristics": {
+            "HEX boja": "FDE9D8",
+            "NCS oznaka": "",
+            "LRV": "74",
+            "Porodica boja": "WH",
+            "Šifra dekora": "0406"
+          },
+          "brandId": "3"
+        }
+      ]
     }
   ],
-  "generatedAt": "2026-03-16T11:11:50.291Z",
+  "generatedAt": "2026-06-13T18:27:29.237Z",
   "source": "https://www.tarkett.rs/sr_RS/kategorija-rs_C01001-homogeni-vinil"
 }
