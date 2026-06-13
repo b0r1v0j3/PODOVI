@@ -168,25 +168,39 @@ function parseDescriptionDialog(html) {
   };
 }
 
+function cleanDocName(name) {
+  return decodeEntities(name).replace(/\.pdf$/i, '').replace(/\s+/g, ' ').trim();
+}
+
+// Redosled je bitan: specifičnija pravila idu pre opštijih. Naslovi su čisti
+// srpski, bez sirovih imena fajlova, da bi se identični dokumenti (npr. po jeziku)
+// sveli na jedan red posle dedupe-a u ingestu.
 const TITLE_RULES = [
-  { re: /technical data sheet|tds\b/i, title: () => 'Tehnički list' },
-  { re: /\bdop\b|declaration of performance/i, title: () => 'Izjava o svojstvima (DoP)' },
-  { re: /\bepd\b/i, title: () => 'EPD' },
-  { re: /\beds\b/i, title: () => 'Ekološki list (EDS)' },
-  { re: /installation/i, title: () => 'Uputstvo za ugradnju' },
-  { re: /maintenance|cleaning/i, title: () => 'Uputstvo za održavanje' },
-  { re: /warranty|guarantee/i, title: () => 'Garancija' },
-  { re: /floorscore|certificat|fire|antislip|iso \d|reach\b/i, title: (n) => `Sertifikat — ${n}` },
-  { re: /brochure|guide|catalog/i, title: (n) => `Brošura — ${n}` },
+  { re: /technical data sheet|data sheet|\btds\b|tehnič/i, title: 'Tehnički list' },
+  { re: /declaration of performance|d[ée]claration de performance|\bdop\b/i, title: 'Izjava o svojstvima (DoP)' },
+  { re: /\bepd\b|environmental product declaration/i, title: 'EPD' },
+  { re: /\beds\b|environmental data sheet/i, title: 'Ekološki list (EDS)' },
+  { re: /installation|verlege|\bpose\b/i, title: 'Uputstvo za ugradnju' },
+  { re: /maintenance|cleaning|entretien|održav/i, title: 'Uputstvo za održavanje' },
+  { re: /warrant|waranty|guarantee|garant/i, title: 'Garancija' },
+  { re: /\bfire\b|reaction to fire|\bbfl|vatro/i, title: 'Sertifikat — vatrootpornost' },
+  { re: /antislip|anti-slip|slip resistance|\br1[01]\b|en\s?16165|din\s?51130|klizanj/i, title: 'Sertifikat — otpornost na klizanje' },
+  { re: /floorscore/i, title: 'Sertifikat — FloorScore' },
+  { re: /\breach\b/i, title: 'Sertifikat — REACH' },
+  { re: /\bm1\b|emiss|\bvoc\b|emcheck/i, title: 'Sertifikat — emisije' },
+  { re: /\biso\s?\d|certificat|sertifik/i, title: 'Sertifikat' },
+  { re: /product description|description produit|opis proizvoda/i, title: 'Opis proizvoda' },
+  { re: /brochure|brošur|\bguide\b|catalog|katalog|binder|leaflet|results|\bcard\b|flyer/i, title: 'Brošura' },
 ];
 
 function mapDocumentTitle(name, category) {
-  const n = decodeEntities(name);
+  const n = cleanDocName(name);
   for (const rule of TITLE_RULES) {
-    if (rule.re.test(n)) return rule.title(n);
+    if (rule.re.test(n)) return rule.title;
   }
   if (/installation/i.test(category)) return 'Uputstvo za ugradnju';
-  return n;
+  if (/maintenance/i.test(category)) return 'Uputstvo za održavanje';
+  return n || 'Dokument';
 }
 
 function encodeAssetUrl(url) {
