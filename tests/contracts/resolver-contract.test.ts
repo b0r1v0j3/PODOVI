@@ -87,6 +87,12 @@ vi.mock('@/lib/repositories/product-repository', () => ({
   },
 }));
 
+// Skida `?v=<stamp>` cache-bust token sa Supabase URL-ova da snapshot ostane
+// stabilan kroz buduće re-ingeste (stamp se menja po pokretanju).
+function stripCacheBust(url: string | null): string | null {
+  return url ? url.split('?')[0] : url;
+}
+
 function summarizeProductContract(product: Product & { collectionSlug?: string }) {
   return {
     id: product.id,
@@ -97,7 +103,7 @@ function summarizeProductContract(product: Product & { collectionSlug?: string }
     name: product.name,
     shortDescription: product.shortDescription,
     hasPrimaryImage: Boolean(product.images?.[0]?.url),
-    primaryImageUrl: product.images?.[0]?.url || null,
+    primaryImageUrl: stripCacheBust(product.images?.[0]?.url || null),
     specSample: (product.specs || []).slice(0, 8).map((spec) => ({
       key: spec.key,
       label: spec.label,
@@ -198,7 +204,7 @@ describe('resolve-product contract', () => {
       afterName: mutated.name,
       afterShortDescription: mutated.shortDescription,
       documentCount: mutated.documents?.length || 0,
-      imageUrl: mutated.images?.[0]?.url || null,
+      imageUrl: stripCacheBust(mutated.images?.[0]?.url || null),
       specCount: mutated.specs?.length || 0,
       hasThicknessSpec: (mutated.specs || []).some((spec) => spec.key === 'thickness' || spec.key === 'overall_thickness'),
       hasFormatSpec: (mutated.specs || []).some((spec) => spec.key === 'format'),
