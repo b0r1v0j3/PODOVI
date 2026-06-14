@@ -44,7 +44,13 @@ interface RawCollection {
 }
 
 async function collectionsForCategory(categorySlug: string, categoryName: string): Promise<RawCollection[]> {
-    const { status, body } = await getColorsForCategory(categorySlug);
+    let status: number;
+    let body: any;
+    try {
+        ({ status, body } = await getColorsForCategory(categorySlug));
+    } catch {
+        return []; // poslednja brana: bilo kakav pad get-colors ne ruši celo /cenovnik stablo
+    }
     if (status !== 200 || !body) return [];
 
     // Nested format: { collections: [{ slug, name, colors: [...], colorCount }] }
