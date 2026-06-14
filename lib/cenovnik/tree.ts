@@ -4,6 +4,7 @@
 
 import { getColorsForCategory } from '@/lib/colors/get-colors';
 import { categories, brands } from '@/lib/data/mock-data';
+import { getProductsByCategory } from '@/lib/utils/productDataLoader';
 
 export interface CenovnikCollection {
     slug: string;
@@ -12,6 +13,7 @@ export interface CenovnikCollection {
     categoryName: string;
     brandId: string;
     colorCount: number;
+    existingPrice?: number;
 }
 
 export interface CenovnikBrandGroup {
@@ -38,6 +40,7 @@ interface RawCollection {
     categoryName: string;
     brandId: string;
     colorCount: number;
+    existingPrice?: number;
 }
 
 async function collectionsForCategory(categorySlug: string, categoryName: string): Promise<RawCollection[]> {
@@ -84,9 +87,51 @@ async function collectionsForCategory(categorySlug: string, categoryName: string
     return [];
 }
 
+// Catalog-derived sloj: proizvodi iz kataloga koji nisu već u stablu (po slug-u) i nisu
+// po-boja rute (slug sa "?"). Svaki ulazi kao red bez boja (colorCount 0) pod svojim brendom.
+// existingPrice = product.price (SA PDV-om, popunjeno samo gde katalog ima cenu, npr. Romus).
+function flatProductsForCategory(
+    category: { id: string; slug: string; name: string },
+    existingSlugs: Set<string>,
+): RawCollection[] {
+    let products: any[] = [];
+    try {
+        products = getProductsByCategory(category.id) || [];
+    } catch {
+        return [];
+    }
+    const seen = new Set(existingSlugs);
+    const out: RawCollection[] = [];
+    for (const p of products) {
+        const slug = String(p?.slug || '');
+        if (!slug || slug.includes('?')) continue; // preskoči prazno i po-boja rute
+        if (seen.has(slug)) continue;              // već u stablu (kolekcija-header / dr. izvor)
+        seen.add(slug);
+        const price = typeof p?.price === 'number' && p.price > 0 ? p.price : undefined;
+        out.push({
+            slug,
+            name: String(p?.name || slug),
+            categorySlug: category.slug,
+            categoryName: category.name,
+            brandId: String(p?.brandId || '6'),
+            colorCount: 0,
+            existingPrice: price,
+        });
+    }
+    return out;
+}
+
 export async function loadPriceEntryTree(): Promise<CenovnikTree> {
     const perCategory = await Promise.all(
-        categories.map((category) => collectionsForCategory(category.slug, category.name))
+        categories.map(async (category) => {
+            const fromColors = await collectionsForCategory(category.slug, category.name);
+            const existingSlugs = new Set(fromColors.map((c) => c.slug));
+            const fromCatalog = flatProductsForCategory(
+                { id: category.id, slug: category.slug, name: category.name },
+                existingSlugs,
+            );
+            return [...fromColors, ...fromCatalog];
+        })
     );
 
     const allCollections = perCategory.flat();
@@ -105,6 +150,7 @@ export async function loadPriceEntryTree(): Promise<CenovnikTree> {
             categoryName: collection.categoryName,
             brandId: collection.brandId,
             colorCount: collection.colorCount,
+            existingPrice: collection.existingPrice,
         };
         if (group) {
             group.collections.push(item);
