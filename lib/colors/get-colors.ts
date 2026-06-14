@@ -160,6 +160,7 @@ export async function getColorsForCategory(
         };
     }
 
+    let flatColors: any[] = [];
     try {
         let query = supabase
             .from('colors')
@@ -173,78 +174,78 @@ export async function getColorsForCategory(
         const { data, error } = await query.order('collection_slug').order('code');
 
         if (error) {
-            console.error('Colors API error:', error.message);
-            return { status: 500, body: { error: error.message } };
+            // Ne-fatalno: bez Supabase boja, ali JSON izvori (dole) i dalje prolaze.
+            console.error('Colors API error (non-fatal):', error.message);
+        } else {
+            flatColors = ((data || []) as ColorRow[]).map((color) => ({
+                collection: color.collection_slug,
+                collection_name: color.collection_name,
+                code: color.code,
+                name: color.name,
+                full_name: color.full_name,
+                slug: color.slug,
+                image_url: color.image_url,
+                texture_url: color.texture_url,
+                image_count: color.image_count || 0,
+                lifestyle_url: color.lifestyle_url,
+                welding_rod: color.welding_rod,
+                dimension: color.dimension,
+                format: color.format,
+                overall_thickness: color.overall_thickness,
+                description: color.description,
+                specs: color.specs,
+                collection_specs: color.collection_specs,
+                characteristics: color.characteristics,
+                brandId: '6',
+            }));
         }
-
-        let flatColors = ((data || []) as ColorRow[]).map((color) => ({
-            collection: color.collection_slug,
-            collection_name: color.collection_name,
-            code: color.code,
-            name: color.name,
-            full_name: color.full_name,
-            slug: color.slug,
-            image_url: color.image_url,
-            texture_url: color.texture_url,
-            image_count: color.image_count || 0,
-            lifestyle_url: color.lifestyle_url,
-            welding_rod: color.welding_rod,
-            dimension: color.dimension,
-            format: color.format,
-            overall_thickness: color.overall_thickness,
-            description: color.description,
-            specs: color.specs,
-            collection_specs: color.collection_specs,
-            characteristics: color.characteristics,
-            brandId: '6',
-        }));
-
-        if (category === 'lvt') {
-            const tarkettColors = (tarkettLvtData as TarkettProduct[]).map((product) => {
-                const imageUrl = product.images?.[0] || '';
-                const cleanName = (product.name || '')
-                    .replace(/^(Ess\d+-|iD\s*\d+-|Tarkett\s*)/i, '')
-                    .replace(/-0v$/i, '')
-                    .trim();
-
-                return {
-                    collection: product.collection,
-                    collection_name: product.collection,
-                    code: product.id,
-                    name: cleanName,
-                    full_name: product.name,
-                    slug: product.id,
-                    image_url: imageUrl,
-                    texture_url: imageUrl,
-                    image_count: product.images?.length || 0,
-                    lifestyle_url: null,
-                    welding_rod: null,
-                    dimension: null,
-                    format: null,
-                    overall_thickness: product.specs?.total_thickness || null,
-                    description: product.description,
-                    specs: product.specs,
-                    collection_specs: null,
-                    characteristics: null,
-                    brandId: '3',
-                };
-            });
-
-            flatColors = requestedCollection
-                ? [...flatColors, ...tarkettColors.filter((color) => color.collection === requestedCollection)]
-                : [...flatColors, ...tarkettColors];
-        }
-
-        return {
-            status: 200,
-            body: {
-                total: flatColors.length,
-                collections: Array.from(new Set(flatColors.map((color) => color.collection))).length,
-                colors: flatColors,
-            },
-        };
     } catch (err: any) {
-        console.error('Colors API unexpected error:', err);
-        return { status: 500, body: { error: 'Internal server error' } };
+        // getSupabase ili mreža pukla → ne-fatalno; JSON izvori i dalje prolaze.
+        console.error('Colors table unavailable (non-fatal):', err?.message || err);
     }
+
+    if (category === 'lvt') {
+        const tarkettColors = (tarkettLvtData as TarkettProduct[]).map((product) => {
+            const imageUrl = product.images?.[0] || '';
+            const cleanName = (product.name || '')
+                .replace(/^(Ess\d+-|iD\s*\d+-|Tarkett\s*)/i, '')
+                .replace(/-0v$/i, '')
+                .trim();
+
+            return {
+                collection: product.collection,
+                collection_name: product.collection,
+                code: product.id,
+                name: cleanName,
+                full_name: product.name,
+                slug: product.id,
+                image_url: imageUrl,
+                texture_url: imageUrl,
+                image_count: product.images?.length || 0,
+                lifestyle_url: null,
+                welding_rod: null,
+                dimension: null,
+                format: null,
+                overall_thickness: product.specs?.total_thickness || null,
+                description: product.description,
+                specs: product.specs,
+                collection_specs: null,
+                characteristics: null,
+                brandId: '3',
+            };
+        });
+
+        flatColors = requestedCollection
+            ? [...flatColors, ...tarkettColors.filter((color) => color.collection === requestedCollection)]
+            : [...flatColors, ...tarkettColors];
+    }
+
+    return {
+        status: 200,
+        body: {
+            total: flatColors.length,
+            collections: Array.from(new Set(flatColors.map((color) => color.collection))).length,
+            colors: flatColors,
+        },
+    };
 }
