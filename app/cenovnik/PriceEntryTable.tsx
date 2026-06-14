@@ -11,16 +11,12 @@ import {
   baseToWithVat,
   withVatToBase,
 } from '@/lib/cenovnik/vat';
+import { initialPricePair, isCollectionChanged, type PricePair } from '@/lib/cenovnik/prefill';
 
 interface ColorOption {
   code: string;
   name: string;
   slug: string;
-}
-
-interface PricePair {
-  base: string;
-  withVat: string;
 }
 
 interface ColorState {
@@ -44,7 +40,17 @@ export default function PriceEntryTable({
 
   const [expandedBrand, setExpandedBrand] = useState<Record<string, boolean>>({});
   const [expandedColl, setExpandedColl] = useState<Record<string, boolean>>({});
-  const [collPrices, setCollPrices] = useState<Record<string, PricePair>>({});
+  const [collPrices, setCollPrices] = useState<Record<string, PricePair>>(() => {
+    // Pred-popuni cene proizvoda koji već imaju cenu (Romus, SA PDV-om); ostalo prazno.
+    const init: Record<string, PricePair> = {};
+    for (const brand of tree.brands) {
+      for (const c of brand.collections) {
+        const pair = initialPricePair(c.existingPrice);
+        if (pair.base || pair.withVat) init[collKey(c)] = pair;
+      }
+    }
+    return init;
+  });
   const [colorStates, setColorStates] = useState<Record<string, Record<string, ColorState>>>({});
   const [colorsByColl, setColorsByColl] = useState<Record<string, ColorOption[]>>({});
   const [loadingColors, setLoadingColors] = useState<Record<string, boolean>>({});
@@ -215,7 +221,8 @@ export default function PriceEntryTable({
           overrides.push({ colorSlug: slug, colorCode: m?.code, colorName: m?.name, base: ob, withVat: ow });
         }
 
-        if (base != null || withVat != null || overrides.length > 0) {
+        const changed = isCollectionChanged(cp || { base: '', withVat: '' }, c.existingPrice);
+        if (changed || overrides.length > 0) {
           collections.push({
             collectionSlug: c.slug,
             collectionName: c.name,
