@@ -1,0 +1,138 @@
+const fs = require('fs');
+const path = require('path');
+const sharp = require('sharp');
+const core = require('./lib/ingest-core.js');
+const hm = require('./lib/hotlink-migrate.js');
+
+const DATA_DIR = path.join(process.cwd(), 'public', 'data');
+const PENDING_PATH = path.join(DATA_DIR, 'tarkett-migration-pending.json');
+const IMAGES_BUCKET = 'product-images';
+const DOCS_BUCKET = 'product-documents';
+const DEST_PREFIX = 'products/tarkett-migrated';
+const MIN_IMG_WIDTH = 600;
+const MAX_PDF_BYTES = 52_000_000; // ~49.6 MiB, ispod Supabase 50 MiB globalnog limita
+
+// Redosled: LVT prvi (najveći), pa ostali. Samo fajlovi koji sadrže Tarkett hotlinkove.
+const TARGET_FILES = [
+  'tarkett_lvt_products.json',
+  'tarkett_homogeneous_vinyl_colors.json',
+  'tarkett_vinyl_home_colors.json',
+  'tarkett_heterogeneous_vinyl_colors.json',
+  'tarkett_sport_colors.json',
+  'tarkett_documents_index.json',
+  'tarkett_wood_collection_index.json',
+  'tarkett_lajsne_variants.json',
+];
+
+function parseArgs() {
+  const args = { dryRun: false, files: [], skipExisting: false };
+  for (const a of process.argv.slice(2)) {
+    if (a === '--dry-run') args.dryRun = true;
+    else if (a === '--skip-existing') args.skipExisting = true;
+    else if (a.startsWith('--file=')) args.files.push(a.split('=')[1]);
+  }
+  return args;
+}
+
+function destPath(basename) {
+  const dot = basename.lastIndexOf('.');
+  const stem = dot > 0 ? basename.slice(0, dot) : basename;
+  const ext = dot > 0 ? basename.slice(dot + 1).toLowerCase() : 'bin';
+  return `${DEST_PREFIX}/${core.slugify(stem)}.${ext === 'jpeg' ? 'jpg' : ext}`;
+}
+
+async function migrateImage(supabase, manifest, info) {
+  const mKey = `asset:${info.clean}`;
+  if (manifest.has(mKey)) return manifest.get(mKey).publicUrl;
+  // probaj XXL, fallback na original
+  let buffer;
+  try { buffer = await core.downloadAsset(info.xxlUrl); }
+  catch { buffer = await core.downloadAsset(info.fallbackUrl); }
+  const meta = await core.withTimeout(sharp(buffer).metadata(), 20000, `sharp ${info.basename}`);
+  if (!meta.width || meta.width < MIN_IMG_WIDTH) throw new Error(`slika ${meta.width || '?'}px < ${MIN_IMG_WIDTH}px`);
+  const publicUrl = await core.uploadToBucket(supabase, IMAGES_BUCKET, destPath(info.basename), buffer);
+  manifest.record(mKey, { publicUrl });
+  return publicUrl;
+}
+
+async function migratePdf(supabase, manifest, info) {
+  const mKey = `asset:${info.clean}`;
+  if (manifest.has(mKey)) return manifest.get(mKey).publicUrl;
+  // HEAD provera veličine (da ne preuzimamo 50MB uzalud)
+  let size = 0;
+  try {
+    const head = await core.withTimeout(fetch(info.clean, { method: 'HEAD', headers: core.BROWSER_HEADERS }), 20000, `head ${info.basename}`);
+    size = Number(head.headers.get('content-length') || 0);
+  } catch { /* ako HEAD padne, probaćemo download pa upload */ }
+  if (size > MAX_PDF_BYTES) { const e = new Error(`PDF ${(size / 1048576).toFixed(1)}MB > limit`); e.oversized = true; throw e; }
+  const buffer = await core.downloadAsset(info.clean);
+  if (!buffer.slice(0, 5).toString().startsWith('%PDF')) throw new Error('nije PDF');
+  if (buffer.length > MAX_PDF_BYTES) { const e = new Error(`PDF ${(buffer.length / 1048576).toFixed(1)}MB > limit`); e.oversized = true; throw e; }
+  const publicUrl = await core.uploadToBucket(supabase, DOCS_BUCKET, destPath(info.basename), buffer);
+  manifest.record(mKey, { publicUrl });
+  return publicUrl;
+}
+
+(async () => {
+  const args = parseArgs();
+  const manifest = core.loadManifest('migrate-tarkett');
+  const supabase = args.dryRun ? null : core.getSupabase();
+  const targets = TARGET_FILES.filter((f) => args.files.length === 0 || args.files.includes(f));
+
+  // 1) Sakupi sve jedinstvene URL-ove iz ciljnih fajlova
+  const fileStrings = new Map();
+  const allUrls = new Set();
+  for (const f of targets) {
+    const p = path.join(DATA_DIR, f);
+    if (!fs.existsSync(p)) { console.log(`⚠️  nema ${f}`); continue; }
+    const s = fs.readFileSync(p, 'utf8');
+    fileStrings.set(f, s);
+    for (const u of hm.extractTarkettUrls(s)) allUrls.add(u);
+  }
+  console.log(`🎯 fajlova: ${targets.length} | jedinstvenih Tarkett URL-ova: ${allUrls.size}${args.dryRun ? ' (DRY-RUN)' : ''}`);
+
+  // 2) Migriraj svaki jedinstveni asset → URL mapa
+  const urlMap = {};
+  const pending = [];
+  let done = 0, img = 0, pdf = 0;
+  for (const url of allUrls) {
+    const info = hm.classifyTarkettUrl(url);
+    if (info.type === 'other') { pending.push({ url, reason: 'nepoznat tip' }); continue; }
+    if (args.dryRun) { (info.type === 'image' ? img++ : pdf++); continue; }
+    try {
+      const publicUrl = info.type === 'image'
+        ? await migrateImage(supabase, manifest, info)
+        : await migratePdf(supabase, manifest, info);
+      urlMap[url] = publicUrl;
+      info.type === 'image' ? img++ : pdf++;
+      if (++done % 50 === 0) { manifest.save(); console.log(`   … ${done}/${allUrls.size}`); }
+    } catch (err) {
+      if (err.oversized) pending.push({ url, reason: err.message });
+      else { pending.push({ url, reason: err.message }); console.log(`   ⚠️ ${info.basename}: ${err.message}`); }
+    }
+  }
+  if (!args.dryRun) manifest.save();
+  console.log(`✅ migrirano: slike ${img} | pdf ${pdf} | pending ${pending.length}`);
+
+  if (args.dryRun) {
+    console.log(`(dry-run: slike ${img}, pdf ${pdf}, other/pending ${pending.length})`);
+    return;
+  }
+
+  // 3) Prepiši sve pojave u svakom fajlu preko mape (oversized/pending ostaju kako jesu)
+  for (const f of targets) {
+    const s = fileStrings.get(f);
+    if (!s) continue;
+    const out = hm.rewriteString(s, urlMap);
+    if (out !== s) core.writeJsonWithBackup(path.join(DATA_DIR, f), JSON.parse(out), `migrate-${f.replace(/\.json$/, '')}`);
+  }
+
+  // 4) Upiši/azuriraj pending listu (dozvoljeni izuzetak za contract test)
+  const prevPending = fs.existsSync(PENDING_PATH) ? JSON.parse(fs.readFileSync(PENDING_PATH, 'utf8')) : [];
+  const mergedByUrl = new Map(prevPending.map((x) => [x.url, x]));
+  for (const x of pending) mergedByUrl.set(x.url, x);
+  // ukloni iz pending one koji su sada migrirani (re-run posle dizanja limita)
+  for (const u of Object.keys(urlMap)) mergedByUrl.delete(u);
+  fs.writeFileSync(PENDING_PATH, JSON.stringify([...mergedByUrl.values()], null, 2));
+  console.log(`📝 pending lista: ${mergedByUrl.size} (public/data/tarkett-migration-pending.json)`);
+})().catch((err) => { console.error('❌', err); process.exit(1); });
