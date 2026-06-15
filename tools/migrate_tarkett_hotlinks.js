@@ -118,12 +118,19 @@ async function migratePdf(supabase, manifest, info) {
     if (info.type === 'other') { pending.push({ url, reason: 'nepoznat tip' }); continue; }
     if (args.dryRun) { (info.type === 'image' ? img++ : pdf++); continue; }
     try {
-      const publicUrl = info.type === 'image'
-        ? await migrateImage(supabase, manifest, info)
-        : await migratePdf(supabase, manifest, info);
+      // Tvrdi per-asset plafon povrh internih timeout-a (ingest-core): nijedan asset ne sme da
+      // zaglavi ceo run. Lekcija: zastao socket body-read može da prođe interne timeout-e —
+      // ovo ga sigurno prekida (Promise.race vs setTimeout, event loop ostaje živ).
+      const publicUrl = await core.withTimeout(
+        info.type === 'image'
+          ? migrateImage(supabase, manifest, info)
+          : migratePdf(supabase, manifest, info),
+        120000,
+        `asset ${info.basename}`,
+      );
       urlMap[url] = publicUrl;
       info.type === 'image' ? img++ : pdf++;
-      if (++done % 50 === 0) { manifest.save(); console.log(`   … ${done}/${allUrls.size}`); }
+      if (++done % 25 === 0) { manifest.save(); console.log(`   … ${done}/${allUrls.size}`); }
     } catch (err) {
       if (err.oversized) pending.push({ url, reason: err.message });
       else { pending.push({ url, reason: err.message }); console.log(`   ⚠️ ${info.basename}: ${err.message}`); }
