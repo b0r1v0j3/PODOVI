@@ -13,12 +13,20 @@ function encodeFetchUrl(url) {
   }
 }
 
+// Izvor za fetch generisanih dokumenata: media.tarkett-image.com/docs/<locale>/pdf/... vraća
+// 403 (Akamai), ali isti put na www.tarkett.rs radi (specifications → PDF; format-table → JSON).
+// Samo te /docs/<locale>/pdf/ endpoint-e rerutiramo; obični /docs/<fajl>.pdf ostaju na media.
+function fetchSourceUrl(clean) {
+  const m = String(clean || '').match(/^https:\/\/media\.tarkett-image\.com\/docs\/([a-z]{2}_[A-Z]{2}\/pdf\/.+)$/);
+  return m ? `https://www.tarkett.rs/${m[1]}` : String(clean || '');
+}
+
 // Klasifikuj Tarkett URL: image (sa XXL transformacijom + fallback), pdf, ili other.
 function classifyTarkettUrl(url) {
   const clean = String(url || '').split('?')[0];
   const basename = clean.split('/').pop() || '';
   if (/\/docs\//.test(clean) || /\.pdf$/i.test(basename)) {
-    return { type: 'pdf', clean, basename, cleanFetch: encodeFetchUrl(clean) };
+    return { type: 'pdf', clean, basename, cleanFetch: encodeFetchUrl(fetchSourceUrl(clean)) };
   }
   if (/\.(jpe?g|png|webp)$/i.test(basename)) {
     // size segment (/large/, /medium/, /XL/, /large-high/) -> /XXL/ (1920px); fallback = original
@@ -95,4 +103,5 @@ module.exports = {
   encodeFetchUrl,
   hasExtension,
   destPathFor,
+  fetchSourceUrl,
 };
