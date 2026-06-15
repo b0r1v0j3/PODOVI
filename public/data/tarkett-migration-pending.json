@@ -22,5 +22,41 @@
   {
     "url": "https://media.tarkett-image.com/docs/ID_SEE_ModularT_7__SR.pdf",
     "reason": "PDF 52.7MB > limit"
+  },
+  {
+    "url": "https://media.tarkett-image.com/docs/Brochure-iQ-Optima-INT.pdf",
+    "reason": "PDF 66.3MB > limit"
+  },
+  {
+    "url": "https://media.tarkett-image.com/large/TH_Srento_1.jpg",
+    "reason": "HTTP 403 za https://media.tarkett-image.com/large/TH_Srento_1.jpg"
+  },
+  {
+    "url": "https://media.tarkett-image.com/docs/BR_INT_Indoor_Sports.pdf",
+    "reason": "PDF 98.5MB > limit"
+  },
+  {
+    "url": "https://media.tarkett-image.com/docs/Installation-Guide-Lumaflex_Energy_Linosport_xf2-EN.pdf",
+    "reason": "HTTP 403 za https://media.tarkett-image.com/docs/Installation-Guide-Lumaflex_Energy_Linosport_xf2-EN.pdf"
+  },
+  {
+    "url": "https://media.tarkett-image.com/docs/IG_EN_Tarkett_Wood_T-Lock_Installation_Instructions.pdf",
+    "reason": "HTTP 403 za https://media.tarkett-image.com/docs/IG_EN_Tarkett_Wood_T-Lock_Installation_Instructions.pdf"
+  },
+  {
+    "url": "https://media.tarkett-image.com/docs/MI_EN_Tarkett_Wood_Maintenance_Instructions.pdf",
+    "reason": "HTTP 403 za https://media.tarkett-image.com/docs/MI_EN_Tarkett_Wood_Maintenance_Instructions.pdf"
+  },
+  {
+    "url": "https://media.tarkett-image.com/docs/ProductCatalogue_Europarquet_2025.pdf",
+    "reason": "HTTP 403 za https://media.tarkett-image.com/docs/ProductCatalogue_Europarquet_2025.pdf"
+  },
+  {
+    "url": "https://media.tarkett-image.com/docs/Sertifikat_EKO.pdf",
+    "reason": "HTTP 403 za https://media.tarkett-image.com/docs/Sertifikat_EKO.pdf"
+  },
+  {
+    "url": "https://media.tarkett-image.com/docs/TDS_Winter_832.pdf",
+    "reason": "HTTP 403 za https://media.tarkett-image.com/docs/TDS_Winter_832.pdf"
   }
 ]
