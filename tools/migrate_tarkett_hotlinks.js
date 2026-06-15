@@ -109,33 +109,42 @@ async function migratePdf(supabase, manifest, info) {
   const migratableInfos = [...allUrls].map((u) => hm.classifyTarkettUrl(u)).filter((i) => i.type !== 'other');
   assertNoDestCollisions(migratableInfos);
 
-  // 2) Migriraj svaki jedinstveni asset → URL mapa
+  // 2) Migriraj svaki jedinstveni asset → URL mapa. Paralelno (worker-pool) jer je posao
+  // mrežno-vezan (download+upload); CONCURRENCY radnika vuče iz zajedničkog reda. JS je
+  // jednonitni → idx++/push/brojači su bezbedni bez zaključavanja.
   const urlMap = {};
   const pending = [];
-  let done = 0, img = 0, pdf = 0;
-  for (const url of allUrls) {
-    const info = hm.classifyTarkettUrl(url);
-    if (info.type === 'other') { pending.push({ url, reason: 'nepoznat tip' }); continue; }
-    if (args.dryRun) { (info.type === 'image' ? img++ : pdf++); continue; }
-    try {
-      // Tvrdi per-asset plafon povrh internih timeout-a (ingest-core): nijedan asset ne sme da
-      // zaglavi ceo run. Lekcija: zastao socket body-read može da prođe interne timeout-e —
-      // ovo ga sigurno prekida (Promise.race vs setTimeout, event loop ostaje živ).
-      const publicUrl = await core.withTimeout(
-        info.type === 'image'
-          ? migrateImage(supabase, manifest, info)
-          : migratePdf(supabase, manifest, info),
-        120000,
-        `asset ${info.basename}`,
-      );
-      urlMap[url] = publicUrl;
-      info.type === 'image' ? img++ : pdf++;
-      if (++done % 25 === 0) { manifest.save(); console.log(`   … ${done}/${allUrls.size}`); }
-    } catch (err) {
-      if (err.oversized) pending.push({ url, reason: err.message });
-      else { pending.push({ url, reason: err.message }); console.log(`   ⚠️ ${info.basename}: ${err.message}`); }
+  const urlList = [...allUrls];
+  const CONCURRENCY = args.dryRun ? 1 : 8;
+  let idx = 0, done = 0, img = 0, pdf = 0;
+
+  async function worker() {
+    while (idx < urlList.length) {
+      const url = urlList[idx++];
+      const info = hm.classifyTarkettUrl(url);
+      if (info.type === 'other') { pending.push({ url, reason: 'nepoznat tip' }); continue; }
+      if (args.dryRun) { (info.type === 'image' ? img++ : pdf++); continue; }
+      try {
+        // Tvrdi per-asset plafon (120s) povrh internih timeout-a: zastao socket body-read može
+        // da prođe interne timeout-e; Promise.race vs setTimeout sigurno prekida (event loop živ).
+        const publicUrl = await core.withTimeout(
+          info.type === 'image'
+            ? migrateImage(supabase, manifest, info)
+            : migratePdf(supabase, manifest, info),
+          120000,
+          `asset ${info.basename}`,
+        );
+        urlMap[url] = publicUrl;
+        info.type === 'image' ? img++ : pdf++;
+        if (++done % 25 === 0) { manifest.save(); console.log(`   … ${done}/${urlList.length} (img ${img} pdf ${pdf} pending ${pending.length})`); }
+      } catch (err) {
+        if (err.oversized) pending.push({ url, reason: err.message });
+        else { pending.push({ url, reason: err.message }); console.log(`   ⚠️ ${info.basename}: ${err.message}`); }
+      }
     }
   }
+
+  await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
   if (!args.dryRun) manifest.save();
   console.log(`✅ migrirano: slike ${img} | pdf ${pdf} | pending ${pending.length}`);
 
