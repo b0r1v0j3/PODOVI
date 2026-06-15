@@ -6,6 +6,7 @@ const {
   encodeFetchUrl,
   hasExtension,
   destPathFor,
+  fetchSourceUrl,
 } = require('../../tools/lib/hotlink-migrate.js');
 const { slugify } = require('../../tools/lib/ingest-core.js');
 
@@ -111,6 +112,27 @@ describe('hotlink-migrate: destPathFor (kolizijski-bezbedna storage putanja)', (
     expect(hasExtension('x.jpg')).toBe(true);
     expect(hasExtension('specifications')).toBe(false);
     expect(hasExtension('DoP_all language.pdf')).toBe(true);
+  });
+});
+
+describe('hotlink-migrate: fetchSourceUrl (generisani /docs/<locale>/pdf/ → tarkett.rs)', () => {
+  it('rerutira specifications endpoint na tarkett.rs (media 403)', () => {
+    expect(fetchSourceUrl('https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-black-0130/specifications'))
+      .toBe('https://www.tarkett.rs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-black-0130/specifications');
+  });
+  it('rerutira format-table endpoint na tarkett.rs', () => {
+    expect(fetchSourceUrl('https://media.tarkett-image.com/docs/sr_RS/pdf/collection-X/color-Y/format-table'))
+      .toBe('https://www.tarkett.rs/sr_RS/pdf/collection-X/color-Y/format-table');
+  });
+  it('obične /docs/<fajl>.pdf NE rerutira (rade na media)', () => {
+    const u = 'https://media.tarkett-image.com/docs/DS-Tarkett-x.pdf';
+    expect(fetchSourceUrl(u)).toBe(u);
+  });
+  it('classifyTarkettUrl koristi tarkett.rs za cleanFetch generisanih endpoint-a', () => {
+    const r = classifyTarkettUrl('https://media.tarkett-image.com/docs/sr_RS/pdf/collection-X/color-Y/specifications');
+    expect(r.type).toBe('pdf');
+    expect(r.cleanFetch).toBe('https://www.tarkett.rs/sr_RS/pdf/collection-X/color-Y/specifications');
+    expect(r.clean).toContain('media.tarkett-image.com'); // rewrite ključ ostaje original
   });
 });
 
