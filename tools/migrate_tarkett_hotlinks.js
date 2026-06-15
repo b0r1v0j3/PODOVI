@@ -34,11 +34,24 @@ function parseArgs() {
   return args;
 }
 
-function destPath(basename) {
-  const dot = basename.lastIndexOf('.');
-  const stem = dot > 0 ? basename.slice(0, dot) : basename;
-  const ext = dot > 0 ? basename.slice(dot + 1).toLowerCase() : 'bin';
-  return `${DEST_PREFIX}/${core.slugify(stem)}.${ext === 'jpeg' ? 'jpg' : ext}`;
+// Storage putanja iz info-a. Kolizijski-bezbedno (vidi hm.destPathFor): bez-ekstenzije
+// Tarkett dokumenti dobijaju jedinstven stem iz putanje umesto deljenog 'specifications'.
+function destPath(info) {
+  return hm.destPathFor(info, DEST_PREFIX, core.slugify);
+}
+
+// Sanity guard: dva različita izvorna URL-a NE SMEJU mapirati na istu storage putanju
+// (inače upsert:true prepisuje i servira pogrešan dokument). Pokreni pre migracije.
+function assertNoDestCollisions(infos) {
+  const byDest = new Map();
+  for (const info of infos) {
+    const dp = destPath(info);
+    const prev = byDest.get(dp);
+    if (prev && prev !== info.clean) {
+      throw new Error(`destPath kolizija: "${prev}" i "${info.clean}" → ${dp}`);
+    }
+    byDest.set(dp, info.clean);
+  }
 }
 
 async function migrateImage(supabase, manifest, info) {
@@ -46,11 +59,11 @@ async function migrateImage(supabase, manifest, info) {
   if (manifest.has(mKey)) return manifest.get(mKey).publicUrl;
   // probaj XXL, fallback na original
   let buffer;
-  try { buffer = await core.downloadAsset(info.xxlUrl); }
-  catch { buffer = await core.downloadAsset(info.fallbackUrl); }
+  try { buffer = await core.downloadAsset(info.xxlFetch || info.xxlUrl); }
+  catch { buffer = await core.downloadAsset(info.fallbackFetch || info.fallbackUrl); }
   const meta = await core.withTimeout(sharp(buffer).metadata(), 20000, `sharp ${info.basename}`);
   if (!meta.width || meta.width < MIN_IMG_WIDTH) throw new Error(`slika ${meta.width || '?'}px < ${MIN_IMG_WIDTH}px`);
-  const publicUrl = await core.uploadToBucket(supabase, IMAGES_BUCKET, destPath(info.basename), buffer);
+  const publicUrl = await core.uploadToBucket(supabase, IMAGES_BUCKET, destPath(info), buffer);
   manifest.record(mKey, { publicUrl });
   return publicUrl;
 }
@@ -60,15 +73,16 @@ async function migratePdf(supabase, manifest, info) {
   if (manifest.has(mKey)) return manifest.get(mKey).publicUrl;
   // HEAD provera veličine (da ne preuzimamo 50MB uzalud)
   let size = 0;
+  const fetchUrl = info.cleanFetch || info.clean;
   try {
-    const head = await core.withTimeout(fetch(info.clean, { method: 'HEAD', headers: core.BROWSER_HEADERS }), 20000, `head ${info.basename}`);
+    const head = await core.withTimeout(fetch(fetchUrl, { method: 'HEAD', headers: core.BROWSER_HEADERS }), 20000, `head ${info.basename}`);
     size = Number(head.headers.get('content-length') || 0);
   } catch { /* ako HEAD padne, probaćemo download pa upload */ }
   if (size > MAX_PDF_BYTES) { const e = new Error(`PDF ${(size / 1048576).toFixed(1)}MB > limit`); e.oversized = true; throw e; }
-  const buffer = await core.downloadAsset(info.clean);
+  const buffer = await core.downloadAsset(fetchUrl);
   if (!buffer.slice(0, 5).toString().startsWith('%PDF')) throw new Error('nije PDF');
   if (buffer.length > MAX_PDF_BYTES) { const e = new Error(`PDF ${(buffer.length / 1048576).toFixed(1)}MB > limit`); e.oversized = true; throw e; }
-  const publicUrl = await core.uploadToBucket(supabase, DOCS_BUCKET, destPath(info.basename), buffer);
+  const publicUrl = await core.uploadToBucket(supabase, DOCS_BUCKET, destPath(info), buffer);
   manifest.record(mKey, { publicUrl });
   return publicUrl;
 }
@@ -90,6 +104,10 @@ async function migratePdf(supabase, manifest, info) {
     for (const u of hm.extractTarkettUrls(s)) allUrls.add(u);
   }
   console.log(`🎯 fajlova: ${targets.length} | jedinstvenih Tarkett URL-ova: ${allUrls.size}${args.dryRun ? ' (DRY-RUN)' : ''}`);
+
+  // 1b) Fail-fast: nijedna dva izvora ne smeju mapirati na istu storage putanju.
+  const migratableInfos = [...allUrls].map((u) => hm.classifyTarkettUrl(u)).filter((i) => i.type !== 'other');
+  assertNoDestCollisions(migratableInfos);
 
   // 2) Migriraj svaki jedinstveni asset → URL mapa
   const urlMap = {};

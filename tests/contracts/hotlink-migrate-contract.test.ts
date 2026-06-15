@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-const { classifyTarkettUrl, extractTarkettUrls, rewriteString } = require('../../tools/lib/hotlink-migrate.js');
+const {
+  classifyTarkettUrl,
+  extractTarkettUrls,
+  rewriteString,
+  encodeFetchUrl,
+  hasExtension,
+  destPathFor,
+} = require('../../tools/lib/hotlink-migrate.js');
+const { slugify } = require('../../tools/lib/ingest-core.js');
 
 describe('hotlink-migrate: classifyTarkettUrl', () => {
   it('slika /large/ → tip image + XXL transformacija + fallback', () => {
@@ -37,6 +45,72 @@ describe('hotlink-migrate: extractTarkettUrls', () => {
   });
   it('ne hvata druge hostove', () => {
     expect(extractTarkettUrls('"https://cdn.gerflor.com/a.jpg"')).toEqual([]);
+  });
+  it('hvata CEO URL sa razmacima u putanji (ne preseca na razmaku)', () => {
+    // Regresija: stari regex /[^\s"]+/ presekao bi na razmaku → fragment .../IN_iD
+    const s = '{"img":"https://media.tarkett-image.com/large/IN_iD Tilt HIT_24749018_002.jpg"}';
+    expect(extractTarkettUrls(s)).toEqual([
+      'https://media.tarkett-image.com/large/IN_iD Tilt HIT_24749018_002.jpg',
+    ]);
+  });
+  it('hvata PDF sa razmacima i ne curi van navodnika', () => {
+    const s = '["https://media.tarkett-image.com/docs/DoP_iD_Tilt_HIT_all language.pdf","x"]';
+    expect(extractTarkettUrls(s)).toEqual([
+      'https://media.tarkett-image.com/docs/DoP_iD_Tilt_HIT_all language.pdf',
+    ]);
+  });
+});
+
+describe('hotlink-migrate: encodeFetchUrl (razmaci → %20 za fetch)', () => {
+  it('enkoduje razmake za mrežu, ostavlja validan URL netaknut', () => {
+    expect(encodeFetchUrl('https://media.tarkett-image.com/large/IN_iD Tilt HIT.jpg'))
+      .toBe('https://media.tarkett-image.com/large/IN_iD%20Tilt%20HIT.jpg');
+    expect(encodeFetchUrl('https://media.tarkett-image.com/large/x.jpg'))
+      .toBe('https://media.tarkett-image.com/large/x.jpg');
+  });
+  it('idempotentno (već enkodovan ostaje isti)', () => {
+    const enc = 'https://media.tarkett-image.com/large/IN_iD%20Tilt.jpg';
+    expect(encodeFetchUrl(enc)).toBe(enc);
+  });
+  it('classifyTarkettUrl daje *Fetch polja sa enkodovanim razmacima, literal ostaje za rewrite', () => {
+    const r = classifyTarkettUrl('https://media.tarkett-image.com/large/IN_iD Tilt.jpg');
+    expect(r.clean).toBe('https://media.tarkett-image.com/large/IN_iD Tilt.jpg');
+    expect(r.xxlFetch).toBe('https://media.tarkett-image.com/XXL/IN_iD%20Tilt.jpg');
+    expect(r.fallbackFetch).toBe('https://media.tarkett-image.com/large/IN_iD%20Tilt.jpg');
+    const pdf = classifyTarkettUrl('https://media.tarkett-image.com/docs/DoP all language.pdf');
+    expect(pdf.cleanFetch).toBe('https://media.tarkett-image.com/docs/DoP%20all%20language.pdf');
+  });
+});
+
+describe('hotlink-migrate: destPathFor (kolizijski-bezbedna storage putanja)', () => {
+  const PREFIX = 'products/tarkett-migrated';
+  it('fajl sa ekstenzijom: slug(stem).ext, jpeg→jpg', () => {
+    const info = classifyTarkettUrl('https://media.tarkett-image.com/large/IN_LVT.jpg');
+    expect(destPathFor(info, PREFIX, slugify)).toBe('products/tarkett-migrated/in-lvt.jpg');
+    const jpeg = classifyTarkettUrl('https://media.tarkett-image.com/large/A.jpeg');
+    expect(destPathFor(jpeg, PREFIX, slugify)).toBe('products/tarkett-migrated/a.jpg');
+  });
+  it('bez-ekstenzije /docs/ dokumenti: DVE razlicite boje → DVE razlicite putanje (regresija kolizije)', () => {
+    const a = classifyTarkettUrl('https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-black-0130/specifications');
+    const b = classifyTarkettUrl('https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-blue-0889/specifications');
+    const pa = destPathFor(a, PREFIX, slugify);
+    const pb = destPathFor(b, PREFIX, slugify);
+    expect(a.type).toBe('pdf');
+    expect(pa).not.toBe(pb); // pre fiksa: oba 'specifications.bin'
+    expect(pa.endsWith('.pdf')).toBe(true);
+    expect(pa).toContain('eminent-black-0130');
+    expect(pb).toContain('eminent-blue-0889');
+  });
+  it('format-table i specifications iste boje NE kolidiraju', () => {
+    const base = 'https://media.tarkett-image.com/docs/sr_RS/pdf/collection-C000119-iq-eminent/eminent-black-0130/';
+    const spec = destPathFor(classifyTarkettUrl(base + 'specifications'), PREFIX, slugify);
+    const fmt = destPathFor(classifyTarkettUrl(base + 'format-table'), PREFIX, slugify);
+    expect(spec).not.toBe(fmt);
+  });
+  it('hasExtension razlikuje fajl od bez-ekstenzije putanje', () => {
+    expect(hasExtension('x.jpg')).toBe(true);
+    expect(hasExtension('specifications')).toBe(false);
+    expect(hasExtension('DoP_all language.pdf')).toBe(true);
   });
 });
 
