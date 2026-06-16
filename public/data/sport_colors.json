@@ -1,221 +1,1959 @@
 {
-    "collections": [
+  "collections": [
+    {
+      "name": "DLW Colorette Sport",
+      "slug": "dlw-colorette-sport",
+      "url": "https://www.gerflor-cee.com/products/dlw-colorette-sport",
+      "colorCount": 12,
+      "description": "Opis:\nDLW Colorette Sport je prirodni sportski linoleum za sale i vise-namenske sportske prostore, sa izrazenijom paletom boja i Neocare povrsinom.\n\nUgradnja:\nLepljenje u sistemu sportskog poda; linije terena mogu se nanositi nakon ugradnje.\n\nPrimena:\nSkolske sale, sportske dvorane, gimnazije i rekreativni objekti.\n\nKljucne prednosti:\nPrirodni sportski pod.\nPremium sportski dizajn.\nNeocare povrsinska obrada.",
+      "characteristics": {
+        "Tip": "Sportski linoleum",
+        "Format": "Rolna",
+        "Ukupna debljina": "4.00 mm",
+        "Tip instalacije": "Lepljenje",
+        "Namena": "Sportske sale i gimnazije"
+      },
+      "colors": [
         {
-            "name": "DLW Colorette Sport",
-            "slug": "dlw-colorette-sport",
-            "url": "https://www.gerflor-cee.com/products/dlw-colorette-sport",
-            "colorCount": 12,
-            "description": "Opis:\nDLW Colorette Sport je prirodni sportski linoleum za sale i vise-namenske sportske prostore, sa izrazenijom paletom boja i Neocare povrsinom.\n\nUgradnja:\nLepljenje u sistemu sportskog poda; linije terena mogu se nanositi nakon ugradnje.\n\nPrimena:\nSkolske sale, sportske dvorane, gimnazije i rekreativni objekti.\n\nKljucne prednosti:\nPrirodni sportski pod.\nPremium sportski dizajn.\nNeocare povrsinska obrada.",
-            "characteristics": {
-                "Tip": "Sportski linoleum",
-                "Format": "Rolna",
-                "Ukupna debljina": "4.00 mm",
-                "Tip instalacije": "Lepljenje",
-                "Namena": "Sportske sale i gimnazije"
-            },
-            "colors": [
-                {
-                    "code": "1001",
-                    "name": "BANANA YELLOW",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1001-banana-yellow.jpg"
-                },
-                {
-                    "code": "1004",
-                    "name": "BLUEBIRD",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1004-bluebird.jpg"
-                },
-                {
-                    "code": "1012",
-                    "name": "LIGHT BEIGE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1012-light-beige.jpg"
-                },
-                {
-                    "code": "1052",
-                    "name": "OXID GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1052-oxid-grey.jpg"
-                },
-                {
-                    "code": "1059",
-                    "name": "STONE GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1059-stone-grey.jpg"
-                },
-                {
-                    "code": "1080",
-                    "name": "ELEPHANT GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1080-elephant-grey.jpg"
-                },
-                {
-                    "code": "1118",
-                    "name": "POWER RED",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1118-power-red.jpg"
-                },
-                {
-                    "code": "1123",
-                    "name": "POPPY BLUE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1123-poppy-blue.jpg"
-                },
-                {
-                    "code": "1132",
-                    "name": "SPICY GREEN",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1132-spicy-green.jpg"
-                },
-                {
-                    "code": "1171",
-                    "name": "SUNRISE ORANGE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1171-sunrise-orange.jpg"
-                },
-                {
-                    "code": "1559",
-                    "name": "VINTAGE GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1559-vintage-grey.jpg"
-                },
-                {
-                    "code": "1574",
-                    "name": "PURE GREEN",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1574-pure-green.jpg"
-                }
-            ],
-            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/collection.jpg"
+          "code": "1001",
+          "name": "BANANA YELLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1001-banana-yellow.jpg"
         },
         {
-            "name": "DLW Marmorette Sport 3.2mm",
-            "slug": "dlw-marmorette-sport-32mm",
-            "url": "https://www.gerflor-cee.com/products/dlw-marmorette-sport-32mm",
-            "colorCount": 7,
-            "description": "Opis:\nDLW Marmorette Sport 3.2mm je sportski linoleum sa mramornim izgledom za sale i gimnasticke prostore gde je vazna prirodna osnova i laksi mix boja.\n\nUgradnja:\nLepljenje u sistemu sportskog poda sa mogucnoscu naknadnog obelezavanja linija.\n\nPrimena:\nSportske sale, gimnasticki prostori i vise-namenski objekti.\n\nKljucne prednosti:\n3.2 mm debljina.\n8 boja za mix and match pristup.\nPrirodni sportski linoleum.",
-            "characteristics": {
-                "Tip": "Sportski linoleum",
-                "Format": "Rolna",
-                "Ukupna debljina": "3.20 mm",
-                "Tip instalacije": "Lepljenje",
-                "Namena": "Sportske sale i gimnasticki prostori"
-            },
-            "colors": [
-                {
-                    "code": "1026",
-                    "name": "SKY BLUE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1026-sky-blue.jpg"
-                },
-                {
-                    "code": "1048",
-                    "name": "CRANBERRY RED",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1048-cranberry-red.jpg"
-                },
-                {
-                    "code": "1050",
-                    "name": "QUARTZ GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1050-quartz-grey.jpg"
-                },
-                {
-                    "code": "1053",
-                    "name": "ICE GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1053-ice-grey.jpg"
-                },
-                {
-                    "code": "1070",
-                    "name": "ROCKY BROWN",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1070-rocky-brown.jpg"
-                },
-                {
-                    "code": "1076",
-                    "name": "PALE YELLOW",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1076-pale-yellow.jpg"
-                },
-                {
-                    "code": "1132",
-                    "name": "LIME GREEN",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1132-lime-green.jpg"
-                }
-            ],
-            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/collection.jpg"
+          "code": "1004",
+          "name": "BLUEBIRD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1004-bluebird.jpg"
         },
         {
-            "name": "DLW Linodur Sport",
-            "slug": "dlw-linodur-sport",
-            "url": "https://www.gerflor-cee.com/products/dlw-linodur-sport",
-            "colorCount": 14,
-            "description": "Opis:\nDLW Linodur Sport je prirodni sportski linoleum za unutrasnje vise-namenske sportske sale i gimnazije, sa suptilnim zrnastim dizajnom i Neocare povrsinom.\n\nUgradnja:\nLepljenje; lako se sece i postavlja, bez potrebe za dodatnim premazom odmah nakon ugradnje.\n\nPrimena:\nUnutrasnje sportske sale, gimnazije i vise-namenski sportski prostori.\n\nKljucne prednosti:\n98% prirodnih sastojaka.\nMat efekat i moderan suptilan grain finish.\nLako odrzavanje i dobro klizanje/grip u sportskom okruzenju.",
-            "characteristics": {
-                "Tip": "Sportski linoleum",
-                "Format": "Rolna",
-                "Ukupna debljina": "4.00 mm",
-                "Tip instalacije": "Lepljenje",
-                "Namena": "Unutrasnje sportske sale i gimnazije",
-                "Sastav": "98% prirodnih sastojaka"
-            },
-            "colors": [
-                {
-                    "code": "1011",
-                    "name": "AVOCADO GREEN",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1011-avocado-green.jpg"
-                },
-                {
-                    "code": "1013",
-                    "name": "LAVA RED",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1013-lava-red.jpg"
-                },
-                {
-                    "code": "1020",
-                    "name": "SPRING BLUE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1020-spring-blue.jpg"
-                },
-                {
-                    "code": "1024",
-                    "name": "SPECKLED BLUE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1024-speckled-blue.jpg"
-                },
-                {
-                    "code": "1026",
-                    "name": "LAGOON",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1026-lagoon.jpg"
-                },
-                {
-                    "code": "1048",
-                    "name": "COUNTRY BEIGE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1048-country-beige.jpg"
-                },
-                {
-                    "code": "1049",
-                    "name": "CLIFF GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1049-cliff-grey.jpg"
-                },
-                {
-                    "code": "1056",
-                    "name": "MARBLE GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1056-marble-grey.jpg"
-                },
-                {
-                    "code": "1057",
-                    "name": "HEAVEN BLUE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1057-heaven-blue.jpg"
-                },
-                {
-                    "code": "1059",
-                    "name": "SLATE GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1059-slate-grey.jpg"
-                },
-                {
-                    "code": "1072",
-                    "name": "PEACH ORANGE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1072-peach-orange.jpg"
-                },
-                {
-                    "code": "1073",
-                    "name": "GLOWING ROCK",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1073-glowing-rock.jpg"
-                },
-                {
-                    "code": "1074",
-                    "name": "STRAW YELLOW",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1074-straw-yellow.jpg"
-                },
-                {
-                    "code": "1081",
-                    "name": "SPORTY BLACK",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1081-sporty-black.jpg"
-                }
-            ],
-            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/collection.jpg"
+          "code": "1012",
+          "name": "LIGHT BEIGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1012-light-beige.jpg"
+        },
+        {
+          "code": "1052",
+          "name": "OXID GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1052-oxid-grey.jpg"
+        },
+        {
+          "code": "1059",
+          "name": "STONE GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1059-stone-grey.jpg"
+        },
+        {
+          "code": "1080",
+          "name": "ELEPHANT GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1080-elephant-grey.jpg"
+        },
+        {
+          "code": "1118",
+          "name": "POWER RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1118-power-red.jpg"
+        },
+        {
+          "code": "1123",
+          "name": "POPPY BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1123-poppy-blue.jpg"
+        },
+        {
+          "code": "1132",
+          "name": "SPICY GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1132-spicy-green.jpg"
+        },
+        {
+          "code": "1171",
+          "name": "SUNRISE ORANGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1171-sunrise-orange.jpg"
+        },
+        {
+          "code": "1559",
+          "name": "VINTAGE GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1559-vintage-grey.jpg"
+        },
+        {
+          "code": "1574",
+          "name": "PURE GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1574-pure-green.jpg"
         }
-    ]
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/collection.jpg"
+    },
+    {
+      "name": "DLW Marmorette Sport 3.2mm",
+      "slug": "dlw-marmorette-sport-32mm",
+      "url": "https://www.gerflor-cee.com/products/dlw-marmorette-sport-32mm",
+      "colorCount": 7,
+      "description": "Opis:\nDLW Marmorette Sport 3.2mm je sportski linoleum sa mramornim izgledom za sale i gimnasticke prostore gde je vazna prirodna osnova i laksi mix boja.\n\nUgradnja:\nLepljenje u sistemu sportskog poda sa mogucnoscu naknadnog obelezavanja linija.\n\nPrimena:\nSportske sale, gimnasticki prostori i vise-namenski objekti.\n\nKljucne prednosti:\n3.2 mm debljina.\n8 boja za mix and match pristup.\nPrirodni sportski linoleum.",
+      "characteristics": {
+        "Tip": "Sportski linoleum",
+        "Format": "Rolna",
+        "Ukupna debljina": "3.20 mm",
+        "Tip instalacije": "Lepljenje",
+        "Namena": "Sportske sale i gimnasticki prostori"
+      },
+      "colors": [
+        {
+          "code": "1026",
+          "name": "SKY BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1026-sky-blue.jpg"
+        },
+        {
+          "code": "1048",
+          "name": "CRANBERRY RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1048-cranberry-red.jpg"
+        },
+        {
+          "code": "1050",
+          "name": "QUARTZ GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1050-quartz-grey.jpg"
+        },
+        {
+          "code": "1053",
+          "name": "ICE GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1053-ice-grey.jpg"
+        },
+        {
+          "code": "1070",
+          "name": "ROCKY BROWN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1070-rocky-brown.jpg"
+        },
+        {
+          "code": "1076",
+          "name": "PALE YELLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1076-pale-yellow.jpg"
+        },
+        {
+          "code": "1132",
+          "name": "LIME GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/1132-lime-green.jpg"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-marmorette-sport-32mm/collection.jpg"
+    },
+    {
+      "name": "DLW Linodur Sport",
+      "slug": "dlw-linodur-sport",
+      "url": "https://www.gerflor-cee.com/products/dlw-linodur-sport",
+      "colorCount": 14,
+      "description": "Opis:\nDLW Linodur Sport je prirodni sportski linoleum za unutrasnje vise-namenske sportske sale i gimnazije, sa suptilnim zrnastim dizajnom i Neocare povrsinom.\n\nUgradnja:\nLepljenje; lako se sece i postavlja, bez potrebe za dodatnim premazom odmah nakon ugradnje.\n\nPrimena:\nUnutrasnje sportske sale, gimnazije i vise-namenski sportski prostori.\n\nKljucne prednosti:\n98% prirodnih sastojaka.\nMat efekat i moderan suptilan grain finish.\nLako odrzavanje i dobro klizanje/grip u sportskom okruzenju.",
+      "characteristics": {
+        "Tip": "Sportski linoleum",
+        "Format": "Rolna",
+        "Ukupna debljina": "4.00 mm",
+        "Tip instalacije": "Lepljenje",
+        "Namena": "Unutrasnje sportske sale i gimnazije",
+        "Sastav": "98% prirodnih sastojaka"
+      },
+      "colors": [
+        {
+          "code": "1011",
+          "name": "AVOCADO GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1011-avocado-green.jpg"
+        },
+        {
+          "code": "1013",
+          "name": "LAVA RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1013-lava-red.jpg"
+        },
+        {
+          "code": "1020",
+          "name": "SPRING BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1020-spring-blue.jpg"
+        },
+        {
+          "code": "1024",
+          "name": "SPECKLED BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1024-speckled-blue.jpg"
+        },
+        {
+          "code": "1026",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1026-lagoon.jpg"
+        },
+        {
+          "code": "1048",
+          "name": "COUNTRY BEIGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1048-country-beige.jpg"
+        },
+        {
+          "code": "1049",
+          "name": "CLIFF GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1049-cliff-grey.jpg"
+        },
+        {
+          "code": "1056",
+          "name": "MARBLE GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1056-marble-grey.jpg"
+        },
+        {
+          "code": "1057",
+          "name": "HEAVEN BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1057-heaven-blue.jpg"
+        },
+        {
+          "code": "1059",
+          "name": "SLATE GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1059-slate-grey.jpg"
+        },
+        {
+          "code": "1072",
+          "name": "PEACH ORANGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1072-peach-orange.jpg"
+        },
+        {
+          "code": "1073",
+          "name": "GLOWING ROCK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1073-glowing-rock.jpg"
+        },
+        {
+          "code": "1074",
+          "name": "STRAW YELLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1074-straw-yellow.jpg"
+        },
+        {
+          "code": "1081",
+          "name": "SPORTY BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/1081-sporty-black.jpg"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-linodur-sport/collection.jpg"
+    },
+    {
+      "name": "Taraflex Multi Use 62",
+      "slug": "taraflex-multi-use-62",
+      "url": "https://www.gerflor-cee.com/products/taraflex-multi-use-62",
+      "colorCount": 14,
+      "description": "Performance and very high indentation resistance for sport and non-sport activities\n\nProduct & Designs​ - Taraflex with biocontent: a contribution to a more sustainable future - P1 category: high performance and safety for the players - CXP-HD+ foam: great sport performances and high indentation resistance, with optimised recovery to furniture, high heels... - D-max construction: high durability and outstanding dimensional stability - Protecsol triple-action surface treatment: maximisation of slide and grip, easy to maintain and friction-burn-free surface - 14 urban and modern designs, renewed with latest trends: freedom of design with a masking effect - New range of wood designs: more realistic - MyTaraflex innovative service: optimal court customization​Installation​ - Glued installation​​Market application​ - Great sport performances: ideal for sports use - High indentation and impact resistance : ideal for non-sports demands​ - High durability: optimal for multi-purpose applications​Sustainability​ - Up to 82% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe: low CO2 footprint​ - TVOC after 28 days < 100µg/m3: indoor air quality​ - 100% REACH, formaldehyde-free: health and safety​ ​ - 100% recyclable: second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "6.20 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m"
+      },
+      "colors": [
+        {
+          "code": "2790",
+          "name": "POLISHED CONCRETE DARK GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/2790-polished-concrete-dark-grey.jpg?v=20260616055946"
+        },
+        {
+          "code": "2791",
+          "name": "POLISHED CONCRETE LIGHT GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/2791-polished-concrete-light-grey.jpg?v=20260616055947"
+        },
+        {
+          "code": "6391",
+          "name": "MAPLE STONE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6391-maple-stone.jpg?v=20260616055948"
+        },
+        {
+          "code": "6392",
+          "name": "MAPLE EARTH",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6392-maple-earth.jpg?v=20260616055947"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6445-lagoon.jpg?v=20260616055947"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6350-light-cherry.jpg?v=20260616055947"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6379-maple-desert.jpg?v=20260616055947"
+        },
+        {
+          "code": "6373",
+          "name": "MAPLE OCEAN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6373-maple-ocean.jpg?v=20260616055947"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6873-anthracite.jpg?v=20260616055950"
+        },
+        {
+          "code": "7762",
+          "name": "PURE CONCRETE BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/7762-pure-concrete-blue.jpg?v=20260616055952"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/5742-wood-oak.jpg?v=20260616055952"
+        },
+        {
+          "code": "6844",
+          "name": "BLACK STRIPS",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6844-black-strips.jpg?v=20260616055951"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/6180-red.jpg?v=20260616055952"
+        },
+        {
+          "code": "7764",
+          "name": "PURE CONCRETE LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/colors/7764-pure-concrete-lagoon.jpg?v=20260616055952"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-1.jpg?v=20260616055940",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-2.jpg?v=20260616055940",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-3.jpg?v=20260616055940",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-4.jpg?v=20260616055940",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-5.jpg?v=20260616055940",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-6.jpg?v=20260616055941",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-7.jpg?v=20260616055941",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-8.jpg?v=20260616055941",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-9.jpg?v=20260616055941",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-10.jpg?v=20260616055941",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-11.jpg?v=20260616055941",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-multi-use-62/ambience/scena-12.jpg?v=20260616055941"
+      ],
+      "documents": [
+        {
+          "title": "Maintaining Gerflor Sport Floors - Technical Bulletin 2023",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/maintaining-gerflor-sport-floors-technical-bulletin-2023-69175.pdf?v=20260616055933",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Multiuse Uni - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/taraflex-multiuse-uni-environmental-datasheet-48914.pdf?v=20260616055934",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/epd-40929.pdf?v=20260616055935",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/taraflex-fdes-69715.pdf?v=20260616055939",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/brosura-69716.pdf?v=20260616055939",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/uputstvo-za-ugradnju-19973.pdf?v=20260616055933",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/uputstvo-za-odrzavanje-68327.pdf?v=20260616055936",
+          "type": "pdf"
+        },
+        {
+          "title": "Fiche technique-Taraflex-Multi-Use 6",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/fiche-technique-taraflex-multi-use-6-42387.pdf?v=20260616055933",
+          "type": "pdf"
+        },
+        {
+          "title": "Opis proizvoda",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/opis-proizvoda-48140.pdf?v=20260616055933",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Multiuse - Technical datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/taraflex-multiuse-technical-datasheet-48915.pdf?v=20260616055933",
+          "type": "pdf"
+        },
+        {
+          "title": "DOP_005-1041-23_EN 14904_TARAFLEX POLYVALENT-MULTI USE_28 01 2026",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/dop-005-1041-23-en-14904-taraflex-polyvalent-multi-use-28-01-2026-68398.pdf?v=20260616055935",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/sertifikat-vatrootpornost-68636.pdf?v=20260616055934",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/sertifikat-69258.pdf?v=20260616055934",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/garancija-69676.pdf?v=20260616055934",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — FloorScore",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-multi-use-62/sertifikat-floorscore-69913.pdf?v=20260616055935",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Taraflex Comfort 2",
+      "slug": "taraflex-comfort-2",
+      "url": "https://www.gerflor-cee.com/products/taraflex-comfort-2",
+      "colorCount": 22,
+      "description": "The perfect sports flooring for education : high level of safety, comfort and maximum protection\n\nProduct & Designs​ - Taraflex with biocontent: a contribution to a more sustainable future - P3 category, unique on the market: high performance and safety for the players - CXP-HD and polyolefin foam: optimal safety, protection and comfort for the players - D-max construction: high durability and outstanding dimensional stability - Unique Protecsol triple-action surface treatment: maximisation of slide and grip, easy to maintain and friction-burn-free surface - Large palette of natural and vibrant colours and designs, renewed with latest trends: floor customisation - New range of wood designs: more realistic - Available with MyTaraflex innovative service: make each sport hall unique ​Installation​ - Glued installation ​Market application​ - The first sports floor in the P3 category: provides the highest levels of safety and protection for a point-elastic floor ​Sustainability​ - Up to 72% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe: low CO2 footprint​ - TVOC after 28 days < 100µg/m3: indoor air quality​ - 100% REACH, formaldehyde-free: health and safety​ - 100% recyclable: second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "12.50 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m, 26.4 m"
+      },
+      "colors": [
+        {
+          "code": "6830",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6830-black.jpg?v=20260616060443"
+        },
+        {
+          "code": "6758",
+          "name": "SILVER GRAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6758-silver-gray.jpg?v=20260616060444"
+        },
+        {
+          "code": "6146",
+          "name": "CORAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6146-coral.jpg?v=20260616060443"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6445-lagoon.jpg?v=20260616060443"
+        },
+        {
+          "code": "6570",
+          "name": "MINT GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6570-mint-green.jpg?v=20260616060444"
+        },
+        {
+          "code": "6038",
+          "name": "TERRACOTTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6038-terracotta.jpg?v=20260616060443"
+        },
+        {
+          "code": "4345",
+          "name": "ECRU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/4345-ecru.jpg?v=20260616060443"
+        },
+        {
+          "code": "0654",
+          "name": "SAGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/0654-sage.jpg?v=20260616060444"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6350-light-cherry.jpg?v=20260616060449"
+        },
+        {
+          "code": "6391",
+          "name": "MAPLE STONE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6391-maple-stone.jpg?v=20260616060449"
+        },
+        {
+          "code": "5763",
+          "name": "MAPLE SUN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/5763-maple-sun.jpg?v=20260616060448"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6379-maple-desert.jpg?v=20260616060448"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6873-anthracite.jpg?v=20260616060449"
+        },
+        {
+          "code": "6430",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6430-blue.jpg?v=20260616060448"
+        },
+        {
+          "code": "6211",
+          "name": "GOLD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6211-gold.jpg?v=20260616060447"
+        },
+        {
+          "code": "2404",
+          "name": "LONDON LIGHT BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/2404-london-light-blue.jpg?v=20260616060450"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6180-red.jpg?v=20260616060452"
+        },
+        {
+          "code": "6431",
+          "name": "TEAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6431-teal.jpg?v=20260616060455"
+        },
+        {
+          "code": "6348",
+          "name": "CLAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6348-clay.jpg?v=20260616060454"
+        },
+        {
+          "code": "6553",
+          "name": "FERN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/6553-fern.jpg?v=20260616060454"
+        },
+        {
+          "code": "0047",
+          "name": "MALLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/0047-mallow.jpg?v=20260616060453"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/colors/5742-wood-oak.jpg?v=20260616060454"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/ambience/scena-1.jpg?v=20260616060438",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/ambience/scena-2.jpg?v=20260616060438",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/ambience/scena-3.jpg?v=20260616060438",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-comfort-2/ambience/scena-4.jpg?v=20260616060438"
+      ],
+      "documents": [
+        {
+          "title": "Maintaining Gerflor Sport Floors - Technical Bulletin 2023",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/maintaining-gerflor-sport-floors-technical-bulletin-2023-69175.pdf?v=20260616060430",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Comfort Uni - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/taraflex-comfort-uni-environmental-datasheet-53550.pdf?v=20260616060431",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/epd-40929.pdf?v=20260616060431",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/taraflex-fdes-69715.pdf?v=20260616060437",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/brosura-69716.pdf?v=20260616060435",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/uputstvo-za-ugradnju-17729.pdf?v=20260616060433",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/uputstvo-za-odrzavanje-68327.pdf?v=20260616060434",
+          "type": "pdf"
+        },
+        {
+          "title": "Fiche technique -Taraflex-SportM Confort",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/fiche-technique-taraflex-sportm-confort-42392.pdf?v=20260616060430",
+          "type": "pdf"
+        },
+        {
+          "title": "Opis proizvoda",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/opis-proizvoda-47658.pdf?v=20260616060431",
+          "type": "pdf"
+        },
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/tehnicki-list-48881.pdf?v=20260616060431",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/izjava-o-svojstvima-dop-58185.pdf?v=20260616060432",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/sertifikat-69258.pdf?v=20260616060432",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/sertifikat-vatrootpornost-35729.pdf?v=20260616060432",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/garancija-69676.pdf?v=20260616060432",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — FloorScore",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-comfort-2/sertifikat-floorscore-69913.pdf?v=20260616060432",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Taraflex Evolution 2",
+      "slug": "taraflex-evolution-2",
+      "url": "https://www.gerflor-cee.com/products/taraflex-evolution-2",
+      "colorCount": 20,
+      "description": "The reference in sports flooring, since 1976.\n\nProduct & designs​ - Taraflex with biocontent: a contribution to a more sustainable future - P1 category: high performance and safety for the players - CXP-HD foam: optimal performance and safety - D-max construction: high durability and outstanding dimensional stability - Unique Protecsol triple-action surface treatment: maximisation of slide and grip, easy to maintain and friction-burn-free surface - Large palette of natural and vibrant colours and designs, renewed with latest trends: floor customisation - New range of wood designs: more realistic - Available with MyTaraflex innovative service: make each sport hall unique ​Installation​ - Glued installation​ - Available with Dry-Tex systemMarket application​ - Great balance between durability, comfort and performances: optimal sports use for all users and practices - Suitable with all sports : handball, volleyball, pickleball, futsal...​Sustainability​ - Up to 81% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe: low CO2 footprint​ - TVOC after 28 days < 100µg/m3: indoor air quality​ - 100% REACH, formaldehyde-free: health and safety​ - 100% recyclable: second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "7.50 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m"
+      },
+      "colors": [
+        {
+          "code": "6830",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6830-black.jpg?v=20260616060517"
+        },
+        {
+          "code": "6758",
+          "name": "SILVER GRAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6758-silver-gray.jpg?v=20260616060519"
+        },
+        {
+          "code": "6146",
+          "name": "CORAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6146-coral.jpg?v=20260616060516"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6445-lagoon.jpg?v=20260616060517"
+        },
+        {
+          "code": "6570",
+          "name": "MINT GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6570-mint-green.jpg?v=20260616060518"
+        },
+        {
+          "code": "6038",
+          "name": "TERRACOTTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6038-terracotta.jpg?v=20260616060520"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/5742-wood-oak.jpg?v=20260616060517"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6379-maple-desert.jpg?v=20260616060519"
+        },
+        {
+          "code": "4345",
+          "name": "ECRU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/4345-ecru.jpg?v=20260616060525"
+        },
+        {
+          "code": "0654",
+          "name": "SAGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/0654-sage.jpg?v=20260616060522"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6873-anthracite.jpg?v=20260616060523"
+        },
+        {
+          "code": "6430",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6430-blue.jpg?v=20260616060521"
+        },
+        {
+          "code": "6211",
+          "name": "GOLD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6211-gold.jpg?v=20260616060523"
+        },
+        {
+          "code": "2404",
+          "name": "LONDON LIGHT BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/2404-london-light-blue.jpg?v=20260616060525"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6180-red.jpg?v=20260616060524"
+        },
+        {
+          "code": "6431",
+          "name": "TEAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6431-teal.jpg?v=20260616060526"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY DESIGN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6350-light-cherry-design.jpg?v=20260616060527"
+        },
+        {
+          "code": "6348",
+          "name": "CLAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6348-clay.jpg?v=20260616060526"
+        },
+        {
+          "code": "6553",
+          "name": "FERN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/6553-fern.jpg?v=20260616060528"
+        },
+        {
+          "code": "0047",
+          "name": "MALLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/colors/0047-mallow.jpg?v=20260616060529"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/ambience/scena-1.jpg?v=20260616060510",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/ambience/scena-2.jpg?v=20260616060511",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/ambience/scena-3.jpg?v=20260616060511",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/ambience/scena-4.jpg?v=20260616060511",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2/ambience/scena-5.jpg?v=20260616060511"
+      ],
+      "documents": [
+        {
+          "title": "Taraflex® Evolution - Technical datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/taraflex-evolution-technical-datasheet-48890.pdf?v=20260616060501",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Evolution Uni - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/taraflex-evolution-uni-environmental-datasheet-48888.pdf?v=20260616060502",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/epd-40929.pdf?v=20260616060506",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/taraflex-fdes-69715.pdf?v=20260616060510",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/brosura-69592.pdf?v=20260616060507",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/uputstvo-za-ugradnju-19973.pdf?v=20260616060501",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/uputstvo-za-odrzavanje-68327.pdf?v=20260616060507",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/sertifikat-vatrootpornost-17750.pdf?v=20260616060502",
+          "type": "pdf"
+        },
+        {
+          "title": "Opis proizvoda",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/opis-proizvoda-48138.pdf?v=20260616060502",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/izjava-o-svojstvima-dop-57788.pdf?v=20260616060506",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/sertifikat-68868.pdf?v=20260616060503",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/garancija-69676.pdf?v=20260616060503",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Evolution - Environmental datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/taraflex-evolution-environmental-datasheet-48886.pdf?v=20260616060506",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — FloorScore",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2/sertifikat-floorscore-69913.pdf?v=20260616060505",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Taraflex Evolution 2 Drytex",
+      "slug": "taraflex-evolution-2-drytex",
+      "url": "https://www.gerflor-cee.com/products/taraflex-evolution-2-drytex",
+      "colorCount": 20,
+      "description": "Sport for all ! Even on damp subfloors\n\nProduct & designs​ - Taraflex with biocontent: a contribution to a more sustainable future - P1 category : high performance and safety for the players - CXP-HD foam : Optimal Performance and Safety - D-max construction : high durability and outstanding dimensional stability - Unique Protecsol triple-action surface treatment : maximisation of slide and grip, easy to maintain and friction-burn-free surface - Large palette of natural and vibrant colours and designs, renewed with latest trends: floor customisation - New range of wood designs: more realistic - Available with MyTaraflex innovative service : make each sport hall unique ​Installation​ - Dry-Tex system : solution for damp subfloors ​Market application​ - No need to wait for the slab to dry out : time-effectiveness - No need for additional moisture barriers : save labour and material costs - Unbeatable bonding strength to the subfloor : greater durability and performance - Suitable with all sports : handball, volleyball, pickleball, futsal...​Sustainability​ - Up to 74% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe : low CO2 footprint​ - TVOC after 28 days < 100µg/m3 : indoor air quality​ - 100% REACH, formaldehyde-free : health and safety​ - 100% recyclable : second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "7.50 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m"
+      },
+      "colors": [
+        {
+          "code": "6830",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6830-black.jpg?v=20260616060545"
+        },
+        {
+          "code": "6758",
+          "name": "SILVER GRAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6758-silver-gray.jpg?v=20260616060547"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6873-anthracite.jpg?v=20260616060547"
+        },
+        {
+          "code": "6430",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6430-blue.jpg?v=20260616060549"
+        },
+        {
+          "code": "6146",
+          "name": "CORAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6146-coral.jpg?v=20260616060545"
+        },
+        {
+          "code": "6553",
+          "name": "FERN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6553-fern.jpg?v=20260616060545"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6445-lagoon.jpg?v=20260616060546"
+        },
+        {
+          "code": "2404",
+          "name": "LONDON LIGHT BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/2404-london-light-blue.jpg?v=20260616060547"
+        },
+        {
+          "code": "6570",
+          "name": "MINT GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6570-mint-green.jpg?v=20260616060549"
+        },
+        {
+          "code": "0654",
+          "name": "SAGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/0654-sage.jpg?v=20260616060549"
+        },
+        {
+          "code": "6431",
+          "name": "TEAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6431-teal.jpg?v=20260616060551"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY DESIGN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6350-light-cherry-design.jpg?v=20260616060552"
+        },
+        {
+          "code": "6348",
+          "name": "CLAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6348-clay.jpg?v=20260616060551"
+        },
+        {
+          "code": "4345",
+          "name": "ECRU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/4345-ecru.jpg?v=20260616060553"
+        },
+        {
+          "code": "6211",
+          "name": "GOLD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6211-gold.jpg?v=20260616060552"
+        },
+        {
+          "code": "0047",
+          "name": "MALLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/0047-mallow.jpg?v=20260616060553"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6180-red.jpg?v=20260616060555"
+        },
+        {
+          "code": "6038",
+          "name": "TERRACOTTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6038-terracotta.jpg?v=20260616060553"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/6379-maple-desert.jpg?v=20260616060554"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/colors/5742-wood-oak.jpg?v=20260616060558"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/ambience/scena-1.jpg?v=20260616060541",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/ambience/scena-2.jpg?v=20260616060541",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/ambience/scena-3.jpg?v=20260616060541",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/ambience/scena-4.jpg?v=20260616060541",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-drytex/ambience/scena-5.jpg?v=20260616060540"
+      ],
+      "documents": [
+        {
+          "title": "Maintaining Gerflor Sport Floors - Technical Bulletin 2023",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/maintaining-gerflor-sport-floors-technical-bulletin-2023-69175.pdf?v=20260616060533",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Evolution Uni Drytex - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/taraflex-evolution-uni-drytex-environmental-datasheet-48897.pdf?v=20260616060534",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/epd-40929.pdf?v=20260616060535",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/taraflex-fdes-69715.pdf?v=20260616060540",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/brosura-69741.pdf?v=20260616060540",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/uputstvo-za-ugradnju-17726.pdf?v=20260616060534",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/uputstvo-za-odrzavanje-68327.pdf?v=20260616060538",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/sertifikat-vatrootpornost-17751.pdf?v=20260616060534",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/izjava-o-svojstvima-dop-58556.pdf?v=20260616060535",
+          "type": "pdf"
+        },
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/tehnicki-list-59187.pdf?v=20260616060534",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex Evolution Dry Tex - Fiche technique",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/taraflex-evolution-dry-tex-fiche-technique-59188.pdf?v=20260616060535",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/sertifikat-69272.pdf?v=20260616060535",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/garancija-69676.pdf?v=20260616060535",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — FloorScore",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-drytex/sertifikat-floorscore-69913.pdf?v=20260616060535",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Taraflex Evolution 2 Sl",
+      "slug": "taraflex-evolution-2-sl",
+      "url": "https://www.gerflor-cee.com/products/taraflex-evolution-2-sl",
+      "colorCount": 20,
+      "description": "No glue, no compromise ! Even on damp subfloors\n\nProduct & designs​ - Taraflex with biocontent: a contribution to a more sustainable future - Unique textile backing: ensures the highest levels of stability and durability - P1 category : high sport performance and safety for the players - CXP-HD foam : optimal performance and safety - D-max construction : high durability and outstanding dimensional stability - Unique Protecsol triple-action surface treatment : maximisation of slide and grip, easy to maintain and friction-burn-free surface - Large palette of natural and vibrant colours and designs, renewed with latest trends: floor customisation - New range of wood designs: more realistic - Available with MyTaraflex innovative service : make each sport hall unique ​Installation​ - No glue : easy, fast and sustainable installation - Unique exceptional bonding between textile backing and Tarafix SL holding strip : same quality as glued Taraflex - Resists to humidity rises : solution for damp subfloors, no need to install vapor barriers​Market application​ - No need to wait for the slab to dry out : time-effectiveness - No need for additional moisture barriers : save labour and material costs - Unbeatable bonding strength to the subfloor : greater durability and performance - Suitable with all sports : handball, volleyball, pickleball, futsal...​Sustainability​ - No glue : respect the environment and the installers' health - Textile backing made of recycled bottles : 2000 bottles used for a 800-sqm court - Easy to remove thanks to Tarafix SL holding strip : can be recycled easily or reused - Up to 74% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe : low CO2 footprint​ - TVOC after 28 days < 100µg/m3 : indoor air quality​ - 100% REACH, formaldehyde-free : health and safety​ - 100% recyclable : second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "7.50 mm",
+        "Installation system covering": "Adhesive-free (fr: Pose non-collée)",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m"
+      },
+      "colors": [
+        {
+          "code": "6830",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6830-black.jpg?v=20260616060614"
+        },
+        {
+          "code": "6758",
+          "name": "SILVER GRAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6758-silver-gray.jpg?v=20260616060615"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6873-anthracite.jpg?v=20260616060615"
+        },
+        {
+          "code": "6430",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6430-blue.jpg?v=20260616060615"
+        },
+        {
+          "code": "6146",
+          "name": "CORAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6146-coral.jpg?v=20260616060614"
+        },
+        {
+          "code": "6553",
+          "name": "FERN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6553-fern.jpg?v=20260616060615"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6445-lagoon.jpg?v=20260616060616"
+        },
+        {
+          "code": "2404",
+          "name": "LONDON LIGHT BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/2404-london-light-blue.jpg?v=20260616060616"
+        },
+        {
+          "code": "6570",
+          "name": "MINT GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6570-mint-green.jpg?v=20260616060618"
+        },
+        {
+          "code": "0654",
+          "name": "SAGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/0654-sage.jpg?v=20260616060620"
+        },
+        {
+          "code": "6431",
+          "name": "TEAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6431-teal.jpg?v=20260616060620"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY DESIGN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6350-light-cherry-design.jpg?v=20260616060620"
+        },
+        {
+          "code": "6348",
+          "name": "CLAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6348-clay.jpg?v=20260616060620"
+        },
+        {
+          "code": "4345",
+          "name": "ECRU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/4345-ecru.jpg?v=20260616060620"
+        },
+        {
+          "code": "6211",
+          "name": "GOLD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6211-gold.jpg?v=20260616060620"
+        },
+        {
+          "code": "0047",
+          "name": "MALLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/0047-mallow.jpg?v=20260616060621"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6180-red.jpg?v=20260616060621"
+        },
+        {
+          "code": "6038",
+          "name": "TERRACOTTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6038-terracotta.jpg?v=20260616060623"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/6379-maple-desert.jpg?v=20260616060626"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/colors/5742-wood-oak.jpg?v=20260616060625"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/ambience/scena-1.jpg?v=20260616060610",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/ambience/scena-2.jpg?v=20260616060610",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/ambience/scena-3.jpg?v=20260616060610",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-evolution-2-sl/ambience/scena-4.jpg?v=20260616060609"
+      ],
+      "documents": [
+        {
+          "title": "Taraflex® Evolution SL - Technical datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/taraflex-evolution-sl-technical-datasheet-47775.pdf?v=20260616060604",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Sport M Plus SL Uni - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/taraflex-sport-m-plus-sl-uni-environmental-datasheet-48909.pdf?v=20260616060605",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/epd-47637.pdf?v=20260616060608",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/taraflex-fdes-69715.pdf?v=20260616060609",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/brosura-34662.pdf?v=20260616060607",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/uputstvo-za-ugradnju-29494.pdf?v=20260616060604",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/uputstvo-za-odrzavanje-70529.pdf?v=20260616060608",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/sertifikat-vatrootpornost-31673.pdf?v=20260616060605",
+          "type": "pdf"
+        },
+        {
+          "title": "Opis proizvoda",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/opis-proizvoda-47772.pdf?v=20260616060605",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/izjava-o-svojstvima-dop-57789.pdf?v=20260616060607",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/garancija-69676.pdf?v=20260616060605",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Evolution SL Uni - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-evolution-2-sl/taraflex-evolution-sl-uni-environmental-datasheet-48907.pdf?v=20260616060607",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Taraflex Performance 2",
+      "slug": "taraflex-performance-2",
+      "url": "https://www.gerflor-cee.com/products/taraflex-performance-2",
+      "colorCount": 20,
+      "description": "High Sport Performance and Comfort for Clubs, Competition and Education\n\nProduct & Designs​ - Taraflex with biocontent: a contribution to a more sustainable future - P2 category: high levels of performance and safety, ideal for clubs/competition/education - CXP-HD foam: optimal performance and safety - D-max construction: high durability and outstanding dimensional stability - Unique Protecsol triple-action surface treatment: maximisation of slide and grip, easy to maintain and friction-burn-free surface - Large palette of natural and vibrant colours and designs, renewed with latest trends: floor customisation - New range of wood designs: more realistic - Available with MyTaraflex innovative service: make each sport hall unique ​Installation​ - Glued installation​ Available with Dry-Tex system​Market application​ - Best balance of sport performance and safety: ideal for clubs, competition and education ​Sustainability​ - Up to 78% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe: low CO2 footprint​ - TVOC after 28 days < 100µg/m3: indoor air quality​ - 100% REACH, formaldehyde-free: health and safety​ - 100% recyclable: second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "9.00 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m"
+      },
+      "colors": [
+        {
+          "code": "6830",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6830-black.jpg?v=20260616060645"
+        },
+        {
+          "code": "6758",
+          "name": "SILVER GRAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6758-silver-gray.jpg?v=20260616060645"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6873-anthracite.jpg?v=20260616060645"
+        },
+        {
+          "code": "6430",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6430-blue.jpg?v=20260616060645"
+        },
+        {
+          "code": "6146",
+          "name": "CORAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6146-coral.jpg?v=20260616060644"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6445-lagoon.jpg?v=20260616060644"
+        },
+        {
+          "code": "6570",
+          "name": "MINT GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6570-mint-green.jpg?v=20260616060645"
+        },
+        {
+          "code": "6038",
+          "name": "TERRACOTTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6038-terracotta.jpg?v=20260616060645"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY DESIGN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6350-light-cherry-design.jpg?v=20260616060649"
+        },
+        {
+          "code": "6348",
+          "name": "CLAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6348-clay.jpg?v=20260616060650"
+        },
+        {
+          "code": "6553",
+          "name": "FERN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6553-fern.jpg?v=20260616060650"
+        },
+        {
+          "code": "0047",
+          "name": "MALLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/0047-mallow.jpg?v=20260616060650"
+        },
+        {
+          "code": "6211",
+          "name": "GOLD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6211-gold.jpg?v=20260616060650"
+        },
+        {
+          "code": "2404",
+          "name": "LONDON LIGHT BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/2404-london-light-blue.jpg?v=20260616060650"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6180-red.jpg?v=20260616060650"
+        },
+        {
+          "code": "6431",
+          "name": "TEAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6431-teal.jpg?v=20260616060649"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/6379-maple-desert.jpg?v=20260616060653"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/5742-wood-oak.jpg?v=20260616060654"
+        },
+        {
+          "code": "4345",
+          "name": "ECRU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/4345-ecru.jpg?v=20260616060654"
+        },
+        {
+          "code": "0654",
+          "name": "SAGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/colors/0654-sage.jpg?v=20260616060656"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/ambience/scena-1.jpg?v=20260616060639",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/ambience/scena-2.jpg?v=20260616060639",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/ambience/scena-3.jpg?v=20260616060639",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/ambience/scena-4.jpg?v=20260616060639",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/ambience/scena-5.jpg?v=20260616060639",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/ambience/scena-6.jpg?v=20260616060639",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2/ambience/scena-7.jpg?v=20260616060639"
+      ],
+      "documents": [
+        {
+          "title": "Maintaining Gerflor Sport Floors - Technical Bulletin 2023",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/maintaining-gerflor-sport-floors-technical-bulletin-2023-69175.pdf?v=20260616060632",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex Performance Uni - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/taraflex-performance-uni-environmental-datasheet-48932.pdf?v=20260616060633",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/epd-40929.pdf?v=20260616060635",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/taraflex-fdes-69715.pdf?v=20260616060638",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/brosura-69716.pdf?v=20260616060638",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/uputstvo-za-ugradnju-19973.pdf?v=20260616060632",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/uputstvo-za-odrzavanje-68327.pdf?v=20260616060636",
+          "type": "pdf"
+        },
+        {
+          "title": "Opis proizvoda",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/opis-proizvoda-48143.pdf?v=20260616060632",
+          "type": "pdf"
+        },
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/tehnicki-list-55359.pdf?v=20260616060632",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/izjava-o-svojstvima-dop-61202.pdf?v=20260616060633",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/sertifikat-vatrootpornost-67334.pdf?v=20260616060633",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/sertifikat-68866.pdf?v=20260616060633",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/garancija-69676.pdf?v=20260616060633",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — FloorScore",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2/sertifikat-floorscore-69913.pdf?v=20260616060634",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Taraflex Performance 2 Drytex",
+      "slug": "taraflex-performance-2-drytex",
+      "url": "https://www.gerflor-cee.com/products/taraflex-performance-2-drytex",
+      "colorCount": 22,
+      "description": "High Sport Performance and Comfort for Clubs, Competition and Education. Even on damp subfloors!\n\nProduct & designs​ - Taraflex with biocontent: a contribution to a more sustainable future - P2 category : high levels of performance and safety, ideal for clubs / competition / education - CXP-HD foam : optimal performance and safety - D-max construction : high durability and outstanding dimensional stability - Unique Protecsol triple-action surface treatment : maximisation of slide and grip, easy to maintain and friction-burn-free surface - Large palette of natural and vibrant colours and designs, renewed with latest trends: floor customisation - New range of wood designs: more realistic - Available with MyTaraflex innovative service : make each sport hall unique ​Installation​ - Dry-Tex system : solution for damp subfloors​Market application​ - No need to wait for the slab to dry out : time-effectiveness - No need for additional moisture barriers : save labour and material costs - Unbeatable bonding strength to the subfloor : greater durability and performance ​Sustainability​ - Up to 73% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe : low CO2 footprint​ - TVOC after 28 days < 100µg/m3 : indoor air quality​ - 100% REACH, formaldehyde-free : health and safety​ - 100% recyclable : second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "9.35 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m"
+      },
+      "colors": [
+        {
+          "code": "6830",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6830-black.jpg?v=20260616060712"
+        },
+        {
+          "code": "6758",
+          "name": "SILVER GRAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6758-silver-gray.jpg?v=20260616060714"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6379-maple-desert.jpg?v=20260616060713"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/5742-wood-oak.jpg?v=20260616060713"
+        },
+        {
+          "code": "6348",
+          "name": "CLAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6348-clay.jpg?v=20260616060713"
+        },
+        {
+          "code": "4345",
+          "name": "ECRU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/4345-ecru.jpg?v=20260616060713"
+        },
+        {
+          "code": "6211",
+          "name": "GOLD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6211-gold.jpg?v=20260616060712"
+        },
+        {
+          "code": "0047",
+          "name": "MALLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/0047-mallow.jpg?v=20260616060713"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6180-red.jpg?v=20260616060716"
+        },
+        {
+          "code": "6038",
+          "name": "TERRACOTTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6038-terracotta.jpg?v=20260616060716"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6445-lagoon.jpg?v=20260616060716"
+        },
+        {
+          "code": "6391",
+          "name": "MAPLE STONE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6391-maple-stone.jpg?v=20260616060719"
+        },
+        {
+          "code": "5763",
+          "name": "MAPLE SUN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/5763-maple-sun.jpg?v=20260616060718"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY DESIGN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6350-light-cherry-design.jpg?v=20260616060717"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6873-anthracite.jpg?v=20260616060718"
+        },
+        {
+          "code": "6430",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6430-blue.jpg?v=20260616060718"
+        },
+        {
+          "code": "6146",
+          "name": "CORAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6146-coral.jpg?v=20260616060720"
+        },
+        {
+          "code": "6553",
+          "name": "FERN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6553-fern.jpg?v=20260616060721"
+        },
+        {
+          "code": "2404",
+          "name": "LONDON LIGHT BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/2404-london-light-blue.jpg?v=20260616060721"
+        },
+        {
+          "code": "6570",
+          "name": "MINT GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6570-mint-green.jpg?v=20260616060721"
+        },
+        {
+          "code": "0654",
+          "name": "SAGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/0654-sage.jpg?v=20260616060722"
+        },
+        {
+          "code": "6431",
+          "name": "TEAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/colors/6431-teal.jpg?v=20260616060722"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/ambience/scena-1.jpg?v=20260616060707",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/ambience/scena-2.jpg?v=20260616060707",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/ambience/scena-3.jpg?v=20260616060708",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-drytex/ambience/scena-4.jpg?v=20260616060707"
+      ],
+      "documents": [
+        {
+          "title": "Maintaining Gerflor Sport Floors - Technical Bulletin 2023",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/maintaining-gerflor-sport-floors-technical-bulletin-2023-69175.pdf?v=20260616060659",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex Performance Uni Drytex - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/taraflex-performance-uni-drytex-environmental-datasheet-48941.pdf?v=20260616060701",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/epd-40929.pdf?v=20260616060701",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/taraflex-fdes-69715.pdf?v=20260616060706",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/brosura-69718.pdf?v=20260616060706",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/uputstvo-za-ugradnju-17726.pdf?v=20260616060702",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/uputstvo-za-odrzavanje-68327.pdf?v=20260616060704",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/sertifikat-vatrootpornost-25595.pdf?v=20260616060700",
+          "type": "pdf"
+        },
+        {
+          "title": "Opis proizvoda",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/opis-proizvoda-32042.pdf?v=20260616060700",
+          "type": "pdf"
+        },
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/tehnicki-list-32247.pdf?v=20260616060700",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/izjava-o-svojstvima-dop-61201.pdf?v=20260616060701",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/sertifikat-69272.pdf?v=20260616060701",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-drytex/garancija-69676.pdf?v=20260616060701",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Taraflex Performance 2 Sl",
+      "slug": "taraflex-performance-2-sl",
+      "url": "https://www.gerflor-cee.com/products/taraflex-performance-2-sl",
+      "colorCount": 20,
+      "description": "No glue, no compromise ! Even on damp subfloors\n\nProduct & designs​ - Taraflex with biocontent: a contribution to a more sustainable future - Unique textile backing : ensures the highest levels of stability and durability - P2 category : high levels of performance and safety, ideal for clubs / competition / education - CXP-HD foam : optimal performance and safety - D-max construction : high durability and outstanding dimensional stability - Unique Protecsol triple-action surface treatment : maximisation of slide and grip, easy to maintain and friction-burn-free surface - Large palette of natural and vibrant colours and designs, renewed with latest trends: floor customisation - New range of wood designs: more realistic - Available with MyTaraflex innovative service : make each sport hall unique Installation​ - No glue : easy, fast and sustainable installation - Unique exceptional bonding between textile backing and Tarafix SL holding strip : same quality as glued Taraflex - Resists to humidity rises : solution for damp subfloors, no need to install vapor barriers ​Market application​ - No need to wait for the slab to dry out : time-effectiveness - No need for additional moisture barriers : save labour and material costs - Unbeatable bonding strength to the subfloor : greater durability and performance ​Sustainability​ - No glue : respect the environment and the installers' health - Textile backing made of recycled bottles : 2,000 bottles used for a 800-sqm court - Easy to remove thanks to Tarafix SL holding strip : can be recycled easily or reused - Up to 73% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe : low CO2 footprint​ - TVOC after 28 days < 100µg/m3 : indoor air quality​ - 100% REACH, formaldehyde-free : health and safety​ - 100% recyclable : second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "9.35 mm",
+        "Installation system covering": "Adhesive-free (fr: Pose non-collée)",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m"
+      },
+      "colors": [
+        {
+          "code": "6830",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6830-black.jpg?v=20260616060738"
+        },
+        {
+          "code": "6758",
+          "name": "SILVER GRAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6758-silver-gray.jpg?v=20260616060738"
+        },
+        {
+          "code": "0047",
+          "name": "MALLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/0047-mallow.jpg?v=20260616060738"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6180-red.jpg?v=20260616060738"
+        },
+        {
+          "code": "6038",
+          "name": "TERRACOTTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6038-terracotta.jpg?v=20260616060738"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6379-maple-desert.jpg?v=20260616060738"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/5742-wood-oak.jpg?v=20260616060739"
+        },
+        {
+          "code": "6348",
+          "name": "CLAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6348-clay.jpg?v=20260616060738"
+        },
+        {
+          "code": "4345",
+          "name": "ECRU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/4345-ecru.jpg?v=20260616060741"
+        },
+        {
+          "code": "6211",
+          "name": "GOLD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6211-gold.jpg?v=20260616060743"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6445-lagoon.jpg?v=20260616060743"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6873-anthracite.jpg?v=20260616060742"
+        },
+        {
+          "code": "6430",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6430-blue.jpg?v=20260616060743"
+        },
+        {
+          "code": "6146",
+          "name": "CORAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6146-coral.jpg?v=20260616060742"
+        },
+        {
+          "code": "6553",
+          "name": "FERN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6553-fern.jpg?v=20260616060742"
+        },
+        {
+          "code": "2404",
+          "name": "LONDON LIGHT BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/2404-london-light-blue.jpg?v=20260616060742"
+        },
+        {
+          "code": "6570",
+          "name": "MINT GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6570-mint-green.jpg?v=20260616060744"
+        },
+        {
+          "code": "0654",
+          "name": "SAGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/0654-sage.jpg?v=20260616060745"
+        },
+        {
+          "code": "6431",
+          "name": "TEAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6431-teal.jpg?v=20260616060746"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY DESIGN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/colors/6350-light-cherry-design.jpg?v=20260616060746"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/ambience/scena-1.jpg?v=20260616060733",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/ambience/scena-2.jpg?v=20260616060733",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-performance-2-sl/ambience/scena-3.jpg?v=20260616060733"
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/tehnicki-list-47783.pdf?v=20260616060728",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex Performance Uni SL - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/taraflex-performance-uni-sl-environmental-datasheet-48962.pdf?v=20260616060729",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/epd-47637.pdf?v=20260616060730",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/taraflex-fdes-69715.pdf?v=20260616060733",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/brosura-34662.pdf?v=20260616060731",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/uputstvo-za-ugradnju-19973.pdf?v=20260616060728",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/uputstvo-za-odrzavanje-70529.pdf?v=20260616060731",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/sertifikat-vatrootpornost-32210.pdf?v=20260616060729",
+          "type": "pdf"
+        },
+        {
+          "title": "Opis proizvoda",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/opis-proizvoda-47819.pdf?v=20260616060728",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/izjava-o-svojstvima-dop-57790.pdf?v=20260616060730",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-performance-2-sl/garancija-69676.pdf?v=20260616060729",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Taraflex Surface 2",
+      "slug": "taraflex-surface-2",
+      "url": "https://www.gerflor-cee.com/products/taraflex-surface-2",
+      "colorCount": 21,
+      "description": "The ideal floor for heavy duty multipurpose usage and rolling sports\n\nProduct & Designs​ - Taraflex with biocontent: a contribution to a more sustainable future - 2mm thickness: sport appearance with no shock absorption - Meets EN 14904 when installed on sub-construction (A3/A4 category): high levels of shock absorption and high resistance to heavy loads - Unique Protecsol triple-action surface treatment: maximisation of slide and grip, easy to maintain and friction-burn-free surface - Large palette of natural and vibrant colours and designs, renewed with latest trends: floor customisation - Available with MyTaraflex innovative service: make each sport hall unique ​Installation​ - Glued installation​ ​Market application​ - High resistance to indentation: ideal solution for multipurpose usage - Can be combined with under-carriage systems: high shock absorption and resistance to rolling sports ​Sustainability​ - Up to 88% biocontent, mineral and recycled - Best in class carbon footprint: a good choice for decarbonising your projects - Phthalate-free formulation - Made in Europe: low CO2 footprint​ - TVOC after 28 days < 100µg/m3: indoor air quality​ - 100% REACH, formaldehyde-free: health and safety​ - 100% recyclable: second life",
+      "characteristics": {
+        "Surface treatment": "Triple-Action Protecsol®",
+        "Overall thickness": "2.00 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "1,5m roll",
+        "Width of sheet": "1.5 m",
+        "Length of sheet": "20.5 m"
+      },
+      "colors": [
+        {
+          "code": "6830",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6830-black.jpg?v=20260616060805"
+        },
+        {
+          "code": "6431",
+          "name": "TEAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6431-teal.jpg?v=20260616060806"
+        },
+        {
+          "code": "6038",
+          "name": "TERRACOTTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6038-terracotta.jpg?v=20260616060805"
+        },
+        {
+          "code": "6758",
+          "name": "SILVER GRAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6758-silver-gray.jpg?v=20260616060805"
+        },
+        {
+          "code": "6873",
+          "name": "ANTHRACITE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6873-anthracite.jpg?v=20260616060806"
+        },
+        {
+          "code": "6430",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6430-blue.jpg?v=20260616060805"
+        },
+        {
+          "code": "6211",
+          "name": "GOLD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6211-gold.jpg?v=20260616060805"
+        },
+        {
+          "code": "2404",
+          "name": "LONDON LIGHT BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/2404-london-light-blue.jpg?v=20260616060806"
+        },
+        {
+          "code": "6180",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6180-red.jpg?v=20260616060809"
+        },
+        {
+          "code": "0047",
+          "name": "MALLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/0047-mallow.jpg?v=20260616060810"
+        },
+        {
+          "code": "6553",
+          "name": "FERN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6553-fern.jpg?v=20260616060810"
+        },
+        {
+          "code": "4345",
+          "name": "ECRU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/4345-ecru.jpg?v=20260616060811"
+        },
+        {
+          "code": "6350",
+          "name": "LIGHT CHERRY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6350-light-cherry.jpg?v=20260616060810"
+        },
+        {
+          "code": "5742",
+          "name": "WOOD OAK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/5742-wood-oak.jpg?v=20260616060811"
+        },
+        {
+          "code": "5763",
+          "name": "MAPLE SUN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/5763-maple-sun.jpg?v=20260616060810"
+        },
+        {
+          "code": "6570",
+          "name": "MINT GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6570-mint-green.jpg?v=20260616060809"
+        },
+        {
+          "code": "6445",
+          "name": "LAGOON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6445-lagoon.jpg?v=20260616060812"
+        },
+        {
+          "code": "6146",
+          "name": "CORAL",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6146-coral.jpg?v=20260616060813"
+        },
+        {
+          "code": "6348",
+          "name": "CLAY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6348-clay.jpg?v=20260616060814"
+        },
+        {
+          "code": "0654",
+          "name": "SAGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/0654-sage.jpg?v=20260616060813"
+        },
+        {
+          "code": "6379",
+          "name": "MAPLE DESERT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/colors/6379-maple-desert.jpg?v=20260616060814"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/ambience/scena-1.jpg?v=20260616060800",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/ambience/scena-2.jpg?v=20260616060800",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/ambience/scena-3.jpg?v=20260616060800",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/ambience/scena-4.jpg?v=20260616060800",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/gerflor-taraflex-surface-2/ambience/scena-5.jpg?v=20260616060800"
+      ],
+      "documents": [
+        {
+          "title": "Taraflex Surface - Technical datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/taraflex-surface-technical-datasheet-55362.pdf?v=20260616060753",
+          "type": "pdf"
+        },
+        {
+          "title": "Taraflex® Surface Uni - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/taraflex-surface-uni-environmental-datasheet-48926.pdf?v=20260616060754",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/epd-40929.pdf?v=20260616060756",
+          "type": "pdf"
+        },
+        {
+          "title": "TARAFLEX - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/taraflex-fdes-69715.pdf?v=20260616060759",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/brosura-69716.pdf?v=20260616060758",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/uputstvo-za-ugradnju-19973.pdf?v=20260616060753",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/uputstvo-za-odrzavanje-68327.pdf?v=20260616060759",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/sertifikat-vatrootpornost-25578.pdf?v=20260616060753",
+          "type": "pdf"
+        },
+        {
+          "title": "Opis proizvoda",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/opis-proizvoda-47711.pdf?v=20260616060753",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/izjava-o-svojstvima-dop-59304.pdf?v=20260616060755",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/sertifikat-69272.pdf?v=20260616060755",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/garancija-69676.pdf?v=20260616060755",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — FloorScore",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/sport/gerflor-taraflex-surface-2/sertifikat-floorscore-69913.pdf?v=20260616060755",
+          "type": "pdf"
+        }
+      ]
+    }
+  ]
 }

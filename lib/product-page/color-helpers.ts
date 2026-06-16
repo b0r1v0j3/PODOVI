@@ -33,7 +33,9 @@ type NestedCollection = {
     colors?: Array<Record<string, any>>;
 };
 
-export const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
+// `as unknown as` jer je JSON import heterogen (više oblika boja kroz kolekcije: creation,
+// virtuo…) pa direktan narrowing cast TS odbija ("neither type sufficiently overlaps").
+export const lvtColors = (lvtColorsData as unknown as { colors?: ColorFromJSON[] }).colors || [];
 export const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
 export const tarkettLinoleumCollections = (tarkettLinoleumColorsData as { collections?: NestedCollection[] }).collections || [];
 export const baseVinylCollections = (vinylColorsData as { collections?: NestedCollection[] }).collections || [];
