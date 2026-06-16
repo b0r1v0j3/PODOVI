@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
+import HomeHero from '@/components/HomeHero';
 import HomeProductTabs, { HomeProductGroup } from '@/components/HomeProductTabs';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Product } from '@/types';
@@ -84,6 +85,8 @@ export default async function HomePage() {
 
   return (
     <div>
+      <HomeHero />
+
       <HomeProductTabs groups={productGroups} brandsRecord={brandsRecord} />
 
       {/* Why Choose Us */}
