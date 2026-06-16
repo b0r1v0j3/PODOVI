@@ -18,6 +18,16 @@ interface HomeProductTabsProps {
   brandsRecord: Record<string, Brand>;
 }
 
+// Fisher-Yates — nova kopija, ne mutira ulaz.
+function shuffleArray<T>(items: T[]): T[] {
+  const out = items.slice();
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
 function buildAllProducts(groups: HomeProductGroup[], limit = 12): Product[] {
   const products: Product[] = [];
   const seen = new Set<string>();
@@ -54,9 +64,19 @@ function buildAllProducts(groups: HomeProductGroup[], limit = 12): Product[] {
 export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTabsProps) {
   const [activeSlug, setActiveSlug] = useState('sve');
 
-  const initialAllProducts = useMemo(() => buildAllProducts(groups, INITIAL_PRODUCT_LIMIT), [groups]);
-  const expandedAllProducts = useMemo(() => buildAllProducts(groups, Number.POSITIVE_INFINITY), [groups]);
-  const activeGroup = groups.find((group) => group.category.slug === activeSlug);
+  // Nasumičan izbor kolekcija pri SVAKOM ulasku na početnu. Strana je statički keširana,
+  // pa mešanje mora na klijentu: SSR/prvi render = originalni redosled (bez hydration greške),
+  // a posle mount-a se promeša jednom po poseti (stabilno dok korisnik prebacuje tabove).
+  const [shuffled, setShuffled] = useState(false);
+  useEffect(() => setShuffled(true), []);
+  const displayGroups = useMemo(
+    () => (shuffled ? groups.map((group) => ({ ...group, products: shuffleArray(group.products) })) : groups),
+    [groups, shuffled],
+  );
+
+  const initialAllProducts = useMemo(() => buildAllProducts(displayGroups, INITIAL_PRODUCT_LIMIT), [displayGroups]);
+  const expandedAllProducts = useMemo(() => buildAllProducts(displayGroups, Number.POSITIVE_INFINITY), [displayGroups]);
+  const activeGroup = displayGroups.find((group) => group.category.slug === activeSlug);
   const activeProducts = activeSlug === 'sve'
     ? initialAllProducts
     : (activeGroup?.products || []).slice(0, INITIAL_PRODUCT_LIMIT);
