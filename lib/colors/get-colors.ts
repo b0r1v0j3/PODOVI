@@ -10,6 +10,7 @@ import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
+import tarkettLinoleumData from '@/public/data/tarkett_linoleum_colors.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
@@ -81,6 +82,8 @@ export async function getColorsForCategory(
         ],
         parket: alpodCollections.filter((collection) => collection.categoryId === '3'),
         deking: alpodCollections.filter((collection) => collection.categoryId === '5'),
+        // NB: linoleum NIJE nested — ostaje u flat grani (Gerflor DLW iz Supabase), a Tarkett
+        // linoleum (JSON-only) se dodaje u flat dole (isto kao lvt/tarkettLvtData).
         elektroprovodni: ((esdColorsData as any)?.collections || []) as any[],
         'industrijske-ploce': ((industrialColorsData as any)?.collections || []) as any[],
         sport: [
@@ -238,6 +241,41 @@ export async function getColorsForCategory(
         flatColors = requestedCollection
             ? [...flatColors, ...tarkettColors.filter((color) => color.collection === requestedCollection)]
             : [...flatColors, ...tarkettColors];
+    }
+
+    // Tarkett linoleum (xf²) je JSON-only (kao Tarkett LVT) → dodaj u flat granu uz Gerflor DLW
+    // (koji dolazi iz Supabase). Flatten nested {collections[].colors} u flat oblik koji ColorGrid/
+    // /cenovnik očekuju; collection = pun slug (npr. 'tarkett-veneto-xf2-2-5-mm').
+    if (category === 'linoleum') {
+        const tarkettLino = (((tarkettLinoleumData as any)?.collections || []) as any[]);
+        const tarkettLinoColors = tarkettLino.flatMap((collection: any) =>
+            (collection.colors || [])
+                .filter((color: any) => Boolean(color.image || color.image_url))
+                .map((color: any) => ({
+                    collection: collection.slug,
+                    collection_name: collection.name,
+                    code: color.code,
+                    name: color.name,
+                    full_name: `${color.code} ${color.name}`.trim(),
+                    slug: color.slug,
+                    image_url: color.image || color.image_url || '',
+                    texture_url: color.image || color.image_url || '',
+                    image_count: 1,
+                    lifestyle_url: null,
+                    welding_rod: null,
+                    dimension: null,
+                    format: null,
+                    overall_thickness: color.characteristics?.['Ukupna debljina'] || null,
+                    description: color.description || collection.description || '',
+                    specs: null,
+                    collection_specs: collection.characteristics || null,
+                    characteristics: { ...(collection.characteristics || {}), ...(color.characteristics || {}) },
+                    brandId: '3',
+                }))
+        );
+        flatColors = requestedCollection
+            ? [...flatColors, ...tarkettLinoColors.filter((color) => color.collection === requestedCollection)]
+            : [...flatColors, ...tarkettLinoColors];
     }
 
     return {

@@ -4,14 +4,23 @@ const gerflor = require('./gerflor-parse.js'); // reuse decodeEntities + mapDocu
 
 const MEDIA_HOST = 'https://media.tarkett-image.com';
 
+// Percent-enkoduj ime/segmente fajla (čuva '/'). Bitno za npr. „xf²" (U+00B2) u linoleum
+// dokumentima — sirovo ime daje HTTP 400, %C2%B2 daje 200. Idempotentno (decode pa encode),
+// no-op za obične nazive (alfanumerik + - _ .), pa S3 asseti ostaju nepromenjeni.
+function encodeAssetPath(s) {
+  return String(s || '').trim().split('/').map((seg) => {
+    try { return encodeURIComponent(decodeURIComponent(seg)); } catch { return encodeURIComponent(seg); }
+  }).join('/');
+}
+
 // Najveća dostupna rezolucija swatch/ambijent slika je XXL (1920px); XXXL/original = 403.
 function mediaImageUrl(thumbnail, size = 'XXL') {
-  return `${MEDIA_HOST}/${size}/${String(thumbnail || '').trim()}`;
+  return `${MEDIA_HOST}/${size}/${encodeAssetPath(thumbnail)}`;
 }
 
 // PDF radi samo preko /docs/ prefiksa (svi ostali → 403).
 function mediaDocUrl(assetUrl) {
-  return `${MEDIA_HOST}/docs/${String(assetUrl || '').trim()}`;
+  return `${MEDIA_HOST}/docs/${encodeAssetPath(assetUrl)}`;
 }
 
 function stripHtml(s) {

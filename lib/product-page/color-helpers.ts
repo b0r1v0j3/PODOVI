@@ -1,6 +1,7 @@
 import type { ColorFromJSON, ColorSource, ProductImageType, ProductSpec, Product } from './types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
+import tarkettLinoleumColorsData from '@/public/data/tarkett_linoleum_colors.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.json';
@@ -34,6 +35,7 @@ type NestedCollection = {
 
 export const lvtColors = (lvtColorsData as { colors?: ColorFromJSON[] }).colors || [];
 export const linoleumColors = (linoleumColorsData as { colors?: ColorFromJSON[] }).colors || [];
+export const tarkettLinoleumCollections = (tarkettLinoleumColorsData as { collections?: NestedCollection[] }).collections || [];
 export const baseVinylCollections = (vinylColorsData as { collections?: NestedCollection[] }).collections || [];
 export const vinylSpecialCollections = (vinylSpecialColorsData as { collections?: NestedCollection[] }).collections || [];
 export const tarkettVinylHomeCollections = (tarkettVinylHomeColorsData as { collections?: NestedCollection[] }).collections || [];

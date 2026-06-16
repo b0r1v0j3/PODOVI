@@ -4,6 +4,7 @@ import {
     cleanColorName,
     mergeSpecs,
     linoleumColors,
+    tarkettLinoleumCollections,
     buildNestedColorSlug,
     vinylCollections,
     esdCollections,
@@ -262,6 +263,23 @@ export async function prepareCustomColors(
                 image_count: c.image_count || 1,
                 characteristics: c.characteristics || {},
             }));
+        }
+    }
+
+    // Tarkett linoleum (xf², cat 7): customColors from tarkett_linoleum_colors.json (nested),
+    // isto kao vinil/sport. MORA pre Gerflor grane jer Tarkett slug ima 'tarkett-' prefiks.
+    if (product.categoryId === '7') {
+        const tarkettSlugCandidates = Array.from(new Set([
+            product.slug,
+            pageSlug,
+            product.slug.replace(/^tarkett-/, ''),
+            pageSlug.replace(/^tarkett-/, ''),
+        ].filter(Boolean)));
+        const tarkettLinoCollection = tarkettLinoleumCollections.find((col: any) =>
+            tarkettSlugCandidates.includes(col.slug)
+        );
+        if (tarkettLinoCollection && tarkettLinoCollection.colors && tarkettLinoCollection.colors.length > 0) {
+            return mapNestedCollectionColors(tarkettLinoCollection, { categoryId: '7' });
         }
     }
 
