@@ -11,6 +11,7 @@ import {
     industrialCollections,
     sportCollections,
     lajsneCollections,
+    gerflorStairShowerCollections,
     alpodParketCollections,
     alpodDekingCollections,
     resolveSelectedColorServerData,
@@ -427,16 +428,22 @@ export async function prepareCustomColors(
         }
     }
 
-    // Lajsne (cat 11): customColors from tarkett_lajsne_variants.json
+    // Lajsne (cat 11): customColors from tarkett_lajsne_variants.json (Tarkett)
+    // ILI gerflor_stairs_shower.json (Gerflor stepenice/tuš — prvo Gerflor prisustvo u cat 11).
     if (product.categoryId === '11') {
         const slugCandidates = [
             product.slug,
             product.slug.replace(/^tarkett-/, ''),
+            product.slug.replace(/^gerflor-/, ''),
         ];
-        const lajsneCollection = lajsneCollections.find((col: any) =>
+        const matchSlug = (col: any) =>
             slugCandidates.includes(col.slug) ||
-            slugCandidates.includes(String(col.slug || '').replace(/^tarkett-/, ''))
-        );
+            slugCandidates.includes(String(col.slug || '').replace(/^tarkett-/, '')) ||
+            slugCandidates.includes(String(col.slug || '').replace(/^gerflor-/, ''));
+        // Konsultuj OBE liste: Tarkett lajsne i Gerflor stepenice/tuš.
+        const lajsneCollection =
+            lajsneCollections.find(matchSlug) ||
+            gerflorStairShowerCollections.find(matchSlug);
         if (lajsneCollection && lajsneCollection.colors && lajsneCollection.colors.length > 0) {
             return mapNestedCollectionColors(lajsneCollection, { categoryId: '11' });
         }

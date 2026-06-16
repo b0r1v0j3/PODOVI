@@ -1,0 +1,601 @@
+{
+  "collections": [
+    {
+      "name": "Stair Nosings",
+      "slug": "gerflor-stair-nosings",
+      "brandId": "6",
+      "url": "https://www.gerflor-cee.com/products/stair-nosings",
+      "colorCount": 4,
+      "categoryId": "11",
+      "description": "Stair nosing for a perfect finish of the stairs\n\nBENEFITS - PVC stair nose weldable or to screw - Grooves or carborundum black band provide anti-slip protection - Landing / stair harmony PACKAGING - 10 units of 3 LM",
+      "shortDescription": "Stair nosing for a perfect finish of the stairs",
+      "characteristics": {},
+      "colors": [
+        {
+          "code": "4203",
+          "name": "T49/3R - GRIS",
+          "slug": "gerflor-stair-nosings-t49-3r-gris-04624203",
+          "sku": "04624203",
+          "href": "https://www.gerflor-cee.com/products/stair-nosings-4203-t49-3r-gris-04624203",
+          "collection_slug": "gerflor-stair-nosings",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-nosings/colors/4203-t49-3r-gris.jpg?v=20260616152858",
+          "description": "Stair nosing for a perfect finish of the stairs\n\nBENEFITS - PVC stair nose weldable or to screw - Grooves or carborundum black band provide anti-slip protection - Landing / stair harmony PACKAGING - 10 units of 3 LM",
+          "characteristics": {},
+          "brandId": "6"
+        },
+        {
+          "code": "6281",
+          "name": "T49/3R - BEIGE",
+          "slug": "gerflor-stair-nosings-t49-3r-beige-04626281",
+          "sku": "04626281",
+          "href": "https://www.gerflor-cee.com/products/stair-nosings-6281-t49-3r-beige-04626281",
+          "collection_slug": "gerflor-stair-nosings",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-nosings/colors/6281-t49-3r-beige.jpg?v=20260616152859",
+          "description": "Stair nosing for a perfect finish of the stairs\n\nBENEFITS - PVC stair nose weldable or to screw - Grooves or carborundum black band provide anti-slip protection - Landing / stair harmony PACKAGING - 10 units of 3 LM",
+          "characteristics": {},
+          "brandId": "6"
+        },
+        {
+          "code": "6512",
+          "name": "T49/3R - NOIR",
+          "slug": "gerflor-stair-nosings-t49-3r-noir-04626512",
+          "sku": "04626512",
+          "href": "https://www.gerflor-cee.com/products/stair-nosings-6512-t49-3r-noir-04626512",
+          "collection_slug": "gerflor-stair-nosings",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-nosings/colors/6512-t49-3r-noir.jpg?v=20260616152858",
+          "description": "Stair nosing for a perfect finish of the stairs\n\nBENEFITS - PVC stair nose weldable or to screw - Grooves or carborundum black band provide anti-slip protection - Landing / stair harmony PACKAGING - 10 units of 3 LM",
+          "characteristics": {},
+          "brandId": "6"
+        },
+        {
+          "code": "0001",
+          "name": "T67 ALU INCL.BLACK CARBORUNDUM BAND",
+          "slug": "gerflor-stair-nosings-t67-alu-inclblack-carborundum-band-05030001",
+          "sku": "05030001",
+          "href": "https://www.gerflor-cee.com/products/stair-nosings-0001-t67-alu-inclblack-carborundum-band-05030001",
+          "collection_slug": "gerflor-stair-nosings",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-nosings/colors/0001-t67-alu-inclblack-carborundum-band.jpg?v=20260616152859",
+          "description": "Stair nosing for a perfect finish of the stairs\n\nBENEFITS - PVC stair nose weldable or to screw - Grooves or carborundum black band provide anti-slip protection - Landing / stair harmony PACKAGING - 10 units of 3 LM",
+          "characteristics": {},
+          "brandId": "6"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-nosings/ambience/scena-1.jpg?v=20260616152854",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-nosings/ambience/scena-2.jpg?v=20260616152854"
+      ],
+      "documents": [
+        {
+          "title": "Aluminium stair nosing T67 - Technical datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-stair-nosings/aluminium-stair-nosing-t67-technical-datasheet-45107.pdf?v=20260616152853",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-stair-nosings/brosura-37212.pdf?v=20260616152854",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-stair-nosings/uputstvo-za-odrzavanje-20307.pdf?v=20260616152853",
+          "type": "pdf"
+        },
+        {
+          "title": "Stair nosing T27 - Technical datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-stair-nosings/stair-nosing-t27-technical-datasheet-45105.pdf?v=20260616152853",
+          "type": "pdf"
+        },
+        {
+          "title": "Stair nosing T49 - Technical datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-stair-nosings/stair-nosing-t49-technical-datasheet-45106.pdf?v=20260616152853",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Stair Clip",
+      "slug": "gerflor-stair-clip",
+      "brandId": "6",
+      "url": "https://www.gerflor-cee.com/products/stair-clip",
+      "colorCount": 3,
+      "categoryId": "11",
+      "description": "Stair clip for a perfect stair finish\n\nAPPLICATIONS - For stairs BENEFITS - A better watertight seal - Durability of the floor covering - Easy maintenance - A better appearance by highlighting the bottom of the stair PACKAGING - 9 units of 2.7 LM",
+      "shortDescription": "Stair clip for a perfect stair finish",
+      "characteristics": {},
+      "colors": [
+        {
+          "code": "8345",
+          "name": "BEIGE",
+          "slug": "gerflor-stair-clip-beige-h1388345",
+          "sku": "h1388345",
+          "href": "https://www.gerflor-cee.com/products/stair-clip-8345-beige-h1388345",
+          "collection_slug": "gerflor-stair-clip",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-clip/colors/8345-beige.jpg?v=20260616152907",
+          "description": "Stair clip for a perfect stair finish\n\nAPPLICATIONS - For stairs BENEFITS - A better watertight seal - Durability of the floor covering - Easy maintenance - A better appearance by highlighting the bottom of the stair PACKAGING - 9 units of 2.7 LM",
+          "characteristics": {},
+          "brandId": "6"
+        },
+        {
+          "code": "8775",
+          "name": "GREY",
+          "slug": "gerflor-stair-clip-grey-h1388775",
+          "sku": "h1388775",
+          "href": "https://www.gerflor-cee.com/products/stair-clip-8775-grey-h1388775",
+          "collection_slug": "gerflor-stair-clip",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-clip/colors/8775-grey.jpg?v=20260616152908",
+          "description": "Stair clip for a perfect stair finish\n\nAPPLICATIONS - For stairs BENEFITS - A better watertight seal - Durability of the floor covering - Easy maintenance - A better appearance by highlighting the bottom of the stair PACKAGING - 9 units of 2.7 LM",
+          "characteristics": {},
+          "brandId": "6"
+        },
+        {
+          "code": "8833",
+          "name": "DARK GREY",
+          "slug": "gerflor-stair-clip-dark-grey-h1388833",
+          "sku": "h1388833",
+          "href": "https://www.gerflor-cee.com/products/stair-clip-8833-dark-grey-h1388833",
+          "collection_slug": "gerflor-stair-clip",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-clip/colors/8833-dark-grey.jpg?v=20260616152908",
+          "description": "Stair clip for a perfect stair finish\n\nAPPLICATIONS - For stairs BENEFITS - A better watertight seal - Durability of the floor covering - Easy maintenance - A better appearance by highlighting the bottom of the stair PACKAGING - 9 units of 2.7 LM",
+          "characteristics": {},
+          "brandId": "6"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-stair-clip/ambience/scena-1.jpg?v=20260616152903",
+      "documents": [
+        {
+          "title": "Stair clip - Technical datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-stair-clip/stair-clip-technical-datasheet-45058.pdf?v=20260616152903",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Tarastep Pro",
+      "slug": "gerflor-tarastep-pro",
+      "brandId": "6",
+      "url": "https://www.gerflor-cee.com/products/tarastep-pro",
+      "colorCount": 13,
+      "categoryId": "11",
+      "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+      "shortDescription": "The more durable solution to recover stairs with wide colors pallet to match with floor !",
+      "characteristics": {
+        "Surface treatment": "Protecsol®",
+        "Overall thickness": "3.45 mm",
+        "Thickness of the wearlayer": "1.00 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "1m roll",
+        "Width of sheet": "1 m",
+        "Length of sheet": "20.0 m",
+        "European classification domestic": "23",
+        "European classification commercial": "34",
+        "European classification light industrial": "42"
+      },
+      "colors": [
+        {
+          "code": "2339",
+          "name": "DARK GREY & YELLOW",
+          "slug": "gerflor-tarastep-pro-dark-grey-yellow-10332339",
+          "sku": "10332339",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2339-dark-grey-yellow-10332339",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2339-dark-grey-yellow.jpg?v=20260616152919",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2342",
+          "name": "GENOVA & DARK GREY",
+          "slug": "gerflor-tarastep-pro-genova-dark-grey-10332342",
+          "sku": "10332342",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2342-genova-dark-grey-10332342",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2342-genova-dark-grey.jpg?v=20260616152922",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2340",
+          "name": "WARM GREY & BLACK",
+          "slug": "gerflor-tarastep-pro-warm-grey-black-10332340",
+          "sku": "10332340",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2340-warm-grey-black-10332340",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2340-warm-grey-black.jpg?v=20260616152921",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2333",
+          "name": "NATURE & DARK GREY",
+          "slug": "gerflor-tarastep-pro-nature-dark-grey-10332333",
+          "sku": "10332333",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2333-nature-dark-grey-10332333",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2333-nature-dark-grey.jpg?v=20260616152921",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2337",
+          "name": "DEEP BLUE & CLEAR",
+          "slug": "gerflor-tarastep-pro-deep-blue-clear-10332337",
+          "sku": "10332337",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2337-deep-blue-clear-10332337",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2337-deep-blue-clear.jpg?v=20260616152921",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2341",
+          "name": "BLACK & LIGHT GREY",
+          "slug": "gerflor-tarastep-pro-black-light-grey-10332341",
+          "sku": "10332341",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2341-black-light-grey-10332341",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2341-black-light-grey.jpg?v=20260616152921",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2343",
+          "name": "LIGHT GREY & BLACK",
+          "slug": "gerflor-tarastep-pro-light-grey-black-10332343",
+          "sku": "10332343",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2343-light-grey-black-10332343",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2343-light-grey-black.jpg?v=20260616152922",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2336",
+          "name": "BRESCIA & BLACK",
+          "slug": "gerflor-tarastep-pro-brescia-black-10332336",
+          "sku": "10332336",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2336-brescia-black-10332336",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2336-brescia-black.jpg?v=20260616152922",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2332",
+          "name": "SILVER & DARK GREY",
+          "slug": "gerflor-tarastep-pro-silver-dark-grey-10332332",
+          "sku": "10332332",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2332-silver-dark-grey-10332332",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2332-silver-dark-grey.jpg?v=20260616152924",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2338",
+          "name": "SAND & BROWN",
+          "slug": "gerflor-tarastep-pro-sand-brown-10332338",
+          "sku": "10332338",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2338-sand-brown-10332338",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2338-sand-brown.jpg?v=20260616152926",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2335",
+          "name": "CAPRI & BLACK",
+          "slug": "gerflor-tarastep-pro-capri-black-10332335",
+          "sku": "10332335",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2335-capri-black-10332335",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2335-capri-black.jpg?v=20260616152927",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2344",
+          "name": "SILVER & GREEN",
+          "slug": "gerflor-tarastep-pro-silver-green-10332344",
+          "sku": "10332344",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2344-silver-green-10332344",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2344-silver-green.jpg?v=20260616152926",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        },
+        {
+          "code": "2334",
+          "name": "BLUE GREY & CLEAR",
+          "slug": "gerflor-tarastep-pro-blue-grey-clear-10332334",
+          "sku": "10332334",
+          "href": "https://www.gerflor-cee.com/products/tarastep-pro-2334-blue-grey-clear-10332334",
+          "collection_slug": "gerflor-tarastep-pro",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/colors/2334-blue-grey-clear.jpg?v=20260616152926",
+          "description": "The more durable solution to recover stairs with wide colors pallet to match with floor !\n\nProduct and Design : - Complete solution for stairs : more durable - Concrete design with high contrast with stair nose - Mix & match with Taralay and Premium ranges : colors harmony stair & floor - High thickness : comfort underfoot - 1 mm wearlayer : high resistance to trafficInstallation and Maintenance: - Protecsol varnish : easy maintenance - Flexible product: easy to cut and to installMarket application: - Ideal in healthcare, education, offices or housing applicationsSustainability: - TVOC after 28 days < 100 micrograms/m3 - 100% recyclable - Made in France: reduced CO2 footprint of transport - 100% reach compliant, formaldeyde free : Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "3.45 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "1m roll",
+            "Width of sheet": "1 m",
+            "Length of sheet": "20.0 m",
+            "European classification domestic": "23",
+            "European classification commercial": "34",
+            "European classification light industrial": "42"
+          },
+          "brandId": "6"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarastep-pro/ambience/scena-1.jpg?v=20260616152916",
+      "documents": [
+        {
+          "title": "Tarastep Pro - Technical Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/tarastep-pro-technical-datasheet-69774.pdf?v=20260616152914",
+          "type": "pdf"
+        },
+        {
+          "title": "TARALAY MILLENIUM / TARADAL / TARASTEP - FDES",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/taralay-millenium-taradal-tarastep-fdes-62053.pdf?v=20260616152915",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/brosura-37212.pdf?v=20260616152915",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/uputstvo-za-odrzavanje-29796.pdf?v=20260616152914",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/uputstvo-za-ugradnju-36825.pdf?v=20260616152914",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/sertifikat-vatrootpornost-32257.pdf?v=20260616152915",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/izjava-o-svojstvima-dop-34067.pdf?v=20260616152915",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/garancija-69676.pdf?v=20260616152914",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — FloorScore",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarastep-pro/sertifikat-floorscore-69913.pdf?v=20260616152914",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Shower Threshold",
+      "slug": "gerflor-shower-threshold",
+      "brandId": "6",
+      "url": "https://www.gerflor-cee.com/products/shower-threshold",
+      "colorCount": 2,
+      "categoryId": "11",
+      "description": "Threshold for a perfect finish of the shower system\n\nAPPLICATIONS - Makes the junction between a floor covering and a shower covering - Compatible with floors 2 or 3.5mm thick BENEFITS - Weld system with the covering which ensures perfect watertightness - Allows welding of 2 or 3.5mm floor covering thanks to the tab system - 3 colours to limit the contrast PACKAGING - 10 units of 3 LM",
+      "shortDescription": "Threshold for a perfect finish of the shower system",
+      "characteristics": {},
+      "colors": [
+        {
+          "code": "4205",
+          "name": "GRIS",
+          "slug": "gerflor-shower-threshold-gris-04694205",
+          "sku": "04694205",
+          "href": "https://www.gerflor-cee.com/products/shower-threshold-4205-gris-04694205",
+          "collection_slug": "gerflor-shower-threshold",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-shower-threshold/colors/4205-gris.jpg?v=20260616152934",
+          "description": "Threshold for a perfect finish of the shower system\n\nAPPLICATIONS - Makes the junction between a floor covering and a shower covering - Compatible with floors 2 or 3.5mm thick BENEFITS - Weld system with the covering which ensures perfect watertightness - Allows welding of 2 or 3.5mm floor covering thanks to the tab system - 3 colours to limit the contrast PACKAGING - 10 units of 3 LM",
+          "characteristics": {},
+          "brandId": "6"
+        },
+        {
+          "code": "9301",
+          "name": "BEIGE CLAIR",
+          "slug": "gerflor-shower-threshold-beige-clair-04699301",
+          "sku": "04699301",
+          "href": "https://www.gerflor-cee.com/products/shower-threshold-9301-beige-clair-04699301",
+          "collection_slug": "gerflor-shower-threshold",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-shower-threshold/colors/9301-beige-clair.jpg?v=20260616152936",
+          "description": "Threshold for a perfect finish of the shower system\n\nAPPLICATIONS - Makes the junction between a floor covering and a shower covering - Compatible with floors 2 or 3.5mm thick BENEFITS - Weld system with the covering which ensures perfect watertightness - Allows welding of 2 or 3.5mm floor covering thanks to the tab system - 3 colours to limit the contrast PACKAGING - 10 units of 3 LM",
+          "characteristics": {},
+          "brandId": "6"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-shower-threshold/ambience/scena-1.jpg?v=20260616152932",
+      "documents": [
+        {
+          "title": "Shower threshold profile - Technical Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-shower-threshold/shower-threshold-profile-technical-datasheet-20349.pdf?v=20260616152932",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Tarafoam Underlayer Shower System 16 Db",
+      "slug": "gerflor-tarafoam-underlayer-shower-system-16-db",
+      "brandId": "6",
+      "url": "https://www.gerflor-cee.com/products/tarafoam-underlayer-shower-system-16-db",
+      "colorCount": 0,
+      "categoryId": "11",
+      "description": "The comfort version for the shower system!\n\nAPPLICATIONS - To be installed in the shower system BENEFITS - Provides acoustic insulation (16dB with Tarasafe Standard, Geo and Ultra ; 17 dB with Tarasafe Ultra H2O) and comfort under foot. - Thickness: 2 mm. PACKAGING - 1 roll of 40m²",
+      "shortDescription": "The comfort version for the shower system!",
+      "characteristics": {},
+      "colors": [],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/lajsne/gerflor-tarafoam-underlayer-shower-system-16-db/ambience/scena-1.jpg?v=20260616152940",
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarafoam-underlayer-shower-system-16-db/tehnicki-list-24390.pdf?v=20260616152939",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarafoam-underlayer-shower-system-16-db/brosura-43822.pdf?v=20260616152940",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/lajsne/gerflor-tarafoam-underlayer-shower-system-16-db/uputstvo-za-ugradnju-60610.pdf?v=20260616152940",
+          "type": "pdf"
+        }
+      ]
+    }
+  ],
+  "totalColors": 22,
+  "generatedAt": "2026-06-16T15:29:40.670Z"
+}

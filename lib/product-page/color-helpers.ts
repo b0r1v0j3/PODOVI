@@ -14,6 +14,7 @@ import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
+import gerflorStairsShowerData from '@/public/data/gerflor_stairs_shower.json';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import { SITE_URL } from '@/lib/seo/site-config';
 import { getDerivedWeldingSpecs } from './welding-helpers';
@@ -63,6 +64,7 @@ const gerflorSportCollections = (sportColorsData as { collections?: NestedCollec
 const tarkettSportCollections = (tarkettSportColorsData as { collections?: NestedCollection[] }).collections || [];
 export const sportCollections = [...gerflorSportCollections, ...tarkettSportCollections];
 export const lajsneCollections = (tarkettLajsneData as { collections?: NestedCollection[] }).collections || [];
+export const gerflorStairShowerCollections = (gerflorStairsShowerData as { collections?: NestedCollection[] }).collections || [];
 
 // Helper: strip collection sub-type prefixes from color names
 // e.g. "LOOSELAY 0374 PARKER STATION" -> "PARKER STATION"
@@ -429,6 +431,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         { categorySlug: 'industrijske-ploce', collections: industrialCollections },
         { categorySlug: 'sport', collections: sportCollections },
         { categorySlug: 'lajsne', collections: lajsneCollections },
+        { categorySlug: 'lajsne', collections: gerflorStairShowerCollections },
     ];
 
     for (const source of nestedSources) {
@@ -453,6 +456,7 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         { categorySlug: 'sport', fileName: 'sport_colors.json', nested: true },
         { categorySlug: 'sport', fileName: 'tarkett_sport_colors.json', nested: true },
         { categorySlug: 'lajsne', fileName: 'tarkett_lajsne_variants.json', nested: true },
+        { categorySlug: 'lajsne', fileName: 'gerflor_stairs_shower.json', nested: true },
     ];
 
     for (const candidate of candidates) {

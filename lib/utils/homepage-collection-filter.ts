@@ -20,6 +20,7 @@ export const COLLECTION_SKU_PREFIXES = [
   'IND-',
   'SPORT-',
   'TARKETT-LAJSNE-',
+  'GERFLOR-LAJSNE-',
   'ROMUS-',
   'TECHEM-',
 ] as const;

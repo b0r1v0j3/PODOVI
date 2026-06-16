@@ -31,6 +31,7 @@ const LVT_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'lvt_colors_com
 const SPORT_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'sport_colors.json');
 const VINYL_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'vinyl_colors_complete.json');
 const INDUSTRIAL_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'industrial_colors.json');
+const STAIRS_SHOWER_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'gerflor_stairs_shower.json');
 const IMAGES_BUCKET = 'product-images';
 const DOCS_BUCKET = 'product-documents';
 const MIN_DECOR_WIDTH = 800;
@@ -146,7 +147,38 @@ const R_TILE = [
   url: `${parse.PUBLIC_HOST}/products/${slug}`,
 }));
 
-const ALL_COLLECTIONS = [...VIRTUO, ...TARAFLEX, ...TARASAFE, ...MURAL, ...R_TILE];
+// S-LAJSNE — Gerflor stepenišni profili (stair nosings/clip/tarastep) + tuš rešenja
+// (shower threshold + tarafoam underlayer). Idu u POSTOJEĆU Lajsne kategoriju (cat 11),
+// koja je do sada bila Tarkett-only — ovo je PRVO Gerflor prisustvo u cat 11.
+// kind 'lajsne-nested' → nested collections[] u public/data/gerflor_stairs_shower.json,
+// ISTI oblik kao Tarkett tarkett_lajsne_variants.json (name, slug, brandId, url, colorCount,
+// characteristics, documents, colors:[{code,name,slug,image,...}], collection_image_url).
+// SLUG KONVENCIJA: prefiksiran `gerflor-<slug>`. Razlog (poklapa loader + prepare-colors):
+//   - getGerflorStairShowerCollections() postavlja brandId '6' i NE strip-uje prefiks
+//     (Tarkett ekvivalent koristi slug BEZ tarkett- da bi ga prepare-colors strip-ovao;
+//      ovde biramo eksplicitan gerflor- prefiks da slug bude jedinstven naspram Tarkett
+//      lajsni i da se PDP ruta /proizvodi/gerflor-<slug> razlikuje).
+//   - prepare-colors.ts cat-11 grana doda kandidate i sa i bez gerflor- prefiksa, pa match
+//     radi bez obzira na to da li URL nosi prefiks.
+// Slugovi = CEE slugovi (provereno u živom sitemap-u 2026-06-16): stair-nosings (12),
+// stair-clip (3), tarastep-pro (13), shower-threshold (2),
+// tarafoam-underlayer-shower-system-16-db (varijacija ima nestandardni SKU → 0 swatch-eva,
+// kolekcija se i dalje upisuje kao R-Tile-slate; kartica se renderuje, PDP bez boja).
+const STAIRS_SHOWER = [
+  'stair-nosings',
+  'stair-clip',
+  'tarastep-pro',
+  'shower-threshold',
+  'tarafoam-underlayer-shower-system-16-db',
+].map((slug) => ({
+  kind: 'lajsne-nested',
+  categoryId: '11',
+  bucketDir: 'lajsne',
+  slug,
+  url: `${parse.PUBLIC_HOST}/products/${slug}`,
+}));
+
+const ALL_COLLECTIONS = [...VIRTUO, ...TARAFLEX, ...TARASAFE, ...MURAL, ...R_TILE, ...STAIRS_SHOWER];
 
 // Eksplicitno SKIPOVANO (moguci kasniji follow-up, vidi tmp/s6-recon.md §2):
 //  - my-taraflex-* landing/configurator stranice (4)
@@ -264,7 +296,8 @@ function displayNameFromVariation(v) {
       `${targets.filter((c) => c.kind === 'sport-nested').length} Taraflex + ` +
       `${targets.filter((c) => c.kind === 'vinyl-nested' && c.protivklizno).length} Tarasafe + ` +
       `${targets.filter((c) => c.kind === 'vinyl-nested' && c.zidneObloge).length} Mural + ` +
-      `${targets.filter((c) => c.kind === 'industrial-nested').length} R-Tile/Design-Tile)` +
+      `${targets.filter((c) => c.kind === 'industrial-nested').length} R-Tile/Design-Tile + ` +
+      `${targets.filter((c) => c.kind === 'lajsne-nested').length} Stepenice/Tuš)` +
       `${args.dryRun ? ' (DRY-RUN)' : ''}`
   );
   console.log(`⏭️  Eksplicitno skipovano (moguci follow-up): ${SKIPPED_FOLLOWUP.length} grupa:`);
@@ -286,6 +319,8 @@ function displayNameFromVariation(v) {
   if (!Array.isArray(vinylData.collections)) vinylData.collections = [];
   const industrialData = JSON.parse(fs.readFileSync(INDUSTRIAL_JSON_PATH, 'utf8'));
   if (!Array.isArray(industrialData.collections)) industrialData.collections = [];
+  const stairsShowerData = JSON.parse(fs.readFileSync(STAIRS_SHOWER_JSON_PATH, 'utf8'));
+  if (!Array.isArray(stairsShowerData.collections)) stairsShowerData.collections = [];
 
   const summary = [];
   let unsavedWrites = 0;
@@ -572,6 +607,58 @@ function displayNameFromVariation(v) {
         const idx = vinylData.collections.findIndex((c) => c.slug === col.slug);
         if (idx >= 0) vinylData.collections[idx] = entry;
         else vinylData.collections.push(entry);
+      } else if (col.kind === 'lajsne-nested') {
+        // S-LAJSNE Gerflor stepenice/tuš → nested collections[] u gerflor_stairs_shower.json,
+        // ISTI oblik kao Tarkett tarkett_lajsne_variants.json (name, slug, brandId, url,
+        // colorCount, characteristics, documents, colors[], collection_image_url).
+        // slug = 'gerflor-<slug>' (prefiksiran) da bude jedinstven naspram Tarkett lajsni;
+        // getGerflorStairShowerCollections() postavlja brandId '6', a prepare-colors cat-11
+        // grana match-uje i sa i bez gerflor- prefiksa.
+        // Svaka boja nosi punu strukturu (code/name/slug/image/characteristics/brandId) kao
+        // Tarkett varijante → findNestedColorSource + mapNestedCollectionColors rade isto.
+        const collChars = buildCharacteristicsFromSpecTable(specs);
+        const prefixedSlug = `gerflor-${col.slug}`;
+        const colors = decorResults.map((r) => {
+          const code = r.variation.code || '';
+          const nameSlug = r.variation.nameSlug || core.slugify(r.displayName);
+          // Slug boje = prefixedSlug-<nameSlug>-<sku> (poklapa Tarkett oblik
+          // <collection-slug>-<name-slug> + jedinstven SKU za PDP color rutu).
+          const colorSlug = r.variation.sku
+            ? `${prefixedSlug}-${nameSlug}-${r.variation.sku}`
+            : `${prefixedSlug}-${nameSlug}`;
+          return {
+            code,
+            name: r.displayName,
+            slug: colorSlug,
+            sku: r.variation.sku || '',
+            href: r.variation.url,
+            collection_slug: prefixedSlug,
+            image: r.publicUrl,
+            description: descriptionText,
+            characteristics: { ...collChars },
+            brandId: '6',
+          };
+        });
+        const entry = {
+          name: collectionName,
+          slug: prefixedSlug,
+          brandId: '6',
+          url: col.url,
+          colorCount: colors.length,
+          categoryId: col.categoryId,
+          description: descriptionText,
+          shortDescription: descriptionText
+            ? descriptionText.split('\n\n')[0].slice(0, 200)
+            : `${collectionName} — Gerflor`,
+          characteristics: collChars,
+          colors,
+          collection_image_url: heroForCollection,
+        };
+        if (sceneUrls.length > 1) entry.room_scene_images = sceneUrls.slice(1);
+        if (uploadedDocs.length) entry.documents = uploadedDocs;
+        const idx = stairsShowerData.collections.findIndex((c) => c.slug === prefixedSlug);
+        if (idx >= 0) stairsShowerData.collections[idx] = entry;
+        else stairsShowerData.collections.push(entry);
       }
 
       manifest.record(`collection:${col.slug}`, {
@@ -623,6 +710,12 @@ function displayNameFromVariation(v) {
     );
     industrialData.generatedAt = new Date().toISOString();
     core.writeJsonWithBackup(INDUSTRIAL_JSON_PATH, industrialData, 'industrial-colors');
+    stairsShowerData.totalColors = stairsShowerData.collections.reduce(
+      (sum, c) => sum + ((c.colors && c.colors.length) || 0),
+      0
+    );
+    stairsShowerData.generatedAt = new Date().toISOString();
+    core.writeJsonWithBackup(STAIRS_SHOWER_JSON_PATH, stairsShowerData, 'gerflor-stairs-shower');
     maybeSave(true);
   }
 
@@ -633,7 +726,8 @@ function displayNameFromVariation(v) {
       `Taraflex: ${summary.filter((r) => r.kind === 'sport-nested').length} kol. | ` +
       `Tarasafe: ${summary.filter((r) => r.kind === 'vinyl-nested' && r.protivklizno).length} kol. | ` +
       `Mural: ${summary.filter((r) => r.kind === 'vinyl-nested' && r.zidneObloge).length} kol. | ` +
-      `R-Tile/Design-Tile: ${summary.filter((r) => r.kind === 'industrial-nested').length} kol.`
+      `R-Tile/Design-Tile: ${summary.filter((r) => r.kind === 'industrial-nested').length} kol. | ` +
+      `Stepenice/Tuš (cat 11): ${summary.filter((r) => r.kind === 'lajsne-nested').length} kol.`
   );
   if (!args.dryRun) {
     console.log(

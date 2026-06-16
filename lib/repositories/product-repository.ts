@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllDessoCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllGrassProducts, getAllPriborProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllDessoCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllGrassProducts, getAllPriborProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections, getGerflorStairShowerCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -511,24 +511,26 @@ export class SupabaseProductRepository implements IProductRepository {
       products = [...products, ...tarkettSportProducts];
     }
 
-    // Category 11: Tarkett lajsne collections from JSON
+    // Category 11: Tarkett lajsne + Gerflor stepenice/tuš collections from JSON
     if (!filters?.categoryId || legacyCategoryId === '11' || filters.categoryId === '11') {
       const existingSlugs = new Set(products.map((p: Product) => p.slug));
-      let tarkettLajsneProducts = getTarkettLajsneCollections()
-        .filter(lp => !existingSlugs.has(lp.slug));
+      let lajsneProducts = [
+        ...getTarkettLajsneCollections(),
+        ...getGerflorStairShowerCollections(),
+      ].filter(lp => !existingSlugs.has(lp.slug));
 
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
-        tarkettLajsneProducts = tarkettLajsneProducts.filter(p =>
+        lajsneProducts = lajsneProducts.filter(p =>
           p.name.toLowerCase().includes(searchLower) ||
           p.description.toLowerCase().includes(searchLower) ||
           p.sku.toLowerCase().includes(searchLower)
         );
       }
       if (filters?.brandIds && filters.brandIds.length > 0) {
-        tarkettLajsneProducts = tarkettLajsneProducts.filter(p => filters.brandIds!.includes(p.brandId));
+        lajsneProducts = lajsneProducts.filter(p => filters.brandIds!.includes(p.brandId));
       }
-      products = [...products, ...tarkettLajsneProducts];
+      products = [...products, ...lajsneProducts];
     }
 
     if (!filters?.categoryId || legacyCategoryId === '1' || legacyCategoryId === '3' || filters.categoryId === '1' || filters.categoryId === '3') {
@@ -713,6 +715,7 @@ export class MockProductRepository implements IProductRepository {
     ...getWolflorVinylCollections(),
     ...getTarkettSportCollections(),
     ...getTarkettLajsneCollections(),
+    ...getGerflorStairShowerCollections(),
     ...getAllDekingProducts(),
     ...getAllGrassProducts(),
     ...getAllPriborProducts(),
