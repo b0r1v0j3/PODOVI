@@ -5,11 +5,54 @@ const { chromium } = require('playwright');
 const core = require('./lib/ingest-core.js');
 const parse = require('./lib/tarkett-parse.js');
 
-const HOMO_JSON = path.join(process.cwd(), 'public', 'data', 'tarkett_homogeneous_vinyl_colors.json');
-const LVT_JSON = path.join(process.cwd(), 'public', 'data', 'tarkett_lvt_products.json');
+const DATA_DIR = path.join(process.cwd(), 'public', 'data');
+const LVT_JSON = path.join(DATA_DIR, 'tarkett_lvt_products.json');
+const DEFAULT_HOMO_TARGET = 'tarkett_homogeneous_vinyl_colors.json';
+const SWATCH_CONCURRENCY = 8;     // worker-pool za per-boja petlju (mrežno-vezano: download+upload)
+const SWATCH_TIMEOUT_MS = 120000; // tvrdi per-boja plafon (zastao socket može proći interne timeout-e)
 const IMAGES_BUCKET = 'product-images';
 const DOCS_BUCKET = 'product-documents';
 const MIN_SWATCH_WIDTH = 800; // XXL je 1920; štiti od poluzanih/placeholder slika
+
+function dataJsonPath(name) { return path.join(DATA_DIR, String(name || DEFAULT_HOMO_TARGET)); }
+
+// 24 Tarkett linoleum (xf²) kolekcije (verbatim iz tmp/s7-linoleum-recon.md / output/*.json dump-ova).
+// Oblik je identičan homogenom vinilu (hex popunjen, slug design_key) → kind:'homogeneous'.
+// LinoWall (C000833) je ZIDNA OBLOGA, ne pod → isključeno iz floor liste (recon §2/§5). Ostaje 23.
+const LINOLEUM_COLLECTIONS = [
+  ['C000834', 'originale-essenza-2-5-mm'],
+  ['C000342', 'veneto-xf2-2-5-mm'],
+  ['C000060', 'etrusco-xf2-2-5-mm'],
+  ['C000845', 'etrusco-xf2-bfl-2-5-mm'],
+  ['C002561', 'linomarine'],
+  ['C002231', 'originale-silencio-xf2-19db-3-8mm'],
+  ['C002230', 'originale-xf2-2-5mm'],
+  ['C002232', 'originale-xf2-bfl-2-5mm'],
+  ['C000276', 'style-elle-silencio-xf2-19db-3-8mm'],
+  ['C000277', 'style-elle-xf2-2-5-mm'],
+  ['C000847', 'style-elle-xf2-bfl-2-5-mm'],
+  ['C000279', 'style-emme-silencio-xf2-19-db'],
+  ['C000280', 'style-emme-xf2-2-5-mm'],
+  ['C000846', 'style-emme-xf2-bfl-2-5-mm'],
+  ['C000848', 'trentino-xf2-2-5-mm'],
+  ['C000850', 'trentino-xf2-bfl-2-5-mm'],
+  ['C000336', 'veneto-acoustic-cork-xf2-15-db-4-4-mm'],
+  ['C000338', 'veneto-essenza-2-5-mm'],
+  ['C000339', 'veneto-sicuro-xf2-r10-2-5mm'],
+  ['C000340', 'veneto-silencio-xf2-19db-3-8mm'],
+  ['C000341', 'veneto-xf2-2-0-mm'],
+  ['C000343', 'veneto-xf2-3-2-mm'],
+  ['C000344', 'veneto-xf2-bfl-2-5-mm'],
+].map(([collectionId, slug]) => ({
+  key: `linoleum-${slug}`,
+  kind: 'homogeneous',
+  collectionId,
+  slug: `tarkett-${slug}`,
+  categorySlug: 'linoleum',
+  categoryId: '7',
+  targetJson: 'tarkett_linoleum_colors.json',
+  url: `https://www.tarkett.rs/sr_RS/kolekcija-${collectionId}-${slug}`,
+}));
 
 // Konfiguracija 4 nove kolekcije (verbatim iz upstream izviđanja 2026-06-13).
 const COLLECTIONS = [
@@ -21,6 +64,7 @@ const COLLECTIONS = [
     url: 'https://www.tarkett.rs/sr_RS/kolekcija-C003193-real-spc-50' },
   { key: 'modulart-70',  kind: 'lvt', type: 'LVT', collectionId: 'C003148', slug: 'modulart-70', categorySlug: 'lvt',
     url: 'https://www.tarkett.rs/sr_RS/kolekcija-C003148-modulart-70' },
+  ...LINOLEUM_COLLECTIONS,
 ];
 
 function parseArgs() {
@@ -140,27 +184,46 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
   const galleryUrls = args.dryRun ? parse.galleryImagesFromAssets(item)
     : await ingestGallery(supabase, manifest, col, parse.galleryImagesFromAssets(item));
 
-  const colors = [];
-  for (const d of designs) {
-    const code = parse.colorCode(d);
-    const name = parse.cleanColorName(d.product_name, item.collection_name);
-    const fileBase = `${code}-${core.slugify(name)}`;
-    let image = parse.mediaImageUrl(d.product_thumbnail);
-    if (!args.dryRun) {
-      try {
-        image = await ingestSwatch(supabase, manifest, col, d, fileBase, `${col.slug}/${fileBase}`);
-      } catch (err) { console.log(`   ⚠️ swatch ${fileBase}: ${err.message} — preskačem boju`); continue; }
+  // Per-boja petlja paralelizovana worker-pool-om (mrežno-vezano: download+upload swatch-a).
+  // 511 boja sekvencijalno je presporo/rizično; svaki swatch ima tvrdi core.withTimeout plafon
+  // jer zastao socket može da prođe interne ingest-core timeout-e i zamrzne ceo run.
+  // Rezultati u pre-dimenzionisan niz po indeksu → redosled boja ostaje stabilan; svaki
+  // promašaj swatch-a (dry-run nikad) ostavlja null pa se filtrira (boja se preskače).
+  const results = new Array(designs.length).fill(null);
+  let cursor = 0;
+  let saved = 0;
+  async function swatchWorker() {
+    while (cursor < designs.length) {
+      const idx = cursor++;
+      const d = designs[idx];
+      const code = parse.colorCode(d);
+      const name = parse.cleanColorName(d.product_name, item.collection_name);
+      const fileBase = `${code}-${core.slugify(name)}`;
+      let image = parse.mediaImageUrl(d.product_thumbnail);
+      if (!args.dryRun) {
+        try {
+          image = await core.withTimeout(
+            ingestSwatch(supabase, manifest, col, d, fileBase, `${col.slug}/${fileBase}`),
+            SWATCH_TIMEOUT_MS,
+            `swatch ${fileBase}`,
+          );
+        } catch (err) { console.log(`   ⚠️ swatch ${fileBase}: ${err.message} — preskačem boju`); continue; }
+        if (++saved % 25 === 0) manifest.save();
+      }
+      results[idx] = {
+        code,
+        name,
+        slug: `${col.slug}-color-${code}-${core.slugify(name)}`,
+        image,
+        description,
+        characteristics: parse.homogeneousColorCharacteristics(d),
+        brandId: '3',
+      };
     }
-    colors.push({
-      code,
-      name,
-      slug: `${col.slug}-color-${code}-${core.slugify(name)}`,
-      image,
-      description,
-      characteristics: parse.homogeneousColorCharacteristics(d),
-      brandId: '3',
-    });
   }
+  const poolSize = args.dryRun ? 1 : Math.min(SWATCH_CONCURRENCY, designs.length || 1);
+  await Promise.all(Array.from({ length: poolSize }, () => swatchWorker()));
+  const colors = results.filter(Boolean);
 
   return {
     name: item.collection_name,
@@ -234,7 +297,11 @@ async function ingestLvt(supabase, manifest, args, col, item) {
   const browser = await chromium.launch({ headless: true });
   const summary = [];
   // Lazy-load ciljnih JSON-ova (samo kad nisu dry-run, da se ne piše ništa u dry-run).
-  let homoData = null, lvtData = null;
+  // homoDataByFile: ime ciljnog JSON-a (col.targetJson) → učitan {collections} objekat.
+  // Vinil kolekcije idu u tarkett_homogeneous_vinyl_colors.json (default), linoleum u
+  // tarkett_linoleum_colors.json — isti homogeni record oblik, različit fajl.
+  const homoDataByFile = new Map();
+  let lvtData = null;
 
   try {
     for (const col of targets) {
@@ -257,7 +324,12 @@ async function ingestLvt(supabase, manifest, args, col, item) {
           const record = await ingestHomogeneous(supabase, manifest, args, col, item);
           console.log(`   → boja:${record.colors.length} dok:${record.documents.length} ambijent:${record.room_scene_images.length + (record.collection_image_url ? 1 : 0)}`);
           if (!args.dryRun) {
-            homoData = homoData || JSON.parse(fs.readFileSync(HOMO_JSON, 'utf8'));
+            const targetName = col.targetJson || DEFAULT_HOMO_TARGET;
+            let homoData = homoDataByFile.get(targetName);
+            if (!homoData) {
+              homoData = JSON.parse(fs.readFileSync(dataJsonPath(targetName), 'utf8'));
+              homoDataByFile.set(targetName, homoData);
+            }
             homoData.collections = homoData.collections.filter((c) => c.slug !== record.slug);
             homoData.collections.push(record);
           }
@@ -285,9 +357,13 @@ async function ingestLvt(supabase, manifest, args, col, item) {
   }
 
   if (!args.dryRun) {
-    if (homoData) {
+    for (const [targetName, homoData] of homoDataByFile) {
       homoData.generatedAt = new Date().toISOString();
-      core.writeJsonWithBackup(HOMO_JSON, homoData, 'tarkett-homogeneous-vinyl');
+      core.writeJsonWithBackup(
+        dataJsonPath(targetName),
+        homoData,
+        `tarkett-${targetName.replace(/\.json$/, '').replace(/_/g, '-')}`,
+      );
     }
     if (lvtData) {
       core.writeJsonWithBackup(LVT_JSON, lvtData, 'tarkett-lvt-products');

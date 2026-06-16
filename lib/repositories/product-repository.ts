@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -431,7 +431,11 @@ export class SupabaseProductRepository implements IProductRepository {
     }
 
     if (!filters?.categoryId || legacyCategoryId === '7' || filters.categoryId === '7') {
-      let linoleumCollections = getGerflorLinoleumCollections();
+      // Gerflor DLW linoleum + Tarkett linoleum (xf²) — oba JSON-only, ni jedan u Supabase DB.
+      let linoleumCollections = [
+        ...getGerflorLinoleumCollections(),
+        ...getTarkettLinoleumCollections(),
+      ];
 
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
@@ -650,6 +654,7 @@ export class MockProductRepository implements IProductRepository {
     ...getAllGerflorProducts(),
     ...getGerflorLVTCollections(),
     ...getGerflorLinoleumCollections(),
+    ...getTarkettLinoleumCollections(),
     ...getGerflorCarpetCollections(),
     ...getAllCarpetProducts(),
     ...getAllBloqCarpetProducts(),

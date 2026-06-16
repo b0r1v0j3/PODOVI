@@ -16,6 +16,7 @@ import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
+import tarkettLinoleumData from '@/public/data/tarkett_linoleum_colors.json';
 import techemMatsData from '@/public/data/techem_mats.json';
 import romusToolsData from '@/public/data/romus_tools.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
@@ -37,6 +38,7 @@ let tarkettLajsneCollectionCache: Product[] | null = null;
 let tarkettVinylHomeCollectionCache: Product[] | null = null;
 let tarkettHomogeneousVinylCollectionCache: Product[] | null = null;
 let tarkettHeterogeneousVinylCollectionCache: Product[] | null = null;
+let tarkettLinoleumCollectionCache: Product[] | null = null;
 let wolflorVinylCollectionCache: Product[] | null = null;
 let gerflorLvtCollectionCache: Product[] | null = null;
 let gerflorLinoleumCollectionCache: Product[] | null = null;
@@ -1364,6 +1366,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getTarkettVinylHomeCollections(),
         ...getTarkettHeterogeneousVinylCollections(),
         ...getTarkettHomogeneousVinylCollections(),
+        ...getTarkettLinoleumCollections(),
         ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
         ...getTarkettLajsneCollections(),
@@ -1415,7 +1418,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
     } else if (categoryId === '11') {
         return [...getTarkettLajsneCollections()];
     } else if (categoryId === '7') {
-        return [...getGerflorLinoleumCollections(), ...getAllLinoleumProducts()];
+        return [...getGerflorLinoleumCollections(), ...getAllLinoleumProducts(), ...getTarkettLinoleumCollections()];
     } else if (categoryId === '4') {
         return [...getGerflorCarpetCollections(), ...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
     } else if (categoryId === '5') {
@@ -1440,6 +1443,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getTarkettVinylHomeCollections(),
         ...getTarkettHeterogeneousVinylCollections(),
         ...getTarkettHomogeneousVinylCollections(),
+        ...getTarkettLinoleumCollections(),
         ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
@@ -2116,7 +2120,8 @@ function buildTarkettVinylCollectionHeaders(
     collections: any[],
     skuPrefix: string,
     typeValue: 'Heterogeni' | 'Homogeni',
-    fallbackDescriptionText?: string
+    fallbackDescriptionText?: string,
+    categoryId: string = '2'
 ): Product[] {
     return collections.map((collection: any) => {
         const fallbackDescription = typeValue === 'Homogeni'
@@ -2160,7 +2165,7 @@ function buildTarkettVinylCollectionHeaders(
             name: collection.name,
             slug: collection.slug,
             sku: `${skuPrefix}-${String(collection.slug).replace(/^tarkett-/, '').toUpperCase()}`,
-            categoryId: '2',
+            categoryId,
             brandId: '3',
             shortDescription:
                 collection.shortDescription ||
@@ -2235,6 +2240,26 @@ export function getTarkettHeterogeneousVinylCollections(): Product[] {
     );
 
     return tarkettHeterogeneousVinylCollectionCache;
+}
+
+export function getTarkettLinoleumCollections(): Product[] {
+    if (tarkettLinoleumCollectionCache) {
+        return tarkettLinoleumCollectionCache;
+    }
+
+    const collections = (((tarkettLinoleumData as any)?.collections || []) as any[]);
+
+    // Linoleum record oblik je identičan homogenom vinilu (hex popunjen, slug design_key),
+    // ali pripada kategoriji linoleum (7), ne vinil (2) — zato categoryId override.
+    tarkettLinoleumCollectionCache = buildTarkettVinylCollectionHeaders(
+        collections,
+        'TARKETT-LINOLEUM',
+        'Homogeni',
+        'Tarkett linoleum (xf²) kolekcija.',
+        '7'
+    );
+
+    return tarkettLinoleumCollectionCache;
 }
 
 export function getWolflorVinylCollections(): Product[] {
