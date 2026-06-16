@@ -91,6 +91,34 @@ export function getCategoryPageCopy(category: Category): ListingPageCopy {
     };
   }
 
+  if (category.slug === 'pribor') {
+    return {
+      heading: 'Pribor',
+      lead: 'Lepkovi, podloge, elektrode za varenje i sredstva za negu — prateći pribor za pravilnu ugradnju i održavanje podova (Tarkett i Gerflor).',
+      body: 'U kategoriji Pribor nalazi se prateći asortiman za podove: lepkovi i hladno varenje, podloge (akustične, za neravne površine, plutene, za laminat), elektrode i šipke za varenje vinila i sporta, lepljive trake i sredstva za negu i čišćenje. Svaka stavka dolazi sa tehničkim specifikacijama i uputstvom, a cena se najčešće dobija na upit.',
+      bullets: [
+        'Lepkovi, hladno varenje i lepljive trake za vinil, parket i sport',
+        'Podloge: akustične, plutene, za neravne površine i laminat',
+        'Elektrode/šipke za varenje i sredstva za negu i održavanje',
+      ],
+      metaTitle: 'Pribor za Podove | Lepkovi, Podloge, Elektrode i Nega | podovi.online',
+      metaDescription: 'Prateći pribor za podove: lepkovi i hladno varenje, akustične i plutene podloge, elektrode za varenje, lepljive trake i sredstva za negu. Tarkett i Gerflor.',
+      keywords: dedupeKeywords([
+        'pribor za podove',
+        'lepak za vinil',
+        'lepak za parket',
+        'hladno varenje',
+        'elektrode za varenje',
+        'podloga za laminat',
+        'akustična podloga',
+        'sredstva za negu podova',
+        'Tarkett pribor',
+        'Gerflor pribor',
+        'Srbija',
+      ]),
+    };
+  }
+
   return {
     heading: category.name,
     lead: category.description,

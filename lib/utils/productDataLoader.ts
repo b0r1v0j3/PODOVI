@@ -23,6 +23,7 @@ import romusToolsData from '@/public/data/romus_tools.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
 import tarkettGrassProducts from '@/public/data/tarkett_grass_products.json';
+import priborProducts from '@/public/data/pribor_products.json';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
@@ -36,6 +37,7 @@ let bloqCarpetCache: Product[] | null = null;
 let dessoCarpetCache: Product[] | null = null;
 let dekingProductsCache: Product[] | null = null;
 let grassProductsCache: Product[] | null = null;
+let priborProductsCache: Product[] | null = null;
 let esdCollectionCache: Product[] | null = null;
 let tarkettSportCollectionCache: Product[] | null = null;
 let tarkettLajsneCollectionCache: Product[] | null = null;
@@ -1377,6 +1379,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getTarkettLajsneCollections(),
         ...getAllDekingProducts(),
         ...getAllGrassProducts(),
+        ...getAllPriborProducts(),
         ...getAllAlpodProducts(),
         ...getAllTechemProducts(),
         ...getAllRomusToolProducts(),
@@ -1431,6 +1434,8 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return [...getAllDekingProducts(), ...getAlpodCollectionProducts('5')];
     } else if (categoryId === '14') {
         return [...getAllGrassProducts()];
+    } else if (categoryId === '15') {
+        return [...getAllPriborProducts()];
     } else if (categoryId === '3') {
         return [
             ...getAlpodCollectionProducts('3'),
@@ -1457,6 +1462,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
         ...getAllGrassProducts(),
+        ...getAllPriborProducts(),
         ...getAlpodCollectionProducts(),
         ...getAllTechemProducts(),
         ...getAllRomusToolProducts(),
@@ -2633,6 +2639,70 @@ export function getAllGrassProducts(): Product[] {
 
     grassProductsCache = grassList;
     return grassProductsCache;
+}
+
+/**
+ * Get all accessory ("Pribor") products from pribor_products.json.
+ * Modeled on getAllGrassProducts(): single-design, colorless (no color
+ * selector), typically "Cena na upit" (price 0). categoryId '15' (Pribor),
+ * brandId per source (Tarkett '3' / Gerflor '6'), SKU prefix 'PRIBOR-'.
+ * Accessories are sold per piece/package, so priceUnit defaults to 'kom'
+ * (per-item JSON may override). Empty JSON until the real ingest runs → [].
+ */
+export function getAllPriborProducts(): Product[] {
+    if (priborProductsCache) {
+        return priborProductsCache;
+    }
+
+    const priborList = (priborProducts as any[]).map(p => {
+        const slug = (p.slug as string) || (p.name as string).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+        // Convert specs object back to array (mirror deking/grass)
+        const specsArray: Array<{ key: string; label: string; value: string }> = [];
+        if (p.specs && !Array.isArray(p.specs)) {
+            for (const [key, value] of Object.entries(p.specs)) {
+                specsArray.push({
+                    key: key.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+                    label: key,
+                    value: value as string
+                });
+            }
+        } else if (Array.isArray(p.specs)) {
+            specsArray.push(...p.specs);
+        }
+        // Force the collection spec as required by the site
+        if (!specsArray.find(s => s.key === 'collection')) {
+            specsArray.push({ key: 'collection', label: 'Kolekcija', value: p.collection || p.name });
+        }
+
+        const images = p.images ? p.images : [];
+        const brandId = p.brandId || '3';
+
+        return {
+            id: p.id,
+            name: p.name,
+            slug: slug,
+            sku: p.sku || `PRIBOR-${slug}`,
+            categoryId: p.categoryId || '15', // 15 is Pribor
+            brandId,
+            shortDescription: p.shortDescription || p.description || p.name,
+            description: p.description || enrichProductDescription({ name: p.name, categoryId: '15', brandId, specs: specsArray } as any),
+            images: images,
+            specs: specsArray,
+            documents: Array.isArray(p.documents) ? p.documents : [],
+            detailsSections: undefined,
+            price: typeof p.price === 'number' ? p.price : 0, // "Cena na upit" → 0
+            priceUnit: (p.priceUnit as string) || 'kom',
+            inStock: true,
+            featured: false,
+            externalLink: p.url || undefined,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01')
+        } as Product;
+    });
+
+    priborProductsCache = priborList;
+    return priborProductsCache;
 }
 
 export function getAlpodCollectionProducts(categoryId?: string): Product[] {
