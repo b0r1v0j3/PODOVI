@@ -1,0 +1,813 @@
+[
+  {
+    "id": "14000",
+    "name": "CAMPO",
+    "slug": "tarkett-campo",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002770-campo",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-campo",
+    "description": "Napravljen od sintetičkih vlakana, Campo izgleda i deluje baš kao prirodna trava, i poseduje veoma praktične prednosti. Sa kvalitetnim svojstvima, udobnošću hodanja i izdržljivošću, Campo je izbor za razne aktivnosti.",
+    "shortDescription": "Napravljen od sintetičkih vlakana, Campo izgleda i deluje baš kao prirodna trava, i poseduje veoma praktične prednosti. Sa kvalitetnim svojstvima, udobnošću hodanja i izdržljivošću, Campo je izbor za razne aktivnosti.",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "CAMPO",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "50 m²",
+      "Dužina": "25 m",
+      "Format": "Rolna 2x25m",
+      "Dezen": "Campo",
+      "Rezidencijalna klasifikacija": "21 Umeren/lak",
+      "Ukupna debljina": "19 mm",
+      "Is Cutable": "Ne",
+      "Tip formata": "Rolna",
+      "Tip proizvoda": "Textile Flooring",
+      "Product Material": "Tufted",
+      "Pile Fibre": "50%PE 50%PP",
+      "Širina": "200 cm"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-campo/hero.jpg?v=20260616140746",
+        "alt": "CAMPO",
+        "isPrimary": true,
+        "order": 1
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-campo/gallery-1.jpg?v=20260616140747",
+        "alt": "CAMPO",
+        "isPrimary": false,
+        "order": 2
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-campo/gallery-2.jpg?v=20260616140746",
+        "alt": "CAMPO",
+        "isPrimary": false,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-campo/gallery-3.jpg?v=20260616140746",
+        "alt": "CAMPO",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-campo/gallery-4.jpg?v=20260616140746",
+        "alt": "CAMPO",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-campo/gallery-5.jpg?v=20260616140747",
+        "alt": "CAMPO",
+        "isPrimary": false,
+        "order": 6
+      }
+    ],
+    "documents": [
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14001",
+    "name": "FIELD",
+    "slug": "tarkett-field",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002779-field",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-field",
+    "description": "Dok je uzgoj trave tradicionalan izbor, upotreba veštačke trave postaje popularna u današnje vreme bez skoro ikakvog održavanja i dodatnih troškova nakon ugradnje. Odabirom Field veštačke trave, kvalitet je osiguran dugi niz godina!",
+    "shortDescription": "Dok je uzgoj trave tradicionalan izbor, upotreba veštačke trave postaje popularna u današnje vreme bez skoro ikakvog održavanja i dodatnih troškova nakon ugradnje. Odabirom Field veštačke trave, kvalitet je osiguran dugi niz godina!",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "FIELD",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "50 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "25 m",
+      "Format": "Rolna 2x25m",
+      "Dezen": "Field",
+      "Rezidencijalna klasifikacija": "21 Umeren/lak",
+      "Ukupna debljina": "17 mm",
+      "Is Cutable": "Ne",
+      "Luxury Class En 1307": "LC2",
+      "Colour Fastness Light": "≥ 8",
+      "Tip formata": "Rolna",
+      "Tip proizvoda": "Textile Flooring",
+      "Effective Pile Thickness": "17 mm",
+      "Nb Knots": "19,95",
+      "Product Material": "Tufted",
+      "Pile Fibre": "50%PE 50%PP",
+      "Širina": "200 cm",
+      "Basis Weight": "1200000 g/m²",
+      "Product Type Norm Iso": "Tekstilne podne obloge (EN 1307)",
+      "Reakcija na vatru": "Efl",
+      "Podno grejanje": "Ne"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field/hero.jpg?v=20260616140751",
+        "alt": "FIELD",
+        "isPrimary": true,
+        "order": 1
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field/gallery-1.jpg?v=20260616140751",
+        "alt": "FIELD",
+        "isPrimary": false,
+        "order": 2
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field/gallery-2.jpg?v=20260616140752",
+        "alt": "FIELD",
+        "isPrimary": false,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field/gallery-3.jpg?v=20260616140752",
+        "alt": "FIELD",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field/gallery-4.jpg?v=20260616140751",
+        "alt": "FIELD",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field/gallery-5.jpg?v=20260616140752",
+        "alt": "FIELD",
+        "isPrimary": false,
+        "order": 6
+      }
+    ],
+    "documents": [
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14002",
+    "name": "Field CUT",
+    "slug": "tarkett-field-cut",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002933-field-cut",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-field-cut",
+    "description": "Kolekcija veštačke trave sa odličnim odnosom kvaliteta i cene, sada dostupna i u gotovim komadima. Održiva i inovativna alternativa prirodnoj travi, jednostavna za instalaciju, bez održavanja, štedi vodu i zelena tokom cele godine. Idealno za balkone, bašte, ulaze, dečije igraonice, terase itd.",
+    "shortDescription": "Kolekcija veštačke trave sa odličnim odnosom kvaliteta i cene, sada dostupna i u gotovim komadima. Održiva i inovativna alternativa prirodnoj travi, jednostavna za instalaciju, bez održavanja, štedi vodu i zelena tokom cele godine. Idealno za balkone, bašte, ulaze, dečije igraonice, terase itd.",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "Field CUT",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "2 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "200 cm",
+      "Format": "Komad 2x1m",
+      "Dezen": "Field",
+      "Rezidencijalna klasifikacija": "21 Umeren/lak",
+      "Ukupna debljina": "17 mm",
+      "Is Cutable": "Ne",
+      "Tip formata": "Tepih",
+      "Tip proizvoda": "Textile Flooring",
+      "Effective Pile Thickness": "17 mm",
+      "Nb Knots": "24,15",
+      "Product Material": "Tufted",
+      "Pile Fibre": "50%PE 50%PP",
+      "Širina": "100 cm",
+      "Basis Weight": "1200 g/m²",
+      "Product Type Norm Iso": "Tekstilne podne obloge (EN 1307)"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/hero.jpg?v=20260616140757",
+        "alt": "Field CUT",
+        "isPrimary": true,
+        "order": 1
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/gallery-1.jpg?v=20260616140758",
+        "alt": "Field CUT",
+        "isPrimary": false,
+        "order": 2
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/gallery-2.jpg?v=20260616140756",
+        "alt": "Field CUT",
+        "isPrimary": false,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/gallery-3.jpg?v=20260616140757",
+        "alt": "Field CUT",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/gallery-4.jpg?v=20260616140757",
+        "alt": "Field CUT",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/gallery-5.jpg?v=20260616140757",
+        "alt": "Field CUT",
+        "isPrimary": false,
+        "order": 6
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/gallery-6.jpg?v=20260616140757",
+        "alt": "Field CUT",
+        "isPrimary": false,
+        "order": 7
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/gallery-7.jpg?v=20260616140758",
+        "alt": "Field CUT",
+        "isPrimary": false,
+        "order": 8
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-field-cut/gallery-8.jpg?v=20260616140758",
+        "alt": "Field CUT",
+        "isPrimary": false,
+        "order": 9
+      }
+    ],
+    "documents": [
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14003",
+    "name": "Glade",
+    "slug": "tarkett-glade",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002778-glade",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-glade",
+    "description": "Unesite dah prirode u vaš otvoren prostor. Sa Glade veštačkom travom u svom domu, uživaćete u svakom trenutku!",
+    "shortDescription": "Unesite dah prirode u vaš otvoren prostor. Sa Glade veštačkom travom u svom domu, uživaćete u svakom trenutku!",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "Glade",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "80 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "20 m",
+      "Format": "Rolna 4 x 20 m",
+      "Dezen": "Glade",
+      "Rezidencijalna klasifikacija": "22+ Opšta",
+      "Ukupna debljina": "35 mm",
+      "Is Cutable": "Ne",
+      "Luxury Class En 1307": "LC4",
+      "Colour Fastness Light": "≥ 8",
+      "Tip formata": "Rolna",
+      "Tip proizvoda": "Textile Flooring",
+      "Effective Pile Thickness": "35 mm",
+      "Nb Knots": "18,9",
+      "Product Material": "Tufted",
+      "Pile Fibre": "50%PE 50%PP",
+      "Širina": "400 cm",
+      "Basis Weight": "1650000 g/m²",
+      "Product Type Norm Iso": "Tekstilne podne obloge (EN 1307)",
+      "Reakcija na vatru": "Efl",
+      "Podno grejanje": "Ne"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-glade/hero.jpg?v=20260616140803",
+        "alt": "Glade",
+        "isPrimary": true,
+        "order": 1
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-glade/gallery-1.jpg?v=20260616140803",
+        "alt": "Glade",
+        "isPrimary": false,
+        "order": 2
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-glade/gallery-2.jpg?v=20260616140804",
+        "alt": "Glade",
+        "isPrimary": false,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-glade/gallery-3.jpg?v=20260616140804",
+        "alt": "Glade",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-glade/gallery-4.jpg?v=20260616140804",
+        "alt": "Glade",
+        "isPrimary": false,
+        "order": 5
+      }
+    ],
+    "documents": [
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14004",
+    "name": "GREENFIELD",
+    "slug": "tarkett-greenfield",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C001186-greenfield",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-greenfield",
+    "description": "Veštačka trava je idealno rešenje za pokrivanje otvorenih prostora. U poređenju sa prirodnom travom, poseduje brojne prednosti, zbog kojih se sve više i primenjuje. Pored toga što je vrlo praktično rešenje za uređenje prostora ovog tipa, veštačka trava je i vrlo privlačna i dopadljiva. Idealno rešenje za terase i balkone. Praktično za održavanje a osvežavajuće za dekoraciju - veštačka trava Greenfield.",
+    "shortDescription": "Veštačka trava je idealno rešenje za pokrivanje otvorenih prostora. U poređenju sa prirodnom travom, poseduje brojne prednosti, zbog kojih se sve više i primenjuje. Pored toga što je vrlo praktično rešenje za uređenje prostora ovog tipa, veštačka trava je i vrlo privlačna i dopadljiva. Idealno rešenje za terase i balkone. Praktično za održavanje a osvežavajuće za dekoraciju - veštačka trava Greenfield.",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "GREENFIELD",
+      "Način ugradnje": "Lepljenje",
+      "Dop Certificate": "5101-0038-DoP-2013-11",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "50 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "25 m",
+      "Format": "Rolna 2x25m",
+      "Dezen": "Greenfield",
+      "Ukupna debljina": "7,50 mm",
+      "Is Cutable": "Ne",
+      "Luxury Class En 1307": "LC1",
+      "Tip formata": "Rolna",
+      "Tip proizvoda": "Textile Flooring",
+      "Pile Fibre": "100% PP",
+      "Širina": "200 cm",
+      "Basis Weight": "920 g/m²"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenfield/hero.jpg?v=20260616140810",
+        "alt": "GREENFIELD",
+        "isPrimary": true,
+        "order": 1
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenfield/gallery-2.jpg?v=20260616140811",
+        "alt": "GREENFIELD",
+        "isPrimary": false,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenfield/gallery-3.jpg?v=20260616140810",
+        "alt": "GREENFIELD",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenfield/gallery-4.jpg?v=20260616140810",
+        "alt": "GREENFIELD",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenfield/gallery-5.jpg?v=20260616140811",
+        "alt": "GREENFIELD",
+        "isPrimary": false,
+        "order": 6
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenfield/gallery-6.jpg?v=20260616140811",
+        "alt": "GREENFIELD",
+        "isPrimary": false,
+        "order": 7
+      }
+    ],
+    "documents": [
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-greenfield/in-br-artificial-grass-installation-2020.pdf?v=20260616140809",
+        "type": "pdf"
+      },
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14005",
+    "name": "GREENLAND",
+    "slug": "tarkett-greenland",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C001883-greenland",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-greenland",
+    "description": "Kolekcija Greenland predstavlja praktično rešenje za otvorene prostore. Veštačka trava Greenland će pozitivno doprineti izgledu i udobnosti prostora vaše terase i balkona.",
+    "shortDescription": "Kolekcija Greenland predstavlja praktično rešenje za otvorene prostore. Veštačka trava Greenland će pozitivno doprineti izgledu i udobnosti prostora vaše terase i balkona.",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "GREENLAND",
+      "Način ugradnje": "Lepljenje",
+      "Dop Certificate": "5101-0059-DoP-2014-11",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "100 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "25 m",
+      "Format": "Rolna 4 x 25 m",
+      "Dezen": "Greenland",
+      "Ukupna debljina": "6,50 mm",
+      "Is Cutable": "Ne",
+      "Luxury Class En 1307": "LC1",
+      "Tip formata": "Rolna",
+      "Tip proizvoda": "Textile Flooring",
+      "Pile Fibre": "100% PP",
+      "Širina": "400 cm",
+      "Basis Weight": "750 g/m²"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland/gallery-2.jpg?v=20260616140829",
+        "alt": "GREENLAND",
+        "isPrimary": true,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland/gallery-3.jpg?v=20260616140829",
+        "alt": "GREENLAND",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland/gallery-4.jpg?v=20260616140830",
+        "alt": "GREENLAND",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland/gallery-5.jpg?v=20260616140829",
+        "alt": "GREENLAND",
+        "isPrimary": false,
+        "order": 6
+      }
+    ],
+    "documents": [
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-greenfield/in-br-artificial-grass-installation-2020.pdf?v=20260616140809",
+        "type": "pdf"
+      },
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14006",
+    "name": "Greenland CUT",
+    "slug": "tarkett-greenland-cut",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002934-greenland-cut",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-greenland-cut",
+    "description": "Dobro poznata kolekcija veštačke trave osnovnog kvaliteta, sada dostupna u unapred isečenim komadima. Povoljno rešenje, lako se instalira, bez održavanja, štedi vodu, zelena tokom cele godine. Idealno za balkone, bašte, ulaze, dečije igraonice, terase itd.",
+    "shortDescription": "Dobro poznata kolekcija veštačke trave osnovnog kvaliteta, sada dostupna u unapred isečenim komadima. Povoljno rešenje, lako se instalira, bez održavanja, štedi vodu, zelena tokom cele godine. Idealno za balkone, bašte, ulaze, dečije igraonice, terase itd.",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "Greenland CUT",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "2 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "200 cm",
+      "Format": "Komad 2x1m",
+      "Dezen": "Greenland",
+      "Rezidencijalna klasifikacija": "21 Umeren/lak",
+      "Ukupna debljina": "6,50 mm",
+      "Is Cutable": "Ne",
+      "Tip formata": "Tepih",
+      "Tip proizvoda": "Textile Flooring",
+      "Effective Pile Thickness": "5 mm",
+      "Nb Knots": "102,4",
+      "Product Material": "Tufted",
+      "Pile Fibre": "100% PP",
+      "Širina": "100 cm",
+      "Basis Weight": "750 g/m²",
+      "Product Type Norm Iso": "Tekstilne podne obloge (EN 1307)"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland-cut/hero.jpg?v=20260616140849",
+        "alt": "Greenland CUT",
+        "isPrimary": true,
+        "order": 1
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland-cut/gallery-1.jpg?v=20260616140849",
+        "alt": "Greenland CUT",
+        "isPrimary": false,
+        "order": 2
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland-cut/gallery-2.jpg?v=20260616140849",
+        "alt": "Greenland CUT",
+        "isPrimary": false,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland-cut/gallery-3.jpg?v=20260616140849",
+        "alt": "Greenland CUT",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland-cut/gallery-4.jpg?v=20260616140850",
+        "alt": "Greenland CUT",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland-cut/gallery-5.jpg?v=20260616140850",
+        "alt": "Greenland CUT",
+        "isPrimary": false,
+        "order": 6
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland-cut/gallery-6.jpg?v=20260616140850",
+        "alt": "Greenland CUT",
+        "isPrimary": false,
+        "order": 7
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-greenland-cut/gallery-7.jpg?v=20260616140850",
+        "alt": "Greenland CUT",
+        "isPrimary": false,
+        "order": 8
+      }
+    ],
+    "documents": [
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14007",
+    "name": "PRADO",
+    "slug": "tarkett-prado",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C001518-prado",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-prado",
+    "description": "Veštačka trava Prado odaje utisak trave u svom izvornom prirodnom obliku. Prado se može uklopiti u bilo koji prostor enterijera, eksterijera ili pejzaža. Prado je veštačka trava koja odaje jedinstvenost kako putem svog izgleda tako i putem dodira. Postavljanje veštačke trave u prostore eksterijera dovodi to uštede resursa (vode, struje) i skraćuje vreme održavanja dvorišta.",
+    "shortDescription": "Veštačka trava Prado odaje utisak trave u svom izvornom prirodnom obliku. Prado se može uklopiti u bilo koji prostor enterijera, eksterijera ili pejzaža. Prado je veštačka trava koja odaje jedinstvenost kako putem svog izgleda tako i putem dodira. Postavljanje veštačke trave u prostore eksterijera dovodi to uštede resursa (vode, struje) i skraćuje vreme održavanja dvorišta.",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "PRADO",
+      "Način ugradnje": "Lepljenje",
+      "Dop Certificate": "5101-0109-DoP-2019-01",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "100 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "25 m",
+      "Format": "Rolna 4 x 25 m",
+      "Dezen": "Prado",
+      "Is Cutable": "Ne",
+      "Luxury Class En 1307": "LC2",
+      "Tip formata": "Rolna",
+      "Tip proizvoda": "Textile Flooring",
+      "Pile Fibre": "55%PE 45%PP",
+      "Širina": "400 cm",
+      "Basis Weight": "1350 g/m²"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado/gallery-2.jpg?v=20260616140854",
+        "alt": "PRADO",
+        "isPrimary": true,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado/gallery-3.jpg?v=20260616140855",
+        "alt": "PRADO",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado/gallery-4.jpg?v=20260616140855",
+        "alt": "PRADO",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado/gallery-5.jpg?v=20260616140854",
+        "alt": "PRADO",
+        "isPrimary": false,
+        "order": 6
+      }
+    ],
+    "documents": [
+      {
+        "title": "Uputstvo za instalaciju",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-greenfield/in-br-artificial-grass-installation-2020.pdf?v=20260616140809",
+        "type": "pdf"
+      },
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14008",
+    "name": "Prado CUT",
+    "slug": "tarkett-prado-cut",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002936-prado-cut",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-prado-cut",
+    "description": "Veštačka trava Prado CUT odaje utisak trave u svom izvornom prirodnom obliku. Prado CUT se može uklopiti u bilo koji prostor enterijera ili eksterijera. Prado CUT je veštačka trava koja odaje jedinstvenost kako putem svog izgleda tako i putem dodira. Postavljanje veštačke trave u prostore eksterijera dovodi to uštede resursa (vode, struje).",
+    "shortDescription": "Veštačka trava Prado CUT odaje utisak trave u svom izvornom prirodnom obliku. Prado CUT se može uklopiti u bilo koji prostor enterijera ili eksterijera. Prado CUT je veštačka trava koja odaje jedinstvenost kako putem svog izgleda tako i putem dodira. Postavljanje veštačke trave u prostore eksterijera dovodi to uštede resursa (vode, struje).",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "Prado CUT",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "2 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "200 cm",
+      "Format": "Komad 2x1m",
+      "Dezen": "Prado",
+      "Rezidencijalna klasifikacija": "22 Opšti/srednji",
+      "Is Cutable": "Ne",
+      "Tip formata": "Tepih",
+      "Tip proizvoda": "Textile Flooring",
+      "Effective Pile Thickness": "17 mm",
+      "Nb Knots": "12,598",
+      "Product Material": "Tufted",
+      "Širina": "100 cm",
+      "Basis Weight": "1350000 g/m²",
+      "Product Type Norm Iso": "Tekstilne podne obloge (EN 1307)"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado-cut/hero.jpg?v=20260616140921",
+        "alt": "Prado CUT",
+        "isPrimary": true,
+        "order": 1
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado-cut/gallery-1.jpg?v=20260616140919",
+        "alt": "Prado CUT",
+        "isPrimary": false,
+        "order": 2
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado-cut/gallery-2.jpg?v=20260616140919",
+        "alt": "Prado CUT",
+        "isPrimary": false,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado-cut/gallery-3.jpg?v=20260616140919",
+        "alt": "Prado CUT",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado-cut/gallery-4.jpg?v=20260616140920",
+        "alt": "Prado CUT",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado-cut/gallery-5.jpg?v=20260616140920",
+        "alt": "Prado CUT",
+        "isPrimary": false,
+        "order": 6
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado-cut/gallery-6.jpg?v=20260616140920",
+        "alt": "Prado CUT",
+        "isPrimary": false,
+        "order": 7
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-prado-cut/gallery-7.jpg?v=20260616140920",
+        "alt": "Prado CUT",
+        "isPrimary": false,
+        "order": 8
+      }
+    ],
+    "documents": [
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "14009",
+    "name": "Premier",
+    "slug": "tarkett-premier",
+    "url": "https://www.tarkett.rs/sr_RS/kolekcija-C002935-premier",
+    "brand": "Tarkett",
+    "brandId": "3",
+    "categoryId": "14",
+    "sku": "GRASS-premier",
+    "description": "Izuzetno bogata, gusta i mekana površina, visine 50 mm daju ovoj kolekciji luksuzni osećaj uz prirodni izgled. Ovaj vrhunski landscape proizvod nudi odličnu, otpornu i štedljivu alternativu za prirodnu travu.",
+    "shortDescription": "Izuzetno bogata, gusta i mekana površina, visine 50 mm daju ovoj kolekciji luksuzni osećaj uz prirodni izgled. Ovaj vrhunski landscape proizvod nudi odličnu, otpornu i štedljivu alternativu za prirodnu travu.",
+    "specs": {
+      "Brend": "Tarkett",
+      "Kolekcija": "Premier",
+      "Tip dezena": "Sveobuhvatni",
+      "Površina": "60 m²",
+      "Zemlja porekla": "Serbia",
+      "Dužina": "15 m",
+      "Format": "Roll 4x15m",
+      "Dezen": "Premier",
+      "Rezidencijalna klasifikacija": "22 Opšti/srednji",
+      "Ukupna debljina": "50 mm",
+      "Is Cutable": "Ne",
+      "Tip formata": "Rolna",
+      "Tip proizvoda": "Textile Flooring",
+      "Effective Pile Thickness": "50 mm",
+      "Nb Knots": "21",
+      "Product Material": "Tufted",
+      "Pile Fibre": "50%PE 50%PP",
+      "Širina": "400 cm",
+      "Basis Weight": "2150 g/m²",
+      "Product Type Norm Iso": "Tekstilne podne obloge (EN 1307)"
+    },
+    "images": [
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-premier/hero.jpg?v=20260616140926",
+        "alt": "Premier",
+        "isPrimary": true,
+        "order": 1
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-premier/gallery-1.jpg?v=20260616140926",
+        "alt": "Premier",
+        "isPrimary": false,
+        "order": 2
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-premier/gallery-2.jpg?v=20260616140927",
+        "alt": "Premier",
+        "isPrimary": false,
+        "order": 3
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-premier/gallery-3.jpg?v=20260616140927",
+        "alt": "Premier",
+        "isPrimary": false,
+        "order": 4
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-premier/gallery-4.jpg?v=20260616140927",
+        "alt": "Premier",
+        "isPrimary": false,
+        "order": 5
+      },
+      {
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-premier/gallery-5.jpg?v=20260616140926",
+        "alt": "Premier",
+        "isPrimary": false,
+        "order": 6
+      }
+    ],
+    "documents": [
+      {
+        "title": "Brošura",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/grass/tarkett-campo/br-see-residential-grass-smmak.pdf?v=20260616140745",
+        "type": "pdf"
+      }
+    ]
+  }
+]

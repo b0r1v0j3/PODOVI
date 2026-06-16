@@ -25,7 +25,7 @@ import {
 } from '@/lib/data/parket-collection-mapping';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import dessoCarpetData from '@/public/data/desso_carpet_tiles.json';
-import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
+import { getAllDekingProducts, getAllGrassProducts } from '@/lib/utils/productDataLoader';
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
 
 function mapNestedCollectionColors(collection: any, context: { categoryId: string }) {
@@ -205,6 +205,34 @@ export async function prepareCustomColors(
     if (product.categoryId === '5' && product.sku?.startsWith('DEKING-')) {
         const collectionName = product.name.replace(' Kolekcija', ''); // e.g. TimberTech EDGE
         const variants = getAllDekingProducts().filter(p => !p.sku?.startsWith('DEKING-'));
+        if (variants.length > 0) {
+            return variants.map(v => ({
+                collection: collectionName,
+                collection_name: collectionName,
+                code: v.sku || '',
+                name: v.name,
+                full_name: v.name,
+                slug: v.slug,
+                image_url: v.images?.[0]?.url || '',
+                texture_url: v.images?.[0]?.url || '',
+                image_count: v.images?.length ?? 0,
+                characteristics: (v.specs || []).reduce((acc: Record<string, string>, spec: ProductSpec) => {
+                    acc[spec.label] = spec.value;
+                    return acc;
+                }, {} as Record<string, string>)
+            }));
+        }
+    }
+
+    // Veštačka trava (cat 14): customColors from tarkett_grass_products.json (mirror deking branch).
+    // Grass collections are single-design / colorless ("Cena na upit"), so customColors is
+    // typically empty or a single self-entry — the PDP renders the standard (no color selector)
+    // layout. SKU prefix GRASS- on grass collection products.
+    if (product.categoryId === '14' && product.sku?.startsWith('GRASS-')) {
+        const collectionName = product.specs?.find(s => s.key === 'collection')?.value || product.name;
+        const variants = getAllGrassProducts().filter(p =>
+            (p.specs?.find(s => s.key === 'collection')?.value || p.name) === collectionName
+        );
         if (variants.length > 0) {
             return variants.map(v => ({
                 collection: collectionName,

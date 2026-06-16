@@ -107,6 +107,14 @@ export const categories: Category[] = [
     image: '/images/categories/alat.png',
     order: 13,
   },
+  {
+    id: '14',
+    name: 'Veštačka trava',
+    slug: 'vestacka-trava',
+    description: 'Tarkett veštačka trava za sportske terene, terase i spoljne prostore',
+    image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-campo/hero.jpg',
+    order: 14,
+  },
 
 ];
 

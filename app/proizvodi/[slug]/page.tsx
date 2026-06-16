@@ -419,6 +419,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '10': 'sport',
       '11': 'lajsne',
       '12': 'otiraci',
+      '14': 'vestacka-trava',
     };
 
     // ── Resolve product ──

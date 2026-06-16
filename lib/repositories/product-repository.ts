@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllDessoCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllDessoCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllGrassProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -203,6 +203,24 @@ export class SupabaseProductRepository implements IProductRepository {
         dekingProducts = dekingProducts.filter(p => filters.brandIds!.includes(p.brandId));
       }
       products = [...products, ...dekingProducts];
+    }
+
+    // Category 14: Veštačka trava (Add Tarkett artificial-grass products)
+    if (!filters?.categoryId || legacyCategoryId === '14' || filters.categoryId === '14') {
+      let grassProducts = getAllGrassProducts();
+
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        grassProducts = grassProducts.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        grassProducts = grassProducts.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      products = [...products, ...grassProducts];
     }
 
     const techemProducts = getAllTechemProducts();
@@ -673,6 +691,7 @@ export class MockProductRepository implements IProductRepository {
     ...getTarkettSportCollections(),
     ...getTarkettLajsneCollections(),
     ...getAllDekingProducts(),
+    ...getAllGrassProducts(),
     ...getAllAlpodProducts(),
     ...getAllTechemProducts(),
     ...getAllRomusToolProducts(),
