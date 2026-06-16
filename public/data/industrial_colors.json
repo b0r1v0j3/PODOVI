@@ -1,451 +1,1294 @@
 {
-    "collections": [
+  "collections": [
+    {
+      "name": "GTI Max Cleantech",
+      "slug": "gti-max-cleantech",
+      "url": "https://www.gerflor-cee.com/products/gti-max-cleantech",
+      "colorCount": 18,
+      "description": "Opis:\nGTI Max Cleantech su modularne industrijske ploce za ciste tehnicke prostore i brzu renovaciju bez dugog prekida rada.\n\nUgradnja:\nLoose lay / Connect sistem sa vodonepropusnim resenjem za zahtevne objekte.\n\nPrimena:\nClean room, farmacija, laboratorije, proizvodnja i logistika sa visokim saobracajem.\n\nKljucne prednosti:\nPogodno za clean room.\nVodonepropusan sistem.\nOtpornost na visok saobracaj.",
+      "characteristics": {
+        "Tip": "Industrijske vinil ploce",
+        "Format": "Ploca",
+        "Dimenzije": "60 x 60 cm",
+        "Ukupna debljina": "6.00 mm",
+        "Tip instalacije": "Loose lay / Connect",
+        "Namena": "Clean room i tehnicki prostori"
+      },
+      "colors": [
         {
-            "name": "GTI Max Cleantech",
-            "slug": "gti-max-cleantech",
-            "url": "https://www.gerflor-cee.com/products/gti-max-cleantech",
-            "colorCount": 18,
-            "description": "Opis:\nGTI Max Cleantech su modularne industrijske ploce za ciste tehnicke prostore i brzu renovaciju bez dugog prekida rada.\n\nUgradnja:\nLoose lay / Connect sistem sa vodonepropusnim resenjem za zahtevne objekte.\n\nPrimena:\nClean room, farmacija, laboratorije, proizvodnja i logistika sa visokim saobracajem.\n\nKljucne prednosti:\nPogodno za clean room.\nVodonepropusan sistem.\nOtpornost na visok saobracaj.",
-            "characteristics": {
-                "Tip": "Industrijske vinil ploce",
-                "Format": "Ploca",
-                "Dimenzije": "60 x 60 cm",
-                "Ukupna debljina": "6.00 mm",
-                "Tip instalacije": "Loose lay / Connect",
-                "Namena": "Clean room i tehnicki prostori"
-            },
-            "colors": [
-                {
-                    "code": "0230",
-                    "name": "BLUE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0230-blue.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0236",
-                    "name": "BLACK",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0236-black.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0247",
-                    "name": "MAGMA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0247-magma.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0249",
-                    "name": "CARBON",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0249-carbon.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0252",
-                    "name": "TITANIUM",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0252-titanium.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0253",
-                    "name": "ALUMINIUM",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0253-aluminium.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0255",
-                    "name": "SAPHIR",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0255-saphir.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0259",
-                    "name": "GRECALE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0259-grecale.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0260",
-                    "name": "ORA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0260-ora.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0261",
-                    "name": "SCIROCCO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0261-scirocco.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0262",
-                    "name": "LIBECCIO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0262-libeccio.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0263",
-                    "name": "BORA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0263-bora.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0264",
-                    "name": "PONENTE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0264-ponente.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0265",
-                    "name": "MAESTRALE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0265-maestrale.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0266",
-                    "name": "PELER",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0266-peler.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0267",
-                    "name": "LEVANTE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0267-levante.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0268",
-                    "name": "ERMELLINO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0268-ermellino.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "1249",
-                    "name": "TRAMONTANA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/1249-tramontana.jpg?v=20260314-clean-jpg"
-                }
-            ],
-            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/collection.jpg"
+          "code": "0230",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0230-blue.jpg?v=20260314-clean-jpg"
         },
         {
-            "name": "GTI Max Connect",
-            "slug": "gti-max-connect",
-            "url": "https://www.gerflor-cee.com/products/gti-max-connect",
-            "colorCount": 30,
-            "description": "Opis:\nGTI Max Connect su industrijske ploce za fast-track renovacije, logistiku i zone sa velikim opterecenjem gde je vazno brzo pustanje prostora u rad.\n\nUgradnja:\nLoose lay / Connect sistem bez komplikovane pripreme podloge.\n\nPrimena:\nIndustrija, logistika, radionice, skladista i prostori visokog saobracaja.\n\nKljucne prednosti:\nLoose lay ugradnja.\nVisok saobracaj.\nLaka renovacija.",
-            "characteristics": {
-                "Tip": "Industrijske vinil ploce",
-                "Format": "Ploca",
-                "Dimenzije": "63.5 x 63.5 cm",
-                "Ukupna debljina": "6.00 mm",
-                "Tip instalacije": "Loose lay / Connect",
-                "Namena": "Industrija i brze renovacije"
-            },
-            "colors": [
-                {
-                    "code": "0230",
-                    "name": "BLUE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0230-blue.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0231",
-                    "name": "YELLOW",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0231-yellow.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0232",
-                    "name": "RED",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0232-red.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0233",
-                    "name": "GREEN",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0233-green.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0234",
-                    "name": "CLEAR GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0234-clear-grey.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0235",
-                    "name": "DARK GREY",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0235-dark-grey.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0236",
-                    "name": "BLACK",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0236-black.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0247",
-                    "name": "MAGMA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0247-magma.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0249",
-                    "name": "CARBON",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0249-carbon.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0252",
-                    "name": "TITANIUM",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0252-titanium.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0253",
-                    "name": "ALUMINIUM",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0253-aluminium.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0255",
-                    "name": "SAPHIR",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0255-saphir.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0259",
-                    "name": "GRECALE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0259-grecale.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0260",
-                    "name": "ORA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0260-ora.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0261",
-                    "name": "SCIROCCO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0261-scirocco.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0262",
-                    "name": "LIBECCIO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0262-libeccio.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0263",
-                    "name": "BORA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0263-bora.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0264",
-                    "name": "PONENTE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0264-ponente.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0265",
-                    "name": "MAESTRALE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0265-maestrale.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0266",
-                    "name": "PELER",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0266-peler.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0267",
-                    "name": "LEVANTE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0267-levante.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "0268",
-                    "name": "ERMELLINO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0268-ermellino.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "1249",
-                    "name": "TRAMONTANA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/1249-tramontana.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2247",
-                    "name": "VULCANO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2247-vulcano.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2249",
-                    "name": "STROMBOLI",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2249-stromboli.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2252",
-                    "name": "TEIDE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2252-teide.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2264",
-                    "name": "PITON",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2264-piton.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2265",
-                    "name": "MERAPI",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2265-merapi.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2266",
-                    "name": "VESUVIO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2266-vesuvio.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2267",
-                    "name": "FUJI",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2267-fuji.jpg?v=20260314-clean-jpg"
-                }
-            ],
-            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/collection.jpg"
+          "code": "0236",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0236-black.jpg?v=20260314-clean-jpg"
         },
         {
-            "name": "GTI Pure Connect",
-            "slug": "gti-pure-connect",
-            "url": "https://www.gerflor-cee.com/products/gti-pure-connect",
-            "colorCount": 6,
-            "description": "Opis:\nGTI Pure Connect su modularne ploce za komercijalne i tehnicke prostore gde je vazna brza renovacija, dobar habajuci sloj i cisto, uredno zoniranje.\n\nUgradnja:\nLoose lay / Connect sistem za brzo pustanje prostora u rad.\n\nPrimena:\nKomercijalni i tehnicki prostori, radionice, showroom i zone visokog saobracaja.\n\nKljucne prednosti:\nLoose lay ugradnja.\nVisok saobracaj.\nLaka renovacija.",
-            "characteristics": {
-                "Tip": "Industrijske vinil ploce",
-                "Format": "Ploca",
-                "Dimenzije": "63.5 x 63.5 cm",
-                "Ukupna debljina": "6.00 mm",
-                "Tip instalacije": "Loose lay / Connect",
-                "Namena": "Komercijalni i tehnicki prostori"
-            },
-            "colors": [
-                {
-                    "code": "2740",
-                    "name": "HARLEM SOFT",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2740-harlem-soft.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2741",
-                    "name": "BROOKLYN",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2741-brooklyn.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2742",
-                    "name": "TIMES SQUARE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2742-times-square.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2743",
-                    "name": "CENTRAL PARK",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2743-central-park.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2744",
-                    "name": "QUEENS SOFT",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2744-queens-soft.jpg?v=20260314-clean-jpg"
-                },
-                {
-                    "code": "2745",
-                    "name": "PLAZA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2745-plaza.jpg?v=20260314-clean-jpg"
-                }
-            ],
-            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/collection.jpg"
+          "code": "0247",
+          "name": "MAGMA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0247-magma.jpg?v=20260314-clean-jpg"
         },
         {
-            "name": "Attraction Connect",
-            "slug": "attraction-connect",
-            "url": "https://www.gerflor-cee.com/products/attraction-connect",
-            "colorCount": 21,
-            "description": "Opis:\nAttraction Connect su dekorativne tehnicke ploce za prostore gde je potrebno brzo obnoviti pod i dobiti jaku vizuelnu signalizaciju kroz boju i dezen.\n\nUgradnja:\nLoose lay / Connect sistem za brzu ugradnju i jednostavnu parcijalnu zamenu ploca.\n\nPrimena:\nKomercijalni i industrijski prostori, fast-track renovacije, zone signalizacije i intenzivnog prolaza.\n\nKljucne prednosti:\nLoose lay ugradnja.\nTrend boje.\nLaka renovacija.",
-            "characteristics": {
-                "Tip": "Industrijske vinil ploce",
-                "Format": "Ploca",
-                "Dimenzije": "63.5 x 63.5 cm",
-                "Ukupna debljina": "5.00 mm",
-                "Tip instalacije": "Loose lay / Connect",
-                "Namena": "Dekorativne i tehnicke renovacije"
-            },
-            "colors": [
-                {
-                    "code": "2740",
-                    "name": "HARLEM SOFT",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2740-harlem-soft.jpg"
-                },
-                {
-                    "code": "2741",
-                    "name": "BROOKLYN",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2741-brooklyn.jpg"
-                },
-                {
-                    "code": "2742",
-                    "name": "TIMES SQUARE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2742-times-square.jpg"
-                },
-                {
-                    "code": "2743",
-                    "name": "CENTRAL PARK",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2743-central-park.jpg"
-                },
-                {
-                    "code": "2744",
-                    "name": "QUEENS SOFT",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2744-queens-soft.jpg"
-                },
-                {
-                    "code": "2745",
-                    "name": "PLAZA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2745-plaza.jpg"
-                },
-                {
-                    "code": "3707",
-                    "name": "PARAIBA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/3707-paraiba.jpg"
-                },
-                {
-                    "code": "3709",
-                    "name": "CEARA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/3709-ceara.jpg"
-                },
-                {
-                    "code": "4003",
-                    "name": "TAO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4003-tao.jpg"
-                },
-                {
-                    "code": "4004",
-                    "name": "PAGO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4004-pago.jpg"
-                },
-                {
-                    "code": "4146",
-                    "name": "MOHELI",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4146-moheli.jpg"
-                },
-                {
-                    "code": "4342",
-                    "name": "JUARA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4342-juara.jpg"
-                },
-                {
-                    "code": "4343",
-                    "name": "TOKELAU",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4343-tokelau.jpg"
-                },
-                {
-                    "code": "4351",
-                    "name": "GREIGE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4351-greige.jpg"
-                },
-                {
-                    "code": "4476",
-                    "name": "WATTARU",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4476-wattaru.jpg"
-                },
-                {
-                    "code": "8053",
-                    "name": "ANAMBAS",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8053-anambas.jpg"
-                },
-                {
-                    "code": "8157",
-                    "name": "GOIAS",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8157-goias.jpg"
-                },
-                {
-                    "code": "8386",
-                    "name": "BOA VISTA",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8386-boa-vista.jpg"
-                },
-                {
-                    "code": "8577",
-                    "name": "AMAZONAS",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8577-amazonas.jpg"
-                },
-                {
-                    "code": "8736",
-                    "name": "RECIFE",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8736-recife.jpg"
-                },
-                {
-                    "code": "8837",
-                    "name": "SONGO",
-                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8837-songo.jpg"
-                }
-            ],
-            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/collection.jpg"
+          "code": "0249",
+          "name": "CARBON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0249-carbon.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0252",
+          "name": "TITANIUM",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0252-titanium.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0253",
+          "name": "ALUMINIUM",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0253-aluminium.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0255",
+          "name": "SAPHIR",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0255-saphir.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0259",
+          "name": "GRECALE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0259-grecale.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0260",
+          "name": "ORA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0260-ora.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0261",
+          "name": "SCIROCCO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0261-scirocco.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0262",
+          "name": "LIBECCIO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0262-libeccio.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0263",
+          "name": "BORA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0263-bora.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0264",
+          "name": "PONENTE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0264-ponente.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0265",
+          "name": "MAESTRALE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0265-maestrale.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0266",
+          "name": "PELER",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0266-peler.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0267",
+          "name": "LEVANTE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0267-levante.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0268",
+          "name": "ERMELLINO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/0268-ermellino.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "1249",
+          "name": "TRAMONTANA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/1249-tramontana.jpg?v=20260314-clean-jpg"
         }
-    ]
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-cleantech/collection.jpg"
+    },
+    {
+      "name": "GTI Max Connect",
+      "slug": "gti-max-connect",
+      "url": "https://www.gerflor-cee.com/products/gti-max-connect",
+      "colorCount": 30,
+      "description": "Opis:\nGTI Max Connect su industrijske ploce za fast-track renovacije, logistiku i zone sa velikim opterecenjem gde je vazno brzo pustanje prostora u rad.\n\nUgradnja:\nLoose lay / Connect sistem bez komplikovane pripreme podloge.\n\nPrimena:\nIndustrija, logistika, radionice, skladista i prostori visokog saobracaja.\n\nKljucne prednosti:\nLoose lay ugradnja.\nVisok saobracaj.\nLaka renovacija.",
+      "characteristics": {
+        "Tip": "Industrijske vinil ploce",
+        "Format": "Ploca",
+        "Dimenzije": "63.5 x 63.5 cm",
+        "Ukupna debljina": "6.00 mm",
+        "Tip instalacije": "Loose lay / Connect",
+        "Namena": "Industrija i brze renovacije"
+      },
+      "colors": [
+        {
+          "code": "0230",
+          "name": "BLUE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0230-blue.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0231",
+          "name": "YELLOW",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0231-yellow.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0232",
+          "name": "RED",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0232-red.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0233",
+          "name": "GREEN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0233-green.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0234",
+          "name": "CLEAR GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0234-clear-grey.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0235",
+          "name": "DARK GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0235-dark-grey.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0236",
+          "name": "BLACK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0236-black.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0247",
+          "name": "MAGMA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0247-magma.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0249",
+          "name": "CARBON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0249-carbon.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0252",
+          "name": "TITANIUM",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0252-titanium.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0253",
+          "name": "ALUMINIUM",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0253-aluminium.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0255",
+          "name": "SAPHIR",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0255-saphir.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0259",
+          "name": "GRECALE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0259-grecale.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0260",
+          "name": "ORA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0260-ora.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0261",
+          "name": "SCIROCCO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0261-scirocco.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0262",
+          "name": "LIBECCIO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0262-libeccio.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0263",
+          "name": "BORA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0263-bora.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0264",
+          "name": "PONENTE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0264-ponente.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0265",
+          "name": "MAESTRALE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0265-maestrale.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0266",
+          "name": "PELER",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0266-peler.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0267",
+          "name": "LEVANTE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0267-levante.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "0268",
+          "name": "ERMELLINO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/0268-ermellino.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "1249",
+          "name": "TRAMONTANA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/1249-tramontana.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2247",
+          "name": "VULCANO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2247-vulcano.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2249",
+          "name": "STROMBOLI",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2249-stromboli.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2252",
+          "name": "TEIDE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2252-teide.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2264",
+          "name": "PITON",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2264-piton.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2265",
+          "name": "MERAPI",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2265-merapi.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2266",
+          "name": "VESUVIO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2266-vesuvio.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2267",
+          "name": "FUJI",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/2267-fuji.jpg?v=20260314-clean-jpg"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-max-connect/collection.jpg"
+    },
+    {
+      "name": "GTI Pure Connect",
+      "slug": "gti-pure-connect",
+      "url": "https://www.gerflor-cee.com/products/gti-pure-connect",
+      "colorCount": 6,
+      "description": "Opis:\nGTI Pure Connect su modularne ploce za komercijalne i tehnicke prostore gde je vazna brza renovacija, dobar habajuci sloj i cisto, uredno zoniranje.\n\nUgradnja:\nLoose lay / Connect sistem za brzo pustanje prostora u rad.\n\nPrimena:\nKomercijalni i tehnicki prostori, radionice, showroom i zone visokog saobracaja.\n\nKljucne prednosti:\nLoose lay ugradnja.\nVisok saobracaj.\nLaka renovacija.",
+      "characteristics": {
+        "Tip": "Industrijske vinil ploce",
+        "Format": "Ploca",
+        "Dimenzije": "63.5 x 63.5 cm",
+        "Ukupna debljina": "6.00 mm",
+        "Tip instalacije": "Loose lay / Connect",
+        "Namena": "Komercijalni i tehnicki prostori"
+      },
+      "colors": [
+        {
+          "code": "2740",
+          "name": "HARLEM SOFT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2740-harlem-soft.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2741",
+          "name": "BROOKLYN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2741-brooklyn.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2742",
+          "name": "TIMES SQUARE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2742-times-square.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2743",
+          "name": "CENTRAL PARK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2743-central-park.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2744",
+          "name": "QUEENS SOFT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2744-queens-soft.jpg?v=20260314-clean-jpg"
+        },
+        {
+          "code": "2745",
+          "name": "PLAZA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/2745-plaza.jpg?v=20260314-clean-jpg"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gti-pure-connect/collection.jpg"
+    },
+    {
+      "name": "Attraction Connect",
+      "slug": "attraction-connect",
+      "url": "https://www.gerflor-cee.com/products/attraction-connect",
+      "colorCount": 21,
+      "description": "Opis:\nAttraction Connect su dekorativne tehnicke ploce za prostore gde je potrebno brzo obnoviti pod i dobiti jaku vizuelnu signalizaciju kroz boju i dezen.\n\nUgradnja:\nLoose lay / Connect sistem za brzu ugradnju i jednostavnu parcijalnu zamenu ploca.\n\nPrimena:\nKomercijalni i industrijski prostori, fast-track renovacije, zone signalizacije i intenzivnog prolaza.\n\nKljucne prednosti:\nLoose lay ugradnja.\nTrend boje.\nLaka renovacija.",
+      "characteristics": {
+        "Tip": "Industrijske vinil ploce",
+        "Format": "Ploca",
+        "Dimenzije": "63.5 x 63.5 cm",
+        "Ukupna debljina": "5.00 mm",
+        "Tip instalacije": "Loose lay / Connect",
+        "Namena": "Dekorativne i tehnicke renovacije"
+      },
+      "colors": [
+        {
+          "code": "2740",
+          "name": "HARLEM SOFT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2740-harlem-soft.jpg"
+        },
+        {
+          "code": "2741",
+          "name": "BROOKLYN",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2741-brooklyn.jpg"
+        },
+        {
+          "code": "2742",
+          "name": "TIMES SQUARE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2742-times-square.jpg"
+        },
+        {
+          "code": "2743",
+          "name": "CENTRAL PARK",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2743-central-park.jpg"
+        },
+        {
+          "code": "2744",
+          "name": "QUEENS SOFT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2744-queens-soft.jpg"
+        },
+        {
+          "code": "2745",
+          "name": "PLAZA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/2745-plaza.jpg"
+        },
+        {
+          "code": "3707",
+          "name": "PARAIBA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/3707-paraiba.jpg"
+        },
+        {
+          "code": "3709",
+          "name": "CEARA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/3709-ceara.jpg"
+        },
+        {
+          "code": "4003",
+          "name": "TAO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4003-tao.jpg"
+        },
+        {
+          "code": "4004",
+          "name": "PAGO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4004-pago.jpg"
+        },
+        {
+          "code": "4146",
+          "name": "MOHELI",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4146-moheli.jpg"
+        },
+        {
+          "code": "4342",
+          "name": "JUARA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4342-juara.jpg"
+        },
+        {
+          "code": "4343",
+          "name": "TOKELAU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4343-tokelau.jpg"
+        },
+        {
+          "code": "4351",
+          "name": "GREIGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4351-greige.jpg"
+        },
+        {
+          "code": "4476",
+          "name": "WATTARU",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/4476-wattaru.jpg"
+        },
+        {
+          "code": "8053",
+          "name": "ANAMBAS",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8053-anambas.jpg"
+        },
+        {
+          "code": "8157",
+          "name": "GOIAS",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8157-goias.jpg"
+        },
+        {
+          "code": "8386",
+          "name": "BOA VISTA",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8386-boa-vista.jpg"
+        },
+        {
+          "code": "8577",
+          "name": "AMAZONAS",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8577-amazonas.jpg"
+        },
+        {
+          "code": "8736",
+          "name": "RECIFE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8736-recife.jpg"
+        },
+        {
+          "code": "8837",
+          "name": "SONGO",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/8837-songo.jpg"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/attraction-connect/collection.jpg"
+    },
+    {
+      "name": "R Tile 4mm",
+      "slug": "r-tile-4mm",
+      "url": "https://www.gerflor-cee.com/products/r-tile-4mm",
+      "colorCount": 10,
+      "description": "",
+      "characteristics": {
+        "Overall thickness": "4.00 mm",
+        "Thickness of the wearlayer": "4.00 mm",
+        "Installation system covering": "Interlocking system",
+        "Format details": "Square tile"
+      },
+      "colors": [
+        {
+          "code": "1002",
+          "name": "Beige",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/1002-beige.jpg?v=20260616134620"
+        },
+        {
+          "code": "6005",
+          "name": "Green",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/6005-green.jpg?v=20260616134622"
+        },
+        {
+          "code": "3016",
+          "name": "Maroon",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/3016-maroon.jpg?v=20260616134622"
+        },
+        {
+          "code": "1018",
+          "name": "Yellow",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/1018-yellow.jpg?v=20260616134622"
+        },
+        {
+          "code": "9004",
+          "name": "Black",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/9004-black.jpg?v=20260616134623"
+        },
+        {
+          "code": "7045",
+          "name": "Light Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/7045-light-grey.jpg?v=20260616134622"
+        },
+        {
+          "code": "7015",
+          "name": "Dark Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/7015-dark-grey.jpg?v=20260616134622"
+        },
+        {
+          "code": "5005",
+          "name": "Blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/5005-blue.jpg?v=20260616134621"
+        },
+        {
+          "code": "9003",
+          "name": "White",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/9003-white.jpg?v=20260616134624"
+        },
+        {
+          "code": "3020",
+          "name": "Red",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/colors/3020-red.jpg?v=20260616134625"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/ambience/scena-1.jpg?v=20260616134617",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/ambience/scena-2.jpg?v=20260616134617",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/ambience/scena-3.jpg?v=20260616134617",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-4mm/ambience/scena-4.jpg?v=20260616134617"
+      ],
+      "documents": [
+        {
+          "title": "Technical Datasheet - R-Tile 4mm",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-4mm/technical-datasheet-r-tile-4mm-57992.pdf?v=20260616134616",
+          "type": "pdf"
+        },
+        {
+          "title": "R-TILE 4MM - PV feu",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-4mm/r-tile-4mm-pv-feu-61626.pdf?v=20260616134616",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-4mm/sertifikat-vatrootpornost-61630.pdf?v=20260616134616",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-4mm/izjava-o-svojstvima-dop-67473.pdf?v=20260616134616",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-4mm/garancija-69676.pdf?v=20260616134616",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "R Tile 5mm",
+      "slug": "r-tile-5mm",
+      "url": "https://www.gerflor-cee.com/products/r-tile-5mm",
+      "colorCount": 10,
+      "description": "Explore our interlocking dove tails tiles crafted for enduring robustness and adaptable for various industrial uses\n\nProduct - Slip Resistance: R10 rating ensures a safe walking surface. - Access & Corners: For safe foot and wheel traffic navigation (available in all colors) - Interlocking Design: Superior dove-tail join for a robust and seamless flooring solution. - Durability: Injection-molded tiles designed for high impact resistance and longevity. Application - Rolling Traffic: Fully compatible with pallet jacks. - Quick Installation: Hassle-free installation with minimal subfloor preparation required. - Versatile Applications: Suitable for various settings from low traffic areas to heavy industrial use. Installation - Loose Lay System: Easily removable and reusable, no adhesive needed. - Dovetail Interlocking System: Quick and simple installation. Environment - Sustainability: Made in Ireland. - Recycling: 100% recyclable with up to 80% recycled content - Compliance: Fully REACH compliant and free from phthalates (except for recycled content), heavy metals, and solvents. - Indoor Air Quality: Low TVOC emissions (< 100 micrograms/m3) and no formaldehyde.",
+      "characteristics": {
+        "Overall thickness": "5.00 mm",
+        "Installation system covering": "Adhesive-free (fr: Pose libre)",
+        "Format details": "Square tile"
+      },
+      "colors": [
+        {
+          "code": "5005",
+          "name": "Blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/5005-blue.jpg?v=20260616134634"
+        },
+        {
+          "code": "3020",
+          "name": "Red",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/3020-red.jpg?v=20260616134636"
+        },
+        {
+          "code": "9003",
+          "name": "White",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/9003-white.jpg?v=20260616134637"
+        },
+        {
+          "code": "9004",
+          "name": "Black",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/9004-black.jpg?v=20260616134636"
+        },
+        {
+          "code": "7045",
+          "name": "Light Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/7045-light-grey.jpg?v=20260616134636"
+        },
+        {
+          "code": "1002",
+          "name": "Beige",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/1002-beige.jpg?v=20260616134635"
+        },
+        {
+          "code": "6005",
+          "name": "Green",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/6005-green.jpg?v=20260616134637"
+        },
+        {
+          "code": "3016",
+          "name": "Maroon",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/3016-maroon.jpg?v=20260616134636"
+        },
+        {
+          "code": "1018",
+          "name": "Yellow",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/1018-yellow.jpg?v=20260616134638"
+        },
+        {
+          "code": "7015",
+          "name": "Dark Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/colors/7015-dark-grey.jpg?v=20260616134639"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/ambience/scena-1.jpg?v=20260616134631",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/ambience/scena-2.jpg?v=20260616134631",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-5mm/ambience/scena-3.jpg?v=20260616134631"
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-5mm/tehnicki-list-44060.pdf?v=20260616134628",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-5mm/brosura-47072.pdf?v=20260616134630",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-5mm/uputstvo-za-ugradnju-44349.pdf?v=20260616134630",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-5mm/uputstvo-za-odrzavanje-44670.pdf?v=20260616134630",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-5mm/sertifikat-vatrootpornost-46932.pdf?v=20260616134630",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — otpornost na klizanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-5mm/sertifikat-otpornost-na-klizanje-46944.pdf?v=20260616134630",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-5mm/garancija-69676.pdf?v=20260616134630",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "R Tile 7mm",
+      "slug": "r-tile-7mm",
+      "url": "https://www.gerflor-cee.com/products/r-tile-7mm",
+      "colorCount": 10,
+      "description": "Explore our interlocking dove tails tiles crafted for enduring robustness and adaptable for various industrial uses\n\nProduct - Slip Resistance: R10 rating ensures a safe walking surface. - Access & Corners: For safe foot and wheel traffic navigation (available in all colors) - Interlocking Design: Superior dove-tail join for a robust and seamless flooring solution. - Durability: Injection-molded tiles designed for high impact resistance and longevity. Application - Rolling Traffic: Fully compatible with pallet jacks. - Quick Installation: Hassle-free installation with minimal subfloor preparation required. - Versatile Applications: Suitable for various settings from low traffic areas to heavy industrial use. Installation - Loose Lay System: Easily removable and reusable, no adhesive needed. - Dovetail Interlocking System: Quick and simple installation. Environment - Sustainability: Made in Ireland. - Recycling: 100% recyclable with up to 80% recycled content - Compliance: Fully REACH compliant and free from phthalates (except for recycled content), heavy metals, and solvents. - Indoor Air Quality: Low TVOC emissions (< 100 micrograms/m3) and no formaldehyde.",
+      "characteristics": {
+        "Overall thickness": "7.00 mm",
+        "Installation system covering": "Adhesive-free (fr: Pose libre)",
+        "Format details": "Square tile"
+      },
+      "colors": [
+        {
+          "code": "7015",
+          "name": "Dark Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/7015-dark-grey.jpg?v=20260616134645"
+        },
+        {
+          "code": "5005",
+          "name": "Blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/5005-blue.jpg?v=20260616134646"
+        },
+        {
+          "code": "3016",
+          "name": "Maroon",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/3016-maroon.jpg?v=20260616134647"
+        },
+        {
+          "code": "9003",
+          "name": "White",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/9003-white.jpg?v=20260616134645"
+        },
+        {
+          "code": "9004",
+          "name": "Black",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/9004-black.jpg?v=20260616134647"
+        },
+        {
+          "code": "7045",
+          "name": "Light Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/7045-light-grey.jpg?v=20260616134647"
+        },
+        {
+          "code": "1002",
+          "name": "Beige",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/1002-beige.jpg?v=20260616134647"
+        },
+        {
+          "code": "6005",
+          "name": "Green",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/6005-green.jpg?v=20260616134646"
+        },
+        {
+          "code": "3020",
+          "name": "Red",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/3020-red.jpg?v=20260616134648"
+        },
+        {
+          "code": "1018",
+          "name": "Yellow",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/colors/1018-yellow.jpg?v=20260616134649"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/ambience/scena-1.jpg?v=20260616134641",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/ambience/scena-2.jpg?v=20260616134641",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/ambience/scena-3.jpg?v=20260616134642",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-7mm/ambience/scena-4.jpg?v=20260616134642"
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-7mm/tehnicki-list-44060.pdf?v=20260616134640",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-7mm/brosura-47072.pdf?v=20260616134640",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-7mm/uputstvo-za-ugradnju-44349.pdf?v=20260616134641",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-7mm/uputstvo-za-odrzavanje-44670.pdf?v=20260616134640",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-7mm/sertifikat-vatrootpornost-42800.pdf?v=20260616134640",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — otpornost na klizanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-7mm/sertifikat-otpornost-na-klizanje-43393.pdf?v=20260616134641",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-7mm/izjava-o-svojstvima-dop-68402.pdf?v=20260616134641",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-7mm/garancija-69676.pdf?v=20260616134641",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "R Tile 9mm",
+      "slug": "r-tile-9mm",
+      "url": "https://www.gerflor-cee.com/products/r-tile-9mm",
+      "colorCount": 10,
+      "description": "Explore our interlocking dove tails tiles crafted for enduring robustness and adaptable for various industrial uses\n\nProduct - Slip Resistance: R10 rating ensures a safe walking surface. - Access & Corners: For safe foot and wheel traffic navigation (available in all colors) - Interlocking Design: Superior dove-tail join for a robust and seamless flooring solution. - Durability: Injection-molded tiles designed for high impact resistance and longevity. Application - Rolling Traffic: Fully compatible with pallet jacks. - Quick Installation: Hassle-free installation with minimal subfloor preparation required. - Versatile Applications: Suitable for various settings from low traffic areas to heavy industrial use. Installation - Loose Lay System: Easily removable and reusable, no adhesive needed. - Dovetail Interlocking System: Quick and simple installation. Environment - Sustainability: Made in Ireland. - Recycling: 100% recyclable with up to 80% recycled content - Compliance: Fully REACH compliant and free from phthalates (except for recycled content), heavy metals, and solvents. - Indoor Air Quality: Low TVOC emissions (< 100 micrograms/m3) and no formaldehyde.",
+      "characteristics": {
+        "Overall thickness": "9.00 mm",
+        "Installation system covering": "Adhesive-free (fr: Pose libre)",
+        "Format details": "Square tile"
+      },
+      "colors": [
+        {
+          "code": "9004",
+          "name": "Black",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/9004-black.jpg?v=20260616134659"
+        },
+        {
+          "code": "7045",
+          "name": "Light Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/7045-light-grey.jpg?v=20260616134701"
+        },
+        {
+          "code": "1002",
+          "name": "Beige",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/1002-beige.jpg?v=20260616134700"
+        },
+        {
+          "code": "6005",
+          "name": "Green",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/6005-green.jpg?v=20260616134701"
+        },
+        {
+          "code": "3020",
+          "name": "Red",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/3020-red.jpg?v=20260616134701"
+        },
+        {
+          "code": "1018",
+          "name": "Yellow",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/1018-yellow.jpg?v=20260616134701"
+        },
+        {
+          "code": "7015",
+          "name": "Dark Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/7015-dark-grey.jpg?v=20260616134701"
+        },
+        {
+          "code": "5005",
+          "name": "Blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/5005-blue.jpg?v=20260616134701"
+        },
+        {
+          "code": "3016",
+          "name": "Maroon",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/3016-maroon.jpg?v=20260616134703"
+        },
+        {
+          "code": "9003",
+          "name": "White",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/colors/9003-white.jpg?v=20260616134704"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/ambience/scena-1.jpg?v=20260616134656",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/ambience/scena-2.jpg?v=20260616134656",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-9mm/ambience/scena-3.jpg?v=20260616134656"
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-9mm/tehnicki-list-44060.pdf?v=20260616134655",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-9mm/brosura-47072.pdf?v=20260616134655",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-9mm/uputstvo-za-ugradnju-44349.pdf?v=20260616134655",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-9mm/uputstvo-za-odrzavanje-44670.pdf?v=20260616134655",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-9mm/sertifikat-vatrootpornost-42800.pdf?v=20260616134654",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — otpornost na klizanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-9mm/sertifikat-otpornost-na-klizanje-43394.pdf?v=20260616134654",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-9mm/izjava-o-svojstvima-dop-68402.pdf?v=20260616134655",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-9mm/garancija-69676.pdf?v=20260616134655",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "R Tile Excel 5mm",
+      "slug": "r-tile-excel-5mm",
+      "url": "https://www.gerflor-cee.com/products/r-tile-excel-5mm",
+      "colorCount": 10,
+      "description": "A stylish, durable, and eco-friendly interlocking flooring solution that installs quickly without adhesives—ideal for high-traffic, budget-conscious spaces.\n\nProduct - Interlocking Design: Hidden interlock system with a concrete finish, offering a seamless and aesthetic appearance. - Durability: Cost-effective and robust solution, ideal for areas requiring both style and resilience. Application - Rolling Traffic: Supports light wheeled traffic, making it suitable for trolleys and carts. - Quick Installation: Easy to install with minimal subfloor preparation, thanks to the interlocking system. - Versatile Applications: Perfect for residential and commercial spaces such as office buildings, museums, reception areas, childcare facilities, and retail environments—especially where budget-conscious design is a priority. Installation - Loose Lay System: Easily removable and reusable, no adhesive needed. - Dovetail Interlocking System: Quick and simple installation. Environment - Sustainability: Made in Ireland. - Recycling: 100% recyclable - Compliance: Fully REACH compliant and free from phthalates (except for recycled content), heavy metals, and solvents. - Indoor Air Quality: Low TVOC emissions (< 100 micrograms/m3) and no formaldehyde.",
+      "characteristics": {},
+      "colors": [
+        {
+          "code": "1002",
+          "name": "Beige",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/1002-beige.jpg?v=20260616134713"
+        },
+        {
+          "code": "3016",
+          "name": "Maroon",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/3016-maroon.jpg?v=20260616134714"
+        },
+        {
+          "code": "5005",
+          "name": "Blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/5005-blue.jpg?v=20260616134714"
+        },
+        {
+          "code": "9003",
+          "name": "White",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/9003-white.jpg?v=20260616134714"
+        },
+        {
+          "code": "7015",
+          "name": "Dark Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/7015-dark-grey.jpg?v=20260616134713"
+        },
+        {
+          "code": "9004",
+          "name": "Black",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/9004-black.jpg?v=20260616134715"
+        },
+        {
+          "code": "1018",
+          "name": "Yellow",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/1018-yellow.jpg?v=20260616134714"
+        },
+        {
+          "code": "3020",
+          "name": "Red",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/3020-red.jpg?v=20260616134715"
+        },
+        {
+          "code": "6005",
+          "name": "Green",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/6005-green.jpg?v=20260616134716"
+        },
+        {
+          "code": "7045",
+          "name": "Light Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/colors/7045-light-grey.jpg?v=20260616134716"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/ambience/scena-1.jpg?v=20260616134710",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/ambience/scena-2.jpg?v=20260616134709",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-5mm/ambience/scena-3.jpg?v=20260616134710"
+      ],
+      "documents": [
+        {
+          "title": "Excel Tile - Technical DataSheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-5mm/excel-tile-technical-datasheet-59210.pdf?v=20260616134709",
+          "type": "pdf"
+        },
+        {
+          "title": "EXCEL TILE - PV feu",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-5mm/excel-tile-pv-feu-62265.pdf?v=20260616134709",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-5mm/sertifikat-vatrootpornost-62266.pdf?v=20260616134709",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-5mm/izjava-o-svojstvima-dop-67478.pdf?v=20260616134709",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-5mm/garancija-69676.pdf?v=20260616134709",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "R Tile Excel 7mm",
+      "slug": "r-tile-excel-7mm",
+      "url": "https://www.gerflor-cee.com/products/r-tile-excel-7mm",
+      "colorCount": 10,
+      "description": "A stylish, durable, and eco-friendly interlocking flooring solution that installs quickly without adhesives—ideal for high-traffic, budget-conscious spaces.\n\nProduct - Interlocking Design: Hidden interlock system with a concrete finish, offering a seamless and aesthetic appearance. - Durability: Cost-effective and robust solution, ideal for areas requiring both style and resilience. Application - Rolling Traffic: Supports light wheeled traffic, making it suitable for trolleys and carts. - Quick Installation: Easy to install with minimal subfloor preparation, thanks to the interlocking system. - Versatile Applications: Perfect for residential and commercial spaces such as office buildings, museums, reception areas, childcare facilities, and retail environments—especially where budget-conscious design is a priority. Installation - Loose Lay System: Easily removable and reusable, no adhesive needed. - Dovetail Interlocking System: Quick and simple installation. Environment - Sustainability: Made in Ireland. - Recycling: 100% recyclable - Compliance: Fully REACH compliant and free from phthalates (except for recycled content), heavy metals, and solvents. - Indoor Air Quality: Low TVOC emissions (< 100 micrograms/m3) and no formaldehyde.",
+      "characteristics": {},
+      "colors": [
+        {
+          "code": "1002",
+          "name": "Beige",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/1002-beige.jpg?v=20260616134725"
+        },
+        {
+          "code": "3016",
+          "name": "Maroon",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/3016-maroon.jpg?v=20260616134726"
+        },
+        {
+          "code": "5005",
+          "name": "Blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/5005-blue.jpg?v=20260616134726"
+        },
+        {
+          "code": "9003",
+          "name": "White",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/9003-white.jpg?v=20260616134726"
+        },
+        {
+          "code": "7045",
+          "name": "Light Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/7045-light-grey.jpg?v=20260616134726"
+        },
+        {
+          "code": "1018",
+          "name": "Yellow",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/1018-yellow.jpg?v=20260616134726"
+        },
+        {
+          "code": "3020",
+          "name": "Red",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/3020-red.jpg?v=20260616134726"
+        },
+        {
+          "code": "6005",
+          "name": "Green",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/6005-green.jpg?v=20260616134726"
+        },
+        {
+          "code": "7015",
+          "name": "Dark Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/7015-dark-grey.jpg?v=20260616134727"
+        },
+        {
+          "code": "9004",
+          "name": "Black",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/colors/9004-black.jpg?v=20260616134729"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/ambience/scena-1.jpg?v=20260616134722",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-excel-7mm/ambience/scena-2.jpg?v=20260616134722"
+      ],
+      "documents": [
+        {
+          "title": "Excel Tile - Technical DataSheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-7mm/excel-tile-technical-datasheet-59210.pdf?v=20260616134721",
+          "type": "pdf"
+        },
+        {
+          "title": "EXCEL TILE - PV feu",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-7mm/excel-tile-pv-feu-62265.pdf?v=20260616134721",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-7mm/sertifikat-vatrootpornost-62266.pdf?v=20260616134721",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-7mm/izjava-o-svojstvima-dop-67478.pdf?v=20260616134721",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-excel-7mm/garancija-69676.pdf?v=20260616134721",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "R Tile Slate",
+      "slug": "r-tile-slate",
+      "url": "https://www.gerflor-cee.com/products/r-tile-slate",
+      "colorCount": 0,
+      "description": "Elegant, sustainable flooring with a hidden interlock system for quick, adhesive-free installation in light-use commercial and residential spaces.\n\nProduct - Interlocking Design: Hidden interlock system with a refined slate texture, allowing elegant color combinations for a seamless and stylish finish. - Durability: Designed for foot traffic only, offering a visually appealing and practical solution for light-use environments. Application - Rolling Traffic: Not intended for wheeled traffic; optimized for pedestrian use. - Quick Installation: Simple and efficient installation with minimal subfloor preparation. - Versatile Applications: Ideal for residential and commercial spaces such as reception and waiting areas, childcare facilities, healthcare venues, and hospitality settings including coffee shops, restaurants, and hotel lobbies. Installation - Loose Lay System: Easily removable and reusable, no adhesive needed. - Dovetail Interlocking System: Quick and simple installation. Environment - Sustainability: Made in Ireland. - Recycling: 100% recyclable - Compliance: Fully REACH compliant and free from phthalates (except for recycled content), heavy metals, and solvents. - Indoor Air Quality: Low TVOC emissions (< 100 micrograms/m3) and no formaldehyde.",
+      "characteristics": {
+        "Overall thickness": "6.00 mm"
+      },
+      "colors": [],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-slate/ambience/scena-1.jpg?v=20260616134733",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-slate/ambience/scena-2.jpg?v=20260616134733",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-slate/ambience/scena-3.jpg?v=20260616134733",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-r-tile-slate/ambience/scena-4.jpg?v=20260616134733"
+      ],
+      "documents": [
+        {
+          "title": "Technical Datasheet - Slate",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-slate/technical-datasheet-slate-57993.pdf?v=20260616134732",
+          "type": "pdf"
+        },
+        {
+          "title": "SLATE - PV feu",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-slate/slate-pv-feu-62271.pdf?v=20260616134732",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-slate/sertifikat-vatrootpornost-62272.pdf?v=20260616134732",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-slate/izjava-o-svojstvima-dop-67474.pdf?v=20260616134733",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-r-tile-slate/garancija-69676.pdf?v=20260616134732",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Design Tile",
+      "slug": "design-tile",
+      "url": "https://www.gerflor-cee.com/products/design-tile",
+      "colorCount": 20,
+      "description": "Design Tile is a hidden dovetails interlocking tile with a ceramic looking finish that is ideal for renovations and high traffic applications\n\nProduct & Design - Hidden dove tails system : Tile effect - Modern designs with color-matching grout edging : Ceramic look - High definition of design & structured emboss: ultra-realism - Wood and stone designs that can be seamlessly combined : Zoning for areas separationInstallation & Maintenance - PUR+ with enhanced scratch and stain resistance: easy to clean - Patented robust hidden interlock system: Easy to install - Loose lay system : Easy to remove and reuse - Installation over ceramic : Ideal for renovationSustainability - 100% recyclable, up to 80% of recycled content: Preservation of the resources - TVOC < 100 micrograms/m3: best indoor air quality - 100% reach, Phthalate free, formaldehyde-free: Health and safety",
+      "characteristics": {
+        "Surface treatment": "PUR+",
+        "Overall thickness": "7.80 mm",
+        "Thickness of the wearlayer": "0.70 mm",
+        "Installation system covering": "Adhesive-free (fr: Pose libre)",
+        "Format details": "Square tile"
+      },
+      "colors": [
+        {
+          "code": "1548",
+          "name": "Limestone",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1548-limestone.jpg?v=20260616134744"
+        },
+        {
+          "code": "1550",
+          "name": "Vintage Maple",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1550-vintage-maple.jpg?v=20260616134745"
+        },
+        {
+          "code": "1544",
+          "name": "Shalestone",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1544-shalestone.jpg?v=20260616134746"
+        },
+        {
+          "code": "1554",
+          "name": "Terrazzo Grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1554-terrazzo-grey.jpg?v=20260616134746"
+        },
+        {
+          "code": "1555",
+          "name": "Sandstone",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1555-sandstone.jpg?v=20260616134745"
+        },
+        {
+          "code": "1551",
+          "name": "Vintage Sand",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1551-vintage-sand.jpg?v=20260616134746"
+        },
+        {
+          "code": "1546",
+          "name": "Granite",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1546-granite.jpg?v=20260616134746"
+        },
+        {
+          "code": "1553",
+          "name": "Terrazzo Cream",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1553-terrazzo-cream.jpg?v=20260616134746"
+        },
+        {
+          "code": "1545",
+          "name": "Clay",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1545-clay.jpg?v=20260616134748"
+        },
+        {
+          "code": "1547",
+          "name": "Volcano",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1547-volcano.jpg?v=20260616134749"
+        },
+        {
+          "code": "1549",
+          "name": "Polished Concrete",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1549-polished-concrete.jpg?v=20260616134749"
+        },
+        {
+          "code": "1552",
+          "name": "Vintage Ash",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1552-vintage-ash.jpg?v=20260616134750"
+        },
+        {
+          "code": "1693",
+          "name": "MANHATTAN GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1693-manhattan-grey.jpg?v=20260616134750"
+        },
+        {
+          "code": "1695",
+          "name": "MANHATTAN CLOUD",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1695-manhattan-cloud.jpg?v=20260616134750"
+        },
+        {
+          "code": "1697",
+          "name": "ACERO BEIGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1697-acero-beige.jpg?v=20260616134751"
+        },
+        {
+          "code": "1699",
+          "name": "LUBERON GREY",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1699-luberon-grey.jpg?v=20260616134750"
+        },
+        {
+          "code": "1692",
+          "name": "MANHATTAN STORM",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1692-manhattan-storm.jpg?v=20260616134752"
+        },
+        {
+          "code": "1694",
+          "name": "MANHATTAN DUST",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1694-manhattan-dust.jpg?v=20260616134753"
+        },
+        {
+          "code": "1696",
+          "name": "ACERO LIGHT",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1696-acero-light.jpg?v=20260616134754"
+        },
+        {
+          "code": "1698",
+          "name": "MARMETTA BEIGE",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/colors/1698-marmetta-beige.jpg?v=20260616134754"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/ambience/scena-1.jpg?v=20260616134740",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/ambience/scena-2.jpg?v=20260616134740",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/ambience/scena-3.jpg?v=20260616134740",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/ambience/scena-4.jpg?v=20260616134740",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/ambience/scena-5.jpg?v=20260616134740",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/ambience/scena-6.jpg?v=20260616134741",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/industrial/gerflor-design-tile/ambience/scena-7.jpg?v=20260616134740"
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/tehnicki-list-60411.pdf?v=20260616134738",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/brosura-59871.pdf?v=20260616134740",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/uputstvo-za-ugradnju-56485.pdf?v=20260616134739",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/uputstvo-za-odrzavanje-67285.pdf?v=20260616134739",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — otpornost na klizanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/sertifikat-otpornost-na-klizanje-46944.pdf?v=20260616134738",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/sertifikat-vatrootpornost-59066.pdf?v=20260616134738",
+          "type": "pdf"
+        },
+        {
+          "title": "Design Tile - PV Feu",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/design-tile-pv-feu-59067.pdf?v=20260616134739",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/izjava-o-svojstvima-dop-61188.pdf?v=20260616134739",
+          "type": "pdf"
+        },
+        {
+          "title": "ATTAR Report 23203",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/attar-report-23203-69581.pdf?v=20260616134739",
+          "type": "pdf"
+        },
+        {
+          "title": "25-003625_eml~01",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/25-003625-eml01-69580.pdf?v=20260616134739",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/garancija-69676.pdf?v=20260616134739",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — emisije",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/industrial/gerflor-design-tile/sertifikat-emisije-69952.pdf?v=20260616134740",
+          "type": "pdf"
+        }
+      ]
+    }
+  ],
+  "totalColors": 155,
+  "generatedAt": "2026-06-16T13:47:54.850Z"
 }

@@ -3,8 +3,10 @@
  *
  * Model: tools/ingest_gerflor_cee.js (enrichment-only, hardcoded slug map), ali generalizovan
  * na EKSPLICITNU listu kolekcija sa dva tipa:
- *   - 'lvt-flat'    → upis u public/data/lvt_colors_complete.json (flat colors[])
- *   - 'sport-nested'→ upis u public/data/sport_colors.json (nested collections[])
+ *   - 'lvt-flat'         → upis u public/data/lvt_colors_complete.json (flat colors[])
+ *   - 'sport-nested'     → upis u public/data/sport_colors.json (nested collections[])
+ *   - 'vinyl-nested'     → upis u public/data/vinyl_colors_complete.json (nested collections[])
+ *   - 'industrial-nested'→ upis u public/data/industrial_colors.json (nested collections[], cat 9)
  *
  * Tvrda pravila (S4/S7 lekcija — zastali socket prodje interni timeout i obesi ceo run):
  *   - SVI asseti se self-host-uju na Supabase (nema hotlinkova).
@@ -28,6 +30,7 @@ const parse = require('./lib/gerflor-parse.js');
 const LVT_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'lvt_colors_complete.json');
 const SPORT_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'sport_colors.json');
 const VINYL_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'vinyl_colors_complete.json');
+const INDUSTRIAL_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'industrial_colors.json');
 const IMAGES_BUCKET = 'product-images';
 const DOCS_BUCKET = 'product-documents';
 const MIN_DECOR_WIDTH = 800;
@@ -95,7 +98,31 @@ const TARASAFE = [
   url: `${parse.PUBLIC_HOST}/products/${slug}`,
 }));
 
-const ALL_COLLECTIONS = [...VIRTUO, ...TARAFLEX, ...TARASAFE];
+// S9 — Gerflor R-Tile + Design Tile (PVC interlocking industrijske ploče). Idu u POSTOJEĆU
+// Industrijske ploče kategoriju (cat 9). Reuse istog sitemap → varijacije mehanizma kao Taraflex
+// (kind 'industrial-nested'), ali ciljani fajl je public/data/industrial_colors.json (nested
+// collections[], isti oblik kao GTI Max Cleantech/Connect/Pure i Attraction Connect).
+// Slugovi = CEE slugovi, provereno u tmp/s6-cee-urls.json (classifyProductPath ih klasifikuje
+// kao 'variation'; r-tile-slate nema varijacije u sitemap-u → colors[] = [], kolekcija se i dalje
+// upisuje). design-tile-access-corner (akcesoar) je EKSPLICITNO izostavljen.
+const R_TILE = [
+  'r-tile-4mm',
+  'r-tile-5mm',
+  'r-tile-7mm',
+  'r-tile-9mm',
+  'r-tile-excel-5mm',
+  'r-tile-excel-7mm',
+  'r-tile-slate',
+  'design-tile',
+].map((slug) => ({
+  kind: 'industrial-nested',
+  categoryId: '9',
+  bucketDir: 'industrial',
+  slug,
+  url: `${parse.PUBLIC_HOST}/products/${slug}`,
+}));
+
+const ALL_COLLECTIONS = [...VIRTUO, ...TARAFLEX, ...TARASAFE, ...R_TILE];
 
 // Eksplicitno SKIPOVANO (moguci kasniji follow-up, vidi tmp/s6-recon.md §2):
 //  - my-taraflex-* landing/configurator stranice (4)
@@ -107,6 +134,7 @@ const SKIPPED_FOLLOWUP = [
   'subflex-taraflex-* underlayment accessories (10)',
   'single-color specialty/portable systems: taraflex-table-tennis-2-62, taraflexr-badminton-45, ' +
     'taraflexr-badminton-portable, taraflexr-bateco, taraflexr-isolsport, taraflexr-table-tennis-portable (6)',
+  'design-tile-access-corner (R-Tile/Design-Tile pristupni ugaoni akcesoar — S9 SKIP) (1)',
 ];
 
 function parseArgs() {
@@ -210,7 +238,8 @@ function displayNameFromVariation(v) {
     `🎯 S6 ingest — kolekcija za obradu: ${targets.length} ` +
       `(${targets.filter((c) => c.kind === 'lvt-flat').length} Virtuo + ` +
       `${targets.filter((c) => c.kind === 'sport-nested').length} Taraflex + ` +
-      `${targets.filter((c) => c.kind === 'vinyl-nested').length} Tarasafe)` +
+      `${targets.filter((c) => c.kind === 'vinyl-nested').length} Tarasafe + ` +
+      `${targets.filter((c) => c.kind === 'industrial-nested').length} R-Tile/Design-Tile)` +
       `${args.dryRun ? ' (DRY-RUN)' : ''}`
   );
   console.log(`⏭️  Eksplicitno skipovano (moguci follow-up): ${SKIPPED_FOLLOWUP.length} grupa:`);
@@ -230,6 +259,8 @@ function displayNameFromVariation(v) {
   if (!Array.isArray(sportData.collections)) sportData.collections = [];
   const vinylData = JSON.parse(fs.readFileSync(VINYL_JSON_PATH, 'utf8'));
   if (!Array.isArray(vinylData.collections)) vinylData.collections = [];
+  const industrialData = JSON.parse(fs.readFileSync(INDUSTRIAL_JSON_PATH, 'utf8'));
+  if (!Array.isArray(industrialData.collections)) industrialData.collections = [];
 
   const summary = [];
   let unsavedWrites = 0;
@@ -442,7 +473,37 @@ function displayNameFromVariation(v) {
         const idx = sportData.collections.findIndex((c) => c.slug === col.slug);
         if (idx >= 0) sportData.collections[idx] = entry;
         else sportData.collections.push(entry);
-      } else {
+      } else if (col.kind === 'industrial-nested') {
+        // S9 R-Tile / Design Tile → nested collections[] u public/data/industrial_colors.json,
+        // ISTI oblik kao postojeci GTI Max Cleantech/Connect, GTI Pure i Attraction Connect:
+        // { name, slug, url, colorCount, description, characteristics, colors:[{code,name,image}],
+        //   collection_image_url }. slug = CEE '<slug>' BEZ gerflor- prefiksa — cat-9 prepare-colors
+        // grana strip-uje gerflor- pa matchuje na ovaj slug (industrialCollections.find).
+        // r-tile-slate nema varijacije u sitemap-u → colors = [] (kolekcija se i dalje upisuje,
+        // kartica se renderuje preko IND- manual unosa, PDP samo nema swatch-eve).
+        const colors = decorResults.map((r) => ({
+          code: r.variation.code || '',
+          name: r.displayName,
+          image: r.publicUrl,
+        }));
+        const entry = {
+          name: collectionName,
+          slug: col.slug,
+          url: col.url,
+          colorCount: colors.length,
+          description: descriptionText,
+          characteristics: buildCharacteristicsFromSpecTable(specs),
+          colors,
+          collection_image_url: heroForCollection,
+        };
+        // room_scene_images / documents su opcioni dodaci (postojeci industrijski unosi ih nemaju,
+        // ali cat-9 citac ih ignorise pa ne kvare shape) — dodajemo ih samo ako postoje.
+        if (sceneUrls.length > 1) entry.room_scene_images = sceneUrls.slice(1);
+        if (uploadedDocs.length) entry.documents = uploadedDocs;
+        const idx = industrialData.collections.findIndex((c) => c.slug === col.slug);
+        if (idx >= 0) industrialData.collections[idx] = entry;
+        else industrialData.collections.push(entry);
+      } else if (col.kind === 'vinyl-nested') {
         // S5 Tarasafe → vinyl-nested: nested collections[] u vinyl_colors_complete.json
         // (isti oblik kao postojece Gerflor vinil kolekcije: taralay-*/mipolam-*).
         // slug = CEE '<slug>' (tarasafe-*); getVinylCollectionProducts() dodaje 'gerflor-' prefiks.
@@ -526,6 +587,12 @@ function displayNameFromVariation(v) {
     );
     vinylData.generatedAt = new Date().toISOString();
     core.writeJsonWithBackup(VINYL_JSON_PATH, vinylData, 'vinyl-colors-complete');
+    industrialData.totalColors = industrialData.collections.reduce(
+      (sum, c) => sum + ((c.colors && c.colors.length) || 0),
+      0
+    );
+    industrialData.generatedAt = new Date().toISOString();
+    core.writeJsonWithBackup(INDUSTRIAL_JSON_PATH, industrialData, 'industrial-colors');
     maybeSave(true);
   }
 
@@ -534,12 +601,17 @@ function displayNameFromVariation(v) {
   console.log(
     `\nVirtuo: ${summary.filter((r) => r.kind === 'lvt-flat').length} kol. | ` +
       `Taraflex: ${summary.filter((r) => r.kind === 'sport-nested').length} kol. | ` +
-      `Tarasafe: ${summary.filter((r) => r.kind === 'vinyl-nested').length} kol.`
+      `Tarasafe: ${summary.filter((r) => r.kind === 'vinyl-nested').length} kol. | ` +
+      `R-Tile/Design-Tile: ${summary.filter((r) => r.kind === 'industrial-nested').length} kol.`
   );
   if (!args.dryRun) {
     console.log(
       'PODSETNIK: za svaku Taraflex kolekciju dodati createCollectionProduct unos u ' +
         'lib/data/manual-collection-products.ts (cat 10, slug gerflor-taraflex-*).'
+    );
+    console.log(
+      'PODSETNIK: za svaku R-Tile/Design-Tile kolekciju postoji createCollectionProduct unos u ' +
+        'lib/data/manual-collection-products.ts (cat 9, slug gerflor-<slug>, SKU IND-<SLUG>).'
     );
   }
 })().catch((err) => {

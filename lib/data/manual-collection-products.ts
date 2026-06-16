@@ -306,6 +306,240 @@ export const manualCollectionProducts: Product[] = [
       },
     ],
   }),
+  // ── S9: Gerflor R-Tile + Design Tile (PVC interlocking industrijske ploče, cat 9) ──
+  // Boje/PDP swatch-evi se resolve-uju iz public/data/industrial_colors.json preko
+  // prepare-colors cat-9 grane (slug strip 'gerflor-' → industrialCollections.find).
+  // SKU prefiks IND- (vec u hasCollectionSku obe instance) → kartice na /kategorije/industrijske-ploce.
+  createCollectionProduct({
+    id: 'manual-industrial-r-tile-4mm',
+    name: 'R-Tile 4mm',
+    slug: 'gerflor-r-tile-4mm',
+    sku: 'IND-R-TILE-4MM',
+    categoryId: '9',
+    shortDescription: 'PVC modularne ploče sa klik spojem, 4 mm, za brzu ugradnju bez lepka.',
+    description:
+      'R-Tile 4mm su PVC industrijske ploče sa interlocking (klik) spojem za brzu ugradnju bez lepljenja, pogodne za radionice, garaze, izlozbene i lake industrijske prostore gde je vazno brzo pustanje u rad.',
+    imageUrl: '/images/products/industrial/r-tile-4mm/collection.jpg',
+    externalLink: 'https://www.gerflor-cee.com/products/r-tile-4mm',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'R-Tile 4mm' },
+      { key: 'type', label: 'Tip', value: 'Industrijske ploce' },
+      { key: 'thickness', label: 'Ukupna debljina', value: '4.00 mm' },
+      { key: 'installation', label: 'Ugradnja', value: 'Interlocking (klik), bez lepka' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Interlocking spoj — ugradnja bez lepka i brzo pustanje u rad.',
+          'Pogodno za radionice, garaze i lake industrijske prostore.',
+          'Modularan sistem za laku zamenu ostecenih ploca.',
+          'Otpornost na svakodnevni saobracaj i habanje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-industrial-r-tile-5mm',
+    name: 'R-Tile 5mm',
+    slug: 'gerflor-r-tile-5mm',
+    sku: 'IND-R-TILE-5MM',
+    categoryId: '9',
+    shortDescription: 'PVC modularne ploče sa klik spojem, 5 mm, za jaci saobracaj.',
+    description:
+      'R-Tile 5mm su PVC industrijske ploče sa klik spojem i vecom debljinom za zone sa jacim opterecenjem, ugradnja je bez lepljenja a sistem omogucava brzu renovaciju i zamenu pojedinacnih elemenata.',
+    imageUrl: '/images/products/industrial/r-tile-5mm/collection.jpg',
+    externalLink: 'https://www.gerflor-cee.com/products/r-tile-5mm',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'R-Tile 5mm' },
+      { key: 'type', label: 'Tip', value: 'Industrijske ploce' },
+      { key: 'thickness', label: 'Ukupna debljina', value: '5.00 mm' },
+      { key: 'installation', label: 'Ugradnja', value: 'Interlocking (klik), bez lepka' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Veca debljina za zone sa jacim saobracajem.',
+          'Interlocking spoj — ugradnja bez lepka.',
+          'Brza renovacija i zamena pojedinacnih ploca.',
+          'Otpornost na habanje u industrijskim uslovima.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-industrial-r-tile-7mm',
+    name: 'R-Tile 7mm',
+    slug: 'gerflor-r-tile-7mm',
+    sku: 'IND-R-TILE-7MM',
+    categoryId: '9',
+    shortDescription: 'PVC modularne ploče sa klik spojem, 7 mm, za teze opterecenje.',
+    description:
+      'R-Tile 7mm su PVC industrijske ploče sa klik spojem i pojacanom debljinom za teze opterecenje, namenjene proizvodnim halama, servisima i prostorima sa visokim saobracajem gde se trazi izdrzljiv pod bez lepljenja.',
+    imageUrl: '/images/products/industrial/r-tile-7mm/collection.jpg',
+    externalLink: 'https://www.gerflor-cee.com/products/r-tile-7mm',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'R-Tile 7mm' },
+      { key: 'type', label: 'Tip', value: 'Industrijske ploce' },
+      { key: 'thickness', label: 'Ukupna debljina', value: '7.00 mm' },
+      { key: 'installation', label: 'Ugradnja', value: 'Interlocking (klik), bez lepka' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Pojacana debljina za teze industrijsko opterecenje.',
+          'Interlocking spoj — ugradnja bez lepka.',
+          'Pogodno za proizvodne hale i servise.',
+          'Modularna zamena ostecenih ploca.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-industrial-r-tile-9mm',
+    name: 'R-Tile 9mm',
+    slug: 'gerflor-r-tile-9mm',
+    sku: 'IND-R-TILE-9MM',
+    categoryId: '9',
+    shortDescription: 'PVC modularne ploče sa klik spojem, 9 mm, za najteze uslove.',
+    description:
+      'R-Tile 9mm su najdeblje R-Tile PVC ploče sa klik spojem, namenjene najtezim industrijskim uslovima i zonama sa izuzetno visokim opterecenjem, uz ugradnju bez lepka i modularnu zamenu elemenata.',
+    imageUrl: '/images/products/industrial/r-tile-9mm/collection.jpg',
+    externalLink: 'https://www.gerflor-cee.com/products/r-tile-9mm',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'R-Tile 9mm' },
+      { key: 'type', label: 'Tip', value: 'Industrijske ploce' },
+      { key: 'thickness', label: 'Ukupna debljina', value: '9.00 mm' },
+      { key: 'installation', label: 'Ugradnja', value: 'Interlocking (klik), bez lepka' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Maksimalna debljina za najteze industrijsko opterecenje.',
+          'Interlocking spoj — ugradnja bez lepka.',
+          'Visoka otpornost na udare i tezak saobracaj.',
+          'Modularan sistem za brzu zamenu ploca.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-industrial-r-tile-excel-5mm',
+    name: 'R-Tile Excel 5mm',
+    slug: 'gerflor-r-tile-excel-5mm',
+    sku: 'IND-R-TILE-EXCEL-5MM',
+    categoryId: '9',
+    shortDescription: 'PVC modularne ploče Excel sa klik spojem, 5 mm, glatka povrsina.',
+    description:
+      'R-Tile Excel 5mm su PVC industrijske ploče sa klik spojem i Excel povrsinom (glatkiji izgled) za prostore gde se trazi cistija estetika uz brzu ugradnju bez lepka i otpornost na intenzivan saobracaj.',
+    imageUrl: '/images/products/industrial/r-tile-excel-5mm/collection.jpg',
+    externalLink: 'https://www.gerflor-cee.com/products/r-tile-excel-5mm',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'R-Tile Excel 5mm' },
+      { key: 'type', label: 'Tip', value: 'Industrijske ploce' },
+      { key: 'thickness', label: 'Ukupna debljina', value: '5.00 mm' },
+      { key: 'installation', label: 'Ugradnja', value: 'Interlocking (klik), bez lepka' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Excel povrsina za glatkiji, cistiji izgled.',
+          'Interlocking spoj — ugradnja bez lepka.',
+          'Pogodno za izlozbene i komercijalno-industrijske zone.',
+          'Otpornost na intenzivan saobracaj.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-industrial-r-tile-excel-7mm',
+    name: 'R-Tile Excel 7mm',
+    slug: 'gerflor-r-tile-excel-7mm',
+    sku: 'IND-R-TILE-EXCEL-7MM',
+    categoryId: '9',
+    shortDescription: 'PVC modularne ploče Excel sa klik spojem, 7 mm, glatka povrsina.',
+    description:
+      'R-Tile Excel 7mm su PVC industrijske ploče sa klik spojem, Excel povrsinom i vecom debljinom za teze opterecenje, kombinuju cistiju estetiku sa izdrzljivoscu i ugradnjom bez lepka.',
+    imageUrl: '/images/products/industrial/r-tile-excel-7mm/collection.jpg',
+    externalLink: 'https://www.gerflor-cee.com/products/r-tile-excel-7mm',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'R-Tile Excel 7mm' },
+      { key: 'type', label: 'Tip', value: 'Industrijske ploce' },
+      { key: 'thickness', label: 'Ukupna debljina', value: '7.00 mm' },
+      { key: 'installation', label: 'Ugradnja', value: 'Interlocking (klik), bez lepka' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Excel povrsina sa vecom debljinom za teze opterecenje.',
+          'Interlocking spoj — ugradnja bez lepka.',
+          'Cistiji izgled za reprezentativne industrijske prostore.',
+          'Visoka otpornost na habanje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-industrial-r-tile-slate',
+    name: 'R-Tile Slate',
+    slug: 'gerflor-r-tile-slate',
+    sku: 'IND-R-TILE-SLATE',
+    categoryId: '9',
+    shortDescription: 'PVC modularne ploče sa klik spojem i slate (skriljac) teksturom povrsine.',
+    description:
+      'R-Tile Slate su PVC industrijske ploče sa klik spojem i slate (skriljac) teksturom povrsine za bolji izgled i prijanjanje, pogodne za prostore gde se uz izdrzljivost trazi i dekorativna povrsina, uz ugradnju bez lepka.',
+    imageUrl: '/images/products/industrial/r-tile-slate/collection.jpg',
+    externalLink: 'https://www.gerflor-cee.com/products/r-tile-slate',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'R-Tile Slate' },
+      { key: 'type', label: 'Tip', value: 'Industrijske ploce' },
+      { key: 'installation', label: 'Ugradnja', value: 'Interlocking (klik), bez lepka' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Slate (skriljac) tekstura povrsine za bolji izgled i prijanjanje.',
+          'Interlocking spoj — ugradnja bez lepka.',
+          'Modularan sistem za brzu ugradnju i zamenu.',
+          'Otpornost na svakodnevni saobracaj.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-industrial-design-tile',
+    name: 'Design Tile',
+    slug: 'gerflor-design-tile',
+    sku: 'IND-DESIGN-TILE',
+    categoryId: '9',
+    shortDescription: 'Dekorativne PVC modularne ploče sa klik spojem i dezenima kamena i drveta.',
+    description:
+      'Design Tile su dekorativne PVC industrijske ploče sa klik spojem i dezenima koji oponasaju kamen, beton i drvo, za prostore gde se uz izdrzljivost i brzu ugradnju bez lepka trazi i atraktivan izgled poda.',
+    imageUrl: '/images/products/industrial/design-tile/collection.jpg',
+    externalLink: 'https://www.gerflor-cee.com/products/design-tile',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Design Tile' },
+      { key: 'type', label: 'Tip', value: 'Industrijske ploce' },
+      { key: 'installation', label: 'Ugradnja', value: 'Interlocking (klik), bez lepka' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Dekorativni dezeni kamena, betona i drveta.',
+          'Interlocking spoj — ugradnja bez lepka.',
+          'Spoj estetike i industrijske izdrzljivosti.',
+          'Modularna zamena pojedinacnih ploca.',
+        ],
+      },
+    ],
+  }),
   createCollectionProduct({
     id: 'manual-sport-dlw-colorette-sport',
     name: 'DLW Colorette Sport',
