@@ -11,7 +11,13 @@ const MIN_DECOR_WIDTH = 800;
 
 // Kolekcije gde se CEE color opseg ne poklapa sa našim (codeless nov vs code-keyed star):
 // radi se samo obogaćivanje na nivou kolekcije, postojeće boje ostaju netaknute.
-const SKIP_COLOR_INGEST_CEE_SLUGS = new Set([
+const SKIP_COLOR_INGEST_CEE_SLUGS = new Set([]);
+
+// REFRESH (S3b): kolekcije čiji je upstream opseg POTPUNO osvežen na novu codeless generaciju,
+// a naše stare code-keyed boje su DISKONTINUISANE (k tome sa polomljenim lokalnim /images/
+// putanjama). Pre ingesta očistimo col.colors → svih ~40 upstream varijacija se ingestuje sveže
+// (na Supabase), stara generacija otpada. Taralay Initial Acoustic/Compact: 49 starih → 40 novih.
+const REFRESH_COLOR_CEE_SLUGS = new Set([
   'taralay-initial-acoustic-0',
   'taralay-initial-compact-new',
 ]);
@@ -89,6 +95,13 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
 
     try {
     const skipColorIngest = SKIP_COLOR_INGEST_CEE_SLUGS.has(ceeSlug);
+
+    // REFRESH: odbaci stare diskontinuisane boje PRE računanja "novih upstream" (linija ~126)
+    // → sve upstream varijacije postaju nove i ingestuju se sveže; stare lokalne /images/ otpadaju.
+    if (REFRESH_COLOR_CEE_SLUGS.has(ceeSlug)) {
+      console.log(`   🔄 REFRESH: odbacujem ${col.colors.length} starih (diskontinuisanih) boja`);
+      col.colors = [];
+    }
 
     console.log(`\n📂 ${col.name} (${col.slug} → ${ceeSlug})`);
     const pageHtml = await core.fetchPage(`${parse.PUBLIC_HOST}/products/${ceeSlug}`);

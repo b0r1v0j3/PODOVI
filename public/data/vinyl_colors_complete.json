@@ -16095,167 +16095,15 @@
       "name": "Taralay Initial Acoustic",
       "slug": "taralay-initial-acoustic",
       "url": "https://www.gerflor-cee.com/products/taralay-initial-acoustic",
-      "colorCount": 49,
+      "colorCount": 40,
       "colors": [
         {
-          "code": "0035",
-          "name": "URBAN GRIS",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0035-urban-gris-22150035",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0035-urban-gris.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0037",
-          "name": "URBAN SOURIS",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0037-urban-souris-22150037",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0037-urban-souris.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0047",
-          "name": "DIVERSION IVOIRE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0047-diversion-ivoire-22150047",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0047-diversion-ivoire.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0049",
-          "name": "DIVERSION CARBONE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0049-diversion-carbone-22150049",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0049-diversion-carbone.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0465",
-          "name": "STRADA CIMENT",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0465-strada-ciment-22150465",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0465-strada-ciment.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0515",
-          "name": "DIVERSION KIWI",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0515-diversion-kiwi-22150515",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0515-diversion-kiwi.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0588",
-          "name": "NOMA CLAIR",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0588-noma-clair-22150588",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0588-noma-clair.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0590",
-          "name": "RENZO STEEL",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0590-renzo-steel-22150590",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0590-renzo-steel.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0636",
+          "code": "",
           "name": "ESTEREL BLOND",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0636-esterel-blond-22150636",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-esterel-blond",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0636-esterel-blond.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/esterel-blond.jpg?v=20260616063154",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16269,183 +16117,12 @@
           }
         },
         {
-          "code": "0698",
-          "name": "NOMA NATUREL",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0698-noma-naturel-22150698",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0698-noma-naturel.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0773",
-          "name": "RANCH",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0773-ranch-22150773",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0773-ranch.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0790",
-          "name": "STRADA CHROME",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0790-strada-chrome-22150790",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0790-strada-chrome.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0791",
-          "name": "STRADA METALLIC",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0791-strada-metallic-22150791",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0791-strada-metallic.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0797",
-          "name": "HABANA IVORY",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0797-habana-ivory-22150797",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0797-habana-ivory.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0799",
-          "name": "FILAMENT LIGHT",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0799-filament-light-22150799",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0799-filament-light.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0824",
-          "name": "DIVERSION SOURIS",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0824-diversion-souris-22150824",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0824-diversion-souris.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0825",
-          "name": "DIVERSION TURQUOISE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0825-diversion-turquoise-22150825",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0825-diversion-turquoise.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0826",
-          "name": "FILAMENT GREY",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0826-filament-grey-22150826",
-          "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0826-filament-grey.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — akustički",
-            "Format": "Rolna",
-            "Ukupna debljina": "3.15 mm",
-            "Sloj habanja": "0.50 mm",
-            "Smanjenje buke": "17 dB",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0828",
+          "code": "",
           "name": "HABANA BEIGE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0828-habana-beige-22150828",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-habana-beige",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0828-habana-beige.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/habana-beige.jpg?v=20260616063200",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16459,12 +16136,12 @@
           }
         },
         {
-          "code": "0949",
-          "name": "DIVERSION SOLEIL",
+          "code": "",
+          "name": "AZAY CREAM",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0949-diversion-soleil-22150949",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-azay-cream",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0949-diversion-soleil.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/azay-cream.jpg?v=20260616063205",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16478,12 +16155,12 @@
           }
         },
         {
-          "code": "0950",
-          "name": "MIAMI SABLE",
+          "code": "",
+          "name": "BALI GRIS",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0950-miami-sable-22150950",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-bali-gris",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0950-miami-sable.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/bali-gris.jpg?v=20260616063210",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16497,12 +16174,12 @@
           }
         },
         {
-          "code": "0951",
-          "name": "MIAMI LITCHEE",
+          "code": "",
+          "name": "CHICAGO SAGE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0951-miami-litchee-22150951",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-sage",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0951-miami-litchee.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-sage.jpg?v=20260616063215",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16516,12 +16193,12 @@
           }
         },
         {
-          "code": "0952",
-          "name": "MIAMI SOLEIL",
+          "code": "",
+          "name": "CHICAGO CREAM",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0952-miami-soleil-22150952",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-cream",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0952-miami-soleil.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-cream.jpg?v=20260616063220",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16535,12 +16212,12 @@
           }
         },
         {
-          "code": "0953",
-          "name": "RANCH ANTHRACITE",
+          "code": "",
+          "name": "CHICAGO HURRICANE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0953-ranch-anthracite-22150953",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-hurricane",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0953-ranch-anthracite.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-hurricane.jpg?v=20260616063225",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16554,12 +16231,12 @@
           }
         },
         {
-          "code": "0954",
-          "name": "SPIDER DORE",
+          "code": "",
+          "name": "CHICAGO SIROCCO",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0954-spider-dore-22150954",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-sirocco",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0954-spider-dore.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-sirocco.jpg?v=20260616063229",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16573,12 +16250,12 @@
           }
         },
         {
-          "code": "0955",
-          "name": "SPIDER PERLE",
+          "code": "",
+          "name": "CHICAGO TYPHOON",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0955-spider-perle-22150955",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-typhoon",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0955-spider-perle.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-typhoon.jpg?v=20260616063234",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16592,12 +16269,12 @@
           }
         },
         {
-          "code": "0956",
-          "name": "SPIDER GRENAT",
+          "code": "",
+          "name": "COTTAGE BLOND",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0956-spider-grenat-22150956",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-cottage-blond",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0956-spider-grenat.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/cottage-blond.jpg?v=20260616063237",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16611,12 +16288,12 @@
           }
         },
         {
-          "code": "0957",
-          "name": "SPIDER CUIVRE",
+          "code": "",
+          "name": "COTTAGE CINNAMON",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0957-spider-cuivre-22150957",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-cottage-cinnamon",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0957-spider-cuivre.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/cottage-cinnamon.jpg?v=20260616063242",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16630,12 +16307,12 @@
           }
         },
         {
-          "code": "0958",
-          "name": "URBAN BEIGE",
+          "code": "",
+          "name": "ESTEREL CLEAR",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0958-urban-beige-22150958",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-esterel-clear",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0958-urban-beige.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/esterel-clear.jpg?v=20260616063246",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16649,12 +16326,12 @@
           }
         },
         {
-          "code": "0959",
-          "name": "BOSTONIAN BROWN",
+          "code": "",
+          "name": "TERRAZZO SAGE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0959-bostonian-brown-22150959",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-terrazzo-sage",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0959-bostonian-brown.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/terrazzo-sage.jpg?v=20260616063251",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16668,12 +16345,12 @@
           }
         },
         {
-          "code": "0960",
-          "name": "BOSTONIAN GREY",
+          "code": "",
+          "name": "VALENCAY BLOND",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0960-bostonian-grey-22150960",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-valencay-blond",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0960-bostonian-grey.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/valencay-blond.jpg?v=20260616063257",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16687,12 +16364,126 @@
           }
         },
         {
-          "code": "0961",
+          "code": "",
+          "name": "VALENCAY PECAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-valencay-pecan",
+          "collection_slug": "taralay-initial-acoustic",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/valencay-pecan.jpg?v=20260616063301",
+          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — akustički",
+            "Format": "Rolna",
+            "Ukupna debljina": "3.15 mm",
+            "Sloj habanja": "0.50 mm",
+            "Smanjenje buke": "17 dB",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "FILAMENT ALTO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-filament-alto",
+          "collection_slug": "taralay-initial-acoustic",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/filament-alto.jpg?v=20260616063305",
+          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — akustički",
+            "Format": "Rolna",
+            "Ukupna debljina": "3.15 mm",
+            "Sloj habanja": "0.50 mm",
+            "Smanjenje buke": "17 dB",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO CORAL",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-coral",
+          "collection_slug": "taralay-initial-acoustic",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-coral.jpg?v=20260616063309",
+          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — akustički",
+            "Format": "Rolna",
+            "Ukupna debljina": "3.15 mm",
+            "Sloj habanja": "0.50 mm",
+            "Smanjenje buke": "17 dB",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO OCEAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-ocean",
+          "collection_slug": "taralay-initial-acoustic",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-ocean.jpg?v=20260616063314",
+          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — akustički",
+            "Format": "Rolna",
+            "Ukupna debljina": "3.15 mm",
+            "Sloj habanja": "0.50 mm",
+            "Smanjenje buke": "17 dB",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO SUNSHINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-sunshine",
+          "collection_slug": "taralay-initial-acoustic",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-sunshine.jpg?v=20260616063319",
+          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — akustički",
+            "Format": "Rolna",
+            "Ukupna debljina": "3.15 mm",
+            "Sloj habanja": "0.50 mm",
+            "Smanjenje buke": "17 dB",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "1274",
+          "name": "CORDOBA BLACK & WHITE",
+          "sku": "28931274",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-1274-cordoba-black-white-28931274",
+          "collection_slug": "taralay-initial-acoustic",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/1274-cordoba-black-white.jpg?v=20260616063323",
+          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — akustički",
+            "Format": "Rolna",
+            "Ukupna debljina": "3.15 mm",
+            "Sloj habanja": "0.50 mm",
+            "Smanjenje buke": "17 dB",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
           "name": "BOSTONIAN HONEY",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0961-bostonian-honey-22150961",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-bostonian-honey",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0961-bostonian-honey.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/bostonian-honey.jpg?v=20260616063328",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16706,12 +16497,12 @@
           }
         },
         {
-          "code": "0962",
-          "name": "DIVERSION MARINE",
+          "code": "",
+          "name": "FILAMENT LIGHT",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0962-diversion-marine-22150962",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-filament-light",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0962-diversion-marine.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/filament-light.jpg?v=20260616063333",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16725,12 +16516,12 @@
           }
         },
         {
-          "code": "0963",
-          "name": "MIAMI PERLE",
+          "code": "",
+          "name": "HABANA IVORY",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0963-miami-perle-22150963",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-habana-ivory",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0963-miami-perle.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/habana-ivory.jpg?v=20260616063337",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16744,12 +16535,12 @@
           }
         },
         {
-          "code": "0964",
-          "name": "MIAMI SOURIS",
+          "code": "",
+          "name": "BALI BEIGE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0964-miami-souris-22150964",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-bali-beige",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0964-miami-souris.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/bali-beige.jpg?v=20260616063343",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16763,12 +16554,12 @@
           }
         },
         {
-          "code": "0965",
-          "name": "MIAMI FORET",
+          "code": "",
+          "name": "BOSTONIAN CHATAIN",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0965-miami-foret-22150965",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-bostonian-chatain",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0965-miami-foret.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/bostonian-chatain.jpg?v=20260616063348",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16782,12 +16573,12 @@
           }
         },
         {
-          "code": "0966",
-          "name": "MIAMI ABRICOT",
+          "code": "",
+          "name": "CHICAGO TERRA",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0966-miami-abricot-22150966",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-terra",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0966-miami-abricot.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-terra.jpg?v=20260616063353",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16801,12 +16592,12 @@
           }
         },
         {
-          "code": "0967",
-          "name": "MIAMI MER",
+          "code": "",
+          "name": "CHICAGO HAZE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0967-miami-mer-22150967",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-haze",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0967-miami-mer.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-haze.jpg?v=20260616063357",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16820,12 +16611,12 @@
           }
         },
         {
-          "code": "0968",
-          "name": "MIAMI CIEL",
+          "code": "",
+          "name": "CHICAGO SAND",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0968-miami-ciel-22150968",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-sand",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0968-miami-ciel.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-sand.jpg?v=20260616063402",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16839,12 +16630,12 @@
           }
         },
         {
-          "code": "0969",
-          "name": "MIAMI PAON",
+          "code": "",
+          "name": "CHICAGO STORM",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0969-miami-paon-22150969",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-storm",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0969-miami-paon.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-storm.jpg?v=20260616063407",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16858,12 +16649,12 @@
           }
         },
         {
-          "code": "0970",
-          "name": "MIAMI TAUPE",
+          "code": "",
+          "name": "COTTAGE BROWN",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0970-miami-taupe-22150970",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-cottage-brown",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0970-miami-taupe.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/cottage-brown.jpg?v=20260616063413",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16877,12 +16668,12 @@
           }
         },
         {
-          "code": "0973",
-          "name": "SPIDER ALU",
+          "code": "",
+          "name": "COTTAGE CLEAR",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0973-spider-alu-22150973",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-cottage-clear",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0973-spider-alu.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/cottage-clear.jpg?v=20260616063418",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16896,12 +16687,12 @@
           }
         },
         {
-          "code": "0974",
-          "name": "SPIDER SAPHIR",
+          "code": "",
+          "name": "FILAMENT GOLDEN",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0974-spider-saphir-22150974",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-filament-golden",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0974-spider-saphir.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/filament-golden.jpg?v=20260616063423",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16915,12 +16706,12 @@
           }
         },
         {
-          "code": "0975",
-          "name": "SPIDER EMERAUDE",
+          "code": "",
+          "name": "MOON ISLAND",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0975-spider-emeraude-22150975",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-moon-island",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0975-spider-emeraude.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/moon-island.jpg?v=20260616063428",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16934,12 +16725,12 @@
           }
         },
         {
-          "code": "0976",
-          "name": "SPIDER QUARTZ",
+          "code": "",
+          "name": "TERRAZZO TERRA",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0976-spider-quartz-22150976",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-terrazzo-terra",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0976-spider-quartz.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/terrazzo-terra.jpg?v=20260616063432",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16953,12 +16744,12 @@
           }
         },
         {
-          "code": "0977",
-          "name": "TWIST GREY",
+          "code": "",
+          "name": "VALENCAY PATINE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0977-twist-grey-22150977",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-valencay-patine",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0977-twist-grey.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/valencay-patine.jpg?v=20260616063437",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16972,12 +16763,12 @@
           }
         },
         {
-          "code": "0978",
-          "name": "TWIST BLOND",
+          "code": "",
+          "name": "VERONE NAVONA",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0978-twist-blond-22150978",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-verone-navona",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0978-twist-blond.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/verone-navona.jpg?v=20260616063442",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -16991,12 +16782,12 @@
           }
         },
         {
-          "code": "0979",
-          "name": "TWIST WHITE",
+          "code": "",
+          "name": "AZAY GOLD",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0979-twist-white-22150979",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-azay-gold",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0979-twist-white.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/azay-gold.jpg?v=20260616063446",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -17010,12 +16801,50 @@
           }
         },
         {
-          "code": "0980",
-          "name": "TWIST BROWN",
+          "code": "",
+          "name": "CHICAGO SKY",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-0980-twist-brown-22150980",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-sky",
           "collection_slug": "taralay-initial-acoustic",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0980-twist-brown.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-sky.jpg?v=20260616063449",
+          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — akustički",
+            "Format": "Rolna",
+            "Ukupna debljina": "3.15 mm",
+            "Sloj habanja": "0.50 mm",
+            "Smanjenje buke": "17 dB",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO MINT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-chicago-mint",
+          "collection_slug": "taralay-initial-acoustic",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/chicago-mint.jpg?v=20260616063454",
+          "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — akustički",
+            "Format": "Rolna",
+            "Ukupna debljina": "3.15 mm",
+            "Sloj habanja": "0.50 mm",
+            "Smanjenje buke": "17 dB",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "1283",
+          "name": "FIESTA RAINBOW",
+          "sku": "28931283",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-acoustic-1283-fiesta-rainbow-28931283",
+          "collection_slug": "taralay-initial-acoustic",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-acoustic/decor/1283-fiesta-rainbow.jpg?v=20260616063458",
           "description": "Proizvod:\nGerflor Taralay Initial Acoustic — heterogeni vinil ulaznog nivoa sa akustičnom podlogom.\nKvalitetni dizajni drveta i kamena po pristupačnoj ceni.\nSmanjenje buke koraka za udobniji prostor.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nIntegrisana akustična podloga.\n\nPrimena:\nStambene zgrade — hodnici i zajednički prostori.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — akustički",
@@ -17122,573 +16951,15 @@
       "name": "Taralay Initial Compact",
       "slug": "taralay-initial-compact",
       "url": "https://www.gerflor-cee.com/products/taralay-initial-compact",
-      "colorCount": 49,
+      "colorCount": 40,
       "colors": [
         {
-          "code": "0035",
-          "name": "URBAN GRIS",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0035-urban-gris-22220035",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0035-urban-gris.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0037",
-          "name": "URBAN SOURIS",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0037-urban-souris-22220037",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0037-urban-souris.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0047",
-          "name": "DIVERSION IVOIRE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0047-diversion-ivoire-22220047",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0047-diversion-ivoire.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0049",
-          "name": "DIVERSION CARBONE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0049-diversion-carbone-22220049",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0049-diversion-carbone.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0465",
-          "name": "STRADA CIMENT",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0465-strada-ciment-22220465",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0465-strada-ciment.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0515",
-          "name": "DIVERSION KIWI",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0515-diversion-kiwi-22220515",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0515-diversion-kiwi.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0588",
-          "name": "NOMA CLAIR",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0588-noma-clair-22220588",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0588-noma-clair.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0590",
-          "name": "RENZO STEEL",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0590-renzo-steel-22220590",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0590-renzo-steel.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0636",
-          "name": "ESTEREL BLOND",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0636-esterel-blond-22220636",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0636-esterel-blond.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0698",
-          "name": "NOMA NATUREL",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0698-noma-naturel-22220698",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0698-noma-naturel.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0773",
-          "name": "RANCH",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0773-ranch-22220773",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0773-ranch.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0790",
-          "name": "STRADA CHROME",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0790-strada-chrome-22220790",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0790-strada-chrome.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0791",
-          "name": "STRADA METALLIC",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0791-strada-metallic-22220791",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0791-strada-metallic.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0797",
-          "name": "HABANA IVORY",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0797-habana-ivory-22220797",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0797-habana-ivory.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0799",
-          "name": "FILAMENT LIGHT",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0799-filament-light-22220799",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0799-filament-light.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0824",
-          "name": "DIVERSION SOURIS",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0824-diversion-souris-22220824",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0824-diversion-souris.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0825",
-          "name": "DIVERSION TURQUOISE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0825-diversion-turquoise-22220825",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0825-diversion-turquoise.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0826",
-          "name": "FILAMENT GREY",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0826-filament-grey-22220826",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0826-filament-grey.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0828",
-          "name": "HABANA BEIGE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0828-habana-beige-22220828",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0828-habana-beige.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0949",
-          "name": "DIVERSION SOLEIL",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0949-diversion-soleil-22220949",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0949-diversion-soleil.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0950",
-          "name": "MIAMI SABLE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0950-miami-sable-22220950",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0950-miami-sable.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0951",
-          "name": "MIAMI LITCHEE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0951-miami-litchee-22220951",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0951-miami-litchee.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0952",
-          "name": "MIAMI SOLEIL",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0952-miami-soleil-22220952",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0952-miami-soleil.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0953",
-          "name": "RANCH ANTHRACITE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0953-ranch-anthracite-22220953",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0953-ranch-anthracite.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0954",
-          "name": "SPIDER DORE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0954-spider-dore-22220954",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0954-spider-dore.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0955",
-          "name": "SPIDER PERLE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0955-spider-perle-22220955",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0955-spider-perle.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0956",
-          "name": "SPIDER GRENAT",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0956-spider-grenat-22220956",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0956-spider-grenat.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0957",
-          "name": "SPIDER CUIVRE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0957-spider-cuivre-22220957",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0957-spider-cuivre.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0958",
-          "name": "URBAN BEIGE",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0958-urban-beige-22220958",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0958-urban-beige.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0959",
-          "name": "BOSTONIAN BROWN",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0959-bostonian-brown-22220959",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0959-bostonian-brown.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0960",
-          "name": "BOSTONIAN GREY",
-          "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0960-bostonian-grey-22220960",
-          "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0960-bostonian-grey.jpg",
-          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
-          "characteristics": {
-            "Tip": "Heterogeni vinil — kompaktni",
-            "Format": "Rolna",
-            "Ukupna debljina": "2.0 mm",
-            "Sloj habanja": "0.50 mm",
-            "Klasa upotrebe": "Klasa 34/42",
-            "Vatrostojnost": "Bfl-s1",
-            "Tip instalacije": "Lepljenje"
-          }
-        },
-        {
-          "code": "0961",
+          "code": "",
           "name": "BOSTONIAN HONEY",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0961-bostonian-honey-22220961",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-bostonian-honey",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0961-bostonian-honey.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/bostonian-honey.jpg?v=20260616063504",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17701,12 +16972,12 @@
           }
         },
         {
-          "code": "0962",
-          "name": "DIVERSION MARINE",
+          "code": "",
+          "name": "FILAMENT LIGHT",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0962-diversion-marine-22220962",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-filament-light",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0962-diversion-marine.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/filament-light.jpg?v=20260616063509",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17719,12 +16990,12 @@
           }
         },
         {
-          "code": "0963",
-          "name": "MIAMI PERLE",
+          "code": "",
+          "name": "HABANA IVORY",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0963-miami-perle-22220963",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-habana-ivory",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0963-miami-perle.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/habana-ivory.jpg?v=20260616063513",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17737,12 +17008,12 @@
           }
         },
         {
-          "code": "0964",
-          "name": "MIAMI SOURIS",
+          "code": "",
+          "name": "BALI BEIGE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0964-miami-souris-22220964",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-bali-beige",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0964-miami-souris.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/bali-beige.jpg?v=20260616063519",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17755,12 +17026,12 @@
           }
         },
         {
-          "code": "0965",
-          "name": "MIAMI FORET",
+          "code": "",
+          "name": "BOSTONIAN CHATAIN",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0965-miami-foret-22220965",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-bostonian-chatain",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0965-miami-foret.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/bostonian-chatain.jpg?v=20260616063524",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17773,12 +17044,12 @@
           }
         },
         {
-          "code": "0966",
-          "name": "MIAMI ABRICOT",
+          "code": "",
+          "name": "CHICAGO TERRA",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0966-miami-abricot-22220966",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-terra",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0966-miami-abricot.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-terra.jpg?v=20260616063529",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17791,12 +17062,12 @@
           }
         },
         {
-          "code": "0967",
-          "name": "MIAMI MER",
+          "code": "",
+          "name": "CHICAGO HAZE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0967-miami-mer-22220967",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-haze",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0967-miami-mer.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-haze.jpg?v=20260616063534",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17809,12 +17080,12 @@
           }
         },
         {
-          "code": "0968",
-          "name": "MIAMI CIEL",
+          "code": "",
+          "name": "CHICAGO SAND",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0968-miami-ciel-22220968",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-sand",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0968-miami-ciel.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-sand.jpg?v=20260616063539",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17827,12 +17098,12 @@
           }
         },
         {
-          "code": "0969",
-          "name": "MIAMI PAON",
+          "code": "",
+          "name": "CHICAGO STORM",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0969-miami-paon-22220969",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-storm",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0969-miami-paon.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-storm.jpg?v=20260616063544",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17845,12 +17116,12 @@
           }
         },
         {
-          "code": "0970",
-          "name": "MIAMI TAUPE",
+          "code": "",
+          "name": "COTTAGE BROWN",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0970-miami-taupe-22220970",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-cottage-brown",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0970-miami-taupe.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/cottage-brown.jpg?v=20260616063548",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17863,12 +17134,12 @@
           }
         },
         {
-          "code": "0973",
-          "name": "SPIDER ALU",
+          "code": "",
+          "name": "COTTAGE CLEAR",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0973-spider-alu-22220973",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-cottage-clear",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0973-spider-alu.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/cottage-clear.jpg?v=20260616063552",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17881,12 +17152,12 @@
           }
         },
         {
-          "code": "0974",
-          "name": "SPIDER SAPHIR",
+          "code": "",
+          "name": "FILAMENT GOLDEN",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0974-spider-saphir-22220974",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-filament-golden",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0974-spider-saphir.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/filament-golden.jpg?v=20260616063556",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17899,12 +17170,12 @@
           }
         },
         {
-          "code": "0975",
-          "name": "SPIDER EMERAUDE",
+          "code": "",
+          "name": "MOON ISLAND",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0975-spider-emeraude-22220975",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-moon-island",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0975-spider-emeraude.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/moon-island.jpg?v=20260616063601",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17917,12 +17188,12 @@
           }
         },
         {
-          "code": "0976",
-          "name": "SPIDER QUARTZ",
+          "code": "",
+          "name": "TERRAZZO TERRA",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0976-spider-quartz-22220976",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-terrazzo-terra",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0976-spider-quartz.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/terrazzo-terra.jpg?v=20260616063605",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17935,12 +17206,12 @@
           }
         },
         {
-          "code": "0977",
-          "name": "TWIST GREY",
+          "code": "",
+          "name": "VALENCAY PATINE",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0977-twist-grey-22220977",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-valencay-patine",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0977-twist-grey.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/valencay-patine.jpg?v=20260616063609",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17953,12 +17224,12 @@
           }
         },
         {
-          "code": "0978",
-          "name": "TWIST BLOND",
+          "code": "",
+          "name": "VERONE NAVONA",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0978-twist-blond-22220978",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-verone-navona",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0978-twist-blond.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/verone-navona.jpg?v=20260616063614",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17971,12 +17242,12 @@
           }
         },
         {
-          "code": "0979",
-          "name": "TWIST WHITE",
+          "code": "",
+          "name": "FILAMENT ALTO",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0979-twist-white-22220979",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-filament-alto",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0979-twist-white.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/filament-alto.jpg?v=20260616063617",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -17989,12 +17260,408 @@
           }
         },
         {
-          "code": "0980",
-          "name": "TWIST BROWN",
+          "code": "",
+          "name": "CHICAGO CORAL",
           "sku": null,
-          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-0980-twist-brown-22220980",
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-coral",
           "collection_slug": "taralay-initial-compact",
-          "image": "/images/products/vinyl/taralay-initial-acoustic/0980-twist-brown.jpg",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-coral.jpg?v=20260616063623",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO OCEAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-ocean",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-ocean.jpg?v=20260616063629",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO SUNSHINE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-sunshine",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-sunshine.jpg?v=20260616063633",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CORDOBA BLACK & WHITE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-cordoba-black-white",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/cordoba-black-white.jpg?v=20260616063638",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "ESTEREL BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-esterel-blond",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/esterel-blond.jpg?v=20260616063643",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "HABANA BEIGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-habana-beige",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/habana-beige.jpg?v=20260616063648",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "AZAY CREAM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-azay-cream",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/azay-cream.jpg?v=20260616063652",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "BALI GRIS",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-bali-gris",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/bali-gris.jpg?v=20260616063657",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO SAGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-sage",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-sage.jpg?v=20260616063701",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO CREAM",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-cream",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-cream.jpg?v=20260616063705",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO HURRICANE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-hurricane",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-hurricane.jpg?v=20260616063710",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO SIROCCO",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-sirocco",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-sirocco.jpg?v=20260616063715",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO TYPHOON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-typhoon",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-typhoon.jpg?v=20260616063719",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "COTTAGE BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-cottage-blond",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/cottage-blond.jpg?v=20260616063724",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "COTTAGE CINNAMON",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-cottage-cinnamon",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/cottage-cinnamon.jpg?v=20260616063728",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "ESTEREL CLEAR",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-esterel-clear",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/esterel-clear.jpg?v=20260616063733",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "TERRAZZO SAGE",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-terrazzo-sage",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/terrazzo-sage.jpg?v=20260616063737",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "VALENCAY BLOND",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-valencay-blond",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/valencay-blond.jpg?v=20260616063742",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "VALENCAY PECAN",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-valencay-pecan",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/valencay-pecan.jpg?v=20260616063746",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "AZAY GOLD",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-azay-gold",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/azay-gold.jpg?v=20260616063750",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO SKY",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-sky",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-sky.jpg?v=20260616063754",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "CHICAGO MINT",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-chicago-mint",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/chicago-mint.jpg?v=20260616063758",
+          "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
+          "characteristics": {
+            "Tip": "Heterogeni vinil — kompaktni",
+            "Format": "Rolna",
+            "Ukupna debljina": "2.0 mm",
+            "Sloj habanja": "0.50 mm",
+            "Klasa upotrebe": "Klasa 34/42",
+            "Vatrostojnost": "Bfl-s1",
+            "Tip instalacije": "Lepljenje"
+          }
+        },
+        {
+          "code": "",
+          "name": "FIESTA RAINBOW",
+          "sku": null,
+          "href": "https://www.gerflor-cee.com/products/taralay-initial-compact-new-fiesta-rainbow",
+          "collection_slug": "taralay-initial-compact",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/taralay-initial-compact/decor/fiesta-rainbow.jpg?v=20260616063802",
           "description": "Proizvod:\nGerflor Taralay Initial Compact — heterogeni vinil ulaznog nivoa sa kompaktnom strukturom.\nEkonomično rešenje sa kvalitetnim dizajnima.\nKompaktna konstrukcija za sve komercijalne prostore.\n\nUgradnja:\nLepljenje na pripremljenu podlogu.\nVarenje spojeva.\n\nPrimena:\nKomercijalni prostori sa umerenim prometom.\nObrazovne ustanove.\nKancelarije.\n\nOdrživost:\nBez ftalata.\n100% reciklabilno.",
           "characteristics": {
             "Tip": "Heterogeni vinil — kompaktni",
@@ -20201,6 +19868,6 @@
       ]
     }
   ],
-  "totalColors": 951,
-  "generatedAt": "2026-06-13T13:54:07.693Z"
+  "totalColors": 933,
+  "generatedAt": "2026-06-16T06:38:02.474Z"
 }
