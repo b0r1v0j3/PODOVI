@@ -32,6 +32,7 @@ interface CategoryTabsProps {
   categorySlug: string; // 'lvt' | 'linoleum' | 'vinil' | 'tekstilne-ploce' | 'parket' | 'lajsne'
   initialColorSlug?: string; // Optional color slug to automatically open and highlight
   vinylType?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
+  safetyOnly?: boolean; // For vinyl safety filter: only protivklizni/sigurnosni collections
   listingMode?: CategoryListingMode;
   searchParams?: {
     search?: string;
@@ -74,6 +75,7 @@ export default function CategoryTabs({
   categorySlug,
   initialColorSlug,
   vinylType,
+  safetyOnly,
   listingMode,
   searchParams: searchParamsProp
 }: CategoryTabsProps) {
@@ -140,6 +142,11 @@ export default function CategoryTabs({
       });
     }
 
+    // Filter by safety (protivklizno) — keep only safety collections (S5)
+    if (categorySlug === 'vinil' && safetyOnly) {
+      filtered = filtered.filter(p => p.specs.some(s => s.key === 'protivklizno'));
+    }
+
     // Filter by thickness (for LVT, Vinil, and Linoleum)
     if ((categorySlug === 'lvt' || categorySlug === 'vinil' || categorySlug === 'linoleum') && searchParams?.thickness) {
       const selectedThicknesses = searchParams.thickness.split(',');
@@ -170,7 +177,7 @@ export default function CategoryTabs({
     }
 
     return filterCategoryListingCollections(categorySlug, filtered, resolvedListingMode);
-  }, [collections, useJsonColors, categorySlug, vinylType, searchParams, resolvedListingMode]);
+  }, [collections, useJsonColors, categorySlug, vinylType, safetyOnly, searchParams, resolvedListingMode]);
 
   // Filter colors by all active filters
   const colorsToRender = useMemo(() => {
@@ -229,6 +236,11 @@ export default function CategoryTabs({
         }
         return false;
       });
+    }
+
+    // Filter by safety (protivklizno) — keep only colors from safety collections (S5)
+    if (categorySlug === 'vinil' && safetyOnly) {
+      filtered = filtered.filter(color => color.specs.some(s => s.key === 'protivklizno'));
     }
 
     // Filter by search term
@@ -315,7 +327,7 @@ export default function CategoryTabs({
     }
 
     return filtered;
-  }, [colorsFromJSON, categorySlug, vinylType, useJsonColors, searchParams, collections]);
+  }, [colorsFromJSON, categorySlug, vinylType, safetyOnly, useJsonColors, searchParams, collections]);
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {

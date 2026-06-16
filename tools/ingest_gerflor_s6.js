@@ -27,6 +27,7 @@ const parse = require('./lib/gerflor-parse.js');
 
 const LVT_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'lvt_colors_complete.json');
 const SPORT_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'sport_colors.json');
+const VINYL_JSON_PATH = path.join(process.cwd(), 'public', 'data', 'vinyl_colors_complete.json');
 const IMAGES_BUCKET = 'product-images';
 const DOCS_BUCKET = 'product-documents';
 const MIN_DECOR_WIDTH = 800;
@@ -72,7 +73,29 @@ const TARAFLEX = [
   url: `${parse.PUBLIC_HOST}/products/${slug}`,
 }));
 
-const ALL_COLLECTIONS = [...VIRTUO, ...TARAFLEX];
+// S5 — Gerflor Tarasafe (protivklizni / sigurnosni vinil). Heterogeni safety vinyl koji ide
+// u POSTOJEĆU Vinil kategoriju (cat 2). Reuse istog sitemap → varijacije mehanizma kao Taraflex,
+// ali ciljani fajl je public/data/vinyl_colors_complete.json (nested collections[]) i svaka
+// kolekcija nosi protivklizno:true. Slugovi = CEE slugovi (tarasafe-*), provereno u
+// tmp/s6-cee-urls.json (classifyProductPath ih klasifikuje kao 'variation').
+const TARASAFE = [
+  'tarasafe-ultra-compact-sparclean',
+  'tarasafe-compact-standard',
+  'tarasafe-h2o',
+  'tarasafe-compact-design-2022',
+  'tarasafe-ultra-h2o',
+  'tarasafe-plus',
+  'tarasafe-super',
+].map((slug) => ({
+  kind: 'vinyl-nested',
+  categoryId: '2',
+  bucketDir: 'vinyl',
+  protivklizno: true,
+  slug,
+  url: `${parse.PUBLIC_HOST}/products/${slug}`,
+}));
+
+const ALL_COLLECTIONS = [...VIRTUO, ...TARAFLEX, ...TARASAFE];
 
 // Eksplicitno SKIPOVANO (moguci kasniji follow-up, vidi tmp/s6-recon.md §2):
 //  - my-taraflex-* landing/configurator stranice (4)
@@ -186,7 +209,8 @@ function displayNameFromVariation(v) {
   console.log(
     `🎯 S6 ingest — kolekcija za obradu: ${targets.length} ` +
       `(${targets.filter((c) => c.kind === 'lvt-flat').length} Virtuo + ` +
-      `${targets.filter((c) => c.kind === 'sport-nested').length} Taraflex)` +
+      `${targets.filter((c) => c.kind === 'sport-nested').length} Taraflex + ` +
+      `${targets.filter((c) => c.kind === 'vinyl-nested').length} Tarasafe)` +
       `${args.dryRun ? ' (DRY-RUN)' : ''}`
   );
   console.log(`⏭️  Eksplicitno skipovano (moguci follow-up): ${SKIPPED_FOLLOWUP.length} grupa:`);
@@ -204,6 +228,8 @@ function displayNameFromVariation(v) {
   if (!Array.isArray(lvtData.colors)) lvtData.colors = [];
   const sportData = JSON.parse(fs.readFileSync(SPORT_JSON_PATH, 'utf8'));
   if (!Array.isArray(sportData.collections)) sportData.collections = [];
+  const vinylData = JSON.parse(fs.readFileSync(VINYL_JSON_PATH, 'utf8'));
+  if (!Array.isArray(vinylData.collections)) vinylData.collections = [];
 
   const summary = [];
   let unsavedWrites = 0;
@@ -224,7 +250,7 @@ function displayNameFromVariation(v) {
         console.log(
           `\n📂 ${col.slug} [${col.kind}, cat ${col.categoryId}] → varijacija (boja): ${variations.length}`
         );
-        summary.push({ slug: col.slug, kind: col.kind, categoryId: col.categoryId, colors: variations.length });
+        summary.push({ slug: col.slug, kind: col.kind, categoryId: col.categoryId, colors: variations.length, protivklizno: col.protivklizno || false });
         continue;
       }
 
@@ -392,7 +418,7 @@ function displayNameFromVariation(v) {
           // dokumenti se na LVT cuvaju na nivou kolekcije (auto-derived product ih ne cita,
           // ali ih ostavljamo na prvoj boji za eventualnu kasniju upotrebu / PDP fallback).
         }
-      } else {
+      } else if (col.kind === 'sport-nested') {
         // Taraflex → nested collections[], slug = '<slug>' (npr. taraflex-comfort-2)
         // BEZ gerflor- prefiksa (poklapa postojeci DLW sport: 'dlw-colorette-sport';
         // cat-10 prepare-colors grana strip-uje gerflor-/tarkett- pa matchuje na ovaj slug).
@@ -416,6 +442,46 @@ function displayNameFromVariation(v) {
         const idx = sportData.collections.findIndex((c) => c.slug === col.slug);
         if (idx >= 0) sportData.collections[idx] = entry;
         else sportData.collections.push(entry);
+      } else {
+        // S5 Tarasafe → vinyl-nested: nested collections[] u vinyl_colors_complete.json
+        // (isti oblik kao postojece Gerflor vinil kolekcije: taralay-*/mipolam-*).
+        // slug = CEE '<slug>' (tarasafe-*); getVinylCollectionProducts() dodaje 'gerflor-' prefiks.
+        // protivklizno:true + "Protivklizno":"Da" u characteristics i na svakoj boji →
+        // getVinylCollectionProducts (firstColor.characteristics) i CategoryTabs (color.characteristics)
+        // automatski izlozе spec 'protivklizno' za ?safety=1 filter.
+        const collChars = buildCharacteristicsFromSpecTable(specs);
+        collChars['Protivklizno'] = 'Da';
+        const colors = decorResults.map((r) => {
+          const code = r.variation.code || '';
+          const colorChars = { ...collChars };
+          return {
+            code,
+            name: r.displayName,
+            sku: r.variation.sku,
+            href: r.variation.url,
+            collection_slug: col.slug,
+            image: r.publicUrl,
+            description: descriptionText,
+            characteristics: colorChars,
+          };
+        });
+        const entry = {
+          name: collectionName,
+          slug: col.slug,
+          url: col.url,
+          colorCount: colors.length,
+          categoryId: col.categoryId,
+          protivklizno: true,
+          description: descriptionText,
+          characteristics: collChars,
+          colors,
+          collection_image_url: heroForCollection,
+          room_scene_images: sceneUrls.length > 1 ? sceneUrls.slice(1) : [],
+        };
+        if (uploadedDocs.length) entry.documents = uploadedDocs;
+        const idx = vinylData.collections.findIndex((c) => c.slug === col.slug);
+        if (idx >= 0) vinylData.collections[idx] = entry;
+        else vinylData.collections.push(entry);
       }
 
       manifest.record(`collection:${col.slug}`, {
@@ -437,6 +503,7 @@ function displayNameFromVariation(v) {
         headerCount: colorCountHeader,
         documents: uploadedDocs.length,
         scenes: sceneUrls.length,
+        protivklizno: col.protivklizno || false,
       });
     } catch (err) {
       console.log(`⚠️ ${col.slug}: ${err.message} — preskačem kolekciju`);
@@ -453,6 +520,12 @@ function displayNameFromVariation(v) {
     lvtData.generatedAt = new Date().toISOString();
     core.writeJsonWithBackup(LVT_JSON_PATH, lvtData, 'lvt-colors-complete');
     core.writeJsonWithBackup(SPORT_JSON_PATH, sportData, 'sport-colors');
+    vinylData.totalColors = vinylData.collections.reduce(
+      (sum, c) => sum + ((c.colors && c.colors.length) || 0),
+      0
+    );
+    vinylData.generatedAt = new Date().toISOString();
+    core.writeJsonWithBackup(VINYL_JSON_PATH, vinylData, 'vinyl-colors-complete');
     maybeSave(true);
   }
 
@@ -460,7 +533,8 @@ function displayNameFromVariation(v) {
   for (const row of summary) console.log(JSON.stringify(row));
   console.log(
     `\nVirtuo: ${summary.filter((r) => r.kind === 'lvt-flat').length} kol. | ` +
-      `Taraflex: ${summary.filter((r) => r.kind === 'sport-nested').length} kol.`
+      `Taraflex: ${summary.filter((r) => r.kind === 'sport-nested').length} kol. | ` +
+      `Tarasafe: ${summary.filter((r) => r.kind === 'vinyl-nested').length} kol.`
   );
   if (!args.dryRun) {
     console.log(

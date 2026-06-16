@@ -182,6 +182,7 @@ export interface ProductFilters {
   inStock?: boolean;
   search?: string;
   type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
+  safety?: string; // For vinyl safety filter: '1' = only protivklizni/sigurnosni collections
   collections?: string[]; // For LVT collection filter
   listing?: 'core' | 'accessory' | 'all'; // Listing segment filter for categories with accessory taxonomy
   thickness?: string[]; // For overall thickness filter (for LVT) - array of thickness values like "2.00", "2.50", etc.

@@ -54,6 +54,35 @@ const LINOLEUM_COLLECTIONS = [
   url: `https://www.tarkett.rs/sr_RS/kolekcija-${collectionId}-${slug}`,
 }));
 
+// S5 — Tarkett protivklizni / sigurnosni vinil (tarkett.rs kategorija rs_C01005-protivklizni-podovi).
+// Oblik je IDENTIČAN homogenom vinilu (iq-motion) — potvrđeno: per-dizajn JSON nosi
+// slip_resistance_din_51130 = "R10"/"R11"; designs[] sa product_hex_color_code/product_thumbnail.
+// → kind:'homogeneous', categorySlug:'vinil', categoryId:'2', protivklizno:true.
+// Pišu u DEFAULT_HOMO_TARGET (tarkett_homogeneous_vinyl_colors.json) uz iQ Motion.
+// Stvarni protivklizni opseg na tarkett.rs = kolekcije koje JOŠ postoje (imaju __NUXT__ payload).
+// Provereno DOM-scrape-om kategorije `kategorija-rs_C01005-protivklizni-podovi` + per-kolekcija
+// ekstrakcijom (2026-06-16): dekorativni Safetred Design/Ion/Spectrum/Transport/Aqua/Rail opseg
+// je DISKONTINUISAN na srpskom sajtu (stari C-ID-evi iz all_kolekcije.txt sad redirektuju na
+// kategoriju → nema podataka). Ostaje 6 realnih homogenih safety kolekcija; dekorativnu
+// raznolikost daje Gerflor Tarasafe (7 kol). Vidi docs/.../runbooks S5.
+const TARKETT_SAFETY_COLLECTIONS = [
+  ['C000226', 'safetred-universal'],
+  ['C000227', 'safetred-universal-r11'],
+  ['C000096', 'granit-safe-t'],
+  ['C000095', 'granit-multisafe'],
+  ['C000159', 'multisafe-aqua'],
+  ['C000180', 'primo-safe-t'],
+].map(([collectionId, slug]) => ({
+  key: `safety-${slug}`,
+  kind: 'homogeneous',
+  collectionId,
+  slug: `tarkett-${slug}`,
+  categorySlug: 'vinil',
+  categoryId: '2',
+  protivklizno: true,
+  url: `https://www.tarkett.rs/sr_RS/kolekcija-${collectionId}-${slug}`,
+}));
+
 // Konfiguracija 4 nove kolekcije (verbatim iz upstream izviđanja 2026-06-13).
 const COLLECTIONS = [
   { key: 'iq-motion',    kind: 'homogeneous', collectionId: 'C003138', slug: 'tarkett-iq-motion', categorySlug: 'vinil',
@@ -65,6 +94,7 @@ const COLLECTIONS = [
   { key: 'modulart-70',  kind: 'lvt', type: 'LVT', collectionId: 'C003148', slug: 'modulart-70', categorySlug: 'lvt',
     url: 'https://www.tarkett.rs/sr_RS/kolekcija-C003148-modulart-70' },
   ...LINOLEUM_COLLECTIONS,
+  ...TARKETT_SAFETY_COLLECTIONS,
 ];
 
 function parseArgs() {
@@ -179,6 +209,12 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
   const firstSpecs = await fetchDesignSpecs(designs[0]?.productDataUrl).catch(() => null);
   if (firstSpecs) characteristics = parse.toSerbianCharacteristics(firstSpecs.rawSpecs);
 
+  // S5 — sigurnosne (protivklizne) kolekcije nose eksplicitnu "Protivklizno": "Da" karakteristiku.
+  // productDataLoader.buildSpecsFromCharacteristicRecord onda automatski proizvede spec
+  // { key:'protivklizno', value:'Da' } na kolekcijskom headeru, a CategoryTabs gradi isti spec
+  // iz svake boje (color.characteristics). Filter ?safety=1 bira po tom specu — kao "type" filter.
+  if (col.protivklizno) characteristics['Protivklizno'] = 'Da';
+
   const documents = args.dryRun ? parse.collectionDocsFromAssets(item)
     : await ingestDocuments(supabase, manifest, col, parse.collectionDocsFromAssets(item));
   const galleryUrls = args.dryRun ? parse.galleryImagesFromAssets(item)
@@ -210,13 +246,17 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
         } catch (err) { console.log(`   ⚠️ swatch ${fileBase}: ${err.message} — preskačem boju`); continue; }
         if (++saved % 25 === 0) manifest.save();
       }
+      const colorCharacteristics = parse.homogeneousColorCharacteristics(d);
+      // S5 — propagiraj sigurnosni tag na nivo boje, da CategoryTabs (koji gradi specs iz
+      // color.characteristics) izloži spec 'protivklizno' i na pojedinačnim bojama (Boje tab).
+      if (col.protivklizno) colorCharacteristics['Protivklizno'] = 'Da';
       results[idx] = {
         code,
         name,
         slug: `${col.slug}-color-${code}-${core.slugify(name)}`,
         image,
         description,
-        characteristics: parse.homogeneousColorCharacteristics(d),
+        characteristics: colorCharacteristics,
         brandId: '3',
       };
     }
@@ -231,6 +271,8 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
     brandId: '3',
     url: col.url,
     colorCount: colors.length,
+    // S5 — eksplicitni record-level flag (izvor istine za sigurnosne kolekcije).
+    protivklizno: col.protivklizno || false,
     shortDescription,
     description,
     categoryDescription: shortDescription,
@@ -333,7 +375,7 @@ async function ingestLvt(supabase, manifest, args, col, item) {
             homoData.collections = homoData.collections.filter((c) => c.slug !== record.slug);
             homoData.collections.push(record);
           }
-          summary.push({ key: col.key, kind: col.kind, colors: record.colors.length, docs: record.documents.length });
+          summary.push({ key: col.key, kind: col.kind, colors: record.colors.length, docs: record.documents.length, protivklizno: record.protivklizno });
         } else {
           const items = await ingestLvt(supabase, manifest, args, col, item);
           console.log(`   → stavki:${items.length} (type=${col.type})`);
