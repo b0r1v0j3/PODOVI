@@ -101,11 +101,11 @@ export const manualCollectionProducts: Product[] = [
       { key: 'application', label: 'Namena', value: 'Clean room, laboratorije, farmacija' },
     ],
     documents: [
-      { title: 'Technical Data Sheet', url: 'https://cdn.gerflor.com/media/2/40901/mipolam%20biocontrol%20clean%20-%20technical%20data%20sheet.pdf', type: 'tech_datasheet' },
-      { title: 'Life Sciences - Guide', url: 'https://cdn.gerflor.com/media/2/21058/life%20sciences%20-%20gb%20guide.pdf', type: 'guide' },
-      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/42987/tiles%20and%20rolls%20welding%20-%20installation%20guidelines.pdf', type: 'installation' },
-      { title: 'Maintenance Instructions', url: 'https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf', type: 'maintenance' },
-      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/42191/mipolam%20biocontrol%20clean%20-%20dop.pdf', type: 'dop' },
+      { title: 'Technical Data Sheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/40901-mipolam-biocontrol-clean-technical-data-sheet.pdf?v=20260616042226', type: 'tech_datasheet' },
+      { title: 'Life Sciences - Guide', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/21058-life-sciences-gb-guide.pdf?v=20260616042230', type: 'guide' },
+      { title: 'Installation Guidelines', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/42987-tiles-and-rolls-welding-installation-guidelines.pdf?v=20260616042229', type: 'installation' },
+      { title: 'Maintenance Instructions', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/47406-maintenance-for-for-mipolam-flooring-evercare-treatment-maintenance-inscructions.pdf?v=20260616042224', type: 'maintenance' },
+      { title: 'Declaration of Performance', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/42191-mipolam-biocontrol-clean-dop.pdf?v=20260616042229', type: 'dop' },
     ],
     detailsSections: [
       {
@@ -138,12 +138,12 @@ export const manualCollectionProducts: Product[] = [
       { key: 'application', label: 'Namena', value: 'Clean room, nuklearni i tehnicki prostori' },
     ],
     documents: [
-      { title: 'Technical Data Sheet', url: 'https://cdn.gerflor.com/media/2/40583/mipolam%20biocontrol%20performance%20-%20technical%20data%20sheet.pdf', type: 'tech_datasheet' },
-      { title: 'Life Sciences - Guide', url: 'https://cdn.gerflor.com/media/2/21058/life%20sciences%20-%20gb%20guide.pdf', type: 'guide' },
-      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/42987/tiles%20and%20rolls%20welding%20-%20installation%20guidelines.pdf', type: 'installation' },
-      { title: 'Maintenance Instructions', url: 'https://cdn.gerflor.com/media/2/47406/%20maintenance%20for%20for%20mipolam%20flooring%20(evercare%20treatment)%20-%20maintenance%20inscructions%20.pdf', type: 'maintenance' },
-      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/60431/mipolam%20biocontrol%20performance%20-%20declaration%20of%20performance.pdf', type: 'dop' },
-      { title: 'Environmental Product Declaration', url: 'https://cdn.gerflor.com/media/2/47600/epd%20mipolam%20symbioz%20%E2%80%93%20mipolam%20biocontrol%20performance%20for%20europe.pdf', type: 'epd' },
+      { title: 'Technical Data Sheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/40583-mipolam-biocontrol-performance-technical-data-sheet.pdf?v=20260616042227', type: 'tech_datasheet' },
+      { title: 'Life Sciences - Guide', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/21058-life-sciences-gb-guide.pdf?v=20260616042230', type: 'guide' },
+      { title: 'Installation Guidelines', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/42987-tiles-and-rolls-welding-installation-guidelines.pdf?v=20260616042229', type: 'installation' },
+      { title: 'Maintenance Instructions', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/47406-maintenance-for-for-mipolam-flooring-evercare-treatment-maintenance-inscructions.pdf?v=20260616042224', type: 'maintenance' },
+      { title: 'Declaration of Performance', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/60431-mipolam-biocontrol-performance-declaration-of-performance.pdf?v=20260616042229', type: 'dop' },
+      { title: 'Environmental Product Declaration', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/47600-epd-mipolam-symbioz-mipolam-biocontrol-performance-for-europe.pdf?v=20260616042231', type: 'epd' },
     ],
     detailsSections: [
       {
@@ -176,11 +176,11 @@ export const manualCollectionProducts: Product[] = [
       { key: 'installation', label: 'Ugradnja', value: 'Loose lay / Connect' },
     ],
     documents: [
-      { title: 'Technical Datasheet', url: 'https://cdn.gerflor.com/media/2/43315/gti%20max%20-%20technical%20datasheet.pdf', type: 'tech_datasheet' },
-      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/58195/gti%20max%20cleantech%20-%20product%20description.doc', type: 'product_description' },
-      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/67285/technical%20tiles%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
+      { title: 'Technical Datasheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/43315-gti-max-technical-datasheet.pdf?v=20260616042230', type: 'tech_datasheet' },
+      { title: 'Product Description', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/58195-gti-max-cleantech-product-description.doc?v=20260616042230', type: 'product_description' },
+      { title: 'Maintenance Instruction', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/67285-technical-tiles-maintenance-instruction.pdf?v=20260616042218', type: 'maintenance' },
       { title: 'Environmental Datasheet', url: 'https://cdn.gerflor.com/media/2/58974/gti%20max%20-%20environmental%20datasheet%20(europe).pdf', type: 'environmental_datasheet' },
-      { title: 'EPD Europe', url: 'https://cdn.gerflor.com/media/2/58559/gti%20tiles%20-%20epd%20europe.pdf', type: 'epd' },
+      { title: 'EPD Europe', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/58559-gti-tiles-epd-europe.pdf?v=20260616042233', type: 'epd' },
     ],
     detailsSections: [
       {
@@ -213,11 +213,11 @@ export const manualCollectionProducts: Product[] = [
       { key: 'installation', label: 'Ugradnja', value: 'Loose lay / Connect' },
     ],
     documents: [
-      { title: 'Technical Datasheet', url: 'https://cdn.gerflor.com/media/2/43315/gti%20max%20-%20technical%20datasheet.pdf', type: 'tech_datasheet' },
-      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/39401/gti%20max%20connect%20-%20installation%20guidelines.pdf', type: 'installation' },
-      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/67285/technical%20tiles%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
-      { title: 'Environmental Product Declaration', url: 'https://cdn.gerflor.com/media/2/31664/gti%20max%20connect%20-%20environmental%20product%20declaration.pdf', type: 'epd' },
-      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/58194/gti%20max%20connect%20-%20product%20description.doc', type: 'product_description' },
+      { title: 'Technical Datasheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/43315-gti-max-technical-datasheet.pdf?v=20260616042230', type: 'tech_datasheet' },
+      { title: 'Installation Guidelines', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/39401-gti-max-connect-installation-guidelines.pdf?v=20260616042231', type: 'installation' },
+      { title: 'Maintenance Instruction', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/67285-technical-tiles-maintenance-instruction.pdf?v=20260616042218', type: 'maintenance' },
+      { title: 'Environmental Product Declaration', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/31664-gti-max-connect-environmental-product-declaration.pdf?v=20260616042231', type: 'epd' },
+      { title: 'Product Description', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/58194-gti-max-connect-product-description.doc?v=20260616042231', type: 'product_description' },
     ],
     detailsSections: [
       {
@@ -250,11 +250,11 @@ export const manualCollectionProducts: Product[] = [
       { key: 'installation', label: 'Ugradnja', value: 'Loose lay / Connect' },
     ],
     documents: [
-      { title: 'Technical Datasheet', url: 'https://cdn.gerflor.com/media/2/43319/gti%20pure%20connect%20-%20technical%20datasheet.pdf', type: 'tech_datasheet' },
-      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/47534/gti%20pure%20-%20installation%20guidelines.pdf', type: 'installation' },
-      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/67285/technical%20tiles%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
-      { title: 'Environmental Datasheet', url: 'https://cdn.gerflor.com/media/2/58975/gti%20pure%20-%20environmental%20datasheet%20(europe).pdf', type: 'environmental_datasheet' },
-      { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/60429/gti%20pure%20-%20dop.pdf', type: 'dop' },
+      { title: 'Technical Datasheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/43319-gti-pure-connect-technical-datasheet.pdf?v=20260616042231', type: 'tech_datasheet' },
+      { title: 'Installation Guidelines', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/47534-gti-pure-installation-guidelines.pdf?v=20260616042233', type: 'installation' },
+      { title: 'Maintenance Instruction', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/67285-technical-tiles-maintenance-instruction.pdf?v=20260616042218', type: 'maintenance' },
+      { title: 'Environmental Datasheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/58975-gti-pure-environmental-datasheet-europe.pdf?v=20260616042232', type: 'environmental_datasheet' },
+      { title: 'Declaration of Performance', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/60429-gti-pure-dop.pdf?v=20260616042232', type: 'dop' },
     ],
     detailsSections: [
       {
@@ -287,11 +287,11 @@ export const manualCollectionProducts: Product[] = [
       { key: 'installation', label: 'Ugradnja', value: 'Loose lay / Connect' },
     ],
     documents: [
-      { title: 'Technical Data Sheet', url: 'https://cdn.gerflor.com/media/2/41727/attraction%C2%AE%20-%20technical%20data%20sheet.pdf', type: 'tech_datasheet' },
-      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/17715/attraction%C2%AE%20-%20installation%20guidelines.pdf', type: 'installation' },
-      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/67285/technical%20tiles%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
-      { title: 'Environmental Datasheet', url: 'https://cdn.gerflor.com/media/2/57316/attraction%20-%20environmental%20datasheet%20(europe).pdf', type: 'environmental_datasheet' },
-      { title: 'Environmental Product Declaration', url: 'https://cdn.gerflor.com/media/2/56910/attraction%20-%20epd.pdf', type: 'epd' },
+      { title: 'Technical Data Sheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/41727-attraction-technical-data-sheet.pdf?v=20260616042233', type: 'tech_datasheet' },
+      { title: 'Installation Guidelines', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/17715-attraction-installation-guidelines.pdf?v=20260616042233', type: 'installation' },
+      { title: 'Maintenance Instruction', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/67285-technical-tiles-maintenance-instruction.pdf?v=20260616042218', type: 'maintenance' },
+      { title: 'Environmental Datasheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/57316-attraction-environmental-datasheet-europe.pdf?v=20260616042233', type: 'environmental_datasheet' },
+      { title: 'Environmental Product Declaration', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/56910-attraction-epd.pdf?v=20260616042234', type: 'epd' },
       { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/28959/attraction%C2%AE%20-%20declaration%20of%20performance%20%20d%C3%A9claration%20de%20performance.pdf', type: 'dop' },
     ],
     detailsSections: [
@@ -325,11 +325,11 @@ export const manualCollectionProducts: Product[] = [
       { key: 'application', label: 'Namena', value: 'Sportske sale i gimnazije' },
     ],
     documents: [
-      { title: 'Technical Data Sheet', url: 'https://cdn.gerflor.com/media/2/68811/dlw%20colorette%20sport%20-%20technical%20data%20sheet.pdf', type: 'tech_datasheet' },
-      { title: 'Sample Card', url: 'https://cdn.gerflor.com/media/2/45656/dlw%20colorette%20sport%20-%20sample%20card.pdf', type: 'sample_card' },
-      { title: 'Maintenance Instructions', url: 'https://cdn.gerflor.com/media/2/18174/dlw%20linoleum%20floor%20-%20maintenance%20instructions.pdf', type: 'maintenance' },
+      { title: 'Technical Data Sheet', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/68811-dlw-colorette-sport-technical-data-sheet.pdf?v=20260616042234', type: 'tech_datasheet' },
+      { title: 'Sample Card', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/45656-dlw-colorette-sport-sample-card.pdf?v=20260616042236', type: 'sample_card' },
+      { title: 'Maintenance Instructions', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/18174-dlw-linoleum-floor-maintenance-instructions.pdf?v=20260616042235', type: 'maintenance' },
       { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/34635/dlw%20colorette%20sport%20-%20dop.pdf', type: 'dop' },
-      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/34958/dlw%20colorette%20sport%20-%20product%20description.docx', type: 'product_description' },
+      { title: 'Product Description', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/34958-dlw-colorette-sport-product-description.docx?v=20260616042234', type: 'product_description' },
     ],
     detailsSections: [
       {
@@ -366,7 +366,7 @@ export const manualCollectionProducts: Product[] = [
       { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/22526/dlw%20marmorette%20sport%20-%20product%20description.docx', type: 'product_description' },
       { title: 'Fire Certificate', url: 'https://cdn.gerflor.com/media/2/24267/dlw%20linoleum%20marmorette%20sport%203,2mm%20-%20fire%20certificate.pdf', type: 'fire_certificate' },
       { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/40414/marmorette%20sport%20-%20declaration%20of%20performance.pdf', type: 'dop' },
-      { title: 'C2C Certificate', url: 'https://cdn.gerflor.com/media/2/68300/dlw%20linoleum%20-%20c2c.pdf', type: 'certificate' },
+      { title: 'C2C Certificate', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/68300-dlw-linoleum-c2c.pdf?v=20260616042234', type: 'certificate' },
     ],
     detailsSections: [
       {
@@ -399,11 +399,11 @@ export const manualCollectionProducts: Product[] = [
       { key: 'application', label: 'Namena', value: 'Sportske sale i skolske dvorane' },
     ],
     documents: [
-      { title: 'Sample Card', url: 'https://cdn.gerflor.com/media/2/43411/linodur%20sport%20-%20sample%20card.pdf', type: 'sample_card' },
-      { title: 'Maintenance Instruction', url: 'https://cdn.gerflor.com/media/2/37988/linodur%20sport%20-%20maintenance%20instruction.pdf', type: 'maintenance' },
-      { title: 'Installation Guidelines', url: 'https://cdn.gerflor.com/media/2/60683/[802]%20game%20line%20marking%20guidelines%20-%20installation%20guidelines.pdf', type: 'installation' },
-      { title: 'Fire Certificate', url: 'https://cdn.gerflor.com/media/2/37987/linodur%20sport%20-%20fire%20certificate.pdf', type: 'fire_certificate' },
-      { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/38007/linodur%20sport%20-%20product%20description.docx', type: 'product_description' },
+      { title: 'Sample Card', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/43411-linodur-sport-sample-card.pdf?v=20260616042236', type: 'sample_card' },
+      { title: 'Maintenance Instruction', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/37988-linodur-sport-maintenance-instruction.pdf?v=20260616042235', type: 'maintenance' },
+      { title: 'Installation Guidelines', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/60683-802-game-line-marking-guidelines-installation-guidelines.pdf?v=20260616042234', type: 'installation' },
+      { title: 'Fire Certificate', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/37987-linodur-sport-fire-certificate.pdf?v=20260616042235', type: 'fire_certificate' },
+      { title: 'Product Description', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/38007-linodur-sport-product-description.docx?v=20260616042235', type: 'product_description' },
     ],
     detailsSections: [
       {
