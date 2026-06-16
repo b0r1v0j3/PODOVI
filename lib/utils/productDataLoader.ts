@@ -14,6 +14,7 @@ import tarkettCollectionSpecsData from '@/public/data/tarkett_collection_specs.j
 import tarkettCollectionDetails from '@/public/data/tarkett_collection_details.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
+import gerflorStairsShowerData from '@/public/data/gerflor_stairs_shower.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
@@ -41,6 +42,7 @@ let priborProductsCache: Product[] | null = null;
 let esdCollectionCache: Product[] | null = null;
 let tarkettSportCollectionCache: Product[] | null = null;
 let tarkettLajsneCollectionCache: Product[] | null = null;
+let gerflorStairShowerCollectionCache: Product[] | null = null;
 let tarkettVinylHomeCollectionCache: Product[] | null = null;
 let tarkettHomogeneousVinylCollectionCache: Product[] | null = null;
 let tarkettHeterogeneousVinylCollectionCache: Product[] | null = null;
@@ -1377,6 +1379,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
         ...getTarkettLajsneCollections(),
+        ...getGerflorStairShowerCollections(),
         ...getAllDekingProducts(),
         ...getAllGrassProducts(),
         ...getAllPriborProducts(),
@@ -1425,7 +1428,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
             ...getTarkettSportCollections(),
         ];
     } else if (categoryId === '11') {
-        return [...getTarkettLajsneCollections()];
+        return [...getTarkettLajsneCollections(), ...getGerflorStairShowerCollections()];
     } else if (categoryId === '7') {
         return [...getGerflorLinoleumCollections(), ...getAllLinoleumProducts(), ...getTarkettLinoleumCollections()];
     } else if (categoryId === '4') {
@@ -3001,4 +3004,74 @@ export function getTarkettLajsneCollections(): Product[] {
     });
 
     return tarkettLajsneCollectionCache;
+}
+
+/**
+ * Generate collection-level Product entries from gerflor_stairs_shower.json.
+ * These surface Gerflor stepenišni profili (stair nosings/clip/tarastep) i tuš rešenja
+ * (shower threshold + tarafoam underlayer) in the Lajsne (cat 11) category listing.
+ * Mirrors getTarkettLajsneCollections() but with brandId '6' and a GERFLOR-LAJSNE- SKU prefix
+ * (recognized by hasCollectionSku in BOTH homepage-collection-filter.ts and the inline copy in
+ * app/kategorije/[slug]/page.tsx). Slugs are stored prefixed (gerflor-<slug>) in the data file.
+ * Empty data file → [] → cat-11 listing stays Tarkett-only, no breakage.
+ */
+export function getGerflorStairShowerCollections(): Product[] {
+    if (gerflorStairShowerCollectionCache) {
+        return gerflorStairShowerCollectionCache;
+    }
+
+    const collections = (((gerflorStairsShowerData as any)?.collections || []) as any[]);
+
+    gerflorStairShowerCollectionCache = collections.map((collection: any) => {
+        const firstVariant = collection.colors?.[0];
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            collection.collection_image_url,
+            firstVariant?.image
+        );
+        const specs = buildSpecsFromCharacteristicRecord(collection.characteristics, collection.name);
+        const productType = normalizeText(collection.characteristics?.['Tip proizvoda']);
+
+        if (productType && !specs.find((spec) => spec.key === 'type')) {
+            specs.push({
+                key: 'type',
+                label: 'Tip proizvoda',
+                value: productType,
+            });
+        }
+
+        const skuSuffix = String(collection.slug).replace(/^gerflor-/, '').toUpperCase();
+
+        return {
+            id: `gerflor-lajsne-${collection.slug}`,
+            name: collection.name,
+            slug: collection.slug,
+            sku: `GERFLOR-LAJSNE-${skuSuffix}`,
+            categoryId: '11',
+            brandId: '6',
+            shortDescription:
+                collection.shortDescription ||
+                `${collection.name} — ${collection.colorCount || collection.colors?.length || 0} varijanti`,
+            description:
+                collection.description ||
+                collection.shortDescription ||
+                `${collection.name} Gerflor kolekcija stepenišnih profila i tuš rešenja.`,
+            images: imageUrl ? [{
+                id: `gerflor-lajsne-${collection.slug}-img`,
+                url: imageUrl,
+                alt: collection.name,
+                isPrimary: true,
+                order: 0,
+            }] : [],
+            specs,
+            documents: Array.isArray(collection.documents) ? collection.documents : [],
+            detailsSections: Array.isArray(collection.detailsSections) ? collection.detailsSections : undefined,
+            externalLink: collection.url,
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        } as Product;
+    });
+
+    return gerflorStairShowerCollectionCache;
 }

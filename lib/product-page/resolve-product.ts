@@ -11,6 +11,7 @@ import {
     industrialCollections,
     sportCollections,
     lajsneCollections,
+    gerflorStairShowerCollections,
     buildNestedColorFromCollection,
     loadColorFromJson,
     colorToProduct,
@@ -141,6 +142,7 @@ function findNestedCollection(slug: string) {
         industrialCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         sportCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         lajsneCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
+        gerflorStairShowerCollections.find((collection: any) => collection.slug === slugWithoutPrefix || collection.slug === slug) ||
         null
     );
 }
@@ -415,10 +417,15 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         return collectionFromColor(colorSource, slug);
     }
 
-    const lajsneCollection = lajsneCollections.find((col: any) =>
-        col.slug === slug ||
-        col.slug === slug.replace(/^tarkett-/, '')
-    );
+    const lajsneCollection =
+        lajsneCollections.find((col: any) =>
+            col.slug === slug ||
+            col.slug === slug.replace(/^tarkett-/, '')
+        ) ||
+        gerflorStairShowerCollections.find((col: any) =>
+            col.slug === slug ||
+            col.slug === slug.replace(/^gerflor-/, '')
+        );
     if (lajsneCollection && lajsneCollection.colors && lajsneCollection.colors.length > 0) {
         const firstColor = buildNestedColorFromCollection(lajsneCollection, lajsneCollection.colors[0]);
         const colorSource: ColorSource = {

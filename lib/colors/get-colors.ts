@@ -17,6 +17,7 @@ import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
 import tarkettSportData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
+import gerflorStairsShowerData from '@/public/data/gerflor_stairs_shower.json';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import { getDerivedWeldingCharacteristics } from '@/lib/product-page/welding-helpers';
 import { filterCategoryListingCollections, resolveCategoryListingMode } from '@/lib/catalog/listing-curation';
@@ -90,7 +91,10 @@ export async function getColorsForCategory(
             ...((((sportColorsData as any)?.collections || []) as any[])),
             ...((((tarkettSportData as any)?.collections || []) as any[])),
         ],
-        lajsne: ((tarkettLajsneData as any)?.collections || []) as any[],
+        lajsne: [
+            ...((((tarkettLajsneData as any)?.collections || []) as any[])),
+            ...((((gerflorStairsShowerData as any)?.collections || []) as any[])),
+        ],
     };
 
     if (category in nestedCollectionsMap) {

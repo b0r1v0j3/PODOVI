@@ -306,7 +306,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         p.sku?.startsWith('ESD-') ||
         p.sku?.startsWith('IND-') ||
         p.sku?.startsWith('SPORT-') ||
-        p.sku?.startsWith('TARKETT-LAJSNE-')
+        p.sku?.startsWith('TARKETT-LAJSNE-') ||
+        p.sku?.startsWith('GERFLOR-LAJSNE-')
       ) ?? false;
     const allCollections = filterCategoryListingCollections(
       category.slug,
