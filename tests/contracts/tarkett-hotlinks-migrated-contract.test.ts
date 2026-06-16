@@ -30,3 +30,27 @@ describe('S4: Tarkett hotlinkovi migrirani (osim pending)', () => {
     expect(bad.map((p) => p.reason), 'neočekivani razlozi u pending').toEqual([]);
   });
 });
+
+const gerflorPendingPath = path.join(DATA_DIR, 'gerflor-migration-pending.json');
+const gerflorPending: Array<{ url: string }> = fs.existsSync(gerflorPendingPath)
+  ? JSON.parse(fs.readFileSync(gerflorPendingPath, 'utf8'))
+  : [];
+const gerflorAllowed = new Set(gerflorPending.map((p) => p.url.split('?')[0]));
+
+describe('S4: Gerflor cdn dokumenti migrirani (osim pending)', () => {
+  // cdn.gerflor.com se javlja u public/data + lib/data/manual-collection-products.ts
+  const files = [
+    ...fs.readdirSync(DATA_DIR).filter((x) => x.endsWith('.json')).map((x) => path.join(DATA_DIR, x)),
+    path.join(process.cwd(), 'lib', 'data', 'manual-collection-products.ts'),
+  ];
+  it('nijedan cdn.gerflor.com URL osim onih u gerflor pending listi', () => {
+    const offenders: string[] = [];
+    for (const fp of files) {
+      if (!fs.existsSync(fp) || fp.endsWith('gerflor-migration-pending.json')) continue;
+      const s = fs.readFileSync(fp, 'utf8');
+      const urls = s.match(/https?:\/\/cdn\.gerflor\.com\/[^\s"'\\)]+/g) || [];
+      for (const u of urls) if (!gerflorAllowed.has(u.split('?')[0])) offenders.push(`${path.basename(fp)}: ${u}`);
+    }
+    expect(offenders, `nemigrirani gerflor hotlinkovi:\n${offenders.slice(0, 20).join('\n')}`).toEqual([]);
+  });
+});
