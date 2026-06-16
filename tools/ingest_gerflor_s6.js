@@ -105,6 +105,30 @@ const TARASAFE = [
 // Slugovi = CEE slugovi, provereno u tmp/s6-cee-urls.json (classifyProductPath ih klasifikuje
 // kao 'variation'; r-tile-slate nema varijacije u sitemap-u → colors[] = [], kolekcija se i dalje
 // upisuje). design-tile-access-corner (akcesoar) je EKSPLICITNO izostavljen.
+// S9 — Gerflor Mural (zidne obloge / wall coverings). Heterogeni zidni vinil koji ide u
+// POSTOJEĆU Vinil kategoriju (cat 2). Reuse istog 'vinyl-nested' mehanizma kao Tarasafe
+// (upis u public/data/vinyl_colors_complete.json, nested collections[]), ali umesto
+// protivklizno:true nosi zidneObloge:true → "Zidna obloga":"Da" u characteristics i na svakoj
+// boji. getVinylCollectionProducts (firstColor.characteristics) i CategoryTabs
+// (color.characteristics) automatski izlože spec 'zidna_obloga' (characteristicLabelToKey)
+// za NOVI ?zidne=1 filter — kao što Tarasafe izlaže 'protivklizno' za ?safety=1.
+// Slugovi = CEE slugovi (mural-*), provereno u tmp/s6-cee-urls.json (classifyProductPath ih
+// klasifikuje kao 'variation'). --dry-run potvrđuje color count iz živog sitemap-a; slug bez
+// varijacija u sitemap-u izlistava se sa 0 boja (signal mrtvog/pogrešnog sluga).
+const MURAL = [
+  'mural-revela',
+  'mural-calypso',
+  'mural-club',
+  'mural-ultra-design',
+].map((slug) => ({
+  kind: 'vinyl-nested',
+  categoryId: '2',
+  bucketDir: 'vinyl',
+  zidneObloge: true,
+  slug,
+  url: `${parse.PUBLIC_HOST}/products/${slug}`,
+}));
+
 const R_TILE = [
   'r-tile-4mm',
   'r-tile-5mm',
@@ -122,7 +146,7 @@ const R_TILE = [
   url: `${parse.PUBLIC_HOST}/products/${slug}`,
 }));
 
-const ALL_COLLECTIONS = [...VIRTUO, ...TARAFLEX, ...TARASAFE, ...R_TILE];
+const ALL_COLLECTIONS = [...VIRTUO, ...TARAFLEX, ...TARASAFE, ...MURAL, ...R_TILE];
 
 // Eksplicitno SKIPOVANO (moguci kasniji follow-up, vidi tmp/s6-recon.md §2):
 //  - my-taraflex-* landing/configurator stranice (4)
@@ -238,7 +262,8 @@ function displayNameFromVariation(v) {
     `🎯 S6 ingest — kolekcija za obradu: ${targets.length} ` +
       `(${targets.filter((c) => c.kind === 'lvt-flat').length} Virtuo + ` +
       `${targets.filter((c) => c.kind === 'sport-nested').length} Taraflex + ` +
-      `${targets.filter((c) => c.kind === 'vinyl-nested').length} Tarasafe + ` +
+      `${targets.filter((c) => c.kind === 'vinyl-nested' && c.protivklizno).length} Tarasafe + ` +
+      `${targets.filter((c) => c.kind === 'vinyl-nested' && c.zidneObloge).length} Mural + ` +
       `${targets.filter((c) => c.kind === 'industrial-nested').length} R-Tile/Design-Tile)` +
       `${args.dryRun ? ' (DRY-RUN)' : ''}`
   );
@@ -281,7 +306,7 @@ function displayNameFromVariation(v) {
         console.log(
           `\n📂 ${col.slug} [${col.kind}, cat ${col.categoryId}] → varijacija (boja): ${variations.length}`
         );
-        summary.push({ slug: col.slug, kind: col.kind, categoryId: col.categoryId, colors: variations.length, protivklizno: col.protivklizno || false });
+        summary.push({ slug: col.slug, kind: col.kind, categoryId: col.categoryId, colors: variations.length, protivklizno: col.protivklizno || false, zidneObloge: col.zidneObloge || false });
         continue;
       }
 
@@ -504,14 +529,17 @@ function displayNameFromVariation(v) {
         if (idx >= 0) industrialData.collections[idx] = entry;
         else industrialData.collections.push(entry);
       } else if (col.kind === 'vinyl-nested') {
-        // S5 Tarasafe → vinyl-nested: nested collections[] u vinyl_colors_complete.json
+        // S5 Tarasafe / S9 Mural → vinyl-nested: nested collections[] u vinyl_colors_complete.json
         // (isti oblik kao postojece Gerflor vinil kolekcije: taralay-*/mipolam-*).
-        // slug = CEE '<slug>' (tarasafe-*); getVinylCollectionProducts() dodaje 'gerflor-' prefiks.
-        // protivklizno:true + "Protivklizno":"Da" u characteristics i na svakoj boji →
-        // getVinylCollectionProducts (firstColor.characteristics) i CategoryTabs (color.characteristics)
-        // automatski izlozе spec 'protivklizno' za ?safety=1 filter.
+        // slug = CEE '<slug>'; getVinylCollectionProducts() dodaje 'gerflor-' prefiks.
+        // Tarasafe nosi protivklizno:true → "Protivklizno":"Da" (spec 'protivklizno', ?safety=1).
+        // Mural nosi zidneObloge:true → "Zidna obloga":"Da" (spec 'zidna_obloga', ?zidne=1).
+        // Tag se upisuje u characteristics i na svakoj boji → getVinylCollectionProducts
+        // (firstColor.characteristics) i CategoryTabs (color.characteristics) automatski izlože
+        // odgovarajući spec za pripadni filter.
         const collChars = buildCharacteristicsFromSpecTable(specs);
-        collChars['Protivklizno'] = 'Da';
+        if (col.protivklizno) collChars['Protivklizno'] = 'Da';
+        if (col.zidneObloge) collChars['Zidna obloga'] = 'Da';
         const colors = decorResults.map((r) => {
           const code = r.variation.code || '';
           const colorChars = { ...collChars };
@@ -532,7 +560,8 @@ function displayNameFromVariation(v) {
           url: col.url,
           colorCount: colors.length,
           categoryId: col.categoryId,
-          protivklizno: true,
+          protivklizno: col.protivklizno || false,
+          zidneObloge: col.zidneObloge || false,
           description: descriptionText,
           characteristics: collChars,
           colors,
@@ -565,6 +594,7 @@ function displayNameFromVariation(v) {
         documents: uploadedDocs.length,
         scenes: sceneUrls.length,
         protivklizno: col.protivklizno || false,
+        zidneObloge: col.zidneObloge || false,
       });
     } catch (err) {
       console.log(`⚠️ ${col.slug}: ${err.message} — preskačem kolekciju`);
@@ -601,7 +631,8 @@ function displayNameFromVariation(v) {
   console.log(
     `\nVirtuo: ${summary.filter((r) => r.kind === 'lvt-flat').length} kol. | ` +
       `Taraflex: ${summary.filter((r) => r.kind === 'sport-nested').length} kol. | ` +
-      `Tarasafe: ${summary.filter((r) => r.kind === 'vinyl-nested').length} kol. | ` +
+      `Tarasafe: ${summary.filter((r) => r.kind === 'vinyl-nested' && r.protivklizno).length} kol. | ` +
+      `Mural: ${summary.filter((r) => r.kind === 'vinyl-nested' && r.zidneObloge).length} kol. | ` +
       `R-Tile/Design-Tile: ${summary.filter((r) => r.kind === 'industrial-nested').length} kol.`
   );
   if (!args.dryRun) {

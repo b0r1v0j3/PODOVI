@@ -33,6 +33,7 @@ interface CategoryTabsProps {
   initialColorSlug?: string; // Optional color slug to automatically open and highlight
   vinylType?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
   safetyOnly?: boolean; // For vinyl safety filter: only protivklizni/sigurnosni collections
+  wallOnly?: boolean; // For vinyl wall-covering filter: only zidne obloge collections
   listingMode?: CategoryListingMode;
   searchParams?: {
     search?: string;
@@ -76,6 +77,7 @@ export default function CategoryTabs({
   initialColorSlug,
   vinylType,
   safetyOnly,
+  wallOnly,
   listingMode,
   searchParams: searchParamsProp
 }: CategoryTabsProps) {
@@ -147,6 +149,11 @@ export default function CategoryTabs({
       filtered = filtered.filter(p => p.specs.some(s => s.key === 'protivklizno'));
     }
 
+    // Filter by wall coverings (zidna_obloga) — keep only zidne obloge collections (S9)
+    if (categorySlug === 'vinil' && wallOnly) {
+      filtered = filtered.filter(p => p.specs.some(s => s.key === 'zidna_obloga'));
+    }
+
     // Filter by thickness (for LVT, Vinil, and Linoleum)
     if ((categorySlug === 'lvt' || categorySlug === 'vinil' || categorySlug === 'linoleum') && searchParams?.thickness) {
       const selectedThicknesses = searchParams.thickness.split(',');
@@ -177,7 +184,7 @@ export default function CategoryTabs({
     }
 
     return filterCategoryListingCollections(categorySlug, filtered, resolvedListingMode);
-  }, [collections, useJsonColors, categorySlug, vinylType, safetyOnly, searchParams, resolvedListingMode]);
+  }, [collections, useJsonColors, categorySlug, vinylType, safetyOnly, wallOnly, searchParams, resolvedListingMode]);
 
   // Filter colors by all active filters
   const colorsToRender = useMemo(() => {
@@ -241,6 +248,11 @@ export default function CategoryTabs({
     // Filter by safety (protivklizno) — keep only colors from safety collections (S5)
     if (categorySlug === 'vinil' && safetyOnly) {
       filtered = filtered.filter(color => color.specs.some(s => s.key === 'protivklizno'));
+    }
+
+    // Filter by wall coverings (zidna_obloga) — keep only colors from zidne obloge collections (S9)
+    if (categorySlug === 'vinil' && wallOnly) {
+      filtered = filtered.filter(color => color.specs.some(s => s.key === 'zidna_obloga'));
     }
 
     // Filter by search term
@@ -327,7 +339,7 @@ export default function CategoryTabs({
     }
 
     return filtered;
-  }, [colorsFromJSON, categorySlug, vinylType, safetyOnly, useJsonColors, searchParams, collections]);
+  }, [colorsFromJSON, categorySlug, vinylType, safetyOnly, wallOnly, useJsonColors, searchParams, collections]);
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {

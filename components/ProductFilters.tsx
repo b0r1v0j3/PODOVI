@@ -40,6 +40,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const isToolCategory = pathname?.includes('/kategorije/alat');
   const currentType = searchParams.get('type');
   const currentSafety = searchParams.get('safety');
+  const currentZidne = searchParams.get('zidne');
   const currentCollections = searchParams.get('collections');
   const currentFamily = searchParams.get('family');
   const currentListing = searchParams.get('listing');
@@ -56,6 +57,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     currentType === 'homogeni' ? 'homogeni' : currentType === 'heterogeni' ? 'heterogeni' : null
   );
   const [safetyOnly, setSafetyOnly] = useState<boolean>(currentSafety === '1');
+  const [wallOnly, setWallOnly] = useState<boolean>(currentZidne === '1');
   const [selectedCollections, setSelectedCollections] = useState<string[]>(
     currentCollections ? currentCollections.split(',') : []
   );
@@ -90,6 +92,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     const urlPriceMax = searchParams.get('priceMax') || '';
     const urlType = searchParams.get('type');
     const urlSafety = searchParams.get('safety');
+    const urlZidne = searchParams.get('zidne');
     const urlCollections = searchParams.get('collections')?.split(',').filter(Boolean) || [];
     const urlFamily = searchParams.get('family')?.split(',').filter(Boolean) || [];
     const urlListingMode = resolveCategoryListingMode(searchParams.get('listing'), categorySlug);
@@ -106,6 +109,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       const newType = urlType === 'homogeni' ? 'homogeni' : urlType === 'heterogeni' ? 'heterogeni' : null;
       setVinylType(newType);
       setSafetyOnly(urlSafety === '1');
+      setWallOnly(urlZidne === '1');
     }
     if (isLVTCategory) {
       setSelectedCollections(urlCollections);
@@ -202,6 +206,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     params.delete('priceMax');
     params.delete('type');
     params.delete('safety');
+    params.delete('zidne');
     params.delete('collections');
     params.delete('family');
     params.delete('listing');
@@ -217,6 +222,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (priceMax) params.set('priceMax', priceMax);
     if (isVinilCategory && vinylType) params.set('type', vinylType);
     if (isVinilCategory && safetyOnly) params.set('safety', '1');
+    if (isVinilCategory && wallOnly) params.set('zidne', '1');
     if (pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) params.set('collections', selectedCollections.join(','));
     if (pathname?.includes('/kategorije/tekstilne-ploce') && selectedFamilies.length > 0) params.set('family', selectedFamilies.join(','));
     if (supportsListingMode && selectedListingMode !== defaultListingMode) params.set('listing', selectedListingMode);
@@ -239,7 +245,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [search, selectedBrands, priceMin, priceMax, vinylType, safetyOnly, selectedCollections, selectedFamilies, selectedListingMode, selectedThickness, selectedWoodTypes, selectedToolGroups, selectedToolSubcategories, pathname, router, searchParams, supportsListingMode, defaultListingMode, isVinilCategory, isLVTCategory, isLinoleumCategory, isLaminatCategory, isParketCategory, isToolCategory]);
+  }, [search, selectedBrands, priceMin, priceMax, vinylType, safetyOnly, wallOnly, selectedCollections, selectedFamilies, selectedListingMode, selectedThickness, selectedWoodTypes, selectedToolGroups, selectedToolSubcategories, pathname, router, searchParams, supportsListingMode, defaultListingMode, isVinilCategory, isLVTCategory, isLinoleumCategory, isLaminatCategory, isParketCategory, isToolCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -248,6 +254,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     setPriceMax('');
     setVinylType(null);
     setSafetyOnly(false);
+    setWallOnly(false);
     setSelectedCollections([]);
     setSelectedFamilies([]);
     setSelectedListingMode(defaultListingMode);
@@ -312,6 +319,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     Boolean(search || selectedBrands.length > 0 || priceMin || priceMax) ||
     Boolean(isVinilCategory && vinylType) ||
     Boolean(isVinilCategory && safetyOnly) ||
+    Boolean(isVinilCategory && wallOnly) ||
     Boolean(pathname?.includes('/kategorije/lvt') && selectedCollections.length > 0) ||
     Boolean(pathname?.includes('/kategorije/tekstilne-ploce') && selectedFamilies.length > 0) ||
     Boolean(supportsListingMode && selectedListingMode !== defaultListingMode) ||
@@ -326,6 +334,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     (priceMin || priceMax ? 1 : 0) +
     (isVinilCategory && vinylType ? 1 : 0) +
     (isVinilCategory && safetyOnly ? 1 : 0) +
+    (isVinilCategory && wallOnly ? 1 : 0) +
     (pathname?.includes('/kategorije/lvt') ? selectedCollections.length : 0) +
     (pathname?.includes('/kategorije/tekstilne-ploce') ? selectedFamilies.length : 0) +
     (supportsListingMode && selectedListingMode !== defaultListingMode ? 1 : 0) +
@@ -640,7 +649,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
                 </div>
               )}
 
-              {/* Protivklizni / Sigurnosni filter (S5) */}
+              {/* Protivklizni / Sigurnosni (S5) + Zidne obloge (S9) filter */}
               {isVinilCategory && (
                 <div className="mb-8">
                   <p className="label mb-3">Namena</p>
@@ -653,6 +662,16 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
                       className="h-4 w-4 border-ink-400 text-ink-900"
                     />
                     <span className="ml-2.5 text-sm text-ink-700">Protivklizni/Sigurnosni</span>
+                  </label>
+                  <label className="mt-3 flex cursor-pointer items-center">
+                    <input
+                      type="checkbox"
+                      name="wallOnly"
+                      checked={wallOnly}
+                      onChange={(e) => setWallOnly(e.target.checked)}
+                      className="h-4 w-4 border-ink-400 text-ink-900"
+                    />
+                    <span className="ml-2.5 text-sm text-ink-700">Zidne obloge</span>
                   </label>
                 </div>
               )}

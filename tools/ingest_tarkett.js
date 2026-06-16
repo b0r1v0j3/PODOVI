@@ -83,6 +83,36 @@ const TARKETT_SAFETY_COLLECTIONS = [
   url: `https://www.tarkett.rs/sr_RS/kolekcija-${collectionId}-${slug}`,
 }));
 
+// S9 — Tarkett zidne obloge (wall coverings, tarkett.rs). Oblik je IDENTIČAN homogenom
+// vinilu (potvrđeno output/tarkett-core-kolekcija-C000833-linowall-2-00-mm.json:
+// collection_name + designs[] sa product_name/product_hex_color_code/product_thumbnail/
+// productDataUrl). Idu u POSTOJEĆU Vinil kategoriju (cat 2), pišu u DEFAULT_HOMO_TARGET
+// (tarkett_homogeneous_vinyl_colors.json) uz iQ Motion / safety, a izoluje ih NOVI filter
+// ?zidne=1. Svaka kolekcija nosi zidneObloge:true → "Zidna obloga":"Da" na kolekciji i svakoj
+// boji (ogledalo S5 protivklizno mehanizma; spec key = characteristicLabelToKey('Zidna obloga')
+// = 'zidna_obloga'). URL-slug = stvarni tarkett.rs slug (verbatim iz tmp/all_kolekcije.txt);
+// LinoWall NIJE 'linowall' nego 'linowall-2-00-mm'. --dry-run potvrđuje da svaki
+// kolekcija-<ID> URL razrešava (ima __NUXT__ payload) — diskontinuisane redirektuju na
+// kategoriju i automatski se preskaču ("__NUXT__ item nije pronađen").
+// Provereno --dry-run-om (2026-06-16): aquarelle-wall (C000021) i aquarelle-wall-borders
+// (C000022) su DISKONTINUISANE na srpskom sajtu — kolekcija-<ID> URL redirektuje na kategoriju
+// (nema __NUXT__ payload, kao S5 mrtve safety kolekcije) → izbačene. Ostaju 4 žive zidne obloge.
+const TARKETT_WALL_COLLECTIONS = [
+  ['C000024', 'aquarelle-wall-hfs'],
+  ['C000351', 'wallgard'],
+  ['C002315', 'surface-wall'],
+  ['C000833', 'linowall-2-00-mm'],
+].map(([collectionId, slug]) => ({
+  key: `wall-${slug}`,
+  kind: 'homogeneous',
+  collectionId,
+  slug: `tarkett-${slug}`,
+  categorySlug: 'vinil',
+  categoryId: '2',
+  zidneObloge: true,
+  url: `https://www.tarkett.rs/sr_RS/kolekcija-${collectionId}-${slug}`,
+}));
+
 // S8 — Desso tekstilne ploče (tarkett.rs kategorija rs_C01018-tekstilne-ploce).
 // 51 kolekcija (verbatim iz output/desso-all-collections.json → category-json/rs_C01018,
 // searchCounts.collections = 51; brandName = "Desso" na svima). Oblik per-kolekcija stranice
@@ -170,6 +200,7 @@ const COLLECTIONS = [
     url: 'https://www.tarkett.rs/sr_RS/kolekcija-C003148-modulart-70' },
   ...LINOLEUM_COLLECTIONS,
   ...TARKETT_SAFETY_COLLECTIONS,
+  ...TARKETT_WALL_COLLECTIONS,
   ...DESSO_COLLECTIONS,
 ];
 
@@ -310,6 +341,11 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
   // iz svake boje (color.characteristics). Filter ?safety=1 bira po tom specu — kao "type" filter.
   if (col.protivklizno) characteristics['Protivklizno'] = 'Da';
 
+  // S9 — zidne obloge: eksplicitna "Zidna obloga": "Da" karakteristika. productDataLoader
+  // .buildSpecsFromCharacteristicRecord proizvede spec { key:'zidna_obloga', value:'Da' } na
+  // kolekcijskom headeru; filter ?zidne=1 bira po tom specu (kao ?safety=1 po 'protivklizno').
+  if (col.zidneObloge) characteristics['Zidna obloga'] = 'Da';
+
   const documents = args.dryRun ? parse.collectionDocsFromAssets(item)
     : await ingestDocuments(supabase, manifest, col, parse.collectionDocsFromAssets(item));
   const galleryUrls = args.dryRun ? parse.galleryImagesFromAssets(item)
@@ -345,6 +381,9 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
       // S5 — propagiraj sigurnosni tag na nivo boje, da CategoryTabs (koji gradi specs iz
       // color.characteristics) izloži spec 'protivklizno' i na pojedinačnim bojama (Boje tab).
       if (col.protivklizno) colorCharacteristics['Protivklizno'] = 'Da';
+      // S9 — propagiraj zidni tag na nivo boje, da CategoryTabs (specs iz color.characteristics)
+      // izloži spec 'zidna_obloga' i na pojedinačnim bojama (Boje tab) za ?zidne=1 filter.
+      if (col.zidneObloge) colorCharacteristics['Zidna obloga'] = 'Da';
       results[idx] = {
         code,
         name,
@@ -368,6 +407,8 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
     colorCount: colors.length,
     // S5 — eksplicitni record-level flag (izvor istine za sigurnosne kolekcije).
     protivklizno: col.protivklizno || false,
+    // S9 — eksplicitni record-level flag (izvor istine za zidne obloge).
+    zidneObloge: col.zidneObloge || false,
     shortDescription,
     description,
     categoryDescription: shortDescription,
@@ -573,7 +614,7 @@ async function ingestLvt(supabase, manifest, args, col, item) {
             homoData.collections = homoData.collections.filter((c) => c.slug !== record.slug);
             homoData.collections.push(record);
           }
-          summary.push({ key: col.key, kind: col.kind, colors: record.colors.length, docs: record.documents.length, protivklizno: record.protivklizno });
+          summary.push({ key: col.key, kind: col.kind, colors: record.colors.length, docs: record.documents.length, protivklizno: record.protivklizno, zidneObloge: record.zidneObloge });
         } else if (col.kind === 'carpet') {
           const record = await ingestCarpet(supabase, manifest, args, col, item);
           console.log(`   → "${record.collection.name}" ploča:${record.colors.length} dok:${record.collection.documents.length} podloge:${record.collection.backing_variants.length}`);

@@ -21630,8 +21630,1411 @@
           "type": "pdf"
         }
       ]
+    },
+    {
+      "name": "Mural Revela",
+      "slug": "mural-revela",
+      "url": "https://www.gerflor-cee.com/products/mural-revela",
+      "colorCount": 16,
+      "categoryId": "2",
+      "protivklizno": false,
+      "zidneObloge": true,
+      "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+      "characteristics": {
+        "Overall thickness": "5.00 mm",
+        "Thickness of the wearlayer": "5.00 mm",
+        "Installation system covering": "Glue down, Interlocking system",
+        "Format details": "Rectangular tile, Panel",
+        "Zidna obloga": "Da"
+      },
+      "colors": [
+        {
+          "code": "7072",
+          "name": "Sarti",
+          "sku": "39217072",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7072-sarti-39217072",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7072-sarti.jpg?v=20260616150906",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7091",
+          "name": "Kamina",
+          "sku": "39217091",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7091-kamina-39217091",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7091-kamina.jpg?v=20260616150907",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7059",
+          "name": "Derby Gloss",
+          "sku": "39277059",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7059-derby-gloss-39277059",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7059-derby-gloss.jpg?v=20260616150909",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7035",
+          "name": "Corabia",
+          "sku": "39257035",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7035-corabia-39257035",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7035-corabia.jpg?v=20260616150908",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7007",
+          "name": "Vilnius",
+          "sku": "39257007",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7007-vilnius-39257007",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7007-vilnius.jpg?v=20260616150909",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7032",
+          "name": "Alanya",
+          "sku": "39257032",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7032-alanya-39257032",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7032-alanya.jpg?v=20260616150908",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7097",
+          "name": "Boulia Gloss",
+          "sku": "39287097",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7097-boulia-gloss-39287097",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7097-boulia-gloss.jpg?v=20260616150905",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7029",
+          "name": "Tanami Gloss",
+          "sku": "39287029",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7029-tanami-gloss-39287029",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7029-tanami-gloss.jpg?v=20260616150908",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7093",
+          "name": "Ampara",
+          "sku": "39217093",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7093-ampara-39217093",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7093-ampara.jpg?v=20260616150910",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7053",
+          "name": "Zanzibar",
+          "sku": "39257053",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7053-zanzibar-39257053",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7053-zanzibar.jpg?v=20260616150909",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7868",
+          "name": "Ubeda",
+          "sku": "39217868",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7868-ubeda-39217868",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7868-ubeda.jpg?v=20260616150911",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7918",
+          "name": "Hanoi",
+          "sku": "39257918",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7918-hanoi-39257918",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7918-hanoi.jpg?v=20260616150911",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7915",
+          "name": "Kampala",
+          "sku": "39217915",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7915-kampala-39217915",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7915-kampala.jpg?v=20260616150911",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7052",
+          "name": "Colima",
+          "sku": "39257052",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7052-colima-39257052",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7052-colima.jpg?v=20260616150912",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7911",
+          "name": "Liverpool",
+          "sku": "39257911",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7911-liverpool-39257911",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7911-liverpool.jpg?v=20260616150913",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7869",
+          "name": "Baeza",
+          "sku": "39257869",
+          "href": "https://www.gerflor-cee.com/products/mural-revela-7869-baeza-39257869",
+          "collection_slug": "mural-revela",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/colors/7869-baeza.jpg?v=20260616150912",
+          "description": "The easy to install, decorative and hardwearing wall covering solution\n\nProduct & Design: - 5mm thickness: support default absorption - Non-porous surface: waterproof property - Smooth surface: easy maintenance - Slab format: ultra-realism - Panel format: increased time savings - Modern mineral and colour designs: trendy and timeless atmospheres - Matt or glossy decors - Harmony with Gerflor floor ranges - Warm touch for comfortInstallation & Maintenance: - Very simple tongue and groove assembly - Easy to cut product - New building or renovation on existing ceramics - Horizontal or vertical installation for tiles - Wall profiles offer: Durable and high quality installationMarket application: - Perfect waterproofness for use in the shower (follow Gerflor installation protocol) - Fire rating D-s3,d0: compliant with local regulations for some public buildingsSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled / 100% recyclable: resource preservation - Made in Europe: reduces the carbon footprint of transportation - 100% Reach compliant, formaldehyde free: health and safety",
+          "characteristics": {
+            "Overall thickness": "5.00 mm",
+            "Thickness of the wearlayer": "5.00 mm",
+            "Installation system covering": "Glue down, Interlocking system",
+            "Format details": "Rectangular tile, Panel",
+            "Zidna obloga": "Da"
+          }
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-1.jpg?v=20260616150902",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-2.jpg?v=20260616150902",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-3.jpg?v=20260616150903",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-4.jpg?v=20260616150902",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-5.jpg?v=20260616150902",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-6.jpg?v=20260616150902",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-7.jpg?v=20260616150902",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-8.jpg?v=20260616150902",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-9.jpg?v=20260616150903",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-10.jpg?v=20260616150903",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-11.jpg?v=20260616150902",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-12.jpg?v=20260616150903",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-13.jpg?v=20260616150903",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-revela/ambience/scena-14.jpg?v=20260616150903"
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/tehnicki-list-46484.pdf?v=20260616150858",
+          "type": "pdf"
+        },
+        {
+          "title": "Environmental Datasheet Gerflor - MURAL REVELA",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/environmental-datasheet-gerflor-mural-revela-45198.pdf?v=20260616150859",
+          "type": "pdf"
+        },
+        {
+          "title": "EPD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/epd-54378.pdf?v=20260616150859",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/brosura-69743.pdf?v=20260616150902",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/uputstvo-za-odrzavanje-54433.pdf?v=20260616150858",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/uputstvo-za-ugradnju-67971.pdf?v=20260616150858",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/sertifikat-vatrootpornost-35911.pdf?v=20260616150900",
+          "type": "pdf"
+        },
+        {
+          "title": "DOP_036-2001-12_EN 15102_MURAL REVELA_26 05 2025",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/dop-036-2001-12-en-15102-mural-revela-26-05-2025-61190.pdf?v=20260616150859",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-revela/garancija-69678.pdf?v=20260616150859",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Mural Calypso",
+      "slug": "mural-calypso",
+      "url": "https://www.gerflor-cee.com/products/mural-calypso",
+      "colorCount": 28,
+      "categoryId": "2",
+      "protivklizno": false,
+      "zidneObloge": true,
+      "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+      "characteristics": {
+        "Surface treatment": "None",
+        "Overall thickness": "0.92 mm",
+        "Thickness of the wearlayer": "0.10 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "2m roll",
+        "Width of sheet": "2 m",
+        "Length of sheet": "30.0 m",
+        "Zidna obloga": "Da"
+      },
+      "colors": [
+        {
+          "code": "7744",
+          "name": "NORDIC MILK",
+          "sku": "hb567744",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7744-nordic-milk-hb567744",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7744-nordic-milk.jpg?v=20260616150921",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7000",
+          "name": "BAMBOO SNOW PEARL",
+          "sku": "hb567000",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7000-bamboo-snow-pearl-hb567000",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7000-bamboo-snow-pearl.jpg?v=20260616150923",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7005",
+          "name": "BLOSSOM SNOW PEARL",
+          "sku": "hb567005",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7005-blossom-snow-pearl-hb567005",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7005-blossom-snow-pearl.jpg?v=20260616150925",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7201",
+          "name": "CLOUD MOONLIGHT",
+          "sku": "hb567201",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7201-cloud-moonlight-hb567201",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7201-cloud-moonlight.jpg?v=20260616150923",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7311",
+          "name": "CLOUD LINEN",
+          "sku": "hb567311",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7311-cloud-linen-hb567311",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7311-cloud-linen.jpg?v=20260616150922",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7611",
+          "name": "UNI SNOW",
+          "sku": "hb567611",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7611-uni-snow-hb567611",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7611-uni-snow.jpg?v=20260616150923",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7019",
+          "name": "CLOUD TERRA",
+          "sku": "hb567019",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7019-cloud-terra-hb567019",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7019-cloud-terra.jpg?v=20260616150919",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7023",
+          "name": "ENVOL SNOW SKYLINE",
+          "sku": "hb567023",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7023-envol-snow-skyline-hb567023",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7023-envol-snow-skyline.jpg?v=20260616150923",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7025",
+          "name": "ARTY BEIGE",
+          "sku": "hb567025",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7025-arty-beige-hb567025",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7025-arty-beige.jpg?v=20260616150923",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7013",
+          "name": "GINKO SNOW GOLD",
+          "sku": "hb567013",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7013-ginko-snow-gold-hb567013",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7013-ginko-snow-gold.jpg?v=20260616150926",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7015",
+          "name": "TROPIC SKYLINE",
+          "sku": "hb567015",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7015-tropic-skyline-hb567015",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7015-tropic-skyline.jpg?v=20260616150928",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7027",
+          "name": "VERONA",
+          "sku": "hb567027",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7027-verona-hb567027",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7027-verona.jpg?v=20260616150927",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7020",
+          "name": "UNI ICE",
+          "sku": "hb567020",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7020-uni-ice-hb567020",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7020-uni-ice.jpg?v=20260616150930",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7017",
+          "name": "CLOUD PINK",
+          "sku": "hb567017",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7017-cloud-pink-hb567017",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7017-cloud-pink.jpg?v=20260616150928",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7022",
+          "name": "ENVOL SNOW GREEN",
+          "sku": "hb567022",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7022-envol-snow-green-hb567022",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7022-envol-snow-green.jpg?v=20260616150927",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7016",
+          "name": "TROPIC TERRA COPPER",
+          "sku": "hb567016",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7016-tropic-terra-copper-hb567016",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7016-tropic-terra-copper.jpg?v=20260616150929",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7014",
+          "name": "GINKO SNOW GREEN",
+          "sku": "hb567014",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7014-ginko-snow-green-hb567014",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7014-ginko-snow-green.jpg?v=20260616150929",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7018",
+          "name": "CLOUD GREEN",
+          "sku": "hb567018",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7018-cloud-green-hb567018",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7018-cloud-green.jpg?v=20260616150934",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7026",
+          "name": "ARTY GREY",
+          "sku": "hb567026",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7026-arty-grey-hb567026",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7026-arty-grey.jpg?v=20260616150930",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7024",
+          "name": "VENICE",
+          "sku": "hb567024",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7024-venice-hb567024",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7024-venice.jpg?v=20260616150932",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7021",
+          "name": "UNI LOTUS",
+          "sku": "hb567021",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7021-uni-lotus-hb567021",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7021-uni-lotus.jpg?v=20260616150932",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7002",
+          "name": "BAMBOO LOTUS",
+          "sku": "hb567002",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7002-bamboo-lotus-hb567002",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7002-bamboo-lotus.jpg?v=20260616150932",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7010",
+          "name": "CLOUD HAZE",
+          "sku": "hb567010",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7010-cloud-haze-hb567010",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7010-cloud-haze.jpg?v=20260616150932",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7721",
+          "name": "MANHATTAN MIST",
+          "sku": "hb567721",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7721-manhattan-mist-hb567721",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7721-manhattan-mist.jpg?v=20260616150934",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7740",
+          "name": "FABRIC SILK",
+          "sku": "hb567740",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7740-fabric-silk-hb567740",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7740-fabric-silk.jpg?v=20260616150932",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7309",
+          "name": "CLOUD LOTUS",
+          "sku": "hb567309",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7309-cloud-lotus-hb567309",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7309-cloud-lotus.jpg?v=20260616150935",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7408",
+          "name": "CLOUD SKYLINE",
+          "sku": "hb567408",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7408-cloud-skyline-hb567408",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7408-cloud-skyline.jpg?v=20260616150937",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "7711",
+          "name": "CLOUD ICE",
+          "sku": "hb567711",
+          "href": "https://www.gerflor-cee.com/products/mural-calypso-7711-cloud-ice-hb567711",
+          "collection_slug": "mural-calypso",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/colors/7711-cloud-ice.jpg?v=20260616150936",
+          "description": "The perfect decorative and waterproof vinyl wallcovering with coloured backing\n\nProduct & Design: - Non porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Tarasafe ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 0.9mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Colored backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Proven water tightness: suitable for installation in shower and wet areas - Can be installed with Tarasafe and shower accessories: durability of the system proven by an external third body (French CSTB) - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <100μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "None",
+            "Overall thickness": "0.92 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-1.jpg?v=20260616150917",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-2.jpg?v=20260616150917",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-3.jpg?v=20260616150917",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-4.jpg?v=20260616150917",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-5.jpg?v=20260616150917",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-6.jpg?v=20260616150917",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-7.jpg?v=20260616150917",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-8.jpg?v=20260616150918",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-9.jpg?v=20260616150918",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-calypso/ambience/scena-10.jpg?v=20260616150917"
+      ],
+      "documents": [
+        {
+          "title": "MURAL CALYPSO - Technical Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-calypso/mural-calypso-technical-datasheet-41768.pdf?v=20260616150916",
+          "type": "pdf"
+        },
+        {
+          "title": "Mural Calypso - Environmental Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-calypso/mural-calypso-environmental-datasheet-34116.pdf?v=20260616150916",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-calypso/uputstvo-za-ugradnju-29974.pdf?v=20260616150916",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-calypso/uputstvo-za-odrzavanje-44830.pdf?v=20260616150916",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-calypso/sertifikat-vatrootpornost-66928.pdf?v=20260616150916",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-calypso/izjava-o-svojstvima-dop-69210.pdf?v=20260616150917",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-calypso/garancija-69678.pdf?v=20260616150916",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Mural Club",
+      "slug": "mural-club",
+      "url": "https://www.gerflor-cee.com/products/mural-club",
+      "colorCount": 6,
+      "categoryId": "2",
+      "protivklizno": false,
+      "zidneObloge": true,
+      "description": "Flexible Homogeneous Wall protection\n\nFlexible Homogeneous Wall protection Wall - Wall covering - 1mm thickness : resistance to impacts - Weldable and washable : hygiene - 6 soft colours matching the floor covering - 100% recyclable",
+      "characteristics": {
+        "Surface treatment": "PUR",
+        "Overall thickness": "1.00 mm",
+        "Thickness of the wearlayer": "1.00 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "2m roll",
+        "Width of sheet": "2 m",
+        "Length of sheet": "30.0 m",
+        "Zidna obloga": "Da"
+      },
+      "colors": [
+        {
+          "code": "0007",
+          "name": "BLUE",
+          "sku": "41590007",
+          "href": "https://www.gerflor-cee.com/products/mural-club-0007-blue-41590007",
+          "collection_slug": "mural-club",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/colors/0007-blue.jpg?v=20260616150953",
+          "description": "Flexible Homogeneous Wall protection\n\nFlexible Homogeneous Wall protection Wall - Wall covering - 1mm thickness : resistance to impacts - Weldable and washable : hygiene - 6 soft colours matching the floor covering - 100% recyclable",
+          "characteristics": {
+            "Surface treatment": "PUR",
+            "Overall thickness": "1.00 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "0004",
+          "name": "GREEN",
+          "sku": "41590004",
+          "href": "https://www.gerflor-cee.com/products/mural-club-0004-green-41590004",
+          "collection_slug": "mural-club",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/colors/0004-green.jpg?v=20260616150951",
+          "description": "Flexible Homogeneous Wall protection\n\nFlexible Homogeneous Wall protection Wall - Wall covering - 1mm thickness : resistance to impacts - Weldable and washable : hygiene - 6 soft colours matching the floor covering - 100% recyclable",
+          "characteristics": {
+            "Surface treatment": "PUR",
+            "Overall thickness": "1.00 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "0003",
+          "name": "SAND",
+          "sku": "41590003",
+          "href": "https://www.gerflor-cee.com/products/mural-club-0003-sand-41590003",
+          "collection_slug": "mural-club",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/colors/0003-sand.jpg?v=20260616150951",
+          "description": "Flexible Homogeneous Wall protection\n\nFlexible Homogeneous Wall protection Wall - Wall covering - 1mm thickness : resistance to impacts - Weldable and washable : hygiene - 6 soft colours matching the floor covering - 100% recyclable",
+          "characteristics": {
+            "Surface treatment": "PUR",
+            "Overall thickness": "1.00 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "0006",
+          "name": "GREY",
+          "sku": "41590006",
+          "href": "https://www.gerflor-cee.com/products/mural-club-0006-grey-41590006",
+          "collection_slug": "mural-club",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/colors/0006-grey.jpg?v=20260616150951",
+          "description": "Flexible Homogeneous Wall protection\n\nFlexible Homogeneous Wall protection Wall - Wall covering - 1mm thickness : resistance to impacts - Weldable and washable : hygiene - 6 soft colours matching the floor covering - 100% recyclable",
+          "characteristics": {
+            "Surface treatment": "PUR",
+            "Overall thickness": "1.00 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "0001",
+          "name": "WHITE",
+          "sku": "41590001",
+          "href": "https://www.gerflor-cee.com/products/mural-club-0001-white-41590001",
+          "collection_slug": "mural-club",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/colors/0001-white.jpg?v=20260616150952",
+          "description": "Flexible Homogeneous Wall protection\n\nFlexible Homogeneous Wall protection Wall - Wall covering - 1mm thickness : resistance to impacts - Weldable and washable : hygiene - 6 soft colours matching the floor covering - 100% recyclable",
+          "characteristics": {
+            "Surface treatment": "PUR",
+            "Overall thickness": "1.00 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "0005",
+          "name": "YELLOW",
+          "sku": "41590005",
+          "href": "https://www.gerflor-cee.com/products/mural-club-0005-yellow-41590005",
+          "collection_slug": "mural-club",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/colors/0005-yellow.jpg?v=20260616150953",
+          "description": "Flexible Homogeneous Wall protection\n\nFlexible Homogeneous Wall protection Wall - Wall covering - 1mm thickness : resistance to impacts - Weldable and washable : hygiene - 6 soft colours matching the floor covering - 100% recyclable",
+          "characteristics": {
+            "Surface treatment": "PUR",
+            "Overall thickness": "1.00 mm",
+            "Thickness of the wearlayer": "1.00 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "30.0 m",
+            "Zidna obloga": "Da"
+          }
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/ambience/scena-1.jpg?v=20260616150946",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/ambience/scena-2.jpg?v=20260616150946",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/ambience/scena-3.jpg?v=20260616150946",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-club/ambience/scena-4.jpg?v=20260616150946"
+      ],
+      "documents": [
+        {
+          "title": "Mural Club - Technical Datasheet",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-club/mural-club-technical-datasheet-41767.pdf?v=20260616150941",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-club/brosura-69813.pdf?v=20260616150946",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za održavanje",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-club/uputstvo-za-odrzavanje-17856.pdf?v=20260616150945",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-club/uputstvo-za-ugradnju-29974.pdf?v=20260616150942",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-club/sertifikat-vatrootpornost-66928.pdf?v=20260616150943",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-club/garancija-69678.pdf?v=20260616150943",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "name": "Mural Ultra Design",
+      "slug": "mural-ultra-design",
+      "url": "https://www.gerflor-cee.com/products/mural-ultra-design",
+      "colorCount": 12,
+      "categoryId": "2",
+      "protivklizno": false,
+      "zidneObloge": true,
+      "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+      "characteristics": {
+        "Surface treatment": "Protecsol®",
+        "Overall thickness": "1.50 mm",
+        "Thickness of the wearlayer": "0.10 mm",
+        "Installation system covering": "Glue down",
+        "Format details": "2m roll",
+        "Width of sheet": "2 m",
+        "Length of sheet": "21.0 m",
+        "Zidna obloga": "Da"
+      },
+      "colors": [
+        {
+          "code": "8721",
+          "name": "MANHATTAN MIST",
+          "sku": "28858721",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8721-manhattan-mist-28858721",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8721-manhattan-mist.jpg?v=20260616151002",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8002",
+          "name": "BAMBOO LOTUS",
+          "sku": "28858002",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8002-bamboo-lotus-28858002",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8002-bamboo-lotus.jpg?v=20260616151004",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8611",
+          "name": "SNOW",
+          "sku": "28858611",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8611-snow-28858611",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8611-snow.jpg?v=20260616151003",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8010",
+          "name": "HAZE",
+          "sku": "28858010",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8010-haze-28858010",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8010-haze.jpg?v=20260616151003",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8011",
+          "name": "LICHEN",
+          "sku": "28858011",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8011-lichen-28858011",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8011-lichen.jpg?v=20260616151003",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8744",
+          "name": "NORDIC MILK",
+          "sku": "28858744",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8744-nordic-milk-28858744",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8744-nordic-milk.jpg?v=20260616151002",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8740",
+          "name": "FABRIC SILK",
+          "sku": "28858740",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8740-fabric-silk-28858740",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8740-fabric-silk.jpg?v=20260616151002",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8000",
+          "name": "BAMBOO SNOW PEARL",
+          "sku": "28858000",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8000-bamboo-snow-pearl-28858000",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8000-bamboo-snow-pearl.jpg?v=20260616151003",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8005",
+          "name": "BLOSSOM SNOW PEARL",
+          "sku": "28858005",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8005-blossom-snow-pearl-28858005",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8005-blossom-snow-pearl.jpg?v=20260616151003",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8309",
+          "name": "LOTUS",
+          "sku": "28858309",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8309-lotus-28858309",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8309-lotus.jpg?v=20260616151006",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8408",
+          "name": "SKYLINE",
+          "sku": "28858408",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8408-skyline-28858408",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8408-skyline.jpg?v=20260616151007",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        },
+        {
+          "code": "8711",
+          "name": "ICE",
+          "sku": "28858711",
+          "href": "https://www.gerflor-cee.com/products/mural-ultra-design-8711-ice-28858711",
+          "collection_slug": "mural-ultra-design",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/colors/8711-ice.jpg?v=20260616151007",
+          "description": "The perfect decorative and impact resistant vinyl wallcovering with coloured backing\n\nProduct & Design: - 1.5mm thickness: good resistance to impact in medium traffic areas - Non-porous surface: water tightness - Smooth surface: easy to clean - 2m roll: less joins, less gaps for dirt - Modern designs and soft colours: trendy and timeless atmosphere - Mix & match with Gerflor ranges: home feeling and harmonious atmospheresInstallation & Maintenance: - 1.5mm thickness flexible product: easy to cut and to install especially in angles - Horizontal or vertical installation - Hot welded: perfect for areas where water tightness is a must - Coloured backing: perfect aspect of the join - Compatible with Gerflor profiles: durable installationMarket application: - Good resistance to medium traffic areas: adapted to usage in corridors, bedrooms, classrooms… - Good antibacterial performance: suitable for healthcare application - B-s2,d0 fire classification: compliant with most country regulations in public areasSustainability: - TVOC after 28 days <10μg/m3: very good indoor air quality - Up to 30% recycled content / 100% recyclable: preservation of the resources - Made in Europe: reduced CO2 footprint of transport - 100% Reach compliant, Phthalate free, formaldehyde free: Health and safety",
+          "characteristics": {
+            "Surface treatment": "Protecsol®",
+            "Overall thickness": "1.50 mm",
+            "Thickness of the wearlayer": "0.10 mm",
+            "Installation system covering": "Glue down",
+            "Format details": "2m roll",
+            "Width of sheet": "2 m",
+            "Length of sheet": "21.0 m",
+            "Zidna obloga": "Da"
+          }
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/ambience/scena-1.jpg?v=20260616150958",
+      "room_scene_images": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/ambience/scena-2.jpg?v=20260616150958",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/ambience/scena-3.jpg?v=20260616150958",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinyl/gerflor-mural-ultra-design/ambience/scena-4.jpg?v=20260616150958"
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-ultra-design/tehnicki-list-32593.pdf?v=20260616150956",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-ultra-design/brosura-33951.pdf?v=20260616150957",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za ugradnju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-ultra-design/uputstvo-za-ugradnju-29974.pdf?v=20260616150956",
+          "type": "pdf"
+        },
+        {
+          "title": "Sertifikat — vatrootpornost",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-ultra-design/sertifikat-vatrootpornost-66928.pdf?v=20260616150957",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o svojstvima (DoP)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-ultra-design/izjava-o-svojstvima-dop-69425.pdf?v=20260616150957",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinyl/gerflor-mural-ultra-design/garancija-69678.pdf?v=20260616150957",
+          "type": "pdf"
+        }
+      ]
     }
   ],
-  "totalColors": 988,
-  "generatedAt": "2026-06-16T10:00:42.329Z"
+  "totalColors": 1050,
+  "generatedAt": "2026-06-16T15:10:07.767Z"
 }
