@@ -554,6 +554,11 @@ export class SupabaseProductRepository implements IProductRepository {
       });
     }
 
+    // Protivklizni/Sigurnosni filter (?safety=1): zadrži samo kolekcije sa protivklizno specom.
+    if (filters?.safety === '1') {
+      products = products.filter(p => p.specs?.some(s => s.key === 'protivklizno'));
+    }
+
     if (filters?.collections && filters.collections.length > 0) {
       products = products.filter(p => {
         const productName = p.name;
@@ -718,6 +723,10 @@ export class MockProductRepository implements IProductRepository {
         if (typeFilter === 'heterogeni') return productType === 'heterogeni';
         return false;
       });
+    }
+
+    if (filters?.safety === '1') {
+      filtered = filtered.filter(p => p.specs?.some(s => s.key === 'protivklizno'));
     }
 
     if (filters?.collections && filters.collections.length > 0) {

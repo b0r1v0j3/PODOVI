@@ -25,6 +25,7 @@ interface CategoryPageProps {
     inStock?: string;
     color?: string;
     type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
+    safety?: string; // For vinyl safety filter: '1' = only protivklizni/sigurnosni collections
     collections?: string; // For LVT collection filter (comma-separated)
     family?: string; // For BLOQ family filter (comma-separated)
     listing?: string; // For core/accessory listing segmentation
@@ -219,6 +220,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     priceMax: searchParams.priceMax ? parseFloat(searchParams.priceMax) : undefined,
     inStock: searchParams.inStock === 'true' ? true : undefined,
     type: searchParams.type, // For vinyl type filter
+    safety: searchParams.safety, // For vinyl protivklizni/sigurnosni filter (?safety=1)
     // Laminat: don't filter by thickness in repository (we do it manually); others: use repository filter
     thickness: isLaminat ? undefined : (searchParams.thickness ? searchParams.thickness.split(',') : undefined),
     woodType: searchParams.woodType, // For Parket: Hrast | Jasen
@@ -857,6 +859,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               categorySlug={category.slug}
               initialColorSlug={searchParams.color}
               vinylType={searchParams.type}
+              safetyOnly={searchParams.safety === '1'}
               listingMode={listingMode}
               searchParams={{
                 search: searchParams.search,
