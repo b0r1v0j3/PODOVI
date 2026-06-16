@@ -266,7 +266,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     category.slug === 'industrijske-ploce' ||
     category.slug === 'sport' ||
     category.slug === 'lajsne' ||
-    category.slug === 'vestacka-trava'
+    category.slug === 'vestacka-trava' ||
+    category.slug === 'pribor'
   );
   const listingMode = resolveCategoryListingMode(searchParams.listing, category.slug);
   let collections: typeof allProducts = [];
@@ -299,6 +300,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         p.sku?.startsWith('DESSO-') ||
         p.sku?.startsWith('DEKING-') ||
         p.sku?.startsWith('GRASS-') ||
+        p.sku?.startsWith('PRIBOR-') ||
         p.sku?.startsWith('ESD-') ||
         p.sku?.startsWith('IND-') ||
         p.sku?.startsWith('SPORT-') ||

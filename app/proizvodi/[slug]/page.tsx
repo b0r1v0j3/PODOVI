@@ -420,6 +420,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       '11': 'lajsne',
       '12': 'otiraci',
       '14': 'vestacka-trava',
+      '15': 'pribor',
     };
 
     // ── Resolve product ──

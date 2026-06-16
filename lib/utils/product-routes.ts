@@ -24,6 +24,7 @@ const CATEGORY_ROUTE_SLUG_MAP: Record<string, string> = {
   '12': 'otiraci',
   '13': 'alat',
   '14': 'vestacka-trava',
+  '15': 'pribor',
 };
 
 function slugifyCollectionName(value: string): string {

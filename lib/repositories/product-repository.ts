@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllDessoCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllGrassProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllDessoCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllGrassProducts, getAllPriborProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -221,6 +221,24 @@ export class SupabaseProductRepository implements IProductRepository {
         grassProducts = grassProducts.filter(p => filters.brandIds!.includes(p.brandId));
       }
       products = [...products, ...grassProducts];
+    }
+
+    // Category 15: Pribor (Add Tarkett/Gerflor accessory products)
+    if (!filters?.categoryId || legacyCategoryId === '15' || filters.categoryId === '15') {
+      let priborProducts = getAllPriborProducts();
+
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        priborProducts = priborProducts.filter(p =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description.toLowerCase().includes(searchLower) ||
+          p.sku.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.brandIds && filters.brandIds.length > 0) {
+        priborProducts = priborProducts.filter(p => filters.brandIds!.includes(p.brandId));
+      }
+      products = [...products, ...priborProducts];
     }
 
     const techemProducts = getAllTechemProducts();
@@ -692,6 +710,7 @@ export class MockProductRepository implements IProductRepository {
     ...getTarkettLajsneCollections(),
     ...getAllDekingProducts(),
     ...getAllGrassProducts(),
+    ...getAllPriborProducts(),
     ...getAllAlpodProducts(),
     ...getAllTechemProducts(),
     ...getAllRomusToolProducts(),

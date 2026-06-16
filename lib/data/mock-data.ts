@@ -115,6 +115,16 @@ export const categories: Category[] = [
     image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/grass/tarkett-campo/hero.jpg',
     order: 14,
   },
+  {
+    id: '15',
+    name: 'Pribor',
+    slug: 'pribor',
+    description: 'Lepkovi, podloge, elektrode za varenje, sredstva za negu i prateći pribor za podove (Tarkett, Gerflor)',
+    // Placeholder do realnog ingesta: Supabase host + .jpg (validate-images proverava host+https+ekstenziju).
+    // Nakon ingesta zameniti realnim hero asset URL-om prvog pribor proizvoda (npr. hladno-varenje/hero.jpg).
+    image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/pribor/tarkett-hladno-varenje/hero.jpg',
+    order: 15,
+  },
 
 ];
 
