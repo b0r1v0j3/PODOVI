@@ -417,6 +417,263 @@ export const manualCollectionProducts: Product[] = [
       },
     ],
   }),
+  // ── Gerflor Taraflex (sport, cat 10) — S6 ingest ───────────────────────────
+  // Ogledalo DLW Colorette Sport bloka. Slug u JSON-u (sport_colors.json) je BEZ
+  // gerflor- prefiksa (taraflex-*); product slug ima gerflor- prefiks. imageUrl/documents
+  // se popunjavaju iz sport_colors.json (collection_image_url) nakon realnog S6 ingest-a;
+  // resolveCollectionImageUrl strip-uje gerflor- i čita collection_image_url po slug-u.
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-comfort-2',
+    name: 'Taraflex Comfort 2',
+    slug: 'gerflor-taraflex-comfort-2',
+    sku: 'SPORT-TARAFLEX-COMFORT-2',
+    categoryId: '10',
+    shortDescription: 'Sportski vinilni pod sa visokom apsorpcijom udara za multi-sport sale.',
+    description:
+      'Taraflex Comfort 2 je sportski vinilni pod sa visokom apsorpcijom udara, razvijen za multi-sport sale i skolske dvorane gde su komfor i zastita igraca prioritet.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-comfort-2',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Comfort 2' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Multi-sport sale i skolske dvorane' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Visoka apsorpcija udara za zastitu igraca.',
+          'Pogodan za vise sportova u istom prostoru.',
+          'Otporna povrsina sa kontrolisanim gripom.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-evolution-2',
+    name: 'Taraflex Evolution 2',
+    slug: 'gerflor-taraflex-evolution-2',
+    sku: 'SPORT-TARAFLEX-EVOLUTION-2',
+    categoryId: '10',
+    shortDescription: 'Sportski vinilni pod za sale sa balansiranom apsorpcijom udara.',
+    description:
+      'Taraflex Evolution 2 je sportski vinilni pod za sportske sale, sa balansiranom apsorpcijom udara i izdrzljivom povrsinom za intenzivnu upotrebu.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-evolution-2',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Evolution 2' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Sportske sale' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Balansirana apsorpcija udara za sportske sale.',
+          'Izdrzljiva povrsina za intenzivnu upotrebu.',
+          'Pogodan za vise sportova.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-evolution-2-drytex',
+    name: 'Taraflex Evolution 2 Drytex',
+    slug: 'gerflor-taraflex-evolution-2-drytex',
+    sku: 'SPORT-TARAFLEX-EVOLUTION-2-DRYTEX',
+    categoryId: '10',
+    shortDescription: 'Sportski vinil sa Drytex podlogom za bolju otpornost na vlagu.',
+    description:
+      'Taraflex Evolution 2 Drytex je verzija Evolution 2 poda sa Drytex podlogom, koja pruza bolju otpornost na vlagu i pogodnija je za objekte sa povisenim nivoom vlage.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-evolution-2-drytex',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Evolution 2 Drytex' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Sportske sale (povisena vlaga)' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Drytex podloga za bolju otpornost na vlagu.',
+          'Balansirana apsorpcija udara za sportske sale.',
+          'Izdrzljiva sportska povrsina.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-evolution-2-sl',
+    name: 'Taraflex Evolution 2 SL',
+    slug: 'gerflor-taraflex-evolution-2-sl',
+    sku: 'SPORT-TARAFLEX-EVOLUTION-2-SL',
+    categoryId: '10',
+    shortDescription: 'Sportski vinil Evolution 2 u samostojecoj (self-laying) varijanti.',
+    description:
+      'Taraflex Evolution 2 SL je samostojeca (self-laying) varijanta Evolution 2 poda, namenjena brzoj instalaciji i privremenim ili polustalnim sportskim postavkama.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-evolution-2-sl',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Evolution 2 SL' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Sportske sale (brza instalacija)' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Samostojeca (self-laying) instalacija.',
+          'Balansirana apsorpcija udara za sportske sale.',
+          'Pogodno za privremene i polustalne postavke.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-multi-use-62',
+    name: 'Taraflex Multi-Use 6.2',
+    slug: 'gerflor-taraflex-multi-use-62',
+    sku: 'SPORT-TARAFLEX-MULTI-USE-62',
+    categoryId: '10',
+    shortDescription: 'Vise-namenski sportski vinil za sale sa mesovitom upotrebom.',
+    description:
+      'Taraflex Multi-Use 6.2 je vise-namenski sportski vinilni pod za sale sa mesovitom upotrebom, koji kombinuje sportske performanse sa otpornoscu na svakodnevni saobracaj i razlicite namene prostora.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-multi-use-62',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Multi-Use 6.2' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Vise-namenske sale' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Vise-namenska upotreba u istom prostoru.',
+          'Sportske performanse uz otpornost na svakodnevni saobracaj.',
+          'Izdrzljiva povrsina za mesovitu upotrebu.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-performance-2',
+    name: 'Taraflex Performance 2',
+    slug: 'gerflor-taraflex-performance-2',
+    sku: 'SPORT-TARAFLEX-PERFORMANCE-2',
+    categoryId: '10',
+    shortDescription: 'Profesionalni sportski vinil za takmicarske dvorane.',
+    description:
+      'Taraflex Performance 2 je profesionalni sportski vinilni pod za takmicarske dvorane, sa visokim sportskim performansama i povrsinom prilagodjenom zahtevnoj upotrebi i takmicenjima.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-performance-2',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Performance 2' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Takmicarske sportske dvorane' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Visoke sportske performanse za takmicenja.',
+          'Povrsina prilagodjena zahtevnoj upotrebi.',
+          'Pogodno za vise sportova u takmicarskim dvoranama.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-performance-2-drytex',
+    name: 'Taraflex Performance 2 Drytex',
+    slug: 'gerflor-taraflex-performance-2-drytex',
+    sku: 'SPORT-TARAFLEX-PERFORMANCE-2-DRYTEX',
+    categoryId: '10',
+    shortDescription: 'Profesionalni sportski vinil sa Drytex podlogom za vlazne objekte.',
+    description:
+      'Taraflex Performance 2 Drytex je verzija Performance 2 poda sa Drytex podlogom, koja zadrzava takmicarske sportske performanse uz bolju otpornost na vlagu.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-performance-2-drytex',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Performance 2 Drytex' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Takmicarske dvorane (povisena vlaga)' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Drytex podloga za bolju otpornost na vlagu.',
+          'Visoke takmicarske sportske performanse.',
+          'Povrsina prilagodjena zahtevnoj upotrebi.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-performance-2-sl',
+    name: 'Taraflex Performance 2 SL',
+    slug: 'gerflor-taraflex-performance-2-sl',
+    sku: 'SPORT-TARAFLEX-PERFORMANCE-2-SL',
+    categoryId: '10',
+    shortDescription: 'Profesionalni sportski vinil Performance 2 u samostojecoj varijanti.',
+    description:
+      'Taraflex Performance 2 SL je samostojeca (self-laying) varijanta Performance 2 poda, namenjena brzoj instalaciji za takmicenja i dogadjaje uz zadrzane sportske performanse.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-performance-2-sl',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Performance 2 SL' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Takmicenja i dogadjaji (brza instalacija)' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Samostojeca (self-laying) instalacija.',
+          'Visoke takmicarske sportske performanse.',
+          'Pogodno za dogadjaje i privremene postavke.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
+  createCollectionProduct({
+    id: 'manual-sport-gerflor-taraflex-surface-2',
+    name: 'Taraflex Surface 2',
+    slug: 'gerflor-taraflex-surface-2',
+    sku: 'SPORT-TARAFLEX-SURFACE-2',
+    categoryId: '10',
+    shortDescription: 'Sportski vinil za sale sa naglaskom na izdrzljivost povrsine.',
+    description:
+      'Taraflex Surface 2 je sportski vinilni pod za sale sa naglaskom na izdrzljivu povrsinu i dobre sportske performanse, pogodan za skolske i rekreativne objekte.',
+    externalLink: 'https://www.gerflor-cee.com/products/taraflex-surface-2',
+    specs: [
+      { key: 'collection', label: 'Kolekcija', value: 'Taraflex Surface 2' },
+      { key: 'type', label: 'Tip', value: 'Sportski vinil' },
+      { key: 'format', label: 'Format', value: 'Rola' },
+      { key: 'application', label: 'Namena', value: 'Skolske i rekreativne sale' },
+    ],
+    detailsSections: [
+      {
+        title: 'Ključne karakteristike',
+        items: [
+          'Izdrzljiva sportska povrsina.',
+          'Dobre sportske performanse za sale.',
+          'Pogodno za skolske i rekreativne objekte.',
+          'Linije terena mogu se nanositi nakon ugradnje.',
+        ],
+      },
+    ],
+  }),
 ];
 
 function cloneManualCollectionProduct(product: Product): Product {
