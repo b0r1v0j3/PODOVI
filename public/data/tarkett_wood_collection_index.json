@@ -979,20 +979,12 @@
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/dop-sommereuroparqet-rs.pdf?v=20260615140934"
         },
         {
-          "title": "Produkt katalog 2025",
-          "url": "https://media.tarkett-image.com/docs/ProductCatalogue_Europarquet_2025.pdf"
-        },
-        {
           "title": "DOP",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/2702-00021-dop-2024-01-sr.pdf?v=20260615140933"
         },
         {
           "title": "DATASHEET",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/br-rs-hd-sommer-europarquet.pdf?v=20260615140929"
-        },
-        {
-          "title": "Sertifikat - EKO",
-          "url": "https://media.tarkett-image.com/docs/Sertifikat_EKO.pdf"
         }
       ],
       "heroImage": ""
@@ -2353,12 +2345,7 @@
           "value": "1,960 m²"
         }
       ],
-      "documents": [
-        {
-          "title": "Tehnički list",
-          "url": "https://media.tarkett-image.com/docs/TDS_Winter_832.pdf"
-        }
-      ],
+      "documents": [],
       "heroImage": ""
     },
     "woodstock-longboards-1033-4v": {
