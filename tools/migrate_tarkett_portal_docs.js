@@ -12,7 +12,7 @@ const DEST_PREFIX = 'products/tarkett-migrated';
 // Bilo koji /sr_RS/pdf/.../(specifications|format-table) URL (proizvoljna dubina putanje).
 const PORTAL_RE = /https?:\/\/www\.tarkett\.rs\/[^\s"']*?\/pdf\/([^\s"']*?\/(specifications|format-table))\b/gi;
 
-const args = { dryRun: process.argv.includes('--dry-run'), files: [] };
+const args = { dryRun: process.argv.includes('--dry-run'), rewriteOnly: process.argv.includes('--rewrite-only'), files: [] };
 for (const a of process.argv.slice(2)) if (a.startsWith('--file=')) args.files.push(a.split('=')[1]);
 
 const TARGET_FILES = args.files.length ? args.files : [
@@ -34,6 +34,7 @@ function classify(url) {
 
 async function fetchPdf(url, kind) {
     const r = await core.withTimeout(fetch(url, { headers: core.BROWSER_HEADERS }), 60000, `fetch ${kind}`);
+    if (r.status === 404) { const e = new Error('HTTP 404'); e.notFound = true; throw e; } // genuino nema — ne blok
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     let buf;
     if (kind === 'format-table') {
@@ -77,35 +78,37 @@ async function fetchPdf(url, kind) {
     const supabase = core.getSupabase();
     const urlMap = {};
     const pending = [];
-    let idx = 0, ok = 0;
-    // Niska konkurencija + politeness-delay + retry: tarkett.rs rate-limituje (vraća HTML throttle
-    // stranicu) pod opterećenjem. 3 radnika, 200ms pauza, 4 pokušaja sa eksponencijalnim backoff-om.
-    const CONC = 3;
-    async function fetchWithRetry(info) {
-        let lastErr;
-        for (let attempt = 0; attempt < 4; attempt++) {
-            if (attempt) await core.sleep(500 * Math.pow(3, attempt - 1)); // 500, 1500, 4500ms
-            try { return await core.withTimeout(fetchPdf(info.url, info.kind), 120000, `asset ${info.kind}`); }
-            catch (e) { lastErr = e; }
+    let ok = 0, newOk = 0, consecFail = 0, aborted = false;
+    // PRISTOJAN DRIP: tarkett.rs agresivno rate-limituje (HTML throttle „<div>Please…"). Jedan
+    // tok, 1.2s pauza, 1 retry. CIRCUIT-BREAKER: posle 25 uzastopnih grešaka prekini ceo run
+    // (blok je aktivan — probaj posle cooldown-a). Manifest čini re-run bezbednim (preskače gotove).
+    const DELAY = 1200, BREAK_AFTER = 25;
+    for (const info of infos) {
+        const mKey = `portal:${info.url}`;
+        if (manifest.has(mKey)) { urlMap[info.url] = manifest.get(mKey).publicUrl; ok++; continue; }
+        if (args.rewriteOnly) continue; // bez mreže — nemanifestovani ostaju za kasniji cooldown-run
+        let buf, err;
+        for (let attempt = 0; attempt < 2 && !buf; attempt++) {
+            if (attempt) await core.sleep(2000);
+            try { buf = await core.withTimeout(fetchPdf(info.url, info.kind), 60000, `asset ${info.kind}`); }
+            catch (e) { err = e; if (e.notFound) break; } // 404 = genuino nema, ne retry-uj
         }
-        throw lastErr;
-    }
-    async function worker() {
-        while (idx < infos.length) {
-            const info = infos[idx++];
-            const mKey = `portal:${info.url}`;
-            if (manifest.has(mKey)) { urlMap[info.url] = manifest.get(mKey).publicUrl; ok++; continue; }
+        if (buf) {
             try {
-                const buf = await fetchWithRetry(info);
                 const publicUrl = await core.uploadToBucket(supabase, DOCS_BUCKET, info.dest, buf);
-                urlMap[info.url] = publicUrl;
-                manifest.record(mKey, { publicUrl });
-                if (++ok % 50 === 0) { manifest.save(); console.log(`   … ${ok}/${infos.length} (pending ${pending.length})`); }
-            } catch (e) { pending.push({ url: info.url, reason: e.message }); }
-            await core.sleep(200);
+                urlMap[info.url] = publicUrl; manifest.record(mKey, { publicUrl });
+                ok++; consecFail = 0;
+                if (++newOk % 25 === 0) { manifest.save(); console.log(`   … +${newOk} novih (ukupno ${ok}/${infos.length}, pending ${pending.length})`); }
+            } catch (e) { pending.push({ url: info.url, reason: e.message }); consecFail++; }
+        } else {
+            pending.push({ url: info.url, reason: err ? err.message : '?' });
+            // 404 = server zdrav, samo nema dok → resetuj brojač; samo pravi throttle okida prekidač.
+            if (err && err.notFound) consecFail = 0; else consecFail++;
         }
+        if (consecFail >= BREAK_AFTER) { aborted = true; console.log(`🛑 prekid: ${consecFail} uzastopnih throttle grešaka (blok) — probaj posle cooldown-a`); break; }
+        await core.sleep(DELAY);
     }
-    await Promise.all(Array.from({ length: CONC }, () => worker()));
+    if (aborted) console.log(`(prekinuto — migrirano ${newOk} novih ovog runa)`);
     manifest.save();
     console.log(`✅ migrirano: ${ok} | greške/pending: ${pending.length}`);
 
