@@ -19,7 +19,11 @@
     "lajsne": {
       "accessoryCollectionSlugs": [
         "tarkett-tarkett-genius-traka",
-        "tarkett-tarkodry-podloga-za-podove-i-zidove"
+        "tarkett-tarkodry-podloga-za-podove-i-zidove",
+        "tarkett-prateci-asortiman-za-parket-reparacija-parketa",
+        "tarkett-taktilne-trake-za-slabovide",
+        "tarkett-taktilne-trake-za-upozorenje",
+        "tarkett-trake-za-kontrolu-statickog-elektriciteta-za-podne-obloge-u-rolni"
       ]
     }
   }
