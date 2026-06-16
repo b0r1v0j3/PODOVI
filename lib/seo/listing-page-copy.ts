@@ -66,6 +66,31 @@ export function getCategoryPageCopy(category: Category): ListingPageCopy {
     };
   }
 
+  if (category.slug === 'vestacka-trava') {
+    return {
+      heading: 'Veštačka trava',
+      lead: 'Tarkett veštačka trava za sportske terene, terase, igrališta i spoljne prostore — realističan izgled, UV stabilnost i dug vek trajanja.',
+      body: 'U kategoriji Veštačka trava nalaze se Tarkett kolekcije veštačkog travnatog pokrivača namenjene sportskim terenima, dekorativnim i pejzažnim površinama. Svaka kolekcija dolazi sa tehničkim specifikacijama (visina flora, težina, garancija, UV stabilnost) i uputstvom za ugradnju, a cena se dobija na upit.',
+      bullets: [
+        'Veštačka trava za sportske terene, terase i igrališta',
+        'Realističan izgled, UV stabilnost i otpornost na spoljne uslove',
+        'Tehničke specifikacije i uputstvo za ugradnju uz svaku kolekciju',
+      ],
+      metaTitle: 'Veštačka Trava | Tarkett za Sport, Terase i Spoljne Prostore | podovi.online',
+      metaDescription: 'Tarkett veštačka trava za sportske terene, terase, igrališta i pejzaž: realističan izgled, UV stabilnost i dug vek trajanja. Cena na upit.',
+      keywords: dedupeKeywords([
+        'veštačka trava',
+        'vestacka trava',
+        'Tarkett veštačka trava',
+        'veštačka trava za teren',
+        'sportska veštačka trava',
+        'veštačka trava za terasu',
+        'dekorativna veštačka trava',
+        'Srbija',
+      ]),
+    };
+  }
+
   return {
     heading: category.name,
     lead: category.description,

@@ -22,6 +22,7 @@ import techemMatsData from '@/public/data/techem_mats.json';
 import romusToolsData from '@/public/data/romus_tools.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
+import tarkettGrassProducts from '@/public/data/tarkett_grass_products.json';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
@@ -34,6 +35,7 @@ let carpetProductsCache: Product[] | null = null;
 let bloqCarpetCache: Product[] | null = null;
 let dessoCarpetCache: Product[] | null = null;
 let dekingProductsCache: Product[] | null = null;
+let grassProductsCache: Product[] | null = null;
 let esdCollectionCache: Product[] | null = null;
 let tarkettSportCollectionCache: Product[] | null = null;
 let tarkettLajsneCollectionCache: Product[] | null = null;
@@ -1374,6 +1376,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getTarkettSportCollections(),
         ...getTarkettLajsneCollections(),
         ...getAllDekingProducts(),
+        ...getAllGrassProducts(),
         ...getAllAlpodProducts(),
         ...getAllTechemProducts(),
         ...getAllRomusToolProducts(),
@@ -1426,6 +1429,8 @@ export function getProductsByCategory(categoryId: string): Product[] {
         return [...getGerflorCarpetCollections(), ...getAllCarpetProducts(), ...getAllBloqCarpetProducts(), ...getAllDessoCarpetProducts()];
     } else if (categoryId === '5') {
         return [...getAllDekingProducts(), ...getAlpodCollectionProducts('5')];
+    } else if (categoryId === '14') {
+        return [...getAllGrassProducts()];
     } else if (categoryId === '3') {
         return [
             ...getAlpodCollectionProducts('3'),
@@ -1451,6 +1456,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getWolflorVinylCollections(),
         ...getTarkettSportCollections(),
         ...getAllDekingProducts(),
+        ...getAllGrassProducts(),
         ...getAlpodCollectionProducts(),
         ...getAllTechemProducts(),
         ...getAllRomusToolProducts(),
@@ -2566,6 +2572,67 @@ export function getAllDekingProducts(): Product[] {
 
     dekingProductsCache = dekingList;
     return dekingProductsCache;
+}
+
+/**
+ * Get all Tarkett artificial-grass products from tarkett_grass_products.json.
+ * Modeled on getAllDekingProducts(): single-design, colorless, "Cena na upit"
+ * (price 0). categoryId '14' (Veštačka trava), brandId '3' (Tarkett),
+ * SKU prefix 'GRASS-'. Empty JSON until the real ingest runs → returns [].
+ */
+export function getAllGrassProducts(): Product[] {
+    if (grassProductsCache) {
+        return grassProductsCache;
+    }
+
+    const grassList = (tarkettGrassProducts as any[]).map(p => {
+        const slug = (p.slug as string) || (p.name as string).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+        // Convert specs object back to array (mirror deking)
+        const specsArray: Array<{ key: string; label: string; value: string }> = [];
+        if (p.specs && !Array.isArray(p.specs)) {
+            for (const [key, value] of Object.entries(p.specs)) {
+                specsArray.push({
+                    key: key.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+                    label: key,
+                    value: value as string
+                });
+            }
+        } else if (Array.isArray(p.specs)) {
+            specsArray.push(...p.specs);
+        }
+        // Force the collection spec as required by the site
+        if (!specsArray.find(s => s.key === 'collection')) {
+            specsArray.push({ key: 'collection', label: 'Kolekcija', value: p.collection || p.name });
+        }
+
+        const images = p.images ? p.images : [];
+
+        return {
+            id: p.id,
+            name: p.name,
+            slug: slug,
+            sku: p.sku || `GRASS-${slug}`,
+            categoryId: p.categoryId || '14', // 14 is Veštačka trava
+            brandId: p.brandId || '3',
+            shortDescription: p.shortDescription || p.description || p.name,
+            description: p.description || enrichProductDescription({ name: p.name, categoryId: '14', brandId: '3', specs: specsArray } as any),
+            images: images,
+            specs: specsArray,
+            documents: Array.isArray(p.documents) ? p.documents : [],
+            detailsSections: undefined,
+            price: 0, // "Cena na upit"
+            priceUnit: 'm²' as const,
+            inStock: true,
+            featured: false,
+            externalLink: p.url || undefined,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01')
+        } as Product;
+    });
+
+    grassProductsCache = grassList;
+    return grassProductsCache;
 }
 
 export function getAlpodCollectionProducts(categoryId?: string): Product[] {

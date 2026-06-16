@@ -14,6 +14,7 @@ export const COLLECTION_SKU_PREFIXES = [
   'DESSO-',
   'DEKING-',
   'TIMBERTECH-',
+  'GRASS-',
   'ESD-',
   'IND-',
   'SPORT-',

@@ -23,6 +23,7 @@ const CATEGORY_ROUTE_SLUG_MAP: Record<string, string> = {
   '11': 'lajsne',
   '12': 'otiraci',
   '13': 'alat',
+  '14': 'vestacka-trava',
 };
 
 function slugifyCollectionName(value: string): string {
