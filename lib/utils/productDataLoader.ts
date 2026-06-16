@@ -6,6 +6,7 @@ import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
+import dessoCarpetData from '@/public/data/desso_carpet_tiles.json';
 import collectionImagesData from '@/public/data/collection_images.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
@@ -31,6 +32,7 @@ let lvtProductsCache: Product[] | null = null;
 let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
 let bloqCarpetCache: Product[] | null = null;
+let dessoCarpetCache: Product[] | null = null;
 let dekingProductsCache: Product[] | null = null;
 let esdCollectionCache: Product[] | null = null;
 let tarkettSportCollectionCache: Product[] | null = null;
@@ -1361,6 +1363,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getGerflorLinoleumCollections(),
         ...getGerflorCarpetCollections(),
         ...getAllBloqCarpetProducts(),
+        ...getAllDessoCarpetProducts(),
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
         ...getTarkettVinylHomeCollections(),
@@ -1420,7 +1423,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
     } else if (categoryId === '7') {
         return [...getGerflorLinoleumCollections(), ...getAllLinoleumProducts(), ...getTarkettLinoleumCollections()];
     } else if (categoryId === '4') {
-        return [...getGerflorCarpetCollections(), ...getAllCarpetProducts(), ...getAllBloqCarpetProducts()];
+        return [...getGerflorCarpetCollections(), ...getAllCarpetProducts(), ...getAllBloqCarpetProducts(), ...getAllDessoCarpetProducts()];
     } else if (categoryId === '5') {
         return [...getAllDekingProducts(), ...getAlpodCollectionProducts('5')];
     } else if (categoryId === '3') {
@@ -1438,6 +1441,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getGerflorLVTCollections(),
         ...getGerflorLinoleumCollections(),
         ...getAllBloqCarpetProducts(),
+        ...getAllDessoCarpetProducts(),
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
         ...getTarkettVinylHomeCollections(),
@@ -2025,6 +2029,159 @@ export function getAllBloqCarpetProducts(): Product[] {
 
     bloqCarpetCache = [...collectionProducts, ...colorProducts];
     return bloqCarpetCache;
+}
+
+
+/**
+ * Apply the "Desso " display prefix idempotently. The ingest already writes
+ * collection_name with the prefix, but guard here too so loader output is always
+ * "Desso <Collection>" without doubling (e.g. upstream "DESSO X RENS" stays as-is).
+ */
+function dessoDisplayName(name: string): string {
+    const n = String(name || '').trim();
+    if (/^desso\b/i.test(n)) return n;
+    return `Desso ${n}`;
+}
+
+/**
+ * Get all Desso Carpet products from desso_carpet_tiles.json.
+ * Mirrors getAllBloqCarpetProducts(): emits both collection-level products
+ * (DESSO- SKU prefix for the category page "Kolekcije" tab) and individual color
+ * products. Desso attaches to the EXISTING Tarkett brand (brandId '3') inside the
+ * EXISTING "Tekstilne ploče" category (categoryId '4'); "Desso" is a display-name
+ * prefix only. Data file is BLOQ-carpet shaped (flat colors[]).
+ */
+export function getAllDessoCarpetProducts(): Product[] {
+    if (dessoCarpetCache) {
+        return dessoCarpetCache;
+    }
+
+    const colors = (dessoCarpetData as any).colors || [];
+
+    // Group colors by collection to create collection-level products
+    const collectionMap = new Map<string, any[]>();
+    for (const color of colors) {
+        const key = color.collection_slug || color.collection;
+        if (!collectionMap.has(key)) {
+            collectionMap.set(key, []);
+        }
+        collectionMap.get(key)!.push(color);
+    }
+
+    // Create collection-level products (shown in "Kolekcije" tab)
+    const collectionProducts: Product[] = [];
+    Array.from(collectionMap.entries()).forEach(([collSlug, collColors]) => {
+        const first = collColors[0];
+        const collName = dessoDisplayName(first.collection_name || collSlug);
+        const description = [
+            normalizeText(first.collection_description_sr),
+            normalizeText(first.collection_description_en),
+            normalizeText(first.description),
+            normalizeText(enrichProductDescription({ name: collName, categoryId: '4', brandId: '3', specs: [] } as any)),
+        ].find(Boolean) || '';
+
+        const imageUrl = selectPreferredCollectionHeroAsset(
+            undefined,
+            ...collColors.map((color) => color.image_url)
+        );
+        const collectionSpecs = mergeUniqueSpecs(
+            buildSpecsFromCharacteristicRecord(
+                {
+                    Familija: first.parent_collection,
+                    Format: first.format,
+                    Dimenzije: first.dimension,
+                    Podloga: Array.isArray(first.backing_variants) && first.backing_variants.length > 0
+                        ? first.backing_variants.join(' / ')
+                        : first.characteristics?.Podloga || first.specs?.BACKING,
+                    'Klasa upotrebe': first.characteristics?.['Klasa upotrebe']
+                        || first.characteristics?.['Komercijalna klasifikacija'] || first.specs?.CLASSIFICATION,
+                    Vatrostojnost: first.characteristics?.Vatrostojnost
+                        || first.characteristics?.['Reakcija na vatru'] || first.specs?.FIRE_RESISTANCE,
+                },
+                collName
+            ),
+            []
+        );
+        const documents = Array.isArray(first.documents) ? first.documents : [];
+
+        collectionProducts.push({
+            id: `desso-coll-${collSlug}`,
+            name: collName,
+            slug: collSlug,
+            sku: `DESSO-${collSlug.toUpperCase()}`, // DESSO- prefix so hasCollectionSku picks it up
+            categoryId: '4',
+            brandId: '3', // Tarkett (Desso is a display-name prefix only)
+            shortDescription: `${collName} - ${collColors.length} boja u kolekciji ${first.parent_collection || 'Desso'}`,
+            description,
+            images: imageUrl ? [{
+                id: `desso-coll-${collSlug}-img`,
+                url: imageUrl,
+                alt: collName,
+                isPrimary: true,
+                order: 1,
+            }] : [],
+            specs: collectionSpecs,
+            documents,
+            externalLink: normalizeText(first.external_url) || 'https://www.tarkett.com/',
+            inStock: true,
+            featured: false,
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        });
+    });
+
+    // Create individual color products
+    const colorProducts = colors.map((color: any) => {
+        const specs = Object.entries(color.characteristics || {}).map(([label, value]) => ({
+            key: label.toLowerCase().replace(/\s+/g, '_'),
+            label,
+            value: value as string
+        }));
+
+        if (color.parent_collection && !specs.find(s => s.key === 'family')) {
+            specs.push({ key: 'family', label: 'Familija', value: color.parent_collection });
+        }
+
+        const images = [];
+        if (color.image_url) {
+            images.push({
+                id: `${color.slug}-img-1`,
+                url: color.image_url,
+                alt: `${color.name}`,
+                isPrimary: true,
+                order: 1,
+            });
+        }
+
+        const formattedName = formatProductName(color.full_name || color.name, color.code);
+
+        return {
+            id: color.slug,
+            name: formattedName,
+            slug: `${color.collection_slug || color.collection}?color=${color.slug}`,
+            sku: color.code,
+            categoryId: '4', // Tekstilne ploče
+            brandId: '3', // Tarkett (Desso prefix)
+            shortDescription: enrichShortDescription({ ...color, name: formattedName, categoryId: '4', brandId: '3', specs } as any),
+            description: color.description || enrichProductDescription({ name: formattedName, categoryId: '4', brandId: '3', specs } as any),
+            images: images.length > 0 ? images : [{
+                id: `${color.slug}-img-1`,
+                url: '/images/placeholder.svg',
+                alt: formattedName,
+                isPrimary: true,
+                order: 1,
+            }],
+            specs,
+            inStock: true,
+            featured: false,
+            externalLink: color.external_url || 'https://www.tarkett.com/',
+            createdAt: new Date('2024-01-01'),
+            updatedAt: new Date('2024-01-01'),
+        };
+    });
+
+    dessoCarpetCache = [...collectionProducts, ...colorProducts];
+    return dessoCarpetCache;
 }
 
 

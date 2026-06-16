@@ -24,6 +24,7 @@ import {
     getParketCollectionVariantSlugs,
 } from '@/lib/data/parket-collection-mapping';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
+import dessoCarpetData from '@/public/data/desso_carpet_tiles.json';
 import { getAllDekingProducts } from '@/lib/utils/productDataLoader';
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
 
@@ -161,6 +162,28 @@ export async function prepareCustomColors(
     if (product.categoryId === '4' && (product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-'))) {
         const bloqColors = (bloqCarpetData as any).colors || [];
         const collectionColors = bloqColors.filter((c: any) => c.collection_slug === pageSlug);
+        if (collectionColors.length > 0) {
+            return collectionColors.map((c: any) => ({
+                collection: c.collection_slug,
+                collection_name: c.collection_name,
+                code: c.code,
+                name: c.name,
+                full_name: c.full_name || c.name,
+                slug: c.slug,
+                image_url: c.image_url || '',
+                texture_url: c.image_url || '',
+                image_count: c.image_url ? 1 : 0,
+                characteristics: c.characteristics || {},
+                backing_variants: c.backing_variants,
+            }));
+        }
+    }
+
+    // Desso Carpet (cat 4): customColors from desso_carpet_tiles.json (mirror BLOQ branch).
+    // Desso attaches to the existing Tarkett brand; SKU prefix DESSO- on collection products.
+    if (product.categoryId === '4' && (product.sku === 'DESSO-CARPET' || product.sku?.startsWith('DESSO-'))) {
+        const dessoColors = (dessoCarpetData as any).colors || [];
+        const collectionColors = dessoColors.filter((c: any) => c.collection_slug === pageSlug);
         if (collectionColors.length > 0) {
             return collectionColors.map((c: any) => ({
                 collection: c.collection_slug,

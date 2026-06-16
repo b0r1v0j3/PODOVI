@@ -282,7 +282,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Create brands object for Client Component (serializable)
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (hasCollectionTabs) {
-    // Collections: GER-, TARKETT-, WOLFLOR-VINYL-, LINOLEUM-, VINIL-, PARKET-, LAM-, BLOQ-, DEKING-, ESD-, IND-, SPORT-, PODOVI-COLLECTION-
+    // Collections: GER-, TARKETT-, WOLFLOR-VINYL-, LINOLEUM-, VINIL-, PARKET-, LAM-, BLOQ-, DESSO-, DEKING-, ESD-, IND-, SPORT-, PODOVI-COLLECTION-
     // Colors: products without those SKU prefixes
     const hasCollectionSku = (p: { sku?: string | null }) =>
       (
@@ -295,6 +295,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         p.sku?.startsWith('PARKET-') ||
         p.sku?.startsWith('LAM-') ||
         p.sku?.startsWith('BLOQ-') ||
+        p.sku?.startsWith('DESSO-') ||
         p.sku?.startsWith('DEKING-') ||
         p.sku?.startsWith('ESD-') ||
         p.sku?.startsWith('IND-') ||

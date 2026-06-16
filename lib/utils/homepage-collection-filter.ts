@@ -11,6 +11,7 @@ export const COLLECTION_SKU_PREFIXES = [
   'PARKET-',
   'LAM-',
   'BLOQ-',
+  'DESSO-',
   'DEKING-',
   'TIMBERTECH-',
   'ESD-',
