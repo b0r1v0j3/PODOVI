@@ -7,9 +7,9 @@ const UPSTREAM_HOSTS = /gerflor-cee\.com|cdn\.gerflor\.com|prod-peco\.gerflor\.i
 // bez upstream obogaćivanja; zadržava postojeće podatke.
 const EXEMPT = new Set(['mipolam-elegance']);
 
-// protivklizno kolekcije (S5 Tarasafe) idu kroz isti vinyl JSON ali su zaseban segment —
-// ovaj ugovor čuva originalnih 25 S2 Gerflor-vinil kolekcija.
-const collections = ((vinylData as any).collections as any[]).filter((c) => !c.protivklizno);
+// protivklizno (S5 Tarasafe) i zidneObloge (S9 Mural) kolekcije idu kroz isti vinyl JSON ali su
+// zasebni segmenti — ovaj ugovor čuva originalnih 25 S2 Gerflor-vinil kolekcija.
+const collections = ((vinylData as any).collections as any[]).filter((c) => !c.protivklizno && !c.zidneObloge);
 
 describe('Gerflor vinyl S2 enrichment data contract', () => {
   it('ima 25 kolekcija', () => {
