@@ -594,13 +594,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
       }
     }
 
-    // ── Load compatible accessories ──
+    // ── Load compatible accessories (lajsne/profili po sistemu poda) ──
     let accessoryProducts: Product[] = [];
-    if (product.compatibleAccessories && product.compatibleAccessories.length > 0) {
-      const { products: allMockProducts } = await import('@/lib/data/mock-data');
-      accessoryProducts = product.compatibleAccessories
-        .map(slug => allMockProducts.find(p => p.slug === slug))
-        .filter((p): p is Product => !!p);
+    {
+      const { resolveCompatibleAccessories } = await import('@/lib/product-page/compatible-accessories');
+      accessoryProducts = resolveCompatibleAccessories(product);
     }
 
     // ── Laminat: fallback image from first variant ──
