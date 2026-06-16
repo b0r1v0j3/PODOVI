@@ -21,11 +21,11 @@ exports[`color API contracts > returns selected-color docs + spec payload for a 
   "documents": [
     {
       "title": "Tehnički list",
-      "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002929-bold/mist-1/specifications",
+      "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/portal-collection-c002929-boldmist-1-specifications.pdf?v=20260616230530",
     },
     {
       "title": "Tabela formata",
-      "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C002929-bold/mist-1/format-table",
+      "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/portal-collection-c002929-boldmist-1-format-table.pdf?v=20260616230532",
     },
   ],
   "specCount": 23,
