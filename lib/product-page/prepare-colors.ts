@@ -184,7 +184,11 @@ export async function prepareCustomColors(
     // Desso attaches to the existing Tarkett brand; SKU prefix DESSO- on collection products.
     if (product.categoryId === '4' && (product.sku === 'DESSO-CARPET' || product.sku?.startsWith('DESSO-'))) {
         const dessoColors = (dessoCarpetData as any).colors || [];
-        const collectionColors = dessoColors.filter((c: any) => c.collection_slug === pageSlug);
+        // Desso podaci imaju collection_slug bez prefiksa ("desso-futurity"), a kanonski
+        // routeSlug za brend Tarkett (id 3) dobija "tarkett-" prefiks → toleriši oba (kao BLOQ koji
+        // već ima "bloq-" u podacima). Bez ovoga svih 46 Desso kolekcija pokazuje 0 boja.
+        const dessoPageSlug = pageSlug.replace(/^tarkett-/, '');
+        const collectionColors = dessoColors.filter((c: any) => c.collection_slug === pageSlug || c.collection_slug === dessoPageSlug);
         if (collectionColors.length > 0) {
             return collectionColors.map((c: any) => ({
                 collection: c.collection_slug,
