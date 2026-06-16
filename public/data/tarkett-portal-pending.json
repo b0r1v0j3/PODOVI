@@ -146,9 +146,5 @@
   {
     "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000179-primo-premium/primo-medium-green-0680/format-table",
     "reason": "HTTP 404"
-  },
-  {
-    "url": "https://www.tarkett.rs/sr_RS/pdf/collection-C000259-standard-plus-2-0-mm/standard-light-beige-0479/specifications",
-    "reason": "Upload product-documents/products/tarkett-migrated/portal-collection-c000259-standard-plus-2-0-mmstandard-light-beige-0479-specifications.pdf: Bad Gateway"
   }
 ]
