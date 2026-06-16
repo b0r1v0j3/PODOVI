@@ -26,6 +26,7 @@ interface CategoryPageProps {
     color?: string;
     type?: string; // For vinyl type filter: 'homogeni' | 'heterogeni'
     safety?: string; // For vinyl safety filter: '1' = only protivklizni/sigurnosni collections
+    zidne?: string; // For vinyl wall-covering filter: '1' = only zidne obloge collections
     collections?: string; // For LVT collection filter (comma-separated)
     family?: string; // For BLOQ family filter (comma-separated)
     listing?: string; // For core/accessory listing segmentation
@@ -221,6 +222,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     inStock: searchParams.inStock === 'true' ? true : undefined,
     type: searchParams.type, // For vinyl type filter
     safety: searchParams.safety, // For vinyl protivklizni/sigurnosni filter (?safety=1)
+    zidne: searchParams.zidne, // For vinyl zidne obloge filter (?zidne=1)
     // Laminat: don't filter by thickness in repository (we do it manually); others: use repository filter
     thickness: isLaminat ? undefined : (searchParams.thickness ? searchParams.thickness.split(',') : undefined),
     woodType: searchParams.woodType, // For Parket: Hrast | Jasen
@@ -865,6 +867,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               initialColorSlug={searchParams.color}
               vinylType={searchParams.type}
               safetyOnly={searchParams.safety === '1'}
+              wallOnly={searchParams.zidne === '1'}
               listingMode={listingMode}
               searchParams={{
                 search: searchParams.search,

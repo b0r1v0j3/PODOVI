@@ -596,6 +596,11 @@ export class SupabaseProductRepository implements IProductRepository {
       products = products.filter(p => p.specs?.some(s => s.key === 'protivklizno'));
     }
 
+    // Zidne obloge filter (?zidne=1): zadrži samo kolekcije sa zidna_obloga specom.
+    if (filters?.zidne === '1') {
+      products = products.filter(p => p.specs?.some(s => s.key === 'zidna_obloga'));
+    }
+
     if (filters?.collections && filters.collections.length > 0) {
       products = products.filter(p => {
         const productName = p.name;
@@ -766,6 +771,10 @@ export class MockProductRepository implements IProductRepository {
 
     if (filters?.safety === '1') {
       filtered = filtered.filter(p => p.specs?.some(s => s.key === 'protivklizno'));
+    }
+
+    if (filters?.zidne === '1') {
+      filtered = filtered.filter(p => p.specs?.some(s => s.key === 'zidna_obloga'));
     }
 
     if (filters?.collections && filters.collections.length > 0) {
