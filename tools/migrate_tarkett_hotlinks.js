@@ -10,7 +10,7 @@ const IMAGES_BUCKET = 'product-images';
 const DOCS_BUCKET = 'product-documents';
 const DEST_PREFIX = 'products/tarkett-migrated';
 const MIN_IMG_WIDTH = 600;
-const MAX_PDF_BYTES = 52_000_000; // ~49.6 MiB, ispod Supabase 50 MiB globalnog limita
+const MAX_PDF_BYTES = 157_000_000; // ~149.7 MiB; Supabase globalni limit dignut na 150 MiB (2026-06-16)
 
 // Redosled: LVT prvi (najveći), pa ostali. Samo fajlovi koji sadrže Tarkett hotlinkove.
 const TARGET_FILES = [
@@ -127,11 +127,13 @@ async function migratePdf(supabase, manifest, info) {
       try {
         // Tvrdi per-asset plafon (120s) povrh internih timeout-a: zastao socket body-read može
         // da prođe interne timeout-e; Promise.race vs setTimeout sigurno prekida (event loop živ).
+        // PDF-ovi do 150MB (oversized brošure/grading book) sa sporog Akamai-ja traže duži plafon;
+        // slike ostaju na 120s. (Zastao socket i dalje sigurno prekida, samo kasnije.)
         const publicUrl = await core.withTimeout(
           info.type === 'image'
             ? migrateImage(supabase, manifest, info)
             : migratePdf(supabase, manifest, info),
-          120000,
+          info.type === 'image' ? 120000 : 600000,
           `asset ${info.basename}`,
         );
         urlMap[url] = publicUrl;
