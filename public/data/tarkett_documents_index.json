@@ -90,14 +90,6 @@
     ],
     "salsa": [
       {
-        "title": "Uputstvo za T-Lock ugradnju",
-        "url": "https://media.tarkett-image.com/docs/IG_EN_Tarkett_Wood_T-Lock_Installation_Instructions.pdf"
-      },
-      {
-        "title": "Uputstvo za održavanje",
-        "url": "https://media.tarkett-image.com/docs/MI_EN_Tarkett_Wood_Maintenance_Instructions.pdf"
-      },
-      {
         "title": "Sertifikat o stalnosti svojstava",
         "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/cr-see-tarkett-certifikat-142-0797-2019.pdf?v=20260615135100"
       },
@@ -258,14 +250,6 @@
       {
         "title": "Deklaracija o performansama",
         "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/2702-00021-dop-2024-01-sr.pdf?v=20260615140933"
-      },
-      {
-        "title": "Produkt katalog 2025",
-        "url": "https://media.tarkett-image.com/docs/ProductCatalogue_Europarquet_2025.pdf"
-      },
-      {
-        "title": "EKO sertifikat",
-        "url": "https://media.tarkett-image.com/docs/Sertifikat_EKO.pdf"
       },
       {
         "title": "DOP sertifikat",
@@ -538,12 +522,7 @@
         "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/ds-see-timeless-1232-4v.pdf?v=20260615140942"
       }
     ],
-    "winter-832": [
-      {
-        "title": "Tehnički list",
-        "url": "https://media.tarkett-image.com/docs/TDS_Winter_832.pdf"
-      }
-    ],
+    "winter-832": [],
     "woodstock-longboards-1033-4v": [
       {
         "title": "Tehnički list",
