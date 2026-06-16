@@ -48,7 +48,7 @@ describe('S4: Gerflor cdn dokumenti migrirani (osim pending)', () => {
     for (const fp of files) {
       if (!fs.existsSync(fp) || fp.endsWith('gerflor-migration-pending.json')) continue;
       const s = fs.readFileSync(fp, 'utf8');
-      const urls = s.match(/https?:\/\/cdn\.gerflor\.com\/[^\s"'\\)]+/g) || [];
+      const urls = s.match(/https?:\/\/cdn\.gerflor\.com\/[^"'\\\n]+/g) || [];
       for (const u of urls) if (!gerflorAllowed.has(u.split('?')[0])) offenders.push(`${path.basename(fp)}: ${u}`);
     }
     expect(offenders, `nemigrirani gerflor hotlinkovi:\n${offenders.slice(0, 20).join('\n')}`).toEqual([]);

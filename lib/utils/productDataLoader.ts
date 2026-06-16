@@ -2513,9 +2513,9 @@ export function getEsdCollectionProducts(): Product[] {
         'gti-el5-connect': '/images/esd/gti-el5-connect-alt.jpg', // New scene (14530)
         'gti-el5-cleantech': '/images/esd/gti-el5-cleantech-alt.jpg', // New scene (14531)
         'mipolam-biocontrol-el5': '/images/esd/mipolam-biocontrol-el5-alt.jpg', // New scene (31395)
-        'mipolam-technic-el5-eu': 'https://cdn.gerflor.com/media/1642426083/1/14621.jpg',
-        'mipolam-robust-el7': 'https://cdn.gerflor.com/media/1642426083/1/14895.jpg',
-        'mipolam-el7': 'https://cdn.gerflor.com/media/1642426083/1/34841.jpg',
+        'mipolam-technic-el5-eu': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/gerflor-migrated/img/1642426083-1-14621.jpg?v=20260616042821',
+        'mipolam-robust-el7': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/gerflor-migrated/img/1642426083-1-14895.jpg?v=20260616042821',
+        'mipolam-el7': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/gerflor-migrated/img/1642426083-1-34841.jpg?v=20260616042821',
     };
 
     const result = collections.map((col: any) => {

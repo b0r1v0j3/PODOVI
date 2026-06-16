@@ -7,19 +7,22 @@ const core = require('./lib/ingest-core.js');
 const hm = require('./lib/hotlink-migrate.js');
 
 const DOCS_BUCKET = 'product-documents';
+const IMAGES_BUCKET = 'product-images';
 const DEST_PREFIX = 'products/gerflor-migrated';
 const PENDING_PATH = path.join(process.cwd(), 'public', 'data', 'gerflor-migration-pending.json');
 const CONCURRENCY = 8;
 
-// Mešavina public/data JSON i lib/data TS — sve tekstualni fajlovi, string-rewrite radi.
+// Mešavina public/data JSON i lib/* TS — sve tekstualni fajlovi, string-rewrite radi.
 const TARGET_FILES = [
   'public/data/gerflor_documents_raw.json',
   'public/data/documents_index.json',
   'public/data/welding_accessories.json',
   'lib/data/manual-collection-products.ts',
+  'lib/utils/productDataLoader.ts',
 ];
 
-const HOST_RE = /https?:\/\/cdn\.gerflor\.com\/[^"'\\ ]+/g;
+// Hvata ceo URL do navodnika/backslash-a (uključujući LITERALNE razmake u putanji).
+const HOST_RE = /https?:\/\/cdn\.gerflor\.com\/[^"'\\\n]+/g;
 
 function parseArgs() {
   const a = { dryRun: false };
@@ -27,25 +30,31 @@ function parseArgs() {
   return a;
 }
 
-// destPath: /media/2/<id>/<ime>.<ext> → <id>-<slug>.<ext> (id čini putanju jedinstvenom).
-function destPath(url) {
+// destPath: jedinstvena putanja iz /media/<segmenti>/<ime>.<ext>. Slike → product-images,
+// ostalo → product-documents. id-segmenti čine putanju jedinstvenom bez obzira na strukturu.
+function destPathFor(url) {
   const clean = url.split('?')[0];
   const decoded = decodeURIComponent(clean);
-  const basename = decoded.split('/').pop() || 'dokument';
-  const idMatch = clean.match(/\/media\/\d+\/(\d+)\//);
-  const id = idMatch ? idMatch[1] : 'x';
+  const basename = decoded.split('/').pop() || 'asset';
+  const after = clean.split('/media/')[1] || '';
+  const idParts = after.split('/').slice(0, -1).join('-'); // sve sem fajla (npr. 2-55420)
   const dot = basename.lastIndexOf('.');
   const stem = dot > 0 ? basename.slice(0, dot) : basename;
-  const ext = (dot > 0 ? basename.slice(dot + 1) : 'bin').toLowerCase();
-  return `${DEST_PREFIX}/${id}-${core.slugify(stem)}.${ext}`;
+  let ext = (dot > 0 ? basename.slice(dot + 1) : 'bin').toLowerCase();
+  if (ext === 'jpeg') ext = 'jpg';
+  const isImg = /^(jpg|png|webp|gif)$/.test(ext);
+  const prefix = isImg ? `${DEST_PREFIX}/img` : DEST_PREFIX;
+  return { path: `${prefix}/${core.slugify(idParts)}-${core.slugify(stem)}.${ext}`, bucket: isImg ? IMAGES_BUCKET : DOCS_BUCKET };
 }
+function destPath(url) { return destPathFor(url).path; } // za grupisanje po asset-u
 
 async function migrateDoc(supabase, manifest, url) {
   const mKey = `asset:${url}`;
   if (manifest.has(mKey)) return manifest.get(mKey).publicUrl;
   const buffer = await core.downloadAsset(hm.encodeFetchUrl(url));
   if (buffer.length < 100) throw new Error('prazan/nevalidan odgovor');
-  const publicUrl = await core.uploadToBucket(supabase, DOCS_BUCKET, destPath(url), buffer);
+  const { path: dest, bucket } = destPathFor(url);
+  const publicUrl = await core.uploadToBucket(supabase, bucket, dest, buffer);
   manifest.record(mKey, { publicUrl });
   return publicUrl;
 }
