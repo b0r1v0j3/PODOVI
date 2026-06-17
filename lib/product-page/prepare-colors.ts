@@ -43,6 +43,7 @@ function mapNestedCollectionColors(collection: any, context: { categoryId: strin
         slug: color.slug || buildNestedColorSlug(collection, color),
         image_url: color.image || color.image_url || '',
         texture_url: color.image || color.image_url || '',
+        lifestyle_url: color.lifestyle_url || undefined, // visoko-rez hero slika (parket po meri)
         image_count: (color.image || color.image_url) ? 1 : 0,
         brandId: color.brandId || collection.brandId,
         characteristics: {

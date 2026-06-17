@@ -182,8 +182,9 @@ export default function ColorGrid({
     // Update selected slug
     setCurrentSelectedSlug(color.slug);
 
-    // If in compact mode (ProductColorSelector), update URL with ?color= parameter and update image
-    if (compact) {
+    // If in compact mode (ProductColorSelector) ILI pattern-grupa (parket po meri, non-compact),
+    // update URL with ?color= and update hero image. (Bez ovoga non-compact klik ne radi ništa.)
+    if (compact || (color as { isPatternGroup?: boolean }).isPatternGroup) {
       // Update URL with ?color= parameter
       // Use replace instead of push to avoid creating unnecessary history entries
       // when changing colors on the same page
@@ -514,8 +515,9 @@ export default function ColorGrid({
         </div>
       )}
 
-      {/* Grid */}
-      <div className={`grid gap-3 ${compact ? 'grid-cols-6 mb-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
+      {/* Grid — items-start: kartice poravnate na vrh (slike u istoj ravni i kad liste imena
+           različite dužine, npr. pattern-grupe Rhombus 11 / Waves 4). */}
+      <div className={`grid items-start gap-3 ${compact ? 'grid-cols-6 mb-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
         {paginatedColors.map((color) => {
           const isSelected = currentSelectedSlug === color.slug;
           const primaryColorImage = getPrimaryColorImage(color);
