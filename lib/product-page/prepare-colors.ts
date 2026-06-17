@@ -27,6 +27,7 @@ import {
 } from '@/lib/data/parket-collection-mapping';
 import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import dessoCarpetData from '@/public/data/desso_carpet_tiles.json';
+import romusToolsData from '@/public/data/romus_tools.json';
 import { getAllDekingProducts, getAllGrassProducts, getAllPriborProducts } from '@/lib/utils/productDataLoader';
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
 
@@ -86,6 +87,35 @@ export async function prepareCustomColors(
             // Parket/deking po meri sa malo jedinstvenih slika: grupiši po slici umesto
             // da prikažeš N identičnih swatch-eva (npr. Essence 19 opcija → 3 grupe).
             return collapseToPatternGroups(mapped, collection.slug) ?? mapped;
+        }
+    }
+
+    // Romus alat sa variant-setom (npr. "Silikon u boji" = 18 boja, svaki sibling zaseban
+    // proizvod sa SVOJOM slikom): prikaži siblinge (isti sourceProductId) kao swatch-eve.
+    // Samo kad svaki sibling ima jedinstvenu sliku (bez repeticije) → bezbedno za alate
+    // čije veličinske varijante dele istu sliku.
+    if (product.categoryId === '13') {
+        const tools = (romusToolsData as { products?: any[] }).products || [];
+        const self = tools.find((t) => t.slug === pageSlug) || tools.find((t) => t.slug === product.slug);
+        if (self && self.sourceProductId) {
+            const siblings = tools.filter((t) => t.sourceProductId === self.sourceProductId);
+            const imgOf = (t: any) => (t.images?.[0]?.url) || t.image || '';
+            const uniqueImgs = new Set(siblings.map(imgOf).filter(Boolean));
+            if (siblings.length >= 2 && uniqueImgs.size === siblings.length) {
+                const ordered = [self, ...siblings.filter((t) => t.slug !== self.slug)]; // trenutni prvi (auto-select)
+                return ordered.map((t) => ({
+                    collection: self.parentName || 'Romus',
+                    collection_name: self.parentName || '',
+                    code: t.variantName || t.sku || '',
+                    name: t.variantName || t.name,
+                    full_name: t.variantName || t.name,
+                    slug: t.slug,
+                    image_url: imgOf(t),
+                    texture_url: imgOf(t),
+                    image_count: 1,
+                    characteristics: {},
+                }));
+            }
         }
     }
 
@@ -536,6 +566,20 @@ export async function mergeSelectedColor(
             if (source.color.description && typeof source.color.description === 'string' && source.color.description.trim()) {
                 product.description = source.color.description.trim();
             }
+        }
+    }
+
+    // Romus alat: merge izabrani sibling (Silikon u boji i sl.)
+    if (selectedColorSlug && product.categoryId === '13') {
+        const tools = (romusToolsData as { products?: any[] }).products || [];
+        const sib = tools.find((t) => t.slug === selectedColorSlug);
+        if (sib) {
+            // Smislen naslov: "Silikon u boji CLOUD" umesto generičkog "Specijalni alati za podove".
+            product.name = [sib.parentName, sib.variantName].filter(Boolean).join(' ') || sib.name || product.name;
+            product.shortDescription = sib.shortDescription || product.shortDescription;
+            const img = (sib.images && sib.images[0] && sib.images[0].url) || sib.image;
+            if (img) product.images = [{ id: `color-img-${selectedColorSlug}`, url: img, alt: sib.name, isPrimary: true, order: 1 }];
+            if (sib.description && typeof sib.description === 'string' && sib.description.trim()) product.description = sib.description.trim();
         }
     }
 

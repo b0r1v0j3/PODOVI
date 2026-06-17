@@ -639,7 +639,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // ── Determine if this is a "color selector" category ──
     const isTechemCatalogCategory = product.categoryId === '12';
     const isPodoviDekingCollection = product.brandId === '14' && product.categoryId === '5';
-    const isColorSelectorCategory = !isTechemCatalogCategory && (['6', '7', '4', '2', '3', '1', '8', '9', '10', '11'].includes(product.categoryId) || isPodoviDekingCollection);
+    const isColorSelectorCategory = !isTechemCatalogCategory && (['6', '7', '4', '2', '3', '1', '8', '9', '10', '11'].includes(product.categoryId) || isPodoviDekingCollection
+      // Romus alat sa variant-setom (npr. Silikon u boji 18 boja) — prikaži swatch-eve.
+      || (product.categoryId === '13' && Array.isArray(customColors) && customColors.length > 1));
 
     // ── Helper JSX logic to populate masonry columns neatly ──
     const sharedCertsAndEco = (['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
@@ -854,7 +856,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                                   : undefined
                     }
                     apiCategory={product.categoryId === '11' ? 'lajsne' : product.categoryId === '5' && product.brandId === '14' ? 'deking' : undefined}
-                    uiMode={product.categoryId === '11' || (product.categoryId === '5' && product.brandId === '14') || Boolean((customColors as Array<{ isPatternGroup?: boolean }> | undefined)?.[0]?.isPatternGroup) ? 'variants' : 'colors'}
+                    uiMode={product.categoryId === '11' || (product.categoryId === '5' && product.brandId === '14') || product.categoryId === '13' || Boolean((customColors as Array<{ isPatternGroup?: boolean }> | undefined)?.[0]?.isPatternGroup) ? 'variants' : 'colors'}
                     videoEmbedUrl={routeSlug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                     inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                     productId={product.id}
