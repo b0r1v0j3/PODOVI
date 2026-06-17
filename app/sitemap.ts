@@ -73,6 +73,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/parket/essence`,
+      lastModified: sharedCatalogLastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 
   const categories = await categoryRepository.findAll();
