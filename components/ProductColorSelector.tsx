@@ -527,14 +527,18 @@ export default function ProductColorSelector({
                   <h3 className="eyebrow">{selectorTitle}</h3>
                   <p className="text-[13px] text-ink-500 mt-1">{colorsCountLabel} {selectorCountLabel}</p>
                 </div>
-                <button
-                  type="button"
-                  ref={colorsModalTriggerRef}
-                  onClick={() => setIsColorsModalOpen(true)}
-                  className="btn-link whitespace-nowrap"
-                >
-                  Pogledaj sve →
-                </button>
+                {/* Pattern-grupe (parket po meri) već prikazuju SVE grupe + imena u glavnom
+                    prikazu → "Pogledaj sve" je suvišan (nema dodatnih varijanti za modal). */}
+                {!isPatternGroup && (
+                  <button
+                    type="button"
+                    ref={colorsModalTriggerRef}
+                    onClick={() => setIsColorsModalOpen(true)}
+                    className="btn-link whitespace-nowrap"
+                  >
+                    Pogledaj sve →
+                  </button>
+                )}
               </div>
               <ColorGrid
                 collectionSlug={collectionSlug}
