@@ -21,10 +21,12 @@ describe('Essence konfigurator — podaci', () => {
     }
   });
 
-  it('uzorci imaju RAZLIČITE slike (ne generički placeholder)', () => {
+  it('uzorci imaju RAZLIČITE slike sa naše Supabase (ne generički placeholder, ne hotlink)', () => {
     const images = data.patterns.map((p) => p.image);
     expect(new Set(images).size).toBe(19);
-    expect(data.patterns.every((p) => /alpod\.rs\/wp-content\/uploads\/.*(pattern_|trapezium_|Wave-)/i.test(p.image || ''))).toBe(true);
+    // Migrirano na našu Supabase (product-images/products/alpod-migrated/essence), bez hotlinka na alpod.
+    expect(data.patterns.every((p) => /\/alpod-migrated\/essence\/.*(pattern-|trapezium-|wave-)/i.test(p.image || ''))).toBe(true);
+    expect(data.patterns.every((p) => !/alpod\.rs/i.test(p.image || ''))).toBe(true);
   });
 
   it('svaka osa ima jedinstvene šifre i slike', () => {
@@ -32,6 +34,8 @@ describe('Essence konfigurator — podaci', () => {
       const codes = axis.map((o) => o.code);
       expect(new Set(codes).size).toBe(codes.length);
       expect(axis.every((o) => Boolean(o.image))).toBe(true);
+      // Sve migrirano na našu Supabase, bez hotlinka na alpod.
+      expect(axis.every((o) => /supabase\.co\/.*\/alpod-migrated\/essence\//i.test(o.image || ''))).toBe(true);
     }
   });
 });

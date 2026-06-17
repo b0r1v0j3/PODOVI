@@ -1,69 +1,66 @@
 // lib/data/essence-configurator-axes.ts
 // Boje/gradacije/obrade za Essence konfigurator (izvor: alpod.rs, verifikovano 2026-06-17).
-// Slike hotlink sa alpod.rs (host dozvoljen u next.config.mjs); opciono kasnije migrirano na Supabase.
+// Sve slike su migrirane na našu Supabase (product-images/products/alpod-migrated/essence).
 import type { EssenceOption } from '@/lib/configurator/types';
 
-const C = 'https://www.alpod.rs/wp-content/uploads/2025/12/';
-const G = 'https://www.alpod.rs/wp-content/uploads/2025/03/';
-const S = 'https://www.alpod.rs/wp-content/uploads/2025/02/';
 
 // Prave (različite) slike uzoraka sa alpod Essence galerije (verifikovano 2026-06-17).
 // Naša baza ima generičku placeholder sliku za sve uzorke, pa je loader override-uje ovim.
 // Ključ = naziv uzorka iz alpod_floor_collections.json (collections[].colors[].name).
 export const ESSENCE_PATTERN_IMAGES: Record<string, string> = {
-  'Rhombus Diamond Regular': `${C}pattern_diamond_regular_oak-1.jpg`,
-  'Rhombus Diamond Irregular': `${C}pattern_diamond_irregular_oak-1.jpg`,
-  'Rhombus Chevron Regular': `${C}pattern_chevron_regular_oak-1.jpg`,
-  'Rhombus Chevron Irregular': `${C}pattern_chevron_irregular_oak-1.jpg`,
-  'Rhombus Cliff Regular': `${C}pattern_cliff_regular_oak-1.jpg`,
-  'Rhombus Cliff Irregular': `${C}pattern_cliff_irregular_oak-1.jpg`,
-  'Trapezium Hive Regular': `${C}trapezium_hive_regular_topdown_Oak_web-1.jpg`,
-  'Trapezium Hive Irregular': `${C}essence_trapezium_hive_irregular_topdown_lines_6_web1-1.jpg`,
-  'Trapezium Aloe': `${C}trapezium_aloe_oak_lines_03_web-1.jpg`,
-  'Mosaic Stellar': `${C}pattern_stellar_oak-1.jpg`,
-  'Mosaic Threads': `${C}pattern_threads_oak-1.jpg`,
-  'Waves Ocean': `${C}Wave-Ocean.jpg`,
-  'Waves Sea': `${C}pattern_waves_sea-1.jpg`,
-  'Waves Herringbone': `${C}Wave-Herringbone.jpg`,
-  'Waves Fish Scale': `${C}pattern_fish_scale_oak-1.jpg`,
-  'Forest Trees': `${C}pattern_forest_trees-1.jpg`,
-  'Forest Flowers': `${C}pattern_flower_oak-1.jpg`,
-  'Forest Leaves': `${C}pattern_leafs_oak-1.jpg`,
-  'Forest Branches': `${C}pattern_branches_oak-1.jpg`,
+  'Rhombus Diamond Regular': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-diamond-regular-oak-1-5c015b.jpg?v=20260617202653',
+  'Rhombus Diamond Irregular': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-diamond-irregular-oak-1-6d2f2f.jpg?v=20260617202654',
+  'Rhombus Chevron Regular': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-chevron-regular-oak-1-99f7aa.jpg?v=20260617202655',
+  'Rhombus Chevron Irregular': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-chevron-irregular-oak-1-10ac4f.jpg?v=20260617202655',
+  'Rhombus Cliff Regular': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-cliff-regular-oak-1-e128d0.jpg?v=20260617202656',
+  'Rhombus Cliff Irregular': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-cliff-irregular-oak-1-15ef54.jpg?v=20260617202657',
+  'Trapezium Hive Regular': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-trapezium-hive-regular-topdown-oak-web-1-ce760f.jpg?v=20260617202657',
+  'Trapezium Hive Irregular': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-trapezium-hive-irregular-topdown-lines-6-web1-1-a9590f.jpg?v=20260617202658',
+  'Trapezium Aloe': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-trapezium-aloe-oak-lines-03-web-1-600db1.jpg?v=20260617202658',
+  'Mosaic Stellar': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-stellar-oak-1-f98a72.jpg?v=20260617202659',
+  'Mosaic Threads': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-threads-oak-1-25db69.jpg?v=20260617202700',
+  'Waves Ocean': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-wave-ocean-5da6da.jpg?v=20260617202700',
+  'Waves Sea': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-waves-sea-1-11c578.jpg?v=20260617202701',
+  'Waves Herringbone': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-wave-herringbone-bd83a8.jpg?v=20260617202702',
+  'Waves Fish Scale': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-fish-scale-oak-1-11217a.jpg?v=20260617202702',
+  'Forest Trees': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-forest-trees-1-f36c70.jpg?v=20260617202703',
+  'Forest Flowers': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-flower-oak-1-c3d73c.jpg?v=20260617202703',
+  'Forest Leaves': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-leafs-oak-1-c47f83.jpg?v=20260617202704',
+  'Forest Branches': 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-pattern-branches-oak-1-eab096.jpg?v=20260617202704',
 };
 
 export const ESSENCE_COLORS: EssenceOption[] = [
-  { code: 'C01', name: 'Cappuccino', image: `${C}Essence-color-140-300x300.webp` },
-  { code: 'C02', name: 'Slim Coconut', image: `${C}Essence-color-171-300x300.webp` },
-  { code: 'C03', name: 'Dark Oak', image: `${C}Essence-color-229-300x300.webp` },
-  { code: 'C04', name: 'Natural', image: `${C}neutral_color_242-1-300x300.jpg` },
-  { code: 'C05', name: 'Vanilla', image: `${C}Essence-color-276-300x300.webp` },
-  { code: 'C06', name: 'Dark Chocolate', image: `${C}dark_chocolate_color_314-1-300x300.jpg` },
-  { code: 'C07', name: 'Castle Brown', image: `${C}castle_brown_503-1-300x300.jpg` },
-  { code: 'C08', name: 'Pure', image: `${C}Essence-color-532-300x300.webp` },
-  { code: 'C09', name: 'Tobacco', image: `${C}Essence-color-548-300x300.webp` },
-  { code: 'C10', name: 'White 5', image: `${C}white_5_551-1-300x300.jpg` },
-  { code: 'C11', name: 'Caramel', image: `${C}caramel_604-1-300x300.jpg` },
-  { code: 'C12', name: 'Foggy', image: `${C}Essence-color-609-300x300.webp` },
-  { code: 'C13', name: 'Invisible', image: `${C}invisible_612-1-300x300.jpg` },
-  { code: 'C14', name: 'Light Mist', image: `${C}Essence-color-646-300x300.webp` },
-  { code: 'C15', name: 'Smoke Brown', image: `${C}Essence-color-702-300x300.webp` },
-  { code: 'C16', name: 'Dark Walnut', image: `${C}Essence-color-705-300x300.webp` },
-  { code: 'C17', name: 'Beige', image: `${C}beige_706-1-300x300.jpg` },
-  { code: 'C18', name: 'White New', image: `${C}Essence-color-711-300x300.webp` },
-  { code: 'C19', name: 'Nordic White', image: `${C}arctic_white_715-1-300x300.jpg` },
-  { code: 'C20', name: 'Dark Brown', image: `${C}Essence-color-730-300x300.webp` },
+  { code: 'C01', name: 'Cappuccino', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-140-300x300-bea5d4.jpg?v=20260617202705' },
+  { code: 'C02', name: 'Slim Coconut', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-171-300x300-67024b.jpg?v=20260617202705' },
+  { code: 'C03', name: 'Dark Oak', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-229-300x300-d912ff.jpg?v=20260617202706' },
+  { code: 'C04', name: 'Natural', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-neutral-color-242-1-300x300-d283cd.jpg?v=20260617202706' },
+  { code: 'C05', name: 'Vanilla', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-276-300x300-2c66bc.jpg?v=20260617202707' },
+  { code: 'C06', name: 'Dark Chocolate', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-dark-chocolate-color-314-1-300x300-aff64d.jpg?v=20260617202707' },
+  { code: 'C07', name: 'Castle Brown', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-castle-brown-503-1-300x300-985357.jpg?v=20260617202708' },
+  { code: 'C08', name: 'Pure', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-532-300x300-4a9f2d.jpg?v=20260617202708' },
+  { code: 'C09', name: 'Tobacco', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-548-300x300-825fea.jpg?v=20260617202708' },
+  { code: 'C10', name: 'White 5', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-white-5-551-1-300x300-af7039.jpg?v=20260617202709' },
+  { code: 'C11', name: 'Caramel', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-caramel-604-1-300x300-d36b64.jpg?v=20260617202709' },
+  { code: 'C12', name: 'Foggy', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-609-300x300-db11d2.jpg?v=20260617202710' },
+  { code: 'C13', name: 'Invisible', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-invisible-612-1-300x300-c86075.jpg?v=20260617202710' },
+  { code: 'C14', name: 'Light Mist', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-646-300x300-fd4074.jpg?v=20260617202710' },
+  { code: 'C15', name: 'Smoke Brown', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-702-300x300-76c4bb.jpg?v=20260617202711' },
+  { code: 'C16', name: 'Dark Walnut', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-705-300x300-bbd6c7.jpg?v=20260617202711' },
+  { code: 'C17', name: 'Beige', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-beige-706-1-300x300-7faffc.jpg?v=20260617202712' },
+  { code: 'C18', name: 'White New', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-711-300x300-e1a4cc.jpg?v=20260617202712' },
+  { code: 'C19', name: 'Nordic White', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-arctic-white-715-1-300x300-3f4dd0.jpg?v=20260617202713' },
+  { code: 'C20', name: 'Dark Brown', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-12-essence-color-730-300x300-3d68b2.jpg?v=20260617202713' },
 ];
 
 export const ESSENCE_GRADATIONS: EssenceOption[] = [
-  { code: 'E', name: 'Elegant', image: `${G}elegant_gradation-1-768x650.webp` },
-  { code: 'N', name: 'Natural', image: `${G}natural_gradation-1-768x650.webp` },
-  { code: 'S', name: 'Standard', image: `${G}standard_gradation-1-768x650.webp` },
+  { code: 'E', name: 'Elegant', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-03-elegant-gradation-1-768x650-e9b4a7.jpg?v=20260617202714' },
+  { code: 'N', name: 'Natural', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-03-natural-gradation-1-768x650-22de36.jpg?v=20260617202714' },
+  { code: 'S', name: 'Standard', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-03-standard-gradation-1-768x650-7ae3b6.jpg?v=20260617202715' },
 ];
 
 export const ESSENCE_SURFACES: EssenceOption[] = [
-  { code: 'B', name: 'Brušeno', image: `${S}bruseno-4-768x658.jpg` },
-  { code: 'C', name: 'Četkano', image: `${S}krtaceno-4-768x658.jpg` },
-  { code: 'H', name: 'Hoblano', image: `${S}skobljano-4-768x658.jpg` },
-  { code: 'P', name: 'Piljeno', image: `${S}zagano-4-768x658.jpg` },
+  { code: 'B', name: 'Brušeno', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-02-bruseno-4-768x658-a1d02b.jpg?v=20260617202715' },
+  { code: 'C', name: 'Četkano', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-02-krtaceno-4-768x658-9caddf.jpg?v=20260617202715' },
+  { code: 'H', name: 'Hoblano', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-02-skobljano-4-768x658-fdcaf8.jpg?v=20260617202716' },
+  { code: 'P', name: 'Piljeno', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence/2025-02-zagano-4-768x658-4b7401.jpg?v=20260617202716' },
 ];
