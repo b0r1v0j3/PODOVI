@@ -17,6 +17,7 @@ import {
     resolveSelectedColorServerData,
 } from './color-helpers';
 import { getDerivedWeldingCharacteristics } from './welding-helpers';
+import { collapseToPatternGroups } from './pattern-groups';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import {
     getEffectiveParketCollection,
@@ -81,7 +82,10 @@ export async function prepareCustomColors(
             col.slug === (product as { collectionSlug?: string }).collectionSlug
         );
         if (collection && collection.colors && collection.colors.length > 0) {
-            return mapNestedCollectionColors(collection, { categoryId: product.categoryId });
+            const mapped = mapNestedCollectionColors(collection, { categoryId: product.categoryId });
+            // Parket/deking po meri sa malo jedinstvenih slika: grupiši po slici umesto
+            // da prikažeš N identičnih swatch-eva (npr. Essence 19 opcija → 3 grupe).
+            return collapseToPatternGroups(mapped, collection.slug) ?? mapped;
         }
     }
 

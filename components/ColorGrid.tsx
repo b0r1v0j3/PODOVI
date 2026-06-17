@@ -545,13 +545,23 @@ export default function ColorGrid({
 
               {/* Info - only show if not compact */}
               {!compact && (
-                <div className="px-1 pt-2 pb-3">
-                  <p className="text-[13px] text-ink-900 truncate">{color.code}</p>
-                  {color.collection_name && (
-                    <p className="eyebrow truncate mt-0.5">{color.collection_name}</p>
-                  )}
-                  <p className="text-[13px] text-ink-600 truncate mt-1">{color.name}</p>
-                </div>
+                (color as { variantList?: string[] }).variantList ? (
+                  <div className="px-1 pt-2 pb-3">
+                    <p className="text-[13px] text-ink-900">{color.name}</p>
+                    <p className="eyebrow mt-0.5">{color.code}</p>
+                    <p className="text-[11px] text-ink-500 mt-1.5 leading-relaxed">
+                      {((color as { variantList?: string[] }).variantList || []).join(' · ')}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="px-1 pt-2 pb-3">
+                    <p className="text-[13px] text-ink-900 truncate">{color.code}</p>
+                    {color.collection_name && (
+                      <p className="eyebrow truncate mt-0.5">{color.collection_name}</p>
+                    )}
+                    <p className="text-[13px] text-ink-600 truncate mt-1">{color.name}</p>
+                  </div>
+                )
               )}
             </button>
           );
