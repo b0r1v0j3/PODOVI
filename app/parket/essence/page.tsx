@@ -1,6 +1,5 @@
 // app/parket/essence/page.tsx
 import { Metadata } from 'next';
-import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import EssenceConfigurator from '@/components/configurator/EssenceConfigurator';
 import { getEssenceConfiguratorData } from '@/lib/data/essence-configurator';
