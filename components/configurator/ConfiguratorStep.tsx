@@ -19,8 +19,9 @@ export default function ConfiguratorStep({ label, items, selectedCode, onSelect,
   const gridClass = isPattern
     ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'
     : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5';
-  const tileClass = isPattern ? 'aspect-[3/2] bg-ink-900' : 'aspect-square bg-paper';
-  const fitClass = isPattern ? 'object-contain' : 'object-cover';
+  // Uzorci: pločica istog odnosa kao slika (1200x846) + object-cover → popunjava bez crnih ivica, kontura ostaje.
+  const tileClass = isPattern ? 'aspect-[1200/846] bg-ink-900' : 'aspect-square bg-paper';
+  const fitClass = 'object-cover';
   const emptyTextClass = isPattern ? 'text-white/60' : 'text-ink-500';
 
   return (

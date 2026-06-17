@@ -22,9 +22,9 @@ export default function ConfiguratorSummary({ selection }: { selection: EssenceS
     <div className="border border-ink-200 p-4">
       <p className="eyebrow mb-3">Vaš izbor</p>
 
-      <div className={`relative mb-4 aspect-[4/3] border border-ink-200 ${preview ? 'bg-ink-900' : 'bg-paper'}`}>
+      <div className="relative mb-4 aspect-[1200/846] border border-ink-200 bg-paper">
         {preview ? (
-          <Image src={preview} alt={selection.uzorak?.name || ''} fill sizes="320px" className="object-contain" />
+          <Image src={preview} alt={selection.uzorak?.name || ''} fill sizes="320px" className="object-cover" />
         ) : (
           <span className="flex h-full items-center justify-center text-[12px] text-ink-400">izaberite uzorak</span>
         )}
