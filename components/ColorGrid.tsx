@@ -519,6 +519,8 @@ export default function ColorGrid({
         {paginatedColors.map((color) => {
           const isSelected = currentSelectedSlug === color.slug;
           const primaryColorImage = getPrimaryColorImage(color);
+          const isGroup = Boolean((color as { variantList?: string[] }).variantList);
+          const hideImage = Boolean((color as { hideImage?: boolean }).hideImage);
           return (
             <button
               key={color.slug}
@@ -528,20 +530,23 @@ export default function ColorGrid({
                 : 'border-transparent hover:border-ink-200'
                 }`}
             >
-              {/* Image */}
-              <div className="aspect-square relative overflow-hidden bg-paper">
-                {primaryColorImage?.url ? (
-                  <ImageWithFallback
-                    src={primaryColorImage.url}
-                    alt={primaryColorImage.alt || color.full_name}
-                    className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                    sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
-                    quality={100}
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-ink-500 text-xs">Bez slike</div>
-                )}
-              </div>
+              {/* Image — pattern-grupe: uspravan okvir + object-contain (cela foto, bez sečenja).
+                   hideImage (jedna deljena generička slika, npr. Four Seasons baner) → bez slike. */}
+              {!hideImage && (
+                <div className={`${isGroup ? 'aspect-[3/4]' : 'aspect-square'} relative overflow-hidden bg-paper`}>
+                  {primaryColorImage?.url ? (
+                    <ImageWithFallback
+                      src={primaryColorImage.url}
+                      alt={primaryColorImage.alt || color.full_name}
+                      className={`${isGroup ? 'object-contain' : 'object-cover'} group-hover:scale-[1.03] transition-transform duration-700`}
+                      sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
+                      quality={100}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-ink-500 text-xs">Bez slike</div>
+                  )}
+                </div>
+              )}
 
               {/* Info - only show if not compact */}
               {!compact && (

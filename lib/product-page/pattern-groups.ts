@@ -64,6 +64,9 @@ export function collapseToPatternGroups(colors: AnyColor[], collectionSlug: stri
             code: `${members.length} opcija`,
             variantList: names,
             isPatternGroup: true,
+            // Jedna jedina deljena slika za celu kolekciju = generička (npr. Four Seasons baner
+            // koji ne prikazuje parket) → ne prikazuj sliku, samo listu nijansi.
+            hideImage: uniqueImages === 1,
         });
     }
     return groups;
