@@ -182,7 +182,9 @@ export default function ProductColorSelector({
     };
   }, [selectedColor, activeCustomColor]);
   const displayProductTitle = useMemo(() => {
-    const rawName = activeColorContext?.name
+    // Pattern-grupe (parket po meri): naslov uvek = ime kolekcije (Essence Premium / Four Seasons),
+    // ne ime izabrane grupe ("Rhombus"/"Nijanse").
+    const rawName = (activeColorContext?.name && !isPatternGroup)
       ? (
         activeColorContext.code && activeColorContext.name.startsWith(activeColorContext.code)
           ? activeColorContext.name.substring(activeColorContext.code.length).trim()
@@ -191,7 +193,7 @@ export default function ProductColorSelector({
       : productName;
 
     return splitProductTitle(rawName, collectionDisplayName || collectionName);
-  }, [activeColorContext, productName, collectionDisplayName, collectionName]);
+  }, [activeColorContext, productName, collectionDisplayName, collectionName, isPatternGroup]);
   const shareTitle = useMemo(() => {
     if (displayProductTitle.collection && displayProductTitle.collection !== displayProductTitle.color) {
       return `${displayProductTitle.color} - ${displayProductTitle.collection}`;

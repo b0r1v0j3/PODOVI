@@ -15,10 +15,13 @@ interface AnyColor {
 }
 
 function deriveGroupLabel(names: string[], image: string): string {
-    // 1) zajednička prva reč (npr. sve "Waves *" → "Waves", "Forest *" → "Forest")
+    // 1) najčešća prva reč ako pokriva bar pola grupe (Waves 4/4, Forest 4/4, Rhombus 6/11)
     const firstWords = names.map((n) => String(n || '').trim().split(/\s+/)[0]).filter(Boolean);
-    if (firstWords.length > 0 && firstWords.every((w) => w === firstWords[0])) {
-        return firstWords[0];
+    if (firstWords.length > 0) {
+        const freq: Record<string, number> = {};
+        for (const w of firstWords) freq[w] = (freq[w] || 0) + 1;
+        const [topWord, topCount] = Object.entries(freq).sort((a, b) => b[1] - a[1])[0];
+        if (topCount >= firstWords.length * 0.5) return topWord;
     }
     // 2) opisni token iz imena fajla (essence_rhombus_web → "Rhombus"), preskoči generičke
     const m = image.match(/(?:essence|alpod|parket)_([a-z]+)/i) || image.match(/\/([a-z]+)[_-][a-z0-9]*\.(?:jpg|jpeg|webp|png)/i);
