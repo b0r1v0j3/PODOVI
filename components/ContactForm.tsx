@@ -12,6 +12,12 @@ export default function ContactForm() {
     const initialRef = searchParams.get('ref') || '';
     const initialCategory = searchParams.get('category') || '';
     const initialName = searchParams.get('name') || '';
+    const initialKonfigurator = searchParams.get('konfigurator') || '';
+    const initialUzorak = searchParams.get('uzorak') || '';
+    const initialBoja = searchParams.get('boja') || '';
+    const initialGradacija = searchParams.get('gradacija') || '';
+    const initialObrada = searchParams.get('obrada') || '';
+    const initialSifra = searchParams.get('sifra') || '';
 
     const [formData, setFormData] = useState({
         fullName: '',
@@ -45,6 +51,20 @@ export default function ContactForm() {
             }));
         }
 
+        if (initialKonfigurator === 'essence' && initialUzorak) {
+            const lines =
+                `Uzorak: ${initialUzorak}\n` +
+                `Boja: ${initialBoja}\n` +
+                `Gradacija: ${initialGradacija}\n` +
+                `Obrada: ${initialObrada}\n` +
+                (initialSifra ? `Šifra: ${initialSifra}\n` : '');
+            setFormData(prev => ({
+                ...prev,
+                message: `Poštovani,\n\nŽeleo bih ponudu za parket po meri (Essence Premium) sa sledećom konfiguracijom:\n${lines}\nMolim vas za ponudu i informaciju o dostupnosti.\n\nHvala.`,
+            }));
+            return;
+        }
+
         if (initialCategory || initialColor || initialRef) {
             let details = '';
             if (initialCategory) details += `Kategorija: ${initialCategory}\n`;
@@ -59,7 +79,7 @@ export default function ContactForm() {
                 }));
             }
         }
-    }, [initialProduct, initialCategory, initialColor, initialRef, initialName]);
+    }, [initialProduct, initialCategory, initialColor, initialRef, initialName, initialKonfigurator, initialUzorak, initialBoja, initialGradacija, initialObrada, initialSifra]);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
