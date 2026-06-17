@@ -93793,7 +93793,7 @@
       "url": "https://www.alpod.rs/kolekcija-parketa-essence/",
       "description": "Essence Premium je Alpod premium kolekcija parketa po meri sa geometrijskim, talasastim i forest uzorcima.",
       "shortDescription": "Essence Premium - 19 opcija u katalogu",
-      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/2024-09-rhomb-card-038ed3.jpg?v=20260617114235",
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827",
       "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/2024-09-rhomb-card-038ed3.jpg?v=20260617114235",
       "image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/2024-09-rhomb-card-038ed3.jpg?v=20260617114235",
       "colorCount": 19,
@@ -93855,7 +93855,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-2",
@@ -93905,7 +93906,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-3",
@@ -93955,7 +93957,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-4",
@@ -94005,7 +94008,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-5",
@@ -94055,7 +94059,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-6",
@@ -94105,7 +94110,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-7",
@@ -94155,7 +94161,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-8",
@@ -94205,7 +94212,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-9",
@@ -94255,7 +94263,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-10",
@@ -94305,7 +94314,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-11",
@@ -94355,7 +94365,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-rhombus.jpg?v=20260617132827"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-12",
@@ -94405,7 +94416,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-waves.jpg?v=20260617132828"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-13",
@@ -94455,7 +94467,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-waves.jpg?v=20260617132828"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-14",
@@ -94505,7 +94518,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-waves.jpg?v=20260617132828"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-15",
@@ -94555,7 +94569,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-waves.jpg?v=20260617132828"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-16",
@@ -94605,7 +94620,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-forest.jpg?v=20260617132828"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-17",
@@ -94655,7 +94671,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-forest.jpg?v=20260617132828"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-18",
@@ -94705,7 +94722,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-forest.jpg?v=20260617132828"
         },
         {
           "sourceId": "alpod-parket-essence-premium-color-19",
@@ -94755,7 +94773,8 @@
           "priceAbsent": true,
           "priceHtml": "",
           "priceValue": 0,
-          "prices": null
+          "prices": null,
+          "lifestyle_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/essence-lifestyle-forest.jpg?v=20260617132828"
         }
       ],
       "sourceType": "page"

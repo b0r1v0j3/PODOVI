@@ -341,7 +341,9 @@ export default function ProductColorSelector({
                 )}
                 {customColors.map((color: { slug?: string; image_url?: string; texture_url?: string; lifestyle_url?: string; image?: string; name?: string; full_name?: string }) => {
                   const primaryColorImage = getPrimaryColorImage(color);
-                  const imgUrl = primaryColorImage?.url;
+                  // Hero (velika slika) prefira lifestyle_url (visoka rezolucija, prostor) ako postoji;
+                  // swatch i dalje koristi image_url (čista card slika).
+                  const imgUrl = color.lifestyle_url || primaryColorImage?.url;
                   const isActive = color.slug === customColorHeroState.activeColorSlug;
                   if (!imgUrl) return null;
                   return (
