@@ -7,6 +7,31 @@ const C = 'https://www.alpod.rs/wp-content/uploads/2025/12/';
 const G = 'https://www.alpod.rs/wp-content/uploads/2025/03/';
 const S = 'https://www.alpod.rs/wp-content/uploads/2025/02/';
 
+// Prave (različite) slike uzoraka sa alpod Essence galerije (verifikovano 2026-06-17).
+// Naša baza ima generičku placeholder sliku za sve uzorke, pa je loader override-uje ovim.
+// Ključ = naziv uzorka iz alpod_floor_collections.json (collections[].colors[].name).
+export const ESSENCE_PATTERN_IMAGES: Record<string, string> = {
+  'Rhombus Diamond Regular': `${C}pattern_diamond_regular_oak-1.jpg`,
+  'Rhombus Diamond Irregular': `${C}pattern_diamond_irregular_oak-1.jpg`,
+  'Rhombus Chevron Regular': `${C}pattern_chevron_regular_oak-1.jpg`,
+  'Rhombus Chevron Irregular': `${C}pattern_chevron_irregular_oak-1.jpg`,
+  'Rhombus Cliff Regular': `${C}pattern_cliff_regular_oak-1.jpg`,
+  'Rhombus Cliff Irregular': `${C}pattern_cliff_irregular_oak-1.jpg`,
+  'Trapezium Hive Regular': `${C}trapezium_hive_regular_topdown_Oak_web-1.jpg`,
+  'Trapezium Hive Irregular': `${C}essence_trapezium_hive_irregular_topdown_lines_6_web1-1.jpg`,
+  'Trapezium Aloe': `${C}trapezium_aloe_oak_lines_03_web-1.jpg`,
+  'Mosaic Stellar': `${C}pattern_stellar_oak-1.jpg`,
+  'Mosaic Threads': `${C}pattern_threads_oak-1.jpg`,
+  'Waves Ocean': `${C}Wave-Ocean.jpg`,
+  'Waves Sea': `${C}pattern_waves_sea-1.jpg`,
+  'Waves Herringbone': `${C}Wave-Herringbone.jpg`,
+  'Waves Fish Scale': `${C}pattern_fish_scale_oak-1.jpg`,
+  'Forest Trees': `${C}pattern_forest_trees-1.jpg`,
+  'Forest Flowers': `${C}pattern_flower_oak-1.jpg`,
+  'Forest Leaves': `${C}pattern_leafs_oak-1.jpg`,
+  'Forest Branches': `${C}pattern_branches_oak-1.jpg`,
+};
+
 export const ESSENCE_COLORS: EssenceOption[] = [
   { code: 'C01', name: 'Cappuccino', image: `${C}Essence-color-140-300x300.webp` },
   { code: 'C02', name: 'Slim Coconut', image: `${C}Essence-color-171-300x300.webp` },

@@ -21,6 +21,12 @@ describe('Essence konfigurator — podaci', () => {
     }
   });
 
+  it('uzorci imaju RAZLIČITE slike (ne generički placeholder)', () => {
+    const images = data.patterns.map((p) => p.image);
+    expect(new Set(images).size).toBe(19);
+    expect(data.patterns.every((p) => /alpod\.rs\/wp-content\/uploads\/.*(pattern_|trapezium_|Wave-)/i.test(p.image || ''))).toBe(true);
+  });
+
   it('svaka osa ima jedinstvene šifre i slike', () => {
     for (const axis of [data.colors, data.gradations, data.surfaces]) {
       const codes = axis.map((o) => o.code);
