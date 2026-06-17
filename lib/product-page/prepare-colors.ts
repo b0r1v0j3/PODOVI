@@ -107,7 +107,7 @@ export async function prepareCustomColors(
                 return ordered.map((t) => ({
                     collection: self.parentName || 'Romus',
                     collection_name: self.parentName || '',
-                    code: t.variantName || t.sku || '',
+                    code: t.sku || '', // NE variantName — inače naslov skida code iz name-a (CLOUD-CLOUD="")
                     name: t.variantName || t.name,
                     full_name: t.variantName || t.name,
                     slug: t.slug,
@@ -575,9 +575,16 @@ export async function mergeSelectedColor(
         const tools = (romusToolsData as { products?: any[] }).products || [];
         const sib = tools.find((t) => t.slug === selectedColorSlug);
         if (sib) {
-            // Smislen naslov: "Silikon u boji CLOUD" umesto generičkog "Specijalni alati za podove".
+            // Smislen naslov: H1 = varijanta (CLOUD), podnaslov = "Silikon u boji" (ne grupa "Specijalni alati za podove").
             product.name = [sib.parentName, sib.variantName].filter(Boolean).join(' ') || sib.name || product.name;
             product.shortDescription = sib.shortDescription || product.shortDescription;
+            if (sib.parentName) {
+                const specs = Array.isArray(product.specs) ? [...product.specs] : [];
+                const collSpec = { key: 'collection', label: 'Kolekcija', value: sib.parentName };
+                const idx = specs.findIndex((s) => s.key === 'collection');
+                if (idx >= 0) specs[idx] = collSpec; else specs.push(collSpec);
+                product.specs = specs;
+            }
             const img = (sib.images && sib.images[0] && sib.images[0].url) || sib.image;
             if (img) product.images = [{ id: `color-img-${selectedColorSlug}`, url: img, alt: sib.name, isPrimary: true, order: 1 }];
             if (sib.description && typeof sib.description === 'string' && sib.description.trim()) product.description = sib.description.trim();
