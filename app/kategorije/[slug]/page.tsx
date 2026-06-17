@@ -13,6 +13,7 @@ import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
 import CategoryTabs from '@/components/CategoryTabs';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import EssenceConfiguratorBanner from '@/components/configurator/EssenceConfiguratorBanner';
 import type { Product } from '@/types';
 
 interface CategoryPageProps {
@@ -839,6 +840,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             ) : null}
           </div>
         </section>
+        {category.slug === 'parket' && <EssenceConfiguratorBanner />}
         {/* Traka filtera: brend cipovi + dugme Filteri (fioka) */}
         <ProductFilters
           availableBrands={availableBrands}
