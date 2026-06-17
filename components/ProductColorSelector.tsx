@@ -104,6 +104,9 @@ export default function ProductColorSelector({
     ? (colorsCount === 1 ? 'varijanta' : 'varijanti')
     : 'boja';
   const selectorAllTitle = uiMode === 'variants' ? 'Sve varijante' : 'Sve boje';
+  // "Parket po meri" grupisani prikaz (Essence/Four Seasons): malo grupa sa listom imena →
+  // glavni grid ne-compact da se vide imena varijanti (kao mockup), umesto sitnih thumbnail-a.
+  const isPatternGroup = Boolean((customColors as Array<{ isPatternGroup?: boolean }> | undefined)?.[0]?.isPatternGroup);
 
   // Zakljucaj scroll pozadine dok je modal boja otvoren
   useScrollLock(isColorsModalOpen);
@@ -532,7 +535,7 @@ export default function ProductColorSelector({
               <ColorGrid
                 collectionSlug={collectionSlug}
                 onColorSelect={handleColorSelect}
-                compact={true}
+                compact={!isPatternGroup}
                 limit={12}
                 onColorsLoaded={setColorsCount}
                 initialColorSlug={initialColorSlug}

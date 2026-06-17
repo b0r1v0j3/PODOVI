@@ -38,7 +38,16 @@ describe('Podovi imported Alpod-source catalog contracts', () => {
 
     const colors = await prepareCustomColors(product!, slug);
 
-    expect(colors?.length).toBeGreaterThanOrEqual(minimumColors);
+    // "Parket po meri" sa malo jedinstvenih slika (Essence/Four Seasons) se sažima u grupe
+    // (jedan swatch po slici) sa `variantList` imenima; ostale kolekcije zadrže stavku po boji.
+    // Ukupan broj opcija mora ostati >= minimumColors u oba slučaja.
+    const totalOptions = (colors || []).reduce(
+      (sum, color) => sum + (Array.isArray((color as { variantList?: string[] }).variantList)
+        ? (color as { variantList?: string[] }).variantList!.length
+        : 1),
+      0,
+    );
+    expect(totalOptions).toBeGreaterThanOrEqual(minimumColors);
     expect(colors?.every((color) => Boolean(color.image_url || color.texture_url))).toBe(true);
   });
 
