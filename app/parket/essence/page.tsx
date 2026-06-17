@@ -2,6 +2,7 @@
 import { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import EssenceConfigurator from '@/components/configurator/EssenceConfigurator';
+import EssenceInfo from '@/components/configurator/EssenceInfo';
 import { getEssenceConfiguratorData } from '@/lib/data/essence-configurator';
 
 export const metadata: Metadata = {
@@ -30,6 +31,8 @@ export default function EssenceConfiguratorPage() {
         </section>
 
         <EssenceConfigurator data={data} />
+
+        <EssenceInfo />
       </div>
     </div>
   );
