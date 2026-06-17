@@ -9,15 +9,26 @@ interface ConfiguratorStepProps {
   items: EssenceOption[];
   selectedCode: string | null;
   onSelect: (option: EssenceOption) => void;
+  // 'pattern' = landscape tile, cela slika vidljiva (bele konture oblika parketa);
+  // 'swatch' = kvadrat (boje/gradacije/obrade).
+  variant?: 'pattern' | 'swatch';
 }
 
-export default function ConfiguratorStep({ label, items, selectedCode, onSelect }: ConfiguratorStepProps) {
+export default function ConfiguratorStep({ label, items, selectedCode, onSelect, variant = 'swatch' }: ConfiguratorStepProps) {
+  const isPattern = variant === 'pattern';
+  const gridClass = isPattern
+    ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'
+    : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5';
+  const tileClass = isPattern ? 'aspect-[3/2] bg-ink-900' : 'aspect-square bg-paper';
+  const fitClass = isPattern ? 'object-contain' : 'object-cover';
+  const emptyTextClass = isPattern ? 'text-white/60' : 'text-ink-500';
+
   return (
     <div>
       <p className="mb-4 text-[13px] text-ink-600">
         <span className="font-medium text-ink-900">Izaberite {label.toLowerCase()}</span> · {items.length} opcija
       </p>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className={`grid gap-3 ${gridClass}`}>
         {items.map((item) => {
           const selected = item.code === selectedCode;
           return (
@@ -28,17 +39,17 @@ export default function ConfiguratorStep({ label, items, selectedCode, onSelect 
               aria-pressed={selected}
               className={`group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ink-900 ${selected ? 'ring-2 ring-ink-900' : ''}`}
             >
-              <div className="relative aspect-square overflow-hidden border border-ink-200 bg-paper">
+              <div className={`relative overflow-hidden border border-ink-200 ${tileClass}`}>
                 {item.image ? (
                   <Image
                     src={item.image}
                     alt={item.name}
                     fill
-                    sizes="(max-width: 768px) 50vw, 20vw"
-                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className={fitClass}
                   />
                 ) : (
-                  <span className="flex h-full items-center justify-center px-2 text-center text-[12px] text-ink-500">
+                  <span className={`flex h-full items-center justify-center px-2 text-center text-[12px] ${emptyTextClass}`}>
                     {item.name}
                   </span>
                 )}

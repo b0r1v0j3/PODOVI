@@ -54,6 +54,7 @@ export default function EssenceConfigurator({ data }: { data: EssenceConfigurato
           items={steps[active].items}
           selectedCode={selection[steps[active].key]?.code || null}
           onSelect={(option) => handleSelect(steps[active].key, option)}
+          variant={steps[active].key === 'uzorak' ? 'pattern' : 'swatch'}
         />
       </div>
 
