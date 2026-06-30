@@ -2,9 +2,18 @@
 
 import { useState, FormEvent, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 
-// Vrste poda koje korisnik može da izabere u čeklistu (vodi ga ka upitu).
-const FLOOR_CATEGORIES = ['Vinil', 'LVT', 'Parket', 'Linoleum', 'Tepih', 'Sport'];
+// Vrste poda koje korisnik bira (kartica sa slikom materijala vodi ga ka upitu).
+// Slike su reprezentativni dekori iz kataloga (self-hostovano na Supabase).
+const FLOOR_CATEGORIES: { name: string; image: string }[] = [
+    { name: 'Vinil', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/mipolam-accord/decor/0301-louise.jpg' },
+    { name: 'LVT', image: '/images/products/lvt/colors/creation-55/1742-sahara-noir/pod/1742-sahara-noir-pod.jpg' },
+    { name: 'Parket', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/2024-10-33533-admoak-n02020-1-5943e4.jpg' },
+    { name: 'Linoleum', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/linoleum/tarkett-trentino-xf2-2-5-mm/decor/505-trentino-cloud.jpg' },
+    { name: 'Tepih', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/tekstilne-ploce/desso-airmaster-atmos/decor/3841-b747.jpg' },
+    { name: 'Sport', image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/sport/dlw-colorette-sport/1059-stone-grey.jpg' },
+];
 
 function buildCategorySubject(categories: string[]): string {
     if (!categories.length) return '';
@@ -191,35 +200,39 @@ export default function ContactForm() {
                 <p className="mb-4 text-[13px] text-ink-500">
                     Izaberite jednu ili više — naslov i poruku popunjavamo umesto vas (možete ih izmeniti).
                 </p>
-                <div className="border-t border-ink-200">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                     {FLOOR_CATEGORIES.map((category) => {
-                        const active = formData.categories.includes(category);
+                        const active = formData.categories.includes(category.name);
                         return (
                             <button
                                 type="button"
-                                key={category}
-                                onClick={() => toggleCategory(category)}
+                                key={category.name}
+                                onClick={() => toggleCategory(category.name)}
                                 aria-pressed={active}
-                                className="flex w-full items-center gap-3 border-b border-ink-200 py-3 text-left transition-colors hover:bg-paper"
+                                className={`group relative overflow-hidden border text-left transition-colors ${active ? 'border-ink-900' : 'border-ink-200 hover:border-ink-400'
+                                    }`}
                             >
-                                <span
-                                    className={`flex h-5 w-5 flex-shrink-0 items-center justify-center border transition-colors duration-200 ${active
-                                        ? 'border-ink-900 bg-ink-900 text-white'
-                                        : 'border-ink-400 text-transparent'
-                                        }`}
-                                >
-                                    <svg
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        className={`h-3.5 w-3.5 transition-transform duration-200 ${active ? 'scale-100' : 'scale-50'}`}
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </span>
-                                <span className={`text-[15px] ${active ? 'font-medium text-ink-900' : 'text-ink-700'}`}>
-                                    {category}
-                                </span>
+                                <div className="relative aspect-[4/3] overflow-hidden bg-paper">
+                                    <Image
+                                        src={category.image}
+                                        alt={`Pod: ${category.name}`}
+                                        fill
+                                        sizes="(max-width: 640px) 50vw, 220px"
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                    {active && (
+                                        <span className="absolute right-0 top-0 flex h-6 w-6 items-center justify-center bg-ink-900 text-white">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-3.5 w-3.5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="border-t border-ink-200 px-3 py-2.5">
+                                    <span className={`text-[14px] ${active ? 'font-medium text-ink-900' : 'text-ink-700'}`}>
+                                        {category.name}
+                                    </span>
+                                </div>
                             </button>
                         );
                     })}
