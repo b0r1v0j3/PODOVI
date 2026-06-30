@@ -1,7 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+  type PointerEvent as ReactPointerEvent,
+} from 'react';
 import { Brand, Category, Product } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 
@@ -87,6 +94,8 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const canOpenCategoryPage = Boolean(activeGroup);
   const categoryButtonClass = 'shrink-0 text-[1.65rem] font-semibold leading-none tracking-normal transition-colors sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]';
   const tabsScrollRef = useRef<HTMLDivElement>(null);
+  // Drag-to-scroll stanje (samo miš; touch/pen koriste nativni horizontalni scroll).
+  const dragState = useRef({ active: false, pointerId: -1, startX: 0, startScroll: 0, moved: false });
 
   useEffect(() => {
     const el = tabsScrollRef.current;
@@ -106,13 +115,70 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     return () => el.removeEventListener('wheel', onWheel);
   }, []);
 
+  const handleTabsPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== 'mouse') return;
+    const el = tabsScrollRef.current;
+    if (!el || el.scrollWidth <= el.clientWidth) return;
+    dragState.current = {
+      active: true,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startScroll: el.scrollLeft,
+      moved: false,
+    };
+  };
+
+  const handleTabsPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const state = dragState.current;
+    const el = tabsScrollRef.current;
+    if (!state.active || !el) return;
+    const dx = event.clientX - state.startX;
+    // Tek kad pređe prag tretiramo kao povlačenje — da pravi klik (bez pomeranja) i dalje radi.
+    if (!state.moved && Math.abs(dx) > 4) {
+      state.moved = true;
+      try {
+        el.setPointerCapture(state.pointerId);
+      } catch {
+        /* capture nije obavezan */
+      }
+    }
+    if (state.moved) {
+      el.scrollLeft = state.startScroll - dx;
+    }
+  };
+
+  const handleTabsPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const el = tabsScrollRef.current;
+    if (el?.hasPointerCapture?.(event.pointerId)) {
+      el.releasePointerCapture(event.pointerId);
+    }
+    dragState.current.active = false;
+  };
+
+  // Ako je bilo povlačenja, gušimo klik koji bi inače promenio aktivnu kategoriju.
+  const handleTabsClickCapture = (event: ReactMouseEvent<HTMLDivElement>) => {
+    if (dragState.current.moved) {
+      event.preventDefault();
+      event.stopPropagation();
+      dragState.current.moved = false;
+    }
+  };
+
   return (
     <section className="bg-white">
       <div className="container">
         <h1 className="sr-only">Podovi.online katalog proizvoda</h1>
 
         <div className="overflow-hidden border-b border-[#1D1D1F]">
-          <div ref={tabsScrollRef} className="no-scrollbar -mx-6 flex gap-3 overflow-x-auto px-6 pb-4 pt-6 sm:gap-4 md:pt-8 lg:gap-5">
+          <div
+            ref={tabsScrollRef}
+            onPointerDown={handleTabsPointerDown}
+            onPointerMove={handleTabsPointerMove}
+            onPointerUp={handleTabsPointerUp}
+            onPointerCancel={handleTabsPointerUp}
+            onClickCapture={handleTabsClickCapture}
+            className="no-scrollbar -mx-6 flex cursor-grab select-none gap-3 overflow-x-auto px-6 pb-4 pt-6 active:cursor-grabbing sm:gap-4 md:pt-8 lg:gap-5"
+          >
             <button
               type="button"
               onClick={() => setActiveSlug('sve')}
