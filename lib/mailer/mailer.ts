@@ -204,7 +204,6 @@ export class EmailMailer implements IMailer {
               <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${contact.email}" style="color: #2563eb; text-decoration: none;">${contact.email}</a></p>
               <p style="margin: 5px 0;"><strong>Telefon:</strong> <a href="tel:${contact.phone}" style="color: #2563eb; text-decoration: none;">${contact.phone}</a></p>
               ${!isProductInquiry ? `<p style="margin: 5px 0;"><strong>Tema:</strong> ${contact.subject}</p>` : ''}
-              ${contact.categories && contact.categories.length ? `<p style="margin: 5px 0;"><strong>Vrste poda od interesa:</strong> ${contact.categories.join(', ')}</p>` : ''}
             </div>
           </div>
           
