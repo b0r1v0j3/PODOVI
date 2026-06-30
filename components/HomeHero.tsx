@@ -22,7 +22,6 @@ export default function HomeHero() {
 
       <div className="container relative pb-14 pt-28 md:pb-24 md:pt-40">
         <div className="max-w-3xl">
-          <p className="mb-5 text-[11px] uppercase tracking-label text-white/70">Galerija podova</p>
           <h1 className="text-4xl font-normal leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
             Pod čini prostor
           </h1>
