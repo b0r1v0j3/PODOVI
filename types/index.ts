@@ -124,6 +124,8 @@ export interface ContactFormData {
   phone: string;
   subject: string;
   message: string;
+  // Optional: vrste poda izabrane u čeklistu na /upiti
+  categories?: string[];
   // Optional product context
   productName?: string;
   productUrl?: string;

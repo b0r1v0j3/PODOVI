@@ -3,6 +3,19 @@
 import { useState, FormEvent, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
+// Vrste poda koje korisnik može da izabere u čeklistu (vodi ga ka upitu).
+const FLOOR_CATEGORIES = ['Vinil', 'LVT', 'Parket', 'Linoleum', 'Tepih', 'Sport'];
+
+function buildCategorySubject(categories: string[]): string {
+    if (!categories.length) return '';
+    return `Upit: ${categories.join(', ')}`;
+}
+
+function buildCategoryMessage(categories: string[]): string {
+    if (!categories.length) return '';
+    return `Poštovani,\n\nZainteresovan sam za sledeće vrste podova: ${categories.join(', ')}.\nMolim vas za ponudu i informaciju o dostupnosti.\n\nHvala.`;
+}
+
 export default function ContactForm() {
     const searchParams = useSearchParams();
 
@@ -25,11 +38,18 @@ export default function ContactForm() {
         phone: '',
         subject: '',
         message: '',
+        categories: [] as string[],
     });
 
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
     const successHeadingRef = useRef<HTMLHeadingElement>(null);
+
+    // Da li je korisnik RUČNO dirao naslov/poruku — ako jeste, auto-popuna ih ne menja.
+    // (Pre-fill iz URL-a ih takođe obeleži kao "dirnuto".) Ref-ovi se postavljaju samo
+    // van setState updater-a, pa je updater čist (bezbedno uz React StrictMode dupli poziv).
+    const subjectTouched = useRef(false);
+    const messageTouched = useRef(false);
 
     // Premesti fokus na naslov potvrde kada se forma uspešno pošalje
     useEffect(() => {
@@ -44,11 +64,13 @@ export default function ContactForm() {
                 ...prev,
                 subject: `Upit za: ${initialName}`
             }));
+            subjectTouched.current = true;
         } else if (initialProduct) {
             setFormData(prev => ({
                 ...prev,
                 subject: `Upit za proizvod: ${initialProduct}`
             }));
+            subjectTouched.current = true;
         }
 
         if (initialKonfigurator === 'essence' && initialUzorak) {
@@ -62,6 +84,7 @@ export default function ContactForm() {
                 ...prev,
                 message: `Poštovani,\n\nŽeleo bih ponudu za parket po meri (Essence Premium) sa sledećom konfiguracijom:\n${lines}\nMolim vas za ponudu i informaciju o dostupnosti.\n\nHvala.`,
             }));
+            messageTouched.current = true;
             return;
         }
 
@@ -77,9 +100,31 @@ export default function ContactForm() {
                     ...prev,
                     message: `Poštovani,\n\nZainteresovan sam za sledeći proizvod:\n${details}\nMolim vas za ponudu i informaciju o dostupnosti.\n\nHvala.`
                 }));
+                messageTouched.current = true;
             }
         }
     }, [initialProduct, initialCategory, initialColor, initialRef, initialName, initialKonfigurator, initialUzorak, initialBoja, initialGradacija, initialObrada, initialSifra]);
+
+    const toggleCategory = (category: string) => {
+        setFormData(prev => {
+            const nextCategories = prev.categories.includes(category)
+                ? prev.categories.filter(c => c !== category)
+                : [...prev.categories, category];
+
+            const next = { ...prev, categories: nextCategories };
+
+            // Auto-popuni naslov i poruku SAMO ako ih korisnik (ili pre-fill) nije već dirao.
+            // Updater čita ref-ove ali ih ne menja → čist je i bezbedan uz StrictMode.
+            if (!subjectTouched.current) {
+                next.subject = buildCategorySubject(nextCategories);
+            }
+            if (!messageTouched.current) {
+                next.message = buildCategoryMessage(nextCategories);
+            }
+
+            return next;
+        });
+    };
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -102,7 +147,9 @@ export default function ContactForm() {
             }
 
             setStatus('success');
-            setFormData({ fullName: '', email: '', phone: '', subject: '', message: '' });
+            setFormData({ fullName: '', email: '', phone: '', subject: '', message: '', categories: [] });
+            subjectTouched.current = false;
+            messageTouched.current = false;
         } catch (error: any) {
             setStatus('error');
             setErrorMessage(error.message || 'Došlo je do greške. Molimo pokušajte ponovo.');
@@ -112,11 +159,16 @@ export default function ContactForm() {
     if (status === 'success') {
         return (
             <div role="status" className="border border-ink-200 p-8 text-center">
-                <div className="inline-flex w-16 h-16 items-center justify-center border border-ink-200 text-ink-900 mx-auto mb-4">
+                {/* transitions.dev "success check" — fade + rotate + blur + bob + stroke-draw */}
+                <span
+                    className="t-success-check inline-flex w-16 h-16 items-center justify-center border border-ink-200 text-ink-900 mx-auto mb-4"
+                    data-state="in"
+                    aria-hidden="true"
+                >
                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
                     </svg>
-                </div>
+                </span>
                 <h3 ref={successHeadingRef} tabIndex={-1} className="text-2xl font-normal text-ink-900 mb-2">Hvala na upitu!</h3>
                 <p className="text-ink-600 mb-8">
                     Vaša poruka je uspešno poslata. Naš tim će vas kontaktirati u najkraćem mogućem roku.
@@ -133,6 +185,47 @@ export default function ContactForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Izbor vrste poda — vodi korisnika i auto-sastavlja naslov + poruku */}
+            <fieldset>
+                <legend className="label mb-1">Koja vrsta poda vas zanima?</legend>
+                <p className="mb-4 text-[13px] text-ink-500">
+                    Izaberite jednu ili više — naslov i poruku popunjavamo umesto vas (možete ih izmeniti).
+                </p>
+                <div className="border-t border-ink-200">
+                    {FLOOR_CATEGORIES.map((category) => {
+                        const active = formData.categories.includes(category);
+                        return (
+                            <button
+                                type="button"
+                                key={category}
+                                onClick={() => toggleCategory(category)}
+                                aria-pressed={active}
+                                className="flex w-full items-center gap-3 border-b border-ink-200 py-3 text-left transition-colors hover:bg-paper"
+                            >
+                                <span
+                                    className={`flex h-5 w-5 flex-shrink-0 items-center justify-center border transition-colors duration-200 ${active
+                                        ? 'border-ink-900 bg-ink-900 text-white'
+                                        : 'border-ink-400 text-transparent'
+                                        }`}
+                                >
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        className={`h-3.5 w-3.5 transition-transform duration-200 ${active ? 'scale-100' : 'scale-50'}`}
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </span>
+                                <span className={`text-[15px] ${active ? 'font-medium text-ink-900' : 'text-ink-700'}`}>
+                                    {category}
+                                </span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </fieldset>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <label htmlFor="fullName" className="label">
@@ -190,7 +283,7 @@ export default function ContactForm() {
                         className="input w-full"
                         placeholder="Naslov poruke"
                         value={formData.subject}
-                        onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                        onChange={e => { subjectTouched.current = true; setFormData({ ...formData, subject: e.target.value }); }}
                     />
                 </div>
             </div>
@@ -206,7 +299,7 @@ export default function ContactForm() {
                     className="input w-full resize-y"
                     placeholder="Napišite vašu poruku ovde..."
                     value={formData.message}
-                    onChange={e => setFormData({ ...formData, message: e.target.value })}
+                    onChange={e => { messageTouched.current = true; setFormData({ ...formData, message: e.target.value }); }}
                 ></textarea>
             </div>
 
