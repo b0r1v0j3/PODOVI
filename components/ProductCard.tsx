@@ -33,8 +33,8 @@ export default async function ProductCard({ product, sizes = "(max-width: 768px)
   const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, displayCollectionName);
 
   return (
-    <Link href={productHref} className="group flex h-full flex-col rounded-lg border border-ink-200 bg-white p-2 shadow-[0_1px_0_rgba(17,17,17,0.03)] transition duration-200 hover:border-ink-400 hover:shadow-[0_12px_35px_rgba(17,17,17,0.07)]">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-paper">
+    <Link href={productHref} className="group flex h-full flex-col overflow-hidden rounded-lg border border-ink-200 bg-white shadow-[0_1px_0_rgba(17,17,17,0.03)] transition duration-200 hover:border-ink-400 hover:shadow-[0_12px_35px_rgba(17,17,17,0.07)]">
+      <div className="relative aspect-[7/6] overflow-hidden bg-paper">
         {primaryImage ? (
           <ProductImage
             sources={imageCandidates}
@@ -72,7 +72,7 @@ export default async function ProductCard({ product, sizes = "(max-width: 768px)
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col px-1 pb-1 pt-3">
+      <div className="flex flex-1 flex-col px-3 pb-4 pt-3">
         {brand && (
           <span className="eyebrow mb-1 text-ink-600">
             {brand.name}
@@ -80,16 +80,16 @@ export default async function ProductCard({ product, sizes = "(max-width: 768px)
         )}
 
         {splitCollection && !areProductCardTextsEqual(splitCollection, splitColor) && (
-          <p className="text-[13px] text-ink-500 mb-0.5 leading-tight truncate">
+          <p className="mb-0.5 truncate text-[12px] leading-tight text-ink-500">
             {splitCollection}
           </p>
         )}
-        <h3 className="text-[15px] font-semibold text-ink-900 leading-snug underline-offset-4 group-hover:underline group-focus-visible:underline">
+        <h3 className="text-[15px] font-semibold leading-snug text-ink-900 underline-offset-4 group-hover:underline group-focus-visible:underline">
           {splitColor}
         </h3>
 
-        <div className="mt-auto flex items-end justify-between gap-3 pt-4">
-          <p className="text-[13px] text-ink-700">
+        <div className="mt-auto flex items-end justify-between gap-3 pt-3">
+          <p className="text-[12px] text-ink-700">
             {product.price && product.price > 0
               ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit}`
               : 'Cena na upit'}

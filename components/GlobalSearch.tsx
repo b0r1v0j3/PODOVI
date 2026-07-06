@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import { Search } from 'lucide-react';
 import ProductImage from './ProductImage';
 import { useScrollLock } from './useScrollLock';
 
@@ -194,16 +195,14 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
                 type="button"
                 className={
                     variant === 'bar'
-                        ? 'flex min-h-[40px] w-full items-center gap-3 border border-ink-200 bg-white px-4 text-left text-[13px] text-ink-500 shadow-[0_10px_30px_rgba(17,17,17,0.04)] transition-colors duration-200 hover:border-ink-400 hover:text-ink-700'
+                        ? 'flex min-h-[36px] w-full items-center gap-3 rounded-[4px] border border-ink-200 bg-white px-3 text-left text-[13px] text-ink-500 transition-colors duration-200 hover:border-ink-400 hover:text-ink-700'
                         : 'flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-600 transition-colors duration-200 hover:text-ink-900'
                 }
                 onClick={openSearch}
                 aria-label="Otvori pretragu"
                 aria-expanded={expanded}
             >
-                <svg className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+                <Search className="h-[18px] w-[18px] flex-shrink-0" strokeWidth={1.7} />
                 {variant === 'bar' && (
                     <span className="truncate">Pretraži proizvode, kolekcije, brendove...</span>
                 )}
