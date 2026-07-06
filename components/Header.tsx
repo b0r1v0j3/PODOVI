@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { Heart } from 'lucide-react';
 import GlobalSearch from './GlobalSearch';
 import PodoviWordmark from './PodoviWordmark';
 import { useFavorites } from '@/lib/context/FavoritesContext';
@@ -52,28 +53,26 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 isolate border-b border-ink-200 bg-white">
-      <nav className="container grid h-14 grid-cols-[auto_1fr_auto] items-center gap-4 md:h-16 lg:gap-8">
+      <nav className="mx-auto grid h-14 w-full max-w-[1536px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 md:h-[60px] lg:gap-8">
         {/* Logo */}
         <Link href="/" className="flex min-h-[44px] items-center">
           <PodoviWordmark textClassName="text-xl md:text-2xl text-ink-900" />
         </Link>
 
-        <div className="hidden justify-center md:flex">
-          <div className="w-full max-w-[560px]">
+        <div className="hidden w-[590px] justify-center md:flex">
+          <div className="w-full max-w-[590px]">
             <GlobalSearch variant="bar" />
           </div>
         </div>
 
         {/* Desktop actions */}
-        <div className="hidden items-center gap-2 md:flex lg:gap-4">
+        <div className="hidden items-center justify-end gap-5 md:flex">
           <Link
             href="/omiljeni"
-            className={`relative flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors duration-200 ${isActive('/omiljeni') ? 'text-ink-900' : 'text-ink-600 hover:text-ink-900'}`}
+            className={`relative flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors duration-200 ${isActive('/omiljeni') ? 'text-ink-900' : 'text-ink-900 hover:text-ink-600'}`}
             title="Omiljeni proizvodi"
           >
-            <svg className="h-5 w-5" fill={isActive('/omiljeni') ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
+            <Heart className="h-5 w-5" fill={isActive('/omiljeni') ? 'currentColor' : 'none'} strokeWidth={1.7} />
             {favCount > 0 && (
               <span className="absolute right-0 top-1 flex h-4 w-4 items-center justify-center bg-ink-900 text-[10px] font-medium text-white">
                 {favCount > 9 ? '9+' : favCount}
@@ -83,7 +82,7 @@ export default function Header() {
 
           <Link
             href="/upiti"
-            className="btn-primary px-5 py-2"
+            className="inline-flex h-9 w-[176px] items-center justify-center rounded-[4px] bg-ink-900 text-[13px] font-semibold text-white transition-colors hover:bg-ink-700"
             aria-current={isActive('/upiti') ? 'page' : undefined}
           >
             Pošalji upit

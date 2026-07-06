@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 06.07.2026 (Homepage katalog-first redizajn)
+> **Poslednje ažuriranje:** 06.07.2026 (Homepage mockup fidelity pass)
 
 ---
 
@@ -150,6 +150,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Homepage mockup fidelity pass (06.07.2026)**
+- Početna strana je dodatno poravnata sa prihvaćenim ImageGen mockupom: globalni header/search/upit dugme, kraća top navigacija (`Sve`, `Parket`, `Vinil`, `LVT`, `Tekstilne ploče`, `Deking`), `Sve` kao aktivna gornja stavka i Vinil kao početni katalog fokus.
+- `HomeProductTabs` sada koristi odvojeno stanje za top nav i aktivnu filter kategoriju, kompaktniji levi filter panel sa sekcijama iz mockupa (`Tip vinila`, `Primena`, `Debljina`, `Brand / brend`, collapsed `Izgled/Boja/Kolekcija`) i inquiry karticu overlay preko desne kolone na desktopu.
+- Product kartice su vizuelno zategnute prema mockupu: slike idu do ivice kartice, proporcija slike je veća, tekst je kompaktniji, favorite dugme je manji rounded control, a grid počinje na istoj visini kao referenca.
+- Verifikovano: `npm run lint`, browser QA za desktop `1536x1024`, mobile `390x844`, bez horizontalnog overflow-a, bez starog hero teksta i sa Wolflor brand filter interakcijom.
 
 **Homepage katalog-first redizajn (06.07.2026)**
 - `/` više ne renderuje stari full-bleed hero `Pod čini prostor`; početna strana sada odmah otvara katalog-first iskustvo u pravcu prihvaćenog ImageGen mockupa.

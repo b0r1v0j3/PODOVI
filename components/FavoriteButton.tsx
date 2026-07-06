@@ -17,7 +17,7 @@ export default function FavoriteButton({ productId, size = 'sm' }: FavoriteButto
         toggleFavorite(productId);
     };
 
-    const sizeClasses = size === 'sm' ? 'w-11 h-11 md:w-9 md:h-9' : 'w-11 h-11';
+    const sizeClasses = size === 'sm' ? 'w-11 h-11 md:w-8 md:h-8' : 'w-11 h-11';
     const iconSize = size === 'sm' ? 'w-4 h-4' : 'w-5 h-5';
 
     return (
@@ -27,7 +27,7 @@ export default function FavoriteButton({ productId, size = 'sm' }: FavoriteButto
             aria-label={active ? 'Ukloni iz omiljenih' : 'Dodaj u omiljene'}
             aria-pressed={active}
             className={`
-        inline-flex items-center justify-center bg-white border
+        inline-flex items-center justify-center rounded-[4px] bg-white/95 border
         transition-colors duration-200
         ${sizeClasses}
         ${active
