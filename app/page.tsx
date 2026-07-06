@@ -1,10 +1,7 @@
-import Link from 'next/link';
 import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
-import HomeHero from '@/components/HomeHero';
 import HomeProductTabs, { HomeProductGroup } from '@/components/HomeProductTabs';
-import ScrollReveal from '@/components/ScrollReveal';
 import { Product } from '@/types';
 import { hasCollectionSku } from '@/lib/utils/homepage-collection-filter';
 
@@ -84,71 +81,8 @@ export default async function HomePage() {
     .filter((group) => group.products.length > 0);
 
   return (
-    <div>
-      <HomeHero />
-
+    <div className="bg-white">
       <HomeProductTabs groups={productGroups} brandsRecord={brandsRecord} />
-
-      {/* Why Choose Us */}
-      <section className="border-y border-ink-200 bg-white py-20 md:py-24">
-        <div className="container">
-          <div className="mb-12 md:mb-16">
-            <h2 className="text-center text-3xl font-normal tracking-tight text-ink-900 md:text-5xl">
-              Zašto izabrati nas?
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 divide-y divide-ink-200 md:grid-cols-3 md:divide-x md:divide-y-0">
-            <ScrollReveal className="py-10 md:py-2 md:pr-10">
-              <div className="md:min-h-[240px]">
-                <span className="block text-[34px] font-normal leading-none text-ink-200">01</span>
-                <h3 className="mb-3 mt-8 text-xl font-medium tracking-tight text-ink-900">Proveren kvalitet</h3>
-                <p className="text-[15px] leading-7 text-ink-600">
-                  Radimo samo sa renomiranim evropskim proizvođačima sa dugogodišnjom tradicijom.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={100} className="py-10 md:px-10 md:py-2">
-              <div className="md:min-h-[240px]">
-                <span className="block text-[34px] font-normal leading-none text-ink-200">02</span>
-                <h3 className="mb-3 mt-8 text-xl font-medium tracking-tight text-ink-900">Konkurentne cene</h3>
-                <p className="text-[15px] leading-7 text-ink-600">
-                  Najbolji odnos cene i kvaliteta zahvaljujući direktnoj saradnji sa proizvođačima.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={200} className="py-10 md:py-2 md:pl-10">
-              <div className="md:min-h-[240px]">
-                <span className="block text-[34px] font-normal leading-none text-ink-200">03</span>
-                <h3 className="mb-3 mt-8 text-xl font-medium tracking-tight text-ink-900">Stručna podrška</h3>
-                <p className="text-[15px] leading-7 text-ink-600">
-                  Naš tim stručnjaka će vam pomoći da izaberete idealno rešenje za vaš prostor.
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-ink-900 py-20 text-white md:py-24">
-        <ScrollReveal>
-          <div className="container">
-            <div className="mx-auto max-w-5xl text-center">
-              <p className="mb-5 text-[11px] uppercase tracking-label text-white/60">Upit za ponudu</p>
-              <h2 className="text-3xl font-normal tracking-tight text-white md:text-5xl">
-                Spremni da transformišete vaš prostor?
-              </h2>
-              <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-white/65">
-              Pošaljite nam upit i naš stručni tim će vam se javiti u najkraćem roku sa personalizovanom ponudom.
-              </p>
-              <Link href="/upiti" className="btn-inverse mt-10 inline-flex items-center justify-center">
-                Pošalji upit
-              </Link>
-            </div>
-          </div>
-        </ScrollReveal>
-      </section>
     </div>
   );
 }

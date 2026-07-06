@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 06.07.2026 (Katalog UI redizajn kategorijskih stranica)
+> **Poslednje ažuriranje:** 06.07.2026 (Homepage katalog-first redizajn)
 
 ---
 
@@ -150,6 +150,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Homepage katalog-first redizajn (06.07.2026)**
+- `/` više ne renderuje stari full-bleed hero `Pod čini prostor`; početna strana sada odmah otvara katalog-first iskustvo u pravcu prihvaćenog ImageGen mockupa.
+- `HomeProductTabs` je preuređen u stabilan home catalog shell: primarna horizontalna navigacija, desktop filter rail levo, Vinil kao početni fokus, sort kontrola, brend/type/debljina lokalni filteri, gušći grid proizvoda i desktop upit kartica.
+- Uklonjena je client-side randomizacija početnih proizvoda da prvi viewport ostane stabilan za QA i produkciju.
+- `ProductCard` / `ProductCardClient` su dodatno zategnuti za katalog density: stalno vidljiv favorite, mirniji hover, kompaktniji tekst i `Uporedi` kao stvarno klikabilan control.
+- Verifikovano: `npm run lint`, `USE_MOCK_DATA=true npm run build`, browser QA za `/` desktop, mobile 390x844 i Wolflor brand filter interakciju.
 
 **Katalog UI redizajn kategorijskih stranica (06.07.2026)**
 - `/kategorije/[slug]` je preuređen u katalog-first layout: gornja traka glavnih kategorija, kompaktniji uvod, desktop filter rail levo i gušći grid proizvoda/kolekcija.
