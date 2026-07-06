@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 14.05.2026 (Podovi Alpod-source kompletan Parket/Vinil/Deking import)
+> **Poslednje ažuriranje:** 06.07.2026 (Katalog UI redizajn kategorijskih stranica)
 
 ---
 
@@ -150,6 +150,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Katalog UI redizajn kategorijskih stranica (06.07.2026)**
+- `/kategorije/[slug]` je preuređen u katalog-first layout: gornja traka glavnih kategorija, kompaktniji uvod, desktop filter rail levo i gušći grid proizvoda/kolekcija.
+- `Header` sada na desktopu prikazuje centralnu search traku koja koristi postojeći `GlobalSearch` overlay, bez promene search API-ja ili navigacionog contract-a.
+- `ProductCard` i `ProductCardClient` su vizuelno poravnati: framed slike, kompaktniji odnos slike/teksta, swatch preview iz postojećih image kandidata i vidljiv `Uporedi` affordance, uz zadržan shared `getCanonicalProductHref()` / `getProductImageCandidates()` lane.
+- `ProductFilters` zadržava postojeći mobile drawer, a na desktopu renderuje isti filter state kao lepljivi panel; query parametri i CategoryTabs data flow nisu menjani.
+- Verifikovano: `npm run lint`, `USE_MOCK_DATA=true npx next build`, browser QA za `/kategorije/vinil` desktop, mobile 390x844, filter drawer i `type=heterogeni` interakciju.
 
 **Alpod-source Parket/Vinil/Deking kompletiran kao Podovi katalog (14.05.2026)**
 - `public/data/alpod_floor_collections.json`, generisan kroz `tools/extract_alpod_floor_collections.js`, sada uvozi sve što javni Alpod Store API vraća pod Parket, Vinil i Spoljašnje podne obloge, plus Parket menijske stranice `Essence Premium` i `Four Seasons`: ukupno 851 stavka u 13 kolekcija (Parket 7/359, Vinil 4/372, Deking 2/120).

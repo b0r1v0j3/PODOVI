@@ -340,6 +340,9 @@ export default function CategoryTabs({
 
     return filtered;
   }, [colorsFromJSON, categorySlug, vinylType, safetyOnly, wallOnly, useJsonColors, searchParams, collections]);
+  const displayedColorsCount = useJsonColors
+    ? (colorsFromJSON.length > 0 ? colorsToRender.length : totalColorsCount ?? legacyColors.length)
+    : legacyColors.length;
 
   // Load total count from JSON on mount (without loading all colors)
   useEffect(() => {
@@ -609,8 +612,8 @@ export default function CategoryTabs({
       );
     }
     const gridClass = singleColumn
-      ? 'grid grid-cols-1 gap-6 max-w-2xl'
-      : 'grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 xl:grid-cols-4';
+      ? 'grid grid-cols-1 gap-4 max-w-2xl'
+      : 'grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4';
     return (
       <div key={gridKey} className={gridClass}>
         {products.map((product) => {
@@ -626,12 +629,13 @@ export default function CategoryTabs({
   return (
     <div>
       {/* Tabs */}
-      <div className="mb-6 border-b border-ink-200">
-        <div className="flex gap-8">
+      <div className="mb-6 border-b border-ink-200 bg-[#fbfaf8]">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="flex gap-8">
           <button
             type="button"
             onClick={() => setActiveTab('collections')}
-            className={`min-h-[44px] px-1 pb-3 text-base font-normal transition-colors duration-200 ${activeTab === 'collections'
+            className={`min-h-[48px] px-1 pb-3 text-[15px] font-medium transition-colors duration-200 ${activeTab === 'collections'
               ? 'text-ink-900 border-b-2 border-ink-900'
               : 'text-ink-500 hover:text-ink-600 border-b-2 border-transparent'
               }`}
@@ -641,18 +645,14 @@ export default function CategoryTabs({
           <button
             type="button"
             onClick={() => setActiveTab('colors')}
-            className={`min-h-[44px] px-1 pb-3 text-base font-normal transition-colors duration-200 ${activeTab === 'colors'
+            className={`min-h-[48px] px-1 pb-3 text-[15px] font-medium transition-colors duration-200 ${activeTab === 'colors'
               ? 'text-ink-900 border-b-2 border-ink-900'
               : 'text-ink-500 hover:text-ink-600 border-b-2 border-transparent'
               }`}
           >
-            {colorsTabLabel} ({useJsonColors
-              ? (loadingColors
-                ? '...'
-                : colorsToRender.length)
-              : legacyColors.length
-            })
+            {colorsTabLabel} ({displayedColorsCount})
           </button>
+          </div>
         </div>
       </div>
 
@@ -671,7 +671,7 @@ export default function CategoryTabs({
               isColorsLoading ? (
                 <div role="status" aria-busy="true" aria-label={colorsLoadingLabel}>
                   <div className="mb-6 h-4 w-32 animate-pulse bg-paper" />
-                  <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 xl:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
                     {Array.from({ length: 8 }).map((_, index) => (
                       <div key={index}>
                         <div className="aspect-[4/5] animate-pulse bg-paper" />
