@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import { ArrowRight, Check, ChevronDown, Search } from 'lucide-react';
 import { Brand, Category, Product } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 
@@ -36,6 +35,38 @@ interface CountOption {
   value: string;
   label: string;
   count: number;
+}
+
+function CheckIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3.5 8.2 6.4 11 12.5 5" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ChevronDownIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M4 6 8 10 12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function SearchIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="m21 21-4.2-4.2M19 10.5a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0Z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ArrowRightIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
 
 function buildAllProducts(groups: HomeProductGroup[], limit = INITIAL_PRODUCT_LIMIT): Product[] {
@@ -244,7 +275,7 @@ function FilterButton({
         }`}
         aria-hidden="true"
       >
-        {active ? <Check className="h-2.5 w-2.5" strokeWidth={2.4} /> : null}
+        {active ? <CheckIcon className="h-2.5 w-2.5" /> : null}
       </span>
       <span className="min-w-0 flex-1 truncate">{label}</span>
       {typeof count === 'number' ? (
@@ -265,7 +296,7 @@ function FilterSection({
     <div className="border-t border-ink-200 py-3 first:border-t-0 first:pt-0">
       <div className="mb-2 flex items-center justify-between">
         <p className="text-[11px] font-semibold uppercase tracking-label text-ink-700">{title}</p>
-        <ChevronDown className="h-3.5 w-3.5 text-ink-500" strokeWidth={1.7} />
+        <ChevronDownIcon className="h-3.5 w-3.5 text-ink-500" />
       </div>
       {children}
     </div>
@@ -276,7 +307,7 @@ function CollapsedFilterSection({ title }: { title: string }) {
   return (
     <div className="flex items-center justify-between border-t border-ink-200 py-3">
       <p className="text-[11px] font-semibold uppercase tracking-label text-ink-700">{title}</p>
-      <ChevronDown className="h-3.5 w-3.5 text-ink-500" strokeWidth={1.7} />
+      <ChevronDownIcon className="h-3.5 w-3.5 text-ink-500" />
     </div>
   );
 }
@@ -626,7 +657,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
               {brandOptions.length > 0 ? (
                 <FilterSection title="Brand / brend">
                   <label className="mb-2 flex h-8 items-center gap-2 rounded-[4px] border border-ink-200 px-2 text-ink-500">
-                    <Search className="h-3.5 w-3.5" strokeWidth={1.7} />
+                    <SearchIcon className="h-3.5 w-3.5" />
                     <input
                       type="search"
                       value={brandQuery}
@@ -748,13 +779,13 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
               </p>
               <Link href="/upiti" className="mt-4 flex h-10 w-full items-center justify-between rounded-[4px] bg-ink-900 px-4 text-[13px] font-semibold text-white transition-colors hover:bg-ink-700">
                 Pošalji upit
-                <ArrowRight className="h-4 w-4" strokeWidth={1.9} />
+                <ArrowRightIcon className="h-4 w-4" />
               </Link>
               <div className="mt-4 space-y-2 text-[12px] text-ink-700">
                 {['Brz odgovor', 'Stručna podrška', 'Najbolje rešenje'].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <span className="flex h-4 w-4 items-center justify-center rounded-full border border-emerald-500 text-emerald-600">
-                      <Check className="h-2.5 w-2.5" strokeWidth={2} />
+                      <CheckIcon className="h-2.5 w-2.5" />
                     </span>
                     {item}
                   </div>
