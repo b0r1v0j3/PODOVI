@@ -6,9 +6,10 @@ import { Product } from '@/types';
 interface CompareButtonProps {
     product: Product;
     size?: 'sm' | 'md';
+    variant?: 'icon' | 'text';
 }
 
-export default function CompareButton({ product, size = 'sm' }: CompareButtonProps) {
+export default function CompareButton({ product, size = 'sm', variant = 'icon' }: CompareButtonProps) {
     const { addToCompare, removeFromCompare, isInCompare, isFull } = useCompare();
     const active = isInCompare(product.id);
 
@@ -21,6 +22,30 @@ export default function CompareButton({ product, size = 'sm' }: CompareButtonPro
             addToCompare(product);
         }
     };
+
+    if (variant === 'text') {
+        return (
+            <button
+                onClick={handleClick}
+                disabled={!active && isFull}
+                title={active ? 'Ukloni iz poređenja' : isFull ? 'Maksimalno 3 proizvoda' : 'Uporedi'}
+                aria-label={active ? 'Ukloni iz poređenja' : isFull ? 'Maksimalno 3 proizvoda' : 'Uporedi'}
+                aria-pressed={active}
+                className={`inline-flex items-center gap-1.5 text-[12px] transition-colors ${
+                    active
+                        ? 'text-ink-900'
+                        : isFull
+                            ? 'cursor-not-allowed text-ink-400'
+                            : 'text-ink-600 hover:text-ink-900'
+                }`}
+            >
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 20V10M12 20V4M17 20v-7" />
+                </svg>
+                {active ? 'Izabrano' : 'Uporedi'}
+            </button>
+        );
+    }
 
     const sizeClasses = size === 'sm'
         ? 'w-11 h-11 md:w-9 md:h-9 text-xs'

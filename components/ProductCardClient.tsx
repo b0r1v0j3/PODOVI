@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Product, Brand } from '@/types';
+import CompareButton from './CompareButton';
 import ProductCardOverlay from './ProductCardOverlay';
 import ProductImage from './ProductImage';
 import { splitProductTitle } from '@/lib/utils/name-parser';
@@ -37,7 +38,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
 
   if (compact) {
     return (
-      <Link href={productHref} className="group block rounded-lg border border-ink-200 bg-white p-2 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_rgba(17,17,17,0.08)]">
+      <Link href={productHref} className="group block rounded-lg border border-ink-200 bg-white p-2 transition duration-200 hover:border-ink-400 hover:shadow-[0_12px_35px_rgba(17,17,17,0.07)]">
         <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-paper">
           {primaryImage ? (
             <ProductImage
@@ -51,7 +52,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
             <div className="absolute inset-0 flex items-center justify-center text-ink-500 text-sm">Bez slike</div>
           )}
           {/* Favorite & Compare buttons */}
-          <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 md:focus-within:opacity-100 transition-opacity duration-300">
+          <div className="opacity-100 transition-opacity duration-300">
             <ProductCardOverlay product={product} />
           </div>
           {swatchCandidates.length > 1 && (
@@ -85,7 +86,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
   }
 
   return (
-    <Link href={productHref} className="group flex h-full flex-col rounded-lg border border-ink-200 bg-white p-2 shadow-[0_1px_0_rgba(17,17,17,0.03)] transition duration-300 hover:-translate-y-0.5 hover:border-ink-400 hover:shadow-[0_20px_50px_rgba(17,17,17,0.08)]">
+    <Link href={productHref} className="group flex h-full flex-col rounded-lg border border-ink-200 bg-white p-2 shadow-[0_1px_0_rgba(17,17,17,0.03)] transition duration-200 hover:border-ink-400 hover:shadow-[0_12px_35px_rgba(17,17,17,0.07)]">
       <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-paper">
         {primaryImage ? (
           <ProductImage
@@ -103,7 +104,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
           </div>
         )}
         {/* Favorite & Compare buttons */}
-        <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 md:focus-within:opacity-100 transition-opacity duration-300">
+        <div className="opacity-100 transition-opacity duration-300">
           <ProductCardOverlay product={product} />
         </div>
         {swatchCandidates.length > 1 && (
@@ -119,7 +120,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col px-1 pb-1 pt-3 md:pt-4">
+      <div className="flex flex-1 flex-col px-1 pb-1 pt-3">
         {brand && (
           <span className="eyebrow mb-1 text-ink-600">
             {brand.name}
@@ -131,7 +132,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
             {splitCollection}
           </p>
         )}
-        <h3 className="text-[15px] md:text-base font-medium text-ink-900 leading-snug underline-offset-4 group-hover:underline group-focus-visible:underline">
+        <h3 className="text-[15px] font-semibold text-ink-900 leading-snug underline-offset-4 group-hover:underline group-focus-visible:underline">
           {splitColor}
         </h3>
 
@@ -141,12 +142,7 @@ export default function ProductCardClient({ product, brand, compact = false }: P
               ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit}`
               : 'Cena na upit'}
           </p>
-          <span className="inline-flex items-center gap-1.5 text-[12px] text-ink-600">
-            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M7 20V10M12 20V4M17 20v-7" />
-            </svg>
-            Uporedi
-          </span>
+          <CompareButton product={product} variant="text" />
         </div>
       </div>
     </Link>
