@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 06.07.2026 (Homepage mockup fidelity pass)
+> **Poslednje ažuriranje:** 06.07.2026 (Homepage faceted catalog pass)
 
 ---
 
@@ -150,6 +150,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Homepage faceted catalog pass (06.07.2026)**
+- Početna strana je usmerena ka prihvaćenom minimalističkom katalog dizajnu sa oštrijim ivicama: uklonjen je gornji category rail (`Sve / Parket / Vinil...`) jer kategorije sada žive u levom filteru.
+- `HomeProductTabs` sada podržava multi-select kategorije i filtere; logika je OR unutar iste sekcije i AND između sekcija, uz aktivne filter chipove i `Očisti sve`.
+- Inquiry CTA `Imate projekat?` je izmešten iz apsolutnog overlay-a preko product grida u levi rail ispod filtera, pa više ne prekriva kolekcije.
+- Homepage kolekcijske kartice dobijaju `swatchImages` iz postojećih color JSON izvora (`vinyl`, `tarkett`, `wolflor`, `lvt`, `linoleum`, `carpet`, `alpod`) kroz `app/page.tsx`, a `ProductCard*` koristi shared `getProductSwatchCandidates()` helper.
+- Kartice/favorite/filter kontrole su vizuelno zategnute bez zaobljenih card ivica i bez teških hover senki, u skladu sa novim PDP pravcem.
+- Verifikovano: `npm run lint`, `USE_MOCK_DATA=true npm run build`, Chrome QA za `/` desktop i mobile; potvrđeno 3 swatch kvadrata na karticama, bez top category rail-a, bez CTA preklapanja grida i sa multi-select category klikom.
 
 **Homepage mockup fidelity pass (06.07.2026)**
 - Početna strana je dodatno poravnata sa prihvaćenim ImageGen mockupom: globalni header/search/upit dugme, kraća top navigacija (`Sve`, `Parket`, `Vinil`, `LVT`, `Tekstilne ploče`, `Deking`), `Sve` kao aktivna gornja stavka i Vinil kao početni katalog fokus.

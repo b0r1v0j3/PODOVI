@@ -10,7 +10,7 @@ import {
   getProductCardDisplayName,
 } from '@/lib/utils/product-card-text';
 import { getCanonicalProductHref } from '@/lib/utils/product-routes';
-import { getProductImageCandidates } from '@/lib/utils/product-images';
+import { getProductImageCandidates, getProductSwatchCandidates } from '@/lib/utils/product-images';
 
 interface ProductCardProps {
   product: Product;
@@ -21,7 +21,7 @@ export default async function ProductCard({ product, sizes = "(max-width: 768px)
   const brand = await brandRepository.findById(product.brandId);
   const imageCandidates = getProductImageCandidates(product, 'card').slice(0, 4);
   const primaryImage = imageCandidates[0];
-  const swatchCandidates = imageCandidates.slice(0, 3);
+  const swatchCandidates = getProductSwatchCandidates(product, 'thumb').slice(0, 3);
   const displayName = getProductCardDisplayName(product.name, brand?.name);
   const productHref = getCanonicalProductHref(product as Product & { collectionSlug?: string });
   const rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;
@@ -33,7 +33,7 @@ export default async function ProductCard({ product, sizes = "(max-width: 768px)
   const { collection: splitCollection, color: splitColor } = splitProductTitle(displayName, displayCollectionName);
 
   return (
-    <Link href={productHref} className="group flex h-full flex-col overflow-hidden rounded-lg border border-ink-200 bg-white shadow-[0_1px_0_rgba(17,17,17,0.03)] transition duration-200 hover:border-ink-400 hover:shadow-[0_12px_35px_rgba(17,17,17,0.07)]">
+    <Link href={productHref} className="group flex h-full flex-col overflow-hidden border border-ink-200 bg-white transition duration-200 hover:border-ink-900">
       <div className="relative aspect-[7/6] overflow-hidden bg-paper">
         {primaryImage ? (
           <ProductImage
@@ -59,12 +59,12 @@ export default async function ProductCard({ product, sizes = "(max-width: 768px)
         <div className="opacity-100 transition-opacity duration-300">
           <ProductCardOverlay product={product} />
         </div>
-        {swatchCandidates.length > 1 && (
-          <div className="absolute bottom-3 left-3 z-10 flex gap-1.5">
+        {swatchCandidates.length > 0 && (
+          <div className="absolute bottom-3 left-3 z-10 flex gap-1">
             {swatchCandidates.map((candidate) => (
               <span
                 key={candidate.url}
-                className="h-8 w-8 rounded-[4px] border border-white/90 bg-cover bg-center shadow-[0_0_0_1px_rgba(17,17,17,0.18)]"
+                className="h-8 w-8 border border-white bg-cover bg-center shadow-[0_0_0_1px_rgba(17,17,17,0.35)]"
                 style={{ backgroundImage: `url("${candidate.url}")` }}
                 aria-hidden="true"
               />

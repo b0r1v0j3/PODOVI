@@ -27,7 +27,7 @@ export default function FavoriteButton({ productId, size = 'sm' }: FavoriteButto
             aria-label={active ? 'Ukloni iz omiljenih' : 'Dodaj u omiljene'}
             aria-pressed={active}
             className={`
-        inline-flex items-center justify-center rounded-[4px] bg-white/95 border
+        inline-flex items-center justify-center bg-white/95 border
         transition-colors duration-200
         ${sizeClasses}
         ${active
