@@ -337,7 +337,10 @@ Techem `Otirači` are intentionally a flat listing branch:
 - `CategoryCard` je shared surface i sada opcionalno prikazuje broj proizvoda po kategoriji; homepage može i dalje da ga koristi bez count-a.
 - `Aktivni brendovi` count na `/kategorije` ne sme da dolazi iz sirovih product FK vrednosti; računa se iz preseka proizvoda i `brandRepository.findAll()` skupa, tako da summary ostane poravnat sa `/brendovi` čak i kada neki brand lane živi kroz fallback/mock source.
 - Root shell copy (`app/layout.tsx`, `lib/seo/structured-data.ts`, `components/Footer.tsx`, `components/WhatsAppButton.tsx`) mora ostati usklađen sa činjenicom da katalog više nije flooring-only: `Otirači`, lajsne i ostali prateći sistemi moraju biti priznati i u metadata/microcopy sloju, ne samo u JSON/product pipeline-u.
-- Homepage (`app/page.tsx`) sada nosi direktan CTA ka `/kategorije/otiraci` i treba da zadrži makar jedan curated Techem slot u hero/featured discoverability sloju; nemoj vraćati homepage na hardcoded flooring-only merchandising bez eksplicitne odluke.
+- Homepage (`app/page.tsx` + `components/HomeProductTabs.tsx`) je sada katalog-first surface, ne hero/merchandising landing: SSR bira collection-first grupe po kategoriji, a klijentski `HomeProductTabs` radi lokalni faceted filter.
+- Homepage collection kartice koriste dodatni page-local `swatchImages` payload, izveden iz postojećih color JSON izvora (`vinyl_colors_complete.json`, Tarkett/Wolflor vinil JSON-ovi, LVT/Linoleum/Tekstilne/Alpod izvori). Taj payload je samo listing affordance; ne dodavati ga u `Product` interface niti ga koristiti kao PDP selected-color source-of-truth.
+- `ProductCard` i `ProductCardClient` moraju ostati na shared `getProductSwatchCandidates()` helperu za card swatcheve: prioritet je `swatchImages` → `customColors` → normalni image kandidati. Ne vraćati page-local `product.images.slice(...)` logiku u kartice.
+- Root homepage category izbor više ne sme da ima paralelni top category rail pored levog filtera. Kategorije u homepage filteru su multi-select; unutar jedne sekcije filter logika je OR, između sekcija AND.
 
 ## 6a. Brand Pages (`app/brendovi/page.tsx`, `app/brendovi/[slug]/page.tsx`)
 

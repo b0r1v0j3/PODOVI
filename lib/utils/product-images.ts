@@ -6,6 +6,10 @@ export type ProductImageCandidate = {
   url: string;
   alt: string;
 };
+type ProductSwatchSource = {
+  swatchImages?: Array<string | Partial<ProductImageCandidate> | null | undefined>;
+  customColors?: Array<CustomColorHeroSource | null | undefined>;
+};
 export type CustomColorHeroSource = {
   slug?: string | null;
   image_url?: string | null;
@@ -132,6 +136,30 @@ export function getProductImageCandidates(product: Product, surface: ProductImag
       url: image.url,
       alt: image.alt || product.name,
     }))
+  );
+}
+
+export function getProductSwatchCandidates(product: Product, surface: ProductImageSurface = 'thumb') {
+  const swatchSource = product as Product & ProductSwatchSource;
+  const swatchImages = Array.isArray(swatchSource.swatchImages) ? swatchSource.swatchImages : [];
+  const customColors = Array.isArray(swatchSource.customColors) ? swatchSource.customColors : [];
+
+  return normalizeProductImageCandidates(
+    null,
+    [
+      ...swatchImages.map((candidate) => {
+        if (typeof candidate === 'string') {
+          return { url: candidate, alt: product.name };
+        }
+
+        return {
+          url: candidate?.url,
+          alt: candidate?.alt || product.name,
+        };
+      }),
+      ...customColors.flatMap((color) => getColorImageCandidates(color)),
+      ...getProductImageCandidates(product, surface),
+    ]
   );
 }
 
