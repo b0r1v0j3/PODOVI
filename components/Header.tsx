@@ -52,16 +52,20 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 isolate border-b border-ink-200 bg-white">
-      <nav className="container flex h-14 items-center justify-between md:h-16">
+      <nav className="container grid h-14 grid-cols-[auto_1fr_auto] items-center gap-4 md:h-16 lg:gap-8">
         {/* Logo */}
         <Link href="/" className="flex min-h-[44px] items-center">
           <PodoviWordmark textClassName="text-xl md:text-2xl text-ink-900" />
         </Link>
 
+        <div className="hidden justify-center md:flex">
+          <div className="w-full max-w-[560px]">
+            <GlobalSearch variant="bar" />
+          </div>
+        </div>
+
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 md:flex lg:gap-4">
-          <GlobalSearch />
-
           <Link
             href="/omiljeni"
             className={`relative flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors duration-200 ${isActive('/omiljeni') ? 'text-ink-900' : 'text-ink-600 hover:text-ink-900'}`}

@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { categoryRepository } from '@/lib/repositories/category-repository';
@@ -233,11 +234,20 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const selectedToolSubcategorySlugs = parseFilterSlugList(searchParams.toolSubcategory);
 
   // Get all products first (without collection filter) to properly separate collections from colors
-  let allProducts = await productRepository.findByCategory(category.id, filtersWithoutCollections);
-  const allBrands = await brandRepository.findAll();
+  let [
+    allProducts,
+    allBrands,
+    categoryProducts,
+    allCategories,
+  ] = await Promise.all([
+    productRepository.findByCategory(category.id, filtersWithoutCollections),
+    brandRepository.findAll(),
+    productRepository.findByCategory(category.id),
+    categoryRepository.findAll(),
+  ]);
+  const allProductsForThickness = categoryProducts;
 
   // Get unique brands used in this category
-  const categoryProducts = await productRepository.findByCategory(category.id);
   const categoryBrandIds = new Set(categoryProducts.map(p => p.brandId));
   const availableBrands = allBrands.filter(b => categoryBrandIds.has(b.id));
   const availableToolGroups = category.slug === 'alat' ? buildToolGroupOptions(categoryProducts) : [];
@@ -248,10 +258,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (category.slug === 'alat') {
     allProducts = filterRomusToolProducts(allProducts, selectedToolGroupSlugs, selectedToolSubcategorySlugs);
   }
-
-  // Get ALL products without any filters to calculate available thickness options
-  // This ensures all thickness options remain visible even when one is selected
-  const allProductsForThickness = await productRepository.findByCategory(category.id);
 
   // For LVT, Linoleum, Carpet, Vinil, Parket, Laminat – separate collections from colors
   const isTechemMatCategory = category.slug === 'otiraci';
@@ -782,9 +788,27 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       name: category.name,
     },
   });
+  const primaryCategorySlugs = ['parket', 'laminat', 'lvt', 'tekstilne-ploce', 'deking', 'vinil', 'linoleum'];
+  const categoryNavItems = primaryCategorySlugs
+    .map((slug) => allCategories.find((item) => item.slug === slug))
+    .filter((item): item is (typeof allCategories)[number] => Boolean(item));
+  const activeFilterLabels = [
+    searchParams.search ? 'Pretraga' : null,
+    searchParams.brands ? 'Brend' : null,
+    searchParams.collections ? 'Kolekcija' : null,
+    searchParams.family ? 'Familija' : null,
+    searchParams.thickness ? 'Debljina' : null,
+    searchParams.woodType ? 'Vrsta drveta' : null,
+    searchParams.type ? 'Tip vinila' : null,
+    searchParams.safety === '1' ? 'Protivklizni' : null,
+    searchParams.zidne === '1' ? 'Zidne obloge' : null,
+    searchParams.listing ? 'Prikaz' : null,
+    searchParams.toolGroup ? 'Grupa alata' : null,
+    searchParams.toolSubcategory ? 'Podgrupa' : null,
+  ].filter((label): label is string => Boolean(label));
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen bg-[#fbfaf8]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -798,114 +822,147 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           ]),
         }}
       />
+      <div className="border-b border-ink-200 bg-white">
+        <div className="container">
+          <nav className="no-scrollbar flex min-h-[58px] items-end gap-8 overflow-x-auto" aria-label="Kategorije">
+            <Link
+              href="/"
+              className="flex min-h-[58px] shrink-0 items-center border-b-2 border-transparent text-[18px] text-ink-700 transition-colors hover:text-ink-900 sm:text-[20px]"
+            >
+              Sve
+            </Link>
+            {categoryNavItems.map((item) => {
+              const active = item.slug === category.slug;
+              return (
+                <Link
+                  key={item.slug}
+                  href={`/kategorije/${item.slug}`}
+                  aria-current={active ? 'page' : undefined}
+                  className={`flex min-h-[58px] shrink-0 items-center border-b-2 text-[18px] transition-colors sm:text-[20px] ${
+                    active
+                      ? 'border-ink-900 text-ink-900'
+                      : 'border-transparent text-ink-500 hover:text-ink-900'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      </div>
+
       {/* Main Content */}
-      <div className="container py-6">
+      <div className="container py-6 lg:py-8">
         <div className="mb-4">
           <Breadcrumbs items={[
             { label: category.name }
           ]} />
         </div>
-        <section className="mb-6 pb-10 pt-2">
+
+        <section className="border-b border-ink-200 pb-6 pt-2">
           <div className="max-w-4xl">
-            <p className="eyebrow">
-              Kategorija
-            </p>
-            <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
-              <h1 className="text-3xl font-normal tracking-tight text-ink-900 sm:text-5xl">
+            <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
+              <h1 className="text-4xl font-medium leading-tight text-ink-900 sm:text-5xl">
                 {categoryCopy.heading}
               </h1>
-              <span className="text-[13px] text-ink-500">
+              <span className="pb-1 text-[13px] text-ink-500">
                 {allProducts.length} proizvoda
               </span>
             </div>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-ink-600 sm:text-lg">
+            <p className="mt-4 max-w-3xl text-base leading-7 text-ink-700">
               {categoryCopy.lead}
             </p>
             {categoryCopy.body ? (
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-ink-500 sm:text-base">
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-ink-500">
                 {categoryCopy.body}
               </p>
             ) : null}
-            {categoryCopy.bullets.length > 0 ? (
-              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-                {categoryCopy.bullets.map((bullet) => (
-                  <span
-                    key={bullet}
-                    className="text-[13px] text-ink-700"
-                  >
-                    {bullet}
-                  </span>
-                ))}
-              </div>
-            ) : null}
           </div>
-        </section>
-        {category.slug === 'parket' && <EssenceConfiguratorBanner />}
-        {/* Traka filtera: brend cipovi + dugme Filteri (fioka) */}
-        <ProductFilters
-          availableBrands={availableBrands}
-          currentFilters={{
-            ...filtersWithoutCollections,
-            listing: listingMode,
-            toolGroup: selectedToolGroupSlugs,
-            toolSubcategory: selectedToolSubcategorySlugs,
-          }}
-          availableCollections={availableCollections}
-          availableFamilies={category.slug === 'tekstilne-ploce' ? availableFamilies : undefined}
-          availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
-          availableThickness={availableThickness}
-          availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
-          availableToolGroups={category.slug === 'alat' ? availableToolGroups : undefined}
-          availableToolSubcategories={category.slug === 'alat' ? availableToolSubcategories : undefined}
-        />
 
-        {/* Products Grid */}
-        <div className="mt-8">
-          {hasCollectionTabs ? (
-            <CategoryTabs
-              collections={collections}
-              colors={colors}
-              brandsRecord={brandsRecord}
-              categorySlug={category.slug}
-              initialColorSlug={searchParams.color}
-              vinylType={searchParams.type}
-              safetyOnly={searchParams.safety === '1'}
-              wallOnly={searchParams.zidne === '1'}
-              listingMode={listingMode}
-              searchParams={{
-                search: searchParams.search,
-                brands: searchParams.brands,
-                collections: searchParams.collections,
-                family: searchParams.family,
-                listing: searchParams.listing,
-                thickness: searchParams.thickness,
-                woodType: searchParams.woodType,
-              }}
-            />
-          ) : (
-            <>
-              <p className="mb-6 text-[13px] text-ink-500">
-                {filteredProducts.length === 0 ? 'Nema' : filteredProducts.length} {filteredProducts.length === 1 ? 'proizvod' : 'proizvoda'}
-              </p>
-
-              {filteredProducts.length === 0 ? (
-                <div className="border border-ink-200 bg-white p-12 text-center">
-                  <h3 className="text-lg font-medium text-ink-900 mb-2">
-                    Nema proizvoda
-                  </h3>
-                  <p className="text-[13px] text-ink-500">
-                    Trenutno nema proizvoda koji odgovaraju izabranim filterima.
-                  </p>
-                </div>
-              ) : (
-                <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 xl:grid-cols-4">
-                  {filteredProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-              )}
-            </>
+          {activeFilterLabels.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {activeFilterLabels.map((label) => (
+                <span key={label} className="border border-ink-200 bg-white px-3 py-1 text-[12px] text-ink-600">
+                  {label}
+                </span>
+              ))}
+            </div>
           )}
+        </section>
+
+        {category.slug === 'parket' && (
+          <div className="mt-8">
+            <EssenceConfiguratorBanner />
+          </div>
+        )}
+
+        <div className="mt-8 grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start">
+          <ProductFilters
+            availableBrands={availableBrands}
+            currentFilters={{
+              ...filtersWithoutCollections,
+              listing: listingMode,
+              toolGroup: selectedToolGroupSlugs,
+              toolSubcategory: selectedToolSubcategorySlugs,
+            }}
+            availableCollections={availableCollections}
+            availableFamilies={category.slug === 'tekstilne-ploce' ? availableFamilies : undefined}
+            availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
+            availableThickness={availableThickness}
+            availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
+            availableToolGroups={category.slug === 'alat' ? availableToolGroups : undefined}
+            availableToolSubcategories={category.slug === 'alat' ? availableToolSubcategories : undefined}
+          />
+
+          {/* Products Grid */}
+          <main className="min-w-0">
+            {hasCollectionTabs ? (
+              <CategoryTabs
+                collections={collections}
+                colors={colors}
+                brandsRecord={brandsRecord}
+                categorySlug={category.slug}
+                initialColorSlug={searchParams.color}
+                vinylType={searchParams.type}
+                safetyOnly={searchParams.safety === '1'}
+                wallOnly={searchParams.zidne === '1'}
+                listingMode={listingMode}
+                searchParams={{
+                  search: searchParams.search,
+                  brands: searchParams.brands,
+                  collections: searchParams.collections,
+                  family: searchParams.family,
+                  listing: searchParams.listing,
+                  thickness: searchParams.thickness,
+                  woodType: searchParams.woodType,
+                }}
+              />
+            ) : (
+              <>
+                <p className="mb-6 text-[13px] text-ink-500">
+                  {filteredProducts.length === 0 ? 'Nema' : filteredProducts.length} {filteredProducts.length === 1 ? 'proizvod' : 'proizvoda'}
+                </p>
+
+                {filteredProducts.length === 0 ? (
+                  <div className="rounded-lg border border-ink-200 bg-white p-12 text-center">
+                    <h3 className="mb-2 text-lg font-medium text-ink-900">
+                      Nema proizvoda
+                    </h3>
+                    <p className="text-[13px] text-ink-500">
+                      Trenutno nema proizvoda koji odgovaraju izabranim filterima.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
+                    {filteredProducts.map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+          </main>
         </div>
       </div>
     </div>
