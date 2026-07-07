@@ -248,7 +248,7 @@ export default async function HomePage() {
     .map((category, index) => {
       const products = productBuckets[index] || [];
       const selectedProducts = selectHomepageProducts(products);
-      const colorProducts = selectHomepageColors(products);
+      const colorCount = selectHomepageColors(products).length;
 
       return {
         category: {
@@ -257,9 +257,8 @@ export default async function HomePage() {
           slug: category.slug,
         },
         products: selectedProducts,
-        colorProducts,
         totalCount: selectedProducts.length,
-        colorCount: colorProducts.length,
+        colorCount,
       };
     })
     .filter((group) => group.products.length > 0);

@@ -335,6 +335,10 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const [sortMode, setSortMode] = useState('featured');
   const [activeProductTab, setActiveProductTab] = useState<'collections' | 'colors'>('collections');
   const [visibleProductCount, setVisibleProductCount] = useState(INITIAL_PRODUCT_LIMIT);
+  const [loadedColorGroups, setLoadedColorGroups] = useState<Record<string, Product[]>>({});
+  const [loadingColorCategoryIds, setLoadingColorCategoryIds] = useState<string[]>([]);
+  const [colorLoadError, setColorLoadError] = useState<string | null>(null);
+  const [colorLoadAttempt, setColorLoadAttempt] = useState(0);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const hasUserScrolledRef = useRef(false);
 
@@ -364,9 +368,9 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     () => displayGroups.map((group) => ({
       slug: group.category.slug,
       name: group.category.name,
-      count: group.totalCount,
+      count: activeProductTab === 'colors' ? (group.colorCount || 0) : group.totalCount,
     })),
-    [displayGroups],
+    [activeProductTab, displayGroups],
   );
 
   const selectedCategorySet = useMemo(() => new Set(selectedCategorySlugs), [selectedCategorySlugs]);
@@ -382,13 +386,79 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     () => dedupeProductsBySlug(tabGroups.flatMap((group) => group.products)),
     [tabGroups],
   );
-  const colorBaseProducts = useMemo(
-    () => dedupeProductsBySlug(tabGroups.flatMap((group) => group.colorProducts || [])),
+  const colorCategoryIds = useMemo(
+    () => tabGroups
+      .filter((group) => (group.colorCount || 0) > 0)
+      .map((group) => group.category.id),
     [tabGroups],
+  );
+  const missingColorCategoryIds = useMemo(
+    () => colorCategoryIds.filter((categoryId) => !loadedColorGroups[categoryId]),
+    [colorCategoryIds, loadedColorGroups],
+  );
+  const missingColorCategoryIdsKey = missingColorCategoryIds.join(',');
+
+  useEffect(() => {
+    if (activeProductTab !== 'colors' || !missingColorCategoryIdsKey) {
+      return;
+    }
+
+    const categoryIds = missingColorCategoryIdsKey.split(',').filter(Boolean);
+    let cancelled = false;
+
+    setLoadingColorCategoryIds(categoryIds);
+    setColorLoadError(null);
+
+    fetch(`/api/home-colors?categoryIds=${encodeURIComponent(categoryIds.join(','))}`)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        return response.json() as Promise<{ groups?: Array<{ categoryId: string; products: Product[] }> }>;
+      })
+      .then((payload) => {
+        if (cancelled) {
+          return;
+        }
+
+        setLoadedColorGroups((current) => {
+          const next = { ...current };
+
+          for (const group of payload.groups || []) {
+            next[group.categoryId] = group.products || [];
+          }
+
+          return next;
+        });
+      })
+      .catch((error) => {
+        if (!cancelled) {
+          setColorLoadError(error instanceof Error ? error.message : 'Boje nisu učitane');
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setLoadingColorCategoryIds([]);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeProductTab, colorLoadAttempt, missingColorCategoryIdsKey]);
+
+  const colorBaseProducts = useMemo(
+    () => dedupeProductsBySlug(tabGroups.flatMap((group) => loadedColorGroups[group.category.id] || group.colorProducts || [])),
+    [loadedColorGroups, tabGroups],
   );
   const baseProducts = activeProductTab === 'colors' ? colorBaseProducts : collectionBaseProducts;
   const collectionTabCount = collectionBaseProducts.length;
-  const colorTabCount = colorBaseProducts.length;
+  const colorTabCount = tabGroups.reduce(
+    (sum, group) => sum + (group.colorCount ?? loadedColorGroups[group.category.id]?.length ?? group.colorProducts?.length ?? 0),
+    0,
+  );
+  const isLoadingColors = activeProductTab === 'colors' && missingColorCategoryIds.length > 0 && loadingColorCategoryIds.length > 0;
 
   const selectedCategorySlug = selectedCategorySlugs.length === 1 ? selectedCategorySlugs[0] : null;
   const singleSelectedGroup = selectedCategorySlug
@@ -514,6 +584,9 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     thicknessBounds.hasData,
     thicknessFiltered,
   ]);
+  const activeProductCount = activeProductTab === 'colors' && missingColorCategoryIds.length > 0
+    ? colorTabCount
+    : filteredProducts.length;
 
   useEffect(() => {
     hasUserScrolledRef.current = false;
@@ -858,7 +931,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                       {activeName}
                     </h2>
                     <span className="pb-1.5 text-[12px] text-ink-500">
-                      {filteredProducts.length} {activeProductTab === 'colors' ? 'boja' : 'kolekcija'}
+                      {activeProductCount} {activeProductTab === 'colors' ? 'boja' : 'kolekcija'}
                     </span>
                   </div>
                   <p className="mt-2 max-w-3xl text-[13px] leading-6 text-ink-700">
@@ -973,7 +1046,24 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
               </label>
             </div>
 
-            {visibleProducts.length > 0 ? (
+            {isLoadingColors ? (
+              <div className="border border-ink-200 bg-white p-12 text-center">
+                <h3 className="mb-2 text-lg font-medium text-ink-900">Učitavam boje</h3>
+                <p className="text-[13px] text-ink-500">Pripremamo dekore za izabrane kategorije.</p>
+              </div>
+            ) : colorLoadError ? (
+              <div className="border border-ink-200 bg-white p-12 text-center">
+                <h3 className="mb-2 text-lg font-medium text-ink-900">Boje nisu učitane</h3>
+                <p className="text-[13px] text-ink-500">Pokušajte ponovo za nekoliko trenutaka.</p>
+                <button
+                  type="button"
+                  onClick={() => setColorLoadAttempt((current) => current + 1)}
+                  className="mt-4 border border-ink-200 bg-white px-4 py-2 text-[12px] font-semibold text-ink-900 transition-colors hover:border-ink-900"
+                >
+                  Pokušaj ponovo
+                </button>
+              </div>
+            ) : visibleProducts.length > 0 ? (
               <>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-3 xl:grid-cols-4">
                   {visibleProducts.map((product) => (
