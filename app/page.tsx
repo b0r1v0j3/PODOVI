@@ -75,8 +75,11 @@ const SWATCH_DATASETS = [
 function normalizeSwatchKey(value: string | null | undefined): string {
   return String(value || '')
     .trim()
+    .replace(/¹/g, '1')
+    .replace(/²/g, '2')
+    .replace(/³/g, '3')
     .toLowerCase()
-    .replace(/^(gerflor|tarkett|wolflor|podovi|bloq|desso)-/, '')
+    .replace(/^(gerflor|tarkett|wolflor|podovi|bloq|desso)(?:\s+|-)+/, '')
     .replace(/[^a-z0-9čćžšđ]+/gi, '-')
     .replace(/^-+|-+$/g, '');
 }
