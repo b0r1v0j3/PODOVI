@@ -232,6 +232,10 @@ function selectHomepageProducts(products: Product[]): Product[] {
     .sort((a, b) => Number((b.images?.length || 0) > 0) - Number((a.images?.length || 0) > 0));
 }
 
+function selectHomepageColors(products: Product[]): Product[] {
+  return dedupeBySlug(products.filter((product) => !hasCollectionSku(product)));
+}
+
 export default async function HomePage() {
   const categories = await categoryRepository.findAll();
   const homepageCategories = categories;
@@ -244,6 +248,7 @@ export default async function HomePage() {
     .map((category, index) => {
       const products = productBuckets[index] || [];
       const selectedProducts = selectHomepageProducts(products);
+      const colorProducts = selectHomepageColors(products);
 
       return {
         category: {
@@ -252,7 +257,9 @@ export default async function HomePage() {
           slug: category.slug,
         },
         products: selectedProducts,
+        colorProducts,
         totalCount: selectedProducts.length,
+        colorCount: colorProducts.length,
       };
     })
     .filter((group) => group.products.length > 0);

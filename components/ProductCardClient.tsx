@@ -23,7 +23,9 @@ interface ProductCardClientProps {
 export default function ProductCardClient({ product, brand, compact = false }: ProductCardClientProps) {
   const imageCandidates = getProductImageCandidates(product, compact ? 'thumb' : 'card').slice(0, 4);
   const primaryImage = imageCandidates[0];
-  const swatchCandidates = getProductSwatchCandidates(product, 'thumb').slice(0, 3);
+  const swatchCandidates = getProductSwatchCandidates(product, 'thumb')
+    .filter((candidate) => candidate.url !== primaryImage?.url)
+    .slice(0, 3);
 
   const displayName = getProductCardDisplayName(product.name, brand?.name);
 
