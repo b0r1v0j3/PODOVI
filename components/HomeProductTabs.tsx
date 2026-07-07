@@ -894,7 +894,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
             <div className="sticky top-24 space-y-4">
             <div className="border border-ink-200 bg-white p-4">
               <div className="mb-3 flex items-center justify-between">
-                <h2 className="text-[14px] font-semibold text-ink-900">Filtri</h2>
+                <h2 className="text-[14px] font-semibold text-ink-900">Filteri</h2>
                 <button
                   type="button"
                   onClick={resetFilters}
