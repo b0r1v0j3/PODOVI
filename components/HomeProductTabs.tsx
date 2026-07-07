@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Brand, Category, Product } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 
 const INITIAL_PRODUCT_LIMIT = 12;
-const PREFERRED_HOME_CATEGORY = 'vinil';
-const FILTER_CATEGORY_SLUGS = ['vinil', 'lvt', 'tekstilne-ploce', 'deking', 'parket', 'laminat'];
+const VINYL_CATEGORY_SLUG = 'vinil';
+const LVT_CATEGORY_SLUG = 'lvt';
 
 const CATEGORY_DESCRIPTIONS: Record<string, string> = {
   vinil: 'Profesionalni homogeni i heterogeni vinil podovi za stambene i komercijalne prostore.',
@@ -169,6 +169,22 @@ function sortProducts(products: Product[], sortMode: string): Product[] {
   return sorted;
 }
 
+function getNextProductRowSize(): number {
+  if (typeof window === 'undefined') {
+    return 4;
+  }
+
+  if (window.matchMedia('(min-width: 1280px)').matches) {
+    return 4;
+  }
+
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    return 3;
+  }
+
+  return 2;
+}
+
 function formatVinylTypeLabel(value: string): string {
   const normalized = normalizeOptionValue(value);
 
@@ -312,12 +328,7 @@ function FilterSection({
 }
 
 export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTabsProps) {
-  const initialCategorySlug = groups.some((group) => group.category.slug === PREFERRED_HOME_CATEGORY)
-    ? PREFERRED_HOME_CATEGORY
-    : groups[0]?.category.slug || 'sve';
-  const [selectedCategorySlugs, setSelectedCategorySlugs] = useState<string[]>(
-    initialCategorySlug === 'sve' ? [] : [initialCategorySlug],
-  );
+  const [selectedCategorySlugs, setSelectedCategorySlugs] = useState<string[]>([]);
   const [selectedBrandIds, setSelectedBrandIds] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedApplications, setSelectedApplications] = useState<string[]>([]);
@@ -325,6 +336,18 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const [thicknessRange, setThicknessRange] = useState<[number, number] | null>(null);
   const [brandQuery, setBrandQuery] = useState('');
   const [sortMode, setSortMode] = useState('featured');
+  const [visibleProductCount, setVisibleProductCount] = useState(INITIAL_PRODUCT_LIMIT);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const hasUserScrolledRef = useRef(false);
+
+  useEffect(() => {
+    const markUserScroll = () => {
+      hasUserScrolledRef.current = true;
+    };
+
+    window.addEventListener('scroll', markUserScroll, { passive: true });
+    return () => window.removeEventListener('scroll', markUserScroll);
+  }, []);
 
   useEffect(() => {
     const availableSlugs = new Set(groups.map((group) => group.category.slug));
@@ -340,14 +363,11 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
 
   const displayGroups = groups;
   const categoryOptions = useMemo(
-    () => displayGroups
-      .filter((group) => FILTER_CATEGORY_SLUGS.includes(group.category.slug))
-      .map((group) => ({
-        slug: group.category.slug,
-        name: group.category.name,
-        count: group.totalCount,
-      }))
-      .sort((a, b) => FILTER_CATEGORY_SLUGS.indexOf(a.slug) - FILTER_CATEGORY_SLUGS.indexOf(b.slug)),
+    () => displayGroups.map((group) => ({
+      slug: group.category.slug,
+      name: group.category.name,
+      count: group.totalCount,
+    })),
     [displayGroups],
   );
 
@@ -359,19 +379,25 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const baseProducts = useMemo(() => {
     const sourceGroups = selectedCategorySlugs.length > 0
       ? selectedGroups
-      : displayGroups.filter((group) => FILTER_CATEGORY_SLUGS.includes(group.category.slug));
+      : displayGroups;
 
     return dedupeProductsBySlug(sourceGroups.flatMap((group) => group.products));
   }, [displayGroups, selectedCategorySlugs.length, selectedGroups]);
 
-  const singleSelectedGroup = selectedCategorySlugs.length === 1
-    ? displayGroups.find((group) => group.category.slug === selectedCategorySlugs[0])
+  const selectedCategorySlug = selectedCategorySlugs.length === 1 ? selectedCategorySlugs[0] : null;
+  const singleSelectedGroup = selectedCategorySlug
+    ? displayGroups.find((group) => group.category.slug === selectedCategorySlug)
     : null;
   const activeName = singleSelectedGroup?.category.name || (selectedCategorySlugs.length > 1 ? 'Katalog' : 'Sve kolekcije');
   const activeDescription = singleSelectedGroup
     ? CATEGORY_DESCRIPTIONS[singleSelectedGroup.category.slug] || 'Pregled kolekcija i dekora za stambene, poslovne i tehničke prostore.'
     : 'Izaberite jednu ili više kategorija, zatim suzite izbor po brendu, tipu, primeni i kolekciji.';
-  const formatVinylTypes = selectedCategorySlugs.length === 1 && selectedCategorySlugs[0] === PREFERRED_HOME_CATEGORY;
+  const formatVinylTypes = selectedCategorySlug === VINYL_CATEGORY_SLUG;
+  const typeFilterTitle = formatVinylTypes
+    ? 'Tip vinila'
+    : selectedCategorySlug === LVT_CATEGORY_SLUG
+      ? 'Tip LVT'
+      : 'Tip';
 
   const brandOptions = useMemo(() => buildBrandOptions(baseProducts, brandsRecord), [baseProducts, brandsRecord]);
   const visibleBrandOptions = useMemo(
@@ -486,7 +512,54 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     thicknessFiltered,
   ]);
 
-  const visibleProducts = filteredProducts.slice(0, INITIAL_PRODUCT_LIMIT);
+  useEffect(() => {
+    hasUserScrolledRef.current = false;
+    setVisibleProductCount(INITIAL_PRODUCT_LIMIT);
+  }, [filteredProducts]);
+
+  const loadNextProductRow = useCallback(() => {
+    setVisibleProductCount((current) => Math.min(
+      current + getNextProductRowSize(),
+      filteredProducts.length,
+    ));
+  }, [filteredProducts.length]);
+
+  const visibleProducts = filteredProducts.slice(0, visibleProductCount);
+  const hasMoreProducts = visibleProducts.length < filteredProducts.length;
+
+  useEffect(() => {
+    const loadVisibleRowOnScroll = () => {
+      hasUserScrolledRef.current = true;
+      const target = loadMoreRef.current;
+      if (!target || !hasMoreProducts) {
+        return;
+      }
+
+      const rect = target.getBoundingClientRect();
+      if (rect.top <= window.innerHeight + 160 && rect.bottom >= -160) {
+        loadNextProductRow();
+      }
+    };
+
+    window.addEventListener('scroll', loadVisibleRowOnScroll, { passive: true });
+    return () => window.removeEventListener('scroll', loadVisibleRowOnScroll);
+  }, [hasMoreProducts, loadNextProductRow]);
+
+  useEffect(() => {
+    const target = loadMoreRef.current;
+    if (!target || !hasMoreProducts || typeof IntersectionObserver === 'undefined') {
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (hasUserScrolledRef.current && entries.some((entry) => entry.isIntersecting)) {
+        loadNextProductRow();
+      }
+    }, { rootMargin: '0px 0px 160px 0px' });
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [hasMoreProducts, loadNextProductRow, visibleProductCount]);
 
   const resetRefinements = () => {
     setSelectedBrandIds([]);
@@ -620,7 +693,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
               </FilterSection>
 
               {typeOptions.length > 0 ? (
-                <FilterSection title={formatVinylTypes ? 'Tip vinila' : 'Tip'}>
+                <FilterSection title={typeFilterTitle}>
                   <div className="space-y-0.5">
                     {typeOptions.map((option) => (
                       <FilterButton
@@ -878,15 +951,28 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
             </div>
 
             {visibleProducts.length > 0 ? (
-              <div className="grid grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-3 xl:grid-cols-4">
-                {visibleProducts.map((product) => (
-                  <ProductCardClient
-                    key={`${selectedCategorySlugs.join('-') || 'all'}-${product.id}`}
-                    product={product}
-                    brand={brandsRecord[product.brandId] || null}
-                  />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-3 xl:grid-cols-4">
+                  {visibleProducts.map((product) => (
+                    <ProductCardClient
+                      key={`${selectedCategorySlugs.join('-') || 'all'}-${product.id}`}
+                      product={product}
+                      brand={brandsRecord[product.brandId] || null}
+                    />
+                  ))}
+                </div>
+                {hasMoreProducts ? (
+                  <div ref={loadMoreRef} className="flex justify-center py-8">
+                    <button
+                      type="button"
+                      onClick={loadNextProductRow}
+                      className="border border-ink-200 bg-white px-4 py-2 text-[12px] font-semibold text-ink-900 transition-colors hover:border-ink-900"
+                    >
+                      Učitaj još kolekcija
+                    </button>
+                  </div>
+                ) : null}
+              </>
             ) : (
               <div className="border border-ink-200 bg-white p-12 text-center">
                 <h3 className="mb-2 text-lg font-medium text-ink-900">Nema proizvoda</h3>
