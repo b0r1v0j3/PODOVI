@@ -179,7 +179,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
-      // Vrati fokus na dugme "Filteri" koje je otvorilo fioku
+      // Vrati fokus na dugme "Filtri" koje je otvorilo fioku
       filtersTriggerRef.current?.focus();
     };
   }, [isDrawerOpen]);
@@ -348,7 +348,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         <div className="sticky top-24 rounded-lg border border-ink-200 bg-white p-4 shadow-[0_20px_55px_rgba(17,17,17,0.06)]">
           <div className="mb-4 flex items-center justify-between gap-3 border-b border-ink-200 pb-4">
             <div>
-              <h2 className="text-base font-medium text-ink-900">Filteri</h2>
+              <h2 className="text-base font-medium text-ink-900">Filtri</h2>
               {activeFilterCount > 0 && (
                 <p className="mt-1 text-[12px] text-ink-500">{activeFilterCount} aktivno</p>
               )}
@@ -630,7 +630,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
         </div>
       </aside>
 
-      {/* Hairline traka: levo brend cipovi, desno dugme Filteri */}
+      {/* Hairline traka: levo brend cipovi, desno dugme Filtri */}
       <div className="flex items-center justify-between gap-4 border-b border-ink-200 lg:hidden">
         <div className="no-scrollbar -mx-1 flex flex-1 items-center gap-5 overflow-x-auto px-1">
           {availableBrands.map((brand) => {
@@ -660,7 +660,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
           aria-expanded={isDrawerOpen}
           className="inline-flex min-h-[44px] shrink-0 items-center gap-2 text-[13px] text-ink-900 transition-opacity hover:opacity-60"
         >
-          Filteri{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}
+          Filtri{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
           </svg>
@@ -681,11 +681,11 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
           <div
             role="dialog"
             aria-modal="true"
-            aria-label="Filteri"
+            aria-label="Filtri"
             className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-ink-200 bg-white"
           >
             <div className="flex items-center justify-between border-b border-ink-200 px-6 py-4">
-              <h2 className="eyebrow">Filteri</h2>
+              <h2 className="eyebrow">Filtri</h2>
               <button
                 type="button"
                 ref={closeButtonRef}
