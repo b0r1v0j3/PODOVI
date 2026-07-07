@@ -21,7 +21,9 @@ export default async function ProductCard({ product, sizes = "(max-width: 768px)
   const brand = await brandRepository.findById(product.brandId);
   const imageCandidates = getProductImageCandidates(product, 'card').slice(0, 4);
   const primaryImage = imageCandidates[0];
-  const swatchCandidates = getProductSwatchCandidates(product, 'thumb').slice(0, 3);
+  const swatchCandidates = getProductSwatchCandidates(product, 'thumb')
+    .filter((candidate) => candidate.url !== primaryImage?.url)
+    .slice(0, 3);
   const displayName = getProductCardDisplayName(product.name, brand?.name);
   const productHref = getCanonicalProductHref(product as Product & { collectionSlug?: string });
   const rawCollectionName = product.specs?.find(s => s.key === 'collection')?.value;

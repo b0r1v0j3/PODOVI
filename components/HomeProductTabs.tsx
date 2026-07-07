@@ -22,7 +22,9 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
 export interface HomeProductGroup {
   category: Pick<Category, 'id' | 'name' | 'slug'>;
   products: Product[];
+  colorProducts?: Product[];
   totalCount: number;
+  colorCount?: number;
 }
 
 interface HomeProductTabsProps {
@@ -264,11 +266,6 @@ function getCollectionFilterValue(product: Product): string | null {
   return getSpecValue(product, ['collection', 'kolekcija', 'brand_line', 'range']) || product.name || null;
 }
 
-function getProductDecorCount(product: Product): number {
-  const colors = (product as Product & { customColors?: unknown[] }).customColors;
-  return Array.isArray(colors) ? Math.max(colors.length, 1) : 1;
-}
-
 function toggleSelection(current: string[], value: string): string[] {
   return current.includes(value)
     ? current.filter((item) => item !== value)
@@ -336,6 +333,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const [thicknessRange, setThicknessRange] = useState<[number, number] | null>(null);
   const [brandQuery, setBrandQuery] = useState('');
   const [sortMode, setSortMode] = useState('featured');
+  const [activeProductTab, setActiveProductTab] = useState<'collections' | 'colors'>('collections');
   const [visibleProductCount, setVisibleProductCount] = useState(INITIAL_PRODUCT_LIMIT);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const hasUserScrolledRef = useRef(false);
@@ -376,13 +374,21 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     () => displayGroups.filter((group) => selectedCategorySet.has(group.category.slug)),
     [displayGroups, selectedCategorySet],
   );
-  const baseProducts = useMemo(() => {
-    const sourceGroups = selectedCategorySlugs.length > 0
-      ? selectedGroups
-      : displayGroups;
-
-    return dedupeProductsBySlug(sourceGroups.flatMap((group) => group.products));
-  }, [displayGroups, selectedCategorySlugs.length, selectedGroups]);
+  const tabGroups = useMemo(
+    () => (selectedCategorySlugs.length > 0 ? selectedGroups : displayGroups),
+    [displayGroups, selectedCategorySlugs.length, selectedGroups],
+  );
+  const collectionBaseProducts = useMemo(
+    () => dedupeProductsBySlug(tabGroups.flatMap((group) => group.products)),
+    [tabGroups],
+  );
+  const colorBaseProducts = useMemo(
+    () => dedupeProductsBySlug(tabGroups.flatMap((group) => group.colorProducts || [])),
+    [tabGroups],
+  );
+  const baseProducts = activeProductTab === 'colors' ? colorBaseProducts : collectionBaseProducts;
+  const collectionTabCount = collectionBaseProducts.length;
+  const colorTabCount = colorBaseProducts.length;
 
   const selectedCategorySlug = selectedCategorySlugs.length === 1 ? selectedCategorySlugs[0] : null;
   const singleSelectedGroup = selectedCategorySlug
@@ -456,10 +462,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const maxThumbPosition = ((effectiveThicknessRange[1] - thicknessBounds.min) / thicknessDenominator) * 100;
   const thicknessFiltered = thicknessRange !== null
     && (effectiveThicknessRange[0] > thicknessBounds.min || effectiveThicknessRange[1] < thicknessBounds.max);
-  const colorDecorCount = useMemo(
-    () => baseProducts.reduce((sum, product) => sum + getProductDecorCount(product), 0),
-    [baseProducts],
-  );
+  const colorDecorCount = colorTabCount;
 
   const filteredProducts = useMemo(() => {
     const selectedBrandSet = new Set(selectedBrandIds);
@@ -855,7 +858,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                       {activeName}
                     </h2>
                     <span className="pb-1.5 text-[12px] text-ink-500">
-                      {filteredProducts.length} proizvoda
+                      {filteredProducts.length} {activeProductTab === 'colors' ? 'boja' : 'kolekcija'}
                     </span>
                   </div>
                   <p className="mt-2 max-w-3xl text-[13px] leading-6 text-ink-700">
@@ -931,10 +934,30 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
 
             <div className="mb-5 flex flex-col gap-3 border-b border-ink-200 text-[12px] text-ink-500 sm:flex-row sm:items-end sm:justify-between">
               <div className="flex items-center gap-8">
-                <button type="button" className="border-b-[3px] border-ink-900 pb-3 font-medium text-ink-900">
-                  Kolekcije ({filteredProducts.length})
+                <button
+                  type="button"
+                  onClick={() => setActiveProductTab('collections')}
+                  aria-pressed={activeProductTab === 'collections'}
+                  className={`pb-3 transition-colors ${
+                    activeProductTab === 'collections'
+                      ? 'border-b-[3px] border-ink-900 font-medium text-ink-900'
+                      : 'border-b-[3px] border-transparent text-ink-500 hover:text-ink-900'
+                  }`}
+                >
+                  Kolekcije ({collectionTabCount})
                 </button>
-                <span className="pb-3">Boje ({colorDecorCount})</span>
+                <button
+                  type="button"
+                  onClick={() => setActiveProductTab('colors')}
+                  aria-pressed={activeProductTab === 'colors'}
+                  className={`pb-3 transition-colors ${
+                    activeProductTab === 'colors'
+                      ? 'border-b-[3px] border-ink-900 font-medium text-ink-900'
+                      : 'border-b-[3px] border-transparent text-ink-500 hover:text-ink-900'
+                  }`}
+                >
+                  Boje ({colorDecorCount})
+                </button>
               </div>
               <label className="mb-3 flex w-full flex-col gap-2 text-[12px] text-ink-500 sm:mb-2 sm:w-[180px]">
                 <span className="sr-only">Sortiraj proizvode</span>
@@ -955,9 +978,10 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                 <div className="grid grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-3 xl:grid-cols-4">
                   {visibleProducts.map((product) => (
                     <ProductCardClient
-                      key={`${selectedCategorySlugs.join('-') || 'all'}-${product.id}`}
+                      key={`${activeProductTab}-${selectedCategorySlugs.join('-') || 'all'}-${product.id}`}
                       product={product}
                       brand={brandsRecord[product.brandId] || null}
+                      compact={activeProductTab === 'colors'}
                     />
                   ))}
                 </div>
@@ -968,7 +992,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                       onClick={loadNextProductRow}
                       className="border border-ink-200 bg-white px-4 py-2 text-[12px] font-semibold text-ink-900 transition-colors hover:border-ink-900"
                     >
-                      Učitaj još kolekcija
+                      Učitaj još {activeProductTab === 'colors' ? 'boja' : 'kolekcija'}
                     </button>
                   </div>
                 ) : null}

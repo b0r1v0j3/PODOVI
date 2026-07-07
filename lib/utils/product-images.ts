@@ -139,7 +139,7 @@ export function getProductImageCandidates(product: Product, surface: ProductImag
   );
 }
 
-export function getProductSwatchCandidates(product: Product, surface: ProductImageSurface = 'thumb') {
+export function getProductSwatchCandidates(product: Product, _surface: ProductImageSurface = 'thumb') {
   const swatchSource = product as Product & ProductSwatchSource;
   const swatchImages = Array.isArray(swatchSource.swatchImages) ? swatchSource.swatchImages : [];
   const customColors = Array.isArray(swatchSource.customColors) ? swatchSource.customColors : [];
@@ -158,7 +158,6 @@ export function getProductSwatchCandidates(product: Product, surface: ProductIma
         };
       }),
       ...customColors.flatMap((color) => getColorImageCandidates(color)),
-      ...getProductImageCandidates(product, surface),
     ]
   );
 }
