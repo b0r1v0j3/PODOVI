@@ -7,7 +7,27 @@ import ProductCardClient from '@/components/ProductCardClient';
 
 const INITIAL_PRODUCT_LIMIT = 12;
 const VINYL_CATEGORY_SLUG = 'vinil';
-const LVT_CATEGORY_SLUG = 'lvt';
+const SCOPED_OPTION_SEPARATOR = '::';
+
+const TYPE_FILTER_TITLES: Record<string, string> = {
+  vinil: 'Tip vinila',
+  linoleum: 'Tip linoleuma',
+  lvt: 'Tip LVT-a',
+  laminat: 'Tip laminata',
+  parket: 'Tip parketa',
+  deking: 'Tip dekinga',
+  'tekstilne-ploce': 'Tip tekstilnih ploča',
+};
+
+const COLLECTION_FILTER_TITLES: Record<string, string> = {
+  vinil: 'Kolekcije vinila',
+  linoleum: 'Kolekcije linoleuma',
+  lvt: 'Kolekcije LVT-a',
+  laminat: 'Kolekcije laminata',
+  parket: 'Kolekcije parketa',
+  deking: 'Kolekcije dekinga',
+  'tekstilne-ploce': 'Kolekcije tekstilnih ploča',
+};
 
 const CATEGORY_DESCRIPTIONS: Record<string, string> = {
   vinil: 'Profesionalni homogeni i heterogeni vinil podovi za stambene i komercijalne prostore.',
@@ -36,6 +56,12 @@ interface CountOption {
   value: string;
   label: string;
   count: number;
+}
+
+interface ScopedOptionGroup {
+  category: Pick<Category, 'id' | 'name' | 'slug'>;
+  title: string;
+  options: CountOption[];
 }
 
 function CheckIcon({ className }: { className: string }) {
@@ -85,6 +111,39 @@ function dedupeProductsBySlug(products: Product[]): Product[] {
 
 function normalizeOptionValue(value: string): string {
   return value.trim().toLowerCase();
+}
+
+function buildScopedOptionValue(categorySlug: string, optionValue: string): string {
+  return `${categorySlug}${SCOPED_OPTION_SEPARATOR}${optionValue}`;
+}
+
+function parseScopedOptionValue(value: string): { categorySlug: string; optionValue: string } | null {
+  const separatorIndex = value.indexOf(SCOPED_OPTION_SEPARATOR);
+  if (separatorIndex === -1) {
+    return null;
+  }
+
+  return {
+    categorySlug: value.slice(0, separatorIndex),
+    optionValue: value.slice(separatorIndex + SCOPED_OPTION_SEPARATOR.length),
+  };
+}
+
+function buildScopedSelectionMap(values: string[]): Map<string, Set<string>> {
+  const map = new Map<string, Set<string>>();
+
+  for (const value of values) {
+    const parsed = parseScopedOptionValue(value);
+    if (!parsed) {
+      continue;
+    }
+
+    const existing = map.get(parsed.categorySlug) || new Set<string>();
+    existing.add(parsed.optionValue);
+    map.set(parsed.categorySlug, existing);
+  }
+
+  return map;
 }
 
 function getSpecValue(product: Product, keys: string[]): string | null {
@@ -309,17 +368,26 @@ function FilterButton({
 function FilterSection({
   title,
   children,
+  defaultOpen = true,
 }: {
   title: string;
   children: ReactNode;
+  defaultOpen?: boolean;
 }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
   return (
     <div className="border-t border-ink-200 py-3 first:border-t-0 first:pt-0">
-      <div className="mb-2 flex items-center justify-between">
-        <p className="text-[11px] font-semibold uppercase tracking-label text-ink-700">{title}</p>
-        <ChevronDownIcon className="h-3.5 w-3.5 text-ink-500" />
-      </div>
-      {children}
+      <button
+        type="button"
+        onClick={() => setIsOpen((current) => !current)}
+        className="mb-2 flex w-full items-center justify-between text-left"
+        aria-expanded={isOpen}
+      >
+        <span className="text-[11px] font-semibold uppercase tracking-label text-ink-700">{title}</span>
+        <ChevronDownIcon className={`h-3.5 w-3.5 text-ink-500 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      {isOpen ? children : null}
     </div>
   );
 }
@@ -364,6 +432,10 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   }, [groups]);
 
   const displayGroups = groups;
+  const categorySlugById = useMemo(
+    () => new Map(displayGroups.map((group) => [group.category.id, group.category.slug])),
+    [displayGroups],
+  );
   const categoryOptions = useMemo(
     () => displayGroups.map((group) => ({
       slug: group.category.slug,
@@ -468,45 +540,92 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const activeDescription = singleSelectedGroup
     ? CATEGORY_DESCRIPTIONS[singleSelectedGroup.category.slug] || 'Pregled kolekcija i dekora za stambene, poslovne i tehničke prostore.'
     : 'Izaberite jednu ili više kategorija, zatim suzite izbor po brendu, tipu, primeni i kolekciji.';
-  const formatVinylTypes = selectedCategorySlug === VINYL_CATEGORY_SLUG;
-  const typeFilterTitle = formatVinylTypes
-    ? 'Tip vinila'
-    : selectedCategorySlug === LVT_CATEGORY_SLUG
-      ? 'Tip LVT'
-      : 'Tip';
+
+  const filterBaseProductsByCategoryId = useMemo(() => {
+    const map = new Map<string, Product[]>();
+
+    for (const group of tabGroups) {
+      const products = activeProductTab === 'colors'
+        ? dedupeProductsBySlug(loadedColorGroups[group.category.id] || group.colorProducts || [])
+        : group.products;
+      map.set(group.category.id, products);
+    }
+
+    return map;
+  }, [activeProductTab, loadedColorGroups, tabGroups]);
 
   const brandOptions = useMemo(() => buildBrandOptions(baseProducts, brandsRecord), [baseProducts, brandsRecord]);
   const visibleBrandOptions = useMemo(
     () => brandOptions.filter((option) => option.label.toLowerCase().includes(brandQuery.trim().toLowerCase())),
     [brandOptions, brandQuery],
   );
-  const typeOptions = useMemo(
+  const typeOptionGroups = useMemo<ScopedOptionGroup[]>(
     () => {
-      const options = buildValueOptions(
-        baseProducts,
-        (product) => getSpecValue(product, ['type', 'tip']),
-        5,
-        formatVinylTypes ? formatVinylTypeLabel : undefined,
-      );
-
-      if (!formatVinylTypes) {
-        return options;
+      if (selectedCategorySlugs.length === 0) {
+        return [];
       }
 
-      const priority = ['heterogeni', 'homogeni'];
-      return options
-        .filter((option) => priority.includes(option.value))
-        .sort((a, b) => priority.indexOf(a.value) - priority.indexOf(b.value));
+      return tabGroups.flatMap((group) => {
+        const rawOptions = buildValueOptions(
+          filterBaseProductsByCategoryId.get(group.category.id) || [],
+          (product) => getSpecValue(product, ['type', 'tip']),
+          Number.MAX_SAFE_INTEGER,
+          group.category.slug === VINYL_CATEGORY_SLUG ? formatVinylTypeLabel : undefined,
+        );
+        const options = group.category.slug === VINYL_CATEGORY_SLUG
+          ? rawOptions
+            .filter((option) => ['heterogeni', 'homogeni'].includes(option.value))
+            .sort((a, b) => ['heterogeni', 'homogeni'].indexOf(a.value) - ['heterogeni', 'homogeni'].indexOf(b.value))
+          : rawOptions;
+
+        if (options.length === 0) {
+          return [];
+        }
+
+        return [{
+          category: group.category,
+          title: TYPE_FILTER_TITLES[group.category.slug] || `Tip ${group.category.name.toLowerCase()}`,
+          options: options.map((option) => ({
+            ...option,
+            value: buildScopedOptionValue(group.category.slug, option.value),
+          })),
+        }];
+      });
     },
-    [baseProducts, formatVinylTypes],
+    [filterBaseProductsByCategoryId, selectedCategorySlugs.length, tabGroups],
   );
   const applicationOptions = useMemo(
     () => buildApplicationOptions(baseProducts),
     [baseProducts],
   );
-  const collectionOptions = useMemo(
-    () => buildValueOptions(baseProducts, getCollectionFilterValue, 6),
-    [baseProducts],
+  const collectionOptionGroups = useMemo<ScopedOptionGroup[]>(
+    () => {
+      if (selectedCategorySlugs.length === 0) {
+        return [];
+      }
+
+      return tabGroups.flatMap((group) => {
+        const options = buildValueOptions(
+          filterBaseProductsByCategoryId.get(group.category.id) || [],
+          getCollectionFilterValue,
+          Number.MAX_SAFE_INTEGER,
+        );
+
+        if (options.length === 0) {
+          return [];
+        }
+
+        return [{
+          category: group.category,
+          title: COLLECTION_FILTER_TITLES[group.category.slug] || `Kolekcije ${group.category.name.toLowerCase()}`,
+          options: options.map((option) => ({
+            ...option,
+            value: buildScopedOptionValue(group.category.slug, option.value),
+          })),
+        }];
+      });
+    },
+    [filterBaseProductsByCategoryId, selectedCategorySlugs.length, tabGroups],
   );
   const thicknessBounds = useMemo(() => {
     const values = baseProducts
@@ -536,19 +655,23 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
 
   const filteredProducts = useMemo(() => {
     const selectedBrandSet = new Set(selectedBrandIds);
-    const selectedTypeSet = new Set(selectedTypes);
+    const selectedTypeMap = buildScopedSelectionMap(selectedTypes);
     const selectedApplicationSet = new Set(selectedApplications);
-    const selectedCollectionSet = new Set(selectedCollections);
+    const selectedCollectionMap = buildScopedSelectionMap(selectedCollections);
 
     const filtered = baseProducts.filter((product) => {
       if (selectedBrandSet.size > 0 && !selectedBrandSet.has(product.brandId)) {
         return false;
       }
 
-      const type = getSpecValue(product, ['type', 'tip']);
-      const formattedType = type ? (formatVinylTypes ? formatVinylTypeLabel(type) : type) : null;
-      if (selectedTypeSet.size > 0 && (!formattedType || !selectedTypeSet.has(normalizeOptionValue(formattedType)))) {
-        return false;
+      const categorySlug = categorySlugById.get(product.categoryId);
+      const selectedTypesForCategory = categorySlug ? selectedTypeMap.get(categorySlug) : null;
+      if (selectedTypesForCategory && selectedTypesForCategory.size > 0) {
+        const type = getSpecValue(product, ['type', 'tip']);
+        const formattedType = type ? (categorySlug === VINYL_CATEGORY_SLUG ? formatVinylTypeLabel(type) : type) : null;
+        if (!formattedType || !selectedTypesForCategory.has(normalizeOptionValue(formattedType))) {
+          return false;
+        }
       }
 
       const applicationMatches = getApplicationMatches(product);
@@ -556,9 +679,12 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
         return false;
       }
 
-      const collection = getCollectionFilterValue(product);
-      if (selectedCollectionSet.size > 0 && (!collection || !selectedCollectionSet.has(normalizeOptionValue(collection)))) {
-        return false;
+      const selectedCollectionsForCategory = categorySlug ? selectedCollectionMap.get(categorySlug) : null;
+      if (selectedCollectionsForCategory && selectedCollectionsForCategory.size > 0) {
+        const collection = getCollectionFilterValue(product);
+        if (!collection || !selectedCollectionsForCategory.has(normalizeOptionValue(collection))) {
+          return false;
+        }
       }
 
       if (thicknessFiltered && thicknessBounds.hasData) {
@@ -574,8 +700,8 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     return sortProducts(filtered, sortMode);
   }, [
     baseProducts,
+    categorySlugById,
     effectiveThicknessRange,
-    formatVinylTypes,
     selectedApplications,
     selectedBrandIds,
     selectedCollections,
@@ -671,6 +797,30 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     });
   };
 
+  const typeOptionLookup = useMemo(() => {
+    const lookup = new Map<string, { label: string; sectionTitle: string }>();
+
+    for (const group of typeOptionGroups) {
+      for (const option of group.options) {
+        lookup.set(option.value, { label: option.label, sectionTitle: group.title });
+      }
+    }
+
+    return lookup;
+  }, [typeOptionGroups]);
+
+  const collectionOptionLookup = useMemo(() => {
+    const lookup = new Map<string, { label: string; sectionTitle: string }>();
+
+    for (const group of collectionOptionGroups) {
+      for (const option of group.options) {
+        lookup.set(option.value, { label: option.label, sectionTitle: group.title });
+      }
+    }
+
+    return lookup;
+  }, [collectionOptionGroups]);
+
   const activeFilterChips = [
     ...selectedCategorySlugs.flatMap((slug) => {
       const category = categoryOptions.find((option) => option.slug === slug);
@@ -696,11 +846,11 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
         : [];
     }),
     ...selectedTypes.flatMap((value) => {
-      const option = typeOptions.find((item) => item.value === value);
+      const option = typeOptionLookup.get(value);
       return option
         ? [{
           id: `type-${value}`,
-          label: option.label,
+          label: `${option.sectionTitle}: ${option.label}`,
           onRemove: () => setSelectedTypes((current) => current.filter((item) => item !== value)),
         }]
         : [];
@@ -716,11 +866,11 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
         : [];
     }),
     ...selectedCollections.flatMap((value) => {
-      const option = collectionOptions.find((item) => item.value === value);
+      const option = collectionOptionLookup.get(value);
       return option
         ? [{
           id: `collection-${value}`,
-          label: option.label,
+          label: `${option.sectionTitle}: ${option.label}`,
           onRemove: () => setSelectedCollections((current) => current.filter((item) => item !== value)),
         }]
         : [];
@@ -768,10 +918,10 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                 </div>
               </FilterSection>
 
-              {typeOptions.length > 0 ? (
-                <FilterSection title={typeFilterTitle}>
+              {typeOptionGroups.map((group) => (
+                <FilterSection key={`type-${group.category.slug}`} title={group.title}>
                   <div className="space-y-0.5">
-                    {typeOptions.map((option) => (
+                    {group.options.map((option) => (
                       <FilterButton
                         key={option.value}
                         active={selectedTypes.includes(option.value)}
@@ -782,7 +932,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                     ))}
                   </div>
                 </FilterSection>
-              ) : null}
+              ))}
 
               {applicationOptions.length > 0 ? (
                 <FilterSection title="Primena">
@@ -884,10 +1034,10 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                 </FilterSection>
               ) : null}
 
-              {collectionOptions.length > 0 ? (
-                <FilterSection title="Kolekcija">
+              {collectionOptionGroups.map((group) => (
+                <FilterSection key={`collection-${group.category.slug}`} title={group.title} defaultOpen={false}>
                   <div className="space-y-0.5">
-                    {collectionOptions.map((option) => (
+                    {group.options.map((option) => (
                       <FilterButton
                         key={option.value}
                         active={selectedCollections.includes(option.value)}
@@ -898,7 +1048,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                     ))}
                   </div>
                 </FilterSection>
-              ) : null}
+              ))}
             </div>
 
             <div className="border border-ink-200 bg-white p-4">
