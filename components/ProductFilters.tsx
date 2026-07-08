@@ -9,7 +9,33 @@ import {
   resolveCategoryListingMode,
   type CategoryListingMode,
 } from '@/lib/catalog/listing-curation';
+import { normalizeThicknessValue } from '@/lib/catalog/spec-normalize';
 import { useScrollLock } from './useScrollLock';
+
+// URL parametri stižu i ručno kucani ("?brands=Tarkett", "?thickness=8.00") — sve što
+// se ne poklopi sa stvarnim opcijama odbacujemo, inače brojač "N aktivno" broji
+// fantomske filtere koje nijedan checkbox ne prikazuje kao čekirane.
+function sanitizeBrandIds(values: string[], availableBrands: Brand[]): string[] {
+  return values.filter((value) => availableBrands.some((brand) => brand.id === value));
+}
+
+function sanitizeThicknessValues(values: string[], availableThickness?: string[]): string[] {
+  if (!availableThickness || availableThickness.length === 0) return [];
+  const canonical = new Map(
+    availableThickness.map((option) => [normalizeThicknessValue(option), option])
+  );
+  return values
+    .map((value) => canonical.get(normalizeThicknessValue(value)))
+    .filter((value): value is string => Boolean(value));
+}
+
+function sanitizeWoodTypes(
+  values: string[],
+  availableWoodTypes?: { value: string; count: number }[]
+): string[] {
+  if (!availableWoodTypes || availableWoodTypes.length === 0) return [];
+  return values.filter((value) => availableWoodTypes.some((option) => option.value === value));
+}
 
 interface ProductFiltersProps {
   availableBrands: Brand[];
@@ -50,7 +76,9 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   const currentToolSubcategories = searchParams.get('toolSubcategory')?.split(',').filter(Boolean) || [];
 
   const [search, setSearch] = useState(currentFilters.search || '');
-  const [selectedBrands, setSelectedBrands] = useState<string[]>(currentFilters.brandIds || []);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>(
+    sanitizeBrandIds(currentFilters.brandIds || [], availableBrands)
+  );
   const [priceMin, setPriceMin] = useState(currentFilters.priceMin?.toString() || '');
   const [priceMax, setPriceMax] = useState(currentFilters.priceMax?.toString() || '');
   const [vinylType, setVinylType] = useState<'homogeni' | 'heterogeni' | null>(
@@ -68,9 +96,11 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     resolveCategoryListingMode(currentListing || currentFilters.listing, categorySlug)
   );
   const [selectedThickness, setSelectedThickness] = useState<string[]>(
-    currentThickness ? currentThickness.split(',') : []
+    sanitizeThicknessValues(currentThickness ? currentThickness.split(',') : [], availableThickness)
   );
-  const [selectedWoodTypes, setSelectedWoodTypes] = useState<string[]>(currentWoodTypes);
+  const [selectedWoodTypes, setSelectedWoodTypes] = useState<string[]>(
+    sanitizeWoodTypes(currentWoodTypes, availableWoodTypes)
+  );
   const [selectedToolGroups, setSelectedToolGroups] = useState<string[]>(currentToolGroups);
   const [selectedToolSubcategories, setSelectedToolSubcategories] = useState<string[]>(currentToolSubcategories);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -87,7 +117,10 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isSyncingRef.current) return;
 
     const urlSearch = searchParams.get('search') || '';
-    const urlBrands = searchParams.get('brands')?.split(',').filter(Boolean) || [];
+    const urlBrands = sanitizeBrandIds(
+      searchParams.get('brands')?.split(',').filter(Boolean) || [],
+      availableBrands
+    );
     const urlPriceMin = searchParams.get('priceMin') || '';
     const urlPriceMax = searchParams.get('priceMax') || '';
     const urlType = searchParams.get('type');
@@ -96,7 +129,10 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     const urlCollections = searchParams.get('collections')?.split(',').filter(Boolean) || [];
     const urlFamily = searchParams.get('family')?.split(',').filter(Boolean) || [];
     const urlListingMode = resolveCategoryListingMode(searchParams.get('listing'), categorySlug);
-    const urlThickness = searchParams.get('thickness')?.split(',').filter(Boolean) || [];
+    const urlThickness = sanitizeThicknessValues(
+      searchParams.get('thickness')?.split(',').filter(Boolean) || [],
+      availableThickness
+    );
     const urlWoodType = searchParams.get('woodType');
     const urlToolGroups = searchParams.get('toolGroup')?.split(',').filter(Boolean) || [];
     const urlToolSubcategories = searchParams.get('toolSubcategory')?.split(',').filter(Boolean) || [];
@@ -124,13 +160,13 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       setSelectedThickness(urlThickness);
     }
     if (isParketCategory) {
-      setSelectedWoodTypes(urlWoodType?.split(',').filter(Boolean) || []);
+      setSelectedWoodTypes(sanitizeWoodTypes(urlWoodType?.split(',').filter(Boolean) || [], availableWoodTypes));
     }
     if (isToolCategory) {
       setSelectedToolGroups(urlToolGroups);
       setSelectedToolSubcategories(urlToolSubcategories);
     }
-  }, [searchParams, searchParamsString, categorySlug, supportsListingMode, isVinilCategory, isLVTCategory, pathname, isLinoleumCategory, isLaminatCategory, isParketCategory, isToolCategory]);
+  }, [searchParams, searchParamsString, categorySlug, supportsListingMode, isVinilCategory, isLVTCategory, pathname, isLinoleumCategory, isLaminatCategory, isParketCategory, isToolCategory, availableBrands, availableThickness, availableWoodTypes]);
 
   // Auto-remove incompatible thicknesses when vinyl type changes
   useEffect(() => {
