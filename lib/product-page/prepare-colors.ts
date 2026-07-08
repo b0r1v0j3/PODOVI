@@ -30,7 +30,7 @@ import dessoCarpetData from '@/public/data/desso_carpet_tiles.json';
 import romusToolsData from '@/public/data/romus_tools.json';
 import { getAllDekingProducts, getAllGrassProducts, getAllPriborProducts } from '@/lib/utils/productDataLoader';
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
-import { isAlpodImportBrand, parseCoverageM2 } from '@/lib/catalog/spec-normalize';
+import { isAlpodImportBrand, isFirstPartyImageUrl, parseCoverageM2 } from '@/lib/catalog/spec-normalize';
 import admonterOfficialMediaData from '@/public/data/admonter_official_media.json';
 
 // Zvanični Admonter materijal po fabričkoj šifri (AGENTS.md t.11) — ljudska imena
@@ -63,11 +63,12 @@ function mapNestedCollectionColors(collection: any, context: { categoryId: strin
         image_url: color.image || color.image_url || '',
         texture_url: color.image || color.image_url || '',
         lifestyle_url: color.lifestyle_url || undefined, // visoko-rez hero slika (parket po meri)
-        // Sve slike boje (Alpod galerija + zvanične proizvođačke) za galeriju na PDP-u
+        // Sve slike boje (Alpod galerija + zvanične proizvođačke) za galeriju na PDP-u;
+        // bez hotlinkova — samo slike iz naše baze
         images: [
             ...(Array.isArray(color.images) ? color.images : []),
             ...officialImages,
-        ],
+        ].filter((img: any) => isFirstPartyImageUrl(typeof img === 'string' ? img : img?.url)),
         image_count: (color.image || color.image_url) ? 1 : 0,
         brandId: color.brandId || collection.brandId,
         characteristics: {
@@ -586,7 +587,7 @@ export async function mergeSelectedColor(
                         .filter(Boolean)),
                     ...(Array.isArray(decorOverlay?.roomshot_urls) ? decorOverlay.roomshot_urls : []),
                     ...(Array.isArray(decorOverlay?.texture_urls) ? decorOverlay.texture_urls : []),
-                ];
+                ].filter((url) => isFirstPartyImageUrl(url));
                 const seenGallery = new Set<string>();
                 product.images = galleryUrls
                     .filter((url) => {

@@ -27,7 +27,7 @@ import tarkettGrassProducts from '@/public/data/tarkett_grass_products.json';
 import priborProducts from '@/public/data/pribor_products.json';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import admonterOfficialMediaData from '@/public/data/admonter_official_media.json';
-import { parseCoverageM2 } from '@/lib/catalog/spec-normalize';
+import { isFirstPartyImageUrl, parseCoverageM2 } from '@/lib/catalog/spec-normalize';
 import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 import { selectPreferredCollectionHeroAsset } from '@/lib/utils/catalog-assets';
@@ -543,11 +543,23 @@ function normalizeAlpodImages(rawImages: unknown[], fallbackId: string, fallback
     return rawImages
         .map((rawImage, index) => normalizeProductImage(rawImage, fallbackId, fallbackAlt, index))
         .filter((image): image is Product['images'][number] => {
-            if (!image || seenUrls.has(image.url)) {
+            // Bez hotlinkova: nemigrirane www.alpod.rs galerijske slike (_1/_2) se odsecaju
+            // (primarne su sve migrirane u Supabase; trovale su og:image listu).
+            if (!image || !isFirstPartyImageUrl(image.url) || seenUrls.has(image.url)) {
                 return false;
             }
             seenUrls.add(image.url);
             return true;
+        })
+        .map((image) => {
+            // I variants (thumb/card/hero/og) moraju biti first-party — kartice ih preferiraju
+            if (!image.variants) {
+                return image;
+            }
+            const entries = Object.entries(image.variants).filter(([, url]) => isFirstPartyImageUrl(url));
+            return entries.length > 0
+                ? { ...image, variants: Object.fromEntries(entries) as Product['images'][number]['variants'] }
+                : { ...image, variants: undefined };
         });
 }
 

@@ -43,6 +43,18 @@ export function normalizeThicknessValue(raw: string | number | null | undefined)
 }
 
 /**
+ * Princip projekta: prikazujemo SAMO slike iz naše baze (Supabase storage ili lokalne
+ * putanje) — nikad hotlink tuđeg sajta. Alpod import u images[] nizu i dalje nosi
+ * nemigrirane www.alpod.rs URL-ove (_1/_2 galerijske slike) koje ovde odsecamo.
+ */
+export function isFirstPartyImageUrl(url: unknown): boolean {
+  const value = String(url || '');
+  if (!value) return false;
+  if (value.startsWith('/')) return true;
+  return value.includes('.supabase.co/');
+}
+
+/**
  * Alpod opis varijante nosi pokrivnost pakovanja: "... 10/3,6x120x1200 mm (1,5840 m2)".
  * Jedna implementacija za loader i PDP merge — vrednost puni Product.coveragePerPackage.
  */
