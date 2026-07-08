@@ -27,6 +27,7 @@ import tarkettGrassProducts from '@/public/data/tarkett_grass_products.json';
 import priborProducts from '@/public/data/pribor_products.json';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import admonterOfficialMediaData from '@/public/data/admonter_official_media.json';
+import artisanDisplayOverlayData from '@/public/data/artisan_display_overlay.json';
 import { isFirstPartyImageUrl, parseCoverageM2 } from '@/lib/catalog/spec-normalize';
 import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
@@ -430,12 +431,21 @@ function getAlpodRawCollections(categoryId?: string): Record<string, any>[] {
     return categoryId ? collections.filter((collection) => normalizeText(collection.categoryId) === categoryId) : collections;
 }
 
-// ── Admonter: zvanični materijal proizvođača (AGENTS.md t.11: asortiman = Alpod, materijal = admonter.com) ──
+// ── Display overlay registar po kolekciji (AGENTS.md t.10/t.11) ──
+// Svaki pregled proizvoda dodaje overlay fajl (ljudska imena dekora, intro,
+// kolekcijska slika, dokumenta) i registruje ga ovde — transformacije ispod
+// su generičke. Admonter nosi i materijal proizvođača (admonter.com);
+// Artisan je Alpodova sopstvena kolekcija pa je overlay čisto display sloj.
 const ADMONTER_COLLECTION_SLUG = 'podovi-parket-admonter';
 const ADMONTER_BRAND_ID = '16';
 
-function getAdmonterOverlay(): Record<string, any> {
-    return (admonterOfficialMediaData as any) || {};
+const COLLECTION_OVERLAYS: Record<string, Record<string, any>> = {
+    [ADMONTER_COLLECTION_SLUG]: (admonterOfficialMediaData as any) || {},
+    'podovi-parket-artisan': (artisanDisplayOverlayData as any) || {},
+};
+
+function getCollectionOverlay(rawCollection: Record<string, any>): Record<string, any> | null {
+    return COLLECTION_OVERLAYS[normalizeText(rawCollection?.slug)] || null;
 }
 
 function isAdmonterCollection(rawCollection: Record<string, any>): boolean {
@@ -569,7 +579,7 @@ function transformAlpodCollectionProduct(rawCollection: Record<string, any>, ind
     const categoryId = normalizeText(rawCollection.categoryId) || '2';
     const colorCount = Number(rawCollection.colorCount || rawCollection.colors?.length || 0);
     const isAdmonter = isAdmonterCollection(rawCollection);
-    const overlayCollection = isAdmonter ? getAdmonterOverlay().collection || {} : {};
+    const overlayCollection = getCollectionOverlay(rawCollection)?.collection || {};
     // References fotografije proizvođača idu ISPRED Alpod svočeva (odluka vlasnika 08.07.2026)
     const officialImages = [
         overlayCollection.collection_image_url,
@@ -598,7 +608,7 @@ function transformAlpodCollectionProduct(rawCollection: Record<string, any>, ind
         }
     );
     const description =
-        (isAdmonter && normalizeText(overlayCollection.intro_sr)) ||
+        normalizeText(overlayCollection.intro_sr) ||
         normalizeText(rawCollection.description) ||
         `${name} kolekcija u Podovi katalogu. Cena i dostupnost se proveravaju slanjem upita.`;
     const documents = (Array.isArray(overlayCollection.documents) ? overlayCollection.documents : [])
@@ -616,10 +626,12 @@ function transformAlpodCollectionProduct(rawCollection: Record<string, any>, ind
         sku: normalizeText(rawCollection.sku) || `PODOVI-COLLECTION-${slug.toUpperCase()}`,
         categoryId,
         brandId: isAdmonter ? ADMONTER_BRAND_ID : DEFAULT_PODOVI_BRAND_ID,
-        shortDescription: isAdmonter
-            ? `Admonter — austrijski parket od prirodnog drveta · ${colorCount} dekora`
-            : normalizeText(rawCollection.shortDescription) ||
-              `${name} - ${colorCount} ${categoryId === '5' ? 'artikala' : 'dekora'} bez javno istaknute cene`,
+        shortDescription:
+            normalizeText(overlayCollection.short_description_sr) ||
+            (isAdmonter
+                ? `Admonter — austrijski parket od prirodnog drveta · ${colorCount} dekora`
+                : normalizeText(rawCollection.shortDescription) ||
+                  `${name} - ${colorCount} ${categoryId === '5' ? 'artikala' : 'dekora'} bez javno istaknute cene`),
         description,
         images,
         specs,
@@ -652,8 +664,8 @@ function transformAlpodVariantProduct(
     const rawName = normalizeText(rawColor.name || rawColor.full_name) || collectionName;
     const fullName = fixAlpodSerbian(normalizeText(rawColor.full_name) || rawName);
     const isAdmonter = isAdmonterCollection(rawCollection);
-    const overlay = getAdmonterOverlay();
-    const decorOverlay = isAdmonter ? overlay.decors?.[normalizeText(rawColor.sourceSku)] : null;
+    const overlay = getCollectionOverlay(rawCollection) || {};
+    const decorOverlay = overlay.decors?.[normalizeText(rawColor.sourceSku)] || null;
     // Ljudsko ime umesto ERP šifre ("Hrast Noblesse — četkan, natur ulje"); fabrički naziv ostaje u specs
     const displayName = normalizeText(decorOverlay?.display_name_sr);
     const name = displayName || fixAlpodSerbian(rawName);

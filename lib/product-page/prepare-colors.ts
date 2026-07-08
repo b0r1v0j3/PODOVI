@@ -32,14 +32,22 @@ import { getAllDekingProducts, getAllGrassProducts, getAllPriborProducts } from 
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
 import { isAlpodImportBrand, isFirstPartyImageUrl, parseCoverageM2 } from '@/lib/catalog/spec-normalize';
 import admonterOfficialMediaData from '@/public/data/admonter_official_media.json';
+import artisanDisplayOverlayData from '@/public/data/artisan_display_overlay.json';
 
-// Zvanični Admonter materijal po fabričkoj šifri (AGENTS.md t.11) — ljudska imena
-// i room-shot/teksture za PDP selektor boja, koji čita sirove Alpod JSON boje.
-const admonterDecorOverlays: Record<string, any> = (admonterOfficialMediaData as any)?.decors || {};
+// Display overlay dekora po fabričkoj šifri (AGENTS.md t.10/t.11) — ljudska imena
+// i zvanične slike za PDP selektor boja, koji čita sirove Alpod JSON boje.
+// Šifre (ADMOAK-*, ARTCHA-*...) su globalno jedinstvene pa je union bezbedan;
+// gradacije_sr ostaju per-overlay i čitaju se u merge blokovima preko __overlayRoot.
+const decorOverlaysBySku: Record<string, any> = {};
+for (const overlayRoot of [admonterOfficialMediaData, artisanDisplayOverlayData] as any[]) {
+    for (const [sku, decor] of Object.entries(overlayRoot?.decors || {})) {
+        decorOverlaysBySku[sku.toUpperCase()] = { ...(decor as Record<string, any>), __overlayRoot: overlayRoot };
+    }
+}
 
 function getAdmonterDecorOverlay(color: any): any | null {
     const key = String(color?.sourceSku || color?.code || '').toUpperCase();
-    return (key && admonterDecorOverlays[key]) || null;
+    return (key && decorOverlaysBySku[key]) || null;
 }
 
 function mapNestedCollectionColors(collection: any, context: { categoryId: string }) {
@@ -620,8 +628,9 @@ export async function mergeSelectedColor(
             product.coveragePerPackage = parseCoverageM2(rawColor.description) ?? product.coveragePerPackage;
 
             // Čitljiv opis: gradacija + format + pakovanje umesto sirovog cenovničkog stringa
-            const overlayRoot = (admonterOfficialMediaData as any) || {};
-            const gradacijaText = decorOverlay ? overlayRoot.gradacije_sr?.[decorOverlay.gradacija] : undefined;
+            const gradacijaText = decorOverlay
+                ? decorOverlay.__overlayRoot?.gradacije_sr?.[decorOverlay.gradacija]
+                : undefined;
             const ch = (rawColor.characteristics || {}) as Record<string, any>;
             const dims = [ch['Debljina'], ch['Širina'], ch['Dužina']]
                 .map((value) => String(value || '').trim())

@@ -450,6 +450,22 @@ export default function ColorGrid({
     return filteredColors.slice(startIndex, startIndex + itemsPerPage);
   }, [filteredColors, currentPage, itemsPerPage, compact, totalPages]);
 
+  // Grupisanje po pod-liniji (spec 'Podkolekcija' — npr. Artisan: Chalet/Herringbone/
+  // Palace/Cottage/Chevron/Project/Lounge). Samo u punom (modal) prikazu i samo kad
+  // SVAKA boja nosi liniju a postoje bar 2 različite — inače ostaje ravan grid.
+  const subcollectionGroups = useMemo(() => {
+    if (compact) return null;
+    const groups = new Map<string, Color[]>();
+    for (const color of paginatedColors) {
+      const line = String(((color as { characteristics?: Record<string, string> }).characteristics || {})['Podkolekcija'] || '').trim();
+      if (!line) return null;
+      const group = groups.get(line) || [];
+      group.push(color);
+      groups.set(line, group);
+    }
+    return groups.size >= 2 ? Array.from(groups.entries()) : null;
+  }, [paginatedColors, compact]);
+
   const goToPage = (page: number) => {
     if (page >= 0 && page < totalPages) {
       setCurrentPage(page);
@@ -516,9 +532,18 @@ export default function ColorGrid({
       )}
 
       {/* Grid — items-start: kartice poravnate na vrh (slike u istoj ravni i kad liste imena
-           različite dužine, npr. pattern-grupe Rhombus 11 / Waves 4). */}
-      <div className={`grid items-start gap-3 ${compact ? 'grid-cols-6 mb-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
-        {paginatedColors.map((color) => {
+           različite dužine, npr. pattern-grupe Rhombus 11 / Waves 4).
+           Sa pod-linijama: jedna sekcija po liniji sa hairline podnaslovom. */}
+      {(subcollectionGroups || [[null, paginatedColors] as [string | null, Color[]]]).map(([groupLabel, groupColors]) => (
+        <div key={groupLabel ?? 'sve'}>
+          {groupLabel && (
+            <div className="mt-6 mb-3 flex items-baseline gap-3 border-b border-ink-200 pb-2 first:mt-0">
+              <h3 className="eyebrow">{groupLabel}</h3>
+              <span className="text-[12px] text-ink-500">{groupColors.length}</span>
+            </div>
+          )}
+          <div className={`grid items-start gap-3 ${compact ? 'grid-cols-6 mb-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
+        {groupColors.map((color) => {
           const isSelected = currentSelectedSlug === color.slug;
           const primaryColorImage = getPrimaryColorImage(color);
           const isGroup = Boolean((color as { variantList?: string[] }).variantList);
@@ -573,7 +598,9 @@ export default function ColorGrid({
             </button>
           );
         })}
-      </div>
+          </div>
+        </div>
+      ))}
 
       {/* Pagination Controls - below grid for compact mode */}
       {compact && totalPages > 1 && (
