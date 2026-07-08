@@ -13,6 +13,14 @@ import { getCategoryPageCopy } from '@/lib/seo/listing-page-copy';
 import { createMetadataImage, getMetadataImageUrls } from '@/lib/utils/product-images';
 import ProductCard from '@/components/ProductCard';
 import ProductFilters from '@/components/ProductFilters';
+import CategoryToolbar, {
+  buildCategoryQueryString,
+  buildFilterRemovalHref,
+  removeFilterValue,
+  resolveCategorySortMode,
+  sortCategoryProducts,
+  type ActiveFilterChip,
+} from '@/components/CategoryToolbar';
 import CategoryTabs from '@/components/CategoryTabs';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import EssenceConfiguratorBanner from '@/components/configurator/EssenceConfiguratorBanner';
@@ -37,6 +45,7 @@ interface CategoryPageProps {
     woodType?: string; // For Parket: Hrast | Jasen
     toolGroup?: string; // For Alat: Romus top-level tool group slugs
     toolSubcategory?: string; // For Alat: Romus tool subcategory slugs
+    sort?: string; // Sortiranje listinga: 'preporuceno' | 'naziv' | 'cena' | 'najnovije'
   };
 }
 
@@ -78,6 +87,165 @@ function pluralizeSr(count: number, one: string, few: string, many: string): str
 
 function getProductSpecValue(product: Product, key: string): string {
   return product.specs?.find((spec) => spec.key === key)?.value?.trim() || '';
+}
+
+// Collection-header SKU prefiksi — jedini izvor istine za razdvajanje kolekcija od boja.
+function hasCollectionSku(p: { sku?: string | null }): boolean {
+  return (
+    p.sku?.startsWith('GER-') ||
+    p.sku?.startsWith('TARKETT-') ||
+    p.sku?.startsWith('PODOVI-COLLECTION-') ||
+    p.sku?.startsWith('WOLFLOR-VINYL-') ||
+    p.sku?.startsWith('LINOLEUM-') ||
+    p.sku?.startsWith('VINIL-') ||
+    p.sku?.startsWith('PARKET-') ||
+    p.sku?.startsWith('LAM-') ||
+    p.sku?.startsWith('BLOQ-') ||
+    p.sku?.startsWith('DESSO-') ||
+    p.sku?.startsWith('DEKING-') ||
+    p.sku?.startsWith('GRASS-') ||
+    p.sku?.startsWith('PRIBOR-') ||
+    p.sku?.startsWith('ESD-') ||
+    p.sku?.startsWith('IND-') ||
+    p.sku?.startsWith('SPORT-') ||
+    p.sku?.startsWith('TARKETT-LAJSNE-') ||
+    p.sku?.startsWith('GERFLOR-LAJSNE-')
+  ) ?? false;
+}
+
+// ===== FILTERI 2.0 Faza 1: pomoćne funkcije za poređenje filtera =====
+// Ista logika služi i za prikazano filtriranje i za brojače uz opcije —
+// umesto dupliranja poređenja po granama.
+
+function getNormalizedProductThickness(p: Product): string | null {
+  const spec = p.specs?.find((s) => s.key === 'thickness' || s.key === 'overall_thickness');
+  return normalizeThicknessValue(spec?.value);
+}
+
+// Vrednost opcije "Kolekcija" za proizvod — ogledalo logike kojom se grade availableCollections.
+function getCollectionFacetValue(p: Product, categorySlug: string): string | null {
+  if (categorySlug === 'lvt') {
+    const collSpec = p.specs?.find((s) => s.key === 'collection')?.value;
+    if (p.sku?.startsWith('TARKETT-') && collSpec) return collSpec;
+    const name = p.name || '';
+    if (name.includes('Saga') || name.includes('SAGA')) return 'SAGA²';
+    if (name.includes('Creation 30')) return 'Creation 30';
+    if (name.includes('Creation 40')) return 'Creation 40';
+    if (name.includes('Creation 55')) return 'Creation 55';
+    if (name.includes('Creation 70')) return 'Creation 70';
+    return null;
+  }
+  if (categorySlug === 'parket') {
+    const specVal = p.specs?.find((s) => s.key === 'collection')?.value;
+    return getEffectiveParketCollection(p.slug, specVal) || specVal || p.name || null;
+  }
+  return (
+    p.specs?.find((s) => s.key === 'collection')?.value ||
+    p.specs?.find((s) => s.key === 'brand_line')?.value ||
+    p.name ||
+    null
+  );
+}
+
+// Parket vrsta drveta — spec wood_type/wood_species ili infer iz slug-a (izvučeno iz bloka za parket).
+function getProductWoodTypes(p: { specs?: { key: string; value: string }[]; slug: string }): string[] {
+  const spec = p.specs?.find((s) => s.key === 'wood_type' || s.key === 'wood_species');
+  const raw = spec?.value?.trim();
+  if (raw) return raw.split(',').map((part) => part.trim()).filter(Boolean);
+  const s = (p.slug || '').toLowerCase();
+  if (s.startsWith('jasen') || s.includes('-jasen-')) return ['Jasen'];
+  if (s.startsWith('hrast') || s.includes('-hrast-') || s.includes('oak')) return ['Hrast'];
+  return ['Hrast'];
+}
+
+function productMatchesWoodType(p: { specs?: { key: string; value: string }[]; slug: string }, wt: string): boolean {
+  const spec = p.specs?.find((s) => s.key === 'wood_type' || s.key === 'wood_species');
+  const raw = spec?.value?.trim();
+  if (raw) return raw.split(',').map((s) => s.trim()).includes(wt);
+  const s = (p.slug || '').toLowerCase();
+  if (wt === 'Jasen') return s.startsWith('jasen') || s.includes('-jasen-');
+  if (wt === 'Hrast') return s.startsWith('hrast') || s.includes('-hrast-') || s.includes('oak');
+  return false;
+}
+
+interface FacetSelections {
+  brandIds: string[];
+  collections: string[];
+  families: string[];
+  thickness: string[]; // normalizovane vrednosti (normalizeThicknessValue)
+  woodTypes: string[];
+  vinylType?: 'homogeni' | 'heterogeni';
+  safetyOnly: boolean;
+  wallOnly: boolean;
+  search?: string;
+  priceMin?: number;
+  priceMax?: number;
+}
+
+function productMatchesFacets(p: Product, f: FacetSelections, categorySlug: string): boolean {
+  if (f.brandIds.length > 0 && !f.brandIds.includes(p.brandId)) return false;
+
+  if (f.collections.length > 0) {
+    const value = getCollectionFacetValue(p, categorySlug);
+    if (!value || !f.collections.includes(value)) return false;
+  }
+
+  // Familija važi samo za BLOQ (brand 8) — ostali brendovi prolaze (postojeće ponašanje).
+  if (f.families.length > 0 && p.brandId === '8') {
+    const familySpec = p.specs?.find((s) => s.key === 'family')?.value;
+    if (!familySpec || !f.families.includes(familySpec)) return false;
+  }
+
+  if (f.thickness.length > 0) {
+    const thickness = getNormalizedProductThickness(p);
+    if (!thickness || !f.thickness.includes(thickness)) return false;
+  }
+
+  if (f.woodTypes.length > 0 && !f.woodTypes.some((wt) => productMatchesWoodType(p, wt))) return false;
+
+  if (categorySlug === 'vinil') {
+    if (f.vinylType) {
+      const typeSpec = p.specs?.find((s) => s.key === 'type')?.value?.toLowerCase();
+      if (typeSpec !== f.vinylType) return false;
+    }
+    if (f.safetyOnly && !p.specs?.some((s) => s.key === 'protivklizno')) return false;
+    if (f.wallOnly && !p.specs?.some((s) => s.key === 'zidna_obloga')) return false;
+  }
+
+  if (f.search) {
+    const term = f.search.toLowerCase();
+    const haystack = `${p.name || ''} ${p.sku || ''} ${p.shortDescription || ''}`.toLowerCase();
+    if (!haystack.includes(term)) return false;
+  }
+
+  if (f.priceMin !== undefined || f.priceMax !== undefined) {
+    const price = typeof p.price === 'number' && Number.isFinite(p.price) ? p.price : null;
+    if (price === null) return false;
+    if (f.priceMin !== undefined && price < f.priceMin) return false;
+    if (f.priceMax !== undefined && price > f.priceMax) return false;
+  }
+
+  return true;
+}
+
+type CountableFacet = 'brandIds' | 'collections' | 'families' | 'thickness';
+
+// Count za opciju X = broj rezultata kad se X primeni preko OSTALIH aktivnih filtera
+// (unutar iste grupe važi samo X, selekcije te grupe se ignorišu — standardno OR fasetiranje).
+function countFacetOption(
+  products: Product[],
+  base: FacetSelections,
+  categorySlug: string,
+  facet: CountableFacet,
+  value: string
+): number {
+  const overridden: FacetSelections = { ...base };
+  overridden[facet] = [value];
+  let count = 0;
+  for (const product of products) {
+    if (productMatchesFacets(product, overridden, categorySlug)) count += 1;
+  }
+  return count;
 }
 
 function getRomusToolGroup(product: Product): string {
@@ -251,6 +419,31 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const selectedToolGroupSlugs = parseFilterSlugList(searchParams.toolGroup);
   const selectedToolSubcategorySlugs = parseFilterSlugList(searchParams.toolSubcategory);
 
+  // FILTERI 2.0 Faza 1: jedinstveno parsirane aktivne vrednosti filtera —
+  // koriste ih brojači uz opcije i čipovi aktivnih filtera.
+  const selectedCollectionValues = parseFilterSlugList(searchParams.collections);
+  const selectedFamilyValues = parseFilterSlugList(searchParams.family);
+  const selectedThicknessValues = parseFilterSlugList(searchParams.thickness)
+    .map((value) => normalizeThicknessValue(value))
+    .filter((value): value is string => Boolean(value));
+  const selectedWoodTypeValues = parseFilterSlugList(searchParams.woodType);
+  const vinylTypeFilter = category.slug === 'vinil' && (searchParams.type === 'homogeni' || searchParams.type === 'heterogeni')
+    ? searchParams.type
+    : undefined;
+  const facetSelections: FacetSelections = {
+    brandIds: resolvedBrandIds,
+    collections: selectedCollectionValues,
+    families: category.slug === 'tekstilne-ploce' ? selectedFamilyValues : [],
+    thickness: selectedThicknessValues,
+    woodTypes: category.slug === 'parket' ? selectedWoodTypeValues : [],
+    vinylType: vinylTypeFilter,
+    safetyOnly: category.slug === 'vinil' && searchParams.safety === '1',
+    wallOnly: category.slug === 'vinil' && searchParams.zidne === '1',
+    search: searchParams.search?.trim() || undefined,
+    priceMin: Number.isFinite(filtersWithoutCollections.priceMin) ? filtersWithoutCollections.priceMin : undefined,
+    priceMax: Number.isFinite(filtersWithoutCollections.priceMax) ? filtersWithoutCollections.priceMax : undefined,
+  };
+
   // Get all products first (without collection filter) to properly separate collections from colors
   let [
     allProducts,
@@ -302,6 +495,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let availableWoodTypes: { value: string; count: number }[] = [];
   let availableThickness: string[] = [];
   let availableThicknessByType: { homogeni: string[]; heterogeni: string[] } = { homogeni: [], heterogeni: [] };
+  // Broj JSON boja po (normalizovanoj) debljini — fallback za brojače kad nijedan
+  // collection header ne nosi tu debljinu (da opcija ne bude pogrešno posivljena).
+  const jsonThicknessColorCounts = new Map<string, { homogeni: number; heterogeni: number; total: number }>();
 
   // For non-LVT categories, get filtered products
   const filteredProducts = hasCollectionTabs ? [] : allProducts;
@@ -310,28 +506,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const brandsRecord: Record<string, typeof allBrands[0]> = {};
   if (hasCollectionTabs) {
     // Collections: GER-, TARKETT-, WOLFLOR-VINYL-, LINOLEUM-, VINIL-, PARKET-, LAM-, BLOQ-, DESSO-, DEKING-, ESD-, IND-, SPORT-, PODOVI-COLLECTION-
-    // Colors: products without those SKU prefixes
-    const hasCollectionSku = (p: { sku?: string | null }) =>
-      (
-        p.sku?.startsWith('GER-') ||
-        p.sku?.startsWith('TARKETT-') ||
-        p.sku?.startsWith('PODOVI-COLLECTION-') ||
-        p.sku?.startsWith('WOLFLOR-VINYL-') ||
-        p.sku?.startsWith('LINOLEUM-') ||
-        p.sku?.startsWith('VINIL-') ||
-        p.sku?.startsWith('PARKET-') ||
-        p.sku?.startsWith('LAM-') ||
-        p.sku?.startsWith('BLOQ-') ||
-        p.sku?.startsWith('DESSO-') ||
-        p.sku?.startsWith('DEKING-') ||
-        p.sku?.startsWith('GRASS-') ||
-        p.sku?.startsWith('PRIBOR-') ||
-        p.sku?.startsWith('ESD-') ||
-        p.sku?.startsWith('IND-') ||
-        p.sku?.startsWith('SPORT-') ||
-        p.sku?.startsWith('TARKETT-LAJSNE-') ||
-        p.sku?.startsWith('GERFLOR-LAJSNE-')
-      ) ?? false;
+    // Colors: products without those SKU prefixes (hasCollectionSku je izvučen na module scope
+    // da bi brojači uz filter opcije koristili identično razdvajanje).
     const allCollections = filterCategoryListingCollections(
       category.slug,
       allProducts.filter(p => hasCollectionSku(p)),
@@ -364,7 +540,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         // Takođe dedup kolekcija (za svaki slučaj) i BACKFILL slika iz varijanti ako header nema sliku
         const byCollectionName = new Map<string, typeof collections[0]>();
         for (const p of collections) {
-          const collectionName = p.specs?.find(s => s.key === 'collection')?.value || p.specs?.find(s => s.key === 'brand_line')?.value || p.name;
+          const collectionName = getCollectionFacetValue(p, 'laminat') || p.name;
 
           // Try to find a better image if current one is missing
           let productToStore = p;
@@ -388,26 +564,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     if (category.slug === 'lvt') {
       const collectionGroups = new Set<string>();
       allCollections.forEach(p => {
-        // For Tarkett collections: use the 'collection' spec value
-        const collSpec = p.specs?.find((s: { key: string }) => s.key === 'collection')?.value;
-        if (p.sku?.startsWith('TARKETT-') && collSpec) {
-          collectionGroups.add(collSpec);
-          return;
-        }
-        // For Gerflor collections: use name-based matching
-        const name = p.name;
-        if (name.includes('Saga') || name.includes('SAGA')) {
-          collectionGroups.add('SAGA²');
-        } else if (name.includes('Creation')) {
-          if (name.includes('Creation 30')) {
-            collectionGroups.add('Creation 30');
-          } else if (name.includes('Creation 40')) {
-            collectionGroups.add('Creation 40');
-          } else if (name.includes('Creation 55')) {
-            collectionGroups.add('Creation 55');
-          } else if (name.includes('Creation 70')) {
-            collectionGroups.add('Creation 70');
-          }
+        // Tarkett: 'collection' spec; Gerflor: name-based grupa (Creation/SAGA) — shared helper
+        const group = getCollectionFacetValue(p, 'lvt');
+        if (group) {
+          collectionGroups.add(group);
         }
       });
       // Sort: Gerflor first (Creation order), then Tarkett alphabetically
@@ -426,7 +586,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     if (category.slug === 'laminat') {
       const names = allCollections
         .filter(p => p.sku?.startsWith('LAM-'))
-        .map(p => p.specs?.find(s => s.key === 'collection')?.value || p.specs?.find(s => s.key === 'brand_line')?.value || p.name)
+        .map(p => getCollectionFacetValue(p, 'laminat'))
         .filter((v): v is string => Boolean(v));
       availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
     }
@@ -434,26 +594,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Parket: kolekcije iz spec "collection", za varijante (collection "Parket") koristimo efektivnu kolekciju iz mapiranja
     if (category.slug === 'parket') {
       const names = allCollections
-        .map(p => {
-          const specVal = p.specs?.find(s => s.key === 'collection')?.value;
-          return getEffectiveParketCollection(p.slug, specVal) || specVal || p.name;
-        })
+        .map(p => getCollectionFacetValue(p, 'parket'))
         .filter((v): v is string => Boolean(v) && v !== 'Parket');
       availableCollections = Array.from(new Set(names)).sort((a, b) => a.localeCompare(b));
 
       // Parket: vrsta drveta (Hrast / Jasen) – iz spec wood_type/wood_species ili iz slug-a (hrast-*, jasen-*, *-oak)
-      const getWoodTypes = (p: { specs?: { key: string; value: string }[]; slug: string }): string[] => {
-        const spec = p.specs?.find(s => s.key === 'wood_type' || s.key === 'wood_species');
-        const raw = spec?.value?.trim();
-        if (raw) return raw.split(',').map(part => part.trim()).filter(Boolean);
-        const s = (p.slug || '').toLowerCase();
-        if (s.startsWith('jasen') || s.includes('-jasen-')) return ['Jasen'];
-        if (s.startsWith('hrast') || s.includes('-hrast-') || s.includes('oak')) return ['Hrast'];
-        return ['Hrast'];
-      };
       const woodCounts: Record<string, number> = {};
       colors.forEach(p => {
-        getWoodTypes(p).forEach(value => {
+        getProductWoodTypes(p).forEach(value => {
           woodCounts[value] = (woodCounts[value] ?? 0) + 1;
         });
       });
@@ -550,11 +698,16 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   const thicknessStr = normalizeThicknessValue(thicknessValue);
                   if (thicknessStr) {
                     thicknessSet.add(thicknessStr);
+                    const countEntry = jsonThicknessColorCounts.get(thicknessStr) || { homogeni: 0, heterogeni: 0, total: 0 };
+                    countEntry.total += 1;
                     if (isHomogeniCollection) {
                       thicknessSetHomogeni.add(thicknessStr);
+                      countEntry.homogeni += 1;
                     } else {
                       thicknessSetHeterogeni.add(thicknessStr);
+                      countEntry.heterogeni += 1;
                     }
+                    jsonThicknessColorCounts.set(thicknessStr, countEntry);
                   }
                 });
               }
@@ -566,6 +719,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               const thicknessStr = normalizeThicknessValue(thicknessValue);
               if (thicknessStr) {
                 thicknessSet.add(thicknessStr);
+                const countEntry = jsonThicknessColorCounts.get(thicknessStr) || { homogeni: 0, heterogeni: 0, total: 0 };
+                countEntry.total += 1;
+                jsonThicknessColorCounts.set(thicknessStr, countEntry);
               }
             });
           }
@@ -613,21 +769,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
       if (selectedCollections.length > 0) {
         collections = allCollections.filter(p => {
-          // For Tarkett: match by collection spec value
-          const collSpec = p.specs?.find((s: { key: string }) => s.key === 'collection')?.value;
-          if (p.sku?.startsWith('TARKETT-') && collSpec) {
-            return selectedCollections.includes(collSpec);
-          }
-          // For Gerflor: match by product name
-          const productName = p.name;
-          return selectedCollections.some(collection => {
-            if (collection === 'Creation 30') return productName.includes('Creation 30');
-            if (collection === 'Creation 40') return productName.includes('Creation 40');
-            if (collection === 'Creation 55') return productName.includes('Creation 55');
-            if (collection === 'Creation 70') return productName.includes('Creation 70');
-            if (collection === 'SAGA²' || collection.includes('SAGA')) return productName.includes('Saga');
-            return false;
-          });
+          // Tarkett po 'collection' spec-u, Gerflor po imenu (Creation/SAGA grupe) — shared helper
+          const group = getCollectionFacetValue(p, 'lvt');
+          return Boolean(group && selectedCollections.includes(group));
         });
         // Also filter Tarkett colors by their collection spec
         colors = colors.filter(p => {
@@ -644,7 +788,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const laminatHeaders = allCollections.filter(p => isLaminatCollection(p));
       const byCollectionName = new Map<string, (typeof allProducts)[0]>();
       for (const p of laminatHeaders) {
-        const name = p.specs?.find(s => s.key === 'collection')?.value || p.specs?.find(s => s.key === 'brand_line')?.value || p.name;
+        const name = getCollectionFacetValue(p, 'laminat') || p.name;
         if (!byCollectionName.has(name)) byCollectionName.set(name, p);
       }
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
@@ -660,7 +804,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         collections = Array.from(byCollectionName.values())
           .filter((p): p is (typeof allProducts)[0] => !!isLaminatCollection(p))
           .sort((a, b) =>
-            (a.specs?.find(s => s.key === 'collection')?.value || a.specs?.find(s => s.key === 'brand_line')?.value || a.name).localeCompare(b.specs?.find(s => s.key === 'collection')?.value || b.specs?.find(s => s.key === 'brand_line')?.value || b.name)
+            (getCollectionFacetValue(a, 'laminat') || a.name).localeCompare(getCollectionFacetValue(b, 'laminat') || b.name)
           );
       }
 
@@ -699,9 +843,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const selectedCollections = searchParams.collections ? searchParams.collections.split(',') : [];
       if (selectedCollections.length > 0) {
         collections = allCollections.filter(p => {
-          const specVal = p.specs?.find(s => s.key === 'collection')?.value;
-          const collectionName = getEffectiveParketCollection(p.slug, specVal) || specVal || p.name;
-          return selectedCollections.includes(collectionName);
+          const collectionName = getCollectionFacetValue(p, 'parket');
+          return Boolean(collectionName && selectedCollections.includes(collectionName));
         });
         // Za Parket, filtriraj i "boje" (varijante) po efektivnoj kolekciji da CategoryTabs prikaže ispravne varijante
         colors = colors.filter(p => {
@@ -715,16 +858,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       // Parket: filtriraj boje po vrstama drveta (Hrast / Jasen) – više izbora, spec ili infer iz slug-a
       const selectedWoodTypes = searchParams.woodType?.split(',').map(s => s.trim()).filter(Boolean) || [];
       if (selectedWoodTypes.length > 0) {
-        const matchWood = (p: { specs?: { key: string; value: string }[]; slug: string }, wt: string): boolean => {
-          const spec = p.specs?.find(s => s.key === 'wood_type' || s.key === 'wood_species');
-          const raw = spec?.value?.trim();
-          if (raw) return raw.split(',').map(s => s.trim()).includes(wt);
-          const s = (p.slug || '').toLowerCase();
-          if (wt === 'Jasen') return s.startsWith('jasen') || s.includes('-jasen-');
-          if (wt === 'Hrast') return s.startsWith('hrast') || s.includes('-hrast-') || s.includes('oak');
-          return false;
-        };
-        colors = colors.filter(p => selectedWoodTypes.some(wt => matchWood(p, wt)));
+        colors = colors.filter(p => selectedWoodTypes.some(wt => productMatchesWoodType(p, wt)));
         // Prikaži samo kolekcije koje imaju bar jednu varijantu izabrane vrste drveta
         const collectionNamesWithSelectedWood = new Set(
           colors
@@ -776,6 +910,157 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     }
   }
 
+  // ===== FILTERI 2.0 Faza 1: sortiranje, brojači po opciji, čipovi aktivnih filtera =====
+  const hasPrices = categoryProducts.some((p) => typeof p.price === 'number' && p.price > 0);
+  const sortMode = resolveCategorySortMode(searchParams.sort, hasPrices);
+  // Sort po PRIKAZNOM imenu: deo DB proizvoda nosi brend prefiks u name ("Gerflor Creation 30"),
+  // a kartice ga skidaju (pravilo: brend se ne ponavlja u naslovu) — bez strip-a bi
+  // "Deal SPC 30" stajao ispred "Creation 30" iako korisnik vidi imena bez brenda.
+  const brandNameById = new Map(allBrands.map((brand) => [brand.id, brand.name]));
+  const getListingSortName = (p: Product): string => {
+    const name = p.name || '';
+    const brandName = brandNameById.get(p.brandId);
+    if (brandName && name.toLowerCase().startsWith(`${brandName.toLowerCase()} `)) {
+      return name.slice(brandName.length + 1);
+    }
+    return name;
+  };
+  collections = sortCategoryProducts(collections, sortMode, getListingSortName);
+  colors = sortCategoryProducts(colors, sortMode, getListingSortName);
+  const displayedFlatProducts = hasCollectionTabs ? [] : sortCategoryProducts(filteredProducts, sortMode, getListingSortName);
+
+  // Univerzum za brojače uz opcije: kolekcijske kartice (uz listing curation) za tab
+  // kategorije, svi proizvodi kategorije za flat kategorije (alat, otirači...).
+  let facetCountUniverse: Product[];
+  if (hasCollectionTabs) {
+    let headers = filterCategoryListingCollections(
+      category.slug,
+      categoryProducts.filter((p) => hasCollectionSku(p)),
+      listingMode
+    );
+    if (category.slug === 'laminat') {
+      const seen = new Set<string>();
+      headers = headers.filter((p) => {
+        const name = getCollectionFacetValue(p, 'laminat') || p.name;
+        if (seen.has(name)) return false;
+        seen.add(name);
+        return true;
+      });
+    }
+    facetCountUniverse = headers;
+  } else {
+    facetCountUniverse = categoryProducts;
+  }
+
+  const categoryColorUniverse = hasCollectionTabs ? categoryProducts.filter((p) => !hasCollectionSku(p)) : [];
+  const brandFilterOptions = availableBrands.map((brand) => {
+    let count = countFacetOption(facetCountUniverse, facetSelections, category.slug, 'brandIds', brand.id);
+    if (count === 0 && categoryColorUniverse.length > 0) {
+      // Brend može da postoji samo kroz boje/varijante (bez header kartice) — ne sivi ga pogrešno.
+      count = countFacetOption(categoryColorUniverse, facetSelections, category.slug, 'brandIds', brand.id);
+    }
+    return { value: brand, count };
+  });
+  const collectionFilterOptions = availableCollections.map((value) => ({
+    value,
+    count: countFacetOption(facetCountUniverse, facetSelections, category.slug, 'collections', value),
+  }));
+  const familyFilterOptions = availableFamilies.map((value) => ({
+    value,
+    count: countFacetOption(facetCountUniverse, facetSelections, category.slug, 'families', value),
+  }));
+  const thicknessFilterOptions = availableThickness.map((value) => {
+    // Laminat opcije nose kratki format ("8"), lvt/vinil/linoleum normalizovan ("2.00") —
+    // brojanje uvek ide preko normalizovane vrednosti.
+    const normalizedValue = normalizeThicknessValue(value) ?? value;
+    let count = countFacetOption(facetCountUniverse, facetSelections, category.slug, 'thickness', normalizedValue);
+    if (count === 0) {
+      // Debljina može da postoji samo na JSON bojama (ne na headerima) — fallback da ne posivi opciju.
+      const jsonCounts = jsonThicknessColorCounts.get(normalizedValue);
+      if (jsonCounts) {
+        count = category.slug === 'vinil' && facetSelections.vinylType
+          ? (facetSelections.vinylType === 'homogeni' ? jsonCounts.homogeni : jsonCounts.heterogeni)
+          : jsonCounts.total;
+      }
+    }
+    return { value, count };
+  });
+
+  const resultsCount = hasCollectionTabs ? collections.length + colors.length : displayedFlatProducts.length;
+  const resultsLabel = hasCollectionTabs
+    ? `${collections.length} ${pluralizeSr(collections.length, 'kolekcija', 'kolekcije', 'kolekcija')} · ${colors.length} ${pluralizeSr(colors.length, 'boja', 'boje', 'boja')}`
+    : `${displayedFlatProducts.length} ${pluralizeSr(displayedFlatProducts.length, 'proizvod', 'proizvoda', 'proizvoda')}`;
+
+  // Čipovi aktivnih filtera: kanonski oblik parametara (brands = ID-jevi, thickness = normalizovano),
+  // svaki čip vodi na isti URL bez TE vrednosti; sort i color preživljavaju.
+  const basePath = `/kategorije/${params.slug}`;
+  const canonicalFilterParams: Record<string, string | undefined> = {
+    search: facetSelections.search,
+    brands: resolvedBrandIds.length > 0 ? resolvedBrandIds.join(',') : undefined,
+    type: vinylTypeFilter,
+    safety: facetSelections.safetyOnly ? '1' : undefined,
+    zidne: facetSelections.wallOnly ? '1' : undefined,
+    collections: selectedCollectionValues.length > 0 ? selectedCollectionValues.join(',') : undefined,
+    family: facetSelections.families.length > 0 ? facetSelections.families.join(',') : undefined,
+    listing: searchParams.listing || undefined,
+    thickness: selectedThicknessValues.length > 0 ? selectedThicknessValues.join(',') : undefined,
+    woodType: facetSelections.woodTypes.length > 0 ? facetSelections.woodTypes.join(',') : undefined,
+    toolGroup: selectedToolGroupSlugs.length > 0 ? selectedToolGroupSlugs.join(',') : undefined,
+    toolSubcategory: selectedToolSubcategorySlugs.length > 0 ? selectedToolSubcategorySlugs.join(',') : undefined,
+    priceMin: searchParams.priceMin || undefined,
+    priceMax: searchParams.priceMax || undefined,
+    inStock: searchParams.inStock || undefined,
+    color: searchParams.color || undefined,
+    sort: searchParams.sort || undefined,
+  };
+
+  const activeFilterChips: ActiveFilterChip[] = [];
+  const addFilterChip = (paramKey: string, label: string, value?: string) => {
+    activeFilterChips.push({
+      key: `${paramKey}:${value ?? '*'}`,
+      label,
+      href: buildFilterRemovalHref(basePath, canonicalFilterParams, paramKey, value),
+    });
+  };
+
+  if (facetSelections.search) addFilterChip('search', `Pretraga: ${facetSelections.search}`);
+  for (const brandId of resolvedBrandIds) {
+    const brand = allBrands.find((b) => b.id === brandId);
+    addFilterChip('brands', brand?.name || brandId, brandId);
+  }
+  for (const value of selectedCollectionValues) addFilterChip('collections', value, value);
+  for (const value of facetSelections.families) addFilterChip('family', value, value);
+  for (const value of selectedThicknessValues) addFilterChip('thickness', `${parseFloat(value)} mm`, value);
+  for (const value of facetSelections.woodTypes) addFilterChip('woodType', value, value);
+  if (vinylTypeFilter) addFilterChip('type', vinylTypeFilter === 'homogeni' ? 'Homogeni' : 'Heterogeni');
+  if (facetSelections.safetyOnly) addFilterChip('safety', 'Protivklizni/Sigurnosni');
+  if (facetSelections.wallOnly) addFilterChip('zidne', 'Zidne obloge');
+  if (searchParams.listing) {
+    addFilterChip('listing', listingMode === 'accessory' ? 'Prateći asortiman' : listingMode === 'all' ? 'Sve stavke' : 'Kolekcije');
+  }
+  for (const slug of selectedToolGroupSlugs) {
+    const option = availableToolGroups.find((o) => o.slug === slug);
+    addFilterChip('toolGroup', option?.value || slug, slug);
+  }
+  for (const slug of selectedToolSubcategorySlugs) {
+    const option = availableToolSubcategories.find((o) => o.slug === slug);
+    addFilterChip('toolSubcategory', option?.value || slug, slug);
+  }
+  if (canonicalFilterParams.priceMin || canonicalFilterParams.priceMax) {
+    const priceLabel = canonicalFilterParams.priceMin && canonicalFilterParams.priceMax
+      ? `Cena ${canonicalFilterParams.priceMin}–${canonicalFilterParams.priceMax}`
+      : canonicalFilterParams.priceMin
+        ? `Cena od ${canonicalFilterParams.priceMin}`
+        : `Cena do ${canonicalFilterParams.priceMax}`;
+    activeFilterChips.push({
+      key: 'price:*',
+      label: priceLabel,
+      href: `${basePath}${buildCategoryQueryString(removeFilterValue(removeFilterValue(canonicalFilterParams, 'priceMin'), 'priceMax'))}`,
+    });
+  }
+  // 'Očisti sve' briše sve filtere, a sort preživljava.
+  const clearAllFiltersHref = `${basePath}${buildCategoryQueryString({ sort: searchParams.sort })}`;
+
   const breadcrumbItems = [
     { name: 'Početna', url: baseUrl },
     { name: category.name, url: `${baseUrl}/kategorije/${params.slug}` },
@@ -796,21 +1081,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const categoryNavItems = primaryCategorySlugs
     .map((slug) => allCategories.find((item) => item.slug === slug))
     .filter((item): item is (typeof allCategories)[number] => Boolean(item));
-  const activeFilterLabels = [
-    searchParams.search ? 'Pretraga' : null,
-    searchParams.brands ? 'Brend' : null,
-    searchParams.collections ? 'Kolekcija' : null,
-    searchParams.family ? 'Familija' : null,
-    searchParams.thickness ? 'Debljina' : null,
-    searchParams.woodType ? 'Vrsta drveta' : null,
-    searchParams.type ? 'Tip vinila' : null,
-    searchParams.safety === '1' ? 'Protivklizni' : null,
-    searchParams.zidne === '1' ? 'Zidne obloge' : null,
-    searchParams.listing ? 'Prikaz' : null,
-    searchParams.toolGroup ? 'Grupa alata' : null,
-    searchParams.toolSubcategory ? 'Podgrupa' : null,
-  ].filter((label): label is string => Boolean(label));
-
   return (
     <div className="min-h-screen bg-[#fbfaf8]">
       <script
@@ -885,16 +1155,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </p>
             ) : null}
           </div>
-
-          {activeFilterLabels.length > 0 && (
-            <div className="mt-5 flex flex-wrap gap-2">
-              {activeFilterLabels.map((label) => (
-                <span key={label} className="border border-ink-200 bg-white px-3 py-1 text-[12px] text-ink-600">
-                  {label}
-                </span>
-              ))}
-            </div>
-          )}
         </section>
 
         {category.slug === 'parket' && (
@@ -905,24 +1165,33 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start">
           <ProductFilters
-            availableBrands={availableBrands}
+            availableBrands={brandFilterOptions}
             currentFilters={{
               ...filtersWithoutCollections,
               listing: listingMode,
               toolGroup: selectedToolGroupSlugs,
               toolSubcategory: selectedToolSubcategorySlugs,
             }}
-            availableCollections={availableCollections}
-            availableFamilies={category.slug === 'tekstilne-ploce' ? availableFamilies : undefined}
+            availableCollections={collectionFilterOptions}
+            availableFamilies={category.slug === 'tekstilne-ploce' ? familyFilterOptions : undefined}
             availableWoodTypes={category.slug === 'parket' ? availableWoodTypes : undefined}
-            availableThickness={availableThickness}
+            availableThickness={thicknessFilterOptions}
             availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
             availableToolGroups={category.slug === 'alat' ? availableToolGroups : undefined}
             availableToolSubcategories={category.slug === 'alat' ? availableToolSubcategories : undefined}
+            resultsCount={resultsCount}
+            hasPrices={hasPrices}
           />
 
           {/* Products Grid */}
           <main className="min-w-0">
+            <CategoryToolbar
+              resultsLabel={resultsLabel}
+              sortMode={sortMode}
+              hasPriceSort={hasPrices}
+              chips={activeFilterChips}
+              clearAllHref={clearAllFiltersHref}
+            />
             {hasCollectionTabs ? (
               <CategoryTabs
                 collections={collections}
@@ -946,11 +1215,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               />
             ) : (
               <>
-                <p className="mb-6 text-[13px] text-ink-500">
-                  {filteredProducts.length === 0 ? 'Nema' : filteredProducts.length} {filteredProducts.length === 1 ? 'proizvod' : 'proizvoda'}
-                </p>
-
-                {filteredProducts.length === 0 ? (
+                {displayedFlatProducts.length === 0 ? (
                   <div className="rounded-lg border border-ink-200 bg-white p-12 text-center">
                     <h3 className="mb-2 text-lg font-medium text-ink-900">
                       Nema proizvoda
@@ -961,7 +1226,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   </div>
                 ) : (
                   <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
-                    {filteredProducts.map((product) => (
+                    {displayedFlatProducts.map((product) => (
                       <ProductCard key={product.id} product={product} />
                     ))}
                   </div>

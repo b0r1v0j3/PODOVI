@@ -154,6 +154,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**Filteri 2.0 — Faza 1 mehanika na stranicama kategorija (08.07.2026)**
+- **Sortiranje** na svim kategorijama (`?sort=` preporuceno/naziv/cena/najnovije; cena samo gde cene postoje; kolacija `sr-Latn` jer golo `'sr'` u Node ICU pada na ćiriličku; sort po prikaznom imenu bez brend prefiksa). Nove komponente: `CategoryToolbar.tsx` (server; broj rezultata + sort + čipovi; util-i `sortCategoryProducts`, `buildFilterRemovalHref`...) i `CategorySortSelect.tsx` (klijent).
+- **Čipovi aktivnih filtera** iznad grida — svaka vrednost se skida jednim klikom (Link sa uklonjenom vrednošću iz query-ja), `Očisti sve` čuva sort; vrednosti ljudske (ime brenda, '8 mm').
+- **Brojači uz opcije + sivljenje**: brend/kolekcija/familija/debljina dobili count po opciji (count = rezultati te opcije preko ostalih aktivnih filtera; facet logika izvučena u zajedničke helpere u page.tsx umesto dupliranja po granama); opcija sa 0 → disabled+posivljena, izabrana se nikad ne zaključava. ProductFilters propovi prešli na `{value,count}[]`.
+- **'+ Prikaži još'** za liste >8 opcija; **mobilna fioka** sa živim dugmetom 'Prikaži N rezultata'; **auto-hide** grupa sa <2 opcije; Pretraga samo na alatu; Cena samo uz `hasPrices`.
+- 16 novih testova (`category-toolbar-contract`); 255/255 contract testova prolazi; verifikovano u pregledaču na 9 kategorija. Poznato ograničenje: JSON boje u tabu „Boje" (LVT/vinil/linoleum) se ne sortiraju server-side — Faza 2.
+
 **Admonter obogaćivanje — zvanični materijal proizvođača kroz ceo pipeline (08.07.2026)**
 - Overlay `public/data/admonter_official_media.json` + `tools/ingest_admonter_official.js`: 121 asset (43 teksture, 63 room-shot, References kolekcijske slike, 8 PDF) migrirano u naš Supabase (`products/admonter-official/`, `product-documents/admonter/`) — bez hotlinkova.
 - `productDataLoader.ts` (alpod transformacije): kolekcija dobija References sliku + galeriju + srpski brend intro + PDF dokumenta; boje dobijaju ljudska imena ("Hrast Noblesse — četkan, natur ulje" umesto ERP šifre; fabrički naziv ostaje kao spec), zvanične slike u galeriji, čitljiv opis (gradacija + format + pakovanje), `coveragePerPackage` parsiran iz opisa (sve alpod varijante), OLJE→ULJE, preračunati polomljeni decimalni agregati kolekcije, uklonjena dupla labela dekora.
