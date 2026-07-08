@@ -7,6 +7,10 @@ export function filterSpecsForDisplay(
     options?: { categoryId?: string; productSlug?: string }
 ): ProductSpec[] {
     if (!specs || !Array.isArray(specs)) return [];
+    // Izvedeni filter-specovi (thickness/wear_layer/wood_type) namerno dele labelu sa
+    // originalom ('Debljina', 'Habajući sloj'...) — u tabeli sme da postoji samo jedan
+    // red po labeli, pa dedupujemo po njoj (prva pojava pobeđuje; vrednosti su iste).
+    const seenLabels = new Set<string>();
     return specs
         .map((s) => {
             if (s.key === 'collection' && s.value === 'Parket' && options?.categoryId === '3' && options?.productSlug) {
@@ -16,7 +20,14 @@ export function filterSpecsForDisplay(
             return s;
         })
         .filter((s) => !(s.key === 'collection' && s.value === 'Parket'))
-        .filter((s) => !String(s.key || '').startsWith('__'));
+        .filter((s) => !String(s.key || '').startsWith('__'))
+        .filter((s) => {
+            const labelKey = String(s.label || '').trim().toLowerCase();
+            if (!labelKey) return true;
+            if (seenLabels.has(labelKey)) return false;
+            seenLabels.add(labelKey);
+            return true;
+        });
 }
 
 export function formatLvtSpecs(specs: Record<string, string>): ProductSpec[] {
