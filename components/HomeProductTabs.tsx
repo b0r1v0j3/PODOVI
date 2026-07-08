@@ -4,6 +4,19 @@ import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Brand, Category, Product } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
+import {
+  buildFacetInheritanceMaps,
+  collectFacetOptionValues,
+  facetChipLabel,
+  facetOptionLabel,
+  getFacetDefsForCategory,
+  productMatchesFacetDef,
+  productMatchesFacetSelections,
+  type CategoryFacetDef,
+  type FacetInheritanceMaps,
+  type FacetMissingPolicy,
+  type FacetSelections,
+} from '@/lib/catalog/facet-config';
 
 const INITIAL_PRODUCT_LIMIT = 12;
 const VINYL_CATEGORY_SLUG = 'vinil';
@@ -60,6 +73,15 @@ interface CountOption {
 
 interface ScopedOptionGroup {
   category: Pick<Category, 'id' | 'name' | 'slug'>;
+  title: string;
+  options: CountOption[];
+}
+
+// Nova facet sekcija (facet-config): renderuje se identično postojećim sekcijama
+// (FilterSection + FilterButton), option.value nosi skopiranu trojku.
+interface FacetSectionGroup {
+  category: Pick<Category, 'id' | 'name' | 'slug'>;
+  def: CategoryFacetDef;
   title: string;
   options: CountOption[];
 }
@@ -126,6 +148,31 @@ function parseScopedOptionValue(value: string): { categorySlug: string; optionVa
   return {
     categorySlug: value.slice(0, separatorIndex),
     optionValue: value.slice(separatorIndex + SCOPED_OPTION_SEPARATOR.length),
+  };
+}
+
+// FILTERI 2.0 na početnoj: vrednost nove facet grupe je skopirana trojka
+// kategorija::param::vrednost — grupa filtrira SAMO proizvode svoje kategorije
+// (isti obrazac kao postojeće Tip/Kolekcije sekcije, samo sa param nivoom više).
+function buildScopedFacetValue(categorySlug: string, param: string, value: string): string {
+  return [categorySlug, param, value].join(SCOPED_OPTION_SEPARATOR);
+}
+
+function parseScopedFacetValue(scoped: string): { categorySlug: string; param: string; value: string } | null {
+  const first = scoped.indexOf(SCOPED_OPTION_SEPARATOR);
+  if (first === -1) {
+    return null;
+  }
+
+  const second = scoped.indexOf(SCOPED_OPTION_SEPARATOR, first + SCOPED_OPTION_SEPARATOR.length);
+  if (second === -1) {
+    return null;
+  }
+
+  return {
+    categorySlug: scoped.slice(0, first),
+    param: scoped.slice(first + SCOPED_OPTION_SEPARATOR.length, second),
+    value: scoped.slice(second + SCOPED_OPTION_SEPARATOR.length),
   };
 }
 
@@ -336,17 +383,22 @@ function FilterButton({
   label,
   count,
   onClick,
+  disabled = false,
 }: {
   active: boolean;
   label: string;
   count?: number;
   onClick: () => void;
+  disabled?: boolean;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="flex w-full items-center gap-2.5 py-0.5 text-left text-[12px] leading-5 text-ink-700 transition-colors hover:text-ink-900"
+      disabled={disabled}
+      className={`flex w-full items-center gap-2.5 py-0.5 text-left text-[12px] leading-5 transition-colors ${
+        disabled ? 'cursor-not-allowed text-ink-700 opacity-50' : 'text-ink-700 hover:text-ink-900'
+      }`}
       aria-pressed={active}
     >
       <span
@@ -398,6 +450,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedApplications, setSelectedApplications] = useState<string[]>([]);
   const [selectedCollections, setSelectedCollections] = useState<string[]>([]);
+  const [selectedFacetValues, setSelectedFacetValues] = useState<string[]>([]);
   const [thicknessRange, setThicknessRange] = useState<[number, number] | null>(null);
   const [brandQuery, setBrandQuery] = useState('');
   const [sortMode, setSortMode] = useState('featured');
@@ -520,6 +573,64 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     };
   }, [activeProductTab, colorLoadAttempt, missingColorCategoryIdsKey]);
 
+  const missingFacetColorCategoryIdsKey = useMemo(() => {
+    if (selectedCategorySlugs.length === 0) {
+      return '';
+    }
+
+    return tabGroups
+      .filter((group) => getFacetDefsForCategory(group.category.slug).length > 0)
+      .filter((group) => (group.colorCount || 0) > 0 && !loadedColorGroups[group.category.id])
+      .map((group) => group.category.id)
+      .join(',');
+  }, [loadedColorGroups, selectedCategorySlugs.length, tabGroups]);
+
+  // FILTERI 2.0: tihi prefetch boja za izabrane kategorije sa novim facet grupama.
+  // Mape nasleđivanja (boja↔kolekcija) su potpune tek sa bojama — kolekcijski header
+  // bez svog spec-a (npr. vinil „Ton") nasleđuje uniju vrednosti svojih boja, isto kao
+  // server na /kategorije. Bez loading/error UI-ja: tab Kolekcije radi i dok boje ne stignu.
+  useEffect(() => {
+    if (activeProductTab === 'colors' || !missingFacetColorCategoryIdsKey) {
+      return;
+    }
+
+    const categoryIds = missingFacetColorCategoryIdsKey.split(',').filter(Boolean);
+    let cancelled = false;
+
+    fetch(`/api/home-colors?categoryIds=${encodeURIComponent(categoryIds.join(','))}`)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        return response.json() as Promise<{ groups?: Array<{ categoryId: string; products: Product[] }> }>;
+      })
+      .then((payload) => {
+        if (cancelled) {
+          return;
+        }
+
+        setLoadedColorGroups((current) => {
+          const next = { ...current };
+
+          for (const group of payload.groups || []) {
+            if (!next[group.categoryId]) {
+              next[group.categoryId] = group.products || [];
+            }
+          }
+
+          return next;
+        });
+      })
+      .catch(() => {
+        // Tiho: facet grupe rade i nad samim kolekcijskim headerima.
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeProductTab, missingFacetColorCategoryIdsKey]);
+
   const colorBaseProducts = useMemo(
     () => dedupeProductsBySlug(tabGroups.flatMap((group) => loadedColorGroups[group.category.id] || group.colorProducts || [])),
     [loadedColorGroups, tabGroups],
@@ -553,6 +664,87 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
 
     return map;
   }, [activeProductTab, loadedColorGroups, tabGroups]);
+
+  // FILTERI 2.0: mape nasleđivanja boja↔kolekcija po kategoriji, izračunate JEDNOM
+  // po datasetu (kolekcijski headeri + učitane boje) i memoizovane — isti obrazac
+  // kao server na /kategorije (buildFacetInheritanceMaps nad celom kategorijom).
+  const facetInheritanceBySlug = useMemo(() => {
+    const map = new Map<string, FacetInheritanceMaps>();
+
+    if (selectedCategorySlugs.length === 0) {
+      return map;
+    }
+
+    for (const group of tabGroups) {
+      const defs = getFacetDefsForCategory(group.category.slug);
+      if (defs.length === 0) {
+        continue;
+      }
+
+      const unionProducts = [
+        ...group.products,
+        ...(loadedColorGroups[group.category.id] || group.colorProducts || []),
+      ];
+      map.set(group.category.slug, buildFacetInheritanceMaps(unionProducts, defs));
+    }
+
+    return map;
+  }, [loadedColorGroups, selectedCategorySlugs.length, tabGroups]);
+
+  const facetSelectionsBySlug = useMemo(() => {
+    const map = new Map<string, FacetSelections>();
+
+    for (const scoped of selectedFacetValues) {
+      const parsed = parseScopedFacetValue(scoped);
+      if (!parsed) {
+        continue;
+      }
+
+      const selections = map.get(parsed.categorySlug) || {};
+      selections[parsed.param] = [...(selections[parsed.param] || []), parsed.value];
+      map.set(parsed.categorySlug, selections);
+    }
+
+    return map;
+  }, [selectedFacetValues]);
+
+  // 'include' na tabu „Boje": boja bez podatka (ni nasleđenog) OSTAJE vidljiva —
+  // isti režim kao CategoryTabs; tab Kolekcije prati strikt server listing ('exclude').
+  const facetMissingPolicy: FacetMissingPolicy = activeProductTab === 'colors' ? 'include' : 'exclude';
+
+  // Proizvod prolazi facet grupe ISKLJUČIVO svoje kategorije (proizvod druge
+  // kategorije nije isključen tuđom grupom); skip = brojanje "preko ostalih grupa".
+  const productMatchesActiveFacets = useCallback(
+    (product: Product, skip?: { categorySlug: string; param: string }) => {
+      const categorySlug = categorySlugById.get(product.categoryId);
+      if (!categorySlug) {
+        return true;
+      }
+
+      const selections = facetSelectionsBySlug.get(categorySlug);
+      if (!selections) {
+        return true;
+      }
+
+      const defs = getFacetDefsForCategory(categorySlug);
+      if (defs.length === 0) {
+        return true;
+      }
+
+      const effectiveSelections = skip && skip.categorySlug === categorySlug && selections[skip.param]
+        ? { ...selections, [skip.param]: [] }
+        : selections;
+
+      return productMatchesFacetSelections(
+        product,
+        effectiveSelections,
+        defs,
+        facetInheritanceBySlug.get(categorySlug),
+        facetMissingPolicy,
+      );
+    },
+    [categorySlugById, facetInheritanceBySlug, facetMissingPolicy, facetSelectionsBySlug],
+  );
 
   const brandOptions = useMemo(() => buildBrandOptions(baseProducts, brandsRecord), [baseProducts, brandsRecord]);
   const visibleBrandOptions = useMemo(
@@ -653,13 +845,15 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     && (effectiveThicknessRange[0] > thicknessBounds.min || effectiveThicknessRange[1] < thicknessBounds.max);
   const colorDecorCount = colorTabCount;
 
-  const filteredProducts = useMemo(() => {
+  // Postojeći filteri (brend/tip/primena/kolekcije/debljina) kao deljivi predikat —
+  // ista logika kao pre, izdvojena da bi i brojači novih facet grupa išli preko nje.
+  const baseRefinementPredicate = useMemo(() => {
     const selectedBrandSet = new Set(selectedBrandIds);
     const selectedTypeMap = buildScopedSelectionMap(selectedTypes);
     const selectedApplicationSet = new Set(selectedApplications);
     const selectedCollectionMap = buildScopedSelectionMap(selectedCollections);
 
-    const filtered = baseProducts.filter((product) => {
+    return (product: Product): boolean => {
       if (selectedBrandSet.size > 0 && !selectedBrandSet.has(product.brandId)) {
         return false;
       }
@@ -695,20 +889,99 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
       }
 
       return true;
-    });
-
-    return sortProducts(filtered, sortMode);
+    };
   }, [
-    baseProducts,
     categorySlugById,
     effectiveThicknessRange,
     selectedApplications,
     selectedBrandIds,
     selectedCollections,
     selectedTypes,
-    sortMode,
     thicknessBounds.hasData,
     thicknessFiltered,
+  ]);
+
+  const filteredProducts = useMemo(
+    () => sortProducts(
+      baseProducts.filter((product) => baseRefinementPredicate(product) && productMatchesActiveFacets(product)),
+      sortMode,
+    ),
+    [baseProducts, baseRefinementPredicate, productMatchesActiveFacets, sortMode],
+  );
+
+  // FILTERI 2.0: nove facet sekcije po izabranim kategorijama (unija grupa kad ih je
+  // više). Pojavljuju se po ISTOM obrascu kao „Tip laminata" — tek kad je kategorija
+  // izabrana. Brojač opcije = rezultati te opcije preko ostalih aktivnih filtera
+  // (kao /kategorije); opcija sa 0 rezultata se sivi, izabrana se nikad ne zaključava.
+  const facetSectionGroups = useMemo<FacetSectionGroup[]>(() => {
+    if (selectedCategorySlugs.length === 0) {
+      return [];
+    }
+
+    const multipleCategories = selectedCategorySlugs.length > 1;
+
+    return tabGroups.flatMap((group) => {
+      const defs = getFacetDefsForCategory(group.category.slug);
+      if (defs.length === 0) {
+        return [];
+      }
+
+      const categoryProducts = filterBaseProductsByCategoryId.get(group.category.id) || [];
+      const inheritMaps = facetInheritanceBySlug.get(group.category.slug) || {};
+      const selectionsForCategory = facetSelectionsBySlug.get(group.category.slug);
+
+      return defs.flatMap((def) => {
+        const inheritMap = inheritMaps[def.param];
+        // Boolean grupa (podno grejanje) je namerno jedna opcija 'Da' (URL vrednost '1').
+        const values = def.boolean ? ['Da'] : collectFacetOptionValues(categoryProducts, def, inheritMap);
+        const hasSelection = Boolean(selectionsForCategory?.[def.param]?.length);
+
+        const options: CountOption[] = values.map((value) => {
+          const selectedValues = def.boolean ? ['1'] : [value];
+          const count = categoryProducts.reduce((sum, product) => (
+            baseRefinementPredicate(product)
+              && productMatchesActiveFacets(product, { categorySlug: group.category.slug, param: def.param })
+              && productMatchesFacetDef(product, selectedValues, def, { inheritMap, missing: facetMissingPolicy })
+              ? sum + 1
+              : sum
+          ), 0);
+
+          return {
+            value: buildScopedFacetValue(group.category.slug, def.param, def.boolean ? '1' : value),
+            label: facetOptionLabel(def, value),
+            count,
+          };
+        });
+
+        if (def.boolean) {
+          // Krije se samo kad nema pokrivenih proizvoda (kao /kategorije).
+          if (!options[0] || (options[0].count === 0 && !hasSelection)) {
+            return [];
+          }
+        } else if (options.length < 2) {
+          // Auto-hide: grupa sa <2 opcije nema diskriminatornu vrednost (kao /kategorije).
+          return [];
+        }
+
+        return [{
+          category: group.category,
+          def,
+          // Sa više izabranih kategorija iste labele bi se sudarale (Ton vinila vs
+          // parketa) — kategorija u zagradi, po uzoru na per-kategorijske Tip naslove.
+          title: multipleCategories ? `${def.label} (${group.category.name})` : def.label,
+          options,
+        }];
+      });
+    });
+  }, [
+    baseRefinementPredicate,
+    facetInheritanceBySlug,
+    facetMissingPolicy,
+    facetSelectionsBySlug,
+    filterBaseProductsByCategoryId,
+    productMatchesActiveFacets,
+    selectedCategorySlugs,
+    tabGroups,
   ]);
   const activeProductCount = activeProductTab === 'colors' && missingColorCategoryIds.length > 0
     ? colorTabCount
@@ -768,6 +1041,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     setSelectedTypes([]);
     setSelectedApplications([]);
     setSelectedCollections([]);
+    setSelectedFacetValues([]);
     setThicknessRange(null);
     setBrandQuery('');
     setSortMode('featured');
@@ -875,6 +1149,21 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
         }]
         : [];
     }),
+    // Čipovi novih facet grupa — ljudske vrednosti kao na /kategorije
+    // („Klasa 33", „Riblja kost", „Podno grejanje").
+    ...selectedFacetValues.flatMap((scoped) => {
+      const parsed = parseScopedFacetValue(scoped);
+      const def = parsed
+        ? getFacetDefsForCategory(parsed.categorySlug).find((item) => item.param === parsed.param)
+        : undefined;
+      return parsed && def
+        ? [{
+          id: `facet-${scoped}`,
+          label: facetChipLabel(def, parsed.value),
+          onRemove: () => setSelectedFacetValues((current) => current.filter((item) => item !== scoped)),
+        }]
+        : [];
+    }),
     ...(thicknessFiltered && thicknessBounds.hasData
       ? [{
         id: 'thickness',
@@ -930,6 +1219,30 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                         onClick={() => setSelectedTypes((current) => toggleSelection(current, option.value))}
                       />
                     ))}
+                  </div>
+                </FilterSection>
+              ))}
+
+              {facetSectionGroups.map((group) => (
+                <FilterSection
+                  key={`facet-${group.category.slug}-${group.def.param}`}
+                  title={group.title}
+                  defaultOpen={!group.def.collapsed || group.options.some((option) => selectedFacetValues.includes(option.value))}
+                >
+                  <div className="space-y-0.5">
+                    {group.options.map((option) => {
+                      const active = selectedFacetValues.includes(option.value);
+                      return (
+                        <FilterButton
+                          key={option.value}
+                          active={active}
+                          label={option.label}
+                          count={option.count}
+                          disabled={option.count === 0 && !active}
+                          onClick={() => setSelectedFacetValues((current) => toggleSelection(current, option.value))}
+                        />
+                      );
+                    })}
                   </div>
                 </FilterSection>
               ))}

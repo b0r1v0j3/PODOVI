@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 08.07.2026 (Filteri 2.0 Faza 1b — nove filter grupe iz spec podataka)
+> **Poslednje ažuriranje:** 08.07.2026 (Filteri 2.0 — nove facet grupe prenete na početnu stranu)
 
 ---
 
@@ -153,6 +153,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Filteri 2.0 — nove facet grupe prenete na POČETNU stranu (08.07.2026)**
+- **`components/HomeProductTabs.tsx`**: dinamičke facet sekcije iz `lib/catalog/facet-config.ts` u postojećem levom panelu, u POSTOJEĆEM dizajnu (isti `FilterSection` collapsible naslov sa chevronom, isti `FilterButton` checkbox red sa brojačem, ista tipografija — 0 vizuelnih promena postojećih delova). Pojavljuju se po istom obrascu kao „Tip laminata": tek kad je kategorija izabrana; ubačene između Tip i Primena sekcija. Vinil → Klasa upotrebe/Dezen/Ton/Ugradnja/Materijal/R-klasa (sklopljena)/Podno grejanje (sklopljena, boolean); Parket → Ton/Uzorak polaganja/Završna obrada/Ugradnja/Podno grejanje; LVT → Klasa (nasleđivanje sa kolekcija)/Ugradnja/Format; Laminat → Klasa (AC); Otirači → Tip.
+- **Skopirana selekcija** `kategorija::param::vrednost` (state ostaje lokalni `useState`, bez URL parametara): grupa filtrira SAMO proizvode svoje kategorije — pri više izabranih kategorija prikazuje se unija grupa (naslov dobija kategoriju u zagradi, npr. „Klasa (Laminat)"), a proizvod druge kategorije NIJE isključen tuđom grupom (ni u brojanju). OR unutar grupe / AND između, kroz `productMatchesFacetSelections`.
+- **Mape nasleđivanja boja↔kolekcija** (`buildFacetInheritanceMaps`) memoizovane jednom po kategoriji nad headerima + učitanim bojama; nov TIHI prefetch `/api/home-colors` za izabrane kategorije sa facet defovima (bez loading/error UI-ja) — kolekcijski header bez svog spec-a nasleđuje uniju vrednosti svojih boja (LVT „Klasa 33" postoji tek kroz boje), isto kao nekadašnji server na /kategorije.
+- **Brojači**: count opcije = rezultati te opcije preko ostalih aktivnih filtera (postojeći brend/tip/primena/kolekcije/debljina predikat izdvojen u deljivi `baseRefinementPredicate` — ista logika); opcija sa 0 → disabled + `opacity-50` (izabrana se nikad ne zaključava); klik na facet sužava i grid i brojače ostalih grupa. Čipovi sa ljudskim vrednostima (`facetChipLabel`: „Klasa 33", „Riblja kost", „Podno grejanje") u postojećem redu čipova; „Očisti sve" i promena kategorije brišu i facete. Auto-hide <2 opcije; boolean grupa se krije bez pokrivenih proizvoda (kao nekadašnji ProductFilters).
+- **Tab „Boje"**: iste grupe i funkcije nad bojama u režimu `'include'` (boja bez podatka, ni nasleđenog, OSTAJE vidljiva); tab Kolekcije strikt `'exclude'` kao nekadašnji server listing.
+- Novi contract test `tests/contracts/homepage-facet-contract.test.ts` (4): žive opcije + stvarno sužavanje za vinil klasu 33, parket Riblja kost, laminat AC5, include ≥ exclude na bojama. Ceo suite 272/272 (268 + 4). Verifikovano u pregledaču (desktop 1440px): Vinil → 7 novih sekcija, klasa 33 sužava 164→8 + Dezen brojače (Grafički 0 posivljen), Parket → Riblja kost → 2 (Artisan, Heritage), Laminat+Linoleum → unija radi (AC5 ne isključuje linoleum, 48→44), LVT → Klasa 33 kroz nasleđivanje, čipovi/skidanje/Očisti sve, tab Boje sa AC5 → 36 boja, identična tipografija (12px/20px red, 11px/600/uppercase naslov).
 
 **Pregled proizvoda #2: Artisan — 725 slika, ljudska imena, grupisan selektor (08.07.2026)**
 - **Galerije sistemski**: novi `tools/migrate_alpod_gallery_images.js` migrirao 2.191 galerijsku sliku (images[] nizovi) za SVE Alpod kolekcije u naš Supabase (Artisan 725, Heritage, Winflex...; 218 URL-ova je trajno mrtvo na alpod strani — 404, ostaju filtrirani kroz isFirstPartyImageUrl). Ambijentalne `_ambient` slike sada u galerijama.
