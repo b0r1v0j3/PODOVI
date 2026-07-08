@@ -8,6 +8,12 @@ import {
   filterCategoryListingCollections,
   resolveCategoryListingMode,
 } from '@/lib/catalog/listing-curation';
+import {
+  buildFacetInheritanceMaps,
+  getFacetDefsForCategory,
+  parseFacetSelectionsFromParams,
+  productMatchesFacetSelections,
+} from '@/lib/catalog/facet-config';
 import ProductCardClient from '@/components/ProductCardClient';
 
 interface ColorFromJSON {
@@ -44,6 +50,9 @@ interface CategoryTabsProps {
     woodType?: string;
     listing?: string;
   };
+  // FILTERI 2.0 Faza 1b: sirove URL vrednosti novih grupa (?klasa=, ?dezen=...) —
+  // primenjuju se i na klijentski učitane JSON boje kroz iste facet-config funkcije.
+  facetParams?: Record<string, string | undefined>;
 }
 
 const NESTED_JSON_CATEGORIES = ['vinil', 'elektroprovodni', 'industrijske-ploce', 'sport', 'lajsne'] as const;
@@ -79,7 +88,8 @@ export default function CategoryTabs({
   safetyOnly,
   wallOnly,
   listingMode,
-  searchParams: searchParamsProp
+  searchParams: searchParamsProp,
+  facetParams
 }: CategoryTabsProps) {
   // Get search params from URL (fallback to prop if provided)
   const urlSearchParams = useSearchParams();
@@ -91,6 +101,25 @@ export default function CategoryTabs({
     thickness: urlSearchParams.get('thickness') || undefined,
     listing: urlSearchParams.get('listing') || undefined,
     }, [searchParamsProp, urlSearchParams]);
+
+  // FILTERI 2.0 Faza 1b: definicije novih grupa + selekcije iz URL-a (prop ili živi URL).
+  const facetDefs = useMemo(() => getFacetDefsForCategory(categorySlug), [categorySlug]);
+  const facetSelections = useMemo(() => {
+    const rawParams: Record<string, string | undefined> = {};
+    for (const def of facetDefs) {
+      rawParams[def.param] = facetParams
+        ? facetParams[def.param]
+        : urlSearchParams.get(def.param) || undefined;
+    }
+    return parseFacetSelectionsFromParams(rawParams, facetDefs);
+  }, [facetDefs, facetParams, urlSearchParams]);
+  const hasFacetSelections = Object.keys(facetSelections).length > 0;
+  // Nasleđivanje sa kolekcijskih headera (server proizvodi u props) — boja bez svog
+  // spec-a dobija vrednost svoje kolekcije preko spec 'collection'.
+  const facetInheritanceMaps = useMemo(
+    () => (hasFacetSelections ? buildFacetInheritanceMaps(collections, facetDefs) : {}),
+    [hasFacetSelections, collections, facetDefs]
+  );
 
   const resolvedListingMode = useMemo(
     () => resolveCategoryListingMode(listingMode || searchParams.listing, categorySlug),
@@ -338,8 +367,18 @@ export default function CategoryTabs({
       });
     }
 
+    // FILTERI 2.0 Faza 1b: nove grupe (?klasa=, ?dezen=, ?ton=...) i na JSON bojama,
+    // kroz ISTE facet-config funkcije kao server listing. Režim 'include': boja bez
+    // podatka (ni nasleđenog preko kolekcije) OSTAJE vidljiva — bolje lažno-uključena
+    // nego pogrešno sakrivena kad izvor nema spec.
+    if (hasFacetSelections) {
+      filtered = filtered.filter((color) =>
+        productMatchesFacetSelections(color, facetSelections, facetDefs, facetInheritanceMaps, 'include')
+      );
+    }
+
     return filtered;
-  }, [colorsFromJSON, categorySlug, vinylType, safetyOnly, wallOnly, useJsonColors, searchParams, collections]);
+  }, [colorsFromJSON, categorySlug, vinylType, safetyOnly, wallOnly, useJsonColors, searchParams, collections, hasFacetSelections, facetSelections, facetDefs, facetInheritanceMaps]);
   const displayedColorsCount = useJsonColors
     ? (colorsFromJSON.length > 0 ? colorsToRender.length : totalColorsCount ?? legacyColors.length)
     : legacyColors.length;
@@ -509,6 +548,18 @@ export default function CategoryTabs({
                 const key = label.toLowerCase().replace(/[^a-z0-9]+/g, '_');
                 if (typeof value === 'string' && !specs.find(s => s.key === key)) {
                   specs.push({ key, label, value });
+                }
+              });
+            }
+
+            // Tarkett LVT (i drugi flat izvori) nose specs kao OBJEKAT ključ→vrednost
+            // (npr. classification_commercial_iso_10874, installation_method, format_type)
+            // — presavij u specs niz da filteri iz facet-config (klasa/ugradnja/format)
+            // rade i u tabu „Boje".
+            if (color.specs && typeof color.specs === 'object' && !Array.isArray(color.specs)) {
+              Object.entries(color.specs).forEach(([key, value]) => {
+                if (typeof value === 'string' && !specs.find(s => s.key === key)) {
+                  specs.push({ key, label: key, value });
                 }
               });
             }
