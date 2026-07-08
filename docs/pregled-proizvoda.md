@@ -24,7 +24,7 @@
 2. **Polomljeni decimalni zarezi u agregaciji** — „Habajući sloj: 3, 6, 2, 5" (u stvari 3,6 i 2,5 mm), „Toplotna otpornost: 0, 067, 098, 107". Agregacija splituje po zarezu unutar decimalnih brojeva. + širine nesortirane (120, 192, 162, 158, 138).
 3. **Dupla labela dekora** — „Dekor / Vrsta drveta" i „Vrsta drveta / dekor" kao dva reda iste vrednosti (normalizeAlpodSpecs dodaje wood_type sa drugom labelom, productDataLoader.ts:456–475).
 4. **Galerija gubi 2/3 slika** — 20/21 boja ima 2–3 slike u `images[]` (uklj. ambijentalne!), ali `mapNestedCollectionColors` (prepare-colors.ts:34–68) prosleđuje samo `image_url` → strelice galerije se nikad ne aktiviraju. PAŽNJA: slike 2 i 3 hotlinkuju www.alpod.rs — treba ih migrirati u Supabase pre prikaza.
-5. **Duplikat-slike među varijantama** — ADMOAK-EL3065/EL3045 i EL3064/EL3043 dele isti fajl slike (klik na „drugu boju" = ista fotografija).
+5. **Duplikat-slike među varijantama** — ADMOAK-EL3065/EL3045 i EL3064/EL3043 dele isti fajl slike. ⚠️ ISPRAVKA (mapiranje 08.07.2026): to NISU duplikati nego **različite dimenzije daske istog dekora** (Oak elegance lock-it: 158×2000 / 192×2000 / 192×2400 mm — potvrđeno zvaničnim Admonter PDF-om). Pravi fix: prikazati dimenziju u nazivu/caption-u varijante, ne uklanjati „duplikat".
 6. **`coveragePerPackage` se gubi** — opis svake boje sadrži „(1,5840 m2)" ali se ne parsira; `FlooringCalculator.tsx` postoji ali NIJE montiran ni na jednoj strani (mrtva komponenta).
 7. **Performanse** — PDP eager-renderuje po 1 full-size sliku za SVAKU boju (Admonter 21, Artisan 142, Winflex 221); swatch grid koristi full-size umesto `variants.thumb` 345×345.
 8. **Slovenački ostatak** — „EC OLJE" umesto „EC ULJE" kod ONDFRI/ONDKAR SKU-ova.
@@ -53,3 +53,7 @@
 - **Brzo (bugovi u kodu):** dupli specovi (#1), polomljeni decimali (#2), dupla labela (#3), coveragePerPackage + kalkulator (#6), OLJE→ULJE (#8)
 - **Srednje (podaci + kod):** galerija svih slika uz migraciju u Supabase (#4, #5), kolekcijska slika sa Alpod banera (#9), rečnik ERP skraćenica (#10), parsiran opis (#11), grupisan selektor boja (#12)
 - **Traži odluku/kontakt:** brend Admonter vs Podovi (#13), mejl Alpodu/Admonteru za zvanični foto-paket + dozvolu (najčistiji put za room-shot slike), PDF dokumentacija sa admonter.com (#14), SEO canonical strategija (#16)
+
+### Dopuna 08.07.2026 — mapiranje na zvanične materijale ✅
+
+Vlasnik potvrdio pravilo (AGENTS.md t.11): asortiman = Alpod, materijal = admonter.com. Urađeno kompletno mapiranje svih 21 dekora → **[docs/admonter-materijali.md](admonter-materijali.md)**: 20/21 mapirano (jedini izuzetak ADMOAK-WL3010 „Oak Wild" — ukinut dekor, ne postoji više na sajtu proizvođača), 63 verifikovana URL-a slika (teksture persp/frontal + room-shot), zvanični opisi gradacija, brend intro, PDF-ovi (Oak/Walnut/Frijo/Kari datasheet, nega, garancija, PEFC/EPD), šabloni polaganja. Dešifrovano: EC ULJE = „natur geölt easy care", SB = Softwood-Backing, ONDFRI/ONDKAR = ugašena OndO linija (dekori Frijo/Kari žive u glavnom programu). Napomena: mat-lak artikli koriste fotografiju uljane verzije (proizvođač ne fotografiše lak zasebno).
