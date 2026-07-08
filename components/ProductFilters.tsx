@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, type ReactNode } from 'react';
+import { useState, useEffect, useMemo, useRef, type ReactNode } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { Brand, ProductFilters as IProductFilters } from '@/types';
 import {
@@ -10,6 +10,12 @@ import {
   type CategoryListingMode,
 } from '@/lib/catalog/listing-curation';
 import { normalizeThicknessValue } from '@/lib/catalog/spec-normalize';
+import {
+  facetOptionLabel,
+  getFacetDefsForCategory,
+  type CategoryFacetDef,
+  type FacetSelections,
+} from '@/lib/catalog/facet-config';
 import { useScrollLock } from './useScrollLock';
 
 // FILTERI 2.0 Faza 1: opcije stižu sa servera u {value, count} obliku —
@@ -49,6 +55,44 @@ function sanitizeWoodTypes(
   return values.filter((value) => availableWoodTypes.some((option) => option.value === value));
 }
 
+// FILTERI 2.0 Faza 1b: opcije novih grupa (klasa/dezen/ton/...) stižu sa servera,
+// definicije (labela, prevod, collapsed) žive u lib/catalog/facet-config.ts.
+export interface DynamicFacetGroupData {
+  param: string;
+  options: FilterOption[];
+}
+
+// URL vrednosti novih grupa se sanitizuju protiv stvarnih opcija (isti obrazac kao
+// brend/debljina) — "?klasa=99" ne sme da uđe u brojač "N aktivno".
+function sanitizeFacetSelections(
+  defs: CategoryFacetDef[],
+  raw: Record<string, string[]>,
+  optionsByParam: Map<string, FilterOption[]>
+): FacetSelections {
+  const out: FacetSelections = {};
+  for (const def of defs) {
+    const values = raw[def.param] || [];
+    if (values.length === 0) continue;
+    if (def.boolean) {
+      if (values.includes('1')) out[def.param] = ['1'];
+      continue;
+    }
+    const options = optionsByParam.get(def.param) || [];
+    const valid = values.filter((value) => options.some((option) => option.value === value));
+    if (valid.length > 0) out[def.param] = valid;
+  }
+  return out;
+}
+
+function readFacetParamsFromUrl(searchParams: URLSearchParams, defs: CategoryFacetDef[]): Record<string, string[]> {
+  const raw: Record<string, string[]> = {};
+  for (const def of defs) {
+    const value = searchParams.get(def.param);
+    if (value) raw[def.param] = value.split(',').map((token) => token.trim()).filter(Boolean);
+  }
+  return raw;
+}
+
 // 1 rezultat / 2 rezultata / 5 rezultata (mobilno dugme "Prikaži N rezultata")
 function pluralizeResults(count: number): string {
   return count % 10 === 1 && count % 100 !== 11 ? 'rezultat' : 'rezultata';
@@ -77,6 +121,127 @@ function ExpandableFilterList<T>({ items, renderItem }: { items: T[]; renderItem
   );
 }
 
+// Minimalan collapse obrazac za sklopljene grupe: hairline naslov sa +/− (dizajn jezik
+// se ne menja — border-ink-200, "label" klasa, bez zaobljenih ivica).
+function CollapsibleFilterGroup({ title, defaultOpen, children }: { title: string; defaultOpen: boolean; children: ReactNode }) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="border-t border-ink-200 pt-3">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between text-left"
+      >
+        <span className="label">{title}</span>
+        <span aria-hidden="true" className="text-[15px] leading-none text-ink-500">{open ? '−' : '+'}</span>
+      </button>
+      {open && <div className="mt-3">{children}</div>}
+    </div>
+  );
+}
+
+// Jedan generički blok za SVE nove grupe (klasa/dezen/ton/ugradnja/materijal/rklasa/
+// grejanje/uzorak/obrada/format/tip) — auto-hide <2 opcije, sivljenje count 0,
+// boolean grupe kao jedan checkbox.
+function DynamicFacetGroups({
+  defs,
+  groups,
+  selectedFacets,
+  onToggle,
+}: {
+  defs: CategoryFacetDef[];
+  groups: DynamicFacetGroupData[];
+  selectedFacets: FacetSelections;
+  onToggle: (param: string, value: string) => void;
+}) {
+  return (
+    <>
+      {defs.map((def) => {
+        const options = groups.find((group) => group.param === def.param)?.options || [];
+        const selected = selectedFacets[def.param] || [];
+
+        if (def.boolean) {
+          const option = options[0];
+          const isSelected = selected.includes('1');
+          // Boolean grupa je namerno jedna opcija — krije se samo kad nema pokrivenih proizvoda.
+          if (!option || (option.count === 0 && !isSelected)) return null;
+          const checkbox = (
+            <label className="flex cursor-pointer items-center justify-between gap-3">
+              <span className="flex min-w-0 items-center">
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={() => onToggle(def.param, '1')}
+                  className="h-4 w-4 border-ink-400 text-ink-900"
+                />
+                <span className="ml-2.5 text-sm text-ink-700">{facetOptionLabel(def, 'Da')}</span>
+              </span>
+              <span className="shrink-0 text-[12px] text-ink-500">({option.count})</span>
+            </label>
+          );
+          return def.collapsed ? (
+            <CollapsibleFilterGroup key={def.param} title={def.label} defaultOpen={isSelected}>
+              {checkbox}
+            </CollapsibleFilterGroup>
+          ) : (
+            <div key={def.param}>
+              <p className="label mb-2">{def.label}</p>
+              {checkbox}
+            </div>
+          );
+        }
+
+        // Auto-hide: grupa sa <2 opcije nema diskriminatornu vrednost.
+        if (options.length < 2) return null;
+
+        const list = (
+          <div className="space-y-2">
+            <ExpandableFilterList
+              items={options}
+              renderItem={(option) => {
+                const isSelected = selected.includes(option.value);
+                const isDisabled = option.count === 0 && !isSelected;
+                return (
+                  <label
+                    key={option.value}
+                    className={`flex items-center justify-between gap-3 ${isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+                  >
+                    <span className="flex min-w-0 items-center">
+                      <input
+                        type="checkbox"
+                        checked={isSelected}
+                        onChange={() => !isDisabled && onToggle(def.param, option.value)}
+                        disabled={isDisabled}
+                        className="h-4 w-4 border-ink-400 text-ink-900 disabled:cursor-not-allowed disabled:opacity-50"
+                      />
+                      <span className={`ml-2.5 truncate text-sm ${isDisabled ? 'text-ink-500' : 'text-ink-700'}`}>
+                        {facetOptionLabel(def, option.value)}
+                      </span>
+                    </span>
+                    <span className="shrink-0 text-[12px] text-ink-500">({option.count})</span>
+                  </label>
+                );
+              }}
+            />
+          </div>
+        );
+
+        return def.collapsed ? (
+          <CollapsibleFilterGroup key={def.param} title={def.label} defaultOpen={selected.length > 0}>
+            {list}
+          </CollapsibleFilterGroup>
+        ) : (
+          <div key={def.param}>
+            <p className="label mb-2">{def.label}</p>
+            {list}
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
 interface ProductFiltersProps {
   availableBrands: BrandFilterOption[];
   currentFilters: IProductFilters;
@@ -87,11 +252,12 @@ interface ProductFiltersProps {
   availableThicknessByType?: { homogeni: string[]; heterogeni: string[] }; // For Vinil thickness by type
   availableToolGroups?: { value: string; slug: string; count: number }[]; // For Alat: Romus tool groups
   availableToolSubcategories?: { value: string; slug: string; group: string; groupSlug: string; count: number }[]; // For Alat: Romus tool subcategories
+  dynamicFacetGroups?: DynamicFacetGroupData[]; // FILTERI 2.0 Faza 1b: nove grupe iz facet-config
   resultsCount?: number; // Broj filtriranih rezultata sa servera (živo dugme mobilne fioke)
   hasPrices?: boolean; // 'Cena' grupa se prikazuje samo kad bar 1 proizvod kategorije ima cenu
 }
 
-export default function ProductFilters({ availableBrands, currentFilters, availableCollections, availableFamilies, availableWoodTypes, availableThickness, availableThicknessByType, availableToolGroups, availableToolSubcategories, resultsCount, hasPrices }: ProductFiltersProps) {
+export default function ProductFilters({ availableBrands, currentFilters, availableCollections, availableFamilies, availableWoodTypes, availableThickness, availableThicknessByType, availableToolGroups, availableToolSubcategories, dynamicFacetGroups, resultsCount, hasPrices }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -145,6 +311,16 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
   );
   const [selectedToolGroups, setSelectedToolGroups] = useState<string[]>(currentToolGroups);
   const [selectedToolSubcategories, setSelectedToolSubcategories] = useState<string[]>(currentToolSubcategories);
+  // FILTERI 2.0 Faza 1b: nove grupe — definicije po kategoriji + selekcije po URL parametru.
+  const facetDefs = useMemo(() => getFacetDefsForCategory(categorySlug), [categorySlug]);
+  const facetOptionsByParam = useMemo(() => {
+    const map = new Map<string, FilterOption[]>();
+    for (const group of dynamicFacetGroups || []) map.set(group.param, group.options);
+    return map;
+  }, [dynamicFacetGroups]);
+  const [selectedFacets, setSelectedFacets] = useState<FacetSelections>(() =>
+    sanitizeFacetSelections(facetDefs, readFacetParamsFromUrl(searchParams, facetDefs), facetOptionsByParam)
+  );
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const filtersTriggerRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -208,7 +384,11 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
       setSelectedToolGroups(urlToolGroups);
       setSelectedToolSubcategories(urlToolSubcategories);
     }
-  }, [searchParams, searchParamsString, categorySlug, supportsListingMode, isVinilCategory, isLVTCategory, pathname, isLinoleumCategory, isLaminatCategory, isParketCategory, isToolCategory, availableBrands, availableThickness, availableWoodTypes]);
+    // Nove grupe (Faza 1b) — sanitizovano protiv stvarnih opcija; identičan objekat se ne
+    // upisuje ponovo da auto-apply ne bi ušao u petlju.
+    const urlFacets = sanitizeFacetSelections(facetDefs, readFacetParamsFromUrl(searchParams, facetDefs), facetOptionsByParam);
+    setSelectedFacets((prev) => (JSON.stringify(prev) === JSON.stringify(urlFacets) ? prev : urlFacets));
+  }, [searchParams, searchParamsString, categorySlug, supportsListingMode, isVinilCategory, isLVTCategory, pathname, isLinoleumCategory, isLaminatCategory, isParketCategory, isToolCategory, availableBrands, availableThickness, availableWoodTypes, facetDefs, facetOptionsByParam]);
 
   // Auto-remove incompatible thicknesses when vinyl type changes
   useEffect(() => {
@@ -292,6 +472,9 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     params.delete('woodType');
     params.delete('toolGroup');
     params.delete('toolSubcategory');
+    // Nove grupe (Faza 1b): brišemo SAMO parametre grupa ove kategorije — tuđi parametri
+    // (npr. 'color' za tab Boje) preživljavaju auto-apply.
+    for (const def of facetDefs) params.delete(def.param);
 
     // Add new filter params based on current state - ALL filters are preserved
     if (search) params.set('search', search);
@@ -308,6 +491,9 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     if (isParketCategory && selectedWoodTypes.length > 0) params.set('woodType', selectedWoodTypes.join(','));
     if (isToolCategory && selectedToolGroups.length > 0) params.set('toolGroup', selectedToolGroups.join(','));
     if (isToolCategory && selectedToolSubcategories.length > 0) params.set('toolSubcategory', selectedToolSubcategories.join(','));
+    for (const [param, values] of Object.entries(selectedFacets)) {
+      if (values.length > 0) params.set(param, values.join(','));
+    }
 
     // Debounce for search input (500ms), immediate for other filters
     const delay = search ? 500 : 0;
@@ -323,7 +509,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [search, selectedBrands, priceMin, priceMax, vinylType, safetyOnly, wallOnly, selectedCollections, selectedFamilies, selectedListingMode, selectedThickness, selectedWoodTypes, selectedToolGroups, selectedToolSubcategories, pathname, router, searchParams, supportsListingMode, defaultListingMode, isVinilCategory, isLVTCategory, isLinoleumCategory, isLaminatCategory, isParketCategory, isToolCategory]);
+  }, [search, selectedBrands, priceMin, priceMax, vinylType, safetyOnly, wallOnly, selectedCollections, selectedFamilies, selectedListingMode, selectedThickness, selectedWoodTypes, selectedToolGroups, selectedToolSubcategories, selectedFacets, facetDefs, pathname, router, searchParams, supportsListingMode, defaultListingMode, isVinilCategory, isLVTCategory, isLinoleumCategory, isLaminatCategory, isParketCategory, isToolCategory]);
 
   const clearFilters = () => {
     setSearch('');
@@ -340,6 +526,7 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     setSelectedWoodTypes([]);
     setSelectedToolGroups([]);
     setSelectedToolSubcategories([]);
+    setSelectedFacets({});
     // Sort nije filter — preživljava i 'Očisti sve'
     const sortParam = searchParams.get('sort');
     router.push(sortParam ? `${pathname}?sort=${encodeURIComponent(sortParam)}` : pathname);
@@ -395,6 +582,24 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     );
   };
 
+  const toggleFacetValue = (param: string, value: string) => {
+    setSelectedFacets(prev => {
+      const current = prev[param] || [];
+      const nextValues = current.includes(value)
+        ? current.filter(v => v !== value)
+        : [...current, value];
+      const next = { ...prev };
+      if (nextValues.length > 0) {
+        next[param] = nextValues;
+      } else {
+        delete next[param];
+      }
+      return next;
+    });
+  };
+
+  const activeFacetValueCount = Object.values(selectedFacets).reduce((sum, values) => sum + values.length, 0);
+
   const hasActiveFilters =
     Boolean(search || selectedBrands.length > 0 || priceMin || priceMax) ||
     Boolean(isVinilCategory && vinylType) ||
@@ -405,7 +610,8 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     Boolean(supportsListingMode && selectedListingMode !== defaultListingMode) ||
     Boolean(isParketCategory && selectedWoodTypes.length > 0) ||
     Boolean((isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) && selectedThickness.length > 0) ||
-    Boolean(isToolCategory && (selectedToolGroups.length > 0 || selectedToolSubcategories.length > 0));
+    Boolean(isToolCategory && (selectedToolGroups.length > 0 || selectedToolSubcategories.length > 0)) ||
+    activeFacetValueCount > 0;
   const priceUnitLabel = isToolCategory ? 'Cena (RSD/kom)' : 'Cena (RSD/m²)';
 
   const activeFilterCount =
@@ -420,7 +626,8 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
     (supportsListingMode && selectedListingMode !== defaultListingMode ? 1 : 0) +
     ((isLVTCategory || isVinilCategory || isLinoleumCategory || isLaminatCategory) ? selectedThickness.length : 0) +
     (isParketCategory ? selectedWoodTypes.length : 0) +
-    (isToolCategory ? selectedToolGroups.length + selectedToolSubcategories.length : 0);
+    (isToolCategory ? selectedToolGroups.length + selectedToolSubcategories.length : 0) +
+    activeFacetValueCount;
 
   return (
     <>
@@ -745,6 +952,16 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
                   })}
                 </div>
               </div>
+            )}
+
+            {/* FILTERI 2.0 Faza 1b: nove grupe iz facet-config — jedan generički blok */}
+            {dynamicFacetGroups && facetDefs.length > 0 && (
+              <DynamicFacetGroups
+                defs={facetDefs}
+                groups={dynamicFacetGroups}
+                selectedFacets={selectedFacets}
+                onToggle={toggleFacetValue}
+              />
             )}
 
             {hasPrices && (
@@ -1205,6 +1422,18 @@ export default function ProductFilters({ availableBrands, currentFilters, availa
                       );
                     })}
                   </div>
+                </div>
+              )}
+
+              {/* FILTERI 2.0 Faza 1b: nove grupe iz facet-config — isti generički blok kao na desktopu */}
+              {dynamicFacetGroups && facetDefs.length > 0 && (
+                <div className="mb-8 space-y-6">
+                  <DynamicFacetGroups
+                    defs={facetDefs}
+                    groups={dynamicFacetGroups}
+                    selectedFacets={selectedFacets}
+                    onToggle={toggleFacetValue}
+                  />
                 </div>
               )}
             </div>

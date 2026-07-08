@@ -7,6 +7,17 @@ import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import { getEffectiveParketCollection, getAllParketVariantSlugs } from '@/lib/data/parket-collection-mapping';
 import { isAlpodImportBrand, normalizeThicknessValue, resolveBrandTokens } from '@/lib/catalog/spec-normalize';
+import {
+  buildFacetInheritanceMaps,
+  collectFacetOptionValues,
+  facetChipLabel,
+  getFacetDefsForCategory,
+  parseFacetSelectionsFromParams,
+  productMatchesFacetSelections,
+  type CategoryFacetDef,
+  type FacetInheritanceMaps,
+  type FacetSelections as ConfigFacetSelections,
+} from '@/lib/catalog/facet-config';
 import { filterCategoryListingCollections, resolveCategoryListingMode } from '@/lib/catalog/listing-curation';
 import { generateBreadcrumbSchema, generateCollectionPageSchema, generateProductListSchema } from '@/lib/seo/structured-data';
 import { getCategoryPageCopy } from '@/lib/seo/listing-page-copy';
@@ -46,6 +57,18 @@ interface CategoryPageProps {
     toolGroup?: string; // For Alat: Romus top-level tool group slugs
     toolSubcategory?: string; // For Alat: Romus tool subcategory slugs
     sort?: string; // Sortiranje listinga: 'preporuceno' | 'naziv' | 'cena' | 'najnovije'
+    // FILTERI 2.0 Faza 1b — nove grupe iz spec podataka (definicije: lib/catalog/facet-config.ts)
+    klasa?: string; // Vinil/LVT klasa upotrebe; Laminat AC klasa
+    dezen?: string; // Vinil: Drvo/Kamen/Beton/Uni...
+    ton?: string; // Vinil/Parket: Svetla/Srednja/Tamna
+    ugradnja?: string; // Vinil/Parket/LVT: Klik/Lepljenje/...
+    materijal?: string; // Vinil: SPC/LVT/WPC
+    rklasa?: string; // Vinil: R-klasa protivkliznosti
+    grejanje?: string; // Vinil/Parket: '1' = pogodno za podno grejanje
+    uzorak?: string; // Parket: uzorak polaganja
+    obrada?: string; // Parket: završna obrada
+    format?: string; // LVT: Daska/Ploča
+    tip?: string; // Otirači: Techem top kategorija
   };
 }
 
@@ -180,9 +203,17 @@ interface FacetSelections {
   search?: string;
   priceMin?: number;
   priceMax?: number;
+  // FILTERI 2.0 Faza 1b: selekcije novih grupa po URL parametru (?klasa=33 → { klasa: ['33'] })
+  facets: ConfigFacetSelections;
 }
 
-function productMatchesFacets(p: Product, f: FacetSelections, categorySlug: string): boolean {
+// Kontekst za nove grupe: definicije za kategoriju + mape nasleđivanja po kolekciji.
+interface FacetFilterContext {
+  defs: CategoryFacetDef[];
+  inheritMaps: FacetInheritanceMaps;
+}
+
+function productMatchesFacets(p: Product, f: FacetSelections, categorySlug: string, facetCtx?: FacetFilterContext): boolean {
   if (f.brandIds.length > 0 && !f.brandIds.includes(p.brandId)) return false;
 
   if (f.collections.length > 0) {
@@ -225,6 +256,14 @@ function productMatchesFacets(p: Product, f: FacetSelections, categorySlug: stri
     if (f.priceMax !== undefined && price > f.priceMax) return false;
   }
 
+  // FILTERI 2.0 Faza 1b: nove grupe (klasa/dezen/ton/ugradnja/...) idu GENERIČKI
+  // preko facet-config definicija — bez if-grana po kategoriji. Server listing je
+  // strikt ('exclude'): proizvod bez vrednosti (ni nasleđene) se sakriva; tab „Boje"
+  // ima blaži režim u CategoryTabs ('include').
+  if (facetCtx && !productMatchesFacetSelections(p, f.facets, facetCtx.defs, facetCtx.inheritMaps, 'exclude')) {
+    return false;
+  }
+
   return true;
 }
 
@@ -232,18 +271,24 @@ type CountableFacet = 'brandIds' | 'collections' | 'families' | 'thickness';
 
 // Count za opciju X = broj rezultata kad se X primeni preko OSTALIH aktivnih filtera
 // (unutar iste grupe važi samo X, selekcije te grupe se ignorišu — standardno OR fasetiranje).
+// Za nove grupe (Faza 1b) facet je { facetParam } i override ide u f.facets[param].
 function countFacetOption(
   products: Product[],
   base: FacetSelections,
   categorySlug: string,
-  facet: CountableFacet,
-  value: string
+  facet: CountableFacet | { facetParam: string },
+  value: string,
+  facetCtx?: FacetFilterContext
 ): number {
   const overridden: FacetSelections = { ...base };
-  overridden[facet] = [value];
+  if (typeof facet === 'string') {
+    overridden[facet] = [value];
+  } else {
+    overridden.facets = { ...base.facets, [facet.facetParam]: [value] };
+  }
   let count = 0;
   for (const product of products) {
-    if (productMatchesFacets(product, overridden, categorySlug)) count += 1;
+    if (productMatchesFacets(product, overridden, categorySlug, facetCtx)) count += 1;
   }
   return count;
 }
@@ -430,6 +475,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const vinylTypeFilter = category.slug === 'vinil' && (searchParams.type === 'homogeni' || searchParams.type === 'heterogeni')
     ? searchParams.type
     : undefined;
+  // FILTERI 2.0 Faza 1b: nove grupe za ovu kategoriju + parsirane URL selekcije.
+  const facetDefs = getFacetDefsForCategory(category.slug);
+  const configFacetSelections = parseFacetSelectionsFromParams(
+    searchParams as Record<string, string | undefined>,
+    facetDefs
+  );
+  const hasConfigFacetSelections = Object.keys(configFacetSelections).length > 0;
   const facetSelections: FacetSelections = {
     brandIds: resolvedBrandIds,
     collections: selectedCollectionValues,
@@ -442,6 +494,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     search: searchParams.search?.trim() || undefined,
     priceMin: Number.isFinite(filtersWithoutCollections.priceMin) ? filtersWithoutCollections.priceMin : undefined,
     priceMax: Number.isFinite(filtersWithoutCollections.priceMax) ? filtersWithoutCollections.priceMax : undefined,
+    facets: configFacetSelections,
   };
 
   // Get all products first (without collection filter) to properly separate collections from colors
@@ -455,6 +508,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     categoryRepository.findAll(),
   ]);
   const allProductsForThickness = categoryProducts;
+
+  // FILTERI 2.0 Faza 1b: mape nasleđivanja po kolekciji, nad NEfiltriranim proizvodima
+  // kategorije. Nasleđivanje ide u oba smera preko spec 'collection': LVT boja bez klase
+  // dobija klasu svoje kolekcije, a LVT header bez klase uniju klasa svojih boja.
+  const facetInheritanceMaps = buildFacetInheritanceMaps(categoryProducts, facetDefs);
+  const facetCtx: FacetFilterContext = { defs: facetDefs, inheritMaps: facetInheritanceMaps };
+  const matchesConfigFacets = (p: Product) =>
+    productMatchesFacetSelections(p, configFacetSelections, facetDefs, facetInheritanceMaps, 'exclude');
 
   // Get unique brands used in this category
   const categoryBrandIds = new Set(categoryProducts.map(p => p.brandId));
@@ -897,6 +958,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       collections = allCollections;
     }
 
+    // FILTERI 2.0 Faza 1b: nove grupe filtriraju i kolekcije i server-side boje
+    // (parket/tekstilne/laminat colors idu ovim istim generičkim putem).
+    if (hasConfigFacetSelections) {
+      collections = collections.filter(matchesConfigFacets);
+      colors = colors.filter(matchesConfigFacets);
+    }
+
     // Za parket u tabu Boje prikazujemo stvarne boje (varijante) sa njihovim imenom i slikom, kao na Tekstilne ploče – bez preslikavanja na kolekciju.
 
     // Build brands record for all products
@@ -927,7 +995,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   };
   collections = sortCategoryProducts(collections, sortMode, getListingSortName);
   colors = sortCategoryProducts(colors, sortMode, getListingSortName);
-  const displayedFlatProducts = hasCollectionTabs ? [] : sortCategoryProducts(filteredProducts, sortMode, getListingSortName);
+  // Flat kategorije (otirači, alat...): nove grupe se primenjuju direktno na proizvode.
+  const flatProductsToDisplay = hasCollectionTabs
+    ? []
+    : (hasConfigFacetSelections ? filteredProducts.filter(matchesConfigFacets) : filteredProducts);
+  const displayedFlatProducts = hasCollectionTabs ? [] : sortCategoryProducts(flatProductsToDisplay, sortMode, getListingSortName);
 
   // Univerzum za brojače uz opcije: kolekcijske kartice (uz listing curation) za tab
   // kategorije, svi proizvodi kategorije za flat kategorije (alat, otirači...).
@@ -954,26 +1026,26 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   const categoryColorUniverse = hasCollectionTabs ? categoryProducts.filter((p) => !hasCollectionSku(p)) : [];
   const brandFilterOptions = availableBrands.map((brand) => {
-    let count = countFacetOption(facetCountUniverse, facetSelections, category.slug, 'brandIds', brand.id);
+    let count = countFacetOption(facetCountUniverse, facetSelections, category.slug, 'brandIds', brand.id, facetCtx);
     if (count === 0 && categoryColorUniverse.length > 0) {
       // Brend može da postoji samo kroz boje/varijante (bez header kartice) — ne sivi ga pogrešno.
-      count = countFacetOption(categoryColorUniverse, facetSelections, category.slug, 'brandIds', brand.id);
+      count = countFacetOption(categoryColorUniverse, facetSelections, category.slug, 'brandIds', brand.id, facetCtx);
     }
     return { value: brand, count };
   });
   const collectionFilterOptions = availableCollections.map((value) => ({
     value,
-    count: countFacetOption(facetCountUniverse, facetSelections, category.slug, 'collections', value),
+    count: countFacetOption(facetCountUniverse, facetSelections, category.slug, 'collections', value, facetCtx),
   }));
   const familyFilterOptions = availableFamilies.map((value) => ({
     value,
-    count: countFacetOption(facetCountUniverse, facetSelections, category.slug, 'families', value),
+    count: countFacetOption(facetCountUniverse, facetSelections, category.slug, 'families', value, facetCtx),
   }));
   const thicknessFilterOptions = availableThickness.map((value) => {
     // Laminat opcije nose kratki format ("8"), lvt/vinil/linoleum normalizovan ("2.00") —
     // brojanje uvek ide preko normalizovane vrednosti.
     const normalizedValue = normalizeThicknessValue(value) ?? value;
-    let count = countFacetOption(facetCountUniverse, facetSelections, category.slug, 'thickness', normalizedValue);
+    let count = countFacetOption(facetCountUniverse, facetSelections, category.slug, 'thickness', normalizedValue, facetCtx);
     if (count === 0) {
       // Debljina može da postoji samo na JSON bojama (ne na headerima) — fallback da ne posivi opciju.
       const jsonCounts = jsonThicknessColorCounts.get(normalizedValue);
@@ -984,6 +1056,24 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       }
     }
     return { value, count };
+  });
+
+  // FILTERI 2.0 Faza 1b: opcije novih grupa sa brojačima, po istom obrascu kao
+  // brend/kolekcija — count preko OSTALIH aktivnih filtera, sa fallback-om na
+  // boje/varijante kad nijedan header ne nosi vrednost (da opcija ne posivi pogrešno).
+  const configFacetGroups = facetDefs.map((def) => {
+    const inheritMap = facetInheritanceMaps[def.param];
+    const optionValues = def.boolean
+      ? ['1']
+      : collectFacetOptionValues([...facetCountUniverse, ...categoryColorUniverse], def, inheritMap);
+    const options = optionValues.map((value) => {
+      let count = countFacetOption(facetCountUniverse, facetSelections, category.slug, { facetParam: def.param }, value, facetCtx);
+      if (count === 0 && categoryColorUniverse.length > 0) {
+        count = countFacetOption(categoryColorUniverse, facetSelections, category.slug, { facetParam: def.param }, value, facetCtx);
+      }
+      return { value, count };
+    });
+    return { param: def.param, options };
   });
 
   const resultsCount = hasCollectionTabs ? collections.length + colors.length : displayedFlatProducts.length;
@@ -1013,6 +1103,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     color: searchParams.color || undefined,
     sort: searchParams.sort || undefined,
   };
+  // Nove grupe (Faza 1b) u kanonske parametre — čip za tuđu vrednost ne sme da ih obriše.
+  for (const def of facetDefs) {
+    const values = configFacetSelections[def.param];
+    canonicalFilterParams[def.param] = values && values.length > 0 ? values.join(',') : undefined;
+  }
 
   const activeFilterChips: ActiveFilterChip[] = [];
   const addFilterChip = (paramKey: string, label: string, value?: string) => {
@@ -1035,6 +1130,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (vinylTypeFilter) addFilterChip('type', vinylTypeFilter === 'homogeni' ? 'Homogeni' : 'Heterogeni');
   if (facetSelections.safetyOnly) addFilterChip('safety', 'Protivklizni/Sigurnosni');
   if (facetSelections.wallOnly) addFilterChip('zidne', 'Zidne obloge');
+  // Čipovi novih grupa — ljudske vrednosti („Klasa 33", „Riblja kost", „Podno grejanje").
+  for (const def of facetDefs) {
+    for (const value of configFacetSelections[def.param] || []) {
+      addFilterChip(def.param, facetChipLabel(def, value), value);
+    }
+  }
   if (searchParams.listing) {
     addFilterChip('listing', listingMode === 'accessory' ? 'Prateći asortiman' : listingMode === 'all' ? 'Sve stavke' : 'Kolekcije');
   }
@@ -1179,6 +1280,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             availableThicknessByType={category.slug === 'vinil' ? availableThicknessByType : undefined}
             availableToolGroups={category.slug === 'alat' ? availableToolGroups : undefined}
             availableToolSubcategories={category.slug === 'alat' ? availableToolSubcategories : undefined}
+            dynamicFacetGroups={facetDefs.length > 0 ? configFacetGroups : undefined}
             resultsCount={resultsCount}
             hasPrices={hasPrices}
           />
@@ -1212,6 +1314,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   thickness: searchParams.thickness,
                   woodType: searchParams.woodType,
                 }}
+                facetParams={Object.fromEntries(
+                  facetDefs.map((def) => [def.param, (searchParams as Record<string, string | undefined>)[def.param]])
+                )}
               />
             ) : (
               <>

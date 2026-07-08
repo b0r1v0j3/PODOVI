@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 08.07.2026 (Filteri 2.0 Faza 0 + dnevni pregled proizvoda)
+> **Poslednje ažuriranje:** 08.07.2026 (Filteri 2.0 Faza 1b — nove filter grupe iz spec podataka)
 
 ---
 
@@ -153,6 +153,22 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Pregled proizvoda #2: Artisan — 725 slika, ljudska imena, grupisan selektor (08.07.2026)**
+- **Galerije sistemski**: novi `tools/migrate_alpod_gallery_images.js` migrirao 2.191 galerijsku sliku (images[] nizovi) za SVE Alpod kolekcije u naš Supabase (Artisan 725, Heritage, Winflex...; 218 URL-ova je trajno mrtvo na alpod strani — 404, ostaju filtrirani kroz isFirstPartyImageUrl). Ambijentalne `_ambient` slike sada u galerijama.
+- **Overlay registar generalizovan** (`COLLECTION_OVERLAYS` u productDataLoader + union dekora u prepare-colors): svaki dnevni pregled dodaje svoj overlay fajl bez novih grana. Artisan overlay: `public/data/artisan_display_overlay.json`.
+- **142 ljudska imena** generisana parserom ERP naziva (dešifrovano kroz alpod spec tabele: 2V/4V=oborene ivice, 4Vm=mikro fuga, **OL=kod spoja (NE ulje!)**, DIM=dimljen, COUNTRY/NATURAL/MARKANT=Alpod gradacije DE/BC/CD, BJELO→Belo); fabrički naziv u specs.
+- **ColorGrid modal grupiše po pod-linijama** iz spec `Podkolekcija` (Artisan: Chalet/Palace/Lounge/Cottage/Project/Herringbone/Chevron — različiti formati) — generično, hairline podnaslovi, radi za svaku kolekciju sa ≥2 linije.
+- Kolekcijski hero baner (alpod webp → Supabase), tačan intro (142 dekora, 7 linija sa formatima), SEO shortDescription, opisi boja sa gradacijom+formatom+pakovanjem, kalkulator radi (coveragePerPackage). Test: `artisan-enrichment-contract` (5). Evidencija: `docs/pregled-proizvoda.md` #2.
+
+**Filteri 2.0 — Faza 1b: nove filter grupe iz postojećih spec podataka (08.07.2026)**
+- **Novi modul `lib/catalog/facet-config.ts`** (deljiv server+klijent, bez Node API-ja): deklarativne definicije grupa po kategoriji `{param, label, specKeys[], canonicalMap/parse, translate?, chipPrefix?, collapsed?, boolean?, order?}` + kanonske mape vrednosti (sirovo → kanonsko, multi-value split po ',' i '/', lowercase lookup, nemapirani tokeni se odbacuju). Parseri: `parseUsageClasses` (klase 21–43 iz "Klasa 34/43", "34 Very Heavy", "23-31"...), `parseRClasses` (R9–R13; 'Klasa DS'/'LROS' se odbacuju), `parseLvtFormat` (Daska/Ploča; Gerflor 'XL' = XL daska).
+- **Nove grupe po kategorijama**: VINIL `?klasa=` (prevod „33 · lokal", „34 · jak promet"...), `?dezen=` (HRAST→Drvo, Stone/Mineral→Kamen, Sveobuhvatni→Uni), `?ton=` (nijansa), `?ugradnja=` (nacin_montaze+vrsta_spoja+nacin_ugradnje+tip_instalacije → Klik/Lepljenje/Plivajuće/Loose-lay), `?materijal=` (SPC/LVT/WPC), sklopljene `?rklasa=` i `?grejanje=1`; PARKET `?ton=`, `?uzorak=` (Klasično/Riblja kost/Chevron), `?obrada=` (Proteco Lak→Lak, Proteco Natura→Mat lak, UV uljen→Ulje), `?ugradnja=` (Klik/Pero i utor; T-Lock→Klik), `?grejanje=1`; LVT `?klasa=` + `?ugradnja=` (dupli ključevi installation/installation_method, dupli rečnik Glue down/Click sistem/Looselay) + `?format=`; LAMINAT `?klasa=` (AC3/AC4/AC5, prikaz „AC5 · 33"; ISO 31/32/33 se slivaju u AC); OTIRAČI `?tip=` (`__techem_top_category`; 'Anodizovani – Design'→Aluminijumski, 'Trend Mats'→Unutrašnji).
+- **Nasleđivanje po kolekciji** (`buildFacetInheritanceMaps`): boja bez spec-a nasleđuje vrednost kolekcije i obrnuto (LVT header bez klase dobija uniju klasa svojih boja), vezivanje preko normalizovanog identiteta kolekcije (`normalizeCollectionKey`: skida brend prefiks i dijakritike; 'Creation Saga²'→'creation-saga2'). Čitanje vrednosti ide preko spec.key I `specKeyFromLabel(spec.label)` — klijentski tab „Boje" gradi ključeve iz labela BEZ skidanja dijakritika ('Način montaže'→'na_in_monta_e'), pa je labela jedini pouzdan most.
+- **page.tsx generički** (bez if-grana po kategoriji): `FacetSelections.facets` + `FacetFilterContext`; `productMatchesFacets`/`countFacetOption` prošireni preko config-a; server listing je strikt ('exclude': bez vrednosti = sakriven), brojači po istom obrascu (count preko ostalih aktivnih filtera, fallback na boje kad headeri nemaju vrednost), čipovi sa ljudskim vrednostima („Klasa 33", „Riblja kost", „Podno grejanje").
+- **ProductFilters**: jedan generički blok `DynamicFacetGroups` za sve nove grupe (desktop + fioka), sanitizacija URL vrednosti protiv opcija, sivljenje count 0, auto-hide <2 opcije, novi minimalni collapse obrazac `CollapsibleFilterGroup` (hairline naslov sa +/−) za sklopljene grupe; auto-apply briše SAMO parametre grupa svoje kategorije (tuđi parametri poput `color` preživljavaju).
+- **CategoryTabs (tab „Boje")**: isti facet-config filteri na JSON bojama u režimu 'include' — boja bez podatka (ni nasleđenog) OSTAJE vidljiva (bolje lažno-uključena nego pogrešno sakrivena); Tarkett LVT `specs` OBJEKAT (classification/installation_method/format_type) se presavija u specs niz da filteri rade i na bojama. Server-side boje (parket/tekstilne/laminat) filtriraju se istim generičkim putem u page.tsx.
+- Novi contract test `tests/contracts/facet-config-contract.test.ts` (23 testa): kanonizacija svih grupa, LVT nasleđivanje u oba smera, R multi-split, missing policy, integracija vinil `?klasa=33` (brojači = stvarno filtriranje, bez mrtvih opcija) + laminat AC5 + otirači. Ceo suite 278/278 zeleno; verifikovano u pregledaču (vinil klasa+dezen, parket uzorak, LVT klasa, laminat AC5, otirači tip, čipovi, tab Boje).
 
 **Filteri 2.0 — Faza 1 mehanika na stranicama kategorija (08.07.2026)**
 - **Sortiranje** na svim kategorijama (`?sort=` preporuceno/naziv/cena/najnovije; cena samo gde cene postoje; kolacija `sr-Latn` jer golo `'sr'` u Node ICU pada na ćiriličku; sort po prikaznom imenu bez brend prefiksa). Nove komponente: `CategoryToolbar.tsx` (server; broj rezultata + sort + čipovi; util-i `sortCategoryProducts`, `buildFilterRemovalHref`...) i `CategorySortSelect.tsx` (klijent).
