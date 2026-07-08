@@ -26,6 +26,8 @@ import tisDekingProducts from '@/public/data/tis_deking_products.json';
 import tarkettGrassProducts from '@/public/data/tarkett_grass_products.json';
 import priborProducts from '@/public/data/pribor_products.json';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
+import admonterOfficialMediaData from '@/public/data/admonter_official_media.json';
+import { parseCoverageM2 } from '@/lib/catalog/spec-normalize';
 import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 import { selectPreferredCollectionHeroAsset } from '@/lib/utils/catalog-assets';
@@ -428,6 +430,59 @@ function getAlpodRawCollections(categoryId?: string): Record<string, any>[] {
     return categoryId ? collections.filter((collection) => normalizeText(collection.categoryId) === categoryId) : collections;
 }
 
+// ── Admonter: zvanični materijal proizvođača (AGENTS.md t.11: asortiman = Alpod, materijal = admonter.com) ──
+const ADMONTER_COLLECTION_SLUG = 'podovi-parket-admonter';
+const ADMONTER_BRAND_ID = '16';
+
+function getAdmonterOverlay(): Record<string, any> {
+    return (admonterOfficialMediaData as any) || {};
+}
+
+function isAdmonterCollection(rawCollection: Record<string, any>): boolean {
+    return normalizeText(rawCollection?.slug) === ADMONTER_COLLECTION_SLUG;
+}
+
+// Alpod opis varijante nosi pokrivnost pakovanja: "ADMONTER FLOORS 10/3,6x120x1200 mm (1,5840 m2)"
+const parseAlpodCoverage = parseCoverageM2;
+
+// Slovenački ostatak u Alpod izvozu ("EC OLJE" umesto "EC ULJE")
+function fixAlpodSerbian(text: string): string {
+    return text.replace(/\bOLJE\b/g, 'ULJE').replace(/\bOlje\b/gi, 'Ulje');
+}
+
+// Alpod kolekcijski agregati numeričkih polja stižu polomljeni — "3, 6, 2, 5" je nastalo
+// spajanjem decimala 3,6 i 2,5 po zarezu. Preračunavamo ih iz vrednosti varijanti,
+// gde su decimale ispravne, i sortiramo numerički.
+const ALPOD_NUMERIC_AGGREGATE_LABELS = ['Habajući sloj', 'Debljina', 'Širina', 'Dužina', 'Toplotna otpornost'];
+
+function recomputeAlpodNumericAggregates(
+    characteristics: Record<string, any> | undefined,
+    colors: Record<string, any>[]
+): Record<string, any> | undefined {
+    if (!characteristics) {
+        return characteristics;
+    }
+    const result: Record<string, any> = { ...characteristics };
+    for (const label of ALPOD_NUMERIC_AGGREGATE_LABELS) {
+        if (!(label in result)) {
+            continue;
+        }
+        const values = new Set<string>();
+        for (const color of colors) {
+            const value = normalizeText(color?.characteristics?.[label]);
+            if (value) {
+                values.add(value);
+            }
+        }
+        if (values.size > 0) {
+            result[label] = Array.from(values)
+                .sort((a, b) => (parseFloat(a.replace(',', '.')) || 0) - (parseFloat(b.replace(',', '.')) || 0))
+                .join(', ');
+        }
+    }
+    return result;
+}
+
 function normalizeAlpodSpecs(
     rawCharacteristics: Record<string, any> | undefined,
     collectionName: string,
@@ -471,7 +526,9 @@ function normalizeAlpodSpecs(
         specs.find((spec) => spec.key === 'dekor_vrsta_drveta')?.value ||
         specs.find((spec) => spec.label.toLowerCase() === 'dekor / vrsta drveta')?.value;
     if (woodTypeValue && !specs.find((spec) => spec.key === 'wood_type')) {
-        specs.push({ key: 'wood_type', label: 'Vrsta drveta / dekor', value: woodTypeValue });
+        // Ista labela kao izvorni spec 'Dekor / Vrsta drveta' — display dedupe po labeli
+        // uklanja dupli red, a filter i dalje čita po key-u 'wood_type'.
+        specs.push({ key: 'wood_type', label: 'Dekor / Vrsta drveta', value: woodTypeValue });
     }
 
     if (options?.categoryId === '2' && !specs.find((spec) => spec.key === 'type')) {
@@ -499,8 +556,16 @@ function transformAlpodCollectionProduct(rawCollection: Record<string, any>, ind
     const slug = normalizeText(rawCollection.slug) || `podovi-kolekcija-${index + 1}`;
     const categoryId = normalizeText(rawCollection.categoryId) || '2';
     const colorCount = Number(rawCollection.colorCount || rawCollection.colors?.length || 0);
+    const isAdmonter = isAdmonterCollection(rawCollection);
+    const overlayCollection = isAdmonter ? getAdmonterOverlay().collection || {} : {};
+    // References fotografije proizvođača idu ISPRED Alpod svočeva (odluka vlasnika 08.07.2026)
+    const officialImages = [
+        overlayCollection.collection_image_url,
+        ...(Array.isArray(overlayCollection.collection_gallery_urls) ? overlayCollection.collection_gallery_urls : []),
+    ].filter(Boolean);
     const images = normalizeAlpodImages(
         [
+            ...officialImages,
             rawCollection.collection_image_url,
             rawCollection.image,
             rawCollection.image_url,
@@ -511,14 +576,26 @@ function transformAlpodCollectionProduct(rawCollection: Record<string, any>, ind
         `alpod-collection-${slug}`,
         name
     );
-    const specs = normalizeAlpodSpecs(rawCollection.characteristics, name, {
-        colorCount,
-        sourceUrl: rawCollection.url,
-        categoryId,
-    });
+    const specs = normalizeAlpodSpecs(
+        recomputeAlpodNumericAggregates(rawCollection.characteristics, (rawCollection.colors || []) as Record<string, any>[]),
+        name,
+        {
+            colorCount,
+            sourceUrl: rawCollection.url,
+            categoryId,
+        }
+    );
     const description =
+        (isAdmonter && normalizeText(overlayCollection.intro_sr)) ||
         normalizeText(rawCollection.description) ||
         `${name} kolekcija u Podovi katalogu. Cena i dostupnost se proveravaju slanjem upita.`;
+    const documents = (Array.isArray(overlayCollection.documents) ? overlayCollection.documents : [])
+        .filter((doc: Record<string, any>) => normalizeText(doc.url))
+        .map((doc: Record<string, any>) => ({
+            title: normalizeText(doc.title),
+            url: normalizeText(doc.url),
+            type: normalizeText(doc.type) || undefined,
+        }));
 
     return {
         id: normalizeText(rawCollection.id) || `alpod-collection-${slug}`,
@@ -526,10 +603,11 @@ function transformAlpodCollectionProduct(rawCollection: Record<string, any>, ind
         slug,
         sku: normalizeText(rawCollection.sku) || `PODOVI-COLLECTION-${slug.toUpperCase()}`,
         categoryId,
-        brandId: DEFAULT_PODOVI_BRAND_ID,
-        shortDescription:
-            normalizeText(rawCollection.shortDescription) ||
-            `${name} - ${colorCount} ${categoryId === '5' ? 'artikala' : 'dekora'} bez javno istaknute cene`,
+        brandId: isAdmonter ? ADMONTER_BRAND_ID : DEFAULT_PODOVI_BRAND_ID,
+        shortDescription: isAdmonter
+            ? `Admonter — austrijski parket od prirodnog drveta · ${colorCount} dekora`
+            : normalizeText(rawCollection.shortDescription) ||
+              `${name} - ${colorCount} ${categoryId === '5' ? 'artikala' : 'dekora'} bez javno istaknute cene`,
         description,
         images,
         specs,
@@ -542,6 +620,7 @@ function transformAlpodCollectionProduct(rawCollection: Record<string, any>, ind
                 ],
             },
         ],
+        documents: documents.length > 0 ? documents : undefined,
         externalLink: normalizeText(rawCollection.url) || undefined,
         price: undefined,
         priceUnit: undefined,
@@ -558,22 +637,35 @@ function transformAlpodVariantProduct(
     index: number
 ): Product & { collectionSlug?: string } {
     const collectionName = normalizeText(rawCollection.name) || 'Podovi kolekcija';
-    const name = normalizeText(rawColor.name || rawColor.full_name) || collectionName;
-    const fullName = normalizeText(rawColor.full_name) || name;
+    const rawName = normalizeText(rawColor.name || rawColor.full_name) || collectionName;
+    const fullName = fixAlpodSerbian(normalizeText(rawColor.full_name) || rawName);
+    const isAdmonter = isAdmonterCollection(rawCollection);
+    const overlay = getAdmonterOverlay();
+    const decorOverlay = isAdmonter ? overlay.decors?.[normalizeText(rawColor.sourceSku)] : null;
+    // Ljudsko ime umesto ERP šifre ("Hrast Noblesse — četkan, natur ulje"); fabrički naziv ostaje u specs
+    const displayName = normalizeText(decorOverlay?.display_name_sr);
+    const name = displayName || fixAlpodSerbian(rawName);
     const slug = normalizeText(rawColor.slug) || `podovi-${slugifyValue(`${collectionName}-${name}`)}`;
     const categoryId = normalizeText(rawCollection.categoryId) || '2';
     const collectionSlug = normalizeText(rawCollection.slug);
+    // Zvanične fotografije proizvođača (room-shot + teksture) idu POSLE Alpod svoča,
+    // da svoč ostane vizuelni identitet boje u gridu, a ambijent u galeriji.
+    const officialImages = [
+        ...(Array.isArray(decorOverlay?.roomshot_urls) ? decorOverlay.roomshot_urls : []),
+        ...(Array.isArray(decorOverlay?.texture_urls) ? decorOverlay.texture_urls : []),
+    ];
     const images = normalizeAlpodImages(
         [
             ...(Array.isArray(rawColor.images) ? rawColor.images : []),
             rawColor.image,
             rawColor.image_url,
             rawColor.texture_url,
+            ...officialImages,
         ].filter(Boolean),
         `alpod-variant-${slug}`,
-        fullName
+        displayName || fullName
     );
-    const specs = normalizeAlpodSpecs(
+    let specs = normalizeAlpodSpecs(
         {
             ...(rawCollection.characteristics || {}),
             ...(rawColor.characteristics || {}),
@@ -584,10 +676,31 @@ function transformAlpodVariantProduct(
             categoryId,
         }
     );
-    const description =
+    if (displayName) {
+        specs = [...specs, { key: 'fabricki_naziv', label: 'Fabrički naziv', value: fullName }];
+    }
+    const coveragePerPackage = parseAlpodCoverage(rawColor.description);
+    // Čitljiv opis iz gradacije + formata umesto sirovog cenovničkog stringa
+    let description =
         normalizeText(rawColor.description) ||
         normalizeText(rawCollection.description) ||
         `${fullName} iz kolekcije ${collectionName}. Cena i dostupnost se proveravaju slanjem upita.`;
+    if (decorOverlay) {
+        const gradacijaText = normalizeText(overlay.gradacije_sr?.[decorOverlay.gradacija]);
+        const ch = (rawColor.characteristics || {}) as Record<string, any>;
+        const dims = [ch['Debljina'], ch['Širina'], ch['Dužina']]
+            .map((value) => normalizeText(value))
+            .filter(Boolean)
+            .join(' × ');
+        const parts = [
+            gradacijaText,
+            dims ? `Format daske: ${dims} mm.` : '',
+            coveragePerPackage ? `Pakovanje: ${String(coveragePerPackage).replace('.', ',')} m².` : '',
+        ].filter(Boolean);
+        if (parts.length > 0) {
+            description = parts.join(' ');
+        }
+    }
 
     return {
         id: `alpod-variant-${rawColor.sourceId || slug || index}`,
@@ -595,11 +708,12 @@ function transformAlpodVariantProduct(
         slug,
         sku: normalizeText(rawColor.code || rawColor.sourceSku) || `PODOVI-ITEM-${index + 1}`,
         categoryId,
-        brandId: DEFAULT_PODOVI_BRAND_ID,
+        brandId: isAdmonter ? ADMONTER_BRAND_ID : DEFAULT_PODOVI_BRAND_ID,
         shortDescription: `${collectionName} - ${name}`,
         description,
         images,
         specs,
+        coveragePerPackage,
         detailsSections: [
             {
                 title: 'Artikal',

@@ -5,12 +5,16 @@ import { resolveProductBySlug } from '@/lib/product-page/resolve-product';
 import { NextRequest } from 'next/server';
 import { describe, expect, it } from 'vitest';
 
+// Alpod import nosi brend 'Podovi' ('14'), OSIM Admonter kolekcije koja od 08.07.2026
+// (odluka vlasnika) nosi izdvojen brend proizvođača 'Admonter' ('16').
+const ALPOD_BRAND_IDS = ['14', '16'];
+
 function isPodoviCollection(product: { brandId?: string; sku?: string | null }) {
-  return product.brandId === '14' && String(product.sku || '').startsWith('PODOVI-COLLECTION-');
+  return ALPOD_BRAND_IDS.includes(product.brandId || '') && String(product.sku || '').startsWith('PODOVI-COLLECTION-');
 }
 
 function isPodoviVariant(product: { brandId?: string; sku?: string | null }) {
-  return product.brandId === '14' && !String(product.sku || '').startsWith('PODOVI-COLLECTION-');
+  return ALPOD_BRAND_IDS.includes(product.brandId || '') && !String(product.sku || '').startsWith('PODOVI-COLLECTION-');
 }
 
 describe('Podovi imported Alpod-source catalog contracts', () => {
@@ -19,7 +23,7 @@ describe('Podovi imported Alpod-source catalog contracts', () => {
     { categoryId: '3', expectedCollections: 7, minimumVariants: 350 },
     { categoryId: '5', expectedCollections: 2, minimumVariants: 100 },
   ])('keeps Podovi collections and variants available for category $categoryId', async ({ categoryId, expectedCollections, minimumVariants }) => {
-    const products = await productRepository.findByCategory(categoryId, { brandIds: ['14'] });
+    const products = await productRepository.findByCategory(categoryId, { brandIds: ALPOD_BRAND_IDS });
 
     expect(products.filter(isPodoviCollection)).toHaveLength(expectedCollections);
     expect(products.filter(isPodoviVariant).length).toBeGreaterThanOrEqual(minimumVariants);

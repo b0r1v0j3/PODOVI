@@ -8,6 +8,7 @@ import ProductColorSelector from '@/components/ProductColorSelector';
 import ColorGrid from '@/components/ColorGrid';
 import ProductActions from '@/components/ProductActions';
 import ProductDocuments from '@/components/ProductDocuments';
+import FlooringCalculator from '@/components/FlooringCalculator';
 import RecommendedAccessories from '@/components/RecommendedAccessories';
 import EcoFeatures from '@/components/EcoFeatures';
 import CertificationBadges from '@/components/CertificationBadges';
@@ -43,6 +44,7 @@ import tarkettDocumentsIndexData from '@/public/data/tarkett_documents_index.jso
 import { SITE_URL } from '@/lib/seo/site-config';
 import { generateBreadcrumbSchema, generateProductSchema } from '@/lib/seo/structured-data';
 import { getCanonicalCollectionAliasHref, getCanonicalProductHref, getCanonicalProductRouteSlug, normalizeCollectionSlugForProductRoute } from '@/lib/utils/product-routes';
+import { isAlpodImportBrand } from '@/lib/catalog/spec-normalize';
 import { getMetadataImageSet, getMetadataImageUrls, getOrderedProductImages } from '@/lib/utils/product-images';
 
 export const dynamic = 'force-dynamic';
@@ -483,7 +485,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
     const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
     const isTarkettCollection = product.sku?.startsWith('TARKETT-');
-    const isPodoviImportedProduct = product.brandId === '14';
+    const isPodoviImportedProduct = isAlpodImportBrand(product.brandId);
     // For deking (category 5), since we don't have separate collection pages, we should not redirect
     const shouldRedirectCollection = ['6', '7', '4', '2', '8', '9', '10', '11'].includes(product.categoryId) || (isPodoviImportedProduct && product.categoryId === '5');
 
@@ -638,7 +640,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // ── Determine if this is a "color selector" category ──
     const isTechemCatalogCategory = product.categoryId === '12';
-    const isPodoviDekingCollection = product.brandId === '14' && product.categoryId === '5';
+    const isPodoviDekingCollection = isAlpodImportBrand(product.brandId) && product.categoryId === '5';
     const isColorSelectorCategory = !isTechemCatalogCategory && (['6', '7', '4', '2', '3', '1', '8', '9', '10', '11'].includes(product.categoryId) || isPodoviDekingCollection
       // Romus alat sa variant-setom (npr. Silikon u boji 18 boja) — prikaži swatch-eve.
       || (product.categoryId === '13' && Array.isArray(customColors) && customColors.length > 1));
@@ -855,13 +857,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
                                       : product.categoryId === '11' ? 'Lajsne'
                                   : undefined
                     }
-                    apiCategory={product.categoryId === '11' ? 'lajsne' : product.categoryId === '5' && product.brandId === '14' ? 'deking' : undefined}
-                    uiMode={product.categoryId === '11' || (product.categoryId === '5' && product.brandId === '14') || product.categoryId === '13' || Boolean((customColors as Array<{ isPatternGroup?: boolean }> | undefined)?.[0]?.isPatternGroup) ? 'variants' : 'colors'}
+                    apiCategory={product.categoryId === '11' ? 'lajsne' : product.categoryId === '5' && isAlpodImportBrand(product.brandId) ? 'deking' : undefined}
+                    uiMode={product.categoryId === '11' || (product.categoryId === '5' && isAlpodImportBrand(product.brandId)) || product.categoryId === '13' || Boolean((customColors as Array<{ isPatternGroup?: boolean }> | undefined)?.[0]?.isPatternGroup) ? 'variants' : 'colors'}
                     videoEmbedUrl={routeSlug === 'privilege-waltz' || product.specs?.find(s => s.key === 'collection')?.value === 'Privilege Waltz' ? 'https://www.youtube.com/embed/0g9jyUd3fPk' : undefined}
                     inquiryRef={product.specs?.find(s => s.key === 'ref' || s.key === 'Ref.')?.value}
                     productId={product.id}
                     hideColorSelector={
-                      (product.categoryId === '5' && !(product.brandId === '14' && customColors && customColors.length > 0)) ||
+                      (product.categoryId === '5' && !(isAlpodImportBrand(product.brandId) && customColors && customColors.length > 0)) ||
                       (['2', '9', '10'].includes(product.categoryId) && (!customColors || customColors.length === 0))
                     }
                   />
@@ -942,7 +944,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         rel="noopener noreferrer"
                         className="btn-link self-start"
                       >
-                        {product.brandId === '14' ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača'} →
+                        {isAlpodImportBrand(product.brandId) ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača'} →
                       </a>
                     )}
                   </div>
@@ -1028,6 +1030,16 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
               return <ProductDetailsTabs tabs={tabs} />;
             })()}
+
+            {/* Kalkulator potrošnje — samo kad znamo m² po pakovanju (Alpod varijante, Techem) */}
+            {product.coveragePerPackage ? (
+              <div className="mt-8">
+                <FlooringCalculator
+                  productName={displayName}
+                  coveragePerPackage={product.coveragePerPackage}
+                />
+              </div>
+            ) : null}
 
             {/* Certifications & Eco Features are now rendered alongside Descriptions in the Flex Masonry layout! */}
 

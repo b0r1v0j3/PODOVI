@@ -6,6 +6,7 @@ import {
   normalizeParketCollectionSlug,
 } from '@/lib/data/parket-collection-mapping';
 import { normalizeTarkettLaminateSlug } from '@/lib/data/tarkett-laminate-slug-mapping';
+import { isAlpodImportBrand } from '@/lib/catalog/spec-normalize';
 
 export type ProductWithCollectionSlug = Product & { collectionSlug?: string };
 
@@ -194,7 +195,7 @@ export function getProductCollectionRouteSlug(product: ProductWithCollectionSlug
     return null;
   }
 
-  if (product.brandId === '14' && product.collectionSlug) {
+  if (isAlpodImportBrand(product.brandId) && product.collectionSlug) {
     return normalizeCollectionSlugForProductRoute(product.collectionSlug, product.brandId, product.categoryId);
   }
 

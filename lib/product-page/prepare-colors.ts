@@ -30,20 +30,44 @@ import dessoCarpetData from '@/public/data/desso_carpet_tiles.json';
 import romusToolsData from '@/public/data/romus_tools.json';
 import { getAllDekingProducts, getAllGrassProducts, getAllPriborProducts } from '@/lib/utils/productDataLoader';
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
+import { isAlpodImportBrand, parseCoverageM2 } from '@/lib/catalog/spec-normalize';
+import admonterOfficialMediaData from '@/public/data/admonter_official_media.json';
+
+// Zvanični Admonter materijal po fabričkoj šifri (AGENTS.md t.11) — ljudska imena
+// i room-shot/teksture za PDP selektor boja, koji čita sirove Alpod JSON boje.
+const admonterDecorOverlays: Record<string, any> = (admonterOfficialMediaData as any)?.decors || {};
+
+function getAdmonterDecorOverlay(color: any): any | null {
+    const key = String(color?.sourceSku || color?.code || '').toUpperCase();
+    return (key && admonterDecorOverlays[key]) || null;
+}
 
 function mapNestedCollectionColors(collection: any, context: { categoryId: string }) {
     return (collection.colors || [])
         .filter((color: any) => Boolean(color.image || color.image_url))
-        .map((color: any) => ({
+        .map((color: any) => {
+        const decorOverlay = getAdmonterDecorOverlay(color);
+        const officialImages = decorOverlay
+            ? [
+                ...(Array.isArray(decorOverlay.roomshot_urls) ? decorOverlay.roomshot_urls : []),
+                ...(Array.isArray(decorOverlay.texture_urls) ? decorOverlay.texture_urls : []),
+            ]
+            : [];
+        return {
         collection: collection.slug,
         collection_name: collection.name,
         code: color.code || '',
-        name: color.name,
-        full_name: `${color.code || ''} ${color.name}`.trim(),
+        name: decorOverlay?.display_name_sr || color.name,
+        full_name: decorOverlay?.display_name_sr || `${color.code || ''} ${color.name}`.trim(),
         slug: color.slug || buildNestedColorSlug(collection, color),
         image_url: color.image || color.image_url || '',
         texture_url: color.image || color.image_url || '',
         lifestyle_url: color.lifestyle_url || undefined, // visoko-rez hero slika (parket po meri)
+        // Sve slike boje (Alpod galerija + zvanične proizvođačke) za galeriju na PDP-u
+        images: [
+            ...(Array.isArray(color.images) ? color.images : []),
+            ...officialImages,
+        ],
         image_count: (color.image || color.image_url) ? 1 : 0,
         brandId: color.brandId || collection.brandId,
         characteristics: {
@@ -65,7 +89,8 @@ function mapNestedCollectionColors(collection: any, context: { categoryId: strin
         dimension: color.dimension || collection.characteristics?.Dimenzije,
         overall_thickness: color.overall_thickness || collection.characteristics?.['Ukupna debljina'],
         description: color.description || collection.description || '',
-        }));
+        };
+        });
 }
 
 /**
@@ -76,7 +101,7 @@ export async function prepareCustomColors(
     product: Product,
     pageSlug: string
 ): Promise<any[] | undefined> {
-    if (product.brandId === '14' && (product.categoryId === '3' || product.categoryId === '5')) {
+    if (isAlpodImportBrand(product.brandId) && (product.categoryId === '3' || product.categoryId === '5')) {
         const sourceCollections = product.categoryId === '3' ? alpodParketCollections : alpodDekingCollections;
         const collection = sourceCollections.find((col: any) =>
             col.slug === pageSlug ||
@@ -537,35 +562,79 @@ export async function mergeSelectedColor(
         }
     }
 
-    if (selectedColorSlug && product.categoryId === '3' && product.brandId === '14') {
+    if (selectedColorSlug && product.categoryId === '3' && isAlpodImportBrand(product.brandId)) {
         const selectedColorData = await resolveSelectedColorServerData(selectedColorSlug, {
             categoryId: product.categoryId,
             brandId: product.brandId,
         });
         if (selectedColorData?.source.color) {
             const { source, documents, specs } = selectedColorData;
-            product.name = source.color.full_name || source.color.name;
-            product.shortDescription = `${source.color.collection_name} - ${source.color.name}`;
+            const rawColor = source.color as Record<string, any>;
+            const decorOverlay = getAdmonterDecorOverlay(rawColor);
+            // Ljudsko ime umesto ERP šifre; fabrički naziv ostaje u spec tabeli
+            const displayName = decorOverlay?.display_name_sr as string | undefined;
+            product.name = displayName || rawColor.full_name || rawColor.name;
+            product.shortDescription = `${rawColor.collection_name} - ${displayName || rawColor.name}`;
 
-            const colorImageUrl = getPrimaryColorImage(source.color)?.url;
+            const colorImageUrl = getPrimaryColorImage(rawColor)?.url;
             if (colorImageUrl) {
-                product.images = [{
-                    id: `color-img-${selectedColorSlug}`,
-                    url: colorImageUrl,
-                    alt: product.name,
-                    isPrimary: true,
-                    order: 1,
-                }];
+                // Cela galerija boje (svoč + zvanični room-shot/teksture) — bitno i za OG meta slike
+                const galleryUrls: string[] = [
+                    colorImageUrl,
+                    ...((Array.isArray(rawColor.images) ? rawColor.images : [])
+                        .map((img: any) => (typeof img === 'string' ? img : img?.url))
+                        .filter(Boolean)),
+                    ...(Array.isArray(decorOverlay?.roomshot_urls) ? decorOverlay.roomshot_urls : []),
+                    ...(Array.isArray(decorOverlay?.texture_urls) ? decorOverlay.texture_urls : []),
+                ];
+                const seenGallery = new Set<string>();
+                product.images = galleryUrls
+                    .filter((url) => {
+                        const key = String(url).split('?')[0];
+                        if (seenGallery.has(key)) return false;
+                        seenGallery.add(key);
+                        return true;
+                    })
+                    .map((url, index) => ({
+                        id: `color-img-${selectedColorSlug}-${index}`,
+                        url,
+                        alt: product.name,
+                        isPrimary: index === 0,
+                        order: index,
+                    }));
             }
 
             if (specs.length > 0) {
                 product.specs = mergeSpecs(product.specs, specs);
             }
+            if (displayName && (rawColor.full_name || rawColor.name)) {
+                product.specs = mergeSpecs(product.specs, [
+                    { key: 'fabricki_naziv', label: 'Fabrički naziv', value: rawColor.full_name || rawColor.name },
+                ]);
+            }
             if (documents.length > 0) {
                 product.documents = documents;
             }
-            if (source.color.description && typeof source.color.description === 'string' && source.color.description.trim()) {
-                product.description = source.color.description.trim();
+
+            product.coveragePerPackage = parseCoverageM2(rawColor.description) ?? product.coveragePerPackage;
+
+            // Čitljiv opis: gradacija + format + pakovanje umesto sirovog cenovničkog stringa
+            const overlayRoot = (admonterOfficialMediaData as any) || {};
+            const gradacijaText = decorOverlay ? overlayRoot.gradacije_sr?.[decorOverlay.gradacija] : undefined;
+            const ch = (rawColor.characteristics || {}) as Record<string, any>;
+            const dims = [ch['Debljina'], ch['Širina'], ch['Dužina']]
+                .map((value) => String(value || '').trim())
+                .filter(Boolean)
+                .join(' × ');
+            const readableParts = [
+                gradacijaText,
+                dims ? `Format daske: ${dims} mm.` : '',
+                product.coveragePerPackage ? `Pakovanje: ${String(product.coveragePerPackage).replace('.', ',')} m².` : '',
+            ].filter(Boolean);
+            if (readableParts.length > 0) {
+                product.description = readableParts.join(' ');
+            } else if (rawColor.description && typeof rawColor.description === 'string' && rawColor.description.trim()) {
+                product.description = rawColor.description.trim();
             }
         }
     }

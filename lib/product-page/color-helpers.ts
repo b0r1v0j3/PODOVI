@@ -1,4 +1,5 @@
 import type { ColorFromJSON, ColorSource, ProductImageType, ProductSpec, Product } from './types';
+import { specKeyFromLabel } from '@/lib/catalog/spec-normalize';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import tarkettLinoleumColorsData from '@/public/data/tarkett_linoleum_colors.json';
@@ -82,11 +83,12 @@ export function cleanColorName(rawName: string): string {
 }
 
 function toSpecKey(label: string, fallbackIndex?: number): string {
-    const normalized = label
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '');
-    if (normalized) {
+    // MORA da proizvodi isti ključ kao loader (specKeyFromLabel) — ranije je ovde
+    // živeo drugi algoritam (crtica, bez skidanja dijakritika: "Habajući sloj" →
+    // 'habaju-i-sloj' vs 'habajuci_sloj'), pa je merge specs pravio duple redove
+    // za 20 od 25 alpod labela kada je boja izabrana preko ?color=.
+    const normalized = specKeyFromLabel(label);
+    if (normalized && normalized !== 'spec') {
         return normalized;
     }
     if (typeof fallbackIndex === 'number') {
