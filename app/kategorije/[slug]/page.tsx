@@ -6,6 +6,7 @@ import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import { getEffectiveParketCollection, getAllParketVariantSlugs } from '@/lib/data/parket-collection-mapping';
+import { normalizeThicknessValue, resolveBrandTokens } from '@/lib/catalog/spec-normalize';
 import { filterCategoryListingCollections, resolveCategoryListingMode } from '@/lib/catalog/listing-curation';
 import { generateBreadcrumbSchema, generateCollectionPageSchema, generateProductListSchema } from '@/lib/seo/structured-data';
 import { getCategoryPageCopy } from '@/lib/seo/listing-page-copy';
@@ -64,6 +65,15 @@ function slugifyFilterValue(value: string): string {
 
 function parseFilterSlugList(value?: string): string[] {
   return value?.split(',').map((item) => item.trim()).filter(Boolean) || [];
+}
+
+// Srpska množina: 1 kolekcija / 2-4 kolekcije / 5+ kolekcija (paukal)
+function pluralizeSr(count: number, one: string, few: string, many: string): string {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod10 === 1 && mod100 !== 11) return one;
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return few;
+  return many;
 }
 
 function getProductSpecValue(product: Product, key: string): string {
@@ -215,10 +225,18 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Parse filters from search params (but exclude collections filter for now)
   // For laminat: don't apply thickness filter here - we handle it manually since laminat uses 'overall_thickness' spec
   const isLaminat = category.slug === 'laminat';
+
+  // ?brands= mora da se validira pre upita: UI upisuje ID ('3'), ali ručni URL-ovi
+  // nose ime/slug — nevalidni tokeni bi inače dali 0 rezultata u svim granama.
+  const allBrands = await brandRepository.findAll();
+  const resolvedBrandIds = searchParams.brands
+    ? resolveBrandTokens(searchParams.brands.split(','), allBrands)
+    : [];
+
   const filtersWithoutCollections = {
     categoryId: category.id,
     search: searchParams.search,
-    brandIds: searchParams.brands ? searchParams.brands.split(',') : undefined,
+    brandIds: resolvedBrandIds.length > 0 ? resolvedBrandIds : undefined,
     priceMin: searchParams.priceMin ? parseFloat(searchParams.priceMin) : undefined,
     priceMax: searchParams.priceMax ? parseFloat(searchParams.priceMax) : undefined,
     inStock: searchParams.inStock === 'true' ? true : undefined,
@@ -236,12 +254,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Get all products first (without collection filter) to properly separate collections from colors
   let [
     allProducts,
-    allBrands,
     categoryProducts,
     allCategories,
   ] = await Promise.all([
     productRepository.findByCategory(category.id, filtersWithoutCollections),
-    brandRepository.findAll(),
     productRepository.findByCategory(category.id),
     categoryRepository.findAll(),
   ]);
@@ -485,10 +501,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       allCollectionsForThickness.forEach(p => {
         const thicknessSpec = p.specs.find(s => s.key === 'thickness');
         if (thicknessSpec) {
-          const normalizedValue = thicknessSpec.value.replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
-          const thicknessValue = parseFloat(normalizedValue);
-          if (!isNaN(thicknessValue)) {
-            const thicknessStr = thicknessValue.toFixed(2);
+          const thicknessStr = normalizeThicknessValue(thicknessSpec.value);
+          if (thicknessStr) {
             thicknessSet.add(thicknessStr);
 
             // For Vinil: separate by type
@@ -533,17 +547,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               if (collection.colors && Array.isArray(collection.colors)) {
                 collection.colors.forEach((color: any) => {
                   const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
-                  if (thicknessValue) {
-                    const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
-                    const parsedValue = parseFloat(normalizedValue);
-                    if (!isNaN(parsedValue)) {
-                      const thicknessStr = parsedValue.toFixed(2);
-                      thicknessSet.add(thicknessStr);
-                      if (isHomogeniCollection) {
-                        thicknessSetHomogeni.add(thicknessStr);
-                      } else {
-                        thicknessSetHeterogeni.add(thicknessStr);
-                      }
+                  const thicknessStr = normalizeThicknessValue(thicknessValue);
+                  if (thicknessStr) {
+                    thicknessSet.add(thicknessStr);
+                    if (isHomogeniCollection) {
+                      thicknessSetHomogeni.add(thicknessStr);
+                    } else {
+                      thicknessSetHeterogeni.add(thicknessStr);
                     }
                   }
                 });
@@ -553,12 +563,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             // For LVT and Linoleum: process colors array
             jsonData.colors.forEach((color: any) => {
               const thicknessValue = color.overall_thickness || color.thickness || color.debljina;
-              if (thicknessValue) {
-                const normalizedValue = String(thicknessValue).replace(/,/g, '.').replace(/\s+/g, '').replace(/mm/gi, '').trim();
-                const parsedValue = parseFloat(normalizedValue);
-                if (!isNaN(parsedValue)) {
-                  thicknessSet.add(parsedValue.toFixed(2));
-                }
+              const thicknessStr = normalizeThicknessValue(thicknessValue);
+              if (thicknessStr) {
+                thicknessSet.add(thicknessStr);
               }
             });
           }
@@ -659,28 +666,25 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
       // Laminat: filter by thickness
       // Build a map of collection name -> thickness value from collection headers
+      // Poređenje ide preko normalizeThicknessValue da "8", "8.00" i "8 mm" budu ista vrednost
       const collectionThicknessMap = new Map<string, string>();
       byCollectionName.forEach((collProduct, collName) => {
         const thicknessSpec = collProduct.specs?.find((s: { key: string; value: string }) => s.key === 'thickness' || s.key === 'overall_thickness');
-        if (thicknessSpec) {
-          const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
-          const thicknessValue = parseFloat(normalizedValue);
-          if (!isNaN(thicknessValue)) {
-            collectionThicknessMap.set(collName, thicknessValue.toString());
-          }
+        const normalized = normalizeThicknessValue(thicknessSpec?.value);
+        if (normalized) {
+          collectionThicknessMap.set(collName, normalized);
         }
       });
 
-      const selectedThickness = searchParams.thickness ? searchParams.thickness.split(',') : [];
+      const selectedThickness = (searchParams.thickness ? searchParams.thickness.split(',') : [])
+        .map((value) => normalizeThicknessValue(value))
+        .filter((value): value is string => Boolean(value));
       if (selectedThickness.length > 0) {
         // Filter collections by their direct thickness spec
         collections = collections.filter(p => {
           const thicknessSpec = p.specs?.find(s => s.key === 'thickness' || s.key === 'overall_thickness');
-          if (!thicknessSpec) return false;
-          const normalizedValue = thicknessSpec.value.replace(/\s+/g, '').replace(/mm/gi, '').trim();
-          const thicknessValue = parseFloat(normalizedValue);
-          if (isNaN(thicknessValue)) return false;
-          return selectedThickness.includes(thicknessValue.toString());
+          const normalized = normalizeThicknessValue(thicknessSpec?.value);
+          return normalized !== null && selectedThickness.includes(normalized);
         });
 
         // Filter colors by their collection's thickness (since variants don't have thickness spec)
@@ -688,7 +692,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           const collName = p.specs?.find(s => s.key === 'collection')?.value;
           if (!collName) return false;
           const thickness = collectionThicknessMap.get(collName);
-          return thickness && selectedThickness.includes(thickness);
+          return Boolean(thickness && selectedThickness.includes(thickness));
         });
       }
     } else if (category.slug === 'parket') {
@@ -867,7 +871,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 {categoryCopy.heading}
               </h1>
               <span className="pb-1 text-[13px] text-ink-500">
-                {allProducts.length} proizvoda
+                {hasCollectionTabs
+                  ? `${collections.length} ${pluralizeSr(collections.length, 'kolekcija', 'kolekcije', 'kolekcija')} · ${colors.length} ${pluralizeSr(colors.length, 'boja', 'boje', 'boja')}`
+                  : `${allProducts.length} ${pluralizeSr(allProducts.length, 'proizvod', 'proizvoda', 'proizvoda')}`}
               </span>
             </div>
             <p className="mt-4 max-w-3xl text-base leading-7 text-ink-700">

@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 06.07.2026 (Homepage faceted catalog pass)
+> **Poslednje ažuriranje:** 08.07.2026 (Filteri 2.0 Faza 0 + dnevni pregled proizvoda)
 
 ---
 
@@ -17,6 +17,8 @@ Ovaj fajl je **jedini izvor istine** za ceo projekat. Svaki novi chat MORA da pr
 6. **PROAKTIVNO USKLAĐIVANJE** — kad menjaš jedan sloj (npr. JSON), UVEK proveri šta treba na ostalim slojevima (resolver, komponente, klijentski importi). **NE ČEKAJ da korisnik primeti.**
 7. **POSTAVLJAJ PITANJA** — ako nešto nije jasno, pitaj pre nego što nastaviš
 8. **AŽURIRAJ DOKUMENTACIJU** — posle svake značajne promene ažuriraj `AGENTS.md` i `.agent/workflows/podovi-architecture.md` kao deo istog commit-a
+9. **KATALOG I FILTERI RASTU ZAJEDNO** (pravilo vlasnika, 08.07.2026) — svaki put kad se proizvodi dodaju, menjaju ili uklanjaju, OBAVEZNO proveri i filtere i ostatak sajta: da li novi proizvodi imaju spec ključeve koje filteri očekuju, da li se pojavila nova vrednost/atribut koji zaslužuje filter opciju ili novu filter grupu, da li je neki filter ostao bez rezultata (mrtav), i da li brojevi u headeru/tabovima/brojačima i dalje štimaju. Ne čekaj da vlasnik primeti — pri svakoj promeni kataloga eksplicitno razmisli i predloži unapređenja filtera i sajta.
+10. **DNEVNI PREGLED PROIZVODA** (pravilo vlasnika, 08.07.2026) — proizvode usavršavamo jedan dnevno, detaljno: naš prikaz + izvorni sajt podataka + sajt proizvođača. Evidencija pregledanih i nalazi: `docs/pregled-proizvoda.md` — OBAVEZNO proveri pre pregleda (bez duplih pregleda) i ažuriraj posle. Unapređenja sadržaja i prikaza da — promena dizajn jezika sajta NE.
 
 ### Pravila za ažuriranje ovog fajla:
 1. **NIKAD ne briši Sekcije 1-4** — menjaju se samo kad vlasnik projekta to eksplicitno traži
@@ -150,6 +152,15 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Filteri 2.0 — Faza 0 higijena + pregled proizvoda #1 Admonter (08.07.2026)**
+- Novi util `lib/catalog/spec-normalize.ts`: `normalizeThicknessValue` (jedan format za sva poređenja debljine — "8"/"8.00"/"8 mm"/"8,0" su ista vrednost) i `resolveBrandTokens` (`?brands=` prihvata ID, slug i ime brenda; nepoznati tokeni se odbacuju umesto da daju 0 rezultata).
+- `app/kategorije/[slug]/page.tsx`: validacija `?brands=` pre upita; laminat debljina poređenja normalizovana (bug `?thickness=8.00` → 0 rezultata); header sada prikazuje realne brojeve "X kolekcija · Y boja" umesto zbunjujućeg zbira "N proizvoda".
+- `components/ProductFilters.tsx`: sanitizacija URL vrednosti (brend/debljina/vrsta drveta) protiv stvarnih opcija — brojač "N aktivno" više ne broji fantomske filtere koje nijedan checkbox ne prikazuje.
+- `lib/repositories/product-repository.ts`: uklonjeno 15 duplih linoleum kolekcija u listinzima (legacy seed `dlw-*` vs catalog-derived `gerflor-dlw-*` — catalog verzija pobeđuje; legacy red ostaje u DB za direktnu rutu).
+- Novi contract test `tests/contracts/filter-hygiene-contract.test.ts`; svi contract testovi prolaze, `next build` prolazi.
+- Predlog Filteri 2.0 (istraženo: katalog, živi sajt, Tarkett/Gerflor/Forbo/Kährs/Quick-Step, Baymard) prihvaćen od vlasnika — sledi Faza 1: sortiranje na kategorijama, brojači uz opcije, čipovi aktivnih filtera, nove filter grupe iz postojećih specova (klasa upotrebe, ton, dezen, ugradnja...).
+- Pokrenut dnevni pregled proizvoda (pravilo t.10): #1 Admonter — nalazi i predlozi u `docs/pregled-proizvoda.md` (16 nalaza: dupli specovi sa `?color=`, polomljeni decimali, izgubljene slike galerije, ERP šifre kao naslovi, kolekcija bez svoje slike...).
 
 **Homepage faceted catalog pass (06.07.2026)**
 - Početna strana je usmerena ka prihvaćenom minimalističkom katalog dizajnu sa oštrijim ivicama: uklonjen je gornji category rail (`Sve / Parket / Vinil...`) jer kategorije sada žive u levom filteru.

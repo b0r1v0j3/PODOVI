@@ -69,6 +69,13 @@ function dedupeProductsBySlug(products: Product[]): Product[] {
   return Array.from(uniqueProducts.values());
 }
 
+// Legacy linoleum proizvodi (slug bez 'gerflor-' prefiksa) dupliraju catalog-derived
+// DLW kolekcije sa 'gerflor-' prefiksom — catalog verzija pobeđuje u listinzima.
+function removeLegacyLinoleumDuplicates(products: Product[]): Product[] {
+  const slugs = new Set(products.map((product) => product.slug));
+  return products.filter((product) => !slugs.has(`gerflor-${product.slug}`));
+}
+
 function enrichCatalogProduct(product: Product): Product {
   return enrichTarkettWoodProduct(product);
 }
@@ -469,10 +476,20 @@ export class SupabaseProductRepository implements IProductRepository {
 
     if (!filters?.categoryId || legacyCategoryId === '7' || filters.categoryId === '7') {
       // Gerflor DLW linoleum + Tarkett linoleum (xf²) — oba JSON-only, ni jedan u Supabase DB.
-      let linoleumCollections = [
+      const derivedLinoleumCollections = [
         ...getGerflorLinoleumCollections(),
         ...getTarkettLinoleumCollections(),
       ];
+
+      // Legacy seed redovi iz DB (npr. slug 'dlw-colorette', SKU LINOLEUM-01..15) dupliraju
+      // catalog-derived kolekcije ('gerflor-dlw-colorette') — u listi pobeđuje catalog verzija
+      // (bogatije slike/spec), a legacy red ostaje u DB samo za direktnu /proizvodi/ rutu.
+      const derivedLinoleumSlugs = new Set(derivedLinoleumCollections.map((product) => product.slug));
+      products = products.filter(
+        (product: Product) => !derivedLinoleumSlugs.has(`gerflor-${product.slug}`)
+      );
+
+      let linoleumCollections = derivedLinoleumCollections;
 
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
@@ -699,7 +716,7 @@ export class SupabaseProductRepository implements IProductRepository {
 // Mock implementation (kept as fallback)
 // =========================================
 export class MockProductRepository implements IProductRepository {
-  private products: Product[] = dedupeProductsBySlug([
+  private products: Product[] = removeLegacyLinoleumDuplicates(dedupeProductsBySlug([
     ...getAllGerflorProducts(),
     ...getGerflorLVTCollections(),
     ...getGerflorLinoleumCollections(),
@@ -726,7 +743,7 @@ export class MockProductRepository implements IProductRepository {
     ...getEsdCollectionProducts(),
     ...getManualCollectionProducts(),
     ...mockProducts,
-  ]);
+  ]));
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {
     let filtered = [...this.products];
