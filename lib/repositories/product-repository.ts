@@ -7,6 +7,7 @@ import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 import { enrichTarkettWoodProduct } from '@/lib/data/tarkett-wood-enrichment';
 import { normalizeSearchText } from '@/lib/utils/search-normalization';
+import { isAlpodImportBrand } from '@/lib/catalog/spec-normalize';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -98,7 +99,7 @@ function matchesCatalogSearch(product: Product, search: string): boolean {
 }
 
 function isAlpodVariantProduct(product: Product): boolean {
-  return product.brandId === '14' && !String(product.sku || '').startsWith('PODOVI-COLLECTION-');
+  return isAlpodImportBrand(product.brandId) && !String(product.sku || '').startsWith('PODOVI-COLLECTION-');
 }
 
 // =========================================

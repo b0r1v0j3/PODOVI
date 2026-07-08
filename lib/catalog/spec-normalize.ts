@@ -43,6 +43,28 @@ export function normalizeThicknessValue(raw: string | number | null | undefined)
 }
 
 /**
+ * Alpod opis varijante nosi pokrivnost pakovanja: "... 10/3,6x120x1200 mm (1,5840 m2)".
+ * Jedna implementacija za loader i PDP merge — vrednost puni Product.coveragePerPackage.
+ */
+export function parseCoverageM2(text: unknown): number | undefined {
+  const match = String(text || '').match(/\(([\d.,]+)\s*m2?\)/i);
+  if (!match) return undefined;
+  const value = parseFloat(match[1].replace(',', '.'));
+  return Number.isFinite(value) && value > 0 ? value : undefined;
+}
+
+/**
+ * Brendovi čiji proizvodi dolaze iz Alpod importa i dele isti data pipeline:
+ * '14' = Podovi (interni brend za artikle bez izdvojenog proizvođača),
+ * '16' = Admonter (izdvojen brend proizvođača, odluka vlasnika 08.07.2026).
+ * SVE grane koje su ranije proveravale brandId === '14' za Alpod ponašanje
+ * moraju da koriste ovu proveru — inače Admonter proizvodi ispadaju iz toka.
+ */
+export function isAlpodImportBrand(brandId: string | undefined): boolean {
+  return brandId === '14' || brandId === '16';
+}
+
+/**
  * Mapira sirove tokene iz URL parametra ?brands= u poznate brand ID-jeve.
  * UI upisuje legacy ID ('3' za Tarkett), ali ručno kucani/podeljeni URL-ovi
  * često nose ime ili slug brenda — prihvatamo sva tri oblika, a nepoznate

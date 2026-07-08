@@ -6,7 +6,7 @@ import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import { getEffectiveParketCollection, getAllParketVariantSlugs } from '@/lib/data/parket-collection-mapping';
-import { normalizeThicknessValue, resolveBrandTokens } from '@/lib/catalog/spec-normalize';
+import { isAlpodImportBrand, normalizeThicknessValue, resolveBrandTokens } from '@/lib/catalog/spec-normalize';
 import { filterCategoryListingCollections, resolveCategoryListingMode } from '@/lib/catalog/listing-curation';
 import { generateBreadcrumbSchema, generateCollectionPageSchema, generateProductListSchema } from '@/lib/seo/structured-data';
 import { getCategoryPageCopy } from '@/lib/seo/listing-page-copy';
@@ -344,7 +344,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       colors = allProducts
         .filter(p => !hasCollectionSku(p))
         .filter(p => {
-          if (p.brandId !== '14' && !validSlugs.has(p.slug)) return false;
+          if (!isAlpodImportBrand(p.brandId) && !validSlugs.has(p.slug)) return false;
           if (seen.has(p.slug)) return false;
           seen.add(p.slug);
           return true;

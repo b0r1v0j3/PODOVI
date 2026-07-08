@@ -8,7 +8,7 @@
 
 | # | Datum | Proizvod (slug) | Kategorija | Status |
 |---|-------|-----------------|------------|--------|
-| 1 | 2026-07-08 | podovi-parket-admonter | Parket | ✅ Pregledan — nalazi ispod, čeka odluke o implementaciji |
+| 1 | 2026-07-08 | podovi-parket-admonter | Parket | ✅ Pregledan + IMPLEMENTIRANO (nalazi #1–#6, #8–#14; zvanični materijal uvezen; brend Admonter) |
 
 ---
 

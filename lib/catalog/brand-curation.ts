@@ -1,9 +1,10 @@
 import { Brand, Product } from '@/types';
 import { PARKET_HEADER_COLLECTIONS } from '@/lib/data/parket-collection-mapping';
+import { isAlpodImportBrand } from '@/lib/catalog/spec-normalize';
 
 type BrandListingMode = 'collections' | 'products';
 
-const COLLECTION_FIRST_BRAND_IDS = new Set(['3', '6', '8', '11', '14']);
+const COLLECTION_FIRST_BRAND_IDS = new Set(['3', '6', '8', '11', '14', '16']);
 
 function isParketCollectionHeader(product: Product): boolean {
   return (
@@ -27,12 +28,12 @@ function isCollectionRepresentative(product: Product): boolean {
   }
 
   if (product.categoryId === '3') {
-    return product.brandId === '14' && sku.startsWith('PODOVI-COLLECTION-')
+    return isAlpodImportBrand(product.brandId) && sku.startsWith('PODOVI-COLLECTION-')
       ? true
       : isParketCollectionHeader(product);
   }
 
-  if (product.brandId === '14' && sku.startsWith('PODOVI-COLLECTION-')) {
+  if (isAlpodImportBrand(product.brandId) && sku.startsWith('PODOVI-COLLECTION-')) {
     return true;
   }
 

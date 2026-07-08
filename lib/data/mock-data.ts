@@ -201,6 +201,15 @@ export const brands: Brand[] = [
     website: 'https://www.podovi.online',
     countryOfOrigin: 'Srbija',
   },
+  {
+    id: '16',
+    name: 'Admonter',
+    slug: 'admonter',
+    logo: '',
+    description: 'Austrijski proizvođač podova od prirodnog drveta iz Admonta u Štajerskoj — održiva proizvodnja od sertifikovanog drveta, garancija 30 godina',
+    website: 'https://admonter.com',
+    countryOfOrigin: 'Austrija',
+  },
 ];
 
 export const products: Product[] = [

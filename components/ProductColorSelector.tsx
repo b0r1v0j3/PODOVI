@@ -280,8 +280,26 @@ export default function ProductColorSelector({
       return;
     }
 
-    setSelectedImage({ url: colorImage.url, alt: colorImage.alt });
-    setSelectedImages([{ url: colorImage.url, alt: colorImage.alt }]);
+    // Boja može da nosi ceo images[] niz (svoč + room-shot + tekstura) — galerija
+    // prikazuje sve, dedupe po URL-u bez query stringa (cache-bust ?v= pravi lažne duple).
+    const rawGallery = Array.isArray((color as any).images) ? (color as any).images : [];
+    const galleryImages = rawGallery
+      .map((img: any) => (typeof img === 'string'
+        ? { url: img, alt: color.name || colorImage.alt }
+        : { url: img?.url || '', alt: img?.alt || color.name || colorImage.alt }))
+      .filter((img: { url: string }) => Boolean(img.url));
+    const combined = [{ url: colorImage.url, alt: colorImage.alt }, ...galleryImages];
+    const seenUrls = new Set<string>();
+    const dedupedImages = combined.filter((img) => {
+      const key = img.url.split('?')[0];
+      if (seenUrls.has(key)) return false;
+      seenUrls.add(key);
+      return true;
+    });
+
+    setSelectedImage(dedupedImages[0]);
+    setSelectedImages(dedupedImages);
+    setCurrentImageIndex(0);
     if (color.code && color.name) {
       setSelectedColor({ code: color.code, name: color.name });
     }
@@ -357,11 +375,26 @@ export default function ProductColorSelector({
                         zIndex: isActive ? 10 : 1,
                         transition: 'opacity 200ms ease-in-out',
                       }}
-                      loading="eager"
+                      // Samo aktivna boja se učitava odmah — kolekcije imaju i 100+ boja,
+                      // eager za sve je ranije vukao ceo katalog slika na jedan PDP.
+                      loading={isActive ? 'eager' : 'lazy'}
                       decoding="async"
                     />
                   );
                 })}
+                {/* Galerijski sloj: kad izabrana boja ima više slika (svoč + ambijent),
+                    strelice listaju kroz selectedImages preko pre-render steka. */}
+                {customColorHeroState.activeColorSlug && selectedImages.length > 1 && selectedImage && (
+                  <img
+                    key={`gallery-${selectedImage.url}`}
+                    src={selectedImage.url}
+                    alt={selectedImage.alt}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ opacity: 1, zIndex: 12, transition: 'opacity 200ms ease-in-out' }}
+                    loading="eager"
+                    decoding="async"
+                  />
+                )}
               </>
             ) : selectedImage ? (
               <>

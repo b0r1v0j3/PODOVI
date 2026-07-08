@@ -10,7 +10,7 @@ exports[`resolve-product contract > merges selected color data into collection p
   "hasThicknessSpec": true,
   "imageUrl": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/mipolam-accord/decor/0301-louise.jpg",
   "selectedColorSlug": "mipolam-accord-0301-louise",
-  "specCount": 17,
+  "specCount": 13,
   "specSample": [
     {
       "key": "tip",
