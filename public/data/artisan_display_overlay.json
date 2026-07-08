@@ -1,0 +1,593 @@
+{
+  "generatedAt": "2026-07-08",
+  "source": "Artisan je Alpodova sopstvena ekskluzivna kolekcija — nema spoljnog proizvođača; overlay je display sloj (ljudska imena, intro). Pregled proizvoda #2.",
+  "collection": {
+    "slug": "podovi-parket-artisan",
+    "collection_image_source": "https://cdn.alpod.rs/wp-content/uploads/2024/03/parket-artisan.webp",
+    "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/alpod-migrated/parket-artisan-hero.jpg?v=20260708200647",
+    "intro_sr": "Artisan je ekskluzivna kolekcija troslojnog parketa u ponudi Alpoda sa čak 142 dekora — najveći izbor parketa u našem katalogu. Sve daske su debljine 14 mm, od kvalitetnih evropskih vrsta drveta (pretežno hrast, uz jasen, bukvu i javor), u jednolamelnoj i trolamelnoj izvedbi. Kolekcija se prostire kroz sedam linija različitih formata: Chalet (180×2200 mm, klasična daska), Palace i Lounge (širokih 207 mm, XL format), Cottage (130×1092 mm), Project (180×725 mm), i dve linije za riblju kost — Herringbone (110×660 mm) i Chevron sa sečenjem pod 45° (130×725 mm). Površine su četkane ili brušene, zaštićene mat lakom ili uljem, a ugradnja može biti plivajuća (klik sistem) ili lepljenjem. Većina dekora je primerena za podno grejanje.",
+    "documents": [],
+    "short_description_sr": "Artisan — troslojni parket, 142 dekora u 7 linija (uklj. riblju kost i chevron)"
+  },
+  "gradacije_sr": {
+    "COUNTRY": "Country gradacija (DE) — rustičnija slika drveta sa izraženim čvorovima i prirodnim varijacijama boje.",
+    "NATURAL": "Natural gradacija (BC) — pretežno mirna, ujednačena slika drveta sa umerenim čvorovima.",
+    "MARKANT": "Markant gradacija (CD) — izražen karakter drveta, vidljivi čvorovi i živa igra boja.",
+    "VINTAGE": "Vintage obrada — patinirani, starinski izgled površine.",
+    "STANDARD": "Standard gradacija — ujednačena slika drveta za mirne enterijere.",
+    "RUSTIK": "Rustik gradacija — naglašeno prirodan izgled sa čvorovima i pukotinama.",
+    "SELECT": "Select gradacija — najmirnija slika drveta, praktično bez čvorova.",
+    "NATURE": "Nature izgled — prirodna slika drveta.",
+    "NEW": null
+  },
+  "decors": {
+    "ARTCHA-ADE100": {
+      "display_name_sr": "Hrast Adelboden Country — mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTHER-AGR110": {
+      "display_name_sr": "Hrast Agrigento Natural Cognac — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-AJA110": {
+      "display_name_sr": "Hrast Ajaccio Natural White Cream — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-ALB100": {
+      "display_name_sr": "Hrast Alba Natural Belo — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTPAL-ALH101": {
+      "display_name_sr": "Hrast Alhambra Country Belo — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCOT-ARE100": {
+      "display_name_sr": "Hrast Arezzo Natural — četkan, mat ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-ARO100": {
+      "display_name_sr": "Hrast Arosa Natural — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-ARR100": {
+      "display_name_sr": "Hrast Arraba Natural Grey — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCOT-AVI100": {
+      "display_name_sr": "Hrast Avignon Markant Cognac — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHA-AVO100": {
+      "display_name_sr": "Hrast Avoriaz Natural Grey — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-BAS110": {
+      "display_name_sr": "Hrast Bastia Country Smoke — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTPAL-BEL100": {
+      "display_name_sr": "Hrast Belvedere Markant White — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCOT-BER101": {
+      "display_name_sr": "Hrast Bergen Natural Belo — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-BON110": {
+      "display_name_sr": "Hrast Bonifacio Country — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-BOR100": {
+      "display_name_sr": "Hrast Bormio Natural Cream — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-BRX100": {
+      "display_name_sr": "Hrast Brixen Natural Olive — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTPAL-BUC100": {
+      "display_name_sr": "Hrast Buckingham Vintage — četkan, mat lak",
+      "gradacija": "VINTAGE"
+    },
+    "ARTCOT-BUR100": {
+      "display_name_sr": "Hrast Burgos Natural Uni — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-CAM110": {
+      "display_name_sr": "Hrast Cambrils Country Cream — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCOT-CAR100": {
+      "display_name_sr": "Hrast Cardiff Natural — lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCOT-CHA100": {
+      "display_name_sr": "Hrast Chambery Markant Cream — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTPAL-CHA101": {
+      "display_name_sr": "Hrast Chambord Country Dim — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-CHA100": {
+      "display_name_sr": "Hrast Charmey Markant Olive Grey — mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHE-ALZ100": {
+      "display_name_sr": "Hrast Chevron Alzace Country — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHE-AQU100": {
+      "display_name_sr": "Hrast Chevron Aquitaine Natural Gold Brown — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHE-ARD100": {
+      "display_name_sr": "Hrast Chevron Ardenne Natural Belo — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHE-BOR100": {
+      "display_name_sr": "Hrast Chevron Bordeaux Toplo Smeđa Country — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHE-BRE100": {
+      "display_name_sr": "Hrast Chevron Bretagne Natural Belo — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHE-BUR100": {
+      "display_name_sr": "Hrast Chevron Burgundy Pearl Natural — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHE-CHA100": {
+      "display_name_sr": "Hrast Chevron Champagne Sivo Beige Country — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHE-COR100": {
+      "display_name_sr": "Hrast Chevron Corse Natural Brown — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHE-LAN100": {
+      "display_name_sr": "Hrast Chevron Languedoc Natural White Light — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHE-LOR100": {
+      "display_name_sr": "Hrast Chevron Lorraine Natural Cognac — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHE-NOR100": {
+      "display_name_sr": "Hrast Chevron Normandy — četkan, ulje",
+      "gradacija": null
+    },
+    "ARTCHE-PRO100": {
+      "display_name_sr": "Hrast Chevron Provence Natural — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHE-RHO100": {
+      "display_name_sr": "Hrast Chevron Rhone Natural Grey — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-COL100": {
+      "display_name_sr": "Hrast Colfosco Natural — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTPRO-OAK130": {
+      "display_name_sr": "Hrast Country Gold — mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-COU100": {
+      "display_name_sr": "Hrast Courmayeur Natural Belo — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-CRA100": {
+      "display_name_sr": "Hrast Crans Montana Country — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-CRA110": {
+      "display_name_sr": "Hrast Crans Montana New Country — četkan, mat lak",
+      "gradacija": "NEW"
+    },
+    "ARTHER-CRO110": {
+      "display_name_sr": "Hrast Crotone Natural — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTCOT-DAL100": {
+      "display_name_sr": "Hrast Dalton Natural Gold — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-DAV100": {
+      "display_name_sr": "Hrast Davos Natural Belo — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCOT-DEV100": {
+      "display_name_sr": "Hrast Devon Natural Cream — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-GAL100": {
+      "display_name_sr": "Hrast Gallipoli Natural White — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCOT-GLE100": {
+      "display_name_sr": "Hrast Glenmore Country Belo — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-GST100": {
+      "display_name_sr": "Hrast Gstaad Country Invisible — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-HAF100": {
+      "display_name_sr": "Hrast Hafjel Markant — mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHA-HAM110": {
+      "display_name_sr": "Hrast Hamsedal New Country Belo — četkan, ulje",
+      "gradacija": "NEW"
+    },
+    "ARTCHA-KAL100": {
+      "display_name_sr": "Hrast Kals Natural Cream — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-KAP101": {
+      "display_name_sr": "Hrast Kaprun Markant Belo — četkan, ulje",
+      "gradacija": "MARKANT"
+    },
+    "ARTHER-KAR100": {
+      "display_name_sr": "Hrast Karthago Markant Cream — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCOT-KIR100": {
+      "display_name_sr": "Hrast Kirkwall Markant — lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHA-KIT100": {
+      "display_name_sr": "Hrast Kitzbuhel Country — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTHER-KOR100": {
+      "display_name_sr": "Hrast Korinthos Natural — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-LAA110": {
+      "display_name_sr": "Hrast Laax New Vintage — četkan, ulje",
+      "gradacija": "NEW"
+    },
+    "ARTCHA-LAA101": {
+      "display_name_sr": "Hrast Laax Vintage — četkan, ulje",
+      "gradacija": "VINTAGE"
+    },
+    "ARTHER-LAG110": {
+      "display_name_sr": "Hrast Lagos Natural — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-LEC100": {
+      "display_name_sr": "Hrast Lech Country — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCOT-LIM100": {
+      "display_name_sr": "Hrast Limerick Natural Belo — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTPAL-LOU100": {
+      "display_name_sr": "Hrast Louvre Markant Grey — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCOT-MAN100": {
+      "display_name_sr": "Hrast Manarola Markant Grey — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHA-MAR100": {
+      "display_name_sr": "Hrast Marilleva Markant Grey — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCOT-MAT100": {
+      "display_name_sr": "Hrast Matera Natural — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-MER100": {
+      "display_name_sr": "Hrast Merano Natural Belo — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-NAS101": {
+      "display_name_sr": "Hrast Nassfeld Country — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-NAS110": {
+      "display_name_sr": "Hrast Nassfeld New Country — četkan, ulje",
+      "gradacija": "NEW"
+    },
+    "ARTPRO-OAK1B0": {
+      "display_name_sr": "Hrast Natural — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTPRO-OAK1A0": {
+      "display_name_sr": "Hrast Natural Uni — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-NAX110": {
+      "display_name_sr": "Hrast Naxos Country Cognac — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-OBE100": {
+      "display_name_sr": "Hrast Obertauern Country Brown — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-ORC100": {
+      "display_name_sr": "Hrast Orcieres Natural — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-ORC110": {
+      "display_name_sr": "Hrast Orcieres New Natural — četkan, mat lak",
+      "gradacija": "NEW"
+    },
+    "ARTCOT-ORS100": {
+      "display_name_sr": "Hrast Oristano Natural — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTCOT-ORI100": {
+      "display_name_sr": "Hrast Oristano Natural — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-OTR110": {
+      "display_name_sr": "Hrast Otranto Country Invisible — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTHER-PES110": {
+      "display_name_sr": "Hrast Pescara Natural — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTPAL-PET101": {
+      "display_name_sr": "Hrast Peterhof Markant — četkan, ulje",
+      "gradacija": "MARKANT"
+    },
+    "ARTCOT-PLA100": {
+      "display_name_sr": "Hrast Planay Markant — lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCOT-POR100": {
+      "display_name_sr": "Hrast Portree Country — lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-PRE100": {
+      "display_name_sr": "Hrast Predazzo Markant Belo — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTHER-PRE110": {
+      "display_name_sr": "Hrast Preveza Country — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTHER-RAP110": {
+      "display_name_sr": "Hrast Rapallo Natural Grey — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCOT-RAV101": {
+      "display_name_sr": "Hrast Ravenna Markant — četkan, ulje",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHA-SAA100": {
+      "display_name_sr": "Hrast Saalbach Country Brown — mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTHER-SAR110": {
+      "display_name_sr": "Hrast Sarande Country Grey — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-SCH100": {
+      "display_name_sr": "Hrast Schladming Vintage — četkan, mat lak",
+      "gradacija": "VINTAGE"
+    },
+    "ARTPAL-SCH101": {
+      "display_name_sr": "Hrast Schonbrunn Country Belo — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-SES101": {
+      "display_name_sr": "Hrast Sestriere Country Brown — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-SES110": {
+      "display_name_sr": "Hrast Sestriere New Country Brown — četkan, ulje",
+      "gradacija": "NEW"
+    },
+    "ARTCHA-SIE100": {
+      "display_name_sr": "Hrast Sierre Markant Belo — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCOT-SIR100": {
+      "display_name_sr": "Hrast Siracusa Country Espresso — mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-SOL101": {
+      "display_name_sr": "Hrast Solden Vintage Belo — četkan, ulje",
+      "gradacija": "VINTAGE"
+    },
+    "ARTHER-SOR110": {
+      "display_name_sr": "Hrast Sorrento Natural — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-TAO100": {
+      "display_name_sr": "Hrast Taormina Markant Cognac — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTPAL-TOP101": {
+      "display_name_sr": "Hrast Topkapi Natural Belo — četkan, ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTHER-TRA110": {
+      "display_name_sr": "Hrast Trapani Country Cream — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCOT-URB100": {
+      "display_name_sr": "Hrast Urbino Natural — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCHA-RAM100": {
+      "display_name_sr": "Hrast Country Brown — četkan, mat lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-VAL100": {
+      "display_name_sr": "Hrast Valzur Markant Cream — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHA-VER101": {
+      "display_name_sr": "Orah Verbier Vintage — četkan, ulje",
+      "gradacija": "VINTAGE"
+    },
+    "ARTPAL-VER100": {
+      "display_name_sr": "Hrast Versailles Markant Cream — četkan, mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTPRO-OAK120": {
+      "display_name_sr": "Hrast Vintage — četkan, lak",
+      "gradacija": "VINTAGE"
+    },
+    "ARTCHA-WEN101": {
+      "display_name_sr": "Hrast Wengen Markant Belo — ulje",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHA-ZER100": {
+      "display_name_sr": "Hrast Zermatt Markant Honey — mat lak",
+      "gradacija": "MARKANT"
+    },
+    "ARTCHA-CAV100": {
+      "display_name_sr": "Jasen Cavalese Nature Grey — četkan, mat lak",
+      "gradacija": "NATURE"
+    },
+    "ARTCHA-CER101": {
+      "display_name_sr": "Jasen Cervinia Country Brown — četkan, ulje",
+      "gradacija": "COUNTRY"
+    },
+    "ARTCHA-ISC100": {
+      "display_name_sr": "Jasen Ischgl Country Coffee — četkan, lak",
+      "gradacija": "COUNTRY"
+    },
+    "ARTHER-PAT110": {
+      "display_name_sr": "Jasen Patras Natural — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTCOT-PTF100": {
+      "display_name_sr": "Jasen Portofino Select Belo — mat lak",
+      "gradacija": "SELECT"
+    },
+    "ARTCHA-SIM100": {
+      "display_name_sr": "Jasen Simplon Natural Belo — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-MUN300": {
+      "display_name_sr": "Bukva Munchen Natural — lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-AMS300": {
+      "display_name_sr": "Hrast Amsterdam Natural Brown — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-CHI300": {
+      "display_name_sr": "Hrast Chicago Natural Belo — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-DAL300": {
+      "display_name_sr": "Hrast Dallas Natural Belo — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-DEN300": {
+      "display_name_sr": "Hrast Denver Natural Cream — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTPRO-OAK350": {
+      "display_name_sr": "Hrast Gold Standard — lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTLOU-HAN301": {
+      "display_name_sr": "Hrast Haneda Natural — ulje",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-HGK300": {
+      "display_name_sr": "Hrast Hong Kong Natural — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-HOU300": {
+      "display_name_sr": "Hrast Houston Natural Belo — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-IST300": {
+      "display_name_sr": "Hrast Istanbul Select — lak",
+      "gradacija": "SELECT"
+    },
+    "ARTLOU-KUA300": {
+      "display_name_sr": "Hrast Kuala Lumpur Natural — lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-MAD300": {
+      "display_name_sr": "Hrast Madrid Natural Grey — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-MIA300": {
+      "display_name_sr": "Hrast Miami Natural Cream — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-SIN300": {
+      "display_name_sr": "Hrast Singapore Natural Cognac — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTPRO-OAK325": {
+      "display_name_sr": "Hrast Standard Belo — mat lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTPRO-OAK320": {
+      "display_name_sr": "Hrast Standard Belo — mat lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTPRO-OAK305": {
+      "display_name_sr": "Hrast Standard — lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTPRO-OAK301": {
+      "display_name_sr": "Hrast Standard — lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTPRO-OAK330": {
+      "display_name_sr": "Hrast Standard — lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTPRO-OAK300": {
+      "display_name_sr": "Hrast Standard — lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTLOU-SYD300": {
+      "display_name_sr": "Hrast Sydney Natural Grey — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-LIS300": {
+      "display_name_sr": "Jasen Lisabon Natural Coffee — četkan, lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-ORL300": {
+      "display_name_sr": "Jasen Orlando Natural Belo — mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTPRO-ASH310": {
+      "display_name_sr": "Jasen Standard Belo — mat lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTPRO-ASH300": {
+      "display_name_sr": "Jasen Standard — lak",
+      "gradacija": "STANDARD"
+    },
+    "ARTLOU-TOR300": {
+      "display_name_sr": "Jasen Toronto Natural Grey — četkan, mat lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTLOU-BAR300": {
+      "display_name_sr": "Javor Barcelona Natural — lak",
+      "gradacija": "NATURAL"
+    },
+    "ARTPRO-OAK420": {
+      "display_name_sr": "Hrast Gold Rustik — lak",
+      "gradacija": "RUSTIK"
+    },
+    "ARTPRO-OAK410": {
+      "display_name_sr": "Hrast Rustik — lak",
+      "gradacija": "RUSTIK"
+    },
+    "ARTPRO-OAK400": {
+      "display_name_sr": "Hrast Rustik — lak",
+      "gradacija": "RUSTIK"
+    }
+  }
+}

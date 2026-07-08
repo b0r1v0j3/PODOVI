@@ -9,6 +9,7 @@
 | # | Datum | Proizvod (slug) | Kategorija | Status |
 |---|-------|-----------------|------------|--------|
 | 1 | 2026-07-08 | podovi-parket-admonter | Parket | ✅ Pregledan + IMPLEMENTIRANO (nalazi #1–#6, #8–#14; zvanični materijal uvezen; brend Admonter) |
+| 2 | 2026-07-08 | podovi-parket-artisan | Parket | ✅ Pregledan + IMPLEMENTIRANO (725 slika galerija, ljudska imena 142 boje, grupisanje po 7 pod-linija, baner, intro, SEO) |
 
 ---
 
@@ -61,3 +62,26 @@ Vlasnik pokazao References sekciju na admonter.com/en/product/wooden-floor-oak/ 
 ### Dopuna 08.07.2026 — mapiranje na zvanične materijale ✅
 
 Vlasnik potvrdio pravilo (AGENTS.md t.11): asortiman = Alpod, materijal = admonter.com. Urađeno kompletno mapiranje svih 21 dekora → **[docs/admonter-materijali.md](admonter-materijali.md)**: 20/21 mapirano (jedini izuzetak ADMOAK-WL3010 „Oak Wild" — ukinut dekor, ne postoji više na sajtu proizvođača), 63 verifikovana URL-a slika (teksture persp/frontal + room-shot), zvanični opisi gradacija, brend intro, PDF-ovi (Oak/Walnut/Frijo/Kari datasheet, nega, garancija, PEFC/EPD), šabloni polaganja. Dešifrovano: EC ULJE = „natur geölt easy care", SB = Softwood-Backing, ONDFRI/ONDKAR = ugašena OndO linija (dekori Frijo/Kari žive u glavnom programu). Napomena: mat-lak artikli koriste fotografiju uljane verzije (proizvođač ne fotografiše lak zasebno).
+
+---
+
+## #2 — Artisan (parket, 142 boje) — 2026-07-08
+
+- **Naša strana:** /proizvodi/podovi-parket-artisan
+- **Izvor:** https://www.alpod.rs/parketi/artisan/ — **Alpodova sopstvena ekskluzivna kolekcija** (nema spoljnog proizvođača; po pravilu t.11 Alpod je ovde ujedno i „zvaničan sajt proizvođača")
+
+### Nalazi i šta je urađeno
+
+1. **Galerije: 725 slika po bojama stajalo nemigrirano na alpod.rs** (image_count 4–12 po boji, uklj. `_ambient` ambijentalne) → novi alat `tools/migrate_alpod_gallery_images.js` migrirao SVE (+ sistemski još ~1.400 za ostale Alpod kolekcije; 218 trajno mrtvih 404 na alpod strani ostaje filtrirano). ✅
+2. **ERP imena 142 boje** → parser generisao ljudska imena („Hrast Adelboden Country — mat lak"); dešifrovano kroz alpod spec tabele: 2V/4V = oborene ivice, 4Vm = mikro fuga, **OL = kod spoja (Herringbone), NE ulje**, DIM = dimljen (ton), COUNTRY/NATURAL/MARKANT = Alpod gradacije (DE/BC/CD), BJELO→Belo. Fabrički naziv ostaje kao spec. ✅
+3. **Selektor 142 boje bio ravna lista** → ColorGrid modal sada grupiše po pod-linijama iz spec `Podkolekcija` (Chalet 180×2200 / Palace i Lounge 207 XL / Cottage / Project / Herringbone 110×660 / Chevron 45°) sa hairline podnaslovima. Generično — radi za svaku kolekciju sa pod-linijama. ✅
+4. **Kolekcijska slika** = alpod hero baner (parket-artisan.webp → naš Supabase). ✅
+5. **Opis** bio jedna netačna rečenica („više od 100") → novi intro: 142 dekora, 7 linija sa formatima, troslojni 14 mm, ugradnja, obrade. SEO shortDescription: „Artisan — troslojni parket, 142 dekora u 7 linija". ✅
+6. **Opisi boja** = gradacija (Country/Natural/Markant tekstovi) + format + pakovanje; `coveragePerPackage` → kalkulator radi. ✅
+7. **Overlay sistem generalizovan** (registar po kolekciji) — svaki sledeći pregled samo dodaje svoj overlay fajl. ✅
+
+### Ostaje (predlozi za kasnije)
+- PDF tehnički listovi: alpod ih generiše dinamički (POST) — skinuti po proizvodu ili generisati svoje iz spec tabela
+- Badge „142 dekora" na kartici kategorije (dizajnerska odluka vlasnika)
+- Dupli spec koncepti iz izvora („Sistem montaže" vs „Vrsta spoja") — normalizacija na nivou importa
+- Kontradikcije naziv-vs-spec u izvoru (npr. 34456 „2V" a spec kaže 4-strane) — spec je pouzdaniji
