@@ -431,11 +431,15 @@ describe('SEO contracts', () => {
     expect(sitemapEntries.find((entry) => entry.url === techemProductUrl)?.lastModified?.toISOString()).toBe(techemGeneratedAt.toISOString());
   });
 
-  it('keeps category detail pages but omits removed hub brand and contact surfaces from the sitemap', async () => {
+  it('omits removed category, hub brand and contact surfaces from the sitemap', async () => {
+    // /kategorije/* strane su obrisane 08.07.2026 (katalog živi isključivo na
+    // početnoj) — sitemap ne sme da emituje nijedan kategorijski URL.
     const { default: sitemap } = await import('@/app/sitemap');
     const sitemapEntries = await sitemap();
     const removedUrls = [
       'https://www.podovi.online/kategorije',
+      'https://www.podovi.online/kategorije/otiraci',
+      'https://www.podovi.online/kategorije/parket',
       'https://www.podovi.online/brendovi',
       'https://www.podovi.online/brendovi/techem',
       'https://www.podovi.online/kontakt',
@@ -445,7 +449,7 @@ describe('SEO contracts', () => {
       expect(sitemapEntries.some((entry) => entry.url === removedUrl)).toBe(false);
     }
 
-    expect(sitemapEntries.some((entry) => entry.url === 'https://www.podovi.online/kategorije/otiraci')).toBe(true);
+    expect(sitemapEntries.some((entry) => entry.url.startsWith('https://www.podovi.online/kategorije'))).toBe(false);
   });
 
   it('keeps Techem product metadata aligned with flat-product SEO copy rules', async () => {

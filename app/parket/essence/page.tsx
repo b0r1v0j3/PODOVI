@@ -17,7 +17,7 @@ export default function EssenceConfiguratorPage() {
     <div className="bg-white min-h-screen">
       <div className="container py-6">
         <div className="mb-4">
-          <Breadcrumbs items={[{ label: 'Parket', href: '/kategorije/parket' }, { label: 'Essence Premium' }]} />
+          <Breadcrumbs items={[{ label: 'Parket' }, { label: 'Essence Premium' }]} />
         </div>
 
         <section className="mb-8 max-w-3xl">

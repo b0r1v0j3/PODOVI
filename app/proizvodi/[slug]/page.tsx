@@ -755,11 +755,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
       !selectedColorSlug &&
       Boolean(collectionLabel) &&
       collectionLabel.toLowerCase() !== displayName.toLowerCase();
-    const categoryBreadcrumbSchemaItems = category
-      ? [{ name: category.name, url: `${baseUrl}/kategorije/${category.slug}` }]
-      : [];
+    // Kategorija u breadcrumb-u je čist kontekst bez linka — /kategorije/* strane su
+    // obrisane (odluka vlasnika 08.07.2026: katalog živi isključivo na početnoj).
+    const categoryBreadcrumbSchemaItems: { name: string; url: string }[] = [];
     const categoryBreadcrumbItems = category
-      ? [{ label: category.name, href: `/kategorije/${category.slug}` }]
+      ? [{ label: category.name }]
       : [];
     const breadcrumbSchemaItems = [
       ...categoryBreadcrumbSchemaItems,

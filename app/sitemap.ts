@@ -81,17 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const categories = await categoryRepository.findAll();
-  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${baseUrl}/kategorije/${category.slug}`,
-    lastModified:
-      getNewestDate(
-        categoryLastModifiedMap.get(category.id),
-        category.id === '12' ? techemLastModified : null
-      ) || sharedCatalogLastModified,
-    changeFrequency: 'weekly',
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...categoryPages, ...productPages];
+  // /kategorije/* strane su obrisane (odluka vlasnika 08.07.2026) — katalog živi
+  // isključivo na početnoj, pa sitemap više ne emituje kategorijske URL-ove.
+  return [...staticPages, ...productPages];
 }
