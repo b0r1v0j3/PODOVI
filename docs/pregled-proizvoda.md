@@ -54,6 +54,10 @@
 - **Srednje (podaci + kod):** galerija svih slika uz migraciju u Supabase (#4, #5), kolekcijska slika sa Alpod banera (#9), rečnik ERP skraćenica (#10), parsiran opis (#11), grupisan selektor boja (#12)
 - **Traži odluku/kontakt:** brend Admonter vs Podovi (#13), mejl Alpodu/Admonteru za zvanični foto-paket + dozvolu (najčistiji put za room-shot slike), PDF dokumentacija sa admonter.com (#14), SEO canonical strategija (#16)
 
+### Dopuna 08.07.2026 (2) — References = slike kolekcija ✅
+
+Vlasnik pokazao References sekciju na admonter.com/en/product/wooden-floor-oak/ — **referentne fotografije proizvođača postaju slike kolekcija**. Primarna slika Admonter kolekcije = „Parquet Oak" referenca (dnevna soba, DSF9790), + 6 galerijskih (uklj. kuhinju). Referenca „oak-private-home-germany-2" preskočena (fajlovi nose `copyright-BerschneiderBerschneider` — potpisani fotograf). Sve migrirano u naš Supabase (`products/admonter-official/`), 121 asset ukupno, 0 grešaka. Pravilo upisano u AGENTS.md t.11.
+
 ### Dopuna 08.07.2026 — mapiranje na zvanične materijale ✅
 
 Vlasnik potvrdio pravilo (AGENTS.md t.11): asortiman = Alpod, materijal = admonter.com. Urađeno kompletno mapiranje svih 21 dekora → **[docs/admonter-materijali.md](admonter-materijali.md)**: 20/21 mapirano (jedini izuzetak ADMOAK-WL3010 „Oak Wild" — ukinut dekor, ne postoji više na sajtu proizvođača), 63 verifikovana URL-a slika (teksture persp/frontal + room-shot), zvanični opisi gradacija, brend intro, PDF-ovi (Oak/Walnut/Frijo/Kari datasheet, nega, garancija, PEFC/EPD), šabloni polaganja. Dešifrovano: EC ULJE = „natur geölt easy care", SB = Softwood-Backing, ONDFRI/ONDKAR = ugašena OndO linija (dekori Frijo/Kari žive u glavnom programu). Napomena: mat-lak artikli koriste fotografiju uljane verzije (proizvođač ne fotografiše lak zasebno).

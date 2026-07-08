@@ -1,6 +1,28 @@
 import { Brand } from '@/types';
 
 /**
+ * Kanonski spec key iz labele. Istorijski su postojala DVA algoritma
+ * (productDataLoader.characteristicLabelToKey: underscore + skida dijakritike;
+ * color-helpers.toSpecKey: crtica + zadržava rupe od dijakritika), pa se
+ * "Habajući sloj" mapirao u 'habajuci_sloj' odnosno 'habaju-i-sloj' i spec
+ * merge po key-u je pravio duple redove. OVO je jedina ispravna implementacija —
+ * oba mesta moraju da je koriste.
+ */
+export function specKeyFromLabel(label: string): string {
+  // Ponašanje identično istorijskom characteristicLabelToKey iz productDataLoader
+  // (bez đ→dj mape!) — ključevi tipa 'habajuci_sloj' su već upisani u podatke i
+  // filtere, pa svaka promena algoritma lomi postojeće ključeve.
+  return (
+    String(label || '')
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '') || 'spec'
+  );
+}
+
+/**
  * Kanonska normalizacija vrednosti debljine iz spec-ova i URL parametara.
  * Ista logika mora da važi na SVIM mestima poređenja (repository, kategorija
  * strana, filter komponenta) — istorijski su postojale tri kopije sa različitim

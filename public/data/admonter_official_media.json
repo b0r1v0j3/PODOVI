@@ -1,0 +1,606 @@
+{
+  "generatedAt": "2026-07-08",
+  "source": "admonter.com — zvanični, javno dostupan marketinški materijal proizvođača (odluka vlasnika 08.07.2026; mapiranje: docs/admonter-materijali.md)",
+  "note": "texture_sources/roomshot_sources su izvorni URL-ovi; *_urls polja popunjava tools/ingest_admonter_official.js posle migracije u naš Supabase storage. Prikaz NIKAD ne hotlinkuje admonter.com.",
+  "collection": {
+    "slug": "podovi-parket-admonter",
+    "manufacturer_brand": "Admonter",
+    "collection_image_source": "https://admonter.com/wp-content/uploads/DSF9790_www.jpg",
+    "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/dsf9790-www-c72a3f.jpg?v=20260708153703",
+    "intro_sr": "Admonter Holzindustrie AG iz Admonta u Štajerskoj jedan je od vodećih austrijskih proizvođača podova od prirodnog drveta. U okruženju benediktinskog manastira Admont drvo se prerađuje vekovima, a manastirska drvna industrija posluje od 1972. godine. Svi proizvodi nastaju u potpunosti u Admontu, isključivo od drveta iz sertifikovanih, održivo gajenih šuma — oko 70% iz samog regiona. Brend obećanje „Natur im Raum“ (Priroda u prostoru) ogleda se u svakoj dasci: prirodni materijali, prirodne površinske obrade i garancija od 30 godina.",
+    "documents": [
+      {
+        "title": "Tehnički list — Hrast (PDF, EN)",
+        "source": "https://admonter.com/wp-content/uploads/Wooden-floor-Oak_EN.pdf",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/admonter/wooden-floor-oak-en-c6da6a.pdf",
+        "type": "datasheet"
+      },
+      {
+        "title": "Tehnički list — Američki orah (PDF, EN)",
+        "source": "https://admonter.com/wp-content/uploads/Wooden-floor-Walnut_EN.pdf",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/admonter/wooden-floor-walnut-en-84ae00.pdf",
+        "type": "datasheet"
+      },
+      {
+        "title": "Tehnički list — Hrast Frijo (PDF, EN)",
+        "source": "https://admonter.com/wp-content/uploads/Oak-Frijo-stone_EN.pdf",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/admonter/oak-frijo-stone-en-cc6747.pdf",
+        "type": "datasheet"
+      },
+      {
+        "title": "Tehnički list — Hrast Kari (PDF, EN)",
+        "source": "https://admonter.com/wp-content/uploads/Oak-Kari-natur_EN.pdf",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/admonter/oak-kari-natur-en-87b8e9.pdf",
+        "type": "datasheet"
+      },
+      {
+        "title": "Ugradnja, nega i održavanje (PDF, EN)",
+        "source": "https://admonter.com/wp-content/uploads/Admonter-Verlege-und-Pflegeanweisung-FLOORs_englisch.pdf",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/admonter/admonter-verlege-und-pflegeanweisung-floors-englisch-372cd2.pdf",
+        "type": "installation"
+      },
+      {
+        "title": "Podno grejanje — uputstvo (PDF, EN)",
+        "source": "https://admonter.com/wp-content/uploads/Admonter-auf-Fussbodenheizungen_EN.pdf",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/admonter/admonter-auf-fussbodenheizungen-en-cf0261.pdf",
+        "type": "guide"
+      },
+      {
+        "title": "Garancija 30 godina (PDF, EN)",
+        "source": "https://admonter.com/wp-content/uploads/2019-Garantiezertifikat-engl.pdf",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/admonter/2019-garantiezertifikat-engl-c42b0f.pdf",
+        "type": "warranty"
+      },
+      {
+        "title": "PEFC sertifikat 2024–2029 (PDF, EN)",
+        "source": "https://admonter.com/wp-content/uploads/PEFC-Zertifikat-en-2024-2029.pdf",
+        "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/admonter/pefc-zertifikat-en-2024-2029-79178a.pdf",
+        "type": "certificate"
+      }
+    ],
+    "reference_page": "https://admonter.com/en/referenzen/oak-private-home-germany/",
+    "collection_gallery_sources": [
+      "https://admonter.com/wp-content/uploads/DSF9799_www.jpg",
+      "https://admonter.com/wp-content/uploads/DSF9806_www.jpg",
+      "https://admonter.com/wp-content/uploads/2024/06/Eiche-9-1.jpg",
+      "https://admonter.com/wp-content/uploads/2024/06/Eiche-1-1.jpg",
+      "https://admonter.com/wp-content/uploads/2024/06/Eiche-4-1.jpg",
+      "https://admonter.com/wp-content/uploads/Admonter_FLOORs_Eiche_basic_geb_Halverde_Kueche1.jpg"
+    ],
+    "collection_gallery_urls": [
+      "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/dsf9799-www-4bc3b6.jpg?v=20260708153704",
+      "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/dsf9806-www-c0a17b.jpg?v=20260708153706",
+      "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/2024-06-eiche-9-1-d4f744.jpg?v=20260708153707",
+      "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/2024-06-eiche-1-1-14e163.jpg?v=20260708153707",
+      "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/2024-06-eiche-4-1-72530f.jpg?v=20260708153708",
+      "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-floors-eiche-basic-geb-halverde-kueche1-2a5631.jpg?v=20260708152816"
+    ]
+  },
+  "gradacije_sr": {
+    "noblesse": "Mirna, harmonična slika drveta — praktično bez čvorova i bez beljike, sa pravim ili blago talasastim šarama. Najsmireniji izbor Admonter gradacija.",
+    "elegance": "Mirna gradacija sa ponekim sitnim čvorom; manje pukotine stručno su popunjene braon kitom. Bez beljike.",
+    "basic": "Prirodna, čvornovata gradacija ujednačene slike drveta; čvorovi i pukotine stručno popunjeni braon kitom. Bez beljike.",
+    "naturelle": "Rustična gradacija puna prirodnog karaktera, sa izraženim varijacijama boje i strukture.",
+    "vivid": "Živa, rustična slika drveta sa izraženim čvorovima i prirodnim varijacijama boje — pod sa karakterom (OndO by Admonter gradacija vivid = rustic).",
+    "rustic": "Rustična gradacija sa markantnim čvorovima, pukotinama i igrom boja — naglašeno prirodan izgled."
+  },
+  "decors": {
+    "ADMOAK-N02020": {
+      "display_name_sr": "Hrast Noblesse — četkan, natur ulje",
+      "gradacija": "noblesse",
+      "admonter_name": "Oak noblesse (Eiche noblesse), brushed, natural oiled easy care",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-noblesse-gebuerstet-natur-geoelt-classic_persp.jpg"
+      ],
+      "roomshot_sources": [],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-noblesse-gebuerstet-natur-geoelt-classic-persp-1fe95a.jpg?v=20260708152817"
+      ],
+      "roomshot_urls": []
+    },
+    "ADMOAK-N02017": {
+      "display_name_sr": "Hrast Noblesse — četkan, mat lak",
+      "gradacija": "noblesse",
+      "admonter_name": "Oak noblesse (Eiche noblesse), brushed, matt lacquered",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-noblesse-gebuerstet-natur-geoelt-classic_persp.jpg"
+      ],
+      "roomshot_sources": [],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-noblesse-gebuerstet-natur-geoelt-classic-persp-1fe95a.jpg?v=20260708152817"
+      ],
+      "roomshot_urls": []
+    },
+    "ADMOAK-WH3N72": {
+      "display_name_sr": "Hrast White Noblesse — četkan, belo ulje",
+      "gradacija": "noblesse",
+      "admonter_name": "Oak white noblesse (Eiche weiß noblesse), brushed, white oiled",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak-white/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-weiss-basic-gebuerstet-natur-geoelt_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-weiss-basic-gebuerstet-natur-geoelt_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-weiss-noblesse-1.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-weiss-noblesse-2.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-weiss-noblesse-9.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-weiss-noblesse_architektenhaus-muenchen-deutschland-3.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-weiss-basic-gebuerstet-natur-geoelt-persp-6d4f33.jpg?v=20260708152818",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-weiss-basic-gebuerstet-natur-geoelt-frontal-e69bc6.jpg?v=20260708152818"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-weiss-noblesse-1-6b42c5.jpg?v=20260708152819",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-weiss-noblesse-2-6f4cb3.jpg?v=20260708152819",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-weiss-noblesse-9-e8df12.jpg?v=20260708152820",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-weiss-noblesse-architektenhaus-muenchen-deutschland-3-cd93ff.jpg?v=20260708152820"
+      ]
+    },
+    "ADMOAK-BA3130": {
+      "display_name_sr": "Hrast Basic — četkan, natur ulje",
+      "gradacija": "basic",
+      "admonter_name": "Oak basic (Eiche basic), brushed, natural oiled easy care",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-basic-geburstet-natur-geolt-classic_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-basic-geburstet-natur-geolt-classic_frontal.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-basic_persp.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-basic_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Admonter_FLOORs_Eiche_basic_geb_Halverde_Kueche1.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-basic-geburstet-natur-geolt-classic-persp-f62e1f.jpg?v=20260708152821",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-basic-geburstet-natur-geolt-classic-frontal-5f0dc4.jpg?v=20260708152822",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-basic-persp-6fdcff.jpg?v=20260708152823",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-basic-frontal-21fe19.jpg?v=20260708152823"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-floors-eiche-basic-geb-halverde-kueche1-2a5631.jpg?v=20260708152816"
+      ]
+    },
+    "ADMOAK-BA3129": {
+      "display_name_sr": "Hrast Basic — četkan, mat lak",
+      "gradacija": "basic",
+      "admonter_name": "Oak basic (Eiche basic), brushed, matt lacquered",
+      "confidence": "verovatno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-basic-geburstet-natur-geolt-classic_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-basic-geburstet-natur-geolt-classic_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Admonter_FLOORs_Eiche_basic_geb_Halverde_Kueche1.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-basic-geburstet-natur-geolt-classic-persp-f62e1f.jpg?v=20260708152821",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-basic-geburstet-natur-geolt-classic-frontal-5f0dc4.jpg?v=20260708152822"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-floors-eiche-basic-geb-halverde-kueche1-2a5631.jpg?v=20260708152816"
+      ]
+    },
+    "ADMOAK-BA3128": {
+      "display_name_sr": "Hrast Basic — četkan, mat lak",
+      "gradacija": "basic",
+      "admonter_name": "Oak basic (Eiche basic), brushed, matt lacquered",
+      "confidence": "verovatno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-basic-geburstet-natur-geolt-classic_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-basic-geburstet-natur-geolt-classic_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Admonter_FLOORs_Eiche_basic_geb_Halverde_Kueche1.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-basic-geburstet-natur-geolt-classic-persp-f62e1f.jpg?v=20260708152821",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-basic-geburstet-natur-geolt-classic-frontal-5f0dc4.jpg?v=20260708152822"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-floors-eiche-basic-geb-halverde-kueche1-2a5631.jpg?v=20260708152816"
+      ]
+    },
+    "ADMOAK-LA3B26": {
+      "display_name_sr": "Hrast Lapis Basic — četkan, natur ulje",
+      "gradacija": "basic",
+      "admonter_name": "Oak Lapis basic (Eiche Lapis basic), brushed, natural oiled easy care",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/oak-lapis/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche_Lapis_basic_geb_natur_geoelt_persp.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche_Lapis_basic_geb_natur_geoelt_frontal.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/106185-Perspektive.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-Lapis-basic-geb-natur-geoelt_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Raumbild-Admonter-Eiche-Lapis-basic-gebuerstet-natur-geoelt-easy-care.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-lapis-basic-geb-natur-geoelt-persp-5caa82.jpg?v=20260708152825",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-lapis-basic-geb-natur-geoelt-frontal-ad104c.jpg?v=20260708152825",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/106185-perspektive-6952a4.jpg?v=20260708152826",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-lapis-basic-geb-natur-geoelt-frontal-e4d488.jpg?v=20260708152826"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/raumbild-admonter-eiche-lapis-basic-gebuerstet-natur-geoelt-easy-care-1d9ffe.jpg?v=20260708152827"
+      ]
+    },
+    "ADMOAK-EL3065": {
+      "display_name_sr": "Hrast Elegance — četkan, natur ulje",
+      "gradacija": "elegance",
+      "admonter_name": "Oak elegance (brushed, natural oiled, lock-it)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-elegance-gebuerstet-natur-geoelt-classic_persp-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-elegance-gebuerstet-natur-geoelt-classic_persp.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-elegance-gebuerstet-natur-geoelt-classic.jpg"
+      ],
+      "roomshot_sources": [
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_elegance01-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_elegance02-scaled.jpg",
+        "https://admonter.com/wp-content/uploads/Admonter-Referenz-Parkett-Eiche-elegance-%C2%A9-Bager-Parkett-1.jpg",
+        "https://admonter.com/wp-content/uploads/Admonter-Referenz-Parkett-Eiche-elegance-%C2%A9-Bager-Parkett-2.jpg",
+        "https://admonter.com/wp-content/uploads/Admonter-Referenz-Parkett-Eiche-elegance-%C2%A9-Bager-Parkett-3.jpg",
+        "https://admonter.com/wp-content/uploads/Admonter-Referenz-Parkett-Eiche-elegance-%C2%A9-Bager-Parkett-4.jpg",
+        "https://admonter.com/wp-content/uploads/Admonter-Referenz-Parkett-Eiche-elegance-%C2%A9-Bager-Parkett-5.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-persp-scaled-e840a2.jpg?v=20260708152828",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-persp-165133.jpg?v=20260708152829",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-da50e7.jpg?v=20260708152829"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance01-scaled-5b5dbf.jpg?v=20260708152830",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance02-scaled-229303.jpg?v=20260708152830",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-referenz-parkett-eiche-elegance-c2a9-bager-parkett-1-8ddb18.jpg?v=20260708152831",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-referenz-parkett-eiche-elegance-c2a9-bager-parkett-2-e40c1a.jpg?v=20260708152831",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-referenz-parkett-eiche-elegance-c2a9-bager-parkett-3-895fad.jpg?v=20260708152832",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-referenz-parkett-eiche-elegance-c2a9-bager-parkett-4-1eeb5c.jpg?v=20260708152833",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-referenz-parkett-eiche-elegance-c2a9-bager-parkett-5-c9a663.jpg?v=20260708152833"
+      ]
+    },
+    "ADMOAK-EL3045": {
+      "display_name_sr": "Hrast Elegance — četkan, natur ulje",
+      "gradacija": "elegance",
+      "admonter_name": "Oak elegance (brushed, natural oiled, lock-it)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-elegance-gebuerstet-natur-geoelt-classic_persp-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-elegance-gebuerstet-natur-geoelt-classic_persp.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-elegance-gebuerstet-natur-geoelt-classic.jpg"
+      ],
+      "roomshot_sources": [
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_elegance01-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_elegance02-scaled.jpg",
+        "https://admonter.com/wp-content/uploads/Admonter-Referenz-Parkett-Eiche-elegance-%C2%A9-Bager-Parkett-1.jpg",
+        "https://admonter.com/wp-content/uploads/Admonter-Referenz-Parkett-Eiche-elegance-%C2%A9-Bager-Parkett-2.jpg",
+        "https://admonter.com/wp-content/uploads/Admonter-Referenz-Parkett-Eiche-elegance-%C2%A9-Bager-Parkett-3.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-persp-scaled-e840a2.jpg?v=20260708152828",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-persp-165133.jpg?v=20260708152829",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-da50e7.jpg?v=20260708152829"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance01-scaled-5b5dbf.jpg?v=20260708152830",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance02-scaled-229303.jpg?v=20260708152830",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-referenz-parkett-eiche-elegance-c2a9-bager-parkett-1-8ddb18.jpg?v=20260708152831",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-referenz-parkett-eiche-elegance-c2a9-bager-parkett-2-e40c1a.jpg?v=20260708152831",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/admonter-referenz-parkett-eiche-elegance-c2a9-bager-parkett-3-895fad.jpg?v=20260708152832"
+      ]
+    },
+    "ADMOAK-EL3064": {
+      "display_name_sr": "Hrast Elegance — četkan, mat lak",
+      "gradacija": "elegance",
+      "admonter_name": "Oak elegance (brushed, matt lacquered, lock-it)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-elegance-gebuerstet-natur-geoelt-classic_persp-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-elegance-gebuerstet-natur-geoelt-classic_persp.jpg"
+      ],
+      "roomshot_sources": [
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_elegance01-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_elegance02-scaled.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-persp-scaled-e840a2.jpg?v=20260708152828",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-persp-165133.jpg?v=20260708152829"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance01-scaled-5b5dbf.jpg?v=20260708152830",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance02-scaled-229303.jpg?v=20260708152830"
+      ]
+    },
+    "ADMOAK-EL3043": {
+      "display_name_sr": "Hrast Elegance — četkan, mat lak",
+      "gradacija": "elegance",
+      "admonter_name": "Oak elegance (brushed, matt lacquered, lock-it)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-elegance-gebuerstet-natur-geoelt-classic_persp-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-elegance-gebuerstet-natur-geoelt-classic_persp.jpg"
+      ],
+      "roomshot_sources": [
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_elegance01-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_elegance02-scaled.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-persp-scaled-e840a2.jpg?v=20260708152828",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance-gebuerstet-natur-geoelt-classic-persp-165133.jpg?v=20260708152829"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance01-scaled-5b5dbf.jpg?v=20260708152830",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-elegance02-scaled-229303.jpg?v=20260708152830"
+      ]
+    },
+    "ADMOAK-ST3B48": {
+      "display_name_sr": "Hrast Stone Basic — četkan, mat lak",
+      "gradacija": "basic",
+      "admonter_name": "Oak stone basic (brushed, matt lacquered)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak-stone/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_frontal.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_stone_naturelle_gebuerstet_natur_geoelt_close-up.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-stone-basic-1.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-basic-2.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-basic-3.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-basic-4.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-basic-5.jpg",
+        "https://admonter.com/wp-content/uploads/Parkett-Bager-Parkett-Eiche-stone-basic-1.jpg",
+        "https://admonter.com/wp-content/uploads/Parkett-Bager-Parkett-Eiche-stone-basic-2.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Best-of-Folder_FLOORs_Eiche-stone_basic-scaled.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-persp-d1a048.jpg?v=20260708152836",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-frontal-b95dcd.jpg?v=20260708152837",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-close-up-63bbea.jpg?v=20260708152837"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-basic-1-ad8253.jpg?v=20260708152838",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-basic-2-2e965d.jpg?v=20260708152839",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-basic-3-360989.jpg?v=20260708152839",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-basic-4-7364f9.jpg?v=20260708152840",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-basic-5-f1cc71.jpg?v=20260708152840",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/parkett-bager-parkett-eiche-stone-basic-1-36f142.jpg?v=20260708152841",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/parkett-bager-parkett-eiche-stone-basic-2-03d086.jpg?v=20260708152841",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/best-of-folder-floors-eiche-stone-basic-scaled-0c80b7.jpg?v=20260708152842"
+      ]
+    },
+    "ADMOAK-ST3B47": {
+      "display_name_sr": "Hrast Stone Basic — četkan, mat lak",
+      "gradacija": "basic",
+      "admonter_name": "Oak stone basic (brushed, matt lacquered)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak-stone/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-stone-basic-1.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-basic-3.jpg",
+        "https://admonter.com/wp-content/uploads/Parkett-Bager-Parkett-Eiche-stone-basic-3.jpg",
+        "https://admonter.com/wp-content/uploads/Parkett-Bager-Parkett-Eiche-stone-basic-4.jpg",
+        "https://admonter.com/wp-content/uploads/Parkett-Bager-Parkett-Eiche-stone-basic-5.jpg",
+        "https://admonter.com/wp-content/uploads/Parkett-Bager-Parkett-Eiche-stone-basic-6.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-persp-d1a048.jpg?v=20260708152836",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-frontal-b95dcd.jpg?v=20260708152837"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-basic-1-ad8253.jpg?v=20260708152838",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-basic-3-360989.jpg?v=20260708152839",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/parkett-bager-parkett-eiche-stone-basic-3-663c9b.jpg?v=20260708152843",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/parkett-bager-parkett-eiche-stone-basic-4-40ab8a.jpg?v=20260708152844",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/parkett-bager-parkett-eiche-stone-basic-5-f638ef.jpg?v=20260708152844",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/parkett-bager-parkett-eiche-stone-basic-6-1f3c4d.jpg?v=20260708152845"
+      ]
+    },
+    "ADMOAK-ST3E33": {
+      "display_name_sr": "Hrast Stone Elegance — četkan, natur ulje",
+      "gradacija": "elegance",
+      "admonter_name": "Oak stone elegance (brushed, natural oiled)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak-stone/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_frontal.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche-stone-naturelle-gebuerstet-natur-geoelt-classic_persp.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-1.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-2.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-3.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-4.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-5.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-6.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-7.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_stone_elegance01-scaled.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_stone_elegance02-scaled.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-persp-d1a048.jpg?v=20260708152836",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-frontal-b95dcd.jpg?v=20260708152837",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-classic-persp-6ef254.jpg?v=20260708152846"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-1-03e405.jpg?v=20260708152846",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-2-8a0cad.jpg?v=20260708152847",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-3-1d381e.jpg?v=20260708152847",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-4-057380.jpg?v=20260708152848",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-5-ab34e0.jpg?v=20260708152848",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-6-885a5f.jpg?v=20260708152849",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-7-1b73a1.jpg?v=20260708152849",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance01-scaled-6869aa.jpg?v=20260708152850",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance02-scaled-b741f5.jpg?v=20260708152850"
+      ]
+    },
+    "ADMOAK-ST3E29": {
+      "display_name_sr": "Hrast Stone Elegance — četkan, natur ulje",
+      "gradacija": "elegance",
+      "admonter_name": "Oak stone elegance (brushed, natural oiled)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak-stone/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-1.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-3.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_stone_elegance03-scaled.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-persp-d1a048.jpg?v=20260708152836",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-frontal-b95dcd.jpg?v=20260708152837"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-1-03e405.jpg?v=20260708152846",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-3-1d381e.jpg?v=20260708152847",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance03-scaled-776c8c.jpg?v=20260708152852"
+      ]
+    },
+    "ADMOAK-ST3E28": {
+      "display_name_sr": "Hrast Stone Elegance — četkan, natur ulje",
+      "gradacija": "elegance",
+      "admonter_name": "Oak stone elegance (brushed, natural oiled)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak-stone/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-2.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-5.jpg",
+        "https://shop.admonter.com/wp-content/uploads/sites/2/Eiche_stone_elegance04-scaled.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-persp-d1a048.jpg?v=20260708152836",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-frontal-b95dcd.jpg?v=20260708152837"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-2-8a0cad.jpg?v=20260708152847",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-5-ab34e0.jpg?v=20260708152848",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance04-scaled-8df75b.jpg?v=20260708152853"
+      ]
+    },
+    "ADMOAK-ST3E30": {
+      "display_name_sr": "Hrast Stone Elegance — četkan, mat lak",
+      "gradacija": "elegance",
+      "admonter_name": "Oak stone elegance (brushed, matt lacquered)",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-oak-stone/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_persp.jpg",
+        "https://admonter.com/wp-content/uploads/eiche-stone-naturelle-gebuerstet-natur-geoelt_frontal.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-4.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-6.jpg",
+        "https://admonter.com/wp-content/uploads/Eiche-stone-elegance-7.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-persp-d1a048.jpg?v=20260708152836",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-naturelle-gebuerstet-natur-geoelt-frontal-b95dcd.jpg?v=20260708152837"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-4-057380.jpg?v=20260708152848",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-6-885a5f.jpg?v=20260708152849",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-stone-elegance-7-1b73a1.jpg?v=20260708152849"
+      ]
+    },
+    "ONDFRI-VIV040": {
+      "display_name_sr": "Hrast Frijo Vivid — četkan, natur ulje",
+      "gradacija": "vivid",
+      "admonter_name": "Oak Frijo (stone) — OndO by Admonter, vivid",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/wp-content/uploads/Oak-Frijo-stone_EN.pdf",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche_Frijo_lebhaft_Perspektive.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/Ondo-Eiche-Frijo-lebhaft-187-scaled.jpg",
+        "https://admonter.com/wp-content/uploads/ONDO-Eiche-Frijo-lebhaft-16-wohngleuckliebe-768x1024.jpeg.webp",
+        "https://admonter.com/wp-content/uploads/ONDO-Eiche-Frijo-lebhaft-18-wohngleuckliebe-768x1024.jpeg.webp",
+        "https://admonter.com/wp-content/uploads/ONDO-Eiche-Frijo-lebhaft-2-wohngleuckliebe-1-768x1024.jpeg-1.webp"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-frijo-lebhaft-perspektive-1ee2a5.jpg?v=20260708152854"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/ondo-eiche-frijo-lebhaft-187-scaled-374bcb.jpg?v=20260708152855",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/ondo-eiche-frijo-lebhaft-16-wohngleuckliebe-768x1024jpeg-4c1c85.jpg?v=20260708152855",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/ondo-eiche-frijo-lebhaft-18-wohngleuckliebe-768x1024jpeg-c0c2b4.jpg?v=20260708152856",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/ondo-eiche-frijo-lebhaft-2-wohngleuckliebe-1-768x1024jpeg-1-d8a4a5.jpg?v=20260708152856"
+      ]
+    },
+    "ONDKAR-VIV060": {
+      "display_name_sr": "Hrast Kari Vivid — četkan, natur ulje",
+      "gradacija": "vivid",
+      "admonter_name": "Oak Kari (natural) — OndO by Admonter, vivid",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/wp-content/uploads/Oak-Kari-natur_EN.pdf",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/Eiche_Kari_lebhaft_Perspektive.jpg"
+      ],
+      "roomshot_sources": [],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/eiche-kari-lebhaft-perspektive-ff25e4.jpg?v=20260708152857"
+      ],
+      "roomshot_urls": []
+    },
+    "ADMOAK-WL3010": {
+      "display_name_sr": "Hrast Wild — četkan, natur ulje",
+      "gradacija": "vivid",
+      "admonter_name": "Oak Wild (ukinut/istorijski dekor — nije na sajtu)",
+      "confidence": "nije-nadjeno",
+      "product_page": null,
+      "texture_sources": [],
+      "roomshot_sources": [],
+      "texture_urls": [],
+      "roomshot_urls": []
+    },
+    "ADMWAL-AM3R08": {
+      "display_name_sr": "Američki orah Rustic — brušen, lak",
+      "gradacija": "rustic",
+      "admonter_name": "American Walnut rustic",
+      "confidence": "tacno",
+      "product_page": "https://admonter.com/en/product/wooden-floor-walnut/",
+      "texture_sources": [
+        "https://admonter.com/wp-content/uploads/Nussbaum-rustic-geschliffen-natur-geoelt-classic_persp-scaled.jpg"
+      ],
+      "roomshot_sources": [
+        "https://admonter.com/wp-content/uploads/nussbaum-elegance-geschliffen-1.jpg",
+        "https://admonter.com/wp-content/uploads/nussbaum-elegance-geschliffen-3.jpg",
+        "https://admonter.com/wp-content/uploads/2024/07/Nuss.jpg"
+      ],
+      "texture_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/nussbaum-rustic-geschliffen-natur-geoelt-classic-persp-scaled-970794.jpg?v=20260708152857"
+      ],
+      "roomshot_urls": [
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/nussbaum-elegance-geschliffen-1-02adfb.jpg?v=20260708152858",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/nussbaum-elegance-geschliffen-3-4dccff.jpg?v=20260708152858",
+        "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/admonter-official/2024-07-nuss-291b3e.jpg?v=20260708152859"
+      ]
+    }
+  }
+}
