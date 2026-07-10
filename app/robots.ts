@@ -6,7 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/admin/'],
+      // /data/ = sirovi kataloški JSON-ovi (samo za build; HTTP pristup blokiran u middleware-u)
+      disallow: ['/api/', '/admin/', '/data/', '/crm/'],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

@@ -10,8 +10,22 @@ import {
 /** Allegro: jedino validne boje (kao na Tarkett.rs). */
 const ALLEGRO_VALID_COLORS = ['hrast-essence-2-strip', 'hrast-sand-ro-2-strip', 'hrast-sienna-ro-2-strip'];
 
+// Sirovi kataloški JSON-ovi u public/data služe ISKLJUČIVO build-u (import u
+// server komponentama) — sajt ih ne povlači preko HTTP-a. Jul 2026: scraper je
+// skidao svih 14 kataloga (~30MB) na svakih ~70s → Vercel usage alarmi i curenje
+// bandwidth-a. Jedini legitimni klijentski fetch-evi su indeksi dokumenata
+// (components/ProductDocuments.tsx) — oni ostaju dostupni.
+const PUBLIC_DATA_ALLOWLIST = new Set([
+  '/data/documents_index.json',
+  '/data/tarkett_documents_index.json',
+]);
+
 export function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
+
+  if (pathname.startsWith('/data/') && !PUBLIC_DATA_ALLOWLIST.has(pathname)) {
+    return new NextResponse('Not available', { status: 403 });
+  }
 
   if (pathname === '/crm' || pathname.startsWith('/crm/')) {
     if (!canAccessCrm(request)) {
