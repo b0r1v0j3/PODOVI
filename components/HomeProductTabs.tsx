@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Brand, Category, Product } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
+import { useScrollLock } from '@/components/useScrollLock';
 import {
   buildFacetInheritanceMaps,
   collectFacetOptionValues,
@@ -116,6 +117,28 @@ function ArrowRightIcon({ className }: { className: string }) {
       <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
+}
+
+function FilterSlidersIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+    </svg>
+  );
+}
+
+function CloseIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
+
+// 1 rezultat / 2 rezultata / 5 rezultata (mobilno dugme "Prikaži N rezultata") —
+// isti obrazac kao nekadašnji ProductFilters (21 rezultat, 11 rezultata...).
+function pluralizeResults(count: number): string {
+  return count % 10 === 1 && count % 100 !== 11 ? 'rezultat' : 'rezultata';
 }
 
 function dedupeProductsBySlug(products: Product[]): Product[] {
@@ -460,8 +483,37 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const [loadingColorCategoryIds, setLoadingColorCategoryIds] = useState<string[]>([]);
   const [colorLoadError, setColorLoadError] = useState<string | null>(null);
   const [colorLoadAttempt, setColorLoadAttempt] = useState(0);
+  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const hasUserScrolledRef = useRef(false);
+  const filtersTriggerRef = useRef<HTMLButtonElement>(null);
+  const drawerCloseButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Zaključaj scroll pozadine dok je mobilna fioka filtera otvorena
+  // (isti obrazac kao nekadašnji ProductFilters drawer).
+  useScrollLock(isFilterDrawerOpen);
+
+  // Zatvori fioku na Escape i upravljaj fokusom dok je otvorena.
+  useEffect(() => {
+    if (!isFilterDrawerOpen) return;
+
+    const triggerButton = filtersTriggerRef.current;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsFilterDrawerOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    // Pri otvaranju fokus ulazi u dijalog — na dugme za zatvaranje
+    drawerCloseButtonRef.current?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      // Vrati fokus na dugme "Filteri" koje je otvorilo fioku
+      triggerButton?.focus();
+    };
+  }, [isFilterDrawerOpen]);
 
   useEffect(() => {
     const markUserScroll = () => {
@@ -1173,6 +1225,197 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
       : []),
   ];
 
+  // DELJENI PANEL FILTERA: desktop <aside> i mobilna fioka renderuju ISTI JSX
+  // kroz ovu funkciju (state je ionako zajednički u komponenti — nula dupliranja
+  // logike). Fioka ima svoje zaglavlje („Filteri" + X) i dno („Prikaži N rezultata"
+  // + „Očisti sve"), pa preskače mali desktop header preko withHeader flag-a.
+  const renderFilterPanel = (withHeader: boolean) => (
+    <>
+      {withHeader ? (
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-[14px] font-semibold text-ink-900">Filteri</h2>
+          <button
+            type="button"
+            onClick={resetFilters}
+            className="text-[11px] text-ink-500 transition-colors hover:text-ink-900"
+          >
+            Očisti sve
+          </button>
+        </div>
+      ) : null}
+
+      <FilterSection title="Kategorija">
+        <div className="space-y-0.5">
+          {categoryOptions.map((item) => (
+            <FilterButton
+              key={item.slug}
+              active={selectedCategorySlugs.includes(item.slug)}
+              label={item.name}
+              count={item.count}
+              onClick={() => toggleCategoryFilter(item.slug)}
+            />
+          ))}
+        </div>
+      </FilterSection>
+
+      {typeOptionGroups.map((group) => (
+        <FilterSection key={`type-${group.category.slug}`} title={group.title}>
+          <div className="space-y-0.5">
+            {group.options.map((option) => (
+              <FilterButton
+                key={option.value}
+                active={selectedTypes.includes(option.value)}
+                label={option.label}
+                count={option.count}
+                onClick={() => setSelectedTypes((current) => toggleSelection(current, option.value))}
+              />
+            ))}
+          </div>
+        </FilterSection>
+      ))}
+
+      {facetSectionGroups.map((group) => (
+        <FilterSection
+          key={`facet-${group.category.slug}-${group.def.param}`}
+          title={group.title}
+          defaultOpen={!group.def.collapsed || group.options.some((option) => selectedFacetValues.includes(option.value))}
+        >
+          <div className="space-y-0.5">
+            {group.options.map((option) => {
+              const active = selectedFacetValues.includes(option.value);
+              return (
+                <FilterButton
+                  key={option.value}
+                  active={active}
+                  label={option.label}
+                  count={option.count}
+                  disabled={option.count === 0 && !active}
+                  onClick={() => setSelectedFacetValues((current) => toggleSelection(current, option.value))}
+                />
+              );
+            })}
+          </div>
+        </FilterSection>
+      ))}
+
+      {applicationOptions.length > 0 ? (
+        <FilterSection title="Primena">
+          <div className="space-y-0.5">
+            {applicationOptions.map((option) => (
+              <FilterButton
+                key={option.value}
+                active={selectedApplications.includes(option.value)}
+                label={option.label}
+                count={option.count}
+                onClick={() => setSelectedApplications((current) => toggleSelection(current, option.value))}
+              />
+            ))}
+          </div>
+        </FilterSection>
+      ) : null}
+
+      {thicknessBounds.hasData ? (
+        <FilterSection title="Debljina">
+          <div className="px-1 pb-1 pt-1">
+            <div className="relative h-7">
+              <div className="absolute left-1 right-1 top-1/2 h-0.5 -translate-y-1/2 bg-ink-200" />
+              <div
+                className="absolute top-1/2 h-0.5 -translate-y-1/2 bg-ink-900"
+                style={{
+                  left: `${minThumbPosition}%`,
+                  right: `${100 - maxThumbPosition}%`,
+                }}
+              />
+              <span
+                className="pointer-events-none absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 bg-ink-900"
+                style={{ left: `${minThumbPosition}%` }}
+              />
+              <span
+                className="pointer-events-none absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 bg-ink-900"
+                style={{ left: `${maxThumbPosition}%` }}
+              />
+              <input
+                type="range"
+                min={thicknessBounds.min}
+                max={thicknessBounds.max}
+                step="0.1"
+                value={effectiveThicknessRange[0]}
+                onChange={(event) => updateThicknessMin(Number(event.target.value))}
+                className="absolute inset-x-0 top-0 h-7 w-full cursor-pointer opacity-0"
+                aria-label="Minimalna debljina"
+              />
+              <input
+                type="range"
+                min={thicknessBounds.min}
+                max={thicknessBounds.max}
+                step="0.1"
+                value={effectiveThicknessRange[1]}
+                onChange={(event) => updateThicknessMax(Number(event.target.value))}
+                className="absolute inset-x-0 top-0 h-7 w-full cursor-pointer opacity-0"
+                aria-label="Maksimalna debljina"
+              />
+            </div>
+            <div className="flex justify-between text-[12px] text-ink-700">
+              <span>{formatMm(effectiveThicknessRange[0])}</span>
+              <span>{formatMm(effectiveThicknessRange[1])}</span>
+            </div>
+          </div>
+        </FilterSection>
+      ) : null}
+
+      {brandOptions.length > 0 ? (
+        <FilterSection title="Brand / brend">
+          <label className="mb-2 flex h-8 items-center gap-2 border border-ink-200 px-2 text-ink-500">
+            <SearchIcon className="h-3.5 w-3.5" />
+            <input
+              type="search"
+              value={brandQuery}
+              onChange={(event) => setBrandQuery(event.target.value)}
+              placeholder="Pretraži brend..."
+              className="h-full min-w-0 flex-1 border-0 bg-transparent p-0 text-[12px] text-ink-900 outline-none placeholder:text-ink-400"
+            />
+          </label>
+          <div className="space-y-0.5">
+            {visibleBrandOptions.map((option) => (
+              <FilterButton
+                key={option.value}
+                active={selectedBrandIds.includes(option.value)}
+                label={option.label}
+                count={option.count}
+                onClick={() => setSelectedBrandIds((current) => toggleSelection(current, option.value))}
+              />
+            ))}
+          </div>
+          {brandQuery.trim() && brandOptions.length > visibleBrandOptions.length ? (
+            <button
+              type="button"
+              onClick={() => setBrandQuery('')}
+              className="mt-2 text-[12px] font-semibold text-ink-800 transition-colors hover:text-ink-500"
+            >
+              Očisti pretragu
+            </button>
+          ) : null}
+        </FilterSection>
+      ) : null}
+
+      {collectionOptionGroups.map((group) => (
+        <FilterSection key={`collection-${group.category.slug}`} title={group.title} defaultOpen={false}>
+          <div className="space-y-0.5">
+            {group.options.map((option) => (
+              <FilterButton
+                key={option.value}
+                active={selectedCollections.includes(option.value)}
+                label={option.label}
+                count={option.count}
+                onClick={() => setSelectedCollections((current) => toggleSelection(current, option.value))}
+              />
+            ))}
+          </div>
+        </FilterSection>
+      ))}
+    </>
+  );
+
   return (
     <section className="bg-white">
       <h1 className="sr-only">Podovi.online katalog proizvoda</h1>
@@ -1182,186 +1425,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
           <aside className="hidden lg:block">
             <div className="sticky top-24 space-y-4">
             <div className="border border-ink-200 bg-white p-4">
-              <div className="mb-3 flex items-center justify-between">
-                <h2 className="text-[14px] font-semibold text-ink-900">Filteri</h2>
-                <button
-                  type="button"
-                  onClick={resetFilters}
-                  className="text-[11px] text-ink-500 transition-colors hover:text-ink-900"
-                >
-                  Očisti sve
-                </button>
-              </div>
-
-              <FilterSection title="Kategorija">
-                <div className="space-y-0.5">
-                  {categoryOptions.map((item) => (
-                    <FilterButton
-                      key={item.slug}
-                      active={selectedCategorySlugs.includes(item.slug)}
-                      label={item.name}
-                      count={item.count}
-                      onClick={() => toggleCategoryFilter(item.slug)}
-                    />
-                  ))}
-                </div>
-              </FilterSection>
-
-              {typeOptionGroups.map((group) => (
-                <FilterSection key={`type-${group.category.slug}`} title={group.title}>
-                  <div className="space-y-0.5">
-                    {group.options.map((option) => (
-                      <FilterButton
-                        key={option.value}
-                        active={selectedTypes.includes(option.value)}
-                        label={option.label}
-                        count={option.count}
-                        onClick={() => setSelectedTypes((current) => toggleSelection(current, option.value))}
-                      />
-                    ))}
-                  </div>
-                </FilterSection>
-              ))}
-
-              {facetSectionGroups.map((group) => (
-                <FilterSection
-                  key={`facet-${group.category.slug}-${group.def.param}`}
-                  title={group.title}
-                  defaultOpen={!group.def.collapsed || group.options.some((option) => selectedFacetValues.includes(option.value))}
-                >
-                  <div className="space-y-0.5">
-                    {group.options.map((option) => {
-                      const active = selectedFacetValues.includes(option.value);
-                      return (
-                        <FilterButton
-                          key={option.value}
-                          active={active}
-                          label={option.label}
-                          count={option.count}
-                          disabled={option.count === 0 && !active}
-                          onClick={() => setSelectedFacetValues((current) => toggleSelection(current, option.value))}
-                        />
-                      );
-                    })}
-                  </div>
-                </FilterSection>
-              ))}
-
-              {applicationOptions.length > 0 ? (
-                <FilterSection title="Primena">
-                  <div className="space-y-0.5">
-                    {applicationOptions.map((option) => (
-                      <FilterButton
-                        key={option.value}
-                        active={selectedApplications.includes(option.value)}
-                        label={option.label}
-                        count={option.count}
-                        onClick={() => setSelectedApplications((current) => toggleSelection(current, option.value))}
-                      />
-                    ))}
-                  </div>
-                </FilterSection>
-              ) : null}
-
-              {thicknessBounds.hasData ? (
-                <FilterSection title="Debljina">
-                  <div className="px-1 pb-1 pt-1">
-                    <div className="relative h-7">
-                      <div className="absolute left-1 right-1 top-1/2 h-0.5 -translate-y-1/2 bg-ink-200" />
-                      <div
-                        className="absolute top-1/2 h-0.5 -translate-y-1/2 bg-ink-900"
-                        style={{
-                          left: `${minThumbPosition}%`,
-                          right: `${100 - maxThumbPosition}%`,
-                        }}
-                      />
-                      <span
-                        className="pointer-events-none absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 bg-ink-900"
-                        style={{ left: `${minThumbPosition}%` }}
-                      />
-                      <span
-                        className="pointer-events-none absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 bg-ink-900"
-                        style={{ left: `${maxThumbPosition}%` }}
-                      />
-                      <input
-                        type="range"
-                        min={thicknessBounds.min}
-                        max={thicknessBounds.max}
-                        step="0.1"
-                        value={effectiveThicknessRange[0]}
-                        onChange={(event) => updateThicknessMin(Number(event.target.value))}
-                        className="absolute inset-x-0 top-0 h-7 w-full cursor-pointer opacity-0"
-                        aria-label="Minimalna debljina"
-                      />
-                      <input
-                        type="range"
-                        min={thicknessBounds.min}
-                        max={thicknessBounds.max}
-                        step="0.1"
-                        value={effectiveThicknessRange[1]}
-                        onChange={(event) => updateThicknessMax(Number(event.target.value))}
-                        className="absolute inset-x-0 top-0 h-7 w-full cursor-pointer opacity-0"
-                        aria-label="Maksimalna debljina"
-                      />
-                    </div>
-                    <div className="flex justify-between text-[12px] text-ink-700">
-                      <span>{formatMm(effectiveThicknessRange[0])}</span>
-                      <span>{formatMm(effectiveThicknessRange[1])}</span>
-                    </div>
-                  </div>
-                </FilterSection>
-              ) : null}
-
-              {brandOptions.length > 0 ? (
-                <FilterSection title="Brand / brend">
-                  <label className="mb-2 flex h-8 items-center gap-2 border border-ink-200 px-2 text-ink-500">
-                    <SearchIcon className="h-3.5 w-3.5" />
-                    <input
-                      type="search"
-                      value={brandQuery}
-                      onChange={(event) => setBrandQuery(event.target.value)}
-                      placeholder="Pretraži brend..."
-                      className="h-full min-w-0 flex-1 border-0 bg-transparent p-0 text-[12px] text-ink-900 outline-none placeholder:text-ink-400"
-                    />
-                  </label>
-                  <div className="space-y-0.5">
-                    {visibleBrandOptions.map((option) => (
-                      <FilterButton
-                        key={option.value}
-                        active={selectedBrandIds.includes(option.value)}
-                        label={option.label}
-                        count={option.count}
-                        onClick={() => setSelectedBrandIds((current) => toggleSelection(current, option.value))}
-                      />
-                    ))}
-                  </div>
-                  {brandQuery.trim() && brandOptions.length > visibleBrandOptions.length ? (
-                    <button
-                      type="button"
-                      onClick={() => setBrandQuery('')}
-                      className="mt-2 text-[12px] font-semibold text-ink-800 transition-colors hover:text-ink-500"
-                    >
-                      Očisti pretragu
-                    </button>
-                  ) : null}
-                </FilterSection>
-              ) : null}
-
-              {collectionOptionGroups.map((group) => (
-                <FilterSection key={`collection-${group.category.slug}`} title={group.title} defaultOpen={false}>
-                  <div className="space-y-0.5">
-                    {group.options.map((option) => (
-                      <FilterButton
-                        key={option.value}
-                        active={selectedCollections.includes(option.value)}
-                        label={option.label}
-                        count={option.count}
-                        onClick={() => setSelectedCollections((current) => toggleSelection(current, option.value))}
-                      />
-                    ))}
-                  </div>
-                </FilterSection>
-              ))}
+              {renderFilterPanel(true)}
             </div>
 
             <div className="border border-ink-200 bg-white p-4">
@@ -1404,49 +1468,41 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
 
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-2 lg:hidden" aria-label="Kategorije">
-                {categoryOptions.map((option) => {
-                  const active = selectedCategorySlugs.includes(option.slug);
-                  return (
+              {/* MOBILNO: jedan red — levo skrolabilni čipovi AKTIVNIH filtera (× skida
+                  vrednost, ista logika kao desktop red čipova), desno trigger „Filteri (N)"
+                  koji otvara fioku sa ISTIM panelom filtera kao desktop. */}
+              <div className="mt-5 flex items-center gap-3 border-y border-ink-200 py-2 lg:hidden">
+                <div className="flex min-w-0 flex-1 items-center gap-2 overflow-x-auto" aria-label="Aktivni filteri">
+                  {activeFilterChips.map((chip) => (
                     <button
-                      key={option.slug}
+                      key={chip.id}
                       type="button"
-                      onClick={() => toggleCategoryFilter(option.slug)}
-                      aria-pressed={active}
-                      className={`border px-3 py-2 text-[12px] transition-colors ${
-                        active
-                          ? 'border-ink-900 bg-ink-900 text-white'
-                          : 'border-ink-200 bg-white text-ink-700'
-                      }`}
+                      onClick={chip.onRemove}
+                      className="inline-flex h-8 shrink-0 items-center gap-2 border border-ink-200 bg-white px-2.5 text-[12px] text-ink-800 transition-colors hover:border-ink-900"
                     >
-                      {option.name}
+                      {chip.label}
+                      <span className="text-ink-500" aria-hidden="true">x</span>
                     </button>
-                  );
-                })}
-              </div>
-
-              <div className="mt-3 flex flex-wrap gap-2 lg:hidden" aria-label="Brendovi">
-                {brandOptions.slice(0, 4).map((option) => (
-                  <button
-                    key={option.value}
-                    type="button"
-                    data-testid={`home-brand-chip-${option.value}`}
-                    onClick={() => setSelectedBrandIds((current) => toggleSelection(current, option.value))}
-                    aria-pressed={selectedBrandIds.includes(option.value)}
-                    className={`border px-3 py-2 text-[12px] transition-colors ${
-                      selectedBrandIds.includes(option.value)
-                        ? 'border-ink-900 bg-ink-900 text-white'
-                        : 'border-ink-200 bg-white text-ink-700'
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  ref={filtersTriggerRef}
+                  onClick={() => setIsFilterDrawerOpen(true)}
+                  aria-haspopup="dialog"
+                  aria-expanded={isFilterDrawerOpen}
+                  data-testid="home-filters-trigger"
+                  className="inline-flex min-h-[44px] shrink-0 items-center gap-2 text-[13px] text-ink-900 transition-opacity hover:opacity-60"
+                >
+                  Filteri{activeFilterChips.length > 0 ? ` (${activeFilterChips.length})` : ''}
+                  <FilterSlidersIcon className="h-4 w-4" />
+                </button>
               </div>
             </div>
 
+            {/* Desktop red čipova — na mobilnom aktivni čipovi žive u redu uz „Filteri" trigger */}
             {activeFilterChips.length > 0 ? (
-              <div className="mb-5 flex flex-wrap items-center gap-2 border-y border-ink-200 py-3">
+              <div className="mb-5 hidden flex-wrap items-center gap-2 border-y border-ink-200 py-3 lg:flex">
                 {activeFilterChips.map((chip) => (
                   <button
                     key={chip.id}
@@ -1559,6 +1615,63 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
           </div>
         </div>
       </div>
+
+      {/* MOBILNA FIOKA FILTERA: overlay + panel zdesna iznad lepljivog headera (z-50).
+          Sadržaj = ISTI deljeni panel kao desktop <aside>; dno sa živim brojem
+          rezultata. Obrazac (scroll lock, Escape, fokus) kao nekadašnji ProductFilters. */}
+      {isFilterDrawerOpen ? (
+        <div className="fixed inset-0 z-[60] lg:hidden">
+          <div
+            className="absolute inset-0 bg-black/20"
+            aria-hidden="true"
+            onClick={() => setIsFilterDrawerOpen(false)}
+          />
+
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Filteri"
+            className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-ink-200 bg-white"
+          >
+            <div className="flex items-center justify-between border-b border-ink-200 px-6 py-4">
+              <h2 className="text-[14px] font-semibold text-ink-900">Filteri</h2>
+              <button
+                type="button"
+                ref={drawerCloseButtonRef}
+                onClick={() => setIsFilterDrawerOpen(false)}
+                aria-label="Zatvori filtere"
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-900 transition-opacity hover:opacity-60"
+              >
+                <CloseIcon className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-6 py-6">
+              {renderFilterPanel(false)}
+            </div>
+
+            <div className="flex gap-3 border-t border-ink-200 px-6 py-4">
+              {activeFilterChips.length > 0 ? (
+                <button
+                  type="button"
+                  onClick={resetFilters}
+                  className="btn-secondary flex-1"
+                >
+                  Očisti sve
+                </button>
+              ) : null}
+              <button
+                type="button"
+                onClick={() => setIsFilterDrawerOpen(false)}
+                className="btn-primary flex-1"
+                data-testid="home-filters-drawer-apply"
+              >
+                Prikaži {activeProductCount} {pluralizeResults(activeProductCount)}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

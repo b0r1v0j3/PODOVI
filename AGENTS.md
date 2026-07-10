@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 08.07.2026 (Filteri 2.0 — nove facet grupe prenete na početnu stranu)
+> **Poslednje ažuriranje:** 10.07.2026 (Mobilni filteri na početnoj — fioka sa kompletnim panelom)
 
 ---
 
@@ -153,6 +153,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Mobilni filteri na početnoj — fioka (drawer) sa kompletnim panelom (10.07.2026)**
+- **`components/HomeProductTabs.tsx`**: kompletan sadržaj desktop filter panela (zaglavlje „Filteri"/„Očisti sve" + sve sekcije: Kategorija, Tip, nove facet grupe, Primena, Debljina, Brand sa pretragom, Kolekcije) izdvojen u JEDNU deljenu funkciju `renderFilterPanel(withHeader)` — desktop `<aside className="hidden lg:block">` i nova mobilna fioka renderuju ISTI JSX, state je zajednički (nula dupliranja logike). Mali desktop header se preskače u fioci (`withHeader=false`) jer fioka ima svoje zaglavlje i dno.
+- **Mobilno (ispod lg)**: umesto dva reda čipova (Kategorije + Brendovi) jedan red — levo horizontalno skrolabilni čipovi AKTIVNIH filtera (× skida vrednost, ista `activeFilterChips` logika kao desktop red čipova), desno trigger „Filteri (N)" sa ikonicom tri klizača (N = broj aktivnih filtera). Desktop red čipova je sada `hidden lg:flex` (na mobilnom čipovi žive uz trigger, bez dupliranja).
+- **Fioka**: `fixed inset-0 z-[60] lg:hidden`, overlay `bg-black/20` (klik zatvara), panel zdesna `w-full max-w-md bg-white border-l border-ink-200 flex flex-col`; zaglavlje „Filteri" + X (44×44); sadržaj `flex-1 overflow-y-auto px-6 py-6` = deljeni panel; dno `border-t` sa `btn-primary` „Prikaži N rezultata" (živi broj filtriranih rezultata — kolekcije ili boje po aktivnom tabu; množina `pluralizeResults`: 1151 rezultat / 164 rezultata) koje zatvara fioku + `btn-secondary` „Očisti sve" kad ima aktivnih. Pristupačnost kao nekadašnji ProductFilters drawer: `useScrollLock`, Escape zatvara, fokus na X pri otvaranju i nazad na trigger pri zatvaranju, `role="dialog" aria-modal="true"`.
+- Desktop bez vizuelnih promena (isti panel 262px, sticky top-24, identična tipografija, hairline ispod headera očuvan). Suite 272/272 zeleno, lint čist. Verifikovano u pregledaču: 375×812 (trigger vidljiv, fioka sa SVIM sekcijama — Vinil → Klasa upotrebe/Dezen/Ton/Ugradnja/Materijal/R-klasa/Podno grejanje; klasa 33 → „Prikaži 8 rezultata" i grid 8; čipovi skidaju vrednosti; Escape/overlay/dugme zatvaraju; scroll lock i fokus rade; bez horizontalnog overflow-a) i 1440×900 (aside sa svim sekcijama i „Imate projekat?", trigger sakriven, čipovi red radi, ništa promenjeno).
 
 **Filteri 2.0 — nove facet grupe prenete na POČETNU stranu (08.07.2026)**
 - **`components/HomeProductTabs.tsx`**: dinamičke facet sekcije iz `lib/catalog/facet-config.ts` u postojećem levom panelu, u POSTOJEĆEM dizajnu (isti `FilterSection` collapsible naslov sa chevronom, isti `FilterButton` checkbox red sa brojačem, ista tipografija — 0 vizuelnih promena postojećih delova). Pojavljuju se po istom obrascu kao „Tip laminata": tek kad je kategorija izabrana; ubačene između Tip i Primena sekcija. Vinil → Klasa upotrebe/Dezen/Ton/Ugradnja/Materijal/R-klasa (sklopljena)/Podno grejanje (sklopljena, boolean); Parket → Ton/Uzorak polaganja/Završna obrada/Ugradnja/Podno grejanje; LVT → Klasa (nasleđivanje sa kolekcija)/Ugradnja/Format; Laminat → Klasa (AC); Otirači → Tip.
