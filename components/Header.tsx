@@ -7,11 +7,13 @@ import GlobalSearch from './GlobalSearch';
 import PodoviWordmark from './PodoviWordmark';
 import { useFavorites } from '@/lib/context/FavoritesContext';
 import { useScrollLock } from './useScrollLock';
+import { OPEN_HOME_FILTERS_EVENT } from '@/lib/catalog/home-filter-events';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { count: favCount } = useFavorites();
+  const isHomepage = pathname === '/';
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -23,6 +25,14 @@ export default function Header() {
   };
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
+  const handleMobileAction = () => {
+    if (isHomepage) {
+      window.dispatchEvent(new Event(OPEN_HOME_FILTERS_EVENT));
+      return;
+    }
+
+    setMobileMenuOpen(true);
+  };
 
   // Scroll lock dok je mobilni meni otvoren
   useScrollLock(mobileMenuOpen);
@@ -32,19 +42,27 @@ export default function Header() {
     if (!mobileMenuOpen) return;
 
     const menuButton = menuButtonRef.current;
+    const desktopMediaQuery = window.matchMedia('(min-width: 1024px)');
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setMobileMenuOpen(false);
       }
     };
+    const handleDesktopResize = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setMobileMenuOpen(false);
+      }
+    };
     document.addEventListener('keydown', handleKeyDown);
+    desktopMediaQuery.addEventListener('change', handleDesktopResize);
 
     // Pri otvaranju fokus ide na prvi fokusabilni element u overlay-u
     closeButtonRef.current?.focus();
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      desktopMediaQuery.removeEventListener('change', handleDesktopResize);
       // Pri zatvaranju (Escape, link, dugme) fokus se vraća na trigger
       menuButton?.focus();
     };
@@ -52,20 +70,20 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 isolate border-b border-ink-200 bg-white">
-      <nav className="mx-auto grid h-14 w-full max-w-[1536px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 md:h-[60px] lg:gap-8">
+      <nav className="mx-auto grid h-14 w-full max-w-[1536px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 md:h-[60px] lg:grid-cols-[1fr_auto_1fr] lg:gap-8 lg:px-6">
         {/* Logo */}
         <Link href="/" className="flex min-h-[44px] items-center">
           <PodoviWordmark textClassName="text-xl md:text-2xl text-ink-900" />
         </Link>
 
-        <div className="hidden w-[590px] justify-center md:flex">
+        <div className="hidden w-[590px] justify-center lg:flex">
           <div className="w-full max-w-[590px]">
             <GlobalSearch variant="bar" />
           </div>
         </div>
 
         {/* Desktop actions */}
-        <div className="hidden items-center justify-end gap-5 md:flex">
+        <div className="hidden items-center justify-end gap-5 lg:flex">
           <Link
             href="/omiljeni"
             className={`relative flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors duration-200 ${isActive('/omiljeni') ? 'text-ink-900' : 'text-ink-900 hover:text-ink-600'}`}
@@ -90,21 +108,33 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobile: search + menu trigger */}
-        <div className="flex items-center gap-1 md:hidden">
-          <GlobalSearch />
+        {/* Mobile: pravo search polje u sredini */}
+        <div className="min-w-0 lg:hidden">
+          <GlobalSearch variant="inline" />
+        </div>
+
+        {/* Na početnoj je desna akcija filter; drugde ostaje navigacioni meni. */}
+        <div className="flex justify-end lg:hidden">
           <button
             ref={menuButtonRef}
             type="button"
             className="flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-900 transition-colors duration-200 hover:text-ink-600"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Otvori meni"
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
+            onClick={handleMobileAction}
+            aria-label={isHomepage ? 'Otvori filtere' : 'Otvori meni'}
+            aria-haspopup="dialog"
+            aria-expanded={isHomepage ? undefined : mobileMenuOpen}
+            aria-controls={isHomepage ? 'home-filter-drawer' : 'mobile-menu'}
+            data-testid={isHomepage ? 'home-filters-trigger' : undefined}
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            {isHomepage ? (
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+              </svg>
+            ) : (
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
       </nav>
@@ -116,7 +146,7 @@ export default function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobilni meni"
-          className="fixed inset-0 z-[60] flex flex-col bg-white md:hidden"
+          className="fixed inset-0 z-[60] flex flex-col bg-white lg:hidden"
         >
           <div className="border-b border-ink-200">
             <div className="container flex h-14 items-center justify-between">
