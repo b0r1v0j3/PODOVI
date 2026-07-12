@@ -44,11 +44,11 @@ npm start
 - **No border radius and no shadows** — separation comes from 1px hairlines and whitespace; the old pink `primary` palette and colored category badges are removed (exceptions: official WhatsApp green, system red for form/error states)
 - **Lowercase bold "podovi" wordmark** (`PodoviWordmark`) in the header and footer
 - **Light footer**: white background, hairline top border, monochrome social icons; the black homepage CTA block is the only dark section on the site
-- Sticky white header with hairline bottom border; mobile menu is a full-screen white overlay with large links
+- Sticky white header with hairline bottom border; na početnoj telefon i tablet (ispod `lg`) imaju pristupačnu inline pretragu i desno dugme za filtere, dok ostale rute zadržavaju full-screen mobilni navigacioni meni
 - Spec: `docs/superpowers/specs/2026-06-12-podovi-redizajn-design.md`
 
 ### Product Catalog
-- Homepage **Prostoria-style product browser** (`HomeProductTabs`): category tab strip with underline indicator (wheel-scrollable) + product grid + "Pogledaj sve" link
+- Homepage **Prostoria-style product browser** (`HomeProductTabs`): URL-sinhronizovani faceted filteri sa deep-link/Back podrškom, živi brojači, „Prikaži još", pretraga kolekcija, mobilna filter fioka i product grid; mobilni intro je sklonjen da katalog počne odmah ispod headera
 - Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport, Lajsne, Otirači)
 - Filter by **brand** (Tarkett, Gerflor, BLOQ, TimberTech, Wolflor, Techem, Romus, Podovi) via text **brand chips** (active = underlined) on category pages
 - **Product filters**: hairline bar with brand chips + "Filteri" button opening a **slide-over drawer** with search, price range, collection, thickness, vinyl type, wood type and other category-specific filters (URL-synced, auto-apply)
@@ -146,11 +146,11 @@ PODOVI/
 │   └── not-found.tsx       # 404 page
 │
 ├── components/             # React components
-│   ├── Header.tsx          # Sticky white header: wordmark, search, favorites badge, inquiry CTA, full-screen mobile menu
+│   ├── Header.tsx          # Sticky header; homepage mobile inline search + filter trigger, other routes mobile menu
 │   ├── PodoviWordmark.tsx  # Lowercase bold "podovi" wordmark
 │   ├── Footer.tsx          # Light site footer (white, hairline top border)
-│   ├── GlobalSearch.tsx    # Full-text product search (full-width overlay over the header)
-│   ├── HomeProductTabs.tsx # Homepage Prostoria-style category tab strip + product grid
+│   ├── GlobalSearch.tsx    # Full-text search: desktop bar/icon plus homepage mobile inline variant
+│   ├── HomeProductTabs.tsx # Homepage URL-synced filters, shared desktop/mobile panel + product grid
 │   ├── CategoryTabs.tsx    # Category page Kolekcije/Boje underline tabs
 │   ├── ProductCard.tsx     # Product card (server component)
 │   ├── ProductCardClient.tsx   # Product card (client component)
@@ -202,6 +202,10 @@ PODOVI/
 │   │   ├── manual-collection-products.ts # Manual collection headers for nested JSON sources
 │   │   ├── lvt-detailed-info.ts # LVT detailed specifications
 │   │   └── lvt-extra.ts    # Additional LVT data
+│   ├── catalog/            # Shared catalog/filter contracts and helpers
+│   │   ├── home-filter-url.ts    # Homepage query parse/serialize + deep-link contract
+│   │   ├── home-filter-utils.ts  # Live counts, expandable-list and honest-sort helpers
+│   │   └── home-filter-events.ts # Mobile header → homepage filter drawer event
 │   ├── repositories/       # Data access layer (repository pattern)
 │   │   ├── product-repository.ts   # Product CRUD & queries
 │   │   ├── category-repository.ts  # Category data access

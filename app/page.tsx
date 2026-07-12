@@ -5,6 +5,7 @@ import HomeProductTabs, { HomeProductGroup } from '@/components/HomeProductTabs'
 import { Product } from '@/types';
 import { hasCollectionSku } from '@/lib/utils/homepage-collection-filter';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
+import { parseHomeFilterUrlState } from '@/lib/catalog/home-filter-url';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
@@ -239,7 +240,26 @@ function selectHomepageColors(products: Product[]): Product[] {
   return dedupeBySlug(products.filter((product) => !hasCollectionSku(product)));
 }
 
-export default async function HomePage() {
+interface HomePageProps {
+  searchParams?: Record<string, string | string[] | undefined>;
+}
+
+function toUrlSearchParams(searchParams: HomePageProps['searchParams']): URLSearchParams {
+  const params = new URLSearchParams();
+
+  for (const [key, rawValue] of Object.entries(searchParams || {})) {
+    const values = Array.isArray(rawValue) ? rawValue : [rawValue];
+    for (const value of values) {
+      if (typeof value === 'string') {
+        params.append(key, value);
+      }
+    }
+  }
+
+  return params;
+}
+
+export default async function HomePage({ searchParams }: HomePageProps) {
   const categories = await categoryRepository.findAll();
   const homepageCategories = categories;
   const [brands, productBuckets] = await Promise.all([
@@ -268,7 +288,11 @@ export default async function HomePage() {
 
   return (
     <div className="bg-white">
-      <HomeProductTabs groups={productGroups} brandsRecord={brandsRecord} />
+      <HomeProductTabs
+        groups={productGroups}
+        brandsRecord={brandsRecord}
+        initialFilterState={parseHomeFilterUrlState(toUrlSearchParams(searchParams))}
+      />
     </div>
   );
 }

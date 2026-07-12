@@ -6,6 +6,19 @@ import { Brand, Category, Product } from '@/types';
 import ProductCardClient from '@/components/ProductCardClient';
 import { useScrollLock } from '@/components/useScrollLock';
 import {
+  getVisibleFilterOptions,
+  hasPricedProducts,
+  sortHomepageProducts,
+  withLiveOptionCounts,
+  type HomepageSortMode,
+} from '@/lib/catalog/home-filter-utils';
+import {
+  parseHomeFilterUrlState,
+  serializeHomeFilterUrlState,
+  type HomeFilterUrlState,
+} from '@/lib/catalog/home-filter-url';
+import { OPEN_HOME_FILTERS_EVENT } from '@/lib/catalog/home-filter-events';
+import {
   buildFacetInheritanceMaps,
   collectFacetOptionValues,
   facetChipLabel,
@@ -64,6 +77,7 @@ export interface HomeProductGroup {
 interface HomeProductTabsProps {
   groups: HomeProductGroup[];
   brandsRecord: Record<string, Brand>;
+  initialFilterState?: HomeFilterUrlState;
 }
 
 interface CountOption {
@@ -86,6 +100,10 @@ interface FacetSectionGroup {
   title: string;
   options: CountOption[];
 }
+
+type RefinementSkip =
+  | { group: 'brand' | 'application' | 'thickness' }
+  | { group: 'type' | 'collection'; categorySlug: string };
 
 function CheckIcon({ className }: { className: string }) {
   return (
@@ -115,14 +133,6 @@ function ArrowRightIcon({ className }: { className: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function FilterSlidersIcon({ className }: { className: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
     </svg>
   );
 }
@@ -209,7 +219,7 @@ function buildScopedSelectionMap(values: string[]): Map<string, Set<string>> {
     }
 
     const existing = map.get(parsed.categorySlug) || new Set<string>();
-    existing.add(parsed.optionValue);
+    existing.add(normalizeOptionValue(parsed.optionValue));
     map.set(parsed.categorySlug, existing);
   }
 
@@ -280,24 +290,6 @@ function buildBrandOptions(products: Product[], brandsRecord: Record<string, Bra
   return Array.from(counts.values())
     .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, 'sr'))
     .slice(0, limit);
-}
-
-function sortProducts(products: Product[], sortMode: string): Product[] {
-  const sorted = products.slice();
-
-  if (sortMode === 'name') {
-    return sorted.sort((a, b) => a.name.localeCompare(b.name, 'sr'));
-  }
-
-  if (sortMode === 'price') {
-    return sorted.sort((a, b) => {
-      const aPrice = a.price && a.price > 0 ? a.price : Number.POSITIVE_INFINITY;
-      const bPrice = b.price && b.price > 0 ? b.price : Number.POSITIVE_INFINITY;
-      return aPrice - bPrice || a.name.localeCompare(b.name, 'sr');
-    });
-  }
-
-  return sorted;
 }
 
 function getNextProductRowSize(): number {
@@ -395,6 +387,50 @@ function getCollectionFilterValue(product: Product): string | null {
   return getSpecValue(product, ['collection', 'kolekcija', 'brand_line', 'range']) || product.name || null;
 }
 
+function sanitizeFilterStateAgainstCatalog(
+  state: HomeFilterUrlState,
+  groups: HomeProductGroup[],
+  brandsRecord: Record<string, Brand>,
+): HomeFilterUrlState {
+  const availableCategorySlugs = new Set(groups.map((group) => group.category.slug));
+  const categories = state.categories.filter((slug) => availableCategorySlugs.has(slug));
+  const selectedCategorySlugs = new Set(categories);
+  const availableBrandIds = new Set(
+    groups.flatMap((group) => [...group.products, ...(group.colorProducts || [])])
+      .map((product) => String(product.brandId))
+      .filter((brandId) => Boolean(brandsRecord[brandId])),
+  );
+  const availableApplications = new Set(APPLICATION_FILTERS.map((option) => option.value));
+
+  const sanitizeScopedSelections = (values: string[]) => values.flatMap((value) => {
+    const parsed = parseScopedOptionValue(value);
+    if (!parsed || !selectedCategorySlugs.has(parsed.categorySlug)) {
+      return [];
+    }
+
+    return [buildScopedOptionValue(parsed.categorySlug, normalizeOptionValue(parsed.optionValue))];
+  });
+
+  const facets = state.facets.filter((value) => {
+    const parsed = parseScopedFacetValue(value);
+    return Boolean(
+      parsed
+      && selectedCategorySlugs.has(parsed.categorySlug)
+      && getFacetDefsForCategory(parsed.categorySlug).some((def) => def.param === parsed.param),
+    );
+  });
+
+  return {
+    ...state,
+    categories,
+    brands: state.brands.filter((brandId) => availableBrandIds.has(brandId)),
+    types: sanitizeScopedSelections(state.types),
+    applications: state.applications.filter((value) => availableApplications.has(value as typeof APPLICATION_FILTERS[number]['value'])),
+    collections: sanitizeScopedSelections(state.collections),
+    facets,
+  };
+}
+
 function toggleSelection(current: string[], value: string): string[] {
   return current.includes(value)
     ? current.filter((item) => item !== value)
@@ -419,7 +455,7 @@ function FilterButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`flex w-full items-center gap-2.5 py-0.5 text-left text-[12px] leading-5 transition-colors ${
+      className={`flex min-h-11 w-full items-center gap-2.5 py-2 text-left text-[12px] leading-5 transition-colors lg:min-h-0 lg:py-0.5 ${
         disabled ? 'cursor-not-allowed text-ink-700 opacity-50' : 'text-ink-700 hover:text-ink-900'
       }`}
       aria-pressed={active}
@@ -456,7 +492,7 @@ function FilterSection({
       <button
         type="button"
         onClick={() => setIsOpen((current) => !current)}
-        className="mb-2 flex w-full items-center justify-between text-left"
+        className="mb-2 flex min-h-11 w-full items-center justify-between text-left lg:min-h-0"
         aria-expanded={isOpen}
       >
         <span className="text-[11px] font-semibold uppercase tracking-label text-ink-700">{title}</span>
@@ -467,53 +503,282 @@ function FilterSection({
   );
 }
 
-export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTabsProps) {
-  const [selectedCategorySlugs, setSelectedCategorySlugs] = useState<string[]>([]);
-  const [selectedBrandIds, setSelectedBrandIds] = useState<string[]>([]);
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [selectedApplications, setSelectedApplications] = useState<string[]>([]);
-  const [selectedCollections, setSelectedCollections] = useState<string[]>([]);
-  const [selectedFacetValues, setSelectedFacetValues] = useState<string[]>([]);
-  const [thicknessRange, setThicknessRange] = useState<[number, number] | null>(null);
+function ExpandableFilterOptions({
+  options,
+  selectedValues,
+  renderOption,
+  limit = 8,
+  forceExpanded = false,
+}: {
+  options: CountOption[];
+  selectedValues: string[];
+  renderOption: (option: CountOption) => ReactNode;
+  limit?: number;
+  forceExpanded?: boolean;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const visibleOptions = getVisibleFilterOptions(
+    options,
+    selectedValues,
+    expanded || forceExpanded,
+    limit,
+  );
+  const hiddenCount = Math.max(options.length - visibleOptions.length, 0);
+  const canToggle = !forceExpanded && options.length > limit;
+
+  return (
+    <>
+      <div className="space-y-0.5">
+        {visibleOptions.map(renderOption)}
+      </div>
+      {canToggle ? (
+        <button
+          type="button"
+          onClick={() => setExpanded((current) => !current)}
+          className="mt-2 min-h-11 text-left text-[12px] font-semibold text-ink-800 underline-offset-4 hover:underline lg:min-h-0"
+        >
+          {expanded ? 'Prikaži manje' : `Prikaži još (${hiddenCount})`}
+        </button>
+      ) : null}
+    </>
+  );
+}
+
+function SearchableFilterOptions({
+  options,
+  selectedValues,
+  renderOption,
+  placeholder,
+}: {
+  options: CountOption[];
+  selectedValues: string[];
+  renderOption: (option: CountOption) => ReactNode;
+  placeholder: string;
+}) {
+  const [query, setQuery] = useState('');
+  const normalizedQuery = query.trim().toLowerCase();
+  const matchingOptions = normalizedQuery
+    ? options.filter((option) => option.label.toLowerCase().includes(normalizedQuery))
+    : options;
+
+  return (
+    <>
+      {options.length > 12 ? (
+        <label className="mb-2 flex h-11 items-center gap-2 border border-ink-200 px-3 text-ink-500 lg:h-8 lg:px-2">
+          <SearchIcon className="h-3.5 w-3.5" />
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={placeholder}
+            aria-label={placeholder}
+            className="h-full min-w-0 flex-1 border-0 bg-transparent p-0 text-[12px] text-ink-900 outline-none placeholder:text-ink-400"
+          />
+        </label>
+      ) : null}
+      {matchingOptions.length > 0 ? (
+        <ExpandableFilterOptions
+          options={matchingOptions}
+          selectedValues={selectedValues}
+          renderOption={renderOption}
+          forceExpanded={Boolean(normalizedQuery)}
+        />
+      ) : (
+        <p className="py-2 text-[12px] text-ink-500">Nema odgovarajućih opcija.</p>
+      )}
+    </>
+  );
+}
+
+export default function HomeProductTabs({ groups, brandsRecord, initialFilterState }: HomeProductTabsProps) {
+  const catalogInitialFilterState = useMemo(
+    () => initialFilterState ? sanitizeFilterStateAgainstCatalog(initialFilterState, groups, brandsRecord) : undefined,
+    [brandsRecord, groups, initialFilterState],
+  );
+  const [selectedCategorySlugs, setSelectedCategorySlugs] = useState<string[]>(() => catalogInitialFilterState?.categories.slice() || []);
+  const [selectedBrandIds, setSelectedBrandIds] = useState<string[]>(() => catalogInitialFilterState?.brands.slice() || []);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>(() => catalogInitialFilterState?.types.slice() || []);
+  const [selectedApplications, setSelectedApplications] = useState<string[]>(() => catalogInitialFilterState?.applications.slice() || []);
+  const [selectedCollections, setSelectedCollections] = useState<string[]>(() => catalogInitialFilterState?.collections.slice() || []);
+  const [selectedFacetValues, setSelectedFacetValues] = useState<string[]>(() => catalogInitialFilterState?.facets.slice() || []);
+  const [thicknessRange, setThicknessRange] = useState<[number, number] | null>(() => catalogInitialFilterState?.thickness || null);
   const [brandQuery, setBrandQuery] = useState('');
-  const [sortMode, setSortMode] = useState('featured');
-  const [activeProductTab, setActiveProductTab] = useState<'collections' | 'colors'>('collections');
+  const [sortMode, setSortMode] = useState<HomepageSortMode>(() => catalogInitialFilterState?.sort || 'featured');
+  const [activeProductTab, setActiveProductTab] = useState<'collections' | 'colors'>(() => catalogInitialFilterState?.tab || 'collections');
   const [visibleProductCount, setVisibleProductCount] = useState(INITIAL_PRODUCT_LIMIT);
   const [loadedColorGroups, setLoadedColorGroups] = useState<Record<string, Product[]>>({});
-  const [loadingColorCategoryIds, setLoadingColorCategoryIds] = useState<string[]>([]);
   const [colorLoadError, setColorLoadError] = useState<string | null>(null);
   const [colorLoadAttempt, setColorLoadAttempt] = useState(0);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const hasUserScrolledRef = useRef(false);
-  const filtersTriggerRef = useRef<HTMLButtonElement>(null);
   const drawerCloseButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const drawerReturnFocusRef = useRef<HTMLElement | null>(null);
+  const historyReadyRef = useRef(false);
+  const applyingHistoryRef = useRef(false);
+  const historyModeRef = useRef<'push' | 'replace'>('push');
+
+  const filterUrlState = useMemo<HomeFilterUrlState>(() => ({
+    categories: selectedCategorySlugs,
+    brands: selectedBrandIds,
+    types: selectedTypes,
+    applications: selectedApplications,
+    collections: selectedCollections,
+    facets: selectedFacetValues,
+    thickness: thicknessRange,
+    tab: activeProductTab,
+    sort: sortMode,
+  }), [
+    activeProductTab,
+    selectedApplications,
+    selectedBrandIds,
+    selectedCategorySlugs,
+    selectedCollections,
+    selectedFacetValues,
+    selectedTypes,
+    sortMode,
+    thicknessRange,
+  ]);
+
+  useEffect(() => {
+    const restoreFromHistory = () => {
+      const state = sanitizeFilterStateAgainstCatalog(
+        parseHomeFilterUrlState(window.location.search),
+        groups,
+        brandsRecord,
+      );
+      const canonicalParams = serializeHomeFilterUrlState(state, window.location.search);
+      const canonicalSearch = canonicalParams.toString();
+      const canonicalUrl = `${window.location.pathname}${canonicalSearch ? `?${canonicalSearch}` : ''}${window.location.hash}`;
+      const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+      if (canonicalUrl !== currentUrl) {
+        window.history.replaceState(null, '', canonicalUrl);
+      }
+      applyingHistoryRef.current = true;
+      setSelectedCategorySlugs(state.categories);
+      setSelectedBrandIds(state.brands);
+      setSelectedTypes(state.types);
+      setSelectedApplications(state.applications);
+      setSelectedCollections(state.collections);
+      setSelectedFacetValues(state.facets);
+      setThicknessRange(state.thickness);
+      setActiveProductTab(state.tab);
+      setSortMode(state.sort);
+      setBrandQuery('');
+      setIsFilterDrawerOpen(false);
+    };
+
+    window.addEventListener('popstate', restoreFromHistory);
+    return () => window.removeEventListener('popstate', restoreFromHistory);
+  }, [brandsRecord, groups]);
+
+  useEffect(() => {
+    const params = serializeHomeFilterUrlState(filterUrlState, window.location.search);
+    const nextSearch = params.toString();
+    const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ''}${window.location.hash}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+    if (!historyReadyRef.current) {
+      historyReadyRef.current = true;
+      if (nextUrl !== currentUrl) {
+        // Tokom prvog child efekta Next-ov history patch možda još nije montiran;
+        // sačuvaj njegov postojeći tree state umesto da ga obrišeš sa `null`.
+        window.history.replaceState(window.history.state, '', nextUrl);
+      }
+      return;
+    }
+
+    if (applyingHistoryRef.current) {
+      applyingHistoryRef.current = false;
+      historyModeRef.current = 'push';
+      return;
+    }
+
+    const mode = historyModeRef.current;
+    historyModeRef.current = 'push';
+
+    if (nextUrl !== currentUrl) {
+      window.history[mode === 'replace' ? 'replaceState' : 'pushState'](null, '', nextUrl);
+    }
+  }, [filterUrlState]);
 
   // Zaključaj scroll pozadine dok je mobilna fioka filtera otvorena
   // (isti obrazac kao nekadašnji ProductFilters drawer).
   useScrollLock(isFilterDrawerOpen);
 
-  // Zatvori fioku na Escape i upravljaj fokusom dok je otvorena.
+  // Header na početnoj emituje događaj jer se filter state namerno nalazi u
+  // katalog komponenti, a mobilni trigger vizuelno pripada globalnom headeru.
+  useEffect(() => {
+    const openFilters = () => {
+      drawerReturnFocusRef.current = document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+      setIsFilterDrawerOpen(true);
+    };
+
+    window.addEventListener(OPEN_HOME_FILTERS_EVENT, openFilters);
+    return () => window.removeEventListener(OPEN_HOME_FILTERS_EVENT, openFilters);
+  }, []);
+
+  // Escape, pravi Tab focus-trap i povratak fokusa.
   useEffect(() => {
     if (!isFilterDrawerOpen) return;
 
-    const triggerButton = filtersTriggerRef.current;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        event.preventDefault();
         setIsFilterDrawerOpen(false);
+        return;
+      }
+
+      if (event.key !== 'Tab' || !drawerRef.current) {
+        return;
+      }
+
+      const focusable = Array.from(drawerRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
+      )).filter((element) => element.offsetParent !== null);
+      if (focusable.length === 0) {
+        event.preventDefault();
+        drawerRef.current.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
     document.addEventListener('keydown', onKeyDown);
-    // Pri otvaranju fokus ulazi u dijalog — na dugme za zatvaranje
     drawerCloseButtonRef.current?.focus();
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
-      // Vrati fokus na dugme "Filteri" koje je otvorilo fioku
-      triggerButton?.focus();
+      const returnTarget = drawerReturnFocusRef.current;
+      if (returnTarget?.isConnected) {
+        returnTarget.focus();
+      }
     };
   }, [isFilterDrawerOpen]);
+
+  // Ako se viewport proširi na desktop, zatvori CSS-sakrivenu fioku i oslobodi scroll.
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const closeOnDesktop = (event: MediaQueryListEvent | MediaQueryList) => {
+      if (event.matches) setIsFilterDrawerOpen(false);
+    };
+
+    closeOnDesktop(desktop);
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
 
   useEffect(() => {
     const markUserScroll = () => {
@@ -532,6 +797,9 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
       }
 
       const next = current.filter((slug) => availableSlugs.has(slug));
+      if (next.length !== current.length) {
+        historyModeRef.current = 'replace';
+      }
       return next.length === current.length ? current : next;
     });
   }, [groups]);
@@ -576,14 +844,18 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   const missingColorCategoryIdsKey = missingColorCategoryIds.join(',');
 
   useEffect(() => {
-    if (activeProductTab !== 'colors' || !missingColorCategoryIdsKey) {
+    if (activeProductTab !== 'colors') {
+      return;
+    }
+
+    if (!missingColorCategoryIdsKey) {
+      setColorLoadError(null);
       return;
     }
 
     const categoryIds = missingColorCategoryIdsKey.split(',').filter(Boolean);
     let cancelled = false;
 
-    setLoadingColorCategoryIds(categoryIds);
     setColorLoadError(null);
 
     fetch(`/api/home-colors?categoryIds=${encodeURIComponent(categoryIds.join(','))}`)
@@ -612,11 +884,6 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
       .catch((error) => {
         if (!cancelled) {
           setColorLoadError(error instanceof Error ? error.message : 'Boje nisu učitane');
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingColorCategoryIds([]);
         }
       });
 
@@ -693,7 +960,9 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     (sum, group) => sum + (group.colorCount ?? loadedColorGroups[group.category.id]?.length ?? group.colorProducts?.length ?? 0),
     0,
   );
-  const isLoadingColors = activeProductTab === 'colors' && missingColorCategoryIds.length > 0 && loadingColorCategoryIds.length > 0;
+  const isLoadingColors = activeProductTab === 'colors'
+    && missingColorCategoryIds.length > 0
+    && !colorLoadError;
 
   const selectedCategorySlug = selectedCategorySlugs.length === 1 ? selectedCategorySlugs[0] : null;
   const singleSelectedGroup = selectedCategorySlug
@@ -798,12 +1067,11 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     [categorySlugById, facetInheritanceBySlug, facetMissingPolicy, facetSelectionsBySlug],
   );
 
-  const brandOptions = useMemo(() => buildBrandOptions(baseProducts, brandsRecord), [baseProducts, brandsRecord]);
-  const visibleBrandOptions = useMemo(
-    () => brandOptions.filter((option) => option.label.toLowerCase().includes(brandQuery.trim().toLowerCase())),
-    [brandOptions, brandQuery],
+  const rawBrandOptions = useMemo(
+    () => buildBrandOptions(baseProducts, brandsRecord, Number.MAX_SAFE_INTEGER),
+    [baseProducts, brandsRecord],
   );
-  const typeOptionGroups = useMemo<ScopedOptionGroup[]>(
+  const rawTypeOptionGroups = useMemo<ScopedOptionGroup[]>(
     () => {
       if (selectedCategorySlugs.length === 0) {
         return [];
@@ -838,11 +1106,11 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     },
     [filterBaseProductsByCategoryId, selectedCategorySlugs.length, tabGroups],
   );
-  const applicationOptions = useMemo(
+  const rawApplicationOptions = useMemo(
     () => buildApplicationOptions(baseProducts),
     [baseProducts],
   );
-  const collectionOptionGroups = useMemo<ScopedOptionGroup[]>(
+  const rawCollectionOptionGroups = useMemo<ScopedOptionGroup[]>(
     () => {
       if (selectedCategorySlugs.length === 0) {
         return [];
@@ -890,29 +1158,43 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     () => thicknessRange || ([thicknessBounds.min, thicknessBounds.max] as [number, number]),
     [thicknessBounds.max, thicknessBounds.min, thicknessRange],
   );
-  const thicknessDenominator = Math.max(thicknessBounds.max - thicknessBounds.min, 1);
-  const minThumbPosition = ((effectiveThicknessRange[0] - thicknessBounds.min) / thicknessDenominator) * 100;
-  const maxThumbPosition = ((effectiveThicknessRange[1] - thicknessBounds.min) / thicknessDenominator) * 100;
+  useEffect(() => {
+    if (!thicknessRange) return;
+
+    if (!thicknessBounds.hasData) {
+      historyModeRef.current = 'replace';
+      setThicknessRange(null);
+      return;
+    }
+
+    const nextMin = Math.max(thicknessBounds.min, Math.min(thicknessRange[0], thicknessBounds.max));
+    const nextMax = Math.max(nextMin, Math.min(thicknessRange[1], thicknessBounds.max));
+    if (nextMin !== thicknessRange[0] || nextMax !== thicknessRange[1]) {
+      historyModeRef.current = 'replace';
+      setThicknessRange([nextMin, nextMax]);
+    }
+  }, [thicknessBounds.hasData, thicknessBounds.max, thicknessBounds.min, thicknessRange]);
   const thicknessFiltered = thicknessRange !== null
     && (effectiveThicknessRange[0] > thicknessBounds.min || effectiveThicknessRange[1] < thicknessBounds.max);
   const colorDecorCount = colorTabCount;
 
-  // Postojeći filteri (brend/tip/primena/kolekcije/debljina) kao deljivi predikat —
-  // ista logika kao pre, izdvojena da bi i brojači novih facet grupa išli preko nje.
-  const baseRefinementPredicate = useMemo(() => {
+  // Deljivi predikat ume da preskoči samo grupu čiji broj trenutno računamo.
+  // Time OR ostaje unutar grupe, a sve druge grupe nastavljaju da rade kao AND.
+  const productMatchesBaseRefinements = useMemo(() => {
     const selectedBrandSet = new Set(selectedBrandIds);
     const selectedTypeMap = buildScopedSelectionMap(selectedTypes);
     const selectedApplicationSet = new Set(selectedApplications);
     const selectedCollectionMap = buildScopedSelectionMap(selectedCollections);
 
-    return (product: Product): boolean => {
-      if (selectedBrandSet.size > 0 && !selectedBrandSet.has(product.brandId)) {
+    return (product: Product, skip?: RefinementSkip): boolean => {
+      if (skip?.group !== 'brand' && selectedBrandSet.size > 0 && !selectedBrandSet.has(product.brandId)) {
         return false;
       }
 
       const categorySlug = categorySlugById.get(product.categoryId);
       const selectedTypesForCategory = categorySlug ? selectedTypeMap.get(categorySlug) : null;
-      if (selectedTypesForCategory && selectedTypesForCategory.size > 0) {
+      const skipsType = skip?.group === 'type' && skip.categorySlug === categorySlug;
+      if (!skipsType && selectedTypesForCategory && selectedTypesForCategory.size > 0) {
         const type = getSpecValue(product, ['type', 'tip']);
         const formattedType = type ? (categorySlug === VINYL_CATEGORY_SLUG ? formatVinylTypeLabel(type) : type) : null;
         if (!formattedType || !selectedTypesForCategory.has(normalizeOptionValue(formattedType))) {
@@ -921,19 +1203,20 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
       }
 
       const applicationMatches = getApplicationMatches(product);
-      if (selectedApplicationSet.size > 0 && !applicationMatches.some((value) => selectedApplicationSet.has(value))) {
+      if (skip?.group !== 'application' && selectedApplicationSet.size > 0 && !applicationMatches.some((value) => selectedApplicationSet.has(value))) {
         return false;
       }
 
       const selectedCollectionsForCategory = categorySlug ? selectedCollectionMap.get(categorySlug) : null;
-      if (selectedCollectionsForCategory && selectedCollectionsForCategory.size > 0) {
+      const skipsCollection = skip?.group === 'collection' && skip.categorySlug === categorySlug;
+      if (!skipsCollection && selectedCollectionsForCategory && selectedCollectionsForCategory.size > 0) {
         const collection = getCollectionFilterValue(product);
         if (!collection || !selectedCollectionsForCategory.has(normalizeOptionValue(collection))) {
           return false;
         }
       }
 
-      if (thicknessFiltered && thicknessBounds.hasData) {
+      if (skip?.group !== 'thickness' && thicknessFiltered && thicknessBounds.hasData) {
         const thickness = parseThicknessValue(product);
         if (thickness === null || thickness < effectiveThicknessRange[0] || thickness > effectiveThicknessRange[1]) {
           return false;
@@ -953,8 +1236,93 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     thicknessFiltered,
   ]);
 
+  const baseRefinementPredicate = useCallback(
+    (product: Product) => productMatchesBaseRefinements(product),
+    [productMatchesBaseRefinements],
+  );
+
+  const brandOptions = useMemo(
+    () => withLiveOptionCounts(
+      rawBrandOptions,
+      baseProducts,
+      (product) => [product.brandId],
+      (product) => productMatchesBaseRefinements(product, { group: 'brand' }) && productMatchesActiveFacets(product),
+    ),
+    [baseProducts, productMatchesActiveFacets, productMatchesBaseRefinements, rawBrandOptions],
+  );
+  const visibleBrandOptions = useMemo(
+    () => brandOptions.filter((option) => option.label.toLowerCase().includes(brandQuery.trim().toLowerCase())),
+    [brandOptions, brandQuery],
+  );
+
+  const typeOptionGroups = useMemo<ScopedOptionGroup[]>(
+    () => rawTypeOptionGroups.map((group) => {
+      const categoryProducts = filterBaseProductsByCategoryId.get(group.category.id) || [];
+      return {
+        ...group,
+        options: withLiveOptionCounts(
+          group.options,
+          categoryProducts,
+          (product) => {
+            const rawType = getSpecValue(product, ['type', 'tip']);
+            if (!rawType) return [];
+            const label = group.category.slug === VINYL_CATEGORY_SLUG ? formatVinylTypeLabel(rawType) : rawType;
+            return [buildScopedOptionValue(group.category.slug, normalizeOptionValue(label))];
+          },
+          (product) => productMatchesBaseRefinements(product, {
+            group: 'type',
+            categorySlug: group.category.slug,
+          }) && productMatchesActiveFacets(product),
+        ),
+      };
+    }),
+    [filterBaseProductsByCategoryId, productMatchesActiveFacets, productMatchesBaseRefinements, rawTypeOptionGroups],
+  );
+
+  const applicationOptions = useMemo(
+    () => withLiveOptionCounts(
+      rawApplicationOptions,
+      baseProducts,
+      getApplicationMatches,
+      (product) => productMatchesBaseRefinements(product, { group: 'application' }) && productMatchesActiveFacets(product),
+    ),
+    [baseProducts, productMatchesActiveFacets, productMatchesBaseRefinements, rawApplicationOptions],
+  );
+
+  const collectionOptionGroups = useMemo<ScopedOptionGroup[]>(
+    () => rawCollectionOptionGroups.map((group) => {
+      const categoryProducts = filterBaseProductsByCategoryId.get(group.category.id) || [];
+      return {
+        ...group,
+        options: withLiveOptionCounts(
+          group.options,
+          categoryProducts,
+          (product) => {
+            const collection = getCollectionFilterValue(product);
+            return collection
+              ? [buildScopedOptionValue(group.category.slug, normalizeOptionValue(collection))]
+              : [];
+          },
+          (product) => productMatchesBaseRefinements(product, {
+            group: 'collection',
+            categorySlug: group.category.slug,
+          }) && productMatchesActiveFacets(product),
+        ),
+      };
+    }),
+    [filterBaseProductsByCategoryId, productMatchesActiveFacets, productMatchesBaseRefinements, rawCollectionOptionGroups],
+  );
+
+  const canSortByPrice = useMemo(() => hasPricedProducts(baseProducts), [baseProducts]);
+  useEffect(() => {
+    if (sortMode === 'price' && !canSortByPrice) {
+      historyModeRef.current = 'replace';
+      setSortMode('featured');
+    }
+  }, [canSortByPrice, sortMode]);
+
   const filteredProducts = useMemo(
-    () => sortProducts(
+    () => sortHomepageProducts(
       baseProducts.filter((product) => baseRefinementPredicate(product) && productMatchesActiveFacets(product)),
       sortMode,
     ),
@@ -1035,6 +1403,74 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     selectedCategorySlugs,
     tabGroups,
   ]);
+
+  const validTypeValues = useMemo(
+    () => new Set(rawTypeOptionGroups.flatMap((group) => group.options.map((option) => option.value))),
+    [rawTypeOptionGroups],
+  );
+  const validCollectionValues = useMemo(
+    () => new Set(rawCollectionOptionGroups.flatMap((group) => group.options.map((option) => option.value))),
+    [rawCollectionOptionGroups],
+  );
+  const validFacetValues = useMemo<Set<string> | null>(() => {
+    if (missingFacetColorCategoryIdsKey) {
+      return null;
+    }
+
+    const values = new Set<string>();
+    for (const group of tabGroups) {
+      const categoryProducts = filterBaseProductsByCategoryId.get(group.category.id) || [];
+      const inheritance = facetInheritanceBySlug.get(group.category.slug) || {};
+
+      for (const def of getFacetDefsForCategory(group.category.slug)) {
+        const inheritMap = inheritance[def.param];
+        if (def.boolean) {
+          const hasTrueValue = categoryProducts.some((product) => productMatchesFacetDef(
+            product,
+            ['1'],
+            def,
+            { inheritMap, missing: 'exclude' },
+          ));
+          if (hasTrueValue) {
+            values.add(buildScopedFacetValue(group.category.slug, def.param, '1'));
+          }
+          continue;
+        }
+
+        for (const value of collectFacetOptionValues(categoryProducts, def, inheritMap)) {
+          values.add(buildScopedFacetValue(group.category.slug, def.param, value));
+        }
+      }
+    }
+
+    return values;
+  }, [facetInheritanceBySlug, filterBaseProductsByCategoryId, missingFacetColorCategoryIdsKey, tabGroups]);
+
+  useEffect(() => {
+    const scopedOptionsReady = activeProductTab === 'collections' || missingColorCategoryIds.length === 0;
+
+    if (scopedOptionsReady) {
+      setSelectedTypes((current) => {
+        const next = current.filter((value) => validTypeValues.has(value));
+        if (next.length !== current.length) historyModeRef.current = 'replace';
+        return next.length === current.length ? current : next;
+      });
+      setSelectedCollections((current) => {
+        const next = current.filter((value) => validCollectionValues.has(value));
+        if (next.length !== current.length) historyModeRef.current = 'replace';
+        return next.length === current.length ? current : next;
+      });
+    }
+
+    if (validFacetValues) {
+      setSelectedFacetValues((current) => {
+        const next = current.filter((value) => validFacetValues.has(value));
+        if (next.length !== current.length) historyModeRef.current = 'replace';
+        return next.length === current.length ? current : next;
+      });
+    }
+  }, [activeProductTab, missingColorCategoryIds.length, validCollectionValues, validFacetValues, validTypeValues]);
+
   const activeProductCount = activeProductTab === 'colors' && missingColorCategoryIds.length > 0
     ? colorTabCount
     : filteredProducts.length;
@@ -1110,6 +1546,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   };
 
   const updateThicknessMin = (value: number) => {
+    historyModeRef.current = 'replace';
     setThicknessRange((current) => {
       const [, currentMax] = current || [thicknessBounds.min, thicknessBounds.max];
       return [Math.min(value, currentMax), currentMax];
@@ -1117,6 +1554,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
   };
 
   const updateThicknessMax = (value: number) => {
+    historyModeRef.current = 'replace';
     setThicknessRange((current) => {
       const [currentMin] = current || [thicknessBounds.min, thicknessBounds.max];
       return [currentMin, Math.max(value, currentMin)];
@@ -1163,43 +1601,42 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     }),
     ...selectedBrandIds.flatMap((id) => {
       const brand = brandOptions.find((option) => option.value === id);
-      return brand
-        ? [{
-          id: `brand-${id}`,
-          label: brand.label,
-          onRemove: () => setSelectedBrandIds((current) => current.filter((item) => item !== id)),
-        }]
-        : [];
+      return [{
+        id: `brand-${id}`,
+        label: brand?.label || brandsRecord[id]?.name || `Brend ${id}`,
+        onRemove: () => setSelectedBrandIds((current) => current.filter((item) => item !== id)),
+      }];
     }),
     ...selectedTypes.flatMap((value) => {
       const option = typeOptionLookup.get(value);
-      return option
-        ? [{
-          id: `type-${value}`,
-          label: `${option.sectionTitle}: ${option.label}`,
-          onRemove: () => setSelectedTypes((current) => current.filter((item) => item !== value)),
-        }]
-        : [];
+      const parsed = parseScopedOptionValue(value);
+      if (!parsed) return [];
+      const sectionTitle = option?.sectionTitle || TYPE_FILTER_TITLES[parsed.categorySlug] || 'Tip';
+      return [{
+        id: `type-${value}`,
+        label: `${sectionTitle}: ${option?.label || parsed.optionValue}`,
+        onRemove: () => setSelectedTypes((current) => current.filter((item) => item !== value)),
+      }];
     }),
     ...selectedApplications.flatMap((value) => {
       const option = applicationOptions.find((item) => item.value === value);
-      return option
-        ? [{
-          id: `application-${value}`,
-          label: option.label,
-          onRemove: () => setSelectedApplications((current) => current.filter((item) => item !== value)),
-        }]
-        : [];
+      const fallback = APPLICATION_FILTERS.find((item) => item.value === value);
+      return [{
+        id: `application-${value}`,
+        label: option?.label || fallback?.label || value,
+        onRemove: () => setSelectedApplications((current) => current.filter((item) => item !== value)),
+      }];
     }),
     ...selectedCollections.flatMap((value) => {
       const option = collectionOptionLookup.get(value);
-      return option
-        ? [{
-          id: `collection-${value}`,
-          label: `${option.sectionTitle}: ${option.label}`,
-          onRemove: () => setSelectedCollections((current) => current.filter((item) => item !== value)),
-        }]
-        : [];
+      const parsed = parseScopedOptionValue(value);
+      if (!parsed) return [];
+      const sectionTitle = option?.sectionTitle || COLLECTION_FILTER_TITLES[parsed.categorySlug] || 'Kolekcija';
+      return [{
+        id: `collection-${value}`,
+        label: `${sectionTitle}: ${option?.label || parsed.optionValue}`,
+        onRemove: () => setSelectedCollections((current) => current.filter((item) => item !== value)),
+      }];
     }),
     // Čipovi novih facet grupa — ljudske vrednosti kao na /kategorije
     // („Klasa 33", „Riblja kost", „Podno grejanje").
@@ -1245,32 +1682,40 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
       ) : null}
 
       <FilterSection title="Kategorija">
-        <div className="space-y-0.5">
-          {categoryOptions.map((item) => (
+        <ExpandableFilterOptions
+          options={categoryOptions.map((item) => ({ value: item.slug, label: item.name, count: item.count }))}
+          selectedValues={selectedCategorySlugs}
+          renderOption={(item) => (
             <FilterButton
-              key={item.slug}
-              active={selectedCategorySlugs.includes(item.slug)}
-              label={item.name}
+              key={item.value}
+              active={selectedCategorySlugs.includes(item.value)}
+              label={item.label}
               count={item.count}
-              onClick={() => toggleCategoryFilter(item.slug)}
+              onClick={() => toggleCategoryFilter(item.value)}
             />
-          ))}
-        </div>
+          )}
+        />
       </FilterSection>
 
       {typeOptionGroups.map((group) => (
         <FilterSection key={`type-${group.category.slug}`} title={group.title}>
-          <div className="space-y-0.5">
-            {group.options.map((option) => (
-              <FilterButton
-                key={option.value}
-                active={selectedTypes.includes(option.value)}
-                label={option.label}
-                count={option.count}
-                onClick={() => setSelectedTypes((current) => toggleSelection(current, option.value))}
-              />
-            ))}
-          </div>
+          <ExpandableFilterOptions
+            options={group.options}
+            selectedValues={selectedTypes}
+            renderOption={(option) => {
+              const active = selectedTypes.includes(option.value);
+              return (
+                <FilterButton
+                  key={option.value}
+                  active={active}
+                  label={option.label}
+                  count={option.count}
+                  disabled={option.count === 0 && !active}
+                  onClick={() => setSelectedTypes((current) => toggleSelection(current, option.value))}
+                />
+              );
+            }}
+          />
         </FilterSection>
       ))}
 
@@ -1280,8 +1725,10 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
           title={group.title}
           defaultOpen={!group.def.collapsed || group.options.some((option) => selectedFacetValues.includes(option.value))}
         >
-          <div className="space-y-0.5">
-            {group.options.map((option) => {
+          <ExpandableFilterOptions
+            options={group.options}
+            selectedValues={selectedFacetValues}
+            renderOption={(option) => {
               const active = selectedFacetValues.includes(option.value);
               return (
                 <FilterButton
@@ -1293,99 +1740,113 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                   onClick={() => setSelectedFacetValues((current) => toggleSelection(current, option.value))}
                 />
               );
-            })}
-          </div>
+            }}
+          />
         </FilterSection>
       ))}
 
       {applicationOptions.length > 0 ? (
         <FilterSection title="Primena">
-          <div className="space-y-0.5">
-            {applicationOptions.map((option) => (
-              <FilterButton
-                key={option.value}
-                active={selectedApplications.includes(option.value)}
-                label={option.label}
-                count={option.count}
-                onClick={() => setSelectedApplications((current) => toggleSelection(current, option.value))}
-              />
-            ))}
-          </div>
+          <ExpandableFilterOptions
+            options={applicationOptions}
+            selectedValues={selectedApplications}
+            renderOption={(option) => {
+              const active = selectedApplications.includes(option.value);
+              return (
+                <FilterButton
+                  key={option.value}
+                  active={active}
+                  label={option.label}
+                  count={option.count}
+                  disabled={option.count === 0 && !active}
+                  onClick={() => setSelectedApplications((current) => toggleSelection(current, option.value))}
+                />
+              );
+            }}
+          />
         </FilterSection>
       ) : null}
 
       {thicknessBounds.hasData ? (
         <FilterSection title="Debljina">
-          <div className="px-1 pb-1 pt-1">
-            <div className="relative h-7">
-              <div className="absolute left-1 right-1 top-1/2 h-0.5 -translate-y-1/2 bg-ink-200" />
-              <div
-                className="absolute top-1/2 h-0.5 -translate-y-1/2 bg-ink-900"
-                style={{
-                  left: `${minThumbPosition}%`,
-                  right: `${100 - maxThumbPosition}%`,
-                }}
-              />
-              <span
-                className="pointer-events-none absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 bg-ink-900"
-                style={{ left: `${minThumbPosition}%` }}
-              />
-              <span
-                className="pointer-events-none absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 bg-ink-900"
-                style={{ left: `${maxThumbPosition}%` }}
-              />
-              <input
-                type="range"
-                min={thicknessBounds.min}
-                max={thicknessBounds.max}
-                step="0.1"
-                value={effectiveThicknessRange[0]}
-                onChange={(event) => updateThicknessMin(Number(event.target.value))}
-                className="absolute inset-x-0 top-0 h-7 w-full cursor-pointer opacity-0"
-                aria-label="Minimalna debljina"
-              />
-              <input
-                type="range"
-                min={thicknessBounds.min}
-                max={thicknessBounds.max}
-                step="0.1"
-                value={effectiveThicknessRange[1]}
-                onChange={(event) => updateThicknessMax(Number(event.target.value))}
-                className="absolute inset-x-0 top-0 h-7 w-full cursor-pointer opacity-0"
-                aria-label="Maksimalna debljina"
-              />
-            </div>
-            <div className="flex justify-between text-[12px] text-ink-700">
-              <span>{formatMm(effectiveThicknessRange[0])}</span>
-              <span>{formatMm(effectiveThicknessRange[1])}</span>
-            </div>
+          <div className="grid grid-cols-2 gap-2 pb-1 pt-1">
+            <label className="text-[11px] text-ink-500">
+              <span>Od</span>
+              <div className="mt-1 flex h-11 items-center border border-ink-200 px-3 lg:h-8 lg:px-2">
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  min={thicknessBounds.min}
+                  max={effectiveThicknessRange[1]}
+                  step="0.1"
+                  value={effectiveThicknessRange[0]}
+                  onChange={(event) => {
+                    if (Number.isFinite(event.currentTarget.valueAsNumber)) {
+                      updateThicknessMin(event.currentTarget.valueAsNumber);
+                    }
+                  }}
+                  className="min-w-0 flex-1 border-0 bg-transparent p-0 text-[12px] text-ink-900 outline-none"
+                  aria-label="Minimalna debljina"
+                />
+                <span className="text-[11px] text-ink-400">mm</span>
+              </div>
+            </label>
+            <label className="text-[11px] text-ink-500">
+              <span>Do</span>
+              <div className="mt-1 flex h-11 items-center border border-ink-200 px-3 lg:h-8 lg:px-2">
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  min={effectiveThicknessRange[0]}
+                  max={thicknessBounds.max}
+                  step="0.1"
+                  value={effectiveThicknessRange[1]}
+                  onChange={(event) => {
+                    if (Number.isFinite(event.currentTarget.valueAsNumber)) {
+                      updateThicknessMax(event.currentTarget.valueAsNumber);
+                    }
+                  }}
+                  className="min-w-0 flex-1 border-0 bg-transparent p-0 text-[12px] text-ink-900 outline-none"
+                  aria-label="Maksimalna debljina"
+                />
+                <span className="text-[11px] text-ink-400">mm</span>
+              </div>
+            </label>
           </div>
         </FilterSection>
       ) : null}
 
       {brandOptions.length > 0 ? (
         <FilterSection title="Brand / brend">
-          <label className="mb-2 flex h-8 items-center gap-2 border border-ink-200 px-2 text-ink-500">
+          <label className="mb-2 flex h-11 items-center gap-2 border border-ink-200 px-3 text-ink-500 lg:h-8 lg:px-2">
             <SearchIcon className="h-3.5 w-3.5" />
             <input
               type="search"
               value={brandQuery}
               onChange={(event) => setBrandQuery(event.target.value)}
               placeholder="Pretraži brend..."
+              aria-label="Pretraži brendove"
               className="h-full min-w-0 flex-1 border-0 bg-transparent p-0 text-[12px] text-ink-900 outline-none placeholder:text-ink-400"
             />
           </label>
-          <div className="space-y-0.5">
-            {visibleBrandOptions.map((option) => (
-              <FilterButton
-                key={option.value}
-                active={selectedBrandIds.includes(option.value)}
-                label={option.label}
-                count={option.count}
-                onClick={() => setSelectedBrandIds((current) => toggleSelection(current, option.value))}
-              />
-            ))}
-          </div>
+          <ExpandableFilterOptions
+            options={visibleBrandOptions}
+            selectedValues={selectedBrandIds}
+            forceExpanded={Boolean(brandQuery.trim())}
+            renderOption={(option) => {
+              const active = selectedBrandIds.includes(option.value);
+              return (
+                <FilterButton
+                  key={option.value}
+                  active={active}
+                  label={option.label}
+                  count={option.count}
+                  disabled={option.count === 0 && !active}
+                  onClick={() => setSelectedBrandIds((current) => toggleSelection(current, option.value))}
+                />
+              );
+            }}
+          />
           {brandQuery.trim() && brandOptions.length > visibleBrandOptions.length ? (
             <button
               type="button"
@@ -1400,17 +1861,24 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
 
       {collectionOptionGroups.map((group) => (
         <FilterSection key={`collection-${group.category.slug}`} title={group.title} defaultOpen={false}>
-          <div className="space-y-0.5">
-            {group.options.map((option) => (
-              <FilterButton
-                key={option.value}
-                active={selectedCollections.includes(option.value)}
-                label={option.label}
-                count={option.count}
-                onClick={() => setSelectedCollections((current) => toggleSelection(current, option.value))}
-              />
-            ))}
-          </div>
+          <SearchableFilterOptions
+            options={group.options}
+            selectedValues={selectedCollections}
+            placeholder={`Pretraži ${group.title.toLowerCase()}...`}
+            renderOption={(option) => {
+              const active = selectedCollections.includes(option.value);
+              return (
+                <FilterButton
+                  key={option.value}
+                  active={active}
+                  label={option.label}
+                  count={option.count}
+                  disabled={option.count === 0 && !active}
+                  onClick={() => setSelectedCollections((current) => toggleSelection(current, option.value))}
+                />
+              );
+            }}
+          />
         </FilterSection>
       ))}
     </>
@@ -1420,7 +1888,7 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
     <section className="bg-white">
       <h1 className="sr-only">Podovi.online katalog proizvoda</h1>
 
-      <div className="mx-auto w-full max-w-[1536px] px-6 pb-16 pt-6 lg:pb-20">
+      <div className="mx-auto w-full max-w-[1536px] px-6 pb-16 pt-2 md:pt-6 lg:pb-20">
         <div className="grid gap-8 lg:grid-cols-[262px_minmax(0,1fr)] xl:gap-11">
           <aside className="hidden lg:block">
             <div className="sticky top-24 space-y-4">
@@ -1449,9 +1917,9 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
             </div>
           </aside>
 
-          <div className="relative min-w-0 pt-2">
-            <div className="pb-3">
-              <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+          <div className="relative min-w-0 pt-0 md:pt-2">
+            <div className="pb-0 md:pb-3">
+              <div className="hidden flex-col gap-5 md:flex md:flex-row md:items-start md:justify-between">
                 <div>
                   <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
                     <h2 className="text-[30px] font-semibold leading-tight text-ink-900 md:text-[32px]">
@@ -1468,36 +1936,26 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
 
               </div>
 
-              {/* MOBILNO: jedan red — levo skrolabilni čipovi AKTIVNIH filtera (× skida
-                  vrednost, ista logika kao desktop red čipova), desno trigger „Filteri (N)"
-                  koji otvara fioku sa ISTIM panelom filtera kao desktop. */}
-              <div className="mt-5 flex items-center gap-3 border-y border-ink-200 py-2 lg:hidden">
-                <div className="flex min-w-0 flex-1 items-center gap-2 overflow-x-auto" aria-label="Aktivni filteri">
+              {/* Na telefonu summary copy je sakriven; ostaju samo aktivni filter čipovi.
+                  Otvaranje fioke je u desnom uglu globalnog headera. */}
+              {activeFilterChips.length > 0 ? (
+                <div className="flex items-center border-y border-ink-200 py-2 md:mt-5 lg:hidden">
+                  <div className="flex min-w-0 flex-1 items-center gap-2 overflow-x-auto" aria-label="Aktivni filteri">
                   {activeFilterChips.map((chip) => (
                     <button
                       key={chip.id}
                       type="button"
                       onClick={chip.onRemove}
+                      aria-label={`Ukloni filter ${chip.label}`}
                       className="inline-flex h-8 shrink-0 items-center gap-2 border border-ink-200 bg-white px-2.5 text-[12px] text-ink-800 transition-colors hover:border-ink-900"
                     >
                       {chip.label}
-                      <span className="text-ink-500" aria-hidden="true">x</span>
+                      <span className="text-ink-500" aria-hidden="true">×</span>
                     </button>
                   ))}
+                  </div>
                 </div>
-                <button
-                  type="button"
-                  ref={filtersTriggerRef}
-                  onClick={() => setIsFilterDrawerOpen(true)}
-                  aria-haspopup="dialog"
-                  aria-expanded={isFilterDrawerOpen}
-                  data-testid="home-filters-trigger"
-                  className="inline-flex min-h-[44px] shrink-0 items-center gap-2 text-[13px] text-ink-900 transition-opacity hover:opacity-60"
-                >
-                  Filteri{activeFilterChips.length > 0 ? ` (${activeFilterChips.length})` : ''}
-                  <FilterSlidersIcon className="h-4 w-4" />
-                </button>
-              </div>
+              ) : null}
             </div>
 
             {/* Desktop red čipova — na mobilnom aktivni čipovi žive u redu uz „Filteri" trigger */}
@@ -1508,10 +1966,11 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                     key={chip.id}
                     type="button"
                     onClick={chip.onRemove}
+                    aria-label={`Ukloni filter ${chip.label}`}
                     className="inline-flex h-8 items-center gap-2 border border-ink-200 bg-white px-2.5 text-[12px] text-ink-800 transition-colors hover:border-ink-900"
                   >
                     {chip.label}
-                    <span className="text-ink-500" aria-hidden="true">x</span>
+                    <span className="text-ink-500" aria-hidden="true">×</span>
                   </button>
                 ))}
                 <button
@@ -1555,12 +2014,12 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                 <span className="sr-only">Sortiraj proizvode</span>
                 <select
                   value={sortMode}
-                  onChange={(event) => setSortMode(event.target.value)}
+                  onChange={(event) => setSortMode(event.target.value as HomepageSortMode)}
                   className="h-9 w-full border border-ink-200 bg-white px-3 text-[12px] text-ink-900 outline-none transition-colors focus:border-ink-900"
                 >
-                  <option value="featured">Sortiraj: Najnovije</option>
+                  <option value="featured">Sortiraj: Preporučeno</option>
                   <option value="name">Sortiraj: Naziv</option>
-                  <option value="price">Sortiraj: Cena</option>
+                  {canSortByPrice ? <option value="price">Sortiraj: Cena</option> : null}
                 </select>
               </label>
             </div>
@@ -1628,13 +2087,16 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
           />
 
           <div
+            id="home-filter-drawer"
+            ref={drawerRef}
             role="dialog"
             aria-modal="true"
-            aria-label="Filteri"
-            className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-ink-200 bg-white"
+            aria-labelledby="home-filter-drawer-title"
+            tabIndex={-1}
+            className="absolute inset-y-0 right-0 flex h-[100dvh] w-full max-w-md flex-col border-l border-ink-200 bg-white"
           >
             <div className="flex items-center justify-between border-b border-ink-200 px-6 py-4">
-              <h2 className="text-[14px] font-semibold text-ink-900">Filteri</h2>
+              <h2 id="home-filter-drawer-title" className="text-[14px] font-semibold text-ink-900">Filteri</h2>
               <button
                 type="button"
                 ref={drawerCloseButtonRef}
@@ -1646,11 +2108,11 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-6 py-6">
+            <div className="min-h-0 flex-1 overscroll-contain overflow-y-auto px-6 py-6">
               {renderFilterPanel(false)}
             </div>
 
-            <div className="flex gap-3 border-t border-ink-200 px-6 py-4">
+            <div className="flex gap-3 border-t border-ink-200 px-6 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4">
               {activeFilterChips.length > 0 ? (
                 <button
                   type="button"
@@ -1660,14 +2122,30 @@ export default function HomeProductTabs({ groups, brandsRecord }: HomeProductTab
                   Očisti sve
                 </button>
               ) : null}
-              <button
-                type="button"
-                onClick={() => setIsFilterDrawerOpen(false)}
-                className="btn-primary flex-1"
-                data-testid="home-filters-drawer-apply"
-              >
-                Prikaži {activeProductCount} {pluralizeResults(activeProductCount)}
-              </button>
+              {activeProductTab === 'colors' && colorLoadError ? (
+                <button
+                  type="button"
+                  onClick={() => setColorLoadAttempt((current) => current + 1)}
+                  className="btn-primary flex-1"
+                >
+                  Pokušaj ponovo
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setIsFilterDrawerOpen(false)}
+                  disabled={isLoadingColors}
+                  className="btn-primary flex-1 disabled:cursor-wait disabled:opacity-60"
+                  data-testid="home-filters-drawer-apply"
+                >
+                  {isLoadingColors
+                    ? 'Učitavam rezultate…'
+                    : `Prikaži ${activeProductCount} ${pluralizeResults(activeProductCount)}`}
+                </button>
+              )}
+              <span className="sr-only" role="status" aria-live="polite">
+                {isLoadingColors ? 'Učitavam rezultate' : `${activeProductCount} ${pluralizeResults(activeProductCount)}`}
+              </span>
             </div>
           </div>
         </div>

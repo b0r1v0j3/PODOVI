@@ -38,7 +38,7 @@ interface SearchResults {
 }
 
 interface GlobalSearchProps {
-    variant?: 'icon' | 'bar';
+    variant?: 'icon' | 'bar' | 'inline';
 }
 
 export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
@@ -53,6 +53,8 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
     const triggerRef = useRef<HTMLButtonElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
+    const requestControllerRef = useRef<AbortController | null>(null);
+    const requestIdRef = useRef(0);
 
     const totalResults = results
         ? results.products.length
@@ -61,28 +63,46 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
     // Fetch search results
     const fetchResults = useCallback(async (q: string) => {
         if (q.length < 2) {
+            requestControllerRef.current?.abort();
+            requestIdRef.current += 1;
             setResults(null);
             setIsOpen(false);
+            setIsLoading(false);
             return;
         }
 
+        requestControllerRef.current?.abort();
+        const controller = new AbortController();
+        requestControllerRef.current = controller;
+        const requestId = ++requestIdRef.current;
         setIsLoading(true);
         try {
-            const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+            const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`, { signal: controller.signal });
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`);
+            }
             const data: SearchResults = await res.json();
+            if (requestId !== requestIdRef.current) return;
             setResults(data);
             setIsOpen(true);
             setActiveIndex(-1);
         } catch {
+            if (controller.signal.aborted || requestId !== requestIdRef.current) return;
             setResults(null);
+            setIsOpen(false);
         } finally {
-            setIsLoading(false);
+            if (requestId === requestIdRef.current) {
+                setIsLoading(false);
+            }
         }
     }, []);
 
     // Debounced search
     useEffect(() => {
         if (debounceRef.current) clearTimeout(debounceRef.current);
+        requestControllerRef.current?.abort();
+        requestIdRef.current += 1;
+        setIsLoading(false);
 
         if (query.length < 2) {
             setResults(null);
@@ -99,10 +119,15 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
         };
     }, [query, fetchResults]);
 
+    useEffect(() => () => requestControllerRef.current?.abort(), []);
+
     // Close on click outside
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+                requestControllerRef.current?.abort();
+                requestIdRef.current += 1;
+                setIsLoading(false);
                 setIsOpen(false);
                 setExpanded(false);
             }
@@ -121,13 +146,27 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
     };
 
     const closeAndReset = useCallback(() => {
+        requestControllerRef.current?.abort();
+        requestIdRef.current += 1;
         setIsOpen(false);
         setExpanded(false);
         setQuery('');
         setResults(null);
         setActiveIndex(-1);
-        // Fokus se vraća na trigger dugme ove instance
-        triggerRef.current?.focus();
+        if (variant === 'inline') {
+            inputRef.current?.focus();
+        } else {
+            triggerRef.current?.focus();
+        }
+    }, [variant]);
+
+    const closeInlineResults = useCallback(() => {
+        requestControllerRef.current?.abort();
+        requestIdRef.current += 1;
+        setIsLoading(false);
+        setIsOpen(false);
+        setActiveIndex(-1);
+        inputRef.current?.focus();
     }, []);
 
     // Scroll lock dok je pretraga otvorena
@@ -135,11 +174,16 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
 
     // Escape na nivou dokumenta dok je pretraga otvorena
     useEffect(() => {
-        if (!expanded) return;
+        const inlinePopupOpen = variant === 'inline' && isOpen;
+        if (!expanded && !inlinePopupOpen) return;
 
         const handleDocumentKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
-                closeAndReset();
+                if (inlinePopupOpen) {
+                    closeInlineResults();
+                } else {
+                    closeAndReset();
+                }
             }
         };
         document.addEventListener('keydown', handleDocumentKeyDown);
@@ -147,16 +191,19 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
         return () => {
             document.removeEventListener('keydown', handleDocumentKeyDown);
         };
-    }, [expanded, closeAndReset]);
+    }, [closeAndReset, closeInlineResults, expanded, isOpen, variant]);
 
     // Keyboard navigation
     const handleKeyDown = (e: React.KeyboardEvent) => {
         const items = getAllItems();
 
-        if (e.key === 'ArrowDown') {
+        if (e.key === 'Escape' && variant === 'inline') {
+            e.preventDefault();
+            closeInlineResults();
+        } else if (e.key === 'ArrowDown' && items.length > 0) {
             e.preventDefault();
             setActiveIndex(prev => (prev < items.length - 1 ? prev + 1 : 0));
-        } else if (e.key === 'ArrowUp') {
+        } else if (e.key === 'ArrowUp' && items.length > 0) {
             e.preventDefault();
             setActiveIndex(prev => (prev > 0 ? prev - 1 : items.length - 1));
         } else if (e.key === 'Enter' && activeIndex >= 0 && items[activeIndex]) {
@@ -187,30 +234,54 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
     };
 
     return (
-        <div ref={containerRef}>
+        <div ref={containerRef} className={variant === 'inline' ? 'relative w-full' : undefined}>
             {/* Trigger */}
-            <button
-                ref={triggerRef}
-                type="button"
-                className={
-                    variant === 'bar'
-                        ? 'flex min-h-[36px] w-full items-center gap-3 rounded-[4px] border border-ink-200 bg-white px-3 text-left text-[13px] text-ink-500 transition-colors duration-200 hover:border-ink-400 hover:text-ink-700'
-                        : 'flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-600 transition-colors duration-200 hover:text-ink-900'
-                }
-                onClick={openSearch}
-                aria-label="Otvori pretragu"
-                aria-expanded={expanded}
-            >
-                <svg className="h-[18px] w-[18px] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d="m21 21-4.2-4.2M19 10.5a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0Z" />
-                </svg>
-                {variant === 'bar' && (
-                    <span className="truncate">Pretraži proizvode, kolekcije, brendove...</span>
-                )}
-            </button>
+            {variant === 'inline' ? (
+                <div className="flex h-9 w-full items-center gap-2 rounded-[4px] border border-ink-200 bg-white px-2.5 text-ink-500 focus-within:border-ink-900">
+                    <svg className="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d="m21 21-4.2-4.2M19 10.5a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0Z" />
+                    </svg>
+                    <input
+                        ref={inputRef}
+                        type="search"
+                        value={query}
+                        onChange={(event) => setQuery(event.target.value)}
+                        onKeyDown={handleKeyDown}
+                        onFocus={() => { if (results && totalResults > 0) setIsOpen(true); }}
+                        placeholder="Pretraži..."
+                        className="h-full min-w-0 flex-1 border-0 bg-transparent p-0 text-[13px] text-ink-900 outline-none placeholder:text-ink-400"
+                        aria-label="Pretraži proizvode"
+                        aria-expanded={isOpen}
+                        role="combobox"
+                        aria-autocomplete="list"
+                        aria-controls="search-results-list"
+                        aria-activedescendant={activeIndex >= 0 ? `search-result-option-${activeIndex}` : undefined}
+                    />
+                </div>
+            ) : (
+                <button
+                    ref={triggerRef}
+                    type="button"
+                    className={
+                        variant === 'bar'
+                            ? 'flex min-h-[36px] w-full items-center gap-3 rounded-[4px] border border-ink-200 bg-white px-3 text-left text-[13px] text-ink-500 transition-colors duration-200 hover:border-ink-400 hover:text-ink-700'
+                            : 'flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-600 transition-colors duration-200 hover:text-ink-900'
+                    }
+                    onClick={openSearch}
+                    aria-label="Otvori pretragu"
+                    aria-expanded={expanded}
+                >
+                    <svg className="h-[18px] w-[18px] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d="m21 21-4.2-4.2M19 10.5a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0Z" />
+                    </svg>
+                    {variant === 'bar' && (
+                        <span className="truncate">Pretraži proizvode, kolekcije, brendove...</span>
+                    )}
+                </button>
+            )}
 
             {/* Full-width search overlay preko headera */}
-            {expanded && (
+            {expanded && variant !== 'inline' && (
                 <div className="fixed inset-0 z-[70] flex flex-col bg-white md:bottom-auto md:max-h-[85vh] md:border-b md:border-ink-200">
                     {/* Input red — puna širina */}
                     <div className="border-b border-ink-200">
@@ -235,6 +306,7 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
                                 role="combobox"
                                 aria-autocomplete="list"
                                 aria-controls="search-results-list"
+                                aria-activedescendant={activeIndex >= 0 ? `search-result-option-${activeIndex}` : undefined}
                             />
                             <button
                                 type="button"
@@ -262,7 +334,7 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
                                         {['LVT', 'Laminat', 'Parket', 'Vodootporno', 'Hrast', 'Tamno sivo', 'Belo'].map(term => (
                                             <button
                                                 key={term}
-                                                onClick={() => { setQuery(term); fetchResults(term); }}
+                                                onClick={() => setQuery(term)}
                                                 className="min-h-[44px] border border-ink-200 px-4 text-[13px] text-ink-600 transition-colors duration-200 hover:border-ink-900 hover:text-ink-900"
                                             >
                                                 {term}
@@ -277,6 +349,20 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
                     </div>
                 </div>
             )}
+
+            {variant === 'inline' && query.length >= 2 && (isLoading || isOpen) ? (
+                <div className="fixed inset-x-0 top-14 z-[70] max-h-[calc(100dvh-3.5rem)] overflow-y-auto overscroll-contain border-b border-ink-200 bg-white">
+                    <div className="px-4 py-3">
+                        {isLoading && !results ? (
+                            <div className="space-y-2" aria-hidden="true">
+                                <div className="h-14 animate-pulse bg-paper" />
+                                <div className="h-14 animate-pulse bg-paper" />
+                                <div className="h-14 animate-pulse bg-paper" />
+                            </div>
+                        ) : renderResults()}
+                    </div>
+                </div>
+            ) : null}
         </div>
     );
 
@@ -285,9 +371,11 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
 
         if (totalResults === 0) {
             return (
-                <div className="py-10 text-center">
-                    <p className="text-sm text-ink-600">Nema rezultata za &ldquo;{query}&rdquo;</p>
-                    <p className="mt-1 text-[13px] text-ink-500">Pokušajte sa drugim pojmom</p>
+                <div id="search-results-list" role="listbox" aria-label="Rezultati pretrage">
+                    <div role="option" aria-selected="false" aria-disabled="true" className="py-10 text-center">
+                        <p className="text-sm text-ink-600">Nema rezultata za &ldquo;{query}&rdquo;</p>
+                        <p className="mt-1 text-[13px] text-ink-500">Pokušajte sa drugim pojmom</p>
+                    </div>
                 </div>
             );
         }
@@ -298,46 +386,51 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
             <>
                 {/* Products */}
                 {results.products.length > 0 && (
-                    <div id="search-results-list">
+                    <div>
                         <div className="border-b border-ink-200 pb-2">
                             <span className="eyebrow">
                                 Proizvodi ({results.products.length})
                             </span>
                         </div>
-                        {results.products.map((product) => {
-                            const idx = flatIndex++;
-                            return (
-                                <Link
-                                    key={product.id}
-                                    href={product.url || `/proizvodi/${product.slug}`}
-                                    onClick={handleResultClick}
-                                    className={`flex items-center gap-4 border-b border-ink-200 px-1 py-3 transition-colors duration-200 hover:bg-paper ${idx === activeIndex ? 'bg-paper' : ''
-                                        }`}
-                                >
-                                    <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden bg-paper">
-                                        <ProductImage
-                                            src={product.image}
-                                            alt={product.name}
-                                            sources={product.imageCandidates}
-                                            sizes="48px"
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                    <div className="min-w-0 flex-1">
-                                        <p className="truncate text-sm text-ink-900">{product.name}</p>
-                                        {product.price && (
-                                            <p className="text-[13px] text-ink-600">{formatPrice(product.price)}</p>
-                                        )}
-                                        {!product.price && product.subtitle && (
-                                            <p className="truncate text-[13px] text-ink-600">{product.subtitle}</p>
-                                        )}
-                                    </div>
-                                    <svg className="h-4 w-4 flex-shrink-0 text-ink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </Link>
-                            );
-                        })}
+                        <div id="search-results-list" role="listbox" aria-label="Rezultati pretrage">
+                            {results.products.map((product) => {
+                                const idx = flatIndex++;
+                                return (
+                                    <Link
+                                        key={product.id}
+                                        id={`search-result-option-${idx}`}
+                                        role="option"
+                                        aria-selected={idx === activeIndex}
+                                        href={product.url || `/proizvodi/${product.slug}`}
+                                        onClick={handleResultClick}
+                                        className={`flex items-center gap-4 border-b border-ink-200 px-1 py-3 transition-colors duration-200 hover:bg-paper ${idx === activeIndex ? 'bg-paper' : ''
+                                            }`}
+                                    >
+                                        <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden bg-paper">
+                                            <ProductImage
+                                                src={product.image}
+                                                alt={product.name}
+                                                sources={product.imageCandidates}
+                                                sizes="48px"
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="truncate text-sm text-ink-900">{product.name}</p>
+                                            {product.price && (
+                                                <p className="text-[13px] text-ink-600">{formatPrice(product.price)}</p>
+                                            )}
+                                            {!product.price && product.subtitle && (
+                                                <p className="truncate text-[13px] text-ink-600">{product.subtitle}</p>
+                                            )}
+                                        </div>
+                                        <svg className="h-4 w-4 flex-shrink-0 text-ink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </Link>
+                                );
+                            })}
+                        </div>
                     </div>
                 )}
 
