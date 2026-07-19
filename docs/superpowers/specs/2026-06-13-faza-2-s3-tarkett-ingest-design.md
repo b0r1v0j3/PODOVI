@@ -21,7 +21,6 @@ Provera stvarnog stanja (2026-06-13):
 | Postojeći Tarkett hotlinkovi | Ostaju za sad; migracija 16.835 slika = S4 (poseban segment) |
 | Obim S3 | 4 nove vinil/LVT kolekcije (isti `*_colors.json` format) |
 | Van S3 (→ S3b) | Parket dezeni (6 Sommer + Step XL hrast-baron), Gerflor Libertex/Initial novi dekori |
-| /cenovnik | Auto-discovery iz kataloga — nove kolekcije se pojave same; S3 samo verifikuje |
 
 ## 3. Obuhvaćene kolekcije
 
@@ -50,31 +49,24 @@ Tačne `tarkett.rs` URL-ove kolekcija i ciljni JSON po SPC/LVT kolekciji potvrđ
 - Na PDP-u se podrazumevano bira prva boja (urađeno posle S2).
 - Breadcrumb prikazuje lep naziv (urađeno).
 
-## 6. /cenovnik (provera, ne novi kod)
-
-`/cenovnik` (skrivena zaštićena strana za unos cena, Tatjana) gradi listu kolekcija kroz `lib/cenovnik/tree.ts` → `loadPriceEntryTree` → `getColorsForCategory(categorySlug)` za SVE kategorije. To čita isti katalog kao i javne stranice. Posledica: **nove kolekcije se automatski pojave** u cenovniku, grupisane po brendu (Tarkett, brandId 3).
-
-S3 obaveza: posle ingesta **verifikovati** da se sve 4 nove kolekcije vide u `/cenovnik` price-entry stablu, pod ispravnim brendom (Tarkett) i kategorijom. Ako neka kategorija (npr. SPC) nije pokrivena `getColorsForCategory`-jem ili završi pod „Ostali brendovi", to je jedina situacija gde se dira `lib/cenovnik/tree.ts` (mapiranje), inače bez izmena.
-
-## 7. Verifikacija (gate)
+## 6. Verifikacija (gate)
 
 1. `npm run build` + `npm run test:contract` zeleno.
 2. Novi data contract test `tests/contracts/tarkett-new-collections-contract.test.ts`: nove kolekcije imaju boje sa slikama; svi asset URL-ovi (slike, dokumenti, hero) počinju sa našim Supabase prefiksom; **nijedan ne pokazuje na `media.tarkett-image.com` ili `tarkett.rs/pdf`** (za NOVE kolekcije); `colorCount === colors.length`.
 3. `npx tsx scripts/audit-catalog-quality.ts` — bez novih grešaka.
-4. Vizuelna provera na dev-u: PDP svake nove kolekcije (slike sa Supabase, dokumenti, prva boja izabrana) + **`/cenovnik`** (login podovi/online) pokazuje 4 nove kolekcije pod Tarkett-om.
+4. Vizuelna provera na dev-u: PDP svake nove kolekcije prikazuje slike sa Supabase, dokumente i izabranu prvu boju.
 5. Deploy na main (push) ostaje ručna odluka vlasnika.
 
-## 8. Šta NIJE u obimu
+## 7. Šta NIJE u obimu
 
 - Migracija 16.835 postojećih Tarkett hotlink slika → **S4**.
 - Parket dezeni (6 Sommer + Step XL) i Gerflor Libertex/Initial novi dekori → **S3b** (drugačija struktura: parket živi u `lib/data/tarkett-products.ts` + wood index).
 - Bilo kakva izmena postojećih Tarkett kolekcija.
-- Cene se NE unose (to radi Tatjana kroz /cenovnik); S3 samo obezbeđuje da su nove kolekcije tamo vidljive.
 
-## 9. Rizici i ublažavanje
+## 8. Rizici i ublažavanje
 
 - **Nuxt struktura varira po kategoriji**: homogeni vinil / SPC / LVT stranice mogu imati različit `__NUXT__` oblik. Ublažavanje: pilot na JEDNOJ novoj kolekciji prvo (de-rizikuje parser pre punog run-a), kao Gerflor pilot.
 - **tarkett.rs anti-bot / prazan DOM u headless modu**: postojeći (obrisani) extractori su imali stored-JSON fallback i `page.content()` fallback; ako Playwright vrati prazan grid, parser pada nazad na HTML parsing. Tvrdi timeout-i iz ingest-core sprečavaju visenja.
-- **SPC kategorija/mapiranje**: Deal/Real SPC mogu da ne legnu čisto u postojeću LVT kategoriju ili cenovnik grupisanje — pilot to otkriva; rešava se mapiranjem (kategorija + brand) bez širih izmena.
+- **SPC kategorija/mapiranje**: Deal/Real SPC mogu da ne legnu čisto u postojeću LVT kategoriju — pilot to otkriva; rešava se mapiranjem (kategorija + brand) bez širih izmena.
 - **Veličina repoa**: asseti idu isključivo u Supabase, ne u git.
 - **Supabase kvote**: 4 kolekcije × desetine boja — mali obim u odnosu na S2.

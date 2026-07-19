@@ -56,8 +56,3 @@ Flagovi: `--dry-run` (bez upisa/uploada), `--collection=<key>` (može više puta
 - **Supabase limit veličine fajla**: predimenzioniran PDF (npr. ModularT install ~>limit) baci „object exceeded the maximum allowed size" → taj dokument se preskoči (loguje `⚠️`), ostali prolaze. Bez hotlink curenja.
 - **Naslovi dokumenata**: `document_role_translated` (srpski sa Tarketa) → fallback `DOCUMENT_ROLE_SR[role]` → fallback `mapDocumentTitle(ime fajla)`. Dedupe **po izvornom URL-u** (ne po naslovu) — dva različita PDF-a sa istom rolom (npr. dva „Uputstvo za instalaciju") oba preživljavaju.
 - **Stari `modulart-7` (40)** ostaje netaknut (migracija postojećih hotlinkova = S4). Novi je `modulart-70`.
-
-## /cenovnik
-
-Nove kolekcije se auto-pojave: homogeni vinil preko nested `vinil` grane, LVT/SPC preko `tarkettLvtData` dodatka u flat `lvt` grani (`lib/colors/get-colors.ts`), grupisano pod brendom **Tarkett (3)**. Provereno za sve 4.
-NB: šira /cenovnik rupa (BLOQ/Romus/Techem/TimberTech/laminat fale jer im JSON loaderi nisu povezani u `get-colors.ts`) je zaseban segment — vidi memoriju `podovi-cenovnik-kompletnost`.

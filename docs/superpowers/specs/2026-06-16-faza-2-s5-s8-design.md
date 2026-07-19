@@ -26,7 +26,7 @@ na svaku safety kolekciju. Filter bira samo te kolekcije.
 - `components/CategoryTabs.tsx` — `safetyOnly` prop → filtrira kolekcije/boje.
 - `app/kategorije/[slug]/page.tsx` — `safety?` searchParam → prosledi `safetyOnly`.
 
-**Bez novog ingest koda. PDP/cenovnik auto preko postojećih cat-2 grana (prepare-colors, product-repository).**
+**Bez novog ingest koda. PDP koristi postojeće cat-2 grane (prepare-colors, product-repository).**
 
 ## S8 — Desso tepih-ploče
 
@@ -47,7 +47,7 @@ Oblik podataka = superset BLOQ carpet oblika.
 - `product-repository.ts` cat-4 merge + `getJsonProductBySlug` aggregate.
 
 **Verifikacija (oba):** test:contract + build zeleni; vizuelna provera (Playwright) — boje se renderuju;
-0 hotlinkova (data-contract); /cenovnik vidi nove kolekcije; deploy push na main.
+0 hotlinkova (data-contract); deploy push na main.
 
 ## Redosled
 S5 (manji, reuse) → deploy → S8 (634 pločice, najveći uvoz) → deploy. Svaki sa vlasničkim pregledom.
