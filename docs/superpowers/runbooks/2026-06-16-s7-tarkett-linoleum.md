@@ -1,6 +1,6 @@
 # S7 — Tarkett linoleum (xf²) ingest + integracija (2026-06-16)
 
-**Cilj:** Dodati Tarkett linoleum (xf²) program u katalog (kategorija 7), sve slike/PDF self-hostovano na Supabase, vidljivo na kategoriji, PDP-u i /cenovnik-u.
+**Cilj:** Dodati Tarkett linoleum (xf²) program u katalog (kategorija 7), sve slike/PDF self-hostovano na Supabase, vidljivo na kategoriji i PDP-u.
 
 ## Rezultat
 - **23 kolekcije, 501 boja, 581 dokument** — Veneto / Etrusco / Style Emme / Style Elle / Originale / Trentino / LinoMarine familije (2.0/2.5/3.2mm, Bfl, Silencio, Acoustic Cork, Sicuro, Essenza).
@@ -29,7 +29,6 @@
 - PDP `tarkett-veneto-xf2-2-5-mm`: 41 boja u color-gridu, pune srpske specifikacije, 28 dok, 0 hotlinkova (Playwright potvrdio).
 - Gerflor DLW PDP (`dlw-marmorette-2-mm`): bez regresije (9 boja).
 - `/api/colors?category=linoleum`: 203 Gerflor DLW + 501 Tarkett.
-- /cenovnik: tree iterira sve kategorije → kat-7 servira Tarkett (isti put kao S3).
 
 ## Otvoreno
 - Neki naslovi dokumenata generički ("Sertifikat"/"Brošura") — kozmetička dorada `DOCUMENT_ROLE_SR`, ne blokira.

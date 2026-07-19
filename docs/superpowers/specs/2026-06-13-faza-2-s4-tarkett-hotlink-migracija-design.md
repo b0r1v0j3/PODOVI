@@ -54,7 +54,7 @@ Generički „rewrite" alat — odvojen od ingest-a (ne pravi nove kolekcije, ve
 
 1. Migracija (offline, `node tools/migrate_tarkett_hotlinks.js`) prepisuje `public/data/*.json`: `media.tarkett-image.com/...` → `nnjmrfwepylrheykalik.supabase.co/.../product-images|documents/...`.
 2. Loaderi (`productDataLoader.ts`, `get-colors.ts`) čitaju iste JSON-ove → sada serviraju Supabase URL-ove. **Bez izmena loadera** (samo se menja vrednost URL-a u podacima).
-3. Stranice/`/cenovnik` rade isto, slike sa Supabase (bolji kvalitet — XXL).
+3. Javne stranice rade isto, sa slikama sa Supabase (bolji kvalitet — XXL).
 
 ## 6. Error handling
 

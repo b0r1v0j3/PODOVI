@@ -2,7 +2,7 @@
 
 > Datum: 2026-06-17
 > Status: dizajn odobren u brainstormingu sa vlasnikom
-> Povezano: [[podovi-galerija-redizajn-stanje]], [[vlasnik-nacin-rada]], [[podovi-cenovnik-stranica]]
+> Povezano: [[podovi-galerija-redizajn-stanje]], [[vlasnik-nacin-rada]]
 
 ## 1. Kontekst i cilj
 
@@ -49,7 +49,7 @@ type EssenceConfiguratorData = {
 }
 getEssenceConfiguratorData(): EssenceConfiguratorData
 ```
-Ako `essenceAxes` fali ili je nepotpun → vrati prazne/parcijalne nizove (ne baca); UI tu granu degradira na ton+naziv pločice. (Ne-fatalno, isti princip kao kod /cenovnik flat grane.)
+Ako `essenceAxes` fali ili je nepotpun → vrati prazne/parcijalne nizove (ne baca); UI tu granu degradira na ton+naziv pločice.
 
 ### 3.3 Stranica (`app/parket/essence/page.tsx`) — server component
 - `metadata` (title/description, OG), breadcrumbs (Parket → Essence Premium).
@@ -102,7 +102,7 @@ Ako `essenceAxes` fali ili je nepotpun → vrati prazne/parcijalne nizove (ne ba
 
 ## 8. Šta NIJE u obimu
 - Kombinovani „živi" render po kombinaciji uzorak×boja (nema 380 slika; odbačeno).
-- Cena u konfiguratoru (izabrano A; moguća Faza 2 kad /cenovnik ima Essence cene).
+- Cena u konfiguratoru (izabrano A; moguća kasnija faza nakon definisanja izvora cena).
 - Tip drveta (hrast/orah) kao 5. korak (alpod ima 4 koraka; podatak postoji ali YAGNI sada).
 - `/parket` index stranica (samo `/parket/essence`; opcioni redirect kasnije).
 

@@ -4,7 +4,7 @@
 
 **Goal:** Izgraditi Tarkett self-host ingest put (parser + orkestracija) i njime dodati 4 nove kolekcije (iQ Motion, Deal SPC 30, Real SPC 50, ModularT 70) sa SVIM assetima (slike + PDF) u našoj Supabase bazi — nula hotlinkova za nove kolekcije.
 
-**Architecture:** Reuse generičkog `tools/lib/ingest-core.js` (env, fetch sa tvrdim `withTimeout`, Supabase upload, manifest, backup). Novi Tarkett-specifični sloj: čiste parse funkcije u `tools/lib/tarkett-parse.js` (TDD, verbatim fixtures) + orkestracija u `tools/ingest_tarkett.js` (Playwright čita `window.__NUXT__` → `state.collectionProductPage.item.designs[]`, preuzima `media.tarkett-image.com/XXL` slike i `/docs/` PDF-ove, uploaduje u Supabase, upisuje normalizovan zapis u ciljni JSON). Homogeni vinil ide u `tarkett_homogeneous_vinyl_colors.json` (nested `collections[]`), LVT/SPC u `tarkett_lvt_products.json` (flat niz stavki). `/cenovnik` auto-discovery (dokazan) → samo verifikacija.
+**Architecture:** Reuse generičkog `tools/lib/ingest-core.js` (env, fetch sa tvrdim `withTimeout`, Supabase upload, manifest, backup). Novi Tarkett-specifični sloj: čiste parse funkcije u `tools/lib/tarkett-parse.js` (TDD, verbatim fixtures) + orkestracija u `tools/ingest_tarkett.js` (Playwright čita `window.__NUXT__` → `state.collectionProductPage.item.designs[]`, preuzima `media.tarkett-image.com/XXL` slike i `/docs/` PDF-ove, uploaduje u Supabase, upisuje normalizovan zapis u ciljni JSON). Homogeni vinil ide u `tarkett_homogeneous_vinyl_colors.json` (nested `collections[]`), LVT/SPC u `tarkett_lvt_products.json` (flat niz stavki).
 
 **Tech Stack:** Node 24 (global fetch), Playwright ^1.58.2 (Nuxt 2 render), sharp ^0.34.5 (validacija slike), Supabase JS ^2.95.3, Vitest ^3.2.4 (`test:contract`). Bez novih zavisnosti.
 
@@ -27,7 +27,6 @@
 | ModularT 70 | LVT lepljeni | `https://www.tarkett.rs/sr_RS/kolekcija-C003148-modulart-70` | C003148 | `modulart-70` | 16 |
 
 - **Payload oblik IDENTIČAN za sve 4** (Nuxt 2 `state.collectionProductPage.item` + `designs[]`); razlikuje se samo sadržaj (homogeni ima hex/LRV/color-family, SPC ima numerički `product_design_key` i prazna meta).
-- **Auto-discovery u /cenovnik (dokazano):** homogeni vinil ulazi preko kategorije `vinil` (nested, `colors[0].brandId="3"`), LVT/SPC preko `lvt` (flat, `brandId:"3"` hardkodovan u `get-colors.ts`) → obe grane → grupisano pod **Tarkett (brand 3)**. **Nula novog koda** u `lib/cenovnik/tree.ts` ili `lib/colors/get-colors.ts` (osim ako verifikacija pokaže drugačije).
 
 ---
 
@@ -908,7 +907,7 @@ Expected: `deal-spc-30 2 SPC https://nnjmrfwepylrheykalik.supabase.co/... docs >
 
 - [ ] **Step 3: Odluka o starom „ModularT 7" (vlasnik)**
 
-Stari `modulart-7` (40 hotlinkovanih stavki) OSTAJE netaknut (po spec §8 „ne diramo postojeće Tarkett kolekcije"; migracija = S4). Novi `modulart-70` je zaseban unos. U katalogu će se privremeno videti obe (stara hotlinkovana + nova self-hostovana).
+Stari `modulart-7` (40 hotlinkovanih stavki) OSTAJE netaknut (po spec §7 „ne diramo postojeće Tarkett kolekcije"; migracija = S4). Novi `modulart-70` je zaseban unos. U katalogu će se privremeno videti obe (stara hotlinkovana + nova self-hostovana).
 Verifikuj da stari nije obrisan: `node -e "const d=require('./public/data/tarkett_lvt_products.json'); console.log('modulart-7', d.filter(p=>p.collection==='modulart-7').length, '| modulart-70', d.filter(p=>p.collection==='modulart-70').length)"` → Expected `modulart-7 40 | modulart-70 16`.
 **Pitati vlasnika** (posle deploya, ne blokira plan): da li sakriti/ukloniti stari „ModularT 7" sad ili u S4. Ne donositi tu odluku automatski.
 
@@ -1021,38 +1020,28 @@ git commit -m "test(s3): data contract — nove Tarkett kolekcije bez hotlinkova
 
 ---
 
-## Task 6: /cenovnik verifikacija + puni gate (build + svi contract testovi + audit)
+## Task 6: Puni gate (build + svi contract testovi + audit)
 
-**Files:** (bez izmena koda osim ako verifikacija pokaže problem mapiranja)
-
-- [ ] **Step 1: Verifikuj da se 4 nove kolekcije pojavljuju u /cenovnik stablu pod Tarkett-om**
-
-Run:
-```bash
-npx tsx -e "import('./lib/cenovnik/tree.ts').then(async m=>{const t=await m.loadPriceEntryTree(); const tk=t.brands.find(b=>b.brandName==='Tarkett'); const want=['tarkett-iq-motion','deal-spc-30','real-spc-50','modulart-70']; const have=tk.collections.map(c=>c.slug); for(const w of want) console.log(w, have.includes(w)?'OK':'NEDOSTAJE'); });"
-```
-Expected: sve 4 → `OK` (pod brendom „Tarkett"). Ako neka legne pod „Ostali brendovi" ili nedostaje → to je JEDINI slučaj gde se dira `lib/cenovnik/tree.ts`/`lib/colors/get-colors.ts` mapiranje (vidi spec §6); inače bez izmena.
-
-- [ ] **Step 2: Pokreni SVE contract testove**
+- [ ] **Step 1: Pokreni SVE contract testove**
 
 Run: `npm run test:contract`
 Expected: svi zeleni (uključujući 2 nova S3 testa; postojeći gerflor/resolver/image testovi netaknuti).
 
-- [ ] **Step 3: Audit kvaliteta kataloga**
+- [ ] **Step 2: Audit kvaliteta kataloga**
 
 Run: `npx tsx scripts/audit-catalog-quality.ts`
 Expected: bez NOVIH grešaka u odnosu na pre-S3 stanje (nove kolekcije ne uvode broken slike/prazne dokumente).
 
-- [ ] **Step 4: Build**
+- [ ] **Step 3: Build**
 
 Run: `npm run build`
 Expected: uspešan build (`validate:images` + `next build` prolaze). Ako `validate:images` prijavi nove kolekcije → proveri da su sve `image` URL putanje validne.
 
-- [ ] **Step 5: Commit (ako je bilo ikakvih izmena mapiranja; inače preskoči)**
+- [ ] **Step 4: Commit (ako je bilo izmena tokom gate-a; inače preskoči)**
 
 ```bash
 git add -A
-git commit -m "chore(s3): /cenovnik verifikacija + gate zeleni"
+git commit -m "chore(s3): puni verifikacioni gate zelen"
 ```
 
 ---
@@ -1090,7 +1079,7 @@ git commit -m "docs(s3): runbook za Tarkett ingest + ažurirana memorija"
 
 - [ ] **Step 5: Deploy odluka (vlasnik)**
 
-Deploy na produkciju (`push main`) je RUČNA odluka vlasnika (kao i ranije). Sažmi: 4 nove kolekcije, sve self-hostovano, /cenovnik ih vidi, gate zelen. Pitaj da li push i da li sakriti stari ModularT 7.
+Deploy na produkciju (`push main`) je RUČNA odluka vlasnika (kao i ranije). Sažmi: 4 nove kolekcije, sve self-hostovano i gate zelen. Pitaj da li push i da li sakriti stari ModularT 7.
 
 ---
 
@@ -1103,9 +1092,8 @@ Deploy na produkciju (`push main`) je RUČNA odluka vlasnika (kao i ranije). Sa�
 - §4 self-hosting (slike+PDF u Supabase, JSON samo Supabase URL-ovi, postojeće netaknuto) → Task 3/4 + contract Task 5. ✅
 - §4 srpski nazivi dokumenata (reuse `mapDocumentTitle` + Tarkett `document_role_translated`) → Task 1 `collectionDocsFromAssets`. ✅
 - §5 DB-first prikaz, prva boja, breadcrumb → besplatno (postojeći loader/resolver iz S2); vizuelna provera Task 3/4. ✅
-- §6 /cenovnik auto-discovery → Task 6 verifikacija. ✅
-- §7 gate (build + test:contract + novi data contract + audit + vizuelno + /cenovnik) → Task 5/6. ✅
-- §9 pilot prvo (de-rizik Nuxt strukture) → Task 3 (iQ Motion). ✅; anti-bot/timeout → ingest-core timeout-i + fetchNuxt. ✅; SPC mapiranje → Task 6 Step 1 (verifikuje, dira samo ako treba). ✅
+- §6 gate (build + test:contract + novi data contract + audit + vizuelno) → Task 5/6. ✅
+- §8 pilot prvo (de-rizik Nuxt strukture) → Task 3 (iQ Motion). ✅; anti-bot/timeout → ingest-core timeout-i + fetchNuxt. ✅
 
 **2. Placeholder scan:** Nema „TBD"/„implement later"; sav kod je kompletan (parse modul + orkestrator + 2 testa). Brojevi boja (16/2/6/16), collection_id-evi, URL-ovi, Supabase prefiks — svi konkretni iz izviđanja.
 

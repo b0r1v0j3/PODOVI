@@ -34,4 +34,3 @@ prefiks MORA u hasCollectionSku (obe instance), inače kolekcije ne postaju kart
 ## Verifikacija (zeleno)
 - test:contract 206/206, build 24/24, 0 hotlinkova (data-contract).
 - /kategorije/tekstilne-ploce: 46 Desso + 18 BLOQ kartica. PDP desso-airmaster-atmos 12 boja (Playwright).
-- /cenovnik: tree preko getProductsByCategory('4') uključuje Desso (isti put kao BLOQ).

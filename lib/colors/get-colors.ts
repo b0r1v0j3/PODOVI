@@ -1,7 +1,5 @@
-// Deljiva logika za dohvat boja po kategoriji.
-// Izdvojeno iz app/api/colors/route.ts kako bi se mogla pozivati i server-side
-// (npr. /cenovnik stranica i Excel template) bez fetch-a sopstvene API rute.
-// Ponašanje je identično originalnoj ruti.
+// Serverska logika javne API rute za dohvat boja po kategoriji.
+// Podaci se sklapaju direktno iz Supabase i JSON izvora, bez internog HTTP fetch-a.
 
 import { supabase } from '@/lib/supabase/client';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
@@ -248,8 +246,8 @@ export async function getColorsForCategory(
     }
 
     // Tarkett linoleum (xf²) je JSON-only (kao Tarkett LVT) → dodaj u flat granu uz Gerflor DLW
-    // (koji dolazi iz Supabase). Flatten nested {collections[].colors} u flat oblik koji ColorGrid/
-    // /cenovnik očekuju; collection = pun slug (npr. 'tarkett-veneto-xf2-2-5-mm').
+    // (koji dolazi iz Supabase). Flatten nested {collections[].colors} u oblik koji javni color API
+    // očekuje; collection = pun slug (npr. 'tarkett-veneto-xf2-2-5-mm').
     if (category === 'linoleum') {
         const tarkettLino = (((tarkettLinoleumData as any)?.collections || []) as any[]);
         const tarkettLinoColors = tarkettLino.flatMap((collection: any) =>
