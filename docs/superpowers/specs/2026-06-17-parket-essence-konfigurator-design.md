@@ -78,7 +78,7 @@ Ako `essenceAxes` fali ili je nepotpun → vrati prazne/parcijalne nizove (ne ba
 1. (jednokratno/po potrebi) skreper → `essenceAxes` + Supabase slike.
 2. `getEssenceConfiguratorData()` (server) → patterns + 3 ose.
 3. `EssenceConfigurator` (client) → wizard izbor → finalni proizvod.
-4. „Zatraži ponudu" → `/upiti` prefilovan → postojeći tok mejla (Nodemailer/Resend) + `inquiries` tabela.
+4. „Zatraži ponudu" → `/upiti` prefilovan → postojeći `/api/inquiries` tok (čuvanje upita + mejl obaveštenja).
 
 ## 5. Stil i mobilni
 - „Galerija" jezik: monohromatski (`ink`), bez zaobljenja, bez senki, hairline linije, crno CTA dugme (kao ostatak sajta).
