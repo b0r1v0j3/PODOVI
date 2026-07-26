@@ -48,6 +48,7 @@ import { isAlpodImportBrand } from '@/lib/catalog/spec-normalize';
 import { getMetadataImageSet, getMetadataImageUrls, getOrderedProductImages } from '@/lib/utils/product-images';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 type DocumentsIndex = Record<string, Record<string, Array<{ title: string; url: string }>>>;
 
