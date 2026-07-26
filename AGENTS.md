@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 11.07.2026 (Homepage filteri — URL stanje, živi brojači i mobilni header)
+> **Poslednje ažuriranje:** 26.07.2026 (Tarkett laminat — nove cene od 01.06.2026)
 
 ---
 
@@ -153,6 +153,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett laminat — nove maloprodajne cene od 01.06.2026 (26.07.2026)**
+- U `lib/data/tarkett-products.ts` ažurirane su RSD/m² cene za svih 64 Tarkett laminat zapisa (10 kolekcijskih headera + 54 varijante), prema cenovniku „Sastavni deo ugovora, Jun 2026"; nisu menjani SKU, asortiman ni tehničke specifikacije.
+- Nove kolekcijske cene: Winter 832 1.210; Journey 731 4V 1.170; Easy Line 832 4V 1.350; Roads 833 4V 1.470; Frontier 1033 4V 1.770; Blues 1033 4V 2.010; Woodstock Longboards 1033 4V 2.170; Giant 1233 4V 2.010; Timeless 1232 4V 2.160; River 1233 4V 2.170 RSD/m².
+- Supabase `products.price` je usklađen uskim transakcionim update-om samo za Tarkett/Laminat redove i proverom 64/64. Novi `tests/contracts/tarkett-laminate-prices-contract.test.ts` čuva očekivane cene, broj proizvoda po kolekciji i jedinicu `m²`.
+- Filter konfiguracija i arhitektura nisu menjani: asortiman, specifikacije i vrednosti faceta ostali su isti; sortiranje po ceni koristi ažurirane vrednosti kroz postojeći DB-first resolver.
 
 **Homepage filteri — URL stanje, živi brojači i mobilni header (11.07.2026)**
 - **URL je deo filter contract-a**: `app/page.tsx` parsira početni query state preko `lib/catalog/home-filter-url.ts`, a `HomeProductTabs` sinhronizuje kategorije, brendove, tipove, primenu, kolekcije, dinamičke facete, debljinu, tab i sortiranje kroz ponovljive query parametre. Deep link, reload i Back/Forward vraćaju isti filter state; nepovezani query parametri se čuvaju, podrazumevani tab/sort se ne upisuju u čist URL.
