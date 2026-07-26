@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 
@@ -42,4 +44,13 @@ describe('Tarkett laminat cenovnik od 01.06.2026', () => {
       expect(new Set(products.map((product) => product.priceUnit))).toEqual(new Set(['m²']));
     }
   );
+
+  it('PDP eksplicitno isključuje Next fetch cache za DB-first cene', () => {
+    const source = readFileSync(
+      join(process.cwd(), 'app', 'proizvodi', '[slug]', 'page.tsx'),
+      'utf8'
+    );
+
+    expect(source).toMatch(/^export const fetchCache = 'force-no-store';$/m);
+  });
 });
