@@ -4988,12 +4988,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 1830,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "blues-1033-4v-bourbon-oak",
@@ -5055,12 +5055,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1830,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "blues-1033-4v-crossroad-oak",
@@ -5122,12 +5122,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1830,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "blues-1033-4v-delta-oak",
@@ -5189,12 +5189,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1830,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "blues-1033-4v-riverside-oak",
@@ -5256,12 +5256,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1830,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "blues-1033-4v-south-chicago",
@@ -5323,12 +5323,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1830,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "blues-1033-4v-voodoo-oak",
@@ -5390,12 +5390,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1830,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "blues-1033-4v-white-room",
@@ -5457,12 +5457,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1830,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "easy-line-832-4v",
@@ -5545,12 +5545,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 1250,
+    "price": 1350,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "easy-line-832-4v-aberdeen-oak-brown",
@@ -5612,12 +5612,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1250,
+    "price": 1350,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "easy-line-832-4v-empire-oak-grey",
@@ -5679,12 +5679,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1250,
+    "price": 1350,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "easy-line-832-4v-kingsley-oak-beige",
@@ -5746,12 +5746,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1250,
+    "price": 1350,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "easy-line-832-4v-sierra-oak-beige",
@@ -5813,12 +5813,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1250,
+    "price": 1350,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "easy-line-832-4v-turnberry-oak-nature",
@@ -5880,12 +5880,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1250,
+    "price": 1350,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "river-1233-4v",
@@ -5975,12 +5975,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-02-06T03:00:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "river-1233-4v-bistra",
@@ -6052,12 +6052,12 @@ export const tarkettProducts: Product[] = [
         "value": "45"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:00:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "river-1233-4v-drava",
@@ -6129,12 +6129,12 @@ export const tarkettProducts: Product[] = [
         "value": "45"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:00:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "river-1233-4v-strumica",
@@ -6206,12 +6206,12 @@ export const tarkettProducts: Product[] = [
         "value": "45"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:00:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "river-1233-4v-tara",
@@ -6283,12 +6283,12 @@ export const tarkettProducts: Product[] = [
         "value": "45"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:00:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "river-1233-4v-una",
@@ -6360,12 +6360,12 @@ export const tarkettProducts: Product[] = [
         "value": "45"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:00:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "river-1233-4v-vit",
@@ -6437,12 +6437,12 @@ export const tarkettProducts: Product[] = [
         "value": "45"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:00:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "giant-1233-4v",
@@ -6523,12 +6523,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 1950,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "giant-1233-4v-red-oak",
@@ -6595,12 +6595,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1950,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "giant-1233-4v-sunset-oak",
@@ -6667,12 +6667,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1950,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "giant-1233-4v-oak-ashes",
@@ -6739,12 +6739,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1950,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "giant-1233-4v-oak-cloud",
@@ -6811,12 +6811,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1950,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "giant-1233-4v-oak-light-beige",
@@ -6883,12 +6883,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1950,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "giant-1233-4v-oak-stone",
@@ -6955,12 +6955,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1950,
+    "price": 2010,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "journey-731-4v",
@@ -7051,12 +7051,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 1050,
+    "price": 1170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "journey-731-4v-oak-carpatian",
@@ -7123,12 +7123,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1050,
+    "price": 1170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "journey-731-4v-oak-adriatic",
@@ -7195,12 +7195,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1050,
+    "price": 1170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "journey-731-4v-old-mountain",
@@ -7267,12 +7267,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1050,
+    "price": 1170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "journey-731-4v-black-sea-oak",
@@ -7339,12 +7339,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1050,
+    "price": 1170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "journey-731-4v-oak-natural",
@@ -7411,12 +7411,12 @@ export const tarkettProducts: Product[] = [
         "value": "48"
       }
     ],
-    "price": 1050,
+    "price": 1170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-01-29T19:27:42.038Z"),
-    "updatedAt": new Date("2026-01-29T19:27:42.038Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "winter-832",
@@ -7489,12 +7489,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 1100,
+    "price": 1210,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-02-06T04:40:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:40:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "winter-832-oak-brown-1s",
@@ -7551,12 +7551,12 @@ export const tarkettProducts: Product[] = [
         "value": "1,960 m²"
       }
     ],
-    "price": 1100,
+    "price": 1210,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:40:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:40:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "winter-832-oak-rustic-coffee",
@@ -7613,12 +7613,12 @@ export const tarkettProducts: Product[] = [
         "value": "1,960 m²"
       }
     ],
-    "price": 1100,
+    "price": 1210,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:40:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:40:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "winter-832-oak-rustic-silver",
@@ -7675,12 +7675,12 @@ export const tarkettProducts: Product[] = [
         "value": "1,960 m²"
       }
     ],
-    "price": 1100,
+    "price": 1210,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:40:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:40:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "timeless-1232-4v",
@@ -7765,12 +7765,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 2050,
+    "price": 2160,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "timeless-1232-4v-oak-epoque",
@@ -7837,12 +7837,12 @@ export const tarkettProducts: Product[] = [
         "value": "52"
       }
     ],
-    "price": 2050,
+    "price": 2160,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "timeless-1232-4v-oak-traditional",
@@ -7909,12 +7909,12 @@ export const tarkettProducts: Product[] = [
         "value": "52"
       }
     ],
-    "price": 2050,
+    "price": 2160,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "timeless-1232-4v-shadow-oak",
@@ -7981,12 +7981,12 @@ export const tarkettProducts: Product[] = [
         "value": "52"
       }
     ],
-    "price": 2050,
+    "price": 2160,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "timeless-1232-4v-canadian-oak",
@@ -8053,12 +8053,12 @@ export const tarkettProducts: Product[] = [
         "value": "52"
       }
     ],
-    "price": 2050,
+    "price": 2160,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "timeless-1232-4v-southern-oak",
@@ -8125,12 +8125,12 @@ export const tarkettProducts: Product[] = [
         "value": "52"
       }
     ],
-    "price": 2050,
+    "price": 2160,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "frontier-1033-4v",
@@ -8226,12 +8226,12 @@ export const tarkettProducts: Product[] = [
         "url": "/docs/frontier-1033-4v-datasheet.pdf"
       }
     ],
-    "price": 1600,
+    "price": 1770,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"),
-    "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "frontier-1033-4v-africa",
@@ -8283,12 +8283,12 @@ export const tarkettProducts: Product[] = [
         "value": "60"
       }
     ],
-    "price": 1600,
+    "price": 1770,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"),
-    "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "frontier-1033-4v-legacy",
@@ -8340,12 +8340,12 @@ export const tarkettProducts: Product[] = [
         "value": "60"
       }
     ],
-    "price": 1600,
+    "price": 1770,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"),
-    "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "frontier-1033-4v-polar",
@@ -8397,12 +8397,12 @@ export const tarkettProducts: Product[] = [
         "value": "60"
       }
     ],
-    "price": 1600,
+    "price": 1770,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"),
-    "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "frontier-1033-4v-rainforest",
@@ -8454,12 +8454,12 @@ export const tarkettProducts: Product[] = [
         "value": "60"
       }
     ],
-    "price": 1600,
+    "price": 1770,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"),
-    "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "frontier-1033-4v-road",
@@ -8511,12 +8511,12 @@ export const tarkettProducts: Product[] = [
         "value": "60"
       }
     ],
-    "price": 1600,
+    "price": 1770,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"),
-    "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "frontier-1033-4v-vulcano",
@@ -8568,12 +8568,12 @@ export const tarkettProducts: Product[] = [
         "value": "60"
       }
     ],
-    "price": 1600,
+    "price": 1770,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-05T12:00:00.000Z"),
-    "updatedAt": new Date("2026-02-05T12:00:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "roads-833-4v",
@@ -8663,12 +8663,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 1350,
+    "price": 1470,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "roads-833-4v-bridge",
@@ -8740,12 +8740,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1350,
+    "price": 1470,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "roads-833-4v-mountain-oak",
@@ -8817,12 +8817,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1350,
+    "price": 1470,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "roads-833-4v-nebraska",
@@ -8894,12 +8894,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1350,
+    "price": 1470,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "roads-833-4v-tundra",
@@ -8971,12 +8971,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1350,
+    "price": 1470,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "roads-833-4v-west-coast",
@@ -9048,12 +9048,12 @@ export const tarkettProducts: Product[] = [
         "value": "56"
       }
     ],
-    "price": 1350,
+    "price": 1470,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T03:30:00.000Z"),
-    "updatedAt": new Date("2026-02-06T03:30:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "woodstock-longboards-1033-4v",
@@ -9127,12 +9127,12 @@ export const tarkettProducts: Product[] = [
         "items": []
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": true,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "woodstock-chatillon-oak-brown",
@@ -9194,12 +9194,12 @@ export const tarkettProducts: Product[] = [
         "value": "42"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "woodstock-chatillon-oak-sand",
@@ -9261,12 +9261,12 @@ export const tarkettProducts: Product[] = [
         "value": "42"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "woodstock-nomad-oak-light",
@@ -9328,12 +9328,12 @@ export const tarkettProducts: Product[] = [
         "value": "42"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "woodstock-summit-oak-cream",
@@ -9395,12 +9395,12 @@ export const tarkettProducts: Product[] = [
         "value": "42"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "woodstock-summit-oak-grey",
@@ -9462,12 +9462,12 @@ export const tarkettProducts: Product[] = [
         "value": "42"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   },
   {
     "id": "woodstock-summit-oak-white",
@@ -9529,11 +9529,11 @@ export const tarkettProducts: Product[] = [
         "value": "42"
       }
     ],
-    "price": 2150,
+    "price": 2170,
     "priceUnit": "m²",
     "inStock": true,
     "featured": false,
     "createdAt": new Date("2026-02-06T04:45:00.000Z"),
-    "updatedAt": new Date("2026-02-06T04:45:00.000Z")
+    "updatedAt": new Date("2026-07-26T00:55:51.991Z")
   }
 ];
