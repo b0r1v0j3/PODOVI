@@ -241,7 +241,7 @@ Certifications row (for cat 6, 7, 4, 2, 8, 9, 10):
 - PDP ostaje `force-dynamic` + `force-no-store`: `searchParams.color` utiče na SSR, canonical metadata i JSON-LD, dok Supabase cena/stanje moraju biti vidljivi bez međuzahtevnog stale perioda. Ne uvoditi `unstable_cache`, ISR ili CDN HTML cache dok svaki product write nema obaveznu, proverenu invalidaciju i dok color URL model ostaje query-param based.
 - `resolveProductBySlugForRequest`, category lookup i brand lookup su module-scope React `cache()` wrapperi koje dele `generateMetadata()` i Page. Oni su request-scoped i služe samo da isti render ne ponovi DB/resolver rad; wrapper ne premeštati unutar funkcija i ne zamenjivati process-global `Map` cache-om.
 - Svaki rezultat iz request cache-a mora da prođe kroz `cloneProductForPage()` pre `mergeSelectedColor()` ili drugih mutacija, da metadata i Page/color varijante ne dele izmenjeni objekat.
-- Middleware se registruje samo za privatne `/data/*` kataloge, `/crm/:path*`, `/api/ops/:path*` i `/proizvodi/allegro`. Dva javna document index JSON-a se namerno isključuju iz matcher-a; pri dodavanju nove zaštićene rute obavezno ažurirati matcher i `middleware-runtime-contract.test.ts`.
+- Middleware se registruje samo za privatne `/data/*` kataloge, isključeni `/crm/:path*`, `/api/ops/:path*` i `/proizvodi/allegro`. `/crm` i potomci moraju da vrate `404` za svaki metod pre renderovanja/DB pristupa; dva javna document index JSON-a se namerno isključuju iz matcher-a. Pri dodavanju ili promeni zaštićene rute obavezno ažurirati matcher i `middleware-runtime-contract.test.ts`.
 
 ### Component → Product Field Mapping
 
@@ -364,13 +364,12 @@ Techem `Otirači` are intentionally a flat listing branch:
 - Brand detail copy mora da prati mode: `kolekcije` kada je collection-first curation aktivna, `asortiman` / `stavke` za flat prikaz. Nemoj da statički nazivaš sve `proizvodi`.
 - `mock-data.ts` mora da sadrži kompletan kanonski fallback spisak brendova koji imaju live proizvode u katalogu. Ako proizvod lane postoji (npr. TimberTech deking), a brand fallback ne postoji, `/brendovi` i `/kategorije` summary count-ovi će otići u drift čak i ako `productRepository` vraća ispravne proizvode.
 
-### Lead CRM (`app/crm/page.tsx`)
+### Lead CRM (ruta uklonjena i isključena)
 
-- CRM reads the existing Supabase `inquiries` table on the server and groups leads through the canonical status flow from `lib/crm/inquiry-status.ts`
-- The same table now stores `status`, `next_contact_date`, and `notes`, so there is no second parallel CRM source of truth
-- Lead edits are saved through the server action `app/crm/actions.ts`, which calls `inquiryRepository.updateLead()` and revalidates `/crm`
-- Because public RLS on `inquiries` only allows `INSERT`, CRM reads require service-role server access (`SUPABASE_SERVICE_ROLE_KEY`)
-- `middleware.ts` can additionally protect `/crm` with HTTP Basic Auth when `CRM_BASIC_AUTH_USERNAME` and `CRM_BASIC_AUTH_PASSWORD` are present
+- Produkcijski `/crm` i svi potomci vraćaju `404` u `middleware.ts` za svaki HTTP metod. `app/crm/page.tsx` i `app/crm/actions.ts` su uklonjeni, pa nema drugog izvršnog CRM entrypoint-a čak ni mimo middleware-a; `CRM_BASIC_AUTH_*` env vrednosti ne uključuju rutu.
+- User-facing buyer-inquiry tok je odvojen i ostaje aktivan: `/upiti` → `components/ContactForm.tsx` → `POST /api/contact` → `mailer.sendContactEmail()` → `ADMIN_EMAIL` (fallback `podovidoo@gmail.com`).
+- Odvojeni `components/InquiryModal.tsx` → `POST /api/inquiries` tok ostaje u kodu (Supabase `inquiries` insert + admin email + potvrda kupcu), ali modal trenutno nije importovan ni na jednoj stranici.
+- Pomoćni CRM status/component kod i kolone `status`, `next_contact_date`, `notes` ostaju, a postojeći podaci nisu obrisani. Ako se CRM ponovo projektuje, public RLS i dalje zahteva server-side `SUPABASE_SERVICE_ROLE_KEY`, uz pravi server-side auth pre vraćanja route/action entrypoint-a ili uklanjanja `404` barijere.
 
 ---
 
@@ -398,8 +397,8 @@ Techem `Otirači` are intentionally a flat listing branch:
 12e. **Globalni bare-code lookup (`0319`, `1004`, `1123`) je dvosmislen i ne rešava se prostim reorder-om.** Ako diraš `loadColorFromJson()` / nested search redosled, ne pomeraj samo `sport` ispred `vinil` ili obrnuto; uvedi collection-scoped ili context-scoped code fallback, inače ćeš samo prebaciti isti correctness bug iz jedne kategorije u drugu.
 13. **Ne vraćaj generičke `collection: Parket` fallback zapise bez potrebe.** Posle cleanup-a iz 15.03.2026 parket kolekcije imaju kanonske varijante; ako moraš da zadržiš stari URL zbog kompatibilnosti, prebaci ga u stvarnu kolekciju (`Tango`, `Tango Classic`, itd.) umesto da ostane na generičkom `Parket`.
 14. **`vercel link` / `env pull` upisuje quoted vrednosti u `.env.local`.** Ako Node skripta ručno čita taj fajl umesto da dobije env direktno iz procesa, mora da skine spoljne navodnike sa `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` i `SUPABASE_SERVICE_ROLE_KEY`; u suprotnom Supabase klijent pada na `Invalid supabaseUrl`.
-15. **`app/crm` ne može da čita leadove samo preko anon ključa.** `inquiries` tabela pod RLS-om dozvoljava public `INSERT`, ali ne i `SELECT`, pa CRM mora da ide kroz server-side service-role čitanje ili će ostati bez podataka.
-16. **`app/crm` basic auth je opcionalan i zavisi od env-a.** Ako `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD` nisu postavljeni, middleware neće zaključati `/crm`; ne računaj na tu zaštitu dok env nije zaista prisutan u target okruženju.
+15. **Novi `app/crm` ne bi mogao da čita leadove samo preko anon ključa.** `inquiries` tabela pod RLS-om dozvoljava public `INSERT`, ali ne i `SELECT`; page/action entrypoint-i su sada uklonjeni, a eventualna reaktivacija mora koristiti server-side service-role pristup iza pravog auth-a.
+16. **`/crm` je uklonjen i code-gated, ne env-gated.** Middleware vraća `404` za root, potomke i state-changing metode bez obzira na `CRM_BASIC_AUTH_*`; samo eksplicitna pregledana promena koda može vratiti CRM entrypoint-e. Ne dirati user-facing `/api/contact` email tok niti odvojeni `/api/inquiries` Supabase/email tok.
 
 ---
 
