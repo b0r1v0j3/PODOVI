@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 11.08.2026 (PDP runtime hardening i Vercel crawl trošak)
+> **Poslednje ažuriranje:** 11.08.2026 (isključen CRM i PDP runtime hardening)
 
 ---
 
@@ -78,7 +78,7 @@ GMAIL_APP_PASSWORD=
 NEXT_PUBLIC_BASE_URL=https://www.podovi.online
 NEXT_PUBLIC_GA_MEASUREMENT_ID=
 
-# Internal auth
+# Internal auth (CRM ruta je isključena; CRM_* ostaje samo legacy fallback za ops)
 CRM_BASIC_AUTH_USERNAME=
 CRM_BASIC_AUTH_PASSWORD=
 OPS_BASIC_AUTH_USERNAME=
@@ -153,6 +153,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Interni CRM isključen bez promene toka upita kupaca (11.08.2026)**
+- `/crm` i svi potomci sada u `middleware.ts` vraćaju `404` za svaki HTTP metod, a izvršni `app/crm/page.tsx` i `app/crm/actions.ts` entrypoint-i su uklonjeni. Zato nema CRM rendera, Supabase čitanja ni CRM server action-a čak ni ako middleware sloj ne učestvuje; pomoćni status/component kod i postojeći DB podaci nisu obrisani.
+- Stvarni user-facing tok nije menjan: `/upiti` koristi `ContactForm` → `POST /api/contact` → `mailer.sendContactEmail()`, koji šalje na `ADMIN_EMAIL` ili podrazumevani `podovidoo@gmail.com`. Odvojeni `/api/inquiries` endpoint takođe ostaje u kodu sa Supabase insertom i dva emaila, ali njegov `InquiryModal` UI trenutno nije povezan ni sa jednom stranicom.
+- Contract test pokriva `GET /crm`, potomka rute i `POST /crm`, uključujući `404`, odsustvo middleware pass-through headera i `private, no-store` odgovor, kao i odsustvo oba CRM entrypoint-a uz očuvane contact/inquiry API rute. Ponovno uključivanje CRM-a zahteva eksplicitnu promenu koda i pravi server-side auth sloj; same stare `CRM_BASIC_AUTH_*` promenljive ne otvaraju rutu.
 
 **PDP runtime hardening — jeftiniji crawl bez zastarevanja cena (11.08.2026)**
 - Vercel usage alarm je vezan prvenstveno za verifikovani `meta-externalagent` crawl kroz `/proizvodi/[slug]`, ne za koncentrisan single-IP napad; PDP i dalje ostaje dinamičan jer `?color=` utiče na server metadata/render, a cena i stanje moraju ostati sveži.
@@ -846,7 +851,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - [x] Lokalizovati Techem supplier copy (opise + ključne spec label-e) na srpski pre nego što krenemo sa većim SEO/content prolazom nad kategorijom `Otirači`.
 - [x] Poravnati canonical brand source sa category hub summary count-ovima tako da TimberTech (`brandId=10`) više ne ostane orphan u `/kategorije` metrikama kad `/brendovi` nema isti entitet iz brand repo sloja.
 - [x] Poravnati Techem `generatedAt` freshness signal sa sitemap-om i PDP metadata slojem tako da `Otirači` ne ostanu na generičkom request-time datumu i fallback copy-ju za boje.
-- [ ] Zameniti privremeni `/crm` Basic Auth punim auth slojem i dodati istoriju pojedinačnih aktivnosti po leadu.
+- [ ] Ako se CRM ponovo aktivira, prvo uvesti puni server-side auth i istoriju pojedinačnih aktivnosti po leadu; do tada `/crm` namerno vraća `404`.
 
 ---
 
@@ -861,7 +866,6 @@ PODOVI/
 │   ├── proizvodi/[slug]/   # Stranice proizvoda (GLAVNI)
 │   ├── brendovi/           # Stranice brendova
 │   ├── kontakt/            # Kontakt forma
-│   ├── crm/                # Interni CRM skeleton za leadove i follow-up
 │   ├── omiljeni/           # Omiljeni proizvodi
 │   ├── uporedi/            # Poređenje proizvoda
 │   └── api/                # API rute (search, contact, inquiries)
@@ -920,8 +924,8 @@ PODOVI/
 29. **Mock-only brand filteri ne smeju sirovo u Supabase UUID `brand_id` query.** Brendovi poput `BLOQ`, `TimberTech`, `Wolflor`, `Romus` i internog `Podovi` brenda (`14`) žive kroz mock/JSON/manual sloj; ako `product-repository.ts` pošalje legacy ID tipa `8`, `10`, `11`, `13` ili `14` direktno u `.in('brand_id', ...)` nad UUID kolonom, Supabase grana pukne i merge blokovi ispod se nikad ne izvrše.
 30. **Za Wolflor kolekcije nemoj koristiti roomshot/ambijentalni hero kao kanonski collection image.** Čak i kada vendor ima `collection.jpg` ili category hero u prostoru, Wolflor kolekcijski prikaz kod nas treba da koristi prvu dostupnu sliku dekora/boje; to važi samo za Wolflor i ne treba prelivati na ostale brendove.
 31. **Kad pregaziš Wolflor JPG na istoj Supabase putanji, promeni i URL query verziju.** PDF kolekcije poput `Andes`/`Atlas` sada često dobijaju kvalitetniji crop na istom object path-u (`products/vinyl/.../wl91600.jpg`), pa bez novog `?v=` cache-bust query-ja browser i CDN mogu da nastave da serviraju stari mutni JPG iako je object već zamenjen boljom verzijom.
-32. **`/crm` traži `SUPABASE_SERVICE_ROLE_KEY` za čitanje leadova.** `inquiries` tabela je pod RLS pravilom da javnost može samo `INSERT`; ako service-role env nije dostupan, CRM može da se renderuje ali neće moći da povuče leadove iz baze.
-33. **`/crm` zaštita trenutno je env-based Basic Auth u `middleware.ts`.** Ako postaviš `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD`, ruta traži HTTP Basic Auth; ako ih ne postaviš, `/crm` ostaje bez te zaštite i ne treba ga tretirati kao produkciono bezbedan admin panel.
+32. **Eventualni novi `/crm` bi tražio `SUPABASE_SERVICE_ROLE_KEY` za čitanje leadova.** `inquiries` tabela je pod RLS pravilom da javnost može samo `INSERT`; trenutni page/action entrypoint-i ne postoje, a middleware završava zahtev sa `404` pre bilo kog čitanja.
+33. **`/crm` je namerno uklonjen i isključen za sve metode i potomke.** `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD` ne otvaraju rutu; nemoj vraćati page/action entrypoint-e niti ukloniti `404` dok ne postoji eksplicitna odluka vlasnika i pravi server-side auth. User-facing `/upiti` → `/api/contact` email tok i odvojeni `/api/inquiries` endpoint ne smeju biti pogođeni.
 34. **`/api/ops` ne sme više da bude “otvoren dok ne stigne pravi auth”.** Sada moraš imati `OPS_BASIC_AUTH_USERNAME` + `OPS_BASIC_AUTH_PASSWORD` (ili namerno deliti CRM Basic Auth kredencijale), a `actorId` više ne dolazi proizvoljno iz request body-ja nego iz autentifikovanog internog identiteta / `OPS_BASIC_AUTH_ACTOR_ID`.
 35. **Ops rollback mora da vraća prethodni stabilni snapshot, ne snapshot samog target release-a.** Publish snapshot predstavlja stanje POSLE publish-a; ako ga rollback reaplikuješ, ništa nisi vratio unazad. Za normalan rollback uzima se prethodni stabilni release snapshot, a za undo rollback-a snapshot release-a koji je rollback poništio.
 36. **Kanonski product klik više ne sme da živi u kartici/search copy-paste granama.** `components/ProductCard.tsx`, `components/ProductCardClient.tsx`, `/api/search`, `generateProductListSchema()` i `app/proizvodi/[slug]/page.tsx` sada dele `lib/utils/product-routes.ts`; ako menjaš canonical product URL obrazac, ažuriraj shared helper umesto da vraćaš lokalne `categorySlugMap` / ručne `/kategorije?...color=` grane.

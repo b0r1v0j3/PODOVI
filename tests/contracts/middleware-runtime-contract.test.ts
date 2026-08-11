@@ -38,6 +38,20 @@ describe('middleware runtime contract', () => {
     expect(matches(pathname, {} as never, {})).toBe(expected);
   });
 
+  it.each([
+    ['GET', '/crm'],
+    ['GET', '/crm/leads'],
+    ['POST', '/crm'],
+  ] as const)('returns 404 for disabled CRM access: %s %s', (method, pathname) => {
+    const response = middleware(
+      new NextRequest(`https://www.podovi.online${pathname}`, { method })
+    );
+
+    expect(response.status).toBe(404);
+    expect(response.headers.get('x-middleware-next')).toBeNull();
+    expect(response.headers.get('cache-control')).toBe('private, no-store, max-age=0');
+  });
+
   it('blocks private catalog JSON while preserving the public document indexes', () => {
     const blockedResponse = middleware(
       new NextRequest('https://www.podovi.online/data/lvt_colors_complete.json')

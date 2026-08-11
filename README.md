@@ -73,7 +73,7 @@ npm start
 ### Contact & Inquiries
 - Inquiry form on `/upiti` (`ContactForm`) with bottom-line inputs and product/color/ref pre-fill via URL parameters
 - Product detail pages link to `/upiti` through a full-width black "Pošalji upit" CTA in the sticky info column, plus a sticky bottom CTA on mobile (`ProductInquiryStickyCTA`)
-- **Internal `/crm` lead board** over existing inquiries with status, next-contact date, and notes, with optional env-based HTTP Basic Auth guard
+- **`/crm` is disabled**: the page/server-action entrypoints are removed and middleware returns `404`; public inquiry/contact email flows remain available
 - Email notifications via Gmail SMTP (Nodemailer)
 - **WhatsApp button** for quick customer communication (keeps the official WhatsApp green)
 
@@ -286,7 +286,7 @@ PODOVI/
 │  │ /omiljeni  │  │  contact  │  │ GlobalSearch    │  │
 │  │ /uporedi   │  │  products │  │ ContactForm     │  │
 │  │ /upiti     │  │  colors   │  │ CompareBar      │  │
-│  │ /crm       │  │  inquiries│  │ ...             │  │
+│  │ /brendovi   │  │  inquiries│  │ ...             │  │
 │  └─────┬─────┘  └─────┬─────┘  └────────┬────────┘  │
 │        │              │                  │           │
 │  ┌─────▼──────────────▼──────────────────▼────────┐  │
@@ -357,10 +357,6 @@ GMAIL_APP_PASSWORD=your-16-character-app-password
 # Optional: Override admin email if different from GMAIL_USER
 # ADMIN_EMAIL=podovidoo@gmail.com
 
-# Optional: Protect /crm with HTTP Basic Auth
-# CRM_BASIC_AUTH_USERNAME=crm
-# CRM_BASIC_AUTH_PASSWORD=change-me
-
 # Required for internal /api/ops routes.
 # If OPS_BASIC_AUTH_USERNAME / OPS_BASIC_AUTH_PASSWORD are not set,
 # the ops endpoints stay disabled.
@@ -380,8 +376,8 @@ SUPABASE_SERVICE_ROLE_KEY=      # Required for storage uploads and admin scripts
 SUPABASE_ACCESS_TOKEN=          # Optional fallback for scripts that discover the project/keys via Supabase Management API
 SUPABASE_PROJECT_REF=           # Optional explicit project ref for upload scripts
 SUPABASE_PROJECT_NAME=podovi    # Optional fallback project name for upload scripts
-CRM_BASIC_AUTH_USERNAME=        # Optional: if set together with password, /crm requires HTTP Basic Auth
-CRM_BASIC_AUTH_PASSWORD=        # Optional: password for /crm Basic Auth
+CRM_BASIC_AUTH_USERNAME=        # Legacy fallback for /api/ops only; does not enable /crm
+CRM_BASIC_AUTH_PASSWORD=        # Legacy fallback for /api/ops only; does not enable /crm
 OPS_BASIC_AUTH_USERNAME=        # Enables /api/ops; if omitted, ops can reuse CRM Basic Auth creds when those are configured
 OPS_BASIC_AUTH_PASSWORD=        # Password for /api/ops Basic Auth
 OPS_BASIC_AUTH_ACTOR_ID=        # Optional stable actorId used for ops role binding lookup
@@ -389,7 +385,7 @@ OPS_BASIC_AUTH_ACTOR_ID=        # Optional stable actorId used for ops role bind
 
 ## Database
 
-The project uses **Supabase** (PostgreSQL) for storing product inquiries. The same `inquiries` table now also powers the internal CRM skeleton through `status`, `next_contact_date`, and `notes`. The schema migration is in `supabase/migration.sql`.
+The project uses **Supabase** (PostgreSQL) for catalog data and the separate `/api/inquiries` flow. The user-facing `/upiti` form currently sends email through `/api/contact`; its inactive `InquiryModal` alternative stores rows in `inquiries`. The legacy CRM columns (`status`, `next_contact_date`, `notes`) and data remain, but `/crm` has no page/server-action entrypoint and returns `404`. The schema migration is in `supabase/migration.sql`.
 
 ```bash
 # Run migration

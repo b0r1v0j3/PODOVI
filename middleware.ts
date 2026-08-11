@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import {
-  canAccessCrm,
-  getCrmUnauthorizedResponse,
   getOpsBasicAuthConfig,
   requireOpsBasicAuth,
 } from '@/lib/auth/internal-basic-auth';
@@ -28,9 +26,14 @@ export function middleware(request: NextRequest) {
   }
 
   if (pathname === '/crm' || pathname.startsWith('/crm/')) {
-    if (!canAccessCrm(request)) {
-      return getCrmUnauthorizedResponse();
-    }
+    // CRM UI je isključen. Javni inquiry tok ostaje na /api/inquiries, ali
+    // nijedan CRM render/server action ne sme da stigne do aplikacije ili baze.
+    return new NextResponse('Not Found', {
+      status: 404,
+      headers: {
+        'Cache-Control': 'private, no-store, max-age=0',
+      },
+    });
   }
 
   if (pathname === '/api/ops' || pathname.startsWith('/api/ops/')) {
