@@ -202,6 +202,7 @@ Collection-first PDP rule:
 - Any UI that depends on an active variant (`backing_variants`, variant code/name, variant-only hero) must stay inert until `selectedColorSlug` is explicit and valid.
 - Kada `selectedColorSlug` jeste eksplicitan i validan, `ProductColorSelector`, `ColorGrid`, server merge i SEO metadata moraju da biraju isti primary asset preko shared color-image helpera; ne uvoditi nove local `texture || image || lifestyle` varijacije po komponenti.
 - BLOQ collection PDP je sada deo tog istog contract-a: `loadColorFromJson()` mora da razume BLOQ tile slugove iz `bloq_carpet_tiles.json`, inače client hero može da pređe na tile, dok server metadata/schema ostanu na collection cover-u.
+- `loadColorFromJson()` je server-local lookup nad statički importovanim katalozima. Kada slug ne postoji, mora da vrati `null` bez HTTP fetch-a ka sopstvenom `/data/*.json` surface-u; svi relevantni katalozi su već učitani u ovom modulu, a remote fallback samo multiplicira funkcijske/middleware invokacije.
 
 ---
 
@@ -234,6 +235,13 @@ Certifications row (for cat 6, 7, 4, 2, 8, 9, 10):
 - Ako shared helper ne vrati upotrebljiv kandidat, schema treba da izostavi `image` / `logo` polje umesto da emituje `/images/placeholder.svg`, non-`https` URL ili supplier fallback
 - wording za `dokumentacija` u Techem meta snippet-u mora biti uslovljen time da `product.documents` zaista postoji
 - build-time `scripts/validate-images.js` sada offline-validira i Techem first-party metadata image contract, pa supplier-hosted/non-https/neodobren host ne sme da prođe `npm run build`; u istom prolazu validator zaista hvata i `mock-data.ts` lokalne `url/image/logo` asset putanje, a odsutan `public/data/techem_mats.json` mora da obori build umesto tihog prolaza bez Techem coverage-a
+
+### Runtime cost and freshness contract
+
+- PDP ostaje `force-dynamic` + `force-no-store`: `searchParams.color` utiče na SSR, canonical metadata i JSON-LD, dok Supabase cena/stanje moraju biti vidljivi bez međuzahtevnog stale perioda. Ne uvoditi `unstable_cache`, ISR ili CDN HTML cache dok svaki product write nema obaveznu, proverenu invalidaciju i dok color URL model ostaje query-param based.
+- `resolveProductBySlugForRequest`, category lookup i brand lookup su module-scope React `cache()` wrapperi koje dele `generateMetadata()` i Page. Oni su request-scoped i služe samo da isti render ne ponovi DB/resolver rad; wrapper ne premeštati unutar funkcija i ne zamenjivati process-global `Map` cache-om.
+- Svaki rezultat iz request cache-a mora da prođe kroz `cloneProductForPage()` pre `mergeSelectedColor()` ili drugih mutacija, da metadata i Page/color varijante ne dele izmenjeni objekat.
+- Middleware se registruje samo za privatne `/data/*` kataloge, `/crm/:path*`, `/api/ops/:path*` i `/proizvodi/allegro`. Dva javna document index JSON-a se namerno isključuju iz matcher-a; pri dodavanju nove zaštićene rute obavezno ažurirati matcher i `middleware-runtime-contract.test.ts`.
 
 ### Component → Product Field Mapping
 

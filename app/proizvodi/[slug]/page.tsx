@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { cache } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound, redirect } from 'next/navigation';
@@ -49,6 +50,12 @@ import { getMetadataImageSet, getMetadataImageUrls, getOrderedProductImages } fr
 
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
+
+// Request-scoped only: metadata and the page render share the same catalog reads,
+// while every new HTTP request still reaches Supabase for current price/stock data.
+const resolveProductBySlugForRequest = cache(resolveProductBySlug);
+const findCategoryByIdForRequest = cache((id: string) => categoryRepository.findById(id));
+const findBrandByIdForRequest = cache((id: string) => brandRepository.findById(id));
 
 type DocumentsIndex = Record<string, Record<string, Array<{ title: string; url: string }>>>;
 
@@ -224,7 +231,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
     const { tarkettProducts } = await import('@/lib/data/tarkett-products');
 
-    product = await resolveProductBySlug(routeSlug);
+    product = await resolveProductBySlugForRequest(routeSlug);
 
     if (!product) {
       return { metadataBase: new URL(baseUrl), title: 'Proizvod nije pronađen' };
@@ -240,8 +247,10 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       }
     }
 
-    const category = product.categoryId ? await categoryRepository.findById(product.categoryId) : null;
-    const brand = product.brandId ? await brandRepository.findById(product.brandId) : null;
+    const [category, brand] = await Promise.all([
+      product.categoryId ? findCategoryByIdForRequest(product.categoryId) : null,
+      product.brandId ? findBrandByIdForRequest(product.brandId) : null,
+    ]);
     const metadataImages = getMetadataImageSet(product, baseUrl);
     const twitterImages = getMetadataImageUrls(metadataImages);
     const isTechemCatalogCategory = product.categoryId === '12';
@@ -263,7 +272,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     let collectionName = collectionSpec?.value || '';
     // Fallback: if no collection spec and a color was selected, resolve parent product name
     if (!collectionName && selectedColorSlug) {
-      const parentProduct = await resolveProductBySlug(routeSlug);
+      const parentProduct = await resolveProductBySlugForRequest(routeSlug);
       if (parentProduct) {
         collectionName = parentProduct.name;
         // Strip brand prefix from parent name too
@@ -429,7 +438,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // ── Resolve product ──
     const requestedColorSlug = typeof searchParams?.color === 'string' ? searchParams.color : '';
     let selectedColorSlug = requestedColorSlug;
-    const resolvedProduct = await resolveProductBySlug(routeSlug);
+    const resolvedProduct = await resolveProductBySlugForRequest(routeSlug);
     if (!resolvedProduct) notFound();
     const product = cloneProductForPage(resolvedProduct);
     const directColorCanonicalHref = getDirectColorCanonicalHref(product, routeSlug);
@@ -552,8 +561,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (!product.brandId || typeof product.brandId !== 'string') product.brandId = '6';
 
     // ── Load related data ──
-    const category = product.categoryId ? await categoryRepository.findById(product.categoryId) : null;
-    let brand = product.brandId ? await brandRepository.findById(product.brandId) : null;
+    const [category, resolvedBrand] = await Promise.all([
+      product.categoryId ? findCategoryByIdForRequest(product.categoryId) : null,
+      product.brandId ? findBrandByIdForRequest(product.brandId) : null,
+    ]);
+    let brand = resolvedBrand;
 
     // Fallback brand map for brands not yet in Supabase
     if (!brand && product.brandId) {

@@ -9,7 +9,7 @@ import { getGerflorLinoleumCollections } from '@/lib/utils/productDataLoader';
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
 import { getCanonicalCollectionAliasHref } from '@/lib/utils/product-routes';
 import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.json';
-import { buildSpecsFromColor } from '@/lib/product-page/color-helpers';
+import { buildSpecsFromColor, loadColorFromJson } from '@/lib/product-page/color-helpers';
 
 type NestedCollection = {
   slug: string;
@@ -130,6 +130,15 @@ describe('resolve-product contract', () => {
     { categoryId: '7', collectionSlug: 'gerflor-dlw-uni-walton', brandId: '6', expected: 'dlw-uni-walton' },
   ])('normalizes collection slug for category $categoryId', ({ categoryId, collectionSlug, brandId, expected }) => {
     expect(normalizeCollectionSlug(categoryId, collectionSlug, brandId)).toBe(expected);
+  });
+
+  it('does not issue HTTP requests after every local color catalog misses', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response('Not available', { status: 403 })
+    );
+
+    await expect(loadColorFromJson('__definitely-missing-color__')).resolves.toBeNull();
+    expect(fetchSpy).not.toHaveBeenCalled();
   });
 
   it('resolves a vinyl collection slug into stable product contract', async () => {
