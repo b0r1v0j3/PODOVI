@@ -55,3 +55,14 @@ export function middleware(request: NextRequest) {
 
   return NextResponse.next();
 }
+
+// Keep ordinary pages, static assets and the two public document indexes off the
+// middleware runtime. The allowlist above remains as defense-in-depth.
+export const config = {
+  matcher: [
+    '/data/((?!documents_index\\.json$|tarkett_documents_index\\.json$).*)',
+    '/crm/:path*',
+    '/api/ops/:path*',
+    '/proizvodi/allegro',
+  ],
+};

@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 26.07.2026 (Tarkett laminat — nove cene od 01.06.2026)
+> **Poslednje ažuriranje:** 11.08.2026 (PDP runtime hardening i Vercel crawl trošak)
 
 ---
 
@@ -153,6 +153,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**PDP runtime hardening — jeftiniji crawl bez zastarevanja cena (11.08.2026)**
+- Vercel usage alarm je vezan prvenstveno za verifikovani `meta-externalagent` crawl kroz `/proizvodi/[slug]`, ne za koncentrisan single-IP napad; PDP i dalje ostaje dinamičan jer `?color=` utiče na server metadata/render, a cena i stanje moraju ostati sveži.
+- `app/proizvodi/[slug]/page.tsx` zadržava `dynamic = 'force-dynamic'` i `fetchCache = 'force-no-store'`, ali module-scope React `cache()` deli `resolveProductBySlug`, category i brand lookup između `generateMetadata()` i Page unutar istog render zahteva. Ovo nije međuzahtevni cache; svaki novi HTTP zahtev i dalje čita aktuelne Supabase vrednosti, a proizvod se klonira pre selected-color mutacije.
+- `loadColorFromJson()` sada pretražuje samo već importovane lokalne kataloge. Uklonjen je mrtav fallback koji je za svaki nepoznat color slug slao 14 uzastopnih HTTP zahteva ka sopstvenim `/data/*.json` URL-ovima, koje middleware ionako vraća kao `403`.
+- `middleware.ts` ima uski statički matcher samo za privatne `/data/*` kataloge, `/crm/*`, `/api/ops/*` i Allegro color canonical redirect; obični PDP-ovi, static asseti i dva javna document index JSON-a više ne pokreću middleware runtime.
+- Contract testovi zaključavaju `0` self-fetch poziva, zajednički PDP/category/brand wrapper za metadata+Page render, stvarnu Next matcher matricu i postojeće data/Allegro ponašanje. `force-no-store` contract čuva međuzahtevnu svežinu, a production build i readback generisanog middleware manifesta potvrđuju da catch-all matcher više ne postoji.
 
 **Tarkett laminat — nove maloprodajne cene od 01.06.2026 (26.07.2026)**
 - U `lib/data/tarkett-products.ts` ažurirane su RSD/m² cene za svih 64 Tarkett laminat zapisa (10 kolekcijskih headera + 54 varijante), prema cenovniku „Sastavni deo ugovora, Jun 2026"; nisu menjani SKU, asortiman ni tehničke specifikacije.

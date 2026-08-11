@@ -38,6 +38,25 @@ const navigationMocks = vi.hoisted(() => ({
   }),
 }));
 
+vi.mock('react', async () => {
+  const actual = await vi.importActual<typeof import('react')>('react');
+
+  return {
+    ...actual,
+    cache: <Args extends unknown[], Result>(fn: (...args: Args) => Result) => {
+      const values = new Map<string, Result>();
+
+      return (...args: Args): Result => {
+        const key = JSON.stringify(args);
+        if (!values.has(key)) {
+          values.set(key, fn(...args));
+        }
+        return values.get(key)!;
+      };
+    },
+  };
+});
+
 vi.mock('@/lib/repositories/product-repository', () => ({
   productRepository: {
     findAll: repositoryMocks.productFindAll,
@@ -413,6 +432,13 @@ describe('SEO contracts', () => {
     });
   });
 
+  it('keeps PDP reads request-fresh instead of enabling cross-request route or data caching', async () => {
+    const pageModule = await import('@/app/proizvodi/[slug]/page');
+
+    expect(pageModule.dynamic).toBe('force-dynamic');
+    expect(pageModule.fetchCache).toBe('force-no-store');
+  });
+
   it('emits canonical PDP hrefs in sitemap instead of redirecting raw slugs', async () => {
     const { default: sitemap } = await import('@/app/sitemap');
     const sitemapEntries = await sitemap();
@@ -506,6 +532,9 @@ describe('SEO contracts', () => {
     expect(productSchema).toBeTruthy();
     expect(productSchema.image).toBe(ogImages[0]?.url);
     expect(productSchema.image).toBe(twitterImages[0]);
+    expect(repositoryMocks.productFindBySlug).toHaveBeenCalledTimes(1);
+    expect(repositoryMocks.categoryFindById).toHaveBeenCalledTimes(1);
+    expect(repositoryMocks.brandFindById).toHaveBeenCalledTimes(1);
   });
 
   it('keeps colored PDP metadata image aligned with the shared selected-color image precedence', async () => {

@@ -17,7 +17,6 @@ import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import gerflorStairsShowerData from '@/public/data/gerflor_stairs_shower.json';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
-import { SITE_URL } from '@/lib/seo/site-config';
 import { getDerivedWeldingSpecs } from './welding-helpers';
 import { getPrimaryColorImage } from '@/lib/utils/product-images';
 
@@ -440,50 +439,6 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         const match = findNestedColorSource(source.collections, source.categorySlug, slug);
         if (match) {
             return match;
-        }
-    }
-
-    const baseUrl = SITE_URL;
-    const candidates: Array<{ categorySlug: ColorSource['categorySlug']; fileName: string; nested: boolean }> = [
-        { categorySlug: 'lvt', fileName: 'lvt_colors_complete.json', nested: false },
-        { categorySlug: 'linoleum', fileName: 'linoleum_colors_complete.json', nested: false },
-        { categorySlug: 'vinil', fileName: 'vinyl_colors_complete.json', nested: true },
-        { categorySlug: 'vinil', fileName: 'vinyl_special_colors.json', nested: true },
-        { categorySlug: 'vinil', fileName: 'tarkett_vinyl_home_colors.json', nested: true },
-        { categorySlug: 'vinil', fileName: 'tarkett_heterogeneous_vinyl_colors.json', nested: true },
-        { categorySlug: 'vinil', fileName: 'tarkett_homogeneous_vinyl_colors.json', nested: true },
-        { categorySlug: 'vinil', fileName: 'wolflor_vinyl_colors.json', nested: true },
-        { categorySlug: 'elektroprovodni', fileName: 'esd_colors.json', nested: true },
-        { categorySlug: 'industrijske-ploce', fileName: 'industrial_colors.json', nested: true },
-        { categorySlug: 'sport', fileName: 'sport_colors.json', nested: true },
-        { categorySlug: 'sport', fileName: 'tarkett_sport_colors.json', nested: true },
-        { categorySlug: 'lajsne', fileName: 'tarkett_lajsne_variants.json', nested: true },
-        { categorySlug: 'lajsne', fileName: 'gerflor_stairs_shower.json', nested: true },
-    ];
-
-    for (const candidate of candidates) {
-        try {
-            const response = await fetch(`${baseUrl}/data/${candidate.fileName}`, {
-                cache: 'no-store',
-            });
-            if (!response.ok) {
-                continue;
-            }
-
-            const data = await response.json();
-            if (candidate.nested && Array.isArray(data.collections)) {
-                const match = findNestedColorSource(data.collections, candidate.categorySlug, slug);
-                if (match) {
-                    return match;
-                }
-            } else if (Array.isArray(data.colors)) {
-                const match = data.colors.find((color: ColorFromJSON) => color.slug === slug);
-                if (match) {
-                    return { categorySlug: candidate.categorySlug, color: match };
-                }
-            }
-        } catch (error) {
-            console.error('Error reading remote color JSON:', candidate.fileName, error);
         }
     }
 
