@@ -15,6 +15,8 @@ type ManualCollectionConfig = {
   shortDescription: string;
   description: string;
   imageUrl?: string;
+  price?: number;
+  priceUnit?: string;
   externalLink: string;
   specs: ProductSpec[];
   documents?: Product['documents'];
@@ -68,6 +70,8 @@ function createCollectionProduct(config: ManualCollectionConfig): Product {
       },
     ] : [],
     specs: config.specs,
+    price: config.price,
+    priceUnit: config.priceUnit,
     documents: config.documents?.map((document) => ({
       ...document,
       url: normalizeDocumentUrl(document.url),
@@ -204,6 +208,8 @@ export const manualCollectionProducts: Product[] = [
     description:
       'GTI Max Connect je sistem industrijskih ploca za fastrack renovacije, objekte sa velikim opterecenjem i prostore gde je bitno brzo pustanje u rad bez komplikovane pripreme.',
     imageUrl: '/images/products/industrial/gti-max-connect/collection.jpg',
+    price: 9999,
+    priceUnit: 'm²',
     externalLink: 'https://www.gerflor-cee.com/products/gti-max-connect',
     specs: [
       { key: 'collection', label: 'Kolekcija', value: 'GTI Max Connect' },
