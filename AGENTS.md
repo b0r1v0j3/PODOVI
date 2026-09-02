@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 11.08.2026 (isključen CRM i PDP runtime hardening)
+> **Poslednje ažuriranje:** 02.09.2026 (GTI Max Connect cena)
 
 ---
 
@@ -153,6 +153,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**GTI Max Connect — maloprodajna cena (02.09.2026)**
+- Kolekcijski proizvod `gerflor-gti-max-connect` u `lib/data/manual-collection-products.ts` sada ima cenu `9.999 RSD/m²`; naziv, SKU, asortiman, varijante, specifikacije i filteri nisu menjani.
+- Produkcioni Supabase nema poseban `products` red za ovaj slug, pa je manual collection zapis kanonski runtime izvor cene; contract test zaključava repository readback cene i jedinice mere.
 
 **Interni CRM isključen bez promene toka upita kupaca (11.08.2026)**
 - `/crm` i svi potomci sada u `middleware.ts` vraćaju `404` za svaki HTTP metod, a izvršni `app/crm/page.tsx` i `app/crm/actions.ts` entrypoint-i su uklonjeni. Zato nema CRM rendera, Supabase čitanja ni CRM server action-a čak ni ako middleware sloj ne učestvuje; pomoćni status/component kod i postojeći DB podaci nisu obrisani.
