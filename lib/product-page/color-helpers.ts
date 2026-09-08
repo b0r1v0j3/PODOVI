@@ -24,6 +24,8 @@ type NestedCollection = {
     name: string;
     slug: string;
     brandId?: string;
+    price?: number;
+    priceUnit?: string;
     description?: string;
     characteristics?: Record<string, string | undefined>;
     documents?: Array<Record<string, any>>;
@@ -156,13 +158,16 @@ export function buildNestedColorFromCollection(
             : (Array.isArray(collection.documents) ? collection.documents : undefined),
         image_url: color.image_url || color.image,
         brandId: color.brandId || (collection as any).brandId,
+        price: color.price ?? collection.price,
+        priceUnit: color.priceUnit ?? collection.priceUnit,
     } as ColorFromJSON;
 }
 
 function findNestedColorSource(
     collections: NestedCollection[],
     categorySlug: ColorSource['categorySlug'],
-    slug: string
+    slug: string,
+    exactOnly = false
 ): ColorSource | null {
     for (const collection of collections) {
         for (const color of collection.colors || []) {
@@ -176,9 +181,11 @@ function findNestedColorSource(
             if (
                 explicitSlug === slug ||
                 generatedSlug === slug ||
-                colorOnlySlug === slug ||
-                slug.endsWith(`-${colorOnlySlug}`) ||
-                color.code === slug
+                (!exactOnly && (
+                    colorOnlySlug === slug ||
+                    slug.endsWith(`-${colorOnlySlug}`) ||
+                    color.code === slug
+                ))
             ) {
                 return {
                     categorySlug,
@@ -407,7 +414,7 @@ export function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSp
     return Array.from(merged.values());
 }
 
-export async function loadColorFromJson(slug: string): Promise<ColorSource | null> {
+export async function loadColorFromJson(slug: string, includeLegacyAliases = true): Promise<ColorSource | null> {
     const lvtMatch = lvtColors.find((color) => color.slug === slug);
     if (lvtMatch) {
         return { categorySlug: 'lvt', color: lvtMatch };
@@ -435,10 +442,13 @@ export async function loadColorFromJson(slug: string): Promise<ColorSource | nul
         { categorySlug: 'lajsne', collections: gerflorStairShowerCollections },
     ];
 
-    for (const source of nestedSources) {
-        const match = findNestedColorSource(source.collections, source.categorySlug, slug);
-        if (match) {
-            return match;
+    // A full SD color slug must win over the same decor suffix in another collection.
+    for (const exactOnly of includeLegacyAliases ? [true, false] : [true]) {
+        for (const source of nestedSources) {
+            const match = findNestedColorSource(source.collections, source.categorySlug, slug, exactOnly);
+            if (match) {
+                return match;
+            }
         }
     }
 
@@ -521,14 +531,23 @@ export function colorToProduct(source: ColorSource, slug: string, collectionSlug
         images,
         specs,
         documents: normalizeColorDocuments(color.documents),
-        price: undefined,
-        priceUnit: undefined,
+        price: color.price,
+        priceUnit: color.priceUnit,
         inStock: true,
         featured: false,
         createdAt: new Date(),
         updatedAt: new Date(),
         collectionSlug: collectionSlugOverride || color.collection,
     };
+}
+
+export function getEsdColorProducts(): Array<Product & { collectionSlug: string }> {
+    return esdCollections.flatMap((collection) => (collection.colors || [])
+        .filter((color) => Boolean(color.image || color.image_url))
+        .map((color) => {
+            const nestedColor = buildNestedColorFromCollection(collection, color, color.slug);
+            return colorToProduct({ categorySlug: 'elektroprovodni', color: nestedColor }, nestedColor.slug);
+        }));
 }
 
 export function collectionFromColor(source: ColorSource, slug: string): Product {
@@ -564,8 +583,8 @@ export function collectionFromColor(source: ColorSource, slug: string): Product 
         description: (color.description && typeof color.description === 'string') ? color.description : '',
         images,
         specs,
-        price: undefined,
-        priceUnit: undefined,
+        price: color.price,
+        priceUnit: color.priceUnit,
         inStock: true,
         featured: false,
         createdAt: new Date(),

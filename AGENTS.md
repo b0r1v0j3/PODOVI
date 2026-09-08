@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 02.09.2026 (GTI Max Connect cena)
+> **Poslednje ažuriranje:** 08.09.2026 (Tarkett iQ Granit SD)
 
 ---
 
@@ -153,6 +153,8 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+- **08.09.2026 — Tarkett iQ Granit SD:** dodata kolekcija `tarkett-iq-granit-sd` u postojeći `esd_colors.json`, kategorija Elektroprovodni (8), brend Tarkett (3), 14 dekora / 28 šifara za rolne i ploče, cena 4.999 RSD/m². Originalni Tarkett cover, 14 tekstura i devet izabranih PDF-ova čuvaju se na našem Supabase Storage-u. Kolekcijski prikaz čuva naziv i fotografiju do izbora boje; SD činjenice i cena su uz izbor, a dokumentacija ostaje dostupna posle izbora. Precizno razlikovati statički disipativni SD od običnog iQ Granit; ne dodeljivati automatske generičke sertifikate. Dokazi i obim: `docs/products/tarkett-iq-granit-sd.md`.
 
 **GTI Max Connect — maloprodajna cena (02.09.2026)**
 - Kolekcijski proizvod `gerflor-gti-max-connect` u `lib/data/manual-collection-products.ts` sada ima cenu `9.999 RSD/m²`; naziv, SKU, asortiman, varijante, specifikacije i filteri nisu menjani.

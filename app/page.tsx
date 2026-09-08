@@ -4,12 +4,14 @@ import { brandRepository } from '@/lib/repositories/brand-repository';
 import HomeProductTabs, { HomeProductGroup } from '@/components/HomeProductTabs';
 import { Product } from '@/types';
 import { hasCollectionSku } from '@/lib/utils/homepage-collection-filter';
+import { getEsdColorProducts } from '@/lib/product-page/color-helpers';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
 import { parseHomeFilterUrlState } from '@/lib/catalog/home-filter-url';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
 import tarkettHomogeneousVinylData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
+import esdColorsData from '@/public/data/esd_colors.json';
 import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
@@ -63,6 +65,7 @@ const SWATCH_DATASETS = [
   tarkettVinylHomeData,
   tarkettHeterogeneousVinylData,
   tarkettHomogeneousVinylData,
+  esdColorsData,
   wolflorVinylData,
   lvtColorsData,
   linoleumColorsData,
@@ -271,7 +274,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     .map((category, index) => {
       const products = productBuckets[index] || [];
       const selectedProducts = selectHomepageProducts(products);
-      const colorCount = selectHomepageColors(products).length;
+      const colorCount = selectHomepageColors(category.id === '8' ? [...products, ...getEsdColorProducts()] : products).length;
 
       return {
         category: {

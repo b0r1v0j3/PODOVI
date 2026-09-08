@@ -109,4 +109,13 @@ describe('Lajsne↔podovi: mapa po sistemu', () => {
         const resolved = resolveCompatibleAccessories(floor);
         expect(resolved[0]?.slug).toBe('tarkett-metalni-profili');
     });
+
+    it('iQ Granit SD preporučuje samo potvrđene bakarne trake za kontrolu statičkog elektriciteta', () => {
+        const sd = { slug: 'tarkett-iq-granit-sd', categoryId: '8' };
+        expect(resolveCompatibleAccessories(sd).map((product) => product.slug)).toEqual([
+            'tarkett-trake-za-kontrolu-statickog-elektriciteta-za-podne-obloge-u-rolni',
+        ]);
+        expect(resolveCompatibleAccessories({ slug: 'gerflor-mipolam-el5', categoryId: '8' })
+            .some((product) => product.slug === 'tarkett-tarkett-genius-traka')).toBe(true);
+    });
 });

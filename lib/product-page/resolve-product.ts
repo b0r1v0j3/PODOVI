@@ -520,6 +520,12 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
         }
     }
 
+    // Resolve the full color slug before matching shorter collection prefixes (iQ Granit / SD).
+    const exactColorSource = await loadColorFromJson(slug, false);
+    if (exactColorSource) {
+        return colorToProduct(exactColorSource, slug);
+    }
+
     // Try to parse slug as collection-slug-color-slug format
     // Example: "gerflor-creation-30-ballerina-41870347"
     // Strategy: Try to find the collection slug first, then extract color slug

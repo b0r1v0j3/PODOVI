@@ -31,6 +31,8 @@ export interface ColorFromJSON {
     collection_specs?: ProductSpec[];
     specs?: Record<string, string>;
     brandId?: string;
+    price?: number;
+    priceUnit?: string;
 }
 
 export type ColorSource = {

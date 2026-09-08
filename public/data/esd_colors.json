@@ -826,6 +826,1301 @@
                 "ESD klasa": "Provodni (< 10⁸ Ω)",
                 "Tip instalacije": "Lepljenje + bakarno uzemljenje"
             }
+        },
+        {
+            "name": "iQ Granit SD",
+            "slug": "tarkett-iq-granit-sd",
+            "brandId": "3",
+            "url": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd",
+            "colorCount": 14,
+            "price": 4999,
+            "priceUnit": "m²",
+            "shortDescription": "Trajno statički disipativni homogeni vinil za laboratorije, čiste sobe i prostore osetljive na statički elektricitet. Debljina 2 mm, 14 dezena.",
+            "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+            "categoryDescription": "Trajno statički disipativni homogeni vinil za laboratorije, čiste sobe i prostore osetljive na statički elektricitet. Debljina 2 mm, 14 dezena.",
+            "characteristics": {
+                "Tip": "Homogeni vinil – statički disipativni (SD)",
+                "ESD klasa": "Statički disipativni (SD)",
+                "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                "Ukupna debljina": "2 mm",
+                "Habajući sloj": "2 mm",
+                "Klasa upotrebe": "34 / 43",
+                "Površinska obrada": "New iQ PUR",
+                "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                "Pakovanje ploča": "14 ploča / 5,2 m²",
+                "Površina rolne": "46 m²",
+                "Ukupna masa": "2.800 g/m²",
+                "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)"
+            },
+            "detailsSections": [
+                {
+                    "title": "Šta znači SD?",
+                    "items": [
+                        "SD označava statički disipativan pod. iQ Granit SD je poseban proizvod za kontrolu statičkog elektriciteta, sa električnom otpornošću prema zemlji ≤ 10⁸ Ω pri ispitivanju prema EN/IEC 61340-4-1 na 100 V."
+                    ]
+                },
+                {
+                    "title": "Formati i pakovanje",
+                    "items": [
+                        "Rolne: širina 2 m, dužina 23 m, površina 46 m².",
+                        "Ploče: 610 × 610 mm; 14 komada u pakovanju, deklarisana površina 5,2 m². Šifre za oba formata prikazane su uz izabrani dekor."
+                    ]
+                },
+                {
+                    "title": "Ugradnja i održavanje",
+                    "items": [
+                        "Za ploče se provodni lepak nanosi po celoj površini. Raspored bakarnih traka, lepljenje rolni i povezivanje sa uzemljenjem izvode se prema Tarkettovom uputstvu za iQ Granit SD.",
+                        "Podloga mora biti čvrsta, ravna, čista i suva. Proizvod nije predviđen za mokre prostore.",
+                        "Površina se obnavlja suvim poliranjem. Koristiti postupke i sredstva iz priloženog uputstva za održavanje ESD poda."
+                    ]
+                }
+            ],
+            "documents": [
+                {
+                    "title": "Tehnički list iQ Granit SD (2026)",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                    "type": "pdf"
+                },
+                {
+                    "title": "Uputstvo za ugradnju ESD poda",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                    "type": "pdf"
+                },
+                {
+                    "title": "Uputstvo za čišćenje i održavanje",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                    "type": "pdf"
+                },
+                {
+                    "title": "Deklaracija o performansama (DoP)",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                    "type": "pdf"
+                },
+                {
+                    "title": "Uslovi ograničene garancije iQ – 20 godina",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                    "type": "pdf"
+                },
+                {
+                    "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                    "type": "pdf"
+                },
+                {
+                    "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                    "type": "pdf"
+                },
+                {
+                    "title": "Podaci za zelenu gradnju",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                    "type": "pdf"
+                },
+                {
+                    "title": "Brošura iQ Granit i iQ Eminent",
+                    "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                    "type": "pdf"
+                }
+            ],
+            "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/collection-cover-87e7ab8c9b5c.jpg",
+            "room_scene_images": [],
+            "colors": [
+                {
+                    "code": "0954",
+                    "name": "Beige",
+                    "slug": "tarkett-iq-granit-sd-color-0954-beige",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097954",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-beige-0954",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-beige-0954-c5c3f702eec6.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0954",
+                        "Šifra rolne": "3096954",
+                        "Šifra ploče": "3097954",
+                        "HEX boja": "D5BBA5",
+                        "NCS oznaka": "S 2005-Y50R",
+                        "LRV": "62.54"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0953",
+                    "name": "Black",
+                    "slug": "tarkett-iq-granit-sd-color-0953-black",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097953",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-black-0953",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-black-0953-955ecd7ad9ce.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0953",
+                        "Šifra rolne": "3096953",
+                        "Šifra ploče": "3097953",
+                        "HEX boja": "3F3E3F",
+                        "NCS oznaka": "S 7502-B",
+                        "LRV": "6"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0950",
+                    "name": "Black Grey",
+                    "slug": "tarkett-iq-granit-sd-color-0950-black-grey",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097950",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-black-grey-0950",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-black-grey-0950-4fd3a06b751f.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0950",
+                        "Šifra rolne": "3096950",
+                        "Šifra ploče": "3097950",
+                        "HEX boja": "686768",
+                        "NCS oznaka": "S 5502-B",
+                        "LRV": "15.11"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0474",
+                    "name": "Clay",
+                    "slug": "tarkett-iq-granit-sd-color-0474-clay",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097474",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-clay-0474",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-clay-0474-429371a1ff3d.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0474",
+                        "Šifra rolne": "3096474",
+                        "Šifra ploče": "3097474",
+                        "HEX boja": "B49A87",
+                        "NCS oznaka": "S 3005-Y50R",
+                        "LRV": "40.42"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0949",
+                    "name": "Dark Grey",
+                    "slug": "tarkett-iq-granit-sd-color-0949-dark-grey",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097949",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-dark-grey-0949",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-dark-grey-0949-8f6a9d44de51.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0949",
+                        "Šifra rolne": "3096949",
+                        "Šifra ploče": "3097949",
+                        "HEX boja": "938B87",
+                        "NCS oznaka": "S 4000-N",
+                        "LRV": "28.6"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0436",
+                    "name": "Dark Sand",
+                    "slug": "tarkett-iq-granit-sd-color-0436-dark-sand",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097436",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-dark-sand-0436",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-dark-sand-0436-f02b61dd0d7e.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0436",
+                        "Šifra rolne": "3096436",
+                        "Šifra ploče": "3097436",
+                        "HEX boja": "9A8671",
+                        "NCS oznaka": "S 4005-Y20R",
+                        "LRV": "32.53"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0948",
+                    "name": "Grey",
+                    "slug": "tarkett-iq-granit-sd-color-0948-grey",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097948",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-grey-0948",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-grey-0948-9f69130b1889.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0948",
+                        "Šifra rolne": "3096948",
+                        "Šifra ploče": "3097948",
+                        "HEX boja": "BFB5AD",
+                        "NCS oznaka": "S 2500-N",
+                        "LRV": "50.18"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0980",
+                    "name": "Light Aqua",
+                    "slug": "tarkett-iq-granit-sd-color-0980-light-aqua",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097980",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-light-aqua-0980",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-light-aqua-0980-e41f973b5db6.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0980",
+                        "Šifra rolne": "3096980",
+                        "Šifra ploče": "3097980",
+                        "HEX boja": "82AFBB",
+                        "NCS oznaka": "S 2020-B10G",
+                        "LRV": "44.09"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0476",
+                    "name": "Light Blue",
+                    "slug": "tarkett-iq-granit-sd-color-0476-light-blue",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097476",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-light-blue-0476",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-light-blue-0476-bb0eb51509d4.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0476",
+                        "Šifra rolne": "3096476",
+                        "Šifra ploče": "3097476",
+                        "HEX boja": "92AAC4",
+                        "NCS oznaka": "S 2020-R90B",
+                        "LRV": "44.17"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0994",
+                    "name": "Light Green",
+                    "slug": "tarkett-iq-granit-sd-color-0994-light-green",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097994",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-light-green-0994",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-light-green-0994-a0365c1dbde8.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0994",
+                        "Šifra rolne": "3096994",
+                        "Šifra ploče": "3097994",
+                        "HEX boja": "ADC0AB",
+                        "NCS oznaka": "S 2010-G",
+                        "LRV": "52.01"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0395",
+                    "name": "Light Grey",
+                    "slug": "tarkett-iq-granit-sd-color-0395-light-grey",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097395",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-light-grey-0395",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-light-grey-0395-7edf0d9339f2.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0395",
+                        "Šifra rolne": "3096395",
+                        "Šifra ploče": "3097395",
+                        "HEX boja": "D1C5BC",
+                        "NCS oznaka": "S 2000-N",
+                        "LRV": "65"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0468",
+                    "name": "Sand",
+                    "slug": "tarkett-iq-granit-sd-color-0468-sand",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097468",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-sand-0468",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-sand-0468-1458468485bd.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0468",
+                        "Šifra rolne": "3096468",
+                        "Šifra ploče": "3097468",
+                        "HEX boja": "F4CA9D",
+                        "NCS oznaka": "S 1510-Y30R",
+                        "LRV": "61.08"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0467",
+                    "name": "Warm Sand",
+                    "slug": "tarkett-iq-granit-sd-color-0467-warm-sand",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097467",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-warm-sand-0467",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-warm-sand-0467-c2748f361e46.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0467",
+                        "Šifra rolne": "3096467",
+                        "Šifra ploče": "3097467",
+                        "HEX boja": "C19B78",
+                        "NCS oznaka": "S 3010-Y30R",
+                        "LRV": "41.32"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                },
+                {
+                    "code": "0475",
+                    "name": "White Green",
+                    "slug": "tarkett-iq-granit-sd-color-0475-white-green",
+                    "brandId": "3",
+                    "collection_slug": "tarkett-iq-granit-sd",
+                    "sku": "3097475",
+                    "price": 4999,
+                    "priceUnit": "m²",
+                    "href": "https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd/granit-white-green-0475",
+                    "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/elektroprovodni/tarkett-iq-granit-sd/granit-white-green-0475-d369e2ce024f.jpg",
+                    "description": "Tarkett iQ Granit SD je homogena vinilna podna obloga sa trajnim statički disipativnim svojstvima. Namenjena je laboratorijama, čistim sobama i prostorima sa opremom osetljivom na statički elektricitet. New iQ PUR površinska obrada olakšava održavanje, a izgled površine može da se obnovi suvim poliranjem. Kolekcija obuhvata 14 dezena, u rolnama i pločama debljine 2 mm. Električna svojstva zavise i od pravilno izvedenog sistema poda, lepka i uzemljenja prema Tarkettovom uputstvu.",
+                    "characteristics": {
+                        "Tip": "Homogeni vinil – statički disipativni (SD)",
+                        "ESD klasa": "Statički disipativni (SD)",
+                        "Električna otpornost": "≤ 10⁸ Ω prema zemlji (EN/IEC 61340-4-1, 100 V)",
+                        "Ukupna debljina": "2 mm",
+                        "Habajući sloj": "2 mm",
+                        "Klasa upotrebe": "34 / 43",
+                        "Površinska obrada": "New iQ PUR",
+                        "Format": "Rolna 2 × 23 m / ploče 610 × 610 mm",
+                        "Pakovanje ploča": "14 ploča / 5,2 m²",
+                        "Površina rolne": "46 m²",
+                        "Ukupna masa": "2.800 g/m²",
+                        "Reakcija na požar": "Bfl-s1 (EN 13501-1)",
+                        "Elektrostatika": "Antistatičko ponašanje ≤ 2 kV (EN 1815)",
+                        "Čiste sobe": "ISO klasa 4 (ISO 14644-1)",
+                        "Način ugradnje": "Lepljenje i bakarna traka za uzemljenje prema Tarkettovom uputstvu",
+                        "Podno grejanje": "Da, temperatura podloge najviše 27 °C",
+                        "Emisija VOC posle 28 dana": "≤ 10 µg/m³ (EN 16516)",
+                        "Šifra dekora": "0475",
+                        "Šifra rolne": "3096475",
+                        "Šifra ploče": "3097475",
+                        "HEX boja": "BEC3B6",
+                        "NCS oznaka": "S 1505-G20Y",
+                        "LRV": "54.47"
+                    },
+                    "documents": [
+                        {
+                            "title": "Tehnički list iQ Granit SD (2026)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/datasheet-e3e32db6a006.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za ugradnju ESD poda",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/installation-2fed78cafbfc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uputstvo za čišćenje i održavanje",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/maintenance-78a124ba9625.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o performansama (DoP)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/dop-02fe6a78a4fd.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Uslovi ograničene garancije iQ – 20 godina",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/warranty-guarantee-0dab573ebbbc.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Deklaracija o uticaju na životnu sredinu (EPD)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/environment-product-declaration-9ef9ff24f529.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Izjava o sastavu i uticaju na zdravlje (MHS)",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/material-health-statement-ed631000ff0f.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Podaci za zelenu gradnju",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/green-building-card-3cf3fa363252.pdf",
+                            "type": "pdf"
+                        },
+                        {
+                            "title": "Brošura iQ Granit i iQ Eminent",
+                            "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/elektroprovodni/tarkett-iq-granit-sd/brochure-2c8de4df4ef1.pdf",
+                            "type": "pdf"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

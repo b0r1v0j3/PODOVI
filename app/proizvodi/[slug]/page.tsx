@@ -545,6 +545,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // ── Save original name before color merge (merge overwrites product.name with color name) ──
     const originalProductName = product.name;
+    const originalShortDescription = product.shortDescription;
 
     // ── Merge selected color variant ──
     if (selectedColorSlug) {
@@ -631,6 +632,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     }
 
     // ── Schema.org ──
+    const isIqGranitSd = routeSlug === 'tarkett-iq-granit-sd';
     const baseUrl = SITE_URL;
     const currentProductUrl = `${baseUrl}/proizvodi/${routeSlug}${selectedColorSlug ? `?color=${encodeURIComponent(selectedColorSlug)}` : ''}`;
     const metadataImages = getMetadataImageSet(product, baseUrl);
@@ -645,9 +647,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
         '@type': 'Offer',
         price: product.price,
         priceCurrency: 'RSD',
-        availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        availability: isIqGranitSd ? undefined : (product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'),
         url: currentProductUrl,
-        priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+        priceValidUntil: isIqGranitSd ? undefined : new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
       } : undefined,
     };
 
@@ -659,7 +661,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
       || (product.categoryId === '13' && Array.isArray(customColors) && customColors.length > 1));
 
     // ── Helper JSX logic to populate masonry columns neatly ──
-    const sharedCertsAndEco = (['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
+    const sharedCertsAndEco = (!isIqGranitSd && ['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
       <>
         <div className="h-full">
           <h3 className="eyebrow mb-6">Sertifikati kvaliteta</h3>
@@ -849,7 +851,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   productPrice={product.price && product.price > 0 ? product.price : undefined}
                   priceUnit={product.priceUnit}
                   brand={brand ? { name: brand.name, slug: brand.slug, logo: brand.logo } : null}
-                  shortDescription={product.shortDescription}
+                  shortDescription={isIqGranitSd ? originalShortDescription : product.shortDescription}
                   specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug })}
                   inStock={product.inStock}
                   productSlug={product.slug}

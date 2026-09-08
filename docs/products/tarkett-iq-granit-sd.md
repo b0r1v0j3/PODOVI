@@ -1,0 +1,21 @@
+# Tarkett iQ Granit SD — 08.09.2026.
+
+Korisnik je odobrio dodavanje kolekcije i cenu **4.999 RSD/m²**. Ova cena je korisnikova prodajna cena za sajt, nije prepisana sa Tarkettovog sajta.
+
+- Kanonski proizvod: `/proizvodi/tarkett-iq-granit-sd`; izvor `public/data/esd_colors.json`, kategorija Elektroprovodni (8), brend Tarkett (3).
+- Zvanični srpski asortiman: [Tarkett C000122](https://www.tarkett.rs/sr_RS/kolekcija-C000122-iq-granit-sd), 14 dezena, ukupno 28 šifara. Svaki dekor navodi šifru rolne i ploče; nijedna šifra nije izvedena iz pretpostavke.
+- Autoritet za tehničke vrednosti: [TDS od 04.05.2026.](https://media.tarkett-image.com/docs/DS-Tarkett-iq_granit_sd-en_INTL.pdf). Trajno statički disipativni homogeni vinil, 2 mm, 2.800 g/m², klase 34/43, New iQ PUR, ISO čista soba 4. Otpornost prema zemlji ≤10⁸ Ω po EN/IEC 61340-4-1 pri 100 V; ne mešati sa drugačijim EN 14041/DoP kriterijumom. R9/R10 je na zahtev, ne podrazumevana potvrđena osobina.
+- Formati: rolna 2×23 m / 46 m²; ploče 610×610 mm, deklarisanih 14 kom / 5,2 m². Dostupnost na upit; javni Tarkett Quickship signal nije stanje zaliha Podovi.
+- Originalni aktuelni cover `IN_HP_IQ_Granit_SD_3096724_001.jpg` (3.000×1.688) i 14 originalnih tekstura (1.920×1.920) hostovani su u `product-images/products/elektroprovodni/tarkett-iq-granit-sd/`. Nema generisanih prikaza ili fotografija drugih kolekcija.
+- Devet PDF-ova u `product-documents/products/elektroprovodni/tarkett-iq-granit-sd/`: TDS, ugradnja, održavanje, aktuelni DoP, uslovi ograničene garancije, EPD, MHS, Green Building Card i iQ Granit/Eminent brošura. Nazivi fajlova uključuju SHA-256 prefiks; javni bajtovi provereni posle uploada. Stariji tenderski list sa garancijom od 10 godina i UK DoP nisu pomešani sa aktuelnim dokumentima.
+- Prikaz ove kolekcije čuva naziv, sažetak, cenu i ključne činjenice; početna fotografija kolekcije ostaje do izbora dekora. Dokumenti ostaju i pri izboru boje. Automatski generički cert/eko blok isključen za SD: tvrdnje su vezane za stvarne podatke i PDF-ove.
+- Za SD preporučen je samo postojeći pribor za odvođenje statičkog elektriciteta (bakarna traka). Generička GENIUS loose-lay traka nije pribor za ovaj sistem. Ponuda u JSON-LD ne tvrdi potvrđene zalihe ili proizvoljan rok važenja cene.
+- Browser provera je otkrila ranije propuste zajedničkog prikaza: duplirane specifikacije posle API merge-a i neaktivan izbor boje iz punog modala. Ispravke koriste postojeću deduplikaciju i isti selection callback. ESD boje uključene su u postojeći `home-colors` tok i brojanje, da kolekcija i njeni dezeni budu dostupni u oba taba kataloga.
+
+Izvorni JSON odgovori, formati, PDF-ovi, slike, SHA-256 manifesti, pre-image ESD kataloga i jednokratna skripta za uvoz nalaze se u `../research-assets/iq-granit-sd-20260908/` u roditeljskom Podovi workspace-u. Uvoz je sačuvao postojeće Gerflor kolekcije bez izmena sadržaja.
+
+Provere pokrivaju sve boje i cenu, parent kolekciju, ESD/Tarkett/pretragu, izbor u modalu, deduplikaciju karakteristika, pribor i devet dokumenata. Slike su validirane; lokalni produkcijski prikaz proverava se na desktopu i 390 px, uključujući ugrađeni PDF pregled i JSON-LD. Globalni audit ima identičan skup nalaza pre/posle izmene: 603 ukupno, 26 actionable (1 high / 7 medium / 18 low), 0 novih; iQ Granit SD ima 0 nalaza. Supabase deo tog audita zadržava prethodno ograničenje sa kategorijom UUID `8`; za ovu kolekciju izvor je lokalni JSON.
+
+Završni ugovorni testovi: **37 fajlova / 323 testa prolaze** (`vitest run --config vitest.contract.config.ts --testTimeout 15000`). Timeout je povećan samo za ovaj test poziv: postojeći hladni import PDP modula prelazi podrazumevanih 5 s; nijedna funkcionalna provera nije preskočena. Dodatna provera potvrđuje da postojeći repository podaci ostaju sačuvani i imaju prednost pri poklapanju sluga sa JSON bojama.
+
+Lokalni produkcijski build prolazi. Browser potvrda: početna fotografija, cena, 9 dokumenata, tehnički PDF u ugrađenom prikazu, mobilna širina 390 px bez horizontalnog prelivanja, stvarni izbor poslednjeg dekora 0475 iz pune palete i ponovno otvaranje bez automatskog zatvaranja. Filter Elektroprovodni + Tarkett prikazuje 1 kolekciju / 14 boja; posle učitavanja svih boja postoje svih 14 ispravnih SD linkova. Nema browser console grešaka ili pokvarenih slika u ovim proverama.

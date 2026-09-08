@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import type { ProductSpec } from '@/types';
 import { mergeSpecs } from '@/lib/product-page/color-helpers';
+import { filterSpecsForDisplay } from '@/lib/product-page/spec-helpers';
 import { getWeldingAccessoryHref } from '@/lib/product-page/welding-helpers';
 
 interface ProductCharacteristicsProps {
@@ -62,7 +63,7 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
   }
 
   if (selectedSpecs && selectedSpecs.length > 0) {
-    const finalSpecs = mergeSpecs(specs || [], selectedSpecs);
+    const finalSpecs = filterSpecsForDisplay(mergeSpecs(specs || [], selectedSpecs), { categoryId });
 
     if (finalSpecs.length === 0) {
       return null;

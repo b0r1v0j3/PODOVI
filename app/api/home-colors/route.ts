@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Product } from '@/types';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { hasCollectionSku } from '@/lib/utils/homepage-collection-filter';
+import { getEsdColorProducts } from '@/lib/product-page/color-helpers';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,7 +46,7 @@ export async function GET(request: NextRequest) {
       const products = await productRepository.findByCategory(categoryId);
       return {
         categoryId,
-        products: selectHomepageColors(products),
+        products: selectHomepageColors(categoryId === '8' ? [...products, ...getEsdColorProducts()] : products),
       };
     }),
   );

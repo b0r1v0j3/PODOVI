@@ -8,6 +8,7 @@
 
 | # | Datum | Proizvod (slug) | Kategorija | Status |
 |---|-------|-----------------|------------|--------|
+| 3 | 2026-09-08 | tarkett-iq-granit-sd | Elektroprovodni | Dodato 14 dekora, 28 SKU, cena i originalna dokumentacija; pregled izvora i prikaza u `docs/products/tarkett-iq-granit-sd.md` |
 | 1 | 2026-07-08 | podovi-parket-admonter | Parket | ✅ Pregledan + IMPLEMENTIRANO (nalazi #1–#6, #8–#14; zvanični materijal uvezen; brend Admonter) |
 | 2 | 2026-07-08 | podovi-parket-artisan | Parket | ✅ Pregledan + IMPLEMENTIRANO (725 slika galerija, ljudska imena 142 boje, grupisanje po 7 pod-linija, baner, intro, SEO) |
 

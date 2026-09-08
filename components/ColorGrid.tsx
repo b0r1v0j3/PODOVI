@@ -182,9 +182,8 @@ export default function ColorGrid({
     // Update selected slug
     setCurrentSelectedSlug(color.slug);
 
-    // If in compact mode (ProductColorSelector) ILI pattern-grupa (parket po meri, non-compact),
-    // update URL with ?color= and update hero image. (Bez ovoga non-compact klik ne radi ništa.)
-    if (compact || (color as { isPatternGroup?: boolean }).isPatternGroup) {
+    // Selector i njegov puni modal menjaju URL i glavnu sliku preko istog callback-a.
+    if (onColorSelect || compact || (color as { isPatternGroup?: boolean }).isPatternGroup) {
       // Update URL with ?color= parameter
       // Use replace instead of push to avoid creating unnecessary history entries
       // when changing colors on the same page
@@ -213,8 +212,7 @@ export default function ColorGrid({
       return;
     }
 
-    // If not in compact mode, navigate to individual color page
-    // (Link will handle navigation)
+    // Samostalan puni grid bez callback-a samo označava izabranu boju.
   }, [compact, onColorSelect, pathname, router, searchParams]);
 
   useEffect(() => {

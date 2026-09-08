@@ -98,7 +98,8 @@ export function getCompatibleAccessorySlugs(categoryId: string): string[] {
 export function resolveCompatibleAccessories(
     product: Pick<Product, 'slug' | 'categoryId' | 'compatibleAccessories'>,
 ): Product[] {
-    const order = [
+    // iQ Granit SD: only its verified static-control copper strip, not the universal installation tape.
+    const order = product.slug === 'tarkett-iq-granit-sd' ? ESD : [
         ...(product.compatibleAccessories || []),
         ...getCompatibleAccessorySlugs(product.categoryId),
     ];

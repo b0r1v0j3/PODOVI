@@ -84,12 +84,11 @@ export default function ProductColorSelector({
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  // Bez ?color= u URL-u, podrazumevano se bira PRVA boja (ne collection cover / room-scene),
-  // da se na otvaranju kolekcije odmah vidi stvarni dekor. Radi i na SSR-u (useState init),
-  // pa nema treperenja; URL ostaje čist (kanonika nepromenjena).
+  const isIqGranitSd = productSlug === 'tarkett-iq-granit-sd';
+  // iQ Granit SD prvo prikazuje zvaničnu fotografiju kolekcije, do izbora boje.
   const firstCustomColorSlug = useMemo(
-    () => customColors?.find((c: any) => c?.slug)?.slug || undefined,
-    [customColors]
+    () => isIqGranitSd ? undefined : customColors?.find((c: any) => c?.slug)?.slug || undefined,
+    [customColors, isIqGranitSd]
   );
   const initialColorSlug = searchParams.get('color') || firstCustomColorSlug;
   const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(initialColorSlug);
@@ -202,7 +201,7 @@ export default function ProductColorSelector({
     return displayProductTitle.color || productName;
   }, [displayProductTitle, productName]);
 
-  // Update selectedColorSlug when URL changes (bez ?color= → prva boja, ne reset na cover)
+  // Sinhronizuj izbor sa URL-om i početnim prikazom kolekcije.
   useEffect(() => {
     const urlColorSlug = searchParams.get('color') || firstCustomColorSlug;
     if (urlColorSlug !== selectedColorSlug) {
@@ -530,10 +529,10 @@ export default function ProductColorSelector({
 
           {/* Naziv (boja) + kolekcija */}
           <h1 className="text-3xl md:text-4xl font-normal tracking-tight text-ink-900 mb-2">
-            {displayProductTitle.color}
+            {isIqGranitSd ? collectionName : displayProductTitle.color}
           </h1>
 
-          {displayProductTitle.collection ? (
+          {!isIqGranitSd && displayProductTitle.collection ? (
             <p className="text-base text-ink-600 mb-4">
               {displayProductTitle.collection}
             </p>
@@ -545,11 +544,22 @@ export default function ProductColorSelector({
 
           {/* Cena — čist tekst, bez kutija */}
           {productPrice && productPrice > 0 ? (
-            <p className="text-[13px] text-ink-500 mb-8">
+            <p className={isIqGranitSd ? 'text-xl text-ink-900 mb-6' : 'text-[13px] text-ink-500 mb-8'}>
               {productPrice.toLocaleString('sr-RS')} RSD{priceUnit ? ` / ${priceUnit}` : ''}
             </p>
           ) : (
             <p className="text-[13px] text-ink-500 mb-8">Cena na upit</p>
+          )}
+
+          {isIqGranitSd && (
+            <dl className="mb-8">
+              {specs?.filter(spec => ['ukupna_debljina', 'elektricna_otpornost', 'format'].includes(spec.key)).map(spec => (
+                <div key={spec.key} className="flex justify-between gap-4 border-b border-ink-200 py-[9px] text-[13px]">
+                  <dt className="text-ink-500">{spec.label}</dt>
+                  <dd className="text-ink-900 text-right">{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
           )}
 
           {/* Varijante/boje – mreža kvadratnih swatcheva */}
@@ -739,7 +749,6 @@ export default function ProductColorSelector({
                 collectionSlug={collectionSlug}
                 onColorSelect={handleModalColorSelect}
                 compact={false}
-                initialColorSlug={initialColorSlug}
                 selectedColorSlug={selectedColorSlug}
                 customColors={customColors}
                 apiCategory={apiCategory}

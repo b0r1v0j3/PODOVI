@@ -1525,6 +1525,7 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getAllTechemProducts(),
         ...getAllRomusToolProducts(),
         ...getVinylCollectionProducts(),
+        ...getEsdCollectionProducts().filter((product) => product.brandId === '3'),
         ...getManualCollectionProducts(),
     ];
     return allProducts.find(p => p.slug === slug || p.id === slug);
@@ -2494,6 +2495,8 @@ function buildTarkettVinylCollectionHeaders(
             specs,
             documents: Array.isArray(collection.documents) ? collection.documents : [],
             detailsSections: Array.isArray(collection.detailsSections) ? collection.detailsSections : undefined,
+            price: typeof collection.price === 'number' ? collection.price : undefined,
+            priceUnit: collection.priceUnit || undefined,
             externalLink: collection.url,
             inStock: true,
             featured: false,
@@ -2979,6 +2982,9 @@ export function getEsdCollectionProducts(): Product[] {
     };
 
     const result = collections.map((col: any) => {
+        if (col.brandId === '3') {
+            return buildTarkettVinylCollectionHeaders([col], 'TARKETT-ESD', 'Homogeni', undefined, '8')[0];
+        }
         const firstColor = col.colors?.[0];
         const slug = `gerflor-${col.slug}`;
         const characteristics = firstColor?.characteristics || {};
