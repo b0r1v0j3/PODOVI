@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import vinylSpecialColorsData from '@/public/data/vinyl_special_colors.json';
 import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.json';
@@ -125,10 +124,6 @@ export async function GET(request: NextRequest) {
         const colorsData = isLinoleum ? linoleumColorsData : isCarpet ? carpetColorsData : lvtColorsData;
         const colors = (colorsData as { colors?: any[] }).colors || [];
         color = findFlatColor(colors);
-    }
-
-    if (!color && isCarpet) {
-        color = findFlatColor((bloqCarpetData as any).colors || []);
     }
 
     if (!color) {

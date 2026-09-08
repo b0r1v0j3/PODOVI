@@ -25,7 +25,6 @@ import {
     getParketCollectionSlug,
     getParketCollectionVariantSlugs,
 } from '@/lib/data/parket-collection-mapping';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import dessoCarpetData from '@/public/data/desso_carpet_tiles.json';
 import romusToolsData from '@/public/data/romus_tools.json';
 import { getAllDekingProducts, getAllGrassProducts, getAllPriborProducts } from '@/lib/utils/productDataLoader';
@@ -104,7 +103,7 @@ function mapNestedCollectionColors(collection: any, context: { categoryId: strin
 
 /**
  * Build the customColors array used by ProductColorSelector for variant switching.
- * Handles Parket, Laminat, and BLOQ Carpet categories.
+ * Handles Parket, Laminat, and Desso Carpet categories.
  */
 export async function prepareCustomColors(
     product: Product,
@@ -228,34 +227,13 @@ export async function prepareCustomColors(
 
 
 
-    // BLOQ Carpet: customColors from bloq_carpet_tiles.json
-    if (product.categoryId === '4' && (product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-'))) {
-        const bloqColors = (bloqCarpetData as any).colors || [];
-        const collectionColors = bloqColors.filter((c: any) => c.collection_slug === pageSlug);
-        if (collectionColors.length > 0) {
-            return collectionColors.map((c: any) => ({
-                collection: c.collection_slug,
-                collection_name: c.collection_name,
-                code: c.code,
-                name: c.name,
-                full_name: c.full_name || c.name,
-                slug: c.slug,
-                image_url: c.image_url || '',
-                texture_url: c.image_url || '',
-                image_count: c.image_url ? 1 : 0,
-                characteristics: c.characteristics || {},
-                backing_variants: c.backing_variants,
-            }));
-        }
-    }
-
-    // Desso Carpet (cat 4): customColors from desso_carpet_tiles.json (mirror BLOQ branch).
+    // Desso Carpet (cat 4): customColors from desso_carpet_tiles.json.
     // Desso attaches to the existing Tarkett brand; SKU prefix DESSO- on collection products.
     if (product.categoryId === '4' && (product.sku === 'DESSO-CARPET' || product.sku?.startsWith('DESSO-'))) {
         const dessoColors = (dessoCarpetData as any).colors || [];
         // Desso podaci imaju collection_slug bez prefiksa ("desso-futurity"), a kanonski
-        // routeSlug za brend Tarkett (id 3) dobija "tarkett-" prefiks → toleriši oba (kao BLOQ koji
-        // već ima "bloq-" u podacima). Bez ovoga svih 46 Desso kolekcija pokazuje 0 boja.
+        // routeSlug za brend Tarkett (id 3) dobija "tarkett-" prefiks → toleriši oba oblika.
+        // Bez ovoga svih 46 Desso kolekcija pokazuje 0 boja.
         const dessoPageSlug = pageSlug.replace(/^tarkett-/, '');
         const collectionColors = dessoColors.filter((c: any) => c.collection_slug === pageSlug || c.collection_slug === dessoPageSlug);
         if (collectionColors.length > 0) {

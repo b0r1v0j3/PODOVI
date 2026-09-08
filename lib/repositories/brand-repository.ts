@@ -44,7 +44,7 @@ export class SupabaseBrandRepository implements IBrandRepository {
 
     const dbBrands: Brand[] = ((data as any[]) || []).map((row: any) => toBrand(row));
 
-    // Merge with mock brands (BLOQ, etc.) that might not be in DB yet
+    // Merge with mock brands that might not be in DB yet
     // Prefer DB version if duplicate SLUG exists (DB has UUIDs, Mock has legacy IDs)
     const dbBrandSlugs = new Set(dbBrands.map((b: Brand) => b.slug));
     const uniqueMockBrands = mockBrands.filter(mb => !dbBrandSlugs.has(mb.slug));
@@ -69,7 +69,7 @@ export class SupabaseBrandRepository implements IBrandRepository {
 
   async findById(id: string): Promise<Brand | null> {
     // Try to map ID to UUID for Supabase lookup
-    // If it's a legacy ID like '8' (BLOQ) that might not be in DB or ID mapping, 
+    // If it's a legacy brand ID that might not be in DB or ID mapping,
     // we should check mock data first or handle the mapping failure gracefully.
     try {
       const uuid = mapBrandIdToUUID(id);

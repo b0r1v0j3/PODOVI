@@ -1,6 +1,6 @@
 import { Product, ProductFilters, ProductImage, ProductSpec } from '@/types';
 import { products as mockProducts } from '@/lib/data/mock-data';
-import { getAllGerflorProducts, getAllBloqCarpetProducts, getAllDessoCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllGrassProducts, getAllPriborProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections, getGerflorStairShowerCollections } from '@/lib/utils/productDataLoader';
+import { getAllGerflorProducts, getAllDessoCarpetProducts, getAllCarpetProducts, getAllTarkettLVTProducts, getGerflorCarpetCollections, getGerflorLinoleumCollections, getTarkettLinoleumCollections, getGerflorLVTCollections, getTarkettLVTCollections, getProductBySlug as getJsonProductBySlug, getAllDekingProducts, getAllGrassProducts, getAllPriborProducts, getAlpodCollectionProducts, getAlpodVariantProducts, getAllAlpodProducts, getAllTechemProducts, getAllRomusToolProducts, getVinylCollectionProducts, getEsdCollectionProducts, getTarkettSportCollections, getTarkettVinylHomeCollections, getTarkettHomogeneousVinylCollections, getTarkettHeterogeneousVinylCollections, getWolflorVinylCollections, getTarkettLajsneCollections, getGerflorStairShowerCollections } from '@/lib/utils/productDataLoader';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getEffectiveParketCollection } from '@/lib/data/parket-collection-mapping';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
@@ -132,7 +132,7 @@ export class SupabaseProductRepository implements IProductRepository {
       if (uuidBrandIds.length > 0) {
         query = query.in('brand_id', uuidBrandIds);
       } else {
-        // Mock-only brands (e.g. BLOQ, TimberTech, Wolflor) do not exist in Supabase products.
+        // Mock-only brands (e.g. TimberTech, Wolflor) do not exist in Supabase products.
         // Force an empty DB branch and let the JSON/manual merge layers below supply the real catalog.
         query = query.eq('brand_id', '00000000-0000-0000-0000-000000000000');
       }
@@ -167,7 +167,7 @@ export class SupabaseProductRepository implements IProductRepository {
       enrichCatalogProduct(toProduct(row, row.product_images || [], row.product_specs || []))
     );
 
-    // Merge BLOQ + Gerflor carpet tile products from JSON for category 4 (Tekstilne ploče)
+    // Merge Desso + Gerflor carpet tile products from JSON for category 4 (Tekstilne ploče)
     // Note: categoryId may be a UUID or legacy '4' string depending on caller
     const legacyCategoryId = filters?.categoryId ? mapCategoryId(filters.categoryId) : undefined;
 
@@ -176,7 +176,6 @@ export class SupabaseProductRepository implements IProductRepository {
       const existingCarpetSlugs = new Set(products.map((product: Product) => product.slug));
       let jsonProducts = [
         ...getGerflorCarpetCollections(),
-        ...getAllBloqCarpetProducts(),
         ...getAllDessoCarpetProducts(),
         ...getAllCarpetProducts(),
       ].filter((product) => !existingCarpetSlugs.has(product.slug));
@@ -667,7 +666,7 @@ export class SupabaseProductRepository implements IProductRepository {
       .single();
 
     if (error || !data) {
-      // Fallback: check JSON products (Gerflor, Bloq, Tarkett LVT)
+      // Fallback: check JSON products (Gerflor, Desso, Tarkett LVT)
       const jsonProduct = getJsonProductBySlug(slug);
       if (jsonProduct) return jsonProduct;
 
@@ -724,7 +723,6 @@ export class MockProductRepository implements IProductRepository {
     ...getTarkettLinoleumCollections(),
     ...getGerflorCarpetCollections(),
     ...getAllCarpetProducts(),
-    ...getAllBloqCarpetProducts(),
     ...tarkettProducts.map(enrichCatalogProduct),
     ...getAllTarkettLVTProducts(),
     ...getTarkettVinylHomeCollections(),

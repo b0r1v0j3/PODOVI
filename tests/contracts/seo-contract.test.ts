@@ -1,7 +1,6 @@
 import techemData from '@/public/data/techem_mats.json';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.json';
 import wolflorVinylColorsData from '@/public/data/wolflor_vinyl_colors.json';
 import tarkettSportColorsData from '@/public/data/tarkett_sport_colors.json';
@@ -116,11 +115,6 @@ const selectedColorMetadataFixture = ((((lvtColorsData as any).colors || []) as 
   color.texture_url &&
   color.lifestyle_url &&
   color.texture_url !== color.lifestyle_url
-));
-const bloqSelectedColorFixture = ((((bloqCarpetData as any).colors || []) as Array<Record<string, any>>).find((color) =>
-  color.collection_slug &&
-  color.slug &&
-  color.image_url
 ));
 const creation30FirstColorSlug = (((lvtColorsData as any).colors || []) as Array<Record<string, any>>)
   .find((color) => color.collection === 'creation-30' && color.slug)?.slug;
@@ -279,10 +273,6 @@ const timbertechPlaceholderBrand: Brand = {
 
 if (!selectedColorMetadataFixture?.collection || !selectedColorMetadataFixture?.slug) {
   throw new Error('Contract test fixture missing: no LVT color with distinct texture/lifestyle candidates.');
-}
-
-if (!bloqSelectedColorFixture?.collection_slug || !bloqSelectedColorFixture?.slug) {
-  throw new Error('Contract test fixture missing: no BLOQ color with image-backed selected-color route.');
 }
 
 if (!creation30FirstColorSlug) {
@@ -744,23 +734,12 @@ describe('SEO contracts', () => {
     expect(navigationMocks.redirect).toHaveBeenCalledWith(`/proizvodi/dlw-uni-walton?color=${linoleumFirstColorSlug}`);
   });
 
-  it('keeps BLOQ colored PDP metadata image aligned with the selected tile image instead of the collection cover', async () => {
-    const { generateMetadata } = await import('@/app/proizvodi/[slug]/page');
-    const metadata = await generateMetadata({
-      params: { slug: bloqSelectedColorFixture.collection_slug },
-      searchParams: { color: bloqSelectedColorFixture.slug },
-    } as any);
-
-    const ogImages = (((metadata.openGraph as any)?.images) || []) as Array<any>;
-    const twitterImages = (((metadata.twitter as any)?.images) || []) as Array<any>;
-    const expectedUrl = resolveMetadataImageUrl(
-      getPrimaryColorImage(bloqSelectedColorFixture)?.url || '',
-      'https://www.podovi.online'
-    );
-
-    expect(expectedUrl).toBeTruthy();
-    expect(ogImages[0]?.url).toBe(expectedUrl);
-    expect(twitterImages).toEqual([expectedUrl]);
+  it('returns not found for retired BLOQ collection and bare color pages', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    const { default: ProductPage } = await import('@/app/proizvodi/[slug]/page');
+    for (const slug of ['bloq-assembly', 'assembly-201-saffron']) {
+      await expect(ProductPage({ params: { slug }, searchParams: {} } as any)).rejects.toThrow('NEXT_NOT_FOUND');
+    }
   });
 
   it('keeps Techem mirrored metadata image candidates on first-party controlled hosts', () => {

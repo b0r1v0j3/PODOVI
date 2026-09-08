@@ -18,7 +18,6 @@ import {
     collectionFromColor,
 } from './color-helpers';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import { getDerivedWeldingSpecs } from './welding-helpers';
 import { normalizeCollectionSlugForProductRoute } from '@/lib/utils/product-routes';
 import { getProductBySlug as getCatalogProductBySlug } from '@/lib/utils/productDataLoader';
@@ -206,13 +205,11 @@ function findLoaderProductBySlug(slug: string): Product | null {
                 normalizedSlug.replace(/^tarkett-/, ''),
                 normalizedSlug.replace(/^wolflor-/, ''),
                 normalizedSlug.replace(/^techem-/, ''),
-                normalizedSlug.replace(/^bloq-/, ''),
                 normalizedSlug.replace(/^podovi-/, ''),
                 normalizedSlug.startsWith('gerflor-') ? '' : `gerflor-${normalizedSlug}`,
                 normalizedSlug.startsWith('tarkett-') ? '' : `tarkett-${normalizedSlug}`,
                 normalizedSlug.startsWith('wolflor-') ? '' : `wolflor-${normalizedSlug}`,
                 normalizedSlug.startsWith('techem-') ? '' : `techem-${normalizedSlug}`,
-                normalizedSlug.startsWith('bloq-') ? '' : `bloq-${normalizedSlug}`,
                 normalizedSlug.startsWith('podovi-') ? '' : `podovi-${normalizedSlug}`,
             ].filter(Boolean)
         )
@@ -433,71 +430,6 @@ export async function resolveProductBySlug(slug: string): Promise<(Product & { c
             color: firstColor as ColorFromJSON,
         };
         return collectionFromColor(colorSource, slug);
-    }
-
-    // Check if slug is a BLOQ collection slug (e.g., "bloq-assembly", "bloq-flow")
-    if (slug.startsWith('bloq-')) {
-        const bloqColors = (bloqCarpetData as any).colors || [];
-        const bloqColor = bloqColors.find((color: any) => color.collection_slug === slug || color.collection === slug);
-        if (bloqColor) {
-            const specs = Object.entries(bloqColor.characteristics || {}).map(([label, value]) => ({
-                key: label.toLowerCase().replace(/\s+/g, '_'),
-                label,
-                value: value as string
-            }));
-
-            // Use enriched description if available — format with section headers for parseDescriptionToSections()
-            const descriptionParts: string[] = [];
-            if (bloqColor.collection_description_sr) {
-                descriptionParts.push(`Opis:\n${bloqColor.collection_description_sr}`);
-            }
-            if (bloqColor.color_range_text) {
-                descriptionParts.push(`Paleta boja:\n${bloqColor.color_range_text}`);
-            }
-            if (bloqColor.backing_variants && Array.isArray(bloqColor.backing_variants) && bloqColor.backing_variants.length > 0) {
-                descriptionParts.push(`Dostupne podloge:\n${bloqColor.backing_variants.join(', ')}`);
-            }
-            const enrichedDescription = descriptionParts.length > 0
-                ? descriptionParts.join('\n')
-                : (bloqColor.description || '');
-
-            // Map documents from JSON
-            const documents = Array.isArray(bloqColor.documents)
-                ? bloqColor.documents.map((doc: any) => ({ title: doc.title || '', url: doc.url || '' }))
-                : [];
-            // Build a meaningful short description from collection description
-            const shortDescBase = bloqColor.collection_description_sr
-                ? bloqColor.collection_description_sr.split(/[.!]/)[0].trim()
-                : `Premium tekstilne ploče`;
-            const shortDesc = shortDescBase.length > 120
-                ? shortDescBase.substring(0, 117) + '...'
-                : shortDescBase;
-
-            return {
-                id: `bloq-${slug}`,
-                name: `BLOQ ${bloqColor.collection_name || slug}`,
-                slug,
-                sku: 'BLOQ-CARPET',
-                categoryId: '4',
-                brandId: '8',
-                shortDescription: shortDesc,
-                description: enrichedDescription,
-                images: bloqColor.image_url ? [{
-                    id: `${slug}-img-1`,
-                    url: bloqColor.image_url,
-                    alt: `BLOQ ${bloqColor.collection_name || slug}`,
-                    isPrimary: true,
-                    order: 1,
-                }] : [],
-                specs,
-                documents,
-                inStock: true,
-                featured: false,
-                createdAt: new Date(),
-                updatedAt: new Date(),
-                collectionSlug: slug,
-            };
-        }
     }
 
     // Check if slug is a Tarkett product slug (e.g., "tarkett-essence-30", "tarkett-id-inspiration-55")

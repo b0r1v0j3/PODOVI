@@ -5,7 +5,6 @@ import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import dessoCarpetData from '@/public/data/desso_carpet_tiles.json';
 import collectionImagesData from '@/public/data/collection_images.json';
 import esdColorsData from '@/public/data/esd_colors.json';
@@ -29,7 +28,7 @@ import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.jso
 import admonterOfficialMediaData from '@/public/data/admonter_official_media.json';
 import artisanDisplayOverlayData from '@/public/data/artisan_display_overlay.json';
 import { isFirstPartyImageUrl, parseCoverageM2 } from '@/lib/catalog/spec-normalize';
-import { bloqRoomshotAssetPaths, tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
+import { tarkettCollectionCoverAssetPaths } from '@/lib/data/local-asset-manifests';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 import { selectPreferredCollectionHeroAsset } from '@/lib/utils/catalog-assets';
 
@@ -37,7 +36,6 @@ let tarkettLvtCache: Product[] | null = null;
 let lvtProductsCache: Product[] | null = null;
 let linoleumProductsCache: Product[] | null = null;
 let carpetProductsCache: Product[] | null = null;
-let bloqCarpetCache: Product[] | null = null;
 let dessoCarpetCache: Product[] | null = null;
 let dekingProductsCache: Product[] | null = null;
 let grassProductsCache: Product[] | null = null;
@@ -104,7 +102,6 @@ const DEFAULT_ROMUS_TOOL_CATEGORY_ID = '13';
 const DEFAULT_ROMUS_BRAND_ID = '13';
 const DEFAULT_PODOVI_BRAND_ID = '14';
 const TARKETT_COLLECTION_LOCAL_ASSET_SET = new Set(tarkettCollectionCoverAssetPaths);
-const BLOQ_ROOMSHOT_LOCAL_ASSET_SET = new Set(bloqRoomshotAssetPaths);
 
 // Display names for Tarkett collections
 const TARKETT_COLLECTION_NAMES: Record<string, string> = {
@@ -1506,7 +1503,6 @@ export function getProductBySlug(slug: string): Product | undefined {
         ...getGerflorLVTCollections(),
         ...getGerflorLinoleumCollections(),
         ...getGerflorCarpetCollections(),
-        ...getAllBloqCarpetProducts(),
         ...getAllDessoCarpetProducts(),
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
@@ -1571,7 +1567,7 @@ export function getProductsByCategory(categoryId: string): Product[] {
     } else if (categoryId === '7') {
         return [...getGerflorLinoleumCollections(), ...getAllLinoleumProducts(), ...getTarkettLinoleumCollections()];
     } else if (categoryId === '4') {
-        return [...getGerflorCarpetCollections(), ...getAllCarpetProducts(), ...getAllBloqCarpetProducts(), ...getAllDessoCarpetProducts()];
+        return [...getGerflorCarpetCollections(), ...getAllCarpetProducts(), ...getAllDessoCarpetProducts()];
     } else if (categoryId === '5') {
         return [...getAllDekingProducts(), ...getAlpodCollectionProducts('5')];
     } else if (categoryId === '14') {
@@ -1592,7 +1588,6 @@ export function getProductsByCategory(categoryId: string): Product[] {
         ...getAllGerflorProducts(),
         ...getGerflorLVTCollections(),
         ...getGerflorLinoleumCollections(),
-        ...getAllBloqCarpetProducts(),
         ...getAllDessoCarpetProducts(),
         ...getAllTarkettLVTProducts(),
         ...getTarkettLVTCollections(),
@@ -2046,147 +2041,6 @@ export function getAllCarpetProducts(): Product[] {
 
 
 /**
- * Get all BLOQ Carpet products from bloq_carpet_tiles.json
- * Returns both collection-level products (with BLOQ- SKU prefix for category page collection tab)
- * and individual color products
- */
-export function getAllBloqCarpetProducts(): Product[] {
-    if (bloqCarpetCache) {
-        return bloqCarpetCache;
-    }
-
-    const colors = (bloqCarpetData as any).colors || [];
-
-    // Group colors by collection to create collection-level products
-    const collectionMap = new Map<string, any[]>();
-    for (const color of colors) {
-        const key = color.collection_slug || color.collection;
-        if (!collectionMap.has(key)) {
-            collectionMap.set(key, []);
-        }
-        collectionMap.get(key)!.push(color);
-    }
-
-    // Create collection-level products (shown in "Kolekcije" tab)
-    const collectionProducts: Product[] = [];
-    Array.from(collectionMap.entries()).forEach(([collSlug, collColors]) => {
-        const first = collColors[0];
-        const collName = first.collection_name || collSlug;
-        const description = [
-            normalizeText(first.collection_description_sr),
-            normalizeText(first.collection_description_en),
-            normalizeText(first.description),
-            normalizeText(enrichProductDescription({ name: `BLOQ ${collName}`, categoryId: '4', brandId: '8', specs: [] } as any)),
-        ].find(Boolean) || '';
-
-        const imageUrl = selectPreferredCollectionHeroAsset(
-            pickFirstKnownLocalPublicAsset(
-                BLOQ_ROOMSHOT_LOCAL_ASSET_SET,
-                `/images/products/bloq-roomshots/bloq-${collSlug}-roomshot.jpg`,
-                `/images/products/bloq-roomshots/${collSlug}-roomshot.jpg`
-            ),
-            ...collColors.map((color) => color.image_url)
-        );
-        const collectionSpecs = mergeUniqueSpecs(
-            buildSpecsFromCharacteristicRecord(
-                {
-                    Familija: first.parent_collection,
-                    Format: first.format,
-                    Dimenzije: first.dimension,
-                    Podloga: Array.isArray(first.backing_variants) && first.backing_variants.length > 0
-                        ? first.backing_variants.join(' / ')
-                        : first.characteristics?.Podloga || first.specs?.BACKING,
-                    'Klasa upotrebe': first.characteristics?.['Klasa upotrebe'] || first.specs?.CLASSIFICATION,
-                    Vatrostojnost: first.characteristics?.Vatrostojnost || first.specs?.FIRE_RESISTANCE,
-                },
-                `BLOQ ${collName}`
-            ),
-            []
-        );
-        const documents = Array.isArray(first.documents) ? first.documents : [];
-
-        collectionProducts.push({
-            id: `bloq-coll-${collSlug}`,
-            name: `BLOQ ${collName}`,
-            slug: collSlug,
-            sku: `BLOQ-${collSlug.toUpperCase()}`, // BLOQ- prefix so hasCollectionSku picks it up
-            categoryId: '4',
-            brandId: '8',
-            shortDescription: `BLOQ ${collName} - ${collColors.length} boja u kolekciji ${first.parent_collection || 'BLOQ'}`,
-            description,
-            images: imageUrl ? [{
-                id: `bloq-coll-${collSlug}-img`,
-                url: imageUrl,
-                alt: `BLOQ ${collName}`,
-                isPrimary: true,
-                order: 1,
-            }] : [],
-            specs: collectionSpecs,
-            documents,
-            externalLink: normalizeText(first.external_url) || 'https://bloq.nl/products',
-            inStock: true,
-            featured: false,
-            createdAt: new Date('2024-01-01'),
-            updatedAt: new Date('2024-01-01'),
-        });
-    });
-
-    // Create individual color products
-    const colorProducts = colors.map((color: any) => {
-        const specs = Object.entries(color.characteristics || {}).map(([label, value]) => ({
-            key: label.toLowerCase().replace(/\s+/g, '_'),
-            label,
-            value: value as string
-        }));
-
-        if (color.parent_collection && !specs.find(s => s.key === 'family')) {
-            specs.push({ key: 'family', label: 'Familija', value: color.parent_collection });
-        }
-
-        const images = [];
-        if (color.image_url) {
-            images.push({
-                id: `${color.slug}-img-1`,
-                url: color.image_url,
-                alt: `${color.name}`,
-                isPrimary: true,
-                order: 1,
-            });
-        }
-
-        const formattedName = formatProductName(color.full_name || color.name, color.code);
-
-        return {
-            id: color.slug,
-            name: formattedName,
-            slug: `${color.collection_slug || color.collection}?color=${color.slug}`,
-            sku: color.code,
-            categoryId: '4', // Tekstilne ploče
-            brandId: '8', // BLOQ
-            shortDescription: enrichShortDescription({ ...color, name: formattedName, categoryId: '4', brandId: '8', specs } as any),
-            description: color.description || enrichProductDescription({ name: formattedName, categoryId: '4', brandId: '8', specs } as any),
-            images: images.length > 0 ? images : [{
-                id: `${color.slug}-img-1`,
-                url: '/images/placeholder.svg',
-                alt: formattedName,
-                isPrimary: true,
-                order: 1,
-            }],
-            specs,
-            inStock: true,
-            featured: false,
-            externalLink: color.external_url || 'https://bloq.nl/products',
-            createdAt: new Date('2024-01-01'),
-            updatedAt: new Date('2024-01-01'),
-        };
-    });
-
-    bloqCarpetCache = [...collectionProducts, ...colorProducts];
-    return bloqCarpetCache;
-}
-
-
-/**
  * Apply the "Desso " display prefix idempotently. The ingest already writes
  * collection_name with the prefix, but guard here too so loader output is always
  * "Desso <Collection>" without doubling (e.g. upstream "DESSO X RENS" stays as-is).
@@ -2199,11 +2053,11 @@ function dessoDisplayName(name: string): string {
 
 /**
  * Get all Desso Carpet products from desso_carpet_tiles.json.
- * Mirrors getAllBloqCarpetProducts(): emits both collection-level products
+ * Emits both collection-level products
  * (DESSO- SKU prefix for the category page "Kolekcije" tab) and individual color
  * products. Desso attaches to the EXISTING Tarkett brand (brandId '3') inside the
  * EXISTING "Tekstilne ploče" category (categoryId '4'); "Desso" is a display-name
- * prefix only. Data file is BLOQ-carpet shaped (flat colors[]).
+ * prefix only. Data file uses a flat colors[] list.
  */
 export function getAllDessoCarpetProducts(): Product[] {
     if (dessoCarpetCache) {

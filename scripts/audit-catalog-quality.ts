@@ -7,7 +7,6 @@ import { products as mockProducts } from '@/lib/data/mock-data';
 import { tarkettProducts } from '@/lib/data/tarkett-products';
 import { getManualCollectionProducts } from '@/lib/data/manual-collection-products';
 import {
-  getAllBloqCarpetProducts,
   getAllCarpetProducts,
   getAllDekingProducts,
   getAllLVTProducts,
@@ -42,7 +41,6 @@ import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import carpetColorsData from '@/public/data/carpet_tiles_complete.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
 
 type Severity = 'high' | 'medium' | 'low';
@@ -80,7 +78,6 @@ const PUBLIC_DIR = path.join(process.cwd(), 'public');
 const BRAND_NAMES: Record<string, string> = {
   '3': 'Tarkett',
   '6': 'Gerflor',
-  '8': 'BLOQ',
   '10': 'TimberTech',
   '11': 'Wolflor',
   '12': 'Techem',
@@ -798,14 +795,12 @@ async function main() {
     { name: 'gerflor-esd-collections', products: getEsdCollectionProducts() },
     { name: 'gerflor-lvt-collections', products: getGerflorLVTCollections() },
     { name: 'gerflor-linoleum-collections', products: getGerflorLinoleumCollections() },
-    { name: 'bloq-collections', products: getAllBloqCarpetProducts() },
     { name: 'timbertech-deking', products: getAllDekingProducts() },
     { name: 'techem-otiraci', products: getAllTechemProducts() },
   ];
 
   const canonicalFallbackSlugs = new Set(
     [
-      ...getAllBloqCarpetProducts(),
       ...getAllCarpetProducts(),
       ...getAllDekingProducts(),
       ...getAllLVTProducts(),
@@ -933,7 +928,6 @@ async function main() {
     summarizeProductArray('gerflor-esd-collections', getEsdCollectionProducts()),
     summarizeProductArray('gerflor-lvt-collections', getGerflorLVTCollections()),
     summarizeProductArray('gerflor-linoleum-collections', getGerflorLinoleumCollections()),
-    summarizeProductArray('bloq-collections', getAllBloqCarpetProducts()),
     summarizeProductArray('timbertech-deking', getAllDekingProducts()),
     summarizeProductArray('techem-otiraci', getAllTechemProducts()),
     summarizeNestedDataset('vinyl-special-json', ((vinylSpecialColorsData as any).collections || []) as any[]),
@@ -951,7 +945,6 @@ async function main() {
     summarizeProductArray('gerflor-lvt-variants', getAllLVTProducts()),
     summarizeFlatColorDataset('linoleum-colors-json', ((linoleumColorsData as any).colors || []) as any[]),
     summarizeFlatColorDataset('carpet-colors-json', ((carpetColorsData as any).colors || []) as any[]),
-    summarizeFlatColorDataset('bloq-colors-json', ((bloqCarpetData as any).colors || []) as any[]),
     summarizeFlatColorDataset('tarkett-lvt-products-json', ((tarkettLvtData as any) || []) as any[]),
     summarizeProductArray('tarkett-lvt-variants', getAllTarkettLVTProducts()),
     summarizeProductArray('gerflor-carpet-colors', getAllCarpetProducts()),

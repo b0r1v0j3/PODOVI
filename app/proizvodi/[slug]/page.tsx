@@ -493,13 +493,12 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
     // ── Redirect color-tiles to collection page with ?color= ──
     const collectionSlugFromProduct = (product as { collectionSlug?: string }).collectionSlug;
-    const isBloqCollection = product.sku === 'BLOQ-CARPET' || product.sku?.startsWith('BLOQ-');
     const isTarkettCollection = product.sku?.startsWith('TARKETT-');
     const isPodoviImportedProduct = isAlpodImportBrand(product.brandId);
     // For deking (category 5), since we don't have separate collection pages, we should not redirect
     const shouldRedirectCollection = ['6', '7', '4', '2', '8', '9', '10', '11'].includes(product.categoryId) || (isPodoviImportedProduct && product.categoryId === '5');
 
-    if (shouldRedirectCollection && collectionSlugFromProduct && !isBloqCollection && !isTarkettCollection) {
+    if (shouldRedirectCollection && collectionSlugFromProduct && !isTarkettCollection) {
       const normalizedCollectionSlug = normalizeCollectionSlugForProductRoute(
         collectionSlugFromProduct,
         product.brandId,
@@ -572,7 +571,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
     if (!brand && product.brandId) {
       const FALLBACK_BRANDS: Record<string, { id: string; name: string; slug: string; logo: string; description: string }> = {
         '3': { id: '3', name: 'Tarkett', slug: 'tarkett', logo: '/images/brands/tarkett.svg', description: 'Tarkett' },
-        '8': { id: '8', name: 'BLOQ', slug: 'bloq', logo: '/images/brands/bloq.svg', description: 'BLOQ' },
         '10': { id: '10', name: 'TimberTech', slug: 'timbertech', logo: '/images/brands/timbertech.svg', description: 'TimberTech' },
         '11': { id: '11', name: 'Wolflor', slug: 'wolflor', logo: '/images/brands/wolflor-logo.png', description: 'Wolflor' },
         '12': { id: '12', name: 'Techem', slug: 'techem', logo: '/images/brands/techem-logo-en.png', description: 'Techem' },
@@ -856,7 +854,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   inStock={product.inStock}
                   productSlug={product.slug}
                   externalLink={product.externalLink}
-                  customColors={(product.categoryId === '3' || product.categoryId === '1' || (product.categoryId === '4' && product.sku?.startsWith('BLOQ'))) ? (customColors ?? []) : customColors}
+                  customColors={(product.categoryId === '3' || product.categoryId === '1') ? (customColors ?? []) : customColors}
                   collectionDisplayName={product.specs.find(s => s.key === 'collection')?.value}
                   collectionCategoryLabel={
                     product.categoryId === '3' ? 'Parket'

@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import { isRetiredBloqReference } from '@/lib/catalog/retired-bloq';
 
 const STORAGE_KEY = 'podovi_favorites';
 
@@ -21,7 +22,8 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
         try {
             const stored = localStorage.getItem(STORAGE_KEY);
             if (stored) {
-                setFavoriteIds(JSON.parse(stored));
+                const parsed = JSON.parse(stored);
+                setFavoriteIds(Array.isArray(parsed) ? parsed.filter(id => typeof id === 'string' && !isRetiredBloqReference(id)) : []);
             }
         } catch { }
         setHydrated(true);
@@ -34,6 +36,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
     }, [favoriteIds, hydrated]);
 
     const toggleFavorite = useCallback((productId: string) => {
+        if (isRetiredBloqReference(productId)) return;
         setFavoriteIds(prev =>
             prev.includes(productId)
                 ? prev.filter(id => id !== productId)

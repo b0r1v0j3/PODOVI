@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest';
 import type { Product } from '@/types';
 import lvtColorsData from '@/public/data/lvt_colors_complete.json';
 import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import collectionImagesData from '@/public/data/collection_images.json';
 import tarkettLajsneData from '@/public/data/tarkett_lajsne_variants.json';
 import tarkettLvtData from '@/public/data/tarkett_lvt_products.json';
@@ -17,7 +16,6 @@ import {
 } from '@/lib/utils/product-images';
 import {
   getAllTechemProducts,
-  getAllBloqCarpetProducts,
   getGerflorLVTCollections,
   getGerflorLinoleumCollections,
   getTarkettLVTCollections,
@@ -158,36 +156,6 @@ const tarkettLajsneHeroFixture = (() => {
   return {
     slug: collection.slug,
     expectedImage: collection.collection_image_url,
-  };
-})();
-
-const bloqHeroFixture = (() => {
-  const collection = ((((bloqCarpetData as any).colors || []) as any[]).find((item) => {
-    const collectionSlug = normalizeCandidate(item.collection_slug || item.collection);
-    const firstSwatchImage = normalizeCandidate(item.image_url);
-    const normalizedRoomshotSlug = collectionSlug.startsWith('bloq-')
-      ? collectionSlug
-      : `bloq-${collectionSlug}`;
-    const expectedImage = normalizedRoomshotSlug
-      ? `/images/products/bloq-roomshots/${normalizedRoomshotSlug}-roomshot.jpg`
-      : '';
-
-    return Boolean(collectionSlug && firstSwatchImage && expectedImage && firstSwatchImage !== expectedImage);
-  }));
-
-  if (!collection) {
-    throw new Error('Contract test fixture missing: no BLOQ collection with distinct roomshot path.');
-  }
-
-  const collectionSlug = normalizeCandidate(collection.collection_slug || collection.collection);
-  const normalizedRoomshotSlug = collectionSlug.startsWith('bloq-')
-    ? collectionSlug
-    : `bloq-${collectionSlug}`;
-
-  return {
-    slug: collectionSlug,
-    expectedImage: `/images/products/bloq-roomshots/${normalizedRoomshotSlug}-roomshot.jpg`,
-    firstSwatchImage: normalizeCandidate(collection.image_url),
   };
 })();
 
@@ -405,13 +373,6 @@ describe('Product image variant contracts', () => {
     const product = getTarkettLajsneCollections().find((item) => item.slug === tarkettLajsneHeroFixture.slug);
 
     expect(product?.images?.[0]?.url).toBe(tarkettLajsneHeroFixture.expectedImage);
-  });
-
-  it('keeps BLOQ collection headers on the dedicated roomshot before tile swatches', () => {
-    const product = getAllBloqCarpetProducts().find((item) => item.slug === bloqHeroFixture.slug);
-
-    expect(product?.images?.[0]?.url).toBe(bloqHeroFixture.expectedImage);
-    expect(product?.images?.[0]?.url).not.toBe(bloqHeroFixture.firstSwatchImage);
   });
 
   it('keeps Tarkett LVT collection headers on the curated collection cover before design images', () => {

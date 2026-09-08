@@ -16,24 +16,3 @@ export const tarkettCollectionCoverAssetPaths = [
   '/images/tarkett/collections/modulart-ll8.jpg',
   '/images/tarkett/collections/progressive-house.jpg',
 ] as const;
-
-export const bloqRoomshotAssetPaths = [
-  '/images/products/bloq-roomshots/bloq-assembly-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-balance-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-canvas-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-connexion-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-flow-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-grain-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-large-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-medium-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-negative-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-positive-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-renegade-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-rhythm-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-sculpture-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-sensity-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-small-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-solace-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-tradition-roomshot.jpg',
-  '/images/products/bloq-roomshots/bloq-unity-roomshot.jpg',
-] as const;

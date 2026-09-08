@@ -9,7 +9,6 @@ import tarkettVinylHomeColorsData from '@/public/data/tarkett_vinyl_home_colors.
 import tarkettHomogeneousVinylColorsData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import tarkettHeterogeneousVinylColorsData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
 import wolflorVinylColorsData from '@/public/data/wolflor_vinyl_colors.json';
-import bloqCarpetData from '@/public/data/bloq_carpet_tiles.json';
 import esdColorsData from '@/public/data/esd_colors.json';
 import industrialColorsData from '@/public/data/industrial_colors.json';
 import sportColorsData from '@/public/data/sport_colors.json';
@@ -225,43 +224,6 @@ function getCategoryId(categorySlug: ColorSource['categorySlug']): string {
     }
 }
 
-function buildBloqColorSource(rawColor: Record<string, any>): ColorSource {
-    const code = String(rawColor.code || '').trim();
-    const rawName = String(rawColor.name || rawColor.full_name || '').trim();
-    const normalizedName = code && rawName.startsWith(`${code} `)
-        ? rawName.substring(code.length).trim()
-        : rawName;
-
-    return {
-        categorySlug: 'tekstilne-ploce',
-        brandId: '8',
-        color: {
-            collection: String(rawColor.collection_slug || rawColor.collection || '').trim(),
-            collection_slug: String(rawColor.collection_slug || rawColor.collection || '').trim(),
-            collection_name: String(rawColor.collection_name || rawColor.collection || '').trim(),
-            code,
-            name: normalizedName,
-            full_name: String(rawColor.full_name || rawName || normalizedName).trim(),
-            slug: String(rawColor.slug || '').trim(),
-            image: String(rawColor.image_url || '').trim(),
-            image_url: String(rawColor.image_url || '').trim(),
-            texture_url: String(rawColor.texture_url || rawColor.image_url || '').trim(),
-            image_count: Number(rawColor.image_count || (rawColor.image_url ? 1 : 0) || 0),
-            dimension: String(rawColor.dimension || '').trim() || undefined,
-            format: String(rawColor.format || '').trim() || undefined,
-            overall_thickness: String(rawColor.overall_thickness || '').trim() || undefined,
-            description: String(rawColor.description || '').trim() || undefined,
-            characteristics: rawColor.characteristics && typeof rawColor.characteristics === 'object'
-                ? rawColor.characteristics
-                : undefined,
-            specs: rawColor.specs && typeof rawColor.specs === 'object'
-                ? rawColor.specs
-                : undefined,
-            brandId: '8',
-        },
-    };
-}
-
 function getPrimaryImageUrl(source: ColorSource): string {
     return getPrimaryColorImage(source.color)?.url || '';
 }
@@ -423,12 +385,6 @@ export async function loadColorFromJson(slug: string, includeLegacyAliases = tru
     const linoleumMatch = linoleumColors.find((color) => color.slug === slug);
     if (linoleumMatch) {
         return { categorySlug: 'linoleum', color: linoleumMatch };
-    }
-
-    const bloqMatch = (((bloqCarpetData as any).colors || []) as Array<Record<string, any>>)
-        .find((color) => String(color.slug || '').trim() === slug);
-    if (bloqMatch) {
-        return buildBloqColorSource(bloqMatch);
     }
 
     const nestedSources: Array<{ categorySlug: ColorSource['categorySlug']; collections: NestedCollection[] }> = [

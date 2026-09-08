@@ -94,7 +94,6 @@ Invariant coupling with existing product pipeline:
 
 | File | Category | Brand | Key Fields |
 |------|----------|-------|------------|
-| `bloq_carpet_tiles.json` | Tekstilne (4) | BLOQ (8) | `colors[]` with `collection_slug`, `collection_name`, `characteristics`, `description`, `collection_description_sr`, `color_range_text`, `documents`, `backing_variants` |
 | `collection_images.json` | LVT helper map | Tarkett (3) | Kurirani local hero override map za Tarkett LVT collection headere; `productDataLoader.ts` ga koristi kao prvi candidate za `getTarkettLVTCollections()`, pre lokalnog `/images/tarkett/collections/<slug>.jpg` fallback-a i pre prvog design image URL-a |
 | `carpet_tiles_complete.json` | Tekstilne (4) | Gerflor (6) | `colors[]` with `collection_slug`, `characteristics` |
 | `lvt_colors_complete.json` | LVT (6) | Gerflor (6) | `colors[]` with `collection`, `specs`, `documents` |
@@ -129,14 +128,13 @@ Techem note:
 - `brandRepository` i `categoryRepository` su source-of-truth za repo-level metadata asset izbor. Page/SEO sloj ne sme da čita sirovi Supabase `row.logo` / `row.image` niti direktno `mock-data.ts`, već samo normalizovan repo entitet; kurirani fallback iz `mock-data.ts` ima prednost nad DB override-om kada nije placeholder.
 - Collection/header hero slike iz `productDataLoader.ts` i `manual-collection-products.ts` moraju da se rezolvuju kroz `lib/utils/catalog-assets.ts`; ne uvoditi nove page-local ili loader-local `a || b || ''` grane za collection hero precedence mimo shared helpera.
 - Lokalni collection hero fallback-i koji zavise od stvarno postojećih fajlova više ne smeju da koriste runtime `fs` lookup nad `public/`; `lib/utils/productDataLoader.ts` sada za to koristi statičke liste iz `lib/data/local-asset-manifests.ts`, kako Vercel trace ne bi uvukao ceo `public/images/*` i `public/documents/*` lane u serverless funkcije.
-- BLOQ collection headeri koriste lokalni roomshot asset kao prvi candidate (`/images/products/bloq-roomshots/bloq-<slug>-roomshot.jpg`), pa tek onda prvi color/tile image iz `bloq_carpet_tiles.json`.
 - Tarkett LVT collection headeri koriste `collection_images.json` kao kanonski local cover override, zatim lokalni `/images/tarkett/collections/<slug>.jpg`, pa tek onda prvi design image iz `tarkett_lvt_products.json`; repo sloj ne sme više da radi poseban drugi override preko istog JSON-a.
 
 ### Category IDs
 - `1` = Laminat, `2` = Vinil (Gerflor + Tarkett + Wolflor + Podovi imported collections), `3` = Parket (Tarkett + Podovi imported collections), `4` = Tekstilne ploce, `5` = Deking (TimberTech + Podovi imported collections), `6` = LVT, `7` = Linoleum, `8` = Elektroprovodni, `9` = Industrijske ploce, `10` = Sport (Gerflor + Tarkett), `11` = Lajsne (Tarkett), `12` = Otirači (Techem, flat catalog branch), `13` = Alat (Romus)
 
 ### Brand IDs
-- `3` = Tarkett, `6` = Gerflor, `8` = BLOQ, `10` = TimberTech, `11` = Wolflor, `12` = Techem, `13` = Romus, `14` = Podovi (internal display brand/logo for imported collections where manufacturer logos are not available)
+- `3` = Tarkett, `6` = Gerflor, `10` = TimberTech, `11` = Wolflor, `12` = Techem, `13` = Romus, `14` = Podovi (internal display brand/logo for imported collections where manufacturer logos are not available)
 
 ---
 
@@ -411,3 +409,7 @@ Techem `Otirači` are intentionally a flat listing branch:
 > 3. If extractor workflow/rollback behavior changed, update `.agent/workflows/extractor-refresh-rollback-runbook.md`
 > 4. Do this as part of the same commit — not as a separate task
 
+
+## BLOQ removal (2026-09-08)
+
+BLOQ (former brand ID `8`) is no longer offered. The 18 collection / 210 decor source, public images, mock brand, loader and independent PDP/color/homepage fallbacks are removed. Category `4` remains shared by Gerflor and Tarkett Desso. Live Supabase had no BLOQ brands, products or colors, so no database deletion was necessary. `lib/catalog/retired-bloq.ts` retains only exact old identities to clear browser favorites, compare/recent snapshots and old inquiry-link prefills; it is not catalog data. Do not restore the retired brand through old import tools or cached data.

@@ -18,7 +18,6 @@ import linoleumColorsData from '@/public/data/linoleum_colors_complete.json';
 import gerflorLinoleumColorsData from '@/public/data/gerflor_linoleum_colors_complete.json';
 import carpetTilesData from '@/public/data/carpet_tiles_complete.json';
 import dessoCarpetTilesData from '@/public/data/desso_carpet_tiles.json';
-import bloqCarpetTilesData from '@/public/data/bloq_carpet_tiles.json';
 import alpodCollectionsData from '@/public/data/alpod_floor_collections.json';
 
 export const metadata = {
@@ -72,7 +71,6 @@ const SWATCH_DATASETS = [
   gerflorLinoleumColorsData,
   carpetTilesData,
   dessoCarpetTilesData,
-  bloqCarpetTilesData,
   alpodCollectionsData,
 ] as const;
 

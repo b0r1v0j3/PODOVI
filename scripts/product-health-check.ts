@@ -16,7 +16,7 @@ type LowSpecIssue = BasicIssue & {
 };
 
 type CollectionDrivenLowSpecIssue = LowSpecIssue & {
-    kind: 'bloq-collection' | 'parket-collection' | 'parket-variant' | 'lvt-variant';
+    kind: 'parket-collection' | 'parket-variant' | 'lvt-variant';
     reason: string;
 };
 
@@ -62,16 +62,6 @@ function getCollectionDrivenLowSpecInfo(product: Product): CollectionDrivenLowSp
     const name = product.name || product.slug;
     const count = countMeaningfulSpecs(product);
 
-    if (product.categoryId === '4' && product.id.startsWith('bloq-coll-')) {
-        return {
-            id: product.id,
-            name,
-            count,
-            kind: 'bloq-collection',
-            reason: 'BLOQ collection page shows color-driven specs, so the base collection card intentionally stays slim.',
-        };
-    }
-
     if (product.categoryId === '6' && !product.id.startsWith('lvt-coll-') && !product.sku?.startsWith('LVT-COLL')) {
         return {
             id: product.id,
@@ -116,7 +106,6 @@ async function runHealthCheck() {
     try {
         let allProducts: Product[] = [];
         allProducts.push(...loader.getAllGerflorProducts());
-        allProducts.push(...loader.getAllBloqCarpetProducts());
         allProducts.push(...loader.getAllTarkettLVTProducts());
         allProducts.push(...loader.getTarkettLVTCollections());
         allProducts.push(...loader.getAllDekingProducts());
@@ -219,7 +208,6 @@ async function runHealthCheck() {
                 return acc;
             }, {});
             const labels: Record<CollectionDrivenLowSpecIssue['kind'], string> = {
-                'bloq-collection': 'BLOQ collection pages',
                 'lvt-variant': 'LVT variant redirects',
                 'parket-collection': 'Parket collection headers',
                 'parket-variant': 'Parket variant redirects',

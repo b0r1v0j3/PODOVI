@@ -148,15 +148,6 @@ export const brands: Brand[] = [
     countryOfOrigin: 'Francuska',
   },
   {
-    id: '8',
-    name: 'BLOQ',
-    slug: 'bloq',
-    logo: '/images/brands/bloq.svg',
-    description: 'Holandski proizvođač premium tekstilnih ploča za komercijalne i poslovne prostore',
-    website: 'https://bloq.nl',
-    countryOfOrigin: 'Holandija',
-  },
-  {
     id: '10',
     name: 'TimberTech',
     slug: 'timbertech',

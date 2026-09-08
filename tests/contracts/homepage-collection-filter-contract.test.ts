@@ -27,7 +27,8 @@ const homepageRailExpectations = [
   { categoryId: '1', name: 'Laminat', minCollectionCards: 1 },
   { categoryId: '2', name: 'Vinil', minCollectionCards: 10 },
   { categoryId: '3', name: 'Parket', minCollectionCards: 5 },
-  { categoryId: '4', name: 'Tekstilne ploče', minCollectionCards: 8 },
+  // BLOQ is retired; this mock rail retains three Gerflor collections. The production Desso merge has its own contract.
+  { categoryId: '4', name: 'Tekstilne ploče', minCollectionCards: 3 },
   { categoryId: '5', name: 'Deking', minCollectionCards: 4 },
   { categoryId: '6', name: 'LVT', minCollectionCards: 15 },
   { categoryId: '7', name: 'Linoleum', minCollectionCards: 3 },

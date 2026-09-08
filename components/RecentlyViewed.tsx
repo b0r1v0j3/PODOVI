@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ProductImage from './ProductImage';
+import { isRetiredBloqProduct } from '@/lib/catalog/retired-bloq';
 
 interface ViewedProduct {
     id: string;
@@ -23,8 +24,11 @@ export default function RecentlyViewed() {
             const stored = localStorage.getItem('recentlyViewed');
             if (stored) {
                 const parsed: ViewedProduct[] = JSON.parse(stored);
-                // Filter out expired items (optional, e.g., > 30 days) and sort by timestamp desc
-                setProducts(parsed.slice(0, 10)); // Limit to 10 items
+                const activeProducts = Array.isArray(parsed) ? parsed.filter(product => product && !isRetiredBloqProduct(product)) : [];
+                setProducts(activeProducts.slice(0, 10));
+                if (!Array.isArray(parsed) || activeProducts.length !== parsed.length) {
+                    localStorage.setItem('recentlyViewed', JSON.stringify(activeProducts));
+                }
             }
         } catch (e) {
             console.error('Failed to load recently viewed products', e);
@@ -86,13 +90,13 @@ export function addToRecentlyViewed(product: {
     price?: number;
     url?: string;
 }) {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || isRetiredBloqProduct(product)) return;
     try {
         const stored = localStorage.getItem('recentlyViewed');
         let products: ViewedProduct[] = stored ? JSON.parse(stored) : [];
 
         // Remove if already exists to move to top
-        products = products.filter(p => p.id !== product.id);
+        products = products.filter(p => p.id !== product.id && !isRetiredBloqProduct(p));
 
         // Add to beginning
         products.unshift({
