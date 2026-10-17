@@ -159,6 +159,24 @@ export default function ProductColorSelector({
     () => getCustomColorHeroImageState(customColors, selectedColorSlug, initialImage),
     [customColors, selectedColorSlug, initialImage]
   );
+  // Hero stek montira samo boje koje su bile aktivne (ne svih 100+ odjednom): naslagane
+  // slike su sve „u vidnom polju", pa loading="lazy" nije sprečavao preuzimanje celog
+  // kataloga (≈14 MB na Creation 55). Poslednja učitana boja ostaje ispod nove dok se
+  // nova ne učita, pa prelaz i dalje nema bljesak.
+  const activeHeroSlug = customColorHeroState.activeColorSlug || null;
+  const mountedHeroRef = useRef<Set<string>>(new Set(activeHeroSlug ? [activeHeroSlug] : []));
+  const [mountedHeroSlugs, setMountedHeroSlugs] = useState<string[]>(() => Array.from(mountedHeroRef.current));
+  const [shownHeroSlug, setShownHeroSlug] = useState<string | null>(activeHeroSlug);
+  useEffect(() => {
+    if (!activeHeroSlug) return;
+    if (mountedHeroRef.current.has(activeHeroSlug)) {
+      // Već montirana = već preuzeta; odmah postaje podloga za sledeći prelaz.
+      setShownHeroSlug(activeHeroSlug);
+      return;
+    }
+    mountedHeroRef.current.add(activeHeroSlug);
+    setMountedHeroSlugs(Array.from(mountedHeroRef.current));
+  }, [activeHeroSlug]);
   const activeCustomColor = useMemo(
     () => (
       customColorHeroState.activeColorSlug
@@ -363,7 +381,9 @@ export default function ProductColorSelector({
                   // swatch i dalje koristi image_url (čista card slika).
                   const imgUrl = color.lifestyle_url || primaryColorImage?.url;
                   const isActive = color.slug === customColorHeroState.activeColorSlug;
-                  if (!imgUrl) return null;
+                  if (!imgUrl || !color.slug || (!isActive && !mountedHeroSlugs.includes(color.slug))) return null;
+                  // Prethodno prikazana boja drži prostor dok se nova (providna do učitavanja) ne učita.
+                  const isBackdrop = !isActive && color.slug === shownHeroSlug;
                   return (
                     <img
                       key={color.slug}
@@ -371,12 +391,11 @@ export default function ProductColorSelector({
                       alt={primaryColorImage?.alt || color.name || color.full_name || ''}
                       className="absolute inset-0 w-full h-full object-cover"
                       style={{
-                        opacity: isActive ? 1 : 0,
-                        zIndex: isActive ? 10 : 1,
+                        opacity: isActive || isBackdrop ? 1 : 0,
+                        zIndex: isActive ? 10 : isBackdrop ? 9 : 1,
                         transition: 'opacity 200ms ease-in-out',
                       }}
-                      // Samo aktivna boja se učitava odmah — kolekcije imaju i 100+ boja,
-                      // eager za sve je ranije vukao ceo katalog slika na jedan PDP.
+                      onLoad={isActive ? () => setShownHeroSlug(color.slug || null) : undefined}
                       loading={isActive ? 'eager' : 'lazy'}
                       decoding="async"
                     />

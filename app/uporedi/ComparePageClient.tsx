@@ -1,12 +1,54 @@
 'use client';
 
+import { useEffect, useMemo, useState } from 'react';
 import { useCompare } from '@/lib/context/CompareContext';
+import type { Product } from '@/types';
 import Link from 'next/link';
 import ProductImage from '@/components/ProductImage';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
 
+/**
+ * Kartice početne strane nose sažete proizvode (bez specifikacija, `compareSlim`),
+ * pa se pri poređenju specifikacije dopunjuju sa servera.
+ */
+function useHydratedCompareItems(items: Product[]): Product[] {
+    const [details, setDetails] = useState<Record<string, Pick<Product, 'specs' | 'shortDescription'>>>({});
+    const slimItems = items.filter((item) => (item as Product & { compareSlim?: boolean }).compareSlim && !details[item.id]);
+    const idsKey = slimItems.map((item) => item.id).join(',');
+    const categoryKey = Array.from(new Set(slimItems.map((item) => item.categoryId))).join(',');
+
+    useEffect(() => {
+        if (!idsKey) return;
+        let cancelled = false;
+        fetch(`/api/products?ids=${encodeURIComponent(idsKey)}&categoryIds=${encodeURIComponent(categoryKey)}`)
+            .then((response) => (response.ok ? response.json() : { products: [] }))
+            .then((payload: { products?: Array<Pick<Product, 'id' | 'specs' | 'shortDescription'>> }) => {
+                if (cancelled) return;
+                setDetails((current) => {
+                    const next = { ...current };
+                    for (const product of payload.products || []) {
+                        next[product.id] = { specs: product.specs || [], shortDescription: product.shortDescription || '' };
+                    }
+                    return next;
+                });
+            })
+            .catch(() => {
+                // Bez dopune: kartica i dalje radi, tabela prikazuje ono što ima.
+            });
+        return () => {
+            cancelled = true;
+        };
+    }, [idsKey, categoryKey]);
+
+    return useMemo(
+        () => items.map((item) => (details[item.id] ? { ...item, ...details[item.id] } : item)),
+        [items, details]
+    );
+}
+
 export default function ComparePageClient() {
-    const { compareItems, removeFromCompare, clearAll } = useCompare();
+    const { compareItems: storedCompareItems, removeFromCompare, clearAll } = useCompare();
+    const compareItems = useHydratedCompareItems(storedCompareItems);
 
     if (compareItems.length === 0) {
         return (

@@ -2,11 +2,12 @@ import { categoryRepository } from '@/lib/repositories/category-repository';
 import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import HomeProductTabs, { HomeProductGroup } from '@/components/HomeProductTabs';
+import { buildHomeCatalogItems, buildHomeFacetSchema } from '@/lib/catalog/home-catalog-index';
+import { HOME_FILTER_QUERY_KEYS } from '@/lib/catalog/home-filter-url';
 import { Product } from '@/types';
 import { hasCollectionSku, toHomepageListingProduct } from '@/lib/utils/homepage-collection-filter';
 import { getEsdColorProducts } from '@/lib/product-page/color-helpers';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
-import { parseHomeFilterUrlState } from '@/lib/catalog/home-filter-url';
 import vinylColorsData from '@/public/data/vinyl_colors_complete.json';
 import tarkettVinylHomeData from '@/public/data/tarkett_vinyl_home_colors.json';
 import tarkettHeterogeneousVinylData from '@/public/data/tarkett_heterogeneous_vinyl_colors.json';
@@ -19,6 +20,11 @@ import gerflorLinoleumColorsData from '@/public/data/gerflor_linoleum_colors_com
 import carpetTilesData from '@/public/data/carpet_tiles_complete.json';
 import dessoCarpetTilesData from '@/public/data/desso_carpet_tiles.json';
 import alpodCollectionsData from '@/public/data/alpod_floor_collections.json';
+
+// ISR: početna se servira iz keša i osvežava najviše na 5 minuta (i pri svakom
+// deploy-u). Filter stanje iz URL-a čita klijent posle montiranja, pa strana ne
+// zavisi od searchParams (ranije: render po zahtevu, ~6 s podataka + 6 MB HTML-a).
+export const revalidate = 300;
 
 export const metadata = {
   title: 'podovi',
@@ -241,26 +247,7 @@ function selectHomepageColors(products: Product[]): Product[] {
   return dedupeBySlug(products.filter((product) => !hasCollectionSku(product)));
 }
 
-interface HomePageProps {
-  searchParams?: Record<string, string | string[] | undefined>;
-}
-
-function toUrlSearchParams(searchParams: HomePageProps['searchParams']): URLSearchParams {
-  const params = new URLSearchParams();
-
-  for (const [key, rawValue] of Object.entries(searchParams || {})) {
-    const values = Array.isArray(rawValue) ? rawValue : [rawValue];
-    for (const value of values) {
-      if (typeof value === 'string') {
-        params.append(key, value);
-      }
-    }
-  }
-
-  return params;
-}
-
-export default async function HomePage({ searchParams }: HomePageProps) {
+export default async function HomePage() {
   const categories = await categoryRepository.findAll();
   const homepageCategories = categories;
   const [brands, productBuckets] = await Promise.all([
@@ -268,11 +255,24 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     Promise.all(homepageCategories.map((category) => productRepository.findByCategory(category.id))),
   ]);
   const brandsRecord = Object.fromEntries(brands.map((brand) => [brand.id, brand]));
+  const schemaSources: Parameters<typeof buildHomeFacetSchema>[0] = [];
   const productGroups: HomeProductGroup[] = homepageCategories
     .map((category, index) => {
       const products = productBuckets[index] || [];
+      const contextProducts = category.id === '8' ? [...products, ...getEsdColorProducts()] : products;
       const selectedProducts = selectHomepageProducts(products);
-      const colorCount = selectHomepageColors(category.id === '8' ? [...products, ...getEsdColorProducts()] : products).length;
+      const colorProducts = selectHomepageColors(contextProducts);
+      // Kontekst nasleđivanja = cela kategorija (kolekcije + boje); klijentu idu samo
+      // sažete kolekcijske stavke. Boje služe ovde samo da šema zna sve grupe.
+      const items = buildHomeCatalogItems(category.slug, contextProducts, selectedProducts);
+      if (items.length > 0) {
+        schemaSources.push({
+          slug: category.slug,
+          name: category.name,
+          items: [...items, ...buildHomeCatalogItems(category.slug, contextProducts, colorProducts, 'color')],
+          products: contextProducts,
+        });
+      }
 
       return {
         category: {
@@ -280,19 +280,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           name: category.name,
           slug: category.slug,
         },
-        products: selectedProducts,
-        totalCount: selectedProducts.length,
-        colorCount,
+        products: items,
+        totalCount: items.length,
+        colorCount: colorProducts.length,
       };
     })
     .filter((group) => group.products.length > 0);
 
+  const facetSchema = buildHomeFacetSchema(schemaSources);
+  // Statička strana se prvo iscrta bez filtera; kada link nosi filter parametre,
+  // katalog ostaje nevidljiv dok klijent ne primeni stanje iz URL-a (bez bljeska
+  // nefiltriranog kataloga i bez pomeranja sadržaja — CLS). Sigurnosni istek 3 s.
+  const filterQueryKeys = Array.from(new Set([
+    ...Object.values(HOME_FILTER_QUERY_KEYS),
+    ...facetSchema.filter((entry) => entry.scope === 'all').map((entry) => entry.param),
+  ]));
+  const pendingFilterScript = `(function(){try{var k=${JSON.stringify(filterQueryKeys)};var p=new URLSearchParams(location.search);if(k.some(function(x){return p.has(x)})){var d=document.documentElement;d.setAttribute('data-home-filters','pending');setTimeout(function(){d.removeAttribute('data-home-filters')},3000)}}catch(e){}})();`;
+
   return (
     <div className="bg-white">
+      <script dangerouslySetInnerHTML={{ __html: pendingFilterScript }} />
       <HomeProductTabs
         groups={productGroups}
         brandsRecord={brandsRecord}
-        initialFilterState={parseHomeFilterUrlState(toUrlSearchParams(searchParams))}
+        facetSchema={facetSchema}
       />
     </div>
   );

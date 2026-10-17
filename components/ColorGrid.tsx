@@ -372,22 +372,19 @@ export default function ColorGrid({
       });
   }, [apiCategory, collectionSlug, customColors, onColorsLoaded]);
 
-  // Preload all color images for instant switching (avoids white flash on color change)
-  // Store URLs in state to render hidden img elements in DOM
-  const [preloadUrls, setPreloadUrls] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (colors.length === 0) return;
-
-    const urls: string[] = [];
-    colors.forEach((color: Color) => {
-      const imageUrl = getPrimaryColorImage(color)?.url;
-      if (imageUrl) {
-        urls.push(imageUrl);
-      }
-    });
-    setPreloadUrls(urls);
-  }, [colors]);
+  // Slika boje se pred-učitava tek na NAMERU (hover/fokus/dodir na boju). Ranije je
+  // skriveni blok preuzimao SVE slike kolekcije pri otvaranju PDP-a (≈14 MB na
+  // Creation 55); hero u ProductColorSelector drži prethodnu boju dok se nova ne
+  // učita, pa prelaz i dalje nema beli bljesak.
+  const prefetchedUrlsRef = useRef<Set<string>>(new Set());
+  const prefetchColorImage = useCallback((color: Color) => {
+    const url = (color as { lifestyle_url?: string }).lifestyle_url || getPrimaryColorImage(color)?.url;
+    if (!url || typeof window === 'undefined' || prefetchedUrlsRef.current.has(url)) return;
+    prefetchedUrlsRef.current.add(url);
+    const image = new window.Image();
+    image.decoding = 'async';
+    image.src = url;
+  }, []);
 
   const filteredColors = useMemo(() => {
     return colors.filter(color =>
@@ -499,12 +496,6 @@ export default function ColorGrid({
 
   return (
     <div className="space-y-6">
-      {/* Hidden preload images - browser downloads these in background */}
-      <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', visibility: 'hidden' }}>
-        {preloadUrls.map((url, idx) => (
-          <img key={idx} src={url} alt="" />
-        ))}
-      </div>
       {/* Header - only show if not compact */}
       {!compact && (
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -550,6 +541,9 @@ export default function ColorGrid({
             <button
               key={color.slug}
               onClick={() => handleColorClick(color)}
+              onPointerEnter={() => prefetchColorImage(color)}
+              onFocus={() => prefetchColorImage(color)}
+              onTouchStart={() => prefetchColorImage(color)}
               className={`group overflow-hidden border-2 text-left cursor-pointer w-full transition-colors ${isSelected
                 ? 'border-ink-900'
                 : 'border-transparent hover:border-ink-200'

@@ -14,9 +14,16 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ products: [] });
     }
 
-    // Fetch all products and filter by IDs
-    // TODO: optimize with a Supabase .in() query when product repo is updated
-    const allProducts = await productRepository.findAll({});
+    // categoryIds (npr. iz „Uporedi") sužava pretragu i uključuje boje/varijante
+    // tih kategorija; bez njega ostaje istorijsko ponašanje findAll({}).
+    const categoryIds = (searchParams.get('categoryIds') || '')
+        .split(',')
+        .map((id) => id.trim())
+        .filter(Boolean)
+        .slice(0, 6);
+    const allProducts = categoryIds.length > 0
+        ? (await Promise.all(Array.from(new Set(categoryIds)).map((categoryId) => productRepository.findByCategory(categoryId)))).flat()
+        : await productRepository.findAll({});
     const products = allProducts
         .filter(p => idList.includes(p.id))
         .map(p => ({

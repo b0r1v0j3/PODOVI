@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 17.10.2026 (nalozi kupaca, porudžbine i SCHÖNOX)
+> **Poslednje ažuriranje:** 17.10.2026 (nalozi kupaca, porudžbine, SCHÖNOX, filteri na početnoj i brzina)
 
 ---
 
@@ -154,6 +154,16 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Filteri na početnoj 3.0 + brzina početne i PDP-a (17.10.2026)** — spec/plan/tasks: `specs/001-filteri-pocetna-brzina/`
+- **Opšte grupe bez izbora kategorije** (pre: Kategorija, Primena pogađana iz opisa, Debljina, Brend): Kategorija, Brend, Namena prostora (iz klase upotrebe EN ISO 10874 i eksplicitne primene — više ne iz reči u opisu), Klasa upotrebe, Ugradnja, Dezen, Debljina (opseg + prečice), Format, Ton, Boja, Uzorak polaganja, Sloj habanja (mm), Zvučna izolacija (dB), R-klasa, Reakcija na požar, Podno grejanje, Cena (samo gde postoji, ≥2 proizvoda), Dostupnost (automatski kada podaci dobiju `availability`). Kategorijske: Tip …, Materijal (vinil), Završna obrada i Vrsta drveta (parket), AC (laminat), ESD klasa, Tip otirača, Profil (deking), Podloga (tekstilne ploče), Kolekcije. Sve vrednosti iz stvarnih specifikacija; nemapirano se odbacuje.
+- **Brojači == rezultati** po konstrukciji (jedan engine `lib/catalog/home-filter-engine.ts`); contract proverava svaku opciju nad celim katalogom (625+ provera, 0 odstupanja). Promena kategorije više ne briše opšte filtere. Prazan rezultat nudi „Ukloni poslednji filter".
+- **Telefon**: vidljivo dugme „Filteri (N)" iznad rezultata (uz postojeću ikonu u zaglavlju), ista fioka, živo „Prikaži N rezultata"; sklopljene grupe pokazuju broj izabranih.
+- **URL**: čitljivi parametri (`?klasa=33&ugradnja=Klik&debljina=2-5`), stari linkovi od 11.07.2026 rade i prepisuju se u novi format.
+- **Brzina**: početna je ISR (300 s) umesto render-a po zahtevu; pregledaču idu sažete stavke (bez opisa/dokumenata/galerija); prve 4 kartice imaju `priority`; swatch sličice idu kroz optimizator slika (ranije originali kao CSS pozadina). PDP: `ProductCharacteristics` više ne uvozi `color-helpers` (13,4 MB JSON-a je bilo u klijentskom paketu svake PDP strane) — `mergeSpecs` je u `lib/product-page/spec-merge.ts`; hero stek boja montira samo aktivnu/viđene boje, a skriveni preloader u `ColorGrid` zamenjen je učitavanjem slike na nameru (hover/fokus/dodir) — ranije su se pri otvaranju PDP-a preuzimale slike svih boja (14,5 MB na Creation 55 → 2,1 MB). Kartice nemaju `Link` prefetch dinamičkih PDP ruta; mreža rezultata se iscrtava kroz `useDeferredValue` (klik na filter: ~60 ms na desktopu). `vercel.json` → `regions: ["fra1"]` (baza je u Evropi, funkcije su radile u iad1). Merenja pre/posle (telefon, Slow 4G + 4× CPU): početna LCP 22,7 s → 2,0 s, prenos 7,4 MB → 0,8 MB; PDP JS 810 → 157 KB, TBT 4,8 → 0,8 s — `specs/001-filteri-pocetna-brzina/performance-report.md`.
+- **Pribor**: „Vrsta pribora" čita samo tačne ključeve tipa (`type`/`tip`/`tip_proizvoda`/`vrsta_proizvoda` — „Tip formata" više ne prepisuje tip), engleske vrednosti se prevode (Pribor za varenje, Podloge, Nega i čišćenje, Pomoćni pribor), a legacy lepkovi/traka bez spec-a tipa dobijaju tip iz samog naziva (Lepkovi za parket, Lepkovi za podove, Pomoćni pribor). Grupa „Kolekcije …" se prikazuje samo kada neka kolekcija okuplja bar 3 stavke (kod pribora je svaka stavka „svoja kolekcija").
+- „Uporedi" dopunjuje specifikacije sažetih stavki preko `/api/products?ids=&categoryIds=`.
+- Novi testovi: `home-catalog-index-contract`, `home-filter-engine-contract`, `pdp-client-bundle-contract`; prošireni `home-filter-url-contract` i `home-filter-ui-contract`.
 
 - **08.09.2026 — Tarkett iQ Granit SD:** dodata kolekcija `tarkett-iq-granit-sd` u postojeći `esd_colors.json`, kategorija Elektroprovodni (8), brend Tarkett (3), 14 dekora / 28 šifara za rolne i ploče, cena 4.999 RSD/m². Originalni Tarkett cover, 14 tekstura i devet izabranih PDF-ova čuvaju se na našem Supabase Storage-u. Kolekcijski prikaz čuva naziv i fotografiju do izbora boje; SD činjenice i cena su uz izbor, a dokumentacija ostaje dostupna posle izbora. Precizno razlikovati statički disipativni SD od običnog iQ Granit; ne dodeljivati automatske generičke sertifikate. Dokazi i obim: `docs/products/tarkett-iq-granit-sd.md`.
 
@@ -941,6 +951,8 @@ PODOVI/
 39. **`lib/utils/product-images.ts` je owner i za surface izbor i za fallback redosled.** Komponente i API surface-i ne smeju ručno da čitaju `images[0]`, da spljoštavaju prvi URL bez candidate niza ili da održavaju lokalni “probaj sledeću sliku” lane mimo shared helpera.
 40. **`lib/utils/image-runtime.ts` ne odlučuje fallback redosled.** “Validna slika” za shared fallback znači da posle surface rezolucije postoji neprazan lokalni path ili parsabilan `https` URL; runtime helper odlučuje samo optimizaciju/bypass, ne to koji kandidat ide prvi.
 41. **Kad menjaš image host/variant/fallback contract, moraš zatvoriti ceo lane u istom prolazu.** Minimum: `lib/utils/product-images.ts`, `lib/utils/image-runtime.ts`, `next.config.mjs`, `lib/utils/productDataLoader.ts`, `scripts/validate-images.js`, `scripts/audit-catalog-quality.ts` i contract testovi moraju ostati poravnati, inače build/runtime/SEO vrlo lako odu u drift.
+42. **Klijentska komponenta ne sme da uvozi modul koji statički uvozi JSON kataloga.** `color-helpers.ts`, `prepare-colors.ts`, `resolve-product.ts`, `productDataLoader.ts`, `facet-config.ts`, `home-catalog-index.ts` i `@/public/data/*` su serverski; jedan takav uvoz (17.10.2026: `mergeSpecs` u `ProductCharacteristics`) ubacio je 13,4 MB u PDP paket. Čiste helpere izdvoj u zaseban modul bez data importa; `pdp-client-bundle-contract` ovo čuva.
+43. **Početna je ISR i ne čita `searchParams`.** Filter stanje iz URL-a primenjuje klijent posle montiranja; ne vraćaj `searchParams` u `app/page.tsx` (strana bi ponovo postala render po zahtevu sa ~6 s podataka) i ne šalji klijentu pune `Product` objekte — kartica i filteri rade nad `HomeCatalogItem`.
 
 ---
 
