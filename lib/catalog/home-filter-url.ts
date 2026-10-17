@@ -8,6 +8,16 @@
  * declarative facets.
  */
 
+import {
+  COLLECTION_GROUP_PARAM,
+  LEGACY_APPLICATION_TO_NAMENA,
+  LEGACY_HOME_FACET_ALIASES,
+  TYPE_GROUP_PARAM,
+  homeGroupId,
+  type HomeFacetSchemaEntry,
+} from '@/lib/catalog/home-facet-schema';
+import type { HomeFilterSelection, HomeRangeSelection } from '@/lib/catalog/home-filter-engine';
+
 export const HOME_FILTER_QUERY_KEYS = {
   categories: 'category',
   brands: 'brand',
@@ -241,6 +251,171 @@ export function serializeHomeFilterUrlState(
 
   const sort = parseEnum(state.sort, ['featured', 'name', 'price'] as const);
   if (sort && sort !== 'featured') params.append(HOME_FILTER_QUERY_KEYS.sort, sort);
+
+  return params;
+}
+
+// ===== Novi sloj (17.10.2026): opšte grupe, opsezi i kategorijske grupe =====
+//
+// Stari ključevi gore ostaju jedini parser za category/brand/type/collection/facet
+// (i stare application/thicknessMin/Max), pa linkovi od 11.07.2026 rade bez promene.
+// Opšte grupe dobijaju čitljive parametre (`?klasa=33&ugradnja=Klik&debljina=2-5`).
+
+
+export interface HomeFilterUrlSelection {
+  selection: HomeFilterSelection;
+  tab: HomeFilterTab;
+  sort: HomeFilterSort;
+}
+
+const RANGE_VALUE = /^\s*(\d+(?:[.,]\d+)?)?\s*-\s*(\d+(?:[.,]\d+)?)?\s*$/;
+
+const MAX_RANGE_VALUE = 1_000_000_000;
+
+function parseRangeNumber(value: string): number | null {
+  const parsed = Number(value.replace(',', '.'));
+  return Number.isFinite(parsed) && parsed >= 0 && parsed <= MAX_RANGE_VALUE ? parsed : null;
+}
+
+export function parseHomeRangeValue(value: unknown): HomeRangeSelection | null {
+  const text = sanitizeText(value);
+  if (!text) return null;
+  const match = text.match(RANGE_VALUE);
+  if (!match || (match[1] === undefined && match[2] === undefined)) return null;
+  const min = match[1] !== undefined ? parseRangeNumber(match[1]) : null;
+  const max = match[2] !== undefined ? parseRangeNumber(match[2]) : null;
+  if ((match[1] !== undefined && min === null) || (match[2] !== undefined && max === null)) return null;
+  if (min !== null && max !== null && min > max) return null;
+  return [min, max];
+}
+
+function formatRangeNumber(value: number | null): string {
+  return value === null ? '' : String(Number(value.toFixed(4)));
+}
+
+export function formatHomeRangeValue(range: HomeRangeSelection): string {
+  return `${formatRangeNumber(range[0])}-${formatRangeNumber(range[1])}`;
+}
+
+function universalEntries(schema: HomeFacetSchemaEntry[]): HomeFacetSchemaEntry[] {
+  return schema.filter((entry) => entry.scope === 'all' && entry.id !== 'category' && entry.id !== 'brand');
+}
+
+function pushUnique(lists: Record<string, string[]>, id: string, value: string): void {
+  const current = lists[id] || [];
+  if (!current.includes(value)) lists[id] = [...current, value];
+}
+
+/** URL → izbor filtera po šemi (stari i novi format). Nepoznate grupe se odbacuju. */
+export function parseHomeFilterSelection(input: SearchParamsInput, schema: HomeFacetSchemaEntry[]): HomeFilterUrlSelection {
+  const params = toSearchParams(input);
+  const raw = parseHomeFilterUrlState(params);
+  const known = new Map(schema.map((entry) => [entry.id, entry]));
+  const universalByParam = new Map(universalEntries(schema).map((entry) => [entry.param, entry]));
+  const lists: Record<string, string[]> = {};
+  const ranges: Record<string, HomeRangeSelection> = {};
+
+  if (raw.categories.length > 0) lists.category = raw.categories;
+  if (raw.brands.length > 0) lists.brand = raw.brands;
+
+  for (const scoped of raw.types) {
+    const [category, value] = scoped.split(SCOPED_SEPARATOR);
+    pushUnique(lists, homeGroupId(category, TYPE_GROUP_PARAM), value);
+  }
+  for (const scoped of raw.collections) {
+    const [category, value] = scoped.split(SCOPED_SEPARATOR);
+    pushUnique(lists, homeGroupId(category, COLLECTION_GROUP_PARAM), value);
+  }
+  for (const scoped of raw.facets) {
+    const [category, param, value] = scoped.split(SCOPED_SEPARATOR);
+    // Alias pobeđuje: laminat::klasa je bila AC skala, ne opšta klasa upotrebe.
+    const alias = LEGACY_HOME_FACET_ALIASES[category]?.[param];
+    if (alias) {
+      pushUnique(lists, homeGroupId(category, alias), value);
+      continue;
+    }
+    const universal = universalByParam.get(param);
+    if (universal && universal.kind !== 'range') {
+      pushUnique(lists, universal.id, universal.kind === 'boolean' ? '1' : value);
+      continue;
+    }
+    pushUnique(lists, homeGroupId(category, param), value);
+  }
+  for (const application of raw.applications) {
+    const namena = LEGACY_APPLICATION_TO_NAMENA[application.toLowerCase()];
+    if (namena && universalByParam.has('namena')) pushUnique(lists, 'namena', namena);
+  }
+  if (raw.thickness && universalByParam.has('debljina')) ranges.debljina = raw.thickness;
+
+  for (const entry of universalEntries(schema)) {
+    const values = params.getAll(entry.param);
+    if (values.length === 0) continue;
+    if (entry.kind === 'range') {
+      const range = firstValid(values, parseHomeRangeValue);
+      if (range) ranges[entry.id] = range;
+      continue;
+    }
+    for (const value of values) {
+      const sanitized = entry.kind === 'boolean' ? (value.trim() === '1' ? '1' : null) : sanitizePlainValue(value);
+      if (sanitized) pushUnique(lists, entry.id, sanitized);
+    }
+  }
+
+  for (const id of Object.keys(lists)) {
+    if (!known.has(id) || known.get(id)!.kind === 'range') delete lists[id];
+  }
+
+  return { selection: { lists, ranges }, tab: raw.tab, sort: raw.sort };
+}
+
+/** Izbor filtera → URL (uvek novi format; nepovezani parametri ostaju). */
+export function serializeHomeFilterSelection(
+  state: HomeFilterUrlSelection,
+  schema: HomeFacetSchemaEntry[],
+  current?: SearchParamsInput,
+): URLSearchParams {
+  const byId = new Map(schema.map((entry) => [entry.id, entry]));
+  const types: string[] = [];
+  const collections: string[] = [];
+  const facets: string[] = [];
+
+  for (const [id, values] of Object.entries(state.selection.lists)) {
+    const entry = byId.get(id);
+    if (!entry || entry.scope === 'all') continue;
+    for (const value of values) {
+      if (entry.param === TYPE_GROUP_PARAM) types.push(`${entry.scope}${SCOPED_SEPARATOR}${value}`);
+      else if (entry.param === COLLECTION_GROUP_PARAM) collections.push(`${entry.scope}${SCOPED_SEPARATOR}${value}`);
+      else facets.push([entry.scope, entry.param, value].join(SCOPED_SEPARATOR));
+    }
+  }
+
+  const params = serializeHomeFilterUrlState({
+    categories: state.selection.lists.category || [],
+    brands: state.selection.lists.brand || [],
+    types,
+    applications: [],
+    collections,
+    facets,
+    thickness: null,
+    tab: state.tab,
+    sort: state.sort,
+  }, current);
+
+  const universal = universalEntries(schema);
+  for (const entry of universal) params.delete(entry.param);
+
+  for (const entry of universal) {
+    if (entry.kind === 'range') {
+      const range = state.selection.ranges[entry.id];
+      if (range && (range[0] !== null || range[1] !== null)) params.append(entry.param, formatHomeRangeValue(range));
+      continue;
+    }
+    const values = Array.from(new Set(state.selection.lists[entry.id] || [])).sort(compareCanonical);
+    for (const value of values) {
+      const sanitized = entry.kind === 'boolean' ? (value === '1' ? '1' : null) : sanitizePlainValue(value);
+      if (sanitized) params.append(entry.param, sanitized);
+    }
+  }
 
   return params;
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import type { ProductSpec } from '@/types';
-import { mergeSpecs } from '@/lib/product-page/color-helpers';
+import { mergeSpecs } from '@/lib/product-page/spec-merge';
 import { filterSpecsForDisplay } from '@/lib/product-page/spec-helpers';
 import { getWeldingAccessoryHref } from '@/lib/product-page/welding-helpers';
 

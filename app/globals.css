@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Početna (desktop): dok klijent ne primeni filter stanje iz linka, katalog je nevidljiv (vidi app/page.tsx).
+   Na telefonu se ne krije — tamo bi LCP čekao hidrataciju, a pomeranje je i bez toga ispod 0,1. */
+@media (min-width: 1024px) {
+  html[data-home-filters='pending'] [data-home-catalog] {
+    visibility: hidden;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

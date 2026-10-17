@@ -5,6 +5,8 @@ const homeSource = readFileSync('components/HomeProductTabs.tsx', 'utf8');
 const headerSource = readFileSync('components/Header.tsx', 'utf8');
 const searchSource = readFileSync('components/GlobalSearch.tsx', 'utf8');
 const pageSource = readFileSync('app/page.tsx', 'utf8');
+const panelSource = readFileSync('components/HomeFilterPanel.tsx', 'utf8');
+const engineSource = readFileSync('lib/catalog/home-filter-engine.ts', 'utf8');
 
 describe('homepage filter UI contract', () => {
   it('keeps the mobile summary hidden and opens filters from the header', () => {
@@ -24,11 +26,20 @@ describe('homepage filter UI contract', () => {
     expect(homeSource).toContain('h-[100dvh]');
   });
 
-  it('uses expandable/searchable lists and live zero-disabled counters', () => {
-    expect(homeSource).toContain('function ExpandableFilterOptions');
-    expect(homeSource).toContain('function SearchableFilterOptions');
-    expect(homeSource).toContain('withLiveOptionCounts(');
-    expect(homeSource.match(/disabled=\{option\.count === 0 && !active\}/g)?.length).toBeGreaterThanOrEqual(5);
+  it('uses expandable/searchable lists and live zero-disabled counters from one engine', () => {
+    expect(panelSource).toContain('function ExpandableFilterOptions');
+    expect(panelSource).toContain('function SearchableFilterOptions');
+    expect(panelSource).toContain('disabled={option.disabled}');
+    expect(homeSource).toContain('evaluateHomeFilters(collectionItems, facetSchema, selection');
+    expect(homeSource).toContain('evaluateHomeFilters(colorItems, facetSchema, selection');
+    // Brojač i onemogućena opcija dolaze iz istog prolaza kao rezultat.
+    expect(engineSource).toContain('disabled: count === 0 && !selected');
+  });
+
+  it('offers a visible Filteri button above results on phones in addition to the header trigger', () => {
+    expect(homeSource).toContain('data-testid="home-filters-open"');
+    expect(homeSource).toContain('aria-controls="home-filter-drawer"');
+    expect(homeSource).toContain('Prikaži ${activeProductCount} ${pluralizeResults(activeProductCount)}');
   });
 
   it('uses honest sorting and hides price sorting when prices do not exist', () => {
@@ -37,15 +48,15 @@ describe('homepage filter UI contract', () => {
     expect(homeSource).toContain("canSortByPrice ? <option value=\"price\"");
   });
 
-  it('hydrates and persists shareable filter URL state', () => {
-    expect(pageSource).toContain('parseHomeFilterUrlState(toUrlSearchParams(searchParams))');
-    expect(homeSource).toContain('serializeHomeFilterUrlState(filterUrlState, window.location.search)');
+  it('serves the homepage from ISR and hydrates/persists shareable filter URL state on the client', () => {
+    expect(pageSource).toContain('export const revalidate = 300;');
+    expect(pageSource).not.toContain('searchParams?:');
+    expect(homeSource).toContain('parseHomeFilterSelection(search, facetSchema)');
+    expect(homeSource).toContain('serializeHomeFilterSelection({ selection, tab: activeProductTab, sort: sortMode }, facetSchema, window.location.search)');
     expect(homeSource).toContain("window.addEventListener('popstate', restoreFromHistory)");
-    expect(homeSource).toContain("window.history.replaceState(null, '', canonicalUrl)");
-    expect(homeSource).toContain("'pushState'](null, '', nextUrl)");
-    expect(homeSource).toContain('sanitizeFilterStateAgainstCatalog(');
-    expect(homeSource).toContain('validCollectionValues.has(value)');
-    expect(homeSource).toContain('validFacetValues.has(value)');
+    expect(homeSource).toContain("window.history.replaceState(window.history.state, '', nextUrl)");
+    expect(homeSource).toContain("window.history.pushState(null, '', nextUrl)");
+    expect(homeSource).toContain('sanitizeHomeSelection(selection, facetSchema, tabPresentValues, categories, brandIds)');
   });
 
   it('shows an honest loading state on a direct colors-tab URL', () => {

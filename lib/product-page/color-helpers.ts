@@ -365,16 +365,8 @@ export function buildCharacteristicsFromColor(
     }, {});
 }
 
-export function mergeSpecs(base: ProductSpec[], extra: ProductSpec[]): ProductSpec[] {
-    const merged = new Map<string, ProductSpec>();
-    for (const spec of base) {
-        merged.set(spec.key, spec);
-    }
-    for (const spec of extra) {
-        merged.set(spec.key, spec);
-    }
-    return Array.from(merged.values());
-}
+// Čist helper živi u spec-merge.ts da ga klijent može uvesti bez JSON izvora boja.
+export { mergeSpecs } from './spec-merge';
 
 export async function loadColorFromJson(slug: string, includeLegacyAliases = true): Promise<ColorSource | null> {
     const lvtMatch = lvtColors.find((color) => color.slug === slug);
