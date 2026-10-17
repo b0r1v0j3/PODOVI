@@ -1,5 +1,7 @@
 # Spajanje sa granom `codex/podovi-commerce-schonox`
 
+> **Završeno 18.10.2026:** grane su spojene. Nalozi, korpa i porudžbine (`ProductOrderPanel` i ostalo) uklonjeni su po odluci vlasnika u `75533ea8`; od commerce grane ostao je samo SCHÖNOX katalog. Server region je `cdg1` (Pariz).
+
 Stanje 17.10.2026: commerce grana još nije commit-ovana (izmene postoje samo u glavnom checkout-u). Ova grana (`claude/home-filters-speed`) je napravljena od `main` @ `069cd66c`.
 
 ## Preklapanja i kako ih razrešiti

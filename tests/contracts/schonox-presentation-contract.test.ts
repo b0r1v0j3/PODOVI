@@ -4,6 +4,7 @@ import { afterAll, describe, expect, it, vi } from 'vitest';
 import type { Product } from '@/types';
 import { getAllSchonoxProducts } from '@/lib/data/schonox-products';
 import { generateProductSchema } from '@/lib/seo/structured-data';
+import { buildHomeCatalogItems } from '@/lib/catalog/home-catalog-index';
 
 const compare = vi.hoisted(() => ({ items: [] as unknown[] }));
 const stubs = vi.hoisted(() => ({ Breadcrumbs: (_props: { items: Array<{ label: string }> }) => null }));
@@ -38,6 +39,16 @@ describe('SCHÖNOX availability is on request, never a stock claim', () => {
     const { default: ComparePageClient } = await import('@/app/uporedi/ComparePageClient');
     const html = renderToStaticMarkup(React.createElement(ComparePageClient));
     expect(html).toContain('Na upit');
+    expect(html).not.toContain('Nije na stanju');
+  });
+
+  it('keeps "Na upit" / "Na stanju" for slim homepage card items added to compare', async () => {
+    const inStock = { ...schonox, id: 'pribor-in-stock', slug: 'pribor-in-stock', availability: undefined, inStock: true } as Product;
+    compare.items = buildHomeCatalogItems('pribor', [schonox, inStock], [schonox, inStock]);
+    const { default: ComparePageClient } = await import('@/app/uporedi/ComparePageClient');
+    const html = renderToStaticMarkup(React.createElement(ComparePageClient));
+    expect(html).toContain('Na upit');
+    expect(html).toContain('Na stanju');
     expect(html).not.toContain('Nije na stanju');
   });
 

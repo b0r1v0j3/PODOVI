@@ -117,7 +117,7 @@ description: "Task list — Filteri na početnoj strani i brzina sajta"
 - [X] T028 Pregled u pregledaču: desktop 1440 px i telefon 390 px po `quickstart.md` (scenariji 1–10)
 - [X] T029 Merenje posle (isti postupak kao T001) i `specs/001-filteri-pocetna-brzina/performance-report.md` (SC-004 TTFB iz CDN keša označiti „proveriti posle objave")
 - [X] T030 [P] `AGENTS.md` (Završeno + datum) i `.agent/workflows/podovi-architecture.md` (novi moduli i tok)
-- [ ] T031 Usklađivanje sa granom `codex/podovi-commerce-schonox` (ako je commit-ovana): merge, razrešiti `facet-config.ts`/dokumentaciju, ponoviti testove i build — 17.10.2026 grana još NIJE commit-ovana (samo necommit-ovane izmene u glavnom checkout-u); uputstvo za spajanje: `specs/001-filteri-pocetna-brzina/merge-notes.md`
+- [x] T031 Usklađivanje sa granom `codex/podovi-commerce-schonox` (ako je commit-ovana): merge, razrešiti `facet-config.ts`/dokumentaciju, ponoviti testove i build — 17.10.2026 grana još NIJE commit-ovana (samo necommit-ovane izmene u glavnom checkout-u); uputstvo za spajanje: `specs/001-filteri-pocetna-brzina/merge-notes.md`
 
 ---
 

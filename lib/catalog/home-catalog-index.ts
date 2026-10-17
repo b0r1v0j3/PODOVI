@@ -288,12 +288,15 @@ export function toHomeCatalogItem(product: Product, context: CategoryFacetContex
   // Namerno BEZ opisa, dokumenata, sku-a, datuma i ostalih Product polja koja kartica
   // ne čita: svaki ključ se ponavlja ~1.100 puta u HTML-u početne strane. Oblik je
   // i dalje Product-kompatibilan za ProductCardClient/CompareButton/FavoriteButton.
+  // inStock/availability čita „Uporedi" (Dostupnost) odmah, bez čekanja na /api/products.
   const item = {
     id: product.id,
     slug: product.slug,
     name: product.name,
     categoryId: product.categoryId,
     brandId: product.brandId,
+    inStock: product.inStock,
+    ...(product.availability ? { availability: product.availability } : {}),
     images,
     specs: slimSpecs(product),
     ...(typeof product.price === 'number' && product.price > 0 ? { price: product.price, priceUnit: product.priceUnit } : {}),
