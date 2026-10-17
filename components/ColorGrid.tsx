@@ -527,7 +527,8 @@ export default function ColorGrid({
                 : 'border-transparent hover:border-ink-200'
                 }`}
             >
-              {/* Image — pattern-grupe: uspravan okvir + object-contain (cela foto, bez sečenja).
+              {/* Image — pattern-grupe: uspravan okvir; slika ga popunjava (cover, ivice se seku) —
+                   odluka vlasnika 17.10.2026: okviri lepo popunjeni, ne cela foto sa praznim trakama.
                    hideImage (jedna deljena generička slika, npr. Four Seasons baner) → bez slike. */}
               {!hideImage && (
                 <div className={`${isGroup ? 'aspect-[3/4]' : 'aspect-square'} relative overflow-hidden bg-paper`}>
@@ -536,7 +537,7 @@ export default function ColorGrid({
                     <ProductImage
                       sources={getColorImageCandidates(color).map((candidate) => ({ ...candidate, url: normalizeSrc(candidate.url) }))}
                       alt={primaryColorImage.alt || color.full_name}
-                      className={`${isGroup ? 'object-contain' : 'object-cover'} group-hover:scale-[1.03] transition-transform duration-700`}
+                      className="group-hover:scale-[1.03] transition-transform duration-700"
                       sizes={compact ? '(min-width: 1024px) 100px, 16vw' : '(min-width: 1280px) 190px, (min-width: 1024px) 240px, (min-width: 768px) 30vw, 45vw'}
                       quality={75}
                     />
