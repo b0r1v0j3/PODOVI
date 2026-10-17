@@ -8,6 +8,7 @@ import Script from "next/script";
 import CompareBar from "@/components/CompareBar";
 import { CompareProvider } from "@/lib/context/CompareContext";
 import { FavoritesProvider } from "@/lib/context/FavoritesContext";
+import { CommerceProvider } from "@/lib/context/CommerceContext";
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo/structured-data";
 import { SITE_URL } from "@/lib/seo/site-config";
 import BackToTop from "@/components/BackToTop";
@@ -70,6 +71,7 @@ export default function RootLayout({
         />
         <CompareProvider>
           <FavoritesProvider>
+            <CommerceProvider>
             {/* Skip to main content link for accessibility */}
             <a
               href="#main-content"
@@ -88,6 +90,7 @@ export default function RootLayout({
               <BackToTop />
               <CompareBar />
             </div>
+            </CommerceProvider>
           </FavoritesProvider>
         </CompareProvider>
       </body>

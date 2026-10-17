@@ -59,6 +59,7 @@ export interface Product {
   price?: number; // Optional, for display only (no checkout)
   priceUnit?: string; // e.g., "m²", "pakovanje"
   inStock: boolean;
+  availability?: 'in_stock' | 'on_request' | 'out_of_stock';
   featured: boolean;
   coveragePerPackage?: number; // m² per package for calculator
   externalLink?: string; // External link for collections (e.g., Gerflor)

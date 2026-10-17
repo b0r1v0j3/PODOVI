@@ -1,6 +1,6 @@
-# Podovi.online — Katalog podnih obloga
+# Podovi.online — Katalog i poručivanje uz potvrdu prodaje
 
-> Serbian flooring catalog website — [podovi.online](https://www.podovi.online)
+> Podovi katalog podnih obloga i pratećeg asortimana — [podovi.online](https://www.podovi.online)
 
 ## Tech Stack
 
@@ -39,6 +39,20 @@ npm start
 
 ## Key Features
 
+### Customer Accounts and Sales-confirmed Orders (2026-10-17)
+
+- `/nalog`: passwordless Supabase email-link login; verified customers receive 10% rebate. An authorized individual override replaces the default, including 0%.
+- `/korpa`: local cart containing only product/variant/quantity references. Server quotes resolve the exact selected variant, current catalog prices and approved rebate. Unknown prices display `Cena na upit`.
+- Orders are saved atomically with immutable item/price snapshots and an idempotency key, then email is attempted. Sales must confirm prices, VAT, delivery and availability; no payment is taken.
+- Customers can read only their own order history. `/ops/porudzbine` and staff APIs require configured Ops Basic Auth plus an explicit `publisher` role binding. `/crm` remains disabled.
+- The implementation is prepared locally; production needs the reviewed migration `supabase/migrations/20261017144116_customer_commerce.sql`, Auth redirect/SMTP setup and staff configuration. See [commerce release notes](docs/customer-ordering-release.md).
+
+### SCHÖNOX
+
+- Official European/global floor, tile and marine program from Sika/SCHÖNOX; source coverage, duplicates and document exceptions are recorded in the dated import manifest.
+- All products are offered for procurement subject to sales confirmation, with no claimed stock or invented prices. Tatjana's price list is expected on 19.10.2026.
+- Catalog integration includes Pribor, brand, search, product pages, homepage filters and sitemap. Images and product documents are served from our Supabase buckets (`product-images/schonox/`, `product-documents/schonox/`).
+
 ### "Galerija" Design Language (redesign 2026-06-12)
 - All public pages use a **monochrome gallery design language** (Prostoria-inspired): `ink` gray-scale + warm `paper` image-background tokens defined in `tailwind.config.ts`, white site background
 - **No border radius and no shadows** — separation comes from 1px hairlines and whitespace; the old pink `primary` palette and colored category badges are removed (exceptions: official WhatsApp green, system red for form/error states)
@@ -50,7 +64,7 @@ npm start
 ### Product Catalog
 - Homepage **Prostoria-style product browser** (`HomeProductTabs`): URL-sinhronizovani faceted filteri sa deep-link/Back podrškom, živi brojači, „Prikaži još", pretraga kolekcija, mobilna filter fioka i product grid; mobilni intro je sklonjen da katalog počne odmah ispod headera
 - Browse products by **category** (Laminat, Vinil, Parket, LVT, Linoleum, Tekstilne ploče, Deking, Elektroprovodni, Industrijske ploče, Sport, Lajsne, Otirači)
-- Filter by **brand** (Tarkett, Gerflor, BLOQ, TimberTech, Wolflor, Techem, Romus, Podovi) via text **brand chips** (active = underlined) on category pages
+- Filter by **brand** (Tarkett, Gerflor, TimberTech, Wolflor, Techem, Romus, Podovi, Admonter, SCHÖNOX) via text **brand chips** (active = underlined) on category pages
 - **Product filters**: hairline bar with brand chips + "Filteri" button opening a **slide-over drawer** with search, price range, collection, thickness, vinyl type, wood type and other category-specific filters (URL-synced, auto-apply)
 - **Color variant selector** with instant image switching (no page reload)
 - **Product detail pages** in a **split layout** — image gallery left, **sticky info column** right (brand label, name, collection, price, color swatches, black "Pošalji upit" CTA) — with Opis / Specifikacije / Eko / Dokumenti rendered as stacked **vertical sections** instead of tabs

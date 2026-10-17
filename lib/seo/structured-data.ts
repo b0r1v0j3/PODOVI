@@ -34,9 +34,10 @@ export function generateProductSchema(
       '@type': 'Offer',
       price: product.price,
       priceCurrency: 'RSD',
-      availability: product.inStock
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock',
+      // On-request items (SCHÖNOX) make no stock claim either way.
+      availability: product.availability === 'on_request'
+        ? undefined
+        : product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
         price: product.price,

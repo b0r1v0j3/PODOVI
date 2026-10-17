@@ -24,6 +24,7 @@ import wolflorVinylData from '@/public/data/wolflor_vinyl_colors.json';
 import tisDekingProducts from '@/public/data/tis_deking_products.json';
 import tarkettGrassProducts from '@/public/data/tarkett_grass_products.json';
 import priborProducts from '@/public/data/pribor_products.json';
+import { getAllSchonoxProducts } from '@/lib/data/schonox-products';
 import alpodFloorCollectionsData from '@/public/data/alpod_floor_collections.json';
 import admonterOfficialMediaData from '@/public/data/admonter_official_media.json';
 import artisanDisplayOverlayData from '@/public/data/artisan_display_overlay.json';
@@ -2672,6 +2673,10 @@ export function getAllPriborProducts(): Product[] {
         if (!specsArray.find(s => s.key === 'collection')) {
             specsArray.push({ key: 'collection', label: 'Kolekcija', value: p.collection || p.name });
         }
+        // Legacy Tarkett/Gerflor accessories are all floor accessories; without this the Program filter hides them.
+        if (!specsArray.some(s => s.key === 'program')) {
+            specsArray.push({ key: 'program', label: 'Program', value: 'Podovi' });
+        }
 
         const images = p.images ? p.images : [];
         const brandId = p.brandId || '3';
@@ -2699,7 +2704,9 @@ export function getAllPriborProducts(): Product[] {
         } as Product;
     });
 
-    priborProductsCache = priborList;
+    // SCHÖNOX is static JSON: build the merged list once, like the other loader caches.
+    // Callers share these objects; the PDP clones before mutating (cloneProductForPage).
+    priborProductsCache = [...priborList, ...getAllSchonoxProducts()];
     return priborProductsCache;
 }
 

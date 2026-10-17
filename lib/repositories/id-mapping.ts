@@ -46,3 +46,8 @@ export function mapBrandId(id: string): string {
 export function mapBrandIdToUUID(id: string): string {
     return BRAND_LEGACY_TO_UUID[id] || id;
 }
+
+/** Supabase id columns are UUID; anything else is a mock-only id Postgres would reject. */
+export function isUuidLikeId(id: string): boolean {
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+}

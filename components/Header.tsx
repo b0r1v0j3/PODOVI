@@ -8,11 +8,14 @@ import PodoviWordmark from './PodoviWordmark';
 import { useFavorites } from '@/lib/context/FavoritesContext';
 import { useScrollLock } from './useScrollLock';
 import { OPEN_HOME_FILTERS_EVENT } from '@/lib/catalog/home-filter-events';
+import { useCommerce } from '@/lib/context/CommerceContext';
+import { FiShoppingBag, FiUser } from 'react-icons/fi';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { count: favCount } = useFavorites();
+  const { count: cartCount, customer } = useCommerce();
   const isHomepage = pathname === '/';
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -70,20 +73,22 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 isolate border-b border-ink-200 bg-white">
-      <nav className="mx-auto grid h-14 w-full max-w-[1536px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 md:h-[60px] lg:grid-cols-[1fr_auto_1fr] lg:gap-8 lg:px-6">
+      <nav className="mx-auto grid h-14 w-full max-w-[1536px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 md:h-[60px] lg:grid-cols-[auto_minmax(180px,1fr)_auto] lg:gap-6 lg:px-6">
         {/* Logo */}
         <Link href="/" className="flex min-h-[44px] items-center">
           <PodoviWordmark textClassName="text-xl md:text-2xl text-ink-900" />
         </Link>
 
-        <div className="hidden w-[590px] justify-center lg:flex">
+        <div className="hidden w-full justify-center lg:flex">
           <div className="w-full max-w-[590px]">
             <GlobalSearch variant="bar" />
           </div>
         </div>
 
         {/* Desktop actions */}
-        <div className="hidden items-center justify-end gap-5 lg:flex">
+        <div className="hidden items-center justify-end gap-3 lg:flex">
+          <Link href="/nalog" aria-current={isActive('/nalog') ? 'page' : undefined} className="flex min-h-[44px] items-center gap-2 text-xs text-ink-900"><FiUser size={18} aria-hidden="true" />Nalog{customer ? ` · ${customer.discountPercent}%` : ''}</Link>
+          <Link href="/korpa" aria-current={isActive('/korpa') ? 'page' : undefined} className="flex min-h-[44px] items-center gap-2 text-xs text-ink-900"><FiShoppingBag size={18} aria-hidden="true" />Korpa ({cartCount})</Link>
           <Link
             href="/omiljeni"
             className={`relative flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors duration-200 ${isActive('/omiljeni') ? 'text-ink-900' : 'text-ink-900 hover:text-ink-600'}`}
@@ -101,7 +106,7 @@ export default function Header() {
 
           <Link
             href="/upiti"
-            className="inline-flex h-9 w-[176px] items-center justify-center rounded-[4px] bg-ink-900 text-[13px] font-semibold text-white transition-colors hover:bg-ink-700"
+            className="inline-flex h-11 px-4 items-center justify-center bg-ink-900 text-[13px] font-semibold text-white transition-colors hover:bg-ink-700"
             aria-current={isActive('/upiti') ? 'page' : undefined}
           >
             Pošalji upit
@@ -139,6 +144,11 @@ export default function Header() {
         </div>
       </nav>
 
+      <nav aria-label="Nalog i korpa" className="flex items-center justify-end gap-5 border-t border-ink-100 px-4 lg:hidden">
+        <Link href="/nalog" className="flex min-h-[44px] items-center gap-2 text-xs"><FiUser aria-hidden="true" />Nalog{customer ? ` · ${customer.discountPercent}%` : ''}</Link>
+        <Link href="/korpa" className="flex min-h-[44px] items-center gap-2 text-xs"><FiShoppingBag aria-hidden="true" />Korpa ({cartCount})</Link>
+      </nav>
+
       {/* Mobile full-screen menu */}
       {mobileMenuOpen && (
         <div
@@ -168,6 +178,8 @@ export default function Header() {
           </div>
 
           <nav className="container flex flex-1 flex-col justify-center" aria-label="Mobilna navigacija">
+            <Link href="/nalog" onClick={closeMobileMenu} className="flex min-h-[44px] items-center border-b border-ink-200 py-5 text-[26px] text-ink-900">Moj nalog</Link>
+            <Link href="/korpa" onClick={closeMobileMenu} className="flex min-h-[44px] items-center justify-between border-b border-ink-200 py-5 text-[26px] text-ink-900">Korpa <span className="text-sm">({cartCount})</span></Link>
             <Link
               href="/omiljeni"
               className="flex min-h-[44px] items-center justify-between border-b border-ink-200 py-6 text-[26px] font-normal text-ink-900"

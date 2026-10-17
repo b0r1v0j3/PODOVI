@@ -14,7 +14,7 @@ describe('homepage filter UI contract', () => {
     expect(headerSource).toContain("aria-controls={isHomepage ? 'home-filter-drawer' : 'mobile-menu'}");
     expect(homeSource).toContain('window.addEventListener(OPEN_HOME_FILTERS_EVENT, openFilters)');
     expect(headerSource).toContain('className="min-w-0 lg:hidden"');
-    expect(headerSource).toContain('className="hidden w-[590px] justify-center lg:flex"');
+    expect(headerSource).toContain('className="hidden w-full justify-center lg:flex"');
   });
 
   it('keeps the drawer keyboard-safe and releases it on desktop resize', () => {

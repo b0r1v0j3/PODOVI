@@ -119,7 +119,7 @@ export const categories: Category[] = [
     id: '15',
     name: 'Pribor',
     slug: 'pribor',
-    description: 'Lepkovi, podloge, elektrode za varenje, sredstva za negu i prateći pribor za podove (Tarkett, Gerflor)',
+    description: 'Prajmeri, mase za nivelaciju, lepkovi, hidroizolacija, podloge i prateći pribor — SCHÖNOX, Tarkett i Gerflor',
     // Placeholder do realnog ingesta: Supabase host + .jpg (validate-images proverava host+https+ekstenziju).
     // Nakon ingesta zameniti realnim hero asset URL-om prvog pribor proizvoda (npr. hladno-varenje/hero.jpg).
     image: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/pribor/tarkett-hladno-varenje/hero.jpg',
@@ -129,6 +129,15 @@ export const categories: Category[] = [
 ];
 
 export const brands: Brand[] = [
+  {
+    id: '17',
+    name: 'SCHÖNOX',
+    slug: 'schonox',
+    logo: '',
+    description: 'SCHÖNOX program kompanije Sika: priprema podloga, lepljenje, hidroizolacija i fugovanje. Podni, keramičarski i Marine program uz potvrdu nabavke i cene od Podovi prodaje.',
+    website: 'https://deu.sika.com/schonox-global/en.html',
+    countryOfOrigin: 'Nemačka',
+  },
   {
     id: '3',
     name: 'Tarkett',

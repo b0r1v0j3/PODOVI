@@ -16,6 +16,7 @@ import CertificationBadges from '@/components/CertificationBadges';
 import RelatedProducts from '@/components/RelatedProducts';
 import RecentlyViewed from '@/components/RecentlyViewed';
 import ProductInquiryStickyCTA from '@/components/ProductInquiryStickyCTA';
+import ProductOrderPanel from '@/components/commerce/ProductOrderPanel';
 import ProductViewTracker from '@/components/ProductViewTracker';
 import ProductDetailsTabs from '@/components/ProductDetailsTabs';
 import ProductImage from '@/components/ProductImage';
@@ -645,7 +646,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         '@type': 'Offer',
         price: product.price,
         priceCurrency: 'RSD',
-        availability: isIqGranitSd ? undefined : (product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'),
+        availability: isIqGranitSd || product.availability === 'on_request' ? undefined : (product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'),
         url: currentProductUrl,
         priceValidUntil: isIqGranitSd ? undefined : new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
       } : undefined,
@@ -764,8 +765,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const collectionHref = (product as { collectionSlug?: string }).collectionSlug && (product as { collectionSlug?: string }).collectionSlug !== routeSlug
       ? `/proizvodi/${(product as { collectionSlug?: string }).collectionSlug}`
       : undefined;
+    // Bez `collection` spec-a i collectionSlug-a labela je samo prettify sopstvenog sluga (npr. SCHÖNOX → "Schonox Kh"), tj. ponavlja proizvod.
+    const hasCollectionIdentity = Boolean(
+      product.specs?.some((spec) => spec.key === 'collection') ||
+      (product as { collectionSlug?: string }).collectionSlug
+    );
     const showSeparateCollectionBreadcrumb =
       !selectedColorSlug &&
+      hasCollectionIdentity &&
       Boolean(collectionLabel) &&
       collectionLabel.toLowerCase() !== displayName.toLowerCase();
     // Kategorija u breadcrumb-u je čist kontekst bez linka — /kategorije/* strane su
@@ -929,11 +936,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
                   {(product.price !== undefined && product.price > 0) ? (
                     <p className="text-[13px] text-ink-500">
+                      <span className="block text-xs mb-1">Kataloška cena</span>
                       {product.price.toLocaleString('sr-RS')} RSD{product.priceUnit ? ` / ${product.priceUnit}` : ''}
                     </p>
-                  ) : (
-                    <p className="text-[13px] text-ink-500">Cena na upit</p>
-                  )}
+                  ) : <p className="text-[13px] text-ink-500">Cena na upit</p>}
+                  <ProductOrderPanel productSlug={product.slug} unit={product.priceUnit} />
 
                   {/* CTA Buttons */}
                   <div className="flex flex-col gap-5">
@@ -946,7 +953,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         if (refSpec?.value) p.set('ref', refSpec.value);
                         return `/upiti?${p.toString()}`;
                       })()}
-                      className="btn-primary block w-full text-center min-h-[44px]"
+                      className="btn-secondary block w-full text-center min-h-[44px]"
                     >
                       Pošaljite upit
                     </Link>

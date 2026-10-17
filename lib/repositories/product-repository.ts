@@ -18,7 +18,7 @@ export interface IProductRepository {
   findFeatured(): Promise<Product[]>;
 }
 
-import { mapCategoryId, mapBrandId, mapCategoryIdToUUID, mapBrandIdToUUID } from './id-mapping';
+import { mapCategoryId, mapBrandId, mapCategoryIdToUUID, mapBrandIdToUUID, isUuidLikeId } from './id-mapping';
 
 // =========================================
 // Transform DB rows → Product interface
@@ -79,10 +79,6 @@ function removeLegacyLinoleumDuplicates(products: Product[]): Product[] {
 
 function enrichCatalogProduct(product: Product): Product {
   return enrichTarkettWoodProduct(product);
-}
-
-function isUuidLikeId(id: string): boolean {
-  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 }
 
 function matchesCatalogSearch(product: Product, search: string): boolean {
@@ -235,12 +231,7 @@ export class SupabaseProductRepository implements IProductRepository {
       let priborProducts = getAllPriborProducts();
 
       if (filters?.search) {
-        const searchLower = filters.search.toLowerCase();
-        priborProducts = priborProducts.filter(p =>
-          p.name.toLowerCase().includes(searchLower) ||
-          p.description.toLowerCase().includes(searchLower) ||
-          p.sku.toLowerCase().includes(searchLower)
-        );
+        priborProducts = priborProducts.filter((product) => matchesCatalogSearch(product, filters.search!));
       }
       if (filters?.brandIds && filters.brandIds.length > 0) {
         priborProducts = priborProducts.filter(p => filters.brandIds!.includes(p.brandId));
@@ -768,12 +759,7 @@ export class MockProductRepository implements IProductRepository {
     }
 
     if (filters?.search) {
-      const searchLower = filters.search.toLowerCase();
-      filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(searchLower) ||
-        p.description.toLowerCase().includes(searchLower) ||
-        p.sku.toLowerCase().includes(searchLower)
-      );
+      filtered = filtered.filter((product) => matchesCatalogSearch(product, filters.search!));
     }
 
     if (filters?.type) {

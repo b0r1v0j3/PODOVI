@@ -8,6 +8,7 @@ import FavoriteButton from './FavoriteButton';
 import { splitProductTitle } from '@/lib/utils/name-parser';
 import { getCustomColorHeroImageState, getPrimaryColorImage } from '@/lib/utils/product-images';
 import { useScrollLock } from './useScrollLock';
+import ProductOrderPanel from './commerce/ProductOrderPanel';
 
 import { ProductSpec } from '@/types';
 
@@ -542,9 +543,9 @@ export default function ProductColorSelector({
             </p>
           ) : null}
 
-          {/* Cena — čist tekst, bez kutija */}
           {productPrice && productPrice > 0 ? (
             <p className={isIqGranitSd ? 'text-xl text-ink-900 mb-6' : 'text-[13px] text-ink-500 mb-8'}>
+              <span className="block text-xs text-ink-500 mb-1">Kataloška cena</span>
               {productPrice.toLocaleString('sr-RS')} RSD{priceUnit ? ` / ${priceUnit}` : ''}
             </p>
           ) : (
@@ -646,6 +647,14 @@ export default function ProductColorSelector({
             return null;
           })()}
 
+          <ProductOrderPanel
+            productSlug={productSlug}
+            variantSlug={searchParams.get('color')}
+            requiresVariant={!hideColorSelector}
+            unit={priceUnit}
+            inquiryOnly={isPatternGroup}
+          />
+
           {/* CTA - Pošaljite upit – prefill: proizvod + boja + ref */}
           <a
             href={(() => {
@@ -680,7 +689,7 @@ export default function ProductColorSelector({
 
               return `/upiti?${params.toString()}`;
             })()}
-            className="btn-primary block w-full text-center min-h-[44px]"
+            className="btn-secondary block w-full text-center min-h-[44px]"
           >
             Pošaljite upit
           </a>

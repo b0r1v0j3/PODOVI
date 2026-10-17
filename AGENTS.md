@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 08.09.2026 (Tarkett iQ Granit SD)
+> **Poslednje ažuriranje:** 17.10.2026 (nalozi kupaca, porudžbine i SCHÖNOX)
 
 ---
 
@@ -35,12 +35,13 @@ Ovaj fajl je **jedini izvor istine** za ceo projekat. Svaki novi chat MORA da pr
 
 ## 1. 📌 ŠTA JE PODOVI.ONLINE
 
-Podovi.online je **katalog podnih obloga, otirača i pratećeg asortimana** za tržište Srbije. Sajt služi kao online katalog firme Podovi DOO (Novi Sad) — kupci pregledaju proizvode, šalju upite, a prodaja se vrši offline.
+Podovi.online je **katalog podnih obloga, otirača i pratećeg asortimana sa poručivanjem uz potvrdu prodaje** za tržište Srbije. Kupci pregledaju proizvode, šalju upite ili porudžbine; Podovi DOO (Novi Sad) potvrđuje cenu, PDV, raspoloživost i dostavu pre realizacije.
 
 ### Ključni principi:
-- **Nije e-commerce** — nema korpu ni checkout. Korisnici šalju upite za proizvode
+- **Poručivanje uz potvrdu prodaje** — po izričitom zahtevu vlasnika od 17.10.2026, sajt dobija naloge putem mejl linka i korpu; slanje porudžbine ne naplaćuje robu. Postojeći upiti ostaju dostupni.
+- **Rabat posle potvrde mejla je 10%** — individualni rabat koji odobri Podovi zamenjuje osnovni (uključujući 0%); ne sabira se i ne čita se iz korisničkog metadata polja. Server proverava identitet, varijantu i cenu.
 - **Sajt je na srpskom jeziku** — sav sadržaj, nazivi, specifikacije su na srpskom
-- **Multi-brand** — Tarkett, Gerflor, BLOQ, TimberTech, Wolflor, Techem, Romus, Podovi — svaki brend ima drugačiju strukturu podataka
+- **Multi-brand** — Tarkett, Gerflor, TimberTech, Wolflor, Techem, Romus, Podovi, Admonter, SCHÖNOX — svaki brend ima drugačiju strukturu podataka. BLOQ ostaje povučen.
 - **Data-driven** — proizvodi dolaze iz kombinacije JSON fajlova, TypeScript data fajlova i Supabase baze
 - **SEO optimizovan** — structured data, sitemap, meta tagovi za svaku stranicu
 
@@ -51,7 +52,7 @@ Podovi.online je **katalog podnih obloga, otirača i pratećeg asortimana** za t
 ### Tehnički stack:
 - **Framework:** Next.js 14 (App Router), TypeScript
 - **Styling:** TailwindCSS 3
-- **Database:** Supabase (PostgreSQL) — upiti i kontakt forme
+- **Database:** Supabase (PostgreSQL + Auth) — katalog, upiti i privatne porudžbine kupaca
 - **Email:** Nodemailer (Gmail SMTP)
 - **Analytics:** Google Analytics 4
 - **Deployment:** Vercel (auto-deploy sa main grane)

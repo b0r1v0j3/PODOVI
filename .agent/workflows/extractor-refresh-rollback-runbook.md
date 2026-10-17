@@ -93,3 +93,47 @@ Budući owner mora da preuzme sledeći minimum:
 3. Obavezno ažuriranje `AGENTS.md` + `.agent/workflows/podovi-architecture.md` u istom commit-u kada se menja extractor contract.
 4. Incident postmortem disciplina: svaki rollback mora imati issue komentar sa uzrokom, opsegom i finalnim statusom.
 
+## SCHÖNOX — evropski/globalni katalog (17.10.2026)
+
+`node tools/extract_schonox_catalog.js` čita zvanične Sika ulaze `floor-range`,
+`tile-range` i `marine-range`, uključujući pomoćni pribor. Provera od 17.10.2026.
+obuhvata 26 kategorijskih stranica, 157 linkovanih proizvodnih stranica i četiri
+inline unosa pribora: nakon 26 duplikata ostaje 135 proizvoda. Marine kategorija
+`parquet-adhesives` je prazna na zvaničnom izvoru i ima eksplicitan status.
+Američke formulacije ne mešati sa evropskim/globalnim programom.
+
+- `--discover` zapisuje izvore u `output/schonox/source.json`, bez zamene kataloga.
+- `--refresh` ponovo čita proizvodne stranice; bez njega koristi lokalni staging
+  keš u `output/schonox/pages`. `--from-source` ponavlja preuzimanje i gradnju iz
+  pregledanog staging izvora. `--self-test` proverava parser i granice izvora.
+- `tools/schonox-copy.json` sadrži pregledane srpske opise. Nepoznat novi proizvod
+  zaustavlja uvoz dok njegov tačan opis ne bude dodat.
+- Manifest `docs/products/schonox-source-manifest.json` beleži sve kategorije,
+  proizvode, alias URL-ove, izvornu specifikaciju/pakovanje, dokument verzije,
+  heševe lokalnih datoteka, neuspehe i izuzetke. Neuspeh preuzimanja ne sme tiho
+  zameniti postojeći katalog delimičnim.
+- KH/RM/ZM slike se kopiraju iz kanonskog `../media-library`; ostale slike i PDF
+  dokumenti se keširaju u `output/schonox/assets` (gitignore) i objavljuju u
+  Supabase bucket-e `product-images/schonox/` i `product-documents/schonox/`
+  (fajl iste veličine se ne šalje ponovo). Isti URL-ovi ostaju stabilni pri
+  ponavljanju. Nema hotlinkova i nema SCHÖNOX fajlova u `public/`.
+- Jedan objavljeni HS 8 DoP izvor vraća Office ZIP sadržaj iako se zove `.pdf`;
+  dokument je eksplicitno izuzet sa razlogom. Sedam proizvoda nema objavljene
+  dokumente. Ove izuzetke ponovo proveriti pri narednom osvežavanju.
+- Svi proizvodi su `availability: on_request`, `inStock: false`. Regionalno
+  pakovanje proizvođača ne predstavlja potvrđenu jedinicu konkretne isporuke.
+  Cena se izostavlja do cenovnika koji korisnik dostavlja 19.10.2026; nula nije
+  zamena za nepoznatu cenu. Refresh čuva postojeće pozitivne lokalne cene i
+  njihove jedinice i nikada ih ne preuzima sa sajta proizvođača. Uvoz cenovnika
+  mora zasebno proveriti šifru, pakovanje, jedinicu, PDV i datum primene.
+- Flat loader `lib/data/schonox-products.ts` dodaje se postojećem Pribor toku;
+  ne uvodi boje niti automatske količine pakovanja. Brend je `17`, kategorija
+  `15`; homepage tipovi nastaju iz stvarnog skupa, uz dodatni Program filter.
+
+Pre predaje pokrenuti parser self-check i
+`npx vitest run --config vitest.contract.config.ts tests/contracts/schonox-catalog-contract.test.ts --maxWorkers=1 --no-file-parallelism`,
+zatim zajedničke lint/build provere. Pri rollback-u vratiti dataset, copy i
+manifest iz istog pregledanog stanja; ne brisati prethodne slike/PDF-ove dok se
+ne potvrdi da nijedan aktivni zapis na njih ne upućuje. Uvoz sam ne objavljuje
+sajt i ne menja produkcioni Supabase.
+

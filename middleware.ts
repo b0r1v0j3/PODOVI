@@ -46,6 +46,13 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  if (pathname === '/ops/porudzbine' || pathname.startsWith('/ops/porudzbine/')) {
+    const auth = requireOpsBasicAuth(request);
+    const response = auth.ok ? NextResponse.next() : auth.response;
+    response.headers.set('Cache-Control', 'private, no-store, max-age=0');
+    return response;
+  }
+
   // /proizvodi/allegro?color=... – redirect nevažećeg ?color= na prvu validnu boju
   if (pathname === '/proizvodi/allegro') {
     const color = searchParams.get('color');
@@ -66,6 +73,7 @@ export const config = {
     '/data/((?!documents_index\\.json$|tarkett_documents_index\\.json$).*)',
     '/crm/:path*',
     '/api/ops/:path*',
+    '/ops/porudzbine/:path*',
     '/proizvodi/allegro',
   ],
 };

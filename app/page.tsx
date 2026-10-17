@@ -3,7 +3,7 @@ import { productRepository } from '@/lib/repositories/product-repository';
 import { brandRepository } from '@/lib/repositories/brand-repository';
 import HomeProductTabs, { HomeProductGroup } from '@/components/HomeProductTabs';
 import { Product } from '@/types';
-import { hasCollectionSku } from '@/lib/utils/homepage-collection-filter';
+import { hasCollectionSku, toHomepageListingProduct } from '@/lib/utils/homepage-collection-filter';
 import { getEsdColorProducts } from '@/lib/product-page/color-helpers';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
 import { parseHomeFilterUrlState } from '@/lib/catalog/home-filter-url';
@@ -233,7 +233,7 @@ function selectHomepageProducts(products: Product[]): Product[] {
   const source = collectionProducts.length > 0 ? collectionProducts : products;
 
   return dedupeBySlug(source)
-    .map((product) => backfillCollectionImages(product, products))
+    .map((product) => toHomepageListingProduct(backfillCollectionImages(product, products)))
     .sort((a, b) => Number((b.images?.length || 0) > 0) - Number((a.images?.length || 0) > 0));
 }
 

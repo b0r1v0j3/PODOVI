@@ -8,6 +8,7 @@ const EXPECTED_MATCHERS = [
   '/data/((?!documents_index\\.json$|tarkett_documents_index\\.json$).*)',
   '/crm/:path*',
   '/api/ops/:path*',
+  '/ops/porudzbine/:path*',
   '/proizvodi/allegro',
 ];
 
@@ -22,6 +23,8 @@ describe('middleware runtime contract', () => {
     ['/crm/leads', true],
     ['/api/ops', true],
     ['/api/ops/change-sets', true],
+    ['/ops/porudzbine', true],
+    ['/ops/porudzbine/123', true],
     ['/proizvodi/allegro', true],
     ['/proizvodi/allegro/', true],
     ['/data/documents_index.json', false],

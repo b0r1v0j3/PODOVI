@@ -127,7 +127,7 @@ export default function ComparePageClient() {
                             {compareItems.map(product => (
                                 <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-center text-[13px]">
                                     <span className={product.inStock ? 'text-ink-900' : 'text-ink-500'}>
-                                        {product.inStock ? 'Na stanju' : 'Nije na stanju'}
+                                        {product.availability === 'on_request' ? 'Na upit' : product.inStock ? 'Na stanju' : 'Nije na stanju'}
                                     </span>
                                 </td>
                             ))}

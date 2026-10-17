@@ -1,7 +1,7 @@
 import { Brand } from '@/types';
 import { brands as mockBrands } from '@/lib/data/mock-data';
 import { hasSupabaseAnonConfig, supabase } from '@/lib/supabase/client';
-import { mapBrandIdToUUID, mapBrandId } from './id-mapping';
+import { isUuidLikeId, mapBrandIdToUUID, mapBrandId } from './id-mapping';
 import { selectPreferredCatalogAsset } from '@/lib/utils/catalog-assets';
 
 export interface IBrandRepository {
@@ -73,6 +73,7 @@ export class SupabaseBrandRepository implements IBrandRepository {
     // we should check mock data first or handle the mapping failure gracefully.
     try {
       const uuid = mapBrandIdToUUID(id);
+      if (!isUuidLikeId(uuid)) return mockBrands.find(b => b.id === id) || null;
       const { data, error } = await supabase
         .from('brands')
         .select('*')

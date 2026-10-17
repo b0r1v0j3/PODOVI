@@ -48,3 +48,6 @@ next-env.d.ts
 # editor configs
 .cursor/
 /.claude/
+
+# supabase cli
+/supabase/.temp/
