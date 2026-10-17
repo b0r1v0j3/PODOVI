@@ -2,7 +2,6 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterAll, describe, expect, it, vi } from 'vitest';
 import ProductColorSelector from '@/components/ProductColorSelector';
-import { CommerceProvider } from '@/lib/context/CommerceContext';
 
 const navigation = vi.hoisted(() => ({ query: '' }));
 vi.mock('next/navigation', () => ({
@@ -40,12 +39,12 @@ describe('iQ Granit SD presentation', () => {
     };
 
     navigation.query = '';
-    const collection = renderToStaticMarkup(React.createElement(CommerceProvider, { children: React.createElement(ProductColorSelector, props) }));
+    const collection = renderToStaticMarkup(React.createElement(ProductColorSelector, props));
     expect(collection).toContain('src="/images/granit-sd-reference.jpg"');
     expect(collection).not.toContain('&amp;color=granit-sd-grey');
 
     navigation.query = 'color=granit-sd-grey';
-    const selected = renderToStaticMarkup(React.createElement(CommerceProvider, { children: React.createElement(ProductColorSelector, { ...props, productName: '3096724 Grey' }) }));
+    const selected = renderToStaticMarkup(React.createElement(ProductColorSelector, { ...props, productName: '3096724 Grey' }));
     expect(selected).not.toContain('src="/images/granit-sd-reference.jpg"');
     expect(selected).toContain('&amp;color=granit-sd-grey');
     for (const html of [collection, selected]) {

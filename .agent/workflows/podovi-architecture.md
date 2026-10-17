@@ -14,30 +14,6 @@ Data flows through a strict 4-step pipeline. **Missing ANY step = data won't dis
 JSON data file → resolve-product.ts → Product object → page.tsx → UI components
 ```
 
-## Customer Commerce (2026-10-17)
-
-The owner's current requirement adds sales-confirmed ordering to the existing catalog. `/nalog` uses the existing Supabase browser client for email-link login and `/nalog/potvrda` for return. `CommerceContext` persists only validated cart references; private customer state and quotes never enter public product caches. `/korpa` submits an order request, without taking payment.
-
-```
-PDP explicit variant → local cart references → /api/commerce/quote
-→ verified Supabase user + server catalog/discount resolution
-→ /api/commerce/orders → commerce_create_order RPC (order + item snapshots)
-→ post-commit email → own order history / protected sales management
-```
-
-- `lib/commerce/` owns shared types, catalog resolution, integer-money pricing, verified identity, private HTTP responses, repository/RPC orchestration and escaped email output. `app/api/commerce/` never accepts client prices, customer IDs, rebates or statuses as authority.
-- Default rebate is 10% only after server `auth.getUser` verifies an email-confirmed user. `commerce_customers.discount_override` replaces it, including 0%; user-editable Auth metadata cannot grant a rebate.
-- An exact collection-scoped variant is required where variants exist. Do not treat the first visual preview, a pattern group, generic 2.25 m² package fallback or hardcoded `inStock` as a saleable SKU/package/stock assertion. Known package rounding comes only from the concrete chosen variant.
-- Unknown prices stay null. Mixed carts expose only the known informative subtotal; sales confirms VAT, prices, delivery and availability. Quote fingerprints require explicit re-review when the catalog or rebate changes.
-- Migration `20261017144116_customer_commerce.sql` adds `commerce_customers`, `commerce_orders`, `commerce_order_items` and a service-only atomic/idempotent RPC. Authenticated RLS permits own reads only. Duplicate retries do not create new orders; email failure does not discard a committed order.
-- `/ops/porudzbine` requires middleware Basic Auth and server-side explicit Ops `publisher` authorization. Staff APIs enforce authorization again. Middleware matcher must include the page. `/crm` remains 404.
-- Release/configuration checklist is `docs/customer-ordering-release.md`. Production migration, SMTP/redirect setup, explicit staff binding and a live email/order round trip must be checked before declaring the feature live.
-- Contract files `tests/contracts/commerce-*.test.ts` cover pricing, persistence boundaries, ownership, cart/variant behavior and the staff perimeter. Keep worker counts bounded on Windows.
-- Speed rule: `@supabase/supabase-js` must never be statically imported into the root-layout/client path. `components/commerce/api.ts` loads it with a dynamic import only when a stored `sb-*-auth-token`, an auth return URL, sign-in or sign-out needs it, so guests download zero Supabase JS. Auth events are deduped by identity; token refreshes must not clear the customer (that unmounts the `/korpa` form). Sign-out is `scope: 'local'`.
-- `getCommerceCustomer` maps only 4xx token rejections to `AUTH_REQUIRED` (the client then drops the local session); Auth network/5xx failures are 503 so a blip never logs the customer out.
-- `resolveCommerceLine` has a per-instance 60 s memo (failures are not cached). The quote key hashes commercial fields only. A per-line 4xx failure carries `lineKey` (`productSlug:variantSlug`) so the cart marks the exact line; 5xx stays cart-level with a retry.
-- Pattern-group parquet (Essence Premium, Four Seasons) is inquiry-only on the PDP (`ProductOrderPanel inquiryOnly`). Authenticated customers may read only non-internal columns (`updated_by`, `request_hash`, `idempotency_key` are not granted).
-
 ## SCHÖNOX Catalog (2026-10-17)
 
 `public/data/schonox_products.json` → `lib/data/schonox-products.ts` → existing Pribor loader/repository/resolver → listing, search, PDP and sitemap. Brand ID `17` is SCHÖNOX. This is a flat product branch, so it must not acquire color-selector variants or disappear behind collection-only curation. Homepage recognizes its SKU family and Pribor exposes a program facet.

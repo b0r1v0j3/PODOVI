@@ -1,4 +1,4 @@
-# Podovi.online — Katalog i poručivanje uz potvrdu prodaje
+# Podovi.online — Katalog podnih obloga
 
 > Podovi katalog podnih obloga i pratećeg asortimana — [podovi.online](https://www.podovi.online)
 
@@ -38,14 +38,6 @@ npm start
 - Contract drift gate now runs in `.github/workflows/contract-tests.yml` for every PR and every push to `main`.
 
 ## Key Features
-
-### Customer Accounts and Sales-confirmed Orders (2026-10-17)
-
-- `/nalog`: passwordless Supabase email-link login; verified customers receive 10% rebate. An authorized individual override replaces the default, including 0%.
-- `/korpa`: local cart containing only product/variant/quantity references. Server quotes resolve the exact selected variant, current catalog prices and approved rebate. Unknown prices display `Cena na upit`.
-- Orders are saved atomically with immutable item/price snapshots and an idempotency key, then email is attempted. Sales must confirm prices, VAT, delivery and availability; no payment is taken.
-- Customers can read only their own order history. `/ops/porudzbine` and staff APIs require configured Ops Basic Auth plus an explicit `publisher` role binding. `/crm` remains disabled.
-- The implementation is prepared locally; production needs the reviewed migration `supabase/migrations/20261017144116_customer_commerce.sql`, Auth redirect/SMTP setup and staff configuration. See [commerce release notes](docs/customer-ordering-release.md).
 
 ### SCHÖNOX
 

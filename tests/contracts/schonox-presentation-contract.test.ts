@@ -11,7 +11,7 @@ const stubs = vi.hoisted(() => ({ Breadcrumbs: (_props: { items: Array<{ label: 
 vi.mock('react', async () => ({ ...(await vi.importActual<typeof import('react')>('react')), cache: <T,>(fn: T) => fn }));
 vi.mock('@/lib/context/CompareContext', () => ({ useCompare: () => ({ compareItems: compare.items, removeFromCompare: vi.fn(), clearAll: vi.fn() }) }));
 vi.mock('@/components/Breadcrumbs', () => ({ default: stubs.Breadcrumbs }));
-for (const name of ['ProductColorSelector', 'ColorGrid', 'ProductActions', 'ProductDocuments', 'RecommendedAccessories', 'EcoFeatures', 'CertificationBadges', 'RelatedProducts', 'RecentlyViewed', 'ProductInquiryStickyCTA', 'ProductViewTracker', 'ProductDetailsTabs', 'ProductImage', 'ProductCharacteristics', 'ProductDescriptionWithCharacteristics', 'ProductBenefits', 'commerce/ProductOrderPanel', 'FlooringCalculator']) {
+for (const name of ['ProductColorSelector', 'ColorGrid', 'ProductActions', 'ProductDocuments', 'RecommendedAccessories', 'EcoFeatures', 'CertificationBadges', 'RelatedProducts', 'RecentlyViewed', 'ProductInquiryStickyCTA', 'ProductViewTracker', 'ProductDetailsTabs', 'ProductImage', 'ProductCharacteristics', 'ProductDescriptionWithCharacteristics', 'ProductBenefits', 'FlooringCalculator']) {
   vi.doMock(`@/components/${name}`, () => ({ default: () => null }));
 }
 vi.stubGlobal('React', React);

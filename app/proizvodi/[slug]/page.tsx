@@ -16,7 +16,6 @@ import CertificationBadges from '@/components/CertificationBadges';
 import RelatedProducts from '@/components/RelatedProducts';
 import RecentlyViewed from '@/components/RecentlyViewed';
 import ProductInquiryStickyCTA from '@/components/ProductInquiryStickyCTA';
-import ProductOrderPanel from '@/components/commerce/ProductOrderPanel';
 import ProductViewTracker from '@/components/ProductViewTracker';
 import ProductDetailsTabs from '@/components/ProductDetailsTabs';
 import ProductImage from '@/components/ProductImage';
@@ -936,11 +935,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
                   {(product.price !== undefined && product.price > 0) ? (
                     <p className="text-[13px] text-ink-500">
-                      <span className="block text-xs mb-1">Kataloška cena</span>
                       {product.price.toLocaleString('sr-RS')} RSD{product.priceUnit ? ` / ${product.priceUnit}` : ''}
                     </p>
-                  ) : <p className="text-[13px] text-ink-500">Cena na upit</p>}
-                  <ProductOrderPanel productSlug={product.slug} unit={product.priceUnit} />
+                  ) : (
+                    <p className="text-[13px] text-ink-500">Cena na upit</p>
+                  )}
 
                   {/* CTA Buttons */}
                   <div className="flex flex-col gap-5">
@@ -953,7 +952,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                         if (refSpec?.value) p.set('ref', refSpec.value);
                         return `/upiti?${p.toString()}`;
                       })()}
-                      className="btn-secondary block w-full text-center min-h-[44px]"
+                      className="btn-primary block w-full text-center min-h-[44px]"
                     >
                       Pošaljite upit
                     </Link>

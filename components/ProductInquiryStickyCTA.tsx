@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useCompare } from '@/lib/context/CompareContext';
 
 interface ProductInquiryStickyCTAProps {
@@ -11,6 +11,7 @@ interface ProductInquiryStickyCTAProps {
 
 /** Sticky CTA na mobilnom: "Pošalji upit" donji bar – vodi na upit sa prefill (product, color, ref). */
 export default function ProductInquiryStickyCTA({ productSlug, inquiryRef }: ProductInquiryStickyCTAProps) {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const { compareItems } = useCompare();
   const color = searchParams.get('color') || '';
@@ -26,14 +27,13 @@ export default function ProductInquiryStickyCTA({ productSlug, inquiryRef }: Pro
   const href = `/upiti?${params.toString()}`;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden flex border-t border-ink-200 bg-white pb-[env(safe-area-inset-bottom)]">
+    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-ink-900 pb-[env(safe-area-inset-bottom)]">
       <Link
         href={href}
-        className="flex min-h-[52px] w-1/2 items-center justify-center text-ink-900 text-[13px] font-medium hover:bg-ink-100 transition-colors"
+        className="flex min-h-[52px] w-full items-center justify-center text-white text-[13px] font-medium hover:bg-ink-700 transition-colors"
       >
         Pošalji upit
       </Link>
-      <a href="#product-order" className="flex min-h-[52px] w-1/2 items-center justify-center bg-ink-900 text-white text-[13px] font-medium hover:bg-ink-700">Količina i korpa</a>
     </div>
   );
 }
