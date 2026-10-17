@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { getPrimaryColorImage } from '@/lib/utils/product-images';
+import ProductImage from './ProductImage';
+import { getColorImageCandidates, getPrimaryColorImage } from '@/lib/utils/product-images';
 
 interface Color {
   collection: string;
@@ -58,29 +59,6 @@ function normalizeSrc(raw?: string | null) {
     if (!p.startsWith('/')) p = '/' + p;
   }
   return p;
-}
-
-function ImageWithFallback({ src, alt, className }: any) {
-  const [imgSrc, setImgSrc] = useState(() => normalizeSrc(src));
-
-  return (
-    <img
-      src={imgSrc || '/images/placeholder.svg'}
-      alt={alt}
-      className={className}
-      loading="lazy"
-      decoding="async"
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover'
-      }}
-      onError={() => setImgSrc('/images/placeholder.svg')}
-    />
-  );
 }
 
 function buildCharacteristics(color: Color): Record<string, string> | undefined {
@@ -554,12 +532,13 @@ export default function ColorGrid({
               {!hideImage && (
                 <div className={`${isGroup ? 'aspect-[3/4]' : 'aspect-square'} relative overflow-hidden bg-paper`}>
                   {primaryColorImage?.url ? (
-                    <ImageWithFallback
-                      src={primaryColorImage.url}
+                    // Sličica ide kroz next/image u širini prikaza (~50–240 px), ne kao pun 1.500 px „pod" JPG.
+                    <ProductImage
+                      sources={getColorImageCandidates(color).map((candidate) => ({ ...candidate, url: normalizeSrc(candidate.url) }))}
                       alt={primaryColorImage.alt || color.full_name}
                       className={`${isGroup ? 'object-contain' : 'object-cover'} group-hover:scale-[1.03] transition-transform duration-700`}
-                      sizes={compact ? "(max-width: 768px) 25vw, 15vw" : "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"}
-                      quality={100}
+                      sizes={compact ? '(min-width: 1024px) 100px, 16vw' : '(min-width: 1280px) 190px, (min-width: 1024px) 240px, (min-width: 768px) 30vw, 45vw'}
+                      quality={75}
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-ink-500 text-xs">Bez slike</div>

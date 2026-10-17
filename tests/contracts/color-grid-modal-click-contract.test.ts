@@ -40,6 +40,10 @@ describe('color selection in the full modal grid', () => {
     // Reopening highlights the current color without replaying selection or closing the modal.
     for (const [mountEffect] of vi.mocked(useEffect).mock.calls) mountEffect();
     expect(html).toContain('border-ink-900');
+    // Sličica ide kroz next/image u širini prikaza, ne kao pun original.
+    expect(html).toContain('/_next/image?url=%2Fimages%2Fgranit-sd-white-green.jpg&amp;w=');
+    expect(html).toContain('sizes="(min-width: 1280px) 190px, (min-width: 1024px) 240px, (min-width: 768px) 30vw, 45vw"');
+    expect(html).not.toContain('src="/images/granit-sd-white-green.jpg"');
     expect(onColorSelect).not.toHaveBeenCalled();
     expect(navigation.replace).not.toHaveBeenCalled();
     expect(clickColor).toBeTypeOf('function');
