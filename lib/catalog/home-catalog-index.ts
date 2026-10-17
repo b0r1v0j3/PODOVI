@@ -77,11 +77,34 @@ const PRODUCT_TYPE_TRANSLATE: Record<string, string> = {
   coving: 'Holkeri',
   'stair nosings': 'Stepenišni profili',
   stairs: 'Stepenišni profili',
-  welding: 'Varenje',
+  welding: 'Pribor za varenje',
   'care & cleaning': 'Nega i čišćenje',
-  'tools & equipment': 'Alati i oprema',
+  'tools & equipment': 'Pomoćni pribor',
   accessories: 'Pribor',
 };
+
+/**
+ * Pribor bez spec-a tipa (legacy Tarkett lepkovi i traka): tip iz SAMOG naziva
+ * proizvoda kad ga naziv eksplicitno kaže („Lepak za parket", „… Adhesive Tape").
+ * Redosled je bitan: traka pre opšteg „lepak/adhesive".
+ */
+const TYPE_FROM_NAME: Record<string, Array<[RegExp, string]>> = {
+  pribor: [
+    [/\b(tape|traka)\b/, 'Pomoćni pribor'],
+    [/lepak za parket|parquet adhesive/, 'Lepkovi za parket'],
+    [/\b(lepak|lepkovi|adhesive|lepilo)\b/, 'Lepkovi za podove'],
+  ],
+};
+
+function typeFromName(product: Product, categorySlug: string): string | null {
+  const rules = TYPE_FROM_NAME[categorySlug];
+  if (!rules) return null;
+  const name = String(product.name || '').toLowerCase();
+  for (const [pattern, label] of rules) {
+    if (pattern.test(name)) return label;
+  }
+  return null;
+}
 
 const TYPE_SPEC_KEYS = ['type', 'tip', 'tip_proizvoda', 'vrsta_proizvoda'];
 const COLLECTION_SPEC_KEYS = ['collection', 'kolekcija', 'brand_line', 'range'];
@@ -112,7 +135,7 @@ function formatTypeLabel(categorySlug: string, raw: string): string | null {
 /** Tip proizvoda za kategorijsku grupu „Tip …" (null = nema podatak). */
 export function getHomeTypeLabel(product: Product, categorySlug: string): string | null {
   const raw = firstSpecValue(product, TYPE_SPEC_KEYS);
-  return raw ? formatTypeLabel(categorySlug, raw) : null;
+  return raw ? formatTypeLabel(categorySlug, raw) : typeFromName(product, categorySlug);
 }
 
 /** Kolekcija za kategorijsku grupu „Kolekcije …" — isti izvor kao istorijski filter. */
@@ -363,8 +386,17 @@ export function buildHomeFacetSchema(categories: HomeSchemaCategory[]): HomeFace
       if (present.has(entry.id)) schema.push(entry);
     }
 
+    // Grupa Kolekcije ima smisla samo kada bar jedna kolekcija okuplja više stavki
+    // (npr. boje iste kolekcije); kod pribora je svaka stavka „svoja kolekcija".
     const collectionId = homeGroupId(category.slug, COLLECTION_GROUP_PARAM);
-    if (present.has(collectionId)) {
+    const collectionSizes = new Map<string, number>();
+    for (const item of category.items) {
+      const value = item.fv[collectionId]?.[0];
+      if (value) collectionSizes.set(value, (collectionSizes.get(value) || 0) + 1);
+    }
+    // ≥3: dva istoimena proizvoda (npr. dve „Podloga TarkoFlex") još nisu kolekcija.
+    const collectionGroupsItems = Array.from(collectionSizes.values()).some((size) => size >= 3);
+    if (present.has(collectionId) && collectionGroupsItems) {
       schema.push({
         id: collectionId,
         param: COLLECTION_GROUP_PARAM,

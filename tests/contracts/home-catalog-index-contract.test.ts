@@ -140,6 +140,27 @@ describe('home catalog index — nasleđivanje i sažete stavke', () => {
   });
 });
 
+describe('home catalog index — pribor (tip na srpskom, bez lažnih kolekcija)', () => {
+  it('legacy pribor dobija srpski tip iz tip_proizvoda ili iz naziva, a Tip formata ga ne prepisuje', async () => {
+    const products = await productRepository.findByCategory('15');
+    const legacy = products.filter((item) => item.sku?.startsWith('PRIBOR-'));
+    expect(legacy.length).toBeGreaterThan(5);
+    const items = buildHomeCatalogItems('pribor', products, products);
+    const schema = buildHomeFacetSchema([{ slug: 'pribor', name: 'Pribor', items, products }]);
+    const typeEntry = schema.find((entry) => entry.id === 'pribor.type');
+    const typeLabels = new Set(Object.values(typeEntry?.optionLabels || {}));
+    for (const expected of ['Pribor za varenje', 'Podloge', 'Nega i čišćenje', 'Pomoćni pribor', 'Lepkovi za parket', 'Lepkovi za podove']) {
+      expect(typeLabels).toContain(expected);
+    }
+    expect(typeLabels).not.toContain('Rolna');
+    expect(typeLabels).not.toContain('Welding');
+    const legacyItems = items.filter((item) => legacy.some((product) => product.id === item.id));
+    expect(legacyItems.every((item) => (item.fv['pribor.type'] || []).length === 1)).toBe(true);
+    // Svaka stavka pribora je „svoja kolekcija" — grupa Kolekcije ne bi ništa grupisala.
+    expect(schema.some((entry) => entry.id === 'pribor.collection')).toBe(false);
+  });
+});
+
 describe('home catalog index — novi brend i nova kategorija ulaze sami (US4)', () => {
   it('šema i engine prikazuju novi brend/kategoriju bez izmene filter koda', () => {
     const newProducts = [

@@ -32,7 +32,9 @@ async function loadCatalog() {
     const categoryItems = buildHomeCatalogItems(category.slug, products, collections.length > 0 ? collections : products);
     if (categoryItems.length === 0) continue;
     items.push(...categoryItems);
-    sources.push({ slug: category.slug, name: category.name, items: categoryItems, products });
+    // Kao app/page.tsx: šema zna i za boje (npr. da Kolekcije stvarno grupišu dekore).
+    const colorItems = buildHomeCatalogItems(category.slug, products, products.filter((product) => !hasCollectionSku(product)), 'color');
+    sources.push({ slug: category.slug, name: category.name, items: [...categoryItems, ...colorItems], products });
   }
   const schema = buildHomeFacetSchema(sources);
   const options: HomeEngineOptions = {
