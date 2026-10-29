@@ -72,6 +72,7 @@ export default function ComparePageClient() {
     const allSpecKeys = new Map<string, string>();
     compareItems.forEach(product => {
         product.specs?.forEach(spec => {
+            if (spec.key === 'program') return;
             if (!allSpecKeys.has(spec.key)) {
                 allSpecKeys.set(spec.key, spec.label || spec.key);
             }

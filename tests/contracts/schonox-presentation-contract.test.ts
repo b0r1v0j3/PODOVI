@@ -35,12 +35,12 @@ function findProps(node: any, type: unknown): any {
 describe('SCHÖNOX availability is on request, never a stock claim', () => {
   it('keeps manufacturer package lines readable in comparison', async () => {
     const emiclassic = getAllSchonoxProducts().find(product => product.slug === 'schonox-emiclassic')!;
+    emiclassic.specs.push({ key: 'program', label: 'Program proizvođača', value: 'Podovi, Brodogradnja' });
     compare.items = [emiclassic];
     const { default: ComparePageClient } = await import('@/app/uporedi/ComparePageClient');
     const html = renderToStaticMarkup(React.createElement(ComparePageClient));
     expect(html).toMatch(/<td[^>]*whitespace-pre-line[^>]*text-left[^>]*>14 kg, kanta\n6 kg, kanta<\/td>/);
-    expect(html).toContain('Program proizvođača');
-    expect(html).toContain('Podovi, Brodogradnja');
+    expect(html).not.toMatch(/Program proizvođača|Brodogradnja|Marine/);
     expect(html).not.toContain('EAN');
   });
 

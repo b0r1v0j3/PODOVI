@@ -11,7 +11,7 @@ import { brandRepository } from '@/lib/repositories/brand-repository';
 import { resolveProductBySlug } from '@/lib/product-page/resolve-product';
 import { hasCollectionSku, toHomepageListingProduct } from '@/lib/utils/homepage-collection-filter';
 import { getCanonicalProductHref } from '@/lib/utils/product-routes';
-import { collectFacetOptionValues, getFacetDefsForCategory, productMatchesFacetSelections } from '@/lib/catalog/facet-config';
+import { getFacetDefsForCategory } from '@/lib/catalog/facet-config';
 
 describe('complete European/global SCHÖNOX catalog', () => {
   it('accounts for all official floor, tile and marine entries, including inline accessories', () => {
@@ -22,6 +22,9 @@ describe('complete European/global SCHÖNOX catalog', () => {
     expect(manifest.entryPoints).toHaveLength(3);
     expect(new Set(dataset.products.map(product => product.slug)).size).toBe(dataset.products.length);
     expect(dataset.products.map(product => product.slug).sort()).toEqual(manifest.products.map(product => product.slug).sort());
+    for (const product of dataset.products) {
+      expect(product.source.groupUrls, product.slug).toEqual(manifest.products.find(source => source.slug === product.slug)!.groups);
+    }
     const includedUrls = new Set(manifest.products.flatMap(product => [product.canonicalUrl, ...product.alternateUrls]));
     for (const listing of manifest.listings) {
       for (const url of listing.productUrls) expect(includedUrls.has(url), url).toBe(true);
@@ -124,18 +127,11 @@ describe('complete European/global SCHÖNOX catalog', () => {
     expect((await productRepository.findAll({ search: 'schonox' })).length).toBe(135);
   });
 
-  it('builds only live product group/program filters and includes Marine products', () => {
+  it('retains all product groups without exposing a manufacturer program filter', () => {
     const products = getAllSchonoxProducts();
     const defs = getFacetDefsForCategory('pribor');
-    const program = defs.find(def => def.param === 'program')!;
-    expect(collectFacetOptionValues(products, program).sort()).toEqual(['Keramika', 'Marine', 'Podovi']);
-    for (const value of collectFacetOptionValues(products, program)) {
-      expect(products.filter(product => productMatchesFacetSelections(product, { program: [value] }, defs)).length).toBeGreaterThan(0);
-    }
-    // Legacy Tarkett/Gerflor floor accessories must stay visible when the Program filter is set to Podovi.
-    const legacy = getAllPriborProducts().filter(product => product.brandId !== '17');
-    expect(legacy.length).toBeGreaterThan(0);
-    for (const product of legacy) expect(productMatchesFacetSelections(product, { program: ['Podovi'] }, defs)).toBe(true);
+    expect(defs.some(def => def.param === 'program')).toBe(false);
+    expect(products.some(product => product.specs.some(spec => spec.key === 'program'))).toBe(false);
     const types = new Set(products.map(product => product.specs.find(spec => spec.key === 'type')?.value));
     expect(types.has('Prajmeri')).toBe(true);
     expect(types.has('Brodarski estrisi')).toBe(true);

@@ -284,12 +284,8 @@ function productPackaging(product) {
 }
 
 function presentationSpecs(product) {
-  const programs = [['floor-range', 'Podovi'], ['tile-range', 'Keramika'], ['marine-range', 'Brodogradnja']].filter(([range]) => product.groups.some(url => url.includes(range))).map(([, label]) => label);
   const packaging = productPackaging(product);
-  return [
-    { key: 'program', label: 'Program proizvođača', value: programs.join(', ') },
-    ...(packaging ? [{ key: 'manufacturer_packaging', label: 'Pakovanja proizvođača', value: packaging }] : []),
-  ];
+  return packaging ? [{ key: 'manufacturer_packaging', label: 'Pakovanja proizvođača', value: packaging }] : [];
 }
 
 function applyPresentation(products, sourceProducts) {
@@ -421,8 +417,7 @@ async function build(source) {
       return { title: repeated ? `${label} (${clean(doc.title).replace(/®/g, '')})` : label, url: asset.url, type: doc.type };
     });
     const packaging = productPackaging(product);
-    const [program, ...packagingSpecs] = presentationSpecs(product);
-    const specifications = [{ key: 'type', label: 'Tip', value: groups[0] }, program, { key: 'manufacturer', label: 'Proizvođač', value: 'SCHÖNOX / Sika' }, ...packagingSpecs];
+    const specifications = [{ key: 'type', label: 'Tip', value: groups[0] }, { key: 'manufacturer', label: 'Proizvođač', value: 'SCHÖNOX / Sika' }, ...presentationSpecs(product)];
     const description = `${details[product.slug]}\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. ${documentationNote(documents)}`;
     return { id: product.slug, name: product.name.replace('®', ''), slug: product.slug, sku: product.slug.toUpperCase(), categoryId: '15', brandId: '17', shortDescription: copy[product.slug], description, specs: specifications, images, documents, availability: 'on_request', inStock: false, priceUnit: 'pakovanje', featured: false, externalLink: product.canonicalUrl, detailsSections: packaging ? [{ title: 'Pakovanje i nabavka', items: ['Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja.'] }] : [], source: { canonicalUrl: product.canonicalUrl, alternateUrls: product.alternateUrls, groupUrls: product.groups, checkedAt: product.checkedAt || source.discoveredAt } };
   });

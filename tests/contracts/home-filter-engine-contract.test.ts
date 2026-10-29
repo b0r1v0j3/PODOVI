@@ -192,39 +192,44 @@ describe('home filter engine — pravila', () => {
 });
 
 describe('brand-only category context', () => {
-  it.each(['Keramika', 'Marine'])('preserves SCHÖNOX Program %s across URL reload and adding/removing a multicategory brand', async (programValue) => {
+  it.each(['Prajmeri', 'Lepkovi za podove'])('preserves SCHÖNOX type %s across URL reload and adding/removing a multicategory brand', async (typeLabel) => {
     const { items, schema, options } = await loadCatalog();
     const brand = toggleHomeListValue(EMPTY_HOME_SELECTION, 'brand', '17');
     const groups = evaluateHomeFilters(items, schema, brand, options).groups;
-    expect(groups.map(group => group.entry.id)).toEqual(expect.arrayContaining(['pribor.program', 'pribor.type']));
+    expect(groups.map(group => group.entry.id)).toContain('pribor.type');
+    expect(groups.some(group => group.entry.id === 'pribor.program')).toBe(false);
     expect(groups.find(group => group.entry.id === 'category')!.options![0].value).toBe('pribor');
-    const program = groups.find(group => group.entry.id === 'pribor.program')!.options!.find(option => option.value === programValue)!;
-    expect(groups.find(group => group.entry.id === 'pribor.program')!.entry.label).toBe('Program proizvođača');
-    expect(program.label).toBe(programValue === 'Marine' ? 'Brodogradnja' : programValue);
-    expect(program.count).toBeGreaterThan(0);
-    const selection = toggleHomeListValue(brand, 'pribor.program', program.value);
+    const type = groups.find(group => group.entry.id === 'pribor.type')!.options!.find(option => option.label === typeLabel)!;
+    expect(type.count).toBeGreaterThan(0);
+    const selection = toggleHomeListValue(brand, 'pribor.type', type.value);
     const params = serializeHomeFilterSelection({ selection, tab: 'collections', sort: 'featured' }, schema);
     expect(params.has('category')).toBe(false);
     const restored = pruneHomeSelection(parseHomeFilterSelection(params, schema).selection, schema, items);
     expect(restored).toEqual(selection);
-    if (programValue === 'Marine') {
-      expect(params.get('facet')).toBe('pribor::program::Marine');
-      expect(evaluateHomeFilters(items, schema, restored, options).chips.map(chip => chip.label)).toContain('Brodogradnja');
-    }
     const sanitized = sanitizeHomeSelection(restored, schema, items, options.categories, new Set(Object.keys(options.brandNames)));
     expect(sanitized).toEqual(selection);
     expectCountsEqualResults(items, schema, selection, options);
     const expanded = pruneHomeSelection(toggleHomeListValue(selection, 'brand', '3'), schema, items);
-    expect(expanded.lists['pribor.program']).toEqual([programValue]);
+    expect(expanded.lists['pribor.type']).toEqual([type.value]);
     const expandedEvaluation = expectCountsEqualResults(items, schema, expanded, options).evaluation;
-    expect(expandedEvaluation.results.filter(item => item.brandId === '17')).toHaveLength(program.count);
+    expect(expandedEvaluation.results.filter(item => item.brandId === '17')).toHaveLength(type.count);
     const tarkettOnly = pruneHomeSelection(toggleHomeListValue(expanded, 'brand', '17'), schema, items);
-    expect(tarkettOnly.lists['pribor.program']).toEqual([programValue]);
+    expect(tarkettOnly.lists['pribor.type']).toEqual([type.value]);
     expectCountsEqualResults(items, schema, tarkettOnly, options);
     expect(pruneHomeSelection(toggleHomeListValue(tarkettOnly, 'brand', '3'), schema, items)).toEqual(EMPTY_HOME_SELECTION);
-    expect(pruneHomeSelection({ ...selection, lists: { ...selection.lists, brand: ['12'] } }, schema, items).lists['pribor.program']).toBeUndefined();
+    expect(pruneHomeSelection({ ...selection, lists: { ...selection.lists, brand: ['12'] } }, schema, items).lists['pribor.type']).toBeUndefined();
     expect(pruneHomeSelection(toggleHomeListValue(selection, 'brand', '17'), schema, items)).toEqual(EMPTY_HOME_SELECTION);
     const explicit = toggleHomeListValue(selection, 'category', 'vinil');
-    expect(pruneHomeSelection(explicit, schema, items).lists['pribor.program']).toBeUndefined();
+    expect(pruneHomeSelection(explicit, schema, items).lists['pribor.type']).toBeUndefined();
+  });
+
+  it('discards retired Program links without hiding SCHÖNOX products', async () => {
+    const { items, schema, options } = await loadCatalog();
+    for (const value of ['Marine', 'Brodogradnja', 'Keramika', 'Podovi']) {
+      const restored = parseHomeFilterSelection(`?brand=17&facet=pribor::program::${value}`, schema);
+      expect(restored.selection.lists['pribor.program']).toBeUndefined();
+      expect(evaluateHomeFilters(items, schema, restored.selection, options).results).toHaveLength(135);
+      expect(serializeHomeFilterSelection(restored, schema).has('facet')).toBe(false);
+    }
   });
 });

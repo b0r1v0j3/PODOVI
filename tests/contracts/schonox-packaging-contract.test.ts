@@ -43,12 +43,12 @@ describe('SCHÖNOX manufacturer packaging presentation', () => {
     expect(dataset.products.find(product => product.slug === 'schonox-ifix')!.priceOptions!.map(option => option.packagingLabel)).toEqual(['7,8 kg, komplet']);
   });
 
-  it('regenerates only the two public specs offline, preserving every other field and raw source', () => {
+  it('removes the program spec and refreshes packaging offline, preserving every other field and raw source', () => {
     const sourceBefore = JSON.stringify(manifest);
     const input = structuredClone(dataset.products);
     for (const product of input) {
+      product.specs.splice(1, 0, { key: 'program', label: 'Program proizvođača', value: 'Podovi, Marine' });
       for (const spec of product.specs) {
-        if (spec.key === 'program') spec.value = spec.value.replace('Brodogradnja', 'Marine');
         if (spec.key === 'manufacturer_packaging') spec.value = 'Material No. 123456 EAN 1234567890123 Packsize raw';
       }
     }
@@ -80,10 +80,7 @@ describe('SCHÖNOX manufacturer packaging presentation', () => {
         expect(new Set(lines).size, product.slug).toBe(lines.length);
         expect(lines.every(line => line.trim() === line && line.length > 0), product.slug).toBe(true);
       }
-      const program = product.specs.find(item => item.key === 'program')!;
-      expect(program.label).toBe('Program proizvođača');
-      expect(program.value).not.toContain('Marine');
-      expect(program.value.includes('Brodogradnja')).toBe(product.source.groupUrls.some(url => url.includes('marine-range')));
+      expect(product.specs.some(item => item.key === 'program'), product.slug).toBe(false);
     }
     expect(manifest.products.find(product => product.slug === 'schonox-emiclassic')!.sections.Packaging).toContain('EAN 4016447004255');
   });

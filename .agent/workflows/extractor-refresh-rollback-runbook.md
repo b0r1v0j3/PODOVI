@@ -103,12 +103,13 @@ inline unosa pribora: nakon 26 duplikata ostaje 135 proizvoda. Marine kategorija
 Američke formulacije ne mešati sa evropskim/globalnim programom.
 
 - `--discover` zapisuje izvore u `output/schonox/source.json`, bez zamene kataloga.
-  - `--presentation-only` osvežava samo specifikacije pakovanja i nazive programa
+  - `--presentation-only` osvežava specifikacije pakovanja i uklanja stari Program
     iz postojećeg `docs/products/schonox-source-manifest.json`, bez mreže ili
     promena cena, slika, dokumenata i datuma izvora. Pakovanja se prikazuju svako
     u svom redu, bez sirovih EAN-a, materijalnih šifara i paletnih količina.
     Sačuvati stvarne višedelne komplete, količine u kutiji i dimenzije rolne.
-    Marine je javno „Brodogradnja“, uz isti interni filter radi starih URL-ova.
+    Celo javno polje/filter Program je uklonjeno po naknadnom nalogu vlasnika.
+    Izvorne grupe ostaju za provenijenciju; ne vraćati ih u javne specifikacije.
 - `--refresh` ponovo preuzima i stranice i assete, uključujući postojeće fajlove.
   PDF mora imati ispravan potpis i bar jednu stranicu; `pdf-parse` mora uspešno
   pročitati sadržaj svake stranice (`getTextContent`), uz rok od 20 sekundi.

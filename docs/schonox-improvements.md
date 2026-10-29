@@ -5,6 +5,21 @@ Detaljni lokalni dokazi pregleda su u `output/audit-2026-10-22/izvestaj.md`.
 Ovaj dokument beleži obim i rezultat popravki, bez vraćanja ranije uklonjene
 korpe, naloga ili porudžbina.
 
+## Uklonjen ceo Program — 29.10.2026.
+
+Poslednji nalog vlasnika uklanja celo polje Program/Program proizvođača i
+njegov filter, uključujući raniji naziv Marine/Brodogradnja. Izbačeno je svih
+135 javnih Program specifikacija i legacy Pribor dodatak. Uklonjena je ta
+podela iz opisa brenda. Stari URL filter se odbacuje bez skrivanja proizvoda;
+sačuvano poređenje ne prikazuje stare Program specove ni pre API osvežavanja.
+Uvoz više ne pravi to javno polje. Izvorne grupe ostaju samo za provenijenciju;
+ostali podaci, pakovanja, cene, slike i dokumenti sačuvani su bez promena.
+Raniji zapisi o prevođenju i očuvanju Program filtera ispod su zamenjeni ovim nalogom.
+Prolaze 63 ciljane provere kataloga, pakovanja, specifikacija, poređenja i filtera,
+extractor self-check i produkcioni build sa TypeScript/lint proverom. Nezavisni
+pregled nije našao preostale probleme. Lokalni produkcioni server potvrđuje
+odsustvo Program reda i filtera; stari Marine URL vraća svih 135 proizvoda.
+
 ## Poslednji nalog o ceni — 29.10.2026.
 
 Vlasnik je odbacio neto/bruto tabelu i oznake PDV-a kao suvišne za kupca.

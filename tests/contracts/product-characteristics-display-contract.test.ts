@@ -20,7 +20,10 @@ afterAll(() => vi.unstubAllGlobals());
 
 describe('selected-color characteristic display', () => {
   it('shows each manufacturer package on its own left-aligned line in both rendering paths', () => {
-    const specs = [{ key: 'manufacturer_packaging', label: 'Pakovanja', value: '14 kg, kanta\n6 kg, kanta' }];
+    const specs = [
+      { key: 'manufacturer_packaging', label: 'Pakovanja', value: '14 kg, kanta\n6 kg, kanta' },
+      { key: 'program', label: 'Program proizvođača', value: 'Podovi, Brodogradnja' },
+    ];
     for (const selectedSpecs of [null, specs]) {
       vi.mocked(useState).mockReturnValueOnce([null, vi.fn()]).mockReturnValueOnce([selectedSpecs, vi.fn()]);
       const html = renderToStaticMarkup(React.createElement(ProductCharacteristics, { specs, categoryId: '15' }));
@@ -28,6 +31,7 @@ describe('selected-color characteristic display', () => {
       expect(html).toMatch(/<dd[^>]*whitespace-pre-line[^>]*text-left/);
       expect(html).toContain('sm:grid-cols-[12rem_minmax(0,1fr)]');
       expect(html).not.toMatch(/<dd[^>]*text-right/);
+      expect(html).not.toMatch(/Program proizvođača|Brodogradnja/);
     }
   });
 

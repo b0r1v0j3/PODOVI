@@ -18,11 +18,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -85,11 +80,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Hidroizolacija"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -176,11 +166,6 @@
           "value": "Pomoćni pribor"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -237,11 +222,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Hidroizolacija"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -305,11 +285,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -369,11 +344,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Hidroizolacija"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -440,11 +410,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Hidroizolacija"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -518,11 +483,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -592,11 +552,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Prajmeri"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -672,11 +627,6 @@
           "value": "Prajmeri"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -741,11 +691,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Brodarski estrisi"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -819,11 +764,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -883,11 +823,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -973,11 +908,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -1039,11 +969,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -1097,11 +1022,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Hidroizolacija"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -1170,11 +1090,6 @@
           "value": "Pomoćni pribor"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -1231,11 +1146,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Hidroizolacija"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -1322,11 +1232,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -1411,11 +1316,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za pločice"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -1507,11 +1407,6 @@
           "value": "Mase za zidove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -1586,11 +1481,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za zidove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -1669,11 +1559,6 @@
           "value": "Mase za zidove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -1743,11 +1628,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -1838,11 +1718,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -1919,11 +1794,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -1983,11 +1853,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za zidove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -2056,11 +1921,6 @@
           "value": "Mase za zidove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -2118,11 +1978,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za zidove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -2204,11 +2059,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za fugovanje"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -2300,11 +2150,6 @@
           "value": "Estrisi"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -2379,11 +2224,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -2469,11 +2309,6 @@
           "value": "Mase za fugovanje"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -2548,11 +2383,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -2648,11 +2478,6 @@
           "value": "Lepkovi za podove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Brodogradnja"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -2744,11 +2569,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -2830,11 +2650,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -2897,11 +2712,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -2995,11 +2805,6 @@
           "value": "Estrisi"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -3076,11 +2881,6 @@
           "value": "Mase za fugovanje"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -3154,11 +2954,6 @@
           "value": "Mase za fugovanje"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -3212,11 +3007,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za fugovanje"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -3283,11 +3073,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za fugovanje"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -3366,11 +3151,6 @@
           "value": "Pomoćni pribor"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -3430,11 +3210,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -3513,11 +3288,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Prajmeri"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -3603,11 +3373,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -3687,11 +3452,6 @@
           "value": "Mase za zidove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -3763,11 +3523,6 @@
           "value": "Mase za fugovanje"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -3837,11 +3592,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Prajmeri"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -3918,11 +3668,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Prajmeri"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika"
         },
         {
           "key": "manufacturer",
@@ -4014,11 +3759,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -4114,11 +3854,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -4207,11 +3942,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -4286,11 +4016,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -4381,11 +4106,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -4462,11 +4182,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -4538,11 +4253,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -4604,11 +4314,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -4668,11 +4373,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Hidroizolacija"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -4768,11 +4468,6 @@
           "value": "Lepkovi za podove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Brodogradnja"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -4857,11 +4552,6 @@
           "value": "Lepkovi za parket"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -4938,11 +4628,6 @@
           "value": "Lepkovi za parket"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -5014,11 +4699,6 @@
           "value": "Lepkovi za parket"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -5067,11 +4747,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za parket"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -5133,11 +4808,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Prajmeri"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -5240,11 +4910,6 @@
           "value": "Prajmeri"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -5341,11 +5006,6 @@
           "value": "Lepkovi za pločice"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -5430,11 +5090,6 @@
           "value": "Estrisi"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -5494,11 +5149,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -5584,11 +5234,6 @@
           "value": "Brodarski estrisi"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Brodogradnja"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -5670,11 +5315,6 @@
           "value": "Mase za fugovanje"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -5744,11 +5384,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za fugovanje"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -5822,11 +5457,6 @@
           "value": "Estrisi"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -5891,11 +5521,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -5967,11 +5592,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -6065,11 +5685,6 @@
           "value": "Lepkovi za podove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -6141,11 +5756,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za parket"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -6224,11 +5834,6 @@
           "value": "Lepkovi za parket"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -6300,11 +5905,6 @@
           "value": "Lepkovi za parket"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -6374,11 +5974,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za parket"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -6457,11 +6052,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -6534,11 +6124,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -6620,11 +6205,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -6713,11 +6293,6 @@
           "value": "Mase za zidove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -6802,11 +6377,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -6897,11 +6467,6 @@
           "value": "Lepkovi za podove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -6971,11 +6536,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za parket"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -7059,11 +6619,6 @@
           "value": "Lepkovi za podove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -7142,11 +6697,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -7206,11 +6756,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za pločice"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -7289,11 +6834,6 @@
           "value": "Lepkovi za pločice"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -7363,11 +6903,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za pločice"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -7451,11 +6986,6 @@
           "value": "Lepkovi za pločice"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -7532,11 +7062,6 @@
           "value": "Lepkovi za pločice"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -7611,11 +7136,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za pločice"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -7707,11 +7227,6 @@
           "value": "Lepkovi za pločice"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -7786,11 +7301,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za pločice"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -7872,11 +7382,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za pločice"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -7963,11 +7468,6 @@
           "value": "Pomoćni pribor"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -8021,11 +7521,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za zidove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -8104,11 +7599,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -8176,11 +7666,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -8243,11 +7728,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -8322,11 +7802,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -8417,11 +7892,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -8498,11 +7968,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -8565,11 +8030,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za fugovanje"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -8646,11 +8106,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Estrisi"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -8732,11 +8187,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za fugovanje"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -8821,11 +8271,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za pločice"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -8914,11 +8359,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -9001,11 +8441,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Prajmeri"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -9113,11 +8548,6 @@
           "value": "Lepkovi za podove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -9182,11 +8612,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -9270,11 +8695,6 @@
           "value": "Hidroizolacija"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -9334,11 +8754,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za fugovanje"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -9412,11 +8827,6 @@
           "value": "Lepkovi za podove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -9486,11 +8896,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za podove"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -9564,11 +8969,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -9635,11 +9035,6 @@
           "value": "Podloge"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -9704,11 +9099,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Lepkovi za pločice"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -9787,11 +9177,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -9861,11 +9246,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",
@@ -9939,11 +9319,6 @@
           "value": "Lepkovi za podove"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -10015,11 +9390,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -10101,11 +9471,6 @@
           "value": "Prajmeri"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -10180,11 +9545,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za fugovanje"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -10263,11 +9623,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -10342,11 +9697,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
         },
         {
           "key": "manufacturer",
@@ -10425,11 +9775,6 @@
           "value": "Mase za fugovanje"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Keramika"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -10504,11 +9849,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -10607,11 +9947,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -10688,11 +10023,6 @@
           "value": "Mase za nivelaciju i popravke"
         },
         {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
-        },
-        {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
@@ -10767,11 +10097,6 @@
           "key": "type",
           "label": "Tip",
           "value": "Mase za nivelaciju i popravke"
-        },
-        {
-          "key": "program",
-          "label": "Program proizvođača",
-          "value": "Podovi"
         },
         {
           "key": "manufacturer",

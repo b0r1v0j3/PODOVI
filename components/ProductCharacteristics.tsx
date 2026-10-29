@@ -140,7 +140,7 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
     }
   }
 
-  const finalSpecs = Array.from(mergedSpecs.values());
+  const finalSpecs = Array.from(mergedSpecs.values()).filter(spec => spec.key !== 'program');
 
   if (finalSpecs.length === 0) {
     return null;

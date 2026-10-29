@@ -2673,10 +2673,6 @@ export function getAllPriborProducts(): Product[] {
         if (!specsArray.find(s => s.key === 'collection')) {
             specsArray.push({ key: 'collection', label: 'Kolekcija', value: p.collection || p.name });
         }
-        // Legacy Tarkett/Gerflor accessories are all floor accessories; without this the Program filter hides them.
-        if (!specsArray.some(s => s.key === 'program')) {
-            specsArray.push({ key: 'program', label: 'Program', value: 'Podovi' });
-        }
 
         const images = p.images ? p.images : [];
         const brandId = p.brandId || '3';
@@ -2691,7 +2687,7 @@ export function getAllPriborProducts(): Product[] {
             shortDescription: p.shortDescription || p.description || p.name,
             description: p.description || enrichProductDescription({ name: p.name, categoryId: '15', brandId, specs: specsArray } as any),
             images: images,
-            specs: specsArray,
+            specs: specsArray.filter(spec => spec.key !== 'program'),
             documents: Array.isArray(p.documents) ? p.documents : [],
             detailsSections: undefined,
             price: typeof p.price === 'number' ? p.price : 0, // "Cena na upit" → 0

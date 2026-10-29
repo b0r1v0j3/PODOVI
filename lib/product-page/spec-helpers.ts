@@ -21,6 +21,7 @@ export function filterSpecsForDisplay(
         })
         .filter((s) => !(s.key === 'collection' && s.value === 'Parket'))
         .filter((s) => !String(s.key || '').startsWith('__'))
+        .filter((s) => s.key !== 'program')
         .filter((s) => {
             const labelKey = String(s.label || '').trim().toLowerCase();
             if (!labelKey) return true;

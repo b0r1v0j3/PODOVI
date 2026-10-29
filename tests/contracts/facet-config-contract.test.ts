@@ -30,11 +30,8 @@ function isCollectionHeader(sku?: string | null): boolean {
 }
 
 describe('facet-config contract (Filteri 2.0 — Faza 1b)', () => {
-  it('displays the manufacturer marine program in Serbian while preserving existing filter URLs', () => {
-    const program = facetDef('pribor', 'program');
-    expect(canonicalizeFacetValue('Podovi, Brodogradnja', program)).toEqual(['Podovi', 'Marine']);
-    expect(canonicalizeFacetValue('Marine', program)).toEqual(['Marine']);
-    expect(facetOptionLabel(program, 'Marine')).toBe('Brodogradnja');
+  it('does not expose a manufacturer program facet', () => {
+    expect(getFacetDefsForCategory('pribor').some(def => def.param === 'program')).toBe(false);
   });
   describe('kanonizacija — klasa upotrebe', () => {
     it('parsira sve istorijske oblike u niz klasa', () => {
