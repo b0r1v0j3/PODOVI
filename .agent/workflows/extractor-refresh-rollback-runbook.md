@@ -152,10 +152,14 @@ Američke formulacije ne mešati sa evropskim/globalnim programom.
   ostaje prazan/na upit, bez traženja da vlasnik ponovo istražuje isti podatak.
 - Svi proizvodi su `availability: on_request`, `inStock: false`. Regionalno
   pakovanje proizvođača ne predstavlja potvrđenu jedinicu konkretne isporuke.
-  Cena se izostavlja do potvrđenog cenovnika; nula nije
-  zamena za nepoznatu cenu. Refresh čuva postojeće pozitivne lokalne cene i
-  njihove jedinice i nikada ih ne preuzima sa sajta proizvođača. Uvoz cenovnika
-  mora zasebno proveriti šifru, pakovanje, jedinicu, PDV i datum primene.
+  Od 29.10.2026. `tools/schonox-prices.json` nosi odobreni javni podskup redovnog
+  cenovnika Sika Srbija od 17.8.2026: 35 pakovanja / 30 proizvoda, bez rabata,
+  prodajne cene sa 20% PDV-a. `node tools/extract_schonox_catalog.js --prices-only`
+  ažurira samo cene postojećeg JSON-a bez mreže; normalan build ponovo primenjuje
+  ovaj podskup. Novi cenovnik prvo proveriti po šifri, pakovanju, jedinici, PDV-u
+  i roku. Nepoznate cene se izostavljaju, ne upisuje se nula. Rok je 31.12.2026,
+  zaključno po vremenu Beograda; loader potom uklanja cene. Originalni interni
+  PDF ne objavljivati. Detalji i izuzeci: `docs/schonox-pricing.md`.
 - Flat loader `lib/data/schonox-products.ts` dodaje se postojećem Pribor toku;
   ne uvodi boje niti automatske količine pakovanja. Brend je `17`, kategorija
   `15`; homepage tipovi nastaju iz stvarnog skupa, uz dodatni Program filter.

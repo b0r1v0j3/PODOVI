@@ -262,16 +262,49 @@ function productPackaging(product) {
   return localizePackaging(packaging);
 }
 
-function approvedPrice(existing) {
-  return existing && Number.isFinite(existing.price) && existing.price > 0
-    ? { price: existing.price, priceUnit: existing.priceUnit } : {};
+function applyApprovedPrices(products, priceList = JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-prices.json'), 'utf8'))) {
+  assert(typeof priceList.sourceTitle === 'string' && priceList.sourceTitle.trim(), 'Missing price-list source');
+  assert.equal(priceList.currency, 'RSD');
+  assert.equal(priceList.vatRate, 20);
+  assert.equal(priceList.discountPercent, 0, 'Only regular list prices may be published');
+  for (const date of [priceList.listDate, priceList.validThrough]) {
+    assert(/^\d{4}-\d{2}-\d{2}$/.test(date) && new Date(date).toISOString().slice(0, 10) === date, 'Invalid price-list date');
+  }
+  assert(priceList.validThrough >= priceList.listDate, 'Price list expires before its start');
+  const catalogSlugs = new Set(products.map(product => product.slug));
+  const prices = new Map();
+  const skus = new Set();
+  for (const product of priceList.products) {
+    assert(catalogSlugs.has(product.slug), `Unknown priced product: ${product.slug}`);
+    assert(!prices.has(product.slug), `Duplicate priced product: ${product.slug}`);
+    assert(product.packages.length, `No priced packages: ${product.slug}`);
+    const priceOptions = product.packages.map(item => {
+      assert(/^\d+$/.test(item.manufacturerSku) && !skus.has(item.manufacturerSku), `Invalid or duplicate price SKU: ${item.manufacturerSku}`);
+      assert(typeof item.packagingLabel === 'string' && item.packagingLabel.trim(), `Missing package label: ${item.manufacturerSku}`);
+      assert(Number.isSafeInteger(item.listPriceNetMinor) && item.listPriceNetMinor > 0 && Number.isSafeInteger(item.listPriceNetMinor * 120), `Invalid package price: ${item.manufacturerSku}`);
+      assert(Array.isArray(item.sourcePages) && item.sourcePages.length && item.sourcePages.every(page => Number.isSafeInteger(page) && page > 0), `Missing price-list page: ${item.manufacturerSku}`);
+      skus.add(item.manufacturerSku);
+      return { manufacturerSku: item.manufacturerSku, packagingLabel: item.packagingLabel, price: Math.round(item.listPriceNetMinor * 120 / 100) / 100, priceWithoutVat: item.listPriceNetMinor / 100 };
+    });
+    prices.set(product.slug, {
+      price: Math.min(...priceOptions.map(option => option.price)),
+      priceUnit: priceOptions.length === 1 ? `pakovanje (${priceOptions[0].packagingLabel})` : 'pakovanje',
+      priceFrom: new Set(priceOptions.map(option => option.price)).size > 1,
+      priceIncludesVat: true,
+      priceValidUntil: priceList.validThrough,
+      priceOptions,
+    });
+  }
+  return products.map(product => {
+    const { price, priceFrom, priceIncludesVat, priceValidUntil, priceOptions, ...record } = product;
+    return { ...record, priceUnit: 'pakovanje', ...prices.get(product.slug) };
+  });
 }
 
 async function build(source) {
   const copy = JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-copy.json'), 'utf8'));
   const details = JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-details.json'), 'utf8'));
   const library = JSON.parse(fs.readFileSync(path.join(LIBRARY, 'catalog.json'), 'utf8')).assets;
-  const previous = new Map((fs.existsSync(DATASET) ? JSON.parse(fs.readFileSync(DATASET, 'utf8')).products : []).map(product => [product.slug, product]));
   const failures = [];
   const assets = [];
   const imageLimitations = [];
@@ -350,9 +383,7 @@ async function build(source) {
     const specifications = [{ key: 'type', label: 'Tip', value: groups[0] }, { key: 'program', label: 'Program', value: programs.join(', ') }, { key: 'manufacturer', label: 'Proizvođač', value: 'SCHÖNOX / Sika' }];
     if (packaging) specifications.push({ key: 'manufacturer_packaging', label: 'Pakovanja proizvođača', value: packaging });
     const description = `${details[product.slug]}\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. ${documentationNote(documents)}`;
-    const existing = previous.get(product.slug);
-    const price = approvedPrice(existing);
-    return { id: product.slug, name: product.name.replace('®', ''), slug: product.slug, sku: product.slug.toUpperCase(), categoryId: '15', brandId: '17', shortDescription: copy[product.slug], description, specs: specifications, images, documents, availability: 'on_request', inStock: false, priceUnit: 'pakovanje', ...price, featured: false, externalLink: product.canonicalUrl, detailsSections: packaging ? [{ title: 'Pakovanje i nabavka', items: ['Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja.'] }] : [], source: { canonicalUrl: product.canonicalUrl, alternateUrls: product.alternateUrls, groupUrls: product.groups, checkedAt: product.checkedAt || source.discoveredAt } };
+    return { id: product.slug, name: product.name.replace('®', ''), slug: product.slug, sku: product.slug.toUpperCase(), categoryId: '15', brandId: '17', shortDescription: copy[product.slug], description, specs: specifications, images, documents, availability: 'on_request', inStock: false, priceUnit: 'pakovanje', featured: false, externalLink: product.canonicalUrl, detailsSections: packaging ? [{ title: 'Pakovanje i nabavka', items: ['Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja.'] }] : [], source: { canonicalUrl: product.canonicalUrl, alternateUrls: product.alternateUrls, groupUrls: product.groups, checkedAt: product.checkedAt || source.discoveredAt } };
   });
   const manifest = { ...source, exclusions: [...source.exclusions, ...Object.entries(DOCUMENT_EXCLUSIONS).map(([url, reason]) => ({ scope: 'document', url, reason }))], assets, failures, imageLimitations, missingImages: products.filter(product => !product.images.length).map(product => ({ slug: product.slug, reason: 'No individual product image exposed by official source.' })), missingDocuments: products.filter(product => !product.documents.length).map(product => ({ slug: product.slug, reason: 'No downloadable product document exposed by official source.' })), missingTechnicalDataSheets: products.filter(product => !product.documents.some(document => document.type === 'product_data_sheet')).map(product => ({ slug: product.slug, reason: 'No product_data_sheet attached; request the technical data sheet before selection or application.' })), productCount: products.length };
   manifest.sourceClarifications = [
@@ -367,11 +398,18 @@ async function build(source) {
   });
   writeJson(MANIFEST, manifest);
   assert.equal(failures.length, 0, `Asset failures recorded in ${MANIFEST}; dataset not replaced.`);
-  writeJson(DATASET, { generatedAt: source.discoveredAt, sourceManifest: 'docs/products/schonox-source-manifest.json', products });
+  writeJson(DATASET, { generatedAt: source.discoveredAt, sourceManifest: 'docs/products/schonox-source-manifest.json', products: applyApprovedPrices(products) });
   console.log(JSON.stringify({ products: products.length, images: products.reduce((sum, product) => sum + product.images.length, 0), documents: products.reduce((sum, product) => sum + product.documents.length, 0), failures: failures.length }));
 }
 
 async function main() {
+  if (process.argv.includes('--prices-only')) {
+    const dataset = JSON.parse(fs.readFileSync(DATASET, 'utf8'));
+    dataset.products = applyApprovedPrices(dataset.products);
+    writeJson(DATASET, dataset);
+    console.log(JSON.stringify({ products: dataset.products.length, pricedProducts: dataset.products.filter(product => product.price).length, priceOptions: dataset.products.reduce((sum, product) => sum + (product.priceOptions?.length || 0), 0) }));
+    return;
+  }
   if (process.argv.includes('--self-test')) {
     assert.notEqual(storagePathFor('same.pdf', Buffer.from('%PDF-one')), storagePathFor('same.pdf', Buffer.from('%PDF-two')));
     assert.match(documentationNote([{ type: 'product_data_sheet' }]), /priloženom tehničkom listu/);
@@ -379,8 +417,6 @@ async function main() {
     assert.equal(productPackaging({ slug: 'schonox-gea', sections: { Packaging: 'Packsize 4.5-kg-combined packaging Material No. 488270 Packsize 25.0-kg-sack' } }), 'Pakovanje: 4.5 kg, kombinovano pakovanje');
     assert.match(productPackaging({ slug: 'schonox-2k-pu-solid', sections: { Packaging: 'Packsize 4.5-kg-combined packaging' } }), /^Pakovanje: 5 kg,.*tehničkom listu/);
     assert.match(productPackaging({ slug: 'schonox-1k-ds-premium', sections: { Packaging: 'Packsize 28.0-kg-sack' } }), /^Pakovanje: 18 kg,.*tehničkom listu/);
-    assert.deepEqual(approvedPrice({ price: 1234.5, priceUnit: 'kg' }), { price: 1234.5, priceUnit: 'kg' });
-    assert.deepEqual(approvedPrice({ price: 0, priceUnit: 'kg' }), {});
     assert.equal(slugify('SCHÖNOX® ZM RAPID'), 'schonox-zm-rapid');
     assert(allowedPage(ENTRY[0])); assert(!allowedPage('https://schonox.us/products/kh'));
     assert(allowedPage(`${BASE}/schonox-global/en/marine-range/test.html`));
@@ -439,4 +475,4 @@ async function main() {
   if (!process.argv.includes('--discover')) await build(source);
 }
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });
-module.exports = { download, highResolutionUrl, mapLimit, productPackaging, documentationNote, storagePathFor, validateAsset };
+module.exports = { applyApprovedPrices, download, highResolutionUrl, mapLimit, productPackaging, documentationNote, storagePathFor, validateAsset };

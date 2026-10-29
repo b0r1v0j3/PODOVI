@@ -29,6 +29,7 @@ export interface FacetProductLike {
   specs?: FacetSpecLike[];
   /** Cena (RSD) — numerička grupa „Cena". */
   price?: number | null;
+  priceOptions?: Array<{ price: number }>;
   /** Dostupnost iz kataloga (npr. SCHÖNOX 'on_request'); polje je opciono. */
   availability?: string | null;
 }
@@ -997,8 +998,9 @@ export function getFacetIntervals(product: FacetProductLike, def: CategoryFacetD
   const range = def.range;
   if (!range) return [];
   if (range.fromPrice) {
-    const price = typeof product.price === 'number' ? product.price : null;
-    return price !== null && price > 0 ? [[price, price]] : [];
+    const prices = product.priceOptions?.length ? product.priceOptions.map((option) => option.price) : [product.price];
+    return Array.from(new Set(prices)).filter((price): price is number => typeof price === 'number' && Number.isFinite(price) && price > 0)
+      .map((price) => [price, price]);
   }
 
   const out: Array<[number, number]> = [];

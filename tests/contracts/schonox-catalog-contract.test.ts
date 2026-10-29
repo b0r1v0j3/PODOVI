@@ -89,19 +89,27 @@ describe('complete European/global SCHÖNOX catalog', () => {
     }
   });
 
-  it('keeps prices unknown, availability on request and dates tied to source discovery', () => {
-    for (const product of getAllSchonoxProducts()) {
-      expect(product.price).toBeUndefined();
-      expect(product.inStock).toBe(false);
-      expect(product.availability).toBe('on_request');
-      expect(product.updatedAt.toISOString()).toBe(dataset.generatedAt);
-      expect(product.description).toContain('potvrdu prodaje');
-      expect(hasCollectionSku(product)).toBe(true);
-      expect(getCanonicalProductHref(product)).toBe(`/proizvodi/${product.slug}`);
+  it('publishes approved prices while keeping availability on request and manufacturer dates', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-10-29T12:00:00Z'));
+    try {
+      const products = getAllSchonoxProducts();
+      expect(products.filter(product => product.price !== undefined)).toHaveLength(30);
+      expect(products.filter(product => product.price === undefined)).toHaveLength(105);
+      for (const product of products) {
+        expect(product.inStock).toBe(false);
+        expect(product.availability).toBe('on_request');
+        expect(product.updatedAt.toISOString()).toBe(dataset.generatedAt);
+        expect(product.description).toContain('potvrdu prodaje');
+        expect(hasCollectionSku(product)).toBe(true);
+        expect(getCanonicalProductHref(product)).toBe(`/proizvodi/${product.slug}`);
+      }
+      const first = getAllSchonoxProducts()[0];
+      first.specs[0].value = 'mutated';
+      expect(getAllSchonoxProducts()[0].specs[0].value).not.toBe('mutated');
+    } finally {
+      vi.useRealTimers();
     }
-    const first = getAllSchonoxProducts()[0];
-    first.specs[0].value = 'mutated';
-    expect(getAllSchonoxProducts()[0].specs[0].value).not.toBe('mutated');
   });
 
   it('keeps loader, repository, brand filter and resolver counts aligned', async () => {
@@ -163,8 +171,7 @@ describe('complete European/global SCHÖNOX catalog', () => {
     expect(schonoxOfType('Hidroizolacija').every(slug => hidro.has(slug))).toBe(true);
   });
 
-  it('caches the merged Pribor list and keeps homepage cards light while the PDP gets the full product', () => {
-    expect(getAllPriborProducts()).toBe(getAllPriborProducts());
+  it('keeps homepage cards light while the PDP gets the full product', () => {
     const full = getProductBySlug('schonox-kh')!;
     expect(full.documents?.length).toBeGreaterThan(0);
     const card = toHomepageListingProduct(full) as Product & { source?: unknown };

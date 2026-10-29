@@ -8,6 +8,7 @@ import { getManualCollectionProducts } from '@/lib/data/manual-collection-produc
 import { enrichTarkettWoodProduct } from '@/lib/data/tarkett-wood-enrichment';
 import { normalizeSearchText } from '@/lib/utils/search-normalization';
 import { isAlpodImportBrand } from '@/lib/catalog/spec-normalize';
+import { getAllSchonoxProducts } from '@/lib/data/schonox-products';
 
 export interface IProductRepository {
   findAll(filters?: ProductFilters): Promise<Product[]>;
@@ -96,6 +97,13 @@ function matchesCatalogSearch(product: Product, search: string): boolean {
 
 function isAlpodVariantProduct(product: Product): boolean {
   return isAlpodImportBrand(product.brandId) && !String(product.sku || '').startsWith('PODOVI-COLLECTION-');
+}
+
+function matchesPriceRange(product: Product, filters?: ProductFilters): boolean {
+  if (filters?.priceMin === undefined && filters?.priceMax === undefined) return true;
+  const prices = product.priceOptions?.length ? product.priceOptions.map((option) => option.price) : [product.price];
+  return prices.some((price) => typeof price === 'number' && Number.isFinite(price) && price > 0
+    && price >= (filters?.priceMin ?? 0) && price <= (filters?.priceMax ?? Infinity));
 }
 
 // =========================================
@@ -646,7 +654,7 @@ export class SupabaseProductRepository implements IProductRepository {
       });
     }
 
-    return products;
+    return products.filter((product) => matchesPriceRange(product, filters));
   }
 
   async findBySlug(slug: string): Promise<Product | null> {
@@ -707,7 +715,7 @@ export class SupabaseProductRepository implements IProductRepository {
 // Mock implementation (kept as fallback)
 // =========================================
 export class MockProductRepository implements IProductRepository {
-  private products: Product[] = removeLegacyLinoleumDuplicates(dedupeProductsBySlug([
+  private baseProducts: Product[] = removeLegacyLinoleumDuplicates(dedupeProductsBySlug([
     ...getAllGerflorProducts(),
     ...getGerflorLVTCollections(),
     ...getGerflorLinoleumCollections(),
@@ -733,7 +741,11 @@ export class MockProductRepository implements IProductRepository {
     ...getEsdCollectionProducts(),
     ...getManualCollectionProducts(),
     ...mockProducts,
-  ]));
+  ])).filter((product) => product.brandId !== '17');
+
+  private get products(): Product[] {
+    return [...this.baseProducts, ...getAllSchonoxProducts()];
+  }
 
   async findAll(filters?: ProductFilters): Promise<Product[]> {
     let filtered = [...this.products];
@@ -746,13 +758,7 @@ export class MockProductRepository implements IProductRepository {
       filtered = filtered.filter(p => filters.brandIds!.includes(p.brandId));
     }
 
-    if (filters?.priceMin !== undefined) {
-      filtered = filtered.filter(p => p.price && p.price >= filters.priceMin!);
-    }
-
-    if (filters?.priceMax !== undefined) {
-      filtered = filtered.filter(p => p.price && p.price <= filters.priceMax!);
-    }
+    filtered = filtered.filter((product) => matchesPriceRange(product, filters));
 
     if (filters?.inStock !== undefined) {
       filtered = filtered.filter(p => p.inStock === filters.inStock);

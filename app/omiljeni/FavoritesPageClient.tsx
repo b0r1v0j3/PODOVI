@@ -7,6 +7,7 @@ import Link from 'next/link';
 import FavoriteButton from '@/components/FavoriteButton';
 import ProductImage from '@/components/ProductImage';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
+import { formatProductPrice } from '@/lib/utils/product-price';
 
 export default function FavoritesPageClient() {
     const { favoriteIds, count } = useFavorites();
@@ -103,9 +104,7 @@ export default function FavoritesPageClient() {
                                         <h3 className="text-[15px] md:text-base font-normal text-ink-900">{product.name}</h3>
                                         <p className="text-[13px] text-ink-500 line-clamp-2 mt-1">{product.shortDescription}</p>
                                         <p className="mt-2 text-[13px] text-ink-500">
-                                            {product.price && product.price > 0
-                                                ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit}`
-                                                : 'Cena na upit'}
+                                            {formatProductPrice(product)}
                                         </p>
                                     </div>
                                 </Link>

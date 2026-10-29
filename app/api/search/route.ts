@@ -7,6 +7,7 @@ import { splitProductTitle } from '@/lib/utils/name-parser';
 import { normalizeSearchText } from '@/lib/utils/search-normalization';
 import { getCanonicalProductHref } from '@/lib/utils/product-routes';
 import { getPrimaryProductImage, getProductImageCandidates } from '@/lib/utils/product-images';
+import { getProductPriceSummary } from '@/lib/utils/product-price';
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -63,7 +64,7 @@ export async function GET(request: NextRequest) {
             categoryId: p.categoryId,
             image: getPrimaryProductImage(p, 'thumb')?.url || '/images/placeholder.svg',
             imageCandidates: getProductImageCandidates(p, 'thumb').slice(0, 4),
-            price: p.price,
+            ...getProductPriceSummary(p),
             subtitle,
         };
     });

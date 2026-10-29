@@ -1,4 +1,5 @@
 import { homeOptionLabel, type HomeFacetSchemaEntry, type HomeRangePresetEntry } from '@/lib/catalog/home-facet-schema';
+import { isProductPriceExpired } from '@/lib/utils/product-price';
 
 /**
  * Filter engine početne strane (čist modul, bez React-a).
@@ -29,6 +30,7 @@ export interface HomeEngineItem {
   brandId: string;
   fv: Record<string, string[]>;
   nv: Record<string, number[]>;
+  priceValidUntil?: string;
 }
 
 export type HomeMissingPolicy = 'exclude' | 'include';
@@ -124,6 +126,7 @@ function passesList(item: HomeEngineItem, entry: HomeFacetSchemaEntry, selected:
 
 function passesRange(item: HomeEngineItem, entry: HomeFacetSchemaEntry, range: HomeRangeSelection, missing: HomeMissingPolicy): boolean {
   if (!appliesTo(item, entry)) return true;
+  if (entry.id === 'cena' && isProductPriceExpired(item.priceValidUntil)) return false;
   const flat = item.nv[entry.id];
   // Nepoznata cena nikada nije dokaz da proizvod pripada izabranom cenovnom opsegu.
   if (!flat || flat.length === 0) return entry.id !== 'cena' && missing === 'include';
@@ -265,7 +268,7 @@ export function evaluateHomeFilters<T extends HomeEngineItem>(
       const distinct = new Set<number>();
       items.forEach((item, itemIndex) => {
         if (!isEligible(itemIndex, groupActiveIndex) || (scope !== 'all' && item.categorySlug !== scope) || !inSelectedCategories[itemIndex]) return;
-        const flat = item.nv[entryId];
+        const flat = entryId === 'cena' && isProductPriceExpired(item.priceValidUntil) ? undefined : item.nv[entryId];
         if (!flat || flat.length === 0) return;
         coverage += 1;
         for (const value of flat) {

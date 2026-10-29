@@ -6,28 +6,31 @@ import type { Product } from '@/types';
 import Link from 'next/link';
 import ProductImage from '@/components/ProductImage';
 import { getProductImageCandidates } from '@/lib/utils/product-images';
+import { formatProductPrice, getProductPriceSummary, type ProductPriceSummary } from '@/lib/utils/product-price';
 
 /**
- * Kartice početne strane nose sažete proizvode (bez specifikacija, `compareSlim`),
- * pa se pri poređenju specifikacije dopunjuju sa servera.
+ * Saved comparisons refresh prices as well as the slim homepage specifications.
  */
 function useHydratedCompareItems(items: Product[]): Product[] {
-    const [details, setDetails] = useState<Record<string, Pick<Product, 'specs' | 'shortDescription'>>>({});
-    const slimItems = items.filter((item) => (item as Product & { compareSlim?: boolean }).compareSlim && !details[item.id]);
-    const idsKey = slimItems.map((item) => item.id).join(',');
-    const categoryKey = Array.from(new Set(slimItems.map((item) => item.categoryId))).join(',');
+    type Details = Pick<Product, 'specs' | 'shortDescription' | 'inStock' | 'availability'> & ProductPriceSummary;
+    const [details, setDetails] = useState<Record<string, Details>>({});
+    const idsKey = items.map((item) => item.id).join(',');
+    const categoryKey = Array.from(new Set(items.map((item) => item.categoryId))).join(',');
 
     useEffect(() => {
         if (!idsKey) return;
         let cancelled = false;
         fetch(`/api/products?ids=${encodeURIComponent(idsKey)}&categoryIds=${encodeURIComponent(categoryKey)}`)
             .then((response) => (response.ok ? response.json() : { products: [] }))
-            .then((payload: { products?: Array<Pick<Product, 'id' | 'specs' | 'shortDescription'>> }) => {
+            .then((payload: { products?: Array<Details & { id: string }> }) => {
                 if (cancelled) return;
-                setDetails((current) => {
-                    const next = { ...current };
+                setDetails(() => {
+                    const next: Record<string, Details> = {};
                     for (const product of payload.products || []) {
-                        next[product.id] = { specs: product.specs || [], shortDescription: product.shortDescription || '' };
+                        next[product.id] = {
+                            specs: product.specs || [], shortDescription: product.shortDescription || '',
+                            ...getProductPriceSummary(product), inStock: product.inStock, availability: product.availability,
+                        };
                     }
                     return next;
                 });
@@ -153,9 +156,7 @@ export default function ComparePageClient() {
                             </th>
                             {compareItems.map(product => (
                                 <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-center text-[13px] text-ink-500">
-                                    {product.price && product.price > 0
-                                        ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit}`
-                                        : 'Cena na upit'}
+                                    {formatProductPrice(product)}
                                 </td>
                             ))}
                         </tr>

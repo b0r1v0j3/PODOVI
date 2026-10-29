@@ -1,4 +1,5 @@
 import type { Product } from '@/types';
+import { isProductPriceExpired } from '@/lib/utils/product-price';
 
 export type HomepageSortMode = 'featured' | 'name' | 'price';
 
@@ -72,8 +73,8 @@ export function sortHomepageProducts(products: Product[], sortMode: HomepageSort
 
   if (sortMode === 'price') {
     return sorted.sort((a, b) => {
-      const aPrice = a.price && a.price > 0 ? a.price : Number.POSITIVE_INFINITY;
-      const bPrice = b.price && b.price > 0 ? b.price : Number.POSITIVE_INFINITY;
+      const aPrice = a.price && a.price > 0 && !isProductPriceExpired(a.priceValidUntil) ? a.price : Number.POSITIVE_INFINITY;
+      const bPrice = b.price && b.price > 0 && !isProductPriceExpired(b.priceValidUntil) ? b.price : Number.POSITIVE_INFINITY;
       return aPrice - bPrice || a.name.localeCompare(b.name, 'sr-Latn');
     });
   }
@@ -84,5 +85,5 @@ export function sortHomepageProducts(products: Product[], sortMode: HomepageSort
 }
 
 export function hasPricedProducts(products: Product[]): boolean {
-  return products.some((product) => typeof product.price === 'number' && product.price > 0);
+  return products.some((product) => typeof product.price === 'number' && product.price > 0 && !isProductPriceExpired(product.priceValidUntil));
 }

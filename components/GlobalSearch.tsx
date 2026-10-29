@@ -4,15 +4,15 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import ProductImage from './ProductImage';
 import { useScrollLock } from './useScrollLock';
+import { formatProductPrice, type ProductPriceSummary } from '@/lib/utils/product-price';
 
-interface SearchProduct {
+interface SearchProduct extends ProductPriceSummary {
     id: string;
     slug: string;
     name: string;
     categoryId: string;
     image: string;
     imageCandidates?: Array<{ url: string; alt?: string }>;
-    price?: number;
     subtitle?: string;
     url?: string;
 }
@@ -225,14 +225,6 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
     // Track which flat index each result is at
     let flatIndex = 0;
 
-    const formatPrice = (price: number) => {
-        return new Intl.NumberFormat('sr-RS', {
-            style: 'decimal',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        }).format(price) + ' RSD/m²';
-    };
-
     return (
         <div ref={containerRef} className={variant === 'inline' ? 'relative w-full' : undefined}>
             {/* Trigger */}
@@ -417,7 +409,7 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
                                         <div className="min-w-0 flex-1">
                                             <p className="truncate text-sm text-ink-900">{product.name}</p>
                                             {product.price && (
-                                                <p className="text-[13px] text-ink-600">{formatPrice(product.price)}</p>
+                                                <p className="text-[13px] text-ink-600">{formatProductPrice(product)}</p>
                                             )}
                                             {!product.price && product.subtitle && (
                                                 <p className="truncate text-[13px] text-ink-600">{product.subtitle}</p>

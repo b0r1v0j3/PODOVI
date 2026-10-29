@@ -2650,7 +2650,7 @@ export function getAllGrassProducts(): Product[] {
  */
 export function getAllPriborProducts(): Product[] {
     if (priborProductsCache) {
-        return priborProductsCache;
+        return [...priborProductsCache, ...getAllSchonoxProducts()];
     }
 
     const priborList = (priborProducts as any[]).map(p => {
@@ -2704,10 +2704,9 @@ export function getAllPriborProducts(): Product[] {
         } as Product;
     });
 
-    // SCHÖNOX is static JSON: build the merged list once, like the other loader caches.
-    // Callers share these objects; the PDP clones before mutating (cloneProductForPage).
-    priborProductsCache = [...priborList, ...getAllSchonoxProducts()];
-    return priborProductsCache;
+    // Only legacy products are cached: SCHÖNOX list prices have an expiry date.
+    priborProductsCache = priborList;
+    return [...priborProductsCache, ...getAllSchonoxProducts()];
 }
 
 export function getAlpodCollectionProducts(categoryId?: string): Product[] {

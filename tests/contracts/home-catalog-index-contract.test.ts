@@ -138,6 +138,26 @@ describe('home catalog index — nasleđivanje i sažete stavke', () => {
     expect(item.images.length).toBeLessThanOrEqual(2);
     expect(item.compareSlim).toBe(true);
   });
+
+  it('nosi sažetu cenu sa PDV-om i filtrira stvarne cene pakovanja bez popunjavanja razmaka', () => {
+    const priced = product({ id: 'membrana', categoryId: '15', specs: [], price: 9360, priceUnit: 'pakovanje', priceFrom: true,
+      priceIncludesVat: true, priceValidUntil: '2099-12-31', priceOptions: [
+        { manufacturerSku: '10', packagingLabel: '10 m²', price: 9360, priceWithoutVat: 7800 },
+        { manufacturerSku: '30', packagingLabel: '30 m²', price: 26040, priceWithoutVat: 21700 },
+      ] });
+    const unknown = product({ id: 'bez-cene', categoryId: '15', specs: [] });
+    const products = [priced, unknown];
+    const items = buildHomeCatalogItems('pribor', products, products);
+    expect(items[0]).toMatchObject({ price: 9360, priceUnit: 'pakovanje', priceFrom: true, priceIncludesVat: true, priceValidUntil: '2099-12-31' });
+    expect(items[0].priceOptions).toBeUndefined();
+    expect(items[0].nv.cena).toEqual([9360, 9360, 26040, 26040]);
+    const schema = buildHomeFacetSchema([{ slug: 'pribor', name: 'Pribor', items, products }]);
+    const options = { missing: 'exclude' as const, categories: [{ slug: 'pribor', name: 'Pribor' }], brandNames: {} };
+    const inRange = (min: number, max: number) => evaluateHomeFilters(items, schema, { lists: {}, ranges: { cena: [min, max] } }, options).results;
+    expect(inRange(15000, 20000)).toEqual([]);
+    expect(inRange(26000, 27000).map((item) => item.id)).toEqual(['membrana']);
+    expect(inRange(0, 10000).map((item) => item.id)).toEqual(['membrana']);
+  });
 });
 
 describe('home catalog index — pribor (tip na srpskom, bez lažnih kolekcija)', () => {

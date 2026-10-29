@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { productRepository } from '@/lib/repositories/product-repository';
+import { getProductPriceSummary } from '@/lib/utils/product-price';
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -35,9 +36,9 @@ export async function GET(request: NextRequest) {
             brandId: p.brandId,
             images: p.images,
             specs: p.specs,
-            price: p.price,
-            priceUnit: p.priceUnit,
+            ...getProductPriceSummary(p),
             inStock: p.inStock,
+            availability: p.availability,
         }));
 
     return NextResponse.json({ products });

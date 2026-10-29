@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ProductImage from './ProductImage';
 import { isRetiredBloqProduct } from '@/lib/catalog/retired-bloq';
+import { formatProductPrice, getProductPriceSummary, type ProductPriceSummary } from '@/lib/utils/product-price';
 
-interface ViewedProduct {
+interface ViewedProduct extends ProductPriceSummary {
     id: string;
     name: string;
     slug: string;
     image: string;
     imageCandidates?: Array<{ url: string; alt?: string }>;
-    price?: number;
+    categoryId?: string;
     url?: string;
     timestamp: number;
 }
@@ -20,6 +21,7 @@ export default function RecentlyViewed() {
     const [products, setProducts] = useState<ViewedProduct[]>([]);
 
     useEffect(() => {
+        let cancelled = false;
         try {
             const stored = localStorage.getItem('recentlyViewed');
             if (stored) {
@@ -29,10 +31,26 @@ export default function RecentlyViewed() {
                 if (!Array.isArray(parsed) || activeProducts.length !== parsed.length) {
                     localStorage.setItem('recentlyViewed', JSON.stringify(activeProducts));
                 }
+                const visibleProducts = activeProducts.slice(0, 10);
+                if (visibleProducts.length > 0) {
+                    const ids = visibleProducts.map(product => product.id).join(',');
+                    const categoryIds = Array.from(new Set(visibleProducts.map(product => product.categoryId).filter(Boolean))).join(',');
+                    fetch(`/api/products?ids=${encodeURIComponent(ids)}&categoryIds=${encodeURIComponent(categoryIds)}`)
+                        .then(response => response.ok ? response.json() : { products: [] })
+                        .then((payload: { products?: Array<ProductPriceSummary & { id: string }> }) => {
+                            if (cancelled) return;
+                            const fresh = new Map((payload.products || []).map(product => [product.id, product]));
+                            setProducts(visibleProducts.map(product => fresh.has(product.id)
+                                ? { ...product, ...getProductPriceSummary(fresh.get(product.id)!) }
+                                : product));
+                        })
+                        .catch(() => { /* The saved names and links remain usable when refresh fails. */ });
+                }
             }
         } catch (e) {
             console.error('Failed to load recently viewed products', e);
         }
+        return () => { cancelled = true; };
     }, []);
 
     if (products.length === 0) {
@@ -68,7 +86,7 @@ export default function RecentlyViewed() {
                                 </h3>
                                 {typeof product.price === 'number' && product.price > 0 && (
                                     <p className="text-[13px] text-ink-500 mt-1">
-                                        {product.price.toLocaleString('sr-RS')} RSD
+                                        {formatProductPrice(product)}
                                     </p>
                                 )}
                             </Link>
@@ -87,9 +105,9 @@ export function addToRecentlyViewed(product: {
     slug: string;
     image: string;
     imageCandidates?: Array<{ url: string; alt?: string }>;
-    price?: number;
+    categoryId?: string;
     url?: string;
-}) {
+} & ProductPriceSummary) {
     if (typeof window === 'undefined' || isRetiredBloqProduct(product)) return;
     try {
         const stored = localStorage.getItem('recentlyViewed');

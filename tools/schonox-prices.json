@@ -1,0 +1,443 @@
+{
+  "sourceTitle": "Sika Srbija - Cenovnik",
+  "listDate": "2026-08-17",
+  "validThrough": "2026-12-31",
+  "currency": "RSD",
+  "vatRate": 20,
+  "discountPercent": 0,
+  "products": [
+    {
+      "slug": "schonox-hp-rapid",
+      "packages": [
+        {
+          "manufacturerSku": "552099",
+          "packagingLabel": "11 kg",
+          "listPriceNetMinor": 2446774,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-hds",
+      "packages": [
+        {
+          "manufacturerSku": "776641",
+          "packagingLabel": "29,5 kg (prah + tečnost)",
+          "listPriceNetMinor": 1151895,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-kh",
+      "packages": [
+        {
+          "manufacturerSku": "483343",
+          "packagingLabel": "1 kg",
+          "listPriceNetMinor": 133645,
+          "sourcePages": [
+            5
+          ]
+        },
+        {
+          "manufacturerSku": "483275",
+          "packagingLabel": "5 kg",
+          "listPriceNetMinor": 392121,
+          "sourcePages": [
+            5
+          ]
+        },
+        {
+          "manufacturerSku": "483197",
+          "packagingLabel": "10 kg",
+          "listPriceNetMinor": 704252,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-shp",
+      "packages": [
+        {
+          "manufacturerSku": "483348",
+          "packagingLabel": "1 kg",
+          "listPriceNetMinor": 76073,
+          "sourcePages": [
+            5,
+            14
+          ]
+        },
+        {
+          "manufacturerSku": "483203",
+          "packagingLabel": "5 kg",
+          "listPriceNetMinor": 273000,
+          "sourcePages": [
+            5,
+            14
+          ]
+        },
+        {
+          "manufacturerSku": "483284",
+          "packagingLabel": "12 kg",
+          "listPriceNetMinor": 673200,
+          "sourcePages": [
+            5,
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-kh-fix",
+      "packages": [
+        {
+          "manufacturerSku": "483277",
+          "packagingLabel": "5 kg",
+          "listPriceNetMinor": 331570,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-fp",
+      "packages": [
+        {
+          "manufacturerSku": "698081",
+          "packagingLabel": "15 kg",
+          "listPriceNetMinor": 815528,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-floorlastic-extra",
+      "packages": [
+        {
+          "manufacturerSku": "485030",
+          "packagingLabel": "20 kg",
+          "listPriceNetMinor": 862734,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-unitech",
+      "packages": [
+        {
+          "manufacturerSku": "484455",
+          "packagingLabel": "20 kg",
+          "listPriceNetMinor": 873913,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-emiclassic",
+      "packages": [
+        {
+          "manufacturerSku": "484590",
+          "packagingLabel": "14 kg",
+          "listPriceNetMinor": 990287,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-lino-xtreme",
+      "packages": [
+        {
+          "manufacturerSku": "493369",
+          "packagingLabel": "14 kg",
+          "listPriceNetMinor": 1142191,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-combileit",
+      "packages": [
+        {
+          "manufacturerSku": "484693",
+          "packagingLabel": "14 kg",
+          "listPriceNetMinor": 1115448,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-durocoll",
+      "packages": [
+        {
+          "manufacturerSku": "484591",
+          "packagingLabel": "14 kg",
+          "listPriceNetMinor": 940523,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-n-640",
+      "packages": [
+        {
+          "manufacturerSku": "485248",
+          "packagingLabel": "6 kg",
+          "listPriceNetMinor": 976350,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-pu-900",
+      "packages": [
+        {
+          "manufacturerSku": "481685",
+          "packagingLabel": "7,05 kg (A+B)",
+          "listPriceNetMinor": 1028393,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-pro-design",
+      "packages": [
+        {
+          "manufacturerSku": "730651",
+          "packagingLabel": "11 kg",
+          "listPriceNetMinor": 1313733,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-multifix",
+      "packages": [
+        {
+          "manufacturerSku": "493366",
+          "packagingLabel": "14 kg",
+          "listPriceNetMinor": 1097829,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-pro-mate",
+      "packages": [
+        {
+          "manufacturerSku": "774867",
+          "packagingLabel": "14 kg",
+          "listPriceNetMinor": 829350,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-renotex",
+      "packages": [
+        {
+          "manufacturerSku": "532518",
+          "packagingLabel": "50,4 m², rolna 1,2 × 42 m",
+          "listPriceNetMinor": 6406883,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-wassereimer",
+      "packages": [
+        {
+          "manufacturerSku": "483683",
+          "packagingLabel": "1 kanta, 10 l",
+          "listPriceNetMinor": 63063,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-anmacheimer",
+      "packages": [
+        {
+          "manufacturerSku": "483540",
+          "packagingLabel": "1 kanta, 30 l",
+          "listPriceNetMinor": 111707,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-rm",
+      "packages": [
+        {
+          "manufacturerSku": "487563",
+          "packagingLabel": "20 kg",
+          "listPriceNetMinor": 356429,
+          "sourcePages": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-zm",
+      "packages": [
+        {
+          "manufacturerSku": "483289",
+          "packagingLabel": "25 kg",
+          "listPriceNetMinor": 361489,
+          "sourcePages": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-dsp",
+      "packages": [
+        {
+          "manufacturerSku": "483232",
+          "packagingLabel": "25 kg",
+          "listPriceNetMinor": 428450,
+          "sourcePages": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-am",
+      "packages": [
+        {
+          "manufacturerSku": "483096",
+          "packagingLabel": "25 kg",
+          "listPriceNetMinor": 325500,
+          "sourcePages": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-hs-10",
+      "packages": [
+        {
+          "manufacturerSku": "546385",
+          "packagingLabel": "25 kg",
+          "listPriceNetMinor": 399000,
+          "sourcePages": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-hs-10-f",
+      "packages": [
+        {
+          "manufacturerSku": "553078",
+          "packagingLabel": "25 kg",
+          "listPriceNetMinor": 508200,
+          "sourcePages": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-hs-50",
+      "packages": [
+        {
+          "manufacturerSku": "535838",
+          "packagingLabel": "25 kg",
+          "listPriceNetMinor": 339900,
+          "sourcePages": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-epoxy-clean",
+      "packages": [
+        {
+          "manufacturerSku": "651696",
+          "packagingLabel": "0,5 kg",
+          "listPriceNetMinor": 250000,
+          "sourcePages": [
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-ab-10-30",
+      "packages": [
+        {
+          "manufacturerSku": "484271",
+          "packagingLabel": "10 m², rolna 1 × 10 m",
+          "listPriceNetMinor": 780000,
+          "sourcePages": [
+            17
+          ]
+        },
+        {
+          "manufacturerSku": "484369",
+          "packagingLabel": "30 m², rolna 1 × 30 m",
+          "listPriceNetMinor": 2170000,
+          "sourcePages": [
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-ifix",
+      "packages": [
+        {
+          "manufacturerSku": "525976",
+          "packagingLabel": "7,8 kg, komplet",
+          "listPriceNetMinor": 780000,
+          "sourcePages": [
+            17
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 29.10.2026 (završetak SCHÖNOX popravki i provere posle prekida)
+> **Poslednje ažuriranje:** 29.10.2026 (SCHÖNOX redovne kataloške cene bez rabata)
 
 ---
 
@@ -154,6 +154,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**SCHÖNOX — redovne cene iz cenovnika (29.10.2026)**
+- Po izričitom nalogu vlasnika objavljuju se redovne kataloške cene bez rabata: 35 šifara/pakovanja na 30 postojećih proizvoda, iz važeće kolone cenovnika Sika Srbija od 17.8.2026. Izvorna cena je RSD po komadu konkretnog pakovanja bez PDV-a; prodajna cena na sajtu uključuje 20% PDV-a. Nabavni rabati se ne koriste.
+- `tools/schonox-prices.json` sadrži samo odobreni javni podskup; originalni interni PDF i privatna prepiska ostaju van Git-a. Ova odluka zamenjuje raniju zabranu objavljivanja iznosa za taj podskup. `--prices-only` primenjuje cenovnik bez ponovnog preuzimanja slika/dokumenata; redovan refresh ga ponovo primenjuje.
+- KH/SHP/AB imaju tabelu stvarnih šifara i pakovanja, a kartica cenu „od“. Cena EPOXY CLEAN odnosi se na 0,5 kg, iFIX na komplet od 7,8 kg; cenu ne množiti težinom/površinom. Filter koristi pojedinačne cene, bez popunjavanja razmaka između njih. Pretraga, omiljeni, poređenje, istorija i SEO koriste istu cenu/jedinicu/PDV.
+- Cenovnik važi zaključno sa 31.12.2026. po vremenu Beograda; istekle cene se uklanjaju i iz zagrejanih serverskih keševa. Ostalih 105 proizvoda nema odgovarajuću cenu; Anti Slip 14 kg i gleterica 600 mm nisu silom upareni sa drugim proizvodom. Dokazi i ograničenja: `docs/schonox-pricing.md`.
+
 **SCHÖNOX — prikaz cele ambalaže i ispravke filtera (22–29.10.2026)**
 - Vlasnik je prihvatio sve popravke iz pregleda integracije na `4bb81ccf`; obim i završne provere beleže se u `docs/schonox-improvements.md`.
 - `ProductImage` bira način prikaza prema aktivnom izvoru, uključujući fallback: SCHÖNOX packshot iz putanje `/product-images/schonox/` dobija `contain`, belu pozadinu i 6% unutrašnjeg razmaka; ostale fotografije zadržavaju `cover` i postojeće pozicioniranje. Kartice, PDP, pretraga, omiljeni, poređenje i istorija dele ovo pravilo. Folder za SCHÖNOX za sada sadrži samo fotografije ambalaže; ako dobije enterijere, dodati eksplicitne metapodatke umesto širenja heuristike. Ne dodavati suprotstavljene `object-cover`/`object-contain` klase pozivaocima.
@@ -161,7 +167,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 - Brend sa asortimanom u jednoj kategoriji otvara njene postojeće grupe bez tihog dodavanja kategorije u URL. Flat asortiman koristi naziv Proizvodi. Izabrane prazne grupe ostaju dostupne za uklanjanje; neizabrane grupe bez rezultata se skrivaju. `RecentlyViewed` ne prikazuje doslovnu nulu za nepoznatu cenu.
 - Svih 135 proizvoda ima pregledan srpski detaljni opis u `tools/schonox-details.json`. Originali su 133 providna PNG-a od 1600×1600 i dva izvorna JPEG-a od 300×400 (ANMACHEIMER/WASSEREIMER), bez veštačkog povećanja. Manifest beleži 135 slika i 437 veza ka dokumentima; zvanični izvori provereni su 22.10, a HS 8 ima nov engleski DoP od 21.10.2026. Stari neispravan nemački DoP ostaje izuzet.
 - Import objavljuje nove putanje sa SHA-256, proverava javno vraćene bajtove i čuva prethodne objekte. Osvežavanje validira ceo raster i svaku stranicu PDF-a pre atomske zamene keša; neuspeh čuva prethodni katalog. SDS/sertifikat se ne predstavlja kao tehnički list: 28 proizvoda nema PDS, a sedam nema dokumente.
-- Dopuna po korekciji vlasnika 29.10: podatke prvo proveriti u već dostupnom cenovniku i zvaničnom tehničkom listu, bez prebacivanja te provere na vlasnika. Cenovnik Sika Srbija od 17.8.2026. već je dostavljen 19.10; sadrži 37 jedinstvenih SCHÖNOX šifara, ali ne ova dva artikla. Priloženi PDS navodi 1K DS PREMIUM **18 kg** i 2K PU SOLID **5 kg (A+B)** i ima prednost nad neusaglašenom marketinškom tabelom. Javna pakovanja prate PDS; sirovi sukobi ostaju samo u internom manifestu. Podatak koji nema pouzdan izvor ostaje prazan/na upit. Privatni cenovnik i iznosi se ne dodaju u javni Git.
+- Dopuna po korekciji vlasnika 29.10: podatke prvo proveriti u već dostupnom cenovniku i zvaničnom tehničkom listu, bez prebacivanja te provere na vlasnika. Cenovnik Sika Srbija od 17.8.2026. već je dostavljen 19.10; sadrži 37 jedinstvenih SCHÖNOX šifara, ali ne ova dva artikla. Priloženi PDS navodi 1K DS PREMIUM **18 kg** i 2K PU SOLID **5 kg (A+B)** i ima prednost nad neusaglašenom marketinškom tabelom. Javna pakovanja prate PDS; sirovi sukobi ostaju samo u internom manifestu. Podatak koji nema pouzdan izvor ostaje prazan/na upit. Privatni cenovnik se ne dodaje u javni Git; odobrene redovne prodajne cene prate zaseban unos iznad.
 - Popravke ne vraćaju naloge/korpu i ne menjaju ISR, sažete podatke početne, učitavanje dekora ili dizajn jezika. Podatke o nabavci i komercijalnom pakovanju i dalje potvrđuje prodaja; ne pretvarati protivrečne proizvođačke izvore u izmišljeno važeće pakovanje.
 
 **Sličice boja na PDP-u kroz optimizator slika (17.10.2026)**

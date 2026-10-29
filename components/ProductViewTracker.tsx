@@ -4,9 +4,10 @@ import { useEffect } from 'react';
 import { Product } from '@/types';
 import { addToRecentlyViewed } from './RecentlyViewed';
 import { getPrimaryProductImage, getProductImageCandidates } from '@/lib/utils/product-images';
+import { getProductPriceSummary, type ProductPriceSummary } from '@/lib/utils/product-price';
 
 interface ProductViewTrackerProps {
-    product: Pick<Product, 'id' | 'name' | 'slug' | 'images' | 'price'> & { url?: string };
+    product: Pick<Product, 'id' | 'name' | 'slug' | 'images' | 'categoryId'> & ProductPriceSummary & { url?: string };
 }
 
 export default function ProductViewTracker({ product }: ProductViewTrackerProps) {
@@ -21,7 +22,8 @@ export default function ProductViewTracker({ product }: ProductViewTrackerProps)
             slug: product.slug,
             image: imageUrl,
             imageCandidates,
-            price: product.price,
+            ...getProductPriceSummary(product),
+            categoryId: product.categoryId,
             url: product.url
         });
     }, [product]);

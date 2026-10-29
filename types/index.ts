@@ -45,6 +45,13 @@ export interface ProductDetailsSection {
   items: string[];
 }
 
+export interface ProductPriceOption {
+  manufacturerSku: string;
+  packagingLabel: string;
+  price: number;
+  priceWithoutVat: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -58,6 +65,10 @@ export interface Product {
   specs: ProductSpec[];
   price?: number; // Optional, for display only (no checkout)
   priceUnit?: string; // e.g., "m²", "pakovanje"
+  priceFrom?: boolean;
+  priceIncludesVat?: boolean;
+  priceValidUntil?: string;
+  priceOptions?: ProductPriceOption[];
   inStock: boolean;
   availability?: 'in_stock' | 'on_request' | 'out_of_stock';
   featured: boolean;

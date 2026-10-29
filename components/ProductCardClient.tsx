@@ -14,6 +14,7 @@ import {
 import { getCanonicalProductHref } from '@/lib/utils/product-routes';
 import { getProductImageCandidates, getProductSwatchCandidates } from '@/lib/utils/product-images';
 import { shouldBypassNextImageOptimization } from '@/lib/utils/image-runtime';
+import { formatProductPrice } from '@/lib/utils/product-price';
 
 interface ProductCardClientProps {
   product: Product;
@@ -158,9 +159,7 @@ export default function ProductCardClient({ product, brand, compact = false, pri
 
         <div className="mt-auto flex items-end justify-between gap-3 pt-3">
           <p className="text-[12px] text-ink-700">
-            {product.price && product.price > 0
-              ? `${product.price.toLocaleString('sr-RS')} RSD/${product.priceUnit}`
-              : 'Cena na upit'}
+            {formatProductPrice(product)}
           </p>
           <CompareButton product={product} variant="text" />
         </div>

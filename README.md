@@ -42,7 +42,7 @@ npm start
 ### SCHÖNOX
 
 - Official European/global floor, tile and marine program from Sika/SCHÖNOX; source coverage, duplicates and document exceptions are recorded in the dated import manifest.
-- All products are offered for procurement subject to sales confirmation, with no claimed stock or invented prices. An available supplier price list must be matched by SKU, package and selling unit before importing prices; manufacturer-content refreshes preserve existing approved prices. Product-specific PDS packaging takes precedence over conflicting marketing tables.
+- All products are offered for procurement subject to sales confirmation. Regular Sika list prices (17 August 2026, valid through 31 December 2026) cover 35 matched packages across 30 products, with no discount and 20% VAT included in displayed selling prices. Exact package/SKU prices and source net prices appear on the product page; unmatched prices remain on request. Manufacturer refreshes reapply the reviewed public price subset. Product-specific PDS packaging takes precedence over conflicting marketing tables. See [pricing coverage and rules](docs/schonox-pricing.md).
 - Catalog integration includes Pribor, brand, search, product pages, homepage filters and sitemap. Images and product documents are served from our Supabase buckets (`product-images/schonox/`, `product-documents/schonox/`).
 - SCHÖNOX packshots use whole-product framing on white with consistent padding across the catalog, PDP and saved/search views. Official image/document versions use content-addressed paths; descriptions and technical-sheet availability come from the reviewed manufacturer data. See [accepted improvements and verification](docs/schonox-improvements.md).
 

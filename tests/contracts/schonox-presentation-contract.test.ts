@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { afterAll, describe, expect, it, vi } from 'vitest';
+import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Product } from '@/types';
 import { getAllSchonoxProducts } from '@/lib/data/schonox-products';
 import { generateProductSchema } from '@/lib/seo/structured-data';
@@ -17,6 +17,11 @@ for (const name of ['ProductColorSelector', 'ColorGrid', 'ProductActions', 'Prod
 }
 vi.stubGlobal('React', React);
 afterAll(() => vi.unstubAllGlobals());
+beforeEach(() => {
+  vi.useFakeTimers({ toFake: ['Date'] });
+  vi.setSystemTime(new Date('2026-10-29T12:00:00Z'));
+});
+afterEach(() => vi.useRealTimers());
 
 const schonox = getAllSchonoxProducts()[0] as Product;
 
@@ -58,5 +63,30 @@ describe('SCHÖNOX availability is on request, never a stock claim', () => {
     const labels = findProps(page, stubs.Breadcrumbs)?.items.map((item: { label: string }) => item.label);
     expect(labels?.at(-1)).toMatch(/SCHÖNOX KH/i);
     expect(labels).not.toContain('Schonox Kh');
+  }, 60000);
+
+  it('renders all priced packages and matching SKU offers on the real flat PDP', async () => {
+    const product = getAllSchonoxProducts().find(item => (item.priceOptions?.length || 0) > 1)!;
+    expect(product).toBeDefined();
+    const { default: ProductPage } = await import('@/app/proizvodi/[slug]/page');
+    const page = await ProductPage({ params: { slug: product.slug }, searchParams: {} } as any);
+    const html = renderToStaticMarkup(page);
+    expect(html).toContain('Redovne cene po pakovanju');
+    expect(html).toContain('Cena sa PDV-om');
+    expect(html).toContain('Izvorna cena bez PDV-a');
+    expect(html).toContain('sa PDV-om');
+    for (const option of product.priceOptions!) {
+      expect(html).toContain(option.manufacturerSku);
+      expect(html).toContain(option.packagingLabel);
+      expect(html).toContain(option.priceWithoutVat.toLocaleString('sr-RS'));
+      expect(html).toContain(option.price.toLocaleString('sr-RS'));
+    }
+    const schema = JSON.parse(findProps(page, 'script').dangerouslySetInnerHTML.__html)[0];
+    expect(schema.offers).toHaveLength(product.priceOptions!.length);
+    for (const offer of schema.offers) {
+      expect(offer.priceValidUntil).toBe('2026-12-31');
+      expect(offer.priceSpecification.valueAddedTaxIncluded).toBe(true);
+      expect(offer.availability).toBeUndefined();
+    }
   }, 60000);
 });

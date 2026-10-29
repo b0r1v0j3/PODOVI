@@ -16,6 +16,25 @@ export function generateProductSchema(
   const normalizedImage = options.image
     ? resolveMetadataImageUrl(options.image, options.baseUrl || SITE_URL)
     : null;
+  const url = options.url || `${SITE_URL}${getCanonicalProductHref(product)}`;
+  const offer = (price: number, unit: string | undefined, sku?: string) => ({
+    '@type': 'Offer',
+    price,
+    priceCurrency: 'RSD',
+    sku,
+    url,
+    priceValidUntil: product.priceValidUntil,
+    availability: product.availability === 'on_request' || product.slug === 'tarkett-iq-granit-sd'
+      ? undefined
+      : product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price,
+      priceCurrency: 'RSD',
+      unitText: unit,
+      valueAddedTaxIncluded: product.priceIncludesVat,
+    },
+  });
 
   return {
     '@context': 'https://schema.org',
@@ -23,28 +42,18 @@ export function generateProductSchema(
     name: product.name,
     description: product.description || product.shortDescription || '',
     image: normalizedImage || undefined,
-    url: options.url || `${SITE_URL}${getCanonicalProductHref(product)}`,
+    url,
     sku: product.sku,
     brand: brand ? {
       '@type': 'Brand',
       name: brand.name,
     } : undefined,
     category: category?.name,
-    offers: typeof product.price === 'number' && product.price > 0 ? {
-      '@type': 'Offer',
-      price: product.price,
-      priceCurrency: 'RSD',
-      // On-request items (SCHÖNOX) make no stock claim either way.
-      availability: product.availability === 'on_request'
-        ? undefined
-        : product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: product.price,
-        priceCurrency: 'RSD',
-        unitText: product.priceUnit,
-      },
-    } : undefined,
+    offers: typeof product.price === 'number' && Number.isFinite(product.price) && product.price > 0
+      ? product.priceOptions?.length
+        ? product.priceOptions.map(option => offer(option.price, `pakovanje (${option.packagingLabel})`, option.manufacturerSku))
+        : offer(product.price, product.priceUnit)
+      : undefined,
     aggregateRating: product.featured ? {
       '@type': 'AggregateRating',
       ratingValue: '4.8',

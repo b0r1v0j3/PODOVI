@@ -78,6 +78,22 @@ Dokazi su u lokalnom `output/schonox-fixes-2026-10-22/`:
 
 ## Preostali komercijalni podaci
 
+Dopuna po nalogu vlasnika 29.10: redovne cene bez rabata iz postojećeg
+cenovnika sada su uparene sa 35 šifara/pakovanja na 30 proizvoda. Na sajtu su
+prodajne cene sa 20% PDV-a; PDP prikazuje i izvornu cenu bez PDV-a. Različita
+pakovanja KH/SHP/AB imaju posebne iznose. Ostalih 105 proizvoda nema cenu u
+tom izvoru. Obračun, obim i neupaređene šifre: `docs/schonox-pricing.md`.
+
+Provera cenovnika i implementacije 29.10: svih 35 uparenih neto iznosa
+nezavisno je upoređeno sa izvornim redovima PDF-a, bez razlika; bruto cene
+proverene su zasebnim celobrojnim obračunom. Svih 48 contract fajlova / 427
+testova prolazi, TypeScript je čist, lint nema upozorenja, extractor self-check
+i produkcioni build sa validacijom slika prolaze. Nezavisni pregled koda nema
+preostalih nalaza. Lokalni produkcioni server je pregledan kroz kartice,
+pretragu, omiljene, poređenje, istoriju, KH/AB tabele, EPOXY CLEAN 0,5 kg,
+iFIX 7,8 kg i proizvod bez cene. Cenovni opseg 26.000–27.000 vraća AB zbog
+stvarne cene rolne 30 m²; mobilna tabela ne širi širinu stranice.
+
 Postojeći cenovnik Sika Srbija od 17.8.2026, dostavljen 19.10, sadrži 37
 jedinstvenih SCHÖNOX šifara i ne navodi ova dva proizvoda. Njihova pakovanja
 su preuzeta iz zvaničnih PDS-ova: 2K PU SOLID 5 kg (A+B), 1K DS PREMIUM

@@ -47,6 +47,7 @@ import { generateBreadcrumbSchema, generateProductSchema } from '@/lib/seo/struc
 import { getCanonicalCollectionAliasHref, getCanonicalProductHref, getCanonicalProductRouteSlug, normalizeCollectionSlugForProductRoute } from '@/lib/utils/product-routes';
 import { isAlpodImportBrand } from '@/lib/catalog/spec-normalize';
 import { getMetadataImageSet, getMetadataImageUrls, getOrderedProductImages } from '@/lib/utils/product-images';
+import { formatProductPrice, getProductPriceSummary } from '@/lib/utils/product-price';
 
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
@@ -107,6 +108,7 @@ function cloneProductForPage<T extends Product & { collectionSlug?: string }>(pr
       items: [...section.items],
     })),
     compatibleAccessories: product.compatibleAccessories ? [...product.compatibleAccessories] : undefined,
+    priceOptions: product.priceOptions?.map(option => ({ ...option })),
   };
 }
 
@@ -635,21 +637,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
     const currentProductUrl = `${baseUrl}/proizvodi/${routeSlug}${selectedColorSlug ? `?color=${encodeURIComponent(selectedColorSlug)}` : ''}`;
     const metadataImages = getMetadataImageSet(product, baseUrl);
     const primaryMetadataImage = metadataImages[0];
-    const schemaData = {
-      ...generateProductSchema(product, brand, category, {
-        image: primaryMetadataImage?.url,
-        url: currentProductUrl,
-        baseUrl,
-      }),
-      offers: product.price && product.price > 0 ? {
-        '@type': 'Offer',
-        price: product.price,
-        priceCurrency: 'RSD',
-        availability: isIqGranitSd || product.availability === 'on_request' ? undefined : (product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'),
-        url: currentProductUrl,
-        priceValidUntil: isIqGranitSd ? undefined : new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
-      } : undefined,
-    };
+    const schemaData = generateProductSchema(product, brand, category, {
+      image: primaryMetadataImage?.url,
+      url: currentProductUrl,
+      baseUrl,
+    });
 
     // ── Determine if this is a "color selector" category ──
     const isTechemCatalogCategory = product.categoryId === '12';
@@ -814,7 +806,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
           })(),
           slug: product.slug,
           images: product.images,
-          price: product.price
+          categoryId: product.categoryId,
+          ...getProductPriceSummary(product),
         }} />
 
         <div className="min-h-screen bg-white">
@@ -933,12 +926,34 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     )}
                   </div>
 
-                  {(product.price !== undefined && product.price > 0) ? (
-                    <p className="text-[13px] text-ink-500">
-                      {product.price.toLocaleString('sr-RS')} RSD{product.priceUnit ? ` / ${product.priceUnit}` : ''}
-                    </p>
-                  ) : (
-                    <p className="text-[13px] text-ink-500">Cena na upit</p>
+                  <p className="text-[13px] text-ink-500">{formatProductPrice(product)}</p>
+                  {product.priceOptions && product.priceOptions.length > 0 && (
+                    <div>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-left text-[12px] text-ink-700">
+                          <caption className="mb-3 text-left text-[13px] text-ink-900">Redovne cene po pakovanju</caption>
+                          <thead>
+                            <tr className="border-b border-ink-200">
+                              <th scope="col" className="py-2 pr-3 font-medium">Šifra</th>
+                              <th scope="col" className="py-2 pr-3 font-medium">Pakovanje</th>
+                              <th scope="col" className="py-2 pr-3 font-medium">Cena sa PDV-om</th>
+                              <th scope="col" className="py-2 font-medium">Izvorna cena bez PDV-a</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {product.priceOptions.map(option => (
+                              <tr key={option.manufacturerSku} className="border-b border-ink-200">
+                                <td className="py-2 pr-3">{option.manufacturerSku}</td>
+                                <td className="py-2 pr-3">{option.packagingLabel}</td>
+                                <td className="py-2 pr-3 whitespace-nowrap">{formatProductPrice({ price: option.price })}</td>
+                                <td className="py-2 whitespace-nowrap">{formatProductPrice({ price: option.priceWithoutVat })}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      {product.priceValidUntil && <p className="mt-3 text-[12px] text-ink-500">Cene važe do {new Date(product.priceValidUntil).toLocaleDateString('sr-RS')} Raspoloživost i rok isporuke potvrđuju se ponudom.</p>}
+                    </div>
                   )}
 
                   {/* CTA Buttons */}
