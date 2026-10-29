@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 17.10.2026 (SCHÖNOX, filteri na početnoj i brzina)
+> **Poslednje ažuriranje:** 29.10.2026 (završetak SCHÖNOX popravki i provere posle prekida)
 
 ---
 
@@ -153,6 +153,15 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**SCHÖNOX — prikaz cele ambalaže i ispravke filtera (22–29.10.2026)**
+- Vlasnik je prihvatio sve popravke iz pregleda integracije na `4bb81ccf`; obim i završne provere beleže se u `docs/schonox-improvements.md`.
+- `ProductImage` bira način prikaza prema aktivnom izvoru, uključujući fallback: SCHÖNOX packshot iz putanje `/product-images/schonox/` dobija `contain`, belu pozadinu i 6% unutrašnjeg razmaka; ostale fotografije zadržavaju `cover` i postojeće pozicioniranje. Kartice, PDP, pretraga, omiljeni, poređenje i istorija dele ovo pravilo. Folder za SCHÖNOX za sada sadrži samo fotografije ambalaže; ako dobije enterijere, dodati eksplicitne metapodatke umesto širenja heuristike. Ne dodavati suprotstavljene `object-cover`/`object-contain` klase pozivaocima.
+- Aktivan filter cene isključuje nepoznate cene i u tabu Boje; politika uključivanja nepotpunih ostalih tehničkih podataka ostaje. Brojači opsega koriste istu proveru kao rezultati. Sortiranje iz URL-a se ne resetuje dok boje nisu učitane.
+- Brend sa asortimanom u jednoj kategoriji otvara njene postojeće grupe bez tihog dodavanja kategorije u URL. Flat asortiman koristi naziv Proizvodi. Izabrane prazne grupe ostaju dostupne za uklanjanje; neizabrane grupe bez rezultata se skrivaju. `RecentlyViewed` ne prikazuje doslovnu nulu za nepoznatu cenu.
+- Svih 135 proizvoda ima pregledan srpski detaljni opis u `tools/schonox-details.json`. Originali su 133 providna PNG-a od 1600×1600 i dva izvorna JPEG-a od 300×400 (ANMACHEIMER/WASSEREIMER), bez veštačkog povećanja. Manifest beleži 135 slika i 437 veza ka dokumentima; zvanični izvori provereni su 22.10, a HS 8 ima nov engleski DoP od 21.10.2026. Stari neispravan nemački DoP ostaje izuzet.
+- Import objavljuje nove putanje sa SHA-256, proverava javno vraćene bajtove i čuva prethodne objekte. Osvežavanje validira ceo raster i svaku stranicu PDF-a pre atomske zamene keša; neuspeh čuva prethodni katalog. SDS/sertifikat se ne predstavlja kao tehnički list: 28 proizvoda nema PDS, a sedam nema dokumente. Nesaglasnosti 1K DS PREMIUM i 2K PU SOLID ostaju vidljive do potvrde proizvođača/prodaje.
+- Popravke ne vraćaju naloge/korpu i ne menjaju ISR, sažete podatke početne, učitavanje dekora ili dizajn jezika. Podatke o nabavci i komercijalnom pakovanju i dalje potvrđuje prodaja; ne pretvarati protivrečne proizvođačke izvore u izmišljeno važeće pakovanje.
 
 **Sličice boja na PDP-u kroz optimizator slika (17.10.2026)**
 - `components/ColorGrid.tsx` više ne prikazuje sličice boja (kompaktna mreža uz hero i modal „Sve boje") kao sirovi `<img>` punog „pod" JPG-a od 1.500 px na ~50–190 px. Sada idu kroz deljeni `ProductImage` (`next/image` + `shouldBypassNextImageOptimization`, pa hostovi van allowliste i dalje idu neoptimizovano) sa `sizes` po rasporedu — kompaktna mreža `(min-width: 1024px) 100px, 16vw` (128/256w), modal i pattern-grupe do 190–240 px (≤384w) — i sa redosledom kandidata iz `getColorImageCandidates()` (texture → lifestyle → image_url → image) umesto lokalnog `ImageWithFallback`, koji je pri grešci odmah prelazio na placeholder. Boje nemaju `thumb` varijantu, pa optimizator pravi sličicu iz originala.

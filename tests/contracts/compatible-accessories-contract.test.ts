@@ -69,7 +69,7 @@ describe('Lajsne↔podovi: mapa po sistemu', () => {
     it('nijedna lajsna/profil nije siroče — svaka je u bar jednoj kategoriji', () => {
         const used = new Set<string>();
         for (const cat of FLOOR_CATEGORIES) for (const s of getCompatibleAccessorySlugs(cat)) used.add(s);
-        const missing = [...VALID_SLUGS].filter((s) => !used.has(s));
+        const missing = Array.from(VALID_SLUGS).filter((s) => !used.has(s));
         expect(missing, `nemapirane lajsne: ${missing.join(', ')}`).toEqual([]);
     });
 

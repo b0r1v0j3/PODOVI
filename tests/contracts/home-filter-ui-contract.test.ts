@@ -45,7 +45,7 @@ describe('homepage filter UI contract', () => {
   it('uses honest sorting and hides price sorting when prices do not exist', () => {
     expect(homeSource).toContain('Sortiraj: Preporučeno');
     expect(homeSource).not.toContain('Sortiraj: Najnovije');
-    expect(homeSource).toContain("canSortByPrice ? <option value=\"price\"");
+    expect(homeSource).toContain("canSortByPrice || (!activeTabDataReady && sortMode === 'price') ? <option value=\"price\"");
   });
 
   it('serves the homepage from ISR and hydrates/persists shareable filter URL state on the client', () => {
@@ -56,7 +56,7 @@ describe('homepage filter UI contract', () => {
     expect(homeSource).toContain("window.addEventListener('popstate', restoreFromHistory)");
     expect(homeSource).toContain("window.history.replaceState(window.history.state, '', nextUrl)");
     expect(homeSource).toContain("window.history.pushState(null, '', nextUrl)");
-    expect(homeSource).toContain('sanitizeHomeSelection(selection, facetSchema, tabPresentValues, categories, brandIds)');
+    expect(homeSource).toContain('sanitizeHomeSelection(selection, facetSchema, tabPresentValues, categories, brandIds, collectionItems)');
   });
 
   it('shows an honest loading state on a direct colors-tab URL', () => {

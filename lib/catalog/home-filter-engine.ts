@@ -40,6 +40,8 @@ export interface HomeEngineOptions {
   brandNames: Record<string, string>;
   /** Broj stavki kategorije kada njeni podaci (npr. boje) još nisu učitani. */
   categoryFallbackCounts?: Record<string, number>;
+  /** Potpun katalog za kontekst brenda, nezavisan od delimično učitanih boja. */
+  contextItems?: HomeEngineItem[];
 }
 
 export interface HomeEngineOption {
@@ -123,7 +125,8 @@ function passesList(item: HomeEngineItem, entry: HomeFacetSchemaEntry, selected:
 function passesRange(item: HomeEngineItem, entry: HomeFacetSchemaEntry, range: HomeRangeSelection, missing: HomeMissingPolicy): boolean {
   if (!appliesTo(item, entry)) return true;
   const flat = item.nv[entry.id];
-  if (!flat || flat.length === 0) return missing === 'include';
+  // Nepoznata cena nikada nije dokaz da proizvod pripada izabranom cenovnom opsegu.
+  if (!flat || flat.length === 0) return entry.id !== 'cena' && missing === 'include';
   return intervalsOverlap(flat, range[0], range[1]);
 }
 
@@ -134,7 +137,7 @@ function compareLabels(a: string, b: string): number {
 
 function sortOptions(entry: HomeFacetSchemaEntry, options: Array<HomeEngineOption & { staticCount: number }>, categoryOrder: string[]) {
   if (entry.id === 'category') {
-    return options.sort((a, b) => categoryOrder.indexOf(a.value) - categoryOrder.indexOf(b.value));
+    return options.sort((a, b) => Number(b.count > 0) - Number(a.count > 0) || categoryOrder.indexOf(a.value) - categoryOrder.indexOf(b.value));
   }
   if (entry.sortByCount) {
     // Redosled po ukupnom (statičnom) broju — ne skače posle svakog klika.
@@ -180,9 +183,20 @@ function optionLabel(entry: HomeFacetSchemaEntry, value: string, options: HomeEn
  * Grupe vidljive za izabrane kategorije, u redosledu panela: Kategorija → grupe
  * izabrane kategorije (Tip, Materijal…) → opšte grupe → Kolekcije kategorije.
  */
-export function getVisibleHomeSchema(schema: HomeFacetSchemaEntry[], selection: HomeFilterSelection): HomeFacetSchemaEntry[] {
-  const categories = selection.lists.category || [];
-  const visible = schema.filter((entry) => entry.scope === 'all' || categories.includes(entry.scope));
+export function getVisibleHomeSchema(schema: HomeFacetSchemaEntry[], selection: HomeFilterSelection, items: HomeEngineItem[] = []): HomeFacetSchemaEntry[] {
+  let categories = selection.lists.category || [];
+  const brands = selection.lists.brand || [];
+  let brandCategories: string[] = [];
+  if (categories.length === 0 && brands.length > 0) {
+    // Brend u jednoj kategoriji otvara njene grupe bez tihog category filtera u URL-u.
+    brandCategories = Array.from(new Set(items.filter(item => brands.includes(item.brandId)).map(item => item.categorySlug)));
+    if (brandCategories.length === 1) categories = brandCategories;
+  }
+  const visible = schema.filter((entry) => entry.scope === 'all' || categories.includes(entry.scope)
+    // Dodavanje drugog brenda ne sme ukloniti aktivan filter postojeće kategorije.
+    || (brandCategories.includes(entry.scope) && (entry.kind === 'range'
+      ? isRangeActive(selection.ranges[entry.id])
+      : (selection.lists[entry.id]?.length || 0) > 0)));
   const isCollectionGroup = (entry: HomeFacetSchemaEntry) => entry.scope !== 'all' && entry.param === 'collection';
   return [
     ...visible.filter((entry) => entry.id === 'category'),
@@ -198,7 +212,7 @@ export function evaluateHomeFilters<T extends HomeEngineItem>(
   selection: HomeFilterSelection,
   options: HomeEngineOptions,
 ): HomeEngineResult<T> {
-  const visible = getVisibleHomeSchema(schema, selection);
+  const visible = getVisibleHomeSchema(schema, selection, options.contextItems || items);
   const categoryNames = new Map(options.categories.map((category) => [category.slug, category.name]));
   const categoryOrder = options.categories.map((category) => category.slug);
   const selectedCategories = selection.lists.category || [];
@@ -250,7 +264,7 @@ export function evaluateHomeFilters<T extends HomeEngineItem>(
       let coverage = 0;
       const distinct = new Set<number>();
       items.forEach((item, itemIndex) => {
-        if ((scope !== 'all' && item.categorySlug !== scope) || !inSelectedCategories[itemIndex]) return;
+        if (!isEligible(itemIndex, groupActiveIndex) || (scope !== 'all' && item.categorySlug !== scope) || !inSelectedCategories[itemIndex]) return;
         const flat = item.nv[entryId];
         if (!flat || flat.length === 0) return;
         coverage += 1;
@@ -270,14 +284,12 @@ export function evaluateHomeFilters<T extends HomeEngineItem>(
       let selectedCount = 0;
       items.forEach((item, itemIndex) => {
         if (!isEligible(itemIndex, groupActiveIndex) || (scope !== 'all' && item.categorySlug !== scope)) return;
-        const flat = item.nv[entryId];
-        const missing = !flat || flat.length === 0;
         (entry.presets || []).forEach((preset, presetIndex) => {
-          if (missing ? options.missing === 'include' : intervalsOverlap(flat, preset.min ?? null, preset.max ?? null)) {
+          if (passesRange(item, entry, [preset.min ?? null, preset.max ?? null], options.missing)) {
             presetCounts[presetIndex] += 1;
           }
         });
-        if (selected && (missing ? options.missing === 'include' : intervalsOverlap(flat, selected[0], selected[1]))) {
+        if (selected && passesRange(item, entry, selected, options.missing)) {
           selectedCount += 1;
         }
       });
@@ -358,6 +370,7 @@ export function evaluateHomeFilters<T extends HomeEngineItem>(
     }), categoryOrder);
 
     const hasSelection = selectedValues.length > 0;
+    if (!hasSelection && entry.id !== 'category' && !groupOptions.some(option => option.count > 0)) continue;
     if (entry.kind === 'boolean') {
       if (!hasSelection && (staticCounts.get('Da') || 0) === 0) continue;
     } else if (!hasSelection && groupOptions.length < 2) {
@@ -416,13 +429,9 @@ export function setHomeRange(selection: HomeFilterSelection, groupId: string, ra
 }
 
 /** Kategorijske selekcije kategorija koje više nisu izabrane se brišu; opšte ostaju. */
-export function pruneHomeSelection(selection: HomeFilterSelection, schema: HomeFacetSchemaEntry[]): HomeFilterSelection {
-  const categories = selection.lists.category || [];
-  const scopeById = new Map(schema.map((entry) => [entry.id, entry.scope]));
-  const keep = (id: string) => {
-    const scope = scopeById.get(id);
-    return scope !== undefined && (scope === 'all' || categories.includes(scope));
-  };
+export function pruneHomeSelection(selection: HomeFilterSelection, schema: HomeFacetSchemaEntry[], items: HomeEngineItem[] = []): HomeFilterSelection {
+  const visibleIds = new Set(getVisibleHomeSchema(schema, selection, items).map(entry => entry.id));
+  const keep = (id: string) => visibleIds.has(id);
   const lists = Object.fromEntries(Object.entries(selection.lists).filter(([id, values]) => values.length > 0 && keep(id)));
   const ranges = Object.fromEntries(Object.entries(selection.ranges).filter(([id, range]) => isRangeActive(range) && keep(id)));
   const changed = Object.keys(lists).length !== Object.keys(selection.lists).length
@@ -463,6 +472,7 @@ export function sanitizeHomeSelection(
   items: HomeEngineItem[] | Map<string, Set<string>>,
   categories: Array<{ slug: string }>,
   brandIds: Set<string>,
+  contextItems: HomeEngineItem[] = items instanceof Map ? [] : items,
 ): HomeFilterSelection {
   const byId = new Map(schema.map((entry) => [entry.id, entry]));
   const categorySlugs = new Set(categories.map((category) => category.slug));
@@ -486,5 +496,5 @@ export function sanitizeHomeSelection(
     if (byId.get(id)?.kind === 'range' && isRangeActive(range)) ranges[id] = range;
   }
 
-  return pruneHomeSelection({ lists, ranges }, schema);
+  return pruneHomeSelection({ lists, ranges }, schema, contextItems);
 }

@@ -197,7 +197,7 @@ describe('tarkett-parse: collectionDocsFromAssets', () => {
     };
     const docs = collectionDocsFromAssets(item);
     expect(docs).toHaveLength(3);
-    expect(docs.map((d) => d.sourceUrl)).toEqual([
+    expect(docs.map((d: { sourceUrl: string }) => d.sourceUrl)).toEqual([
       'https://media.tarkett-image.com/docs/IG_Installation_Guide_Real_SPC_50_ENG.pdf',
       'https://media.tarkett-image.com/docs/IG_Installation_Guide_Herringbone_Real_SPC_50.pdf',
       'https://media.tarkett-image.com/docs/DS_SEE_Real_SPC_50_SRB.pdf',

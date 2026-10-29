@@ -131,7 +131,6 @@ export default function ComparePageClient() {
                                                     <ProductImage
                                                         sources={imageCandidates}
                                                         alt={product.name}
-                                                        className="object-cover"
                                                         sizes="128px"
                                                     />
                                                 </div>

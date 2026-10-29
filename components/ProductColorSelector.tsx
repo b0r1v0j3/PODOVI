@@ -113,6 +113,7 @@ export default function ProductColorSelector({
   // Zatvori modal na Escape i upravljaj fokusom dok je otvoren
   useEffect(() => {
     if (!isColorsModalOpen) return;
+    const trigger = colorsModalTriggerRef.current;
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -127,7 +128,7 @@ export default function ProductColorSelector({
     return () => {
       document.removeEventListener('keydown', onKeyDown);
       // Vrati fokus na dugme "Pogledaj sve" koje je otvorilo modal
-      colorsModalTriggerRef.current?.focus();
+      trigger?.focus();
     };
   }, [isColorsModalOpen]);
 

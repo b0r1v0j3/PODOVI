@@ -78,12 +78,12 @@ Dorada: sinhrono ažuriranje izbora umesto `startTransition`, mreža kartica kro
 3. **PDP preuzimao slike svih boja** (14,5 MB na Creation 55): skriveni preloader u `ColorGrid` + hero stek svih boja → slika boje se preuzima na nameru (hover/fokus/dodir), hero montira samo aktivnu/viđene boje, prethodna ostaje vidljiva dok se nova ne učita.
 4. **Swatch sličice na karticama** su bile originali (do 1.500 px) kao CSS pozadina → `next/image` 32 px.
 5. **Prve kartice lazy** → `priority` za prve 4 kartice (LCP).
-6. **Region**: produkcija odgovara sa `x-vercel-id: fra1::iad1` (funkcija u SAD), a Supabase je u Evropi (~40 ms RTT iz Beograda) → `vercel.json` `regions: ["fra1"]`.
+6. **Region**: pre promene produkcija je odgovarala sa `x-vercel-id: fra1::iad1` (funkcija u SAD), a Supabase je u Evropi (~40 ms RTT iz Beograda). Konačno spojeno podešavanje od 18.10.2026. je `vercel.json` `regions: ["cdg1"]` (Pariz); raniji predlog `fra1` je zamenjen.
 
 ## Produkcija (proveriti posle objave)
 
 - **SC-004 (TTFB početne iz keša < 0,3 s)**: lokalno 52–73 ms iz ISR keša; na produkciji se potvrđuje tek posle objave (pre: 2,7 s, `no-store`).
-- **PDP TTFB**: lokalno ostaje vezan za Supabase upite (strana je namerno dinamička zbog svežih cena). Na produkciji se očekuje pad zbog regiona `fra1` (svaki upit više ne prelazi Atlantik) — izmeriti posle objave.
+- **PDP TTFB**: lokalno ostaje vezan za Supabase upite (strana je namerno dinamička zbog svežih cena). Na produkciji se očekuje pad zbog konačnog regiona `cdg1` (svaki upit više ne prelazi Atlantik) — izmeriti posle objave.
 
 ## Status kriterijuma uspeha
 

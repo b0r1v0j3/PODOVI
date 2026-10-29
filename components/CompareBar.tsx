@@ -43,7 +43,6 @@ export default function CompareBar() {
                                                 <ProductImage
                                                     sources={imageCandidates}
                                                     alt={product.name}
-                                                    className="object-cover"
                                                     sizes="32px"
                                                 />
                                             </div>

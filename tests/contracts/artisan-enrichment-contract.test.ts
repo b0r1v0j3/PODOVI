@@ -60,6 +60,6 @@ describe('Artisan enrichment contract (pregled proizvoda #2)', () => {
       variants.map((p) => p.specs.find((s) => s.key === 'podkolekcija')?.value).filter(Boolean)
     );
     expect(lines.size).toBeGreaterThanOrEqual(6);
-    expect([...lines]).toContain('Herringbone');
+    expect(Array.from(lines)).toContain('Herringbone');
   });
 });

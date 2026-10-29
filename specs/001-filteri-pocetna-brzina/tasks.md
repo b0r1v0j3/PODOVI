@@ -106,7 +106,7 @@ description: "Task list — Filteri na početnoj strani i brzina sajta"
 - [X] T022 [P] [US5] Napraviti `lib/product-page/spec-merge.ts` (`mergeSpecs`), re-export iz `lib/product-page/color-helpers.ts`, uvoz u `components/ProductCharacteristics.tsx` iz `spec-merge`
 - [X] T023 [P] [US5] Contract test `tests/contracts/pdp-client-bundle-contract.test.ts`: nijedan `'use client'` fajl ne uvozi `color-helpers`, `prepare-colors`, `resolve-product`, `productDataLoader` niti `@/public/data/*` (osim izuzetaka sa obrazloženjem)
 - [X] T024 [P] [US5] `components/ProductCardClient.tsx`: `priority` prop (prve 4 kartice taba Kolekcije), swatch sličice kroz `next/image` (`sizes="32px"`, quality 60, `unoptimized` po `shouldBypassNextImageOptimization`), koristi `product.href` kad postoji
-- [X] T025 [P] [US5] `vercel.json` sa `{ "regions": ["fra1"] }`
+- [X] T025 [P] [US5] `vercel.json` sa `{ "regions": ["cdg1"] }` (konačno podešavanje posle spajanja 18.10.2026, Pariz)
 - [X] T026 [US5] `app/api/products/route.ts` (+`categoryIds`) i `app/uporedi/ComparePageClient.tsx` (dopuna specifikacija za `compareSlim` stavke)
 
 ---

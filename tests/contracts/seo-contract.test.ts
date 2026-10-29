@@ -444,7 +444,7 @@ describe('SEO contracts', () => {
     const sitemapEntries = await sitemap();
     const techemProductUrl = `https://www.podovi.online${getCanonicalProductHref(techemFixture)}`;
 
-    expect(sitemapEntries.find((entry) => entry.url === techemProductUrl)?.lastModified?.toISOString()).toBe(techemGeneratedAt.toISOString());
+    expect(sitemapEntries.find((entry) => entry.url === techemProductUrl)?.lastModified).toEqual(techemGeneratedAt);
   });
 
   it('omits removed category, hub brand and contact surfaces from the sitemap', async () => {

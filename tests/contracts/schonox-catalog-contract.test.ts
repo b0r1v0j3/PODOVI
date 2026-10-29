@@ -44,6 +44,47 @@ describe('complete European/global SCHÖNOX catalog', () => {
     expect(manifest.missingDocuments).toHaveLength(7);
   });
 
+  it('keeps immutable, verified packshots at the best official resolution without cropping', () => {
+    const packshots = manifest.assets.filter(asset => 'width' in asset);
+    expect(packshots).toHaveLength(135);
+    for (const asset of packshots) {
+      expect(asset.url).toContain(`-${asset.sha256}.`);
+      expect(asset.sourceUrl).not.toContain('smartcrop');
+      expect(asset.checkedAt).toBeTruthy();
+      if (['schonox-anmacheimer', 'schonox-wassereimer'].includes(asset.productSlug)) {
+        expect(asset).toMatchObject({ width: 300, height: 400, format: 'jpeg', alpha: false });
+      } else {
+        expect(asset).toMatchObject({ width: 1600, height: 1600, format: 'png', alpha: true });
+      }
+    }
+    expect(manifest.imageLimitations.map(item => item.productSlug).sort()).toEqual(['schonox-anmacheimer', 'schonox-wassereimer']);
+  });
+
+  it('publishes reviewed Serbian detail text and only promises a technical sheet when one is attached', () => {
+    const copy = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'tools/schonox-copy.json'), 'utf8'));
+    const details = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'tools/schonox-details.json'), 'utf8'));
+    expect(Object.keys(details).sort()).toEqual(dataset.products.map(product => product.slug).sort());
+    const withLongSource = manifest.products.filter(product => product.description);
+    expect(withLongSource).toHaveLength(120);
+    for (const product of dataset.products) {
+      expect(product.shortDescription).toBe(copy[product.slug]);
+      expect(product.description.startsWith(details[product.slug]), product.slug).toBe(true);
+      expect(product.description).not.toMatch(/\b(suitable for|for interior use|for exterior use|Packaging unit|Packsize)\b/i);
+      const hasPds = product.documents.some(document => document.type === 'product_data_sheet');
+      expect(product.description.includes('priloženom tehničkom listu'), product.slug).toBe(hasPds);
+      expect(product.description.includes('Zatražite tehnički list'), product.slug).toBe(!hasPds);
+    }
+    expect(manifest.missingTechnicalDataSheets).toHaveLength(28);
+    const fpl = dataset.products.find(product => product.slug === 'schonox-fpl-plus')!;
+    expect(fpl.shortDescription).toMatch(/3(?:[–-]| do )50 mm/);
+    expect(fpl.description).toMatch(/10[–-]60 mm/);
+    expect(dataset.products.find(product => product.slug === 'schonox-d-8-15-21-35-65')!.shortDescription).toMatch(/manžet/i);
+    const packaging = (slug: string) => dataset.products.find(product => product.slug === slug)!.specs.find(spec => spec.key === 'manufacturer_packaging')!.value;
+    expect(packaging('schonox-gea')).not.toMatch(/488270|25[.,]0?\s*kg/);
+    expect(packaging('schonox-2k-pu-solid')).toMatch(/nije potvrđeno.*4,5 kg.*5 kg/);
+    expect(packaging('schonox-1k-ds-premium')).toMatch(/nije potvrđeno.*28 kg.*18 kg/);
+  });
+
   it('keeps prices unknown, availability on request and dates tied to source discovery', () => {
     for (const product of getAllSchonoxProducts()) {
       expect(product.price).toBeUndefined();

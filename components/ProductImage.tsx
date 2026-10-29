@@ -64,13 +64,17 @@ export default function ProductImage({
     );
   }
 
+  // shortcut: SCHÖNOX storage contains only packshots; add image metadata if roomshots join it.
   return (
     <Image
       key={activeSource.url}
       src={activeSource.url}
       alt={activeSource.alt || alt || ''}
       fill
-      className={`object-cover ${className || ''}`}
+      className={className}
+      style={activeSource.url.includes('/product-images/schonox/')
+        ? { objectFit: 'contain', backgroundColor: '#fff', padding: '6%' }
+        : { objectFit: 'cover' }}
       sizes={sizes ?? '(max-width: 768px) 100vw, 50vw'}
       quality={quality}
       priority={priority}

@@ -897,7 +897,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                       <ProductImage
                         sources={orderedHeroImages}
                         alt={primaryImage.alt}
-                        className={product.categoryId === '5' ? 'object-cover object-left' : 'object-cover'}
+                        className={product.categoryId === '5' ? 'object-left' : undefined}
                         sizes="(max-width: 768px) 100vw, 50vw"
                         quality={100}
                         priority={true}

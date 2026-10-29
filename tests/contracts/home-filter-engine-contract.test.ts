@@ -9,12 +9,14 @@ import {
   EMPTY_HOME_SELECTION,
   evaluateHomeFilters,
   pruneHomeSelection,
+  sanitizeHomeSelection,
   setHomeRange,
   toggleHomeListValue,
   type HomeEngineItem,
   type HomeEngineOptions,
   type HomeFilterSelection,
 } from '@/lib/catalog/home-filter-engine';
+import { parseHomeFilterSelection, serializeHomeFilterSelection } from '@/lib/catalog/home-filter-url';
 
 /**
  * Filter engine početne strane: brojač uz opciju mora biti TAČNO broj rezultata
@@ -53,7 +55,7 @@ function expectCountsEqualResults(items: HomeEngineItem[], schema: HomeFacetSche
       for (const option of group.options) {
         if (option.selected) continue;
         const single = { ...selection, lists: { ...selection.lists, [group.entry.id]: [option.value] } };
-        const results = evaluateHomeFilters(items, schema, pruneHomeSelection(single, schema), options).results;
+        const results = evaluateHomeFilters(items, schema, pruneHomeSelection(single, schema, options.contextItems || items), options).results;
         const inScope = group.entry.scope === 'all' ? results : results.filter((item) => item.categorySlug === group.entry.scope);
         expect({ group: group.entry.id, value: option.value, count: inScope.length }).toEqual({ group: group.entry.id, value: option.value, count: option.count });
         checked += 1;
@@ -160,5 +162,63 @@ describe('home filter engine — pravila', () => {
     const evaluation = evaluateHomeFilters(items, schema, selection, options);
     expect(evaluation.results.map((item) => item.id)).toEqual(['1']);
     expect(evaluation.chips.map((chip) => chip.label)).toEqual(['Podno grejanje', 'Debljina: 2–5 mm']);
+  });
+
+  it('price ranges exclude unknown prices in color mode and keep range/option counts equal to results', () => {
+    const priceSchema: HomeFacetSchemaEntry[] = [...schema, {
+      id: 'cena', param: 'cena', scope: 'all', label: 'Cena', kind: 'range', unit: 'RSD',
+      presets: [{ label: 'do 2000 RSD', max: 2000 }],
+    }];
+    const pricedItems = items.map((item, index) => ({ ...item, nv: { ...item.nv, ...(index < 2 ? { cena: [1000 + index * 2000, 1000 + index * 2000] } : {}) } }));
+    const includeOptions = { ...options, missing: 'include' as const };
+    const tinyRange = parseHomeFilterSelection('?category=vinil&tab=colors&cena=1-2', priceSchema).selection;
+    expect(evaluateHomeFilters(pricedItems, priceSchema, tinyRange, includeOptions).results).toEqual([]);
+    const selected = setHomeRange(EMPTY_HOME_SELECTION, 'cena', [null, 2000]);
+    const { evaluation } = expectCountsEqualResults(pricedItems, priceSchema, selected, includeOptions);
+    expect(evaluation.results.map(item => item.id)).toEqual(['1']);
+    expect(evaluation.groups.find(group => group.entry.id === 'cena')!.range!.count).toBe(1);
+    expectCountsEqualResults(pricedItems, priceSchema, EMPTY_HOME_SELECTION, includeOptions);
+  });
+
+  it('hides irrelevant unselected groups, retains selected zero groups, and places matching categories first', () => {
+    const selected = toggleHomeListValue(EMPTY_HOME_SELECTION, 'brand', 'b');
+    const evaluation = evaluateHomeFilters(items, schema, selected, options);
+    expect(evaluation.groups.some(group => group.entry.id === 'grejanje')).toBe(false);
+    const withHeating = evaluateHomeFilters(items, schema, toggleHomeListValue(selected, 'grejanje', '1'), options);
+    expect(withHeating.groups.find(group => group.entry.id === 'grejanje')!.options![0]).toMatchObject({ selected: true, count: 0, disabled: false });
+    const categories = evaluateHomeFilters(items, schema, setHomeRange(EMPTY_HOME_SELECTION, 'debljina', [10, 14]), options).groups[0].options!;
+    expect(categories.map(option => option.value)).toEqual(['parket', 'vinil']);
+  });
+});
+
+describe('brand-only category context', () => {
+  it.each(['Keramika', 'Marine'])('preserves SCHÖNOX Program %s across URL reload and adding/removing a multicategory brand', async (programValue) => {
+    const { items, schema, options } = await loadCatalog();
+    const brand = toggleHomeListValue(EMPTY_HOME_SELECTION, 'brand', '17');
+    const groups = evaluateHomeFilters(items, schema, brand, options).groups;
+    expect(groups.map(group => group.entry.id)).toEqual(expect.arrayContaining(['pribor.program', 'pribor.type']));
+    expect(groups.find(group => group.entry.id === 'category')!.options![0].value).toBe('pribor');
+    const program = groups.find(group => group.entry.id === 'pribor.program')!.options!.find(option => option.value === programValue)!;
+    expect(program.count).toBeGreaterThan(0);
+    const selection = toggleHomeListValue(brand, 'pribor.program', program.value);
+    const params = serializeHomeFilterSelection({ selection, tab: 'collections', sort: 'featured' }, schema);
+    expect(params.has('category')).toBe(false);
+    const restored = pruneHomeSelection(parseHomeFilterSelection(params, schema).selection, schema, items);
+    expect(restored).toEqual(selection);
+    const sanitized = sanitizeHomeSelection(restored, schema, items, options.categories, new Set(Object.keys(options.brandNames)));
+    expect(sanitized).toEqual(selection);
+    expectCountsEqualResults(items, schema, selection, options);
+    const expanded = pruneHomeSelection(toggleHomeListValue(selection, 'brand', '3'), schema, items);
+    expect(expanded.lists['pribor.program']).toEqual([programValue]);
+    const expandedEvaluation = expectCountsEqualResults(items, schema, expanded, options).evaluation;
+    expect(expandedEvaluation.results.filter(item => item.brandId === '17')).toHaveLength(program.count);
+    const tarkettOnly = pruneHomeSelection(toggleHomeListValue(expanded, 'brand', '17'), schema, items);
+    expect(tarkettOnly.lists['pribor.program']).toEqual([programValue]);
+    expectCountsEqualResults(items, schema, tarkettOnly, options);
+    expect(pruneHomeSelection(toggleHomeListValue(tarkettOnly, 'brand', '3'), schema, items)).toEqual(EMPTY_HOME_SELECTION);
+    expect(pruneHomeSelection({ ...selection, lists: { ...selection.lists, brand: ['12'] } }, schema, items).lists['pribor.program']).toBeUndefined();
+    expect(pruneHomeSelection(toggleHomeListValue(selection, 'brand', '17'), schema, items)).toEqual(EMPTY_HOME_SELECTION);
+    const explicit = toggleHomeListValue(selection, 'category', 'vinil');
+    expect(pruneHomeSelection(explicit, schema, items).lists['pribor.program']).toBeUndefined();
   });
 });

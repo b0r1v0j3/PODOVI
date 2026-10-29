@@ -27,7 +27,7 @@ describe('Tarkett laminat cenovnik od 01.06.2026', () => {
 
   it('pokriva svih 64 proizvoda u tačno 10 kolekcija', () => {
     expect(laminates).toHaveLength(64);
-    expect([...new Set(laminates.map(collectionOf))].sort()).toEqual(
+    expect(Array.from(new Set(laminates.map(collectionOf))).sort()).toEqual(
       Object.keys(expectedCollections).sort()
     );
   });

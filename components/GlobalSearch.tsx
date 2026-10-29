@@ -412,7 +412,6 @@ export default function GlobalSearch({ variant = 'icon' }: GlobalSearchProps) {
                                                 alt={product.name}
                                                 sources={product.imageCandidates}
                                                 sizes="48px"
-                                                className="object-cover"
                                             />
                                         </div>
                                         <div className="min-w-0 flex-1">

@@ -93,36 +93,63 @@ Budući owner mora da preuzme sledeći minimum:
 3. Obavezno ažuriranje `AGENTS.md` + `.agent/workflows/podovi-architecture.md` u istom commit-u kada se menja extractor contract.
 4. Incident postmortem disciplina: svaki rollback mora imati issue komentar sa uzrokom, opsegom i finalnim statusom.
 
-## SCHÖNOX — evropski/globalni katalog (17.10.2026)
+## SCHÖNOX — evropski/globalni katalog (22.10.2026)
 
 `node tools/extract_schonox_catalog.js` čita zvanične Sika ulaze `floor-range`,
-`tile-range` i `marine-range`, uključujući pomoćni pribor. Provera od 17.10.2026.
+`tile-range` i `marine-range`, uključujući pomoćni pribor. Provera od 22.10.2026.
 obuhvata 26 kategorijskih stranica, 157 linkovanih proizvodnih stranica i četiri
 inline unosa pribora: nakon 26 duplikata ostaje 135 proizvoda. Marine kategorija
 `parquet-adhesives` je prazna na zvaničnom izvoru i ima eksplicitan status.
 Američke formulacije ne mešati sa evropskim/globalnim programom.
 
 - `--discover` zapisuje izvore u `output/schonox/source.json`, bez zamene kataloga.
-- `--refresh` ponovo čita proizvodne stranice; bez njega koristi lokalni staging
-  keš u `output/schonox/pages`. `--from-source` ponavlja preuzimanje i gradnju iz
-  pregledanog staging izvora. `--self-test` proverava parser i granice izvora.
-- `tools/schonox-copy.json` sadrži pregledane srpske opise. Nepoznat novi proizvod
-  zaustavlja uvoz dok njegov tačan opis ne bude dodat.
+- `--refresh` ponovo preuzima i stranice i assete, uključujući postojeće fajlove.
+  PDF mora imati ispravan potpis i bar jednu stranicu; `pdf-parse` mora uspešno
+  pročitati sadržaj svake stranice (`getTextContent`), uz rok od 20 sekundi.
+  Broje se samo uspešno pročitane stranice, jer parser može prećutati grešku
+  pojedinačne stranice. Slike se u celosti dekodiraju i proverava se format.
+  Tek zatim atomska zamena ažurira lokalni keš; neispravno osvežavanje čuva
+  stari fajl i njegov zapis provere.
+  Bez flag-a koristi provereni staging keš. `--from-source` gradi iz pregledanog
+  `output/schonox/source.json`; u kombinaciji sa `--refresh` ponovo preuzima assete.
+  Datumi provere stranica i asseta ostaju odvojeni od vremena gradnje; ponavljanje
+  iz keša ne sme da tvrdi da je izvor upravo ponovo proveren.
+- `tools/schonox-copy.json` sadrži kratke srpske opise, a
+  `tools/schonox-details.json` detaljne opise sa primenom i uslovima. Svih 135
+  ključeva mora biti pregledano; 120 proizvoda ima neprazan duži zvanični opis.
+  Nepoznat proizvod bez oba prevoda zaustavlja uvoz.
 - Manifest `docs/products/schonox-source-manifest.json` beleži sve kategorije,
   proizvode, alias URL-ove, izvornu specifikaciju/pakovanje, dokument verzije,
   heševe lokalnih datoteka, neuspehe i izuzetke. Neuspeh preuzimanja ne sme tiho
   zameniti postojeći katalog delimičnim.
-- KH/RM/ZM slike se kopiraju iz kanonskog `../media-library`; ostale slike i PDF
-  dokumenti se keširaju u `output/schonox/assets` (gitignore) i objavljuju u
-  Supabase bucket-e `product-images/schonox/` i `product-documents/schonox/`
-  (fajl iste veličine se ne šalje ponovo). Isti URL-ovi ostaju stabilni pri
-  ponavljanju. Nema hotlinkova i nema SCHÖNOX fajlova u `public/`.
-- Jedan objavljeni HS 8 DoP izvor vraća Office ZIP sadržaj iako se zove `.pdf`;
-  dokument je eksplicitno izuzet sa razlogom. Sedam proizvoda nema objavljene
-  dokumente. Ove izuzetke ponovo proveriti pri narednom osvežavanju.
+- Pre preuzimanja proverava se exact-product zapis u `../media-library`.
+  Zvanični Dynamic Media zahtev traži 1600 × 1600 bez `smartcrop`; slabiji ili
+  nedostupan rezultat ne zamenjuje bolji postojeći master. Trenutno je 133
+  originalnih providnih PNG fotografija 1600 × 1600, dok su ANMACHEIMER i
+  WASSEREIMER dostupni samo kao JPEG 300 × 400; ne povećavati ih veštački.
+  Sve fotografije pregledati u contact-sheet prikazu pre predaje.
+- Slike/PDF-ovi se keširaju u `output/schonox/assets` i objavljuju isključivo
+  pod putanjom sa punim SHA-256 sadržaja u postojećim Supabase bucket-ima
+  `product-images/schonox/` i `product-documents/schonox/`. Upload je bez upsert-a,
+  a javno čitanje mora potvrditi isti hash. Jednaka veličina nije dokaz jednakog
+  sadržaja. Stari objekti se čuvaju za rollback i prethodno sačuvane prikaze.
+  Nove mastere registrovati u `../media-library/catalog.json`, `CATALOG.md` i
+  media-use lokalni/globalni ledger; istorijski KH/RM/ZM zapisi ostaju sačuvani.
+  Nema hotlinkova ni SCHÖNOX slika/PDF-ova u `public/`.
+- HS 8 DoP izvor ranije je vraćao Office ZIP sadržaj iako se zvao `.pdf`, a pri
+  proveri 22.10.2026. vraća HTTP 404/HTML; ostaje izuzet. Q9 W marine deklaracija koja je
+  identična Q6 dokumentu takođe ostaje izuzeta. Sedam proizvoda nema dokumente,
+  a 28 nema priložen tehnički list (`product_data_sheet`); SDS/sertifikat nije PDS.
+  Opis samo uz stvarni PDS upućuje na priloženi tehnički list, inače traži da ga
+  kupac zatraži od prodaje. Ove izuzetke proveriti pri narednom osvežavanju.
+- Korekcije izvora: FPL PLUS 3–50 mm bez agregata / 10–60 mm sa agregatom; D
+  8/15/21/35/65 su zidne manžetne. GEA tabela ne sme da preuzme tuđi QUARZSAND
+  red 488270 / 25 kg. 2K PU SOLID ima neusaglašeno 4,5/5 kg, a 1K DS Premium
+  28/18 kg i nesaglasne podatke mešanja/klase; aktuelno pakovanje i tehnički
+  dokument potvrđuje prodaja. Ne birati stari PDF kao komercijalnu istinu.
 - Svi proizvodi su `availability: on_request`, `inStock: false`. Regionalno
   pakovanje proizvođača ne predstavlja potvrđenu jedinicu konkretne isporuke.
-  Cena se izostavlja do cenovnika koji korisnik dostavlja 19.10.2026; nula nije
+  Cena se izostavlja do potvrđenog cenovnika; nula nije
   zamena za nepoznatu cenu. Refresh čuva postojeće pozitivne lokalne cene i
   njihove jedinice i nikada ih ne preuzima sa sajta proizvođača. Uvoz cenovnika
   mora zasebno proveriti šifru, pakovanje, jedinicu, PDV i datum primene.
@@ -130,10 +157,13 @@ Američke formulacije ne mešati sa evropskim/globalnim programom.
   ne uvodi boje niti automatske količine pakovanja. Brend je `17`, kategorija
   `15`; homepage tipovi nastaju iz stvarnog skupa, uz dodatni Program filter.
 
-Pre predaje pokrenuti parser self-check i
+Pre predaje pokrenuti `node tools/extract_schonox_catalog.js --self-test` (parser,
+AVIF → PNG, odbijanje nepotpune slike i PDF-a uprkos validnom zaglavlju,
+validan PDF, hash putanje, same-size refresh i očuvanje dobrog keša i zapisa
+provere pri grešci) i
 `npx vitest run --config vitest.contract.config.ts tests/contracts/schonox-catalog-contract.test.ts --maxWorkers=1 --no-file-parallelism`,
-zatim zajedničke lint/build provere. Pri rollback-u vratiti dataset, copy i
+zatim zajedničke lint/build provere. Pri rollback-u vratiti dataset, oba copy fajla i
 manifest iz istog pregledanog stanja; ne brisati prethodne slike/PDF-ove dok se
 ne potvrdi da nijedan aktivni zapis na njih ne upućuje. Uvoz sam ne objavljuje
-sajt i ne menja produkcioni Supabase.
+sajt i ne menja Supabase tabele; upload dodaje nove Storage objekte.
 

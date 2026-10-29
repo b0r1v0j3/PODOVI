@@ -66,7 +66,7 @@ export default function RecentlyViewed() {
                                 <h3 className="text-sm font-normal text-ink-900 truncate">
                                     {product.name}
                                 </h3>
-                                {product.price && (
+                                {typeof product.price === 'number' && product.price > 0 && (
                                     <p className="text-[13px] text-ink-500 mt-1">
                                         {product.price.toLocaleString('sr-RS')} RSD
                                     </p>

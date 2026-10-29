@@ -230,7 +230,7 @@ describe('resolve-product contract', () => {
     expect(resolved).not.toBeNull();
 
     const mutated = structuredClone(resolved as Product) as Product;
-    await mergeSelectedColor(mutated, boldFixtureColor.slug);
+    await mergeSelectedColor(mutated, boldFixtureColor.slug!);
 
     expect(mutated.documents?.length).toBeGreaterThan(1);
     expect({

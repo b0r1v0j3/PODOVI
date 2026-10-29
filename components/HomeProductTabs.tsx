@@ -91,11 +91,12 @@ function pluralizeResults(count: number): string {
 }
 
 // 1 kolekcija / 3 kolekcije / 5 kolekcija; 1 boja / 3 boje / 5 boja.
-function pluralizeItems(count: number, tab: HomeFilterTab): string {
+function pluralizeItems(count: number, tab: HomeFilterTab, flatOnly: boolean): string {
   const lastTwo = count % 100;
   const last = count % 10;
   const few = last >= 2 && last <= 4 && (lastTwo < 12 || lastTwo > 14);
   if (tab === 'colors') return few ? 'boje' : 'boja';
+  if (flatOnly) return last === 1 && lastTwo !== 11 ? 'proizvod' : 'proizvoda';
   if (last === 1 && lastTwo !== 11) return 'kolekcija';
   return few ? 'kolekcije' : 'kolekcija';
 }
@@ -228,7 +229,8 @@ export default function HomeProductTabs({ groups, brandsRecord, facetSchema }: H
     categories,
     brandNames,
     categoryFallbackCounts: colorFallbackCounts,
-  }), [brandNames, categories, colorFallbackCounts, colorItems, facetSchema, selection]);
+    contextItems: collectionItems,
+  }), [brandNames, categories, collectionItems, colorFallbackCounts, colorItems, facetSchema, selection]);
 
   const evaluation = activeProductTab === 'colors' ? colorEvaluation : collectionEvaluation;
   const tabItems = activeProductTab === 'colors' ? colorItems : collectionItems;
@@ -251,22 +253,23 @@ export default function HomeProductTabs({ groups, brandsRecord, facetSchema }: H
     () => hasPricedProducts(tabItems.filter((item) => selectedCategorySlugs.length === 0 || selectedCategorySlugs.includes(item.categorySlug))),
     [selectedCategorySlugs, tabItems],
   );
+  const activeTabDataReady = activeProductTab !== 'colors' || missingColorCategoryIds.length === 0;
   useEffect(() => {
-    if (sortMode === 'price' && !canSortByPrice) {
+    if (activeTabDataReady && sortMode === 'price' && !canSortByPrice) {
       historyModeRef.current = 'replace';
       setSortMode('featured');
     }
-  }, [canSortByPrice, sortMode]);
+  }, [activeTabDataReady, canSortByPrice, sortMode]);
 
   // ===== URL stanje (strana je statička — URL se čita posle montiranja) =====
   const applyUrlState = useCallback((search: string) => {
     const parsed = parseHomeFilterSelection(search, facetSchema);
     applyingHistoryRef.current = true;
-    setSelection(pruneHomeSelection(parsed.selection, facetSchema));
+    setSelection(pruneHomeSelection(parsed.selection, facetSchema, collectionItems));
     setActiveProductTab(parsed.tab);
     setSortMode(parsed.sort);
     setUrlApplied(true);
-  }, [facetSchema]);
+  }, [collectionItems, facetSchema]);
 
   // Katalog je bio sakriven (inline skripta u app/page.tsx) dok se stanje iz linka ne primeni.
   useEffect(() => {
@@ -310,20 +313,20 @@ export default function HomeProductTabs({ groups, brandsRecord, facetSchema }: H
   // Fantomske vrednosti iz linka (nema ih u podacima) se odbacuju kad su podaci taba učitani.
   const tabPresentValues = useMemo(() => collectHomePresentValues(tabItems), [tabItems]);
   useEffect(() => {
-    if (activeProductTab === 'colors' && missingColorCategoryIds.length > 0) return;
-    const sanitized = sanitizeHomeSelection(selection, facetSchema, tabPresentValues, categories, brandIds);
+    if (!activeTabDataReady) return;
+    const sanitized = sanitizeHomeSelection(selection, facetSchema, tabPresentValues, categories, brandIds, collectionItems);
     if (!sameSelection(sanitized, selection)) {
       historyModeRef.current = 'replace';
       setSelection(sanitized);
     }
-  }, [activeProductTab, brandIds, categories, facetSchema, missingColorCategoryIds.length, selection, tabPresentValues]);
+  }, [activeTabDataReady, brandIds, categories, collectionItems, facetSchema, selection, tabPresentValues]);
 
   // ===== Akcije =====
   const updateSelection = useCallback((update: (current: HomeFilterSelection) => HomeFilterSelection) => {
     // Sinhrono (klik je diskretan događaj): startTransition je na sporom telefonu
     // odlagao primenu i za ~0,6 s bez stvarnog posla na glavnoj niti.
-    setSelection((current) => pruneHomeSelection(update(current), facetSchema));
-  }, [facetSchema]);
+    setSelection((current) => pruneHomeSelection(update(current), facetSchema, collectionItems));
+  }, [collectionItems, facetSchema]);
 
   const handleToggle = useCallback((groupId: string, value: string) => {
     updateSelection((current) => toggleHomeListValue(current, groupId, value));
@@ -468,9 +471,12 @@ export default function HomeProductTabs({ groups, brandsRecord, facetSchema }: H
   const singleSelectedGroup = selectedCategorySlug
     ? groups.find((group) => group.category.slug === selectedCategorySlug)
     : null;
-  const activeName = singleSelectedGroup?.category.name || (selectedCategorySlugs.length > 1 ? 'Katalog' : 'Sve kolekcije');
+  const selectedBrands = selection.lists.brand || [];
+  const assortmentGroups = tabGroups.filter(group => selectedBrands.length === 0 || group.products.some(item => selectedBrands.includes(item.brandId)));
+  const flatOnly = assortmentGroups.length > 0 && assortmentGroups.every(group => !group.colorCount);
+  const activeName = singleSelectedGroup?.category.name || (flatOnly ? 'Asortiman' : selectedCategorySlugs.length > 1 ? 'Katalog' : 'Sve kolekcije');
   const activeDescription = singleSelectedGroup
-    ? CATEGORY_DESCRIPTIONS[singleSelectedGroup.category.slug] || 'Pregled kolekcija i dekora za stambene, poslovne i tehničke prostore.'
+    ? CATEGORY_DESCRIPTIONS[singleSelectedGroup.category.slug] || (flatOnly ? 'Pregled proizvoda za pripremu, ugradnju i održavanje.' : 'Pregled kolekcija i dekora za stambene, poslovne i tehničke prostore.')
     : 'Izaberite kategoriju ili odmah suzite ceo katalog po brendu, nameni, klasi, ugradnji, dezenu, debljini i drugim osobinama.';
   const headerCount = activeProductTab === 'colors' && isLoadingColors ? null : activeProductCount;
   const chips = evaluation.chips;
@@ -550,7 +556,7 @@ export default function HomeProductTabs({ groups, brandsRecord, facetSchema }: H
                       {activeName}
                     </h2>
                     <span className="pb-1.5 text-[12px] text-ink-500" aria-live="polite">
-                      {headerCount === null ? 'Učitavam…' : `${headerCount} ${pluralizeItems(headerCount, activeProductTab)}`}
+                      {headerCount === null ? 'Učitavam…' : `${headerCount} ${pluralizeItems(headerCount, activeProductTab, flatOnly)}`}
                     </span>
                   </div>
                   <p className="mt-2 max-w-3xl text-[13px] leading-6 text-ink-700">
@@ -595,7 +601,7 @@ export default function HomeProductTabs({ groups, brandsRecord, facetSchema }: H
                       : 'border-b-[3px] border-transparent text-ink-500 hover:text-ink-900'
                   }`}
                 >
-                  Kolekcije ({collectionEvaluation.results.length})
+                  {flatOnly ? 'Proizvodi' : 'Kolekcije'} ({collectionEvaluation.results.length})
                 </button>
                 <button
                   type="button"
@@ -632,7 +638,7 @@ export default function HomeProductTabs({ groups, brandsRecord, facetSchema }: H
                   >
                     <option value="featured">Sortiraj: Preporučeno</option>
                     <option value="name">Sortiraj: Naziv</option>
-                    {canSortByPrice ? <option value="price">Sortiraj: Cena</option> : null}
+                    {canSortByPrice || (!activeTabDataReady && sortMode === 'price') ? <option value="price">Sortiraj: Cena</option> : null}
                   </select>
                 </label>
               </div>
@@ -675,7 +681,7 @@ export default function HomeProductTabs({ groups, brandsRecord, facetSchema }: H
                       onClick={loadNextProductRow}
                       className="border border-ink-200 bg-white px-4 py-2 text-[12px] font-semibold text-ink-900 transition-colors hover:border-ink-900"
                     >
-                      Učitaj još {activeProductTab === 'colors' ? 'boja' : 'kolekcija'}
+                      Učitaj još {activeProductTab === 'colors' ? 'boja' : flatOnly ? 'proizvoda' : 'kolekcija'}
                     </button>
                   </div>
                 ) : null}

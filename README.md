@@ -42,8 +42,9 @@ npm start
 ### SCHÖNOX
 
 - Official European/global floor, tile and marine program from Sika/SCHÖNOX; source coverage, duplicates and document exceptions are recorded in the dated import manifest.
-- All products are offered for procurement subject to sales confirmation, with no claimed stock or invented prices. Tatjana's price list is expected on 19.10.2026.
+- All products are offered for procurement subject to sales confirmation, with no claimed stock or invented prices. Prices remain unset until a verified commercial price list is imported; manufacturer-content refreshes preserve existing approved prices.
 - Catalog integration includes Pribor, brand, search, product pages, homepage filters and sitemap. Images and product documents are served from our Supabase buckets (`product-images/schonox/`, `product-documents/schonox/`).
+- SCHÖNOX packshots use whole-product framing on white with consistent padding across the catalog, PDP and saved/search views. Official image/document versions use content-addressed paths; descriptions and technical-sheet availability come from the reviewed manufacturer data. See [accepted improvements and verification](docs/schonox-improvements.md).
 
 ### "Galerija" Design Language (redesign 2026-06-12)
 - All public pages use a **monochrome gallery design language** (Prostoria-inspired): `ink` gray-scale + warm `paper` image-background tokens defined in `tailwind.config.ts`, white site background

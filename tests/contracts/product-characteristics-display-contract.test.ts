@@ -22,7 +22,9 @@ describe('selected-color characteristic display', () => {
   it('renders one row per label after the SD color response adds derived filter specs', async () => {
     const collection = esdData.collections.find(item => item.slug === 'tarkett-iq-granit-sd')!;
     const product = getProductBySlug(collection.slug)!;
-    const selected = await resolveSelectedColorServerData(collection.colors[0].slug, { categoryId: '8', brandId: '3' });
+    const color = collection.colors[0];
+    if (!('slug' in color)) throw new Error('SD color fixture is missing its slug.');
+    const selected = await resolveSelectedColorServerData(color.slug, { categoryId: '8', brandId: '3' });
     expect(selected!.specs.filter(spec => spec.label === 'Ukupna debljina')).toHaveLength(2);
 
     // Render the component after its color API response has populated selectedSpecs.
@@ -32,7 +34,7 @@ describe('selected-color characteristic display', () => {
     const html = renderToStaticMarkup(React.createElement(ProductCharacteristics, {
       specs: filterSpecsForDisplay(product.specs), categoryId: '8',
     }));
-    const labels = [...html.matchAll(/<dt[^>]*>(.*?)<\/dt>/g)].map(match => match[1]);
+    const labels = Array.from(html.matchAll(/<dt[^>]*>(.*?)<\/dt>/g)).map(match => match[1]);
     expect(labels.filter(label => label === 'Ukupna debljina')).toHaveLength(1);
     expect(new Set(labels).size).toBe(labels.length);
     expect(labels).toContain('Električna otpornost');
