@@ -76,21 +76,27 @@ describe('SCHÖNOX availability is on request, never a stock claim', () => {
     expect(labels).not.toContain('Schonox Kh');
   }, 60000);
 
-  it('renders all priced packages and matching SKU offers on the real flat PDP', async () => {
+  it('shows one final price on a single-package PDP without price metadata or duplication', async () => {
+    const product = getAllSchonoxProducts().find(item => item.slug === 'schonox-emiclassic')!;
+    const { default: ProductPage } = await import('@/app/proizvodi/[slug]/page');
+    const html = renderToStaticMarkup(await ProductPage({ params: { slug: product.slug }, searchParams: {} } as any));
+    expect(html.match(/11\.883,44 RSD/g)).toHaveLength(1);
+    expect(html).not.toContain('9.902,87');
+    expect(html).not.toMatch(/<table|Izvorna cena|PDV|Cene važe|Redovne cene|RSD\/pakovanje/);
+  }, 60000);
+
+  it('shows each package and its final price once, retaining matching offers only in schema', async () => {
     const product = getAllSchonoxProducts().find(item => (item.priceOptions?.length || 0) > 1)!;
     expect(product).toBeDefined();
     const { default: ProductPage } = await import('@/app/proizvodi/[slug]/page');
     const page = await ProductPage({ params: { slug: product.slug }, searchParams: {} } as any);
     const html = renderToStaticMarkup(page);
-    expect(html).toContain('Redovne cene po pakovanju');
-    expect(html).toContain('Cena sa PDV-om');
-    expect(html).toContain('Izvorna cena bez PDV-a');
-    expect(html).toContain('sa PDV-om');
+    expect(html).toContain('aria-label="Cene po pakovanju"');
+    expect(html).not.toMatch(/<table|Izvorna cena|PDV|Cene važe|Redovne cene|od \d/);
     for (const option of product.priceOptions!) {
-      expect(html).toContain(option.manufacturerSku);
       expect(html).toContain(option.packagingLabel);
-      expect(html).toContain(option.priceWithoutVat.toLocaleString('sr-RS'));
-      expect(html).toContain(option.price.toLocaleString('sr-RS'));
+      expect(html).not.toContain(option.priceWithoutVat.toLocaleString('sr-RS'));
+      expect(html.split(`${option.price.toLocaleString('sr-RS')} RSD`)).toHaveLength(2);
     }
     const schema = JSON.parse(findProps(page, 'script').dangerouslySetInnerHTML.__html)[0];
     expect(schema.offers).toHaveLength(product.priceOptions!.length);

@@ -926,34 +926,17 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     )}
                   </div>
 
-                  <p className="text-[13px] text-ink-500">{formatProductPrice(product)}</p>
-                  {product.priceOptions && product.priceOptions.length > 0 && (
-                    <div>
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-left text-[12px] text-ink-700">
-                          <caption className="mb-3 text-left text-[13px] text-ink-900">Redovne cene po pakovanju</caption>
-                          <thead>
-                            <tr className="border-b border-ink-200">
-                              <th scope="col" className="py-2 pr-3 font-medium">Šifra</th>
-                              <th scope="col" className="py-2 pr-3 font-medium">Pakovanje</th>
-                              <th scope="col" className="py-2 pr-3 font-medium">Cena sa PDV-om</th>
-                              <th scope="col" className="py-2 font-medium">Izvorna cena bez PDV-a</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {product.priceOptions.map(option => (
-                              <tr key={option.manufacturerSku} className="border-b border-ink-200">
-                                <td className="py-2 pr-3">{option.manufacturerSku}</td>
-                                <td className="py-2 pr-3">{option.packagingLabel}</td>
-                                <td className="py-2 pr-3 whitespace-nowrap">{formatProductPrice({ price: option.price })}</td>
-                                <td className="py-2 whitespace-nowrap">{formatProductPrice({ price: option.priceWithoutVat })}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                      {product.priceValidUntil && <p className="mt-3 text-[12px] text-ink-500">Cene važe do {new Date(product.priceValidUntil).toLocaleDateString('sr-RS')} Raspoloživost i rok isporuke potvrđuju se ponudom.</p>}
-                    </div>
+                  {product.priceOptions && product.priceOptions.length > 1 ? (
+                    <dl aria-label="Cene po pakovanju" className="max-w-sm space-y-3">
+                      {product.priceOptions.map(option => (
+                        <div key={option.manufacturerSku} className="flex items-baseline justify-between gap-6">
+                          <dt className="text-[13px] text-ink-500">{option.packagingLabel}</dt>
+                          <dd className="shrink-0 text-xl font-medium tabular-nums text-ink-900">{formatProductPrice({ price: option.price })}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  ) : (
+                    <p className={product.price && product.price > 0 ? 'text-2xl font-medium tabular-nums text-ink-900' : 'text-[13px] text-ink-500'}>{formatProductPrice(product)}</p>
                   )}
 
                   {/* CTA Buttons */}

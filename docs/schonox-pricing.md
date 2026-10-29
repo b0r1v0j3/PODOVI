@@ -4,6 +4,11 @@ Vlasnik je izričito tražio redovne cene iz cenovnika bez rabata. Objavljuje se
 samo uparen podskup redovnih cena; interni PDF, privatna prepiska i nabavni
 uslovi ostaju van javnog repozitorijuma.
 
+Poslednji nalog vlasnika 29.10: kupac vidi **samo konačnu cenu**, npr.
+**11.883,44 RSD**. Bez teksta o PDV-u, izvorne/neto cene, šifara, datuma ili
+ponovljene tabele. Cena već uključuje PDV. Više pakovanja prikazuje se kao
+jednostavni redovi pakovanje–cena. Ova odluka zamenjuje prethodni neto/bruto prikaz.
+
 ## Izvor i obračun
 
 - Sika Srbija, cenovnik od 17.8.2026, važi do 31.12.2026. Nova kolona
@@ -11,7 +16,8 @@ uslovi ostaju van javnog repozitorijuma.
 - Jedinica je KOMAD konkretnog pakovanja, iznosi bez PDV-a. Odobreni javni
   podskup u `tools/schonox-prices.json` čuva neto cenu u parama i stranicu izvora.
 - Prodajna cena: `Math.round(netoPara * 120 / 100) / 100` RSD, bez rabata.
-  Prikaz uključuje 20% PDV-a; PDP prikazuje i izvornu cenu bez PDV-a.
+  Konačni iznos uključuje 20% PDV-a; izvorna neto cena i PDV metapodaci služe
+  obračunu i ne prikazuju se kupcu.
 - Cena se ne množi ponovo kilogramima ili kvadraturom. EPOXY CLEAN 651696
   je 0,5 kg po komadu, iFIX 525976 je komplet 7,8 kg. Globalni paket ili karton
   proizvođača nije automatski prodajna jedinica srpskog cenovnika.
@@ -36,8 +42,10 @@ sačuvan. Loader duboko kopira opcije i uklanja istekle cene nakon ponoći
 
 Početna šalje samo sažetu cenu i numeričke fasete: svako pakovanje je posebna
 tačka, bez izmišljene kontinuirane cene između dva pakovanja. Pretraga,
-omiljeni, poređenje i istorija obnavljaju cenu iz API-ja. PDP prikazuje tabelu
-šifara i pakovanja; JSON-LD koristi tačne cene, jedinice, PDV i rok cenovnika.
+omiljeni, poređenje i istorija obnavljaju cenu iz API-ja. PDP prikazuje jedan
+konačni iznos ili jednostavne redove pakovanje–cena; JSON-LD zadržava tačne
+cene, šifre, jedinice, PDV i rok cenovnika. Formatter uklanja vidljive oznake
+PDV-a i sufiks `/pakovanje (...)`, uz očuvane značajne jedinice poput m².
 Sačuvani korisnički proizvodi obnavljaju i uklanjaju stare iznose.
 
 Regresije pokrivaju svih 35 cena, zaokruživanje na paru, različita pakovanja,

@@ -5,6 +5,21 @@ Detaljni lokalni dokazi pregleda su u `output/audit-2026-10-22/izvestaj.md`.
 Ovaj dokument beleži obim i rezultat popravki, bez vraćanja ranije uklonjene
 korpe, naloga ili porudžbina.
 
+## Poslednji nalog o ceni — 29.10.2026.
+
+Vlasnik je odbacio neto/bruto tabelu i oznake PDV-a kao suvišne za kupca.
+EMICLASSIC sada ima samo istaknut konačan iznos **11.883,44 RSD**. Uklonjeni su
+izvorna cena, šifre, tabela za jedno pakovanje, rok cenovnika i tekst o PDV-u.
+Više pakovanja ima jednostavne redove pakovanje–cena, bez ponovljenog „od“ iznosa.
+Kartice, pretraga, omiljeni, poređenje i istorija koriste isti kraći prikaz.
+Novčani iznosi i njihovi metapodaci ostaju tačni; raniji zapisi o neto/bruto
+prikazu ispod predstavljaju istoriju, ne pravilo za vraćanje tog interfejsa.
+Provera ovog prikaza: 49 contract fajlova / 437 testova prolazi; produkcioni
+build sa TypeScript/lint proverom i validacijom slika prolazi. Lokalni
+produkcioni server pregledan je na računaru i telefonu: jedna cena za
+EMICLASSIC, sve tri KH cene bez ponavljanja i kraći iznosi na karticama.
+Nema vidljivog PDV/neto teksta, cenovne tabele ni horizontalnog širenja.
+
 ## Dopuna čitljivosti pakovanja — 29.10.2026.
 
 Prijavljen je sirovi tekst proizvođačke tabele na EMICLASSIC stranici: šifre,

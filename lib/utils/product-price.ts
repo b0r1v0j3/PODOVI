@@ -25,7 +25,6 @@ export function getProductPriceSummary(product: ProductPriceSummary): ProductPri
 export function formatProductPrice(product: ProductPriceSummary): string {
   if (typeof product.price !== 'number' || !Number.isFinite(product.price) || product.price <= 0 || isProductPriceExpired(product.priceValidUntil)) return 'Cena na upit';
   const amount = product.price.toLocaleString('sr-RS', { maximumFractionDigits: 2 });
-  const unit = product.priceUnit ? `/${product.priceUnit}` : '';
-  const vat = product.priceIncludesVat === true ? ' · sa PDV-om' : product.priceIncludesVat === false ? ' · bez PDV-a' : '';
-  return `${product.priceFrom ? 'od ' : ''}${amount} RSD${unit}${vat}`;
+  const unit = product.priceUnit && !/^pakovanje(?:\s*\(|$)/i.test(product.priceUnit) ? `/${product.priceUnit}` : '';
+  return `${product.priceFrom ? 'od ' : ''}${amount} RSD${unit}`;
 }

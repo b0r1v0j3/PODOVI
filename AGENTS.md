@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 29.10.2026 (SCHÖNOX čitljiva pakovanja i srpski nazivi programa)
+> **Poslednje ažuriranje:** 29.10.2026 (samo konačna prodajna cena u prikazu za kupce)
 
 ---
 
@@ -154,6 +154,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 
 ### ✅ Završeno
 
+**Prikaz cene — samo konačna prodajna cena (29.10.2026, poslednja odluka vlasnika)**
+- Kupac vidi samo iznos i valutu, npr. **11.883,44 RSD**. Cena već uključuje PDV; ne prikazivati oznake „sa/bez PDV-a“, neto/izvornu cenu, šifre ni rok cenovnika uz cenu. Ovaj nalog zamenjuje raniji prikaz neto/bruto tabele.
+- Jedno pakovanje ima jednu jasno istaknutu cenu, bez ponovljene tabele. Više pakovanja ima jednostavne redove pakovanje–cena. Kartice, pretraga, omiljeni, poređenje i istorija koriste isti čisti formatter, bez sufiksa `/pakovanje (...)`; značajne jedinice drugih artikala, poput m², ostaju.
+- Obračun, iznosi, metapodaci PDV-a, šifre, cenovne opcije, schema i istek ostaju u podacima; izmena se odnosi na prezentaciju. Ne vraćati interne podatke u tok za kupca.
+
 **SCHÖNOX — čitljiva pakovanja i program proizvođača (29.10.2026)**
 - Javna specifikacija `manufacturer_packaging` sadrži samo veličine, ambalažu i sastav kompleta: svako pakovanje u svom redu, levo poravnato, na telefonu ispod naziva polja. Poređenje takođe čuva nove redove. Sirovi proizvođački identifikatori, EAN-i i paletne količine ostaju u izvornom manifestu, umesto u jednom dugačkom redu specifikacija.
 - „Marine“ je program za brodogradnju. Javni naziv je „Brodogradnja“, uz polje „Program proizvođača“. Interna vrednost filtera `Marine` ostaje radi postojećih URL-ova, a `translate` daje srpsku labelu i čip. Ne tumačiti članstvo u programu kao automatsku potvrdu za svaku brodsku primenu.
@@ -162,7 +167,7 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 **SCHÖNOX — redovne cene iz cenovnika (29.10.2026)**
 - Po izričitom nalogu vlasnika objavljuju se redovne kataloške cene bez rabata: 35 šifara/pakovanja na 30 postojećih proizvoda, iz važeće kolone cenovnika Sika Srbija od 17.8.2026. Izvorna cena je RSD po komadu konkretnog pakovanja bez PDV-a; prodajna cena na sajtu uključuje 20% PDV-a. Nabavni rabati se ne koriste.
 - `tools/schonox-prices.json` sadrži samo odobreni javni podskup; originalni interni PDF i privatna prepiska ostaju van Git-a. Ova odluka zamenjuje raniju zabranu objavljivanja iznosa za taj podskup. `--prices-only` primenjuje cenovnik bez ponovnog preuzimanja slika/dokumenata; redovan refresh ga ponovo primenjuje.
-- KH/SHP/AB imaju tabelu stvarnih šifara i pakovanja, a kartica cenu „od“. Cena EPOXY CLEAN odnosi se na 0,5 kg, iFIX na komplet od 7,8 kg; cenu ne množiti težinom/površinom. Filter koristi pojedinačne cene, bez popunjavanja razmaka između njih. Pretraga, omiljeni, poređenje, istorija i SEO koriste istu cenu/jedinicu/PDV.
+- KH/SHP/AB imaju zasebne cene stvarnih pakovanja, a kartica cenu „od“. Prvobitnu tabelu šifara/neto/bruto cena zamenio je kasniji nalog za jednostavne redove pakovanje–cena (unos iznad). Cena EPOXY CLEAN odnosi se na 0,5 kg, iFIX na komplet od 7,8 kg; cenu ne množiti težinom/površinom. Filter koristi pojedinačne cene, bez popunjavanja razmaka između njih. Pretraga, omiljeni, poređenje, istorija i SEO koriste isti konačni iznos.
 - Cenovnik važi zaključno sa 31.12.2026. po vremenu Beograda; istekle cene se uklanjaju i iz zagrejanih serverskih keševa. Ostalih 105 proizvoda nema odgovarajuću cenu; Anti Slip 14 kg i gleterica 600 mm nisu silom upareni sa drugim proizvodom. Dokazi i ograničenja: `docs/schonox-pricing.md`.
 
 **SCHÖNOX — prikaz cele ambalaže i ispravke filtera (22–29.10.2026)**

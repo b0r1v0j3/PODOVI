@@ -43,7 +43,7 @@ const fixture: Product = {
     { manufacturerSku: '1002', packagingLabel: '10 kg', price: 2400, priceWithoutVat: 2000 },
   ],
 };
-const summary = 'od 1.440,6 RSD/pakovanje · sa PDV-om';
+const summary = 'od 1.440,6 RSD';
 
 beforeEach(async () => {
   vi.useFakeTimers({ toFake: ['Date'] });
@@ -56,10 +56,14 @@ beforeEach(async () => {
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 
 describe('published package prices', () => {
-  it('keeps decimals, units and explicit VAT without guessing other catalog VAT', () => {
+  it('shows the final amount without VAT or package labels and preserves other catalog units', () => {
     expect(formatProductPrice(fixture)).toBe(summary);
     expect(formatProductPrice({ price: 4999, priceUnit: 'm²' })).toBe('4.999 RSD/m²');
-    expect(formatProductPrice({ price: 1200.5, priceUnit: 'pakovanje (5 kg)', priceIncludesVat: false })).toBe('1.200,5 RSD/pakovanje (5 kg) · bez PDV-a');
+    expect(formatProductPrice({ price: 1200.5, priceUnit: 'kom', priceIncludesVat: true })).toBe('1.200,5 RSD/kom');
+    expect(formatProductPrice({ price: 1.234 })).toBe('1,23 RSD');
+    for (const priceIncludesVat of [true, false, undefined]) {
+      expect(formatProductPrice({ price: 11883.44, priceUnit: 'pakovanje (14 kg)', priceIncludesVat })).toBe('11.883,44 RSD');
+    }
     for (const price of [undefined, 0, -1, NaN, Infinity]) expect(formatProductPrice({ price })).toBe('Cena na upit');
     const cleared = { ...fixture, ...getProductPriceSummary({}) };
     expect(formatProductPrice(cleared)).toBe('Cena na upit');
@@ -76,7 +80,7 @@ describe('published package prices', () => {
     expect(formatProductPrice({ price: 4999, priceUnit: 'm²' })).toBe('4.999 RSD/m²');
   });
 
-  it('carries the same unit and VAT summary through both public APIs', async () => {
+  it('keeps price metadata through both public APIs while formatting only the final customer price', async () => {
     const searchResult = await (await search(new NextRequest('http://localhost/api/search?q=schonox'))).json();
     const savedResult = await (await products(new NextRequest('http://localhost/api/products?ids=test&categoryIds=15'))).json();
     for (const payload of [searchResult, savedResult]) {
@@ -84,6 +88,7 @@ describe('published package prices', () => {
       expect(payload.products[0]).toMatchObject(getProductPriceSummary(fixture));
       expect(formatProductPrice(payload.products[0])).toBe(summary);
       expect(payload.products[0].priceOptions).toBeUndefined();
+      expect(payload.products[0].priceWithoutVat).toBeUndefined();
     }
     expect(savedResult.products[0].availability).toBe('on_request');
   });
@@ -104,23 +109,29 @@ describe('published package prices', () => {
   });
 
   it('renders the same summary on both cards, favorites, compare and recent history', async () => {
-    expect(renderToStaticMarkup(await ProductCard({ product: fixture }))).toContain(summary);
-    expect(renderToStaticMarkup(React.createElement(ProductCardClient, { product: fixture, brand: null }))).toContain(summary);
+    const rendered = [
+      renderToStaticMarkup(await ProductCard({ product: fixture })),
+      renderToStaticMarkup(React.createElement(ProductCardClient, { product: fixture, brand: null })),
+    ];
     vi.mocked(useState).mockReturnValueOnce([[fixture], vi.fn()]).mockReturnValueOnce([false, vi.fn()]);
-    expect(renderToStaticMarkup(React.createElement(FavoritesPage))).toContain(summary);
-    expect(renderToStaticMarkup(React.createElement(ComparePage))).toContain(summary);
+    rendered.push(renderToStaticMarkup(React.createElement(FavoritesPage)));
+    rendered.push(renderToStaticMarkup(React.createElement(ComparePage)));
     vi.mocked(useState).mockReturnValueOnce([[{ ...fixture, image: '/test.png' }], vi.fn()]);
-    expect(renderToStaticMarkup(React.createElement(RecentlyViewed))).toContain(summary);
+    rendered.push(renderToStaticMarkup(React.createElement(RecentlyViewed)));
+    for (const html of rendered) {
+      expect(html).toContain(summary);
+      expect(html).not.toMatch(/PDV|pakovanje|1\.200,5|2\.000/);
+    }
   });
 
-  it('search renders package units and decimals instead of a hardcoded square-metre price', () => {
+  it('search renders only the final package price with no VAT, packaging or square-metre suffix', () => {
     vi.mocked(useState)
       .mockReturnValueOnce(['schonox', vi.fn()])
       .mockReturnValueOnce([{ products: [{ ...fixture, image: '/test.png' }], categories: [], brands: [] }, vi.fn()])
       .mockReturnValueOnce([true, vi.fn()]);
     const html = renderToStaticMarkup(React.createElement(GlobalSearch, { variant: 'inline' }));
     expect(html).toContain(summary);
-    expect(html).not.toContain('RSD/m²');
+    expect(html).not.toMatch(/PDV|pakovanje|RSD\/m²|1\.200,5|2\.000/);
   });
 
   it('refreshes old non-slim compare snapshots and clears prices no longer published', async () => {
@@ -139,7 +150,7 @@ describe('published package prices', () => {
     expect(fetch).toHaveBeenCalledWith('/api/products?ids=test&categoryIds=15');
   });
 
-  it('refreshes old recent snapshots with package units and VAT using one bounded request', async () => {
+  it('refreshes old recent snapshots to the clean final price using one bounded request', async () => {
     const old = { id: 'test', slug: fixture.slug, name: fixture.name, image: '/test.png', price: 1 };
     let viewed: unknown[] = [];
     const setViewed = vi.fn(value => { viewed = value; });
