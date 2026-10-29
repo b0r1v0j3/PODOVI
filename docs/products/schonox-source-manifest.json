@@ -13759,15 +13759,15 @@
     },
     {
       "productSlug": "schonox-2k-pu-solid",
-      "reason": "Source packaging says 4.5 kg, but its component weights 4.17 kg + 0.83 kg sum to 5 kg. Current commercial packaging requires confirmation.",
-      "sourceUrl": "https://deu.sika.com/schonox-global/en/tile-range/tile-adhesives/schoenox-2k-pu-solid.html",
-      "checkedAt": "2026-10-22T09:57:35.516Z"
+      "reason": "The attached product data sheet explicitly specifies a 5 kg combined package (4.17 kg A + 0.83 kg B), which takes precedence over the conflicting 4.5 kg web table. Public packaging now follows the PDS.",
+      "sourceUrl": "https://deu.sika.com/schonox-global/dam/dms/global-schoenox/0/pds-schoenox-2k-pusoliden.pdf",
+      "checkedAt": "2026-10-29T21:28:47.863Z"
     },
     {
       "productSlug": "schonox-1k-ds-premium",
-      "reason": "Live page says 28 kg packaging, 18 kg / 4.9 l mixing and CM O2 P; linked PDS dated 2025-09-08 says 18 kg / 4.5 l and CM O1 P. Do not select one as confirmed current commercial or application data.",
-      "sourceUrl": "https://deu.sika.com/schonox-global/en/tile-range/membranes/schoenox-1k-ds-premium.html",
-      "checkedAt": "2026-10-22T09:57:29.178Z"
+      "reason": "The attached product data sheet explicitly specifies an 18 kg paper sack, corroborated by the product photo and Sika Austria page, which takes precedence over the conflicting 28 kg web table. Conflicting mixing/class numbers remain unpublished.",
+      "sourceUrl": "https://deu.sika.com/schonox-global/dam/dms/global-schoenox/m/pds-schoenox-1k-dspremiumen.pdf",
+      "checkedAt": "2026-10-29T21:28:47.863Z"
     }
   ]
 }

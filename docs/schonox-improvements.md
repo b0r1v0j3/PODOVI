@@ -17,10 +17,10 @@ korpe, naloga ili porudžbina.
   prethode zameni postojeće datoteke. Promenjeni sadržaj dobija novu javnu putanju.
 - FPL PLUS razlikuje 3–50 mm bez agregata i 10–60 mm sa agregatom; D proizvodi
   su zidne zaptivne manžetne. GEA se odvaja od dodatnog QUARZSAND materijala.
-  Nesaglasnost komercijalnog pakovanja 2K PU SOLID mora ostati izričito označena
-  do potvrde Sika/Podovi prodaje. Kod 1K DS PREMIUM razlikuju se podaci na
-  zvaničnoj stranici i u priloženom tehničkom listu: pakovanje, odnos mešanja i
-  klasa se ne predstavljaju kao potvrđeni dok proizvođač ne razjasni važeću verziju.
+  Nesaglasnosti se rešavaju proverom cenovnika i pojedinačnog tehničkog lista.
+  Dopuna 29.10: javna pakovanja 2K PU SOLID (5 kg A+B) i 1K DS PREMIUM
+  (18 kg) prate priloženi PDS, dok sukob sa marketinškom tabelom ostaje u
+  izvornom manifestu. Sporni brojevi mešanja/klase ne prenose se na sajt.
 - Proizvodi dobijaju korisne srpske opise iz zvaničnog izvora. Napomena o
   tehničkom listu mora da prati stvarni tip priloženog dokumenta.
 - Nepoznata cena ne prolazi aktivan cenovni opseg. Sortiranje iz URL-a ostaje
@@ -78,8 +78,12 @@ Dokazi su u lokalnom `output/schonox-fixes-2026-10-22/`:
 
 ## Preostali komercijalni podaci
 
-Cene ostaju na upit do potvrđenog cenovnika. Sika/Podovi prodaja treba da
-potvrdi važeće pakovanje 2K PU SOLID i neusaglašene podatke 1K DS PREMIUM.
+Postojeći cenovnik Sika Srbija od 17.8.2026, dostavljen 19.10, sadrži 37
+jedinstvenih SCHÖNOX šifara i ne navodi ova dva proizvoda. Njihova pakovanja
+su preuzeta iz zvaničnih PDS-ova: 2K PU SOLID 5 kg (A+B), 1K DS PREMIUM
+18 kg. Proveru dostupnih izvora radi agent, bez novog zahteva vlasniku.
+Cene bez proverenog podudaranja šifre, pakovanja i prodajne jedinice ostaju
+na upit; podaci iz privatnog cenovnika se ne objavljuju kao dokument u javnom Git-u.
 Sedam proizvoda nema dokumente, a 28 nema priložen tehnički list; sajt to
 razlikuje od SDS-a i sertifikata i upućuje kupca da zatraži PDS pre izbora/primene.
 Za dve kante bolji izvorni snimak trenutno nije dostupan. Nema otvorenih

@@ -1159,7 +1159,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Brzovezujuća fleksibilna jednokomponentna cementna hidroizolaciona membrana.",
-      "description": "Brzovezujuća fleksibilna jednokomponentna cementna hidroizolacija za unutrašnju i spoljašnju primenu. Formira vodonepropusnu membranu koja premošćava pukotine, na primer na balkonima i terasama, u intenzivno korišćenim mokrim prostorima i u bazenima ispod keramike. Pogodna je i za nanošenje prskanjem i upotrebu na podnom grejanju. Objavljeni tehnički list i veb-stranica navode različite podatke o odnosu mešanja, klasifikaciji i pakovanju; važeću verziju potrebno je potvrditi sa proizvođačem pre primene.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Brzovezujuća fleksibilna jednokomponentna cementna hidroizolacija za unutrašnju i spoljašnju primenu. Formira vodonepropusnu membranu koja premošćava pukotine, na primer na balkonima i terasama, u intenzivno korišćenim mokrim prostorima i u bazenima ispod keramike. Pogodna je i za nanošenje prskanjem i upotrebu na podnom grejanju.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
       "specs": [
         {
           "key": "type",
@@ -1179,7 +1179,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Pakovanje nije potvrđeno: tabela zvanične stranice navodi 28 kg, dok opis, fotografija i priloženi tehnički list navode 18 kg. Podovi prodaja potvrđuje aktuelno pakovanje, šifru i odgovarajući tehnički list pre ponude."
+          "value": "Pakovanje: 18 kg, vreća, prema priloženom tehničkom listu proizvođača."
         }
       ],
       "images": [
@@ -1339,7 +1339,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Beli dvokomponentni poliuretanski lepak za pločice.",
-      "description": "Beli dvokomponentni poliuretanski lepak bez rastvarača za keramiku i prirodni kamen na zahtevnim podlogama, uključujući metal, PVC i ploče obložene plastičnim materijalima, kao i podloge izložene vibracijama. Namenjen je tankoslojnom lepljenju u enterijeru i eksterijeru, uključujući kamen osetljiv na promenu boje i deformacije. Ispunjava klasu R2 prema EN 12004. Zvanična veb-stranica navodi pakovanje od 4,5 kg, dok zbir komponenti 4,17 + 0,83 kg i tehnički list navode 5 kg; važeće komercijalno pakovanje potrebno je potvrditi pre poručivanja.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Beli dvokomponentni poliuretanski lepak bez rastvarača za keramiku i prirodni kamen na zahtevnim podlogama, uključujući metal, PVC i ploče obložene plastičnim materijalima, kao i podloge izložene vibracijama. Namenjen je tankoslojnom lepljenju u enterijeru i eksterijeru, uključujući kamen osetljiv na promenu boje i deformacije. Ispunjava klasu R2 prema EN 12004.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
       "specs": [
         {
           "key": "type",
@@ -1359,7 +1359,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Pakovanje nije potvrđeno: zvanična stranica navodi 4,5 kg, dok navedene komponente 4,17 kg + 0,83 kg daju 5 kg. Podovi prodaja potvrđuje aktuelno pakovanje i šifru pre ponude."
+          "value": "Pakovanje: 5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B), prema priloženom tehničkom listu proizvođača."
         }
       ],
       "images": [

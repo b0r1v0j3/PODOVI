@@ -144,9 +144,12 @@ Američke formulacije ne mešati sa evropskim/globalnim programom.
   kupac zatraži od prodaje. Ove izuzetke proveriti pri narednom osvežavanju.
 - Korekcije izvora: FPL PLUS 3–50 mm bez agregata / 10–60 mm sa agregatom; D
   8/15/21/35/65 su zidne manžetne. GEA tabela ne sme da preuzme tuđi QUARZSAND
-  red 488270 / 25 kg. 2K PU SOLID ima neusaglašeno 4,5/5 kg, a 1K DS Premium
-  28/18 kg i nesaglasne podatke mešanja/klase; aktuelno pakovanje i tehnički
-  dokument potvrđuje prodaja. Ne birati stari PDF kao komercijalnu istinu.
+  red 488270 / 25 kg. Za 2K PU SOLID koristi se **5 kg (A+B)**, a za 1K DS
+  PREMIUM **18 kg, vreća**, prema priloženim zvaničnim tehničkim listovima.
+  Neusaglašene marketinške vrednosti 4,5/28 kg ostaju u manifestu, ne u javnom
+  pakovanju. Ne prenositi sporne brojeve mešanja/klase. Dostupni srpski cenovnik
+  ne sadrži ova dva artikla. Izvore proverava agent; nedostajući pouzdan podatak
+  ostaje prazan/na upit, bez traženja da vlasnik ponovo istražuje isti podatak.
 - Svi proizvodi su `availability: on_request`, `inStock: false`. Regionalno
   pakovanje proizvođača ne predstavlja potvrđenu jedinicu konkretne isporuke.
   Cena se izostavlja do potvrđenog cenovnika; nula nije

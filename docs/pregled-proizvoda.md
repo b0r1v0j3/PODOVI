@@ -86,3 +86,12 @@ Vlasnik potvrdio pravilo (AGENTS.md t.11): asortiman = Alpod, materijal = admont
 - Badge „142 dekora" na kartici kategorije (dizajnerska odluka vlasnika)
 - Dupli spec koncepti iz izvora („Sistem montaže" vs „Vrsta spoja") — normalizacija na nivou importa
 - Kontradikcije naziv-vs-spec u izvoru (npr. 34456 „2V" a spec kaže 4-strane) — spec je pouzdaniji
+
+---
+
+## #3 — SCHÖNOX 1K DS PREMIUM / 2K PU SOLID — 2026-10-29
+
+- Dopuna prihvaćenog pregleda kataloga: postojeći cenovnik Sika Srbija od 17.8.2026. ima 37 SCHÖNOX šifara, ali ne ova dva proizvoda. Agent proverava dostupne izvore; ne traži od vlasnika da ponovi tu proveru.
+- Priloženi [PDS 1K DS PREMIUM](https://deu.sika.com/dam/dms/global-schoenox/m/pds-schoenox-1k-dspremiumen.pdf) navodi **18 kg, papirna vreća**; isto pakovanje navodi [Sika Austria](https://aut.sika.com/de/bau/fliesen-und-natursteinsysteme/abdichtung/schoenox-1k-ds-premium.html).
+- Priloženi [PDS 2K PU SOLID](https://deu.sika.com/schonox-global/dam/dms/global-schoenox/0/pds-schoenox-2k-pusoliden.pdf), odeljak Packaging, navodi **5 kg A+B**, odnosno 4,17 kg komponente A i 0,83 kg komponente B.
+- Javna pakovanja sada prate pojedinačni PDS umesto pogrešnih 28/4,5 kg iz marketinških tabela. Sirovi sukob ostaje u manifestu za sledljivost; opis ne traži dodatnu proveru vlasnika niti prenosi sporne brojeve mešanja/klase. Cene i dostupnost nisu izmišljene.

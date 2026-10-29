@@ -256,8 +256,9 @@ function productPackaging(product) {
   let packaging = product.sections.Packaging;
   // GEA's source table also lists QUARZSAND (488270); that row is a separate product.
   if (product.slug === 'schonox-gea') packaging = packaging?.split('Material No. 488270')[0];
-  if (product.slug === 'schonox-2k-pu-solid') return 'Pakovanje nije potvrđeno: zvanična stranica navodi 4,5 kg, dok navedene komponente 4,17 kg + 0,83 kg daju 5 kg. Podovi prodaja potvrđuje aktuelno pakovanje i šifru pre ponude.';
-  if (product.slug === 'schonox-1k-ds-premium') return 'Pakovanje nije potvrđeno: tabela zvanične stranice navodi 28 kg, dok opis, fotografija i priloženi tehnički list navode 18 kg. Podovi prodaja potvrđuje aktuelno pakovanje, šifru i odgovarajući tehnički list pre ponude.';
+  // Product-specific PDS packaging takes precedence over the conflicting web table.
+  if (product.slug === 'schonox-2k-pu-solid') return 'Pakovanje: 5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B), prema priloženom tehničkom listu proizvođača.';
+  if (product.slug === 'schonox-1k-ds-premium') return 'Pakovanje: 18 kg, vreća, prema priloženom tehničkom listu proizvođača.';
   return localizePackaging(packaging);
 }
 
@@ -358,8 +359,8 @@ async function build(source) {
     ['schonox-fpl-plus', 'Source advantages distinguish 3–50 mm without aggregates and 10–60 mm with aggregates; do not flatten this into 3–60 mm.'],
     ['schonox-d-8-15-21-35-65', 'Source page repeats generic sealing-tape text; D8/D15/D21/D35/D65 are stretchable wall sealing sleeves for pipe penetrations (also identified in the 1K DS PREMIUM PDS).'],
     ['schonox-gea', 'Packaging row 488270 / 25 kg identifies separate SCHÖNOX QUARZSAND; excluded from GEA packaging.'],
-    ['schonox-2k-pu-solid', 'Source packaging says 4.5 kg, but its component weights 4.17 kg + 0.83 kg sum to 5 kg. Current commercial packaging requires confirmation.'],
-    ['schonox-1k-ds-premium', 'Live page says 28 kg packaging, 18 kg / 4.9 l mixing and CM O2 P; linked PDS dated 2025-09-08 says 18 kg / 4.5 l and CM O1 P. Do not select one as confirmed current commercial or application data.'],
+    ['schonox-2k-pu-solid', 'The web table says 4.5 kg, but the attached product data sheet explicitly specifies a 5 kg combined package (4.17 kg A + 0.83 kg B). Public manufacturer packaging follows that PDS; the conflicting raw web table is retained here for traceability.'],
+    ['schonox-1k-ds-premium', 'The web table says 28 kg, but the attached product data sheet explicitly specifies an 18 kg paper sack, also shown on the product photo and Sika Austria product page. Public manufacturer packaging follows that PDS. Mixing/class differences remain internal source notes; no conflicting application number is published.'],
   ].map(([productSlug, reason]) => {
     const product = source.products.find(item => item.slug === productSlug);
     return { productSlug, reason, sourceUrl: product.canonicalUrl, checkedAt: product.checkedAt || source.discoveredAt };
@@ -376,7 +377,8 @@ async function main() {
     assert.match(documentationNote([{ type: 'product_data_sheet' }]), /priloženom tehničkom listu/);
     assert.match(documentationNote([{ type: 'safety_data_sheet' }]), /Zatražite tehnički list/);
     assert.equal(productPackaging({ slug: 'schonox-gea', sections: { Packaging: 'Packsize 4.5-kg-combined packaging Material No. 488270 Packsize 25.0-kg-sack' } }), 'Pakovanje: 4.5 kg, kombinovano pakovanje');
-    assert.match(productPackaging({ slug: 'schonox-2k-pu-solid', sections: {} }), /nije potvrđeno.*4,5 kg.*5 kg/);
+    assert.match(productPackaging({ slug: 'schonox-2k-pu-solid', sections: { Packaging: 'Packsize 4.5-kg-combined packaging' } }), /^Pakovanje: 5 kg,.*tehničkom listu/);
+    assert.match(productPackaging({ slug: 'schonox-1k-ds-premium', sections: { Packaging: 'Packsize 28.0-kg-sack' } }), /^Pakovanje: 18 kg,.*tehničkom listu/);
     assert.deepEqual(approvedPrice({ price: 1234.5, priceUnit: 'kg' }), { price: 1234.5, priceUnit: 'kg' });
     assert.deepEqual(approvedPrice({ price: 0, priceUnit: 'kg' }), {});
     assert.equal(slugify('SCHÖNOX® ZM RAPID'), 'schonox-zm-rapid');
