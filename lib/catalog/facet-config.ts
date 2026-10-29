@@ -431,7 +431,7 @@ const CATEGORY_FACETS: Record<string, CategoryFacetDef[]> = {
   lvt: [lvtKlasa, lvtUgradnja, lvtFormat],
   laminat: [laminatKlasa],
   otiraci: [otiraciTip],
-  pribor: [{ param: 'program', label: 'Program', specKeys: ['program'], canonicalMap: { podovi: 'Podovi', keramika: 'Keramika', marine: 'Marine' }, order: ['Podovi', 'Keramika', 'Marine'] }],
+  pribor: [{ param: 'program', label: 'Program proizvođača', specKeys: ['program'], canonicalMap: { podovi: 'Podovi', keramika: 'Keramika', marine: 'Marine', brodogradnja: 'Marine' }, translate: { Marine: 'Brodogradnja' }, order: ['Podovi', 'Keramika', 'Marine'] }],
 };
 
 export function getFacetDefsForCategory(categorySlug: string): CategoryFacetDef[] {

@@ -19,6 +19,18 @@ vi.stubGlobal('React', React);
 afterAll(() => vi.unstubAllGlobals());
 
 describe('selected-color characteristic display', () => {
+  it('shows each manufacturer package on its own left-aligned line in both rendering paths', () => {
+    const specs = [{ key: 'manufacturer_packaging', label: 'Pakovanja', value: '14 kg, kanta\n6 kg, kanta' }];
+    for (const selectedSpecs of [null, specs]) {
+      vi.mocked(useState).mockReturnValueOnce([null, vi.fn()]).mockReturnValueOnce([selectedSpecs, vi.fn()]);
+      const html = renderToStaticMarkup(React.createElement(ProductCharacteristics, { specs, categoryId: '15' }));
+      expect(html).toContain('14 kg, kanta\n6 kg, kanta');
+      expect(html).toMatch(/<dd[^>]*whitespace-pre-line[^>]*text-left/);
+      expect(html).toContain('sm:grid-cols-[12rem_minmax(0,1fr)]');
+      expect(html).not.toMatch(/<dd[^>]*text-right/);
+    }
+  });
+
   it('renders one row per label after the SD color response adds derived filter specs', async () => {
     const collection = esdData.collections.find(item => item.slug === 'tarkett-iq-granit-sd')!;
     const product = getProductBySlug(collection.slug)!;

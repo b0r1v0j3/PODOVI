@@ -134,7 +134,7 @@ export const brands: Brand[] = [
     name: 'SCHÖNOX',
     slug: 'schonox',
     logo: '',
-    description: 'SCHÖNOX program kompanije Sika: priprema podloga, lepljenje, hidroizolacija i fugovanje. Podni, keramičarski i Marine program uz potvrdu nabavke i cene od Podovi prodaje.',
+    description: 'SCHÖNOX program kompanije Sika: priprema podloga, lepljenje, hidroizolacija i fugovanje. Podni, keramičarski i brodograđevni program uz potvrdu nabavke i cene od Podovi prodaje.',
     website: 'https://deu.sika.com/schonox-global/en.html',
     countryOfOrigin: 'Nemačka',
   },

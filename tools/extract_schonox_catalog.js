@@ -38,23 +38,38 @@ const atomicWrite = (file, bytes) => {
 const writeJson = (file, data) => atomicWrite(file, JSON.stringify(data, null, 2) + '\n');
 
 function localizePackaging(value) {
-  return clean(value).replace(/Material No\.\s*/gi, 'Broj materijala: ').replace(/EAN\s*/g, 'EAN: ')
-    .replace(/Packsize\s*/g, 'Pakovanje: ').replace(/Packaging unit/g, 'Transportno pakovanje:')
-    .replace(/-kg-(?:canister|jerry can|can)\b/g, ' kg, kanister').replace(/kg-jerry can/g, 'kg, kanister')
-    .replace(/-?kg-(?:combined packaging|combined package|combined tin bucket)/g, ' kg, kombinovano pakovanje')
-    .replace(/-?kg-(?:pail|bucket|tin bucket)/g, ' kg, kanta').replace(/-kg-tin can/g, ' kg, limenka')
-    .replace(/-kg-(?:sack|bag|PE-bag)/g, ' kg, vreća').replace(/-kg-bottle/g, ' kg, boca')
-    .replace(/-ml-cartridge/g, ' ml, kartuša').replace(/-m²\/(\d+)-rolls-pallet/g, ' m², rolna ($1 rolni/paleta)').replace(/-m²-roll/g, ' m², rolna').replace(/-m-roll/g, ' m, rolna')
-    .replace(/\/pallet|\/rolls-pallet/g, '/paleta').replace(/\/box/g, '/kutija').replace(/\/roll?\b/g, '/rolna')
-    .replace(/\bcomp\./g, 'komp.').replace(/\bcomponent\b/gi, 'komponenta').replace(/\bresin\b/g, 'smola')
-    .replace(/\bhardener inside\b/g, 'učvršćivač je unutra').replace(/\bhardener\b/g, 'učvršćivač')
-    .replace(/\bColour:?|\bcolor\b/gi, 'Boja:').replace(/\bwhite\b/gi, 'bela').replace(/\bsilvergrey\b/gi, 'srebrnosiva')
-    .replace(/\btransparent\b/g, 'providna').replace(/\bpowder and\b/g, 'prah i').replace(/\bliquid\b/g, 'tečnost')
-    .replace(/\bplastic bottles in a box\b/g, 'plastičnih boca u kutiji').replace(/\bin a case\b/g, 'u koferu')
-    .replace(/\bin box\b/g, 'u kutiji').replace(/\bin pail\b/g, 'u kanti').replace(/\bbox:/gi, 'Kutija:')
-    .replace(/\bset\b/gi, 'komplet').replace(/\bpiece\b/g, 'komad').replace(/\bTUBE\b/g, 'tuba')
-    .replace(/\broll\b/g, 'rolna').replace(/\bwidth\b/g, 'širina').replace(/boxes with (\d+) rolls each/g, 'kutija sa po $1 rolni')
-    .replace(/Container with (\d+) wipes/g, 'Posuda sa $1 krpa');
+  const rows = clean(value)
+    .replace(/-m²\/\d+-rolls-pallet/g, '-m²-roll')
+    .replace(/\s*(?:Material No\.\s*\d+|EAN\s*\d+)\s*/gi, '\n')
+    .split(/\n|(?:Packaging unit\s*)?\d+\s*\/pallet\b/i)
+    .map(row => row.replace(/^.*?Packsize\s*/i, '').replace(/\s+SCHÖNOX.*$/i, '').replace(/\s+Component\s*\/\s*color.*$/i, '').trim())
+    .filter(row => /^(?:\d.*(?:kg|ml|m²|m[ /-]|\/box|piece|set|plastic bottles)|Box:|Container with|set\b|SCHÖNOX iFLOOR-SET|SCHÖNOX iLINE APP)/i.test(row));
+  return [...new Set(rows.map(row => {
+    let packaging = row
+      .replace(/SCHÖNOX iFLOOR-SET /g, 'Komplet za ').replace(/SCHÖNOX iLINE APP EXCLUSIV \(in a case\)/g, 'Kofer')
+      .replace(/\d+(?:[.,]\d+)?/g, number => String(Number(number.replace(',', '.'))).replace('.', ','))
+      .replace(/(\d)\s*x\s*(?=\d|comp\.)/gi, '$1 × ')
+      .replace(/-?kg-(?:combined packaging|combined package|combined tin bucket)/g, ' kg, kombinovano pakovanje')
+      .replace(/-?kg-(?:canister|jerry can|can)\b/g, ' kg, kanister')
+      .replace(/-?kg-(?:pail|bucket|tin bucket)/g, ' kg, kanta').replace(/-?kg-tin can/g, ' kg, limenka')
+      .replace(/-?kg-(?:sack|bag|PE-bag)/g, ' kg, vreća').replace(/-?kg-bottle/g, ' kg, boca')
+      .replace(/-ml-cartridge/g, ' ml, kartuša').replace(/[- ](m²|m)(?:-roll|\/roll?| roll)\b/g, ' $1, rolna')
+      .replace(/(\d+ cm) width/g, 'širina $1').replace(/ - \d+ boxes with (\d+) rolls each/g, ' ($1 rolni u kutiji)')
+      .replace(/ - 1 roll in box/g, ' (1 rolna u kutiji)')
+      .replace(/^([\d,]+)\/box$/, '$1 komada, kutija')
+      .replace(/ - (\d+)\/box/g, ' ($1 komada u kutiji)').replace(/(\d+)\/box/g, '$1 komada u kutiji').replace(/\/box/g, ' u kutiji')
+      .replace(/\bcomp\.|\bcomponent\b/gi, 'komponenta').replace(/\bresin\b/g, 'smola')
+      .replace(/\bhardener inside\b/g, 'učvršćivač je uključen').replace(/\bhardener\b/g, 'učvršćivač')
+      .replace(/\bpowder and\b/g, 'praha +').replace(/\bliquid\b/g, 'tečnosti')
+      .replace(/\bplastic bottles in a box\b/g, 'plastičnih boca u kutiji')
+      .replace(/\bin box\b/g, 'u kutiji').replace(/\bin pail\b/g, 'u kanti').replace(/kg box:/gi, 'kg, kutija:').replace(/^box:/i, 'Kutija:')
+      .replace(/^1 set$/i, 'Komplet').replace(/\bset\b/gi, 'Komplet').replace(/\bpiece\b/g, 'komad').replace(/ TUBE\b/g, ', tube')
+      .replace(/Container with (\d+) wipes/g, 'Posuda sa $1 krpe');
+    if (/^\d+ ×/.test(packaging)) packaging = packaging.replace(/, kanta\b/g, ', kante').replace(/, vreća\b/g, ', vreće');
+    // The CF DESIGN source omits the closing bracket around its component breakdown.
+    const unclosed = (packaging.match(/\(/g) || []).length - (packaging.match(/\)/g) || []).length;
+    return clean(packaging + ')'.repeat(Math.max(0, unclosed)));
+  }))].join('\n');
 }
 
 async function fetchBytes(url) {
@@ -254,12 +269,39 @@ function documentationNote(documents) {
 
 function productPackaging(product) {
   let packaging = product.sections.Packaging;
+  // These tables append a different product, not another package of this product.
+  if (['schonox-con-boden', 'schonox-xp-15', 'schonox-mse'].includes(product.slug)) packaging = packaging?.split(/(?:SCHÖNOX )?(?:QUARZSAND|MONOKORN)\b/i)[0];
   // GEA's source table also lists QUARZSAND (488270); that row is a separate product.
   if (product.slug === 'schonox-gea') packaging = packaging?.split('Material No. 488270')[0];
   // Product-specific PDS packaging takes precedence over the conflicting web table.
-  if (product.slug === 'schonox-2k-pu-solid') return 'Pakovanje: 5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B), prema priloženom tehničkom listu proizvođača.';
-  if (product.slug === 'schonox-1k-ds-premium') return 'Pakovanje: 18 kg, vreća, prema priloženom tehničkom listu proizvođača.';
+  if (product.slug === 'schonox-2k-pu-solid') return '5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B)';
+  if (product.slug === 'schonox-1k-ds-premium') return '18 kg, vreća';
+  // iFIX puts its explicit set sizes after each logistics row, outside the Packsize cell.
+  if (product.slug === 'schonox-ifix') return [...(packaging || '').matchAll(/SCHÖNOX iFIX® SET (\d+(?:[.,]\d+)?) kg/g)].map(([, size]) => `${size.replace('.', ',')} kg, komplet`).join('\n');
+  // LEB and LEF are distinct system components, not alternative bag sizes.
+  if (product.slug === 'schonox-leichtestrich-system') return [...(packaging || '').matchAll(/SCHÖNOX (LEB|LEF) (.*?)(?=SCHÖNOX |$)/g)].map(([, component, row]) => `SCHÖNOX ${component} — ${localizePackaging(row)}`).join('\n');
   return localizePackaging(packaging);
+}
+
+function presentationSpecs(product) {
+  const programs = [['floor-range', 'Podovi'], ['tile-range', 'Keramika'], ['marine-range', 'Brodogradnja']].filter(([range]) => product.groups.some(url => url.includes(range))).map(([, label]) => label);
+  const packaging = productPackaging(product);
+  return [
+    { key: 'program', label: 'Program proizvođača', value: programs.join(', ') },
+    ...(packaging ? [{ key: 'manufacturer_packaging', label: 'Pakovanja proizvođača', value: packaging }] : []),
+  ];
+}
+
+function applyPresentation(products, sourceProducts) {
+  const sourceBySlug = new Map(sourceProducts.map(product => [product.slug, product]));
+  return products.map(product => {
+    const source = sourceBySlug.get(product.slug);
+    assert(source, `Missing presentation source: ${product.slug}`);
+    const updated = presentationSpecs(source);
+    const specs = product.specs.flatMap(spec => ['program', 'manufacturer_packaging'].includes(spec.key) ? updated.filter(item => item.key === spec.key) : [spec]);
+    for (const spec of updated) if (!specs.some(item => item.key === spec.key)) specs.push(spec);
+    return { ...product, specs };
+  });
 }
 
 function applyApprovedPrices(products, priceList = JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-prices.json'), 'utf8'))) {
@@ -379,9 +421,8 @@ async function build(source) {
       return { title: repeated ? `${label} (${clean(doc.title).replace(/®/g, '')})` : label, url: asset.url, type: doc.type };
     });
     const packaging = productPackaging(product);
-    const programs = [['floor-range', 'Podovi'], ['tile-range', 'Keramika'], ['marine-range', 'Marine']].filter(([range]) => product.groups.some(url => url.includes(range))).map(([, label]) => label);
-    const specifications = [{ key: 'type', label: 'Tip', value: groups[0] }, { key: 'program', label: 'Program', value: programs.join(', ') }, { key: 'manufacturer', label: 'Proizvođač', value: 'SCHÖNOX / Sika' }];
-    if (packaging) specifications.push({ key: 'manufacturer_packaging', label: 'Pakovanja proizvođača', value: packaging });
+    const [program, ...packagingSpecs] = presentationSpecs(product);
+    const specifications = [{ key: 'type', label: 'Tip', value: groups[0] }, program, { key: 'manufacturer', label: 'Proizvođač', value: 'SCHÖNOX / Sika' }, ...packagingSpecs];
     const description = `${details[product.slug]}\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. ${documentationNote(documents)}`;
     return { id: product.slug, name: product.name.replace('®', ''), slug: product.slug, sku: product.slug.toUpperCase(), categoryId: '15', brandId: '17', shortDescription: copy[product.slug], description, specs: specifications, images, documents, availability: 'on_request', inStock: false, priceUnit: 'pakovanje', featured: false, externalLink: product.canonicalUrl, detailsSections: packaging ? [{ title: 'Pakovanje i nabavka', items: ['Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja.'] }] : [], source: { canonicalUrl: product.canonicalUrl, alternateUrls: product.alternateUrls, groupUrls: product.groups, checkedAt: product.checkedAt || source.discoveredAt } };
   });
@@ -403,6 +444,14 @@ async function build(source) {
 }
 
 async function main() {
+  if (process.argv.includes('--presentation-only')) {
+    const dataset = JSON.parse(fs.readFileSync(DATASET, 'utf8'));
+    const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
+    dataset.products = applyPresentation(dataset.products, manifest.products);
+    writeJson(DATASET, dataset);
+    console.log(JSON.stringify({ products: dataset.products.length, presentationOnly: true }));
+    return;
+  }
   if (process.argv.includes('--prices-only')) {
     const dataset = JSON.parse(fs.readFileSync(DATASET, 'utf8'));
     dataset.products = applyApprovedPrices(dataset.products);
@@ -414,18 +463,18 @@ async function main() {
     assert.notEqual(storagePathFor('same.pdf', Buffer.from('%PDF-one')), storagePathFor('same.pdf', Buffer.from('%PDF-two')));
     assert.match(documentationNote([{ type: 'product_data_sheet' }]), /priloženom tehničkom listu/);
     assert.match(documentationNote([{ type: 'safety_data_sheet' }]), /Zatražite tehnički list/);
-    assert.equal(productPackaging({ slug: 'schonox-gea', sections: { Packaging: 'Packsize 4.5-kg-combined packaging Material No. 488270 Packsize 25.0-kg-sack' } }), 'Pakovanje: 4.5 kg, kombinovano pakovanje');
-    assert.match(productPackaging({ slug: 'schonox-2k-pu-solid', sections: { Packaging: 'Packsize 4.5-kg-combined packaging' } }), /^Pakovanje: 5 kg,.*tehničkom listu/);
-    assert.match(productPackaging({ slug: 'schonox-1k-ds-premium', sections: { Packaging: 'Packsize 28.0-kg-sack' } }), /^Pakovanje: 18 kg,.*tehničkom listu/);
+    assert.equal(productPackaging({ slug: 'schonox-gea', sections: { Packaging: 'Packsize 4.5-kg-combined packaging Material No. 488270 Packsize 25.0-kg-sack' } }), '4,5 kg, kombinovano pakovanje');
+    assert.equal(productPackaging({ slug: 'schonox-2k-pu-solid', sections: { Packaging: 'Packsize 4.5-kg-combined packaging' } }), '5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B)');
+    assert.equal(productPackaging({ slug: 'schonox-1k-ds-premium', sections: { Packaging: 'Packsize 28.0-kg-sack' } }), '18 kg, vreća');
     assert.equal(slugify('SCHÖNOX® ZM RAPID'), 'schonox-zm-rapid');
     assert(allowedPage(ENTRY[0])); assert(!allowedPage('https://schonox.us/products/kh'));
     assert(allowedPage(`${BASE}/schonox-global/en/marine-range/test.html`));
     const fixture = parse('<main><h1>SCHÖNOX® KH</h1><div class="productcontent"><h3>Packaging</h3><span>5 kg</span></div><input data-document-path="/kh.pdf" data-document-title="KH" data-document-type="product_data_sheet"></main>');
     const record = productData(fixture, ENTRY[0], []);
     assert.equal(record.sections.Packaging, '5 kg'); assert.equal(record.documents[0].url, `${BASE}/kh.pdf`);
-    assert.equal(localizePackaging('Packsize 10.0-kg-canister 60/pallet'), 'Pakovanje: 10.0 kg, kanister 60/paleta');
-    assert.equal(localizePackaging('Packsize 30-m²/40-rolls-pallet'), 'Pakovanje: 30 m², rolna (40 rolni/paleta)');
-    assert.equal(localizePackaging('Packsize 5.50 kg box: 4.42 kg comp. A'), 'Pakovanje: 5.50 kg Kutija: 4.42 kg komp. A');
+    assert.equal(localizePackaging('Packsize 10.0-kg-canister 60/pallet'), '10 kg, kanister');
+    assert.equal(localizePackaging('Packsize 30-m²/40-rolls-pallet'), '30 m², rolna');
+    assert.equal(localizePackaging('Packsize 5.50 kg box: 4.42 kg comp. A'), '5,5 kg, kutija: 4,42 kg komponenta A');
     const avif = await sharp({ create: { width: 2, height: 2, channels: 3, background: '#fff' } }).avif().toBuffer();
     const converted = await validateAsset(avif, 'fixture.png', 'image');
     assert.equal(converted.bytes.subarray(0, 4).toString('hex'), '89504e47');
@@ -475,4 +524,4 @@ async function main() {
   if (!process.argv.includes('--discover')) await build(source);
 }
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });
-module.exports = { applyApprovedPrices, download, highResolutionUrl, mapLimit, productPackaging, documentationNote, storagePathFor, validateAsset };
+module.exports = { applyApprovedPrices, applyPresentation, download, highResolutionUrl, mapLimit, productPackaging, documentationNote, storagePathFor, validateAsset };

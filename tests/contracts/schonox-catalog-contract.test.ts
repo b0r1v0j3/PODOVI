@@ -81,8 +81,8 @@ describe('complete European/global SCHÖNOX catalog', () => {
     expect(dataset.products.find(product => product.slug === 'schonox-d-8-15-21-35-65')!.shortDescription).toMatch(/manžet/i);
     const packaging = (slug: string) => dataset.products.find(product => product.slug === slug)!.specs.find(spec => spec.key === 'manufacturer_packaging')!.value;
     expect(packaging('schonox-gea')).not.toMatch(/488270|25[.,]0?\s*kg/);
-    expect(packaging('schonox-2k-pu-solid')).toMatch(/^Pakovanje: 5 kg,.*4,17 kg.*0,83 kg.*tehničkom listu/);
-    expect(packaging('schonox-1k-ds-premium')).toMatch(/^Pakovanje: 18 kg,.*tehničkom listu/);
+    expect(packaging('schonox-2k-pu-solid')).toBe('5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B)');
+    expect(packaging('schonox-1k-ds-premium')).toBe('18 kg, vreća');
     for (const slug of ['schonox-1k-ds-premium', 'schonox-2k-pu-solid']) {
       expect(packaging(slug)).not.toMatch(/nije potvrđeno|potvrđuje/);
       expect(dataset.products.find(product => product.slug === slug)!.description).not.toMatch(/različite podatke|potrebno je potvrditi/);

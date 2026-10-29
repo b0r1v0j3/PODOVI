@@ -33,6 +33,17 @@ function findProps(node: any, type: unknown): any {
 }
 
 describe('SCHÖNOX availability is on request, never a stock claim', () => {
+  it('keeps manufacturer package lines readable in comparison', async () => {
+    const emiclassic = getAllSchonoxProducts().find(product => product.slug === 'schonox-emiclassic')!;
+    compare.items = [emiclassic];
+    const { default: ComparePageClient } = await import('@/app/uporedi/ComparePageClient');
+    const html = renderToStaticMarkup(React.createElement(ComparePageClient));
+    expect(html).toMatch(/<td[^>]*whitespace-pre-line[^>]*text-left[^>]*>14 kg, kanta\n6 kg, kanta<\/td>/);
+    expect(html).toContain('Program proizvođača');
+    expect(html).toContain('Podovi, Brodogradnja');
+    expect(html).not.toContain('EAN');
+  });
+
   it('omits schema.org availability for a priced on-request product', () => {
     const priced = { ...schonox, price: 1000, priceUnit: 'kom', inStock: false, availability: 'on_request' } as Product;
     expect((generateProductSchema(priced, null, null).offers as any).availability).toBeUndefined();

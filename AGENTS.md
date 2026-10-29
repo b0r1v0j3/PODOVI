@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 29.10.2026 (SCHÖNOX redovne kataloške cene bez rabata)
+> **Poslednje ažuriranje:** 29.10.2026 (SCHÖNOX čitljiva pakovanja i srpski nazivi programa)
 
 ---
 
@@ -153,6 +153,11 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**SCHÖNOX — čitljiva pakovanja i program proizvođača (29.10.2026)**
+- Javna specifikacija `manufacturer_packaging` sadrži samo veličine, ambalažu i sastav kompleta: svako pakovanje u svom redu, levo poravnato, na telefonu ispod naziva polja. Poređenje takođe čuva nove redove. Sirovi proizvođački identifikatori, EAN-i i paletne količine ostaju u izvornom manifestu, umesto u jednom dugačkom redu specifikacija.
+- „Marine“ je program za brodogradnju. Javni naziv je „Brodogradnja“, uz polje „Program proizvođača“. Interna vrednost filtera `Marine` ostaje radi postojećih URL-ova, a `translate` daje srpsku labelu i čip. Ne tumačiti članstvo u programu kao automatsku potvrdu za svaku brodsku primenu.
+- `--presentation-only` osvežava samo javna pakovanja/program iz postojećeg izvornog manifesta; bez mreže, promena cena ili datuma provere proizvođačkih izvora. Poznata PDS pakovanja i odvojeni paketi iz srpskog cenovnika ostaju zasebni. Pregled: `docs/pregled-proizvoda.md`.
 
 **SCHÖNOX — redovne cene iz cenovnika (29.10.2026)**
 - Po izričitom nalogu vlasnika objavljuju se redovne kataloške cene bez rabata: 35 šifara/pakovanja na 30 postojećih proizvoda, iz važeće kolone cenovnika Sika Srbija od 17.8.2026. Izvorna cena je RSD po komadu konkretnog pakovanja bez PDV-a; prodajna cena na sajtu uključuje 20% PDV-a. Nabavni rabati se ne koriste.

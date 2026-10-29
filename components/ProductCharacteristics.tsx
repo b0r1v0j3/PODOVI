@@ -74,13 +74,14 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
         {title && <h2 className="eyebrow mb-6">{title}</h2>}
         <dl>
           {finalSpecs.map((spec, index) => {
+            const isPackaging = spec.key === 'manufacturer_packaging';
             const isWeldingSpec = /(elektrod|varila|welding|vrpca)/i.test(spec.label);
             const weldingHref = isWeldingSpec ? getWeldingAccessoryHref(spec.value) : null;
 
             return (
-              <div key={`${spec.label}-${index}`} className="flex items-center justify-between gap-4 border-b border-ink-200 py-[9px] text-[13px]">
+              <div key={`${spec.label}-${index}`} className={`${isPackaging ? 'grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] items-start gap-1 sm:gap-4' : 'flex items-center justify-between gap-4'} border-b border-ink-200 py-[9px] text-[13px]`}>
                 <dt className="text-ink-500">{spec.label}</dt>
-                <dd className="text-ink-900 text-right">
+                <dd className={`text-ink-900 ${isPackaging ? 'min-w-0 whitespace-pre-line text-left leading-relaxed' : 'text-right'}`}>
                   {weldingHref ? (
                     <Link
                       href={weldingHref}
@@ -103,7 +104,7 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
   // Merge specs and selectedCharacteristics, prioritizing selectedCharacteristics
   // to avoid duplicates. If selectedCharacteristics exists, use it as primary source
   // and only add specs that are not already in selectedCharacteristics.
-  const mergedSpecs = new Map<string, { label: string; value: string }>();
+  const mergedSpecs = new Map<string, { key?: string; label: string; value: string }>();
 
   if (selectedCharacteristics && Object.keys(selectedCharacteristics).length > 0) {
     // If we have color-specific characteristics, use them as primary source
@@ -126,7 +127,7 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
         });
 
         if (!alreadyExists) {
-          mergedSpecs.set(key, { label: spec.label, value: spec.value });
+          mergedSpecs.set(key, { key: spec.key, label: spec.label, value: spec.value });
         }
       });
     }
@@ -134,7 +135,7 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
     // If no color-specific characteristics, just use collection specs
     if (specs && specs.length > 0) {
       specs.forEach((spec) => {
-        mergedSpecs.set(spec.label.toLowerCase(), { label: spec.label, value: spec.value });
+        mergedSpecs.set(spec.label.toLowerCase(), { key: spec.key, label: spec.label, value: spec.value });
       });
     }
   }
@@ -150,13 +151,14 @@ export default function ProductCharacteristics({ specs, categoryId, title }: Pro
       {title && <h2 className="eyebrow mb-6">{title}</h2>}
       <dl>
         {finalSpecs.map((spec, index) => {
+          const isPackaging = spec.key === 'manufacturer_packaging';
           const isWeldingSpec = /(elektrod|varila|welding|vrpca)/i.test(spec.label);
           const weldingHref = isWeldingSpec ? getWeldingAccessoryHref(spec.value) : null;
 
           return (
-            <div key={`${spec.label}-${index}`} className="flex items-center justify-between gap-4 border-b border-ink-200 py-[9px] text-[13px]">
+            <div key={`${spec.label}-${index}`} className={`${isPackaging ? 'grid grid-cols-1 sm:grid-cols-[12rem_minmax(0,1fr)] items-start gap-1 sm:gap-4' : 'flex items-center justify-between gap-4'} border-b border-ink-200 py-[9px] text-[13px]`}>
               <dt className="text-ink-500">{spec.label}</dt>
-              <dd className="text-ink-900 text-right">
+              <dd className={`text-ink-900 ${isPackaging ? 'min-w-0 whitespace-pre-line text-left leading-relaxed' : 'text-right'}`}>
                 {weldingHref ? (
                   <Link
                     href={weldingHref}

@@ -95,3 +95,11 @@ Vlasnik potvrdio pravilo (AGENTS.md t.11): asortiman = Alpod, materijal = admont
 - Priloženi [PDS 1K DS PREMIUM](https://deu.sika.com/dam/dms/global-schoenox/m/pds-schoenox-1k-dspremiumen.pdf) navodi **18 kg, papirna vreća**; isto pakovanje navodi [Sika Austria](https://aut.sika.com/de/bau/fliesen-und-natursteinsysteme/abdichtung/schoenox-1k-ds-premium.html).
 - Priloženi [PDS 2K PU SOLID](https://deu.sika.com/schonox-global/dam/dms/global-schoenox/0/pds-schoenox-2k-pusoliden.pdf), odeljak Packaging, navodi **5 kg A+B**, odnosno 4,17 kg komponente A i 0,83 kg komponente B.
 - Javna pakovanja sada prate pojedinačni PDS umesto pogrešnih 28/4,5 kg iz marketinških tabela. Sirovi sukob ostaje u manifestu za sledljivost; opis ne traži dodatnu proveru vlasnika niti prenosi sporne brojeve mešanja/klase. Cene i dostupnost nisu izmišljene.
+
+---
+
+## #4 — SCHÖNOX EMICLASSIC / čitljivost pakovanja — 2026-10-29
+
+- Vlasnik je prijavio da su materijalne šifre, EAN-i, dve ambalaže i paletne količine spojene u jedan red. [Naš proizvod](https://www.podovi.online/proizvodi/schonox-emiclassic), [zvanični proizvođač](https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-emiclassic.html).
+- Zvanični izvor navodi dve odvojene kante: **14 kg** i **6 kg**. Javni sažetak ih deli u nove redove; identifikatori i paletne količine ostaju u manifestu. Ovo pravilo važi kroz uvoz celog SCHÖNOX kataloga, PDP i poređenje. Stvarni komercijalni paketi/komponente ostaju sačuvani; proizvođački podaci ne menjaju prodajnu jedinicu cenovnika.
+- „Marine“ označava program za brodogradnju, prikazan srpski kao **Brodogradnja**. EMICLASSIC pripada i podnom i brodograđevnom programu; zvanična stranica navodi MED. Sam naziv programa ne zamenjuje proveru tehničkog lista za konkretnu primenu. Interna vrednost filtera ostaje radi postojećih URL-ova.

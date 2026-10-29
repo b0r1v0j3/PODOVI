@@ -196,7 +196,7 @@ export default function ComparePageClient() {
                                 {compareItems.map(product => {
                                     const spec = product.specs?.find(s => s.key === specKey);
                                     return (
-                                        <td key={product.id} className="px-4 py-[9px] border-b border-ink-200 text-[13px] text-ink-900 text-center">
+                                        <td key={product.id} className={`px-4 py-[9px] border-b border-ink-200 text-[13px] text-ink-900 ${specKey === 'manufacturer_packaging' ? 'whitespace-pre-line text-left align-top' : 'text-center'}`}>
                                             {spec?.value || '—'}
                                         </td>
                                     );

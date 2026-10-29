@@ -19,7 +19,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi, Keramika"
         },
         {
@@ -30,7 +30,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 488435 EAN: 4016447010928 Pakovanje: 10 m, rolna Transportno pakovanje: 180/paleta"
+          "value": "10 m, rolna"
         }
       ],
       "images": [
@@ -88,7 +88,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -99,7 +99,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 579849 EAN: 7612895499352 Pakovanje: 30 m², rolna (40 rolni/paleta) Transportno pakovanje: 40/paleta Broj materijala: 579852 EAN: 7612895499369 Pakovanje: 10 m², rolna (58 rolni/paleta) Transportno pakovanje: 58/paleta"
+          "value": "30 m², rolna\n10 m², rolna"
         }
       ],
       "images": [
@@ -177,7 +177,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi, Keramika"
         },
         {
@@ -240,7 +240,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -251,7 +251,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "SCHÖNOX D8 (Ø 12-24 mm) Broj materijala: 579900 EAN: 7612895499550 Pakovanje: 25/kutija SCHÖNOX D15 (Ø 25-40 mm) Broj materijala: 579908 EAN: 7612895499680 Pakovanje: 25/kutija SCHÖNOX D21 (Ø 35-50 mm) Broj materijala: 579910 EAN: 7612895499710 Pakovanje: 25/kutija SCHÖNOX D35 (Ø 50-75 mm) Broj materijala: 580133 EAN: 7612895500225 Pakovanje: 25/kutija SCHÖNOX D65 (Ø 75-125 mm) Broj materijala: 580134 EAN: 7612895500249 Pakovanje: 25/kutija"
+          "value": "25 komada, kutija"
         }
       ],
       "images": [
@@ -306,7 +306,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -317,7 +317,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "SCHÖNOX EC AUSSENECKE Broj materijala: 579668 EAN: 7612895498782 Pakovanje: 50/kutija"
+          "value": "50 komada, kutija"
         }
       ],
       "images": [
@@ -372,7 +372,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -383,7 +383,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "SCHÖNOX FC DICHTMANSCHETTE BODEN Broj materijala: 879639 EAN: 7612895498676 Pakovanje: 10/kutija"
+          "value": "10 komada, kutija"
         }
       ],
       "images": [
@@ -443,7 +443,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -454,7 +454,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 643483 EAN: 7612895645247 Pakovanje: 22.0 kg, kanta Transportno pakovanje: 30/paleta Broj materijala: 643484 EAN: 7612895645254 Pakovanje: 16.0 kg, kanta Transportno pakovanje: 40/paleta Broj materijala: 643481 EAN: 7612895645230 Pakovanje: 7.0 kg, kanta Transportno pakovanje: 96/paleta"
+          "value": "22 kg, kanta\n16 kg, kanta\n7 kg, kanta"
         }
       ],
       "images": [
@@ -519,7 +519,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -530,7 +530,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 646083 EAN: 7612895651668 Pakovanje: 22.0 kg, kanta Transportno pakovanje: 30/paleta"
+          "value": "22 kg, kanta"
         }
       ],
       "images": [
@@ -595,7 +595,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -606,7 +606,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 776641 EAN: 7611237019203 Pakovanje: 23.5 kg prah i 6 kg tečnost Transportno pakovanje: 50/paleta"
+          "value": "23,5 kg praha + 6 kg tečnosti"
         }
       ],
       "images": [
@@ -673,7 +673,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -684,7 +684,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487962 EAN: 4016447007133 Pakovanje: 2.75 kg, kanister"
+          "value": "2,75 kg, kanister"
         }
       ],
       "images": [
@@ -744,8 +744,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Marine"
+          "label": "Program proizvođača",
+          "value": "Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -755,7 +755,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487794 EAN: 4016447009786 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -820,7 +820,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -831,7 +831,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 579735 EAN: 7612895499239 Pakovanje: 1 komad - 2/kutija"
+          "value": "1 komad (2 komada u kutiji)"
         }
       ],
       "images": [
@@ -886,7 +886,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -897,7 +897,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 774867 EAN: 7612895949642 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 44/paleta"
+          "value": "14 kg, kanta"
         }
       ],
       "images": [
@@ -974,7 +974,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -985,7 +985,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 579767 EAN: 7612895499284 Pakovanje: 1 komplet Transportno pakovanje: 120/paleta"
+          "value": "Komplet"
         }
       ],
       "images": [
@@ -1040,7 +1040,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -1051,7 +1051,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "SCHÖNOX SC L 20 Broj materijala: 579903 EAN: 7612895499598 Pakovanje: 10/kutija SCHÖNOX SC L 28 Broj materijala: 579905 EAN: 7612895499635 Pakovanje: 10/kutija SCHÖNOX SC R 20 Broj materijala: 579904 EAN: 7612895499611 Pakovanje: 10/kutija SCHÖNOX SC R 28 Broj materijala: 579906 EAN: 7612895499659 Pakovanje: 10/kutija"
+          "value": "10 komada, kutija"
         }
       ],
       "images": [
@@ -1100,7 +1100,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -1111,7 +1111,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 580458 EAN: 7612895501277 Pakovanje: 50 m, rolna 100/paleta Broj materijala: 580483 EAN: 7612895501512 Pakovanje: 25 m, rolna Transportno pakovanje: 100/paleta"
+          "value": "50 m, rolna\n25 m, rolna"
         }
       ],
       "images": [
@@ -1171,7 +1171,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi, Keramika"
         },
         {
@@ -1234,8 +1234,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -1245,7 +1245,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Pakovanje: 18 kg, vreća, prema priloženom tehničkom listu proizvođača."
+          "value": "18 kg, vreća"
         }
       ],
       "images": [
@@ -1323,7 +1323,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -1334,7 +1334,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 482877 EAN: 40164470021450 Pakovanje: 12.5 kg, vreća Transportno pakovanje: 64/paleta Broj materijala: 482878 EAN: 40164470021467 Pakovanje: 5.0 kg, kanta Transportno pakovanje: 90/paleta"
+          "value": "12,5 kg, vreća\n5 kg, kanta"
         }
       ],
       "images": [
@@ -1414,8 +1414,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -1425,7 +1425,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Pakovanje: 5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B), prema priloženom tehničkom listu proizvođača."
+          "value": "5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B)"
         }
       ],
       "images": [
@@ -1508,7 +1508,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -1519,7 +1519,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 527254 EAN: 7612895337180 Pakovanje: 20.0 kg, vreća Transportno pakovanje: 42/paleta Broj materijala: 582360 EAN: 7612895505091 Pakovanje: 4x4.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "20 kg, vreća\n4 × 4 kg, vreće"
         }
       ],
       "images": [
@@ -1589,7 +1589,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -1600,7 +1600,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 527312 EAN: 7612895337630 Pakovanje: 20.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "20 kg, vreća"
         }
       ],
       "images": [
@@ -1670,7 +1670,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -1681,7 +1681,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 527314 EAN: 7612895337661 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -1746,7 +1746,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -1757,7 +1757,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483096 EAN: 4016447005825 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -1839,7 +1839,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -1850,7 +1850,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483099 EAN: 4016447017637 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -1920,7 +1920,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -1931,7 +1931,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 614660 EAN: 7612895568867 Pakovanje: 25 m²/rolna Transportno pakovanje: 50/paleta Broj materijala: 725325 EAN: 7612895833637 Pakovanje: 25.0 m rolna (33 cm širina) Transportno pakovanje: 60/paleta"
+          "value": "25 m², rolna\n25 m, rolna (širina 33 cm)"
         }
       ],
       "images": [
@@ -1986,7 +1986,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -1997,7 +1997,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 821391 EAN: 7612655075796 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -2057,7 +2057,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -2121,7 +2121,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -2132,7 +2132,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 494332 EAN: 4016447024383 Pakovanje: 20.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "20 kg, vreća"
         }
       ],
       "images": [
@@ -2207,8 +2207,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -2218,7 +2218,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Boja: bela Broj materijala: 649542 EAN: 7612895655963 Pakovanje: 5.0 kg, kombinovano pakovanje (4.738 kg komp. A (smola), 0.262 kg komponenta B (učvršćivač) Transportno pakovanje: 90/paleta Broj materijala: 649349 EAN: 7612895655543 Pakovanje: 4x2.5 kg, kombinovano pakovanje (2.369 kg komp. A (smola), 0.131 kg komponenta B (učvršćivač) Transportno pakovanje: 144/paleta"
+          "value": "5 kg, kombinovano pakovanje (4,738 kg komponenta A (smola), 0,262 kg komponenta B (učvršćivač))\n4 × 2,5 kg, kombinovano pakovanje (2,369 kg komponenta A (smola), 0,131 kg komponenta B (učvršćivač))"
         }
       ],
       "images": [
@@ -2301,7 +2301,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -2312,7 +2312,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487805 EAN: 4016447020507 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -2382,7 +2382,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -2393,7 +2393,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 484693 EAN: 4016447007515 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 44/paleta"
+          "value": "14 kg, kanta"
         }
       ],
       "images": [
@@ -2470,7 +2470,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -2481,7 +2481,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 820471 EAN: 4016447021863 Pakovanje: 5.50 kg Kutija: 4.42 kg komp. A, 1.08 kg komp. B Transportno pakovanje: 55/paleta QUARZSAND (0.1-0.4) Broj materijala: 483533 EAN: 4016447003074 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 40/paleta"
+          "value": "5,5 kg, kutija: 4,42 kg komponenta A, 1,08 kg komponenta B"
         }
       ],
       "images": [
@@ -2551,7 +2551,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -2562,7 +2562,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483232 EAN: 4016447008925 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -2649,8 +2649,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Podovi, Marine"
+          "label": "Program proizvođača",
+          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -2660,7 +2660,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 484591 EAN: 4016447013608 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 44/paleta Broj materijala: 493367 EAN: 4016447024444 Pakovanje: 3.0 kg, kanta Transportno pakovanje: 120/paleta"
+          "value": "14 kg, kanta\n3 kg, kanta"
         }
       ],
       "images": [
@@ -2745,7 +2745,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -2756,7 +2756,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 819107 EAN: 7612655067722 Pakovanje: 10.0 kg, kombinovano pakovanje Transportno pakovanje: 28/paleta"
+          "value": "10 kg, kombinovano pakovanje"
         }
       ],
       "images": [
@@ -2831,7 +2831,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -2900,8 +2900,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Podovi, Marine"
+          "label": "Program proizvođača",
+          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -2911,7 +2911,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 484590 EAN: 4016447004255 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 44/paleta Broj materijala: 487844 EAN: 4016447004491 Pakovanje: 6.0 kg, kanta Transportno pakovanje: 90/paleta"
+          "value": "14 kg, kanta\n6 kg, kanta"
         }
       ],
       "images": [
@@ -2996,7 +2996,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -3007,7 +3007,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483578 EAN: 4016447020309 Pakovanje: Kutija: 1.0 kg smola (komp. A), 0.5 kg učvršćivač (komp. B) Transportno pakovanje: 133/paleta"
+          "value": "Kutija: 1 kg smola (komponenta A), 0,5 kg učvršćivač (komponenta B)"
         }
       ],
       "images": [
@@ -3077,7 +3077,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -3088,7 +3088,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 651696 EAN: 7612895660141 Pakovanje: 4 x 0,5  kg, kanta/kutija Transportno pakovanje: 100/paleta"
+          "value": "4 × 0,5 kg, kante u kutiji"
         }
       ],
       "images": [
@@ -3155,7 +3155,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -3166,7 +3166,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 653145 EAN: 7612895661926 Pakovanje: komplet Transportno pakovanje: 50/paleta"
+          "value": "Komplet"
         }
       ],
       "images": [
@@ -3215,7 +3215,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -3226,7 +3226,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "providna Broj materijala: 484541 EAN: 4016447015756 Pakovanje: 300 ml, kartuša - 12/kutija"
+          "value": "300 ml, kartuša (12 komada u kutiji)"
         }
       ],
       "images": [
@@ -3286,7 +3286,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -3297,7 +3297,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487871 EAN: 4016447018023 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta Broj materijala: 582876 EAN: 7612895509709 Pakovanje: 4x5.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "25 kg, vreća\n4 × 5 kg, vreće"
         }
       ],
       "images": [
@@ -3367,7 +3367,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -3378,7 +3378,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 488439 EAN: 40164470189276 Posuda sa 73 krpa (6/kutija) 30/paleta"
+          "value": "Posuda sa 73 krpe (6 komada u kutiji)"
         }
       ],
       "images": [
@@ -3433,7 +3433,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -3444,7 +3444,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 485030 EAN: 4016447016654 Pakovanje: 20.0 kg, kanta Transportno pakovanje: 33/paleta"
+          "value": "20 kg, kanta"
         }
       ],
       "images": [
@@ -3516,7 +3516,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -3527,7 +3527,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 698081 EAN: 7612895770789 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -3604,8 +3604,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -3615,7 +3615,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487679 EAN: 4016447008369 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -3688,7 +3688,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -3699,7 +3699,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487640 EAN: 4016447004835 Pakovanje: 20.0 kg, vreća Transportno pakovanje: 42/paleta Broj materijala: 582386 EAN: 7612895505336 Pakovanje: 4x4.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "20 kg, vreća\n4 × 4 kg, vreće"
         }
       ],
       "images": [
@@ -3764,7 +3764,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -3775,7 +3775,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487876 EAN: 4016447000813 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -3840,7 +3840,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -3851,7 +3851,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487931 EAN: 4016447021856 Pakovanje: 4.5 kg, kombinovano pakovanje (3.0 kg komp. A (smola), 1.5 kg komp. B (učvršćivač)) Transportno pakovanje: 55/paleta"
+          "value": "4,5 kg, kombinovano pakovanje (3 kg komponenta A (smola), 1,5 kg komponenta B (učvršćivač))"
         }
       ],
       "images": [
@@ -3921,7 +3921,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi, Keramika"
         },
         {
@@ -3932,7 +3932,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 552099 EAN: 7612895434148 Pakovanje: 11.0 kg, kanister Transportno pakovanje: 60/paleta Broj materijala: 622690 EAN: 7612895579641 Pakovanje: 5.5 kg, kanister Transportno pakovanje: 90/paleta"
+          "value": "11 kg, kanister\n5,5 kg, kanister"
         }
       ],
       "images": [
@@ -4017,7 +4017,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4028,7 +4028,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 546385 EAN: 7612895406688 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -4115,7 +4115,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4126,7 +4126,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 553078 EAN: 7612895438573 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -4208,7 +4208,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4219,7 +4219,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 611131 EAN: 7612895563220 Pakovanje: 20.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "20 kg, vreća"
         }
       ],
       "images": [
@@ -4289,7 +4289,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4300,7 +4300,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 535838 EAN: 7612895374253 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -4382,7 +4382,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4393,7 +4393,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 819026 EAN: 7612655065469 Pakovanje: 25,0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -4463,7 +4463,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4474,7 +4474,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 819140 EAN: 7612655064981 Pakovanje: 25,0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -4539,7 +4539,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4550,7 +4550,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 819005 EAN: 7612655065483 25.0 kg, vreća 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -4605,7 +4605,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -4616,7 +4616,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "SCHÖNOX IC INNENECKE Broj materijala: 579641 EAN: 7612895498690 Pakovanje: 50/kutija"
+          "value": "50 komada, kutija"
         }
       ],
       "images": [
@@ -4671,7 +4671,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -4682,7 +4682,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 591015 EAN: 7612895527482 Pakovanje: komplet Transportno pakovanje: 48/paleta SCHÖNOX iFIX® komplet 2.61 kg Broj materijala: 525976 EAN: 7612895331423 Pakovanje: komplet Transportno pakovanje: 32/paleta SCHÖNOX iFIX® komplet 7.8 kg"
+          "value": "2,61 kg, komplet\n7,8 kg, komplet"
         }
       ],
       "images": [
@@ -4769,8 +4769,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Podovi, Marine"
+          "label": "Program proizvođača",
+          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -4780,7 +4780,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487438 EAN: 4016447019037 Pakovanje: SCHÖNOX iFLOOR-komplet 125 m² Transportno pakovanje: 18/paleta"
+          "value": "Komplet za 125 m²"
         }
       ],
       "images": [
@@ -4858,7 +4858,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4869,7 +4869,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 536880 EAN: 7612895378374 Pakovanje: komplet: 2 x 7,3 kg tuba Transportno pakovanje: 54/paleta"
+          "value": "Komplet: 2 × 7,3 kg, tube"
         }
       ],
       "images": [
@@ -4939,7 +4939,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -4950,7 +4950,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 931082 EAN: 7612655336293 Pakovanje: komplet: 2 x 6.7 kg tuba Transportno pakovanje: 96/paleta"
+          "value": "Komplet: 2 × 6,7 kg, tube"
         }
       ],
       "images": [
@@ -5015,18 +5015,13 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
-        },
-        {
-          "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487360 EAN: 4016447024079 Pakovanje: SCHÖNOX iLINE AK 290 Transportno pakovanje: 500/paleta Broj materijala: 487347 EAN: 4016447024086 Pakovanje: SCHÖNOX iLINE AK 380 Transportno pakovanje: 500/paleta"
         }
       ],
       "images": [
@@ -5075,7 +5070,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -5086,7 +5081,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 493402 EAN: 4016447024482 Pakovanje: SCHÖNOX iLINE APP EXCLUSIV (u koferu)"
+          "value": "Kofer"
         }
       ],
       "images": [
@@ -5141,7 +5136,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -5152,7 +5147,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "10.0 kg, kanister 60/paleta 5.0 kg, kanister 90/paleta 1.0 kg, boca - 12/kutija 30/paleta"
+          "value": "10 kg, kanister\n5 kg, kanister\n1 kg, boca (12 komada u kutiji)"
         }
       ],
       "images": [
@@ -5246,8 +5241,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -5257,7 +5252,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 784957 EAN: 7612655008008 Pakovanje: 10.0 kg, kanister Transportno pakovanje: 60/paleta Broj materijala: 483277 EAN: 4016447016609 Pakovanje: 5.0 kg, kanister Transportno pakovanje: 90/paleta Broj materijala: 483542 EAN: 4016447016586 Pakovanje: 1.0 kg, boca - 16/kutija Transportno pakovanje: 32/paleta"
+          "value": "10 kg, kanister\n5 kg, kanister\n1 kg, boca (16 komada u kutiji)"
         }
       ],
       "images": [
@@ -5347,8 +5342,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -5358,7 +5353,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 485135 EAN: 4016447021184 Pakovanje: 5.0 kg, kanta Transportno pakovanje: 60/paleta"
+          "value": "5 kg, kanta"
         }
       ],
       "images": [
@@ -5436,7 +5431,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -5447,7 +5442,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "SCHÖNOX LEB Broj materijala: 708061 EAN: 7612895791463 Pakovanje: 10.0 kg, vreća Transportno pakovanje: 72/paleta SCHÖNOX LEF Broj materijala: 708335 EAN: 7612895792187 Pakovanje: 9.0 kg, vreća Transportno pakovanje: 30/paleta"
+          "value": "SCHÖNOX LEB — 10 kg, vreća\nSCHÖNOX LEF — 9 kg, vreća"
         }
       ],
       "images": [
@@ -5502,7 +5497,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -5513,7 +5508,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 493369 EAN: 4016447024147 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 44/paleta"
+          "value": "14 kg, kanta"
         }
       ],
       "images": [
@@ -5590,8 +5585,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Marine"
+          "label": "Program proizvođača",
+          "value": "Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -5601,7 +5596,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 485137 EAN: 4016447006617 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -5676,7 +5671,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -5687,7 +5682,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "bela Broj materijala: 488273 EAN: 4016447017132 Pakovanje: 300 ml, kartuša - 20/kutija"
+          "value": "300 ml, kartuša (20 komada u kutiji)"
         }
       ],
       "images": [
@@ -5752,7 +5747,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -5763,7 +5758,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "300 ml, kartuša - 12/kutija"
+          "value": "300 ml, kartuša (12 komada u kutiji)"
         }
       ],
       "images": [
@@ -5828,7 +5823,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -5839,7 +5834,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487874 EAN: 4016447013424 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta SCHÖNOX MONOKORN (3-4 mm) Broj materijala: 487875 EAN: 4016447013912 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 40/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -5899,7 +5894,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -5910,7 +5905,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 571140 EAN: 7612895486079 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 44/paleta"
+          "value": "14 kg, kanta"
         }
       ],
       "images": [
@@ -5975,8 +5970,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Podovi, Marine"
+          "label": "Program proizvođača",
+          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -5986,7 +5981,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 493366 EAN: 4016447024277 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 40/paleta Broj materijala: 487802 EAN: 4016447001308 Pakovanje: 3.0 kg, kanta Transportno pakovanje: 120/paleta"
+          "value": "14 kg, kanta\n3 kg, kanta"
         }
       ],
       "images": [
@@ -6071,7 +6066,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -6082,7 +6077,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 485248 EAN: 4016447002060 Pakovanje: 6.0 kg, kanta Transportno pakovanje: 60/paleta Broj materijala: 488153 EAN: 4016447003944 Pakovanje: 0.65 kg, limenka - 10/kutija Transportno pakovanje: 50/paleta"
+          "value": "6 kg, kanta\n0,65 kg, limenka (10 komada u kutiji)"
         }
       ],
       "images": [
@@ -6149,7 +6144,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -6160,7 +6155,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 818975 EAN: 7612655066930 Pakovanje: 18,0 kg, kanta Transportno pakovanje: 24/paleta"
+          "value": "18 kg, kanta"
         }
       ],
       "images": [
@@ -6230,7 +6225,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -6241,7 +6236,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 699722 EAN: 7612895775241 Pakovanje: 6x1800 ml u kutiji Transportno pakovanje: 216/paleta Broj materijala: 703632 EAN: 7612895781662 Pakovanje: 20x600 ml u kutiji Transportno pakovanje: 960/paleta"
+          "value": "6 × 1800 ml u kutiji\n20 × 600 ml u kutiji"
         }
       ],
       "images": [
@@ -6306,7 +6301,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -6317,7 +6312,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 703631 EAN: 761289595781648 Pakovanje: 13,0 kg, kanta Transportno pakovanje: 33/paleta"
+          "value": "13 kg, kanta"
         }
       ],
       "images": [
@@ -6382,7 +6377,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -6393,7 +6388,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 818973 EAN: 7612655066916 Pakovanje: 18.0 kg, kanta Transportno pakovanje: 24/paleta"
+          "value": "18 kg, kanta"
         }
       ],
       "images": [
@@ -6463,7 +6458,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi, Keramika"
         },
         {
@@ -6474,7 +6469,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 485466 EAN: 4016447023454 Pakovanje: 1.02 kg, limenka - 6/kutija Transportno pakovanje: 66/paleta"
+          "value": "1,02 kg, limenka (6 komada u kutiji)"
         }
       ],
       "images": [
@@ -6542,7 +6537,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -6553,7 +6548,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483194 EAN: 4016447008949 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -6628,7 +6623,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -6639,7 +6634,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483238 EAN: 4015447008376 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -6719,7 +6714,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -6730,7 +6725,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487485 EAN: 4016447022129 Pakovanje: 20.0 kg, vreća Transportno pakovanje: 42/paleta Broj materijala: 582383 EAN: 7612895505299 Pakovanje: 4x4.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "20 kg, vreća\n4 × 4 kg, vreće"
         }
       ],
       "images": [
@@ -6810,7 +6805,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -6821,7 +6816,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 730651 EAN: 7312895838069 Pakovanje: 11.0 kg, kanta Transportno pakovanje: 44/paleta"
+          "value": "11 kg, kanta"
         }
       ],
       "images": [
@@ -6903,7 +6898,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -6914,7 +6909,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 616159 EAN: 7612895571065 Pakovanje: 16.0 kg, kanta Transportno pakovanje: 33/paleta"
+          "value": "16 kg, kanta"
         }
       ],
       "images": [
@@ -6979,7 +6974,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -6990,7 +6985,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 523820 EAN: 4016447025021 Pakovanje: 9.79 kg, kombinovano pakovanje Transportno pakovanje: 65/paleta"
+          "value": "9,79 kg, kombinovano pakovanje"
         }
       ],
       "images": [
@@ -7065,7 +7060,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -7076,7 +7071,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 481685 EAN: 4016447012458 Pakovanje: 7.05 kg, kombinovano pakovanje, učvršćivač je unutra Transportno pakovanje: 60/paleta"
+          "value": "7,05 kg, kombinovano pakovanje, učvršćivač je uključen"
         }
       ],
       "images": [
@@ -7148,7 +7143,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -7159,7 +7154,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 532530 EAN: 4016447015060 Pakovanje: 25 m², rolna Transportno pakovanje: 30/paleta"
+          "value": "25 m², rolna"
         }
       ],
       "images": [
@@ -7214,7 +7209,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -7225,7 +7220,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 523429 EAN: 4016447025083 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta Broj materijala: 523442 EAN: 7612895319971 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 64/paleta"
+          "value": "25 kg, vreća\n15 kg, vreća"
         }
       ],
       "images": [
@@ -7295,7 +7290,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -7306,7 +7301,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487540 EAN: 4016447023751 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -7371,7 +7366,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -7382,7 +7377,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 610159 EAN: 7612895560847 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -7457,7 +7452,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -7468,7 +7463,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 813180 EAN: 7612655051417 Pakovanje: 20,0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "20 kg, vreća"
         }
       ],
       "images": [
@@ -7538,7 +7533,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -7549,7 +7544,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 509490 EAN: 4016447024956 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 64/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -7619,8 +7614,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -7630,7 +7625,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 491440 EAN: 4016447024178 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta Broj materijala: 509299 EAN: 4016447024925 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 64/paleta Broj materijala: 582879 EAN: 7612895509747 Pakovanje: 4x4.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "25 kg, vreća\n15 kg, vreća\n4 × 4 kg, vreće"
         }
       ],
       "images": [
@@ -7713,7 +7708,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -7724,7 +7719,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 492888 EAN: 4016447024185 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta Broj materijala: 509298 EAN: 4061447024185 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -7794,7 +7789,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -7805,7 +7800,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 491612 EAN: 4016447023737 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -7880,8 +7875,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -7891,7 +7886,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483376 EAN: 4016447018641 25.0 kg, vreća 42/paleta Broj materijala: 582880 EAN: 7612895509761 4x5.0 kg, vreća 48/paleta Broj materijala: 509395 EAN: 4016447024949 15.0 kg, vreća 64/paleta"
+          "value": "25 kg, vreća\n4 × 5 kg, vreće\n15 kg, vreća"
         }
       ],
       "images": [
@@ -7969,7 +7964,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -7980,7 +7975,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 488270 EAN: 4016447004293 25.0 kg, vreća 42/paleta Broj materijala: 483530 EAN: 4016447004286 25.0 kg, vreća 40/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -8029,7 +8024,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -8040,7 +8035,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487636 EAN: 4016447022167 Pakovanje: 20.0 kg, vreća Transportno pakovanje: 42/paleta Broj materijala: 582381 EAN: 7612895505268 Pakovanje: 4x4.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "20 kg, vreća\n4 × 4 kg, vreće"
         }
       ],
       "images": [
@@ -8110,7 +8105,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -8121,7 +8116,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 532518 EAN: 4016447008116 Pakovanje: 50.4 m²/rolna - 1 rolna u kutiji Transportno pakovanje: 12/paleta"
+          "value": "50,4 m², rolna (1 rolna u kutiji)"
         }
       ],
       "images": [
@@ -8182,7 +8177,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi, Keramika"
         },
         {
@@ -8193,7 +8188,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 573429 EAN: 7612895489926 Pakovanje: 25 m, rolna"
+          "value": "25 m, rolna"
         }
       ],
       "images": [
@@ -8251,8 +8246,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Podovi, Marine"
+          "label": "Program proizvođača",
+          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -8262,7 +8257,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 512142 EAN: 4016447024888 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 64/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -8330,7 +8325,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -8341,7 +8336,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487563 EAN: 4016447023447 Pakovanje: 20.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "20 kg, vreća"
         }
       ],
       "images": [
@@ -8423,7 +8418,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -8434,7 +8429,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483234 EAN: 4016447004088 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -8504,7 +8499,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi, Keramika"
         },
         {
@@ -8515,7 +8510,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487905 EAN: 4016447023676 Pakovanje: 20 m/rolna - 12 kutija sa po 5 rolni Transportno pakovanje: 12/paleta"
+          "value": "20 m, rolna (5 rolni u kutiji)"
         }
       ],
       "images": [
@@ -8573,7 +8568,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -8584,7 +8579,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Boja: srebrnosiva Broj materijala: 485526 EAN: 4016447023164 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 64/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -8654,7 +8649,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -8665,7 +8660,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487744 EAN: 4016447008659 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -8740,8 +8735,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -8751,7 +8746,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "bela Broj materijala: 642123 EAN: 7612895641171 Pakovanje: 4x5.0 kg, vreća Transportno pakovanje: 192/paleta"
+          "value": "4 × 5 kg, vreće"
         }
       ],
       "images": [
@@ -8829,7 +8824,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -8840,7 +8835,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483280 EAN: 4016447004590 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -8920,7 +8915,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi, Keramika"
         },
         {
@@ -8931,7 +8926,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 527392 EAN: 7612895338132 Pakovanje: 2 x 6 plastičnih boca u kutiji (6 x komp. A, 6 x komp. B) Transportno pakovanje: 40/paleta"
+          "value": "2 × 6 plastičnih boca u kutiji (6 × komponenta A, 6 × komponenta B)"
         }
       ],
       "images": [
@@ -9009,8 +9004,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Podovi, Keramika, Marine"
+          "label": "Program proizvođača",
+          "value": "Podovi, Keramika, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -9020,7 +9015,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483284 EAN: 4016447018726 Pakovanje: 12.0 kg, kanta Transportno pakovanje: 40/paleta Broj materijala: 483203 EAN: 4016447010454 Pakovanje: 5.0 kg, kanta Transportno pakovanje: 90/paleta Broj materijala: 483348 EAN: 4016447010683 Pakovanje: 1.0 kg, kanta - 8/kutija Transportno pakovanje: 24/paleta"
+          "value": "12 kg, kanta\n5 kg, kanta\n1 kg, kanta (8 komada u kutiji)"
         }
       ],
       "images": [
@@ -9119,7 +9114,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -9130,7 +9125,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 578066 EAN: 7612895496580 Pakovanje: 300 ml, kartuša - 12/kutija komponenta / Boja: bela"
+          "value": "300 ml, kartuša (12 komada u kutiji)"
         }
       ],
       "images": [
@@ -9190,7 +9185,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -9201,7 +9196,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487644 EAN: 4016447017705 25.0 kg, vreća 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -9276,7 +9271,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -9287,7 +9282,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 804934 EAN: 7612655036599 Pakovanje: 20 m, rolna Transportno pakovanje: 300/paleta"
+          "value": "20 m, rolna"
         }
       ],
       "images": [
@@ -9342,7 +9337,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -9353,7 +9348,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483610 EAN: 4016447023072 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 64/paleta Broj materijala: 582397 EAN: 7612895506449 Pakovanje: 4x5.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "15 kg, vreća\n4 × 5 kg, vreće"
         }
       ],
       "images": [
@@ -9418,7 +9413,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -9429,7 +9424,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 527818 EAN: 7612895340159 Pakovanje: 10.0 kg, kanta Transportno pakovanje: 40/paleta"
+          "value": "10 kg, kanta"
         }
       ],
       "images": [
@@ -9494,7 +9489,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -9505,7 +9500,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 577511 EAN: 7612895495880 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 44/paleta"
+          "value": "14 kg, kanta"
         }
       ],
       "images": [
@@ -9570,7 +9565,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -9581,7 +9576,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483535 EAN: 4016447021832 Pakovanje: 20 m²/rolna Transportno pakovanje: 11/paleta 3 mm"
+          "value": "20 m², rolna"
         }
       ],
       "images": [
@@ -9641,7 +9636,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -9652,7 +9647,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483537 EAN: 4016447019150 Pakovanje: 6.25 m², rolna Transportno pakovanje: 35/paleta"
+          "value": "6,25 m², rolna"
         }
       ],
       "images": [
@@ -9712,7 +9707,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -9723,7 +9718,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483298 EAN: 4016447018634 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -9793,7 +9788,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -9804,7 +9799,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487761 EAN: 4016447019983 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -9869,7 +9864,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -9880,7 +9875,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483098 EAN: 4016447004323 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -9945,7 +9940,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -9956,7 +9951,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 484455 EAN: 4016447007607 Pakovanje: 20.0 kg, kanta Transportno pakovanje: 33/paleta Broj materijala: 487741 EAN: 4016447018627 Pakovanje: 14.0 kg, kanta Transportno pakovanje: 44/paleta"
+          "value": "20 kg, kanta\n14 kg, kanta"
         }
       ],
       "images": [
@@ -10023,8 +10018,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Podovi, Marine"
+          "label": "Program proizvođača",
+          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -10034,7 +10029,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487755 EAN: 4016447006778 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -10107,7 +10102,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -10118,7 +10113,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487645 EAN: 4016447011444 Pakovanje: 10 kg, kanister Transportno pakovanje: 60/paleta Broj materijala: 487647 EAN: 4016447002954 Pakovanje: 1.0 kg, boca - 12/kutija Transportno pakovanje: 30/paleta"
+          "value": "10 kg, kanister\n1 kg, boca (12 komada u kutiji)"
         }
       ],
       "images": [
@@ -10188,7 +10183,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -10199,7 +10194,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 582582 EAN: 7612895508009 Pakovanje: 4x5.0 kg, vreća Transportno pakovanje: 48/paleta"
+          "value": "4 × 5 kg, vreće"
         }
       ],
       "images": [
@@ -10269,7 +10264,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -10280,7 +10275,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483097 EAN: 4016447022594 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -10350,7 +10345,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -10361,7 +10356,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 487562 EAN: 4016447020477 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta SCHÖNOX QUARZSAND Broj materijala: 48350 EAN: 4016447004286 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -10431,7 +10426,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Keramika"
         },
         {
@@ -10442,7 +10437,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 579369 EAN: 7612895497914 Pakovanje: 15.0 kg, vreća Transportno pakovanje: 64/paleta"
+          "value": "15 kg, vreća"
         }
       ],
       "images": [
@@ -10512,8 +10507,8 @@
         },
         {
           "key": "program",
-          "label": "Program",
-          "value": "Podovi, Marine"
+          "label": "Program proizvođača",
+          "value": "Podovi, Brodogradnja"
         },
         {
           "key": "manufacturer",
@@ -10523,7 +10518,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483289 EAN: 4016447020354 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -10613,7 +10608,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -10624,7 +10619,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483292 EAN: 4016447022914 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -10694,7 +10689,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -10705,7 +10700,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 527253 EAN: 7612895337173 Pakovanje: 25.0 kg, vreća Transportno pakovanje: 42/paleta"
+          "value": "25 kg, vreća"
         }
       ],
       "images": [
@@ -10775,7 +10770,7 @@
         },
         {
           "key": "program",
-          "label": "Program",
+          "label": "Program proizvođača",
           "value": "Podovi"
         },
         {
@@ -10786,7 +10781,7 @@
         {
           "key": "manufacturer_packaging",
           "label": "Pakovanja proizvođača",
-          "value": "Broj materijala: 483541 EAN: 4016447022068 Pakovanje: 4.5 kg, vreća u kanti Transportno pakovanje: 44/paleta"
+          "value": "4,5 kg, vreća u kanti"
         }
       ],
       "images": [

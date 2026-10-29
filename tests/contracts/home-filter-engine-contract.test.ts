@@ -199,12 +199,18 @@ describe('brand-only category context', () => {
     expect(groups.map(group => group.entry.id)).toEqual(expect.arrayContaining(['pribor.program', 'pribor.type']));
     expect(groups.find(group => group.entry.id === 'category')!.options![0].value).toBe('pribor');
     const program = groups.find(group => group.entry.id === 'pribor.program')!.options!.find(option => option.value === programValue)!;
+    expect(groups.find(group => group.entry.id === 'pribor.program')!.entry.label).toBe('Program proizvođača');
+    expect(program.label).toBe(programValue === 'Marine' ? 'Brodogradnja' : programValue);
     expect(program.count).toBeGreaterThan(0);
     const selection = toggleHomeListValue(brand, 'pribor.program', program.value);
     const params = serializeHomeFilterSelection({ selection, tab: 'collections', sort: 'featured' }, schema);
     expect(params.has('category')).toBe(false);
     const restored = pruneHomeSelection(parseHomeFilterSelection(params, schema).selection, schema, items);
     expect(restored).toEqual(selection);
+    if (programValue === 'Marine') {
+      expect(params.get('facet')).toBe('pribor::program::Marine');
+      expect(evaluateHomeFilters(items, schema, restored, options).chips.map(chip => chip.label)).toContain('Brodogradnja');
+    }
     const sanitized = sanitizeHomeSelection(restored, schema, items, options.categories, new Set(Object.keys(options.brandNames)));
     expect(sanitized).toEqual(selection);
     expectCountsEqualResults(items, schema, selection, options);

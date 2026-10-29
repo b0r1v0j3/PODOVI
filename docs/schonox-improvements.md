@@ -5,6 +5,36 @@ Detaljni lokalni dokazi pregleda su u `output/audit-2026-10-22/izvestaj.md`.
 Ovaj dokument beleži obim i rezultat popravki, bez vraćanja ranije uklonjene
 korpe, naloga ili porudžbina.
 
+## Dopuna čitljivosti pakovanja — 29.10.2026.
+
+Prijavljen je sirovi tekst proizvođačke tabele na EMICLASSIC stranici: šifre,
+EAN-i, pakovanja i paletne količine bili su spojeni u jedan red. Uvoz sada
+pravi kratak sažetak svakog pakovanja u novom redu; sirovi izvor ostaje u
+manifestu. EMICLASSIC prikazuje **14 kg, kanta** i **6 kg, kanta**, levo
+poravnato, na telefonu ispod naziva polja. Poređenje čuva isti prelom.
+
+Obrađeno je svih 135 proizvoda; 130 ima pouzdan podatak o pakovanju. Četiri
+izvora ga nemaju, a iLINE AK navodi samo nazive modela bez jedinice/ambalaže.
+Takav tekst se izostavlja. Višedelni kompleti, LEB/LEF komponente, dimenzije
+rolni i stvarna pakovanja kutija su sačuvani. Odvojeni QUARZSAND/MONOKORN
+redovi se ne predstavljaju kao dodatna pakovanja drugog proizvoda.
+
+„Marine“ se prikazuje kao **Brodogradnja**, uz naziv **Program proizvođača**.
+Interna vrednost filtera ostaje `Marine`, pa prethodni URL-ovi rade; postojeća
+mapa prevoda daje srpske opcije i čipove. Proverena je zvanična EMICLASSIC
+stranica; tamo su navedena oba pakovanja i MED. Pripadnost programu nije
+automatska potvrda svake brodske primene.
+
+`--presentation-only` menja samo ove dve specifikacije bez mreže. Nezavisno
+je potvrđeno da su cene, cenovne opcije, slike, dokumenti, datumi, opisi i
+izvorni manifest identični prethodnoj verziji. Prolazi 49 contract fajlova /
+436 testova, TypeScript i lint su čisti; extractor self-check prolazi.
+Pregledane su desktop i mobilna strana; pakovanja zadržavaju odvojene redove,
+levo poravnanje i jednu mobilnu kolonu, bez širenja stranice.
+Produkcioni build sa validacijom slika prolazi. Lokalni produkcioni server
+potvrđuje EMICLASSIC redove i cenu, prelom u poređenju i stari Marine URL sa
+srpskim filterom/čipom Brodogradnja i 19 proizvoda.
+
 ## Prihvaćen obim
 
 - SCHÖNOX ambalaža se prikazuje cela na beloj pozadini, sa unutrašnjim razmakom,
