@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { Product } from '@/types';
-import { isRetiredBloqProduct } from '@/lib/catalog/retired-bloq';
+import { isRetiredProduct } from '@/lib/catalog/retired-products';
 
 const MAX_COMPARE = 3;
 const STORAGE_KEY = 'podovi_compare';
@@ -28,7 +28,7 @@ export function CompareProvider({ children }: { children: ReactNode }) {
             const stored = localStorage.getItem(STORAGE_KEY);
             if (stored) {
                 const parsed = JSON.parse(stored);
-                setCompareItems(Array.isArray(parsed) ? parsed.filter(product => product && !isRetiredBloqProduct(product)) : []);
+                setCompareItems(Array.isArray(parsed) ? parsed.filter(product => product && !isRetiredProduct(product)) : []);
             }
         } catch { }
         setHydrated(true);
@@ -42,7 +42,7 @@ export function CompareProvider({ children }: { children: ReactNode }) {
     }, [compareItems, hydrated]);
 
     const addToCompare = useCallback((product: Product) => {
-        if (isRetiredBloqProduct(product)) return;
+        if (isRetiredProduct(product)) return;
         setCompareItems(prev => {
             if (prev.length >= MAX_COMPARE) return prev;
             if (prev.some(p => p.id === product.id)) return prev;

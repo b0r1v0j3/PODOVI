@@ -438,6 +438,32 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "schonox-anti-slip",
+      "packages": [
+        {
+          "manufacturerSku": "582475",
+          "packagingLabel": "14 kg",
+          "listPriceNetMinor": 825546,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "schonox-svedska-gleterica-600mm",
+      "packages": [
+        {
+          "manufacturerSku": "483606",
+          "packagingLabel": "1 kom, 600 mm",
+          "listPriceNetMinor": 278901,
+          "sourcePages": [
+            5
+          ]
+        }
+      ]
     }
   ]
 }

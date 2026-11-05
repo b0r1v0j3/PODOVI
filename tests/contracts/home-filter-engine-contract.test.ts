@@ -228,7 +228,7 @@ describe('brand-only category context', () => {
     for (const value of ['Marine', 'Brodogradnja', 'Keramika', 'Podovi']) {
       const restored = parseHomeFilterSelection(`?brand=17&facet=pribor::program::${value}`, schema);
       expect(restored.selection.lists['pribor.program']).toBeUndefined();
-      expect(evaluateHomeFilters(items, schema, restored.selection, options).results).toHaveLength(135);
+      expect(evaluateHomeFilters(items, schema, restored.selection, options).results).toHaveLength(32);
       expect(serializeHomeFilterSelection(restored, schema).has('facet')).toBe(false);
     }
   });

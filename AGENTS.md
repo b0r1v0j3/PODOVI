@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 29.10.2026 (uklonjen ceo javni Program proizvođača)
+> **Poslednje ažuriranje:** 05.11.2026 (SCHÖNOX asortiman prema cenovniku)
 
 ---
 
@@ -153,6 +153,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**SCHÖNOX — samo asortiman iz cenovnika (05.11.2026, poslednji nalog vlasnika)**
+- Javna ponuda sadrži 32 proizvoda / svih 37 jedinstvenih šifara cenovnika Sika Srbija od 17.8.2026. Dodati su zasebni Anti Slip 14 kg (582475) i švedska gleterica 600 mm (483606); 105 proizvoda kojih nema u cenovniku povučeno je iz javnog kataloga. Ranije beleške o ponudi svih 135 globalnih proizvoda više ne određuju asortiman.
+- `tools/schonox-prices.json` određuje dozvoljene slugove nezavisno od isteka cene; `tools/schonox-assortment.json` dopunjuje globalni izvor regionalnim proizvodima. Uvoz bira dozvoljeni asortiman pre preuzimanja. Izvorni manifest i raniji Supabase objekti ostaju za provenijenciju/rollback.
+- Povučenih 105 proizvoda ne ostaje u sačuvanim omiljenim, poređenju, istoriji ili upitu. Novi alat dobija tip „Alati za ugradnju“. Ostali brendovi i čist prikaz konačne cene ostaju. Posle isteka cenovnika uklanjaju se iznosi, ne ovih 32 proizvoda.
+
 
 **Uklonjen Program proizvođača (29.10.2026, poslednji nalog vlasnika)**
 - Izbačeno je celo polje Program/Program proizvođača i njegov filter, uključujući ranije nazive Marine/Brodogradnja. Ne vraćati ih u javni prikaz ili poređenje. Stari URL filter se odbacuje bez skrivanja proizvoda; stari sačuvani specovi se ne prikazuju ni pre API osvežavanja.

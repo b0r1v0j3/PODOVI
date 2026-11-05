@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ProductImage from './ProductImage';
-import { isRetiredBloqProduct } from '@/lib/catalog/retired-bloq';
+import { isRetiredProduct } from '@/lib/catalog/retired-products';
 import { formatProductPrice, getProductPriceSummary, type ProductPriceSummary } from '@/lib/utils/product-price';
 
 interface ViewedProduct extends ProductPriceSummary {
@@ -26,7 +26,7 @@ export default function RecentlyViewed() {
             const stored = localStorage.getItem('recentlyViewed');
             if (stored) {
                 const parsed: ViewedProduct[] = JSON.parse(stored);
-                const activeProducts = Array.isArray(parsed) ? parsed.filter(product => product && !isRetiredBloqProduct(product)) : [];
+                const activeProducts = Array.isArray(parsed) ? parsed.filter(product => product && !isRetiredProduct(product)) : [];
                 setProducts(activeProducts.slice(0, 10));
                 if (!Array.isArray(parsed) || activeProducts.length !== parsed.length) {
                     localStorage.setItem('recentlyViewed', JSON.stringify(activeProducts));
@@ -108,13 +108,13 @@ export function addToRecentlyViewed(product: {
     categoryId?: string;
     url?: string;
 } & ProductPriceSummary) {
-    if (typeof window === 'undefined' || isRetiredBloqProduct(product)) return;
+    if (typeof window === 'undefined' || isRetiredProduct(product)) return;
     try {
         const stored = localStorage.getItem('recentlyViewed');
         let products: ViewedProduct[] = stored ? JSON.parse(stored) : [];
 
         // Remove if already exists to move to top
-        products = products.filter(p => p.id !== product.id && !isRetiredBloqProduct(p));
+        products = products.filter(p => p.id !== product.id && !isRetiredProduct(p));
 
         // Add to beginning
         products.unshift({

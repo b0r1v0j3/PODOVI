@@ -93,7 +93,21 @@ Budući owner mora da preuzme sledeći minimum:
 3. Obavezno ažuriranje `AGENTS.md` + `.agent/workflows/podovi-architecture.md` u istom commit-u kada se menja extractor contract.
 4. Incident postmortem disciplina: svaki rollback mora imati issue komentar sa uzrokom, opsegom i finalnim statusom.
 
-## SCHÖNOX — evropski/globalni katalog (22.10.2026)
+## SCHÖNOX — asortiman iz cenovnika (05.11.2026)
+
+**Aktuelni javni obim:** 32 proizvoda / 37 šifara, samo iz `tools/schonox-prices.json`.
+Regionalni Anti Slip i gleterica 600 mm imaju proizvođačke zapise u
+`tools/schonox-assortment.json`. Uvoz spaja ove zapise sa istorijskim globalnim
+izvorom i bira dozvoljene slugove pre preuzimanja asseta. Istek cene ne menja
+asortiman. `--assortment-only` bira isti podskup iz postojećeg javnog JSON-a i
+ponovo primenjuje cenovnik bez mreže; svi dozvoljeni proizvodi moraju već postojati
+u njemu. `--from-source` regeneriše kompletan odabrani podskup. Manifest zadržava
+istorijske `products` i zasebne `regionalProducts` / `selectedProductSlugs`;
+asset/missing/failure nizovi opisuju samo javno odabrani podskup.
+Povučene identitete uskladiti u `lib/catalog/retired-products.ts` pri promeni liste.
+Stare assete ne brisati iz Storage-a.
+
+Sledeći opis globalnog crawla i stari brojevi odnose se na izvor, ne javnu ponudu.
 
 `node tools/extract_schonox_catalog.js` čita zvanične Sika ulaze `floor-range`,
 `tile-range` i `marine-range`, uključujući pomoćni pribor. Provera od 22.10.2026.

@@ -28,7 +28,7 @@ afterAll(() => vi.unstubAllGlobals());
 
 describe('product image framing', () => {
   it('shows every canonical SCHÖNOX packshot whole on white with shared padding', () => {
-    expect(dataset.products).toHaveLength(135);
+    expect(dataset.products).toHaveLength(32);
     for (const product of dataset.products) {
       const image = renderImage({ sources: product.images });
       expect(image.props.style, product.slug).toEqual({

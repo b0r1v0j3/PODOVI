@@ -1,4 +1,4 @@
-# SCHÖNOX redovne cene — 29.10.2026.
+# SCHÖNOX redovne cene i asortiman — 05.11.2026.
 
 Vlasnik je izričito tražio redovne cene iz cenovnika bez rabata. Objavljuje se
 samo uparen podskup redovnih cena; interni PDF, privatna prepiska i nabavni
@@ -25,12 +25,15 @@ jednostavni redovi pakovanje–cena. Ova odluka zamenjuje prethodni neto/bruto p
 ## Pokrivenost
 
 Od 40 redova cenovnika, tri ponovljena SHP reda daju ukupno 37 jedinstvenih
-šifara. Upareno je 35 šifara sa 30 postojećih proizvoda: 28 direktnim
-proizvođačkim šiframa, sedam eksplicitnim nazivom i pakovanjem.
-KH, SHP i AB imaju više pakovanja, zasebne cene i oznaku „od“ na kartici.
-Anti Slip 14 kg (582475) i švedska gleterica 600 mm (483606) nemaju potvrđeno
-podudaranje sa postojećim katalogom i nisu pridruženi sličnom proizvodu.
-Ostalih 105 proizvoda nema cenu u ovom izvoru. Dostupnost ostaje uz potvrdu prodaje.
+šifara. Svih 37 šifara sada pripada 32 javna proizvoda. Anti Slip 14 kg (582475)
+i švedska gleterica 600 mm (483606) dodati su kao zasebni proizvodi sa zvaničnim
+fotografijama i proizvođačkim izvorima, bez preslikavanja na sličan proizvod.
+Cene su 9.906,55 RSD i 3.346,81 RSD. KH, SHP i AB imaju više pakovanja i zasebne
+cene, sa oznakom „od“ na kartici. Dostupnost ostaje uz potvrdu prodaje.
+
+Po poslednjem nalogu vlasnika uklonjeno je 105 proizvoda kojih nema u cenovniku.
+Asortiman određuju odobreni slugovi, nezavisno od važenja iznosa. Izvorni globalni
+katalog i stari asseti ostaju za proveru porekla i povratak prethodne verzije.
 
 ## Tok podataka i provere
 
@@ -48,6 +51,6 @@ cene, šifre, jedinice, PDV i rok cenovnika. Formatter uklanja vidljive oznake
 PDV-a i sufiks `/pakovanje (...)`, uz očuvane značajne jedinice poput m².
 Sačuvani korisnički proizvodi obnavljaju i uklanjaju stare iznose.
 
-Regresije pokrivaju svih 35 cena, zaokruživanje na paru, različita pakovanja,
+Regresije pokrivaju svih 37 cena, zaokruživanje na paru, različita pakovanja,
 izostanak rabata, istek u Beogradu, filtere oba repozitorijuma i sažete podatke.
 Završna lokalna i produkciona provera beleže se u `docs/schonox-improvements.md`.

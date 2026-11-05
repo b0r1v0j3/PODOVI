@@ -1,0 +1,92 @@
+{
+  "regionalProducts": [
+    {
+      "name": "SCHÖNOX ANTI SLIP",
+      "slug": "schonox-anti-slip",
+      "canonicalUrl": "https://nld.sika.com/schonox/nl/vloertechniek/lijmen/schoenox-anti-slip.html",
+      "checkedAt": "2026-11-05T00:10:29.618666Z",
+      "groups": [
+        "https://nld.sika.com/schonox/nl/vloertechniek/lijmen.html"
+      ],
+      "shortDescription": "Zeer emissie-arm, verwijderbaar speciaal-fixeermidde",
+      "description": "",
+      "sections": {
+        "Packaging": "Material No. 582475 EAN 7612895506968 Packsize 14.0-kg-pail"
+      },
+      "images": [
+        "https://dynamicmedia.sika.com/adobe/assets/urn:aaid:aem:d96840c3-38f6-4be2-8cd5-e125fb008314/as/collab-02-145020-scx-anti-slip-14kg-1x1-00057179.png?width=2440&height=2440"
+      ],
+      "documents": [
+        {
+          "url": "https://nld.sika.com/schonox/dam/dms/nl-schonox/c/PDS%20ANTI%20SLIP%20LSA%20NL.pdf",
+          "title": "SCHÖNOX ANTI SLIP",
+          "type": "product_data_sheet",
+          "language": "nl",
+          "version": null
+        },
+        {
+          "url": "https://nld.sika.com/schonox/dam/dms/nl-schonox/7/voc-emission-classificationgev-emicodeschoenoxantislipnl.pdf",
+          "title": "SCHÖNOX ANTI SLIP",
+          "type": "ecolabel",
+          "language": "nl",
+          "version": null
+        },
+        {
+          "url": "https://srb.sika.com/dms/getdocument.get/64bddcef-2dbc-4916-bb6b-e8ea9c8d55ce_rs01/sds-schoenox-antislip.pdf",
+          "title": "SCHÖNOX ANTI SLIP",
+          "type": "safety_data_sheet",
+          "language": "sr",
+          "version": "3.0"
+        }
+      ],
+      "alternateUrls": []
+    },
+    {
+      "name": "SCHÖNOX Švedska gleterica 600 mm",
+      "slug": "schonox-svedska-gleterica-600mm",
+      "canonicalUrl": "https://nld.sika.com/schonox/nl/vloertechniek/hulpmiddelen.html",
+      "checkedAt": "2026-11-05T00:10:29.618666Z",
+      "groups": [
+        "https://nld.sika.com/schonox/nl/vloertechniek/hulpmiddelen.html"
+      ],
+      "shortDescription": "Voor het gelijkmatig verdelen van SCHÖNOX egaliseermiddelen.",
+      "description": "SCHÖNOX SCHWEDENRAKEL 600 mm. Materiaalnummer 483606. EAN 4016447003098.",
+      "sections": {
+        "Packaging": "Material No. 483606 EAN 4016447003098 Packsize 1 piece",
+        "Width": "600 mm"
+      },
+      "images": [
+        "https://dynamicmedia.sika.com/adobe/assets/urn:aaid:aem:b6f18635-b0a4-4596-9514-3f011cf0afc4/as/nl-collab-02-32004-scx-schwedenrakel-600mm-1x1-00393474.original-01871930.png"
+      ],
+      "documents": [
+        {
+          "url": "https://deu.sika.com/dam/dms/de-schoenox/c/programm-fussbodentechnik-und-wandtechnik.pdf",
+          "title": "SCHÖNOX Katalog 2026 — SCHWEDENRAKEL, str. 55",
+          "type": "catalog",
+          "language": "de",
+          "version": "2026"
+        },
+        {
+          "url": "https://nld.sika.com/dam/dms/nl-schonox/t/Programma_2025_VLOER.pdf",
+          "title": "SCHÖNOX Katalog 2025 — SCHWEDENRAKEL, str. 35",
+          "type": "catalog",
+          "language": "nl",
+          "version": "2025"
+        }
+      ],
+      "alternateUrls": [],
+      "sourceCatalogs": [
+        {
+          "url": "https://nld.sika.com/dam/dms/nl-schonox/t/Programma_2025_VLOER.pdf",
+          "page": 35,
+          "note": "Excludes SCHÖNOX HS 10 F and SCHÖNOX APF"
+        },
+        {
+          "url": "https://deu.sika.com/dam/dms/de-schoenox/c/programm-fussbodentechnik-und-wandtechnik.pdf",
+          "page": 55,
+          "note": "483606 / 4016447003098 / 600 mm / 1 piece"
+        }
+      ]
+    }
+  ]
+}

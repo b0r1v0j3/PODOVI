@@ -2,7 +2,7 @@
 
 import { useState, FormEvent, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { isRetiredBloqReference } from '@/lib/catalog/retired-bloq';
+import { isRetiredProductReference } from '@/lib/catalog/retired-products';
 
 export default function ContactForm() {
     const searchParams = useSearchParams();
@@ -40,7 +40,7 @@ export default function ContactForm() {
     }, [status]);
 
     useEffect(() => {
-        if (isRetiredBloqReference(initialProduct) || isRetiredBloqReference(initialColor)) return;
+        if (isRetiredProductReference(initialProduct) || isRetiredProductReference(initialColor)) return;
         if (initialName) {
             setFormData(prev => ({
                 ...prev,

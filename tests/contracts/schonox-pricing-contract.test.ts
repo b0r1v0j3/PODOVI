@@ -4,8 +4,9 @@ import dataset from '@/public/data/schonox_products.json';
 import priceList from '@/tools/schonox-prices.json';
 import { getAllSchonoxProducts } from '@/lib/data/schonox-products';
 
-const { applyApprovedPrices } = require('../../tools/extract_schonox_catalog.js') as {
+const { applyApprovedPrices, selectAssortment } = require('../../tools/extract_schonox_catalog.js') as {
   applyApprovedPrices: (products: { slug: string }[], prices?: unknown) => Product[];
+  selectAssortment: <T extends { slug: string }>(products: T[], prices?: unknown) => T[];
 };
 
 const priceFields = ['price', 'priceFrom', 'priceIncludesVat', 'priceValidUntil', 'priceOptions'] as const;
@@ -17,7 +18,7 @@ beforeEach(() => {
 afterEach(() => vi.useRealTimers());
 
 describe('SCHÖNOX regular package prices', () => {
-  it('publishes only the 30 matched products and 35 package SKUs, with 105 prices unknown', () => {
+  it('publishes only the 32 approved products and 37 package SKUs', () => {
     expect(priceList).toMatchObject({
       sourceTitle: 'Sika Srbija - Cenovnik',
       listDate: '2026-08-17',
@@ -29,13 +30,13 @@ describe('SCHÖNOX regular package prices', () => {
     const products = getAllSchonoxProducts();
     const priced = products.filter(product => product.price !== undefined);
     const unknown = products.filter(product => product.price === undefined);
-    expect(products).toHaveLength(135);
-    expect(priced).toHaveLength(30);
-    expect(unknown).toHaveLength(105);
+    expect(products).toHaveLength(32);
+    expect(priced).toHaveLength(32);
+    expect(unknown).toHaveLength(0);
     expect(priced.map(product => product.slug).sort()).toEqual(priceList.products.map(product => product.slug).sort());
     const publishedSkus = priced.flatMap(product => product.priceOptions!.map(option => option.manufacturerSku));
-    expect(publishedSkus).toHaveLength(35);
-    expect(new Set(publishedSkus).size).toBe(35);
+    expect(publishedSkus).toHaveLength(37);
+    expect(new Set(publishedSkus).size).toBe(37);
     expect(publishedSkus.sort()).toEqual(priceList.products.flatMap(product => product.packages.map(pack => pack.manufacturerSku)).sort());
     for (const product of products) {
       expect(product.inStock, product.slug).toBe(false);
@@ -65,6 +66,8 @@ describe('SCHÖNOX regular package prices', () => {
     ['schonox-zm', '483289', '25 kg', 3614.89, 4337.87],
     ['schonox-epoxy-clean', '651696', '0,5 kg', 2500, 3000],
     ['schonox-ifix', '525976', '7,8 kg, komplet', 7800, 9360],
+    ['schonox-anti-slip', '582475', '14 kg', 8255.46, 9906.55],
+    ['schonox-svedska-gleterica-600mm', '483606', '1 kom, 600 mm', 2789.01, 3346.81],
   ] as const)('uses the regular price for one whole package of %s', (slug, manufacturerSku, packagingLabel, priceWithoutVat, price) => {
     expect(getAllSchonoxProducts().find(product => product.slug === slug)).toMatchObject({
       price,
@@ -87,19 +90,46 @@ describe('SCHÖNOX regular package prices', () => {
 
   it.each(['2026-12-30T23:00:00Z', '2026-12-31T22:59:59.999Z'])('keeps prices on the last valid Belgrade day at %s', instant => {
     vi.setSystemTime(new Date(instant));
-    expect(getAllSchonoxProducts().filter(product => product.price !== undefined)).toHaveLength(30);
+    expect(getAllSchonoxProducts().filter(product => product.price !== undefined)).toHaveLength(32);
   });
 
   it('removes prices and their display flags at Belgrade midnight, even while UTC is still December 31', () => {
     vi.setSystemTime(new Date('2026-12-31T23:00:00Z'));
     const products = getAllSchonoxProducts();
-    expect(products).toHaveLength(135);
+    expect(products).toHaveLength(32);
     for (const product of products) {
       for (const field of priceFields) expect(product[field], `${product.slug}.${field}`).toBeUndefined();
       expect(product.priceUnit).toBe('pakovanje');
     }
     vi.setSystemTime(new Date('2026-12-31T22:59:59Z'));
-    expect(getAllSchonoxProducts().filter(product => product.price !== undefined)).toHaveLength(30);
+    expect(getAllSchonoxProducts().filter(product => product.price !== undefined)).toHaveLength(32);
+  });
+});
+
+describe('SCHÖNOX approved assortment selection', () => {
+  it('selects approved slugs offline without mutation or dependence on current prices or expiry', () => {
+    const input = [...dataset.products, { slug: 'schonox-unpriced' }];
+    const before = structuredClone(input);
+    const expiredPrices = { ...priceList, listDate: '2019-01-01', validThrough: '2020-01-01' };
+    const network = vi.spyOn(globalThis, 'fetch').mockImplementation(() => { throw new Error('Assortment selection must stay offline'); });
+    try {
+      vi.setSystemTime(new Date('2030-01-01T00:00:00Z'));
+      expect(selectAssortment(input, expiredPrices)).toEqual(dataset.products);
+      expect(selectAssortment(input.map(product => ({ slug: product.slug })), expiredPrices)).toHaveLength(32);
+      expect(input).toEqual(before);
+      expect(network).not.toHaveBeenCalled();
+    } finally {
+      network.mockRestore();
+    }
+  });
+
+  it('rejects missing, repeated or ambiguous selection before publishing a smaller catalog', () => {
+    const products = [{ slug: 'schonox-kh' }, { slug: 'schonox-zm' }];
+    expect(() => selectAssortment(products, { products: [] })).toThrow('Missing approved assortment');
+    expect(() => selectAssortment(products, { products: [{ slug: ' ' }] })).toThrow('Missing assortment product slug');
+    expect(() => selectAssortment(products, { products: [{ slug: 'schonox-unmatched' }] })).toThrow('Missing assortment product: schonox-unmatched');
+    expect(() => selectAssortment(products, { products: [products[0], products[0]] })).toThrow('Duplicate assortment selection: schonox-kh');
+    expect(() => selectAssortment([products[0], products[0]], { products: [products[0]] })).toThrow('Duplicate assortment source: schonox-kh');
   });
 });
 

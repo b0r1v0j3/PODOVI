@@ -28,8 +28,8 @@ describe('SCHÖNOX package price ranges in both catalog repositories', () => {
     it(`${name}: requires one actual package price inside the selected range`, async () => {
       const filter = { categoryId: '15', brandIds: ['17'] };
       const catalog = await repository.findAll(filter);
-      expect(catalog).toHaveLength(135);
-      expect(catalog.filter((product) => product.price)).toHaveLength(30);
+      expect(catalog).toHaveLength(32);
+      expect(catalog.filter((product) => product.price)).toHaveLength(32);
       const high = await repository.findAll({ ...filter, priceMin: 26000, priceMax: 27000 });
       expect(high.some((product) => product.slug === 'schonox-ab-10-30')).toBe(true);
       const gap = await repository.findAll({ ...filter, priceMin: 15000, priceMax: 20000 });
@@ -58,7 +58,7 @@ describe('SCHÖNOX package price ranges in both catalog repositories', () => {
     const schema = buildHomeFacetSchema([{ slug: 'pribor', name: 'Pribor', items, products }]);
     const options = { missing: 'include' as const, categories: [{ slug: 'pribor', name: 'Pribor' }], brandNames: {} };
     expect(hasPricedProducts(items)).toBe(true);
-    expect(evaluateHomeFilters(items, schema, { lists: {}, ranges: { cena: [1, 100000] } }, options).results).toHaveLength(30);
+    expect(evaluateHomeFilters(items, schema, { lists: {}, ranges: { cena: [1, 100000] } }, options).results).toHaveLength(32);
     vi.setSystemTime(new Date('2026-12-31T23:00:00Z'));
     const filtered = evaluateHomeFilters(items, schema, { lists: {}, ranges: { cena: [1, 100000] } }, options);
     expect(filtered.results).toEqual([]);

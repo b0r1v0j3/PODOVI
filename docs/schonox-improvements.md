@@ -5,6 +5,29 @@ Detaljni lokalni dokazi pregleda su u `output/audit-2026-10-22/izvestaj.md`.
 Ovaj dokument beleži obim i rezultat popravki, bez vraćanja ranije uklonjene
 korpe, naloga ili porudžbina.
 
+## Asortiman iz cenovnika — 05.11.2026.
+
+Po nalogu vlasnika javna SCHÖNOX ponuda obuhvata samo cenovnik Sika Srbija
+od 17.8.2026: 32 proizvoda / 37 šifara. Anti Slip 14 kg i švedska gleterica
+600 mm dodati su kao zasebne stavke sa zvaničnim fotografijama i izvorima;
+105 drugih proizvoda je povučeno. Globalni izvor i prethodni asseti ostaju
+sačuvani. Budući uvoz bira dozvoljene proizvode pre preuzimanja, a sačuvani
+korisnički prikazi uklanjaju povučene artikle. Istek cenovnika uklanja samo
+cene, ne proizvode. Raniji brojevi ispod predstavljaju istorijske rezultate.
+
+Provere: svih 37 cena nezavisno poređeno sa privatnim prepisom cenovnika bez
+odstupanja; 30 zadržanih javnih zapisa identično prethodnoj verziji. Extractor
+self-check, TypeScript i produkcioni build prolaze. Puna lokalna regresija
+ima 451 test; prvi prolaz otkrio je dva zastarela test-podatka (datum agregata
+i pretpostavka da prvi proizvod nema više pakovanja), a oba ispravljena
+suita zatim prolaze 18/18. Ostalih 449 provera prvog prolaza prolazi.
+Lokalni produkcioni HTTP: oba nova PDP-a i EMICLASSIC vraćaju 200 i tačne
+čiste cene; TACKIFIER i HS 8 vraćaju 404; sitemap ima 32 SCHÖNOX URL-a.
+Nema novih SCHÖNOX nalaza u opštem auditu; postojeći van ovog asortimana
+ostaju na baseline-u actionable high=1 / medium=7. Vizuelna provera stranica
+u pregledaču nije izvršena jer je browser servis isključen u Work podešavanjima.
+
+
 ## Uklonjen ceo Program — 29.10.2026.
 
 Poslednji nalog vlasnika uklanja celo polje Program/Program proizvođača i

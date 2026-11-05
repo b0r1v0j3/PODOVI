@@ -1,4 +1,4 @@
-/* Official European/global floor/tile catalog. Run with --discover, then without
+/* Approved Serbian assortment from official European/global and regional sources. Run with --discover, then without
  * flags after reviewing tools/schonox-copy.json. Uploads images/PDFs to our Supabase buckets. */
 const fs = require('node:fs');
 const path = require('node:path');
@@ -211,7 +211,7 @@ async function validateAsset(bytes, file, kind) {
 }
 
 async function download(url, relativeFile, kind) {
-  assert(/^https:\/\/(deu\.sika\.com|dynamicmedia\.sika\.com|sika\.scene7\.com)\//.test(url), `Unexpected asset host ${url}`);
+  assert(/^https:\/\/(deu\.sika\.com|nld\.sika\.com|srb\.sika\.com|dynamicmedia\.sika\.com|sika\.scene7\.com)\//.test(url), `Unexpected asset host ${url}`);
   const file = path.join(STAGE, relativeFile);
   const receiptFile = `${file}.json`;
   const receipt = fs.existsSync(receiptFile) ? JSON.parse(fs.readFileSync(receiptFile, 'utf8')) : null;
@@ -262,6 +262,7 @@ function highResolutionUrl(source) {
 }
 
 function documentationNote(documents) {
+  if (documents.length && documents.every(document => document.type === 'catalog')) return 'Dodatne informacije o alatu proverite u priloženom katalogu proizvođača.';
   return documents.some(document => document.type === 'product_data_sheet')
     ? 'Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.'
     : 'Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.';
@@ -300,7 +301,28 @@ function applyPresentation(products, sourceProducts) {
   });
 }
 
-function applyApprovedPrices(products, priceList = JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-prices.json'), 'utf8'))) {
+const approvedPrices = () => JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-prices.json'), 'utf8'));
+const regionalProducts = () => JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-assortment.json'), 'utf8')).regionalProducts;
+
+function selectAssortment(products, priceList = approvedPrices()) {
+  assert(Array.isArray(priceList.products) && priceList.products.length, 'Missing approved assortment');
+  const available = new Set();
+  for (const product of products) {
+    assert(!available.has(product.slug), `Duplicate assortment source: ${product.slug}`);
+    available.add(product.slug);
+  }
+  const selected = new Set();
+  for (const product of priceList.products) {
+    assert(typeof product.slug === 'string' && product.slug.trim(), 'Missing assortment product slug');
+    assert(!selected.has(product.slug), `Duplicate assortment selection: ${product.slug}`);
+    assert(available.has(product.slug), `Missing assortment product: ${product.slug}`);
+    selected.add(product.slug);
+  }
+  // Assortment membership survives expiry; the runtime loader handles price visibility.
+  return products.filter(product => selected.has(product.slug));
+}
+
+function applyApprovedPrices(products, priceList = approvedPrices()) {
   assert(typeof priceList.sourceTitle === 'string' && priceList.sourceTitle.trim(), 'Missing price-list source');
   assert.equal(priceList.currency, 'RSD');
   assert.equal(priceList.vatRate, 20);
@@ -340,16 +362,20 @@ function applyApprovedPrices(products, priceList = JSON.parse(fs.readFileSync(pa
 }
 
 async function build(source) {
+  const regional = regionalProducts();
+  const prices = approvedPrices();
+  const selected = selectAssortment([...source.products, ...regional], prices);
+  const generatedAt = new Date(Math.max(Date.parse(source.discoveredAt), ...regional.map(product => Date.parse(product.checkedAt)))).toISOString();
   const copy = JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-copy.json'), 'utf8'));
   const details = JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-details.json'), 'utf8'));
   const library = JSON.parse(fs.readFileSync(path.join(LIBRARY, 'catalog.json'), 'utf8')).assets;
   const failures = [];
   const assets = [];
   const imageLimitations = [];
-  const groupLabels = { primers: 'Prajmeri', 'floor-levelling-compounds': 'Mase za nivelaciju i popravke', 'wall-levelling-compounds': 'Mase za zidove', membranes: 'Hidroizolacija', 'tile-adhesives': 'Lepkovi za pločice', 'floor-tile-adhesives': 'Lepkovi za pločice', 'joint-mortars': 'Mase za fugovanje', screeds: 'Estrisi', 'primary-deck-coveringsscreeds': 'Brodarski estrisi', underlayments: 'Podloge', ancillaries: 'Pomoćni pribor', 'floor-adhesives': 'Lepkovi za podove', 'parquet-adhesives': 'Lepkovi za parket' };
-  const documentTitles = { safety_data_sheet: 'Bezbednosni list', product_data_sheet: 'Tehnički list', DOP: 'Izjava o performansama', ecolabel: 'Sertifikat emisija', environmental_product_declaration: 'Ekološka deklaracija (EPD)', declaration_of_conformity: 'Izjava o usaglašenosti' };
+  const groupLabels = { primers: 'Prajmeri', 'floor-levelling-compounds': 'Mase za nivelaciju i popravke', 'wall-levelling-compounds': 'Mase za zidove', membranes: 'Hidroizolacija', 'tile-adhesives': 'Lepkovi za pločice', 'floor-tile-adhesives': 'Lepkovi za pločice', 'joint-mortars': 'Mase za fugovanje', screeds: 'Estrisi', 'primary-deck-coveringsscreeds': 'Brodarski estrisi', underlayments: 'Podloge', ancillaries: 'Pomoćni pribor', 'floor-adhesives': 'Lepkovi za podove', 'parquet-adhesives': 'Lepkovi za parket', lijmen: 'Lepkovi za podove', hulpmiddelen: 'Alati za ugradnju' };
+  const documentTitles = { safety_data_sheet: 'Bezbednosni list', product_data_sheet: 'Tehnički list', DOP: 'Izjava o performansama', ecolabel: 'Sertifikat emisija', environmental_product_declaration: 'Ekološka deklaracija (EPD)', declaration_of_conformity: 'Izjava o usaglašenosti', catalog: 'Katalog proizvođača' };
   const documentLabel = doc => `${documentTitles[doc.type] || 'Dokument proizvođača'} — ${doc.language?.toUpperCase() || 'EN'}`;
-  const products = await mapLimit(source.products, async product => {
+  const products = await mapLimit(selected, async product => {
     assert(copy[product.slug], `Missing Serbian copy: ${product.slug}`);
     assert(details[product.slug], `Missing Serbian detailed description: ${product.slug}`);
     const groups = [...new Set(product.groups.map(url => groupLabels[url.split('/').pop().replace('.html', '')]))];
@@ -421,7 +447,7 @@ async function build(source) {
     const description = `${details[product.slug]}\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. ${documentationNote(documents)}`;
     return { id: product.slug, name: product.name.replace('®', ''), slug: product.slug, sku: product.slug.toUpperCase(), categoryId: '15', brandId: '17', shortDescription: copy[product.slug], description, specs: specifications, images, documents, availability: 'on_request', inStock: false, priceUnit: 'pakovanje', featured: false, externalLink: product.canonicalUrl, detailsSections: packaging ? [{ title: 'Pakovanje i nabavka', items: ['Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja.'] }] : [], source: { canonicalUrl: product.canonicalUrl, alternateUrls: product.alternateUrls, groupUrls: product.groups, checkedAt: product.checkedAt || source.discoveredAt } };
   });
-  const manifest = { ...source, exclusions: [...source.exclusions, ...Object.entries(DOCUMENT_EXCLUSIONS).map(([url, reason]) => ({ scope: 'document', url, reason }))], assets, failures, imageLimitations, missingImages: products.filter(product => !product.images.length).map(product => ({ slug: product.slug, reason: 'No individual product image exposed by official source.' })), missingDocuments: products.filter(product => !product.documents.length).map(product => ({ slug: product.slug, reason: 'No downloadable product document exposed by official source.' })), missingTechnicalDataSheets: products.filter(product => !product.documents.some(document => document.type === 'product_data_sheet')).map(product => ({ slug: product.slug, reason: 'No product_data_sheet attached; request the technical data sheet before selection or application.' })), productCount: products.length };
+  const manifest = { ...source, regionalProducts: regional, selectedProductSlugs: selected.map(product => product.slug), exclusions: [...source.exclusions, ...Object.entries(DOCUMENT_EXCLUSIONS).map(([url, reason]) => ({ scope: 'document', url, reason }))], assets, failures, imageLimitations, missingImages: products.filter(product => !product.images.length).map(product => ({ slug: product.slug, reason: 'No individual product image exposed by official source.' })), missingDocuments: products.filter(product => !product.documents.length).map(product => ({ slug: product.slug, reason: 'No downloadable product document exposed by official source.' })), missingTechnicalDataSheets: products.filter(product => !product.documents.some(document => document.type === 'product_data_sheet')).map(product => ({ slug: product.slug, reason: 'No product_data_sheet attached; request the technical data sheet before selection or application.' })), productCount: products.length };
   manifest.sourceClarifications = [
     ['schonox-fpl-plus', 'Source advantages distinguish 3–50 mm without aggregates and 10–60 mm with aggregates; do not flatten this into 3–60 mm.'],
     ['schonox-d-8-15-21-35-65', 'Source page repeats generic sealing-tape text; D8/D15/D21/D35/D65 are stretchable wall sealing sleeves for pipe penetrations (also identified in the 1K DS PREMIUM PDS).'],
@@ -434,15 +460,35 @@ async function build(source) {
   });
   writeJson(MANIFEST, manifest);
   assert.equal(failures.length, 0, `Asset failures recorded in ${MANIFEST}; dataset not replaced.`);
-  writeJson(DATASET, { generatedAt: source.discoveredAt, sourceManifest: 'docs/products/schonox-source-manifest.json', products: applyApprovedPrices(products) });
+  writeJson(DATASET, { generatedAt, sourceManifest: 'docs/products/schonox-source-manifest.json', products: applyApprovedPrices(products, prices) });
   console.log(JSON.stringify({ products: products.length, images: products.reduce((sum, product) => sum + product.images.length, 0), documents: products.reduce((sum, product) => sum + product.documents.length, 0), failures: failures.length }));
 }
 
 async function main() {
+  if (process.argv.includes('--assortment-only')) {
+    const dataset = JSON.parse(fs.readFileSync(DATASET, 'utf8'));
+    const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
+    const regional = regionalProducts();
+    const prices = approvedPrices();
+    selectAssortment([...manifest.products, ...regional], prices);
+    dataset.products = applyApprovedPrices(selectAssortment(dataset.products, prices), prices);
+    dataset.generatedAt = new Date(Math.max(Date.parse(manifest.discoveredAt), ...regional.map(product => Date.parse(product.checkedAt)))).toISOString();
+    manifest.regionalProducts = regional;
+    manifest.selectedProductSlugs = dataset.products.map(product => product.slug);
+    manifest.productCount = dataset.products.length;
+    const selected = new Set(manifest.selectedProductSlugs);
+    for (const key of ['assets', 'failures', 'imageLimitations', 'missingImages', 'missingDocuments', 'missingTechnicalDataSheets']) {
+      manifest[key] = manifest[key].filter(item => selected.has(item.productSlug || item.slug));
+    }
+    writeJson(MANIFEST, manifest);
+    writeJson(DATASET, dataset);
+    console.log(JSON.stringify({ products: dataset.products.length, assortmentOnly: true }));
+    return;
+  }
   if (process.argv.includes('--presentation-only')) {
     const dataset = JSON.parse(fs.readFileSync(DATASET, 'utf8'));
     const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
-    dataset.products = applyPresentation(dataset.products, manifest.products);
+    dataset.products = applyPresentation(dataset.products, [...manifest.products, ...(manifest.regionalProducts || [])]);
     writeJson(DATASET, dataset);
     console.log(JSON.stringify({ products: dataset.products.length, presentationOnly: true }));
     return;
@@ -458,6 +504,8 @@ async function main() {
     assert.notEqual(storagePathFor('same.pdf', Buffer.from('%PDF-one')), storagePathFor('same.pdf', Buffer.from('%PDF-two')));
     assert.match(documentationNote([{ type: 'product_data_sheet' }]), /priloženom tehničkom listu/);
     assert.match(documentationNote([{ type: 'safety_data_sheet' }]), /Zatražite tehnički list/);
+    assert.match(documentationNote([{ type: 'catalog' }]), /priloženom katalogu/);
+    assert.match(documentationNote([]), /Zatražite tehnički list/);
     assert.equal(productPackaging({ slug: 'schonox-gea', sections: { Packaging: 'Packsize 4.5-kg-combined packaging Material No. 488270 Packsize 25.0-kg-sack' } }), '4,5 kg, kombinovano pakovanje');
     assert.equal(productPackaging({ slug: 'schonox-2k-pu-solid', sections: { Packaging: 'Packsize 4.5-kg-combined packaging' } }), '5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B)');
     assert.equal(productPackaging({ slug: 'schonox-1k-ds-premium', sections: { Packaging: 'Packsize 28.0-kg-sack' } }), '18 kg, vreća');
@@ -508,6 +556,10 @@ async function main() {
       await assert.rejects(download(`${BASE}/fixture.pdf`, relative, 'document'));
       assert.deepEqual(fs.readFileSync(file), secondPdf, 'A bad refresh must preserve the validated cache');
       assert.deepEqual(fs.readFileSync(`${file}.json`), receipt, 'A bad refresh must preserve the cache receipt');
+      response = firstPdf;
+      for (const host of ['nld.sika.com', 'srb.sika.com']) await download(`https://${host}/fixture.pdf`, relative, 'document');
+      await assert.rejects(download('https://nld.sika.com.example.com/fixture.pdf', relative, 'document'), /Unexpected asset host/);
+      await assert.rejects(download('http://srb.sika.com/fixture.pdf', relative, 'document'), /Unexpected asset host/);
     } finally {
       global.fetch = originalFetch;
       process.argv = originalArgv;
@@ -519,4 +571,4 @@ async function main() {
   if (!process.argv.includes('--discover')) await build(source);
 }
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });
-module.exports = { applyApprovedPrices, applyPresentation, download, highResolutionUrl, mapLimit, productPackaging, documentationNote, storagePathFor, validateAsset };
+module.exports = { applyApprovedPrices, applyPresentation, download, highResolutionUrl, mapLimit, productPackaging, documentationNote, selectAssortment, storagePathFor, validateAsset };

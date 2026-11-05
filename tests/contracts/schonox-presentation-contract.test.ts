@@ -45,7 +45,7 @@ describe('SCHÖNOX availability is on request, never a stock claim', () => {
   });
 
   it('omits schema.org availability for a priced on-request product', () => {
-    const priced = { ...schonox, price: 1000, priceUnit: 'kom', inStock: false, availability: 'on_request' } as Product;
+    const priced = { ...schonox, price: 1000, priceUnit: 'kom', priceOptions: undefined, inStock: false, availability: 'on_request' } as Product;
     expect((generateProductSchema(priced, null, null).offers as any).availability).toBeUndefined();
     expect((generateProductSchema({ ...priced, availability: undefined, inStock: true }, null, null).offers as any).availability).toBe('https://schema.org/InStock');
   });

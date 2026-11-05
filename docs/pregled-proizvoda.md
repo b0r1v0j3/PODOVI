@@ -105,3 +105,11 @@ Vlasnik potvrdio pravilo (AGENTS.md t.11): asortiman = Alpod, materijal = admont
 - „Marine“ označava program za brodogradnju, prikazan srpski kao **Brodogradnja**. EMICLASSIC pripada i podnom i brodograđevnom programu; zvanična stranica navodi MED. Sam naziv programa ne zamenjuje proveru tehničkog lista za konkretnu primenu. Interna vrednost filtera ostaje radi postojećih URL-ova.
 - Naknadni izričiti nalog vlasnika za cenu: samo **11.883,44 RSD**, bez neto/izvorne cene, šifara, datuma i oznaka PDV-a. Za više cenovnih pakovanja prikazati samo pakovanje i konačan iznos. Ovo zamenjuje prethodnu tabelu; obračun i cenovni podaci ostaju tačni.
 - Poslednji nalog vlasnika: izbaciti ceo **Program proizvođača** iz javnih specifikacija, filtera i poređenja. Ranije preimenovanje u Brodogradnja je povučeno; ta podela ostaje samo u izvornim podacima za uvoz.
+
+
+## #5 — SCHÖNOX Anti Slip / švedska gleterica 600 mm — 2026-11-05
+
+- Dopuna po nalogu vlasnika: u katalogu su samo proizvodi iz cenovnika. Dodati su zasebni Anti Slip 14 kg (582475) i gleterica 600 mm (483606), bez povezivanja sa TACKIFIER ili drugim sličnim proizvodom. Konačne cene 9.906,55 RSD i 3.346,81 RSD nezavisno su proverene prema izvornoj novoj koloni cenovnika, str. 5.
+- [Anti Slip — proizvođač](https://nld.sika.com/schonox/nl/vloertechniek/lijmen/schoenox-anti-slip.html): uklonjivi disperzioni fiksator, 14 kg, PDS na holandskom i SDS na srpskom. EC 1 bez PLUS. Originalna cela fotografija 2440×2440 sa providnom pozadinom.
+- [Gleterica — proizvođač](https://nld.sika.com/schonox/nl/vloertechniek/hulpmiddelen.html): 600 mm, 1 komad, tip Alati za ugradnju. Cela originalna fotografija 3000×3000. Priloženi DE 2026 i NL 2025 katalozi ne predstavljaju se kao tehnički list. NL katalog izuzima HS 10 F/APF; ne tvrditi kompatibilnost sa svim masama.
+- Originali i dokumenti su u našem Supabase Storage-u sa SHA-256 identitetom. Cene i upit prate postojeći prikaz; zajednički ProductImage primenjuje contain, belu pozadinu i razmak. Pregledač je tokom ove izmene bio isključen u Work podešavanjima, pa vizuelna provera cele stranice nije potvrđena.
