@@ -5,6 +5,35 @@ Detaljni lokalni dokazi pregleda su u `output/audit-2026-10-22/izvestaj.md`.
 Ovaj dokument beleži obim i rezultat popravki, bez vraćanja ranije uklonjene
 korpe, naloga ili porudžbina.
 
+## Pakovanja iz srpskog cenovnika — 05.11.2026.
+
+KH FIX je imao jednu cenu za 5 kg, a specifikaciju globalnih pakovanja 1, 5 i
+10 kg. Po poslednjoj korekciji vlasnika svih 32 proizvoda u javnom polju
+„Pakovanje“ sada prikazuje isključivo `packages[].packagingLabel` iz
+`tools/schonox-prices.json`: ukupno 37 stavki, po jedno pakovanje u redu.
+KH FIX prikazuje samo **5 kg / 3.978,84 RSD** (šifra 483277 ostaje u podacima).
+
+Ključ `manufacturer_packaging` ostaje za postojeći prikaz i poređenje. Ovo
+pravilo zamenjuje ranije beleške o javnim globalnim proizvođačkim/PDS pakovanjima;
+izvorni podaci ostaju u manifestu i internom `productPackaging`. Redovan uvoz
+i `--presentation-only` koriste pakovanja cenovnika. Istek uklanja cene, ne
+odobrena pakovanja. Cene, slike, dokumenti, izvori i `availability: on_request`
+ostaju nepromenjeni.
+
+## Uklonjene generisane napomene — 05.11.2026.
+
+Po poslednjem nalogu vlasnika `description` svih 32 javna proizvoda tačno
+odgovara pregledanom tekstu iz `tools/schonox-details.json`. Uklonjen je dodatni
+pasus o nabavci/dostupnosti, zajedno sa varijantama napomene o tehničkom listu
+i katalogu, kao i cela generisana sekcija „Pakovanje i nabavka“.
+Uvoz više ne dodaje te tekstove. Ovaj nalog zamenjuje ranija pravila o
+generisanim napomenama u opisima navedena ispod.
+
+`--presentation-only` sada i vraća pregledani `description` i prazni generisane
+`detailsSections`, bez mreže ili promene cena, slika, dokumenata i datuma.
+Stvarne specifikacije `manufacturer_packaging`, dokumenti, cene i
+`availability: on_request` ostaju.
+
 ## Asortiman iz cenovnika — 05.11.2026.
 
 Po nalogu vlasnika javna SCHÖNOX ponuda obuhvata samo cenovnik Sika Srbija
@@ -24,8 +53,10 @@ suita zatim prolaze 18/18. Ostalih 449 provera prvog prolaza prolazi.
 Lokalni produkcioni HTTP: oba nova PDP-a i EMICLASSIC vraćaju 200 i tačne
 čiste cene; TACKIFIER i HS 8 vraćaju 404; sitemap ima 32 SCHÖNOX URL-a.
 Nema novih SCHÖNOX nalaza u opštem auditu; postojeći van ovog asortimana
-ostaju na baseline-u actionable high=1 / medium=7. Vizuelna provera stranica
-u pregledaču nije izvršena jer je browser servis isključen u Work podešavanjima.
+ostaju na baseline-u actionable high=1 / medium=7. Naknadna vizuelna provera
+produkcije završena je 05.11. kroz Chrome Computer Use, uprkos grešci direktnog
+Browser runtime-a. Dokazi: `output/schonox-visual-qa-2026-11-05/`; mobilni
+prikaz proveren je Chrome emulacijom.
 
 
 ## Uklonjen ceo Program — 29.10.2026.

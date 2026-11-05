@@ -2,12 +2,13 @@ import { createRequire } from 'node:module';
 import { describe, expect, it, vi } from 'vitest';
 import dataset from '@/public/data/schonox_products.json';
 import manifest from '@/docs/products/schonox-source-manifest.json';
+import priceList from '@/tools/schonox-prices.json';
 
 const { applyPresentation, productPackaging } = createRequire(import.meta.url)('../../tools/extract_schonox_catalog.js');
 const sourceProducts = [...manifest.products, ...manifest.regionalProducts];
 const packaging = (slug: string) => productPackaging(sourceProducts.find(product => product.slug === slug));
 
-describe('SCHÖNOX manufacturer packaging presentation', () => {
+describe('SCHÖNOX approved sales packaging and manufacturer source', () => {
   it('separates real package choices and removes identifiers and pallet logistics', () => {
     expect(packaging('schonox-emiclassic')).toBe('14 kg, kanta\n6 kg, kanta');
     expect(packaging('schonox-kh')).toBe('10 kg, kanister\n5 kg, kanister\n1 kg, boca (12 komada u kutiji)');
@@ -44,12 +45,28 @@ describe('SCHÖNOX manufacturer packaging presentation', () => {
     expect(dataset.products.find(product => product.slug === 'schonox-ifix')!.priceOptions!.map(option => option.packagingLabel)).toEqual(['7,8 kg, komplet']);
     expect(packaging('schonox-anti-slip')).toBe('14 kg, kanta');
     expect(packaging('schonox-svedska-gleterica-600mm')).toBe('1 komad');
+    for (const [slug, value] of [
+      ['schonox-kh-fix', '5 kg'],
+      ['schonox-kh', '1 kg\n5 kg\n10 kg'],
+      ['schonox-ab-10-30', '10 m², rolna 1 × 10 m\n30 m², rolna 1 × 30 m'],
+    ]) {
+      expect(dataset.products.find(product => product.slug === slug)!.specs.find(spec => spec.key === 'manufacturer_packaging'), slug).toEqual({ key: 'manufacturer_packaging', label: 'Pakovanje', value });
+    }
   });
 
-  it('removes the program spec and refreshes packaging offline, preserving every other field and raw source', () => {
+  it('cleans generated notes and refreshes packaging offline, preserving all other data and raw source', () => {
     const sourceBefore = JSON.stringify(manifest);
-    const input = structuredClone(dataset.products);
+    const input = structuredClone(dataset.products).map(product => ({
+      ...product,
+      detailsSections: [{ title: 'Pakovanje i nabavka', items: ['Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja.'] }],
+    }));
     for (const product of input) {
+      const documentationNote = product.documents.length && product.documents.every(document => document.type === 'catalog')
+        ? 'Dodatne informacije o alatu proverite u priloženom katalogu proizvođača.'
+        : product.documents.some(document => document.type === 'product_data_sheet')
+          ? 'Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.'
+          : 'Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.';
+      product.description += `\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. ${documentationNote}`;
       product.specs.splice(1, 0, { key: 'program', label: 'Program proizvođača', value: 'Podovi, Marine' });
       for (const spec of product.specs) {
         if (spec.key === 'manufacturer_packaging') spec.value = 'Material No. 123456 EAN 1234567890123 Packsize raw';
@@ -59,8 +76,10 @@ describe('SCHÖNOX manufacturer packaging presentation', () => {
     const network = vi.spyOn(globalThis, 'fetch').mockImplementation(() => { throw new Error('Presentation refresh must stay offline'); });
     try {
       const result = applyPresentation(input, sourceProducts);
+      expect(result).toHaveLength(32);
       expect(result).toEqual(dataset.products);
-      const withoutPresentation = (products: typeof input) => products.map(product => ({ ...product, specs: product.specs.filter(spec => !['program', 'manufacturer_packaging'].includes(spec.key)) }));
+      expect(applyPresentation(result, sourceProducts)).toEqual(result);
+      const withoutPresentation = (products: typeof input) => products.map(({ description, detailsSections, ...product }) => ({ ...product, specs: product.specs.filter(spec => !['program', 'manufacturer_packaging'].includes(spec.key)) }));
       expect(withoutPresentation(result)).toEqual(withoutPresentation(input));
       expect(JSON.stringify(input)).toBe(inputBefore);
       expect(JSON.stringify(manifest)).toBe(sourceBefore);
@@ -71,13 +90,16 @@ describe('SCHÖNOX manufacturer packaging presentation', () => {
     }
   });
 
-  it('publishes clean, deduplicated packaging for the selected assortment', () => {
+  it('publishes exactly the 37 approved packages for the selected assortment', () => {
     expect(dataset.products).toHaveLength(32);
+    expect(dataset.products.flatMap(product => product.specs.find(item => item.key === 'manufacturer_packaging')!.value.split('\n'))).toHaveLength(37);
     for (const product of dataset.products) {
       const spec = product.specs.find(item => item.key === 'manufacturer_packaging');
-      expect(spec?.value || '', product.slug).toBe(packaging(product.slug));
+      const approvedLabels = priceList.products.find(item => item.slug === product.slug)!.packages.map(item => item.packagingLabel);
+      expect(spec?.value.split('\n'), product.slug).toEqual(approvedLabels);
+      expect(product.priceOptions.map(option => option.packagingLabel), product.slug).toEqual(approvedLabels);
       if (spec) {
-        expect(spec.label).toBe('Pakovanja proizvođača');
+        expect(spec.label).toBe('Pakovanje');
         expect(spec.value, product.slug).not.toMatch(/EAN|Material|Broj materijala|Packsize|Packaging unit|Transportno|pallet|paleta|\d{6,}/i);
         const lines = spec.value.split('\n');
         expect(new Set(lines).size, product.slug).toBe(lines.length);

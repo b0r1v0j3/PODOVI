@@ -100,6 +100,7 @@ describe('SCHÖNOX regular package prices', () => {
     for (const product of products) {
       for (const field of priceFields) expect(product[field], `${product.slug}.${field}`).toBeUndefined();
       expect(product.priceUnit).toBe('pakovanje');
+      expect(product.specs, product.slug).toEqual(dataset.products.find(item => item.slug === product.slug)!.specs);
     }
     vi.setSystemTime(new Date('2026-12-31T22:59:59Z'));
     expect(getAllSchonoxProducts().filter(product => product.price !== undefined)).toHaveLength(32);
@@ -164,6 +165,16 @@ describe('SCHÖNOX approved-price import', () => {
     expect(result).not.toBe(input[0]);
     expect(result).toEqual({ slug: 'schonox-kh', name: 'Retained name', priceUnit: 'pakovanje' });
     expect(applyApprovedPrices(dataset.products)).toEqual(dataset.products);
+  });
+
+  it('replaces stale global packaging during price refresh without mutating input or other product data', () => {
+    const input = structuredClone(dataset.products);
+    const packaging = input.find(product => product.slug === 'schonox-kh-fix')!.specs.find(spec => spec.key === 'manufacturer_packaging')!;
+    packaging.label = 'Pakovanja proizvođača';
+    packaging.value = '1 kg, boca\n5 kg, kanister\n10 kg, kanister';
+    const before = structuredClone(input);
+    expect(applyApprovedPrices(input)).toEqual(dataset.products);
+    expect(input).toEqual(before);
   });
 
   it.each([

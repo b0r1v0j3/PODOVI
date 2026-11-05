@@ -25,7 +25,7 @@ export function getAllSchonoxProducts(): Product[] {
       })),
       specs: record.specs.map((spec) => ({ ...spec })),
       documents: record.documents.map((document) => ({ ...document })),
-      detailsSections: record.detailsSections.map((section) => ({ ...section, items: [...section.items] })),
+      detailsSections: (record.detailsSections as NonNullable<Product['detailsSections']>).map((section) => ({ ...section, items: [...section.items] })),
       createdAt: new Date(dataset.generatedAt),
       updatedAt: new Date(dataset.generatedAt),
     };

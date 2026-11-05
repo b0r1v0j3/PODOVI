@@ -100,12 +100,21 @@ Regionalni Anti Slip i gleterica 600 mm imaju proizvođačke zapise u
 `tools/schonox-assortment.json`. Uvoz spaja ove zapise sa istorijskim globalnim
 izvorom i bira dozvoljene slugove pre preuzimanja asseta. Istek cene ne menja
 asortiman. `--assortment-only` bira isti podskup iz postojećeg javnog JSON-a i
-ponovo primenjuje cenovnik bez mreže; svi dozvoljeni proizvodi moraju već postojati
+ponovo primenjuje cene i javna pakovanja cenovnika bez mreže; svi dozvoljeni proizvodi moraju već postojati
 u njemu. `--from-source` regeneriše kompletan odabrani podskup. Manifest zadržava
 istorijske `products` i zasebne `regionalProducts` / `selectedProductSlugs`;
 asset/missing/failure nizovi opisuju samo javno odabrani podskup.
 Povučene identitete uskladiti u `lib/catalog/retired-products.ts` pri promeni liste.
 Stare assete ne brisati iz Storage-a.
+
+**Pakovanja ponude, poslednja korekcija 05.11.2026:** javno polje „Pakovanje“
+(postojeći ključ `manufacturer_packaging`) sadrži samo `packages[].packagingLabel`
+iz `tools/schonox-prices.json`, po jedno u redu. Svih 32 proizvoda ima ukupno
+37 stavki pakovanja. KH FIX prikazuje samo 5 kg, uz postojeću cenu 3.978,84 RSD
+za šifru 483277. Raniji prikaz globalnih proizvođačkih/PDS pakovanja je zamenjen
+ovim pravilom; globalni podaci ostaju u manifestu i internom `productPackaging`.
+Istek cenovnika uklanja iznose, ne odobrena pakovanja. Cene, slike, dokumenti,
+izvori i `availability: on_request` ne menjaju se ovom korekcijom.
 
 Sledeći opis globalnog crawla i stari brojevi odnose se na izvor, ne javnu ponudu.
 
@@ -117,13 +126,15 @@ inline unosa pribora: nakon 26 duplikata ostaje 135 proizvoda. Marine kategorija
 Američke formulacije ne mešati sa evropskim/globalnim programom.
 
 - `--discover` zapisuje izvore u `output/schonox/source.json`, bez zamene kataloga.
-  - `--presentation-only` osvežava specifikacije pakovanja i uklanja stari Program
-    iz postojećeg `docs/products/schonox-source-manifest.json`, bez mreže ili
-    promena cena, slika, dokumenata i datuma izvora. Pakovanja se prikazuju svako
-    u svom redu, bez sirovih EAN-a, materijalnih šifara i paletnih količina.
-    Sačuvati stvarne višedelne komplete, količine u kutiji i dimenzije rolne.
-    Celo javno polje/filter Program je uklonjeno po naknadnom nalogu vlasnika.
-    Izvorne grupe ostaju za provenijenciju; ne vraćati ih u javne specifikacije.
+- `--presentation-only` osvežava javna pakovanja iz `tools/schonox-prices.json`,
+  uz postojeći manifest kao izvor identiteta proizvoda, uklanja stari Program, vraća
+  `description` tačno na pregledani tekst iz `tools/schonox-details.json` i prazni
+  generisane `detailsSections`. Radi bez mreže i bez promena cena, slika,
+  dokumenata ili datuma. Pakovanja se prikazuju svako u svom redu, tačno prema
+  pregledanim oznakama cenovnika, bez dopune globalnim proizvođačkim pakovanjima.
+  Redovan uvoz koristi isti izbor pakovanja. Celo javno polje/filter Program
+  je uklonjeno po naknadnom nalogu vlasnika. Izvorne grupe ostaju za provenijenciju;
+  ne vraćati ih u javne specifikacije.
 - `--refresh` ponovo preuzima i stranice i assete, uključujući postojeće fajlove.
   PDF mora imati ispravan potpis i bar jednu stranicu; `pdf-parse` mora uspešno
   pročitati sadržaj svake stranice (`getTextContent`), uz rok od 20 sekundi.
@@ -138,7 +149,11 @@ Američke formulacije ne mešati sa evropskim/globalnim programom.
 - `tools/schonox-copy.json` sadrži kratke srpske opise, a
   `tools/schonox-details.json` detaljne opise sa primenom i uslovima. Svih 135
   ključeva mora biti pregledano; 120 proizvoda ima neprazan duži zvanični opis.
-  Nepoznat proizvod bez oba prevoda zaustavlja uvoz.
+  Nepoznat proizvod bez oba prevoda zaustavlja uvoz. Po nalogu od 05.11.2026,
+  javni `description` je tačno pregledani tekst, bez dodatih generičkih napomena
+  o nabavci/dostupnosti, tehničkom listu ili katalogu. Ne generiše se sekcija
+  „Pakovanje i nabavka“ (`detailsSections: []`). Stvarna specifikacija pakovanja,
+  dokumenti, cene i `availability: on_request` ostaju.
 - Manifest `docs/products/schonox-source-manifest.json` beleži sve kategorije,
   proizvode, alias URL-ove, izvornu specifikaciju/pakovanje, dokument verzije,
   heševe lokalnih datoteka, neuspehe i izuzetke. Neuspeh preuzimanja ne sme tiho
@@ -161,8 +176,8 @@ Američke formulacije ne mešati sa evropskim/globalnim programom.
   proveri 22.10.2026. vraća HTTP 404/HTML; ostaje izuzet. Q9 W marine deklaracija koja je
   identična Q6 dokumentu takođe ostaje izuzeta. Sedam proizvoda nema dokumente,
   a 28 nema priložen tehnički list (`product_data_sheet`); SDS/sertifikat nije PDS.
-  Opis samo uz stvarni PDS upućuje na priloženi tehnički list, inače traži da ga
-  kupac zatraži od prodaje. Ove izuzetke proveriti pri narednom osvežavanju.
+  Ranije generisane napomene o priloženom ili nedostajućem PDS-u uklonjene su
+  po nalogu od 05.11.2026. Ove izuzetke proveriti pri narednom osvežavanju.
 - Korekcije izvora: FPL PLUS 3–50 mm bez agregata / 10–60 mm sa agregatom; D
   8/15/21/35/65 su zidne manžetne. GEA tabela ne sme da preuzme tuđi QUARZSAND
   red 488270 / 25 kg. Za 2K PU SOLID koristi se **5 kg (A+B)**, a za 1K DS
@@ -176,8 +191,9 @@ Američke formulacije ne mešati sa evropskim/globalnim programom.
   Od 29.10.2026. `tools/schonox-prices.json` nosi odobreni javni podskup redovnog
   cenovnika Sika Srbija od 17.8.2026: 35 pakovanja / 30 proizvoda, bez rabata,
   prodajne cene sa 20% PDV-a. `node tools/extract_schonox_catalog.js --prices-only`
-  ažurira samo cene postojećeg JSON-a bez mreže; normalan build ponovo primenjuje
-  ovaj podskup. Novi cenovnik prvo proveriti po šifri, pakovanju, jedinici, PDV-u
+  ažurira cene i javnu specifikaciju pakovanja postojećeg JSON-a bez mreže.
+  `applyApprovedPrices` koristi iste odobrene oznake pakovanja i za
+  `--assortment-only` i redovan uvoz. Novi cenovnik prvo proveriti po šifri, pakovanju, jedinici, PDV-u
   i roku. Nepoznate cene se izostavljaju, ne upisuje se nula. Rok je 31.12.2026,
   zaključno po vremenu Beograda; loader potom uklanja cene. Originalni interni
   PDF ne objavljivati. Detalji i izuzeci: `docs/schonox-pricing.md`.

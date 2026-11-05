@@ -10,7 +10,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Membrana za zaptivanje i razdvajanje slojeva ispod keramičkih obloga.",
-      "description": "Hidroizolaciona i razdvajajuća membrana od polietilenske folije visoke otpornosti na kidanje, obostrano obložene flisom. Premošćava pukotine i namenjena je zaptivanju ispod keramičkih obloga u kupatilima, tuševima, intenzivno korišćenim mokrim prostorima i bazenima, u enterijeru i eksterijeru. Na balkonima i terasama primenjuje se u SCHÖNOX BALTERRA sistemu. Sistem ispunjava zahteve ETAG 022, deo 2, i klase W0-I do W2-I prema DIN 18534; za W3-I, hemijska opterećenja, profesionalne kuhinje i perionice potrebno je posebno tehničko uputstvo.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Hidroizolaciona i razdvajajuća membrana od polietilenske folije visoke otpornosti na kidanje, obostrano obložene flisom. Premošćava pukotine i namenjena je zaptivanju ispod keramičkih obloga u kupatilima, tuševima, intenzivno korišćenim mokrim prostorima i bazenima, u enterijeru i eksterijeru. Na balkonima i terasama primenjuje se u SCHÖNOX BALTERRA sistemu. Sistem ispunjava zahteve ETAG 022, deo 2, i klase W0-I do W2-I prema DIN 18534; za W3-I, hemijska opterećenja, profesionalne kuhinje i perionice potrebno je posebno tehničko uputstvo.",
       "specs": [
         {
           "key": "type",
@@ -24,8 +24,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "30 m², rolna\n10 m², rolna"
+          "label": "Pakovanje",
+          "value": "10 m², rolna 1 × 10 m\n30 m², rolna 1 × 30 m"
         }
       ],
       "images": [
@@ -51,14 +51,7 @@
       "priceUnit": "pakovanje",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/tile-range/membranes/schoenox-ab-10-30.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/tile-range/membranes/schoenox-ab-10-30.html",
         "alternateUrls": [],
@@ -94,7 +87,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Kanta za mešanje SCHÖNOX masa za nivelaciju.",
-      "description": "Kanta namenjena mešanju svih SCHÖNOX masa za nivelaciju.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.",
+      "description": "Kanta namenjena mešanju svih SCHÖNOX masa za nivelaciju.",
       "specs": [
         {
           "key": "type",
@@ -105,6 +98,11 @@
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
+        },
+        {
+          "key": "manufacturer_packaging",
+          "label": "Pakovanje",
+          "value": "1 kanta, 30 l"
         }
       ],
       "images": [
@@ -152,7 +150,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Dvokomponentna hibridna samonivelišuća masa za izravnavanje i blokiranje zaostale vlage u mineralnoj podlozi.",
-      "description": "Dvokomponentna hibridna samonivelišuća masa za mineralne podloge sa zaostalom vlagom, pre postavljanja podnih obloga i parketa. U jednom radnom koraku izravnava podlogu i formira barijeru za vodenu paru, pa se kontrola vlage ostvaruje bez dodatnog prajmera za tu namenu. Stvara gustu, neporoznu strukturu maltera. Proizvođač navodi spremnost za polaganje nakon približno 12 sati, uz ispunjene uslove primene sistema.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.",
+      "description": "Dvokomponentna hibridna samonivelišuća masa za mineralne podloge sa zaostalom vlagom, pre postavljanja podnih obloga i parketa. U jednom radnom koraku izravnava podlogu i formira barijeru za vodenu paru, pa se kontrola vlage ostvaruje bez dodatnog prajmera za tu namenu. Stvara gustu, neporoznu strukturu maltera. Proizvođač navodi spremnost za polaganje nakon približno 12 sati, uz ispunjene uslove primene sistema.",
       "specs": [
         {
           "key": "type",
@@ -166,8 +164,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "23,5 kg praha + 6 kg tečnosti"
+          "label": "Pakovanje",
+          "value": "29,5 kg (prah + tečnost)"
         }
       ],
       "images": [
@@ -188,14 +186,7 @@
       "priceUnit": "pakovanje (29,5 kg (prah + tečnost))",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/primers/schoenox-hds.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/primers/schoenox-hds.html",
         "alternateUrls": [],
@@ -225,7 +216,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Univerzalni disperzioni lepak osetljiv na pritisak.",
-      "description": "Univerzalni disperzioni lepak za tekstilne zidne i podne obloge sa odgovarajućom sintetičkom, jutanom ili netkanom poleđinom, kao i za tkane obloge, jednoslojni i višeslojni iglani filc. Pogodan je i za obloge od prirodnih vlakana sa poleđinom, poput kokosa i sisala. Proizvođač navodi mokro i kontaktno lepljenje, kao i primenu u intenzivno korišćenim objektima poput bolnica, aerodroma i tržnih centara.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Univerzalni disperzioni lepak za tekstilne zidne i podne obloge sa odgovarajućom sintetičkom, jutanom ili netkanom poleđinom, kao i za tkane obloge, jednoslojni i višeslojni iglani filc. Pogodan je i za obloge od prirodnih vlakana sa poleđinom, poput kokosa i sisala. Proizvođač navodi mokro i kontaktno lepljenje, kao i primenu u intenzivno korišćenim objektima poput bolnica, aerodroma i tržnih centara.",
       "specs": [
         {
           "key": "type",
@@ -239,8 +230,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "14 kg, kanta"
+          "label": "Pakovanje",
+          "value": "14 kg"
         }
       ],
       "images": [
@@ -271,14 +262,7 @@
       "priceUnit": "pakovanje (14 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-pro-mate.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-pro-mate.html",
         "alternateUrls": [],
@@ -308,7 +292,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Kanta za vodu sa skalom koja nije kalibrisana.",
-      "description": "Kanta za vodu sa mernom skalom. Skala nije kalibrisana.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.",
+      "description": "Kanta za vodu sa mernom skalom. Skala nije kalibrisana.",
       "specs": [
         {
           "key": "type",
@@ -319,6 +303,11 @@
           "key": "manufacturer",
           "label": "Proizvođač",
           "value": "SCHÖNOX / Sika"
+        },
+        {
+          "key": "manufacturer_packaging",
+          "label": "Pakovanje",
+          "value": "1 kanta, 10 l"
         }
       ],
       "images": [
@@ -366,7 +355,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Masa za zaglađivanje i nivelaciju na bazi kalcijum-sulfata, sa veoma niskim emisijama.",
-      "description": "Samonivelišuća masa na bazi kalcijum-sulfata za unutrašnje podove, naročito kalcijum-sulfatne i livenoasfaltne estrihe, a pogodna je i za cementne podloge. Koristi se ispod tekstilnih i elastičnih obloga i parketa. Predviđena je za slojeve 1–20 mm bez agregata ili 10–30 mm sa agregatom. Ispod parketa potreban je sloj od najmanje 2 mm, elastični SCHÖNOX lepak za parket i poštovanje vremena sušenja. Za 25 kg praha proizvođač navodi 6,0 l vode.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Samonivelišuća masa na bazi kalcijum-sulfata za unutrašnje podove, naročito kalcijum-sulfatne i livenoasfaltne estrihe, a pogodna je i za cementne podloge. Koristi se ispod tekstilnih i elastičnih obloga i parketa. Predviđena je za slojeve 1–20 mm bez agregata ili 10–30 mm sa agregatom. Ispod parketa potreban je sloj od najmanje 2 mm, elastični SCHÖNOX lepak za parket i poštovanje vremena sušenja. Za 25 kg praha proizvođač navodi 6,0 l vode.",
       "specs": [
         {
           "key": "type",
@@ -380,8 +369,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "25 kg, vreća"
+          "label": "Pakovanje",
+          "value": "25 kg"
         }
       ],
       "images": [
@@ -417,14 +406,7 @@
       "priceUnit": "pakovanje (25 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-am.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-am.html",
         "alternateUrls": [],
@@ -454,7 +436,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Elektroprovodni univerzalni lepak za elektroprovodne podne obloge.",
-      "description": "Elektroprovodni univerzalni lepak za elektroprovodne i antistatičke tekstilne, PVC, gumene i linoleumske podne obloge. Namenjen je odgovarajućim upijajućim podlogama u stambenim i poslovnim enterijerima; za gumene obloge u rolnama i pločama proizvođač navodi debljinu do 3,5 mm. Dodatni elektroprovodni prajmer nije potreban. Lepak je bez rastvarača i predviđen za elektroprovodnu primenu prema EN 14259.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Elektroprovodni univerzalni lepak za elektroprovodne i antistatičke tekstilne, PVC, gumene i linoleumske podne obloge. Namenjen je odgovarajućim upijajućim podlogama u stambenim i poslovnim enterijerima; za gumene obloge u rolnama i pločama proizvođač navodi debljinu do 3,5 mm. Dodatni elektroprovodni prajmer nije potreban. Lepak je bez rastvarača i predviđen za elektroprovodnu primenu prema EN 14259.",
       "specs": [
         {
           "key": "type",
@@ -468,8 +450,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "14 kg, kanta"
+          "label": "Pakovanje",
+          "value": "14 kg"
         }
       ],
       "images": [
@@ -500,14 +482,7 @@
       "priceUnit": "pakovanje (14 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-combileit.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-combileit.html",
         "alternateUrls": [],
@@ -537,7 +512,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Masa za nivelaciju namenjena i direktnoj upotrebi površine, sa veoma niskim emisijama.",
-      "description": "Samonivelišuća masa visoke čvrstoće za izravnavanje industrijskih podova, garaža i podruma. U enterijeru može da služi kao završna habajuća površina, a u unutrašnjoj i spoljašnjoj primeni kao podloga ispod premaza, keramike i drugih obloga. Predviđena je za 4–15 mm bez agregata ili 15–50 mm sa agregatom; za saobraćaj viljuškara potreban je sloj od najmanje 4 mm. Ima malo skupljanje i ujednačen betonskosivi izgled, a predviđeno opterećenje je nakon 3 dana u propisanim uslovima.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Samonivelišuća masa visoke čvrstoće za izravnavanje industrijskih podova, garaža i podruma. U enterijeru može da služi kao završna habajuća površina, a u unutrašnjoj i spoljašnjoj primeni kao podloga ispod premaza, keramike i drugih obloga. Predviđena je za 4–15 mm bez agregata ili 15–50 mm sa agregatom; za saobraćaj viljuškara potreban je sloj od najmanje 4 mm. Ima malo skupljanje i ujednačen betonskosivi izgled, a predviđeno opterećenje je nakon 3 dana u propisanim uslovima.",
       "specs": [
         {
           "key": "type",
@@ -551,8 +526,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "25 kg, vreća"
+          "label": "Pakovanje",
+          "value": "25 kg"
         }
       ],
       "images": [
@@ -593,14 +568,7 @@
       "priceUnit": "pakovanje (25 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-dsp.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-dsp.html",
         "alternateUrls": [],
@@ -630,7 +598,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Snažan disperzioni lepak ojačan vlaknima, sa veoma niskim emisijama.",
-      "description": "Snažan disperzioni lepak ojačan vlaknima za LVT, PVC i CV obloge, tekstilne obloge sa PVC poleđinom i jednoslojni ili višeslojni iglani filc. Koristi se na odgovarajućim upijajućim podlogama u stambenim i poslovnim enterijerima, uključujući lepljenje SCHÖNOX TS podloge. Čvrsto elastični sloj lepka suprotstavlja se dimenzionalnim promenama obloge. Predviđen je za mokro lepljenje i otporan na plastifikatore.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Snažan disperzioni lepak ojačan vlaknima za LVT, PVC i CV obloge, tekstilne obloge sa PVC poleđinom i jednoslojni ili višeslojni iglani filc. Koristi se na odgovarajućim upijajućim podlogama u stambenim i poslovnim enterijerima, uključujući lepljenje SCHÖNOX TS podloge. Čvrsto elastični sloj lepka suprotstavlja se dimenzionalnim promenama obloge. Predviđen je za mokro lepljenje i otporan na plastifikatore.",
       "specs": [
         {
           "key": "type",
@@ -644,8 +612,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "14 kg, kanta\n3 kg, kanta"
+          "label": "Pakovanje",
+          "value": "14 kg"
         }
       ],
       "images": [
@@ -681,14 +649,7 @@
       "priceUnit": "pakovanje (14 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-durocoll.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-durocoll.html",
         "alternateUrls": [
@@ -721,7 +682,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Univerzalni disperzioni lepak osetljiv na pritisak.",
-      "description": "Univerzalni disperzioni lepak za mokro i pritisno lepljenje na upijajućim i neupijajućim podlogama u enterijeru. Namenjen je odgovarajućim tekstilnim oblogama, PVC i CV zidnim i podnim oblogama, LVT-u, linoleumu, sintetičkoj gumi i zvučnoizolacionim podlogama. Obuhvata i tekstilne obloge sa PVC ili PU poleđinom i obloge sa poleđinom bez punila, uz proveru podobnosti konkretne obloge. Brzo razvija prianjanje, lako se razmazuje i može se koristiti na podnom grejanju.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Univerzalni disperzioni lepak za mokro i pritisno lepljenje na upijajućim i neupijajućim podlogama u enterijeru. Namenjen je odgovarajućim tekstilnim oblogama, PVC i CV zidnim i podnim oblogama, LVT-u, linoleumu, sintetičkoj gumi i zvučnoizolacionim podlogama. Obuhvata i tekstilne obloge sa PVC ili PU poleđinom i obloge sa poleđinom bez punila, uz proveru podobnosti konkretne obloge. Brzo razvija prianjanje, lako se razmazuje i može se koristiti na podnom grejanju.",
       "specs": [
         {
           "key": "type",
@@ -735,8 +696,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "14 kg, kanta\n6 kg, kanta"
+          "label": "Pakovanje",
+          "value": "14 kg"
         }
       ],
       "images": [
@@ -772,14 +733,7 @@
       "priceUnit": "pakovanje (14 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-emiclassic.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-emiclassic.html",
         "alternateUrls": [
@@ -812,7 +766,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Pomoćno sredstvo za pranje pri radu sa epoksidnim masama za fugovanje.",
-      "description": "Koncentrovano sredstvo za čišćenje tokom rada sa epoksidnim fug-masama, naročito SCHÖNOX CF DESIGN. Koristi se na keramičkim pločicama i staklenom mozaiku na zidovima i podovima u enterijeru i eksterijeru. Razređuje se vodom i olakšava ispiranje mase kako se ne bi zadržao epoksidni film. Pravilna obrada i pravovremeno čišćenje same fug-mase i dalje su neophodni.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Koncentrovano sredstvo za čišćenje tokom rada sa epoksidnim fug-masama, naročito SCHÖNOX CF DESIGN. Koristi se na keramičkim pločicama i staklenom mozaiku na zidovima i podovima u enterijeru i eksterijeru. Razređuje se vodom i olakšava ispiranje mase kako se ne bi zadržao epoksidni film. Pravilna obrada i pravovremeno čišćenje same fug-mase i dalje su neophodni.",
       "specs": [
         {
           "key": "type",
@@ -826,8 +780,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "4 × 0,5 kg, kante u kutiji"
+          "label": "Pakovanje",
+          "value": "0,5 kg"
         }
       ],
       "images": [
@@ -848,14 +802,7 @@
       "priceUnit": "pakovanje (0,5 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/tile-range/joint-mortars/schoenox-epoxy-clean.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/tile-range/joint-mortars/schoenox-epoxy-clean.html",
         "alternateUrls": [],
@@ -885,7 +832,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Disperzioni lepak bez rastvarača.",
-      "description": "Disperzioni lepak bez rastvarača za PVC i CV podne obloge na odgovarajućim upijajućim podlogama u enterijeru. Predviđen je i za linoleum u rolnama i podlogu SCHÖNOX TS. Namenjen je polumokrom lepljenju, ima kratko vreme čekanja i brzo razvija prianjanje. Pogodan je za stambene i poslovne prostore, podno grejanje i opterećenje točkićima stolica prema EN 12529.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Disperzioni lepak bez rastvarača za PVC i CV podne obloge na odgovarajućim upijajućim podlogama u enterijeru. Predviđen je i za linoleum u rolnama i podlogu SCHÖNOX TS. Namenjen je polumokrom lepljenju, ima kratko vreme čekanja i brzo razvija prianjanje. Pogodan je za stambene i poslovne prostore, podno grejanje i opterećenje točkićima stolica prema EN 12529.",
       "specs": [
         {
           "key": "type",
@@ -899,8 +846,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "20 kg, kanta"
+          "label": "Pakovanje",
+          "value": "20 kg"
         }
       ],
       "images": [
@@ -926,14 +873,7 @@
       "priceUnit": "pakovanje (20 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-floorlasticextra.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-floorlasticextra.html",
         "alternateUrls": [],
@@ -963,7 +903,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Jednokomponentni prajmer sa punilom.",
-      "description": "Jednokomponentni prajmer sa punilom koji omogućava predpremazivanje i popunjavanje u jednom radnom koraku. Sprečava prolazak mase za nivelaciju kroz spojeve drvenih dasaka i njeno upadanje u istrošene fuge starih keramičkih obloga. Sa SCHÖNOX ARMIERUNGSGEWEBE mrežicom koristi se za stabilizaciju podloge i premošćavanje pukotina. Može se primeniti za poboljšanje prianjanja na starim podlogama, ugradnju električnog podnog grejanja na armaturnoj mreži i lepljenje SCHÖNOX EDP ploča, prema sistemskim uputstvima.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Jednokomponentni prajmer sa punilom koji omogućava predpremazivanje i popunjavanje u jednom radnom koraku. Sprečava prolazak mase za nivelaciju kroz spojeve drvenih dasaka i njeno upadanje u istrošene fuge starih keramičkih obloga. Sa SCHÖNOX ARMIERUNGSGEWEBE mrežicom koristi se za stabilizaciju podloge i premošćavanje pukotina. Može se primeniti za poboljšanje prianjanja na starim podlogama, ugradnju električnog podnog grejanja na armaturnoj mreži i lepljenje SCHÖNOX EDP ploča, prema sistemskim uputstvima.",
       "specs": [
         {
           "key": "type",
@@ -977,8 +917,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "15 kg, vreća"
+          "label": "Pakovanje",
+          "value": "15 kg"
         }
       ],
       "images": [
@@ -1009,14 +949,7 @@
       "priceUnit": "pakovanje (15 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/primers/schoenox-fp.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/primers/schoenox-fp.html",
         "alternateUrls": [],
@@ -1046,7 +979,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Jednokomponentni poliuretanski prajmer bez rastvarača.",
-      "description": "Brzosušeći jednokomponentni PU prajmer bez rastvarača za učvršćivanje površinske zone estriha, regulisanje upijanja i zahtevne podloge sa zaostalom vlagom. Za dvoslojnu primenu na podlogama otpornim na vlagu proizvođač navodi granice do 4,5 CM-% za negrejani i 3,0 CM-% za grejani cementni estrih. Za beton su granice do 6,0 mas.% bez grejanja odnosno 4,5 mas.% sa grejanjem, uz ispitivanje sušenjem u peći. U jednom sloju može služiti kao prajmer za prianjanje ili zaštita osetljive podloge od vlage iz narednih materijala. Pogodan je za enterijer i eksterijer.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Brzosušeći jednokomponentni PU prajmer bez rastvarača za učvršćivanje površinske zone estriha, regulisanje upijanja i zahtevne podloge sa zaostalom vlagom. Za dvoslojnu primenu na podlogama otpornim na vlagu proizvođač navodi granice do 4,5 CM-% za negrejani i 3,0 CM-% za grejani cementni estrih. Za beton su granice do 6,0 mas.% bez grejanja odnosno 4,5 mas.% sa grejanjem, uz ispitivanje sušenjem u peći. U jednom sloju može služiti kao prajmer za prianjanje ili zaštita osetljive podloge od vlage iz narednih materijala. Pogodan je za enterijer i eksterijer.",
       "specs": [
         {
           "key": "type",
@@ -1060,8 +993,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "11 kg, kanister\n5,5 kg, kanister"
+          "label": "Pakovanje",
+          "value": "11 kg"
         }
       ],
       "images": [
@@ -1097,14 +1030,7 @@
       "priceUnit": "pakovanje (11 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/primers/schoenox-hp-rapid.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/primers/schoenox-hp-rapid.html",
         "alternateUrls": [
@@ -1137,7 +1063,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Brzovezujuća hibridna samonivelišuća masa za podove sa tehnologijom Hybrid Active Dry.",
-      "description": "Brzovezujuća hibridna samonivelišuća masa koja spaja mala naprezanja kalcijum-sulfatnih masa sa brzim sušenjem cementnih sistema. Namenjena je slojevima 1–20 mm u stambenim, poslovnim i lakim industrijskim enterijerima, ispod tekstilnih i elastičnih obloga i parketa. Ispod parketa potreban je sloj najmanje 2 mm. Tehnologija Hybrid Active Dry omogućava brzo vezivanje vode i ranu spremnost za oblaganje. Za primenu ispod Sika premaza i zaptivnih slojeva potrebno je poštovati odgovarajući sistemski sklop.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Brzovezujuća hibridna samonivelišuća masa koja spaja mala naprezanja kalcijum-sulfatnih masa sa brzim sušenjem cementnih sistema. Namenjena je slojevima 1–20 mm u stambenim, poslovnim i lakim industrijskim enterijerima, ispod tekstilnih i elastičnih obloga i parketa. Ispod parketa potreban je sloj najmanje 2 mm. Tehnologija Hybrid Active Dry omogućava brzo vezivanje vode i ranu spremnost za oblaganje. Za primenu ispod Sika premaza i zaptivnih slojeva potrebno je poštovati odgovarajući sistemski sklop.",
       "specs": [
         {
           "key": "type",
@@ -1151,8 +1077,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "25 kg, vreća"
+          "label": "Pakovanje",
+          "value": "25 kg"
         }
       ],
       "images": [
@@ -1193,14 +1119,7 @@
       "priceUnit": "pakovanje (25 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-hs-10.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-hs-10.html",
         "alternateUrls": [],
@@ -1230,7 +1149,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Brzovezujuća hibridna masa za nivelaciju podova, ojačana vlaknima, sa tehnologijom Hybrid Active Dry.",
-      "description": "Brzovezujuća hibridna masa ojačana sintetičkim vlaknima, posebno pogodna za drvene daske, ivericu, OSB, livenoasfaltne estrihe i druge zahtevne podloge u enterijeru. Ugrađena vlakna zamenjuju dodatnu armaturnu mrežu u predviđenoj primeni. Nanosi se 3–20 mm ispod tekstilnih i elastičnih obloga i parketa, uključujući odgovarajuće tankoslojne sisteme podnog grejanja. Proizvođač navodi prohodnost približno nakon 2 sata i spremnost za oblaganje nakon 6 sati zahvaljujući Hybrid Active Dry tehnologiji.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Brzovezujuća hibridna masa ojačana sintetičkim vlaknima, posebno pogodna za drvene daske, ivericu, OSB, livenoasfaltne estrihe i druge zahtevne podloge u enterijeru. Ugrađena vlakna zamenjuju dodatnu armaturnu mrežu u predviđenoj primeni. Nanosi se 3–20 mm ispod tekstilnih i elastičnih obloga i parketa, uključujući odgovarajuće tankoslojne sisteme podnog grejanja. Proizvođač navodi prohodnost približno nakon 2 sata i spremnost za oblaganje nakon 6 sati zahvaljujući Hybrid Active Dry tehnologiji.",
       "specs": [
         {
           "key": "type",
@@ -1244,8 +1163,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "25 kg, vreća"
+          "label": "Pakovanje",
+          "value": "25 kg"
         }
       ],
       "images": [
@@ -1281,14 +1200,7 @@
       "priceUnit": "pakovanje (25 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-hs-10-f.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-hs-10-f.html",
         "alternateUrls": [],
@@ -1318,7 +1230,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Debeloslojna masa za nivelaciju sa tehnologijom Hybrid Active Dry.",
-      "description": "Hibridna debeloslojna masa za vezane estrihe debljine 3–50 mm u stambenim, poslovnim i industrijskim enterijerima. Namenjena je novogradnji i renoviranju, naročito uz odgovarajuće tankoslojne sisteme podnog grejanja. Kombinuje mala unutrašnja naprezanja sa brzim sušenjem i može se pumpati. Hybrid Active Dry tehnologija omogućava spremnost za oblaganje približno nakon 48 sati i kod debljih slojeva, uz propisane uslove rada. Za Sika premaze primenjuje se odgovarajući sistemski sklop.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Hibridna debeloslojna masa za vezane estrihe debljine 3–50 mm u stambenim, poslovnim i industrijskim enterijerima. Namenjena je novogradnji i renoviranju, naročito uz odgovarajuće tankoslojne sisteme podnog grejanja. Kombinuje mala unutrašnja naprezanja sa brzim sušenjem i može se pumpati. Hybrid Active Dry tehnologija omogućava spremnost za oblaganje približno nakon 48 sati i kod debljih slojeva, uz propisane uslove rada. Za Sika premaze primenjuje se odgovarajući sistemski sklop.",
       "specs": [
         {
           "key": "type",
@@ -1332,8 +1244,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "25 kg, vreća"
+          "label": "Pakovanje",
+          "value": "25 kg"
         }
       ],
       "images": [
@@ -1369,14 +1281,7 @@
       "priceUnit": "pakovanje (25 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-hs-50.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-hs-50.html",
         "alternateUrls": [],
@@ -1406,7 +1311,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Dvokomponentni vodonepropusni lepak koji se nanosi valjkom.",
-      "description": "Dvokomponentni vodonepropusni lepak za nanošenje valjkom, namenjen lepljenju membrana SCHÖNOX AB 10/30 i pripadajućih sistemskih komponenti. Koristi se u kupatilima, intenzivno korišćenim mokrim prostorima i bazenima ispod keramičkih obloga. Na balkonima i terasama primenjuje se u okviru SCHÖNOX BALTERRA sistema. Na bazi je specijalne umrežavajuće akrilatne disperzije, brzo hidraulički očvršćava, ostaje fleksibilan i premošćava pukotine.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Dvokomponentni vodonepropusni lepak za nanošenje valjkom, namenjen lepljenju membrana SCHÖNOX AB 10/30 i pripadajućih sistemskih komponenti. Koristi se u kupatilima, intenzivno korišćenim mokrim prostorima i bazenima ispod keramičkih obloga. Na balkonima i terasama primenjuje se u okviru SCHÖNOX BALTERRA sistema. Na bazi je specijalne umrežavajuće akrilatne disperzije, brzo hidraulički očvršćava, ostaje fleksibilan i premošćava pukotine.",
       "specs": [
         {
           "key": "type",
@@ -1420,8 +1325,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "2,61 kg, komplet\n7,8 kg, komplet"
+          "label": "Pakovanje",
+          "value": "7,8 kg, komplet"
         }
       ],
       "images": [
@@ -1462,14 +1367,7 @@
       "priceUnit": "pakovanje (7,8 kg, komplet)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/tile-range/membranes/schoenox-ifix.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/tile-range/membranes/schoenox-ifix.html",
         "alternateUrls": [],
@@ -1499,7 +1397,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Disperzija sintetičke smole bez rastvarača za pripremu podloge.",
-      "description": "Disperzioni prajmer od sintetičke smole, bez rastvarača, za smanjenje upijanja i poboljšanje prianjanja na cementnim podlogama i zaštitu gipsanih podloga od vlage iz narednih materijala. Primenjuje se ispod SCHÖNOX lepkova za pločice i masa za nivelaciju, na zidovima i podovima u enterijeru i eksterijeru. Koncentrat se razređuje vodom u odnosu predviđenom za podlogu. Sa SCHÖNOX PL, PL PLUS ili FPL PLUS može se koristiti za izradu vezivnog mosta.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Disperzioni prajmer od sintetičke smole, bez rastvarača, za smanjenje upijanja i poboljšanje prianjanja na cementnim podlogama i zaštitu gipsanih podloga od vlage iz narednih materijala. Primenjuje se ispod SCHÖNOX lepkova za pločice i masa za nivelaciju, na zidovima i podovima u enterijeru i eksterijeru. Koncentrat se razređuje vodom u odnosu predviđenom za podlogu. Sa SCHÖNOX PL, PL PLUS ili FPL PLUS može se koristiti za izradu vezivnog mosta.",
       "specs": [
         {
           "key": "type",
@@ -1513,8 +1411,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "10 kg, kanister\n5 kg, kanister\n1 kg, boca (12 komada u kutiji)"
+          "label": "Pakovanje",
+          "value": "1 kg\n5 kg\n10 kg"
         }
       ],
       "images": [
@@ -1550,14 +1448,7 @@
       "priceUnit": "pakovanje",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/tile-range/primers/schoenox-kh.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/tile-range/primers/schoenox-kh.html",
         "alternateUrls": [],
@@ -1599,7 +1490,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Gotov specijalni disperzioni prajmer sa dubokim prodiranjem i otpornošću na hidrolizu.",
-      "description": "Gotov disperzioni prajmer velike moći prodiranja za mineralne podloge. Služi za poboljšanje prianjanja, smanjenje upijanja i zaštitu od vlage iz narednih materijala; naročito je pogodan za kalcijum-sulfatne, odnosno gipsane podloge uz kratko sušenje. Primenjuje se na betonu, cementnim i kalcijum-sulfatnim estrisima, suvim estrisima, odgovarajućim malterima i gipsanim pločama. Može se nanositi na zidove i podove u enterijeru i eksterijeru, uključujući prskanje.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Gotov disperzioni prajmer velike moći prodiranja za mineralne podloge. Služi za poboljšanje prianjanja, smanjenje upijanja i zaštitu od vlage iz narednih materijala; naročito je pogodan za kalcijum-sulfatne, odnosno gipsane podloge uz kratko sušenje. Primenjuje se na betonu, cementnim i kalcijum-sulfatnim estrisima, suvim estrisima, odgovarajućim malterima i gipsanim pločama. Može se nanositi na zidove i podove u enterijeru i eksterijeru, uključujući prskanje.",
       "specs": [
         {
           "key": "type",
@@ -1613,8 +1504,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "10 kg, kanister\n5 kg, kanister\n1 kg, boca (16 komada u kutiji)"
+          "label": "Pakovanje",
+          "value": "5 kg"
         }
       ],
       "images": [
@@ -1655,14 +1546,7 @@
       "priceUnit": "pakovanje (5 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/tile-range/primers/schoenox-kh-fix.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/tile-range/primers/schoenox-kh-fix.html",
         "alternateUrls": [
@@ -1695,7 +1579,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Disperzioni lepak za linoleum sa veoma niskim emisijama.",
-      "description": "Disperzioni lepak veoma niskih emisija za jednostrano lepljenje linoleuma u rolnama, plutanog linoleuma i corkment podloga. Namenjen je odgovarajućim upijajućim podlogama u stambenim i poslovnim enterijerima. Brzo razvija prianjanje, lako se razmazuje i ima dobru izdašnost. Pogodan je za podno grejanje i opterećenje točkićima stolica prema EN 12529. Bez rastvarača je prema TRGS 610.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Disperzioni lepak veoma niskih emisija za jednostrano lepljenje linoleuma u rolnama, plutanog linoleuma i corkment podloga. Namenjen je odgovarajućim upijajućim podlogama u stambenim i poslovnim enterijerima. Brzo razvija prianjanje, lako se razmazuje i ima dobru izdašnost. Pogodan je za podno grejanje i opterećenje točkićima stolica prema EN 12529. Bez rastvarača je prema TRGS 610.",
       "specs": [
         {
           "key": "type",
@@ -1709,8 +1593,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "14 kg, kanta"
+          "label": "Pakovanje",
+          "value": "14 kg"
         }
       ],
       "images": [
@@ -1741,14 +1625,7 @@
       "priceUnit": "pakovanje (14 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-lino-xtreme.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-lino-xtreme.html",
         "alternateUrls": [],
@@ -1778,7 +1655,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Akrilni lepak i sredstvo za fiksiranje podnih obloga.",
-      "description": "Akrilno sredstvo za fiksiranje tekstilnih i CV podnih obloga i samoležećih tekstilnih ploča na odgovarajućim vodootpornim podlogama u enterijeru. Namenjeno je spoju koji olakšava naknadno uklanjanje obloge; način rada zavisi od vrste poleđine i traženog fiksiranja. Može se koristiti i za SCHÖNOX TS podlogu, a za određene primene razređuje se prema uputstvu. Pogodno je za podno grejanje i točkiće stolica. Proizvođač navodi emisijsku klasu EMICODE EC 1.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Akrilno sredstvo za fiksiranje tekstilnih i CV podnih obloga i samoležećih tekstilnih ploča na odgovarajućim vodootpornim podlogama u enterijeru. Namenjeno je spoju koji olakšava naknadno uklanjanje obloge; način rada zavisi od vrste poleđine i traženog fiksiranja. Može se koristiti i za SCHÖNOX TS podlogu, a za određene primene razređuje se prema uputstvu. Pogodno je za podno grejanje i točkiće stolica. Proizvođač navodi emisijsku klasu EMICODE EC 1.",
       "specs": [
         {
           "key": "type",
@@ -1792,8 +1669,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "14 kg, kanta\n3 kg, kanta"
+          "label": "Pakovanje",
+          "value": "14 kg"
         }
       ],
       "images": [
@@ -1829,14 +1706,7 @@
       "priceUnit": "pakovanje (14 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-multifix.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-multifix.html",
         "alternateUrls": [
@@ -1869,7 +1739,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Kontaktni lepak na bazi rastvarača.",
-      "description": "Kontaktni lepak na bazi rastvarača za lepljenje lajsni, profila i PVC ivica stepenika, kao i odgovarajućih gumenih i tekstilnih elemenata. U enterijeru se može koristiti i za drvo, furnir, metal i kožu, uključujući neupijajuće podloge. Spreman je za upotrebu, ima kratko vreme čekanja i brzo razvija prianjanje. Pravilno kontaktno zalepljeni elementi mogu se opteretiti odmah nakon spajanja.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Kontaktni lepak na bazi rastvarača za lepljenje lajsni, profila i PVC ivica stepenika, kao i odgovarajućih gumenih i tekstilnih elemenata. U enterijeru se može koristiti i za drvo, furnir, metal i kožu, uključujući neupijajuće podloge. Spreman je za upotrebu, ima kratko vreme čekanja i brzo razvija prianjanje. Pravilno kontaktno zalepljeni elementi mogu se opteretiti odmah nakon spajanja.",
       "specs": [
         {
           "key": "type",
@@ -1883,8 +1753,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "6 kg, kanta\n0,65 kg, limenka (10 komada u kutiji)"
+          "label": "Pakovanje",
+          "value": "6 kg"
         }
       ],
       "images": [
@@ -1905,14 +1775,7 @@
       "priceUnit": "pakovanje (6 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-n-640.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-n-640.html",
         "alternateUrls": [],
@@ -1942,7 +1805,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Lepak za LVT podove sa dugim otvorenim vremenom.",
-      "description": "Lepak ojačan vlaknima za LVT, PVC i CV obloge na upijajućim i neupijajućim podlogama u enterijeru. Dugo otvoreno vreme omogućava nanošenje na većoj površini i ostavlja vreme za detalje, a rad sa već položenog dela obloge olakšava ugradnju. Nanosi se nazubljenom gletericom ili valjkom. Nakon pravilnog postavljanja površina se može odmah opteretiti. Pogodan je za podno grejanje, otporan na plastifikatore i ispunjava DIN EN ISO 22636.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Lepak ojačan vlaknima za LVT, PVC i CV obloge na upijajućim i neupijajućim podlogama u enterijeru. Dugo otvoreno vreme omogućava nanošenje na većoj površini i ostavlja vreme za detalje, a rad sa već položenog dela obloge olakšava ugradnju. Nanosi se nazubljenom gletericom ili valjkom. Nakon pravilnog postavljanja površina se može odmah opteretiti. Pogodan je za podno grejanje, otporan na plastifikatore i ispunjava DIN EN ISO 22636.",
       "specs": [
         {
           "key": "type",
@@ -1956,8 +1819,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "11 kg, kanta"
+          "label": "Pakovanje",
+          "value": "11 kg"
         }
       ],
       "images": [
@@ -1993,14 +1856,7 @@
       "priceUnit": "pakovanje (11 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-pro-design.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-pro-design.html",
         "alternateUrls": [],
@@ -2030,7 +1886,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Dvokomponentni poliuretanski lepak bez rastvarača.",
-      "description": "Dvokomponentni poliuretanski lepak bez rastvarača i vode za elastične obloge na upijajućim i neupijajućim podlogama. Posebno je namenjen visoko opterećenim PVC, gumenim i linoleumskim pločama, podlogama od gumenog granulata i odgovarajućim oblogama od veštačke trave. Pogodan je za unutrašnju i spoljašnju primenu. Brzo očvršćava, zadržava oblik nanetih zubaca i ne skuplja se ni u debljem sloju.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.",
+      "description": "Dvokomponentni poliuretanski lepak bez rastvarača i vode za elastične obloge na upijajućim i neupijajućim podlogama. Posebno je namenjen visoko opterećenim PVC, gumenim i linoleumskim pločama, podlogama od gumenog granulata i odgovarajućim oblogama od veštačke trave. Pogodan je za unutrašnju i spoljašnju primenu. Brzo očvršćava, zadržava oblik nanetih zubaca i ne skuplja se ni u debljem sloju.",
       "specs": [
         {
           "key": "type",
@@ -2044,8 +1900,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "7,05 kg, kombinovano pakovanje, učvršćivač je uključen"
+          "label": "Pakovanje",
+          "value": "7,05 kg (A+B)"
         }
       ],
       "images": [
@@ -2071,14 +1927,7 @@
       "priceUnit": "pakovanje (7,05 kg (A+B))",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-pu-900.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-pu-900.html",
         "alternateUrls": [],
@@ -2108,7 +1957,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Višeosna tkanina od staklenih vlakana.",
-      "description": "Višeosna tkanina od staklenih vlakana za armiranje SCHÖNOX HS 10 ili SCHÖNOX APF pri izravnavanju zahtevnih podloga u renoviranju. Rolna je duga 42,0 m i široka 1,2 m. Površinska masa tkanine je 137 g/m².\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.",
+      "description": "Višeosna tkanina od staklenih vlakana za armiranje SCHÖNOX HS 10 ili SCHÖNOX APF pri izravnavanju zahtevnih podloga u renoviranju. Rolna je duga 42,0 m i široka 1,2 m. Površinska masa tkanine je 137 g/m².",
       "specs": [
         {
           "key": "type",
@@ -2122,8 +1971,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "50,4 m², rolna (1 rolna u kutiji)"
+          "label": "Pakovanje",
+          "value": "50,4 m², rolna 1,2 × 42 m"
         }
       ],
       "images": [
@@ -2138,14 +1987,7 @@
       "priceUnit": "pakovanje (50,4 m², rolna 1,2 × 42 m)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/underlayments/schoenox-renotex.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/underlayments/schoenox-renotex.html",
         "alternateUrls": [],
@@ -2175,7 +2017,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Veoma fini, stabilni univerzalni reparaturni malter.",
-      "description": "Veoma fini, stabilni univerzalni reparaturni malter za unutrašnje radove. Namenjen je popravci stepenika i podesta, popunjavanju rupa i udubljenja, oštećenja zidova i izravnavanju prelaza ka susednim površinama. Može se oblikovati i izvlačiti do veoma tankog završnog sloja. Zahvaljujući efektu Liquid Effect postaje gladak tokom nanošenja i poravnavanja, bez lepljenja za gletericu. Brzo se suši hidrauličkim vezivanjem.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Veoma fini, stabilni univerzalni reparaturni malter za unutrašnje radove. Namenjen je popravci stepenika i podesta, popunjavanju rupa i udubljenja, oštećenja zidova i izravnavanju prelaza ka susednim površinama. Može se oblikovati i izvlačiti do veoma tankog završnog sloja. Zahvaljujući efektu Liquid Effect postaje gladak tokom nanošenja i poravnavanja, bez lepljenja za gletericu. Brzo se suši hidrauličkim vezivanjem.",
       "specs": [
         {
           "key": "type",
@@ -2189,8 +2031,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "20 kg, vreća"
+          "label": "Pakovanje",
+          "value": "20 kg"
         }
       ],
       "images": [
@@ -2226,14 +2068,7 @@
       "priceUnit": "pakovanje (20 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-rm.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-rm.html",
         "alternateUrls": [],
@@ -2263,7 +2098,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Jednokomponentna specijalna akrilatna disperzija bez rastvarača.",
-      "description": "Gotov jednokomponentni akrilatni prajmer bez rastvarača za glatke, guste i neupijajuće podloge. Poboljšava prianjanje na staroj keramici, prirodnom kamenu, teracu, odgovarajućim epoksidnim premazima, metalima i dobro zalepljenim, očišćenim i izbrušenim elastičnim oblogama, osim PO obloga. Namenjen je unutrašnjim zidovima i podovima; u mokrim prostorima i eksterijeru primenjuje se ispod odgovarajućih fleksibilnih SCHÖNOX membrana. Pogodnost na upijajućim podlogama je ograničena zbog mogućeg formiranja površinskog filma.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Gotov jednokomponentni akrilatni prajmer bez rastvarača za glatke, guste i neupijajuće podloge. Poboljšava prianjanje na staroj keramici, prirodnom kamenu, teracu, odgovarajućim epoksidnim premazima, metalima i dobro zalepljenim, očišćenim i izbrušenim elastičnim oblogama, osim PO obloga. Namenjen je unutrašnjim zidovima i podovima; u mokrim prostorima i eksterijeru primenjuje se ispod odgovarajućih fleksibilnih SCHÖNOX membrana. Pogodnost na upijajućim podlogama je ograničena zbog mogućeg formiranja površinskog filma.",
       "specs": [
         {
           "key": "type",
@@ -2277,8 +2112,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "12 kg, kanta\n5 kg, kanta\n1 kg, kanta (8 komada u kutiji)"
+          "label": "Pakovanje",
+          "value": "1 kg\n5 kg\n12 kg"
         }
       ],
       "images": [
@@ -2314,14 +2149,7 @@
       "priceUnit": "pakovanje",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/primers/schoenox-shp.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/primers/schoenox-shp.html",
         "alternateUrls": [
@@ -2368,7 +2196,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Disperzioni lepak bez rastvarača.",
-      "description": "Disperzioni lepak bez rastvarača za PVC i CV obloge, linoleum u rolnama, iglani filc i različite tekstilne obloge sa odgovarajućom poleđinom. Pogodan je i za prirodna vlakna sa poleđinom, poput kokosa i sisala, i podlogu SCHÖNOX TS. Koristi se za mokro lepljenje na upijajućim podlogama u stambenim i poslovnim enterijerima. Ima kratko vreme čekanja, brzo razvija prianjanje i može se primenjivati na podnom grejanju.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.",
+      "description": "Disperzioni lepak bez rastvarača za PVC i CV obloge, linoleum u rolnama, iglani filc i različite tekstilne obloge sa odgovarajućom poleđinom. Pogodan je i za prirodna vlakna sa poleđinom, poput kokosa i sisala, i podlogu SCHÖNOX TS. Koristi se za mokro lepljenje na upijajućim podlogama u stambenim i poslovnim enterijerima. Ima kratko vreme čekanja, brzo razvija prianjanje i može se primenjivati na podnom grejanju.",
       "specs": [
         {
           "key": "type",
@@ -2382,8 +2210,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "20 kg, kanta\n14 kg, kanta"
+          "label": "Pakovanje",
+          "value": "20 kg"
         }
       ],
       "images": [
@@ -2404,14 +2232,7 @@
       "priceUnit": "pakovanje (20 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-unitech.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-adhesives/schoenox-unitech.html",
         "alternateUrls": [],
@@ -2441,7 +2262,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Cementna samonivelišuća masa za zaglađivanje i nivelaciju, sa veoma niskim emisijama.",
-      "description": "Cementna samonivelišuća masa malog skupljanja za unutrašnje stambene, poslovne i lake industrijske podove, uključujući bolnice i prometne tržne centre. Koristi se ispod tekstilnih i elastičnih obloga, parketa i odgovarajućih premaza. Predviđena je za slojeve 1–15 mm bez agregata; ispod parketa potrebno je najmanje 2 mm. Dobro se brusi, ima ujednačeno upijanje i pogodna je za podno grejanje. Za Sika premaze i zaptivne slojeve primenjuje se odgovarajući sistemski sklop.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Cementna samonivelišuća masa malog skupljanja za unutrašnje stambene, poslovne i lake industrijske podove, uključujući bolnice i prometne tržne centre. Koristi se ispod tekstilnih i elastičnih obloga, parketa i odgovarajućih premaza. Predviđena je za slojeve 1–15 mm bez agregata; ispod parketa potrebno je najmanje 2 mm. Dobro se brusi, ima ujednačeno upijanje i pogodna je za podno grejanje. Za Sika premaze i zaptivne slojeve primenjuje se odgovarajući sistemski sklop.",
       "specs": [
         {
           "key": "type",
@@ -2455,8 +2276,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "25 kg, vreća"
+          "label": "Pakovanje",
+          "value": "25 kg"
         }
       ],
       "images": [
@@ -2497,14 +2318,7 @@
       "priceUnit": "pakovanje (25 kg)",
       "featured": false,
       "externalLink": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-zm.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://deu.sika.com/schonox-global/en/floor-range/floor-levelling-compounds/schoenox-zm.html",
         "alternateUrls": [
@@ -2537,7 +2351,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Uklonjivi disperzioni fiksator za tekstilne podne obloge, tepih ploče i CV obloge u enterijeru.",
-      "description": "Disperzioni fiksator za pričvršćivanje tekstilnih podnih obloga, tepih ploča i CV obloga na odgovarajuće podloge otporne na vodu, u enterijeru. Nanosi se ravnomerno valjkom ili odgovarajućom nazubljenom gletericom. Omogućava kasnije uklanjanje obloge; uklanjanje ostataka bez tragova nije garantovano na poroznim podlogama i postojećim oblogama. Podloga mora biti čvrsta, trajno suva i čista. Način nanošenja, fazu polaganja i kompatibilnost proveriti prema tehničkom listu i uputstvu proizvođača obloge.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.",
+      "description": "Disperzioni fiksator za pričvršćivanje tekstilnih podnih obloga, tepih ploča i CV obloga na odgovarajuće podloge otporne na vodu, u enterijeru. Nanosi se ravnomerno valjkom ili odgovarajućom nazubljenom gletericom. Omogućava kasnije uklanjanje obloge; uklanjanje ostataka bez tragova nije garantovano na poroznim podlogama i postojećim oblogama. Podloga mora biti čvrsta, trajno suva i čista. Način nanošenja, fazu polaganja i kompatibilnost proveriti prema tehničkom listu i uputstvu proizvođača obloge.",
       "specs": [
         {
           "key": "type",
@@ -2551,8 +2365,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "14 kg, kanta"
+          "label": "Pakovanje",
+          "value": "14 kg"
         }
       ],
       "images": [
@@ -2583,14 +2397,7 @@
       "priceUnit": "pakovanje (14 kg)",
       "featured": false,
       "externalLink": "https://nld.sika.com/schonox/nl/vloertechniek/lijmen/schoenox-anti-slip.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://nld.sika.com/schonox/nl/vloertechniek/lijmen/schoenox-anti-slip.html",
         "alternateUrls": [],
@@ -2620,7 +2427,7 @@
       "categoryId": "15",
       "brandId": "17",
       "shortDescription": "Švedska gleterica širine 600 mm za ravnomerno razastiranje samonivelišućih masa.",
-      "description": "Ručna švedska gleterica SCHÖNOX SCHWEDENRAKEL, širine 600 mm, za ravnomerno razastiranje samonivelišućih masa. Isporučuje se kao jedan komad. Proizvođački holandski katalog izuzima upotrebu sa SCHÖNOX HS 10 F i SCHÖNOX APF; izbor alata treba uskladiti sa uputstvom za konkretnu masu.\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. Dodatne informacije o alatu proverite u priloženom katalogu proizvođača.",
+      "description": "Ručna švedska gleterica SCHÖNOX SCHWEDENRAKEL, širine 600 mm, za ravnomerno razastiranje samonivelišućih masa. Isporučuje se kao jedan komad. Proizvođački holandski katalog izuzima upotrebu sa SCHÖNOX HS 10 F i SCHÖNOX APF; izbor alata treba uskladiti sa uputstvom za konkretnu masu.",
       "specs": [
         {
           "key": "type",
@@ -2634,8 +2441,8 @@
         },
         {
           "key": "manufacturer_packaging",
-          "label": "Pakovanja proizvođača",
-          "value": "1 komad"
+          "label": "Pakovanje",
+          "value": "1 kom, 600 mm"
         }
       ],
       "images": [
@@ -2661,14 +2468,7 @@
       "priceUnit": "pakovanje (1 kom, 600 mm)",
       "featured": false,
       "externalLink": "https://nld.sika.com/schonox/nl/vloertechniek/hulpmiddelen.html",
-      "detailsSections": [
-        {
-          "title": "Pakovanje i nabavka",
-          "items": [
-            "Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja."
-          ]
-        }
-      ],
+      "detailsSections": [],
       "source": {
         "canonicalUrl": "https://nld.sika.com/schonox/nl/vloertechniek/hulpmiddelen.html",
         "alternateUrls": [],

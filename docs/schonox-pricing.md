@@ -9,6 +9,14 @@ Poslednji nalog vlasnika 29.10: kupac vidi **samo konačnu cenu**, npr.
 ponovljene tabele. Cena već uključuje PDV. Više pakovanja prikazuje se kao
 jednostavni redovi pakovanje–cena. Ova odluka zamenjuje prethodni neto/bruto prikaz.
 
+Poslednja korekcija 05.11: javno polje **Pakovanje** prikazuje samo
+`packages[].packagingLabel` iz `tools/schonox-prices.json`, po jedno u redu,
+za svih 32 proizvoda / 37 stavki. Ključ `manufacturer_packaging` ostaje radi
+postojećeg prikaza i poređenja. KH FIX ima samo **5 kg / 3.978,84 RSD**,
+šifra 483277; globalna pakovanja 1 kg i 10 kg nisu deo naše ponude.
+Ovo zamenjuje raniji javni prikaz globalnih proizvođačkih/PDS pakovanja;
+sirovi podaci ostaju u manifestu. Istek cene ne uklanja odobrena pakovanja.
+
 ## Izvor i obračun
 
 - Sika Srbija, cenovnik od 17.8.2026, važi do 31.12.2026. Nova kolona
@@ -38,8 +46,10 @@ katalog i stari asseti ostaju za proveru porekla i povratak prethodne verzije.
 ## Tok podataka i provere
 
 `node tools/extract_schonox_catalog.js --prices-only` primenjuje pregledani
-cenovnik bez mrežnog preuzimanja ambalaže i dokumenata. Redovan refresh ponovo
-primenjuje isti podskup. Izvorni datum provere proizvođačkog sadržaja ostaje
+cenovnik na cene i javnu specifikaciju pakovanja bez mrežnog preuzimanja ambalaže
+i dokumenata. Isti `applyApprovedPrices` usklađuje pakovanja i pri
+`--assortment-only` i redovnom uvozu; `--presentation-only` osvežava ta pakovanja
+bez promene cena. Izvorni datum provere proizvođačkog sadržaja ostaje
 sačuvan. Loader duboko kopira opcije i uklanja istekle cene nakon ponoći
 1.1.2027. u Beogradu, uključujući prethodno zagrejane serverske keševe.
 

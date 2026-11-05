@@ -83,7 +83,7 @@ describe('approved Serbian SCHÖNOX assortment', () => {
     }
   });
 
-  it('publishes reviewed Serbian detail text and only promises a technical sheet when one is attached', () => {
+  it('publishes only reviewed Serbian detail text while retaining document provenance', () => {
     const copy = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'tools/schonox-copy.json'), 'utf8'));
     const details = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'tools/schonox-details.json'), 'utf8'));
     expect(dataset.products.every(product => copy[product.slug] && details[product.slug])).toBe(true);
@@ -91,13 +91,9 @@ describe('approved Serbian SCHÖNOX assortment', () => {
     expect(withLongSource).toHaveLength(120);
     for (const product of dataset.products) {
       expect(product.shortDescription).toBe(copy[product.slug]);
-      expect(product.description.startsWith(details[product.slug]), product.slug).toBe(true);
+      expect(product.description, product.slug).toBe(details[product.slug]);
+      expect(product.detailsSections, product.slug).toEqual([]);
       expect(product.description).not.toMatch(/\b(suitable for|for interior use|for exterior use|Packaging unit|Packsize)\b/i);
-      const hasPds = product.documents.some(document => document.type === 'product_data_sheet');
-      const hasOnlyCatalog = product.documents.length > 0 && product.documents.every(document => document.type === 'catalog');
-      expect(product.description.includes('priloženom tehničkom listu'), product.slug).toBe(hasPds);
-      expect(product.description.includes('Zatražite tehnički list'), product.slug).toBe(!hasPds && !hasOnlyCatalog);
-      expect(product.description.includes('priloženom katalogu'), product.slug).toBe(hasOnlyCatalog);
     }
     expect(manifest.missingTechnicalDataSheets.map(product => product.slug).sort()).toEqual(dataset.products.filter(product => !product.documents.some(document => document.type === 'product_data_sheet')).map(product => product.slug).sort());
     const trowel = dataset.products.find(product => product.slug === 'schonox-svedska-gleterica-600mm')!;
@@ -115,7 +111,6 @@ describe('approved Serbian SCHÖNOX assortment', () => {
         expect(product.inStock).toBe(false);
         expect(product.availability).toBe('on_request');
         expect(product.updatedAt.toISOString()).toBe(dataset.generatedAt);
-        expect(product.description).toContain('potvrdu prodaje');
         expect(hasCollectionSku(product)).toBe(true);
         expect(getCanonicalProductHref(product)).toBe(`/proizvodi/${product.slug}`);
       }

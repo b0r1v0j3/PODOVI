@@ -5,6 +5,7 @@ import type { Product } from '@/types';
 import { getAllSchonoxProducts } from '@/lib/data/schonox-products';
 import { generateProductSchema } from '@/lib/seo/structured-data';
 import { buildHomeCatalogItems } from '@/lib/catalog/home-catalog-index';
+import details from '@/tools/schonox-details.json';
 
 const compare = vi.hoisted(() => ({ items: [] as unknown[] }));
 const stubs = vi.hoisted(() => ({ Breadcrumbs: (_props: { items: Array<{ label: string }> }) => null }));
@@ -12,7 +13,7 @@ const stubs = vi.hoisted(() => ({ Breadcrumbs: (_props: { items: Array<{ label: 
 vi.mock('react', async () => ({ ...(await vi.importActual<typeof import('react')>('react')), cache: <T,>(fn: T) => fn }));
 vi.mock('@/lib/context/CompareContext', () => ({ useCompare: () => ({ compareItems: compare.items, removeFromCompare: vi.fn(), clearAll: vi.fn() }) }));
 vi.mock('@/components/Breadcrumbs', () => ({ default: stubs.Breadcrumbs }));
-for (const name of ['ProductColorSelector', 'ColorGrid', 'ProductActions', 'ProductDocuments', 'RecommendedAccessories', 'EcoFeatures', 'CertificationBadges', 'RelatedProducts', 'RecentlyViewed', 'ProductInquiryStickyCTA', 'ProductViewTracker', 'ProductDetailsTabs', 'ProductImage', 'ProductCharacteristics', 'ProductDescriptionWithCharacteristics', 'ProductBenefits', 'FlooringCalculator']) {
+for (const name of ['ProductColorSelector', 'ColorGrid', 'ProductActions', 'ProductDocuments', 'RecommendedAccessories', 'EcoFeatures', 'CertificationBadges', 'RelatedProducts', 'RecentlyViewed', 'ProductInquiryStickyCTA', 'ProductViewTracker', 'ProductImage', 'ProductCharacteristics', 'ProductDescriptionWithCharacteristics', 'ProductBenefits', 'FlooringCalculator']) {
   vi.doMock(`@/components/${name}`, () => ({ default: () => null }));
 }
 vi.stubGlobal('React', React);
@@ -33,13 +34,16 @@ function findProps(node: any, type: unknown): any {
 }
 
 describe('SCHÖNOX availability is on request, never a stock claim', () => {
-  it('keeps manufacturer package lines readable in comparison', async () => {
+  it('keeps approved package lines readable in comparison', async () => {
     const emiclassic = getAllSchonoxProducts().find(product => product.slug === 'schonox-emiclassic')!;
     emiclassic.specs.push({ key: 'program', label: 'Program proizvođača', value: 'Podovi, Brodogradnja' });
-    compare.items = [emiclassic];
+    compare.items = [emiclassic, ...getAllSchonoxProducts().filter(product => ['schonox-kh-fix', 'schonox-kh'].includes(product.slug))];
     const { default: ComparePageClient } = await import('@/app/uporedi/ComparePageClient');
     const html = renderToStaticMarkup(React.createElement(ComparePageClient));
-    expect(html).toMatch(/<td[^>]*whitespace-pre-line[^>]*text-left[^>]*>14 kg, kanta\n6 kg, kanta<\/td>/);
+    expect(html).toMatch(/<td[^>]*whitespace-pre-line[^>]*text-left[^>]*>14 kg<\/td>/);
+    expect(html).toMatch(/<td[^>]*whitespace-pre-line[^>]*text-left[^>]*>5 kg<\/td>/);
+    expect(html).toMatch(/<td[^>]*whitespace-pre-line[^>]*text-left[^>]*>1 kg\n5 kg\n10 kg<\/td>/);
+    expect(html).not.toContain('6 kg');
     expect(html).not.toMatch(/Program proizvođača|Brodogradnja|Marine/);
     expect(html).not.toContain('EAN');
   });
@@ -74,6 +78,13 @@ describe('SCHÖNOX availability is on request, never a stock claim', () => {
     const labels = findProps(page, stubs.Breadcrumbs)?.items.map((item: { label: string }) => item.label);
     expect(labels?.at(-1)).toMatch(/SCHÖNOX KH/i);
     expect(labels).not.toContain('Schonox Kh');
+  }, 60000);
+
+  it('shows the reviewed HDS description without generated purchasing or documentation notes', async () => {
+    const { default: ProductPage } = await import('@/app/proizvodi/[slug]/page');
+    const html = renderToStaticMarkup(await ProductPage({ params: { slug: 'schonox-hds' }, searchParams: {} } as any));
+    expect(html).toContain(`>${details['schonox-hds']}<`);
+    expect(html).not.toMatch(/Nabavka preko Podovi|potvrdu prodaje|Raspoloživost, odgovarajuće pakovanje|priloženom tehničkom listu|Zatražite tehnički list|priloženom katalogu|Pakovanje i nabavka|regionalna pakovanja|Pakovanje za konkretnu isporuku/);
   }, 60000);
 
   it('shows one final price on a single-package PDP without price metadata or duplication', async () => {

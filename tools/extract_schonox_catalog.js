@@ -261,13 +261,6 @@ function highResolutionUrl(source) {
   return url.href;
 }
 
-function documentationNote(documents) {
-  if (documents.length && documents.every(document => document.type === 'catalog')) return 'Dodatne informacije o alatu proverite u priloženom katalogu proizvođača.';
-  return documents.some(document => document.type === 'product_data_sheet')
-    ? 'Tehničke podatke i uslove primene proverite u priloženom tehničkom listu proizvođača za konkretan proizvod.'
-    : 'Zatražite tehnički list od Podovi prodaje pre izbora i primene proizvoda.';
-}
-
 function productPackaging(product) {
   let packaging = product.sections.Packaging;
   // These tables append a different product, not another package of this product.
@@ -284,20 +277,29 @@ function productPackaging(product) {
   return localizePackaging(packaging);
 }
 
-function presentationSpecs(product) {
-  const packaging = productPackaging(product);
-  return packaging ? [{ key: 'manufacturer_packaging', label: 'Pakovanja proizvođača', value: packaging }] : [];
+function presentationSpecs(product, prices) {
+  const packages = prices.products.find(item => item.slug === product.slug)?.packages;
+  assert(packages?.length, `Missing approved packaging: ${product.slug}`);
+  const labels = packages.map(item => {
+    assert(typeof item.packagingLabel === 'string' && item.packagingLabel.trim(), `Missing approved package label: ${product.slug}`);
+    return item.packagingLabel;
+  });
+  return [{ key: 'manufacturer_packaging', label: 'Pakovanje', value: labels.join('\n') }];
 }
 
 function applyPresentation(products, sourceProducts) {
+  const details = JSON.parse(fs.readFileSync(path.join(__dirname, 'schonox-details.json'), 'utf8'));
+  const prices = approvedPrices();
   const sourceBySlug = new Map(sourceProducts.map(product => [product.slug, product]));
   return products.map(product => {
     const source = sourceBySlug.get(product.slug);
     assert(source, `Missing presentation source: ${product.slug}`);
-    const updated = presentationSpecs(source);
+    const description = details[product.slug];
+    assert(typeof description === 'string' && description.trim(), `Missing Serbian detailed description: ${product.slug}`);
+    const updated = presentationSpecs(source, prices);
     const specs = product.specs.flatMap(spec => ['program', 'manufacturer_packaging'].includes(spec.key) ? updated.filter(item => item.key === spec.key) : [spec]);
     for (const spec of updated) if (!specs.some(item => item.key === spec.key)) specs.push(spec);
-    return { ...product, specs };
+    return { ...product, description, detailsSections: [], specs };
   });
 }
 
@@ -357,7 +359,11 @@ function applyApprovedPrices(products, priceList = approvedPrices()) {
   }
   return products.map(product => {
     const { price, priceFrom, priceIncludesVat, priceValidUntil, priceOptions, ...record } = product;
-    return { ...record, priceUnit: 'pakovanje', ...prices.get(product.slug) };
+    const approved = prices.get(product.slug);
+    const packaging = approved ? {
+      specs: [...(record.specs || []).filter(spec => spec.key !== 'manufacturer_packaging'), ...presentationSpecs(product, priceList)],
+    } : {};
+    return { ...record, ...packaging, priceUnit: 'pakovanje', ...approved };
   });
 }
 
@@ -442,10 +448,9 @@ async function build(source) {
       const repeated = doc.title && kept.filter(item => documentLabel(item.doc) === label).length > 1;
       return { title: repeated ? `${label} (${clean(doc.title).replace(/®/g, '')})` : label, url: asset.url, type: doc.type };
     });
-    const packaging = productPackaging(product);
-    const specifications = [{ key: 'type', label: 'Tip', value: groups[0] }, { key: 'manufacturer', label: 'Proizvođač', value: 'SCHÖNOX / Sika' }, ...presentationSpecs(product)];
-    const description = `${details[product.slug]}\n\nNabavka preko Podovi uz potvrdu prodaje. Raspoloživost, odgovarajuće pakovanje i rok isporuke potvrđuju se ponudom. ${documentationNote(documents)}`;
-    return { id: product.slug, name: product.name.replace('®', ''), slug: product.slug, sku: product.slug.toUpperCase(), categoryId: '15', brandId: '17', shortDescription: copy[product.slug], description, specs: specifications, images, documents, availability: 'on_request', inStock: false, priceUnit: 'pakovanje', featured: false, externalLink: product.canonicalUrl, detailsSections: packaging ? [{ title: 'Pakovanje i nabavka', items: ['Navedena su regionalna pakovanja sa zvaničnog evropskog/globalnog kataloga proizvođača. Pakovanje za konkretnu isporuku potvrđuje Podovi prodaja.'] }] : [], source: { canonicalUrl: product.canonicalUrl, alternateUrls: product.alternateUrls, groupUrls: product.groups, checkedAt: product.checkedAt || source.discoveredAt } };
+    const specifications = [{ key: 'type', label: 'Tip', value: groups[0] }, { key: 'manufacturer', label: 'Proizvođač', value: 'SCHÖNOX / Sika' }, ...presentationSpecs(product, prices)];
+    const description = details[product.slug];
+    return { id: product.slug, name: product.name.replace('®', ''), slug: product.slug, sku: product.slug.toUpperCase(), categoryId: '15', brandId: '17', shortDescription: copy[product.slug], description, specs: specifications, images, documents, availability: 'on_request', inStock: false, priceUnit: 'pakovanje', featured: false, externalLink: product.canonicalUrl, detailsSections: [], source: { canonicalUrl: product.canonicalUrl, alternateUrls: product.alternateUrls, groupUrls: product.groups, checkedAt: product.checkedAt || source.discoveredAt } };
   });
   const manifest = { ...source, regionalProducts: regional, selectedProductSlugs: selected.map(product => product.slug), exclusions: [...source.exclusions, ...Object.entries(DOCUMENT_EXCLUSIONS).map(([url, reason]) => ({ scope: 'document', url, reason }))], assets, failures, imageLimitations, missingImages: products.filter(product => !product.images.length).map(product => ({ slug: product.slug, reason: 'No individual product image exposed by official source.' })), missingDocuments: products.filter(product => !product.documents.length).map(product => ({ slug: product.slug, reason: 'No downloadable product document exposed by official source.' })), missingTechnicalDataSheets: products.filter(product => !product.documents.some(document => document.type === 'product_data_sheet')).map(product => ({ slug: product.slug, reason: 'No product_data_sheet attached; request the technical data sheet before selection or application.' })), productCount: products.length };
   manifest.sourceClarifications = [
@@ -502,10 +507,6 @@ async function main() {
   }
   if (process.argv.includes('--self-test')) {
     assert.notEqual(storagePathFor('same.pdf', Buffer.from('%PDF-one')), storagePathFor('same.pdf', Buffer.from('%PDF-two')));
-    assert.match(documentationNote([{ type: 'product_data_sheet' }]), /priloženom tehničkom listu/);
-    assert.match(documentationNote([{ type: 'safety_data_sheet' }]), /Zatražite tehnički list/);
-    assert.match(documentationNote([{ type: 'catalog' }]), /priloženom katalogu/);
-    assert.match(documentationNote([]), /Zatražite tehnički list/);
     assert.equal(productPackaging({ slug: 'schonox-gea', sections: { Packaging: 'Packsize 4.5-kg-combined packaging Material No. 488270 Packsize 25.0-kg-sack' } }), '4,5 kg, kombinovano pakovanje');
     assert.equal(productPackaging({ slug: 'schonox-2k-pu-solid', sections: { Packaging: 'Packsize 4.5-kg-combined packaging' } }), '5 kg, kombinovano pakovanje (4,17 kg komponenta A + 0,83 kg komponenta B)');
     assert.equal(productPackaging({ slug: 'schonox-1k-ds-premium', sections: { Packaging: 'Packsize 28.0-kg-sack' } }), '18 kg, vreća');
@@ -571,4 +572,4 @@ async function main() {
   if (!process.argv.includes('--discover')) await build(source);
 }
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });
-module.exports = { applyApprovedPrices, applyPresentation, download, highResolutionUrl, mapLimit, productPackaging, documentationNote, selectAssortment, storagePathFor, validateAsset };
+module.exports = { applyApprovedPrices, applyPresentation, download, highResolutionUrl, mapLimit, productPackaging, selectAssortment, storagePathFor, validateAsset };

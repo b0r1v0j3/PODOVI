@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 05.11.2026 (SCHÖNOX asortiman prema cenovniku)
+> **Poslednje ažuriranje:** 05.11.2026 (SCHÖNOX pakovanja iz srpskog cenovnika)
 
 ---
 
@@ -153,6 +153,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**SCHÖNOX — javna pakovanja samo iz cenovnika (05.11.2026, poslednji nalog vlasnika)**
+- Polje „Pakovanje“ svih 32 proizvoda prikazuje isključivo `packages[].packagingLabel` iz `tools/schonox-prices.json`: ukupno 37 stavki, svako pakovanje u svom redu. Ključ `manufacturer_packaging` ostaje radi postojećeg prikaza i poređenja. KH FIX ima samo **5 kg / 3.978,84 RSD** (šifra 483277 u podacima); globalna pakovanja 1 kg i 10 kg nisu deo naše ponude.
+- Ovaj nalog zamenjuje raniji javni prikaz globalnih proizvođačkih/PDS pakovanja. Sirovi proizvođački podaci ostaju u manifestu i internom `productPackaging`; redovan uvoz i `--presentation-only` koriste pakovanja srpskog cenovnika. Cene, slike, dokumenti, izvori i `availability: on_request` ostaju nepromenjeni. Istek uklanja iznose, ne odobrena pakovanja.
+
+**SCHÖNOX — uklonjene generisane napomene (05.11.2026, poslednji nalog vlasnika)**
+- `description` svih 32 javna proizvoda tačno odgovara pregledanom tekstu iz `tools/schonox-details.json`, bez dodatog pasusa o nabavci/dostupnosti, tehničkom listu ili kataloškoj napomeni. Uklonjena je cela generisana `detailsSections` sekcija „Pakovanje i nabavka“; uvoz ih više ne dodaje. Ovaj nalog zamenjuje ranije dodavanje tih napomena.
+- `--presentation-only` sada i vraća pregledani opis i prazni generisane `detailsSections`, bez mreže ili promene cena, slika, dokumenata i datuma. Stvarna specifikacija `manufacturer_packaging`, dokumenti, cene i `availability: on_request` ostaju.
 
 **SCHÖNOX — samo asortiman iz cenovnika (05.11.2026, poslednji nalog vlasnika)**
 - Javna ponuda sadrži 32 proizvoda / svih 37 jedinstvenih šifara cenovnika Sika Srbija od 17.8.2026. Dodati su zasebni Anti Slip 14 kg (582475) i švedska gleterica 600 mm (483606); 105 proizvoda kojih nema u cenovniku povučeno je iz javnog kataloga. Ranije beleške o ponudi svih 135 globalnih proizvoda više ne određuju asortiman.
