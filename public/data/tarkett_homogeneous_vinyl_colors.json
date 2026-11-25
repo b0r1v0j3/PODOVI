@@ -18709,8 +18709,194 @@
           "brandId": "3"
         }
       ]
+    },
+    {
+      "name": "Somplan 350",
+      "slug": "tarkett-somplan-350",
+      "brandId": "3",
+      "url": "https://www.tarkett.rs/sr_RS/kolekcija-C001673-somplan-350",
+      "colorCount": 6,
+      "protivklizno": false,
+      "zidneObloge": false,
+      "shortDescription": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+      "description": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+      "categoryDescription": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+      "characteristics": {
+        "Način ugradnje": "Lepljenje",
+        "Čista soba": "ISO klasa 2",
+        "Elektrostatika": "Antistatik (≤ 2 kV)",
+        "CE oznaka": "EN 14041",
+        "Površina": "46 m²",
+        "Sadržaj ftalata": "Ne sadrži ftalate",
+        "Dužina": "23000 mm",
+        "Otpornost na klizanje (EN 13893)": "Klasa DS (µ ≥ 0,30)",
+        "Format": "Rolna 2x23m",
+        "Ukupna debljina": "2 mm",
+        "Hemijska otpornost": "Nije pogođen",
+        "Zaštitni sloj": "2 mm",
+        "Postojanost boje - svetlost": "≥ 6",
+        "Tip formata": "Rolna",
+        "Tip proizvoda": "Elastična podna obloga",
+        "Komercijalna klasifikacija": "34 Veoma teška",
+        "Širina": "2000 mm",
+        "ISO vrsta proizvoda": "Podne obloge od homogenog polivinil hlorida (ISO 10581)",
+        "Industrijska klasifikacija": "43 Teška",
+        "Termička otpornost": "0,010 m²•K/W",
+        "Površinska obrada": "TEKTANIUM ®",
+        "Otpornost na točkiće stolica": "Pogodno",
+        "Podno grejanje": "Da (maksimum 27°C)"
+      },
+      "detailsSections": [
+        {
+          "title": "Ključne karakteristike",
+          "items": [
+            "Dezeni inspirisan prirodom",
+            "Cleanroom sertifikat",
+            "Kombinacija neutralnih i pastelnih tonova",
+            "Profesionalna Tektanium površinska zaštita za jednostavno održavanje",
+            "Bez ftalata, uz upotrebu bezbednih plastifikatora",
+            "Izuzetno niska emisija ukupnih isparljivih organskih jedinjenja (TVOC) za visok kvalitet vazduha u zatvorenom prostoru"
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "title": "Tehnički list",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-somplan-350/ds-somplan-350.pdf?v=20261125171416",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura — Somplan 350",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-somplan-350/br-ho-somplan350-en-feb-2025.pdf?v=20261125171417",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-somplan-350/id-roa-somplan.pdf?v=20261125171417",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija — Somplan kolekcije",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-somplan-350/wr-tarkett-ho-somplan-en.pdf?v=20261125171418",
+          "type": "pdf"
+        },
+        {
+          "title": "Izjava o uticaju proizvoda na životnu sredinu (EPD)",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-somplan-350/cr-epd-beijing-somplan-collections-exp-2031-02-03.pdf?v=20261125171419",
+          "type": "pdf"
+        },
+        {
+          "title": "Brošura — sve Somplan kolekcije",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-somplan-350/br-tarkett-somplan-collection-lr.pdf?v=20261125171421",
+          "type": "pdf"
+        },
+        {
+          "title": "Garancija — opšti uslovi za profesionalnu upotrebu",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-somplan-350/wr-roa-professional-sales-warranty-2021.pdf?v=20261125171421",
+          "type": "pdf"
+        },
+        {
+          "title": "Uputstvo za instalaciju — Somplan SD",
+          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/vinil/tarkett-somplan-350/id-roa-somplan-sd.pdf?v=20261125171422",
+          "type": "pdf"
+        }
+      ],
+      "collection_image_url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-somplan-350/ambience/scena-1.jpg?v=20261125171422",
+      "room_scene_images": [],
+      "colors": [
+        {
+          "code": "306007016",
+          "name": "Light Cool Grey",
+          "slug": "tarkett-somplan-350-color-306007016-light-cool-grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-somplan-350/decor/306007016-light-cool-grey.jpg?v=20261125171423",
+          "description": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+          "characteristics": {
+            "HEX boja": "",
+            "NCS oznaka": "",
+            "LRV": "",
+            "Porodica boja": "GY",
+            "Šifra dekora": "306007016"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "306007025",
+          "name": "Light Green",
+          "slug": "tarkett-somplan-350-color-306007025-light-green",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-somplan-350/decor/306007025-light-green.jpg?v=20261125171423",
+          "description": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+          "characteristics": {
+            "HEX boja": "",
+            "NCS oznaka": "",
+            "LRV": "",
+            "Porodica boja": "G",
+            "Šifra dekora": "306007025"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "306007040",
+          "name": "Light Grey",
+          "slug": "tarkett-somplan-350-color-306007040-light-grey",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-somplan-350/decor/306007040-light-grey.jpg?v=20261125171423",
+          "description": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+          "characteristics": {
+            "HEX boja": "",
+            "NCS oznaka": "",
+            "LRV": "",
+            "Porodica boja": "GY",
+            "Šifra dekora": "306007040"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "306007041",
+          "name": "Middle Beige",
+          "slug": "tarkett-somplan-350-color-306007041-middle-beige",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-somplan-350/decor/306007041-middle-beige.jpg?v=20261125171424",
+          "description": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+          "characteristics": {
+            "HEX boja": "",
+            "NCS oznaka": "",
+            "LRV": "",
+            "Porodica boja": "BG",
+            "Šifra dekora": "306007041"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "306007006",
+          "name": "Middle Yellow",
+          "slug": "tarkett-somplan-350-color-306007006-middle-yellow",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-somplan-350/decor/306007006-middle-yellow.jpg?v=20261125171423",
+          "description": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+          "characteristics": {
+            "HEX boja": "",
+            "NCS oznaka": "",
+            "LRV": "",
+            "Porodica boja": "BG",
+            "Šifra dekora": "306007006"
+          },
+          "brandId": "3"
+        },
+        {
+          "code": "306007029",
+          "name": "Sunny Blue",
+          "slug": "tarkett-somplan-350-color-306007029-sunny-blue",
+          "image": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-images/products/vinil/tarkett-somplan-350/decor/306007029-sunny-blue.jpg?v=20261125171423",
+          "description": "Fleksibilna homogena podna obloga dostupna u rolnama sa PUR zaštitom. Somplan 350 je moderna kolekcija u neutralnim tonovima inspirisanim prirodom, uz diskretne dezene koji doprinose stvaranju prijatnog i skladnog ambijenta. Posebno je namenjena zahtevnim prostorima u zdravstvu, ustanovama za negu starijih osoba i obrazovnim ustanovama. Proizvodi Somplan 350 su 100% bez ftalata i doprinose dobrom kvalitetu vazduha u zatvorenom prostoru zahvaljujući veoma niskim emisijama ukupnih isparljivih organskih jedinjenja (TVOC), koje su znatno ispod evropskih standarda.",
+          "characteristics": {
+            "HEX boja": "",
+            "NCS oznaka": "",
+            "LRV": "",
+            "Porodica boja": "U",
+            "Šifra dekora": "306007029"
+          },
+          "brandId": "3"
+        }
+      ]
     }
   ],
-  "generatedAt": "2026-06-16T15:08:52.220Z",
+  "generatedAt": "2026-11-25T17:51:06.358Z",
   "source": "https://www.tarkett.rs/sr_RS/kategorija-rs_C01001-homogeni-vinil"
 }

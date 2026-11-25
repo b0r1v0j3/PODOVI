@@ -1,12 +1,15 @@
 import { describe, expect, it } from 'vitest';
 const {
   extractCollectionItem,
+  unflattenNuxtData,
   mediaImageUrl,
   toSerbianCharacteristics,
   homogeneousColorCharacteristics,
   cleanColorName,
   colorCode,
+  designSku,
   collectionDocsFromAssets,
+  applyDocOverrides,
   galleryImagesFromAssets,
   stripHtml,
   keyFeatureItems,
@@ -71,6 +74,51 @@ describe('tarkett-parse: extractCollectionItem', () => {
   });
 });
 
+describe('tarkett-parse: unflattenNuxtData (Nuxt 3 __NUXT_DATA__, tarkett.rs od 11/2026)', () => {
+  // Skraćen oblik stvarnog Somplan 350 payload-a: indeksi umesto vrednosti, Vue omotači kao tuple,
+  // deljena referenca (indeks 8 dvaput), devalue konstanta -1 (undefined), EmptyRef koji (kao svaki
+  // omotač) pokazuje na INDEKS literala ('_' / 'false') i neispravan datum ["Date",""].
+  const NUXT_DATA = [
+    { pinia: 1, state: 13 },
+    { collectionProduct: 2 },
+    ['Reactive', 3],
+    { item: 4 },
+    { collection_name: 5, designs: 6, short_description: -1, related: 9 },
+    'Somplan 350',
+    [7, 10],
+    { product_name: 8, product_design_key: 11 },
+    'SOMPLAN 350 Middle Yellow 2m 3510',
+    ['Ref', 8],
+    { product_name: 12, product_design_key: 12 },
+    '306007006',
+    'light-green',
+    { empty: 14, flag: 16, when: 18 },
+    ['EmptyRef', 15],
+    '_',
+    ['EmptyRef', 17],
+    'false',
+    ['Date', ''],
+  ];
+
+  it('rekonstruiše objekat i extractCollectionItem nalazi pinia.collectionProduct.item', () => {
+    const payload = unflattenNuxtData(NUXT_DATA);
+    const item = extractCollectionItem(payload);
+    expect(item.collection_name).toBe('Somplan 350');
+    expect(item.designs).toHaveLength(2);
+    expect(item.designs[0]).toEqual({ product_name: 'SOMPLAN 350 Middle Yellow 2m 3510', product_design_key: '306007006' });
+    expect(item.related).toBe('SOMPLAN 350 Middle Yellow 2m 3510'); // Ref omotač → sadržaj
+    expect(item.short_description).toBeUndefined();
+    expect(payload.state.empty).toBeUndefined();
+    expect(payload.state.flag).toBe(false);
+    expect(payload.state.when).toBeNull(); // neispravan datum ne ruši ceo parse
+  });
+
+  it('vraća null za prazan/neispravan ulaz', () => {
+    expect(unflattenNuxtData([])).toBeNull();
+    expect(unflattenNuxtData(null)).toBeNull();
+  });
+});
+
 describe('tarkett-parse: mediaImageUrl', () => {
   it('gradi XXL URL po default-u', () => {
     expect(mediaImageUrl('TH_HO_iQ_Motion_Blue_409.jpg'))
@@ -93,6 +141,16 @@ describe('tarkett-parse: colorCode / cleanColorName', () => {
   });
   it('skida ponovljeni prefiks naziva kolekcije', () => {
     expect(cleanColorName('Deal SPC 30 Natural Wood', 'Deal SPC 30')).toBe('Natural Wood');
+  });
+  it('Somplan 350: skida širinu rolne i legacy kod („2m 3510")', () => {
+    expect(cleanColorName('SOMPLAN 350 Middle Yellow 2m 3510', 'Somplan 350')).toBe('Middle Yellow');
+    expect(cleanColorName('LIGHT COOL GREY', 'Somplan 350')).toBe('Light Cool Grey');
+  });
+  it('designSku: 9-cifrena Tarkett referenca iz ključa ili thumbnail-a', () => {
+    expect(designSku({ product_design_key: '306007006', product_thumbnail: 'TH_306007006_001.jpg' })).toBe('306007006');
+    expect(designSku({ product_design_key: 'light-cool-grey', product_thumbnail: '306007016.jpg' })).toBe('306007016');
+    expect(designSku({ product_design_key: 'light-green', product_thumbnail: 'TH_306007025_306036025.jpg' })).toBe('306007025');
+    expect(designSku(IQ_MOTION_DESIGN0)).toBe('');
   });
   it('ModularT: čisti SVE realne varijante prefiksa/dimenzija (Modu70/Modul 70/Modul70/ModularT 70, 66,5X66,5)', () => {
     // Sva 16 sirovih imena iz output dump-a (C003148). Prefiks varira, dimenzije imaju
@@ -123,13 +181,22 @@ describe('tarkett-parse: homogeneousColorCharacteristics', () => {
       'Šifra dekora': '0409',
     });
   });
+  it('prihvata eksplicitnu šifru (npr. Tarkett referencu) i prazne HEX/LRV ostavlja prazne', () => {
+    const out = homogeneousColorCharacteristics(
+      { product_hex_color_code: null, product_light_reflectance_value: null, product_color_families: [{ code: 'BG' }], product_name: 'LIGHT GREY' },
+      '306007040',
+    );
+    expect(out['Šifra dekora']).toBe('306007040');
+    expect(out['HEX boja']).toBe('');
+    expect(out['LRV']).toBe('');
+  });
 });
 
 describe('tarkett-parse: toSerbianCharacteristics', () => {
   it('prevodi poznate snake_case ključeve u srpske labele', () => {
     const out = toSerbianCharacteristics(IQ_RAW_SPECS);
     expect(out['Ukupna debljina']).toBe('2 mm');
-    expect(out['Komercijalna klasifikacija']).toBe('34 Very Heavy');
+    expect(out['Komercijalna klasifikacija']).toBe('34 Veoma teška'); // SPEC_VALUE_SR: Tarkett ne prevodi
     expect(out['Tip formata']).toBe('Rolna');
     expect(out['Površinska obrada']).toBe('iQ PUR');
     expect(out['Zemlja porekla']).toBe('Sweden');
@@ -142,6 +209,29 @@ describe('tarkett-parse: toSerbianCharacteristics', () => {
     const out = toSerbianCharacteristics({ total_thickness: '', format: 'Rolna' });
     expect(out['Ukupna debljina']).toBeUndefined();
     expect(out['Format']).toBe('Rolna');
+  });
+  it('Somplan 350: srpske labele novih ključeva, prevod engleskih vrednosti, skriven is_cutable', () => {
+    const out = toSerbianCharacteristics({
+      installation_method: 'Glue-Down',
+      clean_room_iso_14644: 'ISO klasa 2',
+      castor_chair_effect_iso_4918: 'Suitable',
+      classification_commercial_iso_10874: '34 Very Heavy',
+      product_type: 'Resilient Flooring',
+      ce_marking: 'EN 14041',
+      colour_fastness_light: '≥ 6',
+      product_type_norm_iso: 'Podne obloge od homogenog polivinil hlorida (ISO 10581)',
+      is_cutable: 'Ne',
+    });
+    expect(out['Način ugradnje']).toBe('Lepljenje');
+    expect(out['Čista soba']).toBe('ISO klasa 2');
+    expect(out['Otpornost na točkiće stolica']).toBe('Pogodno');
+    expect(out['Komercijalna klasifikacija']).toBe('34 Veoma teška');
+    expect(out['Tip proizvoda']).toBe('Elastična podna obloga');
+    expect(out['CE oznaka']).toBe('EN 14041');
+    expect(out['Postojanost boje - svetlost']).toBe('≥ 6'); // isti ključ kao postojeće kolekcije (poređenje)
+    expect(out['ISO vrsta proizvoda']).toMatch(/homogenog/);
+    expect(Object.keys(out).some((label) => /cutable/i.test(label))).toBe(false);
+    expect(Object.values(out)).not.toContain('Ne');
   });
   it('prevodi i EPD/karbon/dimenzione ključeve (ne curi engleski na srpskom sajtu)', () => {
     const out = toSerbianCharacteristics({
@@ -221,6 +311,35 @@ describe('tarkett-parse: collectionDocsFromAssets', () => {
   });
 });
 
+describe('tarkett-parse: applyDocOverrides', () => {
+  const docs = collectionDocsFromAssets({
+    collection_assets: [
+      { document_role: 'INSTALLATION', document_role_translated: 'Uputstvo za instalaciju', document_asset_url: 'ID_ROA_Somplan_SD.PDF', document_mime_type: 'pdf' },
+      { document_role: 'CERTIFICATE', document_role_translated: 'Sertifikat', document_asset_url: 'CR_Floorscore_Expire_31_October_2026.pdf', document_mime_type: 'pdf' },
+      { document_role: 'BROCHURE', document_role_translated: 'Brošura', document_asset_url: 'BR_Somplan 350.pdf', document_mime_type: 'pdf' },
+      { document_role: 'DATASHEET', document_role_translated: 'Tehnički list', document_asset_url: 'DS_Somplan_350.pdf', document_mime_type: 'pdf' },
+    ],
+  });
+
+  it('bez podešavanja vraća iste dokumente', () => {
+    expect(applyDocOverrides(docs)).toEqual(docs);
+  });
+
+  it('izbacuje skip, menja naslove po imenu fajla (i sa razmakom), navedene stavlja napred', () => {
+    const out = applyDocOverrides(docs, {
+      skip: ['CR_Floorscore_Expire_31_October_2026.pdf'],
+      titles: { 'BR_Somplan 350.pdf': 'Brošura — Somplan 350', 'ID_ROA_Somplan_SD.PDF': 'Uputstvo za instalaciju — Somplan SD' },
+      order: ['DS_Somplan_350.pdf', 'BR_Somplan 350.pdf'],
+    });
+    expect(out.map((d: { title: string }) => d.title)).toEqual([
+      'Tehnički list',
+      'Brošura — Somplan 350',
+      'Uputstvo za instalaciju — Somplan SD',
+    ]);
+    expect(out[1].sourceUrl).toBe('https://media.tarkett-image.com/docs/BR_Somplan%20350.pdf');
+  });
+});
+
 describe('tarkett-parse: galleryImagesFromAssets', () => {
   it('vraća COVER prvo, pa GALLERY slike kao /XXL/ URL-ove', () => {
     const item = {
@@ -240,6 +359,10 @@ describe('tarkett-parse: galleryImagesFromAssets', () => {
 describe('tarkett-parse: stripHtml / keyFeatureItems', () => {
   it('skida HTML tagove i dekodira entitete', () => {
     expect(stripHtml('<p>Realistični&nbsp;dekori</p>')).toBe('Realistični dekori');
+  });
+  it('vraća razmak između slepljenih rečenica, ne dira skraćenice', () => {
+    expect(stripHtml('sa PUR zaštitom.Somplan 350 je moderna')).toBe('sa PUR zaštitom. Somplan 350 je moderna');
+    expect(stripHtml('Proizvedeno u U.S.A. i EU.')).toBe('Proizvedeno u U.S.A. i EU.');
   });
   it('vadi <li> stavke iz key_features', () => {
     expect(keyFeatureItems('<ul><li>Click sistem</li><li>100% reciklabilno</li></ul>'))

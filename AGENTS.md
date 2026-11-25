@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 05.11.2026 (SCHÖNOX pakovanja iz srpskog cenovnika)
+> **Poslednje ažuriranje:** 25.11.2026 (Tarkett Somplan 350 + uvoz sa Nuxt 3 tarkett.rs)
 
 ---
 
@@ -94,7 +94,7 @@ OPS_BASIC_AUTH_ACTOR_ID=
 | Kategorija | ID | Brendovi | Izvor podataka |
 |---|---|---|---|
 | Laminat | 1 | Tarkett (3) | `lib/data/tarkett-products.ts` |
-| Vinil | 2 | Gerflor (6), Tarkett (3), Wolflor (11), Podovi (14) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (20 kolekcija, 544 boje), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja), `wolflor_vinyl_colors.json` (64 kolekcije, 771 dekora; 57 live + 7 PDF suplement, slike na Supabase), `alpod_floor_collections.json` (4 Podovi kolekcije / 372 dekora, izvor Alpod Store API) |
+| Vinil | 2 | Gerflor (6), Tarkett (3), Wolflor (11), Podovi (14) | `vinyl_colors_complete.json` (25 kolekcija, 939 boja), `vinyl_special_colors.json` (2 kolekcije, 34 boje), `tarkett_vinyl_home_colors.json` (12 kolekcija, 281 boja), `tarkett_homogeneous_vinyl_colors.json` (32 kolekcije, 698 boja), `tarkett_heterogeneous_vinyl_colors.json` (15 kolekcija, 441 boja), `wolflor_vinyl_colors.json` (64 kolekcije, 771 dekora; 57 live + 7 PDF suplement, slike na Supabase), `alpod_floor_collections.json` (4 Podovi kolekcije / 372 dekora, izvor Alpod Store API) |
 | Parket | 3 | Tarkett (3), Podovi (14) | `lib/data/tarkett-products.ts`, `alpod_floor_collections.json` (7 Podovi kolekcija / 359 opcija: 5 Store API kolekcija + Essence Premium + Four Seasons) |
 | Tekstilne ploče | 4 | Gerflor (6), BLOQ (8) | `carpet_tiles_complete.json`, `bloq_carpet_tiles.json` |
 | Deking | 5 | TimberTech (10), Podovi (14) | `tis_deking_products.json`, `alpod_floor_collections.json` (2 Podovi kolekcije / 120 artikala iz Alpod Store API; završne lajsne i WPC prateći artikli ostaju u Deking kategoriji, ne u našem `Lajsne` lane-u) |
@@ -153,6 +153,14 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Tarkett Somplan 350 dodat u Vinil (25.11.2026, nalog vlasnika)**
+- Homogeni vinil u rolni 2x23 m (C001673): 6 boja (Light Cool Grey, Light Green, Light Grey, Middle Beige, Middle Yellow, Sunny Blue), 8 PDF-ova, naslovna ambijent slika — sve na Supabase (`product-images` / `product-documents`, `products/vinil/tarkett-somplan-350/`), 0 hotlinkova. Zapis u `tarkett_homogeneous_vinyl_colors.json` (sada 32 kolekcije); ceo put (kartica na početnoj, PDP, `?color=`, dokumenti, filteri Lepljenje / klasa 34 / namena / podno grejanje) radi bez izmena aplikacije.
+- tarkett.rs je prešao na **Nuxt 3**: `tools/ingest_tarkett.js` sada čita `#__NUXT_DATA__` preko `unflattenNuxtData()` (`tools/lib/tarkett-parse.js`); kolekcione karakteristike uzima iz `collection_default_sku` (jedan zahtev manje).
+- Žuta 306007006: zvanični thumbnail `TH_306007006_001.jpg` je 403 na Tarkett CDN-u (ne vidi se ni na tarkett.rs) → `thumbnailOverrides` na `TH_306007006_306036006.jpg` (vizuelno potvrđena ista boja). Šifre boja = Tarkett reference iz brošure (`codeFromSku`), ne legacy „3510".
+- Dokumenti: FloorScore sertifikat **istekao 31.10.2026** → ne objavljuje se; parovi sa istom rolom dobili jasne naslove i redosled (`documents.{skip,titles,order}` → `applyDocOverrides()`). Novi spec ključevi dobili Tarkettove srpske labele (Čista soba, CE oznaka, ISO vrsta proizvoda; `colour_fastness_light` → „Postojanost boje - svetlost" kao kod ostalih kolekcija, da poređenje ne cepa red), engleske vrednosti prevedene preko `SPEC_VALUE_SR`, prodajni `is_cutable` skriven.
+- Posle nezavisne recenzije (13 agenata): `welding-helpers.ts` čita i „ISO vrsta proizvoda" kao materijal → Somplan dobija „Tarkett elektrode za varenje - vinil podovi" kao ostale homogene rolne; naslov stranice boje skida šifre do 9 cifara (`app/proizvodi/[slug]/page.tsx`) → „Light Cool Grey - Somplan 350", a usput i lajsne (`559527002 AFRICAN MAHOGANY` → bez šifre); `unflattenNuxtData` čita `EmptyRef` preko indeksa (devalue format) i ne puca na neispravan datum.
+- Testovi: `tarkett-parse-contract` (+devalue, Somplan imena/šifre, labele, dokumenti), `tarkett-new-collections-contract` (NEW_HOMO). Runbook: `docs/superpowers/runbooks/2026-06-13-s3-tarkett-ingest-runbook.md` (odeljak Nuxt 3).
 
 **SCHÖNOX — javna pakovanja samo iz cenovnika (05.11.2026, poslednji nalog vlasnika)**
 - Polje „Pakovanje“ svih 32 proizvoda prikazuje isključivo `packages[].packagingLabel` iz `tools/schonox-prices.json`: ukupno 37 stavki, svako pakovanje u svom redu. Ključ `manufacturer_packaging` ostaje radi postojećeg prikaza i poređenja. KH FIX ima samo **5 kg / 3.978,84 RSD** (šifra 483277 u podacima); globalna pakovanja 1 kg i 10 kg nisu deo naše ponude.
@@ -1004,6 +1012,7 @@ PODOVI/
 41. **Kad menjaš image host/variant/fallback contract, moraš zatvoriti ceo lane u istom prolazu.** Minimum: `lib/utils/product-images.ts`, `lib/utils/image-runtime.ts`, `next.config.mjs`, `lib/utils/productDataLoader.ts`, `scripts/validate-images.js`, `scripts/audit-catalog-quality.ts` i contract testovi moraju ostati poravnati, inače build/runtime/SEO vrlo lako odu u drift.
 42. **Klijentska komponenta ne sme da uvozi modul koji statički uvozi JSON kataloga.** `color-helpers.ts`, `prepare-colors.ts`, `resolve-product.ts`, `productDataLoader.ts`, `facet-config.ts`, `home-catalog-index.ts` i `@/public/data/*` su serverski; jedan takav uvoz (17.10.2026: `mergeSpecs` u `ProductCharacteristics`) ubacio je 13,4 MB u PDP paket. Čiste helpere izdvoj u zaseban modul bez data importa; `pdp-client-bundle-contract` ovo čuva.
 43. **Početna je ISR i ne čita `searchParams`.** Filter stanje iz URL-a primenjuje klijent posle montiranja; ne vraćaj `searchParams` u `app/page.tsx` (strana bi ponovo postala render po zahtevu sa ~6 s podataka) i ne šalji klijentu pune `Product` objekte — kartica i filteri rade nad `HomeCatalogItem`.
+44. **tarkett.rs je od ~11/2026 Nuxt 3 — nema više `window.__NUXT__`.** Podaci su u `<script id="__NUXT_DATA__">` (devalue); koristi `unflattenNuxtData()` iz `tools/lib/tarkett-parse.js`, kolekcija je `pinia.collectionProduct.item`. Samo `tools/ingest_tarkett.js` ima taj fallback — ostali Tarkett alati (`ingest_tarkett_lajsne`, `ingest_tarkett_grass`, `ingest_pribor_tarkett`, `extract_tarkett_core`, `scripts/audit-tarkett-sync.ts`) moraju ga dobiti pre sledećeg pokretanja. Pre objave proveri da li Tarkett thumbnail stvarno postoji (žuta Somplan je bila 403) i da li sertifikati nisu istekli.
 
 ---
 

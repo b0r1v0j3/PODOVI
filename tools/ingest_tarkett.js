@@ -188,6 +188,40 @@ const DESSO_COLLECTIONS = [
   url: `https://www.tarkett.rs/sr_RS/kolekcija-${collectionId}-${slug}`,
 }));
 
+// Somplan 350 (25.11.2026, nalog vlasnika) — homogeni vinil u rolni 2x23 m (Tarkett rs_C01001), 6 boja.
+// codeFromSku: šifra boje = Tarkett 9-cifrena referenca kako je štampa brošura (306007 0xx), ne
+// slug-ključ ("light-cool-grey") niti legacy "3510" iz imena žute.
+// thumbnailOverrides: zvanični thumbnail žute (TH_306007006_001.jpg) je 403 na media.tarkett-image.com
+// u svim veličinama (ne vidi se ni na tarkett.rs) → ista boja po šablonu ostalih (TH_<sku>_<sku2>.jpg),
+// vizuelno provereno.
+const SOMPLAN_350 = {
+  key: 'somplan-350', kind: 'homogeneous', collectionId: 'C001673', slug: 'tarkett-somplan-350', categorySlug: 'vinil',
+  url: 'https://www.tarkett.rs/sr_RS/kolekcija-C001673-somplan-350',
+  codeFromSku: true,
+  thumbnailOverrides: { '306007006': 'TH_306007006_306036006.jpg' },
+  documents: {
+    // FloorScore sertifikat je istekao 31.10.2026 (datum u imenu fajla) — ne objavljujemo nevažeći dokument.
+    skip: ['CR_SCS_Floorscore_Tarkett_Beijing_HO_Somplan_Expire_31_October_2026.pdf'],
+    titles: {
+      'BR_HO_Somplan350_EN_Feb_2025.pdf': 'Brošura — Somplan 350',
+      'BR_Tarkett_Somplan_Collection_LR.pdf': 'Brošura — sve Somplan kolekcije',
+      'WR_Tarkett_HO_Somplan_EN.pdf': 'Garancija — Somplan kolekcije',
+      'WR_ROA_Professional_Sales_Warranty_2021.pdf': 'Garancija — opšti uslovi za profesionalnu upotrebu',
+      'ID_ROA_Somplan_SD.PDF': 'Uputstvo za instalaciju — Somplan SD',
+    },
+    order: [
+      'DS_Somplan_350.pdf',
+      'BR_HO_Somplan350_EN_Feb_2025.pdf',
+      'ID_ROA_Somplan.pdf',
+      'WR_Tarkett_HO_Somplan_EN.pdf',
+      'CR_EPD_Beijing_Somplan_Collections_Exp_2031_02_03.pdf',
+      'BR_Tarkett_Somplan_Collection_LR.pdf',
+      'WR_ROA_Professional_Sales_Warranty_2021.pdf',
+      'ID_ROA_Somplan_SD.PDF',
+    ],
+  },
+};
+
 // Konfiguracija 4 nove kolekcije (verbatim iz upstream izviđanja 2026-06-13).
 const COLLECTIONS = [
   { key: 'iq-motion',    kind: 'homogeneous', collectionId: 'C003138', slug: 'tarkett-iq-motion', categorySlug: 'vinil',
@@ -202,6 +236,7 @@ const COLLECTIONS = [
   ...TARKETT_SAFETY_COLLECTIONS,
   ...TARKETT_WALL_COLLECTIONS,
   ...DESSO_COLLECTIONS,
+  SOMPLAN_350,
 ];
 
 function parseArgs() {
@@ -235,18 +270,21 @@ function dessoBackingVariants(item) {
   return out;
 }
 
-// Playwright: učitaj kolekcijsku stranicu i vrati __NUXT__ objekat.
+// Playwright: učitaj kolekcijsku stranicu i vrati Nuxt payload. Nuxt 2 = window.__NUXT__ (sa state);
+// Nuxt 3 (tarkett.rs od ~11/2026) = devalue niz u <script id="__NUXT_DATA__"> → parse.unflattenNuxtData.
 async function fetchNuxt(browser, url) {
   const page = await browser.newPage({ userAgent: core.BROWSER_HEADERS['User-Agent'] });
   try {
     await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-    const nuxt = await page.evaluate(() => {
+    const res = await page.evaluate(() => {
       let n = window.__NUXT__;
       if (typeof n === 'function') { try { n = n(); } catch (_) { n = null; } }
-      if (!n) return null;
-      try { return JSON.parse(JSON.stringify(n)); } catch (_) { return null; }
+      if (n && n.state) { try { return { nuxt2: JSON.parse(JSON.stringify(n)) }; } catch (_) { /* pada na Nuxt 3 */ } }
+      const el = document.getElementById('__NUXT_DATA__');
+      return { nuxt3: el ? el.textContent : null };
     });
-    return nuxt;
+    if (res.nuxt2) return res.nuxt2;
+    return res.nuxt3 ? parse.unflattenNuxtData(JSON.parse(res.nuxt3)) : null;
   } finally {
     await page.close();
   }
@@ -330,9 +368,12 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
   const description = parse.stripHtml(item.description);
   const shortDescription = parse.stripHtml(item.short_description) || description;
 
-  // Kolekcione karakteristike iz per-dizajn JSON-a (prvog dizajna).
+  // Kolekcione karakteristike: Nuxt 3 item već nosi collection_default_sku (isti objekat koji vraća
+  // per-dizajn JSON) — štedi zahtev ka tarkett.rs; inače per-dizajn JSON prvog dizajna.
   let characteristics = {};
-  const firstSpecs = await fetchDesignSpecs(designs[0]?.productDataUrl).catch(() => null);
+  const firstSpecs = item.collection_default_sku?.sku_technical_caracteristics
+    ? { rawSpecs: item.collection_default_sku.sku_technical_caracteristics }
+    : await fetchDesignSpecs(designs[0]?.productDataUrl).catch(() => null);
   if (firstSpecs) characteristics = parse.toSerbianCharacteristics(firstSpecs.rawSpecs);
 
   // S5 — sigurnosne (protivklizne) kolekcije nose eksplicitnu "Protivklizno": "Da" karakteristiku.
@@ -346,8 +387,8 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
   // kolekcijskom headeru; filter ?zidne=1 bira po tom specu (kao ?safety=1 po 'protivklizno').
   if (col.zidneObloge) characteristics['Zidna obloga'] = 'Da';
 
-  const documents = args.dryRun ? parse.collectionDocsFromAssets(item)
-    : await ingestDocuments(supabase, manifest, col, parse.collectionDocsFromAssets(item));
+  const sourceDocs = parse.applyDocOverrides(parse.collectionDocsFromAssets(item), col.documents);
+  const documents = args.dryRun ? sourceDocs : await ingestDocuments(supabase, manifest, col, sourceDocs);
   const galleryUrls = args.dryRun ? parse.galleryImagesFromAssets(item)
     : await ingestGallery(supabase, manifest, col, parse.galleryImagesFromAssets(item));
 
@@ -362,8 +403,10 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
   async function swatchWorker() {
     while (cursor < designs.length) {
       const idx = cursor++;
-      const d = designs[idx];
-      const code = parse.colorCode(d);
+      const src = designs[idx];
+      const override = col.thumbnailOverrides?.[src.product_design_key];
+      const d = override ? { ...src, product_thumbnail: override } : src;
+      const code = (col.codeFromSku && parse.designSku(src)) || parse.colorCode(src);
       const name = parse.cleanColorName(d.product_name, item.collection_name);
       const fileBase = `${code}-${core.slugify(name)}`;
       let image = parse.mediaImageUrl(d.product_thumbnail);
@@ -377,7 +420,7 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
         } catch (err) { console.log(`   ⚠️ swatch ${fileBase}: ${err.message} — preskačem boju`); continue; }
         if (++saved % 25 === 0) manifest.save();
       }
-      const colorCharacteristics = parse.homogeneousColorCharacteristics(d);
+      const colorCharacteristics = parse.homogeneousColorCharacteristics(d, code);
       // S5 — propagiraj sigurnosni tag na nivo boje, da CategoryTabs (koji gradi specs iz
       // color.characteristics) izloži spec 'protivklizno' i na pojedinačnim bojama (Boje tab).
       if (col.protivklizno) colorCharacteristics['Protivklizno'] = 'Da';

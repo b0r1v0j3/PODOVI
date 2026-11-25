@@ -47,6 +47,16 @@ Flagovi: `--dry-run` (bez upisa/uploada), `--collection=<key>` (može više puta
 3. `node tools/ingest_tarkett.js --dry-run --collection=<key>` pa pun run.
 4. Dopuni `tests/contracts/tarkett-new-collections-contract.test.ts` (NEW_HOMO ili NEW_LVT).
 
+## Nuxt 3 (od ~11/2026) i opcije po kolekciji
+
+- tarkett.rs više nema `window.__NUXT__`. `fetchNuxt` prvo traži Nuxt 2 payload (sa `state`), a inače čita `<script id="__NUXT_DATA__">` i dekodira ga sa `parse.unflattenNuxtData()` (devalue). Kolekcija je u `pinia.collectionProduct.item`; polja (`designs`, `collection_assets`, `collection_default_sku`, `key_features`) su ista kao ranije, pa ostatak pipeline-a radi bez izmena.
+- Kolekcione karakteristike se uzimaju iz `item.collection_default_sku.sku_technical_caracteristics` (bez dodatnog zahteva ka tarkett.rs). Per-dizajn JSON (`json-collection-product/...`) i dalje radi, ali njegov `product_collection.collection_default_sku` je UVEK podrazumevani SKU kolekcije, ne izabrani dizajn.
+- Opciona polja reda u `COLLECTIONS` (primer: `SOMPLAN_350`):
+  - `codeFromSku: true` — šifra boje = Tarkett 9-cifrena referenca (`parse.designSku`), kad `product_design_key` nije šifra nego slug.
+  - `thumbnailOverrides: { <product_design_key>: '<fajl>.jpg' }` — kad je zvanični thumbnail 403 na `media.tarkett-image.com`. Zamenu uvek vizuelno proveri.
+  - `documents: { skip, titles, order }` — po imenu izvornog PDF-a: izbaci (npr. istekli sertifikat), daj jasan naslov kad dva PDF-a dele rolu, poređaj (tehnički list prvi).
+- Pre pravog pokretanja: `--dry-run --collection=<key>` mora da pokaže očekivan broj boja/dokumenata (Somplan 350: 6 / 8 / 1 ambijent).
+
 ## Upozorenja / lekcije
 
 - **Slike samo `/XXL/`** (1920px, maks). `XXXL`/`original` → 403. `large`/`XL` = 960px (grid fallback).

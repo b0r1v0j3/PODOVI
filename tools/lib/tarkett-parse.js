@@ -30,7 +30,52 @@ function stripHtml(s) {
       .replace(/<\/(p|div|li|ul|ol)>/gi, ' ')
       .replace(/<br\s*\/?>(?=)/gi, ' ')
       .replace(/<[^>]+>/g, ' ')
-  );
+  // Izvor ponekad lepi rečenice bez razmaka („zaštitom.Somplan 350 je…"); skraćenice tipa „U.S." ostaju.
+  ).replace(/([a-zčćšđž0-9][.!?])(?=[A-ZČĆŠĐŽ][a-zčćšđž])/g, '$1 ');
+}
+
+// Nuxt 3 (tarkett.rs od ~11/2026) više nema window.__NUXT__ nego devalue-serijalizovan payload u
+// <script id="__NUXT_DATA__">: niz u kom su vrednosti objekata/nizova INDEKSI u isti niz, a tuple
+// ["Reactive"|"Ref"|…, idx] su Vue/Nuxt omotači. Vraća običan JS objekat (Map→objekat, Set→niz,
+// Date→ISO string). Kolekcija je u payload.pinia.collectionProduct.item.
+const DEVALUE_SPECIAL = { '-1': undefined, '-2': undefined, '-3': NaN, '-4': Infinity, '-5': -Infinity, '-6': -0 };
+function unflattenNuxtData(values) {
+  if (!Array.isArray(values) || values.length === 0) return null;
+  const hydrated = new Array(values.length);
+  function hydrate(index) {
+    if (index < 0) return DEVALUE_SPECIAL[index];
+    if (index in hydrated) return hydrated[index];
+    const value = values[index];
+    if (!value || typeof value !== 'object') return (hydrated[index] = value);
+    if (Array.isArray(value) && typeof value[0] === 'string') {
+      switch (value[0]) {
+        case 'Date': { const t = new Date(value[1]); return (hydrated[index] = Number.isNaN(t.getTime()) ? null : t.toISOString()); }
+        case 'Set': { const out = (hydrated[index] = []); for (let i = 1; i < value.length; i++) out.push(hydrate(value[i])); return out; }
+        case 'Map': case 'null': {
+          const out = (hydrated[index] = {});
+          for (let i = 1; i < value.length; i += 2) out[value[0] === 'null' ? value[i] : String(hydrate(value[i]))] = hydrate(value[i + 1]);
+          return out;
+        }
+        case 'RegExp': case 'BigInt': case 'Object': return (hydrated[index] = value[1]);
+        case 'EmptyRef': case 'EmptyShallowRef': {
+          const raw = hydrate(value[1]); // kao svi omotači: indeks literala ('_', 'null', 'false'…)
+          if (raw === '_') return (hydrated[index] = undefined);
+          try { return (hydrated[index] = JSON.parse(raw)); } catch (_) { return (hydrated[index] = raw); }
+        }
+        // Reactive / ShallowReactive / Ref / ShallowRef / NuxtError / Island i nepoznati omotači: sadržaj.
+        default: return (hydrated[index] = hydrate(value[1]));
+      }
+    }
+    if (Array.isArray(value)) {
+      const out = (hydrated[index] = new Array(value.length));
+      for (let i = 0; i < value.length; i++) out[i] = hydrate(value[i]);
+      return out;
+    }
+    const out = (hydrated[index] = {});
+    for (const key of Object.keys(value)) out[key] = hydrate(value[key]);
+    return out;
+  }
+  return hydrate(0);
 }
 
 function keyFeatureItems(html) {
@@ -44,12 +89,14 @@ function keyFeatureItems(html) {
   return items;
 }
 
-// Izvuci item iz Nuxt2 payload-a (primarno state.collectionProductPage.item, pa traversal).
+// Izvuci item iz Nuxt payload-a: Nuxt2 state.collectionProductPage.item, Nuxt3 (unflattenNuxtData)
+// pinia.collectionProduct.item, pa traversal.
 function extractCollectionItem(nuxt) {
   if (!nuxt || typeof nuxt !== 'object') return null;
-  const direct = nuxt.state?.collectionProductPage?.item;
-  if (direct && (direct.collection_name || direct.collection_name_slug) && Array.isArray(direct.designs)) {
-    return direct;
+  for (const direct of [nuxt.state?.collectionProductPage?.item, nuxt.pinia?.collectionProduct?.item]) {
+    if (direct && (direct.collection_name || direct.collection_name_slug) && Array.isArray(direct.designs)) {
+      return direct;
+    }
   }
   const stack = [nuxt];
   const seen = new Set();
@@ -86,6 +133,8 @@ function cleanColorName(productName, collectionName) {
   n = n.replace(/\b\d+(?:[.,]\d+)?\s*[xX]\s*\d+(?:[.,]\d+)?\b/g, ' ');
   // Trailing finish kod ("1I") ili numerički kod ("0409", "278817001").
   n = n.replace(/\s+\d+[A-Za-z]$/, '').replace(/\s*\d{3,4}\s*$/, '').trim();
+  // Širina rolne ("SOMPLAN 350 Middle Yellow 2m 3510") — format, ne deo imena boje.
+  n = n.replace(/\s+\d+(?:[.,]\d+)?\s?m$/i, '').trim();
   const coll = String(collectionName || '').trim();
   if (coll && n.toLowerCase().startsWith(coll.toLowerCase() + ' ')) {
     n = n.slice(coll.length).trim();
@@ -97,14 +146,24 @@ function cleanColorName(productName, collectionName) {
     .trim();
 }
 
+// Tarkett referenca dizajna (9 cifara, npr. 306007016 — kako je štampa i brošura proizvođača):
+// numerički product_design_key, inače prvi 9-cifreni broj iz imena thumbnail-a
+// ("TH_306007025_306036025.jpg" → 306007025). Prazno ako nema.
+function designSku(design) {
+  const key = String(design.product_design_key || '').trim();
+  if (/^\d{9}$/.test(key)) return key;
+  const m = String(design.product_thumbnail || '').match(/(?:^|\D)(\d{9})(?=\D|$)/);
+  return m ? m[1] : '';
+}
+
 // Per-boja karakteristike za homogeni vinil (isti oblik kao postojećih 20 kolekcija).
-function homogeneousColorCharacteristics(design) {
+function homogeneousColorCharacteristics(design, code = colorCode(design)) {
   return {
     'HEX boja': String(design.product_hex_color_code || '').trim(),
     'NCS oznaka': String(design.product_ncs_color_code || '').trim(),
     'LRV': String(design.product_light_reflectance_value ?? '').trim(),
     'Porodica boja': String(design.product_color_families?.[0]?.code || '').trim(),
-    'Šifra dekora': colorCode(design),
+    'Šifra dekora': code,
   };
 }
 
@@ -154,6 +213,22 @@ const SPEC_LABEL_SR = {
   epd_number: 'EPD broj',
   epd_carbon_recycling: 'EPD — recikliranje ugljenika',
   carbon_impact_DVR: 'Ugljenični otisak (DVR)',
+  // Somplan 350 (11/2026) — labele kako ih Tarkett Srbija daje u collection_group_attributes.
+  product_type_norm_iso: 'ISO vrsta proizvoda',
+  ce_marking: 'CE oznaka',
+  clean_room_iso_14644: 'Čista soba',
+  castor_chair_effect_iso_4918: 'Otpornost na točkiće stolica',
+  colour_fastness_light: 'Postojanost boje - svetlost', // isti label kao 19 postojećih homogenih kolekcija
+  // Prodajni atribut (sečenje rolne) — Tarkett ga ne prikazuje među karakteristikama; null = ne prikazuj.
+  is_cutable: null,
+};
+
+// Engleske vrednosti koje Tarkett ne prevodi (sajt je na srpskom). Samo tačna poklapanja.
+const SPEC_VALUE_SR = {
+  'Glue-Down': 'Lepljenje',
+  'Resilient Flooring': 'Elastična podna obloga',
+  '34 Very Heavy': '34 Veoma teška',
+  Suitable: 'Pogodno',
 };
 
 // Fallback srpski naslov dokumenta po document_role (kad document_role_translated fali,
@@ -182,9 +257,9 @@ function toSerbianCharacteristics(rawSpecs) {
   const out = {};
   for (const [key, value] of Object.entries(rawSpecs || {})) {
     const v = String(value ?? '').trim();
-    if (!v) continue;
+    if (!v || SPEC_LABEL_SR[key] === null) continue;
     const label = SPEC_LABEL_SR[key] || humanizeKey(key);
-    if (!(label in out)) out[label] = v;
+    if (!(label in out)) out[label] = SPEC_VALUE_SR[v] || v;
   }
   return out;
 }
@@ -210,6 +285,18 @@ function collectionDocsFromAssets(item) {
   return docs;
 }
 
+// Per-kolekcija korekcije dokumenata, po imenu izvornog fajla: `titles` daje jasan naslov kad
+// dva PDF-a dele istu srpsku rolu (dve „Brošure"…), `skip` izbacuje neispravne (npr. istekli
+// sertifikat), `order` stavlja navedene fajlove napred tim redom (ostali zadržavaju izvorni redosled).
+function applyDocOverrides(docs, { titles = {}, skip = [], order = [] } = {}) {
+  const fileOf = (doc) => decodeURIComponent(String(doc.sourceUrl).split('/').pop() || '');
+  const rank = (doc) => { const i = order.indexOf(fileOf(doc)); return i === -1 ? order.length : i; };
+  return docs
+    .filter((doc) => !skip.includes(fileOf(doc)))
+    .map((doc) => (titles[fileOf(doc)] ? { ...doc, title: titles[fileOf(doc)] } : doc))
+    .sort((a, b) => rank(a) - rank(b)); // stabilan sort → nenavedeni ostaju u izvornom redosledu
+}
+
 // Ambijent/hero slike: COVER prvo, pa GALLERY (sve kao /XXL/ URL-ovi).
 function galleryImagesFromAssets(item) {
   const cover = [];
@@ -229,12 +316,15 @@ module.exports = {
   mediaDocUrl,
   stripHtml,
   keyFeatureItems,
+  unflattenNuxtData,
   extractCollectionItem,
   colorCode,
+  designSku,
   cleanColorName,
   homogeneousColorCharacteristics,
   toSerbianCharacteristics,
   SPEC_LABEL_SR,
   collectionDocsFromAssets,
+  applyDocOverrides,
   galleryImagesFromAssets,
 };

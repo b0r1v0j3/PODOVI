@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import homoData from '@/public/data/tarkett_homogeneous_vinyl_colors.json';
 import lvtData from '@/public/data/tarkett_lvt_products.json';
+import { getDerivedWeldingSpecs } from '@/lib/product-page/welding-helpers';
 
 const SUPABASE_PREFIX = 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/';
 // Asset hostovi koji NE smeju da se pojave u nove kolekcije (slike/dokumenti).
@@ -9,7 +10,7 @@ const UPSTREAM_ASSET = /media\.tarkett-image\.com|tarkett\.rs\/[a-z_]+\/pdf/i;
 const homoCollections = (homoData as any).collections as any[];
 const lvtItems = lvtData as any[];
 
-const NEW_HOMO = ['tarkett-iq-motion'];
+const NEW_HOMO = ['tarkett-iq-motion', 'tarkett-somplan-350'];
 const NEW_LVT = [
   { slug: 'deal-spc-30', type: 'SPC', count: 2 },
   { slug: 'real-spc-50', type: 'SPC', count: 6 },
@@ -34,6 +35,15 @@ describe('S3: nove homogeni-vinil kolekcije self-hostovane', () => {
     for (const scene of col.room_scene_images || []) {
       expect(String(scene).startsWith(`${SUPABASE_PREFIX}product-images/`)).toBe(true);
     }
+  });
+
+  it('Somplan 350: svih 6 boja (i žuta 306007006 čiji je Tarkett thumbnail 403) + preporuka elektrode', () => {
+    const col = homoCollections.find((c) => c.slug === 'tarkett-somplan-350');
+    expect(col.colors.map((c: any) => c.code).sort()).toEqual(
+      ['306007006', '306007016', '306007025', '306007029', '306007040', '306007041'],
+    );
+    const welding = getDerivedWeldingSpecs({ categoryId: '2', brandId: '3', collectionSlug: col.slug, collectionName: col.name, characteristics: col.characteristics });
+    expect(welding.map((s) => s.value).join(' ')).toMatch(/Tarkett elektrode za varenje - vinil podovi/);
   });
 
   it('dokumenti homogene kolekcije: jedinstveni izvorni URL-ovi, naslovi popunjeni', () => {

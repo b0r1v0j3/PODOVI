@@ -259,8 +259,10 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
     // ── Clean product name: strip color code prefix and brand prefix ──
     let cleanName = product.name;
-    // Strip color code prefix (e.g., "0347 BALLERINA" → "BALLERINA")
-    const codeMatch = cleanName.match(/^(\d{3,5})\s+(.+)$/);
+    // Strip color code prefix (e.g., "0347 BALLERINA" → "BALLERINA"; Tarkett reference
+    // "306007016 Light Cool Grey" / lajsne "559527002 …" → name). Only mergeSelectedColor
+    // produces digit-prefixed names; no catalog name starts with 6–9 digits.
+    const codeMatch = cleanName.match(/^(\d{3,9})\s+(.+)$/);
     if (codeMatch) {
       cleanName = codeMatch[2];
     }

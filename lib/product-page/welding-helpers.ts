@@ -216,7 +216,9 @@ function getTarkettSelection(context: WeldingContext): WeldingSelection | null {
   const characteristics = context.characteristics || {};
   const installation = getCharacteristic(characteristics, ['Način ugradnje', 'Tip instalacije']);
   const format = getCharacteristic(characteristics, ['Format', 'Tip formata']);
-  const material = getCharacteristic(characteristics, ['Materijal', 'Tip', 'Tip proizvoda (ISO)', 'Tip proizvoda']);
+  // 'ISO vrsta proizvoda' (npr. Somplan 350: „…homogenog polivinil hlorida (ISO 10581)") je jedini
+  // materijal kod kolekcija iz novog Tarkett uvoza; 'Tip proizvoda' tamo je samo „Elastična podna obloga".
+  const material = getCharacteristic(characteristics, ['Materijal', 'Tip', 'Tip proizvoda (ISO)', 'ISO vrsta proizvoda', 'Tip proizvoda']);
 
   if (!isGluedInstallation(installation) || isFloatingOrLooseLay(installation)) {
     return null;
