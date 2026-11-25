@@ -3066,7 +3066,7 @@
           "type": "pdf"
         },
         {
-          "title": "Sertifikat",
+          "title": "Izveštaj o ispitivanju VOC emisija",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/certificate-emissions-m1-acczent-excellence-genius-int.pdf?v=20260615024159",
           "type": "pdf"
         },
@@ -4083,7 +4083,7 @@
           "type": "pdf"
         },
         {
-          "title": "Sertifikat o kvalitetu vazduha",
+          "title": "Izveštaj o ispitivanju VOC emisija",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/certificate-indoor-air-quality-acczent-platinium-int.pdf?v=20260615024204",
           "type": "pdf"
         },
@@ -9572,7 +9572,7 @@
           "type": "pdf"
         },
         {
-          "title": "Sertifikat o kvalitetu vazduha",
+          "title": "Izveštaj o ispitivanju VOC emisija",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/certificate-indoor-air-quality-voc-emissions-tapiflex-excellence-19db-int.pdf?v=20260615024226",
           "type": "pdf"
         },
@@ -11082,11 +11082,6 @@
         {
           "title": "DOP sertifikat ( Deklaracija o performansama)",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/cr-int-0120-025dop-2013-04-tapiflexstairs.pdf?v=20260615024231",
-          "type": "pdf"
-        },
-        {
-          "title": "FDES sertifikat",
-          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/epd-nordic-generic-vinyl-tpx-stairs.pdf?v=20260615024231",
           "type": "pdf"
         },
         {

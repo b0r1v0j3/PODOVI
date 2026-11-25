@@ -983,18 +983,8 @@
           "type": "pdf"
         },
         {
-          "title": "INDOOR_AIR_QUALITY_CERTIFICATE",
-          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/cr-en-tiaqp-2019-linoleum.pdf?v=20260615024311",
-          "type": "pdf"
-        },
-        {
           "title": "Brošura - Linosport xf2",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/flyer-linosport-xf2-en.pdf?v=20260615024312",
-          "type": "pdf"
-        },
-        {
-          "title": "Sertifikat - Smanjenje razvoja alergija",
-          "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/cr-int-li-allergy-uk-seal-of-approval.pdf?v=20260615024312",
           "type": "pdf"
         },
         {
@@ -4483,7 +4473,7 @@
           "type": "pdf"
         },
         {
-          "title": "VOC SERTIFIKAT",
+          "title": "Izveštaj o ispitivanju VOC emisija",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/cr-see-omnisports-v65-tarkett-indoor-air-quality-.pdf?v=20260615024339",
           "type": "pdf"
         },
@@ -4720,7 +4710,7 @@
           "type": "pdf"
         },
         {
-          "title": "Sertifikat - VOC",
+          "title": "Izveštaj o ispitivanju VOC emisija",
           "url": "https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/tarkett-migrated/cr-see-omnsiports-v83-tarkett-indoor-air-quality.pdf?v=20260615024341",
           "type": "pdf"
         },

@@ -245,7 +245,8 @@ Tab "Sertifikati" (cat 6, 7, 4, 2, 8, 9, 10; only when at least one certificate 
 
 Tab "Dokumentacija" (independent of "Sertifikati"):
   └── ProductDocuments → reads product.documents
-        └── SSR mora već da dobije selected-color docs kroz `mergeSelectedColor()`, a client `/api/color-data` fetch služi samo kao confirmation/update lane
+        ├── SSR mora već da dobije selected-color docs kroz `mergeSelectedColor()`, a client `/api/color-data` fetch služi samo kao confirmation/update lane
+        └── expired certificates/EPDs and PDFs whose content does not match the title are removed from the data, not filtered at render; ingest keeps them out (`UNPUBLISHED_DOCS`/`DOC_TITLES` in `tools/ingest_tarkett.js`, `ingest_gerflor_s6.js`, `ingest_gerflor_cee.js`) — owner decision 25.11.2026
 ```
 
 `generateMetadata()` on the same page now has a Techem-specific flat-product branch:

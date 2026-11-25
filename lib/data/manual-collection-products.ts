@@ -606,7 +606,7 @@ export const manualCollectionProducts: Product[] = [
       { title: 'Product Description', url: 'https://cdn.gerflor.com/media/2/22526/dlw%20marmorette%20sport%20-%20product%20description.docx', type: 'product_description' },
       { title: 'Fire Certificate', url: 'https://cdn.gerflor.com/media/2/24267/dlw%20linoleum%20marmorette%20sport%203,2mm%20-%20fire%20certificate.pdf', type: 'fire_certificate' },
       { title: 'Declaration of Performance', url: 'https://cdn.gerflor.com/media/2/40414/marmorette%20sport%20-%20declaration%20of%20performance.pdf', type: 'dop' },
-      { title: 'C2C Certificate', url: 'https://nnjmrfwepylrheykalik.supabase.co/storage/v1/object/public/product-documents/products/gerflor-migrated/68300-dlw-linoleum-c2c.pdf?v=20260616042234', type: 'certificate' },
+      // C2C sertifikat (68300-dlw-linoleum-c2c.pdf) istekao 23.3.2026 — ne objavljuje se (25.11.2026).
     ],
     detailsSections: [
       {

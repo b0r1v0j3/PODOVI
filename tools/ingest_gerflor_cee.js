@@ -9,6 +9,10 @@ const IMAGES_BUCKET = 'product-images';
 const DOCS_BUCKET = 'product-documents';
 const MIN_DECOR_WIDTH = 800;
 
+// Ne objavljujemo (odluka vlasnika 25.11.2026), naš slug → Gerflor media id: „EPD" na Taralay Impression
+// Acoustic je nedovršen UL nacrt bez broja i datuma. (Tarasafe „EPD" = Attraction → ingest_gerflor_s6.js.)
+const UNPUBLISHED_DOCS = { 'taralay-impression-acoustic': '56701' };
+
 // Kolekcije gde se CEE color opseg ne poklapa sa našim (codeless nov vs code-keyed star):
 // radi se samo obogaćivanje na nivou kolekcije, postojeće boje ostaju netaknute.
 const SKIP_COLOR_INGEST_CEE_SLUGS = new Set([]);
@@ -116,6 +120,8 @@ async function uploadImageChecked(supabase, storagePath, buffer, label) {
       // kopije istog dokumenta (npr. 6× "Uputstvo za ugradnju") svode se na jedan red.
       if (seenTitles.has(title)) continue;
       seenTitles.add(title);
+      // Posle dedupe-a, da ni ostale kopije istog naslova ne uđu.
+      if (UNPUBLISHED_DOCS[col.slug] === doc.url.match(/media\/2\/(\d+)\//)?.[1]) continue;
       documents.push({ title, sourceUrl: parse.encodeAssetUrl(doc.url) });
     }
 

@@ -189,6 +189,39 @@ const DESSO_COLLECTIONS = [
   url: `https://www.tarkett.rs/sr_RS/kolekcija-${collectionId}-${slug}`,
 }));
 
+// Dokumenti koje ne objavljujemo ni u jednoj kolekciji (odluka vlasnika 25.11.2026, kao Somplan FloorScore).
+// Ključ = naše ime fajla (storedDocName) — isto kao u public/data/certificate_validity.json; rokovi su iz PDF-ova.
+const UNPUBLISHED_DOCS = new Set([
+  // Desso: C2C sertifikati istekli 2019, EPD-ovi 2018–2024
+  'cr-int-c2c-bronze-continousdyedcarpettile.pdf', 'cr-int-c2c-bronze-pa6-solution-dyed-carpet-tiles.pdf',
+  'cr-int-c2c-silver-solution-dyed-tiles.pdf', 'epd-desso-airmaster-gold-collections.pdf',
+  'epd-desso-tufted-carpet-tile-450-550g-sdpa66-0rc-and-probase.pdf', 'epd-desso-tufted-carpet-tile-500-600g-sdpa6-0rc-and-probase.pdf',
+  'epd-desso-tufted-carpet-tile-600-700g-sdpa6-0rc-and-probase.pdf', 'epd-desso-tufted-carpet-tile-sdpa6-100rc-and-ecobase.pdf',
+  'epd-nordic-specific-desso-0-recycledcontent-probase.pdf', 'epd-nordic-specific-desso-100-recycledcontent-probase.pdf',
+  'ev-int-epd-450-550-gr-0-percent-rc-probase.pdf', 'ev-int-epd-500-600-gr-0-percent-rc-and-probase.pdf',
+  'ev-int-epd-500-600-gr-100-percent-rc-and-probase.pdf', 'ev-int-epd-600-700-gr-0-percent-rc-and-ecobase.pdf',
+  'ev-int-epd-600-700-gr-0-percent-rc-and-probase.pdf', 'ev-int-epd-600-700-gr-100-percent-rc-probase.pdf',
+  'ev-int-epd-700-800-gr-0-percent-rc-and-ecobase.pdf', 'ev-int-epd-700-800-gr-100-percent-rc-and-ecobase.pdf',
+  'ev-int-epd-700-800-gr-100-percent-rc-and-probase.pdf', 'ev-int-epd-900-gr-100-percent-rc-probase.pdf',
+  'ev-int-epd-ibu-600-700-gr-100-percent-rc-and-ecobase.pdf',
+  // Tarkett EPD-ovi: Iconik (7/2025), iQ Natural (1/2026), Safetred / Granit Safe.T (11/2024), Tapiflex Stairs (3/2024)
+  'epd-iconik-int.pdf', 'epd-iq-natural.pdf', 'epd-safety.pdf', 'epd-nordic-generic-vinyl-tpx-stairs.pdf',
+  // Linoleum: TIAQP (2/2024), FloorScore (6/2026), Allergy UK pečat (9/2026), C2C Gold (25.11.2026, za druge proizvode)
+  'cr-en-li-tiaqp-2019.pdf', 'cr-en-tiaqp-2019-linoleum.pdf', 'certificate-floorscore-linoleum-int.pdf',
+  'cr-int-li-allergy-uk-seal-of-approval.pdf', 'cr-int-c2c-gold-lino-originale.pdf',
+  // Nisu ono što naslov kaže: Allergy UK pismo sa spiskom zemalja, AirMaster reklamni tekst na letonskom
+  'cr-int-allergy-uk-list-concerned-countries.pdf', 'indoor-air-quality-airmaster-lv.pdf',
+]);
+// Nisu sertifikati, ali su korisni → tačan naslov.
+const DOC_TITLES = {
+  'certificate-c2c-sustainability-transparency-report-desso-int.pdf': 'Izveštaj o održivosti — Desso',
+  'certificate-emissions-m1-acczent-excellence-genius-int.pdf': 'Izveštaj o ispitivanju VOC emisija',
+  'certificate-indoor-air-quality-acczent-platinium-int.pdf': 'Izveštaj o ispitivanju VOC emisija',
+  'certificate-indoor-air-quality-voc-emissions-tapiflex-excellence-19db-int.pdf': 'Izveštaj o ispitivanju VOC emisija',
+  'cr-see-omnisports-v65-tarkett-indoor-air-quality-.pdf': 'Izveštaj o ispitivanju VOC emisija',
+  'cr-see-omnsiports-v83-tarkett-indoor-air-quality.pdf': 'Izveštaj o ispitivanju VOC emisija',
+};
+
 // Somplan 350 (25.11.2026, nalog vlasnika) — homogeni vinil u rolni 2x23 m (Tarkett rs_C01001), 6 boja.
 // codeFromSku: šifra boje = Tarkett 9-cifrena referenca kako je štampa brošura (306007 0xx), ne
 // slug-ključ ("light-cool-grey") niti legacy "3510" iz imena žute.
@@ -291,6 +324,17 @@ async function uploadSwatch(supabase, storagePath, buffer, label) {
   return core.uploadToBucket(supabase, IMAGES_BUCKET, storagePath, buffer);
 }
 
+// Ime fajla iz izvornog basename-a (jedinstveno). Dva dokumenta sa istim srpskim
+// naslovom (npr. dva "Uputstvo za instalaciju": standard + riblja kost kod Real SPC 50)
+// NE smeju u istu putanju — inače se drugi prepisuje i parser dedupe-po-URL-u je uzaludan.
+const storedDocName = (doc) => `${core.slugify((doc.sourceUrl.split('/').pop() || 'dokument').replace(/\.pdf$/i, ''))}.pdf`;
+
+function applyDocPolicy(docs) {
+  return docs
+    .filter((doc) => !UNPUBLISHED_DOCS.has(storedDocName(doc)))
+    .map((doc) => (DOC_TITLES[storedDocName(doc)] ? { ...doc, title: DOC_TITLES[storedDocName(doc)] } : doc));
+}
+
 // Skini + uploaduj kolekcione dokumente (PDF). Vrati [{title,url,type}] sa Supabase URL-ovima.
 async function ingestDocuments(supabase, manifest, col, docs) {
   const out = [];
@@ -300,11 +344,7 @@ async function ingestDocuments(supabase, manifest, col, docs) {
     try {
       const buffer = await core.downloadAsset(doc.sourceUrl);
       if (!buffer.slice(0, 5).toString().startsWith('%PDF')) throw new Error('nije PDF');
-      // Ime fajla iz izvornog basename-a (jedinstveno). Dva dokumenta sa istim srpskim
-      // naslovom (npr. dva "Uputstvo za instalaciju": standard + riblja kost kod Real SPC 50)
-      // NE smeju u istu putanju — inače se drugi prepisuje i parser dedupe-po-URL-u je uzaludan.
-      const srcBase = (doc.sourceUrl.split('/').pop() || 'dokument').replace(/\.pdf$/i, '');
-      const fileName = `${core.slugify(srcBase)}.pdf`;
+      const fileName = storedDocName(doc);
       const publicUrl = await core.uploadToBucket(supabase, DOCS_BUCKET, `products/${col.categorySlug}/${col.slug}/${fileName}`, buffer);
       out.push({ title: doc.title, url: publicUrl, type: 'pdf' });
       manifest.record(mKey, { publicUrl, collection: col.slug });
@@ -368,7 +408,7 @@ async function ingestHomogeneous(supabase, manifest, args, col, item) {
   // kolekcijskom headeru; filter ?zidne=1 bira po tom specu (kao ?safety=1 po 'protivklizno').
   if (col.zidneObloge) characteristics['Zidna obloga'] = 'Da';
 
-  const sourceDocs = parse.applyDocOverrides(parse.collectionDocsFromAssets(item), col.documents);
+  const sourceDocs = applyDocPolicy(parse.applyDocOverrides(parse.collectionDocsFromAssets(item), col.documents));
   const documents = args.dryRun ? sourceDocs : await ingestDocuments(supabase, manifest, col, sourceDocs);
   const galleryUrls = args.dryRun ? parse.galleryImagesFromAssets(item)
     : await ingestGallery(supabase, manifest, col, parse.galleryImagesFromAssets(item));
@@ -465,8 +505,8 @@ async function ingestCarpet(supabase, manifest, args, col, item) {
 
   const backingVariants = dessoBackingVariants(item);
 
-  const documents = args.dryRun ? parse.collectionDocsFromAssets(item)
-    : await ingestDocuments(supabase, manifest, col, parse.collectionDocsFromAssets(item));
+  const sourceDocs = applyDocPolicy(parse.collectionDocsFromAssets(item));
+  const documents = args.dryRun ? sourceDocs : await ingestDocuments(supabase, manifest, col, sourceDocs);
   const galleryUrls = args.dryRun ? parse.galleryImagesFromAssets(item)
     : await ingestGallery(supabase, manifest, col, parse.galleryImagesFromAssets(item));
 
@@ -550,9 +590,10 @@ async function ingestLvt(supabase, manifest, args, col, item) {
   const designs = item.designs || [];
   const description = parse.stripHtml(item.description);
 
+  const sourceDocs = applyDocPolicy(parse.collectionDocsFromAssets(item));
   const docUrls = args.dryRun
-    ? parse.collectionDocsFromAssets(item).map((d) => d.sourceUrl)
-    : (await ingestDocuments(supabase, manifest, col, parse.collectionDocsFromAssets(item))).map((d) => d.url);
+    ? sourceDocs.map((d) => d.sourceUrl)
+    : (await ingestDocuments(supabase, manifest, col, sourceDocs)).map((d) => d.url);
   const galleryUrls = args.dryRun ? parse.galleryImagesFromAssets(item)
     : await ingestGallery(supabase, manifest, col, parse.galleryImagesFromAssets(item));
 

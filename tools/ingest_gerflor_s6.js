@@ -36,6 +36,14 @@ const IMAGES_BUCKET = 'product-images';
 const DOCS_BUCKET = 'product-documents';
 const MIN_DECOR_WIDTH = 800;
 
+// Odluka vlasnika 25.11.2026, po Gerflor media id-u:
+// 56911: „EPD" na Tarasafe kolekcijama je „attraction - epd.pdf" (EPD za Gerflor Attraction) → ne objavljuje se.
+// 69952: Design Tile „Sertifikat — emisije" je izveštaj o ispitivanju uzorka (M1 test) → tačan naslov; ime fajla
+// ostaje po izvornom naslovu (sertifikat-emisije-69952.pdf, ključ u certificate_validity.json).
+const mediaIdOf = (url) => url.match(/media\/2\/(\d+)\//)?.[1];
+const isUnpublishedDoc = (colSlug, url) => colSlug.startsWith('tarasafe-') && mediaIdOf(url) === '56911';
+const DOC_TITLES = { 69952: 'Izveštaj o ispitivanju VOC emisija' };
+
 const ASSET_TIMEOUT_MS = 120000; // tvrdi backstop po assetu (download+sharp+upload)
 const WORKER_POOL_SIZE = 8;
 const SAVE_EVERY = 25; // manifest checkpoint na svakih N novih zapisa
@@ -351,7 +359,8 @@ function displayNameFromVariation(v) {
       const slides = parse.parseHeroSlides(pageHtml);
       const specs = parse.parseSpecTables(pageHtml);
       const descDialog = parse.parseDescriptionDialog(pageHtml);
-      const documents = collectDocuments(pageHtml);
+      // Posle dedupe-a po naslovu, da ni ostale kopije istog naslova ne uđu.
+      const documents = collectDocuments(pageHtml).filter((doc) => !isUnpublishedDoc(col.slug, doc.sourceUrl));
 
       console.log(
         `   🎨 varijacija: ${variations.length} (header: ${colorCountHeader ?? '?'}) | ` +
@@ -361,8 +370,9 @@ function displayNameFromVariation(v) {
       // ── 2) Dokumenti (PDF) → product-documents/products/<dir>/gerflor-<slug>/... ──
       const docTasks = documents.map((doc) => async () => {
         const manifestKey = `doc:${col.slug}:${doc.sourceUrl}`;
+        const title = DOC_TITLES[mediaIdOf(doc.sourceUrl)] || doc.title;
         if (manifest.has(manifestKey)) {
-          return { title: doc.title, url: manifest.get(manifestKey).publicUrl, type: 'pdf' };
+          return { title, url: manifest.get(manifestKey).publicUrl, type: 'pdf' };
         }
         return core.withTimeout(
           (async () => {
@@ -378,7 +388,7 @@ function displayNameFromVariation(v) {
             manifest.record(manifestKey, { publicUrl, collection: col.slug });
             unsavedWrites++;
             maybeSave();
-            return { title: doc.title, url: publicUrl, type: 'pdf' };
+            return { title, url: publicUrl, type: 'pdf' };
           })(),
           ASSET_TIMEOUT_MS,
           `doc ${col.slug}/${doc.title}`
