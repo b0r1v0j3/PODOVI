@@ -237,6 +237,7 @@ Description + Specs content:
 Tab "Sertifikati" (cat 6, 7, 4, 2, 8, 9, 10; only when at least one certificate or eco item is backed):
   ├── getBackedClaims(product.specs, page + pre-merge collection + documents_index docs) (`lib/product-page/backed-claims.ts`)
   │     ├── specs: key/label words + value (CE oznaka/DoP, EPD, FloorScore Da, RTS M1, emission label A+, BREEAM, ftalati, % reciklirano, ECONYL, % prirodnih, TVOC ≤ 100 µg)
+  │     │     └── Tarkett LVT / Desso per-color values (A+, % reciklirano, TVOC / ECONYL vlakno, podno grejanje) reach the collection — and every ?color= page, which keeps collection specs — via `sharedCollectionValue()` in `getTarkettLVTCollections()` / `getAllDessoCarpetProducts()`, only when all colors share the value; Tarkett LVT FloorScore is never lifted (SCS-FS-02745 no longer covers iD Inspiration)
   │     ├── documents in `public/data/certificate_validity.json` → their verified claim while `validUntil` (Belgrade date) has not passed; claim null = never evidence
   │     └── other documents → judged by title (DoP, EPD/FDES, FloorScore, IAC Gold, C2C, air quality)
   ├── CertificationBadges ← certifications

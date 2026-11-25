@@ -1361,6 +1361,12 @@ export function getAllTarkettLVTProducts(): Product[] {
 
 let tarkettCollectionCache: Product[] | null = null;
 
+/** A per-color value is a collection fact only when every color carries the same one; otherwise ''. */
+export function sharedCollectionValue(values: unknown[]): string {
+    const distinct = Array.from(new Set(values.map((value) => String(value ?? '').trim())));
+    return distinct.length === 1 ? distinct[0] : '';
+}
+
 /**
  * Auto-generate Tarkett collection header products from grouped data.
  * These have TARKETT- SKU prefix so the category page shows them as collection cards.
@@ -1441,6 +1447,9 @@ export function getTarkettLVTCollections(): Product[] {
             pattern_type: 'Tip dezena',
             bevelled_edges: 'Oborene ivice',
             product_type_norm_iso: 'Tip proizvoda (ISO)',
+            emissions_label: 'Oznaka emisija',
+            total_recycled_content: 'Reciklirani sadržaj',
+            tvoc_emission: 'TVOC emisije',
         };
 
         if (collSpecData?.specs) {
@@ -1450,6 +1459,15 @@ export function getTarkettLVTCollections(): Product[] {
                     label: specLabels[key] || key,
                     value: value as string,
                 });
+            }
+        }
+
+        // Tarkett stores these per decor; they reach the collection (and every ?color= page) only when all decors agree.
+        // scs_floorscore_certification stays out: SCS-FS-02745 expired 30.6.2026 and its 2026–2027 edition no longer lists iD Inspiration.
+        for (const key of ['emissions_label', 'total_recycled_content', 'tvoc_emission']) {
+            const value = sharedCollectionValue(items.map((item) => item.specs?.find((spec) => spec.key === key)?.value));
+            if (value && !collSpecs.some((spec) => spec.key === key)) {
+                collSpecs.push({ key, label: specLabels[key], value });
             }
         }
 
@@ -2106,6 +2124,9 @@ export function getAllDessoCarpetProducts(): Product[] {
                         || first.characteristics?.['Komercijalna klasifikacija'] || first.specs?.CLASSIFICATION,
                     Vatrostojnost: first.characteristics?.Vatrostojnost
                         || first.characteristics?.['Reakcija na vatru'] || first.specs?.FIRE_RESISTANCE,
+                    // Color-level fields that every color of the collection shares (ECONYL, podno grejanje).
+                    Vlakno: sharedCollectionValue(collColors.map((color) => color.characteristics?.['Pile Fibre'])),
+                    'Podno grejanje': sharedCollectionValue(collColors.map((color) => color.characteristics?.['Podno grejanje'])),
                 },
                 collName
             ),

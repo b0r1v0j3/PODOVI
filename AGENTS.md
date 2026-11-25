@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 25.11.2026 (Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu)
+> **Poslednje ažuriranje:** 25.11.2026 (Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu; podaci boje Tarkett LVT/Desso na stranicama kolekcije i boje)
 
 ---
 
@@ -153,6 +153,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Podaci boje Tarkett LVT i Desso na stranici kolekcije i boje (25.11.2026, odluka vlasnika)**
+- Tarkett LVT dekori nose A+ (`emissions_label`), reciklirani sadržaj (`total_recycled_content`) i TVOC klasu (`tvoc_emission`), a Desso boje vlakno (`Pile Fibre`, ECONYL) i podno grejanje; stranica kolekcije i `?color=` stranica čitaju samo specifikacije kolekcije (`mergeSelectedColor` za Tarkett LVT i Desso ne menja specs), pa se ništa od toga nije videlo ni u „Tehničkim specifikacijama" ni u kartici „Sertifikati". U svih 19 Tarkett LVT i 46 Desso kolekcija te vrednosti su iste za sve boje kolekcije.
+- `lib/utils/productDataLoader.ts`: `sharedCollectionValue()` daje vrednost samo kad je sve boje kolekcije imaju istu (inače `''`); `getTarkettLVTCollections()` podiže „Oznaka emisija", „Reciklirani sadržaj", „TVOC emisije", a `getAllDessoCarpetProducts()` dodaje „Vlakno" i „Podno grejanje" u specifikacije kolekcije. Lane izabrane boje (`loadColorFromJson`, `mergeSelectedColor`, `/api/color-data`) nije menjan. Rezultat: TVOC na 15/19 Tarkett LVT kolekcija, A+ na 2, „N% recikliranog sadržaja" na 3 (35 / 41 / 44,3 %); ECONYL na 27/46 Desso kolekcija, podno grejanje na 21/46 (tih 21 ulaze i u filter „Podno grejanje" na početnoj).
+- FloorScore se namerno NE podiže: Tarkett podaci kažu „Da" za iD Inspiration Click Solid 30, iD Inspiration 30 i Deal SPC 30, ali SCS-FS-02745 (PDF sa cdn.scscertified.com) je iD Inspiration Click Solid 30 pokrivao samo do 30.6.2026, izdanje 1.10.2026–30.6.2027 iD Inspiration više ne navodi, a iD Inspiration 30 i Deal SPC 30 nisu ni u jednom. Važeće izdanje navodi iD Tilt, iD Tilt Hit i Square Loose Lay — FloorScore za njih tek kad sertifikat bude u Dokumentaciji i u `certificate_validity.json`.
+- Test: `tests/contracts/collection-shared-specs-contract.test.ts` (Tarkett LVT i Desso `?color=` stranica kroz pravi `page.tsx`). Poznato, nije menjano: Desso Desert u izvornim podacima ima „Suitable (maximum 29°C)", a Protect „80% WOL 20% PA".
 
 **Kartica „Sertifikati" samo uz važeću potvrdu iz podataka (25.11.2026, odluka vlasnika)**
 - Ranije su sve kolekcije kategorija 2/4/6/7/8/9/10 dobijale istu fiksnu listu po kategoriji (FloorScore, Indoor Air Comfort Gold, M1, A+, CE, REACH, EPD + „100% reciklabilno", „30% recikliranog sadržaja", „Niske VOC emisije"…), bez obzira na brend i kolekciju; Somplan 350 je nosio FloorScore iako je sertifikat istekao. Ovo zamenjuje i izuzetak za iQ Granit SD (08.09.2026): SD sada dobija samo potvrđeno (CE, EPD, TVOC ≤ 10 µg/m³).
