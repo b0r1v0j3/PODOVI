@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 25.11.2026 (Tarkett Somplan 350 + uvoz sa Nuxt 3 tarkett.rs)
+> **Poslednje ažuriranje:** 25.11.2026 (Somplan 350; na telefonu boje odmah ispod slike)
 
 ---
 
@@ -153,6 +153,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**PDP na telefonu: boje odmah ispod glavne slike (25.11.2026, nalog vlasnika)**
+- Vlasnik: na telefonu se izbor boja nije video bez skrolovanja (bio je ispod naslova i cene), a WhatsApp dugme je prekrivalo šestu boju. `components/ProductColorSelector.tsx`: ispod `lg` su obe kolone `contents` u jednoj flex koloni, slika je `order-first`, blok „Boje/Varijante" `-order-1` → redosled slika → boje → ime/srce/Podeli → brend/naslov/cena. Desktop (`lg`) je nepromenjen (dve kolone, sticky info). Pattern-grupe (parket po meri, visoke pločice) ostaju ispod naslova.
+- Provereno Playwright-om (390×844): Somplan 6/6 i Eclipse Premium 12/12 boja u prvom ekranu, isto Gerflor (klijentske boje) i lajsne („Varijante"); tablet 768 px boje u prvom ekranu (WhatsApp dugme i dalje prelazi ugao poslednje boje); desktop 1440 isti kao pre.
 
 **Tarkett Somplan 350 dodat u Vinil (25.11.2026, nalog vlasnika)**
 - Homogeni vinil u rolni 2x23 m (C001673): 6 boja (Light Cool Grey, Light Green, Light Grey, Middle Beige, Middle Yellow, Sunny Blue), 8 PDF-ova, naslovna ambijent slika — sve na Supabase (`product-images` / `product-documents`, `products/vinil/tarkett-somplan-350/`), 0 hotlinkova. Zapis u `tarkett_homogeneous_vinyl_colors.json` (sada 32 kolekcije); ceo put (kartica na početnoj, PDP, `?color=`, dokumenti, filteri Lepljenje / klasa 34 / namena / podno grejanje) radi bez izmena aplikacije.

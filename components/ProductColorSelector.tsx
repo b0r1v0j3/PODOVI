@@ -352,11 +352,13 @@ export default function ProductColorSelector({
 
   return (
     <>
-      {/* Split raspored: levo galerija, desno sticky info kolona */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
+      {/* Split raspored: levo galerija, desno sticky info kolona. Ispod lg su obe kolone
+          `contents`, pa njihova deca postaju stavke jedne flex kolone: `order` stavlja boje
+          odmah ispod glavne slike (vlasnik: na telefonu se boje moraju videti bez skrolovanja). */}
+      <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start mb-12">
         {/* Levo: galerija */}
-        <div>
-          <div className="aspect-square relative overflow-hidden bg-paper">
+        <div className="contents lg:block">
+          <div className="order-first aspect-square relative overflow-hidden bg-paper">
             {/* Pre-render ALL color images - instant switching via CSS display */}
             {customColors && customColors.length > 0 ? (
               <>
@@ -489,8 +491,9 @@ export default function ProductColorSelector({
             )}
           </div>
 
-          {/* Ispod slike: ime boje (levo) + Favorite & Share (desno) – sve u jednoj liniji */}
-          <div className="flex items-center justify-between mt-4">
+          {/* Ispod slike: ime boje (levo) + Favorite & Share (desno) – sve u jednoj liniji.
+              mb-8 ispod lg zamenjuje nekadašnji gap-8 između kolona. */}
+          <div className="flex items-center justify-between mt-4 mb-8 lg:mb-0">
             {/* Levo: ime boje */}
             <div className="flex-1 min-w-0">
               {activeColorContext ? (
@@ -541,7 +544,7 @@ export default function ProductColorSelector({
         </div>
 
         {/* Desno: sticky info kolona */}
-        <div className="lg:sticky lg:top-24 lg:self-start">
+        <div className="contents lg:block lg:sticky lg:top-24 lg:self-start">
           {/* Brend etiketa */}
           {brand?.name && (
             <p className="eyebrow mb-3">{brand.name}</p>
@@ -582,9 +585,10 @@ export default function ProductColorSelector({
             </dl>
           )}
 
-          {/* Varijante/boje – mreža kvadratnih swatcheva */}
+          {/* Varijante/boje – mreža kvadratnih swatcheva. Ispod lg odmah posle slike (-order-1);
+              pattern-grupe (parket po meri, visoke pločice) ostaju ispod naslova. */}
           {!hideColorSelector && (
-            <div className="mb-10">
+            <div className={isPatternGroup ? 'mb-10' : '-order-1 mt-4 mb-2 lg:mt-0 lg:mb-10'}>
               <div className="flex items-baseline justify-between gap-4 mb-4">
                 <div>
                   <h3 className="eyebrow">{selectorTitle}</h3>
