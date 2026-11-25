@@ -2,7 +2,7 @@ import React from 'react';
 import { readdirSync, readFileSync } from 'node:fs';
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import documentsIndex from '@/public/data/documents_index.json';
-import { getBackedClaims } from '@/lib/product-page/backed-claims';
+import { getBackedClaims, manufacturerEcoText } from '@/lib/product-page/backed-claims';
 import { resolveProductBySlug } from '@/lib/product-page/resolve-product';
 import ProductDetailsTabs from '@/components/ProductDetailsTabs';
 import CertificationBadges from '@/components/CertificationBadges';
@@ -13,6 +13,8 @@ import EcoFeatures from '@/components/EcoFeatures';
  * ili važeći dokumenti te kolekcije/boje potvrđuju. Ranije su sve kolekcije kategorija 2/4/6/7/8/9/10
  * dobijale istu fiksnu listu (FloorScore, REACH, „30% recikliranog sadržaja"…), pa je npr. Somplan 350
  * nosio FloorScore iako je sertifikat istekao 31.10.2026.
+ * Dopuna (vlasnik 25.11.2026, „Da, bez REACH"): eko-činjenice iz teksta proizvođača koji stranica već prikazuje
+ * (opis „Okruženje/Održivost", „Ključne karakteristike") — bez sertifikata iz teksta, REACH-a i „CO2 neutralno".
  */
 
 // React 18 stable has no `cache`; the PDP uses it only for per-request memoization.
@@ -62,12 +64,68 @@ describe('Sertifikati na PDP-u — samo potvrđene tvrdnje', () => {
     });
   });
 
-  it('Gerflor Creation 55: dokumenti su samo tehnički list/uzorci/ugradnja → nema nijedne tvrdnje', async () => {
+  it('Gerflor Creation 55: dokumenti ne potvrđuju ništa; „Okruženje" iz opisa daje eko-činjenice, ali ne i sertifikate', async () => {
     const product = await resolveProductBySlug('gerflor-creation-55');
     expect(product).toBeTruthy();
     const documents = (documentsIndex as Record<string, Record<string, Array<{ title: string }>>>).lvt['creation-55'];
     expect(documents.length).toBeGreaterThan(0);
     expect(getBackedClaims(product!.specs, documents, TODAY)).toEqual({ certifications: [], ecoFeatures: [], underfloorHeating: false });
+
+    // FloorScore za Creation je istekao 30.09.2026, a tekst to ne zna — zato sertifikati iz teksta ne ulaze.
+    const text = manufacturerEcoText(product!.description, product!.detailsSections);
+    expect(text).toContain('Floorscore®, IAC Gold & M1 sertifikovano');
+    expect(getBackedClaims(product!.specs, documents, TODAY, text)).toEqual({
+      certifications: [],
+      ecoFeatures: ['Bez ftalata', '35% recikliranog sadržaja', '100% reciklabilno', 'TVOC emisije: < 10 µg/m³'],
+      underfloorHeating: false,
+    });
+  });
+
+  it('DLW Uni Walton: „Održivost" daje sastojke i reciklažu sa kvalifikatorom; „CO2 neutralno" i poreklo ne ulaze', async () => {
+    const product = await resolveProductBySlug('gerflor-dlw-uni-walton');
+    expect(product).toBeTruthy();
+    const text = manufacturerEcoText(product!.description, product!.detailsSections);
+    expect(text).toEqual(expect.arrayContaining(['CO2 neutralno od proizvodnje do isporuke']));
+    expect(getBackedClaims(product!.specs, [], TODAY, text).ecoFeatures).toEqual([
+      'Do 40% recikliranog sadržaja', '100% reciklabilno', '98% prirodnih sastojaka', '76% brzo obnovljivih sastojaka',
+      'TVOC emisije nakon 28 dana: < 10 µg/m³',
+    ]);
+  });
+
+  it('tekst proizvođača: samo eko-sekcije opisa i „Ključne karakteristike"', () => {
+    expect(manufacturerEcoText(
+      'Proizvod:\n98% prirodni sastojci: Svetle boje\nOkruženje:\nBez ftalata\nOdrživost:\n100% reciklabilno',
+      [{ title: 'Ključne karakteristike', items: ['27% recikliranog sadržaja, ReStart spreman'] }, { title: 'Kolekcija', items: ['Bez PVC-a'] }],
+    )).toEqual(['Bez ftalata', '100% reciklabilno', '27% recikliranog sadržaja, ReStart spreman']);
+  });
+
+  it('tekst proizvođača: kvalifikatori i izuzeci ostaju; sertifikati, REACH, „CO2 neutralno" i fraze bez broja ne prolaze', () => {
+    const eco = (...lines: string[]) => getBackedClaims([], [], TODAY, lines).ecoFeatures;
+    expect(eco('Sadrži u proseku 25,5% recikliranog sadržaja')).toEqual(['U proseku 25,5% recikliranog sadržaja']);
+    expect(eco('Up to 32% recikliranog sadržaja/100% reciklabilno: očuvanje resursa')).toEqual(['Do 32% recikliranog sadržaja', '100% reciklabilno']);
+    expect(eco('Do 25%% recikliranog sadržaja.', '100%% reciklabilno po završetku životnog veka.')).toEqual(['Do 25% recikliranog sadržaja', '100% reciklabilno']);
+    expect(eco('Bez PVC-a, bez halogena, bez ftalata.', 'Pogodan za recikliranje nakon upotrebe')).toEqual(['Bez PVC-a', 'Bez ftalata', 'Pogodno za recikliranje nakon upotrebe']);
+    // R-Tile: izuzetak iz ftalata se ne sme izgubiti.
+    expect(eco('usklađeno sa REACH propisima i bez ftalata (osim u recikliranom sadržaju), teških metala')).toEqual(['Bez ftalata (osim u recikliranom sadržaju)']);
+    expect(eco('Bez ftalata, osim u recikliranom sadržaju')).toEqual([]);
+    // Reciklirana vlakna nisu „reciklabilno".
+    expect(eco('Solution-Dyed Nylon - Econyl® 100% reciklirani')).toEqual([]);
+    // TVOC samo do 100 µg/m³; od više vrednosti važi najslabija.
+    expect(eco('TVOC after 28 days <50 micrograms/m3: vrlo dobar kvalitet unutrašnjeg vazduha')).toEqual(['TVOC emisije nakon 28 dana: < 50 µg/m³']);
+    expect(eco('TVOC <10µg/m³', 'TVOC <200µg/m³')).toEqual([]);
+    expect(getBackedClaims([], [], TODAY, [
+      'Floorscore®, IAC Gold & M1 sertifikovano', 'Cradle to Cradle Silver sertifikat', 'A+ ocena - najviši nivo zdravstvenih standarda',
+      'Third party certified EPD', 'Kompatibilno sa REACH standardima', 'CO2 neutralno od proizvodnje do isporuke',
+      'Proizvedeno u Nemačkoj: smanjen CO2 otisak transporta', 'Niske VOC emisije.', 'Visok sadržaj recikliranih materijala.',
+    ])).toEqual({ certifications: [], ecoFeatures: [], underfloorHeating: false });
+  });
+
+  it('specifikacija ima prednost nad tekstom proizvođača', () => {
+    expect(getBackedClaims([
+      spec('Sadržaj ftalata', 'Sadrži DEHP'),
+      spec('Total recycled content', '44,3 %', 'total_recycled_content'),
+      spec('TVOC emisije', '≤ 1000 µg / m³'),
+    ], [], TODAY, ['Bez ftalata', 'Do 55% recikliranog sadržaja', 'TVOC <10µg/m³']).ecoFeatures).toEqual(['44,3% recikliranog sadržaja']);
   });
 
   it('prepoznaje stvarne specifikacije iz kataloga', () => {
@@ -167,8 +225,13 @@ describe('Sertifikati na PDP-u — samo potvrđene tvrdnje', () => {
   });
 
   it('PDP: bez potvrde nema kartice; podno grejanje samo ne otvara karticu; izabrana boja zadržava sertifikate kolekcije', async () => {
-    expect(await sertifikatiTab('gerflor-creation-55')).toBeNull();
     expect(await sertifikatiTab('podovi-vinil-aurora')).toBeNull();
+    // Bez sertifikata, ali sa eko-činjenicama iz opisa proizvođača → kartica postoji.
+    expect(await sertifikatiTab('gerflor-creation-55')).toEqual({
+      certifications: [], ecoFeatures: ['Bez ftalata', '35% recikliranog sadržaja', '100% reciklabilno', 'TVOC emisije: < 10 µg/m³'], underfloorHeating: false,
+    });
+    // Tarkett „Ključne karakteristike" (samo eko-deo; sertifikate menja čišćenje dokumentacije).
+    expect((await sertifikatiTab('tarkett-acczent-excellence-compact-plus'))?.ecoFeatures).toEqual(['27% recikliranog sadržaja']);
     expect(await sertifikatiTab('tarkett-somplan-350')).toEqual({ certifications: ['CE', 'EPD'], ecoFeatures: ['Bez ftalata'], underfloorHeating: true });
     // iQ Granit SD više nije izuzet: samo potvrđeno (DoP, EPD, TVOC ≤ 10 µg/m³ po EN 16516).
     expect(await sertifikatiTab('tarkett-iq-granit-sd')).toEqual({

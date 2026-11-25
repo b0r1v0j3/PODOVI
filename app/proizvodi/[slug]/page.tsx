@@ -35,7 +35,7 @@ import {
   mergeSelectedColor,
 } from '@/lib/product-page';
 import { resolveSelectedColorServerData } from '@/lib/product-page/color-helpers';
-import { getBackedClaims } from '@/lib/product-page/backed-claims';
+import { getBackedClaims, manufacturerEcoText } from '@/lib/product-page/backed-claims';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 import { splitProductTitle } from '@/lib/utils/name-parser';
 import { getParketCollectionVariantSlugs, getEffectiveParketCollection, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
@@ -710,8 +710,14 @@ export default async function ProductPage({ params, searchParams }: Props) {
       </div>
     ) : null;
 
-    // ── Sertifikati i eko-stavke: samo ono što specifikacije ili važeći dokumenti kolekcije/boje potvrđuju ──
-    const backedClaims = getBackedClaims(product.specs, [...pageDocuments, ...collectionDocuments, ...indexedCollectionDocuments]);
+    // ── Sertifikati i eko-stavke: samo ono što specifikacije ili važeći dokumenti kolekcije/boje potvrđuju,
+    //    plus eko-činjenice iz teksta proizvođača koji stranica prikazuje (nikad sertifikati iz teksta) ──
+    const backedClaims = getBackedClaims(
+      product.specs,
+      [...pageDocuments, ...collectionDocuments, ...indexedCollectionDocuments],
+      undefined,
+      manufacturerEcoText(product.description, product.detailsSections),
+    );
     // Podno grejanje sâmo ne otvara karticu „Sertifikati" (to nije ni sertifikat ni eko-osobina).
     const sharedCertsAndEco = ['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)
       && (backedClaims.certifications.length > 0 || backedClaims.ecoFeatures.length > 0) ? (

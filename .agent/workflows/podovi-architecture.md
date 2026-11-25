@@ -235,11 +235,12 @@ Description + Specs content:
   └── `ProductCharacteristics` → reads product.specs
 
 Tab "Sertifikati" (cat 6, 7, 4, 2, 8, 9, 10; only when at least one certificate or eco item is backed):
-  ├── getBackedClaims(product.specs, page + pre-merge collection + documents_index docs) (`lib/product-page/backed-claims.ts`)
+  ├── getBackedClaims(product.specs, page + pre-merge collection + documents_index docs, now, manufacturerEcoText(description, detailsSections)) (`lib/product-page/backed-claims.ts`)
   │     ├── specs: key/label words + value (CE oznaka/DoP, EPD, FloorScore Da, RTS M1, emission label A+, BREEAM, ftalati, % reciklirano, ECONYL, % prirodnih, TVOC ≤ 100 µg)
   │     │     └── Tarkett LVT / Desso per-color values (A+, % reciklirano, TVOC / ECONYL vlakno, podno grejanje) reach the collection — and every ?color= page, which keeps collection specs — via `sharedCollectionValue()` in `getTarkettLVTCollections()` / `getAllDessoCarpetProducts()`, only when all colors share the value; Tarkett LVT FloorScore is never lifted (SCS-FS-02745 no longer covers iD Inspiration)
   │     ├── documents in `public/data/certificate_validity.json` → their verified claim while `validUntil` (Belgrade date) has not passed; claim null = never evidence
-  │     └── other documents → judged by title (DoP, EPD/FDES, FloorScore, IAC Gold, C2C, air quality)
+  │     ├── other documents → judged by title (DoP, EPD/FDES, FloorScore, IAC Gold, C2C, air quality)
+  │     └── manufacturer text the page shows (description sections Okruženje/Održivost/Environment/Sustainability + „Ključne karakteristike") → eco items only, for kinds the specs do not mention (bez PVC-a, bez ftalata incl. „(osim …)", % reciklirano with „Do"/„U proseku", 100% reciklabilno / pogodno za recikliranje, % prirodnih / brzo obnovljivih, TVOC ≤ 100 µg); never certificates, REACH or „CO2 neutralno" from text
   ├── CertificationBadges ← certifications
   └── EcoFeatures ← ecoFeatures + underfloorHeating (same reading as the 'grejanje' facet; mixed Da+Ne = no claim; heating alone never opens the tab)
 
@@ -275,7 +276,7 @@ Tab "Dokumentacija" (independent of "Sertifikati"):
 | `ProductCharacteristics` | `product.specs` (filtered) + kanonski selected-color `specs` payload iz `/api/color-data`; welding-related values can link to `/proizvodi/welding-rod/[ref]` via `welding-helpers.ts`, sa user-facing labelima tipa `Elektroda za varenje` / `Kompatibilna elektroda za varenje` | `components/ProductCharacteristics.tsx` |
 | `ProductDocuments` | `product.documents` (SSR already selected-color aware) + confirmation lookup preko `/api/color-data` / collection docs index (`documents_index.json` / `tarkett_documents_index.json`); normalizuje Tarkett stale `/large/*.pdf` URL-ove na `/docs/*.pdf` pre prikaza | `components/ProductDocuments.tsx` |
 | `CertificationBadges` | `getBackedClaims().certifications` — only claims backed by a spec, a still-valid verified certificate (`certificate_validity.json`) or a document title of this collection/selected color (no per-category lists) | `components/CertificationBadges.tsx` |
-| `EcoFeatures` | `getBackedClaims().ecoFeatures` + `underfloorHeating` (data-backed only) | `components/EcoFeatures.tsx` |
+| `EcoFeatures` | `getBackedClaims().ecoFeatures` + `underfloorHeating` (data-backed only: specs first, then eco facts from the manufacturer text the page shows) | `components/EcoFeatures.tsx` |
 | `ProductActions` | `product` (favorites, share) | `components/ProductActions.tsx` |
 | `ProductInquiryStickyCTA` | `productSlug`, `inquiryRef` | `components/ProductInquiryStickyCTA.tsx` |
 
