@@ -26,8 +26,8 @@ export function middleware(request: NextRequest) {
   }
 
   if (pathname === '/crm' || pathname.startsWith('/crm/')) {
-    // CRM UI je isključen. Javni inquiry tok ostaje na /api/inquiries, ali
-    // nijedan CRM render/server action ne sme da stigne do aplikacije ili baze.
+    // CRM UI je isključen: nijedan CRM render/server action ne sme da stigne
+    // do aplikacije ili baze.
     return new NextResponse('Not Found', {
       status: 404,
       headers: {

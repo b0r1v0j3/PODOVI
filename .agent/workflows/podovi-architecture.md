@@ -393,7 +393,7 @@ Techem `Otirači` are intentionally a flat listing branch:
 
 - Produkcijski `/crm` i svi potomci vraćaju `404` u `middleware.ts` za svaki HTTP metod. `app/crm/page.tsx` i `app/crm/actions.ts` su uklonjeni, pa nema drugog izvršnog CRM entrypoint-a čak ni mimo middleware-a; `CRM_BASIC_AUTH_*` env vrednosti ne uključuju rutu.
 - User-facing buyer-inquiry tok je odvojen i ostaje aktivan: `/upiti` → `components/ContactForm.tsx` → `POST /api/contact` → `mailer.sendContactEmail()` → `ADMIN_EMAIL` (fallback `podovidoo@gmail.com`).
-- Odvojeni `components/InquiryModal.tsx` → `POST /api/inquiries` tok ostaje u kodu (Supabase `inquiries` insert + admin email + potvrda kupcu), ali modal trenutno nije importovan ni na jednoj stranici.
+- Javni `POST /api/inquiries` (sa `InquiryModal` / `InquiryButton` i `inquiry-repository`) uklonjen je 26.11.2026 jer je slao mejl sa našeg Gmail-a na adrese iz zahteva. Jedini javni mejl tok je `/upiti` → `POST /api/contact` → `mailer.sendContactEmail()`, koji šalje samo na `ADMIN_EMAIL`.
 - Pomoćni CRM status/component kod i kolone `status`, `next_contact_date`, `notes` ostaju, a postojeći podaci nisu obrisani. Ako se CRM ponovo projektuje, public RLS i dalje zahteva server-side `SUPABASE_SERVICE_ROLE_KEY`, uz pravi server-side auth pre vraćanja route/action entrypoint-a ili uklanjanja `404` barijere.
 
 ---
@@ -424,7 +424,7 @@ Techem `Otirači` are intentionally a flat listing branch:
 13. **Ne vraćaj generičke `collection: Parket` fallback zapise bez potrebe.** Posle cleanup-a iz 15.03.2026 parket kolekcije imaju kanonske varijante; ako moraš da zadržiš stari URL zbog kompatibilnosti, prebaci ga u stvarnu kolekciju (`Tango`, `Tango Classic`, itd.) umesto da ostane na generičkom `Parket`.
 14. **`vercel link` / `env pull` upisuje quoted vrednosti u `.env.local`.** Ako Node skripta ručno čita taj fajl umesto da dobije env direktno iz procesa, mora da skine spoljne navodnike sa `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` i `SUPABASE_SERVICE_ROLE_KEY`; u suprotnom Supabase klijent pada na `Invalid supabaseUrl`.
 15. **Novi `app/crm` ne bi mogao da čita leadove samo preko anon ključa.** `inquiries` tabela pod RLS-om dozvoljava public `INSERT`, ali ne i `SELECT`; page/action entrypoint-i su sada uklonjeni, a eventualna reaktivacija mora koristiti server-side service-role pristup iza pravog auth-a.
-16. **`/crm` je uklonjen i code-gated, ne env-gated.** Middleware vraća `404` za root, potomke i state-changing metode bez obzira na `CRM_BASIC_AUTH_*`; samo eksplicitna pregledana promena koda može vratiti CRM entrypoint-e. Ne dirati user-facing `/api/contact` email tok niti odvojeni `/api/inquiries` Supabase/email tok.
+16. **`/crm` je uklonjen i code-gated, ne env-gated.** Middleware vraća `404` za root, potomke i state-changing metode bez obzira na `CRM_BASIC_AUTH_*`; samo eksplicitna pregledana promena koda može vratiti CRM entrypoint-e. Ne dirati user-facing `/api/contact` email tok (javni `/api/inquiries` je uklonjen 26.11.2026).
 
 ---
 

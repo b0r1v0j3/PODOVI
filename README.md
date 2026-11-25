@@ -393,7 +393,7 @@ OPS_BASIC_AUTH_ACTOR_ID=        # Optional stable actorId used for ops role bind
 
 ## Database
 
-The project uses **Supabase** (PostgreSQL) for catalog data and the separate `/api/inquiries` flow. The user-facing `/upiti` form currently sends email through `/api/contact`; its inactive `InquiryModal` alternative stores rows in `inquiries`. The legacy CRM columns (`status`, `next_contact_date`, `notes`) and data remain, but `/crm` has no page/server-action entrypoint and returns `404`. The schema migration is in `supabase/migration.sql`.
+The project uses **Supabase** (PostgreSQL) for catalog data. The user-facing `/upiti` form sends email to the admin through `/api/contact`; the former public `/api/inquiries` endpoint and its unused `InquiryModal` were removed on 2026-11-26 because they emailed addresses taken from the request. The `inquiries` table, the legacy CRM columns (`status`, `next_contact_date`, `notes`) and data remain, but `/crm` has no page/server-action entrypoint and returns `404`. The schema migration is in `supabase/migration.sql`.
 
 ```bash
 # Run migration

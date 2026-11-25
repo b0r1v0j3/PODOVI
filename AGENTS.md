@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 25.11.2026 (Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu + eko-činjenice iz teksta proizvođača; podaci boje Tarkett LVT/Desso na stranicama kolekcije i boje; Dokumentacija bez isteklih i pogrešno naslovljenih PDF-ova)
+> **Poslednje ažuriranje:** 26.11.2026 (uklonjen javni `/api/inquiries`; Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu + eko-činjenice iz teksta proizvođača; podaci boje Tarkett LVT/Desso na stranicama kolekcije i boje; Dokumentacija bez isteklih i pogrešno naslovljenih PDF-ova)
 
 ---
 
@@ -145,6 +145,12 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Uklonjen javni `/api/inquiries` — zloupotreba našeg Gmail-a (26.11.2026, odluka vlasnika)**
+- Javni `POST /api/inquiries` je proveravao samo da polja postoje i slao mejl sa našeg Gmail naloga na `email` iz zahteva (prolazio je i spisak adresa), sa neescapovanim HTML-om iz zahteva — svako je mogao da šalje spam/phishing u ime Podovi. Nijedna strana ga nije koristila (`InquiryButton` / `InquiryModal` nisu bili montirani; javni tok je `/upiti` → `/api/contact`).
+- Uklonjeni su `app/api/inquiries/route.ts`, `components/InquiryModal.tsx`, `components/InquiryButton.tsx`, `lib/repositories/inquiry-repository.ts` i mejler metode `sendInquiryEmail` / `sendInquiryConfirmation`. Mejler ima samo `sendContactEmail`, koji šalje isključivo na `ADMIN_EMAIL`.
+- Ostaju Supabase tabela `inquiries` i njeni podaci, tip `Inquiry`, CRM pomoćni kod (`lib/crm`) i `404` za `/crm`. Ako se forma za upit ikad vrati, nova ruta sme da šalje samo adminu, ili tačno jednoj proverenoj adresi uz escape-ovan HTML.
+- `crm-disabled-contract` zaključava da ruta ne postoji i da mejler šalje samo adminu (`to: this.adminEmail`). Verifikovano: `npx tsc --noEmit`, `npm run test:contract` (485/485; 3 testa pod opterećenjem samo uz `--testTimeout=180000`), `npm run build`, `next start` smoke: `POST`/`GET /api/inquiries` → 404, `/api/contact` sa praznim telom → 400 bez slanja, `/upiti` → 200.
 
 **Kartica „Sertifikati" čita i eko-činjenice iz teksta proizvođača (25.11.2026, vlasnik: „Da, bez REACH")**
 - `manufacturerEcoText(description, detailsSections)` u `backed-claims.ts` uzima samo tekst koji PDP već prikazuje: sekcije opisa „Okruženje/Održivost/Environment/Sustainability" (`parseDescriptionToSections`) i „Ključne karakteristike"; `page.tsx` ga daje kao 4. argument `getBackedClaims`. Iz teksta samo eko-stavke, i to samo za vrste koje specifikacija ne pominje (specifikacija ima prednost): Bez PVC-a, Bez ftalata (izuzetak „(osim u recikliranom sadržaju)" ostaje u tekstu; izuzetak van zagrade = ništa), „N% recikliranog sadržaja" sa kvalifikatorom („Do", „U proseku"), „100% reciklabilno" / „Pogodno za recikliranje nakon upotrebe", „N% prirodnih / brzo obnovljivih sastojaka", TVOC samo ≤ 100 µg/m³ (najslabija vrednost).
@@ -973,7 +979,7 @@ PODOVI/
 │   ├── kontakt/            # Kontakt forma
 │   ├── omiljeni/           # Omiljeni proizvodi
 │   ├── uporedi/            # Poređenje proizvoda
-│   └── api/                # API rute (search, contact, inquiries)
+│   └── api/                # API rute (search, products, colors, contact, ops)
 │
 ├── components/             # React komponente (30+), uključujući `components/crm/` helpere za CRM form flow
 │
@@ -1030,7 +1036,7 @@ PODOVI/
 30. **Za Wolflor kolekcije nemoj koristiti roomshot/ambijentalni hero kao kanonski collection image.** Čak i kada vendor ima `collection.jpg` ili category hero u prostoru, Wolflor kolekcijski prikaz kod nas treba da koristi prvu dostupnu sliku dekora/boje; to važi samo za Wolflor i ne treba prelivati na ostale brendove.
 31. **Kad pregaziš Wolflor JPG na istoj Supabase putanji, promeni i URL query verziju.** PDF kolekcije poput `Andes`/`Atlas` sada često dobijaju kvalitetniji crop na istom object path-u (`products/vinyl/.../wl91600.jpg`), pa bez novog `?v=` cache-bust query-ja browser i CDN mogu da nastave da serviraju stari mutni JPG iako je object već zamenjen boljom verzijom.
 32. **Eventualni novi `/crm` bi tražio `SUPABASE_SERVICE_ROLE_KEY` za čitanje leadova.** `inquiries` tabela je pod RLS pravilom da javnost može samo `INSERT`; trenutni page/action entrypoint-i ne postoje, a middleware završava zahtev sa `404` pre bilo kog čitanja.
-33. **`/crm` je namerno uklonjen i isključen za sve metode i potomke.** `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD` ne otvaraju rutu; nemoj vraćati page/action entrypoint-e niti ukloniti `404` dok ne postoji eksplicitna odluka vlasnika i pravi server-side auth. User-facing `/upiti` → `/api/contact` email tok i odvojeni `/api/inquiries` endpoint ne smeju biti pogođeni.
+33. **`/crm` je namerno uklonjen i isključen za sve metode i potomke.** `CRM_BASIC_AUTH_USERNAME` i `CRM_BASIC_AUTH_PASSWORD` ne otvaraju rutu; nemoj vraćati page/action entrypoint-e niti ukloniti `404` dok ne postoji eksplicitna odluka vlasnika i pravi server-side auth. User-facing `/upiti` → `/api/contact` email tok ne sme biti pogođen. Javni `/api/inquiries` je uklonjen 26.11.2026 (slao je mejl na adrese iz zahteva) — ne vraćati ga bez slanja isključivo adminu ili provere jedne adrese i escape-ovanja HTML-a.
 34. **`/api/ops` ne sme više da bude “otvoren dok ne stigne pravi auth”.** Sada moraš imati `OPS_BASIC_AUTH_USERNAME` + `OPS_BASIC_AUTH_PASSWORD` (ili namerno deliti CRM Basic Auth kredencijale), a `actorId` više ne dolazi proizvoljno iz request body-ja nego iz autentifikovanog internog identiteta / `OPS_BASIC_AUTH_ACTOR_ID`.
 35. **Ops rollback mora da vraća prethodni stabilni snapshot, ne snapshot samog target release-a.** Publish snapshot predstavlja stanje POSLE publish-a; ako ga rollback reaplikuješ, ništa nisi vratio unazad. Za normalan rollback uzima se prethodni stabilni release snapshot, a za undo rollback-a snapshot release-a koji je rollback poništio.
 36. **Kanonski product klik više ne sme da živi u kartici/search copy-paste granama.** `components/ProductCard.tsx`, `components/ProductCardClient.tsx`, `/api/search`, `generateProductListSchema()` i `app/proizvodi/[slug]/page.tsx` sada dele `lib/utils/product-routes.ts`; ako menjaš canonical product URL obrazac, ažuriraj shared helper umesto da vraćaš lokalne `categorySlugMap` / ručne `/kategorije?...color=` grane.
