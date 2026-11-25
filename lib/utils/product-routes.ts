@@ -162,9 +162,8 @@ export function normalizeCollectionSlugForProductRoute(
     return `bloq-${collectionSlug}`;
   }
 
-  if (brandId === '10') {
-    return `timbertech-${collectionSlug}`;
-  }
+  // TimberTech (10) stays unprefixed: its flat deking slugs are canonical and no resolver knows a
+  // `timbertech-` alias (that prefix sent every TimberTech sitemap URL 307 → 404, 05–11/2026).
 
   if (brandId === '11') {
     return `wolflor-${collectionSlug}`;

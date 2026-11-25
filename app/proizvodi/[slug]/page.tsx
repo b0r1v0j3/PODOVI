@@ -191,6 +191,11 @@ async function resolveCanonicalSelectedColorSlug(
     return validSlugs.includes(requestedColorSlug) ? requestedColorSlug : validSlugs[0];
   }
 
+  // Flat TimberTech deking has no colors: the category-wide lookup below would accept a Podovi deking color.
+  if (product.categoryId === '5' && product.brandId === '10') {
+    return '';
+  }
+
   const selectedColorData = await resolveSelectedColorServerData(requestedColorSlug, {
     categoryId: product.categoryId,
     brandId: product.brandId,
