@@ -4,6 +4,7 @@ const sharp = require('sharp');
 const { chromium } = require('playwright');
 const core = require('./lib/ingest-core.js');
 const parse = require('./lib/tarkett-parse.js');
+const { fetchNuxt } = require('./lib/tarkett-nuxt.js');
 
 // S10 — Tarkett „Veštačka trava" (tarkett.rs kategorija rs_C01024).
 // 10 kolekcija idu u NOVU kategoriju „Veštačka trava" (id 14) pod POSTOJEĆI Tarkett brend (id 3).
@@ -68,23 +69,6 @@ function parseArgs() {
 }
 
 function abs(u) { return String(u || '').startsWith('//') ? `https:${u}` : u; }
-
-// Playwright: učitaj kolekcijsku stranicu i vrati __NUXT__ objekat (identično ingest_tarkett_lajsne.js).
-async function fetchNuxt(browser, url) {
-  const page = await browser.newPage({ userAgent: core.BROWSER_HEADERS['User-Agent'] });
-  try {
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-    const nuxt = await page.evaluate(() => {
-      let n = window.__NUXT__;
-      if (typeof n === 'function') { try { n = n(); } catch (_) { n = null; } }
-      if (!n) return null;
-      try { return JSON.parse(JSON.stringify(n)); } catch (_) { return null; }
-    });
-    return nuxt;
-  } finally {
-    await page.close();
-  }
-}
 
 // Per-dizajn JSON (pune specifikacije iz sku_technical_caracteristics) — za srpske karakteristike.
 async function fetchDesignSpecs(productDataUrl) {
@@ -259,7 +243,7 @@ function upsertProduct(list, record) {
           continue;
         }
         console.log(`\n📂 ${col.key}`);
-        const nuxt = await fetchNuxt(browser, col.url);
+        const { nuxt } = await fetchNuxt(browser, col.url);
         const item = parse.extractCollectionItem(nuxt);
         if (!item) throw new Error('__NUXT__ item nije pronađen');
         const realSlug = item.collection_name_slug || col.guessSlug;

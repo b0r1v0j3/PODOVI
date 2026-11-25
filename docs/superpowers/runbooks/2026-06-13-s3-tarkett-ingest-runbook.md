@@ -1,7 +1,7 @@
 # Runbook — S3 Tarkett ingest
 
 > Datum: 2026-06-13. Prati: `docs/superpowers/plans/2026-06-13-faza-2-s3-tarkett-ingest.md`.
-> Alat: `tools/ingest_tarkett.js` (orkestracija) + `tools/lib/tarkett-parse.js` (čiste funkcije) + `tools/lib/ingest-core.js` (reuse iz S2).
+> Alat: `tools/ingest_tarkett.js` (orkestracija) + `tools/lib/tarkett-parse.js` (čiste funkcije) + `tools/lib/tarkett-nuxt.js` (čitanje Nuxt payload-a, deljeno za sve Tarkett alate) + `tools/lib/ingest-core.js` (reuse iz S2).
 
 ## Šta radi
 
@@ -49,7 +49,7 @@ Flagovi: `--dry-run` (bez upisa/uploada), `--collection=<key>` (može više puta
 
 ## Nuxt 3 (od ~11/2026) i opcije po kolekciji
 
-- tarkett.rs više nema `window.__NUXT__`. `fetchNuxt` prvo traži Nuxt 2 payload (sa `state`), a inače čita `<script id="__NUXT_DATA__">` i dekodira ga sa `parse.unflattenNuxtData()` (devalue). Kolekcija je u `pinia.collectionProduct.item`; polja (`designs`, `collection_assets`, `collection_default_sku`, `key_features`) su ista kao ranije, pa ostatak pipeline-a radi bez izmena.
+- tarkett.rs više nema `window.__NUXT__`. `fetchNuxt` / `readNuxtPayload` (`tools/lib/tarkett-nuxt.js`) prvo traže Nuxt 2 payload (sa `state`), a inače čitaju `<script id="__NUXT_DATA__">` i dekodiraju ga sa `parse.unflattenNuxtData()` (devalue). Isti helper koriste `ingest_tarkett_lajsne`, `ingest_tarkett_grass`, `ingest_pribor_tarkett`, `extract_tarkett_core` i `scripts/audit-tarkett-sync.ts` — novi Tarkett alat ne čita `window.__NUXT__` sam. Kolekcija je u `pinia.collectionProduct.item`; polja (`designs`, `collection_assets`, `collection_default_sku`, `key_features`) su ista kao ranije, pa ostatak pipeline-a radi bez izmena.
 - Kolekcione karakteristike se uzimaju iz `item.collection_default_sku.sku_technical_caracteristics` (bez dodatnog zahteva ka tarkett.rs). Per-dizajn JSON (`json-collection-product/...`) i dalje radi, ali njegov `product_collection.collection_default_sku` je UVEK podrazumevani SKU kolekcije, ne izabrani dizajn.
 - Opciona polja reda u `COLLECTIONS` (primer: `SOMPLAN_350`):
   - `codeFromSku: true` — šifra boje = Tarkett 9-cifrena referenca (`parse.designSku`), kad `product_design_key` nije šifra nego slug.

@@ -4,6 +4,7 @@ const sharp = require('sharp');
 const { chromium } = require('playwright');
 const core = require('./lib/ingest-core.js');
 const parse = require('./lib/tarkett-parse.js');
+const { fetchNuxt } = require('./lib/tarkett-nuxt.js');
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'data');
 const LVT_JSON = path.join(DATA_DIR, 'tarkett_lvt_products.json');
@@ -268,26 +269,6 @@ function dessoBackingVariants(item) {
     if (label && !seen.has(label)) { seen.add(label); out.push(label); }
   }
   return out;
-}
-
-// Playwright: učitaj kolekcijsku stranicu i vrati Nuxt payload. Nuxt 2 = window.__NUXT__ (sa state);
-// Nuxt 3 (tarkett.rs od ~11/2026) = devalue niz u <script id="__NUXT_DATA__"> → parse.unflattenNuxtData.
-async function fetchNuxt(browser, url) {
-  const page = await browser.newPage({ userAgent: core.BROWSER_HEADERS['User-Agent'] });
-  try {
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-    const res = await page.evaluate(() => {
-      let n = window.__NUXT__;
-      if (typeof n === 'function') { try { n = n(); } catch (_) { n = null; } }
-      if (n && n.state) { try { return { nuxt2: JSON.parse(JSON.stringify(n)) }; } catch (_) { /* pada na Nuxt 3 */ } }
-      const el = document.getElementById('__NUXT_DATA__');
-      return { nuxt3: el ? el.textContent : null };
-    });
-    if (res.nuxt2) return res.nuxt2;
-    return res.nuxt3 ? parse.unflattenNuxtData(JSON.parse(res.nuxt3)) : null;
-  } finally {
-    await page.close();
-  }
 }
 
 // Per-dizajn JSON (pune specifikacije). Vraća sku_technical_caracteristics + osnovni meta.
@@ -639,7 +620,7 @@ async function ingestLvt(supabase, manifest, args, col, item) {
           continue;
         }
         console.log(`\n📂 ${col.key} (${col.kind})`);
-        const nuxt = await fetchNuxt(browser, col.url);
+        const { nuxt } = await fetchNuxt(browser, col.url);
         const item = parse.extractCollectionItem(nuxt);
         if (!item) throw new Error('__NUXT__ item nije pronađen');
         console.log(`   kolekcija="${item.collection_name}" boja=${(item.designs || []).length}`);

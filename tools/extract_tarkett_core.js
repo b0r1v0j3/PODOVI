@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
+const parse = require('./lib/tarkett-parse.js');
+const { readNuxtPayload } = require('./lib/tarkett-nuxt.js');
 
 // Minimalna obnova obrisanih extract_tarkett_* skripti (runbook §1).
 // Upotreba: node tools/extract_tarkett_core.js <kolekcija-URL>
@@ -17,28 +19,22 @@ const { chromium } = require('playwright');
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
 
-  const nuxt = await page.evaluate(() => {
-    let n = window.__NUXT__;
-    if (typeof n === 'function') { try { n = n(); } catch (_) { n = null; } }
-    if (!n) return null;
-    try { return JSON.parse(JSON.stringify(n)); } catch (_) { return null; }
-  });
+  const nuxt = await readNuxtPayload(page);
   let payload = null;
   if (nuxt) {
-    // Primarno: Nuxt 2 shape na tarkett.rs -> state.collectionProductPage.item
+    // Primarno: Nuxt 2 state.collectionProductPage.item / Nuxt 3 pinia.collectionProduct.item
     // (flat `collection_*` polja + `designs` lista boja). Vidi runbook §1.
-    const direct = nuxt.state?.collectionProductPage?.item;
-    if (direct && (direct.collection_name || direct.collection_name_slug) && Array.isArray(direct.designs)) {
-      payload = direct;
-    }
+    payload = parse.extractCollectionItem(nuxt);
 
     // Fallback traversal: pronađi bilo koji čvor sa imenom kolekcije + listom boja/proizvoda.
     // Podržava i stari pretpostavljeni oblik (node.collection.name) i ravan oblik (collection_name + designs).
     if (!payload) {
       const stack = [nuxt];
+      const seen = new Set(); // Nuxt 3 payload deli reference (devalue), pa obilazak mora da pamti posećeno
       while (stack.length) {
         const node = stack.pop();
-        if (!node || typeof node !== 'object') continue;
+        if (!node || typeof node !== 'object' || seen.has(node)) continue;
+        seen.add(node);
         const colArr = node.designs || node.products || node.colors || node.items;
         const name = node.collection_name || node.collection?.name;
         if (name && Array.isArray(colArr) && colArr.length) {

@@ -8,6 +8,13 @@ import tarkettDocumentsIndex from '../public/data/tarkett_documents_index.json';
 import { getServerSupabase, getSupabaseOrNull, hasSupabaseAnonConfig, hasSupabaseServiceRoleConfig } from '../lib/supabase/client';
 import { mapCategoryIdToUUID } from '../lib/repositories/id-mapping';
 
+// Deljeno sa tools/ingest_tarkett*.js: Nuxt 2 window.__NUXT__ ili Nuxt 3 __NUXT_DATA__ (tarkett.rs od ~11/2026).
+const { readNuxtPayload } = require('../tools/lib/tarkett-nuxt.js');
+const { extractCollectionItem } = require('../tools/lib/tarkett-parse.js');
+
+// --collection=<slug>: proveri samo tu kolekciju (manje zahteva ka tarkett.rs); izveštaj je tada delimičan.
+const ONLY_COLLECTION = process.argv.find((arg) => arg.startsWith('--collection='))?.slice('--collection='.length);
+
 type CategoryConfig = {
   key: 'parket' | 'laminat';
   categoryId: '1' | '3';
@@ -172,8 +179,8 @@ async function fetchOfficialCollection(page: any, link: string): Promise<Officia
   const url = /^https?:\/\//i.test(link) ? link : `https://www.tarkett.rs${link}`;
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(1000);
-  const nuxt = await page.evaluate(() => (window as any).__NUXT__);
-  const item = nuxt?.state?.collectionProductPage?.item;
+  const nuxt = await readNuxtPayload(page);
+  const item = extractCollectionItem(nuxt);
   if (!item) {
     throw new Error(`Collection payload missing for ${url}`);
   }
@@ -277,7 +284,8 @@ async function auditCategory(config: CategoryConfig, documentsIndex: TarkettDocu
   const page = await browser.newPage();
 
   try {
-    const officialLinks = await getCollectionLinks(page, config.url);
+    const officialLinks = (await getCollectionLinks(page, config.url))
+      .filter((link) => !ONLY_COLLECTION || collectionUrlToSlug(link) === ONLY_COLLECTION);
     const officialCollections = [];
 
     for (const link of officialLinks) {
@@ -418,10 +426,18 @@ async function main() {
   const outputDir = path.join(process.cwd(), 'output');
   await fs.mkdir(outputDir, { recursive: true });
 
-  const outputPath = path.join(outputDir, 'tarkett-sync-report.json');
+  const outputPath = path.join(outputDir, ONLY_COLLECTION ? `tarkett-sync-report-${ONLY_COLLECTION}.json` : 'tarkett-sync-report.json');
   await fs.writeFile(outputPath, JSON.stringify(report, null, 2), 'utf8');
 
   console.log(`Saved Tarkett sync audit to ${outputPath}`);
+  if (ONLY_COLLECTION) {
+    const found = CATEGORY_CONFIGS.some((config) => report.categories[config.key].officialCollectionCount > 0);
+    console.log(`⚠️ --collection=${ONLY_COLLECTION}: delimičan izveštaj — missing/extra liste ispod nisu merodavne.`);
+    if (!found) {
+      console.error(`❌ Kolekcija "${ONLY_COLLECTION}" nije nađena ni na jednoj kategorijskoj stranici.`);
+      process.exitCode = 1;
+    }
+  }
 
   for (const config of CATEGORY_CONFIGS) {
     const categoryReport = report.categories[config.key];

@@ -4,6 +4,7 @@ const sharp = require('sharp');
 const { chromium } = require('playwright');
 const core = require('./lib/ingest-core.js');
 const parse = require('./lib/tarkett-parse.js');
+const { fetchNuxt } = require('./lib/tarkett-nuxt.js');
 
 // S9 — Tarkett „Pribor" (lepkovi / podloge / elektrode / nega) → NOVA kategorija „Pribor" (id 15)
 // pod POSTOJEĆI Tarkett brend (id 3). Klon ingest_tarkett_grass.js, ali piše u
@@ -75,24 +76,6 @@ function parseArgs() {
 }
 
 function abs(u) { return String(u || '').startsWith('//') ? `https:${u}` : u; }
-
-// Playwright: učitaj kolekcijsku stranicu i vrati __NUXT__ objekat (identično grass/lajsne skripti).
-async function fetchNuxt(browser, url) {
-  const page = await browser.newPage({ userAgent: core.BROWSER_HEADERS['User-Agent'] });
-  try {
-    const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-    const finalUrl = page.url();
-    const nuxt = await page.evaluate(() => {
-      let n = window.__NUXT__;
-      if (typeof n === 'function') { try { n = n(); } catch (_) { n = null; } }
-      if (!n) return null;
-      try { return JSON.parse(JSON.stringify(n)); } catch (_) { return null; }
-    });
-    return { nuxt, finalUrl, status: response ? response.status() : 0 };
-  } finally {
-    await page.close();
-  }
-}
 
 async function fetchDesignSpecs(productDataUrl) {
   if (!productDataUrl) return null;
@@ -261,11 +244,7 @@ function upsertProduct(list, record) {
           continue;
         }
         console.log(`\n📂 ${col.key}`);
-        if (args.dryRun) {
-          // Bez mreže u dry-run-u: prijavi samo nameru (resolve provera je deo realnog ingesta).
-          summary.push({ key: col.key, sku: `${SKU_PREFIX}${col.guessSlug}`, slug: `tarkett-${col.guessSlug}`, dryRun: true });
-          continue;
-        }
+        // Dry-run čita stranicu i per-dizajn JSON (kao grass/lajsne), ali ne uploaduje i ne upisuje JSON/manifest.
         const { nuxt, finalUrl, status } = await fetchNuxt(browser, col.url);
         const item = parse.extractCollectionItem(nuxt);
         // Mrtva/preusmerena kolekcija: nema item-a ili je URL pao na kategoriju (S5 obrazac).
@@ -295,7 +274,7 @@ function upsertProduct(list, record) {
           images: record.images.length, docs: record.documents.length,
         });
         manifest.record(`collection:${col.key}`, { status: 'ok', sku: record.sku });
-        manifest.save();
+        if (!args.dryRun) manifest.save();
       } catch (err) {
         console.log(`⚠️ ${col.key}: ${err.message} — preskačem kolekciju`);
         manifest.record(`collection:${col.key}`, { status: 'error', error: err.message });
