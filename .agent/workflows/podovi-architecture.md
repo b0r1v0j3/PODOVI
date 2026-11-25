@@ -131,6 +131,7 @@ Invariant coupling with existing product pipeline:
 | `tarkett_wood_collection_index.json` | Laminat (1), Parket (3) | Tarkett (3) | `parket[]` + `laminat[]` with official collection `description`, `shortDescription`, `keyFeatures`, `documents`, `heroImage`, `specs`, `url` scraped from the official Tarkett wood catalog; collection-level PDFs must resolve to `media.tarkett-image.com/docs/*.pdf` |
 | `tis_deking_products.json` | Deking (5) | TimberTech (10)| array of products with `categoryId`, `brandId`, `specs`, `images` |
 | `documents_index.json` | All | — | Fallback doc lookup by category + collection |
+| `certificate_validity.json` | PDP tab "Sertifikati" | — | Certificate/EPD PDFs whose content was read (key = file name from the URL): `claim` it really proves + `validUntil` printed in the PDF; `claim: null` = not evidence (test report, draft, other product). Unlisted documents are judged by title. |
 | `tarkett_documents_index.json` | Laminat (1), Parket (3) | Tarkett (3) | Kurirani PDF indeks po kolekciji (`laminat`, `parket`) za dokument tab fallback |
 | `welding_rods.json` | Accessories | — | Exact DLW / Gerflor linoleum welding rod references grouped by `welding_rod_ref` |
 | `welding_accessories.json` | Accessories | Gerflor / Tarkett | Curated generic welding electrode / family references (`CR40`, `MCR40`, `BBR40`, `CR50`, Tarkett vinyl/linoleum rod collections) used when the site knows the compatible system but not a safe per-color code |
@@ -233,9 +234,15 @@ Description + Specs content:
   ├── `DescriptionSection` → for ostale kategorije; parses sectioned descriptions, a kada opis nije strukturiran prikazuje prose opis pa zatim `detailsSections`
   └── `ProductCharacteristics` → reads product.specs
 
-Certifications row (for cat 6, 7, 4, 2, 8, 9, 10):
-  ├── CertificationBadges (hardcoded per category)
-  ├── EcoFeatures (hardcoded per category)
+Tab "Sertifikati" (cat 6, 7, 4, 2, 8, 9, 10; only when at least one certificate or eco item is backed):
+  ├── getBackedClaims(product.specs, page + pre-merge collection + documents_index docs) (`lib/product-page/backed-claims.ts`)
+  │     ├── specs: key/label words + value (CE oznaka/DoP, EPD, FloorScore Da, RTS M1, emission label A+, BREEAM, ftalati, % reciklirano, ECONYL, % prirodnih, TVOC ≤ 100 µg)
+  │     ├── documents in `public/data/certificate_validity.json` → their verified claim while `validUntil` (Belgrade date) has not passed; claim null = never evidence
+  │     └── other documents → judged by title (DoP, EPD/FDES, FloorScore, IAC Gold, C2C, air quality)
+  ├── CertificationBadges ← certifications
+  └── EcoFeatures ← ecoFeatures + underfloorHeating (same reading as the 'grejanje' facet; mixed Da+Ne = no claim; heating alone never opens the tab)
+
+Tab "Dokumentacija" (independent of "Sertifikati"):
   └── ProductDocuments → reads product.documents
         └── SSR mora već da dobije selected-color docs kroz `mergeSelectedColor()`, a client `/api/color-data` fetch služi samo kao confirmation/update lane
 ```
@@ -265,8 +272,8 @@ Certifications row (for cat 6, 7, 4, 2, 8, 9, 10):
 | `DescriptionSection` | `product.description` (parsed into sections) | inline in `page.tsx` |
 | `ProductCharacteristics` | `product.specs` (filtered) + kanonski selected-color `specs` payload iz `/api/color-data`; welding-related values can link to `/proizvodi/welding-rod/[ref]` via `welding-helpers.ts`, sa user-facing labelima tipa `Elektroda za varenje` / `Kompatibilna elektroda za varenje` | `components/ProductCharacteristics.tsx` |
 | `ProductDocuments` | `product.documents` (SSR already selected-color aware) + confirmation lookup preko `/api/color-data` / collection docs index (`documents_index.json` / `tarkett_documents_index.json`); normalizuje Tarkett stale `/large/*.pdf` URL-ove na `/docs/*.pdf` pre prikaza | `components/ProductDocuments.tsx` |
-| `CertificationBadges` | hardcoded certifications array | `components/CertificationBadges.tsx` |
-| `EcoFeatures` | hardcoded features per category | `components/EcoFeatures.tsx` |
+| `CertificationBadges` | `getBackedClaims().certifications` — only claims backed by a spec, a still-valid verified certificate (`certificate_validity.json`) or a document title of this collection/selected color (no per-category lists) | `components/CertificationBadges.tsx` |
+| `EcoFeatures` | `getBackedClaims().ecoFeatures` + `underfloorHeating` (data-backed only) | `components/EcoFeatures.tsx` |
 | `ProductActions` | `product` (favorites, share) | `components/ProductActions.tsx` |
 | `ProductInquiryStickyCTA` | `productSlug`, `inquiryRef` | `components/ProductInquiryStickyCTA.tsx` |
 

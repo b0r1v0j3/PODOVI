@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 25.11.2026 (Somplan 350; na telefonu boje odmah ispod slike)
+> **Poslednje ažuriranje:** 25.11.2026 (Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu)
 
 ---
 
@@ -153,6 +153,13 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Kartica „Sertifikati" samo uz važeću potvrdu iz podataka (25.11.2026, odluka vlasnika)**
+- Ranije su sve kolekcije kategorija 2/4/6/7/8/9/10 dobijale istu fiksnu listu po kategoriji (FloorScore, Indoor Air Comfort Gold, M1, A+, CE, REACH, EPD + „100% reciklabilno", „30% recikliranog sadržaja", „Niske VOC emisije"…), bez obzira na brend i kolekciju; Somplan 350 je nosio FloorScore iako je sertifikat istekao. Ovo zamenjuje i izuzetak za iQ Granit SD (08.09.2026): SD sada dobija samo potvrđeno (CE, EPD, TVOC ≤ 10 µg/m³).
+- `lib/product-page/backed-claims.ts` → `getBackedClaims(specs, dokumenti, now)`; `page.tsx` daje `product.specs` + dokumente stranice, dokumente kolekcije pre `mergeSelectedColor` i `documents_index` (sertifikat kolekcije važi i za izabranu boju). Rečnik = unija starih lista, svaka stavka samo uz potvrdu: CE (CE oznaka/DoP), EPD (i FDES), FloorScore, Indoor Air Comfort Gold, M1, A+, Cradle to Cradle, BREEAM <ocena>, Sertifikat o kvalitetu vazduha; eko: Bez ftalata, „N% recikliranog sadržaja", ECONYL®, „N% prirodnih sastojaka", „TVOC emisije: …" samo za klasu ≤ 100 µg/m³ (od više vrednosti najslabija), podno grejanje (kao filter; Da+Ne = ništa; samo ne otvara karticu). Ispalo: REACH, „100% reciklabilno", „Antibakterijsko" (Alpod zbirna vrednost — ima je 12 od 221 dekora Winflex) i ne-eko fraze (Laka ugradnja, Sportska otpornost…). Dizajn nepromenjen.
+- `public/data/certificate_validity.json`: 111 pročitanih PDF-ova (ime fajla → `claim` koji PDF zaista potvrđuje + `validUntil` iz PDF-a; `claim: null` = izveštaj o ispitivanju, nacrt ili drugi proizvod). Isteklo: Desso C2C (2019), 22 EPD-a (Desso, Tarkett iconik/iQ Natural/Safetred…), Tarkett linoleum TIAQP (2024) i FloorScore (30.6.2026), Gerflor DLW C2C (23.3.2026); pogrešno: „EPD" na Tarasafe = EPD za Gerflor Attraction, „Cradle to Cradle sertifikat" na Desso = izveštaj o održivosti. Budući rokovi se sami gase (Gerflor FloorScore 31.1.2027, Tarkett linoleum C2C Silver 31.12.2026). Ti PDF-ovi se i dalje vide u Dokumentaciji.
+- Rezultat na 351 kolekciji: 280 sa karticom, 71 bez (Gerflor LVT 26, Gerflor linoleum 15, Gerflor ESD 7, Wolflor 7…) — u njihovim karakteristikama i dokumentima nema potvrde. Opisi proizvođača („Okruženje/Održivost") i „Ključne karakteristike" se ne čitaju. Tarkett LVT dekori imaju FloorScore/A+/reciklirani sadržaj u JSON-u, ali ih stranica nigde ne prikazuje, pa ni bedž.
+- Test: `tests/contracts/backed-claims-contract.test.ts` (Somplan = CE+EPD bez FloorScore/REACH, Creation 55 i Aurora bez kartice, boja zadržava DoP kolekcije, istekli i pogrešni PDF-ovi, registar); `pdp-client-bundle-contract` sad zna za `backed-claims`. Gotcha 45.
 
 **Tarkett alati čitaju Nuxt 3 tarkett.rs (25.11.2026)**
 - Novi `tools/lib/tarkett-nuxt.js` (`fetchNuxt`, `readNuxtPayload`) je jedino mesto koje čita Nuxt payload: Nuxt 2 `window.__NUXT__` (sa `state`) ili Nuxt 3 `<script id="__NUXT_DATA__">` → `unflattenNuxtData()`. Koriste ga `ingest_tarkett`, `ingest_tarkett_lajsne`, `ingest_tarkett_grass`, `ingest_pribor_tarkett`, `extract_tarkett_core` i `scripts/audit-tarkett-sync.ts` (pet lokalnih kopija uklonjeno).
@@ -1020,9 +1027,10 @@ PODOVI/
 39. **`lib/utils/product-images.ts` je owner i za surface izbor i za fallback redosled.** Komponente i API surface-i ne smeju ručno da čitaju `images[0]`, da spljoštavaju prvi URL bez candidate niza ili da održavaju lokalni “probaj sledeću sliku” lane mimo shared helpera.
 40. **`lib/utils/image-runtime.ts` ne odlučuje fallback redosled.** “Validna slika” za shared fallback znači da posle surface rezolucije postoji neprazan lokalni path ili parsabilan `https` URL; runtime helper odlučuje samo optimizaciju/bypass, ne to koji kandidat ide prvi.
 41. **Kad menjaš image host/variant/fallback contract, moraš zatvoriti ceo lane u istom prolazu.** Minimum: `lib/utils/product-images.ts`, `lib/utils/image-runtime.ts`, `next.config.mjs`, `lib/utils/productDataLoader.ts`, `scripts/validate-images.js`, `scripts/audit-catalog-quality.ts` i contract testovi moraju ostati poravnati, inače build/runtime/SEO vrlo lako odu u drift.
-42. **Klijentska komponenta ne sme da uvozi modul koji statički uvozi JSON kataloga.** `color-helpers.ts`, `prepare-colors.ts`, `resolve-product.ts`, `productDataLoader.ts`, `facet-config.ts`, `home-catalog-index.ts` i `@/public/data/*` su serverski; jedan takav uvoz (17.10.2026: `mergeSpecs` u `ProductCharacteristics`) ubacio je 13,4 MB u PDP paket. Čiste helpere izdvoj u zaseban modul bez data importa; `pdp-client-bundle-contract` ovo čuva.
+42. **Klijentska komponenta ne sme da uvozi modul koji statički uvozi JSON kataloga.** `color-helpers.ts`, `prepare-colors.ts`, `resolve-product.ts`, `backed-claims.ts`, `productDataLoader.ts`, `facet-config.ts`, `home-catalog-index.ts` i `@/public/data/*` su serverski; jedan takav uvoz (17.10.2026: `mergeSpecs` u `ProductCharacteristics`) ubacio je 13,4 MB u PDP paket. Čiste helpere izdvoj u zaseban modul bez data importa; `pdp-client-bundle-contract` ovo čuva.
 43. **Početna je ISR i ne čita `searchParams`.** Filter stanje iz URL-a primenjuje klijent posle montiranja; ne vraćaj `searchParams` u `app/page.tsx` (strana bi ponovo postala render po zahtevu sa ~6 s podataka) i ne šalji klijentu pune `Product` objekte — kartica i filteri rade nad `HomeCatalogItem`.
 44. **tarkett.rs je od ~11/2026 Nuxt 3 — nema više `window.__NUXT__`.** Podaci su u `<script id="__NUXT_DATA__">` (devalue), kolekcija je `pinia.collectionProduct.item`. Svi Tarkett alati čitaju payload samo preko `tools/lib/tarkett-nuxt.js` (`fetchNuxt` / `readNuxtPayload`, Nuxt 2 i 3; dekodira `unflattenNuxtData()` iz `tools/lib/tarkett-parse.js`) + `parse.extractCollectionItem` — novi alat ne sme sam da čita `window.__NUXT__`. Pre objave proveri da li Tarkett thumbnail stvarno postoji (žuta Somplan je bila 403) i da li sertifikati nisu istekli.
+45. **Kartica „Sertifikati" se nikad ne puni fiksnom listom.** Sve ide kroz `getBackedClaims()` (`lib/product-page/backed-claims.ts`): specifikacija, naslov dokumenta ili pročitan PDF iz `public/data/certificate_validity.json`. Kad uvoziš sertifikat/EPD, pročitaj PDF i upiši ga u registar (ime fajla → `claim` koji zaista potvrđuje + `validUntil` iz PDF-a; `claim: null` za izveštaj o ispitivanju, nacrt ili drugi proizvod) — inače se sudi po naslovu, a istekli sertifikat bi se prikazao kao važeći. Naslovi u podacima često lažu („Cradle to Cradle sertifikat" = izveštaj o održivosti, „EPD" = EPD drugog proizvoda).
 
 ---
 
@@ -1064,7 +1072,7 @@ PODOVI/
 
 4. **isColorSelectorCategory u page.tsx** — Kad dodaješ novu kategoriju, moraš da dodaš njen ID u SVE liste u `app/proizvodi/[slug]/page.tsx`:
    - `isColorSelectorCategory` (line ~367) — bez ovoga stranica koristi bare layout
-   - `sharedCertsAndEco` (line ~370) — sertifikati i eko features
+   - `sharedCertsAndEco` — kategorije sa karticom „Sertifikati"; sadržaj isključivo iz `getBackedClaims()` (`lib/product-page/backed-claims.ts`), nikad fiksne liste po kategoriji
    - `shouldRedirectCollection` (line ~250) — redirect boja na kolekciju
    - `collectionCategoryLabel` (line ~461) — labela u color selectoru
    - `categorySlugMap` (line ~190) — mapiranje ID → slug

@@ -12,6 +12,7 @@ const HEAVY_IMPORTS = [
   "'@/lib/product-page/color-helpers'",
   "'@/lib/product-page/prepare-colors'",
   "'@/lib/product-page/resolve-product'",
+  "'@/lib/product-page/backed-claims'",
   "'@/lib/product-page'",
   "'@/lib/utils/productDataLoader'",
   "'@/lib/catalog/home-catalog-index'",

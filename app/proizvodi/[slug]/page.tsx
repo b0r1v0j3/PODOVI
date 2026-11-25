@@ -35,6 +35,7 @@ import {
   mergeSelectedColor,
 } from '@/lib/product-page';
 import { resolveSelectedColorServerData } from '@/lib/product-page/color-helpers';
+import { getBackedClaims } from '@/lib/product-page/backed-claims';
 import { enrichProductDescription, enrichShortDescription } from '@/lib/utils/description-enricher';
 import { splitProductTitle } from '@/lib/utils/name-parser';
 import { getParketCollectionVariantSlugs, getEffectiveParketCollection, getParketCollectionSlug } from '@/lib/data/parket-collection-mapping';
@@ -549,6 +550,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
     // ── Save original name before color merge (merge overwrites product.name with color name) ──
     const originalProductName = product.name;
     const originalShortDescription = product.shortDescription;
+    // Collection certificates still back claims when a color's own documents replace them.
+    const collectionDocuments = product.documents || [];
 
     // ── Merge selected color variant ──
     if (selectedColorSlug) {
@@ -652,42 +655,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
       // Romus alat sa variant-setom (npr. Silikon u boji 18 boja) — prikaži swatch-eve.
       || (product.categoryId === '13' && Array.isArray(customColors) && customColors.length > 1));
 
-    // ── Helper JSX logic to populate masonry columns neatly ──
-    const sharedCertsAndEco = (!isIqGranitSd && ['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)) ? (
-      <>
-        <div className="h-full">
-          <h3 className="eyebrow mb-6">Sertifikati kvaliteta</h3>
-          <CertificationBadges certifications={
-            product.brandId === '8'
-              ? ["Cradle to Cradle Silver", "Indoor Air Comfort Gold", "BREEAM A+", "GreenTag Level A", "CE"]
-              : product.categoryId === '10' && product.brandId === '3'
-                ? ["CE", "DoP", "REACH", "Indoor Air Quality", "Niske VOC emisije"]
-              : ["FloorScore", "Indoor Air Comfort Gold", "M1", "A+", "CE", "REACH", "EPD"]
-          } />
-        </div>
-
-        <div className="h-full">
-          <EcoFeatures
-            features={product.brandId === '8'
-              ? ["Cradle to Cradle Silver", "ECONYL® reciklirana vlakna", "70% reciklirani materijali u podlozi", "Smanjenje buke"]
-              : product.categoryId === '7'
-                ? ["98% prirodnih sastojaka", "100% reciklabilno", "Niske VOC emisije", "Antibakterijsko"]
-                : product.categoryId === '10' && product.brandId === '3'
-                  ? ["Niske VOC emisije", "Sportska otpornost", "Lako odrzavanje", "Dug vek trajanja"]
-                : product.categoryId === '10'
-                  ? ["98% prirodnih sastojaka", "Niske VOC emisije", "Sportska otpornost", "Lako odrzavanje"]
-                  : product.categoryId === '9'
-                    ? ["Brza renovacija", "Visoka otpornost na saobracaj", "Laka parcijalna zamena", "Nisko odrzavanje"]
-                : product.categoryId === '4'
-                  ? ["Bez ftalata", "100% reciklabilno", "Smanjenje buke", "Laka ugradnja"]
-                  : ["Bez ftalata", "100% reciklabilno", "30% recikliranog sadržaja", "Niske VOC emisije"]
-            }
-            underfloorHeating={product.brandId !== '8'}
-          />
-        </div>
-      </>
-    ) : null;
-
     const documentsCategoryKey = product.categoryId === '1'
       ? 'laminat'
       : product.categoryId === '3'
@@ -732,14 +699,35 @@ export default async function ProductPage({ params, searchParams }: Props) {
         ? indexedCollectionDocuments
         : normalizedProductDocuments;
 
+    const pageDocuments = selectedColorSlug ? (product.documents || []) : initialProductDocuments;
     const sharedDocs = ((product.documents && product.documents.length > 0) || hasIndexedDocuments) ? (
       <div className="h-full">
         <ProductDocuments
-          initialDocuments={selectedColorSlug ? (product.documents || []) : initialProductDocuments}
+          initialDocuments={pageDocuments}
           categoryId={product.categoryId}
           collectionSlug={product.slug}
         />
       </div>
+    ) : null;
+
+    // ── Sertifikati i eko-stavke: samo ono što specifikacije ili važeći dokumenti kolekcije/boje potvrđuju ──
+    const backedClaims = getBackedClaims(product.specs, [...pageDocuments, ...collectionDocuments, ...indexedCollectionDocuments]);
+    // Podno grejanje sâmo ne otvara karticu „Sertifikati" (to nije ni sertifikat ni eko-osobina).
+    const sharedCertsAndEco = ['6', '7', '4', '2', '8', '9', '10'].includes(product.categoryId)
+      && (backedClaims.certifications.length > 0 || backedClaims.ecoFeatures.length > 0) ? (
+      <>
+        {backedClaims.certifications.length > 0 && (
+          <div className="h-full">
+            <h3 className="eyebrow mb-6">Sertifikati kvaliteta</h3>
+            <CertificationBadges certifications={backedClaims.certifications} />
+          </div>
+        )}
+        {(backedClaims.ecoFeatures.length > 0 || backedClaims.underfloorHeating) && (
+          <div className="h-full">
+            <EcoFeatures features={backedClaims.ecoFeatures} underfloorHeating={backedClaims.underfloorHeating} />
+          </div>
+        )}
+      </>
     ) : null;
 
     // Lep naziv kolekcije za breadcrumb: prvo iz `collection` spec-a; ako ga nema,

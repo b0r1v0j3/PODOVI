@@ -1,0 +1,436 @@
+{
+  "checkedAt": "2026-11-25",
+  "note": "Provereni PDF-ovi sertifikata/EPD-a (ključ = ime fajla iz URL-a, bez ?v=): claim = tvrdnja koju PDF zaista potvrđuje, validUntil = rok odštampan u PDF-u; claim null = ne potvrđuje ništa (nije sertifikat, nacrt ili drugi proizvod). Dokument kojeg nema ovde sudi se po naslovu. Koristi lib/product-page/backed-claims.ts.",
+  "documents": {
+    "68300-dlw-linoleum-c2c.pdf": {
+      "claim": "Cradle to Cradle",
+      "validUntil": "2026-03-23"
+    },
+    "certificate-c2c-sustainability-transparency-report-desso-int.pdf": {
+      "claim": null,
+      "note": "Desso izveštaj o održivosti, nije C2C sertifikat"
+    },
+    "certificate-emissions-m1-acczent-excellence-genius-int.pdf": {
+      "claim": null,
+      "note": "izveštaj o M1 ispitivanju uzorka, nije RTS M1 klasifikacija"
+    },
+    "certificate-floorscore-linoleum-int.pdf": {
+      "claim": "FloorScore",
+      "validUntil": "2026-06-30"
+    },
+    "certificate-indoor-air-comfort-loose-lay-en.pdf": {
+      "claim": "Indoor Air Comfort Gold",
+      "validUntil": "2029-09-27"
+    },
+    "certificate-indoor-air-comfort-omnisports-en.pdf": {
+      "claim": "Indoor Air Comfort Gold",
+      "validUntil": "2029-09-27"
+    },
+    "certificate-indoor-air-quality-acczent-platinium-int.pdf": {
+      "claim": null,
+      "note": "izveštaj o ispitivanju VOC uzorka, nije sertifikat"
+    },
+    "certificate-indoor-air-quality-voc-emissions-tapiflex-excellence-19db-int.pdf": {
+      "claim": null,
+      "note": "izveštaj o ispitivanju VOC uzorka, nije sertifikat"
+    },
+    "certificate-tiaqp-heterogeneous-acoustic-en.pdf": {
+      "claim": "Sertifikat o kvalitetu vazduha",
+      "validUntil": "2028-04-27"
+    },
+    "certificate-tiaqp-heterogeneous-compact-en.pdf": {
+      "claim": "Sertifikat o kvalitetu vazduha",
+      "validUntil": "2028-04-27"
+    },
+    "certificate-tiaqp-heterogeneous-loose-lay-en.pdf": {
+      "claim": "Sertifikat o kvalitetu vazduha",
+      "validUntil": "2028-04-27"
+    },
+    "certificate-tiaqp-omnisports-en.pdf": {
+      "claim": "Sertifikat o kvalitetu vazduha",
+      "validUntil": "2029-07-19"
+    },
+    "cr-en-li-tiaqp-2019.pdf": {
+      "claim": "Sertifikat o kvalitetu vazduha",
+      "validUntil": "2024-02-11"
+    },
+    "cr-en-tiaqp-2019-linoleum.pdf": {
+      "claim": "Sertifikat o kvalitetu vazduha",
+      "validUntil": "2024-02-11"
+    },
+    "cr-epd-beijing-somplan-collections-exp-2031-02-03.pdf": {
+      "claim": "EPD",
+      "validUntil": "2031-02-03"
+    },
+    "cr-int-allergy-uk-list-concerned-countries.pdf": {
+      "claim": null,
+      "note": "pismo/spisak zemalja Allergy UK, nije sertifikat"
+    },
+    "cr-int-c2c-bronze-continousdyedcarpettile.pdf": {
+      "claim": "Cradle to Cradle",
+      "validUntil": "2019-09-29"
+    },
+    "cr-int-c2c-bronze-pa6-solution-dyed-carpet-tiles.pdf": {
+      "claim": "Cradle to Cradle",
+      "validUntil": "2019-04-01"
+    },
+    "cr-int-c2c-gold-lino-originale.pdf": {
+      "claim": "Cradle to Cradle",
+      "validUntil": "2026-11-25"
+    },
+    "cr-int-c2c-silver-lino.pdf": {
+      "claim": "Cradle to Cradle",
+      "validUntil": "2026-12-31"
+    },
+    "cr-int-c2c-silver-solution-dyed-tiles.pdf": {
+      "claim": "Cradle to Cradle",
+      "validUntil": "2019-04-01"
+    },
+    "cr-int-li-allergy-uk-seal-of-approval.pdf": {
+      "claim": null,
+      "note": "Allergy UK pečat (alergije), nije sertifikat kvaliteta vazduha"
+    },
+    "cr-m1-emission-classification-linoleum-essenza-en.pdf": {
+      "claim": "M1",
+      "validUntil": "2028-01-20"
+    },
+    "cr-m1-emission-classification-linoleum-xf2-en.pdf": {
+      "claim": "M1",
+      "validUntil": "2028-02-17"
+    },
+    "cr-see-omnisports-v65-tarkett-indoor-air-quality-.pdf": {
+      "claim": null,
+      "note": "izveštaj o ispitivanju VOC uzorka (2017), nije sertifikat"
+    },
+    "cr-see-omnsiports-v83-tarkett-indoor-air-quality.pdf": {
+      "claim": null,
+      "note": "izveštaj o ispitivanju VOC uzorka (2018), nije sertifikat"
+    },
+    "environment-product-declaration-9ef9ff24f529.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-11-03"
+    },
+    "epd-38940.pdf": {
+      "claim": "EPD"
+    },
+    "epd-40929.pdf": {
+      "claim": "EPD"
+    },
+    "epd-42986.pdf": {
+      "claim": "EPD"
+    },
+    "epd-47600.pdf": {
+      "claim": "EPD"
+    },
+    "epd-47637.pdf": {
+      "claim": "EPD"
+    },
+    "epd-48406.pdf": {
+      "claim": "EPD"
+    },
+    "epd-54378.pdf": {
+      "claim": "EPD"
+    },
+    "epd-56664.pdf": {
+      "claim": "EPD"
+    },
+    "epd-56701.pdf": {
+      "claim": null,
+      "note": "nedovršen nacrt EPD-a (UL šablon bez broja i datuma)"
+    },
+    "epd-56911.pdf": {
+      "claim": null,
+      "note": "EPD za Gerflor Attraction, ne za Tarasafe"
+    },
+    "epd-56913.pdf": {
+      "claim": "EPD"
+    },
+    "epd-60729.pdf": {
+      "claim": "EPD"
+    },
+    "epd-60730.pdf": {
+      "claim": "EPD"
+    },
+    "epd-69426.pdf": {
+      "claim": "EPD"
+    },
+    "epd-acczent-excellence-genius.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-11-07"
+    },
+    "epd-acczent.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-07-09"
+    },
+    "epd-desso-0-percent-recycled-pa6-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-03-27"
+    },
+    "epd-desso-025-recycled-pa6-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-03-27"
+    },
+    "epd-desso-100-percent-recycled-pa6-ecobase-700g.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-07-04"
+    },
+    "epd-desso-100-percent-recycled-pa6-ecobase-800g.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-07-04"
+    },
+    "epd-desso-100-percent-recycled-pa6-ecobase-900g.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-07-04"
+    },
+    "epd-desso-airmaster-classic.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-01-21"
+    },
+    "epd-desso-airmaster-earth.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-01-21"
+    },
+    "epd-desso-airmaster-gold-collections.pdf": {
+      "claim": "EPD",
+      "validUntil": "2024-11-22"
+    },
+    "epd-desso-airmaster-sphere.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-01-21"
+    },
+    "epd-desso-desert.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-05-15"
+    },
+    "epd-desso-emerge-int.pdf": {
+      "claim": "EPD",
+      "validUntil": "2031-01-22"
+    },
+    "epd-desso-enlaced.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-03-06"
+    },
+    "epd-desso-evolve-int.pdf": {
+      "claim": "EPD",
+      "validUntil": "2031-01-22"
+    },
+    "epd-desso-fuse-and-fields.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-03-16"
+    },
+    "epd-desso-grezzo-bloom-and-grezzo-vivid.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-04-17"
+    },
+    "epd-desso-linon-unity.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-03-06"
+    },
+    "epd-desso-linon.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-10-31"
+    },
+    "epd-desso-patricia-urquiola.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-03-27"
+    },
+    "epd-desso-probase-100-percent-recycled-pa6-s-p-02867.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-03-27"
+    },
+    "epd-desso-probase-10025-recycled-pa6-s-p-02867.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-03-27"
+    },
+    "epd-desso-recharge-retrace.pdf": {
+      "claim": "EPD",
+      "validUntil": "2027-06-27"
+    },
+    "epd-desso-recharge.pdf": {
+      "claim": "EPD",
+      "validUntil": "2027-06-27"
+    },
+    "epd-desso-retrace.pdf": {
+      "claim": "EPD",
+      "validUntil": "2027-06-27"
+    },
+    "epd-desso-solid-and-shape.pdf": {
+      "claim": "EPD",
+      "validUntil": "2027-09-26"
+    },
+    "epd-desso-stratos-stratos-blocks.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-07-04"
+    },
+    "epd-desso-tactile-craft-1-and-2.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-12-12"
+    },
+    "epd-desso-tactile-craft-3.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-12-12"
+    },
+    "epd-desso-tufted-carpet-tile-450-550g-sdpa66-0rc-and-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2021-08-07"
+    },
+    "epd-desso-tufted-carpet-tile-500-600g-sdpa6-0rc-and-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2023-06-06"
+    },
+    "epd-desso-tufted-carpet-tile-600-700g-sdpa6-0rc-and-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2023-06-06"
+    },
+    "epd-desso-tufted-carpet-tile-sdpa6-100rc-and-ecobase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2024-04-01"
+    },
+    "epd-gerflor-tarasafe-collection-for-europe-48377.pdf": {
+      "claim": "EPD"
+    },
+    "epd-grezzo-grezzo-bloom-grezzo-vivid.pdf": {
+      "claim": "EPD",
+      "validUntil": "2028-04-17"
+    },
+    "epd-iconik-int.pdf": {
+      "claim": "EPD",
+      "validUntil": "2025-07-27"
+    },
+    "epd-iq-natural.pdf": {
+      "claim": "EPD",
+      "validUntil": "2026-01-25"
+    },
+    "epd-iq-range.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-11-03"
+    },
+    "epd-linoleum.pdf": {
+      "claim": "EPD"
+    },
+    "epd-nordic-generic-vinyl-tpx-stairs.pdf": {
+      "claim": "EPD",
+      "validUntil": "2024-03-04"
+    },
+    "epd-nordic-specific-desso-0-recycledcontent-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2018-05-07"
+    },
+    "epd-nordic-specific-desso-100-recycledcontent-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2018-05-07"
+    },
+    "epd-omnisports-activeplus.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-01-20"
+    },
+    "epd-omnisports-compact.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-01-20"
+    },
+    "epd-omnisports.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-01-20"
+    },
+    "epd-premium-plus.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-01-30"
+    },
+    "epd-safety.pdf": {
+      "claim": "EPD",
+      "validUntil": "2024-11-22"
+    },
+    "epd-tapiflex.pdf": {
+      "claim": "EPD",
+      "validUntil": "2029-07-09"
+    },
+    "ev-int-epd-450-550-gr-0-percent-rc-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2021-08-07"
+    },
+    "ev-int-epd-500-600-gr-0-percent-rc-and-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2023-06-06"
+    },
+    "ev-int-epd-500-600-gr-100-percent-rc-and-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2023-06-06"
+    },
+    "ev-int-epd-600-700-gr-0-percent-rc-and-ecobase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2021-09-29"
+    },
+    "ev-int-epd-600-700-gr-0-percent-rc-and-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2023-06-06"
+    },
+    "ev-int-epd-600-700-gr-100-percent-rc-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2023-06-06"
+    },
+    "ev-int-epd-700-800-gr-0-percent-rc-and-ecobase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2021-09-29"
+    },
+    "ev-int-epd-700-800-gr-100-percent-rc-and-ecobase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2021-09-29"
+    },
+    "ev-int-epd-700-800-gr-100-percent-rc-and-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2023-06-06"
+    },
+    "ev-int-epd-900-gr-100-percent-rc-probase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2023-06-06"
+    },
+    "ev-int-epd-ibu-600-700-gr-100-percent-rc-and-ecobase.pdf": {
+      "claim": "EPD",
+      "validUntil": "2021-01-11"
+    },
+    "homogenous-m1-62278.pdf": {
+      "claim": "M1",
+      "validUntil": "2029-11-04"
+    },
+    "indoor-air-quality-airmaster-lv.pdf": {
+      "claim": null,
+      "note": "promotivni tekst na letonskom, nije sertifikat"
+    },
+    "mipolam-iac-gold-70506.pdf": {
+      "claim": "Indoor Air Comfort Gold",
+      "validUntil": "2030-06-12"
+    },
+    "sertifikat-emisije-67445.pdf": {
+      "claim": "M1",
+      "validUntil": "2028-04-17"
+    },
+    "sertifikat-emisije-67858.pdf": {
+      "claim": "M1",
+      "validUntil": "2028-04-17"
+    },
+    "sertifikat-emisije-69952.pdf": {
+      "claim": null,
+      "note": "izveštaj o ispitivanju VOC uzorka (M1 test), nije sertifikat"
+    },
+    "sertifikat-emisije-70058.pdf": {
+      "claim": "M1",
+      "validUntil": "2029-05-13"
+    },
+    "sertifikat-floorscore-69731.pdf": {
+      "claim": "FloorScore",
+      "validUntil": "2027-01-31"
+    },
+    "sertifikat-floorscore-69913.pdf": {
+      "claim": "FloorScore",
+      "validUntil": "2027-01-31"
+    },
+    "sertifikat-gerflor-floorscore-69913.pdf": {
+      "claim": "FloorScore",
+      "validUntil": "2027-01-31"
+    },
+    "taralay-millenium-taradal-tarastep-fdes-62053.pdf": {
+      "claim": "EPD",
+      "validUntil": "2030-12-31"
+    }
+  }
+}
