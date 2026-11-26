@@ -97,20 +97,7 @@ export default async function WeldingRodPage({ params }: Props) {
             </h2>
             <div className="prose max-w-none text-ink-600">
               {source?.sourceNoteSr && <p>{source.sourceNoteSr}</p>}
-              {source?.officialUrl && (
-                <p>
-                  Zvanični izvor:
-                  {' '}
-                  <a
-                    href={source.officialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-ink-900 underline underline-offset-4 hover:opacity-60"
-                  >
-                    {source.officialUrl}
-                  </a>
-                </p>
-              )}
+              {/* Namerno bez linka „Zvanični izvor" ka sajtu proizvođača (vlasnik 26.11.2026). */}
             </div>
           </div>
         </div>

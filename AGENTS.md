@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 26.11.2026 (uklonjen javni `/api/inquiries`; Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu + eko-činjenice iz teksta proizvođača; podaci boje Tarkett LVT/Desso na stranicama kolekcije i boje; Dokumentacija bez isteklih i pogrešno naslovljenih PDF-ova; TimberTech URL-ovi iz sitemap-a bez 404)
+> **Poslednje ažuriranje:** 26.11.2026 (stranice proizvoda bez linka ka sajtu proizvođača; uklonjen javni `/api/inquiries`; Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu + eko-činjenice iz teksta proizvođača; podaci boje Tarkett LVT/Desso na stranicama kolekcije i boje; Dokumentacija bez isteklih i pogrešno naslovljenih PDF-ova; TimberTech URL-ovi iz sitemap-a bez 404)
 
 ---
 
@@ -145,6 +145,10 @@ JSON fajl → resolve-product.ts → Product objekat → page.tsx → UI kompone
 ## 5. 📋 STANJE PROJEKTA
 
 ### ✅ Završeno
+
+**Stranice proizvoda bez linka ka sajtu proizvođača (26.11.2026, odluka vlasnika)**
+- Uklonjeni linkovi „Pogledaj na sajtu proizvođača" / „Pogledaj izvorni katalog" (`components/ProductColorSelector.tsx`, `app/proizvodi/[slug]/page.tsx`) i „Zvanični izvor" na stranicama elektroda (`app/proizvodi/welding-rod/[ref]/page.tsx`). Razlog: sav materijal (slike, PDF, specifikacije) je kod nas, a link je kupca vodio na tarkett.rs (korpa, uzorci), Gerflor/Sika, a za Podovi parkete na **alpod.rs** — sajt dobavljača koji i sam prodaje.
+- Podatak `externalLink` / `officialUrl` ostaje u katalogu (ops, audit, seed skripte), samo se ne prikazuje. Čuvar: `tests/contracts/no-manufacturer-link-contract.test.ts` — ne vraćati link bez nove odluke vlasnika.
 
 **Uklonjen javni `/api/inquiries` — zloupotreba našeg Gmail-a (26.11.2026, odluka vlasnika)**
 - Javni `POST /api/inquiries` je proveravao samo da polja postoje i slao mejl sa našeg Gmail naloga na `email` iz zahteva (prolazio je i spisak adresa), sa neescapovanim HTML-om iz zahteva — svako je mogao da šalje spam/phishing u ime Podovi. Nijedna strana ga nije koristila (`InquiryButton` / `InquiryModal` nisu bili montirani; javni tok je `/upiti` → `/api/contact`).

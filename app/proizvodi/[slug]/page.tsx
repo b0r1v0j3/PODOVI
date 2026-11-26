@@ -853,7 +853,6 @@ export default async function ProductPage({ params, searchParams }: Props) {
                   specs={filterSpecsForDisplay(product.specs, { categoryId: product.categoryId, productSlug: product.slug })}
                   inStock={product.inStock}
                   productSlug={product.slug}
-                  externalLink={product.externalLink}
                   customColors={(product.categoryId === '3' || product.categoryId === '1') ? (customColors ?? []) : customColors}
                   collectionDisplayName={product.specs.find(s => s.key === 'collection')?.value}
                   collectionCategoryLabel={
@@ -955,16 +954,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                     >
                       Pošaljite upit
                     </Link>
-                    {product.externalLink && (
-                      <a
-                        href={product.externalLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-link self-start"
-                      >
-                        {isAlpodImportBrand(product.brandId) ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača'} →
-                      </a>
-                    )}
+                    {/* Namerno bez linka ka sajtu proizvođača / izvornom katalogu (vlasnik 26.11.2026). */}
                   </div>
 
                   <ProductActions product={product} />

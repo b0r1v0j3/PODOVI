@@ -31,7 +31,6 @@ interface ProductColorSelectorProps {
   specs?: ProductSpec[];
   inStock: boolean;
   productSlug: string;
-  externalLink?: string;
   onCharacteristicsChange?: (characteristics: Record<string, string> | null) => void;
   customColors?: any[];
   /** Za parket/laminat: naziv kolekcije prikazan iznad (kao LVT "Creation 30"). Ispod slike ostaje boja/varijanta. */
@@ -64,7 +63,6 @@ export default function ProductColorSelector({
   specs,
   inStock,
   productSlug,
-  externalLink,
   onCharacteristicsChange,
   customColors,
   collectionDisplayName,
@@ -94,7 +92,6 @@ export default function ProductColorSelector({
   const [selectedColorSlug, setSelectedColorSlug] = useState<string | undefined>(initialColorSlug);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<Record<string, string> | null>(null);
   const [colorsCount, setColorsCount] = useState<number | null>(null);
-  const externalLinkLabel = brand?.slug === 'podovi' ? 'Pogledaj izvorni katalog' : 'Pogledaj na sajtu proizvođača';
   const [isColorsModalOpen, setIsColorsModalOpen] = useState(false);
   const colorsModalTriggerRef = useRef<HTMLButtonElement>(null);
   const colorsModalCloseButtonRef = useRef<HTMLButtonElement>(null);
@@ -708,20 +705,8 @@ export default function ProductColorSelector({
           >
             Pošaljite upit
           </a>
-
-          {/* Link na sajt proizvođača / izvorni katalog */}
-          {externalLink && (
-            <div className="mt-6">
-              <a
-                href={externalLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-link"
-              >
-                {externalLinkLabel} →
-              </a>
-            </div>
-          )}
+          {/* Namerno bez linka ka sajtu proizvođača / izvornom katalogu (vlasnik 26.11.2026):
+              sav materijal je kod nas, a link je vodio kupca na tarkett.rs / alpod.rs. */}
         </div>
       </div>
 
