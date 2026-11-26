@@ -1,6 +1,6 @@
 # 🏠 Podovi.online — AGENTS.md
 
-> **Poslednje ažuriranje:** 26.11.2026 (stranice proizvoda bez linka ka sajtu proizvođača; uklonjen javni `/api/inquiries`; Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu + eko-činjenice iz teksta proizvođača; podaci boje Tarkett LVT/Desso na stranicama kolekcije i boje; Dokumentacija bez isteklih i pogrešno naslovljenih PDF-ova; TimberTech URL-ovi iz sitemap-a bez 404)
+> **Poslednje ažuriranje:** 26.11.2026 (stranice proizvoda bez linka ka sajtu proizvođača; uklonjen javni `/api/inquiries`; Somplan 350; na telefonu boje odmah ispod slike; kartica „Sertifikati" samo uz važeću potvrdu + eko-činjenice iz teksta proizvođača; podaci boje Tarkett LVT/Desso na stranicama kolekcije i boje; Dokumentacija bez isteklih i pogrešno naslovljenih PDF-ova; TimberTech URL-ovi iz sitemap-a bez 404)
 
 ---
 
